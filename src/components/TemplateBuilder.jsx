@@ -1,0 +1,138 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FiPlus, FiX } from 'react-icons/fi';
+
+const STANDARD_PHRASES = [
+  'Klinische Untersuchung zeigt',
+  'Patient berichtet über',
+  'Röntgenologisch zeigt sich',
+  'Bei der Inspektion fällt auf',
+  'Nach Lokalanästhesie erfolgte',
+  'Unter sterilen Bedingungen wurde',
+  'Die Behandlung erfolgte mit',
+  'Es wurde schonend präpariert',
+  'Kontrolltermin in einer Woche',
+  'Bis zur vollständigen Abheilung',
+  'Patient wurde instruiert',
+  'Regelmäßige Kontrollen empfohlen'
+];
+
+const MATERIALS = [
+  'Komposit',
+  'Glasionomerzement',
+  'Amalgam',
+  'Keramik',
+  'Titan',
+  'Zirkonoxid'
+];
+
+export default function TemplateBuilder({ template, onChange }) {
+  const [content, setContent] = useState(template?.Text || '');
+  const [showPreview, setShowPreview] = useState(true);
+  
+  const handleContentChange = (newContent) => {
+    setContent(newContent);
+    onChange?.({ ...template, Text: newContent });
+  };
+
+  const handleAddPhrase = (phrase) => {
+    const textArea = document.getElementById('template-textarea');
+    const cursorPos = textArea.selectionStart;
+    const textBefore = content.substring(0, cursorPos);
+    const textAfter = content.substring(cursorPos);
+    
+    const newContent = textBefore + phrase + textAfter;
+    handleContentChange(newContent);
+    
+    // Cursor nach dem eingefügten Text positionieren
+    setTimeout(() => {
+      textArea.focus();
+      textArea.setSelectionRange(cursorPos + phrase.length, cursorPos + phrase.length);
+    }, 0);
+  };
+
+  return (
+    <div className="flex gap-6">
+      {/* Editor */}
+      <div className="flex-1 space-y-4">
+        <div className="flex justify-between items-center">
+          <h3 className="font-medium text-gray-700">Vorlage bearbeiten</h3>
+          <div className="flex gap-2">
+            {/* Phrases Dropdown */}
+            <select
+              className="text-sm px-3 py-1.5 rounded-lg border border-gray-200 bg-white/80"
+              onChange={(e) => {
+                if (e.target.value) {
+                  handleAddPhrase(e.target.value);
+                  e.target.value = '';
+                }
+              }}
+            >
+              <option value="">+ Textbaustein einfügen</option>
+              {STANDARD_PHRASES.map(phrase => (
+                <option key={phrase} value={phrase}>{phrase}</option>
+              ))}
+            </select>
+            
+            {/* Materials Dropdown */}
+            <select
+              className="text-sm px-3 py-1.5 rounded-lg border border-gray-200 bg-white/80"
+              onChange={(e) => {
+                if (e.target.value) {
+                  handleAddPhrase(`Verwendetes Material: ${e.target.value}`);
+                  e.target.value = '';
+                }
+              }}
+            >
+              <option value="">+ Material hinzufügen</option>
+              {MATERIALS.map(material => (
+                <option key={material} value={material}>{material}</option>
+              ))}
+            </select>
+
+            <button
+              onClick={() => setShowPreview(!showPreview)}
+              className="text-sm px-3 py-1.5 rounded-lg border border-gray-200 bg-white/80 hover:bg-white"
+            >
+              {showPreview ? "Vorschau ausblenden" : "Vorschau einblenden"}
+            </button>
+          </div>
+        </div>
+        
+        <div className="bg-white/60 backdrop-blur-sm rounded-xl shadow-sm p-4">
+          <textarea
+            id="template-textarea"
+            value={content}
+            onChange={(e) => handleContentChange(e.target.value)}
+            placeholder="Geben Sie hier Ihre Vorlage ein..."
+            className="w-full px-3 py-2 rounded-lg border border-gray-200 bg-white/90 focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-[500px] font-mono text-sm"
+            style={{ resize: 'vertical' }}
+          />
+        </div>
+      </div>
+
+      {/* Live Preview */}
+      {showPreview && (
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+          className="w-[400px] sticky top-0 h-fit"
+        >
+          <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6">
+            <h3 className="font-medium text-gray-700 mb-4 pb-2 border-b">Vorschau</h3>
+            <div className="prose prose-sm max-w-none">
+              {content ? (
+                <div className="bg-white/60 rounded-lg p-3 shadow-sm">
+                  <p className="whitespace-pre-wrap text-gray-600">{content}</p>
+                </div>
+              ) : (
+                <p className="text-gray-400 italic">Noch keine Vorlage eingegeben...</p>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+} 
