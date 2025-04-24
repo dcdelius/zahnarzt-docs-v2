@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiSearch, FiBook, FiFileText, FiArrowRight } from "react-icons/fi";
-import { collection, getDocs } from "firebase/firestore";
+import { FiSend, FiMessageSquare, FiPlus, FiTrash2 } from "react-icons/fi";
+import { collection, getDocs, addDoc, query, orderBy, serverTimestamp, deleteDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
+import Navigation from "./components/Navigation";
 
 const pageTransition = {
   initial: { opacity: 0, y: 20 },
@@ -17,165 +18,231 @@ const hoverScale = {
 };
 
 export default function MedicalKnowledgeDashboard() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [articles, setArticles] = useState([]);
-  const [filteredArticles, setFilteredArticles] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [messages, setMessages] = useState([]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [conversations, setConversations] = useState([]);
+  const [currentConversation, setCurrentConversation] = useState(null);
+  const [isNewConversation, setIsNewConversation] = useState(true);
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    const fetchConversations = async () => {
       try {
-        const articlesSnap = await getDocs(collection(db, "Praxen", "1", "Wissensdatenbank"));
-        const articlesList = articlesSnap.docs.map(doc => ({
+        const conversationsSnap = await getDocs(
+          query(collection(db, "Praxen", "1", "Konversationen"), orderBy("timestamp", "desc"))
+        );
+        const conversationsList = conversationsSnap.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
-        setArticles(articlesList);
-        setFilteredArticles(articlesList);
-        
-        // Extrahiere eindeutige Kategorien
-        const uniqueCategories = [...new Set(articlesList.map(article => article.kategorie))];
-        setCategories(uniqueCategories);
+        setConversations(conversationsList);
       } catch (error) {
-        console.error("Fehler beim Laden der Artikel:", error);
-      } finally {
-        setIsLoading(false);
+        console.error("Fehler beim Laden der Konversationen:", error);
       }
     };
 
-    fetchArticles();
+    fetchConversations();
   }, []);
 
-  useEffect(() => {
-    let filtered = articles;
+  const startNewConversation = () => {
+    setMessages([]);
+    setCurrentConversation(null);
+    setIsNewConversation(true);
+  };
 
-    // Filter nach Suchanfrage
-    if (searchQuery) {
-      filtered = filtered.filter(article => 
-        article.titel.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.beschreibung.toLowerCase().includes(searchQuery.toLowerCase())
+  const loadConversation = async (conversationId) => {
+    try {
+      const messagesSnap = await getDocs(
+        query(collection(db, "Praxen", "1", "Konversationen", conversationId, "messages"), orderBy("timestamp", "asc"))
       );
+      const messagesList = messagesSnap.docs.map(doc => doc.data());
+      setMessages(messagesList);
+      setCurrentConversation(conversationId);
+      setIsNewConversation(false);
+    } catch (error) {
+      console.error("Fehler beim Laden der Nachrichten:", error);
     }
+  };
 
-    // Filter nach Kategorie
-    if (selectedCategory) {
-      filtered = filtered.filter(article => article.kategorie === selectedCategory);
+  const deleteConversation = async (conversationId) => {
+    try {
+      await deleteDoc(doc(db, "Praxen", "1", "Konversationen", conversationId));
+      setConversations(prev => prev.filter(conv => conv.id !== conversationId));
+      if (currentConversation === conversationId) {
+        startNewConversation();
+      }
+    } catch (error) {
+      console.error("Fehler beim Löschen der Konversation:", error);
     }
+  };
 
-    setFilteredArticles(filtered);
-  }, [searchQuery, selectedCategory, articles]);
+  const processWithAI = async (userMessage) => {
+    setIsLoading(true);
+    try {
+      // Simulierte Antwort für Testzwecke
+      const aiResponse = "Dies ist eine simulierte Antwort. Die KI-Integration wird in Kürze implementiert.";
+      
+      const newMessages = [
+        { role: 'user', content: userMessage, timestamp: new Date() },
+        { role: 'assistant', content: aiResponse, timestamp: new Date() }
+      ];
+
+      setMessages(prev => [...prev, ...newMessages]);
+
+      // Speichern in Firestore
+      if (isNewConversation) {
+        const conversationRef = await addDoc(collection(db, "Praxen", "1", "Konversationen"), {
+          title: userMessage.substring(0, 50) + "...",
+          timestamp: serverTimestamp()
+        });
+        setCurrentConversation(conversationRef.id);
+        setIsNewConversation(false);
+      }
+
+      // Nachrichten zur Konversation hinzufügen
+      if (currentConversation) {
+        for (const message of newMessages) {
+          await addDoc(
+            collection(db, "Praxen", "1", "Konversationen", currentConversation, "messages"),
+            { ...message, timestamp: serverTimestamp() }
+          );
+        }
+      }
+    } catch (error) {
+      console.error('Fehler bei der Verarbeitung:', error);
+      setMessages(prev => [...prev,
+        { role: 'user', content: userMessage, timestamp: new Date() },
+        { role: 'assistant', content: 'Es tut mir leid, es gab einen Fehler bei der Verarbeitung Ihrer Anfrage. Bitte versuchen Sie es später erneut.', timestamp: new Date() }
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!inputMessage.trim()) return;
+
+    const userMessage = inputMessage;
+    setInputMessage("");
+    await processWithAI(userMessage);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <motion.div
-        variants={pageTransition}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
-      >
-        {/* Header */}
-        <div className="text-center mb-12">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-bold text-gray-900 mb-4"
-          >
-            Wissensdatenbank
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-600"
-          >
-            Zugriff auf medizinisches Fachwissen und Behandlungsrichtlinien
-          </motion.p>
-        </div>
-
-        {/* Suchleiste und Filter */}
-        <div className="max-w-3xl mx-auto mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <div className="flex-1">
-              <div className="relative">
-                <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Suche nach Artikeln..."
-                  className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-300 bg-white/90 shadow-sm transition-all"
-                />
+    <div className="min-h-screen bg-[url('/background.jpg')] bg-cover bg-center">
+      <Navigation />
+      
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <motion.div
+          variants={pageTransition}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="flex w-full max-w-7xl h-[780px] bg-white/40 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden"
+        >
+          {/* Sidebar mit Konversationen */}
+          <div className="w-64 bg-black/60 backdrop-blur-lg text-white p-4 flex flex-col gap-6">
+            <div className="space-y-1">
+              <motion.button
+                whileHover={{ backgroundColor: "#FFFFFF15" }}
+                onClick={startNewConversation}
+                className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm w-full transition-colors bg-white/20 font-semibold"
+              >
+                <FiPlus /> Neue Konversation
+              </motion.button>
+              
+              <div className="mt-4 space-y-1">
+                {conversations.map((conversation) => (
+                  <motion.button
+                    key={conversation.id}
+                    whileHover={{ backgroundColor: "#FFFFFF15" }}
+                    onClick={() => loadConversation(conversation.id)}
+                    className={`flex items-center justify-between w-full gap-2 py-2 px-3 rounded-lg text-sm transition-colors ${
+                      currentConversation === conversation.id ? "bg-white/20 font-semibold" : ""
+                    }`}
+                  >
+                    <span className="truncate">{conversation.title}</span>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteConversation(conversation.id);
+                      }}
+                      className="text-gray-400 hover:text-red-500"
+                    >
+                      <FiTrash2 />
+                    </button>
+                  </motion.button>
+                ))}
               </div>
             </div>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-300 bg-white/90 shadow-sm transition-all"
-            >
-              <option value="">Alle Kategorien</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>{category}</option>
-              ))}
-            </select>
-          </motion.div>
-        </div>
+          </div>
 
-        {/* Artikel-Liste */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {isLoading ? (
-            <div className="col-span-full text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          {/* Hauptbereich mit Chat */}
+          <div className="flex-1 flex flex-col">
+            {/* Chat-Header */}
+            <div className="p-4 border-b border-white/10">
+              <h2 className="text-xl font-semibold text-white">
+                {isNewConversation ? "Neue Konversation" : "Zahnmedizinischer Chat"}
+              </h2>
             </div>
-          ) : filteredArticles.length === 0 ? (
-            <div className="col-span-full text-center py-12">
-              <FiBook className="mx-auto h-12 w-12 text-gray-400" />
-              <h3 className="mt-2 text-sm font-medium text-gray-900">Keine Artikel gefunden</h3>
-              <p className="mt-1 text-sm text-gray-500">Versuchen Sie es mit anderen Suchkriterien.</p>
-            </div>
-          ) : (
-            filteredArticles.map((article, index) => (
-              <motion.div
-                key={article.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index }}
-                whileHover={hoverScale}
-                className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-all"
-              >
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
-                      {article.kategorie}
-                    </span>
-                    <FiFileText className="text-gray-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {article.titel}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                    {article.beschreibung}
-                  </p>
-                  <button
-                    onClick={() => window.open(article.link, '_blank')}
-                    className="flex items-center text-sm font-medium text-blue-600 hover:text-blue-700"
+
+            {/* Chat-Nachrichten */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.map((msg, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-[80%] p-4 rounded-2xl ${
+                      msg.role === 'user'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white/20 text-white backdrop-blur-sm'
+                    }`}
                   >
-                    Zum Artikel
-                    <FiArrowRight className="ml-2" />
-                  </button>
+                    {msg.content}
+                  </div>
+                </motion.div>
+              ))}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-white/20 p-4 rounded-2xl backdrop-blur-sm">
+                    <div className="flex space-x-2">
+                      <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
-            ))
-          )}
-        </div>
-      </motion.div>
+              )}
+            </div>
+
+            {/* Eingabefeld */}
+            <form onSubmit={handleSubmit} className="p-4 border-t border-white/10">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  placeholder="Stellen Sie eine zahnmedizinische Frage..."
+                  className="flex-grow px-4 py-3 rounded-lg border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-300 bg-white/10 text-white placeholder-gray-400 backdrop-blur-sm"
+                />
+                <button
+                  type="submit"
+                  disabled={!inputMessage.trim() || isLoading}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                >
+                  <FiSend />
+                  Senden
+                </button>
+              </div>
+            </form>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 } 

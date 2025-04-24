@@ -9,6 +9,7 @@ import { AudioRecorder } from "./services/AudioRecorder";
 import { WhisperService } from "./services/WhisperService";
 import Sidebar from "./components/Sidebar";
 import DocumentationModal from "./components/DocumentationModal";
+import Navigation from "./components/Navigation";
 
 // Animation variants für konsistente Übergänge
 const pageTransition = {
@@ -292,63 +293,17 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col">
-      {/* Top Navigation Bar */}
-      <div className="bg-white/80 backdrop-blur-md shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <h1 className="text-2xl font-bold text-gray-900">EVIDENTIA</h1>
-              </div>
-              <nav className="ml-6 flex space-x-4">
-                <button
-                  onClick={() => navigate('/dashboard')}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-blue-600 bg-blue-50"
-                >
-                  Dashboard
-                </button>
-                <button
-                  onClick={() => navigate('/knowledge')}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                >
-                  Wissensdatenbank
-                </button>
-                <button
-                  onClick={() => navigate('/email')}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                >
-                  E-Mail-Responder
-                </button>
-                <button
-                  onClick={() => navigate('/settings')}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                >
-                  Einstellungen
-                </button>
-              </nav>
-            </div>
-            <div className="flex items-center">
-              <button
-                onClick={handleLogout}
-                className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              >
-                <FiLogOut className="mr-2" />
-                Abmelden
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-[url('/background.jpg')] bg-cover bg-center">
+      <Navigation />
+      
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center p-4 sm:p-6 md:p-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <motion.div
           variants={pageTransition}
           initial="initial"
           animate="animate"
           exit="exit"
-          className="w-full max-w-[1200px] h-[700px] bg-white/60 backdrop-blur-md rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden"
+          className="flex w-full max-w-7xl h-[780px] bg-white/40 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden"
         >
           {/* Sidebar */}
           <Sidebar
