@@ -10,6 +10,7 @@ import MedicalKnowledgeDashboard from './MedicalKnowledgeDashboard';
 import Settings from './Settings';
 import EmailResponder from './components/EmailResponder';
 import Layout from './components/Layout';
+import LandingPage from './pages/LandingPage';
 
 function Login() {
   const navigate = useNavigate();
@@ -120,6 +121,7 @@ function App() {
         <Route path="/knowledge" element={<MedicalKnowledgeDashboard />} />
         <Route path="/medical-knowledge" element={<MedicalKnowledgeDashboard />} />
         <Route path="/email" element={<EmailResponder />} />
+        <Route path="/landing" element={<LandingPage />} />
       </Route>
     </Routes>
   );

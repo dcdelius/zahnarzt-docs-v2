@@ -5,7 +5,8 @@ import {
   Cog6ToothIcon, 
   BookOpenIcon, 
   EnvelopeIcon, 
-  ArrowRightOnRectangleIcon 
+  ArrowRightOnRectangleIcon, 
+  StarIcon 
 } from "@heroicons/react/24/outline";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -78,6 +79,24 @@ export default function Navigation() {
 
           {/* Navigation Items */}
           <div className="flex items-center space-x-1">
+            {/* Landingpage-Link ganz links */}
+            <motion.div
+              variants={location.pathname === "/landing" ? activeItemVariants : navItemVariants}
+              initial="initial"
+              whileHover="hover"
+            >
+              <Link
+                to="/landing"
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${
+                  location.pathname === "/landing"
+                    ? "bg-blue-50 text-blue-600 font-medium"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                }`}
+              >
+                <StarIcon className="h-5 w-5" />
+                Landingpage
+              </Link>
+            </motion.div>
             {navItems.map((item) => (
               <motion.div
                 key={item.path}
