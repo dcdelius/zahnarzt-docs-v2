@@ -4,7 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDU_-VLE5pfPyYzdaW-hocgfOEwSFcHmp4",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "zahnarzt-app.firebaseapp.com",
   projectId: "zahnarzt-app",
   storageBucket: "zahnarzt-app.appspot.com",
