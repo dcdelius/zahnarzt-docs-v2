@@ -8,6 +8,7 @@ import { useAuth } from "./contexts/AuthContext";
 import Dashboard from './Dashboard';
 import MedicalKnowledgeDashboard from './MedicalKnowledgeDashboard';
 import Settings from './Settings';
+import Settings2 from './Settings2';
 import EmailResponder from './components/EmailResponder';
 import Layout from './components/Layout';
 import LandingPage from './pages/LandingPage';
@@ -118,6 +119,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/settings2" element={<Settings2 />} />
         <Route path="/knowledge" element={<MedicalKnowledgeDashboard />} />
         <Route path="/medical-knowledge" element={<MedicalKnowledgeDashboard />} />
         <Route path="/email" element={<EmailResponder />} />

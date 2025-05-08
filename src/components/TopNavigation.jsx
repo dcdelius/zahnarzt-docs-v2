@@ -8,6 +8,7 @@ const navLinks = [
   { to: "/medical-knowledge", label: "Wissensdatenbank", icon: <BookOpenIcon className="h-5 w-5 mr-2" /> },
   { to: "/email", label: "E-Mail", icon: <EnvelopeIcon className="h-5 w-5 mr-2" /> },
   { to: "/settings", label: "Einstellungen", icon: <Cog6ToothIcon className="h-5 w-5 mr-2" /> },
+  { to: "/settings2", label: "Settings 2", icon: <Cog6ToothIcon className="h-5 w-5 mr-2" /> },
 ];
 
 export default function TopNavigation() {

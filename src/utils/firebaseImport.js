@@ -5,11 +5,11 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 // Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "zahnarzt-app.firebaseapp.com",
-  projectId: "zahnarzt-app",
-  storageBucket: "zahnarzt-app.appspot.com",
-  messagingSenderId: "425056158854",
-  appId: "1:425056158854:web:0f37abc307a346842bfd07"
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
@@ -20,8 +20,14 @@ export const db = getFirestore(app);
 // Authentifizierung
 export async function authenticate() {
   try {
-    // Hier deine Test-Email und Passwort einfügen
-    const userCredential = await signInWithEmailAndPassword(auth, "david.richter@me.com", "123456");
+    const email = process.env.REACT_APP_AUTH_EMAIL;
+    const password = process.env.REACT_APP_AUTH_PASSWORD;
+    
+    if (!email || !password) {
+      throw new Error('Authentication credentials not configured');
+    }
+    
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("Erfolgreich authentifiziert:", userCredential.user.uid);
     return true;
   } catch (error) {

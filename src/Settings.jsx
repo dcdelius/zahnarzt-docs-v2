@@ -167,37 +167,44 @@ export default function Settings() {
   const filteredTemplates = gefilterteVorlagen;
 
   return (
-    <div className="min-h-screen bg-[url('/background.jpg')] bg-cover bg-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-blue-800">
       <Navigation />
       
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <motion.div className="flex w-full max-w-7xl h-[780px] bg-white/40 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex w-full max-w-7xl h-[780px] bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-white/10"
+        >
           {/* 🧭 Sidebar */}
-          <div className="w-64 bg-black/60 backdrop-blur-lg text-white p-4 flex flex-col gap-6">
+          <div className="w-64 bg-black/40 backdrop-blur-xl text-white p-4 flex flex-col gap-6 border-r border-white/10">
             <div className="space-y-1">
               {/* Import Button at the top */}
               <motion.button
-                whileHover={{ backgroundColor: "#FFFFFF20" }}
+                whileHover={{ scale: 1.02, backgroundColor: "#FFFFFF20" }}
+                whileTap={{ scale: 0.98 }}
                 onClick={handleImport}
-                className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm w-full bg-orange-500/80 hover:bg-orange-500 transition-colors mb-4"
+                className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm w-full bg-orange-500/80 hover:bg-orange-500 transition-all mb-4"
               >
                 <FiDownload /> {importStatus || "Beispiel-Bausteine importieren"}
               </motion.button>
 
               <motion.button 
-                whileHover={{ backgroundColor: "#FFFFFF15" }}
+                whileHover={{ scale: 1.02, backgroundColor: "#FFFFFF20" }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setTab("user")} 
-                className={`flex items-center gap-2 py-2 px-3 rounded-lg text-sm w-full transition-colors ${tab === "user" ? "bg-white/20 font-semibold" : ""}`}
+                className={`flex items-center gap-2 py-2 px-3 rounded-lg text-sm w-full transition-all ${tab === "user" ? "bg-white/20 font-semibold" : ""}`}
               >
                 <FiUsers /> Benutzer
               </motion.button>
 
               <div>
                 <motion.button 
-                  whileHover={{ backgroundColor: "#FFFFFF15" }}
+                  whileHover={{ scale: 1.02, backgroundColor: "#FFFFFF20" }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => setTab("templates")} 
-                  className={`flex items-center justify-between w-full gap-2 py-2 px-3 rounded-lg text-sm transition-colors ${tab === "templates" ? "bg-white/20 font-semibold" : ""}`}
+                  className={`flex items-center justify-between w-full gap-2 py-2 px-3 rounded-lg text-sm transition-all ${tab === "templates" ? "bg-white/20 font-semibold" : ""}`}
                 >
                   <span className="flex items-center gap-2">
                     <FiFileText /> Vorlagen
@@ -220,9 +227,10 @@ export default function Settings() {
                           initial={{ x: -10, opacity: 0 }}
                           animate={{ x: 0, opacity: 1 }}
                           transition={{ delay: 0.1 }}
-                          whileHover={{ backgroundColor: "#FFFFFF10" }}
+                          whileHover={{ scale: 1.02, backgroundColor: "#FFFFFF20" }}
+                          whileTap={{ scale: 0.98 }}
                           onClick={() => setAktiverBenutzer("")}
-                          className={`flex items-center w-full px-2 py-1.5 rounded text-sm transition-colors ${aktiverBenutzer === "" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"}`}
+                          className={`flex items-center w-full px-2 py-1.5 rounded text-sm transition-all ${aktiverBenutzer === "" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"}`}
                         >
                           Alle Vorlagen
                         </motion.button>
@@ -232,9 +240,10 @@ export default function Settings() {
                             initial={{ x: -10, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.1 + (index * 0.05) }}
-                            whileHover={{ backgroundColor: "#FFFFFF10" }}
+                            whileHover={{ scale: 1.02, backgroundColor: "#FFFFFF20" }}
+                            whileTap={{ scale: 0.98 }}
                             onClick={() => setAktiverBenutzer(user.id)}
-                            className={`flex items-center gap-2 w-full px-2 py-1.5 rounded text-sm transition-colors ${aktiverBenutzer === user.id ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"}`}
+                            className={`flex items-center gap-2 w-full px-2 py-1.5 rounded text-sm transition-all ${aktiverBenutzer === user.id ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"}`}
                           >
                             <div 
                               className="w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-medium"
@@ -254,9 +263,10 @@ export default function Settings() {
                           initial={{ x: -10, opacity: 0 }}
                           animate={{ x: 0, opacity: 1 }}
                           transition={{ delay: 0.2 }}
-                          whileHover={{ backgroundColor: "#FFFFFF10" }}
+                          whileHover={{ scale: 1.02, backgroundColor: "#FFFFFF20" }}
+                          whileTap={{ scale: 0.98 }}
                           onClick={() => setAktiveKategorie("")} 
-                          className={`flex items-center w-full px-2 py-1.5 rounded text-sm transition-colors ${aktiveKategorie === "" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"}`}
+                          className={`flex items-center w-full px-2 py-1.5 rounded text-sm transition-all ${aktiveKategorie === "" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"}`}
                         >
                           Alle Kategorien
                         </motion.button>
@@ -266,9 +276,10 @@ export default function Settings() {
                             initial={{ x: -10, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.2 + (index * 0.05) }}
-                            whileHover={{ backgroundColor: "#FFFFFF10" }}
+                            whileHover={{ scale: 1.02, backgroundColor: "#FFFFFF20" }}
+                            whileTap={{ scale: 0.98 }}
                             onClick={() => setAktiveKategorie(k)} 
-                            className={`flex items-center w-full px-2 py-1.5 rounded text-sm transition-colors ${aktiveKategorie === k ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"}`}
+                            className={`flex items-center w-full px-2 py-1.5 rounded text-sm transition-all ${aktiveKategorie === k ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"}`}
                           >
                             {k}
                           </motion.button>
@@ -332,32 +343,32 @@ export default function Settings() {
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-white/60 backdrop-blur-sm rounded-xl shadow-lg p-6"
+                    className="bg-white/20 backdrop-blur-xl rounded-xl shadow-lg p-6 border border-white/10"
                   >
                     <div className="space-y-6">
                       <div>
-                        <label className="text-gray-600 block mb-1">Behandlungsname</label>
+                        <label className="text-white block mb-1 font-medium">Behandlungsname</label>
                         <input 
-                          className="w-full px-3 py-2 rounded border border-gray-300" 
+                          className="w-full px-3 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-white placeholder-white/50" 
                           value={editTitel} 
                           onChange={(e) => setEditTitel(e.target.value)} 
                         />
                       </div>
                       <div>
-                        <label className="text-gray-600 block mb-1">Kategorie</label>
+                        <label className="text-white block mb-1 font-medium">Kategorie</label>
                         <input 
-                          className="w-full px-3 py-2 rounded border border-gray-300" 
+                          className="w-full px-3 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-white placeholder-white/50" 
                           value={editKategorie} 
                           onChange={(e) => setEditKategorie(e.target.value)} 
                         />
                       </div>
                       <div>
-                        <label className="text-gray-600 block mb-1">Verfügbar für</label>
-                        <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50">
-                          <label className="flex items-center gap-2">
+                        <label className="text-white block mb-1 font-medium">Verfügbar für</label>
+                        <div className="flex flex-wrap gap-2 p-4 border rounded-lg border-white/20 bg-white/10 backdrop-blur-sm">
+                          <label className="flex items-center gap-2 text-white">
                             <input 
                               type="checkbox" 
-                              className="rounded border-gray-300 text-blue-600"
+                              className="rounded border-white/20 bg-white/10 text-blue-500 focus:ring-blue-500"
                               checked={editVorlage.users?.includes("all")}
                               onChange={(e) => {
                                 if (e.target.checked) {
@@ -376,10 +387,10 @@ export default function Settings() {
                             <span className="text-sm">Alle Benutzer</span>
                           </label>
                           {!editVorlage.users?.includes("all") && benutzer.map(user => (
-                            <label key={user.id} className="flex items-center gap-2">
+                            <label key={user.id} className="flex items-center gap-2 text-white">
                               <input 
                                 type="checkbox"
-                                className="rounded border-gray-300 text-blue-600"
+                                className="rounded border-white/20 bg-white/10 text-blue-500 focus:ring-blue-500"
                                 checked={editVorlage.users?.includes(user.id)}
                                 onChange={(e) => {
                                   setEditVorlage(prev => ({
@@ -397,24 +408,26 @@ export default function Settings() {
                       </div>
 
                       {/* Template Builder Integration */}
-                      <div className="border-t border-gray-200 pt-6">
-                        <label className="text-gray-600 block mb-4">Vorlage erstellen</label>
-                        <TemplateBuilder
-                          template={editVorlage}
-                          onChange={(updatedTemplate) => {
-                            setEditVorlage(prev => ({
-                              ...prev,
-                              Text: updatedTemplate.Text
-                            }));
-                            setEditText(updatedTemplate.Text || '');
-                          }}
-                        />
+                      <div className="border-t border-white/10 pt-6">
+                        <label className="text-white block mb-4 font-medium">Vorlage erstellen</label>
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                          <TemplateBuilder
+                            template={editVorlage}
+                            onChange={(updatedTemplate) => {
+                              setEditVorlage(prev => ({
+                                ...prev,
+                                Text: updatedTemplate.Text
+                              }));
+                              setEditText(updatedTemplate.Text || '');
+                            }}
+                          />
+                        </div>
                       </div>
 
                       <div>
-                        <label className="text-gray-600 block mb-1">GPT-Prompt</label>
+                        <label className="text-white block mb-1 font-medium">GPT-Prompt</label>
                         <textarea 
-                          className="w-full px-3 py-2 rounded border border-gray-300" 
+                          className="w-full px-3 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-white placeholder-white/50" 
                           rows={3} 
                           value={editPrompt} 
                           onChange={(e) => setEditPrompt(e.target.value)} 
@@ -423,9 +436,9 @@ export default function Settings() {
                       </div>
                       
                       <div>
-                        <label className="text-gray-600 block mb-1">Material</label>
+                        <label className="text-white block mb-1 font-medium">Material</label>
                         <input 
-                          className="w-full px-3 py-2 rounded border border-gray-300" 
+                          className="w-full px-3 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-white placeholder-white/50" 
                           value={editMaterial} 
                           onChange={(e) => setEditMaterial(e.target.value)} 
                         />
@@ -433,26 +446,32 @@ export default function Settings() {
                     </div>
                     <div className="flex justify-between gap-2 mt-6">
                       {editVorlage.id && (
-                        <button 
+                        <motion.button 
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                           onClick={deleteVorlage} 
-                          className="text-sm px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                          className="text-sm px-4 py-2 bg-red-500/80 text-white rounded-lg hover:bg-red-600/80 transition-all shadow-sm hover:shadow-md backdrop-blur-sm"
                         >
                           <FiTrash2 className="inline mr-1" /> Löschen
-                        </button>
+                        </motion.button>
                       )}
                       <div className="flex gap-2 ml-auto">
-                        <button 
+                        <motion.button 
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                           onClick={() => setEditVorlage(null)} 
-                          className="text-sm px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                          className="text-sm px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all shadow-sm hover:shadow-md backdrop-blur-sm"
                         >
                           Abbrechen
-                        </button>
-                        <button 
+                        </motion.button>
+                        <motion.button 
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                           onClick={handleSaveVorlage} 
-                          className="text-sm px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                          className="text-sm px-4 py-2 bg-blue-500/80 text-white rounded-lg hover:bg-blue-600/80 transition-all shadow-sm hover:shadow-md backdrop-blur-sm"
                         >
                           Speichern
-                        </button>
+                        </motion.button>
                       </div>
                     </div>
                   </motion.div>
@@ -464,8 +483,9 @@ export default function Settings() {
                         variants={pageTransition}
                         initial="initial"
                         animate="animate"
-                        whileHover={hoverScale}
-                        className="p-3 rounded-xl bg-white/50 backdrop-blur-sm shadow-md hover:shadow-lg transition-shadow duration-200 flex justify-between items-center cursor-pointer"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="p-4 rounded-xl bg-white/20 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-200 flex justify-between items-center cursor-pointer border border-white/10"
                         onClick={() => {
                           setEditVorlage(v);
                           setEditTitel(v.id);
@@ -477,9 +497,9 @@ export default function Settings() {
                       >
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
-                            <p className="font-medium text-gray-800">{v.id}</p>
+                            <p className="font-medium text-white">{v.id}</p>
                             {v.users?.includes("all") ? (
-                              <span className="px-2 py-0.5 bg-blue-100 text-blue-800 text-xs rounded-full">Alle</span>
+                              <span className="px-2 py-0.5 bg-blue-500/20 text-blue-200 text-xs rounded-full border border-blue-500/20">Alle</span>
                             ) : (
                               <div className="flex -space-x-2">
                                 {v.users?.map(userId => {
@@ -487,7 +507,7 @@ export default function Settings() {
                                   return user ? (
                                     <div
                                       key={userId}
-                                      className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-medium text-white"
+                                      className="w-6 h-6 rounded-full border-2 border-white/20 flex items-center justify-center text-[10px] font-medium text-white shadow-xl"
                                       style={{ backgroundColor: user.avatarColor || "#94a3b8" }}
                                       title={user.name}
                                     >
@@ -498,8 +518,9 @@ export default function Settings() {
                               </div>
                             )}
                           </div>
-                          <p className="text-xs text-gray-500">{v.Kategorie}</p>
+                          <p className="text-xs text-gray-300 mt-1">{v.Kategorie}</p>
                         </div>
+                        <FiChevronRight className="text-white/40" />
                       </motion.div>
                     ))}
                   </div>
@@ -620,8 +641,9 @@ export default function Settings() {
                         variants={pageTransition}
                         initial="initial"
                         animate="animate"
-                        whileHover={hoverScale}
-                        className="p-4 rounded-xl bg-white/50 backdrop-blur-sm shadow-md hover:shadow-lg transition-shadow duration-200 flex items-center justify-between cursor-pointer"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="p-4 rounded-xl bg-white/20 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-between cursor-pointer border border-white/10"
                         onClick={() => {
                           setEditUser(b);
                           setEditName(b.name);
@@ -631,19 +653,22 @@ export default function Settings() {
                       >
                         <div className="flex items-center gap-4">
                           <div 
-                            className="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white"
+                            className="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-xl border-2 border-white/20"
                             style={{ backgroundColor: b.avatarColor || "#94a3b8" }}
                           >
                             {b.name?.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase()}
                           </div>
                           <div>
-                            <p className="font-medium text-gray-800">{b.name}</p>
-                            <p className="text-sm text-gray-500">{b.rolle || "Keine Rolle"}</p>
+                            <p className="font-medium text-white">{b.name}</p>
+                            <p className="text-sm text-gray-300">{b.rolle || "Keine Rolle"}</p>
                           </div>
                         </div>
-                        <span className="text-xs px-3 py-1 bg-blue-100 text-blue-800 rounded-full">
-                          {b.rolle || "—"}
-                        </span>
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs px-3 py-1 bg-blue-500/20 text-blue-200 rounded-full border border-blue-500/20">
+                            {b.rolle || "—"}
+                          </span>
+                          <FiChevronRight className="text-white/40" />
+                        </div>
                       </motion.div>
                     ))}
                   </div>
