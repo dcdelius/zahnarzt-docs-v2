@@ -10,33 +10,33 @@ export class WhisperService {
     let retries = 0;
     
     while (retries < this.maxRetries) {
-      try {
-        const formData = new FormData();
-        formData.append('file', audioBlob, 'audio.wav');
-        formData.append('model', 'whisper-1');
-        formData.append('language', 'de');
+    try {
+      const formData = new FormData();
+      formData.append('file', audioBlob, 'audio.wav');
+      formData.append('model', 'whisper-1');
+      formData.append('language', 'de');
         formData.append('prompt', 'Dies ist eine zahnärztliche Dokumentation. Bitte transkribiere die Aufnahme mit besonderem Fokus auf zahnmedizinische Fachbegriffe, Zahlen und Behandlungsdetails.');
 
-        const response = await fetch(this.apiEndpoint, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${this.apiKey}`,
-          },
-          body: formData,
-        });
+      const response = await fetch(this.apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.apiKey}`,
+        },
+        body: formData,
+      });
 
-        if (!response.ok) {
+      if (!response.ok) {
           const errorData = await response.json();
           throw new Error(`OpenAI API Fehler: ${errorData.error?.message || response.statusText}`);
-        }
+      }
 
-        const data = await response.json();
+      const data = await response.json();
         if (!data.text) {
           throw new Error('Keine Transkription erhalten');
         }
 
-        return data.text;
-      } catch (error) {
+      return data.text;
+    } catch (error) {
         console.error(`Transkriptionsfehler (Versuch ${retries + 1}/${this.maxRetries}):`, error);
         
         if (retries === this.maxRetries - 1) {

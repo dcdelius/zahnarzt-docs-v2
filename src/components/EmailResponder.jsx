@@ -219,7 +219,7 @@ export default function EmailResponder() {
                   <span className="text-sm text-white">{new Date().toLocaleTimeString()}</span>
                 </div>
               </div>
-            </div>
+              </div>
 
             {/* Hauptbereich */}
             <div className="flex-1 p-6 space-y-6 overflow-y-auto">
@@ -229,12 +229,12 @@ export default function EmailResponder() {
                   <FiUser className="text-blue-400" />
                   Patientene-Mail
                 </label>
-                <textarea
+                  <textarea
                   value={patientEmail}
                   onChange={(e) => setPatientEmail(e.target.value)}
                   placeholder="Fügen Sie hier die E-Mail des Patienten ein..."
                   className="w-full h-32 px-4 py-3 rounded-lg border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-300 bg-white/10 text-white placeholder-gray-400 backdrop-blur-sm resize-none"
-                />
+                  />
               </div>
 
               {/* Antwortbausteine */}
@@ -320,7 +320,7 @@ export default function EmailResponder() {
                   </div>
                 </div>
               )}
-            </div>
+              </div>
 
             {/* Footer mit Submit-Button */}
             <div className="p-4 border-t border-white/10">
