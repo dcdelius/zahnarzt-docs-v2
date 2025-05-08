@@ -20,9 +20,11 @@ import {
   FiTrash2,
   FiX,
   FiLogOut,
+  FiDownload,
 } from "react-icons/fi";
 import Navigation from "./components/Navigation";
 import TemplateBuilder from './components/TemplateBuilder';
+import { importBausteineUndVorlagen } from './utils/firestoreImport';
 
 // Animation variants für konsistente Übergänge
 const pageTransition = {
@@ -39,6 +41,7 @@ const hoverScale = {
 
 export default function Settings() {
   const [tab, setTab] = useState("user");
+  const [importStatus, setImportStatus] = useState("");
 
   // Benutzerverwaltung
   const [benutzer, setBenutzer] = useState([]);
@@ -136,6 +139,23 @@ export default function Settings() {
     navigate("/");
   };
 
+  const handleImport = async () => {
+    setImportStatus("Importiere...");
+    try {
+      await importBausteineUndVorlagen();
+      setImportStatus("Import erfolgreich!");
+      // Reload templates after import
+      const templateSnap = await getDocs(collection(db, "Praxen", "1", "Vorlagen"));
+      const templates = templateSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setVorlagen(templates);
+      setTimeout(() => setImportStatus(""), 3000);
+    } catch (error) {
+      console.error("Import fehlgeschlagen:", error);
+      setImportStatus("Import fehlgeschlagen!");
+      setTimeout(() => setImportStatus(""), 3000);
+    }
+  };
+
   // Filter-Logik für Vorlagen
   const gefilterteVorlagen = vorlagen.filter(v => {
     const matchesCategory = !aktiveKategorie || v.Kategorie === aktiveKategorie;
@@ -156,6 +176,15 @@ export default function Settings() {
           {/* 🧭 Sidebar */}
           <div className="w-64 bg-black/60 backdrop-blur-lg text-white p-4 flex flex-col gap-6">
             <div className="space-y-1">
+              {/* Import Button at the top */}
+              <motion.button
+                whileHover={{ backgroundColor: "#FFFFFF20" }}
+                onClick={handleImport}
+                className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm w-full bg-orange-500/80 hover:bg-orange-500 transition-colors mb-4"
+              >
+                <FiDownload /> {importStatus || "Beispiel-Bausteine importieren"}
+              </motion.button>
+
               <motion.button 
                 whileHover={{ backgroundColor: "#FFFFFF15" }}
                 onClick={() => setTab("user")} 
