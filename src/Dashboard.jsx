@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMic, FiSend, FiLogOut, FiUser, FiHelpCircle, FiEdit2, FiChevronLeft, FiCircle, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiMic, FiSend, FiLogOut, FiUser, FiHelpCircle, FiEdit2, FiChevronLeft, FiCircle, FiChevronDown, FiChevronUp, FiChevronRight } from "react-icons/fi";
 import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ import DocumentationModal from "./components/DocumentationModal";
 import CustomDropdown from "./components/CustomDropdown";
 import TopNavigation from "./components/TopNavigation";
 import BausteinSelector from './components/BausteinSelector';
+import { buildGPTPrompts } from './utils/buildGPTPrompts';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ export default function Dashboard() {
   const [aktiveBausteine, setAktiveBausteine] = useState([]);
   const [bausteine, setBausteine] = useState([]);
   const [selectedBillingCodes, setSelectedBillingCodes] = useState([]); // Ausgewählte Codes zum Hinzufügen
+  const [showMaterialField, setShowMaterialField] = useState(false); // Collapsible material field
 
   useEffect(() => {
     if (selectedUser) {
@@ -89,6 +91,7 @@ export default function Dashboard() {
     fetchBausteine();
   }, []);
 
+
   const treatments = templates.filter((t) => {
     const matchesCategory = t.Kategorie === selectedCategory;
     const matchesUser = !selectedUser || t.users?.includes("all") || t.users?.includes(selectedUser);
@@ -109,118 +112,25 @@ export default function Dashboard() {
       const selectedTemplate = templates.find(t => t.id === selectedTreatment);
       if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
       
-      // Prüfe sowohl 'prompt' als auch 'Prompt' (Firebase kann unterschiedlich speichern)
-      const templatePrompt = selectedTemplate.prompt || selectedTemplate.Prompt || "";
-      const templateName = selectedTemplate.id || "";
-      const templateCategory = selectedTemplate.Kategorie || "";
-      
-      // Verwende System-Anweisungen und Beispiel-Output aus Firebase, falls vorhanden
-      const systemInstructions = selectedTemplate.systemInstructions || "";
-      const exampleOutput = selectedTemplate.exampleOutput || "";
-      
-      // Standard-Beispiel-Output als Fallback
-      const defaultExampleOutput = `**1) Leistungsübersicht (Abrechnung)**
-
-Füllung Zahn 37 - OD - 2-flächig - 90,00 €
-Intraligamentäre Anästhesie
-Isolation mittels Kofferdamm
-Matrize und Keil
-Mehrschichttechnik bei Kompositfüllung
-Politur der Füllung
-
-**2) Behandlungsdokumentation (Praxisakte)**
-
-Patient kommt zur Füllung an Zahn 37, Flächen: OD, 2-flächig.
-Klinische Untersuchung zeigt kariöse Läsion an Zahn 37 OD.
-Vitalitätsprüfung mit Kältespray positiv.
-Röntgenologisch zeigt sich kariöse Läsion im Dentin.
-Vor- und Nachteile der Kompositfüllung besprochen, Patient einverstanden.
-Kosten: 90,00 € pro Zahn, Farbe: A2.
-Intraligamentäre Anästhesie mit 1 Amp. Ultracain DS 1,7 ml durchgeführt.
-Die Behandlung erfolgte unter Kofferdamm.
-Zur Füllung wurde eine Matrize angelegt.
-Keil und Spannring gesetzt.
-Karies vollständig exkaviert.
-Kavität mit Adhäsivtechnik vorbereitet.
-Trockenlegung in SÄT durchgeführt.
-Die Füllung wurde in Mehrschichttechnik gelegt.
-Füllung mit Gaenial Flow A2 und Tetric EvoCeram A2 schichtweise gelegt und lichthärtend polymerisiert.
-Anatomische Ausformung hergestellt, Kontaktpunkt wiederhergestellt.
-Überschüsse entfernt, Okklusion mit Artikulationspapier geprüft und eingeschliffen.
-Abschließend wurde die Füllung poliert.
-Duraphat auf Füllung und umliegende Zähne appliziert.
-Postoperative Hinweise gegeben: 2 Stunden Nahrungspause, keine harten Speisen heute.
-Kontrolltermin in 4 Wochen vereinbart.
-Patient verließ die Praxis in stabilem Zustand.`;
-
-      // Standard-System-Anweisungen als Fallback
-      const defaultSystemInstructions = `FORMAT-STRUKTUR (IMMER EINHALTEN):
-Die Dokumentation MUSS in zwei Teile unterteilt sein:
-
-1) Leistungsübersicht (Abrechnung)
-- Nur was gemacht wurde
-- Relevant für die Abrechnung
-- Kompakt, sachlich, ohne Fließtext
-- Format: "Leistung" pro Zeile (ohne Kosten)
-- NUR die Füllungstherapie hat Kosten: "Füllung Zahn X - Flächen - Kosten"
-- Einzelleistungen wie Anästhesie, Kofferdamm etc. werden OHNE Kosten aufgeführt (werden von Krankenkasse übernommen)
-- Gesamtbetrag nur bei mehreren Füllungen
-
-2) Behandlungsdokumentation (Praxisakte)
-- Detaillierter Ablauf mit einzelnen Punkten oder Sätzen
-- Forensisch wasserdicht
-- Jede Zeile = eine abgeschlossene Handlung
-- Chronologische Reihenfolge
-- Vollständige Sätze, aber kompakt
-
-STRENGE REGELN:
-1. Verwende IMMER die exakt gleichen Formulierungen aus den Bausteinen
-2. Keine Synonyme oder alternative Formulierungen
-3. Gleiche Satzstruktur und Reihenfolge bei jeder Dokumentation
-4. Gleiche Fachbegriffe und Terminologie
-5. Keine kreativen Variationen - nur exakte Wiederholung der Formulierungen
-6. IMMER die zweiteilige Struktur einhalten (Leistungsübersicht + Behandlungsdokumentation)`;
-
-      // Baue System-Prompt aus Firebase-Daten oder verwende Standard
-      const systemPrompt = templatePrompt 
-        ? `Du bist ein zahnärztlicher Dokumentationsassistent. WICHTIG: Verwende IMMER die exakt gleichen Formulierungen, Wörter und Syntax-Struktur für jede Dokumentation dieser Vorlage.
-
-Vorlage: "${templateName}" (${templateCategory})
-Template-Anweisungen:
-${templatePrompt}
-
-${systemInstructions || defaultSystemInstructions}
-
-${exampleOutput || defaultExampleOutput ? `BEISPIEL-FORMAT (als Referenz):
-${exampleOutput || defaultExampleOutput}` : ''}`
-        : `Du bist ein zahnärztlicher Dokumentationsassistent. Erstelle eine konsistente Dokumentation für "${templateName}" (${templateCategory}). 
-
-${systemInstructions || defaultSystemInstructions}
-
-Verwende IMMER die gleichen Formulierungen und Strukturen.`;
-      
-      const aktiveBausteineData = aktiveBausteine
-        .map(id => bausteine.find(b => b.id === id))
-        .filter(Boolean);
-      const bausteinTexte = aktiveBausteineData
-        .map(b => typeof b.standardText === 'string' ? b.standardText : '')
-        .filter(Boolean)
-        .join("\n");
-      
-      // User-Prompt mit expliziter Konsistenz-Anweisung (auch für manuelle Eingabe)
-      const userPrompt = `WICHTIG: Verwende für diese Dokumentation EXAKT die gleichen Formulierungen wie in allen vorherigen Dokumentationen dieser Vorlage.
-
-${bausteinTexte ? `VERWENDE DIESE EXAKTEN FORMULIERUNGEN (keine Variationen):
-${bausteinTexte}
-
-` : ''}Individueller Text:
-${inputValue}
-
-Erstelle die Dokumentation für "${templateName}" mit:
-- Exakt den gleichen Formulierungen wie in den Bausteinen
-- Gleicher Struktur und Reihenfolge
-- Gleichen Fachbegriffe
-- KEINE Synonyme oder alternative Formulierungen`;
+      // Use utility function to build prompts
+      let systemPrompt, userPrompt;
+      try {
+        const prompts = buildGPTPrompts({
+          template: selectedTemplate,
+          inputText: inputValue,
+          bausteine: aktiveBausteine,
+          allBausteine: bausteine
+        });
+        systemPrompt = prompts.systemPrompt;
+        userPrompt = prompts.userPrompt;
+        
+        if (!systemPrompt || !userPrompt) {
+          throw new Error('Fehler beim Erstellen der GPT-Prompts');
+        }
+      } catch (promptError) {
+        console.error('❌ Fehler beim Erstellen der Prompts:', promptError);
+        throw new Error(`Fehler beim Erstellen der Prompts: ${promptError.message}`);
+      }
       
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -229,11 +139,15 @@ Erstelle die Dokumentation für "${templateName}" mit:
           'Authorization': `Bearer ${OPENAI_API_KEY}`
         },
         body: JSON.stringify({
-          model: "gpt-5",
+          model: "gpt-5-mini",
           messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt }
-          ]
+          ],
+          max_completion_tokens: 2000, // GPT-5 verwendet max_completion_tokens
+          reasoning_effort: "low", // Reduziertes Reasoning für schnellere Antworten
+          // temperature wird nicht unterstützt - GPT-5-mini verwendet Standardwert 1
+          stream: false
         })
       });
       if (!response.ok) {
@@ -241,12 +155,49 @@ Erstelle die Dokumentation für "${templateName}" mit:
         throw new Error(`OpenAI API Fehler: ${errorData.error?.message || 'Unbekannter Fehler'}`);
       }
       const data = await response.json();
-      const processedText = data.choices[0].message.content;
+      
+      // Debug: Vollständige API-Antwort loggen
+      console.log('📥 GPT-5-mini API-Antwort (Text-Submit):', {
+        hasChoices: !!data.choices,
+        choicesLength: data.choices?.length,
+        firstChoice: data.choices?.[0],
+        hasMessage: !!data.choices?.[0]?.message,
+        hasContent: !!data.choices?.[0]?.message?.content
+      });
+      
+      // Validierung der API-Antwort mit detaillierter Fehlermeldung
+      if (!data.choices || data.choices.length === 0) {
+        console.error('❌ Keine choices in API-Antwort:', data);
+        throw new Error('GPT-5-mini API hat keine choices zurückgegeben. Bitte versuchen Sie es erneut.');
+      }
+      
+      if (!data.choices[0]) {
+        console.error('❌ choices[0] fehlt:', data);
+        throw new Error('GPT-5-mini API choices Array ist leer. Bitte versuchen Sie es erneut.');
+      }
+      
+      if (!data.choices[0].message) {
+        console.error('❌ message fehlt in choices[0]:', data.choices[0]);
+        throw new Error('GPT-5-mini API Antwort enthält keine message. Bitte versuchen Sie es erneut.');
+      }
+      
+      // GPT-5-mini könnte eine andere Struktur haben - prüfe verschiedene Möglichkeiten
+      const processedText = data.choices[0].message?.content 
+        || data.choices[0].message?.text
+        || data.choices[0].text
+        || data.content
+        || data.text;
+      
+      if (!processedText || (typeof processedText === 'string' && !processedText.trim())) {
+        console.error('❌ Kein Content in API-Antwort:', {
+          message: data.choices[0].message,
+          choice: data.choices[0],
+          fullData: data
+        });
+        throw new Error('GPT-5-mini hat keine Text-Antwort zurückgegeben. Bitte versuchen Sie es erneut.');
+      }
       setProcessedText(processedText);
-      setShowModal(true);
       setInputValue("");
-      setSelectedTreatment("");
-      setSelectedCategory("");
       setIsProcessing(false);
       await setDoc(doc(db, "Praxen", "1", "Dokumentationen", Date.now().toString()), {
         behandlung: selectedTemplate.id,
@@ -264,8 +215,27 @@ Erstelle die Dokumentation für "${templateName}" mit:
       const sortedDocs = docList.sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
       setHistory(sortedDocs);
     } catch (error) {
-      console.error('Error processing text:', error);
-      alert('Fehler bei der Verarbeitung: ' + error.message);
+      console.error('❌ Fehler bei der Text-Verarbeitung:', error);
+      console.error('Error Details:', {
+        message: error.message,
+        stack: error.stack,
+        name: error.name,
+        selectedTreatment: selectedTreatment,
+        templateFound: !!templates.find(t => t.id === selectedTreatment)
+      });
+      
+      // Detaillierte Fehlermeldung für den Benutzer
+      let errorMessage = 'Fehler bei der Verarbeitung: ';
+      if (error.message.includes('Vorlage nicht gefunden')) {
+        errorMessage += 'Die ausgewählte Vorlage wurde nicht gefunden. Bitte wählen Sie eine andere Vorlage.';
+      } else if (error.message.includes('OpenAI API')) {
+        errorMessage += `API-Fehler: ${error.message}. Bitte überprüfen Sie Ihre API-Keys.`;
+      } else {
+        errorMessage += error.message;
+      }
+      
+      alert(errorMessage);
+      setProcessedText(""); // Reset bei Fehler
     } finally {
       setIsProcessing(false);
     }
@@ -315,94 +285,8 @@ Erstelle die Dokumentation für "${templateName}" mit:
         const audioBlob = await audioRecorder.stopRecording();
         console.log('✅ Aufnahme gestoppt, starte Verarbeitung...');
         
-        // Schritt 1: Whisper Transkription + Template-Vorbereitung parallel
+        // Schritt 1: Whisper Transkription
         console.log('🎙️ Starte Whisper-Transkription...');
-        
-        // Template-Vorbereitung parallel zur Whisper-Transkription starten
-        const selectedTemplate = templates.find(t => t.id === selectedTreatment);
-        if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
-        
-        const templatePrompt = selectedTemplate.prompt || selectedTemplate.Prompt || "";
-        const templateName = selectedTemplate.id || "";
-        const templateCategory = selectedTemplate.Kategorie || "";
-        
-        // Verwende System-Anweisungen und Beispiel-Output aus Firebase, falls vorhanden
-        const systemInstructions = selectedTemplate.systemInstructions || "";
-        const exampleOutput = selectedTemplate.exampleOutput || "";
-        
-        // Standard-Beispiel-Output als Fallback (gleiche wie oben)
-        const defaultExampleOutput = `**1) Leistungsübersicht (Abrechnung)**
-
-Füllung Zahn 37 - OD - 2-flächig - 90,00 €
-Intraligamentäre Anästhesie
-Isolation mittels Kofferdamm
-Matrize und Keil
-Mehrschichttechnik bei Kompositfüllung
-Politur der Füllung
-
-**2) Behandlungsdokumentation (Praxisakte)**
-
-Patient kommt zur Füllung an Zahn 37, Flächen: OD, 2-flächig.
-Klinische Untersuchung zeigt kariöse Läsion an Zahn 37 OD.
-Vitalitätsprüfung mit Kältespray positiv.
-Röntgenologisch zeigt sich kariöse Läsion im Dentin.
-Vor- und Nachteile der Kompositfüllung besprochen, Patient einverstanden.
-Kosten: 90,00 € pro Zahn, Farbe: A2.
-Intraligamentäre Anästhesie mit 1 Amp. Ultracain DS 1,7 ml durchgeführt.
-Die Behandlung erfolgte unter Kofferdamm.
-Zur Füllung wurde eine Matrize angelegt.
-Keil und Spannring gesetzt.
-Karies vollständig exkaviert.
-Kavität mit Adhäsivtechnik vorbereitet.
-Trockenlegung in SÄT durchgeführt.
-Die Füllung wurde in Mehrschichttechnik gelegt.
-Füllung mit Gaenial Flow A2 und Tetric EvoCeram A2 schichtweise gelegt und lichthärtend polymerisiert.
-Anatomische Ausformung hergestellt, Kontaktpunkt wiederhergestellt.
-Überschüsse entfernt, Okklusion mit Artikulationspapier geprüft und eingeschliffen.
-Abschließend wurde die Füllung poliert.
-Duraphat auf Füllung und umliegende Zähne appliziert.
-Postoperative Hinweise gegeben: 2 Stunden Nahrungspause, keine harten Speisen heute.
-Kontrolltermin in 4 Wochen vereinbart.
-Patient verließ die Praxis in stabilem Zustand.`;
-
-        // Standard-System-Anweisungen als Fallback (gleiche wie oben)
-        const defaultSystemInstructions = `FORMAT-STRUKTUR (IMMER EINHALTEN):
-Die Dokumentation MUSS in zwei Teile unterteilt sein:
-
-1) Leistungsübersicht (Abrechnung)
-- Nur was gemacht wurde
-- Relevant für die Abrechnung
-- Kompakt, sachlich, ohne Fließtext
-- Format: "Leistung" pro Zeile (ohne Kosten)
-- NUR die Füllungstherapie hat Kosten: "Füllung Zahn X - Flächen - Kosten"
-- Einzelleistungen wie Anästhesie, Kofferdamm etc. werden OHNE Kosten aufgeführt (werden von Krankenkasse übernommen)
-- Gesamtbetrag nur bei mehreren Füllungen
-
-2) Behandlungsdokumentation (Praxisakte)
-- Detaillierter Ablauf mit einzelnen Punkten oder Sätzen
-- Forensisch wasserdicht
-- Jede Zeile = eine abgeschlossene Handlung
-- Chronologische Reihenfolge
-- Vollständige Sätze, aber kompakt
-
-STRENGE REGELN:
-1. Verwende IMMER die exakt gleichen Formulierungen aus den Bausteinen
-2. Keine Synonyme oder alternative Formulierungen
-3. Gleiche Satzstruktur und Reihenfolge bei jeder Dokumentation
-4. Gleiche Fachbegriffe und Terminologie
-5. Keine kreativen Variationen - nur exakte Wiederholung der Formulierungen
-6. IMMER die zweiteilige Struktur einhalten (Leistungsübersicht + Behandlungsdokumentation)`;
-
-        // Bausteine parallel vorbereiten
-        const aktiveBausteineData = aktiveBausteine
-          .map(id => bausteine.find(b => b.id === id))
-          .filter(Boolean);
-        const bausteinTexte = aktiveBausteineData
-          .map(b => typeof b.standardText === 'string' ? b.standardText : '')
-          .filter(Boolean)
-          .join("\n");
-        
-        // Whisper-Transkription (während Template bereits vorbereitet wird)
         const transcribedText = await whisperService.transcribe(audioBlob);
         console.log('✅ Whisper Transkription abgeschlossen:', transcribedText);
         
@@ -414,47 +298,38 @@ STRENGE REGELN:
         // setInputValue wird nicht gesetzt, damit der Text nicht im Input-Feld erscheint
         
         // Schritt 2: GPT-Verarbeitung mit strikten Konsistenz-Anweisungen
-        console.log('🤖 Starte GPT-5 Verarbeitung...');
+        console.log('🤖 Starte GPT-5-mini Verarbeitung...');
         
-        // Baue System-Prompt aus Firebase-Daten oder verwende Standard
-        const systemPrompt = templatePrompt 
-          ? `Du bist ein zahnärztlicher Dokumentationsassistent. WICHTIG: Verwende IMMER die exakt gleichen Formulierungen, Wörter und Syntax-Struktur für jede Dokumentation dieser Vorlage.
-
-Vorlage: "${templateName}" (${templateCategory})
-Template-Anweisungen:
-${templatePrompt}
-
-${systemInstructions || defaultSystemInstructions}
-
-${exampleOutput || defaultExampleOutput ? `BEISPIEL-FORMAT (als Referenz):
-${exampleOutput || defaultExampleOutput}` : ''}`
-          : `Du bist ein zahnärztlicher Dokumentationsassistent. Erstelle eine konsistente Dokumentation für "${templateName}" (${templateCategory}). 
-
-${systemInstructions || defaultSystemInstructions}
-
-Verwende IMMER die gleichen Formulierungen und Strukturen.`;
+        // Template-Vorbereitung
+        const selectedTemplate = templates.find(t => t.id === selectedTreatment);
+        if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
         
-        // User-Prompt mit expliziter Konsistenz-Anweisung
-        const userPrompt = `WICHTIG: Verwende für diese Dokumentation EXAKT die gleichen Formulierungen wie in allen vorherigen Dokumentationen dieser Vorlage.
-
-${bausteinTexte ? `VERWENDE DIESE EXAKTEN FORMULIERUNGEN (keine Variationen):
-${bausteinTexte}
-
-` : ''}Transkribierter Text:
-${transcribedText}
-
-Erstelle die Dokumentation für "${templateName}" mit:
-- Exakt den gleichen Formulierungen wie in den Bausteinen
-- Gleicher Struktur und Reihenfolge
-- Gleichen Fachbegriffe
-- KEINE Synonyme oder alternative Formulierungen`;
+        // Use utility function to build prompts
+        let systemPrompt, userPrompt;
+        try {
+          const prompts = buildGPTPrompts({
+            template: selectedTemplate,
+            inputText: transcribedText,
+            bausteine: aktiveBausteine,
+            allBausteine: bausteine
+          });
+          systemPrompt = prompts.systemPrompt;
+          userPrompt = prompts.userPrompt;
+          
+          if (!systemPrompt || !userPrompt) {
+            throw new Error('Fehler beim Erstellen der GPT-Prompts');
+          }
+        } catch (promptError) {
+          console.error('❌ Fehler beim Erstellen der Prompts:', promptError);
+          throw new Error(`Fehler beim Erstellen der Prompts: ${promptError.message}`);
+        }
         
-        console.log('📤 Sende an GPT-5 (maximal optimiert für Geschwindigkeit):', {
+        console.log('📤 Sende an GPT-5-mini:', {
           systemPrompt: systemPrompt.substring(0, 100) + '...',
           userPrompt: userPrompt.substring(0, 100) + '...'
         });
         
-        // GPT-5 Aufruf mit allen Geschwindigkeitsoptimierungen
+        // GPT-5-mini Aufruf mit reduziertem Reasoning
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
           method: 'POST',
           headers: {
@@ -462,15 +337,15 @@ Erstelle die Dokumentation für "${templateName}" mit:
             'Authorization': `Bearer ${OPENAI_API_KEY}`
           },
           body: JSON.stringify({
-            model: "gpt-5",
+            model: "gpt-5-mini",
             messages: [
               { role: "system", content: systemPrompt },
               { role: "user", content: userPrompt }
             ],
-            max_completion_tokens: 1500, // Reduziert von 2000 für schnellere Antworten
-            reasoning_effort: "low", // Minimaler Reasoning-Aufwand für schnellere Antworten
-            verbosity: "low", // Kürzere, prägnantere Antworten
-            stream: false
+          max_completion_tokens: 2000, // GPT-5 verwendet max_completion_tokens
+          reasoning_effort: "low", // Reduziertes Reasoning für schnellere Antworten
+          // temperature wird nicht unterstützt - GPT-5-mini verwendet Standardwert 1
+          stream: false
           })
         });
         
@@ -480,9 +355,132 @@ Erstelle die Dokumentation für "${templateName}" mit:
         }
         
         const data = await response.json();
-        const processedText = data.choices[0].message.content;
         
-        console.log('✅ GPT-Verarbeitung abgeschlossen:', processedText.substring(0, 100) + '...');
+        // Debug: Vollständige API-Antwort loggen
+        console.log('📥 GPT-5-mini API-Antwort (vollständig):', JSON.stringify(data, null, 2));
+        console.log('📥 GPT-5-mini API-Antwort (Struktur):', {
+          hasChoices: !!data.choices,
+          choicesLength: data.choices?.length,
+          firstChoice: data.choices?.[0],
+          firstChoiceKeys: data.choices?.[0] ? Object.keys(data.choices[0]) : [],
+          hasMessage: !!data.choices?.[0]?.message,
+          messageKeys: data.choices?.[0]?.message ? Object.keys(data.choices[0].message) : [],
+          hasContent: !!data.choices?.[0]?.message?.content,
+          contentType: typeof data.choices?.[0]?.message?.content,
+          contentValue: data.choices?.[0]?.message?.content,
+          allDataKeys: Object.keys(data),
+          // Prüfe auch finish_reason
+          finishReason: data.choices?.[0]?.finish_reason,
+          // Prüfe ob message ein String ist
+          messageIsString: typeof data.choices?.[0]?.message === 'string',
+          messageStringValue: typeof data.choices?.[0]?.message === 'string' ? data.choices[0].message : null
+        });
+        
+        // Validierung der API-Antwort mit detaillierter Fehlermeldung
+        if (!data.choices || data.choices.length === 0) {
+          console.error('❌ Keine choices in API-Antwort:', data);
+          throw new Error('GPT-5-mini API hat keine choices zurückgegeben. Bitte versuchen Sie es erneut.');
+        }
+        
+        if (!data.choices[0]) {
+          console.error('❌ choices[0] fehlt:', data);
+          throw new Error('GPT-5-mini API choices Array ist leer. Bitte versuchen Sie es erneut.');
+        }
+        
+        if (!data.choices[0].message) {
+          console.error('❌ message fehlt in choices[0]:', data.choices[0]);
+          // Prüfe finish_reason für weitere Informationen
+          if (data.choices[0].finish_reason) {
+            console.error('⚠️ finish_reason:', data.choices[0].finish_reason);
+            if (data.choices[0].finish_reason === 'content_filter') {
+              throw new Error('GPT-5-mini hat die Antwort aufgrund von Content-Filterung blockiert. Bitte versuchen Sie es mit anderen Formulierungen.');
+            } else if (data.choices[0].finish_reason === 'length') {
+              throw new Error('GPT-5-mini Antwort wurde wegen Token-Limit abgeschnitten. Bitte kürzen Sie die Eingabe.');
+            }
+          }
+          throw new Error('GPT-5-mini API Antwort enthält keine message. Bitte versuchen Sie es erneut.');
+        }
+        
+        // Prüfe finish_reason für Warnungen
+        if (data.choices[0].finish_reason && data.choices[0].finish_reason !== 'stop') {
+          console.warn('⚠️ finish_reason ist nicht "stop":', data.choices[0].finish_reason);
+        }
+        
+        // GPT-5-mini könnte eine andere Struktur haben - prüfe verschiedene Möglichkeiten
+        // Zuerst die Standard-Struktur
+        let processedText = data.choices[0].message?.content;
+        
+        // Prüfe ob content leerer String ist (finish_reason: "length" kann zu leerem content führen)
+        if (processedText === "" && data.choices[0].finish_reason === "length") {
+          console.warn('⚠️ Content ist leer und finish_reason ist "length" - Token-Limit erreicht');
+          throw new Error('Die Antwort wurde wegen des Token-Limits abgeschnitten. Bitte versuchen Sie es mit einer kürzeren Eingabe.');
+        }
+        
+        // Wenn nicht vorhanden, prüfe alternative Strukturen
+        if (!processedText || processedText.trim() === "") {
+          console.log('⚠️ Standard content nicht gefunden, suche Alternativen...');
+          console.log('🔍 Prüfe finish_reason:', data.choices[0].finish_reason);
+          
+          // Prüfe ob message selbst ein String ist (unwahrscheinlich, aber möglich)
+          if (typeof data.choices[0].message === 'string') {
+            processedText = data.choices[0].message;
+            console.log('✅ Message ist direkt ein String');
+          }
+          // Prüfe alternative Pfade
+          else {
+            processedText = data.choices[0].message?.text
+              || data.choices[0].message?.delta?.content
+              || data.choices[0].text
+              || data.choices[0].content
+              || data.content
+              || data.text;
+          }
+          
+          // Wenn immer noch nichts gefunden, logge die vollständige Struktur
+          if (!processedText) {
+            console.error('❌ Kein Text in folgenden Pfaden gefunden:', {
+              'choices[0].message.content': data.choices[0].message?.content,
+              'choices[0].message.text': data.choices[0].message?.text,
+              'choices[0].message.delta.content': data.choices[0].message?.delta?.content,
+              'choices[0].text': data.choices[0].text,
+              'choices[0].content': data.choices[0].content,
+              'data.content': data.content,
+              'data.text': data.text,
+              'message type': typeof data.choices[0].message,
+              'message value': data.choices[0].message,
+              'finish_reason': data.choices[0].finish_reason
+            });
+          }
+        }
+        
+        console.log('🔍 Extrahierter processedText:', {
+          found: !!processedText,
+          type: typeof processedText,
+          length: processedText?.length,
+          preview: processedText?.substring(0, 100)
+        });
+        
+        if (!processedText || (typeof processedText === 'string' && !processedText.trim())) {
+          console.error('❌ Kein oder leerer Content in API-Antwort:', {
+            message: data.choices[0].message,
+            choice: data.choices[0],
+            fullData: data,
+            processedText: processedText,
+            finish_reason: data.choices[0].finish_reason,
+            usage: data.usage
+          });
+          
+          // Spezifische Fehlermeldung basierend auf finish_reason
+          if (data.choices[0].finish_reason === "length") {
+            throw new Error('Die Antwort wurde wegen des Token-Limits abgeschnitten. Bitte versuchen Sie es mit einer kürzeren Eingabe oder erhöhen Sie max_tokens.');
+          } else if (data.choices[0].finish_reason === "content_filter") {
+            throw new Error('Die Antwort wurde von der Content-Filterung blockiert. Bitte versuchen Sie es mit anderen Formulierungen.');
+          } else {
+            throw new Error(`GPT-5-mini hat keine Text-Antwort zurückgegeben (finish_reason: ${data.choices[0].finish_reason}). Bitte versuchen Sie es erneut.`);
+          }
+        }
+        
+        console.log('✅ GPT-5-mini Verarbeitung abgeschlossen:', processedText.substring(0, 100) + '...');
         
         // Schritt 3: Ergebnis SOFORT anzeigen (nicht auf Firestore warten)
         setProcessedText(processedText);
@@ -519,9 +517,24 @@ Erstelle die Dokumentation für "${templateName}" mit:
         console.error('Error Details:', {
           message: error.message,
           stack: error.stack,
-          name: error.name
+          name: error.name,
+          selectedTreatment: selectedTreatment,
+          templateFound: !!templates.find(t => t.id === selectedTreatment)
         });
-        alert('Fehler bei der Verarbeitung: ' + error.message);
+        
+        // Detaillierte Fehlermeldung für den Benutzer
+        let errorMessage = 'Fehler bei der Verarbeitung: ';
+        if (error.message.includes('Vorlage nicht gefunden')) {
+          errorMessage += 'Die ausgewählte Vorlage wurde nicht gefunden. Bitte wählen Sie eine andere Vorlage.';
+        } else if (error.message.includes('Keine Transkription')) {
+          errorMessage += 'Die Audio-Aufnahme konnte nicht transkribiert werden. Bitte versuchen Sie es erneut.';
+        } else if (error.message.includes('OpenAI API')) {
+          errorMessage += `API-Fehler: ${error.message}. Bitte überprüfen Sie Ihre API-Keys.`;
+        } else {
+          errorMessage += error.message;
+        }
+        
+        alert(errorMessage);
         setIsProcessing(false);
         setIsRecording(false);
         // Reset processedText bei Fehler
@@ -553,7 +566,7 @@ Erstelle die Dokumentation für "${templateName}" mit:
   };
 
   // Abrechnungsoptimierung mit Google Gemini (präziser, weniger Halluzinationen)
-  // Fallback auf GPT-5 falls Google API Key nicht vorhanden
+  // Fallback auf GPT-5-mini falls Google API Key nicht vorhanden
   const performBillingOptimization = async (documentationText, extras = []) => {
     try {
       // Priorität: Google Gemini (präziser für Abrechnungsziffern)
@@ -566,12 +579,12 @@ Erstelle die Dokumentation für "${templateName}" mit:
           setPendingExtras(pending);
           return;
         } catch (geminiError) {
-          console.warn('Google Gemini Fehler, Fallback auf GPT-5:', geminiError);
-          // Fallback auf GPT-5
+          console.warn('Google Gemini Fehler, Fallback auf GPT-5-mini:', geminiError);
+          // Fallback auf GPT-5-mini
         }
       }
       
-      // Fallback: GPT-5 (mit maximalen Geschwindigkeitsoptimierungen für Abrechnungsoptimierung)
+      // Fallback: GPT-5-mini (schnell und günstig für Abrechnungsoptimierung)
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -579,11 +592,11 @@ Erstelle die Dokumentation für "${templateName}" mit:
           'Authorization': `Bearer ${OPENAI_API_KEY}`
         },
           body: JSON.stringify({
-            model: 'gpt-5',
+            model: 'gpt-5-mini',
             messages: buildBillingPrompt(documentationText, extras),
-            max_completion_tokens: 1000, // Reduziert für schnellere Abrechnungsanalyse
-            reasoning_effort: "low", // Minimaler Reasoning-Aufwand
-            verbosity: "low", // Kürzere Antworten
+            max_completion_tokens: 1000, // GPT-5 verwendet max_completion_tokens
+            reasoning_effort: "low", // Reduziertes Reasoning für schnellere Antworten
+            // temperature wird nicht unterstützt - GPT-5-mini verwendet Standardwert 1
             stream: false
           })
       });
@@ -863,11 +876,62 @@ Erstelle die Dokumentation für "${templateName}" mit:
                 >
                   <h2 className="text-6xl font-extrabold text-[#22223b] mb-12 tracking-tight">Dokumentation beginnt hier</h2>
                   {selectedTreatment && (
-                    <BausteinSelector
-                      currentUserId={selectedUser}
-                      selectedVorlage={templates.find(t => t.id === selectedTreatment)}
-                      onBausteineChange={setAktiveBausteine}
-                    />
+                    <>
+                      {/* Template-specific dictation instructions - only show if instructions exist */}
+                      {(templates.find(t => t.id === selectedTreatment)?.dictationInstructions || templates.find(t => t.id === selectedTreatment)?.DictationInstructions) && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="mb-6 text-lg text-white font-bold"
+                        >
+                          💡 <span className="font-extrabold">Bitte diktieren Sie:</span> {templates.find(t => t.id === selectedTreatment)?.dictationInstructions || templates.find(t => t.id === selectedTreatment)?.DictationInstructions}
+                        </motion.div>
+                      )}
+                      
+                      {/* Collapsible Material Field */}
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="mb-8"
+                      >
+                        <button
+                          onClick={() => setShowMaterialField(!showMaterialField)}
+                          className="flex items-center gap-2 text-white font-bold text-lg mb-2 hover:text-[#ff9900] transition-colors"
+                        >
+                          {showMaterialField ? (
+                            <FiChevronDown className="text-xl" />
+                          ) : (
+                            <FiChevronRight className="text-xl" />
+                          )}
+                          Material {showMaterialField ? 'ausblenden' : 'anzeigen'}
+                        </button>
+                        <AnimatePresence>
+                          {showMaterialField && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <input
+                                type="text"
+                                value={templates.find(t => t.id === selectedTreatment)?.Material || templates.find(t => t.id === selectedTreatment)?.material || ""}
+                                readOnly
+                                className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-800 font-semibold text-lg border-2 border-white/50 focus:outline-none focus:border-[#ff9900]"
+                                placeholder="Material aus Vorlage"
+                              />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                      
+                      <BausteinSelector
+                        currentUserId={selectedUser}
+                        selectedVorlage={templates.find(t => t.id === selectedTreatment)}
+                        onBausteineChange={setAktiveBausteine}
+                      />
+                    </>
                   )}
                   <motion.input
                     type="text"
@@ -935,7 +999,7 @@ Erstelle die Dokumentation für "${templateName}" mit:
                         <div className="text-red-500">⚠️ Kein Text zum Anzeigen. processedText ist leer.</div>
                       )}
                     </div>
-                  </motion.div>
+                </motion.div>
                   
                   {/* Abrechnungsoptimierung - Darunter */}
                   {billingSuggestions && (() => {
