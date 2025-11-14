@@ -107,7 +107,8 @@ KRITISCHE REGELN:
 7. Gleiche Fachbegriffe und Terminologie
 8. Keine kreativen Variationen - nur exakte Wiederholung der Formulierungen
 9. IMMER die zweiteilige Struktur einhalten (Leistungsübersicht + Behandlungsdokumentation)
-10. KEINE Halluzinationen - nur diktierte Informationen in Platzhalter einsetzen`;
+10. KEINE Halluzinationen - nur diktierte Informationen in Platzhalter einsetzen
+11. ZAHNNUMMERN: Verwende IMMER das FDI-Schema OHNE Punkt (z.B. "27" statt "2.7", "36" statt "3.6", "11" statt "1.1")`;
 
   const defaultPrompt = `WICHTIG - VORLAGE VOLLSTÄNDIG VERWENDEN:
 - Verwende die KOMPLETTE Vorlagen-Struktur
@@ -115,7 +116,8 @@ KRITISCHE REGELN:
 - Wenn ein Platzhalter im Diktat nicht erwähnt wird, lasse den Platzhalter WEG oder verwende die Standard-Informationen aus der Vorlage
 - Verwende die Materialien aus der Vorlage automatisch
 - KEINE Halluzinationen: Nur Platzhalter mit diktierte Informationen füllen, nichts erfinden
-- Die gesamte Vorlagen-Struktur muss erhalten bleiben`;
+- Die gesamte Vorlagen-Struktur muss erhalten bleiben
+- ZAHNNUMMERN: Verwende IMMER das FDI-Schema OHNE Punkt (z.B. "27" statt "2.7", "36" statt "3.6", "11" statt "1.1")`;
 
   // Build system prompt
   const systemPrompt = (templatePrompt || defaultPrompt)
@@ -156,19 +158,24 @@ ${templateText ? `VORLAGEN-STRUKTUR (verwende diese KOMPLETTE Struktur und füll
 ${templateText}
 
 WICHTIG: 
-- Verwende die KOMPLETTE Vorlagen-Struktur
+- Verwende die KOMPLETTE Vorlagen-Struktur - ALLE Teile der Vorlage müssen verwendet werden
 - Fülle Platzhalter wie [ZAHL], [ja/nein], [BETRAG], [MATERIAL], [FLÄCHEN], [FARBE] etc. mit Informationen aus dem Diktat
-- Wenn ein Platzhalter im Diktat nicht erwähnt wird, lasse den Platzhalter WEG oder verwende Standard-Informationen
-- Die gesamte Struktur der Vorlage muss erhalten bleiben
+- Wenn ein Platzhalter im Diktat nicht erwähnt wird, lasse nur den Platzhalter WEG, aber behalte ALLEN anderen Text aus der Vorlage
+- Verwende ALLEN Text aus der Vorlage, auch Abschnitte ohne Platzhalter
+- Die gesamte Struktur der Vorlage muss erhalten bleiben - NICHTS weglassen
 
 ` : ''}${templateMaterial ? `VERWENDETES MATERIAL (aus Vorlage - automatisch verwenden):
 ${templateMaterial}
 
-WICHTIG - MATERIAL-VERWENDUNG:
-- Verwende die Materialien aus der Vorlage automatisch
+WICHTIG - SMART MATERIAL-VERWENDUNG:
+- Verwende die Materialien aus der Vorlage automatisch und intelligent
 - Wenn [MATERIAL] in der Vorlage steht, ersetze es mit "${templateMaterial}"
 - Wenn im Diktat andere Materialien genannt werden, verwende diese stattdessen
-- Materialien werden automatisch in die richtigen Stellen der Vorlage eingefügt
+- Materialien SMART verwenden:
+  * In "Leistungsübersicht": Materialien in der richtigen Form erwähnen (z.B. "Mehrschichttechnik bei Komposit-Füllung")
+  * In "Behandlungsdokumentation": Materialien im richtigen Kontext verwenden (z.B. "Füllung mit ${templateMaterial.split(',')[0].trim()} schichtweise gelegt")
+  * Erkenne automatisch, zu welchem Teil der Vorlage das Material gehört und verwende es entsprechend
+  * Wenn Materialien im Diktat erwähnt werden, verwende diese mit vollständigen Produktnamen (z.B. "Gaenial Flow A3, Tetric EvoCeram A3")
 
 ` : ''}${bausteinTexte ? `VERFÜGBARE FORMULIERUNGEN (verwende diese exakten Formulierungen):
 ${bausteinTexte}
@@ -179,22 +186,26 @@ WICHTIG: Verwende diese exakten Formulierungen aus den Bausteinen, wenn sie zur 
 ${inputText}
 
 KRITISCHE REGELN:
-1. Verwende die KOMPLETTE Vorlagen-Struktur
+1. Verwende die KOMPLETTE Vorlagen-Struktur - ALLE Teile der Vorlage müssen verwendet werden
 2. Fülle Platzhalter mit diktierte Informationen
-3. Wenn Platzhalter nicht im Diktat stehen, lasse sie WEG oder verwende Standard-Informationen
-4. Exakt die gleichen Formulierungen aus Bausteinen verwenden
-5. Gleiche Struktur und Reihenfolge wie in der Vorlage
-6. Gleiche Fachbegriffe
-7. KEINE Synonyme
-8. KEINE Halluzinationen - nur diktierte Informationen in Platzhalter einsetzen
+3. Wenn Platzhalter nicht im Diktat stehen, lasse nur den Platzhalter WEG, aber behalte ALLEN anderen Text aus der Vorlage
+4. Verwende ALLEN Text aus der Vorlage, auch Abschnitte ohne Platzhalter
+5. Exakt die gleichen Formulierungen aus Bausteinen verwenden
+6. Gleiche Struktur und Reihenfolge wie in der Vorlage - NICHTS weglassen
+7. Gleiche Fachbegriffe
+8. KEINE Synonyme
+9. KEINE Halluzinationen - nur diktierte Informationen in Platzhalter einsetzen
+10. ZAHNNUMMERN: Verwende IMMER das FDI-Schema OHNE Punkt (z.B. "27" statt "2.7", "36" statt "3.6", "11" statt "1.1")
 
 Erstelle die Dokumentation für "${templateName}" mit:
-- KOMPLETTER Struktur wie in der Vorlage
+- KOMPLETTER Struktur wie in der Vorlage - ALLE Teile der Vorlage müssen verwendet werden
 - Platzhalter ([ZAHL], [ja/nein], [BETRAG], [MATERIAL], etc.) mit Diktat-Informationen füllen
+- ALLEN Text aus der Vorlage verwenden, auch wenn Platzhalter nicht gefüllt werden können
 - Exakte Formulierungen aus Bausteinen
 - Gleiche Fachbegriffe
 - KEINE Synonyme
-- KEINE zusätzlichen Informationen, die nicht im Diktat stehen (nur Platzhalter füllen)`;
+- KEINE zusätzlichen Informationen, die nicht im Diktat stehen (nur Platzhalter füllen)
+- WICHTIG: Wenn ein Platzhalter nicht gefüllt werden kann, lasse nur den Platzhalter weg, aber behalte ALLEN anderen Text aus der Vorlage`;
 
   return { systemPrompt, userPrompt };
 }

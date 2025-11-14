@@ -42,6 +42,7 @@ export default function Dashboard() {
   const [bausteine, setBausteine] = useState([]);
   const [selectedBillingCodes, setSelectedBillingCodes] = useState([]); // Ausgewählte Codes zum Hinzufügen
   const [showMaterialField, setShowMaterialField] = useState(false); // Collapsible material field
+  const [isBillingExpanded, setIsBillingExpanded] = useState(false); // Abrechnungsoptimierung ausklappbar
 
   useEffect(() => {
     if (selectedUser) {
@@ -111,6 +112,56 @@ export default function Dashboard() {
       setIsProcessing(true);
       const selectedTemplate = templates.find(t => t.id === selectedTreatment);
       if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
+      
+      // Priorität: Google Gemini (präziser, weniger Halluzinationen)
+      if (GOOGLE_GEMINI_API_KEY && geminiService) {
+        try {
+          console.log('🤖 Starte Gemini Template-Filling...');
+          const processedText = await geminiService.fillTemplate({
+            template: selectedTemplate,
+            inputText: inputValue,
+            bausteine: aktiveBausteine,
+            allBausteine: bausteine
+          });
+          
+          console.log('✅ Gemini Verarbeitung abgeschlossen:', processedText.substring(0, 100) + '...');
+          setProcessedText(processedText);
+          setInputValue("");
+          setIsProcessing(false);
+          
+          // Speichern in Firestore (asynchron, blockiert nicht)
+          setDoc(doc(db, "Praxen", "1", "Dokumentationen", Date.now().toString()), {
+            behandlung: selectedTemplate.id,
+            transkript: inputValue,
+            dokumentation: processedText,
+            timestamp: new Date(),
+            user: selectedUser
+          }).catch(err => console.error('Fehler beim Speichern in Firestore:', err));
+          
+          // History aktualisieren (asynchron)
+          getDocs(collection(db, "Praxen", "1", "Dokumentationen"))
+            .then(docSnap => {
+              const docList = docSnap.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+                timestamp: doc.data().timestamp?.toDate() || new Date()
+              }));
+              const sortedDocs = docList.sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
+              setHistory(sortedDocs);
+            })
+            .catch(err => console.error('Fehler beim Aktualisieren der History:', err));
+          
+          // Abrechnungsoptimierung starten
+          performBillingOptimization(processedText);
+          return;
+        } catch (geminiError) {
+          console.warn('⚠️ Google Gemini Fehler, Fallback auf GPT-5-mini:', geminiError);
+          // Fallback auf GPT-5-mini
+        }
+      }
+      
+      // Fallback: GPT-5-mini
+      console.log('🤖 Starte GPT-5-mini Verarbeitung (Fallback)...');
       
       // Use utility function to build prompts
       let systemPrompt, userPrompt;
@@ -297,12 +348,59 @@ export default function Dashboard() {
         // Transkription NICHT anzeigen - direkt verarbeiten
         // setInputValue wird nicht gesetzt, damit der Text nicht im Input-Feld erscheint
         
-        // Schritt 2: GPT-Verarbeitung mit strikten Konsistenz-Anweisungen
-        console.log('🤖 Starte GPT-5-mini Verarbeitung...');
-        
-        // Template-Vorbereitung
+        // Schritt 2: Template-Verarbeitung (Priorität: Gemini, Fallback: GPT-5-mini)
         const selectedTemplate = templates.find(t => t.id === selectedTreatment);
         if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
+        
+        // Priorität: Google Gemini (präziser, weniger Halluzinationen)
+        if (GOOGLE_GEMINI_API_KEY && geminiService) {
+          try {
+            console.log('🤖 Starte Gemini Template-Filling...');
+            const processedText = await geminiService.fillTemplate({
+              template: selectedTemplate,
+              inputText: transcribedText,
+              bausteine: aktiveBausteine,
+              allBausteine: bausteine
+            });
+            
+            console.log('✅ Gemini Verarbeitung abgeschlossen:', processedText.substring(0, 100) + '...');
+            setProcessedText(processedText);
+            setInputValue("");
+            setIsProcessing(false);
+            
+            // Speichern in Firestore (asynchron, blockiert nicht)
+            setDoc(doc(db, "Praxen", "1", "Dokumentationen", Date.now().toString()), {
+              behandlung: selectedTemplate.id,
+              transkript: transcribedText,
+              dokumentation: processedText,
+              timestamp: new Date(),
+              user: selectedUser
+            }).catch(err => console.error('Fehler beim Speichern in Firestore:', err));
+            
+            // History aktualisieren (asynchron)
+            getDocs(collection(db, "Praxen", "1", "Dokumentationen"))
+              .then(docSnap => {
+                const docList = docSnap.docs.map((doc) => ({
+                  id: doc.id,
+                  ...doc.data(),
+                  timestamp: doc.data().timestamp?.toDate() || new Date()
+                }));
+                const sortedDocs = docList.sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
+                setHistory(sortedDocs);
+              })
+              .catch(err => console.error('Fehler beim Aktualisieren der History:', err));
+            
+            // Abrechnungsoptimierung starten
+            performBillingOptimization(processedText);
+            return;
+          } catch (geminiError) {
+            console.warn('⚠️ Google Gemini Fehler, Fallback auf GPT-5-mini:', geminiError);
+            // Fallback auf GPT-5-mini
+          }
+        }
+        
+        // Fallback: GPT-5-mini
+        console.log('🤖 Starte GPT-5-mini Verarbeitung (Fallback)...');
         
         // Use utility function to build prompts
         let systemPrompt, userPrompt;
@@ -560,7 +658,7 @@ export default function Dashboard() {
       extraInfo = `Zusätzlich: ${extras.join(", ")}. `;
     }
     return [
-      { role: 'system', content: 'Zahnärztliche Abrechnung: Identifiziere GOZ/BEMA-Codes. Format: Leistung, Bezeichnung, Begründung. Fehlende Leistungen als Fragen: "X wurde nicht dokumentiert. Wurde sie durchgeführt?"' },
+      { role: 'system', content: 'Analysiere zahnärztliche Dokumentation KURZ. Format: "GOZ/BEMA-Codes: [Liste]" und "Fehlende Leistungen: [Fragen]". Maximal 5 Zeilen.' },
       { role: 'user', content: `${extraInfo}Dokumentation:\n${documentationText}` }
     ];
   };
@@ -594,7 +692,7 @@ export default function Dashboard() {
           body: JSON.stringify({
             model: 'gpt-5-mini',
             messages: buildBillingPrompt(documentationText, extras),
-            max_completion_tokens: 1000, // GPT-5 verwendet max_completion_tokens
+            max_completion_tokens: 300, // Stark reduziert für schnellere, kürzere Antworten
             reasoning_effort: "low", // Reduziertes Reasoning für schnellere Antworten
             // temperature wird nicht unterstützt - GPT-5-mini verwendet Standardwert 1
             stream: false
@@ -630,8 +728,40 @@ export default function Dashboard() {
     setPendingExtras(prev => prev.filter(e => e !== extra));
   };
 
-  // Hilfsfunktion zum Parsen der GPT-Ausgabe in strukturierte Vorschläge
+  // Vereinfachte Parsing-Funktion für kurze Antworten
   function parseBillingSuggestions(suggestions) {
+    if (!suggestions) return { codes: [], questions: [], summary: "" };
+    
+    const codes = [];
+    const questions = [];
+    
+    // Extrahiere GOZ/BEMA-Codes
+    const codeMatches = suggestions.match(/(?:GOZ\/BEMA-Codes?:|Codes?:)\s*([\d\s,]+)/i);
+    if (codeMatches && codeMatches[1]) {
+      codeMatches[1].split(/[,\s]+/).forEach(code => {
+        const cleanCode = code.trim();
+        if (cleanCode && /^\d{2,5}$/.test(cleanCode)) {
+          codes.push(cleanCode);
+        }
+      });
+    }
+    
+    // Extrahiere fehlende Leistungen/Fragen
+    const questionMatches = suggestions.match(/(?:Fehlende Leistungen?:|Fragen?:)\s*(.+)/i);
+    if (questionMatches && questionMatches[1]) {
+      questionMatches[1].split(/[,\n]/).forEach(q => {
+        const cleanQ = q.trim();
+        if (cleanQ && cleanQ.length > 0) {
+          questions.push(cleanQ);
+        }
+      });
+    }
+    
+    return { codes, questions, summary: suggestions };
+  }
+  
+  // Alte komplexe Parsing-Funktion (für Fallback)
+  function parseBillingSuggestionsOld(suggestions) {
     if (!suggestions) return { codes: [], optimizations: [], rawText: "" };
     
     // Extrahiere GOZ/BEMA-Codes - verschiedene Formate
@@ -756,12 +886,22 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen relative flex flex-col overflow-hidden">
-      {/* Gradient Background */}
+      {/* Gradient Background - Bleibt statisch */}
       <div className="absolute inset-0 -z-10">
         <div className="w-full h-full bg-gradient-to-br from-[#e6f7c1] via-[#ffe6a7] to-[#ffb36b]" style={{background: 'radial-gradient(circle at 20% 30%, #b6e3c6 0%, #ffe6a7 40%, #ffb36b 100%)'}} />
-              </div>
+      </div>
+      
+      {/* TopNavigation - Bleibt statisch */}
       <TopNavigation />
-      <div className="flex flex-1">
+      
+      {/* Hauptinhalt - Wird animiert */}
+      <motion.div 
+        className="flex flex-1"
+        initial={{ x: '-100%', opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: '-100%', opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 100, damping: 20, duration: 0.5 }}
+      >
         {/* Sidebar */}
         <aside className="w-[320px] flex flex-col justify-start py-16 px-12 min-h-screen relative">
           {/* Branding */}
@@ -1001,156 +1141,101 @@ export default function Dashboard() {
                     </div>
                 </motion.div>
                   
-                  {/* Abrechnungsoptimierung - Darunter */}
+                  {/* Abrechnungsoptimierung - Kompakt, ausklappbar unten */}
                   {billingSuggestions && (() => {
                     const parsed = parseBillingSuggestions(billingSuggestions);
-                    const hasContent = parsed.codes.length > 0 || parsed.optimizations.length > 0;
+                    const hasContent = parsed.codes.length > 0 || parsed.questions.length > 0;
                     
-                    console.log('📊 Parsed Billing Suggestions:', {
-                      codes: parsed.codes,
-                      optimizationsCount: parsed.optimizations.length,
-                      hasContent
-                    });
-                    
-                    const handleAddToText = (textToAdd) => {
-                      setProcessedText(prev => {
-                        const newText = prev + (prev.endsWith('\n') ? '' : '\n\n') + textToAdd;
-                        return newText;
-                      });
-                    };
+                    if (!hasContent) return null;
                     
                     return (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200/50"
+                        className="bg-white/60 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 overflow-hidden"
                       >
-                        <h3 className="text-xl font-bold text-[#22223b] mb-6 flex items-center gap-2">
-                          <FiCircle className="text-[#ff9900]" />
-                          Abrechnungsoptimierung
-                        </h3>
-                        
-                        {/* GOZ/BEMA-Codes - Kompakt oben */}
-                        {parsed.codes.length > 0 && (
-                          <div className="mb-6">
-                            <div className="text-sm font-semibold text-gray-700 mb-3">Abrechnungsziffern:</div>
-                            <div className="flex flex-wrap gap-2">
-                              {parsed.codes.map((code, idx) => (
-                <motion.button
-                                  key={idx}
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
-                                  onClick={() => handleAddToText(`GOZ ${code}`)}
-                                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all cursor-pointer"
-                                >
-                                  {code}
-                </motion.button>
-                              ))}
-                            </div>
+                        {/* Kompakter Header - Immer sichtbar */}
+                        <button
+                          onClick={() => setIsBillingExpanded(!isBillingExpanded)}
+                          className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50/50 transition-colors"
+                        >
+                          <div className="flex items-center gap-2">
+                            <FiCircle className="text-[#ff9900]" />
+                            <span className="font-semibold text-gray-800">Abrechnungsvorschläge</span>
+                            {parsed.codes.length > 0 && (
+                              <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">
+                                {parsed.codes.length} Codes
+                              </span>
+                            )}
+                            {parsed.questions.length > 0 && (
+                              <span className="px-2 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">
+                                {parsed.questions.length} Fragen
+                              </span>
+                            )}
                           </div>
-                        )}
+                          <motion.div
+                            animate={{ rotate: isBillingExpanded ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <FiChevronDown className="text-gray-400" />
+                          </motion.div>
+                        </button>
                         
-                        {/* Optimierungsvorschläge - Aufklappbar */}
-                        {parsed.optimizations.length > 0 && (
-                          <div className="space-y-3">
-                            <div className="text-sm font-semibold text-gray-700 mb-3">Optimierungsvorschläge:</div>
-                            {parsed.optimizations.map((opt) => {
-                              const isExpanded = expandedSuggestions.has(opt.id);
-                              const isSelected = selectedBillingCodes.includes(opt.id);
-                              return (
-                                <motion.div
-                                  key={opt.id}
-                                  className="border border-gray-200 rounded-lg overflow-hidden bg-white/80 backdrop-blur-sm"
-                                  initial={false}
-                                  whileHover={{ borderColor: '#ff9900' }}
-                                >
-                                  <div className="flex items-center gap-2">
-                                    <button
-                                      onClick={() => toggleSuggestion(opt.id)}
-                                      className="flex-1 px-4 py-3 flex items-center justify-between hover:bg-gray-50/50 transition-colors text-left"
-                                    >
-                                      <div className="flex items-center gap-3 flex-1 min-w-0">
-                                        {opt.code && (
-                                          <span className="px-3 py-1 bg-gradient-to-r from-[#ff9900] to-orange-500 text-white rounded-lg text-xs font-bold flex-shrink-0 shadow-sm">
-                                            {opt.code}
-                                          </span>
-                                        )}
-                                        <span className="text-sm font-medium text-gray-800 truncate">
-                                          {opt.bezeichnung || opt.leistung || "Optimierungsvorschlag"}
+                        {/* Ausklappbarer Inhalt */}
+                        <AnimatePresence>
+                          {isBillingExpanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="px-4 pb-4 space-y-4 border-t border-gray-200 pt-4">
+                                {/* GOZ/BEMA-Codes */}
+                                {parsed.codes.length > 0 && (
+                                  <div>
+                                    <div className="text-sm font-semibold text-gray-700 mb-2">Abrechnungsziffern:</div>
+                                    <div className="flex flex-wrap gap-2">
+                                      {parsed.codes.map((code, idx) => (
+                                        <span
+                                          key={idx}
+                                          className="px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-semibold"
+                                        >
+                                          {code}
                                         </span>
-                                      </div>
-                                      {opt.hasDetails && (
-                                        <motion.div
-                                          animate={{ rotate: isExpanded ? 180 : 0 }}
-                                          transition={{ duration: 0.2 }}
-                                        >
-                                          <FiChevronDown className="text-gray-400 flex-shrink-0 ml-2" />
-                                        </motion.div>
-                                      )}
-                                    </button>
-                                    <button
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        const textToAdd = opt.bezeichnung || opt.leistung || '';
-                                        if (textToAdd) {
-                                          handleAddToText(textToAdd);
-                                          setSelectedBillingCodes(prev => [...prev, opt.id]);
-                                        }
-                                      }}
-                                      className={`px-4 py-3 flex-shrink-0 transition-all ${
-                                        isSelected 
-                                          ? 'bg-green-500 text-white' 
-                                          : 'bg-[#ff9900] hover:bg-orange-600 text-white'
-                                      } font-semibold text-xs`}
-                                    >
-                                      {isSelected ? '✓ Hinzugefügt' : '+ Hinzufügen'}
-                                    </button>
+                                      ))}
+                                    </div>
                                   </div>
-                                  {opt.hasDetails && (
-                                    <AnimatePresence>
-                                      {isExpanded && (
-                                        <motion.div
-                                          initial={{ height: 0, opacity: 0 }}
-                                          animate={{ height: "auto", opacity: 1 }}
-                                          exit={{ height: 0, opacity: 0 }}
-                                          transition={{ duration: 0.2 }}
-                                          className="overflow-hidden"
-                                        >
-                                          <div className="px-4 py-3 bg-gray-50/50 text-sm text-gray-700 space-y-2 border-t border-gray-200">
-                                            {opt.leistung && !opt.code && (
-                                              <div>
-                                                <span className="font-semibold text-[#ff9900]">Leistung:</span> {opt.leistung}
-                                              </div>
-                                            )}
-                                            {opt.begruendung && (
-                                              <div>
-                                                <span className="font-semibold text-blue-700">Begründung:</span> {opt.begruendung}
-                                              </div>
-                                            )}
-                                            {opt.verbesserung && (
-                                              <div>
-                                                <span className="font-semibold text-blue-700">Vorschlag:</span> {opt.verbesserung}
-                                              </div>
-                                            )}
-                                          </div>
-                                        </motion.div>
-                                      )}
-                                    </AnimatePresence>
-                                  )}
-                                </motion.div>
-                              );
-                            })}
-                          </div>
-                        )}
-                        
-                        {/* Fallback: Zeige rohen Text wenn Parsing fehlschlägt */}
-                        {!hasContent && parsed.rawText && (
-                          <div className="text-sm text-gray-600 whitespace-pre-wrap max-h-96 overflow-y-auto bg-gray-50 p-4 rounded-lg">
-                            {parsed.rawText}
-                          </div>
-                        )}
-              </motion.div>
+                                )}
+                                
+                                {/* Fehlende Leistungen */}
+                                {parsed.questions.length > 0 && (
+                                  <div>
+                                    <div className="text-sm font-semibold text-gray-700 mb-2">Mögliche fehlende Leistungen:</div>
+                                    <ul className="space-y-1">
+                                      {parsed.questions.map((q, idx) => (
+                                        <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                                          <span className="text-[#ff9900] mt-1">•</span>
+                                          <span>{q}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                )}
+                                
+                                {/* Fallback: Roher Text */}
+                                {parsed.summary && parsed.codes.length === 0 && parsed.questions.length === 0 && (
+                                  <div className="text-sm text-gray-600 whitespace-pre-wrap">
+                                    {parsed.summary}
+                                  </div>
+                                )}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
                     );
                   })()}
                   {pendingExtras.length > 0 && (
@@ -1176,7 +1261,7 @@ export default function Dashboard() {
             </AnimatePresence>
           </div>
         </main>
-      </div>
+      </motion.div>
     </div>
   );
 }

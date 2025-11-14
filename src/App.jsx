@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
-import { motion } from "framer-motion";
-import { useNavigate, Routes, Route } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate, Routes, Route, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { useAuth } from "./contexts/AuthContext";
@@ -101,8 +101,52 @@ function Login() {
   );
 }
 
+// Page Transition Variants für Dashboard <-> Wissensdatenbank
+// Mit weißem Übergang zwischen den Seiten
+const pageVariants = {
+  initial: (direction) => ({
+    x: direction === 'forward' ? '100%' : '-100%',
+    opacity: 0
+  }),
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+      damping: 20,
+      duration: 0.5,
+      delay: 0.1 // Kurze Verzögerung für weißen Moment
+    }
+  },
+  exit: (direction) => ({
+    x: direction === 'forward' ? '-100%' : '100%',
+    opacity: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+      damping: 20,
+      duration: 0.3
+    }
+  })
+};
+
+function AnimatedRoute({ children }) {
+  return <>{children}</>;
+}
+
 function App() {
   const { loading } = useAuth();
+  const location = useLocation();
+
+  // Speichere vorherige Route für Richtungsbestimmung
+  useEffect(() => {
+    const prevPath = sessionStorage.getItem('currentPath');
+    if (prevPath && prevPath !== location.pathname) {
+      sessionStorage.setItem('prevPath', prevPath);
+    }
+    sessionStorage.setItem('currentPath', location.pathname);
+  }, [location.pathname]);
 
   if (loading) {
     return (
@@ -112,18 +156,72 @@ function App() {
     );
   }
 
+  const [showWhiteTransition, setShowWhiteTransition] = useState(false);
+  const prevPathRef = useRef(location.pathname);
+
+  // Erkenne Wechsel zwischen Dashboard und Wissensdatenbank
+  useEffect(() => {
+    const isDashboardOrKnowledge = 
+      location.pathname === '/dashboard' || 
+      location.pathname === '/medical-knowledge' || 
+      location.pathname === '/knowledge';
+    const wasDashboardOrKnowledge = 
+      prevPathRef.current === '/dashboard' || 
+      prevPathRef.current === '/medical-knowledge' || 
+      prevPathRef.current === '/knowledge';
+    
+    if (isDashboardOrKnowledge && wasDashboardOrKnowledge && prevPathRef.current !== location.pathname) {
+      setShowWhiteTransition(true);
+      setTimeout(() => setShowWhiteTransition(false), 200);
+    }
+    
+    prevPathRef.current = location.pathname;
+  }, [location.pathname]);
+
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/knowledge" element={<MedicalKnowledgeDashboard />} />
-        <Route path="/medical-knowledge" element={<MedicalKnowledgeDashboard />} />
-        <Route path="/email" element={<EmailResponder />} />
-        <Route path="/landing" element={<LandingPage />} />
-      </Route>
-    </Routes>
+    <div className="relative">
+      {/* Weißer Übergang - Erscheint zwischen Dashboard und Wissensdatenbank */}
+      <AnimatePresence>
+        {showWhiteTransition && (
+          <motion.div
+            key="white-transition"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.1 }}
+            className="fixed inset-0 bg-white z-50 pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
+      
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Login />} />
+            <Route 
+              path="/dashboard" 
+              element={
+                <AnimatedRoute path="/dashboard">
+                  <Dashboard />
+                </AnimatedRoute>
+              } 
+            />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/knowledge" element={<MedicalKnowledgeDashboard />} />
+            <Route 
+              path="/medical-knowledge" 
+              element={
+                <AnimatedRoute path="/medical-knowledge">
+                  <MedicalKnowledgeDashboard />
+                </AnimatedRoute>
+              } 
+            />
+            <Route path="/email" element={<EmailResponder />} />
+            <Route path="/landing" element={<LandingPage />} />
+          </Route>
+        </Routes>
+      </AnimatePresence>
+    </div>
   );
 }
 
