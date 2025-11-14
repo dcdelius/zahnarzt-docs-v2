@@ -17,8 +17,30 @@ export class AudioRecorder {
         throw new Error('Aufnahme läuft bereits');
       }
 
-      this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      this.mediaRecorder = new MediaRecorder(this.stream);
+      // Optimierte Audio-Einstellungen für schnellere Verarbeitung
+      const audioConstraints = {
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+          sampleRate: 16000, // Reduzierte Sample-Rate für kleinere Dateien (ausreichend für Whisper)
+          channelCount: 1 // Mono statt Stereo
+        }
+      };
+      
+      this.stream = await navigator.mediaDevices.getUserMedia(audioConstraints);
+      
+      // Verwende webm oder opus für bessere Komprimierung
+      const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') 
+        ? 'audio/webm;codecs=opus'
+        : MediaRecorder.isTypeSupported('audio/webm')
+        ? 'audio/webm'
+        : 'audio/wav';
+      
+      this.mediaRecorder = new MediaRecorder(this.stream, {
+        mimeType: mimeType,
+        audioBitsPerSecond: 16000 // Niedrigere Bitrate für kleinere Dateien
+      });
       this.audioChunks = [];
 
       this.mediaRecorder.addEventListener('dataavailable', (event) => {
@@ -56,7 +78,9 @@ export class AudioRecorder {
         }
 
         this.mediaRecorder.addEventListener('stop', () => {
-          const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+          // Verwende das tatsächliche MIME-Type für bessere Komprimierung
+          const mimeType = this.mediaRecorder.mimeType || 'audio/webm';
+          const audioBlob = new Blob(this.audioChunks, { type: mimeType });
           this.audioChunks = [];
           
           // Stop all tracks in the stream

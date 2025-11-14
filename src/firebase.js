@@ -5,16 +5,19 @@ import { getFirestore } from "firebase/firestore" // ✅ WICHTIG
 
 // Konfiguration
 const firebaseConfig = {
-  apiKey: "AIzaSyDU_-VLE5pfPyYzdaW-hocgfOEwSFcHmp4",
-  authDomain: "zahnarzt-app.firebaseapp.com",
-  projectId: "zahnarzt-app",
-  storageBucket: "zahnarzt-app.appspot.com",
-  messagingSenderId: "425056158854",
-  appId: "1:425056158854:web:0f37abc307a346842bfd07"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
 // OpenAI API Key
 export const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+
+// Google Gemini API Key (für präzise Abrechnungsanalyse)
+export const GOOGLE_GEMINI_API_KEY = import.meta.env.VITE_GOOGLE_GEMINI_API_KEY;
 
 // Firebase Initialisierung
 const app = initializeApp(firebaseConfig)

@@ -58,6 +58,8 @@ export default function Settings() {
   const [editPrompt, setEditPrompt] = useState("");
   const [editText, setEditText] = useState("");
   const [editMaterial, setEditMaterial] = useState("");
+  const [editSystemInstructions, setEditSystemInstructions] = useState("");
+  const [editExampleOutput, setEditExampleOutput] = useState("");
   const [aktiveKategorie, setAktiveKategorie] = useState("");
   const [aktiverBenutzer, setAktiverBenutzer] = useState("");
 
@@ -111,6 +113,8 @@ export default function Settings() {
       Prompt: editPrompt,
       Text: editText,
       Material: editMaterial,
+      systemInstructions: editSystemInstructions,
+      exampleOutput: editExampleOutput,
       users: editVorlage?.users || ["all"]
     };
     
@@ -316,6 +320,8 @@ export default function Settings() {
                       Prompt: '',
                       Text: '',
                       Material: '',
+                      systemInstructions: '',
+                      exampleOutput: '',
                       users: ['all']
                     });
                     setEditTitel('');
@@ -323,6 +329,8 @@ export default function Settings() {
                     setEditPrompt('');
                     setEditText('');
                     setEditMaterial('');
+                    setEditSystemInstructions('');
+                    setEditExampleOutput('');
                   }}>
                     <FiPlus size={24} className="text-blue-600 hover:text-blue-800" />
                   </button>
@@ -423,6 +431,30 @@ export default function Settings() {
                       </div>
                       
                       <div>
+                        <label className="text-gray-600 block mb-1">System-Anweisungen (für GPT)</label>
+                        <textarea 
+                          className="w-full px-3 py-2 rounded border border-gray-300 font-mono text-sm" 
+                          rows={8} 
+                          value={editSystemInstructions} 
+                          onChange={(e) => setEditSystemInstructions(e.target.value)} 
+                          placeholder="Detaillierte System-Anweisungen für GPT (Format-Struktur, Regeln, etc.). Wenn leer, werden Standard-Anweisungen verwendet."
+                        />
+                        <p className="text-xs text-gray-500 mt-1">Diese Anweisungen definieren, wie GPT die Dokumentation strukturiert und formatiert.</p>
+                      </div>
+                      
+                      <div>
+                        <label className="text-gray-600 block mb-1">Beispiel-Output</label>
+                        <textarea 
+                          className="w-full px-3 py-2 rounded border border-gray-300 font-mono text-sm" 
+                          rows={15} 
+                          value={editExampleOutput} 
+                          onChange={(e) => setEditExampleOutput(e.target.value)} 
+                          placeholder="Beispiel-Output als Referenz für GPT. Wenn leer, wird ein Standard-Beispiel verwendet."
+                        />
+                        <p className="text-xs text-gray-500 mt-1">Dieses Beispiel zeigt GPT das erwartete Format und die Struktur der Dokumentation.</p>
+                      </div>
+                      
+                      <div>
                         <label className="text-gray-600 block mb-1">Material</label>
                         <input 
                           className="w-full px-3 py-2 rounded border border-gray-300" 
@@ -470,9 +502,11 @@ export default function Settings() {
                           setEditVorlage(v);
                           setEditTitel(v.id);
                           setEditKategorie(v.Kategorie || "");
-                          setEditPrompt(v.Prompt || "");
+                          setEditPrompt(v.Prompt || v.prompt || "");
                           setEditText(v.Text || "");
                           setEditMaterial(v.Material || "");
+                          setEditSystemInstructions(v.systemInstructions || "");
+                          setEditExampleOutput(v.exampleOutput || "");
                         }}
                       >
                         <div className="flex-1">

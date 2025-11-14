@@ -110,8 +110,8 @@ export default function Navigation() {
                     location.pathname === item.path
                       ? "bg-blue-50 text-blue-600 font-medium"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
-                >
+                }`}
+              >
                   {item.icon}
                   {item.label}
                 </Link>

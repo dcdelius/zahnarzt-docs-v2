@@ -12,10 +12,13 @@ export class WhisperService {
     while (retries < this.maxRetries) {
     try {
       const formData = new FormData();
-      formData.append('file', audioBlob, 'audio.wav');
+      // Dateiname basierend auf MIME-Type
+      const fileName = audioBlob.type.includes('webm') ? 'audio.webm' : 'audio.wav';
+      formData.append('file', audioBlob, fileName);
       formData.append('model', 'whisper-1');
       formData.append('language', 'de');
-        formData.append('prompt', 'Dies ist eine zahnärztliche Dokumentation. Bitte transkribiere die Aufnahme mit besonderem Fokus auf zahnmedizinische Fachbegriffe, Zahlen und Behandlungsdetails.');
+      formData.append('response_format', 'text'); // Direkt Text statt JSON für schnellere Verarbeitung
+      formData.append('prompt', 'Dies ist eine zahnärztliche Dokumentation. Bitte transkribiere die Aufnahme mit besonderem Fokus auf zahnmedizinische Fachbegriffe, Zahlen und Behandlungsdetails.');
 
       const response = await fetch(this.apiEndpoint, {
         method: 'POST',
@@ -26,14 +29,31 @@ export class WhisperService {
       });
 
       if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(`OpenAI API Fehler: ${errorData.error?.message || response.statusText}`);
+          // Versuche JSON-Fehler zu parsen, falls vorhanden
+          try {
+            const errorData = await response.json();
+            throw new Error(`OpenAI API Fehler: ${errorData.error?.message || response.statusText}`);
+          } catch (e) {
+            // Falls kein JSON, verwende Status-Text
+            throw new Error(`OpenAI API Fehler: ${response.statusText || 'Unbekannter Fehler'}`);
+          }
       }
 
-      const data = await response.json();
-        if (!data.text) {
+      // Wenn response_format=text, ist die Antwort direkt Text, nicht JSON
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('text/plain')) {
+        const text = await response.text();
+        if (!text || !text.trim()) {
           throw new Error('Keine Transkription erhalten');
         }
+        return text.trim();
+      }
+      
+      // Fallback für JSON-Format
+      const data = await response.json();
+      if (!data.text) {
+        throw new Error('Keine Transkription erhalten');
+      }
 
       return data.text;
     } catch (error) {

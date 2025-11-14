@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMic, FiSend, FiLogOut, FiUser, FiHelpCircle, FiEdit2, FiChevronLeft, FiCircle } from "react-icons/fi";
+import { FiMic, FiSend, FiLogOut, FiUser, FiHelpCircle, FiEdit2, FiChevronLeft, FiCircle, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { db, OPENAI_API_KEY } from "./firebase";
+import { db, OPENAI_API_KEY, GOOGLE_GEMINI_API_KEY } from "./firebase";
 import { AudioRecorder } from "./services/AudioRecorder";
 import { WhisperService } from "./services/WhisperService";
+import { GeminiService } from "./services/GeminiService";
 import DocumentationModal from "./components/DocumentationModal";
 import CustomDropdown from "./components/CustomDropdown";
 import TopNavigation from "./components/TopNavigation";
@@ -27,6 +28,7 @@ export default function Dashboard() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [audioRecorder] = useState(() => new AudioRecorder());
   const [whisperService] = useState(() => new WhisperService(import.meta.env.VITE_OPENAI_API_KEY));
+  const [geminiService] = useState(() => GOOGLE_GEMINI_API_KEY ? new GeminiService(GOOGLE_GEMINI_API_KEY) : null);
   const [processedText, setProcessedText] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showTreatmentDropdown, setShowTreatmentDropdown] = useState(false);
@@ -34,8 +36,10 @@ export default function Dashboard() {
   const [billingSuggestions, setBillingSuggestions] = useState("");
   const [confirmedExtras, setConfirmedExtras] = useState([]);
   const [pendingExtras, setPendingExtras] = useState([]); // Von GPT vorgeschlagene, aber noch nicht bestätigte Leistungen
+  const [expandedSuggestions, setExpandedSuggestions] = useState(new Set()); // Für aufklappbare Optimierungsvorschläge
   const [aktiveBausteine, setAktiveBausteine] = useState([]);
   const [bausteine, setBausteine] = useState([]);
+  const [selectedBillingCodes, setSelectedBillingCodes] = useState([]); // Ausgewählte Codes zum Hinzufügen
 
   useEffect(() => {
     if (selectedUser) {
@@ -104,7 +108,97 @@ export default function Dashboard() {
       setIsProcessing(true);
       const selectedTemplate = templates.find(t => t.id === selectedTreatment);
       if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
-      const systemPrompt = selectedTemplate?.prompt || "Erstelle eine strukturierte Dokumentation für die gewählten Bausteine und den eingegebenen Text.";
+      
+      // Prüfe sowohl 'prompt' als auch 'Prompt' (Firebase kann unterschiedlich speichern)
+      const templatePrompt = selectedTemplate.prompt || selectedTemplate.Prompt || "";
+      const templateName = selectedTemplate.id || "";
+      const templateCategory = selectedTemplate.Kategorie || "";
+      
+      // Verwende System-Anweisungen und Beispiel-Output aus Firebase, falls vorhanden
+      const systemInstructions = selectedTemplate.systemInstructions || "";
+      const exampleOutput = selectedTemplate.exampleOutput || "";
+      
+      // Standard-Beispiel-Output als Fallback
+      const defaultExampleOutput = `**1) Leistungsübersicht (Abrechnung)**
+
+Füllung Zahn 37 - OD - 2-flächig - 90,00 €
+Intraligamentäre Anästhesie
+Isolation mittels Kofferdamm
+Matrize und Keil
+Mehrschichttechnik bei Kompositfüllung
+Politur der Füllung
+
+**2) Behandlungsdokumentation (Praxisakte)**
+
+Patient kommt zur Füllung an Zahn 37, Flächen: OD, 2-flächig.
+Klinische Untersuchung zeigt kariöse Läsion an Zahn 37 OD.
+Vitalitätsprüfung mit Kältespray positiv.
+Röntgenologisch zeigt sich kariöse Läsion im Dentin.
+Vor- und Nachteile der Kompositfüllung besprochen, Patient einverstanden.
+Kosten: 90,00 € pro Zahn, Farbe: A2.
+Intraligamentäre Anästhesie mit 1 Amp. Ultracain DS 1,7 ml durchgeführt.
+Die Behandlung erfolgte unter Kofferdamm.
+Zur Füllung wurde eine Matrize angelegt.
+Keil und Spannring gesetzt.
+Karies vollständig exkaviert.
+Kavität mit Adhäsivtechnik vorbereitet.
+Trockenlegung in SÄT durchgeführt.
+Die Füllung wurde in Mehrschichttechnik gelegt.
+Füllung mit Gaenial Flow A2 und Tetric EvoCeram A2 schichtweise gelegt und lichthärtend polymerisiert.
+Anatomische Ausformung hergestellt, Kontaktpunkt wiederhergestellt.
+Überschüsse entfernt, Okklusion mit Artikulationspapier geprüft und eingeschliffen.
+Abschließend wurde die Füllung poliert.
+Duraphat auf Füllung und umliegende Zähne appliziert.
+Postoperative Hinweise gegeben: 2 Stunden Nahrungspause, keine harten Speisen heute.
+Kontrolltermin in 4 Wochen vereinbart.
+Patient verließ die Praxis in stabilem Zustand.`;
+
+      // Standard-System-Anweisungen als Fallback
+      const defaultSystemInstructions = `FORMAT-STRUKTUR (IMMER EINHALTEN):
+Die Dokumentation MUSS in zwei Teile unterteilt sein:
+
+1) Leistungsübersicht (Abrechnung)
+- Nur was gemacht wurde
+- Relevant für die Abrechnung
+- Kompakt, sachlich, ohne Fließtext
+- Format: "Leistung" pro Zeile (ohne Kosten)
+- NUR die Füllungstherapie hat Kosten: "Füllung Zahn X - Flächen - Kosten"
+- Einzelleistungen wie Anästhesie, Kofferdamm etc. werden OHNE Kosten aufgeführt (werden von Krankenkasse übernommen)
+- Gesamtbetrag nur bei mehreren Füllungen
+
+2) Behandlungsdokumentation (Praxisakte)
+- Detaillierter Ablauf mit einzelnen Punkten oder Sätzen
+- Forensisch wasserdicht
+- Jede Zeile = eine abgeschlossene Handlung
+- Chronologische Reihenfolge
+- Vollständige Sätze, aber kompakt
+
+STRENGE REGELN:
+1. Verwende IMMER die exakt gleichen Formulierungen aus den Bausteinen
+2. Keine Synonyme oder alternative Formulierungen
+3. Gleiche Satzstruktur und Reihenfolge bei jeder Dokumentation
+4. Gleiche Fachbegriffe und Terminologie
+5. Keine kreativen Variationen - nur exakte Wiederholung der Formulierungen
+6. IMMER die zweiteilige Struktur einhalten (Leistungsübersicht + Behandlungsdokumentation)`;
+
+      // Baue System-Prompt aus Firebase-Daten oder verwende Standard
+      const systemPrompt = templatePrompt 
+        ? `Du bist ein zahnärztlicher Dokumentationsassistent. WICHTIG: Verwende IMMER die exakt gleichen Formulierungen, Wörter und Syntax-Struktur für jede Dokumentation dieser Vorlage.
+
+Vorlage: "${templateName}" (${templateCategory})
+Template-Anweisungen:
+${templatePrompt}
+
+${systemInstructions || defaultSystemInstructions}
+
+${exampleOutput || defaultExampleOutput ? `BEISPIEL-FORMAT (als Referenz):
+${exampleOutput || defaultExampleOutput}` : ''}`
+        : `Du bist ein zahnärztlicher Dokumentationsassistent. Erstelle eine konsistente Dokumentation für "${templateName}" (${templateCategory}). 
+
+${systemInstructions || defaultSystemInstructions}
+
+Verwende IMMER die gleichen Formulierungen und Strukturen.`;
+      
       const aktiveBausteineData = aktiveBausteine
         .map(id => bausteine.find(b => b.id === id))
         .filter(Boolean);
@@ -112,6 +206,22 @@ export default function Dashboard() {
         .map(b => typeof b.standardText === 'string' ? b.standardText : '')
         .filter(Boolean)
         .join("\n");
+      
+      // User-Prompt mit expliziter Konsistenz-Anweisung (auch für manuelle Eingabe)
+      const userPrompt = `WICHTIG: Verwende für diese Dokumentation EXAKT die gleichen Formulierungen wie in allen vorherigen Dokumentationen dieser Vorlage.
+
+${bausteinTexte ? `VERWENDE DIESE EXAKTEN FORMULIERUNGEN (keine Variationen):
+${bausteinTexte}
+
+` : ''}Individueller Text:
+${inputValue}
+
+Erstelle die Dokumentation für "${templateName}" mit:
+- Exakt den gleichen Formulierungen wie in den Bausteinen
+- Gleicher Struktur und Reihenfolge
+- Gleichen Fachbegriffe
+- KEINE Synonyme oder alternative Formulierungen`;
+      
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -119,10 +229,10 @@ export default function Dashboard() {
           'Authorization': `Bearer ${OPENAI_API_KEY}`
         },
         body: JSON.stringify({
-          model: "gpt-4",
+          model: "gpt-5",
           messages: [
             { role: "system", content: systemPrompt },
-            { role: "user", content: `Verwende diese Bausteine als Basis:\n${bausteinTexte}\n\nHier ist der individuelle Text:\n${inputValue}` }
+            { role: "user", content: userPrompt }
           ]
         })
       });
@@ -161,6 +271,265 @@ export default function Dashboard() {
     }
   };
 
+  // Audio Recording Handler - Kompletter Flow: Aufnahme → Whisper → GPT → Vorlage
+  const handleRecordingToggle = async () => {
+    if (!isRecording) {
+      // Aufnahme starten
+      try {
+        if (!selectedTreatment) {
+          alert('Bitte wählen Sie zuerst eine Behandlung aus');
+          return;
+        }
+        
+        console.log('🎤 Starte Audio-Aufnahme...');
+        await audioRecorder.startRecording();
+        audioRecorder.setStatusCallback((status) => {
+          console.log('📊 Recording Status:', status);
+          setIsRecording(status);
+        });
+        setIsRecording(true);
+        console.log('✅ Aufnahme gestartet');
+      } catch (error) {
+        console.error('❌ Fehler beim Starten der Aufnahme:', error);
+        let errorMessage = 'Mikrofon konnte nicht aktiviert werden';
+        
+        if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+          errorMessage = 'Mikrofon-Berechtigung wurde verweigert. Bitte erlauben Sie den Zugriff in den Browser-Einstellungen.';
+        } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
+          errorMessage = 'Kein Mikrofon gefunden. Bitte verbinden Sie ein Mikrofon.';
+        } else if (error.name === 'NotReadableError' || error.name === 'TrackStartError') {
+          errorMessage = 'Mikrofon wird bereits von einer anderen Anwendung verwendet.';
+        } else {
+          errorMessage = error.message || errorMessage;
+        }
+        
+        alert(errorMessage);
+        setIsRecording(false);
+      }
+    } else {
+      // Aufnahme stoppen, transkribieren und automatisch verarbeiten
+      try {
+        console.log('⏹️ Stoppe Audio-Aufnahme...');
+        setIsProcessing(true);
+        setIsRecording(false); // Sofort auf false setzen, damit Button wieder klickbar ist
+        const audioBlob = await audioRecorder.stopRecording();
+        console.log('✅ Aufnahme gestoppt, starte Verarbeitung...');
+        
+        // Schritt 1: Whisper Transkription + Template-Vorbereitung parallel
+        console.log('🎙️ Starte Whisper-Transkription...');
+        
+        // Template-Vorbereitung parallel zur Whisper-Transkription starten
+        const selectedTemplate = templates.find(t => t.id === selectedTreatment);
+        if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
+        
+        const templatePrompt = selectedTemplate.prompt || selectedTemplate.Prompt || "";
+        const templateName = selectedTemplate.id || "";
+        const templateCategory = selectedTemplate.Kategorie || "";
+        
+        // Verwende System-Anweisungen und Beispiel-Output aus Firebase, falls vorhanden
+        const systemInstructions = selectedTemplate.systemInstructions || "";
+        const exampleOutput = selectedTemplate.exampleOutput || "";
+        
+        // Standard-Beispiel-Output als Fallback (gleiche wie oben)
+        const defaultExampleOutput = `**1) Leistungsübersicht (Abrechnung)**
+
+Füllung Zahn 37 - OD - 2-flächig - 90,00 €
+Intraligamentäre Anästhesie
+Isolation mittels Kofferdamm
+Matrize und Keil
+Mehrschichttechnik bei Kompositfüllung
+Politur der Füllung
+
+**2) Behandlungsdokumentation (Praxisakte)**
+
+Patient kommt zur Füllung an Zahn 37, Flächen: OD, 2-flächig.
+Klinische Untersuchung zeigt kariöse Läsion an Zahn 37 OD.
+Vitalitätsprüfung mit Kältespray positiv.
+Röntgenologisch zeigt sich kariöse Läsion im Dentin.
+Vor- und Nachteile der Kompositfüllung besprochen, Patient einverstanden.
+Kosten: 90,00 € pro Zahn, Farbe: A2.
+Intraligamentäre Anästhesie mit 1 Amp. Ultracain DS 1,7 ml durchgeführt.
+Die Behandlung erfolgte unter Kofferdamm.
+Zur Füllung wurde eine Matrize angelegt.
+Keil und Spannring gesetzt.
+Karies vollständig exkaviert.
+Kavität mit Adhäsivtechnik vorbereitet.
+Trockenlegung in SÄT durchgeführt.
+Die Füllung wurde in Mehrschichttechnik gelegt.
+Füllung mit Gaenial Flow A2 und Tetric EvoCeram A2 schichtweise gelegt und lichthärtend polymerisiert.
+Anatomische Ausformung hergestellt, Kontaktpunkt wiederhergestellt.
+Überschüsse entfernt, Okklusion mit Artikulationspapier geprüft und eingeschliffen.
+Abschließend wurde die Füllung poliert.
+Duraphat auf Füllung und umliegende Zähne appliziert.
+Postoperative Hinweise gegeben: 2 Stunden Nahrungspause, keine harten Speisen heute.
+Kontrolltermin in 4 Wochen vereinbart.
+Patient verließ die Praxis in stabilem Zustand.`;
+
+        // Standard-System-Anweisungen als Fallback (gleiche wie oben)
+        const defaultSystemInstructions = `FORMAT-STRUKTUR (IMMER EINHALTEN):
+Die Dokumentation MUSS in zwei Teile unterteilt sein:
+
+1) Leistungsübersicht (Abrechnung)
+- Nur was gemacht wurde
+- Relevant für die Abrechnung
+- Kompakt, sachlich, ohne Fließtext
+- Format: "Leistung" pro Zeile (ohne Kosten)
+- NUR die Füllungstherapie hat Kosten: "Füllung Zahn X - Flächen - Kosten"
+- Einzelleistungen wie Anästhesie, Kofferdamm etc. werden OHNE Kosten aufgeführt (werden von Krankenkasse übernommen)
+- Gesamtbetrag nur bei mehreren Füllungen
+
+2) Behandlungsdokumentation (Praxisakte)
+- Detaillierter Ablauf mit einzelnen Punkten oder Sätzen
+- Forensisch wasserdicht
+- Jede Zeile = eine abgeschlossene Handlung
+- Chronologische Reihenfolge
+- Vollständige Sätze, aber kompakt
+
+STRENGE REGELN:
+1. Verwende IMMER die exakt gleichen Formulierungen aus den Bausteinen
+2. Keine Synonyme oder alternative Formulierungen
+3. Gleiche Satzstruktur und Reihenfolge bei jeder Dokumentation
+4. Gleiche Fachbegriffe und Terminologie
+5. Keine kreativen Variationen - nur exakte Wiederholung der Formulierungen
+6. IMMER die zweiteilige Struktur einhalten (Leistungsübersicht + Behandlungsdokumentation)`;
+
+        // Bausteine parallel vorbereiten
+        const aktiveBausteineData = aktiveBausteine
+          .map(id => bausteine.find(b => b.id === id))
+          .filter(Boolean);
+        const bausteinTexte = aktiveBausteineData
+          .map(b => typeof b.standardText === 'string' ? b.standardText : '')
+          .filter(Boolean)
+          .join("\n");
+        
+        // Whisper-Transkription (während Template bereits vorbereitet wird)
+        const transcribedText = await whisperService.transcribe(audioBlob);
+        console.log('✅ Whisper Transkription abgeschlossen:', transcribedText);
+        
+        if (!transcribedText || !transcribedText.trim()) {
+          throw new Error('Keine Transkription erhalten');
+        }
+        
+        // Transkription NICHT anzeigen - direkt verarbeiten
+        // setInputValue wird nicht gesetzt, damit der Text nicht im Input-Feld erscheint
+        
+        // Schritt 2: GPT-Verarbeitung mit strikten Konsistenz-Anweisungen
+        console.log('🤖 Starte GPT-5 Verarbeitung...');
+        
+        // Baue System-Prompt aus Firebase-Daten oder verwende Standard
+        const systemPrompt = templatePrompt 
+          ? `Du bist ein zahnärztlicher Dokumentationsassistent. WICHTIG: Verwende IMMER die exakt gleichen Formulierungen, Wörter und Syntax-Struktur für jede Dokumentation dieser Vorlage.
+
+Vorlage: "${templateName}" (${templateCategory})
+Template-Anweisungen:
+${templatePrompt}
+
+${systemInstructions || defaultSystemInstructions}
+
+${exampleOutput || defaultExampleOutput ? `BEISPIEL-FORMAT (als Referenz):
+${exampleOutput || defaultExampleOutput}` : ''}`
+          : `Du bist ein zahnärztlicher Dokumentationsassistent. Erstelle eine konsistente Dokumentation für "${templateName}" (${templateCategory}). 
+
+${systemInstructions || defaultSystemInstructions}
+
+Verwende IMMER die gleichen Formulierungen und Strukturen.`;
+        
+        // User-Prompt mit expliziter Konsistenz-Anweisung
+        const userPrompt = `WICHTIG: Verwende für diese Dokumentation EXAKT die gleichen Formulierungen wie in allen vorherigen Dokumentationen dieser Vorlage.
+
+${bausteinTexte ? `VERWENDE DIESE EXAKTEN FORMULIERUNGEN (keine Variationen):
+${bausteinTexte}
+
+` : ''}Transkribierter Text:
+${transcribedText}
+
+Erstelle die Dokumentation für "${templateName}" mit:
+- Exakt den gleichen Formulierungen wie in den Bausteinen
+- Gleicher Struktur und Reihenfolge
+- Gleichen Fachbegriffe
+- KEINE Synonyme oder alternative Formulierungen`;
+        
+        console.log('📤 Sende an GPT-5 (maximal optimiert für Geschwindigkeit):', {
+          systemPrompt: systemPrompt.substring(0, 100) + '...',
+          userPrompt: userPrompt.substring(0, 100) + '...'
+        });
+        
+        // GPT-5 Aufruf mit allen Geschwindigkeitsoptimierungen
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${OPENAI_API_KEY}`
+          },
+          body: JSON.stringify({
+            model: "gpt-5",
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: userPrompt }
+            ],
+            max_completion_tokens: 1500, // Reduziert von 2000 für schnellere Antworten
+            reasoning_effort: "low", // Minimaler Reasoning-Aufwand für schnellere Antworten
+            verbosity: "low", // Kürzere, prägnantere Antworten
+            stream: false
+          })
+        });
+        
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(`OpenAI API Fehler: ${errorData.error?.message || 'Unbekannter Fehler'}`);
+        }
+        
+        const data = await response.json();
+        const processedText = data.choices[0].message.content;
+        
+        console.log('✅ GPT-Verarbeitung abgeschlossen:', processedText.substring(0, 100) + '...');
+        
+        // Schritt 3: Ergebnis SOFORT anzeigen (nicht auf Firestore warten)
+        setProcessedText(processedText);
+        // Input-Feld leeren, da processedText jetzt angezeigt wird
+        setInputValue("");
+        setIsProcessing(false); // UI sofort freigeben
+        console.log('📝 processedText gesetzt und angezeigt, Input-Feld geleert');
+        
+        // Firestore-Speicherung und History-Update im Hintergrund (nicht blockierend)
+        setDoc(doc(db, "Praxen", "1", "Dokumentationen", Date.now().toString()), {
+          behandlung: selectedTemplate.id,
+          transkript: transcribedText,
+          dokumentation: processedText,
+          timestamp: new Date(),
+          user: selectedUser
+        }).catch(err => console.error('Fehler beim Speichern in Firestore:', err));
+        
+        // History-Update im Hintergrund
+        getDocs(collection(db, "Praxen", "1", "Dokumentationen"))
+          .then(docSnap => {
+            const docList = docSnap.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+              timestamp: doc.data().timestamp?.toDate() || new Date()
+            }));
+            const sortedDocs = docList.sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
+            setHistory(sortedDocs);
+          })
+          .catch(err => console.error('Fehler beim Aktualisieren der History:', err));
+        
+        console.log('✅ Komplette Verarbeitung abgeschlossen (UI bereits freigegeben)');
+      } catch (error) {
+        console.error('❌ Fehler bei der Verarbeitung:', error);
+        console.error('Error Details:', {
+          message: error.message,
+          stack: error.stack,
+          name: error.name
+        });
+        alert('Fehler bei der Verarbeitung: ' + error.message);
+        setIsProcessing(false);
+        setIsRecording(false);
+        // Reset processedText bei Fehler
+        setProcessedText("");
+      }
+    }
+  };
+
   const handleLogout = async () => {
     try {
       const auth = getAuth();
@@ -171,31 +540,52 @@ export default function Dashboard() {
     }
   };
 
-  // Angepasstes Prompt-Template für GPT
+  // Optimiertes, kürzeres Prompt-Template für GPT (schnellere Verarbeitung)
   const buildBillingPrompt = (documentationText, extras = []) => {
     let extraInfo = "";
     if (extras.length > 0) {
-      extraInfo = `Folgende Leistungen wurden nach Rückfrage tatsächlich erbracht, aber nicht dokumentiert: ${extras.join(", ")}. Bitte berücksichtige dies bei der Analyse und Abrechnungsoptimierung.`;
+      extraInfo = `Zusätzlich: ${extras.join(", ")}. `;
     }
     return [
-      { role: 'system', content: 'Du bist ein Experte für zahnärztliche Abrechnung. Analysiere die folgende Behandlungsdokumentation und identifiziere potenzielle Abrechnungsmöglichkeiten. Gib Vorschläge für zusätzliche GOZ/BEMA-Codes, die anwendbar sein könnten. Für jeden Vorschlag: Leistung, Bezeichnung, Begründung, und optional Verbesserungsvorschlag. Wenn typische Leistungen wie Mehrschichttechnik, Kofferdamm, Matrize, Anästhesie etc. nicht erwähnt werden, gib sie als Liste von "offenen Fragen" zurück, z.B. "Mehrschichttechnik wurde nicht dokumentiert. Wurde sie durchgeführt?".' },
-      { role: 'user', content: `${extraInfo}\n\nDokumentation: ${documentationText}` }
+      { role: 'system', content: 'Zahnärztliche Abrechnung: Identifiziere GOZ/BEMA-Codes. Format: Leistung, Bezeichnung, Begründung. Fehlende Leistungen als Fragen: "X wurde nicht dokumentiert. Wurde sie durchgeführt?"' },
+      { role: 'user', content: `${extraInfo}Dokumentation:\n${documentationText}` }
     ];
   };
 
-  // Angepasste Funktion zur Abrechnungsoptimierung
+  // Abrechnungsoptimierung mit Google Gemini (präziser, weniger Halluzinationen)
+  // Fallback auf GPT-5 falls Google API Key nicht vorhanden
   const performBillingOptimization = async (documentationText, extras = []) => {
     try {
+      // Priorität: Google Gemini (präziser für Abrechnungsziffern)
+      if (GOOGLE_GEMINI_API_KEY && geminiService) {
+        try {
+          const suggestions = await geminiService.analyzeBilling(documentationText, extras);
+          setBillingSuggestions(suggestions);
+          // Extrahiere offene Fragen (z.B. Zeilen mit "?" am Ende)
+          const pending = suggestions.split(/\n/).filter(l => l.trim().endsWith("?"));
+          setPendingExtras(pending);
+          return;
+        } catch (geminiError) {
+          console.warn('Google Gemini Fehler, Fallback auf GPT-5:', geminiError);
+          // Fallback auf GPT-5
+        }
+      }
+      
+      // Fallback: GPT-5 (mit maximalen Geschwindigkeitsoptimierungen für Abrechnungsoptimierung)
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${OPENAI_API_KEY}`
         },
-        body: JSON.stringify({
-          model: 'gpt-4',
-          messages: buildBillingPrompt(documentationText, extras)
-        })
+          body: JSON.stringify({
+            model: 'gpt-5',
+            messages: buildBillingPrompt(documentationText, extras),
+            max_completion_tokens: 1000, // Reduziert für schnellere Abrechnungsanalyse
+            reasoning_effort: "low", // Minimaler Reasoning-Aufwand
+            verbosity: "low", // Kürzere Antworten
+            stream: false
+          })
       });
       if (!response.ok) {
         const errorData = await response.json();
@@ -209,6 +599,7 @@ export default function Dashboard() {
       setPendingExtras(pending);
     } catch (error) {
       console.error('Fehler bei der Abrechnungsoptimierung:', error);
+      alert('Fehler bei der Abrechnungsoptimierung: ' + error.message);
     }
   };
 
@@ -228,20 +619,88 @@ export default function Dashboard() {
 
   // Hilfsfunktion zum Parsen der GPT-Ausgabe in strukturierte Vorschläge
   function parseBillingSuggestions(suggestions) {
-    // Einfache Heuristik: Trenne an \n\n oder an "Leistung:"-Vorkommen
-    const blocks = suggestions.split(/\n\n|(?=Leistung:)/g).map(block => block.trim()).filter(Boolean);
-    return blocks.map(block => {
-      const leistung = block.match(/Leistung: ?(.+?)(\n|$)/i)?.[1] || "";
-      const bezeichnung = block.match(/Bezeichnung: ?(.+?)(\n|$)/i)?.[1] || "";
-      const begruendung = block.match(/Begründung: ?(.+?)(\n|$)/i)?.[1] || "";
-      const verbesserung = block.match(/Verbesserungsvorschlag: ?(.+?)(\n|$)/i)?.[1] || "";
-      return { leistung, bezeichnung, begruendung, verbesserung };
+    if (!suggestions) return { codes: [], optimizations: [], rawText: "" };
+    
+    // Extrahiere GOZ/BEMA-Codes - verschiedene Formate
+    const codeRegex = /(?:GOZ|BEMA|Leistung:)\s*([\d]{2,5})|([\d]{4,5})/gi;
+    const codes = [];
+    const codeSet = new Set();
+    let match;
+    
+    // Suche nach Codes in verschiedenen Formaten
+    const patterns = [
+      /GOZ\s*([\d]{2,5})/gi,
+      /BEMA\s*([\d]{2,3})/gi,
+      /Leistung:\s*([\d]{2,5})/gi,
+      /([\d]{4,5})/g  // 4-5 stellige Zahlen (typisch für GOZ)
+    ];
+    
+    patterns.forEach(pattern => {
+      while ((match = pattern.exec(suggestions)) !== null) {
+        const code = match[1] || match[0];
+        if (code && code.length >= 2 && code.length <= 5 && !codeSet.has(code)) {
+          codeSet.add(code);
+          codes.push(code);
+        }
+      }
     });
+    
+    // Extrahiere Optimierungsvorschläge mit Details
+    const blocks = suggestions.split(/\n\n+|(?=Leistung:)/g).map(block => block.trim()).filter(Boolean);
+    const optimizations = [];
+    
+    blocks.forEach((block, idx) => {
+      // Prüfe ob Block relevante Informationen enthält
+      if (block.length < 10) return; // Zu kurz, wahrscheinlich nicht relevant
+      
+      const leistung = block.match(/Leistung: ?(.+?)(\n|$)/i)?.[1]?.trim() || "";
+      const bezeichnung = block.match(/Bezeichnung: ?(.+?)(\n|$)/i)?.[1]?.trim() || "";
+      const begruendung = block.match(/Begründung: ?(.+?)(\n|$)/i)?.[1]?.trim() || "";
+      const verbesserung = block.match(/Verbesserungsvorschlag: ?(.+?)(\n|$)/i)?.[1]?.trim() || "";
+      
+      // Extrahiere Code aus verschiedenen Stellen
+      let code = "";
+      const codeMatch = (leistung + " " + bezeichnung).match(/([\d]{3,5})/);
+      if (codeMatch) {
+        code = codeMatch[1];
+      }
+      
+      // Nur hinzufügen wenn relevante Informationen vorhanden
+      if (leistung || bezeichnung || begruendung || verbesserung) {
+        optimizations.push({ 
+          id: idx,
+          leistung, 
+          bezeichnung, 
+          begruendung, 
+          verbesserung,
+          code,
+          hasDetails: !!(begruendung || verbesserung)
+        });
+      }
+    });
+    
+    return { codes, optimizations, rawText: suggestions };
   }
+  
+  const toggleSuggestion = (id) => {
+    setExpandedSuggestions(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
 
   // Hilfsfunktion für die schöne Formatierung des fertigen Textes
   function renderProcessedText(text) {
-    if (!text) return null;
+    console.log('🎨 renderProcessedText aufgerufen mit:', text ? text.substring(0, 50) + '...' : 'null/undefined');
+    if (!text) {
+      console.warn('⚠️ renderProcessedText: text ist leer');
+      return <div className="text-red-500">Kein Text zum Anzeigen</div>;
+    }
     const lines = text.split(/\n/);
     const elements = [];
     let currentList = [];
@@ -287,7 +746,7 @@ export default function Dashboard() {
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10">
         <div className="w-full h-full bg-gradient-to-br from-[#e6f7c1] via-[#ffe6a7] to-[#ffb36b]" style={{background: 'radial-gradient(circle at 20% 30%, #b6e3c6 0%, #ffe6a7 40%, #ffb36b 100%)'}} />
-      </div>
+              </div>
       <TopNavigation />
       <div className="flex flex-1">
         {/* Sidebar */}
@@ -299,7 +758,7 @@ export default function Dashboard() {
           </div>
           {/* Zweistufiges Auswahlmenü */}
           <div className="mb-16 relative min-h-[180px]">
-            <motion.div
+        <motion.div
               initial={false}
               animate={{ x: sidebarStep === 1 ? 0 : -340, opacity: sidebarStep === 1 ? 1 : 0 }}
               transition={{ type: 'spring', stiffness: 80, damping: 18 }}
@@ -325,11 +784,11 @@ export default function Dashboard() {
               animate={{ x: sidebarStep === 2 ? 0 : 340, opacity: sidebarStep === 2 ? 1 : 0 }}
               transition={{ type: 'spring', stiffness: 80, damping: 18 }}
               className="absolute top-0 left-0 w-full"
-            >
+                  >
               <AnimatePresence>
                 {selectedTreatment ? (
                   <div className="flex flex-row items-center gap-2 h-40">
-                    <motion.div
+                    <motion.div 
                       key={selectedTreatment}
                       initial={{ opacity: 0, scale: 0.7, rotate: 0, y: 0 }}
                       animate={{ opacity: 1, scale: 2.2, rotate: -90, y: 140 }}
@@ -357,10 +816,10 @@ export default function Dashboard() {
                           onClick={() => setSelectedTreatment(treatment.id)}
                         >
                           {treatment.id}
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
                 )}
               </AnimatePresence>
             </motion.div>
@@ -395,11 +854,11 @@ export default function Dashboard() {
           <div className="max-w-4xl mx-auto w-full">
             <AnimatePresence initial={false}>
               {!processedText ? (
-                <motion.div
+              <motion.div 
                   key="eingabe"
                   initial={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -40 }}
-                  animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, ease: 'easeInOut' }}
                 >
                   <h2 className="text-6xl font-extrabold text-[#22223b] mb-12 tracking-tight">Dokumentation beginnt hier</h2>
@@ -412,9 +871,9 @@ export default function Dashboard() {
                   )}
                   <motion.input
                     type="text"
-                    value={inputValue}
+                  value={inputValue}
                     onChange={e => setInputValue(e.target.value)}
-                    placeholder="Spracheingabe oder Text hier eingeben..."
+                  placeholder="Spracheingabe oder Text hier eingeben..."
                     className="w-full px-0 py-6 border-0 border-b-2 border-[#ff9900] bg-transparent text-4xl font-light focus:outline-none focus:ring-0 placeholder-gray-400 mb-12"
                     animate={{ y: 0 }}
                     transition={{ type: 'spring', stiffness: 80, damping: 18 }}
@@ -425,16 +884,16 @@ export default function Dashboard() {
                     transition={{ type: 'spring', stiffness: 80, damping: 18 }}
                   >
                     <button
-                      onClick={() => setIsRecording(!isRecording)}
-                      disabled={isProcessing || !selectedTreatment || inputValue.trim()}
+                      onClick={handleRecordingToggle}
+                      disabled={isProcessing || !selectedTreatment}
                       className={`flex-1 flex items-center justify-center gap-3 ${selectedCategory && selectedTreatment ? 'px-0 py-3 text-xl' : 'px-0 py-6 text-3xl'} font-extrabold uppercase tracking-wide transition-colors rounded-full ${
                         isRecording 
-                          ? "bg-red-500 text-white" 
+                          ? "bg-red-500 text-white hover:bg-red-600" 
                           : "bg-[#ff9900] text-white hover:bg-orange-600"
-                      } ${(isProcessing || !selectedTreatment || inputValue.trim()) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      } ${(isProcessing || !selectedTreatment) ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                       <FiMic className={`text-3xl ${isRecording ? "animate-pulse" : ""}`} />
-                      {isProcessing ? "Verarbeite..." : isRecording ? "Aufnahme läuft..." : "Aufnahme starten"}
+                      {isProcessing ? "Verarbeite..." : isRecording ? "Aufnahme stoppen" : "Aufnahme starten"}
                     </button>
                     <button
                       onClick={handleTextSubmit}
@@ -449,7 +908,7 @@ export default function Dashboard() {
                       {isProcessing ? "Verarbeite..." : "Text verarbeiten"}
                     </button>
                   </motion.div>
-                </motion.div>
+              </motion.div>
               ) : (
                 <motion.div
                   key="ergebnis"
@@ -457,27 +916,179 @@ export default function Dashboard() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 40 }}
                   transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  className="space-y-8"
                 >
-                  <div className="flex flex-row gap-12 items-start">
-                    <div className="flex-[2] pr-8 text-lg text-gray-800">
-                      {renderProcessedText(processedText)}
+                  {/* Dokumentationstext */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200/50"
+                  >
+                    <h3 className="text-xl font-bold text-[#22223b] mb-6 flex items-center gap-2">
+                      <FiCircle className="text-blue-600" />
+                      Behandlungsdokumentation
+                    </h3>
+                    <div className="text-lg text-gray-800">
+                      {processedText ? (
+                        renderProcessedText(processedText)
+                      ) : (
+                        <div className="text-red-500">⚠️ Kein Text zum Anzeigen. processedText ist leer.</div>
+                      )}
                     </div>
-                    {billingSuggestions && (
-                      <div className="flex-1 pl-8 border-l border-gray-200">
-                        <h3 className="text-lg font-bold text-blue-900 mb-4">Abrechnungsoptimierung</h3>
-                        <div className="flex flex-col gap-6">
-                          {parseBillingSuggestions(billingSuggestions).map((v, idx) => (
-                            <div key={idx} className="flex flex-col gap-1 text-base text-blue-900">
-                              {v.leistung && <div><span className="font-bold text-[#ff9900] mr-2">Leistung:</span><span className="font-semibold">{v.leistung}</span></div>}
-                              {v.bezeichnung && <div><span className="font-bold text-blue-700 mr-2">Bezeichnung:</span>{v.bezeichnung}</div>}
-                              {v.begruendung && <div><span className="font-bold text-blue-700 mr-2">Begründung:</span>{v.begruendung}</div>}
-                              {v.verbesserung && <div><span className="font-bold text-blue-700 mr-2">Verbesserungsvorschlag:</span>{v.verbesserung}</div>}
+                  </motion.div>
+                  
+                  {/* Abrechnungsoptimierung - Darunter */}
+                  {billingSuggestions && (() => {
+                    const parsed = parseBillingSuggestions(billingSuggestions);
+                    const hasContent = parsed.codes.length > 0 || parsed.optimizations.length > 0;
+                    
+                    console.log('📊 Parsed Billing Suggestions:', {
+                      codes: parsed.codes,
+                      optimizationsCount: parsed.optimizations.length,
+                      hasContent
+                    });
+                    
+                    const handleAddToText = (textToAdd) => {
+                      setProcessedText(prev => {
+                        const newText = prev + (prev.endsWith('\n') ? '' : '\n\n') + textToAdd;
+                        return newText;
+                      });
+                    };
+                    
+                    return (
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200/50"
+                      >
+                        <h3 className="text-xl font-bold text-[#22223b] mb-6 flex items-center gap-2">
+                          <FiCircle className="text-[#ff9900]" />
+                          Abrechnungsoptimierung
+                        </h3>
+                        
+                        {/* GOZ/BEMA-Codes - Kompakt oben */}
+                        {parsed.codes.length > 0 && (
+                          <div className="mb-6">
+                            <div className="text-sm font-semibold text-gray-700 mb-3">Abrechnungsziffern:</div>
+                            <div className="flex flex-wrap gap-2">
+                              {parsed.codes.map((code, idx) => (
+                <motion.button
+                                  key={idx}
+                                  whileHover={{ scale: 1.05 }}
+                                  whileTap={{ scale: 0.95 }}
+                                  onClick={() => handleAddToText(`GOZ ${code}`)}
+                                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all cursor-pointer"
+                                >
+                                  {code}
+                </motion.button>
+                              ))}
                             </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                          </div>
+                        )}
+                        
+                        {/* Optimierungsvorschläge - Aufklappbar */}
+                        {parsed.optimizations.length > 0 && (
+                          <div className="space-y-3">
+                            <div className="text-sm font-semibold text-gray-700 mb-3">Optimierungsvorschläge:</div>
+                            {parsed.optimizations.map((opt) => {
+                              const isExpanded = expandedSuggestions.has(opt.id);
+                              const isSelected = selectedBillingCodes.includes(opt.id);
+                              return (
+                                <motion.div
+                                  key={opt.id}
+                                  className="border border-gray-200 rounded-lg overflow-hidden bg-white/80 backdrop-blur-sm"
+                                  initial={false}
+                                  whileHover={{ borderColor: '#ff9900' }}
+                                >
+                                  <div className="flex items-center gap-2">
+                                    <button
+                                      onClick={() => toggleSuggestion(opt.id)}
+                                      className="flex-1 px-4 py-3 flex items-center justify-between hover:bg-gray-50/50 transition-colors text-left"
+                                    >
+                                      <div className="flex items-center gap-3 flex-1 min-w-0">
+                                        {opt.code && (
+                                          <span className="px-3 py-1 bg-gradient-to-r from-[#ff9900] to-orange-500 text-white rounded-lg text-xs font-bold flex-shrink-0 shadow-sm">
+                                            {opt.code}
+                                          </span>
+                                        )}
+                                        <span className="text-sm font-medium text-gray-800 truncate">
+                                          {opt.bezeichnung || opt.leistung || "Optimierungsvorschlag"}
+                                        </span>
+                                      </div>
+                                      {opt.hasDetails && (
+                                        <motion.div
+                                          animate={{ rotate: isExpanded ? 180 : 0 }}
+                                          transition={{ duration: 0.2 }}
+                                        >
+                                          <FiChevronDown className="text-gray-400 flex-shrink-0 ml-2" />
+                                        </motion.div>
+                                      )}
+                                    </button>
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        const textToAdd = opt.bezeichnung || opt.leistung || '';
+                                        if (textToAdd) {
+                                          handleAddToText(textToAdd);
+                                          setSelectedBillingCodes(prev => [...prev, opt.id]);
+                                        }
+                                      }}
+                                      className={`px-4 py-3 flex-shrink-0 transition-all ${
+                                        isSelected 
+                                          ? 'bg-green-500 text-white' 
+                                          : 'bg-[#ff9900] hover:bg-orange-600 text-white'
+                                      } font-semibold text-xs`}
+                                    >
+                                      {isSelected ? '✓ Hinzugefügt' : '+ Hinzufügen'}
+                                    </button>
+                                  </div>
+                                  {opt.hasDetails && (
+                                    <AnimatePresence>
+                                      {isExpanded && (
+                                        <motion.div
+                                          initial={{ height: 0, opacity: 0 }}
+                                          animate={{ height: "auto", opacity: 1 }}
+                                          exit={{ height: 0, opacity: 0 }}
+                                          transition={{ duration: 0.2 }}
+                                          className="overflow-hidden"
+                                        >
+                                          <div className="px-4 py-3 bg-gray-50/50 text-sm text-gray-700 space-y-2 border-t border-gray-200">
+                                            {opt.leistung && !opt.code && (
+                                              <div>
+                                                <span className="font-semibold text-[#ff9900]">Leistung:</span> {opt.leistung}
+                                              </div>
+                                            )}
+                                            {opt.begruendung && (
+                                              <div>
+                                                <span className="font-semibold text-blue-700">Begründung:</span> {opt.begruendung}
+                                              </div>
+                                            )}
+                                            {opt.verbesserung && (
+                                              <div>
+                                                <span className="font-semibold text-blue-700">Vorschlag:</span> {opt.verbesserung}
+                                              </div>
+                                            )}
+                                          </div>
+                                        </motion.div>
+                                      )}
+                                    </AnimatePresence>
+                                  )}
+                                </motion.div>
+                              );
+                            })}
+                          </div>
+                        )}
+                        
+                        {/* Fallback: Zeige rohen Text wenn Parsing fehlschlägt */}
+                        {!hasContent && parsed.rawText && (
+                          <div className="text-sm text-gray-600 whitespace-pre-wrap max-h-96 overflow-y-auto bg-gray-50 p-4 rounded-lg">
+                            {parsed.rawText}
+                          </div>
+                        )}
+              </motion.div>
+                    );
+                  })()}
                   {pendingExtras.length > 0 && (
                     <div className="mb-6">
                       <div className="font-semibold text-orange-700 mb-2">Möglicherweise vergessene Leistungen:</div>
@@ -494,7 +1105,7 @@ export default function Dashboard() {
                           </div>
                         ))}
                       </div>
-                    </div>
+            </div>
                   )}
                 </motion.div>
               )}

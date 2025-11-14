@@ -8,7 +8,7 @@ const AudioTranscriber = ({ onTranscriptionComplete }) => {
   const [transcription, setTranscription] = useState('');
   const [error, setError] = useState('');
   const [audioRecorder] = useState(() => new AudioRecorder());
-  const [whisperService] = useState(() => new WhisperService(process.env.REACT_APP_OPENAI_API_KEY));
+  const [whisperService] = useState(() => new WhisperService(import.meta.env.VITE_OPENAI_API_KEY));
 
   const startRecording = async () => {
     try {
