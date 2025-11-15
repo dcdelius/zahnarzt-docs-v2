@@ -19,6 +19,9 @@ export const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 // Google Gemini API Key (für präzise Abrechnungsanalyse)
 export const GOOGLE_GEMINI_API_KEY = import.meta.env.VITE_GOOGLE_GEMINI_API_KEY;
 
+// Google Cloud Speech-to-Text API Key (optional, für bessere medizinische Transkription)
+export const GOOGLE_SPEECH_API_KEY = import.meta.env.VITE_GOOGLE_SPEECH_API_KEY;
+
 // Firebase Initialisierung
 const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)

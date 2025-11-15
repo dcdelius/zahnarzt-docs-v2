@@ -1,16 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { Suspense, lazy, useRef, useEffect } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, Routes, Route, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { useAuth } from "./contexts/AuthContext";
-import Dashboard from './Dashboard';
-import MedicalKnowledgeDashboard from './MedicalKnowledgeDashboard';
-import Settings from './Settings';
-import EmailResponder from './components/EmailResponder';
 import Layout from './components/Layout';
-import LandingPage from './pages/LandingPage';
+
+// Lazy Loading für bessere Performance und kein weißer Flash
+const Dashboard = lazy(() => import('./Dashboard'));
+const MedicalKnowledgeDashboard = lazy(() => import('./MedicalKnowledgeDashboard'));
+const Settings = lazy(() => import('./Settings'));
+const EmailResponder = lazy(() => import('./components/EmailResponder'));
+const LandingPage = lazy(() => import('./pages/LandingPage'));
 
 function Login() {
   const navigate = useNavigate();
@@ -38,7 +40,7 @@ function Login() {
         transition={{ duration: 1 }}
         className="text-white text-5xl tracking-[0.3em] font-bold mb-4 drop-shadow-xl"
       >
-        EVIDENTIA
+        DOCUDENT
       </motion.h1>
 
       <motion.div
@@ -101,52 +103,10 @@ function Login() {
   );
 }
 
-// Page Transition Variants für Dashboard <-> Wissensdatenbank
-// Mit weißem Übergang zwischen den Seiten
-const pageVariants = {
-  initial: (direction) => ({
-    x: direction === 'forward' ? '100%' : '-100%',
-    opacity: 0
-  }),
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 100,
-      damping: 20,
-      duration: 0.5,
-      delay: 0.1 // Kurze Verzögerung für weißen Moment
-    }
-  },
-  exit: (direction) => ({
-    x: direction === 'forward' ? '-100%' : '100%',
-    opacity: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 100,
-      damping: 20,
-      duration: 0.3
-    }
-  })
-};
-
-function AnimatedRoute({ children }) {
-  return <>{children}</>;
-}
 
 function App() {
   const { loading } = useAuth();
   const location = useLocation();
-
-  // Speichere vorherige Route für Richtungsbestimmung
-  useEffect(() => {
-    const prevPath = sessionStorage.getItem('currentPath');
-    if (prevPath && prevPath !== location.pathname) {
-      sessionStorage.setItem('prevPath', prevPath);
-    }
-    sessionStorage.setItem('currentPath', location.pathname);
-  }, [location.pathname]);
 
   if (loading) {
     return (
@@ -156,71 +116,210 @@ function App() {
     );
   }
 
-  const [showWhiteTransition, setShowWhiteTransition] = useState(false);
-  const prevPathRef = useRef(location.pathname);
+  // Loading Component für Suspense
+  const PageLoader = () => (
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+    </div>
+  );
 
-  // Erkenne Wechsel zwischen Dashboard und Wissensdatenbank
+  // Bestimme Richtung für Slide-Animation
+  const getDirection = (currentPath, prevPath) => {
+    const dashboardPaths = ['/dashboard'];
+    const knowledgePaths = ['/medical-knowledge', '/knowledge'];
+    const settingsPaths = ['/settings'];
+    
+    const isDashboard = dashboardPaths.includes(currentPath);
+    const isKnowledge = knowledgePaths.includes(currentPath);
+    const isSettings = settingsPaths.includes(currentPath);
+    const wasDashboard = dashboardPaths.includes(prevPath);
+    const wasKnowledge = knowledgePaths.includes(prevPath);
+    const wasSettings = settingsPaths.includes(prevPath);
+    
+    // Dashboard -> Knowledge: von rechts rein (direction = 1)
+    // Knowledge -> Dashboard: von links rein (direction = -1)
+    // Dashboard -> Settings: von rechts rein (direction = 1)
+    // Settings -> Dashboard: von links rein (direction = -1)
+    // Knowledge -> Settings: von rechts rein (direction = 1)
+    // Settings -> Knowledge: von links rein (direction = -1)
+    
+    if (isKnowledge && wasDashboard) return 1;
+    if (isDashboard && wasKnowledge) return -1;
+    if (isSettings && wasDashboard) return 1;
+    if (isDashboard && wasSettings) return -1;
+    if (isSettings && wasKnowledge) return 1;
+    if (isKnowledge && wasSettings) return -1;
+    
+    // Standard: von rechts
+    return 1;
+  };
+
+  const prevPathRef = useRef(location.pathname);
+  const direction = getDirection(location.pathname, prevPathRef.current);
+  
   useEffect(() => {
-    const isDashboardOrKnowledge = 
-      location.pathname === '/dashboard' || 
-      location.pathname === '/medical-knowledge' || 
-      location.pathname === '/knowledge';
-    const wasDashboardOrKnowledge = 
-      prevPathRef.current === '/dashboard' || 
-      prevPathRef.current === '/medical-knowledge' || 
-      prevPathRef.current === '/knowledge';
-    
-    if (isDashboardOrKnowledge && wasDashboardOrKnowledge && prevPathRef.current !== location.pathname) {
-      setShowWhiteTransition(true);
-      setTimeout(() => setShowWhiteTransition(false), 200);
-    }
-    
     prevPathRef.current = location.pathname;
   }, [location.pathname]);
 
+  // Slide-Animation Variants
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? '-100%' : '100%',
+      opacity: 0
+    })
+  };
+
   return (
     <div className="relative">
-      {/* Weißer Übergang - Erscheint zwischen Dashboard und Wissensdatenbank */}
-      <AnimatePresence>
-        {showWhiteTransition && (
-          <motion.div
-            key="white-transition"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.1 }}
-            className="fixed inset-0 bg-white z-50 pointer-events-none"
-          />
-        )}
-      </AnimatePresence>
-      
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Login />} />
-            <Route 
-              path="/dashboard" 
-              element={
-                <AnimatedRoute path="/dashboard">
-                  <Dashboard />
-                </AnimatedRoute>
-              } 
-            />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/knowledge" element={<MedicalKnowledgeDashboard />} />
-            <Route 
-              path="/medical-knowledge" 
-              element={
-                <AnimatedRoute path="/medical-knowledge">
-                  <MedicalKnowledgeDashboard />
-                </AnimatedRoute>
-              } 
-            />
-            <Route path="/email" element={<EmailResponder />} />
-            <Route path="/landing" element={<LandingPage />} />
-          </Route>
-        </Routes>
-      </AnimatePresence>
+      <Suspense fallback={<PageLoader />}>
+        <AnimatePresence mode="wait" initial={false} custom={direction}>
+          <Routes location={location} key={location.pathname}>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Login />} />
+              <Route 
+                path="/dashboard" 
+                element={
+                  <motion.div
+                    key="dashboard"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30,
+                      duration: 0.4
+                    }}
+                    className="absolute inset-0"
+                  >
+                    <Dashboard />
+                  </motion.div>
+                } 
+              />
+              <Route 
+                path="/settings" 
+                element={
+                  <motion.div
+                    key="settings"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30,
+                      duration: 0.4
+                    }}
+                    className="absolute inset-0"
+                  >
+                    <Settings />
+                  </motion.div>
+                } 
+              />
+              <Route 
+                path="/knowledge" 
+                element={
+                  <motion.div
+                    key="knowledge"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30,
+                      duration: 0.4
+                    }}
+                    className="absolute inset-0"
+                  >
+                    <MedicalKnowledgeDashboard />
+                  </motion.div>
+                } 
+              />
+              <Route 
+                path="/medical-knowledge" 
+                element={
+                  <motion.div
+                    key="medical-knowledge"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30,
+                      duration: 0.4
+                    }}
+                    className="absolute inset-0"
+                  >
+                    <MedicalKnowledgeDashboard />
+                  </motion.div>
+                } 
+              />
+              <Route 
+                path="/email" 
+                element={
+                  <motion.div
+                    key="email"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30,
+                      duration: 0.4
+                    }}
+                    className="absolute inset-0"
+                  >
+                    <EmailResponder />
+                  </motion.div>
+                } 
+              />
+              <Route 
+                path="/landing" 
+                element={
+                  <motion.div
+                    key="landing"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30,
+                      duration: 0.4
+                    }}
+                    className="absolute inset-0"
+                  >
+                    <LandingPage />
+                  </motion.div>
+                } 
+              />
+            </Route>
+          </Routes>
+        </AnimatePresence>
+      </Suspense>
     </div>
   );
 }

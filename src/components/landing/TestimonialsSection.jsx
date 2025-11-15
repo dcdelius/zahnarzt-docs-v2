@@ -2,7 +2,7 @@ const testimonials = [
   {
     name: 'Dr. Anna Müller',
     role: 'Zahnärztin, Berlin',
-    text: 'EVIDENT A.I. hat unsere Dokumentation revolutioniert. Die KI spart uns täglich viel Zeit und die Bedienung ist kinderleicht!',
+    text: 'DOCUDENT A.I. hat unsere Dokumentation revolutioniert. Die KI spart uns täglich viel Zeit und die Bedienung ist kinderleicht!',
     avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
   },
   {

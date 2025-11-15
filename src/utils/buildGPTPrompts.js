@@ -33,6 +33,7 @@ export function buildGPTPrompts({ template, inputText, bausteine, allBausteine }
 
   // Extract template fields (handle both lowercase and uppercase keys)
   const templatePrompt = template.prompt || template.Prompt || "";
+  const templateGPTPrompt = template.GPTPrompt || template.gptPrompt || template.GeminiPrompt || template.geminiPrompt || ""; // Spezifischer GPT-Prompt
   const templateText = template.Text || template.text || "";
   const templateMaterial = template.Material || template.material || "";
   const templateName = template.id || "";
@@ -110,22 +111,28 @@ KRITISCHE REGELN:
 10. KEINE Halluzinationen - nur diktierte Informationen in Platzhalter einsetzen
 11. ZAHNNUMMERN: Verwende IMMER das FDI-Schema OHNE Punkt (z.B. "27" statt "2.7", "36" statt "3.6", "11" statt "1.1")`;
 
-  const defaultPrompt = `WICHTIG - VORLAGE VOLLSTÄNDIG VERWENDEN:
-- Verwende die KOMPLETTE Vorlagen-Struktur
-- Fülle Platzhalter ([ZAHL], [ja/nein], [BETRAG], [MATERIAL], etc.) mit Informationen aus dem Diktat
-- Wenn ein Platzhalter im Diktat nicht erwähnt wird, lasse den Platzhalter WEG oder verwende die Standard-Informationen aus der Vorlage
+  const defaultPrompt = `🚨 KRITISCH WICHTIG - VORLAGE MUSS KOMPLETT VERWENDET WERDEN:
+- Die VORLAGE IST DAS GERÜST - sie muss IMMER zu 100% verwendet werden, auch wenn nur wenig diktiert wurde
+- Verwende die KOMPLETTE Vorlagen-Struktur - ALLE Teile müssen erhalten bleiben
+- Fülle Platzhalter ([ZAHL], [ja/nein], [BETRAG], [MATERIAL], etc.) NUR mit Informationen aus dem Diktat
+- Wenn ein Platzhalter im Diktat nicht erwähnt wird, lasse NUR den Platzhalter WEG (z.B. "[ZAHL]" entfernen), aber behalte ALLEN anderen Text aus der Vorlage
+- Verwende ALLEN Text aus der Vorlage - auch Abschnitte OHNE Platzhalter müssen erhalten bleiben
 - Verwende die Materialien aus der Vorlage automatisch
-- KEINE Halluzinationen: Nur Platzhalter mit diktierte Informationen füllen, nichts erfinden
-- Die gesamte Vorlagen-Struktur muss erhalten bleiben
+- KEINE Halluzinationen: NICHTS erfinden, NUR Platzhalter mit diktierte Informationen füllen
+- Die gesamte Vorlagen-Struktur ist MANDATORY - NICHTS weglassen, NICHTS ändern, NICHTS erfinden
+- Wenn im Diktat nur wenig steht, verwende trotzdem die KOMPLETTE Vorlage und fülle nur die erwähnten Platzhalter
 - ZAHNNUMMERN: Verwende IMMER das FDI-Schema OHNE Punkt (z.B. "27" statt "2.7", "36" statt "3.6", "11" statt "1.1")`;
 
   // Build system prompt
-  const systemPrompt = (templatePrompt || defaultPrompt)
-    ? `Du bist ein zahnärztlicher Dokumentationsassistent. WICHTIG: Verwende die KOMPLETTE Vorlagen-Struktur und fülle Platzhalter mit diktierte Informationen. KEINE Halluzinationen - nur diktierte Informationen verwenden.
+  // Verwende spezifischen GPT-Prompt wenn vorhanden, sonst Standard-Prompt
+  const activePrompt = templateGPTPrompt || templatePrompt || defaultPrompt;
+  
+  const systemPrompt = activePrompt
+    ? `Du bist ein zahnärztlicher Dokumentationsassistent. 🚨 KRITISCH: Die VORLAGE IST DAS GERÜST - sie muss IMMER zu 100% verwendet werden, auch wenn nur wenig diktiert wurde. Verwende die KOMPLETTE Vorlagen-Struktur und fülle Platzhalter NUR mit diktierte Informationen. KEINE Halluzinationen - NICHTS erfinden, NUR diktierte Informationen verwenden. 🚨 WICHTIG: Wenn konkrete Behandlungen/Leistungen (wie "Kofferdamm", "Matrize", etc.) NICHT im Diktat erwähnt werden, ENTFERNE diese Zeilen komplett aus der Dokumentation.
 
 Vorlage: "${templateName}" (${templateCategory})
 Template-Anweisungen:
-${templatePrompt || defaultPrompt}
+${activePrompt}
 
 ${systemInstructions || defaultSystemInstructions}
 
@@ -149,20 +156,24 @@ Verwende IMMER die gleichen Formulierungen und Strukturen aus der Vorlage.`;
     .join("\n");
 
   // Build user prompt
-  const userPrompt = `WICHTIG - VORLAGE VOLLSTÄNDIG VERWENDEN:
-- Verwende die KOMPLETTE Vorlagen-Struktur
-- Fülle Platzhalter mit diktierte Informationen
-- KEINE Halluzinationen - nur diktierte Informationen verwenden
+  const userPrompt = `🚨 KRITISCH WICHTIG - VORLAGE MUSS KOMPLETT VERWENDET WERDEN:
+- Die VORLAGE IST DAS GERÜST - sie muss IMMER zu 100% verwendet werden, auch wenn nur wenig diktiert wurde
+- Verwende die KOMPLETTE Vorlagen-Struktur - ALLE Teile müssen erhalten bleiben
+- Fülle Platzhalter NUR mit diktierte Informationen - wenn nicht im Diktat, entferne NUR den Platzhalter (z.B. "[ZAHL]"), aber behalte ALLEN anderen Text
+- KEINE Halluzinationen - NICHTS erfinden, NUR diktierte Informationen verwenden
 
-${templateText ? `VORLAGEN-STRUKTUR (verwende diese KOMPLETTE Struktur und fülle Platzhalter mit diktierte Informationen):
+${templateText ? `VORLAGEN-STRUKTUR (verwende diese KOMPLETTE Struktur - MANDATORY, auch wenn nur wenig diktiert wurde):
 ${templateText}
 
-WICHTIG: 
-- Verwende die KOMPLETTE Vorlagen-Struktur - ALLE Teile der Vorlage müssen verwendet werden
-- Fülle Platzhalter wie [ZAHL], [ja/nein], [BETRAG], [MATERIAL], [FLÄCHEN], [FARBE] etc. mit Informationen aus dem Diktat
-- Wenn ein Platzhalter im Diktat nicht erwähnt wird, lasse nur den Platzhalter WEG, aber behalte ALLEN anderen Text aus der Vorlage
-- Verwende ALLEN Text aus der Vorlage, auch Abschnitte ohne Platzhalter
-- Die gesamte Struktur der Vorlage muss erhalten bleiben - NICHTS weglassen
+🚨 KRITISCH WICHTIG: 
+- Die VORLAGE IST DAS GERÜST - sie muss IMMER zu 100% verwendet werden, auch wenn nur 3-4 Dinge diktiert wurden
+- Verwende die KOMPLETTE Vorlagen-Struktur - ALLE Teile der Vorlage müssen verwendet werden (MANDATORY)
+- Fülle Platzhalter wie [ZAHL], [ja/nein], [BETRAG], [MATERIAL], [FLÄCHEN], [FARBE] etc. NUR mit Informationen aus dem Diktat
+- Wenn ein Platzhalter im Diktat nicht erwähnt wird, lasse NUR den Platzhalter WEG (z.B. "[ZAHL]" entfernen), aber behalte ALLEN anderen Text aus der Vorlage
+- 🚨 KRITISCH: Wenn konkrete Behandlungen/Leistungen (wie "Kofferdamm", "Isolation mittels Kofferdamm", "Matrize", "Mehrschichttechnik", etc.) NICHT im Diktat erwähnt werden, ENTFERNE diese Zeilen komplett
+- Verwende ALLEN Text aus der Vorlage - ABER: Entferne Zeilen für Behandlungen, die NICHT erwähnt wurden
+- Die gesamte Struktur der Vorlage muss erhalten bleiben - NICHTS weglassen, NICHTS ändern, NICHTS erfinden (außer nicht erwähnte Behandlungen entfernen)
+- Wenn im Diktat nur wenig steht, verwende trotzdem die KOMPLETTE Vorlage, aber ENTFERNE Zeilen für Behandlungen, die NICHT erwähnt wurden
 
 ` : ''}${templateMaterial ? `VERWENDETES MATERIAL (aus Vorlage - automatisch verwenden):
 ${templateMaterial}
@@ -185,27 +196,34 @@ WICHTIG: Verwende diese exakten Formulierungen aus den Bausteinen, wenn sie zur 
 ` : ''}DIKTIERTER TEXT (verwende diese Informationen zum Füllen der Platzhalter):
 ${inputText}
 
-KRITISCHE REGELN:
-1. Verwende die KOMPLETTE Vorlagen-Struktur - ALLE Teile der Vorlage müssen verwendet werden
-2. Fülle Platzhalter mit diktierte Informationen
-3. Wenn Platzhalter nicht im Diktat stehen, lasse nur den Platzhalter WEG, aber behalte ALLEN anderen Text aus der Vorlage
-4. Verwende ALLEN Text aus der Vorlage, auch Abschnitte ohne Platzhalter
-5. Exakt die gleichen Formulierungen aus Bausteinen verwenden
-6. Gleiche Struktur und Reihenfolge wie in der Vorlage - NICHTS weglassen
-7. Gleiche Fachbegriffe
-8. KEINE Synonyme
-9. KEINE Halluzinationen - nur diktierte Informationen in Platzhalter einsetzen
-10. ZAHNNUMMERN: Verwende IMMER das FDI-Schema OHNE Punkt (z.B. "27" statt "2.7", "36" statt "3.6", "11" statt "1.1")
+🚨 KRITISCHE REGELN - MÜSSEN STRENG EINGEHALTEN WERDEN:
+1. Die VORLAGE IST DAS GERÜST - sie muss IMMER zu 100% verwendet werden, auch wenn nur wenig diktiert wurde
+2. Verwende die KOMPLETTE Vorlagen-Struktur - ALLE Teile der Vorlage müssen verwendet werden (MANDATORY)
+3. Fülle Platzhalter NUR mit diktierte Informationen - wenn nicht im Diktat, entferne NUR den Platzhalter (z.B. "[ZAHL]"), aber behalte ALLEN anderen Text
+4. 🚨 WICHTIG - KEINE HALLUZINATIONEN: Wenn etwas NICHT im Diktat steht, darf es NICHT in der Dokumentation erscheinen
+5. 🚨 WICHTIG - ISOLATION/KOFFERDAMM: Wenn "Kofferdamm" oder "Isolation" NICHT im Diktat erwähnt wird, ENTFERNE diese Zeile komplett (auch wenn sie in der Vorlage steht)
+6. 🚨 WICHTIG - ANÄSTHESIE: Wenn "Anästhesie" im Diktat steht, verwende "ja" und das Material aus der Vorlage. Wenn NICHT erwähnt, verwende "nein" oder entferne die Zeile
+7. Wenn Platzhalter nicht im Diktat stehen, lasse NUR den Platzhalter WEG, aber behalte ALLEN anderen Text aus der Vorlage
+8. Verwende ALLEN Text aus der Vorlage - ABER: Wenn konkrete Behandlungen/Leistungen (wie "Kofferdamm", "Matrize", etc.) NICHT im Diktat stehen, ENTFERNE diese Zeilen
+9. Exakt die gleichen Formulierungen aus Bausteinen verwenden
+10. Gleiche Struktur und Reihenfolge wie in der Vorlage - NICHTS weglassen, NICHTS ändern (außer nicht erwähnte Behandlungen entfernen)
+11. Gleiche Fachbegriffe - KEINE Synonyme
+12. KEINE Halluzinationen - NICHTS erfinden, NUR diktierte Informationen verwenden
+13. ZAHNNUMMERN: Verwende IMMER das FDI-Schema OHNE Punkt (z.B. "27" statt "2.7", "36" statt "3.6", "11" statt "1.1")
+14. WENN NUR 3-4 DINGE DIKTIERT WURDEN: Verwende trotzdem die KOMPLETTE Vorlage, aber ENTFERNE Zeilen für Behandlungen, die NICHT erwähnt wurden
 
 Erstelle die Dokumentation für "${templateName}" mit:
-- KOMPLETTER Struktur wie in der Vorlage - ALLE Teile der Vorlage müssen verwendet werden
-- Platzhalter ([ZAHL], [ja/nein], [BETRAG], [MATERIAL], etc.) mit Diktat-Informationen füllen
-- ALLEN Text aus der Vorlage verwenden, auch wenn Platzhalter nicht gefüllt werden können
+- KOMPLETTER Struktur wie in der Vorlage - ALLE Teile der Vorlage müssen verwendet werden (MANDATORY)
+- Platzhalter ([ZAHL], [ja/nein], [BETRAG], [MATERIAL], etc.) NUR mit Diktat-Informationen füllen
+- ALLEN Text aus der Vorlage verwenden - auch wenn Platzhalter nicht gefüllt werden können, muss der Text erhalten bleiben
+- 🚨 KRITISCH: Wenn konkrete Behandlungen/Leistungen (wie "Kofferdamm", "Matrize", "Mehrschichttechnik", etc.) NICHT im Diktat erwähnt werden, ENTFERNE diese Zeilen komplett
+- 🚨 KRITISCH: Wenn "Isolation mittels Kofferdamm" NICHT im Diktat steht, ENTFERNE diese Zeile komplett
+- 🚨 KRITISCH: Wenn "Anästhesie" NICHT im Diktat steht, verwende "nein" oder entferne die Zeile
 - Exakte Formulierungen aus Bausteinen
-- Gleiche Fachbegriffe
-- KEINE Synonyme
-- KEINE zusätzlichen Informationen, die nicht im Diktat stehen (nur Platzhalter füllen)
-- WICHTIG: Wenn ein Platzhalter nicht gefüllt werden kann, lasse nur den Platzhalter weg, aber behalte ALLEN anderen Text aus der Vorlage`;
+- Gleiche Fachbegriffe - KEINE Synonyme
+- KEINE zusätzlichen Informationen, die nicht im Diktat stehen - NICHTS erfinden
+- 🚨 WICHTIG: Wenn ein Platzhalter nicht gefüllt werden kann, lasse NUR den Platzhalter weg (z.B. "[ZAHL]" entfernen), aber behalte ALLEN anderen Text aus der Vorlage
+- 🚨 WICHTIG: Auch wenn nur wenig diktiert wurde, muss die KOMPLETTE Vorlage verwendet werden - ABER: Entferne Zeilen für Behandlungen, die NICHT erwähnt wurden`;
 
   return { systemPrompt, userPrompt };
 }

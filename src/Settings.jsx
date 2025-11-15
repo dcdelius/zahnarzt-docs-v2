@@ -1,4 +1,4 @@
-// EVIDENTIA SETTINGS – Benutzer- und Vorlagenverwaltung mit Kategorie-Filter
+// DOCUDENT SETTINGS – Benutzer- und Vorlagenverwaltung mit Kategorie-Filter
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,7 +21,6 @@ import {
   FiX,
   FiLogOut,
 } from "react-icons/fi";
-import TopNavigation from "./components/TopNavigation";
 import TemplateBuilder from './components/TemplateBuilder';
 
 // Animation variants für konsistente Übergänge
@@ -53,6 +52,7 @@ export default function Settings() {
   const [editTitel, setEditTitel] = useState("");
   const [editKategorie, setEditKategorie] = useState("");
   const [editPrompt, setEditPrompt] = useState("");
+  const [editGPTPrompt, setEditGPTPrompt] = useState("");
   const [editText, setEditText] = useState("");
   const [editMaterial, setEditMaterial] = useState("");
   const [editDictationInstructions, setEditDictationInstructions] = useState("");
@@ -107,6 +107,7 @@ export default function Settings() {
       id: vorlageId,
       Kategorie: editKategorie,
       Prompt: editPrompt,
+      GPTPrompt: editGPTPrompt, // Spezifischer GPT-Prompt für diese Vorlage
       Text: editText,
       Material: editMaterial,
       dictationInstructions: editDictationInstructions,
@@ -152,19 +153,13 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen relative flex flex-col overflow-hidden">
-      {/* Gradient Background - Gleicher wie Dashboard */}
-      <div className="absolute inset-0 -z-10">
-        <div className="w-full h-full bg-gradient-to-br from-[#e6f7c1] via-[#ffe6a7] to-[#ffb36b]" style={{background: 'radial-gradient(circle at 20% 30%, #b6e3c6 0%, #ffe6a7 40%, #ffb36b 100%)'}} />
-      </div>
-      <TopNavigation />
-      
-      {/* Main Content */}
-      <div className="flex flex-1">
+      {/* Main Content - Animation wird von App.jsx übernommen */}
+      <div className="flex flex-1 overflow-hidden">
         {/* Sidebar - Gleicher Stil wie Dashboard */}
-        <aside className="w-[320px] flex flex-col justify-start py-16 px-12 min-h-screen relative">
+        <aside className="w-[320px] flex flex-col justify-start py-16 px-12 overflow-y-auto" style={{ height: 'calc(100vh - 73px)' }}>
           {/* Branding */}
           <div className="mb-20">
-            <span className="text-5xl font-extrabold tracking-tight text-[#ff9900] block mb-2">evident.</span>
+            <span className="text-5xl font-extrabold tracking-tight text-[#ff9900] block mb-2">docudent.</span>
             <span className="text-xs font-mono text-gray-400 uppercase tracking-widest">AI DOCS</span>
           </div>
           
@@ -266,7 +261,7 @@ export default function Settings() {
         </aside>
         
         {/* Main Content Area */}
-        <main className="flex-1 flex flex-col px-24 py-16 overflow-auto">
+        <main className="flex-1 flex flex-col px-24 py-16 overflow-y-auto" style={{ height: 'calc(100vh - 73px)' }}>
           <div className="max-w-5xl mx-auto w-full">
             {/* Header */}
             <motion.div
@@ -296,6 +291,7 @@ export default function Settings() {
                           id: '',
                           Kategorie: '',
                           Prompt: '',
+                          GPTPrompt: '',
                           Text: '',
                           Material: '',
                           users: ['all']
@@ -303,6 +299,7 @@ export default function Settings() {
                         setEditTitel('');
                         setEditKategorie('');
                         setEditPrompt('');
+                        setEditGPTPrompt('');
                         setEditText('');
                         setEditMaterial('');
                         setEditDictationInstructions('');
@@ -400,14 +397,37 @@ export default function Settings() {
 
                       {/* Material Field - über dem Textfenster */}
                       <div className="border-t border-gray-200 pt-6">
-                        <label className="text-gray-700 block mb-2 font-semibold">Material</label>
-                        <input 
-                          className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#ff9900] focus:outline-none transition-colors bg-white/80" 
+                        <label className="text-gray-700 block mb-2 font-semibold">
+                          Material
+                          <span className="ml-2 text-xs font-normal text-gray-500">
+                            (wird automatisch kategorisiert)
+                          </span>
+                        </label>
+                        <textarea 
+                          className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#ff9900] focus:outline-none transition-colors bg-white/80 resize-none" 
+                          rows={3}
                           value={editMaterial} 
                           onChange={(e) => setEditMaterial(e.target.value)} 
-                          placeholder="z.B. Komposit, Gaenial Flow A2, Tetric EvoCeram A2"
+                          placeholder="z.B. Anästhesie: Ultracain Dental, Bonding: Vivapen universal, Flow: Gaenial Flow A3, Komposit: Tetric EvoCeram A3"
                         />
-                        <p className="text-xs text-gray-500 mt-2">Das Material wird automatisch in der Dokumentation verwendet, wenn [MATERIAL] in der Vorlage steht oder wenn Materialien in der Behandlungsdokumentation erwähnt werden.</p>
+                        <div className="mt-2 space-y-1">
+                          <p className="text-xs text-gray-500">
+                            💡 <strong>Tipp:</strong> Geben Sie alle Materialien ein, die Sie für diese Behandlung verwenden. Gemini ordnet sie automatisch den richtigen Kategorien zu (Anästhesie, Bonding, Flow, Komposit, Isolation, etc.).
+                          </p>
+                          <details className="text-xs text-gray-500 mt-2">
+                            <summary className="cursor-pointer text-[#ff9900] hover:text-[#ff8800] font-medium">
+                              📋 Material-Kategorien & Beispiele
+                            </summary>
+                            <div className="mt-2 pl-4 space-y-1 text-gray-600">
+                              <p><strong>Anästhesie:</strong> Ultracain, Articain, Lidocain, Mepivacain</p>
+                              <p><strong>Bonding:</strong> Vivapen, Adhese, OptiBond, Prime&Bond</p>
+                              <p><strong>Flow:</strong> Gaenial Flow, Tetric Flow, Filtek Flow</p>
+                              <p><strong>Komposit:</strong> Tetric EvoCeram, Filtek, Grandio, Venus</p>
+                              <p><strong>Isolation:</strong> Kofferdamm, OptiDam, Rubber Dam</p>
+                              <p><strong>Polier:</strong> Sof-Lex, OptiShine, Polierbürsten</p>
+                            </div>
+                          </details>
+                        </div>
                       </div>
 
                       {/* Template Builder Integration */}
@@ -429,19 +449,46 @@ export default function Settings() {
                         <label className="text-gray-700 block mb-3 font-semibold text-lg">GPT-Konfiguration</label>
                         
                         <div className="space-y-4">
+                          {/* Gemini-Prompt */}
                           <div>
-                            <label className="text-gray-700 block mb-2 font-medium">GPT-Prompt</label>
+                            <label className="text-gray-700 block mb-2 font-medium">
+                              GPT-Prompt (spezifisch für diese Vorlage)
+                              <span className="ml-2 text-xs font-normal text-gray-500">
+                                (wird in Firebase gespeichert: <code className="bg-gray-100 px-1 rounded">GPTPrompt</code>)
+                              </span>
+                            </label>
                             <textarea 
-                              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#ff9900] focus:outline-none transition-colors bg-white/80 resize-none" 
-                              rows={4} 
-                              value={editPrompt} 
-                              onChange={(e) => setEditPrompt(e.target.value)} 
-                              placeholder="Zusätzliche Anweisungen für GPT. Wenn leer, wird automatisch verwendet: 'Halte dich strikt an die Vorlagen-Struktur. Wenn im Diktat zusätzliche Behandlungen oder Informationen erwähnt werden, die nicht in der Vorlage stehen, füge diese trotzdem hinzu. Verwende die Materialien aus der Vorlage, es sei denn, im Diktat werden andere Materialien genannt.'"
+                              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#ff9900] focus:outline-none transition-colors bg-white/80 resize-none font-mono text-sm" 
+                              rows={15} 
+                              value={editGPTPrompt} 
+                              onChange={(e) => setEditGPTPrompt(e.target.value)} 
+                              placeholder={`Du füllst eine feste zahnmedizinische Dokumentationsvorlage anhand eines Diktats aus.
+
+Regeln:
+1. Alles, was im Diktat genannt wird, überschreibt die Vorlage.
+2. Alles, was nicht genannt wird, bleibt exakt wie in der Vorlage.
+3. Zusätzliche Maßnahmen kommen am Ende unter "ZUSÄTZLICHE MASSNAHMEN / BEFUNDE".
+
+Flächen-Logik: bukkal→b, distal→d, mesial→m, palatinal→p, oral→o, lingual→l, okklusal→o, inzisal→i.
+Mehrere Flächen zu Zeichenkette kombinieren (z.B. "bukkal distal mesial" → bdm).
+Flächenanzahl automatisch eintragen.
+
+Ausgabe: Nur der fertige Text. Keine Erklärungen. Keine Synonyme.`}
                             />
-                            <p className="text-xs text-gray-500 mt-2">Diese Anweisungen werden in den System-Prompt integriert. Wenn leer, wird automatisch ein Standard-Prompt verwendet, der zusätzliche Informationen aus dem Diktat einbezieht.</p>
-                            {!editPrompt && (
-                              <p className="text-xs text-blue-600 mt-1 italic">💡 Tipp: Lassen Sie das Feld leer, um den Standard-Prompt zu verwenden, der automatisch zusätzliche Informationen einbezieht.</p>
-                            )}
+                            <div className="mt-2 space-y-1">
+                              <p className="text-xs text-gray-500">
+                                ✅ Dieser Prompt wird <strong>für diese spezifische Vorlage</strong> in Firebase gespeichert und bei der Verarbeitung verwendet.
+                              </p>
+                              {editGPTPrompt ? (
+                                <p className="text-xs text-green-600 font-medium">
+                                  ✓ Spezifischer GPT-Prompt für "{editTitel}" ist gesetzt und wird verwendet.
+                                </p>
+                              ) : (
+                                <p className="text-xs text-blue-600 italic">
+                                  💡 Wenn leer, wird der Standard-Prompt verwendet (siehe Placeholder oben).
+                                </p>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -492,6 +539,99 @@ export default function Settings() {
                           setEditTitel(v.id);
                           setEditKategorie(v.Kategorie || "");
                           setEditPrompt(v.Prompt || v.prompt || "");
+                          
+                          // Lade GPT-Prompt, oder setze Standard-Prompt für "Füllungstherapie"
+                          let gptPrompt = v.GPTPrompt || v.gptPrompt || v.GeminiPrompt || v.geminiPrompt || "";
+                          
+                          // Wenn "Füllungstherapie" und kein Prompt vorhanden, setze den detaillierten Standard-Prompt
+                          if (v.id === "Füllungstherapie" && !gptPrompt) {
+                            gptPrompt = `Du bist ein regelbasierter zahnärztlicher Dokumentationsassistent. Deine Aufgabe ist es, eine medizinische Dokumentationsvorlage deterministisch, vollständig und ohne kreative Abweichungen anhand eines Diktats und eines Materialblocks auszufüllen.
+
+Du erhältst immer drei Abschnitte:
+
+	1.	VORLAGE
+
+	2.	DIKTAT
+
+	3.	MATERIALIEN
+
+Du erzeugst daraus einen medizinisch korrekten, vollständig ausgefüllten, abrechnungsfähigen Dokumentationstext. Die Struktur, Wortwahl und Reihenfolge der VORLAGE dürfen niemals verändert werden. Du setzt ausschließlich die Platzhalter ein. Keine Erklärungen. Keine Synonyme. Keine freien Formulierungen. Es darf kein einziger Platzhalter im Endtext bleiben.
+
+INFORMATIONS-PRIORITÄT:
+
+	1.	DIKTAT hat Vorrang. Alles, was dort ausdrücklich steht, überschreibt die Vorlage.
+
+	2.	Wenn das DIKTAT bestimmte Informationen nicht enthält, verwende die Standards aus der Vorlage.
+
+	3.	Materialien stammen ausschließlich aus dem Abschnitt MATERIALIEN.
+
+	4.	Nichts erfinden, nur logisch ableiten.
+
+MATERIAL-REGELN:
+
+Du verwendest Materialien ausschließlich aus dem MATERIALIEN-Block. Wenn das DIKTAT ein bestimmtes Material nennt, hat dieses Vorrang. Wenn das DIKTAT kein Material nennt, verwendest du die Standardangaben aus dem MATERIALIEN-Block. Materialangaben dürfen nicht erfunden werden.
+
+INTELLIGENTE MATERIAL-ZUORDNUNG:
+Analysiere jedes Material aus dem MATERIALIEN-Block und ordne es der richtigen Stelle in der Vorlage zu:
+- Anästhesie-Materialien (z.B. Ultracain, Articain, Lidocain, Mepivacain) → nur in Anästhesie-Felder
+- Bonding-Materialien (z.B. Vivapen, Adhese, OptiBond, Prime&Bond) → nur in Bonding-Felder
+- Flow-Komposite (z.B. Gaenial Flow, Tetric Flow, Filtek Flow) → nur in Flow-Felder
+- Komposit-Materialien (z.B. Tetric EvoCeram, Filtek, Grandio, Venus) → nur in Komposit-Felder
+- Isolation-Materialien (z.B. Kofferdamm, OptiDam, Rubber Dam) → nur in Isolation-Felder
+- Polier-Materialien (z.B. Sof-Lex, OptiShine, Polierbürsten) → nur in Polier-Felder
+
+NIEMALS Materialien falsch zuordnen (z.B. Anästhesie nicht bei Komposit auflisten)!
+
+Trage alle Materialien in die dafür vorgesehenen Felder der Vorlage ein: [BOND], [FLOW], [KOMPOSIT], [ANÄSTHESIE_MITTEL], [ISOLATION] sowie [MATERIAL_SET] = "Bonding: [BOND], Flow: [FLOW], Komposit: [KOMPOSIT]". Kein zusätzlicher Materialblock am Ende.
+
+FLÄCHEN-ERKENNUNG:
+
+Analysiere im DIKTAT genannte Zahnflächen automatisch. Mapping: bukkal → b, mesial → m, distal → d, palatinal → p, lingual → l, oral → o, okklusal → o, inzisal → i, vestibulär → v, Laienbegriffe wie "zur Wange", "innen", "außen" korrekt zuordnen. Regeln: Immer Kleinbuchstaben. Reihenfolge wie im DIKTAT. Keine Trennzeichen. Aus mehreren genannten Flächen wird ein einzelner String (z. B. mod). Anzahl der Flächen berechnen und in die Vorlage eintragen.
+
+KAVITÄTENKLASSEN:
+
+Klasse automatisch bestimmen, wenn erkennbar:
+
+– Mesial oder distal beteiligt → Klasse II
+
+– Nur okklusal → Klasse I
+
+– Bukkal/vestibulär → Klasse V
+
+– Inzisale Beteiligung → Klasse IV
+
+– Approximal ohne okklusal → Klasse III
+
+Wenn unklar: Nur setzen, wenn im DIKTAT angegeben.
+
+ZUSÄTZLICHE MASSNAHMEN:
+
+Alles im DIKTAT, das nicht direkt zur Vorlage gehört (z. B. Airflow, Ozon, weitere Diagnostik, Komplikationen, Zusatztherapien), gehört in den Abschnitt "ZUSÄTZLICHE MASSNAHMEN / BEFUNDE". Nur Fakten, nichts erfinden.
+
+REGELN FÜR FEHLENDE FELDER:
+
+Wenn das DIKTAT kein Datum nennt → [TERMIN_DATUM] = "nicht festgelegt".
+
+Wenn das DIKTAT keine Isolation nennt → Standard aus MATERIALIEN.
+
+Wenn das DIKTAT keine Anästhesie erwähnt → Standard = "NEIN".
+
+Wenn "mit Anästhesie" gesagt wird → Anästhesiemittel aus MATERIALIEN.
+
+KEINE PLATZHALTER:
+
+Es dürfen im finalen Text keine eckigen Klammern mehr erscheinen.
+
+AUSGABEFORMAT:
+
+Nutze exakt die Struktur der VORLAGE. Ersetze nur Platzhalter. Gib ausschließlich den fertigen Text aus. Keine Kommentare, keine Meta-Ebene, kein Debugging, keine Erklärungen.
+
+ZIEL:
+
+Ein vollständig ausgefüllter, medizinisch korrekter, abrechnungsfähiger, forensisch sauberer Dokumentationstext, deterministisch und standardisiert.`;
+                          }
+                          
+                          setEditGPTPrompt(gptPrompt);
                           setEditText(v.Text || "");
                           setEditMaterial(v.Material || v.material || "");
                           setEditDictationInstructions(v.dictationInstructions || v.DictationInstructions || "");

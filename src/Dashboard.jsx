@@ -1,26 +1,18 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMic, FiSend, FiLogOut, FiUser, FiHelpCircle, FiEdit2, FiChevronLeft, FiCircle, FiChevronDown, FiChevronUp, FiChevronRight } from "react-icons/fi";
+import { FiMic, FiSend, FiHelpCircle, FiEdit2, FiChevronLeft, FiCircle, FiChevronDown, FiChevronUp, FiChevronRight, FiRefreshCw } from "react-icons/fi";
 import { collection, getDocs, doc, setDoc } from "firebase/firestore";
-import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { db, OPENAI_API_KEY, GOOGLE_GEMINI_API_KEY } from "./firebase";
+import { db, OPENAI_API_KEY } from "./firebase";
 import { AudioRecorder } from "./services/AudioRecorder";
 import { WhisperService } from "./services/WhisperService";
-import { GeminiService } from "./services/GeminiService";
 import DocumentationModal from "./components/DocumentationModal";
-import CustomDropdown from "./components/CustomDropdown";
-import TopNavigation from "./components/TopNavigation";
 import BausteinSelector from './components/BausteinSelector';
 import { buildGPTPrompts } from './utils/buildGPTPrompts';
+import { useUser } from './contexts/UserContext';
 
 export default function Dashboard() {
-  const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
+  const { users, selectedUser } = useUser();
   const [templates, setTemplates] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(() => {
-    return localStorage.getItem('selectedUser') || "";
-  });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedTreatment, setSelectedTreatment] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -29,7 +21,6 @@ export default function Dashboard() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [audioRecorder] = useState(() => new AudioRecorder());
   const [whisperService] = useState(() => new WhisperService(import.meta.env.VITE_OPENAI_API_KEY));
-  const [geminiService] = useState(() => GOOGLE_GEMINI_API_KEY ? new GeminiService(GOOGLE_GEMINI_API_KEY) : null);
   const [processedText, setProcessedText] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showTreatmentDropdown, setShowTreatmentDropdown] = useState(false);
@@ -43,28 +34,21 @@ export default function Dashboard() {
   const [selectedBillingCodes, setSelectedBillingCodes] = useState([]); // Ausgewählte Codes zum Hinzufügen
   const [showMaterialField, setShowMaterialField] = useState(false); // Collapsible material field
   const [isBillingExpanded, setIsBillingExpanded] = useState(false); // Abrechnungsoptimierung ausklappbar
+  const [animationPhase, setAnimationPhase] = useState('input'); // 'input' | 'processing' | 'result'
 
+  // Reset to input phase when treatment changes
   useEffect(() => {
-    if (selectedUser) {
-      localStorage.setItem('selectedUser', selectedUser);
+    if (selectedTreatment) {
+      setAnimationPhase('input');
+      setProcessedText("");
+      setInputValue("");
+      setBillingSuggestions("");
     }
-  }, [selectedUser]);
+  }, [selectedTreatment]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userSnap = await getDocs(collection(db, "Praxen", "1", "Benutzer"));
-        const userList = userSnap.docs.map((doc) => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            name: data.name,
-            role: data.role || data.Rolle || "Behandler",
-            avatarColor: data.avatarColor || "#94a3b8"
-          };
-        });
-        setUsers(userList);
-
         const templateSnap = await getDocs(collection(db, "Praxen", "1", "Vorlagen"));
         const templateList = templateSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setTemplates(templateList);
@@ -110,58 +94,12 @@ export default function Dashboard() {
     if (!inputValue.trim() || !selectedTreatment) return;
     try {
       setIsProcessing(true);
+      setAnimationPhase('processing'); // Input fliegt weg, Processing erscheint
       const selectedTemplate = templates.find(t => t.id === selectedTreatment);
       if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
       
-      // Priorität: Google Gemini (präziser, weniger Halluzinationen)
-      if (GOOGLE_GEMINI_API_KEY && geminiService) {
-        try {
-          console.log('🤖 Starte Gemini Template-Filling...');
-          const processedText = await geminiService.fillTemplate({
-            template: selectedTemplate,
-            inputText: inputValue,
-            bausteine: aktiveBausteine,
-            allBausteine: bausteine
-          });
-          
-          console.log('✅ Gemini Verarbeitung abgeschlossen:', processedText.substring(0, 100) + '...');
-          setProcessedText(processedText);
-          setInputValue("");
-          setIsProcessing(false);
-          
-          // Speichern in Firestore (asynchron, blockiert nicht)
-          setDoc(doc(db, "Praxen", "1", "Dokumentationen", Date.now().toString()), {
-            behandlung: selectedTemplate.id,
-            transkript: inputValue,
-            dokumentation: processedText,
-            timestamp: new Date(),
-            user: selectedUser
-          }).catch(err => console.error('Fehler beim Speichern in Firestore:', err));
-          
-          // History aktualisieren (asynchron)
-          getDocs(collection(db, "Praxen", "1", "Dokumentationen"))
-            .then(docSnap => {
-              const docList = docSnap.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-                timestamp: doc.data().timestamp?.toDate() || new Date()
-              }));
-              const sortedDocs = docList.sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
-              setHistory(sortedDocs);
-            })
-            .catch(err => console.error('Fehler beim Aktualisieren der History:', err));
-          
-          // Abrechnungsoptimierung starten
-          performBillingOptimization(processedText);
-          return;
-        } catch (geminiError) {
-          console.warn('⚠️ Google Gemini Fehler, Fallback auf GPT-5-mini:', geminiError);
-          // Fallback auf GPT-5-mini
-        }
-      }
-      
-      // Fallback: GPT-5-mini
-      console.log('🤖 Starte GPT-5-mini Verarbeitung (Fallback)...');
+        // GPT-5-mini Verarbeitung
+        console.log('🤖 Starte GPT-5-mini Verarbeitung...');
       
       // Use utility function to build prompts
       let systemPrompt, userPrompt;
@@ -250,6 +188,7 @@ export default function Dashboard() {
       setProcessedText(processedText);
       setInputValue("");
       setIsProcessing(false);
+      setAnimationPhase('result'); // Processing fliegt runter, Result kommt von oben
       await setDoc(doc(db, "Praxen", "1", "Dokumentationen", Date.now().toString()), {
         behandlung: selectedTemplate.id,
         transkript: inputValue,
@@ -274,6 +213,9 @@ export default function Dashboard() {
         selectedTreatment: selectedTreatment,
         templateFound: !!templates.find(t => t.id === selectedTreatment)
       });
+      
+      // Bei Fehler zurück zu Input
+      setAnimationPhase('input');
       
       // Detaillierte Fehlermeldung für den Benutzer
       let errorMessage = 'Fehler bei der Verarbeitung: ';
@@ -302,6 +244,7 @@ export default function Dashboard() {
           return;
         }
         
+        // Audio-Aufnahme starten
         console.log('🎤 Starte Audio-Aufnahme...');
         await audioRecorder.startRecording();
         audioRecorder.setStatusCallback((status) => {
@@ -332,6 +275,7 @@ export default function Dashboard() {
       try {
         console.log('⏹️ Stoppe Audio-Aufnahme...');
         setIsProcessing(true);
+        setAnimationPhase('processing'); // Input fliegt weg, Processing erscheint
         setIsRecording(false); // Sofort auf false setzen, damit Button wieder klickbar ist
         const audioBlob = await audioRecorder.stopRecording();
         console.log('✅ Aufnahme gestoppt, starte Verarbeitung...');
@@ -348,59 +292,11 @@ export default function Dashboard() {
         // Transkription NICHT anzeigen - direkt verarbeiten
         // setInputValue wird nicht gesetzt, damit der Text nicht im Input-Feld erscheint
         
-        // Schritt 2: Template-Verarbeitung (Priorität: Gemini, Fallback: GPT-5-mini)
+        // Schritt 2: GPT-5-mini Template-Verarbeitung
         const selectedTemplate = templates.find(t => t.id === selectedTreatment);
         if (!selectedTemplate) throw new Error('Vorlage nicht gefunden');
         
-        // Priorität: Google Gemini (präziser, weniger Halluzinationen)
-        if (GOOGLE_GEMINI_API_KEY && geminiService) {
-          try {
-            console.log('🤖 Starte Gemini Template-Filling...');
-            const processedText = await geminiService.fillTemplate({
-              template: selectedTemplate,
-              inputText: transcribedText,
-              bausteine: aktiveBausteine,
-              allBausteine: bausteine
-            });
-            
-            console.log('✅ Gemini Verarbeitung abgeschlossen:', processedText.substring(0, 100) + '...');
-            setProcessedText(processedText);
-            setInputValue("");
-            setIsProcessing(false);
-            
-            // Speichern in Firestore (asynchron, blockiert nicht)
-            setDoc(doc(db, "Praxen", "1", "Dokumentationen", Date.now().toString()), {
-              behandlung: selectedTemplate.id,
-              transkript: transcribedText,
-              dokumentation: processedText,
-              timestamp: new Date(),
-              user: selectedUser
-            }).catch(err => console.error('Fehler beim Speichern in Firestore:', err));
-            
-            // History aktualisieren (asynchron)
-            getDocs(collection(db, "Praxen", "1", "Dokumentationen"))
-              .then(docSnap => {
-                const docList = docSnap.docs.map((doc) => ({
-                  id: doc.id,
-                  ...doc.data(),
-                  timestamp: doc.data().timestamp?.toDate() || new Date()
-                }));
-                const sortedDocs = docList.sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
-                setHistory(sortedDocs);
-              })
-              .catch(err => console.error('Fehler beim Aktualisieren der History:', err));
-            
-            // Abrechnungsoptimierung starten
-            performBillingOptimization(processedText);
-            return;
-          } catch (geminiError) {
-            console.warn('⚠️ Google Gemini Fehler, Fallback auf GPT-5-mini:', geminiError);
-            // Fallback auf GPT-5-mini
-          }
-        }
-        
-        // Fallback: GPT-5-mini
-        console.log('🤖 Starte GPT-5-mini Verarbeitung (Fallback)...');
+        console.log('🤖 Starte GPT-5-mini Verarbeitung...');
         
         // Use utility function to build prompts
         let systemPrompt, userPrompt;
@@ -585,6 +481,7 @@ export default function Dashboard() {
         // Input-Feld leeren, da processedText jetzt angezeigt wird
         setInputValue("");
         setIsProcessing(false); // UI sofort freigeben
+        setAnimationPhase('result'); // Processing fliegt runter, Result kommt von oben
         console.log('📝 processedText gesetzt und angezeigt, Input-Feld geleert');
         
         // Firestore-Speicherung und History-Update im Hintergrund (nicht blockierend)
@@ -635,21 +532,13 @@ export default function Dashboard() {
         alert(errorMessage);
         setIsProcessing(false);
         setIsRecording(false);
+        setAnimationPhase('input'); // Bei Fehler zurück zu Input
         // Reset processedText bei Fehler
         setProcessedText("");
       }
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      const auth = getAuth();
-      await signOut(auth);
-      navigate("/");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
 
   // Optimiertes, kürzeres Prompt-Template für GPT (schnellere Verarbeitung)
   const buildBillingPrompt = (documentationText, extras = []) => {
@@ -663,26 +552,10 @@ export default function Dashboard() {
     ];
   };
 
-  // Abrechnungsoptimierung mit Google Gemini (präziser, weniger Halluzinationen)
-  // Fallback auf GPT-5-mini falls Google API Key nicht vorhanden
+  // Abrechnungsoptimierung mit GPT-5-mini
   const performBillingOptimization = async (documentationText, extras = []) => {
     try {
-      // Priorität: Google Gemini (präziser für Abrechnungsziffern)
-      if (GOOGLE_GEMINI_API_KEY && geminiService) {
-        try {
-          const suggestions = await geminiService.analyzeBilling(documentationText, extras);
-          setBillingSuggestions(suggestions);
-          // Extrahiere offene Fragen (z.B. Zeilen mit "?" am Ende)
-          const pending = suggestions.split(/\n/).filter(l => l.trim().endsWith("?"));
-          setPendingExtras(pending);
-          return;
-        } catch (geminiError) {
-          console.warn('Google Gemini Fehler, Fallback auf GPT-5-mini:', geminiError);
-          // Fallback auf GPT-5-mini
-        }
-      }
-      
-      // Fallback: GPT-5-mini (schnell und günstig für Abrechnungsoptimierung)
+      // GPT-5-mini für Abrechnungsoptimierung
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -886,27 +759,13 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen relative flex flex-col overflow-hidden">
-      {/* Gradient Background - Bleibt statisch */}
-      <div className="absolute inset-0 -z-10">
-        <div className="w-full h-full bg-gradient-to-br from-[#e6f7c1] via-[#ffe6a7] to-[#ffb36b]" style={{background: 'radial-gradient(circle at 20% 30%, #b6e3c6 0%, #ffe6a7 40%, #ffb36b 100%)'}} />
-      </div>
-      
-      {/* TopNavigation - Bleibt statisch */}
-      <TopNavigation />
-      
-      {/* Hauptinhalt - Wird animiert */}
-      <motion.div 
-        className="flex flex-1"
-        initial={{ x: '-100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: '-100%', opacity: 0 }}
-        transition={{ type: 'spring', stiffness: 100, damping: 20, duration: 0.5 }}
-      >
+      {/* Hauptinhalt - Animation wird von App.jsx übernommen */}
+      <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className="w-[320px] flex flex-col justify-start py-16 px-12 min-h-screen relative">
+        <aside className="w-[320px] flex flex-col justify-start py-16 px-12 min-h-screen relative overflow-y-auto">
           {/* Branding */}
           <div className="mb-20">
-            <span className="text-5xl font-extrabold tracking-tight text-[#ff9900] block mb-2">evident.</span>
+            <span className="text-5xl font-extrabold tracking-tight text-[#ff9900] block mb-2">docudent.</span>
             <span className="text-xs font-mono text-gray-400 uppercase tracking-widest">AI DOCS</span>
           </div>
           {/* Zweistufiges Auswahlmenü */}
@@ -944,11 +803,11 @@ export default function Dashboard() {
                     <motion.div 
                       key={selectedTreatment}
                       initial={{ opacity: 0, scale: 0.7, rotate: 0, y: 0 }}
-                      animate={{ opacity: 1, scale: 2.2, rotate: -90, y: 140 }}
+                      animate={{ opacity: 1, scale: 1.8, rotate: -90, y: 350 }}
                       exit={{ opacity: 0, scale: 0.7, rotate: 0, y: 0 }}
                       transition={{ type: 'spring', stiffness: 100, damping: 18 }}
                       className="origin-left text-white font-extrabold cursor-pointer select-none"
-                      style={{ fontSize: '2.2rem', minWidth: '120px', letterSpacing: '0.01em' }}
+                      style={{ fontSize: '1.6rem', minWidth: '120px', letterSpacing: '0.01em' }}
                       onClick={() => { setSelectedTreatment(""); setSidebarStep(2); }}
                       title="Behandlung ändern"
                     >
@@ -957,7 +816,7 @@ export default function Dashboard() {
                   </div>
                 ) : (
                   <div className="flex flex-row items-start gap-2">
-                    <button onClick={() => setSidebarStep(1)} className="p-2 mt-1 rounded-full hover:bg-gray-100 transition-colors"><FiChevronLeft className="text-2xl text-[#ff9900]" /></button>
+                    <button onClick={() => { setSelectedTreatment(""); setSidebarStep(1); }} className="p-2 mt-1 rounded-full hover:bg-gray-100 transition-colors"><FiChevronLeft className="text-2xl text-[#ff9900]" /></button>
                     <div className="flex flex-col gap-0 pl-1">
                       {treatments.map(treatment => (
                         <motion.div
@@ -977,48 +836,30 @@ export default function Dashboard() {
               </AnimatePresence>
             </motion.div>
           </div>
-          <div className="flex-1" />
-          {/* Avatar und Behandler-Auswahl ganz unten */}
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 rounded-full bg-[#ff9900] flex items-center justify-center text-white text-2xl font-extrabold">
-              <FiUser />
-            </div>
-            <div className="flex-1">
-              <CustomDropdown
-                label="Behandler"
-                value={selectedUser}
-                options={[
-                  ...users.map(u => ({ value: u.id, label: u.name })),
-                  { value: "__logout__", label: "Abmelden" }
-                ]}
-                onChange={val => {
-                  if (val === "__logout__") handleLogout();
-                  else setSelectedUser(val);
-                }}
-                color="#22223b"
-                size="small"
-              />
-              <div className="text-xs text-gray-500 mt-1">{selectedUser ? users.find(u => u.id === selectedUser)?.role : ""}</div>
-            </div>
-          </div>
         </aside>
         {/* Main Content */}
         <main className="flex-1 flex flex-col justify-center px-24 py-24">
           <div className="max-w-4xl mx-auto w-full">
-            <AnimatePresence initial={false}>
-              {!processedText ? (
+            <AnimatePresence mode="wait" initial={false}>
+              {animationPhase === 'input' && (
               <motion.div 
                   key="eingabe"
                   initial={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -40 }}
-                animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  exit={{ 
+                    opacity: 0,
+                    y: -150,
+                    scale: 0.9,
+                    filter: "blur(10px)"
+                  }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: 'easeIn' }}
                 >
-                  <h2 className="text-6xl font-extrabold text-[#22223b] mb-12 tracking-tight">Dokumentation beginnt hier</h2>
-                  {selectedTreatment && (
-                    <>
+                  {/* Container mit fester Struktur - verhindert Hüpfen */}
+                  <div className="relative w-full">
+                    {/* Fester Platz für Elemente oberhalb des Input-Felds */}
+                    <div className="mb-8" style={{ minHeight: '0px' }}>
                       {/* Template-specific dictation instructions - only show if instructions exist */}
-                      {(templates.find(t => t.id === selectedTreatment)?.dictationInstructions || templates.find(t => t.id === selectedTreatment)?.DictationInstructions) && (
+                      {selectedTreatment && (templates.find(t => t.id === selectedTreatment)?.dictationInstructions || templates.find(t => t.id === selectedTreatment)?.DictationInstructions) && (
                         <motion.div
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -1028,15 +869,126 @@ export default function Dashboard() {
                         </motion.div>
                       )}
                       
-                      {/* Collapsible Material Field */}
+                      {/* BausteinSelector - nur wenn Behandlung ausgewählt */}
+                      {selectedTreatment && (
+                        <BausteinSelector
+                          currentUserId={selectedUser}
+                          selectedVorlage={templates.find(t => t.id === selectedTreatment)}
+                          onBausteineChange={setAktiveBausteine}
+                        />
+                      )}
+                    </div>
+                    
+                    {/* Input Field - absolut positioniert, verschiebt sich nicht */}
+                    <div className="relative w-full" style={{ height: '120px', position: 'relative' }}>
+                      <div className="absolute top-0 left-0 right-0 flex items-center justify-center" style={{ height: '120px' }}>
+                        <motion.input
+                          type="text"
+                          value={inputValue}
+                          onChange={e => setInputValue(e.target.value)}
+                          placeholder=" "
+                          className="w-full px-0 py-6 border-0 bg-transparent text-4xl font-light focus:outline-none focus:ring-0 text-gray-900 relative z-10 text-center"
+                          style={{ 
+                            position: 'relative',
+                            lineHeight: '1.2',
+                            paddingTop: '1.5rem',
+                            paddingBottom: '1.5rem'
+                          }}
+                        />
+                        {/* Placeholder mit sanftem Fade In/Out - zentriert */}
+                        {!inputValue && (
+                          <motion.div
+                            className="absolute left-1/2 -translate-x-1/2 text-4xl font-light text-gray-400/50 pointer-events-none z-0 whitespace-nowrap"
+                            style={{ 
+                              top: '50%',
+                              transform: 'translate(-50%, -50%)',
+                              lineHeight: '1.2'
+                            }}
+                            animate={{ opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ 
+                              duration: 3, 
+                              repeat: Infinity, 
+                              ease: "easeInOut" 
+                            }}
+                          >
+                            Spracheingabe oder Text hier eingeben...
+                          </motion.div>
+                        )}
+                        {/* Faded out line with gradient */}
+                        <motion.div 
+                          className="absolute bottom-0 left-0 right-0 h-[2px]"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: inputValue ? 0.3 : 0.6 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div 
+                            className="h-full w-full"
+                            style={{
+                              background: 'linear-gradient(to right, transparent 0%, #ff9900 20%, #ff9900 80%, transparent 100%)'
+                            }}
+                          />
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+
+                  {/* Buttons - mehr Abstand zum Input-Feld */}
+                  <motion.div
+                    className="flex items-center justify-center gap-3 mb-8 mt-12"
+                    animate={{ y: 0 }}
+                    transition={{ type: 'spring', stiffness: 80, damping: 18 }}
+                  >
+                    <motion.button
+                      onClick={handleRecordingToggle}
+                      disabled={isProcessing || !selectedTreatment}
+                      whileHover={!isProcessing && selectedTreatment ? { scale: 1.05 } : {}}
+                      whileTap={!isProcessing && selectedTreatment ? { scale: 0.95 } : {}}
+                      className={`group relative flex items-center justify-center w-12 h-12 rounded-full transition-all ${
+                        isRecording 
+                          ? "bg-red-500 text-white hover:bg-red-600 shadow-lg shadow-red-500/30" 
+                          : "bg-[#ff9900] text-white hover:bg-orange-600 shadow-md shadow-[#ff9900]/20 hover:shadow-lg hover:shadow-[#ff9900]/30"
+                      } ${(isProcessing || !selectedTreatment) ? 'opacity-40 cursor-not-allowed' : ''}`}
+                      title={isProcessing ? "Verarbeite..." : isRecording ? "Aufnahme stoppen" : "Aufnahme starten"}
+                    >
+                      <FiMic className={`text-lg ${isRecording ? "animate-pulse" : ""}`} />
+                      {/* Tooltip */}
+                      <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                        {isProcessing ? "Verarbeite..." : isRecording ? "Aufnahme stoppen" : "Aufnahme starten"}
+                      </span>
+                    </motion.button>
+                    <motion.button
+                      onClick={handleTextSubmit}
+                      disabled={!inputValue.trim() || !selectedTreatment || isProcessing || isRecording}
+                      whileHover={(!inputValue.trim() || !selectedTreatment || isProcessing || isRecording) ? {} : { scale: 1.05 }}
+                      whileTap={(!inputValue.trim() || !selectedTreatment || isProcessing || isRecording) ? {} : { scale: 0.95 }}
+                      className={`group relative flex items-center justify-center w-12 h-12 rounded-full transition-all ${
+                        (!inputValue.trim() || !selectedTreatment || isProcessing || isRecording)
+                          ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                          : 'bg-gray-900 text-white hover:bg-gray-800 shadow-md shadow-gray-900/20 hover:shadow-lg hover:shadow-gray-900/30'
+                      }`}
+                      title={isProcessing ? "Verarbeite..." : "Text verarbeiten"}
+                    >
+                      <FiSend className="text-lg" />
+                      {/* Tooltip */}
+                      <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                        {isProcessing ? "Verarbeite..." : "Text verarbeiten"}
+                      </span>
+                    </motion.button>
+                  </motion.div>
+                  
+                  {/* Material Button - erscheint unter den Buttons, links ausgerichtet, fester Platz */}
+                  <div className="min-h-[60px]">
+                    {selectedTreatment && (
                       <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="mb-8"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex justify-start"
                       >
                         <button
                           onClick={() => setShowMaterialField(!showMaterialField)}
-                          className="flex items-center gap-2 text-white font-bold text-lg mb-2 hover:text-[#ff9900] transition-colors"
+                          className="flex items-center gap-2 text-white font-bold text-lg hover:text-[#ff9900] transition-colors"
                         >
                           {showMaterialField ? (
                             <FiChevronDown className="text-xl" />
@@ -1045,83 +997,135 @@ export default function Dashboard() {
                           )}
                           Material {showMaterialField ? 'ausblenden' : 'anzeigen'}
                         </button>
-                        <AnimatePresence>
-                          {showMaterialField && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.2 }}
-                              className="overflow-hidden"
-                            >
-                              <input
-                                type="text"
-                                value={templates.find(t => t.id === selectedTreatment)?.Material || templates.find(t => t.id === selectedTreatment)?.material || ""}
-                                readOnly
-                                className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-800 font-semibold text-lg border-2 border-white/50 focus:outline-none focus:border-[#ff9900]"
-                                placeholder="Material aus Vorlage"
-                              />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
                       </motion.div>
-                      
-                      <BausteinSelector
-                        currentUserId={selectedUser}
-                        selectedVorlage={templates.find(t => t.id === selectedTreatment)}
-                        onBausteineChange={setAktiveBausteine}
-                      />
-                    </>
-                  )}
-                  <motion.input
-                    type="text"
-                  value={inputValue}
-                    onChange={e => setInputValue(e.target.value)}
-                  placeholder="Spracheingabe oder Text hier eingeben..."
-                    className="w-full px-0 py-6 border-0 border-b-2 border-[#ff9900] bg-transparent text-4xl font-light focus:outline-none focus:ring-0 placeholder-gray-400 mb-12"
-                    animate={{ y: 0 }}
-                    transition={{ type: 'spring', stiffness: 80, damping: 18 }}
-                  />
-                  <motion.div
-                    className="flex gap-8 w-full"
-                    animate={{ y: 0 }}
-                    transition={{ type: 'spring', stiffness: 80, damping: 18 }}
-                  >
-                    <button
-                      onClick={handleRecordingToggle}
-                      disabled={isProcessing || !selectedTreatment}
-                      className={`flex-1 flex items-center justify-center gap-3 ${selectedCategory && selectedTreatment ? 'px-0 py-3 text-xl' : 'px-0 py-6 text-3xl'} font-extrabold uppercase tracking-wide transition-colors rounded-full ${
-                        isRecording 
-                          ? "bg-red-500 text-white hover:bg-red-600" 
-                          : "bg-[#ff9900] text-white hover:bg-orange-600"
-                      } ${(isProcessing || !selectedTreatment) ? 'opacity-50 cursor-not-allowed' : ''}`}
-                    >
-                      <FiMic className={`text-3xl ${isRecording ? "animate-pulse" : ""}`} />
-                      {isProcessing ? "Verarbeite..." : isRecording ? "Aufnahme stoppen" : "Aufnahme starten"}
-                    </button>
-                    <button
-                      onClick={handleTextSubmit}
-                      disabled={!inputValue.trim() || !selectedTreatment || isProcessing || isRecording}
-                      className={`flex-1 flex items-center justify-center gap-3 ${selectedCategory && selectedTreatment ? 'px-0 py-3 text-xl' : 'px-0 py-6 text-3xl'} font-extrabold uppercase tracking-wide transition-colors rounded-full ${
-                        (!inputValue.trim() || !selectedTreatment || isProcessing || isRecording)
-                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                          : 'bg-blue-600 text-white hover:bg-blue-700'
-                      }`}
-                    >
-                      <FiSend className="text-3xl" />
-                      {isProcessing ? "Verarbeite..." : "Text verarbeiten"}
-                    </button>
-                  </motion.div>
+                    )}
+                    
+                    {/* Collapsible Material Field - erscheint unter dem Button */}
+                    {selectedTreatment && (
+                      <AnimatePresence>
+                        {showMaterialField && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden mt-4"
+                          >
+                            <input
+                              type="text"
+                              value={templates.find(t => t.id === selectedTreatment)?.Material || templates.find(t => t.id === selectedTreatment)?.material || ""}
+                              readOnly
+                              className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-800 font-semibold text-lg border-2 border-white/50 focus:outline-none focus:border-[#ff9900]"
+                              placeholder="Material aus Vorlage"
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    )}
+                  </div>
               </motion.div>
-              ) : (
+              )}
+              
+              {animationPhase === 'processing' && (
+                <motion.div
+                  key="processing"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 100 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="flex flex-col items-center justify-center py-24"
+                >
+                  {/* Dynamischer Spinner */}
+                  <div className="relative mb-8" style={{ width: '200px', height: '200px' }}>
+                    {/* Äußerer Ring */}
+                    <motion.div
+                      className="absolute border-4 border-[#ff9900]/30 rounded-full"
+                      animate={{ 
+                        rotate: 360,
+                        scale: [1, 1.2, 1]
+                      }}
+                      transition={{ 
+                        rotate: { duration: 2, repeat: Infinity, ease: "linear" },
+                        scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                      style={{ width: '80px', height: '80px', top: '60px', left: '60px' }}
+                    />
+                    {/* Mittlerer Ring */}
+                    <motion.div
+                      className="absolute border-4 border-transparent border-t-[#ff9900] rounded-full"
+                      animate={{ 
+                        rotate: -360,
+                        scale: [1, 0.9, 1]
+                      }}
+                      transition={{ 
+                        rotate: { duration: 1.5, repeat: Infinity, ease: "linear" },
+                        scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                      style={{ width: '60px', height: '60px', top: '70px', left: '70px' }}
+                    />
+                    {/* Innerer Ring */}
+                    <motion.div
+                      className="absolute border-3 border-transparent border-r-[#ff9900] rounded-full"
+                      animate={{ 
+                        rotate: 360,
+                        opacity: [0.5, 1, 0.5]
+                      }}
+                      transition={{ 
+                        rotate: { duration: 1, repeat: Infinity, ease: "linear" },
+                        opacity: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                      style={{ width: '40px', height: '40px', top: '80px', left: '80px' }}
+                    />
+                    {/* Zentrumspunkt */}
+                    <motion.div
+                      className="absolute bg-[#ff9900] rounded-full"
+                      animate={{ 
+                        scale: [1, 1.3, 1],
+                        opacity: [0.6, 1, 0.6]
+                      }}
+                      transition={{ 
+                        duration: 1.2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      style={{ width: '12px', height: '12px', top: '94px', left: '94px' }}
+                    />
+                  </div>
+                </motion.div>
+              )}
+              
+              {animationPhase === 'result' && (
                 <motion.div
                   key="ergebnis"
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: -100 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 40 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  exit={{ opacity: 0, y: 100 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                   className="space-y-8"
                 >
+                  {/* Reset Button */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex justify-center mb-4"
+                  >
+                    <motion.button
+                      onClick={() => {
+                        setProcessedText("");
+                        setInputValue("");
+                        setAnimationPhase('input');
+                        setBillingSuggestions("");
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-6 py-3 bg-[#ff9900] text-white rounded-full font-semibold shadow-lg hover:bg-orange-600 transition-colors flex items-center gap-2"
+                    >
+                      <FiRefreshCw className="text-lg" />
+                      Neue Dokumentation
+                    </motion.button>
+                  </motion.div>
+                  
                   {/* Dokumentationstext */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -1254,14 +1258,14 @@ export default function Dashboard() {
                           </div>
                         ))}
                       </div>
-            </div>
+                    </div>
                   )}
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
         </main>
-      </motion.div>
+      </div>
     </div>
   );
 }

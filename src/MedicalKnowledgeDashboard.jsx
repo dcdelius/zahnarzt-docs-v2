@@ -4,7 +4,6 @@ import { FiSend, FiMessageSquare, FiPlus, FiTrash2, FiChevronLeft } from "react-
 import { collection, getDocs, addDoc, query, orderBy, serverTimestamp, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { db, GOOGLE_GEMINI_API_KEY } from "./firebase";
 import { GeminiService } from "./services/GeminiService";
-import TopNavigation from "./components/TopNavigation";
 
 export default function MedicalKnowledgeDashboard() {
   const [messages, setMessages] = useState([]);
@@ -151,27 +150,13 @@ export default function MedicalKnowledgeDashboard() {
 
   return (
     <div className="min-h-screen relative flex flex-col overflow-hidden">
-      {/* Gradient Background - Bleibt statisch */}
-      <div className="absolute inset-0 -z-10">
-        <div className="w-full h-full bg-gradient-to-br from-[#e6f7c1] via-[#ffe6a7] to-[#ffb36b]" style={{background: 'radial-gradient(circle at 20% 30%, #b6e3c6 0%, #ffe6a7 40%, #ffb36b 100%)'}} />
-      </div>
-      
-      {/* TopNavigation - Bleibt statisch */}
-      <TopNavigation />
-      
-      {/* Hauptinhalt - Wird animiert */}
-      <motion.div 
-        className="flex flex-1"
-        initial={{ x: '100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: '100%', opacity: 0 }}
-        transition={{ type: 'spring', stiffness: 100, damping: 20, duration: 0.5 }}
-      >
+      {/* Hauptinhalt - Animation wird von App.jsx übernommen */}
+      <div className="flex flex-1">
         {/* Sidebar - Links, wie Dashboard */}
-        <aside className="w-[320px] flex flex-col justify-start py-16 px-12 min-h-screen relative">
+        <aside className="w-[320px] flex flex-col justify-start py-16 px-12 min-h-screen relative overflow-y-auto">
           {/* Branding */}
           <div className="mb-20">
-            <span className="text-5xl font-extrabold tracking-tight text-[#ff9900] block mb-2">evident.</span>
+            <span className="text-5xl font-extrabold tracking-tight text-[#ff9900] block mb-2">docudent.</span>
             <span className="text-xs font-mono text-gray-400 uppercase tracking-widest">AI DOCS</span>
           </div>
           
@@ -334,7 +319,7 @@ export default function MedicalKnowledgeDashboard() {
             </form>
           </div>
         </main>
-      </motion.div>
+      </div>
     </div>
   );
 }

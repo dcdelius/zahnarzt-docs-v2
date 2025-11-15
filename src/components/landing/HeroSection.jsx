@@ -1,7 +1,7 @@
 export default function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[70vh] text-center px-4 py-24 bg-gradient-to-br from-blue-100 to-blue-300">
-      <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 drop-shadow-lg">EVIDENT A.I.</h1>
+      <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 drop-shadow-lg">DOCUDENT A.I.</h1>
       <p className="text-lg md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">Die moderne KI-gestützte Dokumentationslösung für medizinische Praxen und Teams. Schnell. Sicher. Effizient.</p>
       <a href="/dashboard" className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:bg-blue-700 transition">Jetzt starten</a>
       <div className="absolute inset-0 pointer-events-none select-none">

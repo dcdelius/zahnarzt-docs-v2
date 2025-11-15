@@ -73,7 +73,7 @@ export default function Navigation() {
           >
             <Link to="/dashboard" className="flex items-center gap-3">
               <img src="/inverted_logo.png" alt="Logo" className="h-8 w-8" />
-              <span className="text-gray-900 font-semibold text-lg tracking-tight">EVIDENTIA</span>
+              <span className="text-gray-900 font-semibold text-lg tracking-tight">DOCUDENT</span>
             </Link>
           </motion.div>
 

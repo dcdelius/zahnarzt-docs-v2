@@ -119,7 +119,7 @@ export default function Sidebar({
         </div>
 
         {/* Footer */}
-        <div className="text-sm text-gray-500 mt-4">© Evidentia 2025</div>
+        <div className="text-sm text-gray-500 mt-4">© Docudent 2025</div>
       </div>
     </div>
   );

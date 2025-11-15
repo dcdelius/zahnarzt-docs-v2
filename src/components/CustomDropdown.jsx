@@ -88,15 +88,29 @@ export default function CustomDropdown({ label, value, options, onChange, disabl
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.18 }}
                 onClick={() => setOpen(false)}
+                style={{ 
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0
+                }}
               >
                 {/* Großes zentriertes Dropdown-Fenster */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
                   transition={{ duration: 0.18 }}
                   className="bg-white rounded-2xl shadow-xl px-12 py-10 min-w-[340px] max-w-lg w-full flex flex-col items-center"
                   onClick={e => e.stopPropagation()}
+                  style={{ 
+                    position: 'relative',
+                    margin: 'auto'
+                  }}
                 >
                   {options.map(opt => (
                     <div

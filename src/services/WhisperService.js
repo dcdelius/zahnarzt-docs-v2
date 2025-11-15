@@ -18,7 +18,35 @@ export class WhisperService {
       formData.append('model', 'whisper-1');
       formData.append('language', 'de');
       formData.append('response_format', 'text'); // Direkt Text statt JSON für schnellere Verarbeitung
-      formData.append('prompt', 'Dies ist eine zahnärztliche Dokumentation. Bitte transkribiere die Aufnahme mit besonderem Fokus auf zahnmedizinische Fachbegriffe, Zahlen und Behandlungsdetails.');
+      formData.append('prompt', `Dies ist eine zahnärztliche Dokumentation. Bitte transkribiere die Aufnahme mit besonderem Fokus auf zahnmedizinische Fachbegriffe, Zahlen und Behandlungsdetails.
+
+WICHTIGE ZAHNMEDIZINISCHE BEGRIFFE (korrekt schreiben):
+- Ultracain (nicht Ultrakain)
+- Articain (nicht Artikain)
+- Lidocain (nicht Lidokain)
+- Mepivacain (nicht Mepivakain)
+- Vivapen (nicht Vivaphen)
+- Gaenial Flow (nicht Genial Flow)
+- Tetric EvoCeram (nicht Tetric Evo Ceram)
+- Kofferdamm (nicht Kofferdam)
+- Komposit (nicht Komposid)
+- Anästhesie (nicht Anästhesie)
+
+ZAHNFLÄCHEN (immer Kleinbuchstaben, ohne Punkte):
+- mesial → m
+- distal → d
+- bukkal/buccal → b
+- palatinal → p
+- lingual → l
+- okklusal → o
+- inzisal → i
+- vestibulär → v
+
+Beispiel: "mesial okklusal distal" → "mod" (nicht "M.O.D." oder "M O D")
+
+ZAHNNUMMERN (FDI-Schema ohne Punkt):
+- Beispiel: "Zahn siebenundzwanzig" → "27" (nicht "2.7" oder "2,7")
+- Beispiel: "Zahn sechsunddreißig" → "36" (nicht "3.6" oder "3,6")`);
 
       const response = await fetch(this.apiEndpoint, {
         method: 'POST',
