@@ -1,0 +1,265 @@
+[
+    {
+        "id": "krone_gleichartig_gkv_vollkeramik",
+        "titel": "Einzelkrone - GKV gleichartig (Vollkeramik statt Metall)",
+        "kategorie": "prothetik",
+        "versicherung": "GKV",
+        "versorgungsart": "gleichartig",
+        "beschreibung": "Vollkeramik-Krone bei GKV-Patient mit Stiftaufbau - komplette Abrechnung mit Splitting",
+        "natuerliche_anleitung": "Bei gleichartiger Versorgung bekommt der Patient den Festzuschuss (FZ 1.1 + ggf. FZ 1.3 für Stift), PLUS den BEMA-Anteil der Regelversorgung. Die Mehrkosten (GOZ-Differenz + Labor-Differenz) zahlt der Patient zusätzlich. WICHTIG: HKP und Mehrkostenvereinbarung MÜSSEN vor Behandlung unterschrieben sein! Die Abrechnung ist gesplittet: BEMA für Regelanteil, GOZ für Mehrkosten.",
+        "voraussetzungen_dokumente": [
+            "HKP unterschrieben",
+            "Mehrkostenvereinbarung unterschrieben",
+            "GOZ-Vereinbarung (§2 Abs.1 GOZ)",
+            "Bonusheft geprüft"
+        ],
+        "festzuschuss_berechnung": {
+            "befund": "Erhaltungswürdiger Zahn 36 mit weitgehender Zerstörung + Stiftaufbau erforderlich",
+            "festzuschuesse": [
+                {
+                    "code": "FZ_1.1",
+                    "bezeichnung": "Krone bei Zerstörung",
+                    "basis": 183.84
+                },
+                {
+                    "code": "FZ_1.3",
+                    "bezeichnung": "Stiftaufbau",
+                    "basis": 44.25
+                }
+            ],
+            "summe_basis": 228.09,
+            "mit_bonus_5y": 273.71,
+            "mit_bonus_10y": 296.52,
+            "von_kasse": "Festzuschuss wird direkt abgerechnet"
+        },
+        "phasen": [
+            {
+                "phase": "1. Sitzung - Stiftaufbau & Präparation",
+                "zeitpunkt": "Termin 1",
+                "bema_anteil_regelversorgung": {
+                    "beschreibung": "Dies sind die BEMA-Positionen für die Regelversorgung",
+                    "positionen": [
+                        {
+                            "code": "BEMA_41a",
+                            "bezeichnung": "Leitungsanästhesie",
+                            "punkte": 12,
+                            "betrag": 12.45
+                        },
+                        {
+                            "code": "BEMA_18b",
+                            "bezeichnung": "Konfektionierter Stiftaufbau (Seitenzahn)",
+                            "punkte": 35,
+                            "betrag": 36.31,
+                            "hinweis": "Dies ist der Regelversorgungsanteil"
+                        },
+                        {
+                            "code": "BEMA_19",
+                            "bezeichnung": "Provisorische Krone",
+                            "punkte": 20,
+                            "betrag": 20.75
+                        },
+                        {
+                            "code": "BEMA_20a",
+                            "bezeichnung": "Metallische Vollkrone",
+                            "punkte": 50,
+                            "betrag": 51.88,
+                            "hinweis": "Wird gegenüber GOZ 5040 'aufgerechnet'"
+                        }
+                    ],
+                    "summe_bema": "121,39€"
+                },
+                "goz_mehrkosten": {
+                    "beschreibung": "Dies sind die GOZ-MEHRKOSTEN für die höherwertige Versorgung",
+                    "positionen": [
+                        {
+                            "code": "GOZ_0080",
+                            "bezeichnung": "Oberflächenanästhesie",
+                            "betrag_23": 7.25,
+                            "hinweis": "Zusätzlich zu BEMA-Anästhesie!"
+                        },
+                        {
+                            "code": "GOZ_2180",
+                            "bezeichnung": "Stiftkanalaufbereitung",
+                            "betrag_23": 20.38,
+                            "hinweis": "Mehraufwand Stift"
+                        },
+                        {
+                            "code": "GOZ_2190",
+                            "bezeichnung": "Glasfaserstift-Einbringung",
+                            "betrag_23": 43.45,
+                            "hinweis": "Konfektionierter Stift mit adhäsiver Technik"
+                        },
+                        {
+                            "code": "GOZ_2197",
+                            "bezeichnung": "Adhäsive Befestigung Stift",
+                            "betrag_23": 52.16,
+                            "hinweis": "Adhäsiver Stiftaufbau als Mehrleistung"
+                        },
+                        {
+                            "code": "GOZ_2195",
+                            "bezeichnung": "Aufbaufüllung",
+                            "betrag_23": 74.24,
+                            "hinweis": "Komposit-Aufbau"
+                        },
+                        {
+                            "code": "GOZ_5040_differenz",
+                            "bezeichnung": "Krone Stufenpräp. (Differenz zu BEMA 20a)",
+                            "berechnung": "GOZ 5040 (173,88€) minus BEMA 20a (51,88€)",
+                            "betrag": 122.00,
+                            "hinweis": "Mehrkosten für Vollkeramik-Präparation"
+                        },
+                        {
+                            "code": "GOZ_2290",
+                            "bezeichnung": "Gingivaretraktion (Fadenlegen)",
+                            "betrag_23": 14.49,
+                            "hinweis": "Für saubere Abformung bei Kronenrand"
+                        },
+                        {
+                            "code": "GOZ_0065",
+                            "bezeichnung": "Abformung Situationsmodell",
+                            "betrag_23": 24.40
+                        }
+                    ],
+                    "summe_goz_mehrkosten": "358,37€"
+                },
+                "material_mehrkosten": {
+                    "positionen": [
+                        {
+                            "bezeichnung": "Glasfaserstift (konfektioniert)",
+                            "betrag": "15-30€"
+                        },
+                        {
+                            "bezeichnung": "Provisorium-Material",
+                            "betrag": "5-10€"
+                        }
+                    ],
+                    "summe_material": "ca. 25€"
+                }
+            },
+            {
+                "phase": "2. Sitzung - Eingliederung",
+                "zeitpunkt": "Termin 2 (ca. 1-2 Wochen später)",
+                "bema_anteil": {
+                    "beschreibung": "Eingliederung ist in BEMA 20a enthalten",
+                    "positionen": []
+                },
+                "goz_mehrkosten": {
+                    "positionen": [
+                        {
+                            "code": "GOZ_2197",
+                            "bezeichnung": "Adhäsive Eingliederung Krone",
+                            "betrag_23": 52.16,
+                            "hinweis": "Bei adhäsiver Befestigung (Resin-Cement) der Vollkeramik"
+                        },
+                        {
+                            "code": "GOZ_5000",
+                            "bezeichnung": "Röntgenkontrolle (optional)",
+                            "betrag_23": 11.57
+                        }
+                    ],
+                    "summe_goz": "63,73€"
+                }
+            }
+        ],
+        "labor_berechnung": {
+            "regelversorgung_bel2": {
+                "arbeitsmodell": 45.00,
+                "antagonistenmodell": 25.00,
+                "metallkrone_vg": 120.00,
+                "summe": "ca. 190€"
+            },
+            "gleichartig_privat": {
+                "arbeitsmodell_cad": 65.00,
+                "antagonistenmodell": 35.00,
+                "zirkon_krone_monolithisch": 280.00,
+                "verblendung_vestibulär": 80.00,
+                "summe": "ca. 460€"
+            },
+            "labor_mehrkosten_patient": {
+                "berechnung": "Privat-Labor (460€) minus BEL-II (190€)",
+                "betrag": "ca. 270€"
+            }
+        },
+        "gesamtberechnung": {
+            "von_kasse_bezahlt": {
+                "festzuschuss_basis": 228.09,
+                "oder_mit_5y_bonus": 273.71,
+                "oder_mit_10y_bonus": 296.52
+            },
+            "von_praxis_abgerechnet": {
+                "bema_anteil": 121.39,
+                "goz_mehrkosten_sitzung1": 358.37,
+                "goz_mehrkosten_sitzung2": 63.73,
+                "material_praxis": 25.00
+            },
+            "von_patient_gezahlt": {
+                "eigenanteil_festzuschuss_0_bonus": "ca. 152€ (40% von FZ)",
+                "goz_mehrkosten": 422.10,
+                "labor_mehrkosten": 270.00,
+                "material": 25.00,
+                "gesamt_eigenanteil": "ca. 869€"
+            },
+            "praxis_umsatz_gesamt": "ca. 1.100€"
+        },
+        "dokumentation_erforderlich": [
+            "HKP unterschrieben VOR Behandlung",
+            "Mehrkostenvereinbarung unterschrieben",
+            "GOZ-Vereinbarung (bei Faktor >2,3)",
+            "Bonusheft geprüft und dokumentiert",
+            "Stift-Typ dokumentiert (Glasfaser)",
+            "Adhäsive Technik dokumentiert",
+            "Farbwahl dokumentiert"
+        ],
+        "haeufige_fehler": [
+            "HKP nicht unterschrieben → Patient kann Zahlung verweigern!",
+            "Mehrkostenvereinbarung vergessen → Kein Anspruch auf Mehrkosten!",
+            "GOZ 0080 (Oberflächenanästhesie) vergessen",
+            "GOZ 2197 bei adhäsiver Eingliederung nicht berechnet",
+            "Gingivaretraktion (GOZ 2290) vergessen",
+            "Laborkosten-Splitting falsch berechnet"
+        ],
+        "regressfallen": [
+            "Behandlung vor HKP-Unterschrift begonnen",
+            "Festzuschuss bei andersartiger Versorgung (z.B. Inlay) statt gleichartig",
+            "BEMA 18b + GOZ 2190 doppelt für gleichen Stift"
+        ]
+    },
+    {
+        "id": "krone_andersartig_implantat",
+        "titel": "Implantat statt Brücke - GKV andersartig",
+        "kategorie": "prothetik",
+        "versicherung": "GKV",
+        "versorgungsart": "andersartig",
+        "beschreibung": "Patient bekommt Einzelimplantat statt Brücke - nur Festzuschuss, Rest komplett privat",
+        "natuerliche_anleitung": "Bei andersartiger Versorgung erhält der Patient NUR den Festzuschuss von der Kasse. Der GESAMTE Rest wird komplett nach GOZ abgerechnet - kein BEMA-Anteil! Der Festzuschuss richtet sich nach dem Befund (was die Regelversorgung gewesen wäre), nicht nach der tatsächlichen Leistung.",
+        "beispiel_befund": {
+            "situation": "Zahn 36 fehlt, 35 und 37 vorhanden",
+            "regelversorgung_waere": "3-gliedrige Brücke 35-37",
+            "patient_waehlt": "Einzelimplantat regio 36",
+            "versorgungsart": "ANDERSARTIG"
+        },
+        "festzuschuss": {
+            "befund": "FZ 2.1 - Zahnbegrenzte Lücke, 1 fehlender Zahn",
+            "betrag_basis": 411.12,
+            "mit_5y_bonus": 493.34,
+            "mit_10y_bonus": 534.46,
+            "hinweis": "Dieser Betrag reduziert die Rechnung des Patienten"
+        },
+        "abrechnung": {
+            "von_kasse": "Nur Festzuschuss (411-534€ je nach Bonus)",
+            "von_patient": "Gesamtrechnung minus Festzuschuss",
+            "bema_anteil": "KEINER! Alles GOZ",
+            "beispiel_implantat_kosten": {
+                "goz_gesamt": 2000.00,
+                "minus_festzuschuss_10y": 534.46,
+                "patient_zahlt": 1465.54
+            }
+        },
+        "wichtig": [
+            "HKP MUSS ausgefüllt werden (für Festzuschuss)",
+            "Im HKP wird Regelversorgung (Brücke) UND gewählte Therapie eingetragen",
+            "GOZ-Vereinbarung für Implantat erforderlich",
+            "Aufklärung über Alternativen dokumentieren"
+        ]
+    }
+]

@@ -1,0 +1,184 @@
+{
+    "_meta": {
+        "name": "ZE Festzuschuss-Katalog",
+        "version": "2024",
+        "stand": "01.01.2024",
+        "quelle": "KZBV Festzuschuss-Richtlinie, G-BA",
+        "beschreibung": "Festzuschüsse für Zahnersatz bei GKV-Patienten - KORRIGIERT nach offiziellen Quellen"
+    },
+    "bonus_regelung": {
+        "0_jahre": {
+            "faktor": 1.0,
+            "prozent": "60%"
+        },
+        "5_jahre": {
+            "faktor": 1.2,
+            "prozent": "70%",
+            "bedingung": "5 Jahre lückenlose Bonusheft-Stempel"
+        },
+        "10_jahre": {
+            "faktor": 1.3,
+            "prozent": "75%",
+            "bedingung": "10 Jahre lückenlose Bonusheft-Stempel"
+        },
+        "haertefall": {
+            "faktor": 2.0,
+            "prozent": "100%",
+            "bedingung": "Bruttoeinkommen unter Grenze"
+        }
+    },
+    "versorgungsarten": {
+        "regelversorgung": {
+            "beschreibung": "Standardversorgung nach wissenschaftlichem Standard",
+            "abrechnung": "100% BEMA-Positionen + BEL II Labor",
+            "patient_zahlt": "Festzuschuss-Eigenanteil (40% ohne Bonus, 30% mit 5J, 25% mit 10J)",
+            "beispiel": "Metallkrone auf Zahn 36"
+        },
+        "gleichartig": {
+            "beschreibung": "Regelversorgung PLUS zusätzliche/höherwertige Leistungen",
+            "abrechnung": "Festzuschuss + BEMA-Anteil + GOZ-Mehrkosten + Labor-Mehrkosten",
+            "patient_zahlt": "Festzuschuss-Eigenanteil + alle Mehrkosten (GOZ + Labor)",
+            "beispiel": "Vollkeramikkrone statt Metallkrone",
+            "wichtig": [
+                "HKP VOR Behandlung unterschrieben",
+                "Mehrkostenvereinbarung VOR Behandlung unterschrieben",
+                "BEMA-Leistungen sind im FZ abgegolten",
+                "Nur echte MEHRLEISTUNGEN als GOZ berechenbar"
+            ]
+        },
+        "andersartig": {
+            "beschreibung": "Völlig andere Versorgungsform als Regelversorgung",
+            "abrechnung": "NUR Festzuschuss von Kasse, Rest KOMPLETT GOZ (kein BEMA)",
+            "patient_zahlt": "GOZ-Gesamtkosten minus Festzuschuss",
+            "beispiel": "Implantat statt Brücke",
+            "wichtig": [
+                "HKP mit Regelversorgung + gewählter Therapie",
+                "GOZ-Vereinbarung VOR Behandlung",
+                "Aufklärung über Alternativen dokumentiert"
+            ]
+        }
+    },
+    "festzuschuesse_einzelkrone": {
+        "FZ_1.1": {
+            "befund": "Erhaltungswürdiger Zahn mit weitgehender Zerstörung der klinischen Krone",
+            "regelversorgung": "Vollkrone (Metall/NEM)",
+            "betrag_basis_2024": 183.84,
+            "mit_bonus_5y": 220.61,
+            "mit_bonus_10y": 238.99,
+            "haertefall": 367.68
+        },
+        "FZ_1.2": {
+            "befund": "Erhaltungswürdiger Zahn mit weitgehender Zerstörung - im Verblendbereich (Front + PM bis 5)",
+            "regelversorgung": "Vollkrone vestibulär verblendet",
+            "betrag_basis_2024": 210.56,
+            "mit_bonus_5y": 252.67,
+            "mit_bonus_10y": 273.73,
+            "anmerkung": "Nur für Zähne 15-25 OK und 14-24/35-45 UK"
+        },
+        "FZ_1.3": {
+            "befund": "Verblendung einer Krone im Verblendbereich",
+            "regelversorgung": "Verblendung der Krone",
+            "betrag_basis_2024": 46.72,
+            "mit_bonus_5y": 56.06,
+            "mit_bonus_10y": 60.74,
+            "wichtig": "NUR im Verblendbereich (Front/Prämolaren)! NICHT für Stiftaufbau!",
+            "zusaetzlich_zu": [
+                "FZ_1.1"
+            ]
+        },
+        "FZ_1.4": {
+            "befund": "Konfektionierter Stiftaufbau bei Kronenanker nach Endo",
+            "regelversorgung": "Konfektionierter Stift + Aufbau (einzeitig, BEMA 18a)",
+            "betrag_basis_2024": 44.25,
+            "mit_bonus_5y": 53.10,
+            "mit_bonus_10y": 57.53,
+            "wichtig": "Für KONFEKTIONIERTEN Stift (Glasfaser, Metall, Schraube)",
+            "zusaetzlich_zu": [
+                "FZ_1.1",
+                "FZ_1.2"
+            ]
+        },
+        "FZ_1.5": {
+            "befund": "Gegossener metallischer Stiftaufbau",
+            "regelversorgung": "Gegossener Stiftaufbau (zweizeitig, BEMA 18b)",
+            "betrag_basis_2024": 104.17,
+            "mit_bonus_5y": 125.79,
+            "mit_bonus_10y": 137.98,
+            "haertefall": 229.96,
+            "wichtig": "Für GEGOSSENEN Stift (Laborarbeit erforderlich)",
+            "zusaetzlich_zu": [
+                "FZ_1.1",
+                "FZ_1.2"
+            ]
+        }
+    },
+    "festzuschuesse_bruecke": {
+        "FZ_2.1": {
+            "befund": "Zahnbegrenzte Lücke, 1 fehlender Zahn",
+            "regelversorgung": "3-gliedrige Brücke (2 Kronen + 1 Zwischenglied)",
+            "betrag_basis_2024": 411.12,
+            "mit_bonus_5y": 493.34,
+            "mit_bonus_10y": 534.46
+        },
+        "FZ_2.5": {
+            "befund": "Brückenzwischenglied je fehlendem Zahn",
+            "regelversorgung": "Metallzwischenglied",
+            "betrag_basis_2024": 64.70,
+            "mit_bonus_5y": 77.64,
+            "mit_bonus_10y": 84.11
+        }
+    },
+    "festzuschuesse_prothese": {
+        "FZ_3.1": {
+            "befund": "Lückengebiss - Freiendsituation oder unterbrochene Zahnreihe",
+            "regelversorgung": "Modellgussprothese mit Klammern",
+            "betrag_basis_2024": 507.59,
+            "mit_bonus_5y": 592.19,
+            "mit_bonus_10y": 634.49,
+            "haertefall": 845.99,
+            "wann": "Pro Kiefer bei Lückensituation II"
+        },
+        "FZ_3.2a": {
+            "befund": "Teleskopkrone als Verankerung (dentale Verankerung)",
+            "regelversorgung": "Teleskopkrone (BEMA 91d im Regelfall, bei gleichartig: GOZ 5040)",
+            "betrag_basis_2024": 385.97,
+            "mit_bonus_5y": 450.30,
+            "mit_bonus_10y": 482.46,
+            "wann": [
+                "Beidseitig bis Eckzahn verkürzte Zahnreihe",
+                "Einseitig verkürzt + kontralateral unterbrochen",
+                "Beidseitig im SZ-Bereich unterbrochen (je ≥2 fehlend)"
+            ],
+            "abrechnung": "Max 2x je Kiefer - NUR für Eckzahn oder 1. Prämolar!",
+            "wichtig": "NICHT für alle Ankerzähne! Nur für 14/24 bzw. 13/23 oder 34/44",
+            "beispiel": "Bei Ankern 14-24: FZ 3.2a nur für 14 und 24 = 2×"
+        },
+        "FZ_4.1": {
+            "befund": "Zahnloser Oberkiefer oder Restzahnbestand ≤3 Zähne OK",
+            "regelversorgung": "Totalprothese OK / Teleskopprothese",
+            "betrag_basis_2024": 564.00,
+            "mit_bonus_5y": 658.00,
+            "mit_bonus_10y": 705.00
+        },
+        "FZ_4.2": {
+            "befund": "Zahnloser Unterkiefer oder Restzahnbestand ≤3 Zähne UK",
+            "regelversorgung": "Totalprothese UK / Teleskopprothese",
+            "betrag_basis_2024": 564.00,
+            "mit_bonus_5y": 658.00,
+            "mit_bonus_10y": 705.00
+        },
+        "FZ_4.7": {
+            "befund": "Verblendung einer Teleskopkrone im Verblendbereich",
+            "regelversorgung": "Verblendung Teleskop (OK 15-25, UK 34-44)",
+            "betrag_basis_2024": 62.32,
+            "mit_bonus_5y": 72.71,
+            "mit_bonus_10y": 77.90,
+            "abrechnung": "Je Ankerzahn im Verblendbereich"
+        }
+    },
+    "hinweise": {
+        "stift_bei_zahn36": "Bei Zahn 36 (Seitenzahn außerhalb Verblendbereich): FZ 1.1 + FZ 1.4 (konfektioniert) oder FZ 1.5 (gegossen). KEIN FZ 1.3 (das ist Verblendung)!",
+        "teleskop_indikation": "FZ 3.2 nur bei reduziertem Restgebiss (Eckzahn verkürzt)! Sonst andersartig.",
+        "verblendbereich": "OK: 15-25 (Zähne 5-5), UK: 34-44 (Zähne 4-4)"
+    }
+}

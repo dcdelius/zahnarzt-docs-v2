@@ -1,0 +1,56 @@
+{
+    "_meta": {
+        "id": "standard_disclosures",
+        "version": "2025-01-v1",
+        "description": "Aufklärungs- und Hinweistexte. SSOT für alle nicht-chipbezogenen Standardtexte."
+    },
+    "disclosures": [
+        {
+            "id": "standard_aufklaerung",
+            "context": "aufklaerung",
+            "insuranceTypes": [
+                "GKV",
+                "PKV",
+                "MKV"
+            ],
+            "text": "Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert."
+        },
+        {
+            "id": "mkv_disclosure",
+            "context": "aufklaerung",
+            "insuranceTypes": [
+                "MKV"
+            ],
+            "condition": "hasMKV",
+            "text": "Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.",
+            "variables": [
+                "mkvBetrag"
+            ]
+        },
+        {
+            "id": "mkv_hinweis",
+            "context": "abrechnung",
+            "insuranceTypes": [
+                "MKV"
+            ],
+            "condition": "hasMKV",
+            "text": "Zuzahlung lt. Mehrkostenvereinbarung"
+        },
+        {
+            "id": "postop_standard",
+            "context": "hinweise",
+            "insuranceTypes": [
+                "GKV",
+                "PKV",
+                "MKV"
+            ],
+            "text": "Der Patient wurde über Verhaltensregeln nach der Behandlung informiert."
+        },
+        {
+            "id": "postop_la",
+            "context": "hinweise",
+            "condition": "hasAnesthesia",
+            "text": "Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen."
+        }
+    ]
+}

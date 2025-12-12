@@ -1,0 +1,1212 @@
+{
+    "_meta": {
+        "name": "GOZ Katalog",
+        "version": "2024",
+        "stand": "01.01.2025",
+        "quelle": "BZÄK GOZ-Kommentar"
+    },
+    "GOZ_0010": {
+        "id": "GOZ_0010",
+        "system": "GOZ",
+        "nummer": "0010",
+        "bezeichnung": "Eingehende Untersuchung",
+        "honorar": {
+            "einfach": 12.94,
+            "standard": 29.76,
+            "hoch": 45.29
+        },
+        "kategorie": "diagnostik"
+    },
+    "GOZ_0080": {
+        "id": "GOZ_0080",
+        "system": "GOZ",
+        "nummer": "0080",
+        "bezeichnung": "Oberflächenanästhesie",
+        "honorar": {
+            "einfach": 3.15,
+            "standard": 7.25,
+            "hoch": 11.03
+        },
+        "kategorie": "anaesthesie"
+    },
+    "GOZ_0090": {
+        "id": "GOZ_0090",
+        "system": "GOZ",
+        "nummer": "0090",
+        "bezeichnung": "Infiltrationsanästhesie",
+        "honorar": {
+            "einfach": 7.05,
+            "standard": 16.22,
+            "hoch": 24.68
+        },
+        "kategorie": "anaesthesie"
+    },
+    "GOZ_0100": {
+        "id": "GOZ_0100",
+        "system": "GOZ",
+        "nummer": "0100",
+        "bezeichnung": "Leitungsanästhesie",
+        "honorar": {
+            "einfach": 10.57,
+            "standard": 24.31,
+            "hoch": 37.00
+        },
+        "kategorie": "anaesthesie"
+    },
+    "GOZ_1000": {
+        "id": "GOZ_1000",
+        "system": "GOZ",
+        "nummer": "1000",
+        "bezeichnung": "Mundhygienestatus",
+        "honorar": {
+            "einfach": 14.17,
+            "standard": 32.59,
+            "hoch": 49.60
+        },
+        "kategorie": "prophylaxe"
+    },
+    "GOZ_1010": {
+        "id": "GOZ_1010",
+        "system": "GOZ",
+        "nummer": "1010",
+        "bezeichnung": "Kontrolle Mundhygiene und Reinstruktion",
+        "honorar": {
+            "einfach": 5.51,
+            "standard": 12.67,
+            "hoch": 19.29
+        },
+        "kategorie": "prophylaxe"
+    },
+    "GOZ_1020": {
+        "id": "GOZ_1020",
+        "system": "GOZ",
+        "nummer": "1020",
+        "bezeichnung": "Lokale Fluoridierung (je Kiefer)",
+        "honorar": {
+            "einfach": 4.02,
+            "standard": 9.25,
+            "hoch": 14.07
+        },
+        "kategorie": "prophylaxe"
+    },
+    "GOZ_1040": {
+        "id": "GOZ_1040",
+        "system": "GOZ",
+        "nummer": "1040",
+        "bezeichnung": "Professionelle Zahnreinigung (PZR) - je Zahn",
+        "honorar": {
+            "einfach": 1.57,
+            "standard": 3.62,
+            "hoch": 5.50
+        },
+        "kategorie": "prophylaxe"
+    },
+    "GOZ_2000": {
+        "id": "GOZ_2000",
+        "system": "GOZ",
+        "nummer": "2000",
+        "bezeichnung": "Versiegelung Fissuren/Grübchen - je Zahn",
+        "honorar": {
+            "einfach": 8.09,
+            "standard": 18.61,
+            "hoch": 28.32
+        },
+        "kategorie": "konservierend"
+    },
+    "GOZ_2010": {
+        "id": "GOZ_2010",
+        "system": "GOZ",
+        "nummer": "2010",
+        "bezeichnung": "Behandlung überempfindlicher Zahnflächen",
+        "honorar": {
+            "einfach": 3.15,
+            "standard": 7.25,
+            "hoch": 11.03
+        },
+        "kategorie": "konservierend"
+    },
+    "GOZ_2020": {
+        "id": "GOZ_2020",
+        "system": "GOZ",
+        "nummer": "2020",
+        "bezeichnung": "Inzision eines Abszesses",
+        "honorar": {
+            "einfach": 7.05,
+            "standard": 16.22,
+            "hoch": 24.68
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_2030": {
+        "id": "GOZ_2030",
+        "system": "GOZ",
+        "nummer": "2030",
+        "bezeichnung": "Besondere Maßnahmen beim Präparieren/Füllen",
+        "honorar": {
+            "einfach": 5.51,
+            "standard": 12.67,
+            "hoch": 19.29
+        },
+        "kategorie": "konservierend"
+    },
+    "GOZ_2040": {
+        "id": "GOZ_2040",
+        "system": "GOZ",
+        "nummer": "2040",
+        "bezeichnung": "Anlegen von Spanngummi (Kofferdam)",
+        "honorar": {
+            "einfach": 9.45,
+            "standard": 21.74,
+            "hoch": 33.08
+        },
+        "kategorie": "konservierend",
+        "beschreibung": "Kann mehrfach pro Sitzung berechnet werden bei erneutem Anlegen"
+    },
+    "GOZ_2050": {
+        "id": "GOZ_2050",
+        "system": "GOZ",
+        "nummer": "2050",
+        "bezeichnung": "Unterfüllung/Aufbaufüllung",
+        "honorar": {
+            "einfach": 9.19,
+            "standard": 21.14,
+            "hoch": 32.17
+        },
+        "kategorie": "konservierend"
+    },
+    "GOZ_2060": {
+        "id": "GOZ_2060",
+        "system": "GOZ",
+        "nummer": "2060",
+        "bezeichnung": "Kompositfüllung einflächig in Adhäsivtechnik",
+        "kurzform": "K1",
+        "honorar": {
+            "einfach": 32.09,
+            "standard": 73.81,
+            "hoch": 112.32
+        },
+        "kategorie": "konservierend",
+        "enthaelt": [
+            "Adhäsiv",
+            "Schichttechnik",
+            "Politur"
+        ]
+    },
+    "GOZ_2080": {
+        "id": "GOZ_2080",
+        "system": "GOZ",
+        "nummer": "2080",
+        "bezeichnung": "Kompositfüllung zweiflächig in Adhäsivtechnik",
+        "kurzform": "K2",
+        "honorar": {
+            "einfach": 50.17,
+            "standard": 115.39,
+            "hoch": 175.60
+        },
+        "kategorie": "konservierend",
+        "enthaelt": [
+            "Adhäsiv",
+            "Schichttechnik",
+            "Politur"
+        ]
+    },
+    "GOZ_2100": {
+        "id": "GOZ_2100",
+        "system": "GOZ",
+        "nummer": "2100",
+        "bezeichnung": "Kompositfüllung dreiflächig in Adhäsivtechnik",
+        "kurzform": "K3",
+        "honorar": {
+            "einfach": 68.24,
+            "standard": 156.95,
+            "hoch": 238.84
+        },
+        "kategorie": "konservierend",
+        "enthaelt": [
+            "Adhäsiv",
+            "Schichttechnik",
+            "Politur"
+        ]
+    },
+    "GOZ_2120": {
+        "id": "GOZ_2120",
+        "system": "GOZ",
+        "nummer": "2120",
+        "bezeichnung": "Kompositfüllung mehr als dreiflächig",
+        "kurzform": "K4",
+        "honorar": {
+            "einfach": 86.32,
+            "standard": 198.54,
+            "hoch": 302.12
+        },
+        "kategorie": "konservierend",
+        "enthaelt": [
+            "Adhäsiv",
+            "Schichttechnik",
+            "Politur"
+        ]
+    },
+    "GOZ_2197": {
+        "id": "GOZ_2197",
+        "system": "GOZ",
+        "nummer": "2197",
+        "bezeichnung": "Adhäsive Befestigung (Einzelleistung)",
+        "honorar": {
+            "einfach": 22.68,
+            "standard": 52.16,
+            "hoch": 79.38
+        },
+        "kategorie": "konservierend",
+        "beschreibung": "NICHT neben 2060-2120, da dort inkludiert!"
+    },
+    "GOZ_2330": {
+        "id": "GOZ_2330",
+        "system": "GOZ",
+        "nummer": "2330",
+        "bezeichnung": "Indirekte Überkappung (Cp)",
+        "honorar": {
+            "einfach": 11.34,
+            "standard": 26.08,
+            "hoch": 39.69
+        },
+        "kategorie": "konservierend"
+    },
+    "GOZ_2340": {
+        "id": "GOZ_2340",
+        "system": "GOZ",
+        "nummer": "2340",
+        "bezeichnung": "Direkte Überkappung (P)",
+        "honorar": {
+            "einfach": 15.12,
+            "standard": 34.78,
+            "hoch": 52.92
+        },
+        "kategorie": "konservierend"
+    },
+    "GOZ_2360": {
+        "id": "GOZ_2360",
+        "system": "GOZ",
+        "nummer": "2360",
+        "bezeichnung": "Vitalamputation",
+        "honorar": {
+            "einfach": 28.35,
+            "standard": 65.21,
+            "hoch": 99.23
+        },
+        "kategorie": "endodontie"
+    },
+    "GOZ_2380": {
+        "id": "GOZ_2380",
+        "system": "GOZ",
+        "nummer": "2380",
+        "bezeichnung": "Trepanation eines Zahnes",
+        "honorar": {
+            "einfach": 15.12,
+            "standard": 34.78,
+            "hoch": 52.92
+        },
+        "kategorie": "endodontie"
+    },
+    "GOZ_2390": {
+        "id": "GOZ_2390",
+        "system": "GOZ",
+        "nummer": "2390",
+        "bezeichnung": "Aufbereitung Wurzelkanal",
+        "honorar": {
+            "einfach": 13.61,
+            "standard": 31.30,
+            "hoch": 47.64
+        },
+        "kategorie": "endodontie",
+        "beschreibung": "Je Kanal!"
+    },
+    "GOZ_2400": {
+        "id": "GOZ_2400",
+        "system": "GOZ",
+        "nummer": "2400",
+        "bezeichnung": "Elektrometrische Längenbestimmung (Endometrie)",
+        "honorar": {
+            "einfach": 8.09,
+            "standard": 18.61,
+            "hoch": 28.32
+        },
+        "kategorie": "endodontie",
+        "beschreibung": "Je Kanal!"
+    },
+    "GOZ_2410": {
+        "id": "GOZ_2410",
+        "system": "GOZ",
+        "nummer": "2410",
+        "bezeichnung": "Zusatz maschinelle Aufbereitung",
+        "honorar": {
+            "einfach": 12.13,
+            "standard": 27.90,
+            "hoch": 42.46
+        },
+        "kategorie": "endodontie",
+        "beschreibung": "Je Kanal, neben 2390"
+    },
+    "GOZ_2420": {
+        "id": "GOZ_2420",
+        "system": "GOZ",
+        "nummer": "2420",
+        "bezeichnung": "Spülung je Kanal",
+        "honorar": {
+            "einfach": 3.78,
+            "standard": 8.69,
+            "hoch": 13.23
+        },
+        "kategorie": "endodontie"
+    },
+    "GOZ_2430": {
+        "id": "GOZ_2430",
+        "system": "GOZ",
+        "nummer": "2430",
+        "bezeichnung": "Einlage medikamentös je Kanal",
+        "honorar": {
+            "einfach": 4.02,
+            "standard": 9.25,
+            "hoch": 14.07
+        },
+        "kategorie": "endodontie"
+    },
+    "GOZ_2440": {
+        "id": "GOZ_2440",
+        "system": "GOZ",
+        "nummer": "2440",
+        "bezeichnung": "Wurzelfüllung je Kanal",
+        "honorar": {
+            "einfach": 16.14,
+            "standard": 37.12,
+            "hoch": 56.49
+        },
+        "kategorie": "endodontie"
+    },
+    "GOZ_3000": {
+        "id": "GOZ_3000",
+        "system": "GOZ",
+        "nummer": "3000",
+        "bezeichnung": "Extraktion einwurzelig",
+        "honorar": {
+            "einfach": 10.57,
+            "standard": 24.31,
+            "hoch": 37.00
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_3010": {
+        "id": "GOZ_3010",
+        "system": "GOZ",
+        "nummer": "3010",
+        "bezeichnung": "Extraktion mehrwurzelig",
+        "honorar": {
+            "einfach": 14.17,
+            "standard": 32.59,
+            "hoch": 49.60
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_3020": {
+        "id": "GOZ_3020",
+        "system": "GOZ",
+        "nummer": "3020",
+        "bezeichnung": "Extraktion eines tief zerstörten Zahnes",
+        "honorar": {
+            "einfach": 23.62,
+            "standard": 54.33,
+            "hoch": 82.67
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_3040": {
+        "id": "GOZ_3040",
+        "system": "GOZ",
+        "nummer": "3040",
+        "bezeichnung": "Hemisektion",
+        "honorar": {
+            "einfach": 35.43,
+            "standard": 81.49,
+            "hoch": 124.01
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_3090": {
+        "id": "GOZ_3090",
+        "system": "GOZ",
+        "nummer": "3090",
+        "bezeichnung": "Stillung einer übermäßigen Blutung",
+        "honorar": {
+            "einfach": 10.57,
+            "standard": 24.31,
+            "hoch": 37.00
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_3100": {
+        "id": "GOZ_3100",
+        "system": "GOZ",
+        "nummer": "3100",
+        "bezeichnung": "Osteotomie eines einwurzeligen Zahnes",
+        "honorar": {
+            "einfach": 37.80,
+            "standard": 86.94,
+            "hoch": 132.30
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_3110": {
+        "id": "GOZ_3110",
+        "system": "GOZ",
+        "nummer": "3110",
+        "bezeichnung": "Osteotomie eines mehrwurzeligen Zahnes",
+        "honorar": {
+            "einfach": 56.69,
+            "standard": 130.39,
+            "hoch": 198.42
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_5000": {
+        "id": "GOZ_5000",
+        "system": "GOZ",
+        "nummer": "5000",
+        "bezeichnung": "Röntgen: Intraorale Aufnahme",
+        "honorar": {
+            "einfach": 5.03,
+            "standard": 11.57,
+            "hoch": 17.61
+        },
+        "kategorie": "roentgen"
+    },
+    "GOZ_5002": {
+        "id": "GOZ_5002",
+        "system": "GOZ",
+        "nummer": "5002",
+        "bezeichnung": "Röntgen: Panoramaschichtaufnahme (OPG)",
+        "honorar": {
+            "einfach": 25.18,
+            "standard": 57.91,
+            "hoch": 88.13
+        },
+        "kategorie": "roentgen"
+    },
+    "GOZ_5004": {
+        "id": "GOZ_5004",
+        "system": "GOZ",
+        "nummer": "5004",
+        "bezeichnung": "Röntgen: DVT/3D-Aufnahme",
+        "honorar": {
+            "einfach": 60.20,
+            "standard": 138.46,
+            "hoch": 210.70
+        },
+        "kategorie": "roentgen"
+    },
+    "GOZ_0110": {
+        "id": "GOZ_0110",
+        "system": "GOZ",
+        "nummer": "0110",
+        "bezeichnung": "Zuschlag Operationsmikroskop",
+        "honorar": {
+            "einfach": 12.94,
+            "standard": 29.76,
+            "hoch": 45.29
+        },
+        "kategorie": "sonstiges",
+        "beschreibung": "Zusätzlich bei mikroskopgestützten Eingriffen"
+    },
+    "GOZ_0120": {
+        "id": "GOZ_0120",
+        "system": "GOZ",
+        "nummer": "0120",
+        "bezeichnung": "Zuschlag Laser",
+        "honorar": {
+            "einfach": 6.47,
+            "standard": 14.88,
+            "hoch": 22.65
+        },
+        "kategorie": "sonstiges",
+        "beschreibung": "Zusätzlich bei Laseranwendung"
+    },
+    "GOZ_0500": {
+        "id": "GOZ_0500",
+        "system": "GOZ",
+        "nummer": "0500",
+        "bezeichnung": "OP-Zuschlag 250-499 Punkte",
+        "honorar": {
+            "einfach": 14.17,
+            "standard": 14.17,
+            "hoch": 14.17
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Nur 1,0-fach berechenbar"
+    },
+    "GOZ_0510": {
+        "id": "GOZ_0510",
+        "system": "GOZ",
+        "nummer": "0510",
+        "bezeichnung": "OP-Zuschlag 500-799 Punkte",
+        "honorar": {
+            "einfach": 28.35,
+            "standard": 28.35,
+            "hoch": 28.35
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Nur 1,0-fach berechenbar"
+    },
+    "GOZ_0520": {
+        "id": "GOZ_0520",
+        "system": "GOZ",
+        "nummer": "0520",
+        "bezeichnung": "OP-Zuschlag 800-1199 Punkte",
+        "honorar": {
+            "einfach": 42.52,
+            "standard": 42.52,
+            "hoch": 42.52
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Nur 1,0-fach berechenbar"
+    },
+    "GOZ_0530": {
+        "id": "GOZ_0530",
+        "system": "GOZ",
+        "nummer": "0530",
+        "bezeichnung": "OP-Zuschlag ab 1200 Punkte",
+        "honorar": {
+            "einfach": 70.87,
+            "standard": 70.87,
+            "hoch": 70.87
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Nur 1,0-fach berechenbar, z.B. bei GOZ 9010"
+    },
+    "GOZ_3060": {
+        "id": "GOZ_3060",
+        "system": "GOZ",
+        "nummer": "3060",
+        "bezeichnung": "Stillung übermäßige Blutung (besondere Maßnahmen)",
+        "honorar": {
+            "einfach": 10.57,
+            "standard": 24.31,
+            "hoch": 37.00
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Bei Umstechung, Abbinden, Knochenbolzung"
+    },
+    "GOZ_3110a": {
+        "id": "GOZ_3110a",
+        "system": "GOZ",
+        "nummer": "3110",
+        "bezeichnung": "WSR Frontzahn",
+        "honorar": {
+            "einfach": 35.43,
+            "standard": 81.49,
+            "hoch": 124.01
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Je Wurzelspitze!"
+    },
+    "GOZ_3120": {
+        "id": "GOZ_3120",
+        "system": "GOZ",
+        "nummer": "3120",
+        "bezeichnung": "WSR Seitenzahn",
+        "honorar": {
+            "einfach": 42.52,
+            "standard": 97.80,
+            "hoch": 148.82
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Je Wurzelspitze!"
+    },
+    "GOZ_3190": {
+        "id": "GOZ_3190",
+        "system": "GOZ",
+        "nummer": "3190",
+        "bezeichnung": "Zystektomie",
+        "honorar": {
+            "einfach": 28.35,
+            "standard": 65.21,
+            "hoch": 99.23
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Zusätzlich bei WSR mit Zyste"
+    },
+    "GOZ_3300": {
+        "id": "GOZ_3300",
+        "system": "GOZ",
+        "nummer": "3300",
+        "bezeichnung": "Naht/Wundversorgung",
+        "honorar": {
+            "einfach": 10.94,
+            "standard": 25.16,
+            "hoch": 38.29
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_4000": {
+        "id": "GOZ_4000",
+        "system": "GOZ",
+        "nummer": "4000",
+        "bezeichnung": "Parodontalstatus",
+        "honorar": {
+            "einfach": 23.24,
+            "standard": 53.45,
+            "hoch": 81.34
+        },
+        "kategorie": "parodontologie"
+    },
+    "GOZ_4005": {
+        "id": "GOZ_4005",
+        "system": "GOZ",
+        "nummer": "4005",
+        "bezeichnung": "Subgingivale Kürettage (je Zahn)",
+        "honorar": {
+            "einfach": 6.10,
+            "standard": 14.03,
+            "hoch": 21.35
+        },
+        "kategorie": "parodontologie"
+    },
+    "GOZ_4020": {
+        "id": "GOZ_4020",
+        "system": "GOZ",
+        "nummer": "4020",
+        "bezeichnung": "Lokalmedikation Tasche",
+        "honorar": {
+            "einfach": 3.15,
+            "standard": 7.25,
+            "hoch": 11.03
+        },
+        "kategorie": "parodontologie"
+    },
+    "GOZ_4070": {
+        "id": "GOZ_4070",
+        "system": "GOZ",
+        "nummer": "4070",
+        "bezeichnung": "Parodontalchirurgischer Eingriff (je Zahn)",
+        "honorar": {
+            "einfach": 18.90,
+            "standard": 43.47,
+            "hoch": 66.15
+        },
+        "kategorie": "parodontologie"
+    },
+    "GOZ_4075": {
+        "id": "GOZ_4075",
+        "system": "GOZ",
+        "nummer": "4075",
+        "bezeichnung": "Regenerative Parodontalchirurgie",
+        "honorar": {
+            "einfach": 25.51,
+            "standard": 58.67,
+            "hoch": 89.29
+        },
+        "kategorie": "parodontologie"
+    },
+    "GOZ_4110": {
+        "id": "GOZ_4110",
+        "system": "GOZ",
+        "nummer": "4110",
+        "bezeichnung": "Knochenaufbau/Augmentation",
+        "honorar": {
+            "einfach": 22.68,
+            "standard": 52.16,
+            "hoch": 79.38
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Material (Bio-Oss etc.) separat!"
+    },
+    "GOZ_5010": {
+        "id": "GOZ_5010",
+        "system": "GOZ",
+        "nummer": "5010",
+        "bezeichnung": "Krone als Brückenanker (Tangential)",
+        "honorar": {
+            "einfach": 57.14,
+            "standard": 131.43,
+            "hoch": 200.00
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5040": {
+        "id": "GOZ_5040",
+        "system": "GOZ",
+        "nummer": "5040",
+        "bezeichnung": "Krone Brückenanker (Stufenpräparation)",
+        "honorar": {
+            "einfach": 76.04,
+            "standard": 174.89,
+            "hoch": 266.14
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5070": {
+        "id": "GOZ_5070",
+        "system": "GOZ",
+        "nummer": "5070",
+        "bezeichnung": "Teleskopkrone",
+        "honorar": {
+            "einfach": 94.94,
+            "standard": 218.36,
+            "hoch": 332.29
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5120": {
+        "id": "GOZ_5120",
+        "system": "GOZ",
+        "nummer": "5120",
+        "bezeichnung": "Brückenglied",
+        "honorar": {
+            "einfach": 37.80,
+            "standard": 86.94,
+            "hoch": 132.30
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5200": {
+        "id": "GOZ_5200",
+        "system": "GOZ",
+        "nummer": "5200",
+        "bezeichnung": "Vollprothese je Kiefer",
+        "honorar": {
+            "einfach": 189.88,
+            "standard": 436.72,
+            "hoch": 664.58
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_9000": {
+        "id": "GOZ_9000",
+        "system": "GOZ",
+        "nummer": "9000",
+        "bezeichnung": "Implantatanalyse und -planung (je Kiefer)",
+        "honorar": {
+            "einfach": 49.72,
+            "standard": 114.35,
+            "hoch": 174.01
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Je Kiefer! Schablonen-Material separat."
+    },
+    "GOZ_9010": {
+        "id": "GOZ_9010",
+        "system": "GOZ",
+        "nummer": "9010",
+        "bezeichnung": "Implantatinsertion",
+        "honorar": {
+            "einfach": 86.89,
+            "standard": 199.86,
+            "hoch": 304.13
+        },
+        "kategorie": "chirurgie",
+        "beschreibung": "Je Implantat! OP-Zuschlag 0530 möglich."
+    },
+    "GOZ_9020": {
+        "id": "GOZ_9020",
+        "system": "GOZ",
+        "nummer": "9020",
+        "bezeichnung": "Implantatsanierung/Freilegung",
+        "honorar": {
+            "einfach": 21.77,
+            "standard": 50.07,
+            "hoch": 76.20
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_9040": {
+        "id": "GOZ_9040",
+        "system": "GOZ",
+        "nummer": "9040",
+        "bezeichnung": "Implantatentfernung",
+        "honorar": {
+            "einfach": 43.44,
+            "standard": 99.91,
+            "hoch": 152.04
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_9090": {
+        "id": "GOZ_9090",
+        "system": "GOZ",
+        "nummer": "9090",
+        "bezeichnung": "Knochenentnahme (autolog)",
+        "honorar": {
+            "einfach": 37.80,
+            "standard": 86.94,
+            "hoch": 132.30
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_9100": {
+        "id": "GOZ_9100",
+        "system": "GOZ",
+        "nummer": "9100",
+        "bezeichnung": "Aufbau Alveolarfortsatz (je Kieferhälfte)",
+        "honorar": {
+            "einfach": 113.40,
+            "standard": 260.82,
+            "hoch": 396.90
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_9110": {
+        "id": "GOZ_9110",
+        "system": "GOZ",
+        "nummer": "9110",
+        "bezeichnung": "Sinusbodenelevation intern",
+        "honorar": {
+            "einfach": 75.60,
+            "standard": 173.88,
+            "hoch": 264.60
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_9120": {
+        "id": "GOZ_9120",
+        "system": "GOZ",
+        "nummer": "9120",
+        "bezeichnung": "Sinusbodenelevation extern",
+        "honorar": {
+            "einfach": 151.20,
+            "standard": 347.76,
+            "hoch": 529.20
+        },
+        "kategorie": "chirurgie"
+    },
+    "GOZ_0060": {
+        "id": "GOZ_0060",
+        "system": "GOZ",
+        "nummer": "0060",
+        "bezeichnung": "Abformung beider Kiefer für Studienmodelle",
+        "honorar": {
+            "einfach": 21.22,
+            "standard": 48.81,
+            "hoch": 74.27
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_0065": {
+        "id": "GOZ_0065",
+        "system": "GOZ",
+        "nummer": "0065",
+        "bezeichnung": "Optisch-elektronische Abformung (Intraoralscan)",
+        "honorar": {
+            "einfach": 4.50,
+            "standard": 10.35,
+            "hoch": 15.75
+        },
+        "punkte": 80,
+        "kategorie": "allgemein",
+        "beschreibung": "3D-Datenerfassung per Intraoralscanner, je Kieferhälfte/Frontzahnbereich",
+        "leistungsinhalt": [
+            "Dreidimensionale Datenerfassung",
+            "Vorbereitende Maßnahmen (Trocknung, ggf. Puderung)",
+            "Einfache digitale Bissregistrierung",
+            "Elektronische Archivierung"
+        ],
+        "ausschluesse": [
+            "Nicht zusammen mit GOZ 5170/5180/5190 im selben Bereich"
+        ],
+        "wichtig": "NUR für SCAN/digitale Abformung! NICHT für konventionelle Abformung mit A-Silikon!"
+    },
+    "GOZ_2180": {
+        "id": "GOZ_2180",
+        "system": "GOZ",
+        "nummer": "2180",
+        "bezeichnung": "Aufbaufüllung zur Aufnahme einer Krone (plastisch)",
+        "honorar": {
+            "einfach": 8.86,
+            "standard": 20.38,
+            "hoch": 31.01
+        },
+        "kategorie": "konservierend",
+        "beschreibung": "Plastische Aufbaurestauration für Kronenstumpf bei Substanzverlust",
+        "leistungsinhalt": [
+            "Aufbau ohne Stift",
+            "Plastisches Material (Komposit)"
+        ],
+        "ausschluesse": [
+            "Nicht neben GOZ 2190 (gegossener Stift)",
+            "Nicht bei Inlays (2150-2170)"
+        ],
+        "tipp": "Zusätzlich zu GOZ 2195 berechenbar wenn Aufbau um Stift erfolgt",
+        "wichtig": "NICHT 'Stiftkanalaufbereitung'! Das ist Teil von GOZ 2195."
+    },
+    "GOZ_2190": {
+        "id": "GOZ_2190",
+        "system": "GOZ",
+        "nummer": "2190",
+        "bezeichnung": "Gegossener Stiftaufbau (individuell, Labor)",
+        "honorar": {
+            "einfach": 32.28,
+            "standard": 74.24,
+            "hoch": 112.98
+        },
+        "kategorie": "konservierend",
+        "beschreibung": "Individuell im Labor gegossener Stiftaufbau mit Wurzelkanalverankerung",
+        "ablauf": "1. Sitzung: Abformung → Labor → 2. Sitzung: Einsetzen",
+        "ausschluesse": [
+            "Nicht neben GOZ 2180",
+            "Nicht neben GOZ 2195"
+        ],
+        "wichtig": "Für GEGOSSENE Stifte (Metall, Labor)! NICHT für Glasfaserstift!"
+    },
+    "GOZ_2195": {
+        "id": "GOZ_2195",
+        "system": "GOZ",
+        "nummer": "2195",
+        "bezeichnung": "Schraubenaufbau oder Glasfaserstift o.Ä.",
+        "honorar": {
+            "einfach": 18.89,
+            "standard": 43.45,
+            "hoch": 66.12
+        },
+        "kategorie": "konservierend",
+        "beschreibung": "Konfektionierter Stift (Glasfaser, Titan, Schraube) mit Wurzelkanalverankerung",
+        "leistungsinhalt": [
+            "Stiftkanalaufbereitung (Länge, Breite, Konizität)",
+            "Einbringen des konfektionierten Stiftes"
+        ],
+        "material_separat": [
+            "Glasfaserstift",
+            "Radix-Anker",
+            "Schrauben"
+        ],
+        "ausschluesse": [
+            "Nicht neben GOZ 2190"
+        ],
+        "tipp": "Adhäsive Befestigung → zusätzlich GOZ 2197. Aufbau um Stift → zusätzlich GOZ 2180.",
+        "wichtig": "DAS ist die richtige Position für GLASFASERSTIFT!"
+    },
+    "GOZ_5020": {
+        "id": "GOZ_5020",
+        "system": "GOZ",
+        "nummer": "5020",
+        "bezeichnung": "Teilkrone direkt",
+        "honorar": {
+            "einfach": 75.60,
+            "standard": 173.88,
+            "hoch": 264.60
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5030": {
+        "id": "GOZ_5030",
+        "system": "GOZ",
+        "nummer": "5030",
+        "bezeichnung": "Vollkrone (Tangentialpräparation)",
+        "honorar": {
+            "einfach": 57.14,
+            "standard": 131.42,
+            "hoch": 200.00
+        },
+        "kategorie": "prothetik",
+        "beschreibung": "Metallkrone oder NEM-Krone"
+    },
+    "GOZ_5040": {
+        "id": "GOZ_5040",
+        "system": "GOZ",
+        "nummer": "5040",
+        "bezeichnung": "Vollkrone (Stufenpräparation)",
+        "honorar": {
+            "einfach": 75.60,
+            "standard": 173.88,
+            "hoch": 264.60
+        },
+        "kategorie": "prothetik",
+        "beschreibung": "Für Vollkeramik-Kronen! Höherer Wert als Tangential"
+    },
+    "GOZ_5050": {
+        "id": "GOZ_5050",
+        "system": "GOZ",
+        "nummer": "5050",
+        "bezeichnung": "Vollkrone auf Implantat verschraubt",
+        "honorar": {
+            "einfach": 94.50,
+            "standard": 217.35,
+            "hoch": 330.75
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5060": {
+        "id": "GOZ_5060",
+        "system": "GOZ",
+        "nummer": "5060",
+        "bezeichnung": "Verblendschale (Veneer) direkt",
+        "honorar": {
+            "einfach": 113.40,
+            "standard": 260.82,
+            "hoch": 396.90
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5080": {
+        "id": "GOZ_5080",
+        "system": "GOZ",
+        "nummer": "5080",
+        "bezeichnung": "Provisorische Krone (direkt, chairside)",
+        "honorar": {
+            "einfach": 18.14,
+            "standard": 41.72,
+            "hoch": 63.49
+        },
+        "kategorie": "prothetik",
+        "beschreibung": "Chairside-Provisorium"
+    },
+    "GOZ_5090": {
+        "id": "GOZ_5090",
+        "system": "GOZ",
+        "nummer": "5090",
+        "bezeichnung": "Provisorische Krone (laborgefertigt)",
+        "honorar": {
+            "einfach": 28.35,
+            "standard": 65.21,
+            "hoch": 99.23
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5100": {
+        "id": "GOZ_5100",
+        "system": "GOZ",
+        "nummer": "5100",
+        "bezeichnung": "Brückenanker/Krone als Verankerung (Tangential)",
+        "honorar": {
+            "einfach": 57.14,
+            "standard": 131.42,
+            "hoch": 200.00
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5110": {
+        "id": "GOZ_5110",
+        "system": "GOZ",
+        "nummer": "5110",
+        "bezeichnung": "Brückenanker/Krone als Verankerung (Stufe)",
+        "honorar": {
+            "einfach": 75.60,
+            "standard": 173.88,
+            "hoch": 264.60
+        },
+        "kategorie": "prothetik",
+        "beschreibung": "Für Vollkeramik-Brückenanker!"
+    },
+    "GOZ_5130": {
+        "id": "GOZ_5130",
+        "system": "GOZ",
+        "nummer": "5130",
+        "bezeichnung": "Brückenzwischenglied",
+        "honorar": {
+            "einfach": 28.35,
+            "standard": 65.21,
+            "hoch": 99.23
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5140": {
+        "id": "GOZ_5140",
+        "system": "GOZ",
+        "nummer": "5140",
+        "bezeichnung": "Geschiebeverankerung",
+        "honorar": {
+            "einfach": 56.69,
+            "standard": 130.39,
+            "hoch": 198.42
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5170": {
+        "id": "GOZ_5170",
+        "system": "GOZ",
+        "nummer": "5170",
+        "bezeichnung": "Eingliederung Krone/Brücke provisorisch",
+        "honorar": {
+            "einfach": 9.45,
+            "standard": 21.74,
+            "hoch": 33.08
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_5180": {
+        "id": "GOZ_5180",
+        "system": "GOZ",
+        "nummer": "5180",
+        "bezeichnung": "Eingliederung Krone/Brücke definitiv konventionell",
+        "honorar": {
+            "einfach": 18.90,
+            "standard": 43.47,
+            "hoch": 66.15
+        },
+        "kategorie": "prothetik"
+    },
+    "GOZ_2197": {
+        "id": "GOZ_2197",
+        "system": "GOZ",
+        "nummer": "2197",
+        "bezeichnung": "Adhäsive Befestigung (je Einheit)",
+        "honorar": {
+            "einfach": 22.68,
+            "standard": 52.16,
+            "hoch": 79.38
+        },
+        "kategorie": "prothetik",
+        "beschreibung": "Bei adhäsiver Eingliederung von Kronen, Veneers, Inlays. NICHT neben GOZ 2060-2120!"
+    },
+    "GOZ_2290": {
+        "id": "GOZ_2290",
+        "system": "GOZ",
+        "nummer": "2290",
+        "bezeichnung": "Entfernung Krone, Inlay, Brückenanker, Steg o.Ä.",
+        "honorar": {
+            "einfach": 7.56,
+            "standard": 17.39,
+            "hoch": 26.46
+        },
+        "kategorie": "konservierend",
+        "beschreibung": "Entfernung von indirekt hergestellten definitiven Versorgungen",
+        "leistungsinhalt": [
+            "Entfernung Krone/Brückenanker",
+            "Entfernung Inlay/Onlay",
+            "Abtrennen Brückenglied/Steg",
+            "Entfernung Veneers, konfektionierte Kronen, Langzeitprovisorien"
+        ],
+        "ausschluesse": [
+            "NICHT für plastische Füllungen"
+        ],
+        "wichtig": "Dies ist ENTFERNUNG, NICHT Gingivaretraktion! Für Fadenlegen siehe GOZ 203."
+    },
+    "GOZ_203": {
+        "id": "GOZ_203",
+        "system": "GOZ",
+        "nummer": "203",
+        "bezeichnung": "Besondere Maßnahmen beim Präparieren (Fadenlegen)",
+        "honorar": {
+            "einfach": 2.84,
+            "standard": 6.53,
+            "hoch": 9.94
+        },
+        "kategorie": "konservierend",
+        "beschreibung": "Gingivaretraktion durch Fadenlegen vor Abformung, je Kieferhälfte/Frontzahnbereich",
+        "leistungsinhalt": [
+            "Beseitigen störenden Zahnfleisches",
+            "Retraktionsfaden legen",
+            "Vorbereitung für saubere Abformung"
+        ],
+        "tipp": "Für Kronenabformung standardmäßig berechenbar wenn Faden gelegt wird"
+    },
+    "GOZ_0050": {
+        "id": "GOZ_0050",
+        "system": "GOZ",
+        "nummer": "0050",
+        "bezeichnung": "Abformung eines Kiefers (konventionell)",
+        "honorar": {
+            "einfach": 7.56,
+            "standard": 17.39,
+            "hoch": 26.46
+        },
+        "kategorie": "allgemein",
+        "beschreibung": "Anatomische Abformung für Planungs-/Situationsmodell mit Löffelmasse",
+        "wichtig": "Für konventionelle Abformung (A-Silikon, Alginat). Für Scan →  GOZ 0065."
+    }
+}

@@ -1,0 +1,322 @@
+[
+    {
+        "id": "endo_molar_pkv",
+        "titel": "Wurzelbehandlung Molar (3-4 Kanäle) - PKV",
+        "kategorie": "endodontie",
+        "versicherung": "PKV",
+        "beschreibung": "Vollständige Wurzelkanalbehandlung eines mehrwurzeligen Zahnes bei Privatpatient",
+        "phasen": [
+            {
+                "phase": "Diagnostik & Vorbereitung",
+                "positionen": [
+                    {
+                        "code": "GOZ_0010",
+                        "bezeichnung": "Eingehende Untersuchung",
+                        "wann": "Falls noch keine U in diesem Quartal",
+                        "anzahl": 1,
+                        "betrag_23": 29.76
+                    },
+                    {
+                        "code": "GOZ_5000",
+                        "bezeichnung": "Röntgenaufnahme",
+                        "wann": "Vor Endo zur Diagnostik",
+                        "anzahl": 1,
+                        "betrag_23": 11.57
+                    }
+                ]
+            },
+            {
+                "phase": "Anästhesie",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "wann": "IMMER vor Injektion",
+                        "anzahl": 1,
+                        "betrag_23": 7.25,
+                        "tipp": "Wird oft vergessen - immer ansetzen!"
+                    },
+                    {
+                        "code": "GOZ_0090",
+                        "bezeichnung": "Infiltrationsanästhesie",
+                        "wann": "Bei Oberkiefer",
+                        "anzahl": 1,
+                        "betrag_23": 16.22,
+                        "alternativ": "GOZ_0100 bei Unterkiefer"
+                    },
+                    {
+                        "code": "GOZ_0100",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei Unterkiefer-Molaren STANDARD",
+                        "anzahl": 1,
+                        "betrag_23": 24.31
+                    }
+                ]
+            },
+            {
+                "phase": "Kofferdam & Zugang",
+                "positionen": [
+                    {
+                        "code": "GOZ_2040",
+                        "bezeichnung": "Kofferdam anlegen",
+                        "wann": "PFLICHT bei Endo",
+                        "anzahl": 1,
+                        "betrag_23": 21.74,
+                        "tipp": "Bei mehrzeitiger Behandlung: ERNEUT berechnen bei Neuanlegen!"
+                    },
+                    {
+                        "code": "GOZ_2380",
+                        "bezeichnung": "Trepanation",
+                        "wann": "Wenn Pulpakammer noch nicht eröffnet",
+                        "anzahl": 1,
+                        "betrag_23": 34.78,
+                        "bedingung": "Nicht wenn bereits kariös/traumatisch eröffnet"
+                    }
+                ]
+            },
+            {
+                "phase": "Wurzelkanalaufbereitung (JE KANAL!)",
+                "wichtig": "ALLE folgenden Positionen sind JE KANAL berechenbar!",
+                "positionen": [
+                    {
+                        "code": "GOZ_2390",
+                        "bezeichnung": "Aufbereitung Wurzelkanal",
+                        "wann": "IMMER",
+                        "anzahl": "Kanalzahl (3-4)",
+                        "betrag_23_pro_kanal": 31.30,
+                        "beispiel_3_kanaele": 93.90
+                    },
+                    {
+                        "code": "GOZ_2400",
+                        "bezeichnung": "Elektrometrische Längenbestimmung (Endometrie)",
+                        "wann": "Bei elektr. Längenmessung",
+                        "anzahl": "Kanalzahl (bis 2x pro Kanal/Sitzung möglich)",
+                        "betrag_23_pro_kanal": 18.61,
+                        "beispiel_3_kanaele": 55.83,
+                        "tipp": "Wird sehr oft vergessen! Bis zu 2x pro Kanal bei Kontrollmessung"
+                    },
+                    {
+                        "code": "GOZ_2410",
+                        "bezeichnung": "Maschinelle Aufbereitung (Zusatz)",
+                        "wann": "Bei maschineller Aufbereitung (NiTi)",
+                        "anzahl": "Kanalzahl",
+                        "betrag_23_pro_kanal": 27.90,
+                        "beispiel_3_kanaele": 83.70,
+                        "steigerung": "Bis 3,5x bei schwieriger Anatomie (gekrümmt, obliteriert)"
+                    },
+                    {
+                        "code": "GOZ_2420",
+                        "bezeichnung": "Spülung je Kanal",
+                        "wann": "IMMER",
+                        "anzahl": "Kanalzahl",
+                        "betrag_23_pro_kanal": 8.69,
+                        "beispiel_3_kanaele": 26.07
+                    },
+                    {
+                        "code": "GOZ_2430",
+                        "bezeichnung": "Medikamentöse Einlage je Kanal",
+                        "wann": "Bei Zwischeneinlage (mehrzeitig)",
+                        "anzahl": "Kanalzahl",
+                        "betrag_23_pro_kanal": 9.25,
+                        "beispiel_3_kanaele": 27.75
+                    }
+                ]
+            },
+            {
+                "phase": "Wurzelfüllung (2. Sitzung, JE KANAL!)",
+                "positionen": [
+                    {
+                        "code": "GOZ_2040",
+                        "bezeichnung": "Kofferdam ERNEUT",
+                        "wann": "Bei 2. Sitzung",
+                        "anzahl": 1,
+                        "betrag_23": 21.74,
+                        "tipp": "Nicht vergessen! Bei jeder Sitzung neu berechenbar"
+                    },
+                    {
+                        "code": "GOZ_2440",
+                        "bezeichnung": "Wurzelfüllung je Kanal",
+                        "wann": "IMMER",
+                        "anzahl": "Kanalzahl",
+                        "betrag_23_pro_kanal": 37.12,
+                        "beispiel_3_kanaele": 111.36
+                    },
+                    {
+                        "code": "GOZ_5000",
+                        "bezeichnung": "Röntgen-Kontrolle",
+                        "wann": "Kontrollaufnahme nach WF",
+                        "anzahl": 1,
+                        "betrag_23": 11.57
+                    }
+                ]
+            },
+            {
+                "phase": "Optionale Zuschläge",
+                "positionen": [
+                    {
+                        "code": "GOZ_0110",
+                        "bezeichnung": "Operationsmikroskop",
+                        "wann": "Bei Verwendung OP-Mikroskop",
+                        "anzahl": 1,
+                        "betrag_23": 29.76,
+                        "tipp": "Besonders bei Revisionen, Kanalsuche, Perforationen"
+                    },
+                    {
+                        "code": "GOZ_0120",
+                        "bezeichnung": "Laser-Zuschlag",
+                        "wann": "Bei Laser-Desinfektion",
+                        "anzahl": 1,
+                        "betrag_23": 14.88
+                    }
+                ]
+            },
+            {
+                "phase": "Material (separat berechenbar!)",
+                "positionen": [
+                    {
+                        "code": "MATERIAL",
+                        "bezeichnung": "NiTi-Einmalfeilen",
+                        "wann": "Bei maschineller Aufbereitung",
+                        "betrag": "30-60€",
+                        "tipp": "Pro Kanal oft 1-3 Feilen, IMMER separat auflisten"
+                    },
+                    {
+                        "code": "MATERIAL",
+                        "bezeichnung": "Sealer, Guttapercha",
+                        "wann": "Immer",
+                        "betrag": "10-20€"
+                    }
+                ]
+            }
+        ],
+        "gesamtberechnung_beispiel": {
+            "kanalzahl": 3,
+            "sitzungen": 2,
+            "positionen_total": [
+                "1x GOZ 0080 (7,25€)",
+                "1x GOZ 0100 (24,31€)",
+                "2x GOZ 2040 (43,48€)",
+                "1x GOZ 2380 (34,78€)",
+                "3x GOZ 2390 (93,90€)",
+                "3x GOZ 2400 (55,83€)",
+                "3x GOZ 2410 (83,70€)",
+                "3x GOZ 2420 (26,07€)",
+                "3x GOZ 2430 (27,75€)",
+                "3x GOZ 2440 (111,36€)",
+                "2x GOZ 5000 (23,14€)",
+                "Material NiTi (~45€)",
+                "Material Sealer (~15€)"
+            ],
+            "summe_honorar": "531,57€",
+            "summe_material": "60€",
+            "gesamtbetrag": "ca. 590€"
+        },
+        "dokumentation_erforderlich": [
+            "Diagnose (Pulpitis, Gangrän, Revision)",
+            "Kanalzahl",
+            "Arbeitslängen je Kanal",
+            "Verwendete Technik (manuell/maschinell)",
+            "Bei Steigerung: Begründung (Anatomie, Obliteration)",
+            "Bei Mikroskop: Dokumentation der Verwendung"
+        ],
+        "haeufige_fehler": [
+            "GOZ 2400 (Endometrie) vergessen",
+            "Kofferdam bei 2. Sitzung nicht erneut berechnet",
+            "Materialkosten nicht aufgelistet",
+            "Steigerungsfaktor nicht genutzt bei schwierigen Fällen"
+        ]
+    },
+    {
+        "id": "endo_molar_gkv",
+        "titel": "Wurzelbehandlung Molar (3 Kanäle) - GKV",
+        "kategorie": "endodontie",
+        "versicherung": "GKV",
+        "beschreibung": "Wurzelkanalbehandlung bei Kassenpatient - BEMA + mögliche Privatleistungen",
+        "phasen": [
+            {
+                "phase": "BEMA-Leistungen (Kassenanteil)",
+                "positionen": [
+                    {
+                        "code": "BEMA_41a",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei UK-Molaren Standard",
+                        "punkte": 12
+                    },
+                    {
+                        "code": "BEMA_12",
+                        "bezeichnung": "Kofferdam (bMF)",
+                        "wann": "Bei Kofferdam-Anlage",
+                        "punkte": 8,
+                        "wichtig": "1x pro Kieferhälfte/Sitzung, DOKUMENTIEREN!"
+                    },
+                    {
+                        "code": "BEMA_32b",
+                        "bezeichnung": "WK-Aufbereitung 3-wurzelig",
+                        "wann": "IMMER",
+                        "punkte": 45
+                    },
+                    {
+                        "code": "BEMA_35b",
+                        "bezeichnung": "Wurzelfüllung 3-wurzelig",
+                        "wann": "IMMER",
+                        "punkte": 40
+                    },
+                    {
+                        "code": "BEMA_Ä925a",
+                        "bezeichnung": "Röntgenaufnahme",
+                        "wann": "Diagnostik + Kontrolle",
+                        "punkte": 5,
+                        "anzahl": 2
+                    }
+                ]
+            },
+            {
+                "phase": "Privatleistungen (Vereinbarung erforderlich!)",
+                "wichtig": "SCHRIFTLICHE VEREINBARUNG VOR BEHANDLUNG PFLICHT!",
+                "positionen": [
+                    {
+                        "code": "GOZ_2400",
+                        "bezeichnung": "Elektrometrische Längenbestimmung (Endometrie)",
+                        "wann": "NICHT im BEMA enthalten!",
+                        "anzahl": "Je Kanal (3x)",
+                        "betrag_23": 55.83,
+                        "tipp": "IMMER anbieten - wird oft nicht gemacht"
+                    },
+                    {
+                        "code": "GOZ_0110",
+                        "bezeichnung": "Operationsmikroskop",
+                        "wann": "Bei Mikroskop-Einsatz",
+                        "betrag_23": 29.76
+                    },
+                    {
+                        "code": "GOZ_0120",
+                        "bezeichnung": "Laser-Desinfektion",
+                        "wann": "Bei Laser-Einsatz",
+                        "betrag_23": 14.88
+                    },
+                    {
+                        "code": "MATERIAL",
+                        "bezeichnung": "NiTi-Einmalfeilen (bei maschineller Aufbereitung)",
+                        "betrag": "30-60€",
+                        "vereinbarung": "Schriftlich VOR Behandlung!"
+                    }
+                ]
+            }
+        ],
+        "gesamtberechnung_beispiel": {
+            "bema_punkte_gesamt": "122 Punkte = ca. 127€",
+            "privatanteil_moeglich": "Endometrie 56€ + Material 45€ = 101€",
+            "gesamtbetrag": "ca. 228€"
+        },
+        "dokumentation_erforderlich": [
+            "Kofferdam: 'Anlegen von Kofferdam Quadrant X'",
+            "Kanalzahl",
+            "Bei Privatleistungen: Schriftliche Vereinbarung MIT UNTERSCHRIFT"
+        ],
+        "regressfallen": [
+            "BEMA 12 ohne dokumentierten Kofferdam",
+            "Privatleistung ohne schriftliche Vereinbarung VOR Behandlung",
+            "Wiederholte Endo innerhalb 2 Jahre ohne Begründung"
+        ]
+    }
+]

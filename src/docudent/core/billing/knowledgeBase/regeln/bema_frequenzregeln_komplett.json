@@ -1,0 +1,302 @@
+{
+    "_meta": {
+        "name": "BEMA Abrechnungsregeln Komplett",
+        "version": "2024/2025",
+        "quellen": [
+            "KZBV BEMA-Kommentar",
+            "KZVB (Bayern) Abrechnungshilfen",
+            "KZV Berlin Merkblätter",
+            "iww.de Abrechnungstipps",
+            "bema-goz.de Kommentar"
+        ],
+        "beschreibung": "Vollständige BEMA-Frequenzregeln und Abrechnungslogik für alle Bereiche"
+    },
+    "konservierend": {
+        "fuellungen": {
+            "BEMA_13a": {
+                "bezeichnung": "Einflächige Füllung (F1)",
+                "punkte": 28,
+                "abrechnung_einheit": "JE KAVITÄT (nicht je Zahn!)",
+                "haeufigkeit": {
+                    "regel": "1× je Kavität",
+                    "mehrere_kavitaeten": "Mehrere getrennte Kavitäten am selben Zahn = mehrfach abrechenbar",
+                    "beispiel": "Okklusal + bukkal getrennte Kavitäten = 2× BEMA 13a"
+                },
+                "dokumentation": "Genaue Lage (m, o, d, v, l/p) muss angegeben werden",
+                "quelle": "iww.de, KZV-Berlin.de"
+            },
+            "BEMA_13b": {
+                "bezeichnung": "Zweiflächige Füllung (F2)",
+                "punkte": 40,
+                "abrechnung_einheit": "JE KAVITÄT",
+                "haeufigkeit": "1× je Kavität"
+            },
+            "BEMA_13c": {
+                "bezeichnung": "Dreiflächige Füllung (F3)",
+                "punkte": 56,
+                "abrechnung_einheit": "JE KAVITÄT",
+                "haeufigkeit": "1× je Kavität"
+            },
+            "BEMA_13d": {
+                "bezeichnung": "Mehr als dreiflächige Füllung (F4) oder Eckenaufbau Front",
+                "punkte": 73,
+                "abrechnung_einheit": "JE KAVITÄT",
+                "haeufigkeit": "1× je Kavität"
+            },
+            "material_ab_2025": {
+                "frontzahnbereich": "Adhäsiv befestigte Füllungen = Regelversorgung",
+                "seitenzahnbereich": {
+                    "standard": "Selbstadhäsive Materialien (GIZ, SDR)",
+                    "ausnahme": "Bulk-Fill-Komposite in Ausnahmefällen",
+                    "privat": "Adhäsivtechnik im SZ = Mehrkostenvereinbarung nötig!"
+                },
+                "quelle": "KZBV, KZV-SH, zwp-online.info"
+            }
+        },
+        "besondere_massnahmen": {
+            "BEMA_12": {
+                "bezeichnung": "Besondere Maßnahmen beim Präparieren/Füllen (Kofferdam, Separieren)",
+                "punkte": 8,
+                "abrechnung_einheit": "JE KIEFERHÄLFTE oder Frontzahnbereich pro Sitzung",
+                "haeufigkeit": {
+                    "regel": "1× pro Sitzung und Kieferhälfte/Frontzahnbereich",
+                    "maximum": "Max 2× pro Kieferhälfte wenn Präparation UND Füllung",
+                    "wichtig": "NICHT je Zahn!"
+                },
+                "leistungsinhalt": [
+                    "Separieren von Zähnen",
+                    "Beseitigen störenden Zahnfleisches",
+                    "Anlegen von Spanngummi (Kofferdam)",
+                    "Stillung übermäßiger Papillenblutung"
+                ],
+                "nicht_bei": "Zahnfleischverdrängung nur für Abformung (BEMA 18, 20, 91)",
+                "dokumentation_erforderlich": [
+                    "Art der besonderen Maßnahme",
+                    "Betroffener Zahn/Region",
+                    "Verwendetes Material"
+                ],
+                "quelle": "bema-goz.de, iww.de, KZVB.de"
+            }
+        },
+        "ueberkappung": {
+            "BEMA_25": {
+                "bezeichnung": "Cp - Direkte Überkappung",
+                "punkte": 15,
+                "abrechnung_einheit": "JE ZAHN",
+                "voraussetzung": {
+                    "indikation": "Pulpaeröffnung bei Kariesexkavation oder Trauma",
+                    "material_pflicht": "Material MUSS dokumentiert werden (Ca(OH)2, MTA, BioDentine)",
+                    "ohne_material": "REGRESS-GEFAHR!"
+                },
+                "kombinierbar_mit": [
+                    "BEMA_13a-d"
+                ],
+                "quelle": "KZBV, KZV"
+            },
+            "BEMA_26": {
+                "bezeichnung": "P - Indirekte Überkappung",
+                "punkte": 12,
+                "abrechnung_einheit": "JE ZAHN",
+                "voraussetzung": {
+                    "indikation": "Tiefe Karies nahe der Pulpa, aber ohne Eröffnung",
+                    "material_pflicht": "Material MUSS dokumentiert werden (Ca(OH)2)"
+                },
+                "nicht_kombinierbar_mit": [
+                    "BEMA_25 (gleicher Zahn, gleiche Sitzung)"
+                ]
+            }
+        }
+    },
+    "endodontie": {
+        "aufbereitung": {
+            "BEMA_32": {
+                "bezeichnung": "Aufbereiten eines Wurzelkanals",
+                "punkte_einwurzelig": 27,
+                "punkte_mehrwurzelig": 36,
+                "abrechnung_einheit": "JE KANAL (nicht je Zahn!)",
+                "haeufigkeit": {
+                    "regel": "1× je Kanal pro Behandlungsfall",
+                    "revision": "Erneut abrechenbar wenn vorher BEMA 35 (Füllung) erfolgt ist",
+                    "mehrere_sitzungen": "Auch abrechenbar wenn Aufbereitung über mehrere Sitzungen"
+                },
+                "quelle": "bema-goz.de, spitta.de"
+            }
+        },
+        "fuellung": {
+            "BEMA_35": {
+                "bezeichnung": "Wurzelkanalfüllung",
+                "punkte_einwurzelig": 30,
+                "punkte_mehrwurzelig": 42,
+                "abrechnung_einheit": "JE KANAL",
+                "voraussetzung": "Nach abgeschlossener Aufbereitung (BEMA 32)"
+            }
+        },
+        "medikamentoese_einlagen": {
+            "haeufigkeit": "Max 3 Sitzungen im Rahmen der GKV",
+            "material": "Ca(OH)2-Einlage zur Desinfektion",
+            "wechsel": "Alle 7-10 Tage bei starker Entzündung"
+        },
+        "molaren_kriterien": {
+            "beschreibung": "KRITISCH: Wurzelbehandlung an Molaren ist NUR Kassenleistung wenn:",
+            "bedingungen_mindestens_eine": [
+                "Erhalt einer geschlossenen Zahnreihe",
+                "Vermeidung einer einseitigen Freiendsituation",
+                "Erhalt von funktionstüchtigem Zahnersatz"
+            ],
+            "ohne_kriterium": "KEINE Kassenleistung, auch wenn Zahn erhaltungswürdig!",
+            "dokumentation": "Indikation unbedingt dokumentieren!",
+            "quelle": "KZBV.de, KZVB.de, G-BA Behandlungsrichtlinie"
+        },
+        "erhaltungswuerdigkeit": {
+            "voraussetzung": "Wurzelkanäle müssen bis nahe Wurzelspitze aufbereitbar sein",
+            "nicht_erhaltungswuerdig": [
+                "Starke Krümmungen → Aufbereitung nicht möglich",
+                "Obliterationen → Kanal nicht auffindbar"
+            ],
+            "konsequenz": "Bei fehlender Erhaltungswürdigkeit: KEINE Kassenleistung"
+        },
+        "mehrleistungen_goz": {
+            "nicht_kassenleistung": [
+                "Maschinelle NiTi-Aufbereitung",
+                "Elektrometrische Längenmessung",
+                "OP-Mikroskop",
+                "Laser-Desinfektion"
+            ],
+            "abrechnung": "Komplett GOZ, KEINE Zuzahlung der Kasse möglich",
+            "quelle": "KZV-Berlin.de, zaek-berlin.de"
+        }
+    },
+    "chirurgie": {
+        "extraktionen": {
+            "BEMA_45": {
+                "bezeichnung": "X3 - Entfernung tief zerstörter Zahn",
+                "punkte": 17,
+                "abrechnung_einheit": "JE ZAHN",
+                "wann": "Entfernung mit Zange/Hebel NICHT ohne Mehraufwand möglich",
+                "wichtig": "47a ohne Knochenentfernung = NUR 45!"
+            }
+        },
+        "osteotomien": {
+            "BEMA_47a": {
+                "bezeichnung": "Ost1 - Entfernung eines Zahnes durch Osteotomie",
+                "punkte": 31,
+                "abrechnung_einheit": "JE ZAHN",
+                "zwingende_voraussetzungen": [
+                    "Aufklappung des Zahnfleisches (Mukoperiostlappen)",
+                    "Abfräsen/Entfernen von periradikulärem Knochen"
+                ],
+                "ohne_knochenentfernung": {
+                    "folge": "47a NICHT abrechenbar → nur BEMA 45 (X3)!",
+                    "haeufiger_fehler": "Aufklappenalleine reicht NICHT für 47a!"
+                },
+                "leistungsinhalt_enthalten": [
+                    "Primäre Wundversorgung"
+                ],
+                "quelle": "iww.de, KZVB.de, abrechnungswelt.com"
+            },
+            "BEMA_47b": {
+                "bezeichnung": "Hem - Hemisektion/Teilextraktion mehrwurzeliger Zahn",
+                "punkte": 43,
+                "abrechnung_einheit": "JE ZAHN",
+                "nur_in_ausnahmefaellen": true,
+                "indikationen": [
+                    "Erhalt einer geschlossenen Zahnreihe",
+                    "Erhalt bestehender prothetischer Versorgung"
+                ],
+                "voraussetzung": "Erfolgreiche WKB der verbleibenden Wurzel(n)",
+                "nicht_fuer": "Prämolarisierung (Teilung Molar)",
+                "pruefung": "Wird in Wirtschaftlichkeitsprüfungen kontrolliert!",
+                "quelle": "iww.de, KZBV Jahrbuch"
+            },
+            "BEMA_48": {
+                "bezeichnung": "Ost2 - Entfernung verlagert/retiniert/impaktierter Zahn",
+                "punkte": 52,
+                "abrechnung_einheit": "JE ZAHN",
+                "definitionen": {
+                    "verlagert": "Zahn bricht nicht an normaler Position durch",
+                    "retiniert": "Zahn bleibt im Kiefer eingeschlossen",
+                    "impaktiert": "Von Knochen/Weichgewebe umgeben"
+                },
+                "zwingende_voraussetzung": "Aufklappung des Zahnfleisches",
+                "leistungsinhalt_enthalten": [
+                    "Primäre Wundversorgung",
+                    "Entfernung Zahnfollikel",
+                    "Kleine Zystenentfernung durch Alveole"
+                ],
+                "quelle": "KZVB.de, abrechnungswelt.com"
+            }
+        },
+        "zusatzleistungen": {
+            "BEMA_36_37": {
+                "bezeichnung": "Stillung einer übermäßigen Blutung",
+                "voraussetzung": {
+                    "nur_bei": "ÜBERMÄSSIGE Blutung (nicht normale Blutung!)",
+                    "dokumentation": "Erheblicher Mehraufwand muss dokumentiert werden"
+                },
+                "kombinierbar_mit": [
+                    "BEMA_47a",
+                    "BEMA_48"
+                ],
+                "nicht_bei": "Normaler Blutung nach Extraktion"
+            },
+            "BEMA_38": {
+                "bezeichnung": "Nachbehandlung",
+                "wann": "In späteren Sitzungen",
+                "kombinierbar_mit": [
+                    "Alle chirurgischen Leistungen"
+                ]
+            },
+            "BEMA_46": {
+                "bezeichnung": "Chirurgische Wundrevision",
+                "wann": "In späteren Sitzungen bei Komplikationen"
+            },
+            "BEMA_51b": {
+                "bezeichnung": "Plastischer Verschluss eröffnete Kieferhöhle",
+                "kombinierbar_mit": [
+                    "BEMA_47a",
+                    "BEMA_48"
+                ]
+            }
+        },
+        "kombination_regeln": {
+            "wundversorgung_enthalten": "Primäre Wundversorgung ist in 47a und 48 enthalten - NICHT separat!",
+            "blutstillung": "36/37 nur bei übermäßiger Blutung + Dokumentation",
+            "zystenop": "Bei Zystenop mit Osteotomie: 56c/d zusätzlich möglich"
+        }
+    },
+    "roentgen": {
+        "BEMA_Ae925": {
+            "bezeichnung": "Zahnfilm",
+            "einheit": "JE AUFNAHME",
+            "haeufigkeit": "Nach Indikation, Strahlenhygiene beachten"
+        },
+        "BEMA_Ae935d": {
+            "bezeichnung": "OPG",
+            "einheit": "JE AUFNAHME",
+            "haeufigkeit": "Nach Indikation"
+        }
+    },
+    "kritische_regeln_zusammenfassung": {
+        "je_kavitaet_nicht_je_zahn": [
+            "BEMA 13a-d (Füllungen)"
+        ],
+        "je_kanal_nicht_je_zahn": [
+            "BEMA 32 (Aufbereitung)",
+            "BEMA 35 (WK-Füllung)"
+        ],
+        "je_kieferhaelfte_nicht_je_zahn": [
+            "BEMA 12 (Kofferdam)"
+        ],
+        "material_dokumentation_pflicht": [
+            "BEMA 25 (Cp)",
+            "BEMA 26 (P)"
+        ],
+        "knochenentfernung_pflicht": [
+            "BEMA 47a (sonst nur 45!)"
+        ],
+        "ausnahmefaelle_nur": [
+            "BEMA 47b (Hemisektion)",
+            "Molaren-Endo ohne Kriterium"
+        ]
+    }
+}

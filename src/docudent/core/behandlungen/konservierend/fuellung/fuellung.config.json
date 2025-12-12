@@ -1,0 +1,507 @@
+{
+    "_meta": {
+        "name": "Kompositfüllung",
+        "version": "1.0.0",
+        "behandlungstyp": "konservierend",
+        "stand": "2025-01-01"
+    },
+    "behandlungsablauf": {
+        "phasen": [
+            {
+                "id": "aufklaerung",
+                "label": "Aufklärung & Einwilligung",
+                "required": true
+            },
+            {
+                "id": "anaesthesie",
+                "label": "Anästhesie",
+                "required": false
+            },
+            {
+                "id": "trockenlegung",
+                "label": "Trockenlegung",
+                "required": false
+            },
+            {
+                "id": "exkavation",
+                "label": "Exkavation",
+                "required": true
+            },
+            {
+                "id": "ueberkappung",
+                "label": "Überkappung",
+                "required": false
+            },
+            {
+                "id": "konditionierung",
+                "label": "Konditionierung/Adhäsiv",
+                "required": true
+            },
+            {
+                "id": "fuellung",
+                "label": "Füllung einbringen",
+                "required": true
+            },
+            {
+                "id": "okklusionskontrolle",
+                "label": "Okklusionskontrolle",
+                "required": true
+            },
+            {
+                "id": "politur",
+                "label": "Politur",
+                "required": true
+            },
+            {
+                "id": "fluoridierung",
+                "label": "Fluoridierung",
+                "required": false
+            },
+            {
+                "id": "entlassung",
+                "label": "Entlassung",
+                "required": true
+            }
+        ]
+    },
+    "billing": {
+        "GKV": {
+            "basis": {
+                "1_flaeche": "BEMA_13a",
+                "2_flaechen": "BEMA_13b",
+                "3_flaechen": "BEMA_13c",
+                "4_plus_flaechen": "BEMA_13d"
+            },
+            "nebenleistungen": {
+                "infiltration": "BEMA_40",
+                "leitung": "BEMA_41a",
+                "kofferdam": "BEMA_12",
+                "cp": "BEMA_25",
+                "p": "BEMA_26",
+                "fluoridierung": "BEMA_IP4"
+            }
+        },
+        "PKV": {
+            "basis": {
+                "1_flaeche": "GOZ_2060",
+                "2_flaechen": "GOZ_2080",
+                "3_flaechen": "GOZ_2100",
+                "4_plus_flaechen": "GOZ_2120"
+            },
+            "nebenleistungen": {
+                "infiltration": "GOZ_0090",
+                "leitung": "GOZ_0100",
+                "kofferdam": "GOZ_2040",
+                "cp": "GOZ_2330",
+                "p": "GOZ_2340",
+                "fluoridierung": "GOZ_1020",
+                "oberflaeche": "GOZ_0080"
+            }
+        },
+        "MKV": {
+            "hinweis": "GKV-Basis + private GOZ-Zusatzleistungen",
+            "zusatz_goz": {
+                "adhaesiv": "GOZ_2197",
+                "mehrschicht": null
+            }
+        }
+    },
+    "mkv_optionen": {
+        "zuzahlung": {
+            "label": "Zuzahlungsbetrag (Privatrechnung)",
+            "optionen": [
+                {
+                    "id": "50",
+                    "label": "50€",
+                    "wert": 50,
+                    "empfohlen_bei": "1_flaeche"
+                },
+                {
+                    "id": "80",
+                    "label": "80€",
+                    "wert": 80,
+                    "empfohlen_bei": "2_flaechen"
+                },
+                {
+                    "id": "100",
+                    "label": "100€",
+                    "wert": 100,
+                    "empfohlen_bei": "3_flaechen"
+                },
+                {
+                    "id": "120",
+                    "label": "120€",
+                    "wert": 120,
+                    "empfohlen_bei": "3_flaechen"
+                },
+                {
+                    "id": "150",
+                    "label": "150€",
+                    "wert": 150,
+                    "empfohlen_bei": "4_plus_flaechen"
+                }
+            ]
+        },
+        "leistungen": [
+            {
+                "id": "mehrschicht",
+                "label": "Mehrschichttechnik",
+                "beschreibung": "Schichtweiser Aufbau für besseren Randschluss",
+                "dokumentation": "Komposit in Mehrschichttechnik schichtweise appliziert",
+                "goz_code": null,
+                "pflicht_bei_mkv": true
+            },
+            {
+                "id": "adhaesiv",
+                "label": "Adhäsivtechnik (GOZ 2197)",
+                "beschreibung": "Separates Bonding mit Dentinadhäsiv",
+                "dokumentation": "Ätz-/Adhäsivtechnik Schmelz/Dentin mit Dentinadhäsiv",
+                "goz_code": "GOZ_2197",
+                "pflicht_bei_mkv": false,
+                "hinweis": "Umstritten bei PKV - BZÄK sagt: in GOZ enthalten"
+            }
+        ]
+    },
+    "materialien": {
+        "komposite": [
+            {
+                "id": "venus_diamond",
+                "name": "Venus Diamond",
+                "hersteller": "Kulzer",
+                "typ": "Nano-Hybrid",
+                "premium": true
+            },
+            {
+                "id": "tetric_evoceram",
+                "name": "Tetric EvoCeram",
+                "hersteller": "Ivoclar",
+                "typ": "Nano-Hybrid",
+                "premium": true
+            },
+            {
+                "id": "filtek_supreme",
+                "name": "Filtek Supreme",
+                "hersteller": "3M",
+                "typ": "Nano",
+                "premium": true
+            },
+            {
+                "id": "standard",
+                "name": "Standard-Komposit",
+                "hersteller": "",
+                "typ": "",
+                "premium": false
+            }
+        ],
+        "ueberkappung": [
+            {
+                "id": "caoh2",
+                "name": "Ca(OH)₂",
+                "fuer": [
+                    "cp"
+                ],
+                "standard": true
+            },
+            {
+                "id": "mta",
+                "name": "MTA",
+                "fuer": [
+                    "p",
+                    "cp"
+                ],
+                "standard": false
+            },
+            {
+                "id": "biodentine",
+                "name": "Biodentine",
+                "fuer": [
+                    "p",
+                    "cp"
+                ],
+                "standard": false
+            }
+        ],
+        "adhaesive": [
+            {
+                "id": "optibond_fl",
+                "name": "Optibond FL",
+                "hersteller": "Kerr",
+                "typ": "3-Schritt"
+            },
+            {
+                "id": "syntac",
+                "name": "Syntac",
+                "hersteller": "Ivoclar",
+                "typ": "3-Schritt"
+            },
+            {
+                "id": "scotchbond",
+                "name": "Scotchbond Universal",
+                "hersteller": "3M",
+                "typ": "Universal"
+            }
+        ]
+    },
+    "fragen": {
+        "forensisch": [
+            {
+                "id": "vitality",
+                "frage": "Sensibilitätsprobe?",
+                "optionen": [
+                    {
+                        "id": "pos",
+                        "label": "ViPr +",
+                        "text": "Sensibilität positiv"
+                    },
+                    {
+                        "id": "neg",
+                        "label": "ViPr −",
+                        "text": "Sensibilität negativ"
+                    }
+                ],
+                "immer_fragen": true
+            },
+            {
+                "id": "percussion",
+                "frage": "Perkussionsprobe?",
+                "optionen": [
+                    {
+                        "id": "neg",
+                        "label": "Perk −",
+                        "text": "Perkussion negativ"
+                    },
+                    {
+                        "id": "pos",
+                        "label": "Perk +",
+                        "text": "Perkussion positiv"
+                    }
+                ],
+                "immer_fragen": true
+            }
+        ],
+        "upsell": [
+            {
+                "id": "kofferdam",
+                "frage": "Kofferdam verwendet?",
+                "optionen": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, Kofferdam",
+                        "billing": {
+                            "GKV": "BEMA_12",
+                            "PKV": "GOZ_2040"
+                        },
+                        "text": "Absolute Trockenlegung mittels Kofferdam"
+                    },
+                    {
+                        "id": "relative",
+                        "label": "Relative Trockenlegung",
+                        "text": "Relative Trockenlegung"
+                    }
+                ]
+            },
+            {
+                "id": "capping",
+                "frage": "Pulpanah? Überkappung?",
+                "bedingung": {
+                    "diagnose_enthaelt": "profunda"
+                },
+                "optionen": [
+                    {
+                        "id": "cp",
+                        "label": "Cp (indirekt)",
+                        "billing": {
+                            "GKV": "BEMA_25",
+                            "PKV": "GOZ_2330"
+                        },
+                        "text": "Indirekte Überkappung mit Ca(OH)₂"
+                    },
+                    {
+                        "id": "p",
+                        "label": "P (direkt)",
+                        "billing": {
+                            "GKV": "BEMA_26",
+                            "PKV": "GOZ_2340"
+                        },
+                        "text": "Direkte Überkappung bei punktförmiger Pulpaeröffnung"
+                    },
+                    {
+                        "id": "none",
+                        "label": "Nicht erforderlich",
+                        "text": "Keine Pulpanähe"
+                    }
+                ]
+            },
+            {
+                "id": "fluoride",
+                "frage": "Fluoridierung durchgeführt?",
+                "optionen": [
+                    {
+                        "id": "yes",
+                        "label": "Ja",
+                        "billing": {
+                            "GKV": "BEMA_IP4",
+                            "PKV": "GOZ_1020"
+                        },
+                        "text": "Abschließend Fluoridierung"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein"
+                    }
+                ]
+            }
+        ]
+    },
+    "anaesthesie_regeln": {
+        "standard": {
+            "OK_alle": "infiltration",
+            "UK_front": "infiltration",
+            "UK_praemolar": "infiltration_oder_leitung",
+            "UK_molar": "leitung"
+        },
+        "alternativ": {
+            "UK_molar_ILA": {
+                "label": "Intraligamentäranästhesie",
+                "zaehne": [
+                    "36",
+                    "37",
+                    "38",
+                    "46",
+                    "47",
+                    "48"
+                ],
+                "dokumentation": "Intraligamentäranästhesie",
+                "billing": "BEMA_42"
+            }
+        }
+    },
+    "text_vorlagen": {
+        "kurz": {
+            "aufklaerung": "Aufkl. + Einw.",
+            "exkavation": "Exkav.",
+            "fuellung_standard": "Komposit.",
+            "fuellung_mehrschicht": "Komp. Mehrschicht.",
+            "entlassung": "o.B. entl."
+        },
+        "mittel": {
+            "aufklaerung": "Pat. aufgeklärt; Einwilligung erteilt.",
+            "exkavation": "Exkavation kariöser Anteile.",
+            "fuellung_standard": "Komposit eingebracht und lichthärtend polymerisiert.",
+            "fuellung_mehrschicht": "Komposit in Mehrschichttechnik appliziert.",
+            "entlassung": "Pat. beschwerdearm entlassen."
+        },
+        "lang": {
+            "aufklaerung": "Patient über Behandlung, Risiken (postoperative Sensibilität, Pulpitis, Füllungsverlust) aufgeklärt. Alternativen besprochen. Einwilligung erteilt.",
+            "exkavation": "Exkavation kariöser Anteile bis Kavität sondenhart.",
+            "fuellung_standard": "Komposit eingebracht und lichthärtend polymerisiert. Material fest und randständig.",
+            "fuellung_mehrschicht": "Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend polymerisiert.",
+            "entlassung": "Patient beschwerdearm entlassen. Hinweis auf mögliche postoperative Sensibilität."
+        }
+    },
+    "regeln": {
+        "kombinationen": [
+            {
+                "id": "regel_mehrschicht_text",
+                "beschreibung": "Bei GKV + Mehrschicht muss Zuzahlung dokumentiert werden",
+                "wenn": {
+                    "versicherung": "GKV",
+                    "text_enthaelt": [
+                        "Mehrschicht",
+                        "schichtweise"
+                    ]
+                },
+                "dann": {
+                    "erfordert": "mkv_aktiv"
+                },
+                "fehler": "Mehrschichttechnik bei GKV erfordert Mehrkostenvereinbarung!"
+            },
+            {
+                "id": "regel_goz2197_nur_mkv",
+                "beschreibung": "GOZ 2197 nur bei MKV, nicht bei PKV",
+                "wenn": {
+                    "versicherung": "PKV",
+                    "position_enthaelt": "GOZ_2197"
+                },
+                "dann": {
+                    "warnung": true
+                },
+                "fehler": "GOZ 2197 bei PKV umstritten (BZÄK: in Füllung enthalten)"
+            },
+            {
+                "id": "regel_cp_tiefe_karies",
+                "beschreibung": "Cp nur bei tiefer Karies",
+                "wenn": {
+                    "position_enthaelt": [
+                        "BEMA_25",
+                        "GOZ_2330"
+                    ],
+                    "diagnose_nicht": "profunda"
+                },
+                "dann": {
+                    "warnung": true
+                },
+                "fehler": "Cp nur bei Caries profunda abrechenbar"
+            }
+        ],
+        "pflichtdokumentation": [
+            {
+                "wenn": "anaesthesie_leitung",
+                "text_muss_enthalten": [
+                    "Leitungsanästhesie",
+                    "LA Leitg."
+                ]
+            },
+            {
+                "wenn": "kofferdam",
+                "text_muss_enthalten": [
+                    "Kofferdam",
+                    "Kffdm."
+                ]
+            },
+            {
+                "wenn": "mkv_aktiv",
+                "text_muss_enthalten": [
+                    "Mehrkostenvereinbarung",
+                    "MKV"
+                ]
+            }
+        ]
+    },
+    "forensische_defaults": {
+        "beschreibung": "Diese Texte erscheinen immer (wenn aktiviert in Settings)",
+        "texte": [
+            {
+                "id": "aufklaerung",
+                "label": "Aufklärung erfolgt",
+                "standard": true
+            },
+            {
+                "id": "alternativen",
+                "label": "Alternativen besprochen",
+                "standard": true
+            },
+            {
+                "id": "risiken",
+                "label": "Risiken erklärt",
+                "standard": true
+            },
+            {
+                "id": "einwilligung",
+                "label": "Einwilligung erteilt",
+                "standard": true
+            },
+            {
+                "id": "anamnese",
+                "label": "Anamnese aktuell",
+                "standard": false
+            },
+            {
+                "id": "material_alt",
+                "label": "Materialalternativen besprochen (GKV)",
+                "standard": false,
+                "nur_gkv": true
+            }
+        ]
+    }
+}

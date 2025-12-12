@@ -1,46 +1,24 @@
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { 
-  HomeIcon, 
-  Cog6ToothIcon, 
-  BookOpenIcon, 
-  EnvelopeIcon, 
-  ArrowRightOnRectangleIcon, 
-  StarIcon 
-} from "@heroicons/react/24/outline";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Navigation - Warm Dark Coral Theme
+ * 
+ * Design principles:
+ * - Small and subtle
+ * - Round items/dots
+ * - No emojis
+ * - Dark coral aesthetic
+ */
+
 const navItems = [
-  { path: "/dashboard", icon: <HomeIcon className="h-5 w-5" />, label: "Dashboard" },
-  { path: "/medical-knowledge", icon: <BookOpenIcon className="h-5 w-5" />, label: "Wissensdatenbank" },
-  { path: "/email", icon: <EnvelopeIcon className="h-5 w-5" />, label: "E-Mail" },
-  { path: "/settings", icon: <Cog6ToothIcon className="h-5 w-5" />, label: "Einstellungen" }
+  { path: "/dashboard", label: "Home" },
+  { path: "/docudent/v6", label: "V6", highlight: true },
+  { path: "/docudent-v5", label: "V5" },
+  { path: "/settings", label: "Settings" }
 ];
-
-const navItemVariants = {
-  initial: { scale: 1 },
-  hover: { 
-    scale: 1.05,
-    transition: {
-      type: "spring",
-      stiffness: 400,
-      damping: 10
-    }
-  }
-};
-
-const activeItemVariants = {
-  initial: { scale: 1 },
-  hover: { 
-    scale: 1.05,
-    transition: {
-      type: "spring",
-      stiffness: 400,
-      damping: 10
-    }
-  }
-};
 
 export default function Navigation() {
   const location = useLocation();
@@ -56,83 +34,105 @@ export default function Navigation() {
     }
   };
 
+  // Check if on V6 page - use transparent nav
+  const isV6Page = location.pathname.startsWith('/docudent/v6');
+
   return (
     <motion.nav
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50"
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        background: isV6Page
+          ? 'transparent'
+          : 'rgba(44, 26, 30, 0.95)',
+        backdropFilter: isV6Page ? 'none' : 'blur(12px)',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <motion.div 
-            className="flex items-center"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-14">
+          {/* Logo - Minimal */}
+          <motion.div
+            whileHover={{ opacity: 0.8 }}
+            transition={{ duration: 0.2 }}
           >
-            <Link to="/dashboard" className="flex items-center gap-3">
-              <img src="/inverted_logo.png" alt="Logo" className="h-8 w-8" />
-              <span className="text-gray-900 font-semibold text-lg tracking-tight">DOCUDENT</span>
+            <Link
+              to="/dashboard"
+              className="text-sm font-medium tracking-wide"
+              style={{
+                color: isV6Page ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.7)',
+                letterSpacing: '0.1em',
+              }}
+            >
+              DOCUDENT
             </Link>
           </motion.div>
 
-          {/* Navigation Items */}
-          <div className="flex items-center space-x-1">
-            {/* Landingpage-Link ganz links */}
-            <motion.div
-              variants={location.pathname === "/landing" ? activeItemVariants : navItemVariants}
-              initial="initial"
-              whileHover="hover"
+          {/* Navigation Items - Minimal dots + labels */}
+          <div className="flex items-center gap-1">
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+
+              return (
+                <motion.div
+                  key={item.path}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Link
+                    to={item.path}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium transition-all"
+                    style={{
+                      background: isActive
+                        ? 'rgba(255, 107, 74, 0.15)'
+                        : item.highlight && !isActive
+                          ? 'rgba(255, 107, 74, 0.08)'
+                          : 'transparent',
+                      color: isActive
+                        ? '#FF6B4A'
+                        : item.highlight && !isActive
+                          ? '#FF6B4A'
+                          : 'rgba(255,255,255,0.5)',
+                    }}
+                  >
+                    {/* Active dot */}
+                    {isActive && (
+                      <span
+                        className="w-1.5 h-1.5 rounded-full"
+                        style={{ background: '#FF6B4A' }}
+                      />
+                    )}
+                    {item.label}
+                  </Link>
+                </motion.div>
+              );
+            })}
+
+            {/* Divider */}
+            <div
+              className="w-px h-4 mx-2"
+              style={{ background: 'rgba(255,255,255,0.1)' }}
+            />
+
+            {/* Logout - Subtle */}
+            <motion.button
+              onClick={handleLogout}
+              whileHover={{ opacity: 0.8 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-3 py-2 rounded-full text-xs transition-all"
+              style={{
+                color: 'rgba(255,255,255,0.4)',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+              }}
             >
-              <Link
-                to="/landing"
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${
-                  location.pathname === "/landing"
-                    ? "bg-blue-50 text-blue-600 font-medium"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                }`}
-              >
-                <StarIcon className="h-5 w-5" />
-                Landingpage
-              </Link>
-            </motion.div>
-            {navItems.map((item) => (
-              <motion.div
-                key={item.path}
-                variants={location.pathname === item.path ? activeItemVariants : navItemVariants}
-                initial="initial"
-                whileHover="hover"
-              >
-                <Link
-                  to={item.path}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${
-                    location.pathname === item.path
-                      ? "bg-blue-50 text-blue-600 font-medium"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                }`}
-              >
-                  {item.icon}
-                  {item.label}
-                </Link>
-              </motion.div>
-            ))}
-            <motion.div
-              variants={navItemVariants}
-              initial="initial"
-              whileHover="hover"
-            >
-              <button
-                onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all"
-              >
-                <ArrowRightOnRectangleIcon className="h-5 w-5" />
-                Abmelden
-              </button>
-            </motion.div>
+              Logout
+            </motion.button>
           </div>
         </div>
       </div>
     </motion.nav>
   );
-} 
+}

@@ -1,0 +1,294 @@
+{
+    "id": "fuellung",
+    "version": "1.0.0",
+    "label": "Füllung / Restauration",
+    "labelShort": "Füllung",
+    "category": "konservierend",
+    "icon": "fill",
+    "detection": {
+        "keywords": [
+            "füllung",
+            "fuellung",
+            "filling",
+            "komposit",
+            "amalgam",
+            "restauration",
+            "kavität"
+        ],
+        "conditions": {
+            "hasSurfaces": true,
+            "versorgungsart": "fuellung"
+        }
+    },
+    "billingCodes": {
+        "hauptleistung": {
+            "description": "Füllungsleistung nach Flächenanzahl",
+            "GKV": {
+                "rules": {
+                    "1_flaeche": {
+                        "$ref": "bema#BEMA_13a"
+                    },
+                    "2_flaechen": {
+                        "$ref": "bema#BEMA_13b"
+                    },
+                    "3_flaechen": {
+                        "$ref": "bema#BEMA_13c"
+                    },
+                    "aufbau": {
+                        "$ref": "bema#BEMA_13d"
+                    }
+                },
+                "logic": "surfaces.length <= 1 ? '1_flaeche' : surfaces.length === 2 ? '2_flaechen' : '3_flaechen'"
+            },
+            "PKV": {
+                "rules": {
+                    "1_flaeche": {
+                        "$ref": "goz#GOZ_2060"
+                    },
+                    "2_flaechen": {
+                        "$ref": "goz#GOZ_2080"
+                    },
+                    "3_flaechen": {
+                        "$ref": "goz#GOZ_2100"
+                    },
+                    "4_flaechen": {
+                        "$ref": "goz#GOZ_2120"
+                    }
+                },
+                "logic": "surfaces.length <= 1 ? '1_flaeche' : surfaces.length === 2 ? '2_flaechen' : surfaces.length === 3 ? '3_flaechen' : '4_flaechen'"
+            }
+        },
+        "nebenleistungen": {
+            "anaesthesie": {
+                "description": "Anästhesie nach Art und Zahnposition",
+                "oberflaeche": {
+                    "$ref": "goz#GOZ_0080",
+                    "when": "insuranceType === 'PKV'",
+                    "autoAccept": true
+                },
+                "infiltration": {
+                    "GKV": {
+                        "$ref": "bema#BEMA_40"
+                    },
+                    "PKV": {
+                        "$ref": "goz#GOZ_0090"
+                    }
+                },
+                "leitung": {
+                    "GKV": {
+                        "$ref": "bema#BEMA_41a"
+                    },
+                    "PKV": {
+                        "$ref": "goz#GOZ_0100"
+                    },
+                    "when": "isUkMolar(tooth)"
+                }
+            },
+            "isolation": {
+                "kofferdam": {
+                    "GKV": {
+                        "$ref": "bema#BEMA_12"
+                    },
+                    "PKV": {
+                        "$ref": "goz#GOZ_2040"
+                    },
+                    "settingKey": "methodik.kofferdamStandard"
+                }
+            },
+            "ueberkappung": {
+                "description": "Bei tiefer Karies",
+                "indirekt_cp": {
+                    "GKV": {
+                        "$ref": "bema#BEMA_25"
+                    },
+                    "PKV": {
+                        "$ref": "goz#GOZ_2330"
+                    },
+                    "trigger": "diagnosis.includes('profunda') && !pulpaOpen"
+                },
+                "direkt_p": {
+                    "GKV": {
+                        "$ref": "bema#BEMA_26"
+                    },
+                    "PKV": {
+                        "$ref": "goz#GOZ_2340"
+                    },
+                    "trigger": "pulpaOpen === true"
+                }
+            },
+            "adhäsiv": {
+                "$ref": "goz#GOZ_2197",
+                "when": "material.includes('komposit')",
+                "autoAccept": true,
+                "note": "Bei GKV als Mehrkosten (gleichartig)"
+            },
+            "unterfuellung": {
+                "$ref": "goz#GOZ_2050",
+                "when": "insuranceType === 'PKV' && (deepCavity || settings.tiefKaries.unterfuellungStandard)",
+                "settingKey": "tiefKaries.unterfuellungStandard"
+            },
+            "fluoridierung": {
+                "GKV": {
+                    "$ref": "bema#BEMA_IP4"
+                },
+                "PKV": {
+                    "$ref": "goz#GOZ_1020"
+                },
+                "settingKey": "finishing.fluoridImmer"
+            }
+        },
+        "analogpositionen": {
+            "kariesdetektor": {
+                "$ref": "goz#GOZ_2020",
+                "suffix": "a",
+                "begruendung": "Kariesanfärbung zur selektiven Exkavation",
+                "paragraph": "§6 Abs. 1 GOZ"
+            }
+        },
+        "mehrkosten": {
+            "description": "Bei GKV mit Kompositfüllung (gleichartig)",
+            "komposit_gkv": {
+                "positions": [
+                    "GOZ_2197"
+                ],
+                "requires": "mehrkostenvereinbarung",
+                "note": "Vereinbarung VOR Behandlung unterschreiben!"
+            }
+        }
+    },
+    "workflow": {
+        "phases": [
+            {
+                "id": "vorbereitung",
+                "label": "Vorbereitung",
+                "steps": [
+                    "Diagnosestellung",
+                    "Aufklärung",
+                    "Anästhesie"
+                ]
+            },
+            {
+                "id": "praeparation",
+                "label": "Präparation",
+                "steps": [
+                    "Trockenlegung",
+                    "Kariesexkavation",
+                    "Kavitätenkontrolle"
+                ]
+            },
+            {
+                "id": "restauration",
+                "label": "Restauration",
+                "steps": [
+                    "Überkappung (wenn nötig)",
+                    "Adhäsivtechnik",
+                    "Schichtung",
+                    "Lichthärtung"
+                ]
+            },
+            {
+                "id": "finishing",
+                "label": "Finishing",
+                "steps": [
+                    "Ausarbeitung",
+                    "Okklusionskontrolle",
+                    "Politur",
+                    "Fluoridierung"
+                ]
+            }
+        ]
+    },
+    "documentation": {
+        "required": [
+            {
+                "field": "tooth",
+                "label": "Zahnnummer"
+            },
+            {
+                "field": "surfaces",
+                "label": "Flächen"
+            },
+            {
+                "field": "diagnosis",
+                "label": "Diagnose"
+            },
+            {
+                "field": "material",
+                "label": "Material"
+            },
+            {
+                "field": "anesthesia",
+                "label": "Anästhesie"
+            }
+        ],
+        "recommended": [
+            {
+                "field": "isolation",
+                "label": "Trockenlegung"
+            },
+            {
+                "field": "capping",
+                "label": "Überkappung"
+            },
+            {
+                "field": "adhesiveSystem",
+                "label": "Adhäsivsystem"
+            }
+        ],
+        "forensic": [
+            {
+                "field": "aufklaerung",
+                "label": "Aufklärung erfolgt"
+            },
+            {
+                "field": "alternativen",
+                "label": "Alternativen besprochen"
+            },
+            {
+                "field": "pulpStatus",
+                "label": "Pulpazustand"
+            }
+        ]
+    },
+    "smartDefaults": {
+        "description": "Empfohlene Praxis-Einstellungen für optimale Abrechnung",
+        "recommended": {
+            "anaesthesie.ukSeitenzahn": "leitung",
+            "anaesthesie.oberflaecheImmer": true,
+            "methodik.kofferdamStandard": true,
+            "tiefKaries.unterfuellungStandard": true,
+            "finishing.fluoridImmer": true,
+            "questionLevel": "standard"
+        }
+    },
+    "optimierungsTipps": [
+        {
+            "id": "leitung_statt_infiltration",
+            "category": "anaesthesie",
+            "text": "Bei UK-Seitenzähnen BEMA 41a (12 Punkte) statt BEMA 40 (8 Punkte) = +50% mehr!",
+            "insuranceType": "GKV"
+        },
+        {
+            "id": "oberflaechenaneasthesie",
+            "category": "anaesthesie",
+            "text": "GOZ 0080 (7,25€) IMMER vor jeder Injektion ansetzen!",
+            "insuranceType": "PKV"
+        },
+        {
+            "id": "kofferdam_nicht_vergessen",
+            "category": "isolation",
+            "text": "Kofferdam (BEMA 12 / GOZ 2040) wird oft vergessen - verbessert Qualität UND Abrechnung"
+        },
+        {
+            "id": "cp_dokumentation",
+            "category": "ueberkappung",
+            "text": "Bei tiefer Karies UNBEDINGT Cp (BEMA 25) oder P (BEMA 26) ansetzen - Material dokumentieren!"
+        },
+        {
+            "id": "adhaesiv_pkv",
+            "category": "adhäsiv",
+            "text": "GOZ 2197 bei JEDER Kompositfüllung (PKV) - fast immer vergessen!",
+            "insuranceType": "PKV"
+        }
+    ]
+}

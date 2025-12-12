@@ -1,0 +1,326 @@
+[
+    {
+        "id": "par_komplett_gkv",
+        "titel": "Systematische Parodontitistherapie - GKV (PAR 2021)",
+        "kategorie": "parodontologie",
+        "versicherung": "GKV",
+        "beschreibung": "Vollständige PAR-Behandlungsstrecke nach neuer Richtlinie 2021",
+        "natuerliche_anleitung": "Die PAR-Richtlinie 2021 hat neue BEMA-Positionen eingeführt. WICHTIG: ATG (Aufklärungsgespräch) NICHT mit Ä1 kombinieren! MHU und AIT erst nach genehmigtem PAR-Plan. Bei UPT kann Anästhesie separat berechnet werden wenn medizinisch notwendig. Die gesamte Behandlungsstrecke dauert 2 Jahre.",
+        "phasen": [
+            {
+                "phase": "1. Befunderhebung",
+                "zeitpunkt": "Ersttermin",
+                "positionen": [
+                    {
+                        "code": "BEMA_01",
+                        "bezeichnung": "Eingehende Untersuchung",
+                        "wann": "Falls nicht bereits in Quartal",
+                        "punkte": 15.5
+                    },
+                    {
+                        "code": "BEMA_04",
+                        "bezeichnung": "Parodontaler Screening Index (PSI)",
+                        "wann": "Zur Diagnostik",
+                        "punkte": 10
+                    },
+                    {
+                        "code": "BEMA_Ä925a",
+                        "bezeichnung": "Röntgen",
+                        "wann": "Status/OPG zur Knochenbeurteilung",
+                        "punkte": 5
+                    }
+                ]
+            },
+            {
+                "phase": "2. ATG - Aufklärungs- und Therapiegespräch",
+                "zeitpunkt": "Nach Diagnosestellung",
+                "positionen": [
+                    {
+                        "code": "BEMA_ATG",
+                        "bezeichnung": "Parodontologisches Aufklärungs- und Therapiegespräch",
+                        "punkte": 28,
+                        "wichtig": "NICHT mit Ä1 in gleicher Sitzung kombinieren!",
+                        "regressfalle": true
+                    }
+                ]
+            },
+            {
+                "phase": "3. MHU - Mundhygieneunterweisung",
+                "zeitpunkt": "Nach genehmigtem PAR-Plan",
+                "bedingung": "Genehmigung der KK erforderlich",
+                "positionen": [
+                    {
+                        "code": "BEMA_MHU",
+                        "bezeichnung": "Patientenindividuelle Mundhygieneunterweisung",
+                        "punkte": 25,
+                        "tipp": "Erst NACH genehmigtem PAR-Plan abrechenbar!"
+                    }
+                ]
+            },
+            {
+                "phase": "4. AIT - Antiinfektiöse Therapie",
+                "zeitpunkt": "Nach MHU",
+                "positionen": [
+                    {
+                        "code": "BEMA_AIT",
+                        "bezeichnung": "Antiinfektiöse Therapie",
+                        "info": "Supragingivale und subgingivale Belagentfernung bei ST ≥4mm",
+                        "wichtig": "BEMA 105, 107, 107a sind während/nach AIT ABGEGOLTEN!"
+                    },
+                    {
+                        "code": "BEMA_40",
+                        "bezeichnung": "Anästhesie",
+                        "wann": "Bei Bedarf",
+                        "punkte": 8
+                    },
+                    {
+                        "code": "BEMA_41a",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei UK-Seitenzähnen",
+                        "punkte": 12
+                    }
+                ]
+            },
+            {
+                "phase": "5. BEV - Befundevaluation",
+                "zeitpunkt": "3-6 Monate nach AIT",
+                "positionen": [
+                    {
+                        "code": "BEMA_BEVa",
+                        "bezeichnung": "Befundevaluation",
+                        "punkte": 15,
+                        "info": "1x in der Behandlungsstrecke vorgesehen"
+                    }
+                ]
+            },
+            {
+                "phase": "6. CPT - Chirurgische Parodontaltherapie (optional)",
+                "zeitpunkt": "Nach BEV, bei Indikation",
+                "bedingung": "Bei persistierenden Taschen ≥6mm",
+                "positionen": [
+                    {
+                        "code": "BEMA_CPT",
+                        "bezeichnung": "Chirurgische Parodontaltherapie",
+                        "info": "Erfordert gesonderte Antragsgenehmigung"
+                    },
+                    {
+                        "code": "BEMA_40",
+                        "bezeichnung": "Anästhesie",
+                        "punkte": 8
+                    },
+                    {
+                        "code": "BEMA_54",
+                        "bezeichnung": "Naht",
+                        "punkte": 8
+                    }
+                ]
+            },
+            {
+                "phase": "7. UPT - Unterstützende Parodontitistherapie",
+                "zeitpunkt": "Nach Abschluss aktiver Therapie, 2 Jahre lang",
+                "positionen": [
+                    {
+                        "code": "BEMA_UPTa",
+                        "bezeichnung": "UPT Grad A (geringes Risiko)",
+                        "info": "1x pro Jahr",
+                        "wann": "Bei stabilem Befund"
+                    },
+                    {
+                        "code": "BEMA_UPTb",
+                        "bezeichnung": "UPT Grad B (mittleres Risiko)",
+                        "info": "2x pro Jahr",
+                        "wann": "Bei mittlerem Risiko"
+                    },
+                    {
+                        "code": "BEMA_UPTc",
+                        "bezeichnung": "UPT Grad C (hohes Risiko)",
+                        "info": "3-4x pro Jahr",
+                        "wann": "Bei hohem Risiko (Raucher, Diabetes)"
+                    }
+                ],
+                "zusaetzlich": [
+                    {
+                        "code": "BEMA_40/41a",
+                        "bezeichnung": "Anästhesie bei subgingivaler Instrumentierung",
+                        "wann": "Bei medizinischer Notwendigkeit",
+                        "tipp": "SEPARAT berechenbar bei UPT!",
+                        "punkte": "8/12"
+                    }
+                ],
+                "nicht_zusaetzlich": [
+                    "PZR ist NICHT neben UPT für gleiche Zähne berechenbar (Leistungsüberschneidung)"
+                ]
+            }
+        ],
+        "dokumentation_erforderlich": [
+            "PSI-Werte",
+            "Sondierungstiefen",
+            "Raucheranamnese",
+            "Systemische Erkrankungen (Diabetes!)",
+            "Bei ATG: Gesprächsinhalt dokumentieren"
+        ],
+        "regressfallen": [
+            "ATG + Ä1 in gleicher Sitzung = REGRESS!",
+            "MHU vor genehmigtem PAR-Plan = NICHT berechnungsfähig!",
+            "PZR neben UPT für gleiche Zähne = Doppelabrechnung!",
+            "BEMA 04 während laufender PAR-Behandlung = NICHT berechnungsfähig!"
+        ],
+        "formulare": [
+            "Vordruck 5a: PAR-Befund und Antrag",
+            "Vordruck 5b: Ergänzungsantrag CPT",
+            "Vordruck 5c: Bescheinigung PAR-Abschluss",
+            "Vordruck 11: Erweiterter Parodontalstatus"
+        ]
+    },
+    {
+        "id": "par_komplett_pkv",
+        "titel": "Parodontitistherapie - PKV",
+        "kategorie": "parodontologie",
+        "versicherung": "PKV",
+        "beschreibung": "PAR-Behandlung bei Privatpatient - GOZ + Analogpositionen",
+        "natuerliche_anleitung": "Bei PKV gibt es KEINE AIT-Position in der GOZ! Viele Leistungen der PAR-Richtlinie 2021 müssen ANALOG nach §6 Abs.1 GOZ berechnet werden. BZÄK und PKV-Verband haben gemeinsame Analogziffern festgelegt für AIT, ATG, MHU etc. Fristen und Genehmigungsverfahren der GKV gelten NICHT für PKV!",
+        "phasen": [
+            {
+                "phase": "1. Diagnostik",
+                "positionen": [
+                    {
+                        "code": "GOZ_0010",
+                        "bezeichnung": "Eingehende Untersuchung",
+                        "betrag_23": 29.76
+                    },
+                    {
+                        "code": "GOZ_4000",
+                        "bezeichnung": "Parodontalstatus",
+                        "betrag_23": 53.45
+                    },
+                    {
+                        "code": "GOZ_5002",
+                        "bezeichnung": "OPG",
+                        "betrag_23": 57.91
+                    }
+                ]
+            },
+            {
+                "phase": "2. Initiale Therapie (Analogpositionen)",
+                "info": "Diese Leistungen müssen analog berechnet werden",
+                "positionen": [
+                    {
+                        "code": "ANALOG_ATG",
+                        "bezeichnung": "Aufklärungs- und Therapiegespräch",
+                        "analog_zu": "GOZ 0030 oder individuell",
+                        "tipp": "BZÄK Empfehlung beachten"
+                    },
+                    {
+                        "code": "ANALOG_MHU",
+                        "bezeichnung": "Mundhygieneunterweisung",
+                        "analog_zu": "GOZ 1000/1010 Kombination"
+                    },
+                    {
+                        "code": "ANALOG_AIT",
+                        "bezeichnung": "Antiinfektiöse Therapie",
+                        "analog_zu": "Individuell nach Aufwand",
+                        "tipp": "BZÄK Positionspapier PAR 2021 beachten"
+                    }
+                ]
+            },
+            {
+                "phase": "3. Subgingivale Therapie",
+                "positionen": [
+                    {
+                        "code": "GOZ_4005",
+                        "bezeichnung": "Subgingivale Kürettage je Zahn",
+                        "wann": "Bei geschlossenem Vorgehen",
+                        "betrag_23": 14.03
+                    },
+                    {
+                        "code": "GOZ_4020",
+                        "bezeichnung": "Lokalmedikation Tasche",
+                        "wann": "Bei Antibiotikaeinlage",
+                        "betrag_23": 7.25
+                    }
+                ]
+            },
+            {
+                "phase": "4. Parodontalchirurgie (bei Bedarf)",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "betrag_23": 7.25
+                    },
+                    {
+                        "code": "GOZ_0100",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "betrag_23": 24.31
+                    },
+                    {
+                        "code": "GOZ_4070",
+                        "bezeichnung": "Parodontalchirurgischer Eingriff je Zahn",
+                        "betrag_23": 43.47
+                    },
+                    {
+                        "code": "GOZ_4075",
+                        "bezeichnung": "Regenerative PAR-Chirurgie",
+                        "wann": "Bei GTR, Emdogain etc.",
+                        "betrag_23": 58.67
+                    },
+                    {
+                        "code": "GOZ_4110",
+                        "bezeichnung": "Knochenaufbau",
+                        "betrag_23": 52.16
+                    },
+                    {
+                        "code": "GOZ_3300",
+                        "bezeichnung": "Naht",
+                        "betrag_23": 25.16
+                    }
+                ],
+                "material": [
+                    {
+                        "bezeichnung": "Emdogain",
+                        "betrag": "150-300€"
+                    },
+                    {
+                        "bezeichnung": "Membran",
+                        "betrag": "50-150€"
+                    },
+                    {
+                        "bezeichnung": "Knochenersatz",
+                        "betrag": "80-200€"
+                    }
+                ]
+            },
+            {
+                "phase": "5. Erhaltungstherapie (UPT analog)",
+                "positionen": [
+                    {
+                        "code": "GOZ_1040",
+                        "bezeichnung": "PZR je Zahn",
+                        "wann": "Für supragingivale Reinigung",
+                        "betrag_23": 3.62,
+                        "anzahl": "Je Zahn (z.B. 28x)"
+                    },
+                    {
+                        "code": "GOZ_4005",
+                        "bezeichnung": "Subgingivale Reinigung je Zahn",
+                        "wann": "Bei Restrisiken",
+                        "betrag_23": 14.03
+                    },
+                    {
+                        "code": "GOZ_1020",
+                        "bezeichnung": "Fluoridierung",
+                        "wann": "Je Kiefer",
+                        "betrag_23": 9.25,
+                        "anzahl": 2
+                    }
+                ]
+            }
+        ],
+        "wichtige_hinweise": [
+            "GKV-Fristen gelten NICHT für PKV!",
+            "Keine Genehmigungspflicht bei PKV",
+            "Analogpositionen mit korrekter Beschreibung verwenden",
+            "BZÄK/PKV-Verband Empfehlungen für Erstattungssicherheit nutzen"
+        ]
+    }
+]

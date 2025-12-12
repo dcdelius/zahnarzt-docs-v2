@@ -1,0 +1,199 @@
+[
+    {
+        "id": "prothese_pkv",
+        "titel": "Prothese (Teil-/Totalprothese) - PKV",
+        "kategorie": "zahnersatz",
+        "versicherung": "PKV",
+        "beschreibung": "Herausnehmbarer Zahnersatz bei Privatpatient",
+        "phasen": [
+            {
+                "phase": "Abformung",
+                "positionen": [
+                    {
+                        "code": "GOZ_5170",
+                        "bezeichnung": "Situationsabformung je Kiefer",
+                        "wann": "Pro Kiefer",
+                        "betrag_23": 21.74
+                    },
+                    {
+                        "code": "GOZ_5180",
+                        "bezeichnung": "Funktionsabformung je Kiefer",
+                        "wann": "Für individuelle Löffel",
+                        "betrag_23": 65.27
+                    }
+                ]
+            },
+            {
+                "phase": "Bissnahme",
+                "positionen": [
+                    {
+                        "code": "GOZ_5190",
+                        "bezeichnung": "Bissschablone / Kieferrelationsbestimmung",
+                        "wann": "Bei Totalprothese oder stark reduzierter Bezahnung",
+                        "betrag_23": 43.54
+                    }
+                ]
+            },
+            {
+                "phase": "Einprobe",
+                "positionen": [
+                    {
+                        "code": "GOZ_5200",
+                        "bezeichnung": "Wachsanprobe",
+                        "wann": "Kontrolle vor Fertigstellung",
+                        "betrag_23": 32.66
+                    }
+                ]
+            },
+            {
+                "phase": "Teilprothese",
+                "positionen": [
+                    {
+                        "code": "GOZ_5210",
+                        "bezeichnung": "Klammerprothese",
+                        "wann": "Einfache Klammerprothese",
+                        "betrag_23": 130.54
+                    },
+                    {
+                        "code": "GOZ_5220",
+                        "bezeichnung": "Modellgussprothese",
+                        "wann": "Gegossene Klammern",
+                        "betrag_23": 217.59,
+                        "tipp": "Höherwertig als Klammerprothese!"
+                    },
+                    {
+                        "code": "GOZ_5230",
+                        "bezeichnung": "Teleskopprothese je Teleskop",
+                        "wann": "Pro Teleskopkrone",
+                        "anzahl_hinweis": "Anzahl = Teleskopkronen",
+                        "betrag_23": 173.65
+                    }
+                ]
+            },
+            {
+                "phase": "Totalprothese",
+                "positionen": [
+                    {
+                        "code": "GOZ_5240",
+                        "bezeichnung": "Totalprothese",
+                        "wann": "Bei vollständiger Zahnlosigkeit",
+                        "betrag_23": 282.86
+                    }
+                ]
+            },
+            {
+                "phase": "Eingliederung",
+                "positionen": [
+                    {
+                        "code": "GOZ_5250",
+                        "bezeichnung": "Eingliederung und Nachsorge",
+                        "wann": "Bei jedem Zahnersatz",
+                        "betrag_23": 43.54
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "prothese_gkv",
+        "titel": "Prothese - GKV mit Festzuschuss",
+        "kategorie": "zahnersatz",
+        "versicherung": "GKV",
+        "beschreibung": "Herausnehmbarer Zahnersatz bei GKV-Patient mit Festzuschuss",
+        "phasen": [
+            {
+                "phase": "Festzuschuss Prothese",
+                "positionen": [
+                    {
+                        "code": "FZ_3.1",
+                        "bezeichnung": "Teilprothese (bis 4 fehlende Zähne)",
+                        "wann": "Einfache Teilprothese",
+                        "betrag_60": 351.12,
+                        "betrag_70": 409.64,
+                        "betrag_75": 438.90
+                    },
+                    {
+                        "code": "FZ_3.2",
+                        "bezeichnung": "Teilprothese (mehr als 4 fehlende Zähne)",
+                        "wann": "Große Teilprothese",
+                        "betrag_60": 405.90,
+                        "betrag_70": 473.55,
+                        "betrag_75": 507.38
+                    },
+                    {
+                        "code": "FZ_4.1",
+                        "bezeichnung": "Totalprothese je Kiefer",
+                        "wann": "Bei vollständiger Zahnlosigkeit",
+                        "betrag_60": 430.29,
+                        "betrag_70": 502.00,
+                        "betrag_75": 537.86
+                    }
+                ]
+            },
+            {
+                "phase": "Festzuschuss Verankerung (optional)",
+                "positionen": [
+                    {
+                        "code": "FZ_5.1",
+                        "bezeichnung": "Klammer",
+                        "wann": "Pro Klammer",
+                        "betrag_60": 24.09,
+                        "betrag_70": 28.11,
+                        "betrag_75": 30.11
+                    },
+                    {
+                        "code": "FZ_5.7",
+                        "bezeichnung": "Teleskopkrone",
+                        "wann": "Pro Teleskopkrone",
+                        "betrag_60": 199.02,
+                        "betrag_70": 232.19,
+                        "betrag_75": 248.78
+                    },
+                    {
+                        "code": "FZ_5.8",
+                        "bezeichnung": "Geschiebe/Steg",
+                        "wann": "Pro Geschiebe-/Stegverankerung",
+                        "betrag_60": 52.35,
+                        "betrag_70": 61.08,
+                        "betrag_75": 65.44
+                    }
+                ]
+            },
+            {
+                "phase": "Kassenleistung (BEMA)",
+                "positionen": [
+                    {
+                        "code": "BEMA_96a",
+                        "bezeichnung": "Interimsprothese je Kiefer",
+                        "punkte": 85,
+                        "wann": "Provisorische Prothese"
+                    },
+                    {
+                        "code": "BEMA_97a",
+                        "bezeichnung": "Teilprothese je Kiefer",
+                        "punkte": 130,
+                        "wann": "Regelversorgung Teilprothese"
+                    },
+                    {
+                        "code": "BEMA_97b",
+                        "bezeichnung": "Totalprothese je Kiefer",
+                        "punkte": 165,
+                        "wann": "Regelversorgung Totalprothese"
+                    }
+                ]
+            }
+        ],
+        "festzuschuss_regeln": {
+            "bonus_staffel": {
+                "ohne": 0.6,
+                "5_jahre": 0.7,
+                "10_jahre": 0.75
+            }
+        },
+        "g_ba_regeln": [
+            "Befund-Befund-Prinzip",
+            "Regelversorgung = wirtschaftlichste Lösung",
+            "MKV bei höherwertiger Versorgung"
+        ]
+    }
+]

@@ -1,0 +1,611 @@
+{
+    "_meta": {
+        "id": "fuellung",
+        "version": "2025-01-v2",
+        "label": "Kompositfüllung",
+        "kategorie": "konservierend",
+        "stand": "2025-01-11",
+        "architektur": "rule-driven",
+        "hinweis": "Seit 01.01.2025: Amalgamverbot! Komposit (Bulkfill) = Kassenleistung im Seitenzahn."
+    },
+    "requiredFieldsGlobal": [
+        "zahn",
+        "flaechen",
+        "vitality"
+    ],
+    "chips": [
+        {
+            "id": "vipr_pos",
+            "label": "ViPr +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr +",
+                "mittel": "ViPr +",
+                "lang": "Sensibilität positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_neg"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_VITAL_DOKU"
+            ],
+            "forensicNotes": [
+                "Sensibilitätsprüfung dokumentieren: ViPr+/ViPr-"
+            ]
+        },
+        {
+            "id": "vipr_neg",
+            "label": "ViPr −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr −",
+                "mittel": "ViPr −",
+                "lang": "Sensibilität negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_pos"
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_VITAL_DOKU",
+                "RULE_FUELLUNG_DEVITAL_WARNUNG"
+            ],
+            "forensicNotes": [
+                "Bei ViPr- → Endokontrolle erwägen",
+                "Devitaler Zahn bei Füllung dokumentieren"
+            ]
+        },
+        {
+            "id": "perk_neg",
+            "label": "Perk −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk −",
+                "mittel": "Perk −",
+                "lang": "Perkussion negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_pos"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_PERK_DOKU"
+            ],
+            "forensicNotes": []
+        },
+        {
+            "id": "perk_pos",
+            "label": "Perk +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk +",
+                "mittel": "Perk +",
+                "lang": "Perkussion positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_neg"
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_PERK_DOKU",
+                "RULE_FUELLUNG_PERK_POS_WARNUNG"
+            ],
+            "forensicNotes": [
+                "Perk+ kann auf Pulpitis hinweisen",
+                "Ggf. Endo erwägen"
+            ]
+        },
+        {
+            "id": "la_infiltr",
+            "label": "LA Infiltration",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Infiltr.",
+                "mittel": "LA Infiltration (Ultracain D-S).",
+                "lang": "Nach Oberflächenanästhesie Infiltrationsanästhesie mit Ultracain D-S 1,7ml (Articain 4% + Adrenalin 1:200.000)."
+            },
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Infiltration"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_leitung",
+                "ohne_la"
+            ],
+            "defaultActive": true,
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_LA_QUADRANT"
+            ],
+            "forensicNotes": [
+                "Bei OK: Infiltration Standard",
+                "Material und Menge dokumentieren"
+            ]
+        },
+        {
+            "id": "la_leitung",
+            "label": "LA Leitung",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Leitung.",
+                "mittel": "Leitungsanästhesie N. alv. inf. (Ultracain D-S).",
+                "lang": "Leitungsanästhesie des N. alveolaris inf. mit Ultracain D-S 1,7ml (Articain 4% + Adrenalin 1:200.000); Wirkungseintritt nach ca. 3 min."
+            },
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Leitung"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_infiltr",
+                "ohne_la"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_LA_QUADRANT",
+                "RULE_LA_LEITUNG_UK"
+            ],
+            "forensicNotes": [
+                "Standard bei UK-Seitenzähnen (36-38, 46-48)"
+            ],
+            "conditionHint": "Standard bei UK-Seitenzähnen"
+        },
+        {
+            "id": "oberflaeche_la",
+            "label": "Oberflächenanästhesie",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "OA.",
+                "mittel": "Oberflächenanästhesie vor Injektion.",
+                "lang": "Oberflächenanästhesie vor Injektion appliziert (Lidocain-Spray/Gel)."
+            },
+            "billingRef": {
+                "PKV": "GOZ_0080"
+            },
+            "dataPatches": [
+                {
+                    "field": "surface_anesthesia",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_OBERFLAECHE_PKV_UPSELL"
+            ],
+            "forensicNotes": [],
+            "upsellCandidate": true,
+            "upsellNotes": [
+                "Nur bei PKV abrechenbar",
+                "GOZ 0080 zusätzlich zur Injektion"
+            ]
+        },
+        {
+            "id": "kofferdam",
+            "label": "Kofferdam",
+            "phase": "vorbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Kofferdam.",
+                "mittel": "Kofferdam angelegt.",
+                "lang": "Absolute Trockenlegung durch sorgfältiges Anlegen von Kofferdam mit anatomisch angepasster Klammer unter Sichterhaltung des Operationsfeldes."
+            },
+            "billingRef": {
+                "GKV": "BEMA_12",
+                "PKV": "GOZ_2040"
+            },
+            "dataPatches": [
+                {
+                    "field": "isolation",
+                    "value": "Kofferdam"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "rel_trocken"
+            ],
+            "defaultActive": true,
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_KOFFERDAM_PFLICHT"
+            ],
+            "forensicNotes": [
+                "Kofferdam MUSS dokumentiert sein für BEMA 12!",
+                "Ohne Dokumentation → REGRESS"
+            ]
+        },
+        {
+            "id": "rel_trocken",
+            "label": "Rel. Trockenlegung",
+            "phase": "vorbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Rel. Trockenlegung.",
+                "mittel": "Relative Trockenlegung.",
+                "lang": "Relative Trockenlegung mittels Watterollen und kontinuierlicher Absaugung."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "isolation",
+                    "value": "relativ"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kofferdam"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "exkavation",
+            "label": "Exkavation",
+            "phase": "exkavation",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Exkavation bis sondenhart.",
+                "mittel": "Exkavation kariöser Anteile bis sondenharter Konsistenz.",
+                "lang": "Selektive Exkavation kariöser Anteile unter Schonung gesunder Zahnhartsubstanz mittels Rosenbohrer und Handexkavatoren bis zur sondenharten Konsistenz im Kavitätenboden."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "excavation",
+                    "value": true
+                }
+            ],
+            "defaultActive": true,
+            "requiredFields": [
+                "tiefe"
+            ],
+            "ruleRefs": [
+                "RULE_TIEFE_CP_TRIGGER"
+            ],
+            "forensicNotes": [
+                "Bei tiefer Karies → Cp/P prüfen"
+            ]
+        },
+        {
+            "id": "cp",
+            "label": "Cp",
+            "phase": "ueberkappung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Cp ({material}).",
+                "mittel": "Pulpanahe Exkavation, indirekte Überkappung mit {material}.",
+                "lang": "Aufgrund pulpanaher Exkavation indirekte Überkappung mit {material} zur Stimulation der Tertiärdentinbildung."
+            },
+            "variablen": {
+                "material": {
+                    "required": true,
+                    "default": "Ca(OH)₂",
+                    "options": [
+                        "Ca(OH)₂",
+                        "MTA",
+                        "Biodentine"
+                    ]
+                }
+            },
+            "billingRef": {
+                "GKV": "BEMA_25",
+                "PKV": "GOZ_2330"
+            },
+            "dataPatches": [
+                {
+                    "field": "cp",
+                    "value": true
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "p",
+                "cp_not_required"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "tiefe",
+                "material"
+            ],
+            "ruleRefs": [
+                "RULE_CP_MATERIAL_PFLICHT",
+                "RULE_CP_TIEFE_VORAUSSETZUNG"
+            ],
+            "forensicNotes": [
+                "Material MUSS genannt werden!",
+                "Nur bei pulpanaher Karies (Cp profunda)",
+                "Ohne Materialangabe = REGRESS!"
+            ]
+        },
+        {
+            "id": "cp_not_required",
+            "label": "CP nicht erf.",
+            "phase": "ueberkappung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Keine Pulpaeröffnung.",
+                "mittel": "Keine Pulpaeröffnung, Cp nicht erforderlich.",
+                "lang": "Keine Pulpaeröffnung während der Exkavation, indirekte Überkappung (Cp) nicht erforderlich."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "cp_required",
+                    "value": false
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "cp",
+                "p"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "p",
+            "label": "P",
+            "phase": "ueberkappung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "P ({material}).",
+                "mittel": "Punktförmige Pulpaeröffnung, direkte Überkappung mit {material}.",
+                "lang": "Punktförmige Pulpaeröffnung bei der Exkavation, Blutstillung mit NaOCl, direkte Überkappung mit {material}."
+            },
+            "variablen": {
+                "material": {
+                    "required": true,
+                    "default": "MTA",
+                    "options": [
+                        "MTA",
+                        "Biodentine",
+                        "Ca(OH)₂"
+                    ]
+                }
+            },
+            "billingRef": {
+                "GKV": "BEMA_26",
+                "PKV": "GOZ_2340"
+            },
+            "dataPatches": [
+                {
+                    "field": "p",
+                    "value": true
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "cp",
+                "cp_not_required"
+            ],
+            "requiredFields": [
+                "material"
+            ],
+            "ruleRefs": [
+                "RULE_P_MATERIAL_PFLICHT",
+                "RULE_P_NUR_KLEIN"
+            ],
+            "forensicNotes": [
+                "Material MUSS genannt werden!",
+                "Nur bei KLEINER punktförmiger Eröffnung!",
+                "Bei großer Eröffnung → Vitalexstirpation"
+            ]
+        },
+        {
+            "id": "komposit_basic",
+            "label": "Komposit",
+            "phase": "fuellung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Komposit.",
+                "mittel": "Komposit eingebracht und lichthärtend polymerisiert.",
+                "lang": "Kavität präpariert. Komposit eingebracht und lichthärtend polymerisiert. Okklusion kontrolliert."
+            },
+            "billingRef": null,
+            "hinweis": "F-Code (BEMA 13/GOZ 2060) kommt aus surface_mapping",
+            "dataPatches": [],
+            "defaultActive": true,
+            "mutuallyExclusiveWith": [
+                "mehrschicht"
+            ],
+            "requiredFields": [
+                "flaechen"
+            ],
+            "ruleRefs": [
+                "RULE_FCODE_FLAECHEN"
+            ],
+            "forensicNotes": [
+                "Flächenangabe (m,o,d,b,l) erforderlich für F-Code"
+            ]
+        },
+        {
+            "id": "mehrschicht",
+            "label": "Mehrschichttechnik",
+            "phase": "fuellung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Komposit Mehrschichttechnik.",
+                "mittel": "Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend.",
+                "lang": "Selektive Schmelzätzung mit 37% Phosphorsäure (15s), Spülung, Trocknung. Applikation eines Universaladhäsivs, Verblasen und Lichthärtung. Schichtweises Einbringen des Komposits in max. 2mm-Inkrementen mit jeweils separater Lichthärtung zur Minimierung der Polymerisationsschrumpfung."
+            },
+            "billingRef": {
+                "MKV": "GOZ_2197"
+            },
+            "hinweis": "GKV: Als Mehrkostenvereinbarung abrechnen!",
+            "dataPatches": [
+                {
+                    "field": "adhesive",
+                    "value": true
+                },
+                {
+                    "field": "layering",
+                    "value": true
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "komposit_basic"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "flaechen",
+                "mkv_vereinbarung"
+            ],
+            "ruleRefs": [
+                "RULE_MKV_SCHRIFTLICH",
+                "RULE_GOZ2197_NICHT_NEBEN_2060"
+            ],
+            "forensicNotes": [
+                "MKV nur mit schriftlicher Vereinbarung VOR Behandlung!",
+                "GOZ 2197 NICHT neben GOZ 2060-2120 (bereits inkludiert!)"
+            ],
+            "upsellCandidate": true,
+            "upsellNotes": [
+                "Nur bei GKV mit Mehrkostenvereinbarung",
+                "Schichtweiser Aufbau statt Bulk-Fill"
+            ],
+            "conditionHint": "Nur bei Zuzahlung (Mehrkostenvereinbarung)"
+        },
+        {
+            "id": "finishing",
+            "label": "Finishing",
+            "phase": "finishing",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Okkl. geprüft, Politur.",
+                "mittel": "Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.",
+                "lang": "Okklusionsprüfung mit Shimstock und Artikulationsfolie, selektives Einschleifen störender Kontakte bis zur physiologischen Okklusion. Ausarbeitung der Füllungsränder mit rotierenden Instrumenten, abschließende Hochglanzpolitur mit Silikonpolierer und Polierpaste."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "occlusion_check",
+                    "value": true
+                },
+                {
+                    "field": "polish",
+                    "value": true
+                }
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "fluor",
+            "label": "Fluoridierung",
+            "phase": "finishing",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Fluoridierung.",
+                "mittel": "Abschließend Fluoridierung.",
+                "lang": "Abschließende Applikation von Fluoridlack zur Remineralisation des Randschmelzes."
+            },
+            "billingRef": {
+                "GKV": "BEMA_IP4",
+                "PKV": "GOZ_1020"
+            },
+            "dataPatches": [
+                {
+                    "field": "fluoridation",
+                    "value": true
+                }
+            ],
+            "showInQuickView": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FLUORID_UPSELL"
+            ],
+            "forensicNotes": [],
+            "upsellCandidate": true,
+            "upsellNotes": [
+                "Bei GKV: IP4 zusätzlich abrechenbar",
+                "Bei PKV: GOZ 1020"
+            ]
+        }
+    ],
+    "surface_mapping": {
+        "_comment": "F-Code basierend auf Flächenzahl - wird von Engine aufgelöst",
+        "1": {
+            "GKV": "BEMA_13",
+            "PKV": "GOZ_2060"
+        },
+        "2": {
+            "GKV": "BEMA_13b",
+            "PKV": "GOZ_2080"
+        },
+        "3": {
+            "GKV": "BEMA_13c",
+            "PKV": "GOZ_2100"
+        },
+        "4+": {
+            "GKV": "BEMA_13d",
+            "PKV": "GOZ_2120"
+        }
+    },
+    "phasen_reihenfolge": [
+        "befund",
+        "anaesthesie",
+        "vorbereitung",
+        "exkavation",
+        "ueberkappung",
+        "fuellung",
+        "finishing"
+    ]
+}

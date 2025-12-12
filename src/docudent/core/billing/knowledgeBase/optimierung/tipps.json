@@ -1,0 +1,1153 @@
+[
+    {
+        "id": "tipp_kariesdetektor_analog",
+        "titel": "Kariesdetektor als Analogposition (PKV)",
+        "beschreibung": "Kariesdetektor-Anfärbung ist keine reguläre Gebührenposition, kann aber bei PKV analog berechnet werden.",
+        "kategorie": "konservierend",
+        "behandlung": "fuellung",
+        "versicherung": "PKV",
+        "strategie": "GOZ 2020 analog (GOZ 2020a) für Kariesdetektor-Anfärbung berechnen. Begründung: 'Kariesanfärbung zur selektiven Exkavation analog §6 Abs.1 GOZ'.",
+        "beispiel": {
+            "situation": "Kompositfüllung mit Kariesdetektor",
+            "vorher": {
+                "codes": [
+                    "GOZ_2100"
+                ],
+                "betrag": "156,95€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_2100",
+                    "GOZ_2020a"
+                ],
+                "betrag": "173,17€"
+            },
+            "differenz": "+16,22€"
+        },
+        "legalitaet": "legal_optimiert",
+        "regressrisiko": "niedrig",
+        "voraussetzungen": [
+            "Kariesdetektor tatsächlich verwendet",
+            "In Dokumentation erwähnt"
+        ],
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "GOZ §6 Abs.1 Analogberechnung"
+        },
+        "tags": [
+            "kariesdetektor",
+            "analog",
+            "pkv",
+            "füllung",
+            "optimierung"
+        ]
+    },
+    {
+        "id": "tipp_goz2040_mehrfach_endo",
+        "titel": "Kofferdam (GOZ 2040) mehrfach bei Endo",
+        "beschreibung": "Bei mehrzeitiger Wurzelbehandlung kann GOZ 2040 bei jedem Ab- und Neuanlegen berechnet werden.",
+        "kategorie": "endodontie",
+        "versicherung": "PKV",
+        "strategie": "Bei 2-Sitzungs-Endo: 2x GOZ 2040. Bei Zwischenspülung mit Entfernung: zusätzlich möglich.",
+        "beispiel": {
+            "situation": "WKB Zahn 36, 2 Sitzungen",
+            "vorher": {
+                "codes": [
+                    "GOZ_2040"
+                ],
+                "betrag": "21,74€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_2040",
+                    "GOZ_2040"
+                ],
+                "betrag": "43,48€"
+            },
+            "differenz": "+21,74€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Tatsächliches Abnehmen und Neuanlegen",
+            "Dokumentation"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "GOZ Kommentar BZÄK"
+        },
+        "tags": [
+            "kofferdam",
+            "endo",
+            "pkv",
+            "mehrfach"
+        ]
+    },
+    {
+        "id": "tipp_endo_je_kanal",
+        "titel": "Endo-Leistungen je Kanal berechnen",
+        "beschreibung": "Viele Endo-Leistungen sind JE KANAL berechnungsfähig - nicht pro Zahn!",
+        "kategorie": "endodontie",
+        "versicherung": "PKV",
+        "strategie": "Bei 3-kanaligem Molar (z.B. 46): 3x GOZ 2390, 3x GOZ 2400 (Endometrie), 3x GOZ 2410 (masch.), 3x GOZ 2420 (Spülung), 3x GOZ 2440 (WF). NICHT zu unterschätzen!",
+        "beispiel": {
+            "situation": "WKB Zahn 46 (3 Kanäle)",
+            "vorher": {
+                "codes": [
+                    "GOZ_2390"
+                ],
+                "betrag": "31,30€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_2390",
+                    "GOZ_2390",
+                    "GOZ_2390",
+                    "GOZ_2400",
+                    "GOZ_2400",
+                    "GOZ_2400",
+                    "GOZ_2410",
+                    "GOZ_2410",
+                    "GOZ_2410",
+                    "GOZ_2420",
+                    "GOZ_2420",
+                    "GOZ_2420",
+                    "GOZ_2440",
+                    "GOZ_2440",
+                    "GOZ_2440"
+                ],
+                "betrag": "ca. 400€"
+            },
+            "differenz": "+360€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Kanalzahl dokumentiert",
+            "Alle Kanäle behandelt"
+        ],
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "GOZ Leistungstext"
+        },
+        "tags": [
+            "endo",
+            "kanäle",
+            "pkv",
+            "multiplizieren",
+            "wichtig"
+        ]
+    },
+    {
+        "id": "tipp_steigerungsfaktor_begruendung",
+        "titel": "Steigerungsfaktor >2,3 mit Begründung",
+        "beschreibung": "GOZ-Leistungen können bis 3,5-fach gesteigert werden - mit Begründung (Zeitaufwand, Schwierigkeit, Umstände).",
+        "kategorie": "sonstiges",
+        "versicherung": "PKV",
+        "strategie": "Bei aufwändigen Behandlungen (schwierige Anatomie, Angstpatient, Multimorbidität) 3,5-fachen Satz ansetzen. Begründung: 'Erhöhter Zeitaufwand wegen [Grund]'.",
+        "beispiel": {
+            "situation": "Aufwändige Füllung bei Angstpatient",
+            "vorher": {
+                "codes": [
+                    "GOZ_2100 x2,3"
+                ],
+                "betrag": "156,95€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_2100 x3,5"
+                ],
+                "betrag": "238,84€"
+            },
+            "differenz": "+81,89€"
+        },
+        "legalitaet": "legal_optimiert",
+        "regressrisiko": "niedrig",
+        "voraussetzungen": [
+            "Begründung plausibel",
+            "Dokumentation vorhanden"
+        ],
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "GOZ §5"
+        },
+        "tags": [
+            "steigerung",
+            "faktor",
+            "3,5",
+            "begründung",
+            "pkv"
+        ]
+    },
+    {
+        "id": "tipp_mkv_differenz_optimieren",
+        "titel": "MKV: Privatanteil nach GOZ berechnen",
+        "beschreibung": "Bei Mehrkostenvereinbarung den Privatanteil nach GOZ (nicht BEMA) berechnen - deutlich höher!",
+        "kategorie": "konservierend",
+        "versicherung": "MKV",
+        "strategie": "Beispiel 3-flächige Füllung: Kassenanteil BEMA 13c (~58€), Privatanteil GOZ 2100 (2,3-fach: 157€) minus Kassenanteil = 99€ Mehrkosten. NICHT nur 30€ pauschal!",
+        "beispiel": {
+            "situation": "3-flächige Kompositfüllung GKV-Patient mit MKV",
+            "vorher": {
+                "codes": [
+                    "BEMA_13c + 30€ pauschal"
+                ],
+                "betrag": "88€"
+            },
+            "nachher": {
+                "codes": [
+                    "BEMA_13c + (GOZ_2100 - BEMA)"
+                ],
+                "betrag": "157€"
+            },
+            "differenz": "+69€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Schriftliche MKV vor Behandlung",
+            "Patient über Alternativen aufgeklärt"
+        ],
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "§28 Abs.2 SGB V"
+        },
+        "tags": [
+            "mkv",
+            "mehrkosten",
+            "gkv",
+            "füllung",
+            "wichtig"
+        ]
+    },
+    {
+        "id": "tipp_unterfuellung_goz2050",
+        "titel": "Unterfüllung separat berechnen (PKV)",
+        "beschreibung": "Bei tiefen Kavitäten: GOZ 2050 (Unterfüllung) zusätzlich zur Füllung berechenbar.",
+        "kategorie": "konservierend",
+        "versicherung": "PKV",
+        "strategie": "Bei Caries profunda mit Unterfüllung (GIZ, Ca(OH)2-Liner): GOZ 2050 zusätzlich ansetzen.",
+        "beispiel": {
+            "situation": "Tiefe Füllung mit Unterfüllung",
+            "vorher": {
+                "codes": [
+                    "GOZ_2100"
+                ],
+                "betrag": "156,95€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_2100",
+                    "GOZ_2050"
+                ],
+                "betrag": "178,09€"
+            },
+            "differenz": "+21,14€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Unterfüllung tatsächlich gelegt",
+            "Dokumentation"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "GOZ Kommentar"
+        },
+        "tags": [
+            "unterfüllung",
+            "pkv",
+            "füllung",
+            "zusatz"
+        ]
+    },
+    {
+        "id": "tipp_pzr_pro_zahn",
+        "titel": "PZR: Pro Zahn berechnen",
+        "beschreibung": "GOZ 1040 ist JE ZAHN berechenbar. Bei vollbezahntem Patient: 28x = erheblicher Erlös!",
+        "kategorie": "prophylaxe",
+        "versicherung": "PKV",
+        "strategie": "PZR nicht pauschal, sondern pro Zahn abrechnen. Bei 28 Zähnen x GOZ 1040 (3,62€) = 101,36€ nur für Reinigung.",
+        "beispiel": {
+            "situation": "PZR vollbezahnter Patient",
+            "vorher": {
+                "codes": [
+                    "PZR pauschal"
+                ],
+                "betrag": "80€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_1040 x28"
+                ],
+                "betrag": "101,36€"
+            },
+            "differenz": "+21,36€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Alle Zähne gereinigt"
+        ],
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "GOZ Leistungstext"
+        },
+        "tags": [
+            "pzr",
+            "prophylaxe",
+            "pkv",
+            "pro_zahn"
+        ]
+    },
+    {
+        "id": "tipp_oberflaechenanaesthesie",
+        "titel": "Oberflächenanästhesie zusätzlich",
+        "beschreibung": "GOZ 0080 (Oberflächenanästhesie) kann VOR Infiltration/Leitung berechnet werden.",
+        "kategorie": "anaesthesie",
+        "versicherung": "PKV",
+        "strategie": "Bei jeder Anästhesie vorher Oberflächenanästhesie (Gel) anwenden und GOZ 0080 zusätzlich berechnen.",
+        "beispiel": {
+            "situation": "Lokalanästhesie für Füllung",
+            "vorher": {
+                "codes": [
+                    "GOZ_0090"
+                ],
+                "betrag": "16,22€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_0080",
+                    "GOZ_0090"
+                ],
+                "betrag": "23,47€"
+            },
+            "differenz": "+7,25€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Oberflächenanästhetikum tatsächlich verwendet"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "GOZ Kommentar"
+        },
+        "tags": [
+            "anästhesie",
+            "oberflaeche",
+            "pkv",
+            "zusatz"
+        ]
+    },
+    {
+        "id": "tipp_fluoridierung_beide_kiefer",
+        "titel": "Fluoridierung je Kiefer",
+        "beschreibung": "GOZ 1020 ist JE KIEFER berechenbar. Bei beiden Kiefern: 2x!",
+        "kategorie": "prophylaxe",
+        "versicherung": "PKV",
+        "strategie": "Fluoridierung immer für beide Kiefer berechnen: 2x GOZ 1020.",
+        "beispiel": {
+            "situation": "Fluoridierung nach PZR",
+            "vorher": {
+                "codes": [
+                    "GOZ_1020"
+                ],
+                "betrag": "9,25€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_1020",
+                    "GOZ_1020"
+                ],
+                "betrag": "18,50€"
+            },
+            "differenz": "+9,25€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "tags": [
+            "fluoridierung",
+            "prophylaxe",
+            "pkv",
+            "kiefer"
+        ]
+    },
+    {
+        "id": "tipp_2025_bulkfill_gkv",
+        "titel": "Ab 2025: Bulkfill im Seitenzahn Kassenleistung",
+        "beschreibung": "Seit Amalgamverbot 01.01.2025: Selbstadhäsive und Bulkfill-Komposite sind im Seitenzahn GKV-Leistung. Keine MKV erforderlich für Standardfüllung!",
+        "kategorie": "konservierend",
+        "versicherung": "GKV",
+        "strategie": "Standardfüllung Seitenzahn mit Bulkfill = BEMA 13x. MKV nur bei Extras (Mehrschicht, Ästhetik, spezielle Materialien).",
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "KZBV Rundschreiben 01/2025"
+        },
+        "tags": [
+            "2025",
+            "amalgam",
+            "bulkfill",
+            "gkv",
+            "neu",
+            "wichtig"
+        ]
+    },
+    {
+        "id": "tipp_chirurgie_naht_separat",
+        "titel": "Naht separat berechnen",
+        "beschreibung": "Nach Osteotomie oder WSR: GOZ 3300 (Naht) oder BEMA 54 zusätzlich berechenbar!",
+        "kategorie": "chirurgie",
+        "versicherung": "alle",
+        "strategie": "Nach chirurgischen Eingriffen immer Naht separat ansetzen: GOZ 3300 oder BEMA 54.",
+        "beispiel": {
+            "situation": "Osteotomie Weisheitszahn",
+            "vorher": {
+                "codes": [
+                    "GOZ_3110"
+                ],
+                "betrag": "130,39€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_3110",
+                    "GOZ_3300"
+                ],
+                "betrag": "155,57€"
+            },
+            "differenz": "+25,18€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "tags": [
+            "chirurgie",
+            "naht",
+            "osteotomie",
+            "zusatz"
+        ]
+    },
+    {
+        "id": "tipp_roentgen_kontrolle_separat",
+        "titel": "Röntgen-Kontrollaufnahme separat",
+        "beschreibung": "Nach Endo, WSR oder anderen Eingriffen: Kontroll-Röntgen ist separate Leistung!",
+        "kategorie": "roentgen",
+        "versicherung": "alle",
+        "strategie": "Röntgenkontrolle nach WF, nach WSR, nach Implantat-Insertion immer separat ansetzen.",
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "tags": [
+            "röntgen",
+            "kontrolle",
+            "endo",
+            "chirurgie"
+        ]
+    },
+    {
+        "id": "tipp_cp_dokumentation_material",
+        "titel": "Bei Cp/P immer Material dokumentieren",
+        "beschreibung": "Für Cp (BEMA 25) und P (BEMA 26) MUSS das Überkappungsmaterial dokumentiert werden. Sonst Regress!",
+        "kategorie": "konservierend",
+        "versicherung": "alle",
+        "strategie": "Im Fließtext immer: 'Indirekte Überkappung mit Calciumhydroxid (Ultracal)' oder 'Direkte Überkappung mit MTA (ProRoot)'.",
+        "legalitaet": "standard",
+        "regressrisiko": "hoch",
+        "voraussetzungen": [
+            "Material im Text erwähnt"
+        ],
+        "quelle": {
+            "typ": "praxis",
+            "referenz": "KZV Prüfung"
+        },
+        "tags": [
+            "cp",
+            "p",
+            "überkappung",
+            "material",
+            "dokumentation",
+            "wichtig"
+        ]
+    },
+    {
+        "id": "tipp_endo_maschinell_steigerung",
+        "titel": "Maschinelle Aufbereitung: Steigerungsfaktor erhöhen",
+        "beschreibung": "Bei maschineller Aufbereitung (NiTi-Feilen) ist ein erhöhter Steigerungsfaktor (bis 3,5x) für GOZ 2410 gerechtfertigt.",
+        "kategorie": "endodontie",
+        "versicherung": "PKV",
+        "strategie": "Begründung: 'Erhöhter instrumenteller und apparativer Aufwand durch maschinelle, drehmomentkontrollierte Aufbereitung mit NiTi-Feilensystem'. GOZ 2410 mit 3,0-3,5 Faktor ansetzen.",
+        "beispiel": {
+            "situation": "WKB Zahn 46, 3 Kanäle, maschinell",
+            "vorher": {
+                "codes": [
+                    "GOZ_2410 x2,3 x3"
+                ],
+                "betrag": "ca. 84€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_2410 x3,5 x3"
+                ],
+                "betrag": "ca. 127€"
+            },
+            "differenz": "+43€ nur für Aufbereitung"
+        },
+        "legalitaet": "legal_optimiert",
+        "regressrisiko": "niedrig",
+        "voraussetzungen": [
+            "Maschinelle Aufbereitung dokumentiert",
+            "NiTi-Feilen verwendet"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "BZÄK GOZ Kommentar zu GOZ 2410"
+        },
+        "tags": [
+            "endo",
+            "maschinell",
+            "niti",
+            "steigerung",
+            "aufbereitung"
+        ]
+    },
+    {
+        "id": "tipp_endo_2400_endometrie",
+        "titel": "Endometrie (GOZ 2400) bei jedem Kanal",
+        "beschreibung": "GOZ 2400 (elektrometrische Längenbestimmung) ist JE KANAL bis zu 2x pro Sitzung berechenbar!",
+        "kategorie": "endodontie",
+        "versicherung": "PKV",
+        "strategie": "Bei 3-kanaligem Molar: 3x GOZ 2400 (erste Messung) + ggf. 3x GOZ 2400 (Kontrollmessung). Bei GKV-Patienten: Privatvereinbarung, da nicht im BEMA!",
+        "beispiel": {
+            "situation": "WKB Molar mit Endometrie",
+            "vorher": {
+                "codes": [
+                    "Keine Berechnung"
+                ],
+                "betrag": "0€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_2400 x3"
+                ],
+                "betrag": "55,83€"
+            },
+            "differenz": "+55,83€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Elektr. Längenmessung durchgeführt",
+            "Bei GKV: schriftl. Privatvereinbarung"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "BZÄK GOZ 2400"
+        },
+        "tags": [
+            "endo",
+            "endometrie",
+            "gkv",
+            "privatvereinbarung",
+            "kanal"
+        ]
+    },
+    {
+        "id": "tipp_endo_niti_material",
+        "titel": "NiTi-Einmalfeilen separat berechnen",
+        "beschreibung": "Einmal verwendbare NiTi-Instrumente sind nach GOZ Kapitel C gesondert berechenbar.",
+        "kategorie": "endodontie",
+        "versicherung": "PKV",
+        "strategie": "Kosten für NiTi-Einmalfeilen (z.B. ProTaper, WaveOne) separat als Materialkosten berechnen. Pro Kanal meist 1-3 Feilen = 15-45€ extra.",
+        "beispiel": {
+            "situation": "WKB 3-kanaliger Molar mit NiTi Gold",
+            "vorher": {
+                "codes": [
+                    "Material inkludiert"
+                ],
+                "betrag": "0€"
+            },
+            "nachher": {
+                "codes": [
+                    "NiTi-Feilen 3 Kanäle"
+                ],
+                "betrag": "+30-60€"
+            },
+            "differenz": "+30-60€ Materialkosten"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "GOZ Kapitel C Allgemeine Bestimmungen"
+        },
+        "tags": [
+            "endo",
+            "niti",
+            "material",
+            "einmalfeilen",
+            "kosten"
+        ]
+    },
+    {
+        "id": "tipp_endo_revision_analog",
+        "titel": "Entfernung alte WF-Paste: Analogabrechnung",
+        "beschreibung": "Das Entfernen von alter Wurzelfüllpaste (Revision) ist NICHT in GOZ 2410 enthalten - analog berechnen!",
+        "kategorie": "endodontie",
+        "versicherung": "PKV",
+        "strategie": "Entfernung altes WF-Material analog zu GOZ 2410 (z.B. 'GOZ 2410a - Entfernung alter Wurzelfüllung') berechnen. Begründung: §6 Abs.1 GOZ.",
+        "beispiel": {
+            "situation": "Endo-Revision Zahn 36",
+            "vorher": {
+                "codes": [
+                    "GOZ_2410 x3"
+                ],
+                "betrag": "83,70€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_2410a x3 (Entf.)",
+                    "GOZ_2410 x3 (Aufber.)"
+                ],
+                "betrag": "167,40€"
+            },
+            "differenz": "+83,70€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "BZÄK GOZ Kommentar"
+        },
+        "tags": [
+            "endo",
+            "revision",
+            "analog",
+            "wurzelfüllung",
+            "entfernung"
+        ]
+    },
+    {
+        "id": "tipp_endo_mikroskop",
+        "titel": "Operationsmikroskop (GOZ 0110) bei Endo",
+        "beschreibung": "Die Verwendung eines Operationsmikroskops kann mit GOZ 0110 zusätzlich berechnet werden.",
+        "kategorie": "endodontie",
+        "versicherung": "PKV",
+        "strategie": "Bei jeder mikroskopgestützten Endo: GOZ 0110 zusätzlich ansetzen. Besonders bei Revisionen, Kanalsuche, Perforationsdeckung.",
+        "beispiel": {
+            "situation": "Mikroskop-gestützte WKB",
+            "vorher": {
+                "codes": [
+                    "Keine Berechnung"
+                ],
+                "betrag": "0€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_0110"
+                ],
+                "betrag": "+20-35€"
+            },
+            "differenz": "+20-35€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Operationsmikroskop tatsächlich verwendet"
+        ],
+        "tags": [
+            "endo",
+            "mikroskop",
+            "goz0110",
+            "zusatz"
+        ]
+    },
+    {
+        "id": "tipp_implant_9000_je_kiefer",
+        "titel": "Implantatplanung (GOZ 9000) je Kiefer",
+        "beschreibung": "GOZ 9000 (Implantatanalayse) ist JE KIEFER berechenbar - auch wenn kein Implantat gesetzt wird!",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "strategie": "Bei Planung in beiden Kiefern: 2x GOZ 9000. Auch berechenbar bei temporären/orthodontischen Implantaten oder wenn Patient sich gegen OP entscheidet.",
+        "beispiel": {
+            "situation": "Implantatplanung UK und OK",
+            "vorher": {
+                "codes": [
+                    "GOZ_9000"
+                ],
+                "betrag": "114,35€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_9000",
+                    "GOZ_9000"
+                ],
+                "betrag": "228,70€"
+            },
+            "differenz": "+114,35€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "BZÄK GOZ 9000"
+        },
+        "tags": [
+            "implantologie",
+            "planung",
+            "kiefer",
+            "goz9000"
+        ]
+    },
+    {
+        "id": "tipp_implant_op_zuschlag",
+        "titel": "OP-Zuschlag (GOZ 0530) bei Implantaten",
+        "beschreibung": "Bei Implantatinsertion (GOZ 9010, 1545 Punkte) ist OP-Zuschlag GOZ 0530 (≥1200 Punkte) berechenbar!",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "strategie": "GOZ 0530 zusätzlich zu GOZ 9010 ansetzen. Nur 1x pro OP-Tag, nur 1,0-fach, nur wenn kein GOÄ-Zuschlag berechnet wird.",
+        "beispiel": {
+            "situation": "Implantat-Insertion",
+            "vorher": {
+                "codes": [
+                    "GOZ_9010"
+                ],
+                "betrag": "199,86€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_9010",
+                    "GOZ_0530"
+                ],
+                "betrag": "ca. 270€"
+            },
+            "differenz": "+70€ OP-Zuschlag"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "BZÄK GOZ-Chirurgie"
+        },
+        "tags": [
+            "implantologie",
+            "zuschlag",
+            "operation",
+            "goz0530"
+        ]
+    },
+    {
+        "id": "tipp_implant_material_separat",
+        "titel": "Implantat-Material separat berechnen",
+        "beschreibung": "Implantate, Abutments, Einmalfräsen sind IMMER separat berechenbar - zusätzlich zu GOZ-Honorar!",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "strategie": "Material IMMER auflisten: Implantat (300-600€), Abutment (100-300€), Einmalfräsen (50-100€), Navigationsschablone (200-500€).",
+        "beispiel": {
+            "situation": "Implantat Straumann BLT",
+            "vorher": {
+                "codes": [
+                    "GOZ_9010"
+                ],
+                "betrag": "199,86€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_9010",
+                    "Material"
+                ],
+                "betrag": "700-1000€"
+            },
+            "differenz": "+500-800€ Material"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "tags": [
+            "implantologie",
+            "material",
+            "implantat",
+            "kosten"
+        ]
+    },
+    {
+        "id": "tipp_implant_steigerung_schwierig",
+        "titel": "Steigerung bei schwieriger Implantation",
+        "beschreibung": "GOZ 9010 kann bei erschwerten Bedingungen mit bis zu 3,5-fachem Satz berechnet werden.",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "strategie": "Steigerungsgründe: Besonders lange/dicke Implantate, kompakter Knochen, Nerven-Nähe, schwierige Parallelisierung bei Mehrfachimplantaten.",
+        "beispiel": {
+            "situation": "Implantat nahe N. mandibularis",
+            "vorher": {
+                "codes": [
+                    "GOZ_9010 x2,3"
+                ],
+                "betrag": "199,86€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_9010 x3,5"
+                ],
+                "betrag": "304,13€"
+            },
+            "differenz": "+104,27€"
+        },
+        "legalitaet": "legal_optimiert",
+        "regressrisiko": "niedrig",
+        "voraussetzungen": [
+            "Begründung dokumentiert"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "BZÄK GOZ §5"
+        },
+        "tags": [
+            "implantologie",
+            "steigerung",
+            "schwierig",
+            "begründung"
+        ]
+    },
+    {
+        "id": "tipp_par_atg_nicht_mit_ae1",
+        "titel": "PAR: ATG nicht mit Ä1 kombinieren",
+        "beschreibung": "BEMA ATG (Parodontologisches Aufklärungsgespräch) enthält bereits Beratung - Ä1 in gleicher Sitzung NICHT berechnungsfähig!",
+        "kategorie": "parodontologie",
+        "versicherung": "GKV",
+        "strategie": "Bei PAR-Behandlung: ATG ODER Ä1, nicht beides. ATG hat mehr Punkte, also ATG bevorzugen.",
+        "legalitaet": "standard",
+        "regressrisiko": "hoch",
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "BEMA PAR-Richtlinie 2021"
+        },
+        "tags": [
+            "parodontologie",
+            "atg",
+            "beratung",
+            "regressfalle"
+        ]
+    },
+    {
+        "id": "tipp_par_upt_anaesthesie",
+        "titel": "PAR UPT: Anästhesie separat berechnen",
+        "beschreibung": "Bei UPT mit subgingivaler Instrumentierung kann bei medizinischer Notwendigkeit die Anästhesie SEPARAT berechnet werden!",
+        "kategorie": "parodontologie",
+        "versicherung": "GKV",
+        "strategie": "BEMA 40/41a bei UPT zusätzlich ansetzen, wenn Anästhesie für subgingivale Instrumentierung erforderlich. Dokumentieren!",
+        "beispiel": {
+            "situation": "UPT mit tiefem Scaling",
+            "vorher": {
+                "codes": [
+                    "BEMA UPT"
+                ],
+                "betrag": "nur UPT"
+            },
+            "nachher": {
+                "codes": [
+                    "BEMA UPT",
+                    "BEMA_40"
+                ],
+                "betrag": "+8 Punkte"
+            },
+            "differenz": "+8 Punkte"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Medizinische Notwendigkeit dokumentiert"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "DAISY Akademie PAR"
+        },
+        "tags": [
+            "parodontologie",
+            "upt",
+            "anästhesie",
+            "zusatz"
+        ]
+    },
+    {
+        "id": "tipp_par_goz_analog_ait",
+        "titel": "PAR bei PKV: AIT analog berechnen",
+        "beschreibung": "GOZ kennt keine AIT-Position! Bei PKV muss analog nach §6 Abs.1 GOZ abgerechnet werden.",
+        "kategorie": "parodontologie",
+        "versicherung": "PKV",
+        "strategie": "AIT analog zu vergleichbarer GOZ-Leistung berechnen. BZÄK und PKV-Verband haben Analogziffern festgelegt.",
+        "legalitaet": "standard",
+        "regressrisiko": "niedrig",
+        "voraussetzungen": [
+            "Korrekte Beschreibung der Analogleistung"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "BZÄK Positionspapier PAR 2021"
+        },
+        "tags": [
+            "parodontologie",
+            "pkv",
+            "analog",
+            "ait"
+        ]
+    },
+    {
+        "id": "tipp_prothetik_bema19_zweimal",
+        "titel": "BEMA 19: Bis zu 2x pro Zahn möglich",
+        "beschreibung": "BEMA 19 (Provisorium) kann bis zu 2x pro Zahn abgerechnet werden (nicht nur 1x im HKP)!",
+        "kategorie": "prothetik",
+        "versicherung": "GKV",
+        "strategie": "Im HKP nur 1x ansetzbar, aber zweites Provisorium (z.B. bei Reparatur/Neuanfertigung) ohne neuen HKP abrechenbar.",
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "bema-goz.de BEMA 19"
+        },
+        "tags": [
+            "prothetik",
+            "provisorium",
+            "bema19",
+            "mehrfach"
+        ]
+    },
+    {
+        "id": "tipp_prothetik_stumpfaufbau_fuellung",
+        "titel": "Stumpfaufbau als Füllung abrechnen (GKV)",
+        "beschreibung": "Plastische Stumpfaufbauten können seit 2004 als BEMA 13a/b abgerechnet werden!",
+        "kategorie": "prothetik",
+        "versicherung": "GKV",
+        "strategie": "Aufbaufüllung vor Krone: BEMA 13a (1-flächig) oder 13b (2-flächig) zusätzlich zum HKP. Gilt wenn Überkronung zum Zeitpunkt des Legens geplant.",
+        "beispiel": {
+            "situation": "Stumpfaufbau vor Krone",
+            "vorher": {
+                "codes": [
+                    "Keine Berechnung"
+                ],
+                "betrag": "0€"
+            },
+            "nachher": {
+                "codes": [
+                    "BEMA_13b"
+                ],
+                "betrag": "+45 Punkte"
+            },
+            "differenz": "+45 Punkte (~47€)"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "bema-goz.de BEMA 18"
+        },
+        "tags": [
+            "prothetik",
+            "stumpfaufbau",
+            "füllung",
+            "krone",
+            "gkv"
+        ]
+    },
+    {
+        "id": "tipp_prothetik_goz5000_steigerung",
+        "titel": "GOZ 5000: Steigerung bei Mehraufwand",
+        "beschreibung": "GOZ 5000 (Kronenversorgung als Brückenanker) kann bei Mehraufwand mit bis zu 3,5-fach berechnet werden.",
+        "kategorie": "prothetik",
+        "versicherung": "PKV",
+        "strategie": "Steigerungsgründe: Besondere Mundhöhlenverhältnisse, mehrfache Einproben, erschwerter Zugang bei Verschraubung, aufwändige Farbbestimmung.",
+        "legalitaet": "legal_optimiert",
+        "regressrisiko": "niedrig",
+        "voraussetzungen": [
+            "Begründung dokumentiert"
+        ],
+        "tags": [
+            "prothetik",
+            "krone",
+            "steigerung",
+            "pkv"
+        ]
+    },
+    {
+        "id": "tipp_chirurgie_47a_vs_45",
+        "titel": "Osteotomie nur bei echter Osteotomie",
+        "beschreibung": "BEMA 47a (Osteotomie) setzt voraus, dass TATSÄCHLICH Knochen abgetragen wurde - nicht nur schwierige Extraktion!",
+        "kategorie": "chirurgie",
+        "versicherung": "GKV",
+        "strategie": "Bei schwieriger Extraktion OHNE Knochenabtragung: BEMA 45 (X3 mit Wurzeltrennung), NICHT 47a. Falsche Abrechnung = Regress!",
+        "legalitaet": "standard",
+        "regressrisiko": "hoch",
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "bema-goz.de BEMA 47a"
+        },
+        "tags": [
+            "chirurgie",
+            "osteotomie",
+            "extraktion",
+            "regressfalle"
+        ]
+    },
+    {
+        "id": "tipp_chirurgie_blutstillung",
+        "titel": "Übermäßige Blutung separat berechnen",
+        "beschreibung": "Bei übermäßiger Blutung, die besondere Maßnahmen erfordert (Umstechung, Knochenbolzung): GOZ 3060 zusätzlich!",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "strategie": "Normale Blutstillung = inkludiert. Übermäßige Blutung mit Abbinden/Umstechung/Kollagen = GOZ 3060 separat.",
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Übermäßige Blutung dokumentiert",
+            "Besondere Maßnahme beschrieben"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "praxisplan-mh.de"
+        },
+        "tags": [
+            "chirurgie",
+            "blutung",
+            "zusatz"
+        ]
+    },
+    {
+        "id": "tipp_chirurgie_wsr_je_wurzelspitze",
+        "titel": "WSR: Je Wurzelspitze berechnen",
+        "beschreibung": "GOZ 3110/3120 ist JE WURZELSPITZE berechenbar - bei mehrwurzeligem Zahn mehrfach!",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "strategie": "WSR Molar mit 3 Wurzeln: 3x GOZ 3120. Bei BEMA: 54b (erste Wurzel) + 54c (weitere Wurzeln gleicher Zugang).",
+        "beispiel": {
+            "situation": "WSR Zahn 46 (3 Wurzeln)",
+            "vorher": {
+                "codes": [
+                    "GOZ_3120"
+                ],
+                "betrag": "ca. 80€"
+            },
+            "nachher": {
+                "codes": [
+                    "GOZ_3120",
+                    "GOZ_3120",
+                    "GOZ_3120"
+                ],
+                "betrag": "ca. 240€"
+            },
+            "differenz": "+160€"
+        },
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "medikompass.de WSR"
+        },
+        "tags": [
+            "chirurgie",
+            "wsr",
+            "wurzelspitze",
+            "mehrfach"
+        ]
+    },
+    {
+        "id": "tipp_chirurgie_zystektomie",
+        "titel": "Zystektomie bei WSR zusätzlich berechnen",
+        "beschreibung": "Wenn bei WSR eine Zyste entfernt wird: GOZ 3190 (Zystektomie) ZUSÄTZLICH berechenbar!",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "strategie": "Bei radiologisch sichtbarer Zyste und chirurgischer Entfernung: GOZ 3190 neben GOZ 3110/3120 ansetzen.",
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Zyste radiologisch dokumentiert",
+            "Chirurgische Entfernung beschrieben"
+        ],
+        "quelle": {
+            "typ": "kommentar",
+            "referenz": "praxisplan-mh.de WSR"
+        },
+        "tags": [
+            "chirurgie",
+            "wsr",
+            "zyste",
+            "zusatz"
+        ]
+    },
+    {
+        "id": "tipp_chirurgie_knochen_auffuellung",
+        "titel": "Knochendefekt-Auffüllung separat",
+        "beschreibung": "Das Auffüllen eines Knochendefekts (nach Zyste, WSR) kann separat berechnet werden!",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "strategie": "GOZ 4110 oder Analogposition für Knochenersatzmaterial. Material (Bio-Oss, etc.) zusätzlich als Auslagen.",
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "tags": [
+            "chirurgie",
+            "knochen",
+            "augmentation",
+            "zusatz"
+        ]
+    },
+    {
+        "id": "tipp_allgemein_privatvereinbarung_gkv",
+        "titel": "GKV + Privatleistung: Immer schriftlich!",
+        "beschreibung": "Bei GKV-Patienten MUSS jede Privatleistung VOR Behandlung SCHRIFTLICH vereinbart werden (§8 Abs.7 BMV-Z)!",
+        "kategorie": "sonstiges",
+        "versicherung": "GKV",
+        "strategie": "Endometrie, Laser, spezielle Materialien, etc. = IMMER schriftliche Privatvereinbarung VOR Beginn. Ohne Unterschrift = kein Zahlungsanspruch!",
+        "legalitaet": "standard",
+        "regressrisiko": "hoch",
+        "voraussetzungen": [
+            "Schriftliche Vereinbarung VOR Behandlung"
+        ],
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "§8 Abs.7 BMV-Z"
+        },
+        "tags": [
+            "gkv",
+            "privatvereinbarung",
+            "schriftlich",
+            "regressfalle",
+            "wichtig"
+        ]
+    },
+    {
+        "id": "tipp_allgemein_materialkosten_immer",
+        "titel": "Materialkosten IMMER separat berechnen",
+        "beschreibung": "Fast alle Materialien können zusätzlich zum Honorar berechnet werden - nicht vergessen!",
+        "kategorie": "sonstiges",
+        "versicherung": "PKV",
+        "strategie": "Auflistung: Anästhetikum, Komposit, Bonding, NiTi-Feilen, Implantate, Membranen, Knochenersatz, Provisorium-Material, etc.",
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "quelle": {
+            "typ": "gesetz",
+            "referenz": "GOZ Kapitel C"
+        },
+        "tags": [
+            "material",
+            "kosten",
+            "zusatz",
+            "pkv"
+        ]
+    },
+    {
+        "id": "tipp_allgemein_laser_zuschlag",
+        "titel": "Laser-Anwendung (GOZ 0120) zusätzlich",
+        "beschreibung": "Die Anwendung eines Lasers kann mit GOZ 0120 zusätzlich berechnet werden!",
+        "kategorie": "sonstiges",
+        "versicherung": "PKV",
+        "strategie": "Bei Laser-Endo, Laser-PAR, Laser-Chirurgie: GOZ 0120 zusätzlich. Nicht nur für Hauptleistung, auch für Begleitleistungen.",
+        "legalitaet": "standard",
+        "regressrisiko": "kein",
+        "voraussetzungen": [
+            "Laser tatsächlich verwendet"
+        ],
+        "tags": [
+            "laser",
+            "zuschlag",
+            "goz0120",
+            "zusatz"
+        ]
+    }
+]

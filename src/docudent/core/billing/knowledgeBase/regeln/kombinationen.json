@@ -1,0 +1,272 @@
+[
+    {
+        "id": "regel_bema12_nur_kofferdam",
+        "typ": "bedingung",
+        "titel": "BEMA 12 nur mit Kofferdam oder Blutstillung",
+        "beschreibung": "BEMA 12 (bMF) ist NUR abrechnungsfähig bei: Anlegen von Kofferdam, Beseitigung störenden Zahnfleisches, oder Stillung übermäßiger Papillenblutung. Watterollen allein reichen NICHT!",
+        "betrifft": [
+            "BEMA_12"
+        ],
+        "regel": {
+            "operator": "nur_wenn",
+            "bedingung": "Kofferdam dokumentiert ODER Blutstillung dokumentiert ODER Zahnfleischentfernung dokumentiert"
+        },
+        "schweregrad": "regress",
+        "quelle": {
+            "dokument": "BEMA Kommentar",
+            "url": "https://bema-goz.de/bema/12"
+        }
+    },
+    {
+        "id": "regel_bema12_einmal_kieferhaelfte",
+        "typ": "haeufigkeit",
+        "titel": "BEMA 12 maximal 1x pro Kieferhälfte",
+        "beschreibung": "BEMA 12 kann je Sitzung nur einmal pro Kieferhälfte oder Frontzahnbereich abgerechnet werden, auch wenn mehrere Maßnahmen durchgeführt werden.",
+        "betrifft": [
+            "BEMA_12"
+        ],
+        "regel": {
+            "operator": "max_anzahl",
+            "wert": 1,
+            "zeitraum": "pro_sitzung",
+            "bezug": "pro_kieferhaelfte"
+        },
+        "schweregrad": "regress",
+        "quelle": {
+            "dokument": "BEMA Leistungstext",
+            "url": "https://bema-goz.de/bema/12"
+        }
+    },
+    {
+        "id": "regel_bema13_flaechen_korrekt",
+        "typ": "bedingung",
+        "titel": "F-Code muss zur Flächenzahl passen",
+        "beschreibung": "Der F-Code (BEMA 13/13b/13c/13d) muss exakt zur dokumentierten Flächenzahl passen. Prüfdienstprüfung!",
+        "betrifft": [
+            "BEMA_13",
+            "BEMA_13b",
+            "BEMA_13c",
+            "BEMA_13d"
+        ],
+        "regel": {
+            "operator": "nur_wenn",
+            "bedingung": "Dokumentierte Flächen entsprechen abgerechnetem Code"
+        },
+        "schweregrad": "regress",
+        "quelle": {
+            "dokument": "KZV Prüfrichtlinien"
+        }
+    },
+    {
+        "id": "regel_bema25_tiefe_karies",
+        "typ": "bedingung",
+        "titel": "Cp (BEMA 25) nur bei pulpanaher Kavität",
+        "beschreibung": "BEMA 25 (Cp) ist nur bei tiefer, pulpanaher Karies abrechnungsfähig. Diagnose 'Caries profunda' oder 'pulpanah' muss dokumentiert sein. Material (Ca(OH)2 oder MTA) angeben!",
+        "betrifft": [
+            "BEMA_25"
+        ],
+        "regel": {
+            "operator": "nur_wenn",
+            "bedingung": "Diagnose enthält 'profunda' oder 'pulpanah' UND Überkappungsmaterial dokumentiert"
+        },
+        "schweregrad": "regress",
+        "quelle": {
+            "dokument": "BEMA Kommentar"
+        }
+    },
+    {
+        "id": "regel_bema26_pulpaeroeffnung",
+        "typ": "bedingung",
+        "titel": "P (BEMA 26) nur bei sichtbarer Pulpaeröffnung",
+        "beschreibung": "BEMA 26 (P, direkte Überkappung) ist nur bei punktförmiger, sichtbarer Pulpaeröffnung erlaubt. Bei größerer Eröffnung: Vitalamputation oder Endo!",
+        "betrifft": [
+            "BEMA_26"
+        ],
+        "regel": {
+            "operator": "nur_wenn",
+            "bedingung": "Pulpaeröffnung dokumentiert UND Material (MTA/Ca(OH)2) dokumentiert"
+        },
+        "schweregrad": "regress",
+        "quelle": {
+            "dokument": "BEMA Kommentar"
+        }
+    },
+    {
+        "id": "regel_bema41_uk_standard",
+        "typ": "bedingung",
+        "titel": "Leitungsanästhesie bei UK-Molaren Standard",
+        "beschreibung": "Bei Unterkiefer-Molaren (36-38, 46-48) ist Leitungsanästhesie (BEMA 41a) die Regel. Infiltration (BEMA 40) ist möglich, aber selten indiziert und muss ggf. begründet werden.",
+        "betrifft": [
+            "BEMA_40",
+            "BEMA_41a"
+        ],
+        "regel": {
+            "operator": "nur_wenn",
+            "bedingung": "Bei UK-Molar: Leitung empfohlen, Infiltration nur bei Begründung"
+        },
+        "schweregrad": "warnung",
+        "quelle": {
+            "dokument": "Klinische Empfehlung",
+            "paragraph": "Anatomie N. alveolaris inferior"
+        }
+    },
+    {
+        "id": "regel_goz2197_nicht_neben_2060",
+        "typ": "ausschluss",
+        "titel": "GOZ 2197 nicht neben GOZ 2060-2120",
+        "beschreibung": "GOZ 2197 (Adhäsive Befestigung) ist NICHT neben GOZ 2060-2120 abrechnungsfähig, da dort bereits inkludiert!",
+        "betrifft": [
+            "GOZ_2197",
+            "GOZ_2060",
+            "GOZ_2080",
+            "GOZ_2100",
+            "GOZ_2120"
+        ],
+        "regel": {
+            "operator": "darf_nicht",
+            "bedingung": "2197 nicht mit 2060-2120 kombinieren"
+        },
+        "schweregrad": "regress",
+        "quelle": {
+            "dokument": "GOZ Kommentar BZÄK"
+        }
+    },
+    {
+        "id": "regel_goz2040_mehrfach",
+        "typ": "haeufigkeit",
+        "titel": "GOZ 2040 mehrfach pro Sitzung möglich",
+        "beschreibung": "Anders als BEMA 12 kann GOZ 2040 (Kofferdam) mehrfach pro Sitzung abgerechnet werden, wenn Kofferdam abgenommen und erneut angelegt wird (z.B. bei langer Endo).",
+        "betrifft": [
+            "GOZ_2040"
+        ],
+        "regel": {
+            "operator": "max_anzahl",
+            "wert": 99,
+            "bezug": "pro_abnehmen_und_neuanlegen"
+        },
+        "schweregrad": "info",
+        "quelle": {
+            "dokument": "GOZ Kommentar",
+            "url": "https://bema-goz.de/goz/2040"
+        }
+    },
+    {
+        "id": "regel_endo_je_kanal",
+        "typ": "haeufigkeit",
+        "titel": "Endo-Leistungen je Kanal berechenbar",
+        "beschreibung": "GOZ 2390 (Aufbereitung), 2400 (Endometrie), 2410 (masch. Aufbereitung), 2420 (Spülung), 2430 (Einlage), 2440 (WF) sind JE KANAL berechenbar!",
+        "betrifft": [
+            "GOZ_2390",
+            "GOZ_2400",
+            "GOZ_2410",
+            "GOZ_2420",
+            "GOZ_2430",
+            "GOZ_2440"
+        ],
+        "regel": {
+            "operator": "max_anzahl",
+            "wert": 4,
+            "bezug": "pro_kanal"
+        },
+        "schweregrad": "info",
+        "quelle": {
+            "dokument": "GOZ Leistungstext"
+        }
+    },
+    {
+        "id": "regel_mkv_schriftlich",
+        "typ": "dokumentation",
+        "titel": "Mehrkostenvereinbarung schriftlich VOR Behandlung",
+        "beschreibung": "Bei GKV-Patienten mit Mehrkosten (§28 Abs.2 SGB V) MUSS die Vereinbarung SCHRIFTLICH und VOR Behandlungsbeginn erfolgen!",
+        "betrifft": [
+            "MKV"
+        ],
+        "regel": {
+            "operator": "muss",
+            "bedingung": "Schriftliche MKV vor Behandlung dokumentiert"
+        },
+        "schweregrad": "regress",
+        "quelle": {
+            "dokument": "§28 Abs.2 SGB V"
+        }
+    },
+    {
+        "id": "regel_wiederholungsfuellung_2_jahre",
+        "typ": "haeufigkeit",
+        "titel": "Wiederholungsfüllung innerhalb 2 Jahren",
+        "beschreibung": "Füllungen am gleichen Zahn/Fläche innerhalb von 2 Jahren erfordern Begründung (z.B. Bruxismus, Sekundärkaries, neue Kavität). KZV prüft automatisch!",
+        "betrifft": [
+            "BEMA_13",
+            "BEMA_13b",
+            "BEMA_13c",
+            "BEMA_13d"
+        ],
+        "regel": {
+            "operator": "nur_wenn",
+            "bedingung": "Begründung bei Wiederholung <2 Jahre",
+            "zeitraum": "innerhalb_2_jahre"
+        },
+        "schweregrad": "warnung",
+        "quelle": {
+            "dokument": "BEMA Bestimmungen"
+        }
+    },
+    {
+        "id": "regel_extraktion_begruendung",
+        "typ": "dokumentation",
+        "titel": "Extraktion erfordert Begründung",
+        "beschreibung": "Bei Extraktion muss der Grund dokumentiert werden: Nicht erhaltungsfähig, Parodontitis apicalis, Patient wünscht etc. KZV prüft Indikation!",
+        "betrifft": [
+            "BEMA_45",
+            "BEMA_46",
+            "BEMA_47a",
+            "BEMA_48"
+        ],
+        "regel": {
+            "operator": "muss",
+            "bedingung": "Extraktionsgrund dokumentiert"
+        },
+        "schweregrad": "warnung",
+        "quelle": {
+            "dokument": "KZV Prüfrichtlinien"
+        }
+    },
+    {
+        "id": "regel_wsr_vor_extraktion",
+        "typ": "bedingung",
+        "titel": "WSR vor Extraktion erwägen",
+        "beschreibung": "Vor Extraktion eines Zahnes mit apikaler Pathologie sollte WSR als Alternative geprüft und mit Patient besprochen werden. Dokumentation!",
+        "betrifft": [
+            "BEMA_45",
+            "BEMA_51",
+            "BEMA_52"
+        ],
+        "regel": {
+            "operator": "nur_wenn",
+            "bedingung": "Alternativbehandlung (WSR) geprüft und dokumentiert"
+        },
+        "schweregrad": "info",
+        "quelle": {
+            "dokument": "Forensische Empfehlung"
+        }
+    },
+    {
+        "id": "regel_roentgen_wirtschaftlichkeit",
+        "typ": "haeufigkeit",
+        "titel": "Röntgen: Wirtschaftlichkeitsgebot",
+        "beschreibung": "Röntgenaufnahmen nur bei medizinischer Indikation. OPG nicht routinemäßig bei jedem Recall. Zahnfilme gezielt und dokumentiert.",
+        "betrifft": [
+            "BEMA_Ä925a",
+            "GOZ_5000",
+            "GOZ_5002"
+        ],
+        "regel": {
+            "operator": "nur_wenn",
+            "bedingung": "Medizinische Indikation dokumentiert"
+        },
+        "schweregrad": "warnung",
+        "quelle": {
+            "dokument": "Strahlenschutzverordnung"
+        }
+    }
+]

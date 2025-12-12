@@ -1,0 +1,272 @@
+{
+    "_meta": {
+        "name": "BEMA Zahnersatz Regeln Komplett",
+        "version": "2024/2025",
+        "quellen": [
+            "KZBV BEMA-Kommentar",
+            "KZVB Abrechnungshilfen",
+            "iww.de Praxistipps",
+            "G-BA Zahnersatz-Richtlinie"
+        ],
+        "beschreibung": "Vollständige ZE-Regeln: Brücken, Prothesen, Splitting, Labor"
+    },
+    "bruecken": {
+        "BEMA_91": {
+            "bezeichnung": "Brückenpfeiler (Komplexgebühr)",
+            "leistungsinhalt_enthalten": [
+                "Präparation",
+                "Farbbestimmung",
+                "Bissnahme",
+                "Abformung",
+                "Einprobe",
+                "Einzementieren",
+                "Okklusionskontrolle"
+            ],
+            "varianten": {
+                "91a": {
+                    "bezeichnung": "Vollkrone als Brückenanker",
+                    "punkte": 50
+                },
+                "91b": {
+                    "bezeichnung": "Vestibulär verblendete Krone",
+                    "punkte": 55
+                },
+                "91c": {
+                    "bezeichnung": "Teilkrone als Brückenanker",
+                    "punkte": 45
+                },
+                "91d": {
+                    "bezeichnung": "Teleskop-/Konuskrone",
+                    "punkte": 70
+                },
+                "91e": {
+                    "bezeichnung": "Geschiebe bei disparallelen Pfeilern",
+                    "punkte": 25,
+                    "zusaetzlich_zu": [
+                        "91a",
+                        "91b",
+                        "91c"
+                    ]
+                }
+            },
+            "haeufigkeit": {
+                "nur_angrenzende_anker": "Nur direkt an die Lücke angrenzende Anker werden nach BEMA 91 abgerechnet!",
+                "weitere_anker": "Weitere, nicht angrenzende Anker = BEMA 20 (auch wenn verbunden)",
+                "beispiel": "Brücke 14-16 mit Anker 17: 14/16 = BEMA 91a, 17 = BEMA 20a"
+            },
+            "nicht_abrechnungsfaehig": "Gegossene Einlagefüllungen als Brückenanker",
+            "quelle": "KZVB.de, iww.de"
+        },
+        "BEMA_92": {
+            "bezeichnung": "Brückenspanne und Brückenglieder",
+            "varianten": {
+                "92a": {
+                    "bezeichnung": "Brückenspanne",
+                    "punkte": 15,
+                    "abrechnung": "1× je Brückenspanne (unabhängig vom Ausmaß)",
+                    "auch_bei": "Freiendspannen"
+                },
+                "92b": {
+                    "bezeichnung": "Brückenglied",
+                    "punkte": 40,
+                    "abrechnung": "Je ersetzter Zahn (NICHT je fehlender Zahn!)",
+                    "wichtig": "Anzahl Brückenglieder = ersetzt, nicht fehlend"
+                }
+            },
+            "gkv_grenze": {
+                "max_fehlend": "4 Zähne pro Kiefer",
+                "max_seitenzahn": "3 Zähne je Seitenzahngebiet",
+                "bei_ueberschreitung": "Andersartige Versorgung"
+            },
+            "geteilte_bruecke": "Bei Geschiebe (91e) zählt als EINE zusammenhängende Brücke",
+            "quelle": "iww.de"
+        },
+        "BEMA_93": {
+            "bezeichnung": "Adhäsivbrücke (Marylandbrücke)",
+            "varianten": {
+                "93a": {
+                    "bezeichnung": "Adhäsivbrücke mit 1 Flügel",
+                    "punkte": 85
+                },
+                "93b": {
+                    "bezeichnung": "Adhäsivbrücke mit 2 Flügeln",
+                    "punkte": 95
+                }
+            },
+            "einschraenkungen": {
+                "alter": "Nur Versicherte 14-20 Jahre!",
+                "zaehne": "Nur zum Ersatz von 1-2 Schneidezähnen",
+                "bereich": "Nur Frontzahnbereich",
+                "nachbarzahn": "Bei 93a: Nachbarzahn darf nicht überkronungsbedürftig sein"
+            },
+            "leistungsinhalt": [
+                "Präparation Retentionen am Pfeilerzahn",
+                "Abformung",
+                "Farbbestimmung",
+                "Bissnahme",
+                "Einprobe",
+                "Adhäsive Befestigung",
+                "Okklusionskontrolle"
+            ],
+            "quelle": "KZVB.de, zm-online.de"
+        }
+    },
+    "wiederherstellung_bruecke": {
+        "BEMA_95a": {
+            "bezeichnung": "Wiedereinsetzen Brücke mit 2 Ankern",
+            "punkte": 20,
+            "abrechnung": "Je Brücke",
+            "auch_fuer": "Provisorische Brücken",
+            "quelle": "KZVB.de"
+        },
+        "BEMA_95b": {
+            "bezeichnung": "Wiedereinsetzen Brücke mit mehr als 2 Ankern",
+            "punkte": 25,
+            "abrechnung": "Je Brücke (gesamte Brücke mit allen Pfeilern)",
+            "auch_fuer": "Provisorische Brücken",
+            "quelle": "KZVB.de"
+        },
+        "BEMA_95c": {
+            "bezeichnung": "Erneuerung/Wiedereinsetzen Facette oder Verblendschale",
+            "punkte": 15,
+            "abrechnung": "Je Verblendung",
+            "kombinierbar_mit": [
+                "95a",
+                "95b",
+                "95e",
+                "95f"
+            ],
+            "beachte": "Verblendgrenzen nach ZE-Richtlinie Nr. 25",
+            "quelle": "abrechnung-dental.de"
+        },
+        "BEMA_95d": {
+            "bezeichnung": "Abnahme und Wiedereinsetzen provisorische Brücke",
+            "punkte": 15,
+            "haeufigkeit": {
+                "regel": "Höchstens 3× je Brücke im Gesamtverlauf",
+                "wichtig": "Vertragsrechtliche Begrenzung - unabhängig ob öfter nötig!",
+                "analog_zu": "BEMA 24c (max 3× je Krone)"
+            },
+            "hkp": "Kann NICHT in Gebührenvorausberechnung angesetzt werden",
+            "voraussetzung": "BEMA 19 oder 21 muss vorher abgerechnet worden sein",
+            "notdienst_fremdpraxis": "Privat nach §6 Abs.1 GOZ analog",
+            "quelle": "abrechnung-dental.de, bema-goz.de, KZVB.de"
+        }
+    },
+    "versorgungsarten": {
+        "regelversorgung": {
+            "beschreibung": "Medizinisch notwendige und wirtschaftliche Standardversorgung",
+            "abrechnung": {
+                "zahnarzt": "Komplett BEMA",
+                "labor": "Komplett BEL-II"
+            },
+            "patient_zahlt": "Eigenanteil (40% ohne Bonus, 30/25% mit Bonus, 0% Härtefall)",
+            "hkp": "Teil 1"
+        },
+        "gleichartig": {
+            "beschreibung": "Versorgung entspricht Regelversorgung + zusätzliche private Leistungen",
+            "beispiele": [
+                "Vollkeramikkrone statt Metallkrone",
+                "Zahnfarbene Krone statt Metallkrone im Seitenzahnbereich",
+                "Teleskopprothese gaumenfreie Gestaltung",
+                "Inlay/Onlay statt Füllung"
+            ],
+            "abrechnung_splitting": {
+                "bema_anteil": "BEMA-Positionen für Regelversorgungsanteil",
+                "goz_anteil": "GOZ-Positionen für Mehrleistungen (Differenz)",
+                "labor_bel": "BEL-II für Regelversorgungsanteil",
+                "labor_beb": "BEB für Mehrleistungen"
+            },
+            "patient_zahlt": "Eigenanteil + GOZ/BEB-Mehrkosten",
+            "hkp": "Teil 1 (BEMA) + Teil 2 (GOZ/Mehrkosten)",
+            "wichtig": "Festzuschuss bleibt erhalten!"
+        },
+        "andersartig": {
+            "beschreibung": "Versorgung weicht grundlegend von Regelversorgung ab",
+            "beispiele": [
+                "Implantat statt Brücke",
+                "Implantat statt Prothese",
+                "Festsitzende Brücke statt herausnehmbarer Prothese"
+            ],
+            "abrechnung": {
+                "zahnarzt": "Komplett GOZ",
+                "labor": "Komplett BEB (privat)"
+            },
+            "patient_zahlt": "Komplette GOZ/BEB-Rechnung MINUS Festzuschuss",
+            "hkp": "Nur Teil 2 (GOZ)",
+            "festzuschuss": "Patient erhält FZ-Erstattung nachträglich von Kasse",
+            "wichtig": "Keine BEMA-Abrechnung möglich!"
+        }
+    },
+    "labor_regeln": {
+        "BEL_II": {
+            "bezeichnung": "Bundeseinheitliche Benennungsliste für zahntechnische Leistungen",
+            "verwendung": "GKV-Regelversorgung und gleichartiger Anteil",
+            "preise": "Bundeseinheitliche Höchstpreise",
+            "quelle": "GKV-Spitzenverband"
+        },
+        "BEB": {
+            "bezeichnung": "Bundeseinheitliche Benennungsliste (privat)",
+            "verwendung": "Private Leistungen und andersartige Versorgung",
+            "preise": "Frei kalkuliert durch Labor",
+            "meist_hoeher_als_bel": true
+        },
+        "splitting_labor": {
+            "bei_gleichartig": "BEL-II für Kassenanteil + BEB für Mehrleistungen",
+            "bei_andersartig": "Komplett BEB"
+        }
+    },
+    "hkp_regeln": {
+        "teil_1": {
+            "inhalt": "BEMA-Leistungen für Regelversorgung/gleichartigen Kassenanteil",
+            "fuer": [
+                "Regelversorgung",
+                "Gleichartig (Kassenanteil)"
+            ]
+        },
+        "teil_2": {
+            "inhalt": "GOZ-Leistungen für Mehrkosten oder andersartige Versorgung",
+            "fuer": [
+                "Gleichartig (Mehrkosten)",
+                "Andersartig (komplett)"
+            ]
+        },
+        "genehmigung": "HKP muss vor Behandlungsbeginn von Kasse genehmigt werden",
+        "gueltigkeit": "6 Monate nach Genehmigung"
+    },
+    "teleskop_sonderregeln": {
+        "wann_regelversorgung": {
+            "befund_32": "Teleskope auf Eckzähnen (3er) oder 1. Prämolaren (4er)",
+            "abrechnung": "BEMA 91d"
+        },
+        "wann_gleichartig": {
+            "andere_zaehne": "Teleskope auf anderen Zähnen als 3er/4er",
+            "gaumenfreie_gestaltung": "Gaumenfreie Oberkieferprothese",
+            "abrechnung": {
+                "bema": [
+                    "98a",
+                    "19 je Anker",
+                    "24c × (Anker×3)",
+                    "96b"
+                ],
+                "goz": [
+                    "5040 je Anker (komplette Teleskopkrone)"
+                ],
+                "kein_bema_91d": "Bei gleichartig läuft Teleskop über GOZ 5040!"
+            }
+        },
+        "festzuschuss": {
+            "fz_32a": "Nur für Eckzahn/1.PM - max 2× je Kiefer",
+            "fz_47": "Nur für Teleskop-Anker im Verblendbereich, folgt FZ 3.2a Logik"
+        }
+    },
+    "kritische_pruefpunkte": {
+        "bruecken_anker": "Nur direkt angrenzende Anker = BEMA 91, weitere = BEMA 20",
+        "brueckenglied": "Je ersetzter Zahn, NICHT je fehlender Zahn",
+        "adhaesivbruecke": "Nur Alter 14-20, nur 1-2 Frontzähne",
+        "95d_max_3x": "Provisorische Brücke wiedereinsetzen max 3× je Brücke",
+        "gleichartig_splitting": "BEMA Kassenanteil + GOZ Mehrkosten",
+        "andersartig_kein_bema": "Bei andersartig: NUR GOZ, kein BEMA!",
+        "teleskop_gleichartig": "Teleskope auf anderen Zähnen als 3er/4er = GOZ 5040, nicht BEMA 91d"
+    }
+}

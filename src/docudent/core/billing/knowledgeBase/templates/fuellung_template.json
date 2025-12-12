@@ -1,0 +1,149 @@
+{
+    "_meta": {
+        "id": "fuellung_template",
+        "version": "2025-01-v1",
+        "description": "Output-Template für Füllung. Enthält NUR Layout und Slots, KEINE fachlichen Texte.",
+        "hinweis": "Fachliche Inhalte kommen aus: chip.textSnippets, rules, disclosures, forensicNotes"
+    },
+    "sections": [
+        {
+            "id": "header",
+            "label": "Übersicht",
+            "format": "inline",
+            "slots": [
+                "{behandlung}",
+                "{tooth}",
+                "{quadrant}",
+                "{surfaces}"
+            ],
+            "separator": " | "
+        },
+        {
+            "id": "befund",
+            "label": "Befund",
+            "format": "prose",
+            "source": "extractedData",
+            "slotRule": {
+                "fields": [
+                    "diagnose",
+                    "vitality",
+                    "percussion",
+                    "roentgen"
+                ]
+            },
+            "includeAuditNotes": true
+        },
+        {
+            "id": "aufklaerung",
+            "label": "Aufklärung",
+            "format": "prose",
+            "source": "disclosures",
+            "disclosureIds": [
+                "standard_aufklaerung",
+                "mkv_disclosure"
+            ]
+        },
+        {
+            "id": "behandlung",
+            "label": "Behandlungsablauf",
+            "format": "prose",
+            "source": "chips",
+            "slotRule": {
+                "phases": [
+                    "anaesthesie",
+                    "vorbereitung",
+                    "exkavation",
+                    "ueberkappung",
+                    "fuellung",
+                    "finishing",
+                    "abschluss"
+                ],
+                "proseAllowed": true
+            },
+            "connectorSource": "phrasebank.behandlung"
+        },
+        {
+            "id": "leistungen",
+            "label": "Durchgeführte Leistungen",
+            "format": "bullets",
+            "source": "chips",
+            "slotRule": {
+                "phases": [
+                    "anaesthesie",
+                    "vorbereitung",
+                    "exkavation",
+                    "ueberkappung",
+                    "fuellung",
+                    "finishing",
+                    "abschluss"
+                ],
+                "hasBilling": true
+            },
+            "maxBullets": 8
+        },
+        {
+            "id": "abrechnung",
+            "label": "Abrechnung",
+            "format": "billing",
+            "source": "billingDetails",
+            "groupBy": "insuranceType",
+            "includeDisclosure": "mkv_hinweis"
+        },
+        {
+            "id": "hinweise",
+            "label": "Hinweise",
+            "format": "prose",
+            "source": "disclosures",
+            "disclosureIds": [
+                "postop_standard"
+            ]
+        }
+    ],
+    "dedupeRules": {
+        "byChipId": [
+            "la_infiltr",
+            "la_leitung",
+            "kofferdam",
+            "rel_trocken"
+        ],
+        "byCategory": [
+            "anaesthesie",
+            "isolation"
+        ]
+    },
+    "phrasebank": {
+        "behandlung": {
+            "start": [
+                "Zunächst",
+                "Initial",
+                "Zu Beginn"
+            ],
+            "middle": [
+                "Anschließend",
+                "Daraufhin",
+                "Im Weiteren"
+            ],
+            "end": [
+                "Abschließend",
+                "Zum Schluss"
+            ]
+        }
+    },
+    "textLengthPolicy": {
+        "kurz": {
+            "snippetKey": "kurz",
+            "maxSentencesPerChip": 1,
+            "skipSections": [
+                "befund"
+            ]
+        },
+        "mittel": {
+            "snippetKey": "mittel",
+            "maxSentencesPerChip": 2
+        },
+        "lang": {
+            "snippetKey": "lang",
+            "maxSentencesPerChip": 3
+        }
+    }
+}

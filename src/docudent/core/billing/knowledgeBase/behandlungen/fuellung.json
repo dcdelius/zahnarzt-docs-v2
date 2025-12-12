@@ -1,0 +1,274 @@
+[
+    {
+        "id": "fuellung_komposit_pkv",
+        "titel": "Kompositfüllung (alle Größen) - PKV",
+        "kategorie": "konservierend",
+        "versicherung": "PKV",
+        "beschreibung": "Kompositfüllung in Adhäsivtechnik bei Privatpatient - alle möglichen Zusatzpositionen",
+        "phasen": [
+            {
+                "phase": "Anästhesie",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "wann": "VOR Injektion - IMMER ansetzen!",
+                        "anzahl": 1,
+                        "betrag_23": 7.25,
+                        "tipp": "Wird sehr oft vergessen!"
+                    },
+                    {
+                        "code": "GOZ_0090",
+                        "bezeichnung": "Infiltrationsanästhesie",
+                        "wann": "Standard bei OK und UK-Front",
+                        "anzahl": 1,
+                        "betrag_23": 16.22
+                    },
+                    {
+                        "code": "GOZ_0100",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei UK-Seitenzähnen empfohlen",
+                        "anzahl": 1,
+                        "betrag_23": 24.31,
+                        "tipp": "Höherer Wert als Infiltration!"
+                    }
+                ]
+            },
+            {
+                "phase": "Vorbereitung Kavität",
+                "positionen": [
+                    {
+                        "code": "GOZ_2040",
+                        "bezeichnung": "Kofferdam anlegen",
+                        "wann": "Bei Adhäsivtechnik empfohlen",
+                        "anzahl": 1,
+                        "betrag_23": 21.74,
+                        "tipp": "Verbessert Qualität UND Abrechnung"
+                    },
+                    {
+                        "code": "GOZ_2020a",
+                        "bezeichnung": "Kariesdetektor (analog §6 GOZ)",
+                        "wann": "Bei selektiver Exkavation",
+                        "anzahl": 1,
+                        "betrag_23": 16.22,
+                        "tipp": "Analogposition! Begründung: 'Kariesanfärbung zur selektiven Exkavation'"
+                    }
+                ]
+            },
+            {
+                "phase": "Überkappung (bei tiefer Karies)",
+                "bedingung": "Nur bei pulpanaher Kavität (Caries profunda)",
+                "positionen": [
+                    {
+                        "code": "GOZ_2330",
+                        "bezeichnung": "Indirekte Überkappung (Cp)",
+                        "wann": "Bei pulpanaher, aber geschlossener Kavität",
+                        "anzahl": 1,
+                        "betrag_23": 26.08,
+                        "dokumentation": "Material (Ca(OH)2, MTA) MUSS genannt werden!"
+                    },
+                    {
+                        "code": "GOZ_2340",
+                        "bezeichnung": "Direkte Überkappung (P)",
+                        "wann": "Bei punktförmiger Pulpaeröffnung",
+                        "anzahl": 1,
+                        "betrag_23": 34.78,
+                        "dokumentation": "Material MUSS genannt werden! NUR bei kleiner Eröffnung"
+                    }
+                ]
+            },
+            {
+                "phase": "Unterfüllung (bei tiefer Kavität)",
+                "bedingung": "Bei Dentinnähe zur Pulpa",
+                "positionen": [
+                    {
+                        "code": "GOZ_2050",
+                        "bezeichnung": "Unterfüllung/Aufbaufüllung",
+                        "wann": "Bei Liner/Unterfüllung vor Komposit",
+                        "anzahl": 1,
+                        "betrag_23": 21.14,
+                        "tipp": "Oft vergessen bei tiefen Kavitäten!"
+                    }
+                ]
+            },
+            {
+                "phase": "Füllung (nach Flächenzahl)",
+                "positionen": [
+                    {
+                        "code": "GOZ_2060",
+                        "bezeichnung": "Kompositfüllung 1-flächig",
+                        "wann": "Bei 1 Fläche",
+                        "betrag_23": 73.81
+                    },
+                    {
+                        "code": "GOZ_2080",
+                        "bezeichnung": "Kompositfüllung 2-flächig",
+                        "wann": "Bei 2 Flächen",
+                        "betrag_23": 115.39
+                    },
+                    {
+                        "code": "GOZ_2100",
+                        "bezeichnung": "Kompositfüllung 3-flächig",
+                        "wann": "Bei 3 Flächen",
+                        "betrag_23": 156.95
+                    },
+                    {
+                        "code": "GOZ_2120",
+                        "bezeichnung": "Kompositfüllung >3-flächig",
+                        "wann": "Bei 4+ Flächen oder Eckenaufbau Front",
+                        "betrag_23": 198.54
+                    }
+                ],
+                "steigerung": {
+                    "bis_35": true,
+                    "gruende": [
+                        "Schwierige Zugänglichkeit",
+                        "Überdurchschnittlicher Zeitaufwand",
+                        "Angstpatient",
+                        "Multimorbidität",
+                        "Besondere anatomische Verhältnisse"
+                    ]
+                }
+            }
+        ],
+        "gesamtberechnung_beispiele": {
+            "einfache_1fl_fuellung": {
+                "positionen": [
+                    "GOZ_0080",
+                    "GOZ_0090",
+                    "GOZ_2060"
+                ],
+                "summe": "97,28€"
+            },
+            "3fl_fuellung_mit_allem": {
+                "positionen": [
+                    "GOZ_0080",
+                    "GOZ_0090",
+                    "GOZ_2040",
+                    "GOZ_2020a",
+                    "GOZ_2050",
+                    "GOZ_2100"
+                ],
+                "summe": "239,30€",
+                "vs_minimal": "156,95€ (+82,35€ durch Zusatzpositionen!)"
+            },
+            "tiefe_3fl_mit_cp": {
+                "positionen": [
+                    "GOZ_0080",
+                    "GOZ_0090",
+                    "GOZ_2040",
+                    "GOZ_2330",
+                    "GOZ_2050",
+                    "GOZ_2100"
+                ],
+                "summe": "249,16€"
+            }
+        },
+        "dokumentation_erforderlich": [
+            "Flächenangabe (m, o, d, v, p/l)",
+            "Bei Cp/P: Material (Ca(OH)2, MTA etc.)",
+            "Bei Steigerung: Begründung",
+            "Bei Kariesdetektor: Erwähnung im Text"
+        ],
+        "ausschluesse": [
+            "GOZ 2197 NICHT neben 2060-2120 (bereits inkludiert!)"
+        ],
+        "haeufige_fehler": [
+            "Oberflächenanästhesie (GOZ 0080) vergessen",
+            "Kofferdam nicht berechnet",
+            "Unterfüllung bei tiefer Karies nicht angesetzt",
+            "Kariesdetektor verwendet aber nicht berechnet",
+            "Steigerungsfaktor nicht genutzt"
+        ]
+    },
+    {
+        "id": "fuellung_komposit_gkv_mkv",
+        "titel": "Kompositfüllung Seitenzahn - GKV mit Mehrkostenvereinbarung",
+        "kategorie": "konservierend",
+        "versicherung": "GKV",
+        "beschreibung": "Kompositfüllung bei GKV-Patient im Seitenzahn mit optionaler MKV",
+        "wichtiger_hinweis": "Seit 01.01.2025: Amalgamverbot! Komposit (Bulkfill) ist jetzt Kassenleistung im Seitenzahn.",
+        "phasen": [
+            {
+                "phase": "Kassenleistung (BEMA)",
+                "positionen": [
+                    {
+                        "code": "BEMA_40",
+                        "bezeichnung": "Infiltrationsanästhesie",
+                        "punkte": 8
+                    },
+                    {
+                        "code": "BEMA_12",
+                        "bezeichnung": "Kofferdam (bMF)",
+                        "wann": "Bei Kofferdam-Anlage",
+                        "punkte": 8,
+                        "wichtig": "NUR mit dokumentiertem Kofferdam! 1x pro KH/Sitzung"
+                    },
+                    {
+                        "code": "BEMA_25",
+                        "bezeichnung": "Indirekte Überkappung (Cp)",
+                        "wann": "Bei pulpanaher Kavität",
+                        "punkte": 15,
+                        "dokumentation": "Material MUSS genannt werden!"
+                    },
+                    {
+                        "code": "BEMA_13",
+                        "bezeichnung": "Füllung 1-flächig",
+                        "punkte": 33.5
+                    },
+                    {
+                        "code": "BEMA_13b",
+                        "bezeichnung": "Füllung 2-flächig",
+                        "punkte": 45
+                    },
+                    {
+                        "code": "BEMA_13c",
+                        "bezeichnung": "Füllung 3-flächig",
+                        "punkte": 56
+                    },
+                    {
+                        "code": "BEMA_13d",
+                        "bezeichnung": "Füllung >3-flächig",
+                        "punkte": 67
+                    }
+                ]
+            },
+            {
+                "phase": "Mehrkostenvereinbarung (MKV) - OPTIONAL",
+                "bedingung": "Wenn Patient 'Premium'-Versorgung wünscht (Mehrschicht, Ästhetik)",
+                "wichtig": "SCHRIFTLICH VOR BEHANDLUNG!",
+                "berechnung": {
+                    "formel": "GOZ-Betrag minus Kassenanteil",
+                    "beispiel_3fl": {
+                        "goz_2100_23": "156,95€",
+                        "minus_bema_13c": "58,10€ (ca.)",
+                        "mkv_betrag": "98,85€"
+                    }
+                },
+                "tipp": "Nicht 30€ pauschal! Richtige Differenzberechnung bringt mehr"
+            }
+        ],
+        "gesamtberechnung_beispiele": {
+            "standard_3fl_kasse": {
+                "positionen": [
+                    "BEMA_40 (8P)",
+                    "BEMA_12 (8P)",
+                    "BEMA_13c (56P)"
+                ],
+                "punkte_gesamt": "72 Punkte",
+                "betrag": "ca. 75€"
+            },
+            "3fl_mit_mkv_premium": {
+                "bema": "BEMA_40 + BEMA_12 + BEMA_13c = 72P = 75€",
+                "mkv": "GOZ_2100 - BEMA = 99€",
+                "gesamt": "ca. 174€"
+            }
+        },
+        "regressfallen": [
+            "BEMA 12 ohne dokumentierten Kofferdam = REGRESS!",
+            "BEMA 25 (Cp) ohne Materialangabe = REGRESS!",
+            "MKV ohne schriftliche Vereinbarung VOR Behandlung = KEIN ZAHLUNGSANSPRUCH!",
+            "F-Code passt nicht zu dokumentierten Flächen = PRÜFUNG!"
+        ]
+    }
+]

@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Deterministic Blueprint Rendering (Golden Test) > should render deterministically and match snapshot 1`] = `"=== ZUSAMMENFASSUNG === Zahn 16 (m, o, d), Tetric. Diagnose: Karies === BEHANDLUNGSABLAUF === Anästhesie: Infiltration Kofferdam angelegt. Matrize gesetzt. Mundsperrer verwendet Patient würgt === FORENSIK === Risiken aufgeklärt: Schmerzen Nachblutung === ABRECHNUNG === BEMA 13b Füllung 3-flächig BEMA 40 Infiltration === SONSTIGES === Mundsperrer verwendet, Patient würgt"`;

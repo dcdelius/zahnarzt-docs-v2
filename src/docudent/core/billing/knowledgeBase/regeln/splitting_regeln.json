@@ -1,0 +1,266 @@
+{
+    "_meta": {
+        "name": "BEMA↔GOZ Splitting Regeln",
+        "version": "1.0",
+        "beschreibung": "Definiert für gleichartige Versorgungen, was BEMA (Kasse) ist und was GOZ-Mehrkosten (Patient)",
+        "quelle": "GOZ-Kommentar, KZBV Richtlinien, Praxiserfahrung"
+    },
+    "grundprinzipien": {
+        "gleichartig": "Regelversorgung + höherwertige Material-/Technikwahl",
+        "regel": "BEMA-Leistungen = Kassenanteil, darüber hinaus = GOZ-Mehrkosten",
+        "wichtig": "Leistungen die in BEMA inkludiert sind, dürfen NICHT zusätzlich als GOZ berechnet werden!"
+    },
+    "versorgungen": [
+        {
+            "id": "krone_gleichartig_vollkeramik",
+            "name": "Vollkeramikkrone (statt Metallkrone)",
+            "therapie": "Vollkeramikkrone",
+            "regelversorgung": "Metallkrone (NEM/Gold)",
+            "versorgungsart": "gleichartig",
+            "bema_anteil": {
+                "codes": [
+                    "BEMA_20a",
+                    "BEMA_19"
+                ],
+                "beschreibung": "Kronenpräparation, Abformung, Einprobe, Zement (alles in 20a inkludiert), Provisorium"
+            },
+            "goz_mehrkosten": {
+                "berechenbar": [
+                    {
+                        "code": "GOZ_2197",
+                        "bezeichnung": "Adhäsive Befestigung",
+                        "wann": "Bei adhäsiver Zementierung (nicht konventionell)",
+                        "faktor": "2.3-3.5"
+                    }
+                ],
+                "nicht_berechenbar": [
+                    {
+                        "code": "GOZ_2200",
+                        "grund": "Kronenpräparation in BEMA 20a inkludiert"
+                    },
+                    {
+                        "code": "GOZ_2210",
+                        "grund": "Abformung in BEMA 20a inkludiert"
+                    }
+                ]
+            },
+            "labor": {
+                "bel_anteil": "NEM-Gerüst nach BEL-II",
+                "privat_mehrkosten": "Vollkeramik-Differenz (Zirkon/Presskeramik)"
+            }
+        },
+        {
+            "id": "krone_mit_stift_gleichartig",
+            "name": "Vollkeramikkrone nach Endo mit Glasfaserstift",
+            "therapie": "Vollkeramikkrone + konfektionierter Stift",
+            "regelversorgung": "Metallkrone + konfektionierter Stift",
+            "versorgungsart": "gleichartig",
+            "bema_anteil": {
+                "codes": [
+                    "BEMA_18a",
+                    "BEMA_20a",
+                    "BEMA_19"
+                ],
+                "beschreibung": "Stiftaufbau konfektioniert, Krone, Provisorium"
+            },
+            "goz_mehrkosten": {
+                "berechenbar": [
+                    {
+                        "code": "GOZ_2195",
+                        "bezeichnung": "Stiftpräparation",
+                        "wann": "Zusätzliche Präparation für Glasfaserstift",
+                        "faktor": "2.3-3.5"
+                    },
+                    {
+                        "code": "GOZ_2197",
+                        "bezeichnung": "Adhäsive Befestigung Stift",
+                        "wann": "Adhäsive Stiftbefestigung",
+                        "faktor": "2.3-3.5"
+                    },
+                    {
+                        "code": "GOZ_2180",
+                        "bezeichnung": "Aufbaufüllung",
+                        "wann": "Composite-Aufbau",
+                        "faktor": "2.3-3.5"
+                    }
+                ],
+                "nicht_berechenbar": [
+                    {
+                        "code": "GOZ_2210",
+                        "grund": "Abformung in BEMA 20a inkludiert"
+                    }
+                ]
+            },
+            "labor": {
+                "bel_anteil": "NEM-Krone nach BEL-II",
+                "privat_mehrkosten": "Vollkeramik-Differenz, Glasfaserstift-Material"
+            },
+            "materialkosten_patient": [
+                "Glasfaserstift"
+            ]
+        },
+        {
+            "id": "bruecke_gleichartig_vmk",
+            "name": "VMK-Brücke (vollverblendet statt teilverblendet)",
+            "therapie": "Vollverblendete Brücke (VMK)",
+            "regelversorgung": "NEM-Brücke mit vestibulärer Verblendung",
+            "versorgungsart": "gleichartig",
+            "bema_anteil": {
+                "codes": [
+                    "BEMA_91a",
+                    "BEMA_91b",
+                    "BEMA_92",
+                    "BEMA_19"
+                ],
+                "beschreibung": "Brückenanker, Brückenglied (NEM), Einprobe, Provisorien",
+                "hinweis": "Bei mehreren Gliedern entsprechend multiplizieren"
+            },
+            "goz_mehrkosten": {
+                "berechenbar": [
+                    {
+                        "code": "GOZ_2197",
+                        "bezeichnung": "Adhäsive Befestigung",
+                        "wann": "Bei adhäsiver Zementierung",
+                        "faktor": "2.3"
+                    }
+                ],
+                "nicht_berechenbar": [
+                    {
+                        "code": "GOZ_5000",
+                        "grund": "Brückenanker in BEMA 91a/b inkludiert"
+                    }
+                ]
+            },
+            "labor": {
+                "bel_anteil": "NEM-Gerüst + vestibuläre Verblendung nach BEL-II",
+                "privat_mehrkosten": "Palatinale/linguale Verblendung (Vollverblendung)"
+            }
+        },
+        {
+            "id": "inlay_keramik",
+            "name": "Keramikinlay (statt Amalgam/Kunststoff)",
+            "therapie": "Keramikinlay",
+            "regelversorgung": "Kunststofffüllung/Amalgamfüllung",
+            "versorgungsart": "gleichartig",
+            "bema_anteil": {
+                "codes": [
+                    "BEMA_13a",
+                    "BEMA_13b",
+                    "BEMA_13c",
+                    "BEMA_13d"
+                ],
+                "beschreibung": "Entsprechende Füllung je nach Flächenzahl",
+                "hinweis": "BEMA 13 entspricht der Regelversorgung, nicht dem Inlay!"
+            },
+            "goz_mehrkosten": {
+                "berechenbar": [
+                    {
+                        "code": "GOZ_2150",
+                        "bezeichnung": "Inlaypräparation (1-flächig)",
+                        "faktor": "2.3-3.5"
+                    },
+                    {
+                        "code": "GOZ_2160",
+                        "bezeichnung": "Inlaypräparation (2-flächig)",
+                        "faktor": "2.3-3.5"
+                    },
+                    {
+                        "code": "GOZ_2170",
+                        "bezeichnung": "Inlaypräparation (≥3-flächig)",
+                        "faktor": "2.3-3.5"
+                    },
+                    {
+                        "code": "GOZ_2197",
+                        "bezeichnung": "Adhäsive Befestigung",
+                        "faktor": "2.3-3.5"
+                    }
+                ],
+                "nicht_berechenbar": []
+            },
+            "labor": {
+                "bel_anteil": "Keine (Füllung hat kein BEL)",
+                "privat_mehrkosten": "Komplettes Keramikinlay privat"
+            }
+        },
+        {
+            "id": "teleskop_kombinationsversorgung",
+            "name": "Teleskop-Kombinationsversorgung",
+            "therapie": "Teleskopprothese (gaumenfreie Kombiversorgung)",
+            "regelversorgung": "Modellgussprothese mit Klammern (BEMA 96b)",
+            "versorgungsart": "gleichartig",
+            "wichtig": "Bei gleichartiger Teleskopversorgung KEIN BEMA 91d!",
+            "bema_anteil": {
+                "codes": [
+                    "BEMA_98a",
+                    "BEMA_19",
+                    "BEMA_24c",
+                    "BEMA_96b"
+                ],
+                "beschreibung": "Individueller Löffel, Provisorium je Anker, Wiederbefestigung (Anker×3), Modellguss",
+                "formel_24c": "Anzahl Ankerzähne × 3"
+            },
+            "goz_mehrkosten": {
+                "berechenbar": [
+                    {
+                        "code": "GOZ_5040",
+                        "bezeichnung": "Teleskopkrone (komplette Krone!)",
+                        "wann": "Je Ankerzahn",
+                        "faktor": "2.3-3.5 (oft 3.2 bei Parallelität)",
+                        "hinweis": "Dies ist die KRONE, nicht nur Präparation!"
+                    }
+                ],
+                "nicht_berechenbar": [
+                    {
+                        "code": "BEMA_91d",
+                        "grund": "Bei gleichartig über GOZ 5040 abrechnen!"
+                    }
+                ]
+            },
+            "labor": {
+                "bel_anteil": "Modellgussbasis nach BEL-II",
+                "privat_mehrkosten": "Teleskop-Primär-/Sekundärkronen, Galvanotechnik, Friktionselemente"
+            },
+            "festzuschuss_hinweis": "FZ 3.2a nur für 3er/4er (max 2× je Kiefer!), FZ 4.7 nur für Teleskop-Anker im VB"
+        }
+    ],
+    "allgemeine_nicht_berechenbar": [
+        {
+            "szenario": "Kronenpräparation bei BEMA-Krone",
+            "goz": "GOZ_2200",
+            "grund": "In BEMA 20a inkludiert"
+        },
+        {
+            "szenario": "Abformung bei BEMA-Zahnersatz",
+            "goz": "GOZ_2210",
+            "grund": "In BEMA 20a/91a/91b inkludiert"
+        },
+        {
+            "szenario": "Einprobe bei BEMA-Zahnersatz",
+            "goz": "GOZ_2220",
+            "grund": "In BEMA-Position inkludiert"
+        },
+        {
+            "szenario": "Eingliederung bei BEMA-Zahnersatz",
+            "goz": "GOZ_2310",
+            "grund": "In BEMA-Position inkludiert"
+        }
+    ],
+    "haeufige_fehler": [
+        {
+            "fehler": "GOZ 2200 neben BEMA 20a",
+            "korrektur": "Präparation ist in BEMA 20a inkludiert"
+        },
+        {
+            "fehler": "GOZ 2210 neben BEMA Zahnersatz",
+            "korrektur": "Abformung ist in BEMA inkludiert"
+        },
+        {
+            "fehler": "BEMA 91d bei gleichartiger Teleskopversorgung",
+            "korrektur": "Teleskop läuft über GOZ 5040 als Mehrkosten"
+        },
+        {
+            "fehler": "Doppelabrechnung Labor (BEL + privat für gleiche Leistung)",
+            "korrektur": "BEL-II für Regelversorgungsanteil, Privat NUR für Mehrkosten-Material"
+        }
+    ]
+}
