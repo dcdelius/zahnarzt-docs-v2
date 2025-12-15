@@ -40,6 +40,26 @@ import { getRulesForCodes, getTipsForCategory, knowledgeBase } from '../../core/
 import { QuestionEngine, getQuestionEngine, type ActiveQuestion, type QuestionLevel } from '../../core/behandlungen/_shared/questionEngine';
 // NEW: Cross Validator for combination rule checking
 import { validateCodes as checkCombinationConflicts } from '../../core/billing/knowledgeBase/logic/crossValidator';
+// NEW: Analog Justification Service
+import {
+    type AnalogJustification,
+    type AnalogJustificationMap,
+    createAnalogJustification,
+    getJustificationStatus,
+    JUSTIFICATION_MIN_LENGTH
+} from '../../core/billing/knowledgeBase/logic/analogJustificationService';
+// NEW: Analog Completion Validator
+import {
+    validateAnalogJustifications,
+    type AnalogValidationResult,
+    type AnalogValidationError
+} from '../../core/billing/knowledgeBase/logic/analogCompletionValidator';
+// NEW: Analog Export Guard
+import {
+    buildAnalogExportPayload,
+    assertNoCommentaryLeak,
+    type AnalogExportItem
+} from '../../core/billing/knowledgeBase/logic/analogExportGuard';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -123,6 +143,12 @@ export interface BillingV5State {
     // Warnings (Kombinations-Konflikte etc.)
     warnings: BillingWarning[];
 
+    // Analog Justifications (keyed by analogCode)
+    analogJustifications: AnalogJustificationMap;
+
+    // Analog Validation Result
+    analogValidation: AnalogValidationResult | null;
+
     // Output
     preview: string;
 }
@@ -190,6 +216,8 @@ export function useBillingV5Controller(initialTreatmentType: string = 'fuellung'
         inactiveChipIds: SettingsManager.getInactiveChips(initialTreatmentType),
         confirmations: [],
         warnings: [],
+        analogJustifications: {},
+        analogValidation: null,
         preview: '',
     });
 
@@ -967,9 +995,82 @@ ${improvedProse}${questionDocs.length > 0 ? '\n\n' + questionDocs.join('. ') + '
             inactiveChipIds: SettingsManager.getInactiveChips(initialTreatmentType),
             confirmations: [],
             warnings: [],
+            analogJustifications: {},
+            analogValidation: null,
             preview: '',
         });
     }, [initialTreatmentType, treatment]);
+
+    // ─── Validate and Finalize Billing ──────────────────────────
+
+    const validateAndFinalizeBilling = useCallback((): {
+        ok: boolean;
+        errors: AnalogValidationError[];
+        exportPayload?: AnalogExportItem[];
+    } => {
+        // Run analog justification validation
+        const validation = validateAnalogJustifications(
+            state.suggestions,
+            state.analogJustifications
+        );
+
+        // Update state with validation result
+        setState(s => ({ ...s, analogValidation: validation }));
+
+        if (!validation.ok) {
+            console.warn('[BillingV5] Analog validation failed:', validation.missing);
+            return {
+                ok: false,
+                errors: validation.missing
+            };
+        }
+
+        // Build safe export payload (no commentary leaks)
+        const exportPayload = buildAnalogExportPayload(state.analogJustifications);
+
+        // Assert no commentary leaks (throws if found)
+        try {
+            assertNoCommentaryLeak(exportPayload);
+        } catch (e) {
+            console.error('[BillingV5] Export safety check failed:', e);
+            return {
+                ok: false,
+                errors: [{
+                    analogCode: 'EXPORT_GUARD',
+                    type: 'missing_justification',
+                    reason: 'Export enthält verbotene Kommentar-Inhalte',
+                    severity: 'error'
+                }]
+            };
+        }
+
+        console.log('[BillingV5] Billing finalized successfully');
+        return {
+            ok: true,
+            errors: [],
+            exportPayload
+        };
+    }, [state.suggestions, state.analogJustifications]);
+
+    // ─── Save Analog Justification ──────────────────────────────
+
+    const saveAnalogJustification = useCallback((analogCode: string, justificationText: string, selectedComparisonCode?: string) => {
+        const justification = createAnalogJustification(
+            analogCode,
+            justificationText,
+            selectedComparisonCode
+        );
+
+        setState(s => ({
+            ...s,
+            analogJustifications: {
+                ...s.analogJustifications,
+                [analogCode]: justification
+            }
+        }));
+
+        console.log(`[BillingV5] Saved analog justification for ${analogCode}`);
+    }, []);
 
     // ─── Computed Values ───────────────────────────────────────
 
@@ -1009,6 +1110,8 @@ ${improvedProse}${questionDocs.length > 0 ? '\n\n' + questionDocs.join('. ') + '
         answerConfirmation,
         generatePreview,
         reset,
+        saveAnalogJustification,
+        validateAndFinalizeBilling,
     };
 }
 

@@ -4,7 +4,7 @@
  * Diese Engine ist die EINZIGE Stelle die Chips zu Billing-Codes und Text mappt.
  * Liest aus:
  * - behandlungen/*.json (Chips, TextSnippets, billingRefs)
- * - kataloge/bema.json, goz.json (Code-Details, Punkte, Beträge)
+ * - kataloge/bema.json, goz.json, goa.json (Code-Details, Punkte, Beträge)
  * - regeln/kombinationen.json (Ausschlussregeln)
  * 
  * KEINE HARDCODIERTEN WERTE!
@@ -13,11 +13,14 @@
 import type { InsuranceType } from './billingRegistry';
 
 // ESM JSON imports for browser compatibility (no require()!)
-import fuellungUnified from '../behandlungen/fuellung_unified.json';
 import bemaKatalog from '../kataloge/bema.json';
 import gozKatalog from '../kataloge/goz.json';
+import goaeKatalog from '../kataloge/goa.json';
 import kombinationenRegeln from '../regeln/kombinationen.json';
 import fuellungRegeln from '../regeln/fuellung_regeln.json';
+
+// Registry loaders for treatment-specific configs
+import { loadUnifiedConfig, isKnownTreatment } from '../registry';
 
 
 // ═══════════════════════════════════════════════════════════════
@@ -108,7 +111,7 @@ export interface ExtractedData {
 export interface ProcessingResult {
     billingCodes: string[];
     textLines: string[];
-    warnings: string[];
+    warnings: import('../../../../contracts/warnings').ValidationWarning[];
     optimierungen: string[];
     billingDetails: {
         code: string;
@@ -131,17 +134,16 @@ export function loadTreatmentJSON(treatmentId: string): TreatmentJSON | null {
         return _treatmentCache.get(treatmentId)!;
     }
 
-    // ESM static imports - switch based on treatmentId
-    let json: TreatmentJSON;
-    switch (treatmentId) {
-        case 'fuellung':
-            json = fuellungUnified as unknown as TreatmentJSON;
-            break;
-        // Weitere Behandlungen hier hinzufügen
-        default:
-            console.warn(`[TreatmentEngine] Unbekannte Behandlung: ${treatmentId}`);
-            return null;
+    // Policy B: Return null + warn for unknown treatments
+    // This maintains backward compat - callers already handle null gracefully
+    if (!isKnownTreatment(treatmentId)) {
+        console.warn(`[TreatmentEngine] Unknown treatment: "${treatmentId}". Available: fuellung, endo`);
+        return null;
     }
+
+    // Load via centralized registry loader (SSOT)
+    const unified = loadUnifiedConfig(treatmentId);
+    const json = unified as unknown as TreatmentJSON;
     _treatmentCache.set(treatmentId, json);
     return json;
 }
@@ -152,6 +154,7 @@ export function loadTreatmentJSON(treatmentId: string): TreatmentJSON | null {
 
 let _bemaCache: Record<string, any> | null = null;
 let _gozCache: Record<string, any> | null = null;
+let _goaeCache: Record<string, any> | null = null;
 
 function loadBemaCatalog(): Record<string, any> {
     if (!_bemaCache) {
@@ -165,6 +168,13 @@ function loadGozCatalog(): Record<string, any> {
         _gozCache = gozKatalog as Record<string, any>;
     }
     return _gozCache;
+}
+
+function loadGoaeCatalog(): Record<string, any> {
+    if (!_goaeCache) {
+        _goaeCache = goaeKatalog as Record<string, any>;
+    }
+    return _goaeCache;
 }
 
 export function lookupBillingCode(codeId: string): {
@@ -197,6 +207,24 @@ export function lookupBillingCode(codeId: string): {
                 code: entry.nummer || codeId.replace('GOZ_', ''),
                 bezeichnung: entry.bezeichnung || '',
                 betrag_23: betrag,
+                dokumentation_erforderlich: entry.dokumentation_erforderlich
+            };
+        }
+    } else if (codeId.startsWith('GOÄ_') || codeId.startsWith('GOAE_')) {
+        const catalog = loadGoaeCatalog();
+        // Normalize GOAE_ to GOÄ_ for lookup
+        const normalizedId = codeId.startsWith('GOAE_')
+            ? codeId.replace('GOAE_', 'GOÄ_')
+            : codeId;
+        const entry = catalog[normalizedId];
+        if (entry) {
+            // GOÄ catalog uses honorar.standard for standard factor
+            const betrag = entry.honorar?.standard || entry.betrag_23;
+            return {
+                code: entry.nummer || codeId.replace(/^(GOÄ_|GOAE_)/, ''),
+                bezeichnung: entry.bezeichnung || '',
+                betrag_23: betrag,
+                punkte: entry.punkte,
                 dokumentation_erforderlich: entry.dokumentation_erforderlich
             };
         }
@@ -267,7 +295,7 @@ export function processChipsToBilling(
         return {
             billingCodes: [],
             textLines: [],
-            warnings: [`Behandlung "${treatmentId}" nicht gefunden`],
+            warnings: [{ id: 'treatment-not-found', type: 'warning', title: 'Behandlung nicht gefunden', description: `Behandlung "${treatmentId}" nicht gefunden`, affectedCodes: [] }],
             optimierungen: [],
             billingDetails: []
         };
@@ -275,7 +303,7 @@ export function processChipsToBilling(
 
     const billingCodes: string[] = [];
     const textLines: string[] = [];
-    const warnings: string[] = [];
+    const warnings: import('../../../../contracts/warnings').ValidationWarning[] = [];
     const billingDetails: ProcessingResult['billingDetails'] = [];
 
     // Sortiere Chips nach Phasen-Reihenfolge
@@ -321,7 +349,7 @@ export function processChipsToBilling(
 
                 // Dokumentationsanforderung prüfen
                 if (chip.dokumentation_required) {
-                    warnings.push(`⚠️ ${chip.dokumentation_required}`);
+                    warnings.push({ id: `doc-${chip.id}`, type: 'info', title: 'Dokumentation', description: chip.dokumentation_required, affectedCodes: [codeId || ''] });
                 }
             }
         }
@@ -380,9 +408,9 @@ export function processChipsToBilling(
                     if (detailIdx > -1) billingDetails.splice(detailIdx, 1);
                 }
             }
-            warnings.push(`🔴 REGRESS: ${conflict.titel} - Code automatisch entfernt`);
+            warnings.push({ id: `regress-${conflict.regelId || 'auto'}`, type: 'regress', title: 'REGRESS', description: `${conflict.titel} - Code automatisch entfernt`, affectedCodes: codesToRemove });
         } else {
-            warnings.push(`⚠️ ${conflict.titel}`);
+            warnings.push({ id: `warn-${conflict.regelId || 'auto'}`, type: 'warning', title: 'Konflikt', description: conflict.titel, affectedCodes: [] });
         }
     }
 
@@ -1140,9 +1168,9 @@ export function generateAuditNotes(
     activeChipIds: string[],
     insuranceType: InsuranceType,
     extractedData: Record<string, any>
-): { warnings: string[]; optimizations: string[] } {
+): { warnings: import('../../../../contracts/warnings').ValidationWarning[]; optimizations: string[] } {
     const rules = getApplicableRules(treatmentId, activeChipIds, insuranceType, extractedData);
-    const warnings: string[] = [];
+    const warnings: import('../../../../contracts/warnings').ValidationWarning[] = [];
     const optimizations: string[] = [];
 
     for (const rule of rules) {
@@ -1163,7 +1191,7 @@ export function generateAuditNotes(
             }
 
             if (conditionMet) {
-                warnings.push(rule.auditWarning);
+                warnings.push({ id: rule.id, type: rule.regressRisk ? 'regress' : 'warning', title: rule.auditWarning, description: rule.auditWarning, affectedCodes: [] });
             }
         }
 
@@ -1178,9 +1206,10 @@ export function generateAuditNotes(
         for (const chipId of activeChipIds) {
             const chip = treatment.chips.find(c => c.id === chipId);
             if (chip?.forensicNotes?.length) {
-                for (const note of chip.forensicNotes) {
+                for (let i = 0; i < chip.forensicNotes.length; i++) {
+                    const note = chip.forensicNotes[i];
                     if (note.includes('REGRESS') || note.includes('MUSS')) {
-                        warnings.push(note);
+                        warnings.push({ id: `forensic-${chip.id}-${i}`, type: 'regress', title: 'Forensisch', description: note, affectedCodes: [] });
                     }
                 }
             }

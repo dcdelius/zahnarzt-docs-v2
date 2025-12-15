@@ -1,0 +1,366 @@
+{
+    "_meta": {
+        "schema": "docudent.fzRules.v2",
+        "version": "2.0.0",
+        "created": "2025-12-14",
+        "extractedFrom": [
+            "ze_bel_cases_v2_imported.json",
+            "fz_rules_v1.json"
+        ],
+        "purpose": "Extended FZ billing rules covering BK4/5, Unterfütterung types, and Bonus/Härtefall"
+    },
+    "rules": [
+        {
+            "ruleId": "FZ_3.2A_MAX_2_PER_KIEFER",
+            "title": "FZ 3.2a: Max 2 Teleskopkronen pro Kiefer",
+            "severity": "error",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_3\\.2a$",
+                "befundklasse": [
+                    "3"
+                ]
+            },
+            "condition": {
+                "type": "maxCount",
+                "code": "FZ_3.2a",
+                "maxPerKiefer": 2
+            },
+            "message": "FZ 3.2a darf maximal 2x pro Kiefer abgerechnet werden",
+            "evidence": {
+                "caseId": "CASE_03"
+            }
+        },
+        {
+            "ruleId": "FZ_1.5_REQUIRES_FZ_1.1",
+            "title": "FZ 1.5 ist Zusatzbefund zu FZ 1.1",
+            "severity": "error",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_1\\.5$",
+                "befundklasse": [
+                    "1"
+                ]
+            },
+            "condition": {
+                "type": "requiresCode",
+                "code": "FZ_1.5",
+                "requires": [
+                    "FZ_1.1"
+                ]
+            },
+            "message": "FZ 1.5 (Stiftaufbau) darf nur zusammen mit FZ 1.1 (Krone) abgerechnet werden",
+            "evidence": {
+                "caseId": "CASE_01"
+            }
+        },
+        {
+            "ruleId": "BK6_REPAIR_MULTI_FZ_COMBO",
+            "title": "BK6 Reparatur: Multi-FZ Kombination prüfen",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_6\\.",
+                "befundklasse": [
+                    "6"
+                ],
+                "category": "REPAIR"
+            },
+            "condition": {
+                "type": "multiCodeInBK",
+                "befundklasse": "6",
+                "minCount": 2
+            },
+            "message": "Mehrere FZ aus BK6 in Reparaturfall: Prüfe Kombinierbarkeit",
+            "evidence": {
+                "caseId": "CASE_12"
+            }
+        },
+        {
+            "ruleId": "MULTI_BK_KOMBI_VERSORGUNG",
+            "title": "Kombinationsversorgung über Befundklassen hinweg",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_\\d+",
+                "befundklasse": [
+                    "*"
+                ]
+            },
+            "condition": {
+                "type": "multipleBefundklassen",
+                "minDistinctBK": 2
+            },
+            "message": "FZ aus unterschiedlichen Befundklassen: Prüfe Doppelzählung",
+            "evidence": {
+                "caseId": "CASE_06"
+            }
+        },
+        {
+            "ruleId": "FZ_3.2A_VERBLENDBEREICH_ONLY",
+            "title": "FZ 3.2a nur im Verblendbereich",
+            "severity": "error",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_3\\.2a$",
+                "befundklasse": [
+                    "3"
+                ]
+            },
+            "condition": {
+                "type": "verblendbereichRequired",
+                "code": "FZ_3.2a",
+                "verblendbereich": {
+                    "OK": [
+                        "15",
+                        "14",
+                        "13",
+                        "12",
+                        "11",
+                        "21",
+                        "22",
+                        "23",
+                        "24",
+                        "25"
+                    ],
+                    "UK": [
+                        "34",
+                        "35",
+                        "33",
+                        "32",
+                        "31",
+                        "41",
+                        "42",
+                        "43",
+                        "44"
+                    ]
+                }
+            },
+            "message": "FZ 3.2a nur für Teleskopkronen im Verblendbereich",
+            "evidence": {
+                "caseId": "CASE_03"
+            }
+        },
+        {
+            "ruleId": "FZ_7.1_ONLY_ZAHNLOS",
+            "title": "FZ 7.1 nur bei zahnlosem Kiefer",
+            "severity": "error",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_7\\.1$",
+                "befundklasse": [
+                    "7"
+                ]
+            },
+            "condition": {
+                "type": "zahnlosRequired",
+                "code": "FZ_7.1"
+            },
+            "message": "FZ 7.1 (Totalprothese) darf nur bei vollständig zahnlosem Kiefer abgerechnet werden",
+            "evidence": {
+                "caseId": "CASE_04"
+            }
+        },
+        {
+            "ruleId": "FZ_7.2_ONLY_ZAHNLOS",
+            "title": "FZ 7.2 nur bei zahnlosem Kiefer",
+            "severity": "error",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_7\\.2$",
+                "befundklasse": [
+                    "7"
+                ]
+            },
+            "condition": {
+                "type": "zahnlosRequired",
+                "code": "FZ_7.2"
+            },
+            "message": "FZ 7.2 (Totalprothese UK) darf nur bei vollständig zahnlosem Kiefer abgerechnet werden",
+            "evidence": {
+                "caseId": "CASE_19"
+            }
+        },
+        {
+            "ruleId": "FZ_1.3_REPAIR_NOT_NEW",
+            "title": "FZ 1.3 ist Reparaturbefund",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_1\\.3$",
+                "befundklasse": [
+                    "1"
+                ]
+            },
+            "condition": {
+                "type": "categoryCheck",
+                "code": "FZ_1.3",
+                "expectedCategory": "REPAIR"
+            },
+            "message": "FZ 1.3 (Kronenreparatur) sollte als Reparatur klassifiziert sein",
+            "evidence": {
+                "caseId": "CASE_08"
+            }
+        },
+        {
+            "ruleId": "FZ_2.7_REPAIR_NOT_NEW",
+            "title": "FZ 2.7 ist Brückenreparaturbefund",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_2\\.7$",
+                "befundklasse": [
+                    "2"
+                ]
+            },
+            "condition": {
+                "type": "categoryCheck",
+                "code": "FZ_2.7",
+                "expectedCategory": "REPAIR"
+            },
+            "message": "FZ 2.7 (Brückenwiederherstellung) sollte als Reparatur klassifiziert sein",
+            "evidence": {
+                "caseId": "CASE_09"
+            }
+        },
+        {
+            "ruleId": "FZ_6.8_REQUIRES_INDIRECT_LAB",
+            "title": "FZ 6.8 erfordert indirekte Unterfütterung (Labor)",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_6\\.8$",
+                "befundklasse": [
+                    "6"
+                ]
+            },
+            "condition": {
+                "type": "unterfuetterungTypeRequired",
+                "fzCode": "FZ_6.8",
+                "expectedType": "indirect_lab",
+                "expectedBelCode": "BEL_8060"
+            },
+            "message": "Bei FZ 6.8 (indirekte Unterfütterung) muss BEL 8060 vorhanden sein und Type=indirect_lab",
+            "evidence": {
+                "caseId": "CASE_10"
+            }
+        },
+        {
+            "ruleId": "FZ_6.9_REQUIRES_DIRECT_CHAIRSIDE",
+            "title": "FZ 6.9 ist direkte Unterfütterung (chairside)",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_6\\.9$",
+                "befundklasse": [
+                    "6"
+                ]
+            },
+            "condition": {
+                "type": "unterfuetterungTypeRequired",
+                "fzCode": "FZ_6.9",
+                "expectedType": "direct_chairside",
+                "belCodeForbidden": "BEL_8060"
+            },
+            "message": "Bei FZ 6.9 (direkte Unterfütterung) sollte KEIN BEL 8060 vorhanden sein (chairside)",
+            "evidence": {
+                "caseId": "CASE_17"
+            }
+        },
+        {
+            "ruleId": "FZ_6.8.1_FOR_KOMBI_ZE",
+            "title": "FZ 6.8.1 für Unterfütterung bei Kombinationsversorgung",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_6\\.8\\.1$",
+                "befundklasse": [
+                    "6"
+                ]
+            },
+            "condition": {
+                "type": "unterfuetterungTypeRequired",
+                "fzCode": "FZ_6.8.1",
+                "expectedType": "indirect_lab"
+            },
+            "message": "FZ 6.8.1 für Unterfütterung bei Kombinationsversorgung (Teleskope + Prothese)",
+            "evidence": {
+                "caseId": "CASE_18"
+            }
+        },
+        {
+            "ruleId": "BK4_INTERIMSPROTHESE_TEMPORARY",
+            "title": "BK4 Interimsprothese ist temporär",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_4\\.",
+                "befundklasse": [
+                    "4"
+                ]
+            },
+            "condition": {
+                "type": "categoryNote",
+                "note": "Interimsprothese ist temporär vor endgültiger Versorgung"
+            },
+            "message": "BK4 (Interimsprothese) ist temporär und muss durch definitive Versorgung ersetzt werden",
+            "evidence": {
+                "caseId": "CASE_13"
+            }
+        },
+        {
+            "ruleId": "BK5_DEFINITIVE_TEILPROTHESE",
+            "title": "BK5 ist definitive Teilprothese",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_5\\.",
+                "befundklasse": [
+                    "5"
+                ]
+            },
+            "condition": {
+                "type": "categoryNote",
+                "note": "BK5 ist definitive Teilprothese mit Metallelementen"
+            },
+            "message": "BK5 (definitive Teilprothese) umfasst Modellguss mit Klammern ohne Teleskope",
+            "evidence": {
+                "caseId": "CASE_15"
+            }
+        },
+        {
+            "ruleId": "BONUS_STATUS_MISSING",
+            "title": "Bonusstatus fehlt",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_",
+                "befundklasse": [
+                    "*"
+                ]
+            },
+            "condition": {
+                "type": "bonusStatusRequired",
+                "field": "bonusStatus"
+            },
+            "message": "Bonusstatus (none/5y/10y/hardship) sollte angegeben werden für korrekte FZ-Berechnung",
+            "evidence": {
+                "caseId": "CASE_20"
+            }
+        },
+        {
+            "ruleId": "HARDSHIP_CASE_REVIEW",
+            "title": "Härtefallprüfung erforderlich",
+            "severity": "warn",
+            "appliesTo": {
+                "fzCodePattern": "^FZ_",
+                "befundklasse": [
+                    "*"
+                ]
+            },
+            "condition": {
+                "type": "bonusStatusCheck",
+                "triggerValue": "hardship"
+            },
+            "message": "Härtefall: 100% Zuschuss, Prüfung der Härtefallbescheinigung erforderlich",
+            "evidence": {
+                "caseId": "CASE_19"
+            }
+        }
+    ],
+    "notExtractable": [
+        {
+            "ruleDescription": "Detaillierte BK4 Mengenbegrenzung",
+            "reason": "Nur 2 BK4 Fälle vorhanden, keine komplexen Edge-Cases"
+        },
+        {
+            "ruleDescription": "BK5 vs BK3 Abgrenzung (Teleskope)",
+            "reason": "Abgrenzung klinisch, nicht rein codebasiert prüfbar"
+        }
+    ]
+}

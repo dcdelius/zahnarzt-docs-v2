@@ -128,16 +128,19 @@ export function extractToothNumber(text: string): string | null {
         }
     }
 
+
     // 3. Whisper error patterns
 
     // "110" → "11" (Whisper sometimes adds trailing zero)
-    const trailingZeroMatch = text.match(/\b([1-4][1-8])0\b/);
+    // But NOT "120€" which is a currency amount
+    const trailingZeroMatch = text.match(/\b([1-4][1-8])0(?!\s*[€$]|\s*euro|\s*eur\b)/i);
     if (trailingZeroMatch) {
         const fdi = parseInt(trailingZeroMatch[1], 10);
         if (isValidFDI(fdi)) {
             return String(fdi);
         }
     }
+
 
     // "3-6" or "3 6" → "36" (hyphenated or spaced)
     const separatedMatch = text.match(/\b([1-4])[-\s]([1-8])\b/);
@@ -214,14 +217,15 @@ export function normalizeToothInText(text: string): string {
         return match; // Keep original if invalid
     });
 
-    // Fix Whisper errors: "110" → "11"
-    result = result.replace(/\b([1-4][1-8])0\b/g, '$1');
+    // Fix Whisper errors: "110" → "11" (but NOT currency like "120€")
+    // Use negative lookahead to avoid matching amounts followed by currency symbols
+    result = result.replace(/\b([1-4][1-8])0(?!\s*[€$]|\s*euro|\s*eur\b)(?=\s|$|\b)/gi, '$1');
 
     // Fix "3-6" → "36"
-    result = result.replace(/\b([1-4])[-]([1-8])\b/g, '$1$2');
+    result = result.replace(/\b([1-4])[-]([1-8])(?![0-9€$])(?=\s|$|\b)/g, '$1$2');
 
     // Fix "36a" → "36"
-    result = result.replace(/\b([1-4][1-8])[a-z]\b/gi, '$1');
+    result = result.replace(/\b([1-4][1-8])[a-z](?![a-z])(?=\s|$|\b)/gi, '$1');
 
     return result;
 }

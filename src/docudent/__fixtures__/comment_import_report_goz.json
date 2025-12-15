@@ -1,0 +1,2243 @@
+{
+  "meta": {
+    "timestamp": "2025-12-14T20:42:28.714Z",
+    "sourceDir": "/Users/david/dokumaster-ui/src/docudent/GOZ",
+    "provider": "wissing-kommentar",
+    "options": {
+      "dryRun": false,
+      "writeDb": false,
+      "outJson": true
+    },
+    "totalDirs": 1
+  },
+  "discovery": {
+    "filesDiscovered": 227,
+    "filesProcessed": 148,
+    "filesSkipped": [],
+    "filesFailed": [
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_choice.xav_tf=xaver.component.Text_0&mode=multi&so=%2F%2F_%5B%40attr_id%3D%27__lfg144__ID0_2_GOZ12_GOZ-Para02%27%5D&db=asgard-bema-xopp&bk=asgard-bema-xopp&sb=asgard-bema-xopp&do=rszu_ID0_2 (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (2).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (3).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (6).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (7).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (2).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (3).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377512%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377515%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377518%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377537%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377556%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377557%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377567%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377568%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377569%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377570%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377573%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377574%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377575%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377576%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377580%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377581%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377583%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377587%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377588%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377589%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377591%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377592%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377594%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377609%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377637%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377637%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377641%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377641%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377642%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377642%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377643%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377643%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377644%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377644%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377646%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377646%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377647%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377647%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377649%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377649%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377654%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377654%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377655%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377655%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377658%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377658%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377659%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377659%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377660%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377660%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377661%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377661%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377662%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377662%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377663%27%5D (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377663%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377667%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377668%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377669%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377670%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377672%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377678%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377679%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377681%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377694%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377704%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=__[@attr_id=%27__lfg61__EBM-IDaenderung_31%27] (1).html",
+        "error": "Could not detect code from content"
+      }
+    ]
+  },
+  "summary": {
+    "totalFiles": 227,
+    "successCount": 134,
+    "errorCount": 79,
+    "uniqueCodes": 10,
+    "dedupeCount": 14,
+    "bySystem": {
+      "BEL": 0,
+      "GOZ": 128,
+      "BEMA": 6,
+      "UNKNOWN": 0
+    }
+  },
+  "uniqueCodesBySystem": {
+    "BEL": [],
+    "GOZ": [
+      "GOZ_1988",
+      "GOZ_2012",
+      "GOZ_3310",
+      "GOZ_9010",
+      "GOZ_9040"
+    ],
+    "BEMA": [
+      "BEMA_01",
+      "BEMA_106",
+      "BEMA_107",
+      "BEMA_130",
+      "BEMA_Ä2655"
+    ],
+    "UNKNOWN": []
+  },
+  "topCodes": [
+    {
+      "code": "GOZ_2012",
+      "count": 104
+    },
+    {
+      "code": "GOZ_1988",
+      "count": 21
+    },
+    {
+      "code": "BEMA_01",
+      "count": 2
+    },
+    {
+      "code": "BEMA_106",
+      "count": 1
+    },
+    {
+      "code": "BEMA_107",
+      "count": 1
+    },
+    {
+      "code": "BEMA_130",
+      "count": 1
+    },
+    {
+      "code": "BEMA_Ä2655",
+      "count": 1
+    },
+    {
+      "code": "GOZ_3310",
+      "count": 1
+    },
+    {
+      "code": "GOZ_9010",
+      "count": 1
+    },
+    {
+      "code": "GOZ_9040",
+      "count": 1
+    }
+  ],
+  "errors": [
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_choice.xav_tf=xaver.component.Text_0&mode=multi&so=%2F%2F_%5B%40attr_id%3D%27__lfg144__ID0_2_GOZ12_GOZ-Para02%27%5D&db=asgard-bema-xopp&bk=asgard-bema-xopp&sb=asgard-bema-xopp&do=rszu_ID0_2 (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (2).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (3).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (6).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (7).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (2).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (3).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377512%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377515%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377518%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377537%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377556%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377557%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377567%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377568%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377569%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377570%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377573%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377574%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377575%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377576%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377580%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377581%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377583%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377587%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377588%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377589%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377591%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377592%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377594%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377609%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377637%27%5D (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377637%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377641%27%5D (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377641%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377642%27%5D (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377642%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377643%27%5D (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377643%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377644%27%5D (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377644%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377646%27%5D (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377646%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377647%27%5D (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377647%27%5D.html",
+      "error": "Could not detect code from content"
+    }
+  ],
+  "sampleEntries": [
+    {
+      "id": "BEMA:BEMA_01:16d988346f6c",
+      "system": "BEMA",
+      "code": "BEMA_01",
+      "source": {
+        "provider": "wissing-kommentar",
+        "filePath": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0#.html",
+        "fileHash": "1496dfc3400a8ae5693480218cf9d33880b93bb979ac9dc34a6969ecac7fcfcc",
+        "importedAt": "2025-12-14T20:42:21.982Z"
+      },
+      "sections": [
+        {
+          "kind": "unknown",
+          "snippet": "Zahnärztliche Früherkennungsuntersuchung eines Kindes vom 30. bis 72. Lebensmonat"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "In dem Zeitraum vom 30. bis zum 72. Lebensmonat erfolgen drei zahnärztliche Früherkennungsuntersuchungen. Der Abstand zwischen den Früherkennungsuntersuchungen beträgt mindestens zwölf Monate."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die zahnärztlichen Früherkennungsuntersuchungen enthalten folgende Leistungen:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten einschließlich Beratung (Inspektion der Mundhöhle),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Einschätzung des Kariesrisikos anhand des dmft-Indexes,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Ernährungs- und Mundhygieneberatung der Erziehungsberechtigten mit dem Ziel der Keimzahlsenkung durch verringerten Konsum zuckerhaltiger Speisen und Getränke und verbesserte Mundhygiene,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Empfehlung und ggf. Verordnung geeigneter Fluoridierungsmittel zur Schmelzhärtung (Fluorid-Tabletten, fluoridiertes Salz, fluoridierte Zahnpasta und dergl.)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Neben den Früherkennungsuntersuchungen kann eine Leistung nach Nr. 01 in demselben Kalenderhalbjahr nicht abgerechnet werden. Im folgenden Kalenderhalbjahr kann die Leistung nach Nr. 01 frühestens vier Monate nach Erbringung der Früherkennungsuntersuchung abgerechnet werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Eine Leistung nach Nr. IP 4 (lokale Fluoridierung der Zähne) kann bei Kindern mit hohem Kariesrisiko vom 30. Lebensmonat an bis zum vollendeten 6. Lebensjahr zweimal je Kalenderhalbjahr abgerechnet werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Im Zusammenhang mit den Früherkennungsuntersuchungen und einer Leistung nach Nr. IP 4 kann eine Leistung nach Nr. Ä 1 nicht abgerechnet werden."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Die Abrechnung von Früherkennungsuntersuchungen setzt die Einzeluntersuchung bzw. -unterweisung voraus."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Diese Richtlinien legen gemäß § 26 Abs. 1 Satz 2 SGB V Voraussetzungen, Art und Umfang der zahnärztlichen Maßnahmen zur Früherkennung und Verhütung von Zahn-, Mund- und Kieferkrankheiten bei Versicherten fest, die das sechste Lebensjahr noch nicht vollendet haben (Früherkennungsuntersuchungen auf Zahn-, Mund- und Kieferkrankheiten)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die zahnärztlichen Kinder-Früherkennungsuntersuchungen sollen der Erkennung von Zahn-, Mund- und Kieferkrankheiten und der Vorbeugung von Karies und Gingivitis dienen. Weiterhin sollen durch sie Neuerkrankungen festgestellt und bewirkt werden, dass eine Behandlung frühzeitig eingeleitet und ein Fortschreiten der Erkrankung verhindert wird."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Mit den Früherkennungsuntersuchungen (siehe Nummer 6.) sollen insbesondere die Kinder betreut werden, die keine Einrichtungen besuchen, die gruppenprophylaktische Maßnahmen durchführen. Vor allem sollen die Kinder betreut werden, die ein hohes Kariesrisiko aufweisen und nicht bereits in ein anderweitiges Intensivprogramm eingebunden sind (siehe Nummern 6. und 7.)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die zahnärztlichen Kinder-Früherkennungsuntersuchungen sind auf die ärztlichen Kinder-Früherkennungsuntersuchungen, die in den Richtlinien des Bundesausschusses der Ärzte und Krankenkassen in der jeweils geltenden Fassung geregelt sind, abzustimmen. Die Früherkennungsuntersuchungen und die unter Nummer 7. genannten Maßnahmen sollen die Basis- und Intensivprophylaxe im Rahmen der Gruppenprophylaxe ergänzen. Der Zahnarzt klärt vor Beginn der Untersuchungen ab, welche Maßnahmen das Kind im Rahme..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die zahnärztlichen Kinder-Früherkennungsuntersuchungen umfassen die Inspektion der Mundhöhle, die Einschätzung des Kariesrisikos beim Kind, die Ernährungs- und Mundhygieneberatung der Erziehungsberechtigten mit dem Ziel der Keimzahlsenkung beim Kind durch verringerten Konsum zuckerhaltiger Speisen und Getränke sowie verbesserte Mundhygiene, die Empfehlung geeigneter Fluoridierungsmittel zur Schmelzhärtung (fluoridiertes Speisesalz, Zahnpasta u. Ä.) und ggf. die Abgabe oder Verordnung von Fluo..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Es werden drei zahnärztliche Kinder-Früherkennungsuntersuchungen durchgeführt. Die erste Untersuchung findet grundsätzlich im dritten Lebensjahr statt."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die beiden weiteren Untersuchungen finden bis zur Vollendung des 6. Lebensjahres statt. Der Abstand zwischen den Untersuchungen beträgt mindestens 12 Monate."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Ab dem 30. Lebensmonat ist bei Kindern mit hohem Kariesrisiko ergänzend zu den oben genannten Maßnahmen die Anwendung von Fluoridlack zur Kariesvorbeugung angezeigt. Ein hohes Kariesrisiko wird durch die folgenden Werte für kariöse, wegen Karies entfernte und gefüllte Zähne angezeigt:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Für diese Kinder sollen die lokalen Fluoridanwendungen in regelmäßigen Abständen zweimal je Kalenderhalbjahr vorgenommen werden. Diese Maßnahmen sind auf die Fluoridierungsanwendungen in der Gruppenprophylaxe abzustimmen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Soweit kariöse Defekte festgestellt werden, sind diese vorrangig zu sanieren."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Diese Richtlinien treten am 01.01.2005 in Kraft."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die neue Kinder-Richtlinie ist zum 01.09.2016 in Kraft getreten und enthält jetzt auch Verweise zum Zahnarzt. Die Kinder-Richtlinie stärkt besonders auch die vertragszahnärztliche Vorsorge für Kinder bis zum 6. Lebensjahr."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Im Kinderuntersuchungsheft sind folgende Verweise vom Arzt zum Zahnarzt für Kinder vom 6. bis zum 64. Lebensmonat zu vertragszahnärztlichen Untersuchungen durch Ankreuzfelder vorgesehen und zu dokumentieren:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im Zeitraum der U5 (6. bis 7. Lebensmonat) zur Abklärung von Auffälligkeiten an Zähnen und Schleimhaut,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im Zeitraum der U6 (10. bis 12. Lebensmonat) zur Abklärung von Auffälligkeiten an Zähnen und Schleimhaut,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im Zeitraum der U7 (21. bis 24. Lebensmonat) zur Abklärung von Auffälligkeiten im Kieferwachstum und an Zähnen und Schleimhaut,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im Zeitraum der U7a (34. bis 36. Lebensmonat) zur zahnärztlichen Früherkennungsuntersuchung,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im Zeitraum der U8 (46. bis 48. Lebensmonat) zur zahnärztlichen Früherkennungsuntersuchung,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im Zeitraum der U9 (60. bis 64. Lebensmonat) zur zahnärztlichen Früherkennungsuntersuchung."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "(1) Versicherte Kinder haben bis zur Vollendung des sechsten Lebensjahres Anspruch auf Untersuchungen sowie nach Vollendung des zehnten Lebensjahres auf eine Untersuchung zur Früherkennung von Krankheiten, die ihre körperliche oder geistige Entwicklung in nicht geringfügigem Maße gefährden. Zu den Früherkennungsuntersuchungen auf Zahn-, Mund- und Kieferkrankheiten gehören insbesondere die Inspektion der Mundhöhle, die Einschätzung oder Bestimmung des Kariesrisikos, die Ernährungs- und Mundhyg..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für zahnärztliche Früherkennungsuntersuchungen eines Kindes vom 30. bis 72. Lebensmonat"
+        },
+        {
+          "kind": "billing",
+          "snippet": "erneute Abrechnung frühestens nach 12 Monaten"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten einschl. Beratung (Inspektion der Mundhöhle)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Einschätzung des Kariesrisikos anhand des dmf-t-Indexes"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Ernährungs- und Mundhygieneberatung der Erziehungsberechtigten mit dem Ziel der Keimzahlsenkung durch verringerten Konsum zuckerhaltiger Speisen und Getränke und verbesserter Mundhygiene"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Empfehlung und ggf. Verordnung geeigneter Fluoridierungsmittel zur Schmelzhärtung (Fluoridtabletten, fluoridiertes Salz, fluoridierte Zahnpasta und dergleichen)"
+        },
+        {
+          "kind": "billing",
+          "snippet": "Zusätzlich abrechnungsfähig"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "lokale Fluoridierung bei Kindern vom vollendeten 30. Lebensmonat*) an mit hohem Kariesrisiko (BEMA-Nr. IP 4)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Fissurenversiegelung auch bei verfrühtem Durchbruch der 6-Jahres-Molaren vor dem vollendeten 6. Lebensjahr = 72. Lebensmonat (BEMA-Nr. IP 5)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "alle erforderlichen konservierend-chirurgischen Maßnahmen"
+        },
+        {
+          "kind": "billing",
+          "snippet": "Nicht abrechnungsfähig"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "bei Kindern bis zum 29. Lebensmonat"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "bei Kindern, die 6 Jahre oder älter sind"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "neben der BEMA-Nr. 01 im selben Kalenderhalbjahr"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "in der Gruppenprophylaxe"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "neben BEMA-Nr. Ä 1, wenn im gleichen Zusammenhang"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "keine Budgetierung für BEMA-Nrn. IP 1, IP 2, IP 4, IP 5 und FU"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "abrechenbar auch durch Fachzahnarzt für KFO, wenn Kind dort aktuell in Behandlung (Absprache mit Hauszahnarzt zur Vermeidung einer Doppelbehandlung)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "entsprechend regionaler Vorgaben der zuständigen KZV"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "mittels elektronischer Datenübermittlung"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "auf maschinell verwertbaren Datenträgern"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Eine Früherkennungsuntersuchung dient dazu, zu einem frühestmöglichen Zeitpunkt Störungen bzw. Erkrankungen zu erkennen, solange noch keine oder nur möglichst geringe Schäden entstanden sind."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "In Deutschland gibt es schon seit langem das System der allgemeinen ärztlichen Früherkennungsuntersuchungen bei Kindern. Im Zeitraum von der Geburt bis zum 5. Lebensjahr werden die Kosten für neun Früherkennungsuntersuchungen von der gesetzlichen Krankenversicherung übernommen. Hierdurch soll gewährleistet werden, dass zu einem Zeitpunkt, noch ehe die Eltern auf etwaige Krankheitserscheinungen hin aufmerksam geworden sind, möglichst alle Kinder auf Fehlentwicklungen und Krankheitssymptome unt..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Seit dem 01.07.1999 sind nunmehr auch zahnärztliche Früherkennungsuntersuchungen im Rahmen der gesetzlichen Krankenversicherung in den BEMA aufgenommen. Der Bundesausschuss hat drei zahnärztliche Früherkennungsuntersuchungen (abgekürzt FU) für Kleinkinder vom dritten bis zum sechsten Lebensjahr geschaffen:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die erste Früherkennungsuntersuchung soll grundsätzlich im dritten Lebensjahr durchgeführt werden. Zwei weitere Früherkennungsuntersuchungen sollen im Abstand von mindestens zwölf Monaten bis zum vollendeten sechsten Lebensjahr folgen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Grundsätzlich bedeutet dies, dass bei einer Konsultation eines jungen Versicherten im dritten Lebensjahr nach dem 30. Monat eine Früherkennungsuntersuchung durchgeführt werden soll. Erscheinen die Erziehungsberechtigten mit ihrem Kind erst nach dem dritten Geburtstag, so muss natürlich von diesem Grundsatz abgewichen werden und es soll ebenfalls eine FU-Untersuchung durchgeführt werden. Weiteren Untersuchung zur Früherkennung können natürlich auch hier erst nach Ablauf von zwölf Monaten erfol..."
+        },
+        {
+          "kind": "definition",
+          "snippet": "Weitere Definitionen von Zeiträumen, wie sie bis zum 31.12.2003 existiert haben, sind als unnötige Beschränkungen aus dem BEMA gestrichen worden."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Die zahnärztliche Früherkennungsuntersuchung umfasst gemäß den Abrechnungsbestimmungen folgende Leistungen:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten einschließlich Beratung (Inspektion der Mundhöhle),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Einschätzung des Kariesrisikos anhand des dmf-t-Indexes,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Empfehlung und ggf. Verordnung geeigneter Fluoridierungsmittel zur Schmelzhärtung (Fluoridtabletten, fluoridiertes Salz, fluoridierte Zahnpasta und dergleichen)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die zahnärztliche Früherkennungsuntersuchung setzt sich also zusammen aus Maßnahmen zur Früherkennung (Untersuchung und hieraus resultierende Kariesrisikobestimmung), aus Beratungen und aus individualprophylaktischen Maßnahmen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Das Ziel der zahnärztlichen Früherkennungsuntersuchung ist die frühestmögliche Erkennung von Zahn-, Mund- und Kieferkrankheiten. Hierbei steht entsprechend des Alters der Patienten die Erkennung von kariösen Läsionen im Vordergrund. Daneben werden aber selbstverständlich auch alle anderen sich darstellenden Befunde von Krankheitswert Berücksichtigung finden, z. B. Vorliegen einer Gingivitis (Zahnfleischentzündung) oder Stomatitis (Entzündung der gesamten Mundschleimhaut), Kiefer- bzw. Zahnste..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Bestandteile der BEMA-Nummer FU umfassen im Einzelnen:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die eingehende Untersuchung im Zusammenhang mit der zahnärztlichen Früherkennungsuntersuchung von Kindern richtet ihr Hauptaugenmerk auf die Früherkennung von Karies und der Ermittlung des individuellen Kariesrisikos. Aber auch alle anderen sich darstellenden Befunde von Krankheitswert finden bei den Früherkennungsuntersuchungen Berücksichtigung. Beispielhaft seien hier Zahnstellungs- und Kieferanomalien, Erkrankungen der Mundschleimhaut und des Zahnfleisches oder Erkrankungen der perioralen ..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Entsprechend des Alters der untersuchten Kinder werden diejenigen Untersuchungsmethoden vom Behandler ausgewählt, die für den individuellen Bedarf des Kindes notwendig sind. Die Untersuchung wird also immer fallbezogen sein und darf nicht undifferenziert das gesamte Register möglicher Untersuchungsmethoden ziehen (vgl. hierzu auch Begriffsbestimmung und Indikation der BEMA-Nr. 01)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Unter dem dmf-t-Index versteht man ein Verzeichnis, mit dessen Hilfe in einprägsamer, kürzelhafter Form der Grad der kariösen Erkrankung eines Gebisses festgehalten wird. Dabei verbirgt sich hinter der englischsprachigen Abkürzung Folgendes:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für „diseased“ oder „decayed\", d. h. an Karies erkrankte Zähne,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für „missing\", d. h. fehlende (also wegen Karies entfernte) Zähne,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für „filled\", d. h. gefüllte Zähne,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bei der Ermittlung des individuellen Kariesrisikos wird die Zahl der erkrankten bzw. entfernten bzw. gefüllten Zähne in Korrelation gesetzt zum Lebensalter. Nach den Kriterien des Deutschen Ausschusses für Jugendzahnheilkunde (DAJ), die bei den BEMA-Nr. FU anzuwenden sind, wird unter einem hohen Kariesrisiko verstanden, wenn bei einem Kind in einem Alter bis"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "3 Jahre ein dmf-t > 0,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "4 Jahre ein dmf-t > 2,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "5 Jahre ein dmf-t > 4,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "6 Jahre ein dmf-t > 5"
+        },
+        {
+          "kind": "limits",
+          "snippet": "D.h., dass beispielsweise ein dreieinhalbjähriges Kind maximal zwei kariöse, wegen Karies entfernte oder gefüllte Zähne aufweisen darf, um nicht als hoch kariesanfällig zu gelten."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Wenn z. B. bei einem Kind im 6. Lebensjahr mehr als fünf kariöse, wegen Karies entfernte oder gefüllte Zähne vorliegen, dann handelt es sich um ein hohes Kariesrisiko. Die BEMA-Nr. IP 4 ist nur bei solchen Kindern abrechenbar, bei denen ein solches hohes Kariesrisiko vorliegt."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Anhand des dmf-t-lndexes und der DAJ-Kriterien ist es während der Periode des Milchgebisses in Jahresabschnitten möglich, eine Einschätzung des individuellen Kariesrisikos zu treffen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Im Rahmen der FU sollen die Erziehungsberechtigten dahingehend beraten werden, welche Maßnahmen ergriffen werden können zur Keimzahlsenkung in der Mundhöhle ihres Kindes. Ausdrücklich sollen hierbei Beratungen zur Verbesserung der individuellen Mundhygiene und eine Ernährungsberatung mit dem Ziel der Reduktion zuckerhaltiger Speisen und Getränke durchgeführt werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Expressis verbis aufgeführt wird im Rahmen der individuellen Beratungen bei der FU die Empfehlung zum Gebrauch von Fluoridierungsmitteln. Diese umfassen z. B. Fluoridtabletten, fluoridiertes Speisesalz, fluoridhaltiges Mineralwasser und Nahrungsbestandteile, fluoridhaltige Zahnpasten und andere Mundhygieneartikel usw. Soweit diese Mittel der Verordnungsmöglichkeit unterliegen, sind sie ggf. zu verordnen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Im Jahr 2000 hat die DGZMK in einem Statement die Anwendung von Fluoriden zur Kariesprophylaxe veröffentlicht:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Empfehlungen zur Kariesprophylaxe mit Fluoriden"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Eine ausgewogene Ernährung, zweckmäßige Zahn- und Mundpflege sowie die Anwendung von Fluoriden sind die drei Eckpfeiler zahnmedizinischer Prävention. Auf Grund aktueller wissenschaftlicher Erkenntnisse ist beim Einsatz von Fluoriden der lokalen Applikation gegenüber der systemischen Zufuhr der Vorrang einzuräumen. Zahlreiche Untersuchungen haben in den letzten Jahren herausgestellt, dass Fluoride in erster Linie durch direkten Kontakt mit Zahnhartsubstanzen (lokal) karieshemmend wirken. Diese..."
+        },
+        {
+          "kind": "limits",
+          "snippet": "Vor dem 6. Lebensmonat sind aus zahnärztlicher Sicht keine Fluoridierungsmaßnahmen erforderlich. Mit dem Durchbruch der ersten Milchzähne sollten diese von den Eltern einmal am Tag mit einer höchstens erbsengroßen Menge fluoridhaltiger Kinderzahnpaste (maximal 500 ppm Fluorid) gereinigt werden. Dabei wird von der Anwendung von Zahnpasten mit Frucht- oder Bonbongeschmack abgeraten, um keinen Anreiz zum Herunterschlucken zu geben."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Ab dem 2. Geburtstag sollten die Milchzähne auf diese Weise zweimal täglich geputzt werden. Neben einem karies- und gingivitisprophylaktischen Effekt wird damit auch eine frühzeitige Gewöhnung des Kindes an die tägliche Mundhygiene erreicht. Eltern müssen das Zähneputzen bei Kleinkindern überwachen und bis in das Schulalter hinein die Zähne ihres Kindes nachputzen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Im Rahmen der kinderärztlichen Vorsorgeuntersuchungen und bei zahnärztlichen Kontrollterminen sollten die Eltern über die Bevorzugung der lokalen gegenüber der systemischen Fluoridanwendung aufgeklärt und beraten werden. Zusätzlich zum Zähneputzen mit fluoridhaltiger Kinderzahnpaste wird die Verwendung fluoridhaltigen Speisesalzes empfohlen. Weitere Fluoridsupplemente sind im Regelfall nicht nötig."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Wird die Zahnpflege nicht mit fluoridhaltiger Zahnpaste durchgeführt und auch kein fluoridhaltiges Speisesalz verwendet, kann eine Fluorid-Supplementierung mit Fluoridtabletten entsprechend dem angegebenen Dosierungsschema erfolgen. Dabei muss gewährleistet sein, dass die empfohlene Tagesdosis nicht überschritten wird. Insbesondere ist dabei zu berücksichtigen, dass auch Sojanahrung, hypoallergene Nahrungsmittel, bilanzierte Diäten, Mineralwässer zur Herstellung von Säuglingsnahrung und evtl...."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Ab dem Schuleintritt sollten die Zähne mit einer Zahnpaste mit einem Fluoridgehalt von 1000 bis 1500 ppm geputzt werden. Fluoridhaltiges Speisesalz sollte regelmäßig verwendet werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die lokale Anwendung von höher dosierten Fluoridlacken, -lösungen oder -gelen sollte nur nach zahnärztlicher Anweisung und unter zahnärztlicher Kontrolle erfolgen. Die häusliche Anwendung von Fluoridgelees und -lösungen sollte erst vom Schulalter an bei Kindern mit erhöhtem Kariesrisiko erfolgen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Eltern sollten über das Nutzen-Risiko-Verhältnis von Fluoridsupplementen informiert werden und möglichst schriftliche Instruktionen für die sachgerechte Anwendung von Fluoriden erhalten."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Stellt der Zahnarzt bei einem Kind eine hohe Kariesaktivität bzw. ein hohes Kariesrisiko fest, so müssen zusätzliche Maßnahmen erfolgen, um die Kariesgefährdung zu senken. Hierzu zählen insbesondere eine individuelle Ernährungsberatung sowie die Anwendung von keimreduzierenden Lacken, Gelen oder Spüllösungen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Fluoridkonzentration im Trinkwasser (Mineralwasser), mg/l"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Richtwerte für Fluoridsupplemente (mg Fluorid/Tag)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "In der Salzfluoridierung sieht die moderne Wissenschaft mittlerweile „eine hervorragende Möglichkeit …, die Fluoridaufnahme der Bevölkerung auf einen Wert anzuheben, der kariesprophylaktisch bedeutsam ist. Salzfluoridierung in einer Konzentration von 250 mg/kg führt nicht zu einer überhöhten Fluoridaufnahme und ist gesundheitlich unbedenklich“ (Auszug aus der gesonderten wissenschaftlichen Stellungnahme der DGZMK 2002 eigens zur Salzfluoridierung)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Im Unterschied zur lokalen Fluoridierungsmaßnahme entsprechend der BEMA-Nr. IP 4 sollen die Erziehungsberechtigten bei der Früherkennungsuntersuchung lediglich über den häuslichen Gebrauch von verschiedenen Fluoridierungsmitteln beraten werden, eine Fluoridierung als eigenständige Maßnahme erfolgt im Rahmen der Früherkennungsuntersuchung also nicht."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Der Erweiterte Bewertungsausschuss für zahnärztliche Leistungen hat ab 01.07.1999 die gemäß § 26 Abs. 1 SGB V vorgesehenen Früherkennungsuntersuchungen in die vertragszahnärztliche Versorgung eingeführt und im Rahmen der BEMA-Neurelationierung ab dem 01.01.2004 modifiziert. Dabei haben sich vereinfachende Regelungen durchgesetzt."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Zahnärzte können zukünftig die Früherkennungsuntersuchungen für Kinder vom 30. bis 72. Lebensmonat nach der BEMA-Nr. FU erbringen und über die KZV abrechnen.*) Die bisherigen ärztlichen Früherkennungsuntersuchungen für Kinder von der Geburt bis zur Vollendung des 6. Lebensjahres bleiben hiervon unberührt."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die zahnärztlichen Früherkennungsuntersuchungen beinhalten nicht nur Maßnahmen zur Früherkennung von Zahn-, Mund- und Kieferkrankheiten, sondern auch Maßnahmen zur Verhütung dieser Erkrankungen, also lndividualprophylaxe-Leistungen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Früherkennungsuntersuchung umfasst folgende Leistungen:"
+        },
+        {
+          "kind": "billing",
+          "snippet": "Grundsätzlich werden für Kinder drei zahnärztliche Früherkennungsuntersuchungen durchgeführt. Die erste Untersuchung – BEMA-Nr. FU – findet im dritten Lebensjahr statt. Sie soll durchgeführt werden, wenn das Milchgebiss komplett ausgebildet ist. Dies ist in der Regel im Zeitraum ab dem 30. Lebensmonat der Fall. Die weiteren Untersuchungen – nach BEMA-Nr. FU – finden im Abstand von mindestens zwölf Monaten im Zeitraum bis zum 72. Lebensmonat statt. In den Zwischenräumen können eingehende Unter..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Besondere Bedeutung kommt dabei der Erkennung von Kindern mit hohem Kariesrisiko zu. Dieser Patientenkreis soll anhand der Kriterien des Deutschen Ausschusses für Jugendzahnheilkunde (DAJ) ermittelt werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Ein hohes Kariesrisiko wird durch die folgenden Werte für kariöse, wegen Karies entfernter und gefüllter Zähne angezeigt:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Hier ist die lokale Fluoridierung nach BEMA-Nr. IP 4 zweimal halbjährlich angezeigt."
+        },
+        {
+          "kind": "billing",
+          "snippet": "In der Abrechnungsbestimmung ist ausdrücklich festgelegt, dass zahnärztliche Frühuntersuchungen nach den BEMA-Nr. FU nur bei Einzeluntersuchung bzw. -unterweisung abrechnungsfähig sind."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bei Gruppenunterweisung können die BEMA-Nummern nicht abgerechnet werden."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Die Abrechnung erfolgt quartalsweise auf maschinell verwertbaren Datenträgern mittels elektronischer Datenübermittlung."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die BEMA-Nr. 01 kann je Kalenderhalbjahr einmal abgerechnet werden, frühestens nach Ablauf von vier Monaten."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die BEMA-Nr. 01 kann neben den BEMA-Nr. FU in demselben Kalenderhalbjahr nicht abgerechnet werden. Im folgenden Kalenderhalbjahr kann die BEMA-Nr. 01 frühestens vier Monate nach Erbringung der BEMA-Nr. FU abgerechnet werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Im Zusammenhang mit Früherkennungsuntersuchungen kann die BEMA-Nr. Ä 1 nicht abgerechnet werden."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Erfolgt jedoch eine Beratung des Patienten, die in keinem Zusammenhang mit der Früherkennungsuntersuchung steht, also aus anderen Gründen, so kann die BEMA-Nr. Ä 1 für diese Beratung abgerechnet werden. Voraussetzung ist jedoch, dass die BEMA-Nr. Ä 1 abrechnungsfähig ist und keine andere Abrechnungsbestimmung dagegensteht (siehe hierzu Kommentar zur BEMA-Nr. Ä 1)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Wird bei einer zahnärztlichen Früherkennungsuntersuchung festgestellt, dass ein Kind ein hohes Kariesrisiko nach dem dmf-t-Index aufweist, kann darüber hinaus vom 30. Lebensmonat an die lokale Fluoridierung der Zähnen zweimal je Kalenderhalbjahr nach BEMA-Nr. IP 4 erbracht werden. Diese Maßnahmen sind auf die Fluoridierungsanwendungen in der Gruppenprophylaxe abzustimmen."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Das erhöhte Kariesrisiko wird bei den weiteren FU-Untersuchungen oder der Befunderhebung nach BEMA-Nr. 01 reevaluiert. Bei erhöhtem Kariesrisiko kann aufgrund der Abrechnungsbestimmungen der BEMA-Nr. IP 4 dann bei Notwendigkeit bis zur Vollendung des 17. Lebensjahr die Fluoridierung zweimal pro Kalenderhalbjahr durchgeführt werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bei Kindern, die kein hohes Kariesrisiko aufweisen, soll der Zahnarzt geeignete Fluoridierungsmittel zur Schmelzhärtung (fluoridiertes Speisesalz, Zahnpasta u. Ä.) und gegebenenfalls die Abgabe von Fluoridtabletten empfehlen. Dabei ist es wichtig, dass der Zahnarzt im Gespräch mit den Erziehungsberechtigten versucht abzuklären, ob und gegebenenfalls welche Maßnahmen im Rahmen der Gruppenprophylaxe durchgeführt worden sind. Diesem Gespräch kommt deswegen besondere Bedeutung zu, weil hierdurch ..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Basierend auf gesetzlichen Vorgaben nach § 295 SGB V wurde zwischen KZBV und GKV-Spitzenverband der sogenannte DTA-Vertrag („Vertrag über den Datenaustausch auf Datenträgern oder im Wege elektronischer Datenübertragung“) als Teil des Bundesmantelvertrages vereinbart."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Das KCH-Abrechnungsmodul (ab Version 1.7) enthält nun insbesondere neue quartalsübergreifende Prüfungen im Bereich der KCH anhand von Datumsangaben und Rückblicken in Vorquartale. Die Leistungen nach den BEMA-Nrn. Ä 1, 01, 04, 05, 107, IP 1, IP 2, IP 4 und FU sind hiervon betroffen. Außerdem wird die zweijährige Gewährleistungspflicht von Füllungen überprüft (siehe BEMA-Nr. 13)."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Die geltenden Abrechnungsbestimmungen zu diesen Gebührennummern wurden nicht verändert."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Dies bedeutet für die BEMA-Nr. FU, dass nach wie vor eine erneute zahnärztliche Früherkennungsuntersuchung erst nach Ablauf von 12 Monaten abrechnungsfähig ist. Erfolgte also eine BEMA-Nr. FU am 18.06.2011, so kann die nächste erst wieder am 19.06.2012 erfolgen."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Mit dem Einsatz des KCH-Abrechnungsmoduls wird die sachlich-rechnerische Prüfung der konservierend-chirurgischen Quartalsabrechnung bereits in das Abrechnungssystem der Zahnarztpraxis vorverlagert."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Es ist der Zahnarztpraxis zu empfehlen, vor dem Erstellen der Abrechnungsdatei zum Quartalsende den Prüflauf durchzuführen und den gemeldeten Hinweisen nachzugehen."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Durch die quartalsübergreifende Prüfung des neuen Abrechnungsmoduls ist es nunmehr der KZV auch möglich geworden, im Vorfeld vor eventuellen Regressforderungen durch die Krankenkassen möglicherweise auftretende Unstimmigkeiten hinsichtlich des im BEMA vorgegebenen Behandlungsintervalles bei der BEMA-Nr. FU zu bemerken und dem Vertragszahnarzt entsprechende Hinweise zu geben."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Neben den Leistungen nach der Nr. FU können z. B. alle erforderlichen konservierend-chirurgischen Maßnahmen anfallen. Bei verfrühtem Zahndurchbruch vor dem vollendeten 6. Lebensjahr ist auch die Fissurenversiegelung nach Nr. IP 5 neben der Nr. FU möglich."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Früherkennungsuntersuchungen (FU) und die Individualprophylaxe-Leistungen (IP 1, IP 2, IP 4, IP 5) unterliegen bei dem für die Individualprophylaxe vereinbarten Punktwert keiner Budgetierung."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Leistungen der Individualprophylaxe unterliegen allerdings der Wirtschaftlichkeitsprüfung. Eine Prüfung von IP-Leistungen nach Durchschnittswerten ist zulässig (LSG Bayern, Urteil vom 12.08.2014, Az.: L 12 KA 5054/13)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bei Versicherten, die das sechste, aber noch nicht das 18. Lebensjahr vollendet haben, ist eine Vereinbarung über die Leistung nach GOZ-Nr. 1000 (Erstellung eines Mundhygienestatus und eingehende Unterweisung zur Vorbeugung gegen Karies und parodontale Erkrankungen) möglich, wenn die Leistung in einer anderen Frequenz indiziert ist, als sie bei vergleichbarer Leistung nach BEMA-Nr. IP 1 oder IP 2 (je Kalenderhalbjahr einmal) vorgegeben ist."
+        },
+        {
+          "kind": "definition",
+          "snippet": "Die GOZ-Nr. 1000 ist bei Kindern vor Vollendung des sechsten Lebensjahres neben der BEMA-Nr. FU (Zahnärztliche Früherkennungsuntersuchung eines Kindes vom 30. bis zum 72. Lebensmonat) nicht vereinbarungsfähig, da es hierbei zu einer unzulässigen Überschneidung der Leistungsinhalte käme."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Selbstverständlich ist bei Versicherten, die das 18. Lebensjahr vollendet haben, die GOZ-Nr. 1000 immer vereinbarungsfähig."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bei Versicherten, die das sechste, aber noch nicht das 18. Lebensjahr vollendet haben, ist eine Vereinbarung über die Leistung nach der GOZ-Nr. 1010 (Kontrolle des Übungserfolges einschließlich weiterer Unterweisung) möglich, wenn die Leistung in einer anderen Frequenz indiziert ist, als sie bei vergleichbarer Leistung nach BEMA-Nr. IP 1 oder IP 2 (je Kalenderhalbjahr einmal) vorgegeben ist."
+        },
+        {
+          "kind": "definition",
+          "snippet": "Die Leistung nach GOZ-Nr. 1010 ist bei Kindern vor Vollendung des sechsten Lebensjahres neben der BEMA-Nr. FU (Zahnärztliche Früherkennungsuntersuchung eines Kindes vom 30. bis zum 72. Lebensmonat) nicht vereinbarungsfähig, da es hierbei zu einer unzulässigen Überschneidung der Leistungsinhalte käme."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Selbstverständlich ist bei Versicherten, die das 18. Lebensjahr vollendet haben, die GOZ-Nr. 1010 immer vereinbarungsfähig."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Einigung der Spitzenverbände der Krankenkassen und der KZBV zwischen „ab dem 3. Lebensjahr“ laut FU-Richtlinie 7 und „vom vollendeten 3. Lebensjahr an“ laut FU-Abrechnungsbestimmung 4."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Zwischenzeitlich existieren unterschiedliche selektivvertragliche Regelungen zur Frühprävention bei Kleinkindern. Nach diesen Regelungen kann z. B. eine sogenannte „Kleinkind-FU“ auch bereits zwischen dem 6. und 30. Lebensmonat abgerechnet werden. Soweit die Früherkennungsuntersuchung beim Kleinkind auch die Befundaufnahme (wie die BEMA-Nr. FU, die zwischen dem 30. und 72. Lebensmonat abgerechnet werden kann) beinhaltet, sind die bei der BEMA-Nr. 01 genannten Fristen zu beachten. Die Abrechnu...",
+          "bullets": [
+            "FU Zahn Zahnärztliche Früherkennungsuntersuchung eines Kindes vom 30. bis 72. Lebensmonat"
+          ]
+        }
+      ],
+      "softRules": [
+        {
+          "type": "maxCountHint",
+          "severity": "warn",
+          "payload": {
+            "match": "maximal"
+          },
+          "evidenceSnippet": "dass beispielsweise ein dreieinhalbjähriges Kind maximal zwei kariöse, wegen Karies entfernte oder gefüllte Zähne aufweisen darf, um nicht als hoch kariesan"
+        },
+        {
+          "type": "compatHint",
+          "severity": "warn",
+          "payload": {
+            "match": "Neben den Früherkennungsuntersuchungen kann eine Leistung nach Nr. 01 in demselben Kalenderhalbjahr nicht abgerechnet werden. Im folgenden Kalenderhalbjahr kann die Leistung nach Nr. 01 frühestens vier Monate nach Erbringung der Früherkennungsuntersuchung abgerechnet werden.4. Eine Leistung nach Nr. IP 4 (lokale Fluoridierung der Zähne) kann bei Kindern mit hohem Kariesrisiko vom 30. Lebensmonat an bis zum vollendeten 6. Lebensjahr zweimal je Kalenderhalbjahr abgerechnet werden.5. Im Zusammenhang mit den Früherkennungsuntersuchungen und einer Leistung nach Nr. IP 4 kann eine Leistung nach Nr. Ä 1 nicht abgerechnet werden.6. Die Abrechnung von Früherkennungsuntersuchungen setzt die Einzeluntersuchung bzw. -unterweisung voraus.Richtlinien Zahnärztliche Früherkennung:1. Diese Richtlinien legen gemäß § 26 Abs. 1 Satz 2 SGB V Voraussetzungen, Art und Umfang der zahnärztlichen Maßnahmen zur Früherkennung und Verhütung von Zahn-, Mund- und Kieferkrankheiten bei Versicherten fest, die das sechste Lebensjahr noch nicht vollendet haben (Früherkennungsuntersuchungen auf Zahn-, Mund- und Kieferkrankheiten).2. Die zahnärztlichen Kinder-Früherkennungsuntersuchungen sollen der Erkennung von Zahn-, Mund- und Kieferkrankheiten und der Vorbeugung von Karies und Gingivitis dienen. Weiterhin sollen durch sie Neuerkrankungen festgestellt und bewirkt werden, dass eine Behandlung frühzeitig eingeleitet und ein Fortschreiten der Erkrankung verhindert wird.3. Mit den Früherkennungsuntersuchungen (siehe Nummer 6.) sollen insbesondere die Kinder betreut werden, die keine Einrichtungen besuchen, die gruppenprophylaktische Maßnahmen durchführen. Vor allem sollen die Kinder betreut werden, die ein hohes Kariesrisiko aufweisen und nicht bereits in ein anderweitiges Intensivprogramm eingebunden sind (siehe Nummern 6. und 7.).4. Die zahnärztlichen Kinder-Früherkennungsuntersuchungen sind auf die ärztlichen Kinder-Früherkennungsuntersuchungen, die in den Richtlinien des Bundesausschusses der Ärzte und Krankenkassen in der jeweils geltenden Fassung geregelt sind, abzustimmen. Die Früherkennungsuntersuchungen und die unter Nummer 7. genannten Maßnahmen sollen die Basis- und Intensivprophylaxe im Rahmen der Gruppenprophylaxe ergänzen. Der Zahnarzt klärt vor Beginn der Untersuchungen ab, welche Maßnahmen das Kind im Rahmen der Gruppenprophylaxe in Anspruch nimmt. Er hat die eigenen Tätigkeiten darauf abzustimmen.5. Die zahnärztlichen Kinder-Früherkennungsuntersuchungen umfassen die Inspektion der Mundhöhle, die Einschätzung des Kariesrisikos beim Kind, die Ernährungs- und Mundhygieneberatung der Erziehungsberechtigten mit dem Ziel der Keimzahlsenkung beim Kind durch verringerten Konsum zuckerhaltiger Speisen und Getränke sowie verbesserte Mundhygiene, die Empfehlung geeigneter Fluoridierungsmittel zur Schmelzhärtung (fluoridiertes Speisesalz, Zahnpasta u. Ä.) und ggf. die Abgabe oder Verordnung von Fluoridtabletten.6. Es werden drei zahnärztliche Kinder-Früherkennungsuntersuchungen durchgeführt. Die erste Untersuchung findet grundsätzlich im dritten Lebensjahr statt.Die beiden weiteren Untersuchungen finden bis zur Vollendung des 6. Lebensjahres statt. Der Abstand zwischen den Untersuchungen beträgt mindestens 12 Monate.7. Ab dem 30. Lebensmonat ist bei Kindern mit hohem Kariesrisiko ergänzend zu den oben genannten Maßnahmen die Anwendung von Fluoridlack zur Kariesvorbeugung angezeigt. Ein hohes Kariesrisiko wird durch die folgenden Werte für kariöse, wegen Karies entfernte und gefüllte Zähne angezeigt:Alter bis3 Jahre dmf-t > 04 Jahre dmf-t > 25 Jahre dmf-t > 46 Jahre dmf-t > 5Für diese Kinder sollen die lokalen Fluoridanwendungen in regelmäßigen Abständen zweimal je Kalenderhalbjahr vorgenommen werden. Diese Maßnahmen sind auf die Fluoridierungsanwendungen in der Gruppenprophylaxe abzustimmen.8. Soweit kariöse Defekte festgestellt werden, sind diese vorrangig zu sanieren.9. Diese Richtlinien treten am 01.01.2005 in Kraft.Richtlinie zur Früherkennung von Krankheiten bei Kindern bis zur Vollendung des 6. Lebensjahres (Kinder-Richtlinie)Die neue Kinder-Richtlinie ist zum 01.09.2016 in Kraft getreten und enthält jetzt auch Verweise zum Zahnarzt. Die Kinder-Richtlinie stärkt besonders auch die vertragszahnärztliche Vorsorge für Kinder bis zum 6. Lebensjahr. Im Kinderuntersuchungsheft sind folgende Verweise vom Arzt zum Zahnarzt für Kinder vom 6. bis zum 64. Lebensmonat zu vertragszahnärztlichen Untersuchungen durch Ankreuzfelder vorgesehen und zu dokumentieren:– im Zeitraum der U5 (6. bis 7. Lebensmonat) zur Abklärung von Auffälligkeiten an Zähnen und Schleimhaut,– im Zeitraum der U6 (10. bis 12. Lebensmonat) zur Abklärung von Auffälligkeiten an Zähnen und Schleimhaut,– im Zeitraum der U7 (21. bis 24. Lebensmonat) zur Abklärung von Auffälligkeiten im Kieferwachstum und an Zähnen und Schleimhaut,– im Zeitraum der U7a (34. bis 36. Lebensmonat) zur zahnärztlichen Früherkennungsuntersuchung,– im Zeitraum der U8 (46. bis 48. Lebensmonat) zur zahnärztlichen Früherkennungsuntersuchung,– im Zeitraum der U9 (60. bis 64. Lebensmonat) zur zahnärztlichen Früherkennungsuntersuchung.Sozialgesetzbuch 5. Buch (SGB V):§ 26Kinderuntersuchung(1) Versicherte Kinder haben bis zur Vollendung des sechsten Lebensjahres Anspruch auf Untersuchungen sowie nach Vollendung des zehnten Lebensjahres auf eine Untersuchung zur Früherkennung von Krankheiten, die ihre körperliche oder geistige Entwicklung in nicht geringfügigem Maße gefährden. Zu den Früherkennungsuntersuchungen auf Zahn-, Mund- und Kieferkrankheiten gehören insbesondere die Inspektion der Mundhöhle, die Einschätzung oder Bestimmung des Kariesrisikos, die Ernährungs- und Mundhygieneberatung sowie Maßnahmen zur Schmelzhärtung der Zähne und zur Keimzahlsenkung. Die Leistungen nach Satz 2 werden bis zur Vollendung des sechsten Lebensjahres erbracht und können von Ärzten oder Zahnärzten erbracht werden.Schnellübersicht zum Kommentar:Abrechnungsfähig– für zahnärztliche Früherkennungsuntersuchungen eines Kindes vom 30. bis 72. Lebensmonat– erneute Abrechnung frühestens nach 12 MonatenAbgegolten– eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten einschl. Beratung (Inspektion der Mundhöhle)– Einschätzung des Kariesrisikos anhand des dmf-t-Indexes– Ernährungs- und Mundhygieneberatung der Erziehungsberechtigten mit dem Ziel der Keimzahlsenkung durch verringerten Konsum zuckerhaltiger Speisen und Getränke und verbesserter Mundhygiene– Empfehlung und ggf. Verordnung geeigneter Fluoridierungsmittel zur Schmelzhärtung (Fluoridtabletten, fluoridiertes Salz, fluoridierte Zahnpasta und dergleichen)Zusätzlich abrechnungsfähig– lokale Fluoridierung bei Kindern vom vollendeten 30. Lebensmonat*) an mit hohem Kariesrisiko (BEMA-Nr. IP 4)– Fissurenversiegelung auch bei verfrühtem Durchbruch der 6-Jahres-Molaren vor dem vollendeten 6. Lebensjahr = 72. Lebensmonat (BEMA-Nr. IP 5)– alle erforderlichen konservierend-chirurgischen Maßnahmen– u. v. m.Nicht abrechnungsfähig– bei Kindern bis zum 29. Lebensmonat– bei Kindern, die 6 Jahre oder älter sind– neben der BEMA-Nr. 01 im selben Kalenderhalbjahr– in der Gruppenprophylaxe– neben BEMA-Nr. Ä 1, wenn im gleichen ZusammenhangBesonderheiten– keine Budgetierung für BEMA-Nrn. IP 1, IP 2, IP 4, IP 5 und FU– abrechenbar auch durch Fachzahnarzt für KFO, wenn Kind dort aktuell in Behandlung (Absprache mit Hauszahnarzt zur Vermeidung einer Doppelbehandlung)Abrechnung– entsprechend regionaler Vorgaben der zuständigen KZV– mittels elektronischer Datenübermittlung– auf maschinell verwertbaren Datenträgern– keine Zahnangaben– keine BemerkungenKommentar:1 Begriffsbestimmung und IndikationEine Früherkennungsuntersuchung dient dazu, zu einem frühestmöglichen Zeitpunkt Störungen bzw. Erkrankungen zu erkennen, solange noch keine oder nur möglichst geringe Schäden entstanden sind.In Deutschland gibt es schon seit langem das System der allgemeinen ärztlichen Früherkennungsuntersuchungen bei Kindern. Im Zeitraum von der Geburt bis zum 5. Lebensjahr werden die Kosten für neun Früherkennungsuntersuchungen von der gesetzlichen Krankenversicherung übernommen. Hierdurch soll gewährleistet werden, dass zu einem Zeitpunkt, noch ehe die Eltern auf etwaige Krankheitserscheinungen hin aufmerksam geworden sind, möglichst alle Kinder auf Fehlentwicklungen und Krankheitssymptome untersucht werden. Dies ist im Hinblick auf eine prophylaktisch (auf die Vorsorge hin) orientierte Medizin von großer Bedeutung, da bei frühzeitiger Erkennung von Störungen oder Erkrankungen gerade in den ersten Lebensjahren häufig die Möglichkeit einer in solch besonderem Maße effektiven Therapie gegeben ist, wie dies zu einem späteren Zeitpunkt nicht mehr der Fall ist.Seit dem 01.07.1999 sind nunmehr auch zahnärztliche Früherkennungsuntersuchungen im Rahmen der gesetzlichen Krankenversicherung in den BEMA aufgenommen. Der Bundesausschuss hat drei zahnärztliche Früherkennungsuntersuchungen (abgekürzt FU) für Kleinkinder vom dritten bis zum sechsten Lebensjahr geschaffen:Die erste Früherkennungsuntersuchung soll grundsätzlich im dritten Lebensjahr durchgeführt werden. Zwei weitere Früherkennungsuntersuchungen sollen im Abstand von mindestens zwölf Monaten bis zum vollendeten sechsten Lebensjahr folgen.Grundsätzlich bedeutet dies, dass bei einer Konsultation eines jungen Versicherten im dritten Lebensjahr nach dem 30. Monat eine Früherkennungsuntersuchung durchgeführt werden soll. Erscheinen die Erziehungsberechtigten mit ihrem Kind erst nach dem dritten Geburtstag, so muss natürlich von diesem Grundsatz abgewichen werden und es soll ebenfalls eine FU-Untersuchung durchgeführt werden. Weiteren Untersuchung zur Früherkennung können natürlich auch hier erst nach Ablauf von zwölf Monaten erfolgen.Weitere Definitionen von Zeiträumen, wie sie bis zum 31.12.2003 existiert haben, sind als unnötige Beschränkungen aus dem BEMA gestrichen worden.1.1 LeistungsumfangDie zahnärztliche Früherkennungsuntersuchung umfasst gemäß den Abrechnungsbestimmungen folgende Leistungen:a) Eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten einschließlich Beratung (Inspektion der Mundhöhle),b) Einschätzung des Kariesrisikos anhand des dmf-t-Indexes,c) Ernährungs- und Mundhygieneberatung der Erziehungsberechtigten mit dem Ziel der Keimzahlsenkung durch verringerten Konsum zuckerhaltiger Speisen und Getränke und verbesserte Mundhygiene,d) Empfehlung und ggf. Verordnung geeigneter Fluoridierungsmittel zur Schmelzhärtung (Fluoridtabletten, fluoridiertes Salz, fluoridierte Zahnpasta und dergleichen).Die zahnärztliche Früherkennungsuntersuchung setzt sich also zusammen aus Maßnahmen zur Früherkennung (Untersuchung und hieraus resultierende Kariesrisikobestimmung), aus Beratungen und aus individualprophylaktischen Maßnahmen.Das Ziel der zahnärztlichen Früherkennungsuntersuchung ist die frühestmögliche Erkennung von Zahn-, Mund- und Kieferkrankheiten. Hierbei steht entsprechend des Alters der Patienten die Erkennung von kariösen Läsionen im Vordergrund. Daneben werden aber selbstverständlich auch alle anderen sich darstellenden Befunde von Krankheitswert Berücksichtigung finden, z. B. Vorliegen einer Gingivitis (Zahnfleischentzündung) oder Stomatitis (Entzündung der gesamten Mundschleimhaut), Kiefer- bzw. Zahnstellungsanomalien. Auch für den Bereich der Zahn-, Mund- und Kieferheilkunde gilt, dass die frühestmögliche Erkennung der Störungen und Erkrankungen zu einer Vereinfachung und Effektivitätssteigerung der einzuleitenden therapeutischen Maßnahmen führt.Die Bestandteile der BEMA-Nummer FU umfassen im Einzelnen:1.1.1 Eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten einschließlich Beratung (Inspektion der Mundhöhle)Die eingehende Untersuchung im Zusammenhang mit der zahnärztlichen Früherkennungsuntersuchung von Kindern richtet ihr Hauptaugenmerk auf die Früherkennung von Karies und der Ermittlung des individuellen Kariesrisikos. Aber auch alle anderen sich darstellenden Befunde von Krankheitswert finden bei den Früherkennungsuntersuchungen Berücksichtigung. Beispielhaft seien hier Zahnstellungs- und Kieferanomalien, Erkrankungen der Mundschleimhaut und des Zahnfleisches oder Erkrankungen der perioralen (den Mund umgebenden) Region aufgezählt.Entsprechend des Alters der untersuchten Kinder werden diejenigen Untersuchungsmethoden vom Behandler ausgewählt, die für den individuellen Bedarf des Kindes notwendig sind. Die Untersuchung wird also immer fallbezogen sein und darf nicht undifferenziert das gesamte Register möglicher Untersuchungsmethoden ziehen (vgl. hierzu auch Begriffsbestimmung und Indikation der BEMA-Nr. 01).1.1.2 Einschätzung des Kariesrisikos anhand des dmf-t-IndexesUnter dem dmf-t-Index versteht man ein Verzeichnis, mit dessen Hilfe in einprägsamer, kürzelhafter Form der Grad der kariösen Erkrankung eines Gebisses festgehalten wird. Dabei verbirgt sich hinter der englischsprachigen Abkürzung Folgendes:„d“ für „diseased“ oder „decayed\", d. h. an Karies erkrankte Zähne,„m“ für „missing\", d. h. fehlende (also wegen Karies entfernte) Zähne,„f“ für „filled\", d. h. gefüllte Zähne,„t“ für „teeth“ (Zähne).Bei der Ermittlung des individuellen Kariesrisikos wird die Zahl der erkrankten bzw. entfernten bzw. gefüllten Zähne in Korrelation gesetzt zum Lebensalter. Nach den Kriterien des Deutschen Ausschusses für Jugendzahnheilkunde (DAJ), die bei den BEMA-Nr. FU anzuwenden sind, wird unter einem hohen Kariesrisiko verstanden, wenn bei einem Kind in einem Alter bis3 Jahre ein dmf-t > 0,4 Jahre ein dmf-t > 2,5 Jahre ein dmf-t > 4,6 Jahre ein dmf-t > 5vorliegt.D.h., dass beispielsweise ein dreieinhalbjähriges Kind maximal zwei kariöse, wegen Karies entfernte oder gefüllte Zähne aufweisen darf, um nicht als hoch kariesanfällig zu gelten.Wenn z. B. bei einem Kind im 6. Lebensjahr mehr als fünf kariöse, wegen Karies entfernte oder gefüllte Zähne vorliegen, dann handelt es sich um ein hohes Kariesrisiko. Die BEMA-Nr. IP 4 ist nur bei solchen Kindern abrechenbar, bei denen ein solches hohes Kariesrisiko vorliegt.Anhand des dmf-t-lndexes und der DAJ-Kriterien ist es während der Periode des Milchgebisses in Jahresabschnitten möglich, eine Einschätzung des individuellen Kariesrisikos zu treffen.1.1.3 Ernährungs- und Mundhygieneberatung der Erziehungsberechtigten mit dem Ziel der Keimzahlsenkung durch verringerten Konsum zuckerhaltiger Speisen und Getränke und verbesserte MundhygieneIm Rahmen der FU sollen die Erziehungsberechtigten dahingehend beraten werden, welche Maßnahmen ergriffen werden können zur Keimzahlsenkung in der Mundhöhle ihres Kindes. Ausdrücklich sollen hierbei Beratungen zur Verbesserung der individuellen Mundhygiene und eine Ernährungsberatung mit dem Ziel der Reduktion zuckerhaltiger Speisen und Getränke durchgeführt werden.1.1.4 Empfehlung und ggf. Verordnung geeigneter Fluoridierungsmittel zur Schmelzhärtung (Fluoridtabletten, fluoridiertes Salz, fluoridierte Zahnpasta und dergleichen)Expressis verbis aufgeführt wird im Rahmen der individuellen Beratungen bei der FU die Empfehlung zum Gebrauch von Fluoridierungsmitteln. Diese umfassen z. B. Fluoridtabletten, fluoridiertes Speisesalz, fluoridhaltiges Mineralwasser und Nahrungsbestandteile, fluoridhaltige Zahnpasten und andere Mundhygieneartikel usw. Soweit diese Mittel der Verordnungsmöglichkeit unterliegen, sind sie ggf. zu verordnen.Im Jahr 2000 hat die DGZMK in einem Statement die Anwendung von Fluoriden zur Kariesprophylaxe veröffentlicht:Empfehlungen zur Kariesprophylaxe mit FluoridenEine ausgewogene Ernährung, zweckmäßige Zahn- und Mundpflege sowie die Anwendung von Fluoriden sind die drei Eckpfeiler zahnmedizinischer Prävention. Auf Grund aktueller wissenschaftlicher Erkenntnisse ist beim Einsatz von Fluoriden der lokalen Applikation gegenüber der systemischen Zufuhr der Vorrang einzuräumen. Zahlreiche Untersuchungen haben in den letzten Jahren herausgestellt, dass Fluoride in erster Linie durch direkten Kontakt mit Zahnhartsubstanzen (lokal) karieshemmend wirken. Diese Erkenntnisse sowie der deutliche Kariesrückgang insbesondere bei Kindern und Jugendlichen und die insgesamt höhere Verfügbarkeit von Fluorid erfordern eine Anpassung der Empfehlungen zur Kariesprophylaxe mit Fluoriden, so wie sie in anderen westlichen Industrieländern bereits erfolgt ist.1. Vor dem 6. Lebensmonat sind aus zahnärztlicher Sicht keine Fluoridierungsmaßnahmen erforderlich. Mit dem Durchbruch der ersten Milchzähne sollten diese von den Eltern einmal am Tag mit einer höchstens erbsengroßen Menge fluoridhaltiger Kinderzahnpaste (maximal 500 ppm Fluorid) gereinigt werden. Dabei wird von der Anwendung von Zahnpasten mit Frucht- oder Bonbongeschmack abgeraten, um keinen Anreiz zum Herunterschlucken zu geben.Ab dem 2. Geburtstag sollten die Milchzähne auf diese Weise zweimal täglich geputzt werden. Neben einem karies- und gingivitisprophylaktischen Effekt wird damit auch eine frühzeitige Gewöhnung des Kindes an die tägliche Mundhygiene erreicht. Eltern müssen das Zähneputzen bei Kleinkindern überwachen und bis in das Schulalter hinein die Zähne ihres Kindes nachputzen.2. Im Rahmen der kinderärztlichen Vorsorgeuntersuchungen und bei zahnärztlichen Kontrollterminen sollten die Eltern über die Bevorzugung der lokalen gegenüber der systemischen Fluoridanwendung aufgeklärt und beraten werden. Zusätzlich zum Zähneputzen mit fluoridhaltiger Kinderzahnpaste wird die Verwendung fluoridhaltigen Speisesalzes empfohlen. Weitere Fluoridsupplemente sind im Regelfall nicht nötig.3. Wird die Zahnpflege nicht mit fluoridhaltiger Zahnpaste durchgeführt und auch kein fluoridhaltiges Speisesalz verwendet, kann eine Fluorid-Supplementierung mit Fluoridtabletten entsprechend dem angegebenen Dosierungsschema erfolgen. Dabei muss gewährleistet sein, dass die empfohlene Tagesdosis nicht überschritten wird. Insbesondere ist dabei zu berücksichtigen, dass auch Sojanahrung, hypoallergene Nahrungsmittel, bilanzierte Diäten, Mineralwässer zur Herstellung von Säuglingsnahrung und evtl. auch andere fluoridhaltige Nahrungsmittel zur täglichen Fluoridaufnahme beitragen. Vor der Verordnung von Fluoridtabletten durch den Kinderarzt/Zahnarzt ist daher eine individuelle Fluoridanamnese zu erheben. Der Fluoridgehalt des lokalen Trinkwassers ist vom zuständigen Wasserwerk oder Gesundheitsamt zu erfahren.4. Ab dem Schuleintritt sollten die Zähne mit einer Zahnpaste mit einem Fluoridgehalt von 1000 bis 1500 ppm geputzt werden. Fluoridhaltiges Speisesalz sollte regelmäßig verwendet werden.5. Die lokale Anwendung von höher dosierten Fluoridlacken, -lösungen oder -gelen sollte nur nach zahnärztlicher Anweisung und unter zahnärztlicher Kontrolle erfolgen. Die häusliche Anwendung von Fluoridgelees und -lösungen sollte erst vom Schulalter an bei Kindern mit erhöhtem Kariesrisiko erfolgen.6. Die Eltern sollten über das Nutzen-Risiko-Verhältnis von Fluoridsupplementen informiert werden und möglichst schriftliche Instruktionen für die sachgerechte Anwendung von Fluoriden erhalten.7. Stellt der Zahnarzt bei einem Kind eine hohe Kariesaktivität bzw. ein hohes Kariesrisiko fest, so müssen zusätzliche Maßnahmen erfolgen, um die Kariesgefährdung zu senken. Hierzu zählen insbesondere eine individuelle Ernährungsberatung sowie die Anwendung von keimreduzierenden Lacken, Gelen oder Spüllösungen.AlterFluoridkonzentration im Trinkwasser (Mineralwasser), mg/l < 0,30,3 – 0,7> 0,70 – 6 Monate–––6 – 12 Monate0,25––Ab 1 – unter 3 Jahre0,25––Ab 3 – unter 6 Jahre0,500,25–> 6 Jahre1,00,5–Richtwerte für Fluoridsupplemente (mg Fluorid/Tag)1.1.5 Empfehlung von fluoridiertem SpeisesalzIn der Salzfluoridierung sieht die moderne Wissenschaft mittlerweile „eine hervorragende Möglichkeit …, die Fluoridaufnahme der Bevölkerung auf einen Wert anzuheben, der kariesprophylaktisch bedeutsam ist. Salzfluoridierung in einer Konzentration von 250 mg/kg führt nicht zu einer überhöhten Fluoridaufnahme und ist gesundheitlich unbedenklich“ (Auszug aus der gesonderten wissenschaftlichen Stellungnahme der DGZMK 2002 eigens zur Salzfluoridierung).Im Unterschied zur lokalen Fluoridierungsmaßnahme entsprechend der BEMA-Nr. IP 4 sollen die Erziehungsberechtigten bei der Früherkennungsuntersuchung lediglich über den häuslichen Gebrauch von verschiedenen Fluoridierungsmitteln beraten werden, eine Fluoridierung als eigenständige Maßnahme erfolgt im Rahmen der Früherkennungsuntersuchung also nicht.2 Abrechnung der Leistungen2.1 LeistungsinhaltDer Erweiterte Bewertungsausschuss für zahnärztliche Leistungen hat ab 01.07.1999 die gemäß § 26 Abs. 1 SGB V vorgesehenen Früherkennungsuntersuchungen in die vertragszahnärztliche Versorgung eingeführt und im Rahmen der BEMA-Neurelationierung ab dem 01.01.2004 modifiziert. Dabei haben sich vereinfachende Regelungen durchgesetzt.Zahnärzte können zukünftig die Früherkennungsuntersuchungen für Kinder vom 30. bis 72. Lebensmonat nach der BEMA-Nr. FU erbringen und über die KZV abrechnen.*) Die bisherigen ärztlichen Früherkennungsuntersuchungen für Kinder von der Geburt bis zur Vollendung des 6. Lebensjahres bleiben hiervon unberührt.Die zahnärztlichen Früherkennungsuntersuchungen beinhalten nicht nur Maßnahmen zur Früherkennung von Zahn-, Mund- und Kieferkrankheiten, sondern auch Maßnahmen zur Verhütung dieser Erkrankungen, also lndividualprophylaxe-Leistungen.Die Früherkennungsuntersuchung umfasst folgende Leistungen:– eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten einschließlich Beratung (Inspektion der Mundhöhle),– Einschätzung des Kariesrisikos anhand des dmf-t-Indexes,– Ernährungs- und Mundhygieneberatung der Erziehungsberechtigten mit dem Ziel der Keimzahlsenkung durch verringerten Konsum zuckerhaltiger Speisen und Getränke und verbesserte Mundhygiene,– Empfehlung und ggf. Verordnung geeigneter Fluoridierungsmittel zur Schmelzhärtung (Fluorid-Tabletten, fluoridiertes Salz, fluoridierte Zahnpasta und dergl.).Grundsätzlich werden für Kinder drei zahnärztliche Früherkennungsuntersuchungen durchgeführt. Die erste Untersuchung – BEMA-Nr. FU – findet im dritten Lebensjahr statt. Sie soll durchgeführt werden, wenn das Milchgebiss komplett ausgebildet ist. Dies ist in der Regel im Zeitraum ab dem 30. Lebensmonat der Fall. Die weiteren Untersuchungen – nach BEMA-Nr. FU – finden im Abstand von mindestens zwölf Monaten im Zeitraum bis zum 72. Lebensmonat statt. In den Zwischenräumen können eingehende Untersuchungen unter Beachtung der hierfür gültigen Abrechnungsbestimmungen erbracht und abgerechnet werden.Besondere Bedeutung kommt dabei der Erkennung von Kindern mit hohem Kariesrisiko zu. Dieser Patientenkreis soll anhand der Kriterien des Deutschen Ausschusses für Jugendzahnheilkunde (DAJ) ermittelt werden.Ein hohes Kariesrisiko wird durch die folgenden Werte für kariöse, wegen Karies entfernter und gefüllter Zähne angezeigt:Alter bis3 Jahre dmf-t > 04 Jahre dmf-t > 25 Jahre dmf-t > 46 Jahre dmf-t > 5Hier ist die lokale Fluoridierung nach BEMA-Nr. IP 4 zweimal halbjährlich angezeigt.In der Abrechnungsbestimmung ist ausdrücklich festgelegt, dass zahnärztliche Frühuntersuchungen nach den BEMA-Nr. FU nur bei Einzeluntersuchung bzw. -unterweisung abrechnungsfähig sind.Bei Gruppenunterweisung können die BEMA-Nummern nicht abgerechnet werden.Die Abrechnung erfolgt quartalsweise auf maschinell verwertbaren Datenträgern mittels elektronischer Datenübermittlung.2.2 Eingehende Untersuchung (BEMA-Nr. 01) neben BEMA-Nr. FUDie BEMA-Nr. 01 kann je Kalenderhalbjahr einmal abgerechnet werden, frühestens nach Ablauf von vier Monaten.Die BEMA-Nr. 01 kann neben den BEMA-Nr. FU in demselben Kalenderhalbjahr nicht abgerechnet werden. Im folgenden Kalenderhalbjahr kann die BEMA-Nr. 01 frühestens vier Monate nach Erbringung der BEMA-Nr. FU abgerechnet werden.2.3 Beratung (BEMA-Nr. Ä 1) neben BEMA-Nr. FUIm Zusammenhang mit Früherkennungsuntersuchungen kann die BEMA-Nr. Ä 1 nicht abgerechnet werden.Erfolgt jedoch eine Beratung des Patienten, die in keinem Zusammenhang mit der Früherkennungsuntersuchung steht, also aus anderen Gründen, so kann die BEMA-Nr. Ä 1 für diese Beratung abgerechnet werden. Voraussetzung ist jedoch, dass die BEMA-Nr. Ä 1 abrechnungsfähig ist und keine andere Abrechnungsbestimmung dagegensteht (siehe hierzu Kommentar zur BEMA-Nr. Ä 1).2.4 Lokale Fluoridierung der Zähne (BEMA-Nr. IP 4) neben BEMA-Nr. FUWird bei einer zahnärztlichen Früherkennungsuntersuchung festgestellt, dass ein Kind ein hohes Kariesrisiko nach dem dmf-t-Index aufweist, kann darüber hinaus vom 30. Lebensmonat an die lokale Fluoridierung der Zähnen zweimal je Kalenderhalbjahr nach BEMA-Nr. IP 4 erbracht werden. Diese Maßnahmen sind auf die Fluoridierungsanwendungen in der Gruppenprophylaxe abzustimmen.Das erhöhte Kariesrisiko wird bei den weiteren FU-Untersuchungen oder der Befunderhebung nach BEMA-Nr. 01 reevaluiert. Bei erhöhtem Kariesrisiko kann aufgrund der Abrechnungsbestimmungen der BEMA-Nr. IP 4 dann bei Notwendigkeit bis zur Vollendung des 17. Lebensjahr die Fluoridierung zweimal pro Kalenderhalbjahr durchgeführt werden.Bei Kindern, die kein hohes Kariesrisiko aufweisen, soll der Zahnarzt geeignete Fluoridierungsmittel zur Schmelzhärtung (fluoridiertes Speisesalz, Zahnpasta u. Ä.) und gegebenenfalls die Abgabe von Fluoridtabletten empfehlen. Dabei ist es wichtig, dass der Zahnarzt im Gespräch mit den Erziehungsberechtigten versucht abzuklären, ob und gegebenenfalls welche Maßnahmen im Rahmen der Gruppenprophylaxe durchgeführt worden sind. Diesem Gespräch kommt deswegen besondere Bedeutung zu, weil hierdurch mögliche Überdosierungen verhindert werden können.2.5 Quartalsübergreifende Plausibilitätsprüfung durch das KCH-Abrechnungsmodul seit 2011Basierend auf gesetzlichen Vorgaben nach § 295 SGB V wurde zwischen KZBV und GKV-Spitzenverband der sogenannte DTA-Vertrag („Vertrag über den Datenaustausch auf Datenträgern oder im Wege elektronischer Datenübertragung“) als Teil des Bundesmantelvertrages vereinbart.Das KCH-Abrechnungsmodul (ab Version 1.7) enthält nun insbesondere neue quartalsübergreifende Prüfungen im Bereich der KCH anhand von Datumsangaben und Rückblicken in Vorquartale. Die Leistungen nach den BEMA-Nrn. Ä 1, 01, 04, 05, 107, IP 1, IP 2, IP 4 und FU sind hiervon betroffen. Außerdem wird die zweijährige Gewährleistungspflicht von Füllungen überprüft (siehe BEMA-Nr. 13).Die geltenden Abrechnungsbestimmungen zu diesen Gebührennummern wurden nicht verändert.Dies bedeutet für die BEMA-Nr. FU, dass nach wie vor eine erneute zahnärztliche Früherkennungsuntersuchung erst nach Ablauf von 12 Monaten abrechnungsfähig"
+          },
+          "evidenceSnippet": "ertes Salz, fluoridierte Zahnpasta und dergl.).3. Neben den Früherkennungsuntersuchungen kann eine Leistung nach Nr. 01 in demselben Kalenderhalbjahr nicht abgerechnet werden. Im folgenden Kalender..."
+        },
+        {
+          "type": "contraHint",
+          "severity": "warn",
+          "payload": {
+            "match": "Nicht abrechnungsfähig"
+          },
+          "evidenceSnippet": "en konservierend-chirurgischen Maßnahmen– u. v. m.Nicht abrechnungsfähig– bei Kindern bis zum 29. Lebensmonat– bei Kindern, die 6 Jahre oder älter sind– neben der BEMA-Nr."
+        }
+      ],
+      "tags": [
+        "Mengenbegrenzung",
+        "KFO"
+      ]
+    },
+    {
+      "id": "BEMA:BEMA_01:9985e35417cf",
+      "system": "BEMA",
+      "code": "BEMA_01",
+      "title": "Schnellübersicht zum Kommentar:",
+      "source": {
+        "provider": "wissing-kommentar",
+        "filePath": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377513%27%5D.html",
+        "fileHash": "6fed16ec90f2c011e1514b19aa335db46097d2bfb3ef2f52e88db1148e17559f",
+        "importedAt": "2025-12-14T20:42:22.015Z"
+      },
+      "sections": [
+        {
+          "kind": "unknown",
+          "snippet": "für eingehende Untersuchung zur Feststellung von"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ohne zeitliche Begrenzung des Untersuchungsintervalls, so oft wie erforderlich ohne einschränkende Fristen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "mit Dokumentation zumindest der krankhaften Befunde"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "auch ohne Nutzung eines Befundschemas"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Erhebung eines Parodontalbefundes"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Aufzeichnung des Befundes"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Zusätzlich berechnungsfähig"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Beratungen (GOÄ-Nrn. 1 und 3*)), jedoch nicht 2"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Heil- und Kostenpläne (GOZ-Nrn. 0030, 0040)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Abformung des Kiefers/der Kiefer für Situationsmodelle (GOZ-Nrn. 0050/0060)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Röntgendiagnostik (GOÄ-Nrn. 5000 ff.)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Vitalitätsprüfung (GOZ-Nr. 0070)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Parodontalstatus (GOZ-Nr. 4000)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Fotografie inklusive kieferorthopädischer Auswertung (GOZ-Nr. 6000)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "kieferorthopädische Analysen (GOZ-Nrn. 6010, 6020)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "klinische Funktionsanalyse (GOZ-Nr. 8000)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "implantatbezogene Analyse (GOZ-Nr. 9000)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Mundhygienestatus und Kontrolle des Übungserfolges (GOZ-Nrn. 1000, 1010), wenn die Untersuchung anderen Zwecken dient"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "besondere Diagnoseverfahren zur Feststellung des Kariesrisikos (Diagnodent®, FOTI etc.)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Nicht berechnungsfähig"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für Verlaufskontrollen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im inhaltsgleichen Zusammenhang mit Erstellen eines Mundhygienestatus (GOZ-Nr. 1000)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im inhaltsgleichen Zusammenhang mit der Kontrolle des Übungserfolges (GOZ-Nr. 1010)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "im Zusammenhang mit Anweisung zur Beseitigung von schädlichen Gewohnheiten (GOZ-Nr. 6190)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "neben der symptombezogenen Untersuchung (GOÄ-Nr. 5)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "neben der vollständigen körperlichen Untersuchung des stomatognathen Systems (GOÄ-Nr. 6)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ohne eine zeitliche Begrenzung (keine Viermonatsfrist!)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "GOZ-Nr. 0010 als einzige GOZ-Nummer neben GOÄ-Nr. 3 berechnungsfähig"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bestimmung der Gebührenhöhe"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Gemäß § 5 Abs. 2 der GOZ erfolgt die Bemessung der Gebühren unter Berücksichtigung von:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Erhöhte Schwierigkeit der Leistung/des Krankheitsfalls wegen …"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Überdurchschnittlicher Zeitaufwand der einzelnen Leistung wegen …"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Besondere Umstände bei der Ausführung wegen …"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Abwehrhaltung des Kindes/Patienten"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ausgeprägter Überängstlichkeit des Kindes/Patienten"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark erschwertem Mundzugang wegen z. B.:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark eingeschränkter Beweglichkeit des Kiefergelenkes"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "sehr umfangreicher und aufwendiger Untersuchung mit überdurchschnittlicher Zeitdauer wegen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "vieler Restaurationen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "der zusätzlichen Untersuchung von umfangreichem herausnehmbarem/festsitzendem Zahnersatz"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "der Beurteilung generalisierter keilförmiger Defekte/Rezessionen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "vorliegender Parodontopathien (z. B. aufwendige Taschenbeurteilung, Furkationsbeteiligung)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ausgeprägter Funktionsbefunde"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zusätzlicher Implantatdiagnostik"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zusätzlicher kieferorthopädischer Diagnostik"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Untersuchung von stark entzündetem Gewebe"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark parodontal vorgeschädigtem Gebiss – daher besonders vorsichtiges Vorgehen durch Hypersensibilität der parodontalen Gewebe und Zähne"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem aufwendiger Taschensondierung – Vorliegen extremer Furkationen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ausgeprägter kariöser Zerstörung der klinischen Kronen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "schwieriger Beurteilung der Prognose diverser Zähne"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "besonderer Schutzmaßnahmen bei einer akuten Erkrankung des Patienten"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "erschwertem Zugang bedingt durch stark erhöhten Muskeltonus der Wangenmuskulatur"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "erschwertem Zugang bedingt durch stark erhöhten Muskeltonus der Zunge/Zungenpressen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem ausgeprägter muskulöser Verspannung der Gesichts- bzw. Wangenmuskulatur"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem erschwerter Nasenatmung"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "starken Hustenreizes des Patienten – hieraus resultiert ein wiederholter Abbruch der Untersuchung – eine ständige Neueinstellung des Behandlungsfeldes war erforderlich"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "übermäßig starker Plaqueablagerungen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "schwieriger Differenzialdiagnostik bei der vorliegenden Erkrankung"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Unterschiede zur GOZ '88"
+        },
+        {
+          "kind": "definition",
+          "snippet": "unveränderte Leistungsbeschreibung und Punktzahl"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Ziel der eingehenden Untersuchung ist es, über die Feststellung krankhafter Veränderungen zu einer einordnenden Beurteilung eines Krankheitsgeschehens (Diagnose) zu gelangen und infolge Therapieoptionen zu entwickeln, die dann ggf.in einen Heil- und Kostenplan münden (GOZ-Nrn. 0030 und 0040)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "In der Zahn-, Mund- und Kieferheilkunde führen zur klinischen Diagnose die Erhebung der Vorgeschichte einer Krankheit nach Schilderung des Patienten (Anamnese) sowie die Anwendung grundlegender klinischer Untersuchungsverfahren:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die Inspektion (das eingehende Anschauen der krankhaften Veränderung des Patienten),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die Palpation (das manuelle Abtasten der krankhaften Veränderungen des Patienten),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die Perkussion (das Beklopfen v. a. der Zähne) und"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die Sondierung (das Anwenden von speziellen zahnärztlichen Sonden) z. B. zur Karies- und Parodontaldiagnostik."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Neben der groben Beurteilung des allgemeinen Gesundheitszustandes des Patienten umfasst die Befundung auf dem Gebiet der Zahn-, Mund- und Kieferheilkunde sowohl die Inspektion und die Palpation des Kopf- und Gesichtsbereichs (extraorale Untersuchung) als auch im besonderen Maße der Mundhöhle (intraorale Untersuchung)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die extraorale Inspektion erfasst die Auffälligkeiten in Form, Farbe, Größe und Funktion der die Mundhöhle umgebenden (perioralen) Region; die extraorale Palpation konzentriert sich in erster Linie auf Besonderheiten der Weichgewebe, Muskeln und Lymphknoten der perioralen Region. Auch das Kiefergelenk ist Gegenstand der extraoralen Untersuchung."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die intraorale Inspektion und Palpation umfassen sowohl die Untersuchung der die Mundhöhle auskleidenden Schleimhäute und Weichgewebe (Lippe, Wange, Alveolarfortsätze, Gaumen, Rachen, Zunge, Mundboden) und deren knöcherne Basis (Oberkiefer und Unterkiefer) als auch der Zähne und des Zahnhalteapparats (Parodontium)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bei der Untersuchung der Schleimhäute bzw. Weichteile konzentriert sich das Hauptaugenmerk auf Veränderungen der Farbe, der Oberflächenbeschaffenheit und der Konsistenz des Gewebes. Die Zähne werden auf Zahnstellung und Okklusion bzw. Artikulation (Beziehungsgefüge zwischen Oberkiefer- und Unterkieferzähnen) hin untersucht sowie auf Zahnanzahl, Zahnform und Zahnfarbe."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Wesentlicher Gegenstand der Untersuchung ist dabei die Frage des Vorliegens von Karies, doch können auch Informationen über Mundhygienezustand (vgl. GOZ-Nr. 1000), genetische oder entwicklungsbedingte Störungen der Zahnmineralisation oder auch kaufunktionsbedingte Störungen (vgl. GOZ-Nr. 8000) erhoben werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Perkussion (das Beklopfen) der Zähne gibt weiterhin Aufschluss über eine eventuell vorliegende Erkrankung des Zahnmarks (Pulpa) oder des Zahnhalteapparats (Parodontium). Mit Hilfe der Sondierung und anderer spezieller zahnärztlicher Instrumente (Mundspiegel, Luftbläser) ist eine genauere Untersuchung auf Zahnhartsubstanzdefekte möglich."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Neben der Sondierung der Zahnfleischtaschentiefe mittels sogenannter Parodontalsonden ermöglichen die Inspektion von Farbe, Form und Verlauf des Zahnfleischrandes und des Ausmaßes an Zahnfleischrückgang (Recession) sowie die Palpation der Zahnbeweglichkeit die Diagnose einer Parodontalerkrankung. Wird jedoch ein gesonderter Parodontalstatus eigens erstellt, so ist dies eine Leistung, die nach der GOZ-Nr. 4000 gesondert berechnet wird (vgl. Abschnitt 2.1 und GOZ-Nr. 4000)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Defekte der Zahnhartsubstanz, allen voran die Karies, sowie Erkrankungen des Zahnhalteapparats (Parodontopathien) sind die in der zahnärztlichen Praxis ständig wiederkehrenden Krankheitsbilder, die den weitaus höchsten Anteil aller Diagnosen bestreiten. Sie stehen somit im Mittelpunkt der zahnärztlichen Untersuchung."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "In besonderen begründeten Fällen kann die eingehende Untersuchung um spezielle Untersuchungsverfahren erweitert werden, wie z. B. Laboruntersuchungen (mikroskopische und mikrobiologische Methoden, vgl. GOÄ Abschnitt M) oder histologische Untersuchungen (Gewebsuntersuchungen, vgl. GOÄ Abschnitt N)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Besondere Diagnoseverfahren bei hohem Kariesrisiko stellen heute auch laserbasierte (Diagnodent®) oder optische Verfahren (z. B. FOTI) dar. Das Diagnodent®-Verfahren nutzt die unterschiedliche Reflexionsfähigkeit von gesundem und kariösem Schmelz, wohingegen die lichtoptischen Verfahren sämtlich mit der sich unterscheidenden Transluzenz von gesunder und kranker Zahnhartsubstanz arbeiten."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Gemäß der aktuellen Leitlinie können in einzelnen Fällen, in denen klinische Befunde und zweidimensionale Röntgenbefunde nicht ausreichen, um eine Therapieentscheidung zu fällen, DVT-Aufnahmen mit begrenztem Volumen zur Darstellung von Knochentaschen und Furkationsdefekten indiziert sein."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bei ausgefallenen Krankheitsbildern kann es notwendig sein, wissenschaftliche Untersuchungsmethoden anzuwenden, die beim gegenwärtigen Stand der Entwicklung wegen ihres extremen apparativen Aufwands nur in spezialisierten Praxen oder in der Regel nicht mehr in der zahnärztlichen Praxis durchgeführt werden. Dies sind hochtechnisierte Untersuchungsverfahren wie z. B. die Sonographie, die Szintigraphie, die Kernspintomographie (z. B. zur Kiefergelenkdiagnostik) und die Computertomographie."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Aufgabe und hohe ärztliche Kunst des Zahnarztes ist es, aus der Vielzahl der zur Verfügung stehenden Untersuchungsmethoden diejenigen herauszugreifen, die für den individuellen Bedarf des jeweiligen Patienten wichtig sind. Eine Untersuchung muss also immer individuell fallbezogen sein und darf nicht undifferenziert das gesamte Register möglicher Untersuchungsmethoden ziehen. Sobald bei einer Untersuchung sich der Verdacht auf eine spezifische Erkrankung herauskristallisiert, wird es das B..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Sich aus der eingehenden Untersuchung ergebende Beratungen sind nicht Leistungsgegenstand der GOZ-Nr. 0010. Diese werden nach der GOÄ-Nr. 1 abgerechnet oder, insofern die Berechnungsbestimmungen eingehalten sind, bei entsprechendem Umfang auch nach der GOÄ-Nr. 3."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Untersuchung nach der GOZ-Nr. 0010 stellt eine Grunduntersuchung dar, um festzustellen, ob und in welchem Ausmaß im individuellen Fall Erkrankungen der Zähne, des Mundes und des Kiefers vorliegen. Zur eingehenden Untersuchung gehören als essentieller Bestandteil die Inspektion, die Palpation, die Perkussion und die Sondierung der Mundhöhle und ihrer anatomischen Bestandteile (vgl. Abschnitt 1.1)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Perkussion (das Beklopfen) der Zähne gibt Aufschluss über eventuell vorliegende Erkrankungen (vgl. Abschnitt 1.2) der Pulpa oder des Parodontiums. Eine gesonderte Berechnung des Perkussionstestes nach der GOÄ-Nr. 399 ist nicht möglich. Der erste Teil deren Leistungslegende „Oraler Provokationstest“ könnte bei oberflächlicher Betrachtung die Berechnung nahelegen. Jedoch zeigt sich bei genauer Betrachtung auch des zweiten Teils der Leistungslegende „…, auch Expositionstest bei Nahrungsmitte..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die GOZ-Nr. 0010 umfasst selbstverständlich auch die Beurteilung des Parodontalbefundes (Befund des Zahnhalteapparats), weshalb dessen ausdrückliche Erwähnung in der Leistungslegende unverständlich erscheint. Mit gleicher Berechtigung hätte man an dieser Stelle die Befundung aller anderen eigenständigen Teilbereiche der Zahn-, Mund- und Kiefererkrankungen ausdrücklich erwähnen können."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Erwähnung des Parodontalbefundes in dieser Leistungslegende verwirrt umso mehr, als für die individuelle, differenzierte und aufwendige Diagnostik von Parodontopathien (Zahnhalteapparaterkrankungen) eine eigene Gebührenziffer, die GOZ-Nr. 4000 (Erstellung eines Parodontalstatus), geschaffen worden ist. Diese kommt dann zur Anwendung, wenn im Rahmen der eingehenden Grunduntersuchung nach GOZ-Nr. 0010 eine Parodontalerkrankung bereits in vorausgehender oder gleicher Sitzung diagnostiziert w..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Genauso existieren auch für die Untersuchungsverfahren anderer, eigenständiger Teilgebiete der Zahn-, Mund- und Kieferheilkunde eigene Gebührenziffern wie z. B. kieferorthopädische oder funktionstherapeutische Untersuchungsverfahren, die nach erfolgter Grunduntersuchung gemäß GOZ-Nr. 0010 im speziellen Fall zusätzlich angewendet werden (vgl. hierzu Abschnitt 2.2)."
+        },
+        {
+          "kind": "definition",
+          "snippet": "Auch in der GOÄ gibt es Gebührenziffern mit dem Leistungsinhalt der „Untersuchung“:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die GOÄ-Nr. 5:symptombezogene Untersuchung,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die GOÄ-Nr. 6:vollständige körperliche Untersuchung mindestens eines der folgenden Organsysteme:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "alle Augenabschnitte, der gesamte HNO-Bereich, das stomatognathe System, … – ggf. einschl. Dokumentation."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Während die Untersuchung nach GOZ-Nr. 0010 typischerweise am jeweiligen Beginn einer Behandlungseinheit berechenbar ist, kann die GOÄ-Nr. 5 immer dann, wenn ein unvorhergesehenes Symptom zu einer Untersuchung zwingt, infolge derer die zahnärztliche Behandlung in eine andere Richtung geleitet bzw. erweitert wird oder diese vom ursprünglichen Behandlungskonzept abweichen lässt, berechnet werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Nach GOÄ-Nr. 6 wird eine vollständige körperliche Untersuchung eines Organsystems, z. B. „des stomatognathen Systems – ggf. einschl. Dokumentation“, berechnet."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Eine organbezogene Untersuchung ist eine Untersuchung, die ein oder mehrere Organsysteme in den Mittelpunkt der Untersuchung stellen. Es wird hierbei nicht rein symptombezogen untersucht wie bei der GOÄ-Nr. 5, sondern es wird der Versuch unternommen, zu einem möglichst kompletten Bild vom Zustand des untersuchten Organsystems zu gelangen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Befunde krankhafter Veränderungen werden als Ergebnis der Untersuchung nach GOZ-Nr. 0010 in geeigneter Weise dokumentiert, wobei neben der herkömmlichen analogen Patientenkartei schon vielerorts die Speicherung auf elektronischen Datenträgern erfolgt. Auch Fotos, die der Befunddokumentation dienen, gehören zum Leistungsumfang der GOZ-Nr. 0010. Werden dagegen Fotos gemacht, anhand derer erst diagnostische Auswertungen möglich werden, so handelt es sich bei diesen erweiterten Diagnostikmaßn..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Diese grundlegenden klinischen Untersuchungsverfahren werden durch zusätzliche, weitergehende Untersuchungsmethoden ergänzt. Hierzu zählen in erster Linie"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die Vitalitätsprüfung der Zähne (GOZ-Nr. 0070),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die Anfertigung von Röntgenbildern (GOÄ-Nr. 5000 ff.),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die Herstellung von Situationsmodellen und Bissfixierung (GOZ-Nrn. 0050 und 0060),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "das Erstellen eines Mundhygienestatus (GOZ-Nr. 1000), das nur dann berechnungsfähig ist, wenn die Untersuchung nicht die Mundhygiene zum Ziel hat,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "das Erstellen eines Parodontalstatus (GOZ-Nr. 4000),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die kieferorthopädischen Untersuchungsverfahren (GOZ-Nrn. 6010 und 6020),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "das Herstellen eines Aufbissbehelfs zu diagnostischen Zwecken (GOZ-Nrn. 7000 ff.),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die Befunderhebung des stomatognathen Systems (GOZ-Nrn. 8000 ff.),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "die implantatbezogene Analyse (vgl. GOZ-Nrn. 9000)."
+        },
+        {
+          "kind": "plausibility",
+          "snippet": "Oftmals ermöglichen erst diese zusätzlichen, weitergehenden Untersuchungsmethoden in Kombination mit der grundlegenden eingehenden Untersuchung nach GOZ-Nr. 0010 eine genaue Beurteilung eines Krankheitsgeschehens. Auch können diese weitergehenden Untersuchungsmethoden selbst zu Ergebnissen führen, die bei der Durchführung der Untersuchung nach der GOZ-Nr. 0010 überhaupt noch nicht erkannt und erfasst werden konnten (z. B. nur auf dem Röntgenbild oder mithilfe von FOTI zu erkennende Approximal..."
+        },
+        {
+          "kind": "billing",
+          "snippet": "2025 wird in der GOZ bei Anwendung des sogenannten „Regelsatzes“ von 2,3 bei nur noch ca. 60 vergleichbaren Leistungen ein höheres Honorar als im BEMA erzielt. Das ist demnach in weniger als einem Drittel aller vergleichbaren GOZ-Positionen der Fall. Dagegen muss in 2025 erneut häufiger über den 2,3-fachen Faktor hinaus gesteigert werden – nämlich in fast 125 Fällen –, um ein äquivalentes Honorar wie im BEMA zu erzielen. Davon ist sogar in fast 60 Vergleichsfällen über den 3,5-fachen Faktor z..."
+        },
+        {
+          "kind": "billing",
+          "snippet": "Dies gilt auch für die GOZ-Nr. 0010, die mit einem Faktor von 4,2 im Vergleich zur BEMA-Nr. 01 und mit einem Faktor von 6,6 im Vergleich zur BEMA-Nr. 01k angesetzt werden muss, um die BEMA-Honorarhöhe zu erzielen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Bestimmung der Gebührenhöhe der GOZ-Nr. 0010 erfolgt gemäß § 5 Abs. 2 der GOZ unter Berücksichtigung von:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Abwehrhaltung des Kindes/Patienten,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ausgeprägter Überängstlichkeit des Kindes/Patienten,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark eingeschränkter Beweglichkeit des Kiefergelenkes,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "vieler Restaurationen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "der zusätzlichen Untersuchung von umfangreichem herausnehmbarem/festsitzendem Zahnersatz,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "der Beurteilung generalisierter keilförmiger Defekte/Rezessionen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "vorliegender Parodontopathien (z. B. aufwendige Taschenbeurteilung, Furkationsbeteiligung),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ausgeprägter Funktionsbefunde,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zusätzlicher Implantatdiagnostik,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zusätzlicher kieferorthopädischer Diagnostik,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Untersuchung von stark entzündetem Gewebe,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark parodontal vorgeschädigtem Gebiss – daher besonders vorsichtiges Vorgehen durch Hypersensibilität der parodontalen Gewebe und Zähne,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem aufwendiger Taschensondierung – Vorliegen extremer Furkationen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ausgeprägter kariöser Zerstörung der klinischen Kronen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "schwieriger Beurteilung der Prognose diverser Zähne,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "besonderer Schutzmaßnahmen bei einer akuten Erkrankung des Patienten,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "erschwertem Zugang bedingt durch stark erhöhten Muskeltonus der Wangenmuskulatur,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "erschwertem Zugang bedingt durch stark erhöhten Muskeltonus der Zunge/Zungenpressen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem ausgeprägter muskulöser Verspannung der Gesichts- bzw. Wangenmuskulatur,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem erschwerter Nasenatmung,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "starken Hustenreizes des Patienten – hieraus resultiert ein wiederholter Abbruch der Untersuchung – eine ständige Neueinstellung des Behandlungsfeldes war erforderlich,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "übermäßig starker Plaqueablagerungen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "schwieriger Differenzialdiagnostik bei der vorliegenden Erkrankung,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die GOÄ-Nrn. 1 und 3 sowie weitere wichtige GOÄ-Nrn. finden Sie im letzten Abschnitt „GOÄ“ dieses Werkes.",
+          "bullets": [
+            "Gebührennummern",
+            "A. Allgemeine zahnärztliche Leistungen",
+            "0010 Eingehende Untersuchung auf ZMK-Erkrankungen"
+          ]
+        }
+      ],
+      "softRules": [
+        {
+          "type": "requiresTogether",
+          "severity": "warn",
+          "payload": {
+            "match": "in Kombination mit"
+          },
+          "evidenceSnippet": "usätzlichen, weitergehenden Untersuchungsmethoden in Kombination mit der grundlegenden eingehenden Untersuchung nach GOZ-Nr. 0010 eine genaue Beurteilung eines Krankhei"
+        }
+      ],
+      "tags": [
+        "Kombination",
+        "KFO",
+        "Prothese",
+        "Krone",
+        "Modell"
+      ]
+    },
+    {
+      "id": "BEMA:BEMA_106:fa77b810481a",
+      "system": "BEMA",
+      "code": "BEMA_106",
+      "title": "Schnellübersicht zum Kommentar:",
+      "source": {
+        "provider": "wissing-kommentar",
+        "filePath": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377599%27%5D.html",
+        "fileHash": "8485a66c1418c36edf28aee02657f4d4715fc211bd8975d1a59bf2d0153a328b",
+        "importedAt": "2025-12-14T20:42:24.490Z"
+      },
+      "sections": [
+        {
+          "kind": "limits",
+          "snippet": "je Kieferhälfte oder Frontzahnbereich"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für die Beseitigung z. B. von"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "störenden Prothesenrändern"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "überstehenden Füllungsrändern"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "überstehenden Kronenrändern"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "natürlichen Plaqueretentionsnischen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Zusätzlich berechnungsfähig"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Untersuchung und Beratung (GOZ-Nr. 0010, GOÄ-Nrn. 1, 5)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Lokalbehandlung einer Mundschleimhauterkrankung (GOZ-Nr. 4020)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Einschleiftherapie (GOZ-Nr. 4040)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Entfernen von Zahnbelägen (GOZ-Nrn. 4050 bis 4060)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "parodontalchirurgische Maßnahmen (GOZ-Nrn. 4070 ff.)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "lokale Fluoridierung (GOZ-Nr. 1020)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "professionelle Zahnreinigung (GOZ-Nr. 1040)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Mundhygieneinstruktionen (GOZ-Nrn. 1000, 1010)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Versiegelungsmaßnahmen (GOZ-Nr. 2000)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Behandlung überempfindlicher Zahnflächen (GOZ-Nr. 2010)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Kontrolle/Finieren/Polieren einer Restauration (GOZ-Nr. 2130)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "alle prothetischen Maßnahmen (GOZ-Nrn. 5000 ff.)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "alle kieferorthopädischen Maßnahmen (GOZ-Nrn. 6000 ff.)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Nicht berechnungsfähig"
+        },
+        {
+          "kind": "limits",
+          "snippet": "mehr als einmal je Kieferhälfte/Frontzahnbereich"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für das Entfernen von Zahnstein (GOZ-Nrn. 4050, 4055)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für Füllungspolituren (GOZ-Nr. 2130)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für professionelle Zahnreinigung (GOZ-Nr. 1040)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "für Prothesenreinigung (Laborleistung)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bestimmung der Gebührenhöhe"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Gemäß § 5 Abs. 2 der GOZ erfolgt die Bemessung der Gebühren unter Berücksichtigung von:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Erhöhte Schwierigkeit der Leistung/des Krankheitsfalls wegen …"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Überdurchschnittlicher Zeitaufwand der einzelnen Leistung wegen …"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Besondere Umstände bei der Ausführung wegen …"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark erschwertem Mundzugang wegen z. B."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem geringer Schneidekantendifferenz von wenigen Millimetern"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark eingeschränkter Beweglichkeit des Kiefergelenks"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem enger und kleiner Mundöffnung"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark die Mundöffnung einschränkender Verletzung im Bereich des Mundwinkels (Rhagaden)"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark die Mundöffnung einschränkender Verletzung an der Lippe"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ausgeprägtem Brech-/Würgereiz"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "enormer motorischer Instabilität der Zunge – dadurch schwierige und zeitaufwendige Durchführung der Maßnahme"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "schwer zugänglicher „Reiz“-Lage, z. B. zwischen zwei Zähnen"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "technisch schwer zu beseitigendem Reiz an einer Suprakonstruktion – besonders vorsichtiges Vorgehen erforderlich"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "schwierig zu objektivierendem Reizproblem"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zeitaufwendigem Ausgleich aufgrund schwieriger Lokalisierung der Druckstelle, durch unklare Äußerung des Patienten zur Schmerz- bzw. Reizproblematik"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Prothesenrand aus Metall – dadurch zeitaufwendige Entfernung der Druckstelle"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "hochakutem Krankheitsbild"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Durchführung der Maßnahme am stark gelockerten Zahn"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zeitaufwendigem Ausgleich des überstehenden Kronenrandes als Fremdreiz"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zeitaufwendiger Entfernung von störenden Fremdreizen am KFO-Gerät"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zusätzlich nötiger Sicherungsmaßnahmen gegenüber Nachbarzähnen"
+        },
+        {
+          "kind": "limits",
+          "snippet": "mehrerer zeitaufwendig zu beseitigender Fremdreize je Kieferhälfte/Frontzahnbereich"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "mehrerer Maßnahmen an festsitzenden oder abnehmbaren Geräten im selben Gebiet"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Unterschiede zur GOZ '88"
+        },
+        {
+          "kind": "definition",
+          "snippet": "unveränderte Leistungsbeschreibung und Punktzahl"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Diese entstehen z. B. durch:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Trauma (Schlageinwirkung),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Knirschen mit den Zähnen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "durch Ausbrechen oder Absplittern von Zähnen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "fehlerhafte Kontakte im Schlussbiss,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Habits (Gewohnheiten), z. B. beim Pfeifenraucher, bei unsachgemäßem Gebrauch von Bleistiften, Nähnadeln, Nägeln oder auch von Mundhygieneartikeln."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Scharfe Zahnkanten werden oftmals durch Glätten mit rotierenden Instrumenten (Diamantbohrer, Schleifsteinchen, Gummipolierer) oder Ähnlichem (Interdentalpolierstreifen) beseitigt. Ist dies nicht mehr möglich, so kann eine neue Füllung oder der Schutz des Zahnes durch eine Krone erforderlich sein."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Diese verursachen häufig sehr schmerzhafte Druckstellen oder Druckgeschwüre (Decubiti) und können, wenn sie nicht beseitigt werden, eine dauerhafte (irreversible) Schädigung der parodontalen Gewebe verursachen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Einfachste Methode der Beseitigung von Druckstellen ist das Wegschleifen des Prothesenüberhangs. Komplizierter ist bei fehlerhaften Schleimhautkontakten die Ursachenanalyse, die dann ein „Einschleifen“ der Prothesen und eventuell auch der natürlichen Zähne erforderlich macht (siehe auch GOZ-Nrn. 4040, 8000, 8100)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Auch an Prothesenzähnen werden scharfe Kanten durch Beschleifen oder Politur beseitigt, seltener wird eine Reparatur durchgeführt."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Diese sind häufig z. B."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Zahnstein und Konkremente (vgl. GOZ-Nrn. 1040, 4050 bis 4075),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "überstehende Kronenränder,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "überstehende Füllungsränder,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "orthodontische Geräte (kieferorthopädische Apparaturen),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Schienen und Schienungen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Eine langfristige Gesunderhaltung des Zahnhalteapparates kann nur erreicht werden, indem alle Reize und Störungen des normalen physiologischen Gleichgewichts erkannt und beseitigt werden. So kann beispielsweise ein über den Zahn hinausstehender Prothesenrand die Ansammlung von Speiseresten und Plaque fördern und unterhalten. Hierdurch werden die umgebenden Gewebe durch die anhaltende Entzündungsreaktion potenziell so geschädigt, dass es zur Zerstörung des Zahnhalteapparats kommt."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Scharfe Zahnkanten sind u. a. auch für Verletzungen der Mundschleimhaut und der Zunge verantwortlich. Prothesenränder, die zu lang sind, können die Mundschleimhaut „aufschneiden“ oder Druckgeschwüre (Decubiti) verursachen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Phasen einer modernen systematischen Parodontaltherapie untergliedern sich in die Vorbereitungstherapie, die Initialtherapie, die weiterführende chirurgische Therapie und in die Nachsorgetherapie (weitere Ausführungen hierzu vgl. GOZ-Nr. 4000 „Die systematische Behandlung von Parodontopathien …“). Wird eine Beseitigung von Fremdreizen am Parodontium im Rahmen einer systematischen Parodontaltherapie durchgeführt, so erfolgt dies in der Regel im Rahmen der Initialtherapie oder im Rahmen der..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Die Initialtherapie umfasst zum einen eine professionelle Zahnreinigung („PZR“) nach GOZ-Nr. 1040, bei der nach erfolgter Vorbereitungsphase sämtliche verbliebenen, nicht chirurgisch angehbaren Verunreinigungen (über dem Zahnfleischsaum gelegene [supragingivale] harte und weiche Beläge) restlos entfernt werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Zum anderen werden diejenigen weiteren Faktoren, die der Herstellung einer optimalen Hygienefähigkeit des Gebisses im Wege stehen, so weit wie möglich eliminiert. Diese sind neben kariösen Läsionen und nicht erhaltungswürdigen Zähnen insbesondere überstehende Ränder oder Kanten von zahnärztlichen Restaurationen (beispielsweise von Füllungen, Kronen oder Teilprothesen), Schienungen, kieferorthopädischen Apparaten (z. B. Retainer) oder Ähnlichem. Darüber hinaus gibt es auch am natürlichen Zahn ..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Selten weisen Zähne retentionsfördernde Schmelzpathologien wie z. B. Schmelzperlen oder -sporne auf. Sind diese nicht mehr im Sinne einer einfachen glättenden Maßnahme entfernbar, sondern handelt es sich hierbei um Umformungsmaßnahmen – sogenannte Odontoplastiken –, so sind diese Maßnahmen in Ermangelung einer hierfür existierenden Gebührennummer in der GOZ gemäß § 6 Abs. 1 GOZ analog berechnungsfähig."
+        },
+        {
+          "kind": "limits",
+          "snippet": "Die Beseitigung störender Kanten kann je Kieferhälfte oder Frontzahnbereich je Sitzung berechnet werden, d. h. maximal viermal in einer Sitzung, sofern sich die Behandlung auf vier Kieferhälften verteilt."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Sie unterscheidet sich dadurch von der BEMA-Nr. 106, die je Sitzung nur einmal abgerechnet werden darf."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Bestandteil dieser Leistung ist auch die mit dieser Maßnahme eventuell verbundene Politur des gekürzten Prothesenrandes oder der Zahnoberfläche."
+        },
+        {
+          "kind": "limits",
+          "snippet": "Für das Beseitigen von Unregelmäßigkeiten an einer Restaurationsoberfläche (Füllung, Inlay, Krone etc.) im Sinne eines Glättens (Finierens) oder Polierens ist die 2012 neu in die GOZ aufgenommene GOZ-Nr. 2130 berechnungsfähig: „Kontrolle, Finieren/Polieren einer Restauration in separater Sitzung, auch Nachpolieren einer vorhandenen Restauration“. Diese Behandlungsmaßnahme ist je Restauration berechnungsfähig, was sich deutlich von der Berechnungsfähigkeit der GOZ-Nr. 4030 – je Kieferhälfte/Fr..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Es ist durchaus möglich, dass in der Kieferhälfte/dem Frontzahnbereich, in der/dem eine oder mehrere scharfe Kanten an der Zahnhartsubstanz oder an Prothesenrändern entfernt werden, zusätzlich z. B. auch eine oder mehrere ein- oder mehrflächige Füllungen (nach vorausgegangener Füllungsrestauration in einer getrennten Sitzung), Inlays oder Kronen poliert oder finiert werden müssen. Hierfür kann dann die GOZ-Nr. 2130 neben der GOZ-Nr. 4030 berechnet werden."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Muss ein grober Vorkontakt beseitigt werden, ist die GOZ-Nr. 4040 berechnungsfähig (vgl. dort)."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Im Leistungsumfang nicht eingeschlossen sind:"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Untersuchung und Beratung (GOZ-Nr. 0010, GOÄ-Nrn. 1, 5),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Lokalbehandlung einer Mundschleimhauterkrankung (GOZ-Nr. 4020),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Einschleiftherapie (GOZ-Nr. 4040),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Entfernen von Zahnbelägen (GOZ-Nrn. 4050 bis 4060),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "parodontalchirurgische Maßnahmen (GOZ-Nrn. 4070 ff.),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "lokale Fluoridierung (GOZ-Nr. 1020),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "professionelle Zahnreinigung (GOZ-Nr. 1040),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Mundhygieneinstruktionen (GOZ-Nrn. 1000, 1010),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Versiegelungsmaßnahmen (GOZ-Nr. 2000),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Behandlung überempfindlicher Zahnflächen (GOZ-Nr. 2010),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Kontrolle/Finieren/Polieren einer Restauration (GOZ-Nr. 2130),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "alle prothetischen Maßnahmen (GOZ-Nrn. 5000 ff.),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "alle kieferorthopädischen Maßnahmen (GOZ-Nrn. 6000 ff.),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "systematisches Einschleifen (GOZ-Nr. 8100),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem geringer Schneidekantendifferenz von wenigen Millimetern,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark eingeschränkter Beweglichkeit des Kiefergelenks,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "extrem enger und kleiner Mundöffnung,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark die Mundöffnung einschränkender Verletzung im Bereich des Mundwinkels (Rhagaden),"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "stark die Mundöffnung einschränkender Verletzung an der Lippe,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "ausgeprägtem Brech-/Würgereiz,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "enormer motorischer Instabilität der Zunge – dadurch schwierige und zeitaufwendige Durchführung der Maßnahme,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "schwer zugänglicher „Reiz“-Lage, z. B. zwischen zwei Zähnen,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "technisch schwer zu beseitigendem Reiz an einer Suprakonstruktion – besonders vorsichtiges Vorgehen erforderlich,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "schwierig zu objektivierendem Reizproblem,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zeitaufwendigem Ausgleich aufgrund schwieriger Lokalisierung der Druckstelle, durch unklare Äußerung des Patienten zur Schmerz- bzw. Reizproblematik,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Prothesenrand aus Metall – dadurch zeitaufwendige Entfernung der Druckstelle,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "hochakutem Krankheitsbild,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Durchführung der Maßnahme am stark gelockerten Zahn,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zeitaufwendigem Ausgleich des überstehenden Kronenrandes als Fremdreiz,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zeitaufwendiger Entfernung von störenden Fremdreizen am KFO-Gerät,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "zusätzlich nötiger Sicherungsmaßnahmen gegenüber Nachbarzähnen,"
+        },
+        {
+          "kind": "limits",
+          "snippet": "mehrerer zeitaufwendig zu beseitigender Fremdreize je Kieferhälfte/Frontzahnbereich,"
+        },
+        {
+          "kind": "unknown",
+          "snippet": "mehrerer Maßnahmen an festsitzenden oder abnehmbaren Geräten im selben Gebiet,",
+          "bullets": [
+            "Gebührennummern",
+            "E. Leistungen bei Erkrankungen der Mundschleimhaut und des Parodontiums",
+            "4030 Beseitigung von scharfen Zahnkanten, Prothesenrändern, Fremdreizen"
+          ]
+        }
+      ],
+      "softRules": [
+        {
+          "type": "maxCountHint",
+          "severity": "warn",
+          "payload": {
+            "match": "maximal"
+          },
+          "evidenceSnippet": "ontzahnbereich je Sitzung berechnet werden, d. h. maximal viermal in einer Sitzung, sofern sich die Behandlung auf vier Kieferhälften verteilt.Sie unterschei"
+        }
+      ],
+      "tags": [
+        "Mengenbegrenzung",
+        "KFO",
+        "Prothese",
+        "Krone",
+        "Reparatur"
+      ]
+    }
+  ]
+}

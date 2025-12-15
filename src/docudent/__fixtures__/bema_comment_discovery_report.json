@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "timestamp": "2025-12-14T20:15:44.646Z",
+    "sourceDir": "/Users/david/dokumaster-ui/src/docudent/BEMA",
+    "discoveryVersion": "v1"
+  },
+  "counts": {
+    "totalDirs": 6,
+    "totalHtmlFiles": 167,
+    "filesByDepth": {
+      "1": 167
+    },
+    "filesByFolder": {
+      "IP:FU": 9,
+      "KBR": 20,
+      "KCH": 81,
+      "KFO": 23,
+      "PAR": 9,
+      "ZE": 25
+    }
+  },
+  "samples": [
+    {
+      "filePath": "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377010%27%5D.html",
+      "folder": "IP:FU",
+      "sizeBytes": 28120,
+      "detectedSystem": "BEMA",
+      "detectedCode": "BEMA_FU1",
+      "detectionMethod": "BEMA_SPECIAL",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377011%27%5D.html",
+      "folder": "IP:FU",
+      "sizeBytes": 150414,
+      "detectedSystem": "BEMA",
+      "detectedCode": "BEMA_IP1",
+      "detectionMethod": "BEMA_SPECIAL",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377026%27%5D.html",
+      "folder": "KBR",
+      "sizeBytes": 30882,
+      "detectedSystem": "BEMA",
+      "detectedCode": "BEMA_0",
+      "detectionMethod": "BEMA_NR",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377027%27%5D.html",
+      "folder": "KBR",
+      "sizeBytes": 50092,
+      "detectedSystem": "GOZ",
+      "detectedCode": "GOZ_8000",
+      "detectionMethod": "GOZ_PATTERN",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376924%27%5D.html",
+      "folder": "KCH",
+      "sizeBytes": 111902,
+      "detectedSystem": "BEMA",
+      "detectedCode": "BEMA_IP1",
+      "detectionMethod": "BEMA_SPECIAL",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376925%27%5D.html",
+      "folder": "KCH",
+      "sizeBytes": 93332,
+      "detectedSystem": "GOZ",
+      "detectedCode": "GOZ_8000",
+      "detectionMethod": "GOZ_PATTERN",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377056%27%5D.html",
+      "folder": "KFO",
+      "sizeBytes": 83753,
+      "detectedSystem": "BEMA",
+      "detectedCode": "BEMA_0",
+      "detectionMethod": "BEMA_NR",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377057%27%5D.html",
+      "folder": "KFO",
+      "sizeBytes": 34263,
+      "detectedSystem": "BEMA",
+      "detectedCode": "BEMA_Ä1",
+      "detectionMethod": "BEMA_Ä1",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377092%27%5D.html",
+      "folder": "PAR",
+      "sizeBytes": 161168,
+      "detectedSystem": "BEMA",
+      "detectedCode": "BEMA_Ä1",
+      "detectionMethod": "BEMA_Ä1",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377093%27%5D.html",
+      "folder": "PAR",
+      "sizeBytes": 77200,
+      "detectedSystem": "BEMA",
+      "detectedCode": "BEMA_Ä1",
+      "detectionMethod": "BEMA_Ä1",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377112%27%5D.html",
+      "folder": "ZE",
+      "sizeBytes": 58458,
+      "detectedSystem": "GOZ",
+      "detectedCode": "GOZ_8000",
+      "detectionMethod": "GOZ_PATTERN",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    },
+    {
+      "filePath": "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377113%27%5D.html",
+      "folder": "ZE",
+      "sizeBytes": 123300,
+      "detectedSystem": "GOZ",
+      "detectedCode": "GOZ_2150",
+      "detectionMethod": "GOZ_PATTERN",
+      "titleCandidate": "Stand Dezember 2025 (144 EL)"
+    }
+  ],
+  "codeDetectionSummary": {
+    "bema": 8,
+    "goz": 4,
+    "bel": 0,
+    "unknown": 0
+  }
+}

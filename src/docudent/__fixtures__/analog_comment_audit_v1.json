@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "auditVersion": "v1",
+    "timestamp": "2025-12-14T21:50:17.136Z"
+  },
+  "discovery": {
+    "htmlFilesFound": 104,
+    "cardsImported": 57,
+    "ratio": 0.5480769230769231,
+    "issues": []
+  },
+  "codeDetection": {
+    "totalCodes": 57,
+    "patterns": {
+      "ANALOG_ZE_": 4,
+      "ANALOG_Kons_": 10,
+      "ANALOG_FAL_": 17,
+      "ANALOG_Chir_": 7,
+      "ANALOG_Impl_": 3,
+      "ANALOG_Paro_": 3,
+      "ANALOG_KFO_": 11,
+      "ANALOG_Aufbiss_": 2,
+      "ANALOG_NODE_": 0,
+      "other": 0
+    },
+    "suspiciousCodes": []
+  },
+  "sectionClassification": {
+    "distribution": {
+      "unknown": 296,
+      "fee_determination": 112,
+      "example": 100,
+      "legal_reference": 33,
+      "definition": 26,
+      "materials": 13,
+      "commentary": 6,
+      "billing": 4,
+      "limits": 3,
+      "overview": 2,
+      "plausibility": 1
+    },
+    "totalSections": 596,
+    "unknownPercentage": 49.664429530201346,
+    "issues": []
+  },
+  "ruleExtraction": {
+    "totalRules": 103,
+    "byType": {
+      "analogJustification": 56,
+      "requires": 24,
+      "maxCount": 11,
+      "compat": 8,
+      "contra": 4
+    },
+    "unknownPercentage": 0,
+    "issues": []
+  },
+  "goldenCodes": [
+    {
+      "code": "ANALOG_ZE_02",
+      "status": "pass",
+      "expected": {
+        "code": "ANALOG_ZE_02",
+        "minSections": 3,
+        "hasAnalogHint": true,
+        "minCrossRefs": 2,
+        "hasCrossRefSystem": [
+          "GOZ"
+        ],
+        "minRules": 0
+      },
+      "actual": {
+        "sectionsCount": 3,
+        "hasAnalogHint": true,
+        "crossRefsCount": 4,
+        "crossRefSystems": [
+          "GOZ"
+        ],
+        "rulesCount": 2
+      }
+    },
+    {
+      "code": "ANALOG_Kons_04",
+      "status": "pass",
+      "expected": {
+        "code": "ANALOG_Kons_04",
+        "minSections": 5,
+        "hasAnalogHint": true,
+        "minCrossRefs": 3,
+        "hasCrossRefSystem": [
+          "GOZ"
+        ],
+        "minRules": 1
+      },
+      "actual": {
+        "sectionsCount": 12,
+        "hasAnalogHint": true,
+        "crossRefsCount": 3,
+        "crossRefSystems": [
+          "GOZ"
+        ],
+        "rulesCount": 1
+      }
+    },
+    {
+      "code": "ANALOG_FAL_01",
+      "status": "pass",
+      "expected": {
+        "code": "ANALOG_FAL_01",
+        "minSections": 3,
+        "hasAnalogHint": true,
+        "minCrossRefs": 1,
+        "hasCrossRefSystem": [
+          "GOZ"
+        ],
+        "minRules": 0
+      },
+      "actual": {
+        "sectionsCount": 9,
+        "hasAnalogHint": true,
+        "crossRefsCount": 7,
+        "crossRefSystems": [
+          "GOZ"
+        ],
+        "rulesCount": 1
+      }
+    },
+    {
+      "code": "ANALOG_Paro_03",
+      "status": "pass",
+      "expected": {
+        "code": "ANALOG_Paro_03",
+        "minSections": 20,
+        "hasAnalogHint": true,
+        "minCrossRefs": 5,
+        "hasCrossRefSystem": [
+          "GOZ"
+        ],
+        "minRules": 2
+      },
+      "actual": {
+        "sectionsCount": 58,
+        "hasAnalogHint": true,
+        "crossRefsCount": 20,
+        "crossRefSystems": [
+          "GOZ",
+          "GOAE",
+          "BEMA"
+        ],
+        "rulesCount": 4
+      }
+    },
+    {
+      "code": "ANALOG_Impl_02",
+      "status": "pass",
+      "expected": {
+        "code": "ANALOG_Impl_02",
+        "minSections": 3,
+        "hasAnalogHint": true,
+        "minCrossRefs": 2,
+        "hasCrossRefSystem": [
+          "GOZ"
+        ],
+        "minRules": 0
+      },
+      "actual": {
+        "sectionsCount": 32,
+        "hasAnalogHint": true,
+        "crossRefsCount": 13,
+        "crossRefSystems": [
+          "GOZ"
+        ],
+        "rulesCount": 4
+      }
+    }
+  ],
+  "summary": {
+    "status": "OK",
+    "issues": []
+  }
+}

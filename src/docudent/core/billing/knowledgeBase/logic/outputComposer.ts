@@ -14,6 +14,7 @@
  */
 
 import type { ProcessingResult, ChipDefinition } from './treatmentEngine';
+import { type ValidationWarning, createWarningFromString } from '../../../../contracts/warnings';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -121,7 +122,7 @@ export interface ComposedOutput {
     sections: ComposedSection[];
     fullText: string;
     billingCodes: string[];
-    warnings: string[];
+    warnings: ValidationWarning[];
     _evidenceTrace: {  // Internal, not for UI
         allRefs: EvidenceRef[];
         chipIds: string[];
@@ -136,6 +137,8 @@ export interface ComposeOptions {
     hasMKV: boolean;
     // hasAnesthesia REMOVED (Option B) — derived internally from activeChips
     mkvBetrag?: number;
+    // Material for capping placeholder substitution
+    cappingMaterial?: 'mta' | 'caoh' | 'biodentine' | string;
 }
 
 // Internal derived flags — computed inside composeOutput from activeChips
@@ -144,38 +147,59 @@ interface DerivedFlags {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// LOADERS
+// STATIC IMPORTS — Only shared files that are NOT treatment-specific
 // ═══════════════════════════════════════════════════════════════
+import standardDisclosures from '../disclosures/standard_disclosures.json';
+
+// Registry loaders for treatment-specific files (SSOT)
+import { loadTemplateConfig, loadFindingMapConfig, type TemplateConfig, type FindingMapConfig } from '../registry';
+
+// Cache for loaded configs (per treatmentId)
+const templateCache = new Map<string, OutputTemplate | null>();
+const findingMapCache = new Map<string, FindingMap | null>();
 
 function loadTemplate(templateId: string): OutputTemplate | null {
+    if (templateCache.has(templateId)) {
+        return templateCache.get(templateId) || null;
+    }
+
     try {
-        if (templateId === 'fuellung') {
-            return require('../templates/fuellung_template.json');
+        const config = loadTemplateConfig(templateId);
+        if (!config) {
+            console.warn(`[OutputComposer] Template not found: ${templateId}`);
+            templateCache.set(templateId, null);
+            return null;
         }
-        return null;
-    } catch {
-        console.error(`Template not found: ${templateId}`);
+        const template = config as unknown as OutputTemplate;
+        templateCache.set(templateId, template);
+        return template;
+    } catch (e) {
+        console.error(`[OutputComposer] Error loading template for ${templateId}:`, e);
         return null;
     }
 }
 
 function loadDisclosures(): DisclosureFile | null {
-    try {
-        return require('../disclosures/standard_disclosures.json');
-    } catch {
-        console.error('Disclosures file not found');
-        return null;
-    }
+    return standardDisclosures as unknown as DisclosureFile;
 }
 
 function loadFindingMap(treatmentId: string): FindingMap | null {
+    if (findingMapCache.has(treatmentId)) {
+        return findingMapCache.get(treatmentId) || null;
+    }
+
     try {
-        if (treatmentId === 'fuellung') {
-            return require('../mappings/fuellung_finding_map.json');
+        const config = loadFindingMapConfig(treatmentId);
+        if (!config) {
+            console.warn(`[OutputComposer] Finding map not found: ${treatmentId}`);
+            findingMapCache.set(treatmentId, null);
+            return null;
         }
-        return null;
-    } catch {
-        console.error(`Finding map not found: ${treatmentId}`);
+        const findingMap = config as unknown as FindingMap;
+        findingMapCache.set(treatmentId, findingMap);
+        return findingMap;
+    } catch (e) {
+        console.error(`[OutputComposer] Error loading finding map for ${treatmentId}:`, e);
         return null;
     }
 }
@@ -378,7 +402,8 @@ function renderBehandlung(
     chips: ChipDefinition[],
     phrasebank: { start: string[]; middle: string[]; end: string[] },
     textLength: string,
-    seed: number
+    seed: number,
+    options?: ComposeOptions
 ): { content: string; evidenceRefs: EvidenceRef[] } {
     // Filter chips by phase (SSOT: chip.phase)
     const filtered = chips.filter(chip => {
@@ -386,11 +411,23 @@ function renderBehandlung(
         return section.slotRule.phases.includes(chip.phase || '');
     });
 
-    // Get snippets from SSOT (chip.textSnippets)
+    // Material name mapping for placeholder substitution
+    const MATERIAL_NAMES: Record<string, string> = {
+        'mta': 'MTA',
+        'caoh': 'Ca(OH)₂',
+        'biodentine': 'Biodentine',
+    };
+    const materialName = options?.cappingMaterial
+        ? (MATERIAL_NAMES[options.cappingMaterial.toLowerCase()] || options.cappingMaterial)
+        : 'geeignetem Material'; // Safe fallback - never leak placeholder
+
+    // Get snippets from SSOT (chip.textSnippets) and substitute placeholders
     const snippets: Array<{ text: string; chipId: string }> = [];
     for (const chip of filtered) {
-        const snippet = chip.textSnippets?.[textLength] || chip.textSnippets?.mittel;
+        let snippet = chip.textSnippets?.[textLength] || chip.textSnippets?.mittel;
         if (snippet?.trim()) {
+            // Substitute {material} placeholder
+            snippet = snippet.replace(/\{material\}/gi, materialName);
             snippets.push({ text: snippet, chipId: chip.id });
         }
     }
@@ -407,7 +444,8 @@ function renderLeistungen(
     section: TemplateSection,
     chips: ChipDefinition[],
     textLength: string,
-    maxBullets: number = 8
+    maxBullets: number = 8,
+    options?: ComposeOptions
 ): { content: string; evidenceRefs: EvidenceRef[] } {
     const filtered = chips.filter(chip => {
         if (section.slotRule?.hasBilling && !chip.billingRef) return false;
@@ -417,13 +455,25 @@ function renderLeistungen(
         return true;
     });
 
+    // Material name mapping for placeholder substitution (same as renderBehandlung)
+    const MATERIAL_NAMES: Record<string, string> = {
+        'mta': 'MTA',
+        'caoh': 'Ca(OH)₂',
+        'biodentine': 'Biodentine',
+    };
+    const materialName = options?.cappingMaterial
+        ? (MATERIAL_NAMES[options.cappingMaterial.toLowerCase()] || options.cappingMaterial)
+        : 'geeignetem Material';
+
     const bullets: string[] = [];
     const evidenceRefs: EvidenceRef[] = [];
 
     for (const chip of filtered.slice(0, maxBullets)) {
         // SSOT: chip.textSnippets.kurz or chip.label
-        const snippet = chip.textSnippets?.kurz || chip.label;
+        let snippet = chip.textSnippets?.kurz || chip.label;
         if (snippet) {
+            // Substitute {material} placeholder
+            snippet = snippet.replace(/\{material\}/gi, materialName);
             bullets.push(`• ${snippet}`);
             evidenceRefs.push({ type: 'chip', id: chip.id });
         }
@@ -573,9 +623,11 @@ export function composeOutput(
                     const befundResult = renderBefundFromMapping(findingMap, extractedData);
                     sectionResult = { content: befundResult.content, evidenceRefs: befundResult.evidenceRefs };
                     // Add warnings for missing required fields
-                    for (const missing of befundResult.missingRequired) {
-                        if (!engineResult.warnings.includes(missing)) {
-                            engineResult.warnings.push(missing);
+                    for (let i = 0; i < befundResult.missingRequired.length; i++) {
+                        const missing = befundResult.missingRequired[i];
+                        const existingWarning = engineResult.warnings.find(w => w.description === missing);
+                        if (!existingWarning) {
+                            engineResult.warnings.push({ id: `befund-missing-${i}`, type: 'warning', title: 'Fehlende Angabe', description: missing, affectedCodes: [] });
                         }
                     }
                 }
@@ -586,11 +638,11 @@ export function composeOutput(
                 break;
 
             case 'behandlung':
-                sectionResult = renderBehandlung(sectionDef, dedupedChips, template.phrasebank.behandlung, snippetKey, seed);
+                sectionResult = renderBehandlung(sectionDef, dedupedChips, template.phrasebank.behandlung, snippetKey, seed, options);
                 break;
 
             case 'leistungen':
-                sectionResult = renderLeistungen(sectionDef, dedupedChips, snippetKey, sectionDef.maxBullets);
+                sectionResult = renderLeistungen(sectionDef, dedupedChips, snippetKey, sectionDef.maxBullets, options);
                 break;
 
             case 'abrechnung':

@@ -1,0 +1,787 @@
+{
+    "meta": {
+        "version": "case-pack-v2-imported",
+        "sourceVersion": "case-pack-v2",
+        "lastImported": "2025-12-14T16:52:12.705Z",
+        "importedBy": "Docudent Importer v2"
+    },
+    "cases": [
+        {
+            "id": "CASE_01",
+            "category": "ZE",
+            "title": "Einzelkrone Metall auf Molar mit Stiftaufbau",
+            "clinicalScenario": "Patient mit weitgehend zerstörtem Zahn 36 nach Wurzelbehandlung. Versorgung mit gegossenem Stiftaufbau und Vollgusskrone NEM.",
+            "befundklasse": "1",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_1.1",
+                    "FZ_1.5"
+                ],
+                "notes": "FZ 1.1 für Krone bei zerstörtem Zahn, FZ 1.5 für gegossenen Stiftaufbau (Zusatzbefund)"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0120",
+                    "BEL_0051",
+                    "BEL_1050",
+                    "BEL_1021"
+                ],
+                "notes": "Modell, Artikulator, Sägemodell, Stiftaufbau, Vollkrone Metall"
+            },
+            "edgeCases": [
+                "FZ 1.5 nur bei zweizeitigem gegossenem Stiftaufbau"
+            ],
+            "expectedEngineChecks": [
+                "FZ 1.5 ist Zusatzbefund zu FZ 1.1",
+                "BEL codes exist in catalog"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_02",
+            "category": "ZE",
+            "title": "Dreigliedrige Brücke Frontzahnbereich mit Keramikverblendung",
+            "clinicalScenario": "Fehlender Zahn 21, Ankerzähne 11 und 22 erhaltungswürdig. Versorgung mit VMK-Brücke.",
+            "befundklasse": "2",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_2.1"
+                ],
+                "notes": "FZ 2.1 für Brückenversorgung einer Lücke im Frontzahnbereich"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0051",
+                    "BEL_0120",
+                    "BEL_1024",
+                    "BEL_1024",
+                    "BEL_1100",
+                    "BEL_1620",
+                    "BEL_1620",
+                    "BEL_1620"
+                ],
+                "notes": "2x Krone für Verblendung, 1x Brückenglied, 3x Keramikverblendung"
+            },
+            "edgeCases": [
+                "Verblendbereich 13-23 im OK"
+            ],
+            "expectedEngineChecks": [
+                "FZ 2.1 gilt für 1 Lückenzahn",
+                "BEL codes exist in catalog"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_03",
+            "category": "ZE",
+            "title": "Teleskopprothese mit 2 Doppelkronen",
+            "clinicalScenario": "Stark reduziertes Restgebiss im UK mit Zähnen 33 und 43. Versorgung mit 2 Teleskopkronen.",
+            "befundklasse": "3",
+            "kiefer": "UK",
+            "teeth": [
+                "33",
+                "43"
+            ],
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_3.1",
+                    "FZ_3.2a",
+                    "FZ_3.2a"
+                ],
+                "notes": "FZ 3.1 für Teilprothese, 2x FZ 3.2a für Teleskopkronen"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0051",
+                    "BEL_0120",
+                    "BEL_1200",
+                    "BEL_1200",
+                    "BEL_2010",
+                    "BEL_3010",
+                    "BEL_1600"
+                ],
+                "notes": "2x Teleskopierende Krone, Metallbasis, Aufstellung"
+            },
+            "edgeCases": [
+                "Max 2x Teleskopkrone pro Kiefer"
+            ],
+            "expectedEngineChecks": [
+                "FZ 3.2a max 2x pro Kiefer",
+                "BEL codes exist in catalog"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_04",
+            "category": "ZE",
+            "title": "Totalprothese Oberkiefer bei zahnlosem Kiefer",
+            "clinicalScenario": "Vollständig zahnloser Oberkiefer. Versorgung mit schleimhautgetragener Totalprothese.",
+            "befundklasse": "7",
+            "kiefer": "OK",
+            "zahnlos": true,
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_7.1"
+                ],
+                "notes": "FZ 7.1 für Totalprothese im zahnlosen Kiefer"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0212",
+                    "BEL_0215",
+                    "BEL_0120",
+                    "BEL_3010",
+                    "BEL_3610",
+                    "BEL_3620"
+                ],
+                "notes": "Funktionslöffel, Basis für Aufstellung, Artikulator"
+            },
+            "edgeCases": [
+                "Keine Restzähne im Kiefer"
+            ],
+            "expectedEngineChecks": [
+                "FZ 7.1 nur bei komplett zahnlosem Kiefer"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_05",
+            "category": "ZE",
+            "title": "Adhäsivbrücke Frontzahnbereich",
+            "clinicalScenario": "Fehlender Zahn 22 bei jugendlichem Patienten. Minimalinvasive Versorgung mit Adhäsivbrücke.",
+            "befundklasse": "2",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_2.1"
+                ],
+                "notes": "FZ 2.1 für Brückenversorgung auch bei Adhäsivbrücke"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0051",
+                    "BEL_0120",
+                    "BEL_1023",
+                    "BEL_1100",
+                    "BEL_1550",
+                    "BEL_1620"
+                ],
+                "notes": "Flügel, Brückenglied, Konditionierung, Keramikverblendung"
+            },
+            "edgeCases": [
+                "Adhäsivbrücke = Regelversorgung bei Front"
+            ],
+            "expectedEngineChecks": [
+                "BEL codes exist in catalog"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_06",
+            "category": "ZE",
+            "title": "Komplexversorgung UK mit Brücke und Teilprothese",
+            "clinicalScenario": "Lückengebiss UK mit Brücke 34-36 und Modellgussprothese für Freiendsituation.",
+            "befundklasse": "3",
+            "kiefer": "UK",
+            "teeth": [
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "47",
+                "48"
+            ],
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_2.1",
+                    "FZ_3.1",
+                    "FZ_1.1",
+                    "FZ_1.1"
+                ],
+                "notes": "FZ 2.1 für Brücke, FZ 3.1 für Teilprothese, 2x FZ 1.1 für Brückenanker"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0051",
+                    "BEL_0120",
+                    "BEL_1021",
+                    "BEL_1021",
+                    "BEL_1100",
+                    "BEL_2010",
+                    "BEL_2021",
+                    "BEL_2120",
+                    "BEL_3010"
+                ],
+                "notes": "2x Vollkrone Metall, 1x Brückenglied, Metallbasis, Halteelemente"
+            },
+            "edgeCases": [
+                "Kombinationsversorgung Brücke + Prothese"
+            ],
+            "expectedEngineChecks": [
+                "Multi-FZ Kombination valid",
+                "Keine Doppelabrechnung"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_07",
+            "category": "REPAIR",
+            "title": "Bruchreparatur Kunststoffprothese mit Zahnersatz",
+            "clinicalScenario": "Totalprothese OK gebrochen, zusätzlich 2 Prothesenzähne verloren. Reparatur mit Bruchstelle und Zähne.",
+            "befundklasse": "6",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_6.2"
+                ],
+                "notes": "FZ 6.2 für Wiederherstellung mit Abformung"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0120",
+                    "BEL_8010",
+                    "BEL_8022",
+                    "BEL_8023",
+                    "BEL_8023",
+                    "BEL_8027"
+                ],
+                "notes": "Modell, Artikulator, Bruchreparatur, 2x Zahn einarbeiten"
+            },
+            "edgeCases": [
+                "Repair = BEMA 100b bei Abformung"
+            ],
+            "expectedEngineChecks": [
+                "FZ 6.2 für Wiederherstellung mit Abformung"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_08",
+            "category": "REPAIR",
+            "title": "Kronenreparatur Verblendung Frontzahn",
+            "clinicalScenario": "Keramikverblendung an Krone 11 abgeplatzt. Reparatur durch Erneuerung.",
+            "befundklasse": "1",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_1.3"
+                ],
+                "notes": "FZ 1.3 für Wiederherstellung der Funktion einer Krone"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_1620",
+                    "BEL_8010",
+                    "BEL_8030"
+                ],
+                "notes": "Modell, Keramikverblendung, sonstige Leistung"
+            },
+            "edgeCases": [
+                "Reparatur vs Neuanfertigung"
+            ],
+            "expectedEngineChecks": [
+                "FZ 1.3 für Kronenreparatur"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_09",
+            "category": "REPAIR",
+            "title": "Brückenreparatur Lötstelle",
+            "clinicalScenario": "Brücke 24-26 an Lötstelle gelöst. Wiederherstellung durch Neulötung.",
+            "befundklasse": "2",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_2.7"
+                ],
+                "notes": "FZ 2.7 für Wiederherstellung der Funktion einer Brücke"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0120",
+                    "BEL_8010",
+                    "BEL_8070"
+                ],
+                "notes": "Modell, Artikulator, sonstige Leistung ZE"
+            },
+            "edgeCases": [
+                "Lötung statt Neuanfertigung"
+            ],
+            "expectedEngineChecks": [
+                "FZ 2.7 für Brückenreparatur"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_10",
+            "category": "REPAIR",
+            "title": "Unterfütterung Totalprothese UK (indirekt)",
+            "clinicalScenario": "Totalprothese UK sitzt nicht mehr optimal nach Kieferkammatrophie. Indirekte Unterfütterung über Labor.",
+            "befundklasse": "6",
+            "kiefer": "UK",
+            "unterfuetterungType": "indirect_lab",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_6.8"
+                ],
+                "notes": "FZ 6.8 für Unterfütterung einer Prothese (indirekt)"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0112",
+                    "BEL_8010",
+                    "BEL_8060",
+                    "BEL_8070"
+                ],
+                "notes": "Modell, Fixator für Bisslage, Unterfütterung, Versäubern"
+            },
+            "edgeCases": [
+                "Indirekte Unterfütterung = Laborarbeit"
+            ],
+            "expectedEngineChecks": [
+                "FZ 6.8 für Unterfütterung",
+                "BEL_8060 required"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_11",
+            "category": "REPAIR",
+            "title": "Erweiterung Modellgussprothese um Klammer",
+            "clinicalScenario": "Nach Extraktion von Zahn 15 muss die Prothese um eine gegossene Klammer erweitert werden.",
+            "befundklasse": "6",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_6.3"
+                ],
+                "notes": "FZ 6.3 für Erneuerung eines gegossenen Halteelements"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0120",
+                    "BEL_2031",
+                    "BEL_8010",
+                    "BEL_8025",
+                    "BEL_8070"
+                ],
+                "notes": "Modell, gegossene Haltevorrichtung, Polieren"
+            },
+            "edgeCases": [
+                "Erweiterung = Wiederherstellung"
+            ],
+            "expectedEngineChecks": [
+                "FZ 6.3 für Halteelement-Erneuerung"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_12",
+            "category": "REPAIR",
+            "title": "Komplexe Prothesenreparatur mit Unterfütterung und Zahnersatz",
+            "clinicalScenario": "Teilprothese OK mit Bruch, 3 verlorene Zähne, schlechter Sitz. Kombinierte Reparatur mit Unterfütterung.",
+            "befundklasse": "6",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_6.2",
+                    "FZ_6.8",
+                    "FZ_6.0"
+                ],
+                "notes": "FZ 6.2 für Wiederherstellung, FZ 6.8 Unterfütterung, FZ 6.0 Prothesenreparatur"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0112",
+                    "BEL_0120",
+                    "BEL_8010",
+                    "BEL_8022",
+                    "BEL_8023",
+                    "BEL_8023",
+                    "BEL_8023",
+                    "BEL_8060",
+                    "BEL_8070"
+                ],
+                "notes": "Modell, Fixator, Bruchreparatur, 3x Zahn einarbeiten, Unterfütterung"
+            },
+            "edgeCases": [
+                "Multi-FZ bei komplexer Reparatur"
+            ],
+            "expectedEngineChecks": [
+                "Multi-FZ Kombination valid"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_13",
+            "category": "ZE",
+            "title": "Interimsprothese UK nach multipler Extraktion",
+            "clinicalScenario": "Patient nach multipler Extraktion im OK. Versorgung mit Interimsprothese während Heilungsphase vor endgültiger Prothese.",
+            "befundklasse": "4",
+            "kiefer": "OK",
+            "teeth": [
+                "14",
+                "15",
+                "24",
+                "25"
+            ],
+            "bonusStatus": "none",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_4.1"
+                ],
+                "notes": "FZ 4.1 für Interimsprothese bei mehr als 3 fehlenden Zähnen"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0120",
+                    "BEL_3610",
+                    "BEL_3010"
+                ],
+                "notes": "Modell, Artikulator, Kunststoffbasis, Aufstellung"
+            },
+            "edgeCases": [
+                "Interimsprothese nur bei ausreichend Extraktionen",
+                "Zeitlich begrenzt vor endgültiger Versorgung"
+            ],
+            "expectedEngineChecks": [
+                "FZ 4.1 nur bei > 3 fehlenden Zähnen pro Kiefer"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_14",
+            "category": "ZE",
+            "title": "Interimsprothese UK bei Sofortversorgung",
+            "clinicalScenario": "Sofortige Versorgung des zahnlosen UK mit Interimsprothese während Implantateinheilung.",
+            "befundklasse": "4",
+            "kiefer": "UK",
+            "teeth": [
+                "31",
+                "32",
+                "33",
+                "41",
+                "42",
+                "43"
+            ],
+            "bonusStatus": "5y",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_4.2"
+                ],
+                "notes": "FZ 4.2 für Interimsprothese UK"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0120",
+                    "BEL_3610",
+                    "BEL_3010"
+                ],
+                "notes": "Modell, Artikulator, Kunststoffbasis, Aufstellung"
+            },
+            "edgeCases": [
+                "Sofortversorgung während Implantateinheilung"
+            ],
+            "expectedEngineChecks": [
+                "FZ 4.2 für Interimsprothese UK"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_15",
+            "category": "ZE",
+            "title": "Teilprothese UK auf Modellguss ohne Teleskope",
+            "clinicalScenario": "Freiendsituation UK beidseits. Versorgung mit Modellgussprothese mit Klammern, keine Teleskope.",
+            "befundklasse": "5",
+            "kiefer": "UK",
+            "teeth": [
+                "37",
+                "38",
+                "47",
+                "48"
+            ],
+            "bonusStatus": "10y",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_5.1"
+                ],
+                "notes": "FZ 5.1 für Teilprothese mit Klammern (BK5)"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0051",
+                    "BEL_0120",
+                    "BEL_2010",
+                    "BEL_2021",
+                    "BEL_2025",
+                    "BEL_3010"
+                ],
+                "notes": "Modell, Sägemodell, Metallbasis, Klammern, Aufstellung"
+            },
+            "edgeCases": [
+                "BK5 für definitive Teilprothese",
+                "Keine Teleskope"
+            ],
+            "expectedEngineChecks": [
+                "FZ 5.1 für definitive Teilprothese BK5"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_16",
+            "category": "ZE",
+            "title": "Teilprothese OK Freiendsituation mit Gaumenplatte",
+            "clinicalScenario": "Freiendsituation OK beidseits ab Zahn 15/25. Modellgussprothese mit Gaumenplatte.",
+            "befundklasse": "5",
+            "kiefer": "OK",
+            "teeth": [
+                "16",
+                "17",
+                "18",
+                "26",
+                "27",
+                "28"
+            ],
+            "bonusStatus": "none",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_5.2"
+                ],
+                "notes": "FZ 5.2 für Teilprothese OK mit großem Sattel"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0051",
+                    "BEL_0120",
+                    "BEL_2010",
+                    "BEL_2021",
+                    "BEL_3010"
+                ],
+                "notes": "Modell, Sägemodell, Metallbasis, Klammern, Aufstellung"
+            },
+            "edgeCases": [
+                "Gaumenplatte bei OK-Prothese",
+                "BK5 definitive Versorgung"
+            ],
+            "expectedEngineChecks": [
+                "FZ 5.2 für OK-Teilprothese BK5"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_17",
+            "category": "REPAIR",
+            "title": "Direkte Unterfütterung chairside",
+            "clinicalScenario": "Totalprothese UK mit leichtem Lockerungsgefühl. Direkte Unterfütterung am Stuhl ohne Laborweg.",
+            "befundklasse": "6",
+            "kiefer": "UK",
+            "zahnlos": true,
+            "unterfuetterungType": "direct_chairside",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_6.9"
+                ],
+                "notes": "FZ 6.9 für direkte Unterfütterung (chairside)"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_8010",
+                    "BEL_8070"
+                ],
+                "notes": "Modell, sonstige Leistung, Versäubern (kein BEL_8060!)"
+            },
+            "edgeCases": [
+                "Direkte Unterfütterung ohne Labor",
+                "KEIN BEL_8060 bei chairside"
+            ],
+            "expectedEngineChecks": [
+                "FZ 6.9 für direkte Unterfütterung",
+                "BEL_8060 darf fehlen"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_18",
+            "category": "REPAIR",
+            "title": "Indirekte Unterfütterung bei Kombinationsversorgung",
+            "clinicalScenario": "Kombi-Zahnersatz (Teleskope + Prothese) mit Passungenauigkeit. Indirekte Unterfütterung über Labor.",
+            "befundklasse": "6",
+            "kiefer": "OK",
+            "teeth": [
+                "13",
+                "23"
+            ],
+            "unterfuetterungType": "indirect_lab",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_6.8.1"
+                ],
+                "notes": "FZ 6.8.1 für Unterfütterung bei Kombinationsversorgung"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0112",
+                    "BEL_0120",
+                    "BEL_8010",
+                    "BEL_8060",
+                    "BEL_8070"
+                ],
+                "notes": "Modell, Fixator, Artikulator, Unterfütterung, Versäubern"
+            },
+            "edgeCases": [
+                "FZ_6.8.1 spezifisch für Kombi-ZE",
+                "Unterschied zu FZ_6.8"
+            ],
+            "expectedEngineChecks": [
+                "FZ_6.8.1 für Kombi-Unterfütterung"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_19",
+            "category": "ZE",
+            "title": "Totalprothese UK mit Härtefallstatus",
+            "clinicalScenario": "Zahnloser UK bei Patientin mit Härtefallregelung. Versorgung mit Totalprothese, voller Zuschuss erwartet.",
+            "befundklasse": "7",
+            "kiefer": "UK",
+            "zahnlos": true,
+            "bonusStatus": "hardship",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_7.2"
+                ],
+                "notes": "FZ 7.2 für Totalprothese UK bei Härtefall"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0212",
+                    "BEL_0215",
+                    "BEL_0120",
+                    "BEL_3010",
+                    "BEL_3610",
+                    "BEL_3620"
+                ],
+                "notes": "Funktionslöffel, Basis, Aufstellung, Fertigstellung"
+            },
+            "edgeCases": [
+                "Härtefall = 100% Zuschuss (doppelter FZ)",
+                "Keine Eigenbeteiligung"
+            ],
+            "expectedEngineChecks": [
+                "Härtefallprüfung erforderlich",
+                "bonusStatus=hardship"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_20",
+            "category": "ZE",
+            "title": "Einzelkrone mit 10-Jahre-Bonus",
+            "clinicalScenario": "Krone auf Zahn 26, Patient hat lückenlos 10 Jahre Bonusheft nachgewiesen.",
+            "befundklasse": "1",
+            "kiefer": "OK",
+            "teeth": [
+                "26"
+            ],
+            "bonusStatus": "10y",
+            "festzuschuss": {
+                "fzCodes": [
+                    "FZ_1.1"
+                ],
+                "notes": "FZ 1.1 für Einzelkrone mit 10-Jahre-Bonus (75% Zuschuss)"
+            },
+            "bel": {
+                "belCodes": [
+                    "BEL_0010",
+                    "BEL_0051",
+                    "BEL_0120",
+                    "BEL_1021"
+                ],
+                "notes": "Modell, Sägemodell, Artikulator, Vollkrone Metall"
+            },
+            "edgeCases": [
+                "10-Jahre-Bonus = 30% Erhöhung auf Basis-FZ",
+                "Bonusheftnachweis erforderlich"
+            ],
+            "expectedEngineChecks": [
+                "bonusStatus=10y wirkt auf FZ-Faktor"
+            ],
+            "status": "PASS",
+            "validationNotes": [
+                "All codes validated against SSOTs"
+            ]
+        }
+    ]
+}

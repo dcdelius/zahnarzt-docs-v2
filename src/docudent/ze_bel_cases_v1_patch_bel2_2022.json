@@ -1,0 +1,118 @@
+{
+  "_meta": {
+    "schema": "docudent.casePackPatch.v1",
+    "targetCasePackVersion": "case-pack-v1",
+    "created": "2025-12-14",
+    "purpose": "Resolve BEL codes not present in BEL II 2022 SSOT; fix one semantic mismatch (BEL_3010)."
+  },
+  "codeReplacements": [
+    {
+      "from": "BEL_2070",
+      "to": "BEL_2010",
+      "type": "replace",
+      "note": "Metallbasis"
+    },
+    {
+      "from": "BEL_2310",
+      "to": "BEL_3010",
+      "type": "replace",
+      "note": "Aufstellung Grundeinheit"
+    },
+    {
+      "from": "BEL_2400",
+      "to": "BEL_3610",
+      "type": "replace",
+      "note": "Kunststoffbasis Grundeinheit"
+    },
+    {
+      "from": "BEL_2500",
+      "to": "BEL_3620",
+      "type": "replace",
+      "note": "Kunststoffbasis je Zahn"
+    },
+    {
+      "from": "BEL_1220",
+      "to": "BEL_1620",
+      "type": "replace",
+      "note": "Keramikverblendung vestibulär (proxy)"
+    },
+    {
+      "from": "BEL_3010",
+      "to": "BEL_8070",
+      "type": "replace_or_drop",
+      "note": "Metallverbindung bei Instandsetzung/Erweiterung (repair)"
+    }
+  ],
+  "caseFixes": [
+    {
+      "caseId": "CASE_03",
+      "ops": [
+        {
+          "op": "replaceBelCode",
+          "from": "BEL_2070",
+          "to": "BEL_2010"
+        },
+        {
+          "op": "replaceBelCode",
+          "from": "BEL_2310",
+          "to": "BEL_3010"
+        }
+      ]
+    },
+    {
+      "caseId": "CASE_04",
+      "ops": [
+        {
+          "op": "replaceBelCode",
+          "from": "BEL_2310",
+          "to": "BEL_3010"
+        },
+        {
+          "op": "replaceBelCode",
+          "from": "BEL_2400",
+          "to": "BEL_3610"
+        },
+        {
+          "op": "replaceBelCode",
+          "from": "BEL_2500",
+          "to": "BEL_3620"
+        }
+      ]
+    },
+    {
+      "caseId": "CASE_06",
+      "ops": [
+        {
+          "op": "replaceBelCode",
+          "from": "BEL_2070",
+          "to": "BEL_2010"
+        },
+        {
+          "op": "replaceBelCode",
+          "from": "BEL_2310",
+          "to": "BEL_3010"
+        }
+      ]
+    },
+    {
+      "caseId": "CASE_08",
+      "ops": [
+        {
+          "op": "replaceBelCode",
+          "from": "BEL_1220",
+          "to": "BEL_1620"
+        }
+      ]
+    },
+    {
+      "caseId": "CASE_09",
+      "ops": [
+        {
+          "op": "dropBelCode",
+          "code": "BEL_3010",
+          "reason": "Not a soldering/repair code in BEL II 2022; already have BEL_8070 for Metallverbindung."
+        }
+      ]
+    }
+  ]
+}

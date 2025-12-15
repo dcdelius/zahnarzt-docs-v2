@@ -8,9 +8,11 @@
  * - NO switch-cases for chip IDs
  * 
  * It ONLY orchestrates Engine calls:
- * 1. resolveActiveChipIds() - from chipResolver
- * 2. processChipsToBilling() - from treatmentEngine
- * 3. composeOutput() - from outputComposer
+ * 1. translateAnswers() - SINGLE TRANSLATION at top
+ * 2. resolveActiveChipIds() - from chipResolver (receives translated answers)
+ * 3. processChipsToBilling() - from treatmentEngine
+ * 4. mergeFacts() - creates SSOT for warnings
+ * 5. composeOutput() - from outputComposer
  */
 
 import type {
@@ -31,6 +33,23 @@ import {
     resolveActiveChipIds
 } from '../../core/billing/knowledgeBase/logic/chipResolver';
 
+// Answer Translator - SINGLE TRANSLATION POINT
+import {
+    translateAnswers
+} from '../../core/billing/knowledgeBase/logic/answerIdTranslator';
+
+// MergedFacts - SSOT for warnings and header facts
+import {
+    mergeFacts,
+    type MergedFacts
+} from './mergeFacts';
+
+// Answer Effectiveness - DEV-only dead answer detection
+import {
+    computeAnswerEffects,
+    assertNoDeadAnswers
+} from './answerEffectiveness';
+
 // Output Composer - SSOT for output generation
 import {
     composeOutput,
@@ -40,7 +59,7 @@ import {
 } from '../../core/billing/knowledgeBase/logic/outputComposer';
 
 // Re-export types for UI
-export type { ComposedOutput, ComposedSection };
+export type { ComposedOutput, ComposedSection, MergedFacts };
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -53,13 +72,21 @@ export interface GenerateOutputParams {
     textLength: TextLength;
     hasMKV?: boolean;
     mkvBetrag?: number;
+    treatmentId?: string;  // Treatment type: 'fuellung' | 'endo' | 'krone' | 'extraktion'
+}
+
+export interface GenerateOutputResult extends ComposedOutput {
+    _debug?: {
+        translatedAnswers: Record<string, unknown>;
+        activeChipIds: string[];
+    };
 }
 
 // ═══════════════════════════════════════════════════════════════
 // MAIN FUNCTION — PURE PASSTHROUGH (NO LOGIC)
 // ═══════════════════════════════════════════════════════════════
 
-export async function generateFinalOutput(params: GenerateOutputParams): Promise<ComposedOutput> {
+export async function generateFinalOutput(params: GenerateOutputParams): Promise<GenerateOutputResult> {
     const { extracted, answers, insuranceType, textLength, hasMKV = false, mkvBetrag } = params;
 
     console.log('[V6 Output] PASSTHROUGH MODE: Using chipResolver + Engine + Composer');
@@ -71,23 +98,29 @@ export async function generateFinalOutput(params: GenerateOutputParams): Promise
         hasMKV
     });
 
-    const treatmentId = 'fuellung'; // TODO: from category selection
+    const treatmentId = params.treatmentId ?? 'fuellung'; // Default to fuellung for backward compat
 
     // ═══════════════════════════════════════════════════════════════
-    // STEP 1: Resolve active chips via SSOT chipResolver
-    // (NO LOGIC HERE — chipResolver uses JSON mappings)
+    // STEP A: TRANSLATE SEMANTIC IDs → CANONICAL IDs (SINGLE POINT)
+    // This MUST happen before anything else touches answers.
+    // ═══════════════════════════════════════════════════════════════
+    const translatedAnswers = translateAnswers(treatmentId, answers);
+    console.log('[V6 Output] STEP A - Translated answers:', Object.fromEntries(translatedAnswers));
+
+    // ═══════════════════════════════════════════════════════════════
+    // STEP B: Resolve active chips via SSOT chipResolver
+    // Pass TRANSLATED answers — chipResolver will skip its own translation
     // ═══════════════════════════════════════════════════════════════
     const activeChipIds = resolveActiveChipIds(
         treatmentId,
         extracted,
-        answers,
+        translatedAnswers as Map<string, string>,
         { hasMKV, insuranceType }
     );
-    console.log('[V6 Output] Resolved chip IDs (from chipResolver):', activeChipIds);
+    console.log('[V6 Output] STEP B - Resolved chip IDs:', activeChipIds);
 
     // ═══════════════════════════════════════════════════════════════
-    // STEP 2: Get full chip definitions and process billing
-    // (NO LOGIC HERE — treatmentEngine is SSOT)
+    // STEP C: Get full chip definitions and process billing
     // ═══════════════════════════════════════════════════════════════
     const allChips = getTreatmentChips(treatmentId);
     const activeChips: ChipDefinition[] = allChips.filter(c => activeChipIds.includes(c.id));
@@ -104,45 +137,145 @@ export async function generateFinalOutput(params: GenerateOutputParams): Promise
         },
         textLength
     );
-    console.log('[V6 Output] Engine result:', engineResult);
+    console.log('[V6 Output] STEP C - Engine result:', engineResult);
 
     // ═══════════════════════════════════════════════════════════════
-    // STEP 3: Build extractedData for composer (facts only, no strings)
+    // STEP D: Create MergedFacts — SSOT for warnings and header facts
+    // Uses BOTH translated (for canonical values) and raw (for MKV values)
     // ═══════════════════════════════════════════════════════════════
-    const extractedDataForComposer: Record<string, any> = {
-        tooth: extracted.tooth || '?',
-        surfaces: extracted.surfaces || [],
-        diagnosis: extracted.diagnosis || '?',
-        costs: extracted.costs
-        // NO fachliche Strings here like "relative Trockenlegung"
-        // The composer gets that from chip definitions
-    };
+    const mergedFacts = mergeFacts(extracted, translatedAnswers, answers, insuranceType);
+    console.log('[V6 Output] STEP D - MergedFacts:', {
+        tooth: mergedFacts.tooth,
+        surfaces: mergedFacts.surfaces,
+        hasMKV: mergedFacts.hasMKV,
+        mkvBetrag: mergedFacts.mkvBetrag,
+        cappingMaterial: mergedFacts.cappingMaterial
+    });
 
     // ═══════════════════════════════════════════════════════════════
-    // STEP 4: Compose output via SSOT outputComposer
-    // (NO LOGIC HERE — outputComposer uses templates + chip snippets)
+    // STEP E: Compose output via SSOT outputComposer
+    // Uses mergedFacts for warnings, header facts, and placeholder substitution
     // ═══════════════════════════════════════════════════════════════
     const composeOptions: ComposeOptions = {
         textLength,
-        hasMKV,
-        // hasAnesthesia REMOVED (Option B) — Composer derives from activeChips
-        mkvBetrag
+        hasMKV: mergedFacts.hasMKV,
+        mkvBetrag: mergedFacts.mkvBetrag ?? undefined,
+        cappingMaterial: mergedFacts.cappingMaterial ?? undefined
     };
 
     const composedOutput = composeOutput(
         treatmentId,
         engineResult,
         activeChips,
-        extractedDataForComposer,
+        mergedFacts,
         insuranceType,
         composeOptions
     );
 
-    console.log('[V6 Output] Composed output:', {
+    console.log('[V6 Output] STEP E - Composed output:', {
         sectionCount: composedOutput.sections.length,
         billingCodeCount: composedOutput.billingCodes.length,
         warningCount: composedOutput.warnings.length
     });
 
-    return composedOutput;
+    // ═══════════════════════════════════════════════════════════════
+    // DEV ONLY: Dead Answer Gate
+    // Ensures every answered question has an observable effect
+    // ═══════════════════════════════════════════════════════════════
+    if (shouldRunDevChecks()) {
+        try {
+            // Compute baseline WITHOUT answers (for comparison)
+            const emptyAnswers = new Map<string, unknown>();
+            const translatedEmpty = translateAnswers(treatmentId, emptyAnswers);
+            const chipsEmpty = resolveActiveChipIds(
+                treatmentId,
+                extracted,
+                translatedEmpty as Map<string, string>,
+                { hasMKV: false, insuranceType }
+            );
+
+            const engineEmpty = processChipsToBilling(
+                treatmentId,
+                chipsEmpty,
+                insuranceType,
+                false,
+                { tooth: extracted.tooth || undefined, surfaces: extracted.surfaces || [], diagnosis: extracted.diagnosis || undefined },
+                textLength
+            );
+
+            const factsEmpty = mergeFacts(extracted, translatedEmpty, emptyAnswers, insuranceType);
+            const composedEmpty = composeOutput(
+                treatmentId,
+                engineEmpty,
+                allChips.filter(c => chipsEmpty.includes(c.id)),
+                factsEmpty,
+                insuranceType,
+                { textLength, hasMKV: false }
+            );
+
+            // Compute effects
+            const effects = computeAnswerEffects({
+                beforeChips: chipsEmpty,
+                afterChips: activeChipIds,
+                beforeWarnings: composedEmpty.warnings,
+                afterWarnings: composedOutput.warnings,
+                beforeText: composedEmpty.fullText,
+                afterText: composedOutput.fullText,
+            });
+
+            // Assert no dead answers
+            const answeredQuestionIds = Array.from(answers.keys());
+            if (answeredQuestionIds.length > 0) {
+                assertNoDeadAnswers({
+                    answeredQuestionIds,
+                    effects,
+                    unmappedQuestions: [],
+                });
+            }
+
+            console.debug('[V6 Output] DEV-GATE: Answer effects:', effects);
+        } catch (err) {
+            console.error('[V6 Output] DEV-GATE: Dead answer check failed:', err);
+            throw err; // Re-throw in DEV to fail fast
+        }
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // Build result — _debug only in DEV
+    // ═══════════════════════════════════════════════════════════════
+    const result: GenerateOutputResult = { ...composedOutput };
+
+    if (shouldIncludeDebug()) {
+        result._debug = {
+            translatedAnswers: Object.fromEntries(translatedAnswers),
+            activeChipIds,
+        };
+    }
+
+    return result;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// DEV HELPERS (can be overridden in tests via globalThis)
+// ═══════════════════════════════════════════════════════════════
+
+declare global {
+    // eslint-disable-next-line no-var
+    var __FORCE_DEBUG__: boolean | undefined;
+    // eslint-disable-next-line no-var
+    var __SKIP_DEV_CHECKS__: boolean | undefined;
+}
+
+function shouldIncludeDebug(): boolean {
+    if (typeof globalThis.__FORCE_DEBUG__ === 'boolean') {
+        return globalThis.__FORCE_DEBUG__;
+    }
+    return import.meta.env?.DEV ?? false;
+}
+
+function shouldRunDevChecks(): boolean {
+    if (globalThis.__SKIP_DEV_CHECKS__) {
+        return false;
+    }
+    return import.meta.env?.DEV ?? false;
 }

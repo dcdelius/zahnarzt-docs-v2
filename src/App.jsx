@@ -14,6 +14,7 @@ import { Toaster } from 'sonner';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const DocudentV5 = lazy(() => import('./docudent/v5/pages/DocudentV5Page'));
 const DocudentV6 = lazy(() => import('./docudent/v6/pages/DocudentV6Page').then(m => ({ default: m.DocudentV6Page })));
+const DocudentV7 = lazy(() => import('./docudent/v7/pages/DocudentV7Page').then(m => ({ default: m.DocudentV7Page })));
 
 function Login() {
   const navigate = useNavigate();
@@ -134,6 +135,9 @@ function App() {
 
             {/* Docudent V6 - New Clean Architecture */}
             <Route path="/docudent/v6" element={<DocudentV6 />} />
+
+            {/* Docudent V7 - Pure Renderer (Reality Gate) */}
+            <Route path="/docudent/v7" element={<DocudentV7 />} />
 
             {/* Legacy redirects */}
             <Route path="/dashboard" element={<Navigate to="/home" replace />} />

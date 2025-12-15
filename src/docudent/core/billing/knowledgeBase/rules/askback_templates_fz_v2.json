@@ -1,0 +1,302 @@
+{
+    "_meta": {
+        "schema": "docudent.askbackTemplates.v2",
+        "version": "2.0.0",
+        "created": "2025-12-14",
+        "source": [
+            "fz_rules_v2.json",
+            "ze_bel_cases_v2_imported.json"
+        ],
+        "notes": [
+            "Extended from v1 with Bonus, Unterfütterung, and BK4/5 templates"
+        ]
+    },
+    "templates": [
+        {
+            "templateId": "ASK_FZ_7_1_ZAHNLOS_CONFIRM",
+            "ruleId": "FZ_7.1_ONLY_ZAHNLOS",
+            "severity": "error",
+            "trigger": {
+                "type": "missingField",
+                "whenFzCodesInclude": [
+                    "FZ_7.1"
+                ],
+                "field": "zahnlos"
+            },
+            "question": {
+                "de": "Ist der Kiefer für die geplante Versorgung vollständig zahnlos?",
+                "shortDe": "Kiefer zahnlos?"
+            },
+            "expectedAnswer": {
+                "type": "boolean"
+            },
+            "writeback": {
+                "setCaseField": "zahnlos",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_04"
+            }
+        },
+        {
+            "templateId": "ASK_FZ_7_2_ZAHNLOS_CONFIRM",
+            "ruleId": "FZ_7.2_ONLY_ZAHNLOS",
+            "severity": "error",
+            "trigger": {
+                "type": "missingField",
+                "whenFzCodesInclude": [
+                    "FZ_7.2"
+                ],
+                "field": "zahnlos"
+            },
+            "question": {
+                "de": "Ist der Unterkiefer für die geplante Versorgung vollständig zahnlos?",
+                "shortDe": "UK zahnlos?"
+            },
+            "expectedAnswer": {
+                "type": "boolean"
+            },
+            "writeback": {
+                "setCaseField": "zahnlos",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_19"
+            }
+        },
+        {
+            "templateId": "ASK_FZ_3_2A_KIEFER",
+            "ruleId": "FZ_3.2A_VERBLENDBEREICH_ONLY",
+            "severity": "error",
+            "trigger": {
+                "type": "missingField",
+                "whenFzCodesInclude": [
+                    "FZ_3.2a"
+                ],
+                "field": "kiefer"
+            },
+            "question": {
+                "de": "In welchem Kiefer werden die Teleskopkronen eingesetzt?",
+                "shortDe": "Kiefer (OK/UK)?"
+            },
+            "expectedAnswer": {
+                "type": "enum",
+                "options": [
+                    "OK",
+                    "UK"
+                ]
+            },
+            "writeback": {
+                "setCaseField": "kiefer",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_03"
+            }
+        },
+        {
+            "templateId": "ASK_FZ_3_2A_TEETH_LIST",
+            "ruleId": "FZ_3.2A_VERBLENDBEREICH_ONLY",
+            "severity": "error",
+            "trigger": {
+                "type": "missingField",
+                "whenFzCodesInclude": [
+                    "FZ_3.2a"
+                ],
+                "field": "teeth",
+                "requiresField": "kiefer"
+            },
+            "question": {
+                "de": "Welche Zähne werden mit Teleskopkronen versorgt?",
+                "shortDe": "Teleskop-Zähne?"
+            },
+            "expectedAnswer": {
+                "type": "stringArray",
+                "examples": [
+                    "33",
+                    "43"
+                ]
+            },
+            "writeback": {
+                "setCaseField": "teeth",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_03"
+            }
+        },
+        {
+            "templateId": "ASK_FZ_1_5_REQUIRES_KRONE",
+            "ruleId": "FZ_1.5_REQUIRES_FZ_1.1",
+            "severity": "error",
+            "trigger": {
+                "type": "missingCode",
+                "whenFzCodesInclude": [
+                    "FZ_1.5"
+                ],
+                "missingCode": "FZ_1.1"
+            },
+            "question": {
+                "de": "FZ 1.5 (Stiftaufbau) wurde ohne FZ 1.1 (Krone) angegeben. Ist Krone geplant?",
+                "shortDe": "Krone (FZ 1.1) dabei?"
+            },
+            "expectedAnswer": {
+                "type": "boolean"
+            },
+            "writeback": {
+                "addFzCode": "FZ_1.1",
+                "onlyIfAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_01"
+            }
+        },
+        {
+            "templateId": "ASK_BK6_MULTI_FZ_DOCUMENTED",
+            "ruleId": "BK6_REPAIR_MULTI_FZ_COMBO",
+            "severity": "warn",
+            "trigger": {
+                "type": "complexCase",
+                "when": {
+                    "befundklasse": "6",
+                    "minBk6Codes": 2
+                }
+            },
+            "question": {
+                "de": "Mehrere FZ aus BK6. Wurde dies als zusammenhängender Reparaturvorgang dokumentiert?",
+                "shortDe": "Kombinierte Reparatur dokumentiert?"
+            },
+            "expectedAnswer": {
+                "type": "enum",
+                "options": [
+                    "yes_documented",
+                    "yes_not_documented",
+                    "no_separate_cases"
+                ]
+            },
+            "writeback": {
+                "setCaseField": "bk6ComboStatus",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_12"
+            }
+        },
+        {
+            "templateId": "ASK_MULTI_BK_TOOTH_MAPPING",
+            "ruleId": "MULTI_BK_KOMBI_VERSORGUNG",
+            "severity": "warn",
+            "trigger": {
+                "type": "complexCase",
+                "when": {
+                    "minDistinctBK": 2
+                }
+            },
+            "question": {
+                "de": "Mehrere Befundklassen. Bitte FZ-Codes den Zähnen zuordnen.",
+                "shortDe": "Zahn-Zuordnung pro FZ?"
+            },
+            "expectedAnswer": {
+                "type": "object"
+            },
+            "writeback": {
+                "setCaseField": "fzToTeethMap",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_06"
+            }
+        },
+        {
+            "templateId": "ASK_UNTERFUETTERUNG_TYPE",
+            "ruleId": "FZ_6.8_REQUIRES_INDIRECT_LAB",
+            "severity": "warn",
+            "trigger": {
+                "type": "missingField",
+                "whenFzCodesInclude": [
+                    "FZ_6.8",
+                    "FZ_6.9",
+                    "FZ_6.8.1"
+                ],
+                "field": "unterfuetterungType"
+            },
+            "question": {
+                "de": "Handelt es sich um eine indirekte (Labor) oder direkte (chairside) Unterfütterung?",
+                "shortDe": "Unterfütterung indirekt/direkt?"
+            },
+            "expectedAnswer": {
+                "type": "enum",
+                "options": [
+                    "indirect_lab",
+                    "direct_chairside"
+                ]
+            },
+            "writeback": {
+                "setCaseField": "unterfuetterungType",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_10"
+            }
+        },
+        {
+            "templateId": "ASK_BONUS_STATUS",
+            "ruleId": "BONUS_STATUS_MISSING",
+            "severity": "warn",
+            "trigger": {
+                "type": "missingField",
+                "field": "bonusStatus"
+            },
+            "question": {
+                "de": "Welcher Bonus-/Härtefallstatus liegt vor?",
+                "shortDe": "Bonus/Härtefall?"
+            },
+            "expectedAnswer": {
+                "type": "enum",
+                "options": [
+                    "none",
+                    "5y",
+                    "10y",
+                    "hardship"
+                ],
+                "labels": {
+                    "none": "Kein Bonus",
+                    "5y": "5-Jahres-Bonus (20%)",
+                    "10y": "10-Jahres-Bonus (30%)",
+                    "hardship": "Härtefall (100%)"
+                }
+            },
+            "writeback": {
+                "setCaseField": "bonusStatus",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_20"
+            }
+        },
+        {
+            "templateId": "ASK_HARDSHIP_CONFIRMATION",
+            "ruleId": "HARDSHIP_CASE_REVIEW",
+            "severity": "warn",
+            "trigger": {
+                "type": "fieldValue",
+                "field": "bonusStatus",
+                "value": "hardship"
+            },
+            "question": {
+                "de": "Liegt eine gültige Härtefallbescheinigung vor?",
+                "shortDe": "Härtefallbescheinigung?"
+            },
+            "expectedAnswer": {
+                "type": "boolean"
+            },
+            "writeback": {
+                "setCaseField": "hardshipConfirmed",
+                "valueFromAnswer": true
+            },
+            "evidence": {
+                "exampleCaseId": "CASE_19"
+            }
+        }
+    ]
+}

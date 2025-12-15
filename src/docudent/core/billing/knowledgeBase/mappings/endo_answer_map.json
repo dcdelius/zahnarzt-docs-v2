@@ -1,0 +1,135 @@
+{
+    "_meta": {
+        "treatmentId": "endo",
+        "version": "1.0",
+        "description": "SSOT für Answer→Chip Mapping für Endo (Wurzelbehandlung)"
+    },
+    "map": [
+        {
+            "questionKey": "vitality",
+            "questionIdPatterns": [
+                "forensic_vitality",
+                "vitality"
+            ],
+            "answers": {
+                "pos": "vipr_pos",
+                "neg": "vipr_neg"
+            },
+            "exclusiveGroup": "vitality",
+            "mutuallyExclusive": [
+                "vipr_pos",
+                "vipr_neg"
+            ]
+        },
+        {
+            "questionKey": "percussion",
+            "questionIdPatterns": [
+                "forensic_percussion",
+                "percussion"
+            ],
+            "answers": {
+                "pos": "perk_pos",
+                "neg": "perk_neg"
+            },
+            "exclusiveGroup": "percussion",
+            "mutuallyExclusive": [
+                "perk_pos",
+                "perk_neg"
+            ]
+        },
+        {
+            "questionKey": "kanalzahl",
+            "questionIdPatterns": [
+                "kanalzahl",
+                "forensic_kanalzahl"
+            ],
+            "answers": {
+                "1": "kanalaufbereitung_1",
+                "2": "kanalaufbereitung_2",
+                "3": "kanalaufbereitung_3",
+                "4": "kanalaufbereitung_4"
+            },
+            "exclusiveGroup": "kanalzahl",
+            "mutuallyExclusive": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4"
+            ]
+        },
+        {
+            "questionKey": "spuelung",
+            "questionIdPatterns": [
+                "spuelung",
+                "forensic_spuelung"
+            ],
+            "answers": {
+                "naocl": "spuelung_naocl"
+            },
+            "exclusiveGroup": "spuelung",
+            "mutuallyExclusive": []
+        },
+        {
+            "questionKey": "medikament",
+            "questionIdPatterns": [
+                "medikament",
+                "forensic_medikament",
+                "einlage"
+            ],
+            "answers": {
+                "caoh2": "einlage_caoh2",
+                "none": null
+            },
+            "exclusiveGroup": "medikament",
+            "mutuallyExclusive": [
+                "einlage_caoh2"
+            ]
+        }
+    ],
+    "extractionMapping": {
+        "mentioned.anesthesia.type": {
+            "leitung": "la_leitung",
+            "infiltr": "la_infiltr"
+        },
+        "mentioned.vitality": {
+            "+": "vipr_pos",
+            "-": "vipr_neg"
+        },
+        "mentioned.percussion": {
+            "+": "perk_pos",
+            "-": "perk_neg"
+        },
+        "mentioned.kanalzahl": {
+            "1": "kanalaufbereitung_1",
+            "2": "kanalaufbereitung_2",
+            "3": "kanalaufbereitung_3",
+            "4": "kanalaufbereitung_4"
+        }
+    },
+    "defaults": {
+        "alwaysOnChipIds": [
+            "spuelung_naocl"
+        ],
+        "mkvChipId": null
+    },
+    "exclusiveGroups": {
+        "vitality": [
+            "vipr_pos",
+            "vipr_neg"
+        ],
+        "percussion": [
+            "perk_pos",
+            "perk_neg"
+        ],
+        "kanalzahl": [
+            "kanalaufbereitung_1",
+            "kanalaufbereitung_2",
+            "kanalaufbereitung_3",
+            "kanalaufbereitung_4"
+        ],
+        "anesthesia": [
+            "la_leitung",
+            "la_infiltr"
+        ]
+    }
+}

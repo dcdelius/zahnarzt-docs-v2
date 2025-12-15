@@ -58,7 +58,7 @@ export interface TreatmentDefaults {
 
 export interface BillingSuggestion {
     id: string;
-    type: 'festzuschuss' | 'bema' | 'goz' | 'warnung' | 'optimierung';
+    type: 'festzuschuss' | 'bema' | 'goz' | 'warnung' | 'optimierung' | 'warning';
     code?: string;
     label: string;
     description?: string;  // Optional - not always needed
@@ -66,6 +66,14 @@ export interface BillingSuggestion {
     priority: 'hoch' | 'mittel' | 'niedrig';
     autoAccept?: boolean;
     textSnippet?: string;
+    /** Optional metadata for extended info (e.g., analog suggestions) */
+    meta?: {
+        analogCode?: string;
+        suggestedComparisonCodes?: string[];
+        requiresJustification?: boolean;
+        shortRationaleTags?: string[];
+        [key: string]: unknown;
+    };
 }
 
 export interface BillingInferenceResult {
@@ -166,14 +174,29 @@ export function inferBillingV2(context: BillingContext): BillingInferenceResult 
 
     if (!module) {
         console.warn('[BillingRegistry] Kein passendes Modul gefunden');
+
+        // ═══════════════════════════════════════════════════════════
+        // ANALOG RESOLVER FALLBACK
+        // ═══════════════════════════════════════════════════════════
+        const { resolveAnalogSuggestions } = require('./analogResolver');
+        const analogResult = resolveAnalogSuggestions(context);
+
+        const suggestions: BillingSuggestion[] = [{
+            id: 'no_module',
+            type: 'warnung',
+            label: 'Behandlungstyp nicht erkannt',
+            description: 'Bitte Behandlungsart manuell auswählen',
+            priority: 'hoch'
+        }];
+
+        // Append analog suggestions if any
+        if (analogResult.suggestions && analogResult.suggestions.length > 0) {
+            suggestions.push(...analogResult.suggestions);
+            console.log(`[BillingRegistry] Analog suggestions added: ${analogResult.suggestions.length}`);
+        }
+
         return {
-            suggestions: [{
-                id: 'no_module',
-                type: 'warnung',
-                label: 'Behandlungstyp nicht erkannt',
-                description: 'Bitte Behandlungsart manuell auswählen',
-                priority: 'hoch'
-            }],
+            suggestions,
             billingCodes: [],
             verblendbereich: false,
             befundklasse: 0,
@@ -183,6 +206,19 @@ export function inferBillingV2(context: BillingContext): BillingInferenceResult 
 
     console.log(`[BillingRegistry] Verwende Modul: ${module.id}`);
     const result = module.infer(context);
+
+    // ═══════════════════════════════════════════════════════════
+    // ANALOG RESOLVER: If no billing codes found, try analog
+    // ═══════════════════════════════════════════════════════════
+    if (result.billingCodes.length === 0) {
+        const { resolveAnalogSuggestions } = require('./analogResolver');
+        const analogResult = resolveAnalogSuggestions(context);
+
+        if (analogResult.suggestions && analogResult.suggestions.length > 0) {
+            result.suggestions.push(...analogResult.suggestions);
+            console.log(`[BillingRegistry] Analog fallback: ${analogResult.suggestions.length} suggestions`);
+        }
+    }
 
     // ═══════════════════════════════════════════════════════════
     // REGRESSGUARD: Prüfe alle Regeln (optional, falls verfügbar)

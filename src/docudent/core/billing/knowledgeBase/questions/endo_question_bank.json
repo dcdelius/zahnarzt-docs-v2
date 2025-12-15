@@ -1,0 +1,109 @@
+{
+    "_meta": {
+        "treatmentId": "endo",
+        "version": "1.0.0",
+        "description": "Question Bank for Endo (Wurzelbehandlung) - UI semantics only"
+    },
+    "questions": [
+        {
+            "key": "vitality",
+            "category": "forensic",
+            "prompt": "🔍 Sensibilitätsprobe?",
+            "type": "single",
+            "dataField": "mentioned.vitality",
+            "options": [
+                {
+                    "id": "pos",
+                    "label": "ViPr +",
+                    "dataValue": "+"
+                },
+                {
+                    "id": "neg",
+                    "label": "ViPr −",
+                    "dataValue": "-"
+                }
+            ]
+        },
+        {
+            "key": "percussion",
+            "category": "forensic",
+            "prompt": "🔍 Perkussionsprobe?",
+            "type": "single",
+            "dataField": "mentioned.percussion",
+            "options": [
+                {
+                    "id": "neg",
+                    "label": "Perk −",
+                    "dataValue": "-"
+                },
+                {
+                    "id": "pos",
+                    "label": "Perk +",
+                    "dataValue": "+"
+                }
+            ]
+        },
+        {
+            "key": "kanalzahl",
+            "category": "forensic",
+            "prompt": "🦷 Anzahl der Wurzelkanäle?",
+            "type": "single",
+            "dataField": "mentioned.kanalzahl",
+            "options": [
+                {
+                    "id": "1",
+                    "label": "1 Kanal",
+                    "dataValue": 1
+                },
+                {
+                    "id": "2",
+                    "label": "2 Kanäle",
+                    "dataValue": 2
+                },
+                {
+                    "id": "3",
+                    "label": "3 Kanäle",
+                    "dataValue": 3
+                },
+                {
+                    "id": "4",
+                    "label": "4 Kanäle",
+                    "dataValue": 4
+                }
+            ]
+        },
+        {
+            "key": "spuelung",
+            "category": "forensic",
+            "prompt": "💧 Spüllösung?",
+            "type": "single",
+            "dataField": "mentioned.spuelung",
+            "options": [
+                {
+                    "id": "naocl",
+                    "label": "NaOCl 3%",
+                    "dataValue": "naocl"
+                }
+            ]
+        },
+        {
+            "key": "medikament",
+            "category": "forensic",
+            "prompt": "💊 Medikamentöse Einlage?",
+            "type": "single",
+            "dataField": "mentioned.medikament",
+            "options": [
+                {
+                    "id": "caoh2",
+                    "label": "Ca(OH)₂",
+                    "dataValue": "caoh2"
+                },
+                {
+                    "id": "none",
+                    "label": "Keine Einlage",
+                    "dataValue": "none"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,208 @@
+{
+    "_meta": {
+        "treatmentId": "fuellung",
+        "version": "1.0",
+        "description": "SSOT für Answer→Chip Mapping und Default-Chips. Keine Logik im V6-Code!"
+    },
+    "map": [
+        {
+            "questionKey": "vitality",
+            "questionIdPatterns": [
+                "forensic_vitality",
+                "vitality"
+            ],
+            "optionAliases": {
+                "positiv": "pos",
+                "negativ": "neg"
+            },
+            "answers": {
+                "pos": "vipr_pos",
+                "neg": "vipr_neg"
+            },
+            "exclusiveGroup": "vitality",
+            "mutuallyExclusive": [
+                "vipr_pos",
+                "vipr_neg"
+            ]
+        },
+        {
+            "questionKey": "percussion",
+            "questionIdPatterns": [
+                "forensic_percussion",
+                "percussion"
+            ],
+            "optionAliases": {
+                "positiv": "pos",
+                "negativ": "neg"
+            },
+            "answers": {
+                "pos": "perk_pos",
+                "neg": "perk_neg"
+            },
+            "exclusiveGroup": "percussion",
+            "mutuallyExclusive": [
+                "perk_pos",
+                "perk_neg"
+            ]
+        },
+        {
+            "questionKey": "kofferdam",
+            "questionIdPatterns": [
+                "upsell_kofferdam",
+                "kofferdam",
+                "isolation",
+                "forensic_isolation"
+            ],
+            "optionAliases": {
+                "kofferdam": "yes",
+                "relativ": "no",
+                "relative": "no"
+            },
+            "answers": {
+                "yes": "kofferdam",
+                "no": "rel_trocken"
+            },
+            "exclusiveGroup": "isolation",
+            "mutuallyExclusive": [
+                "kofferdam",
+                "rel_trocken"
+            ]
+        },
+        {
+            "questionKey": "capping",
+            "questionIdPatterns": [
+                "forensic_capping",
+                "capping",
+                "material",
+                "forensic_material"
+            ],
+            "optionAliases": {
+                "caoh": "cp",
+                "mta": "cp",
+                "biodentine": "cp",
+                "keine": "none"
+            },
+            "answers": {
+                "cp": "cp",
+                "p": "p",
+                "none": null
+            },
+            "exclusiveGroup": "capping",
+            "mutuallyExclusive": [
+                "cp",
+                "p",
+                "cp_not_required"
+            ]
+        },
+        {
+            "questionKey": "fluoride",
+            "questionIdPatterns": [
+                "upsell_fluoride",
+                "fluoride"
+            ],
+            "answers": {
+                "yes": "fluor",
+                "no": null
+            },
+            "exclusiveGroup": "fluoride",
+            "mutuallyExclusive": [
+                "fluor"
+            ]
+        },
+        {
+            "questionKey": "mehrschicht",
+            "questionIdPatterns": [
+                "mkv_mehrschicht",
+                "mkv_adhaesiv",
+                "mehrschicht",
+                "adhaesiv"
+            ],
+            "answers": {
+                "yes": "mehrschicht",
+                "no": null
+            },
+            "exclusiveGroup": "mehrschicht",
+            "mutuallyExclusive": [
+                "mehrschicht"
+            ],
+            "requiresMKV": true
+        },
+        {
+            "questionKey": "cavity_depth",
+            "questionIdPatterns": [
+                "tiefe",
+                "cavity_depth",
+                "forensic_tiefe"
+            ],
+            "optionAliases": {
+                "tief": "deep",
+                "pulpanah": "deep"
+            },
+            "answers": {
+                "normal": null,
+                "deep": "cp"
+            },
+            "exclusiveGroup": "capping",
+            "mutuallyExclusive": []
+        }
+    ],
+    "extractionMapping": {
+        "mentioned.anesthesia.type": {
+            "leitung": "la_leitung",
+            "infiltr": "la_infiltr",
+            "keine": "ohne_la"
+        },
+        "mentioned.kofferdam": {
+            "true": "kofferdam",
+            "false": "rel_trocken"
+        },
+        "mentioned.vitality": {
+            "+": "vipr_pos",
+            "-": "vipr_neg"
+        },
+        "mentioned.percussion": {
+            "+": "perk_pos",
+            "-": "perk_neg"
+        },
+        "mentioned.capping.type": {
+            "cp": "cp",
+            "p": "p"
+        }
+    },
+    "defaults": {
+        "alwaysOnChipIds": [
+            "exkavation",
+            "komposit_basic",
+            "finishing"
+        ],
+        "mkvChipId": "mehrschicht"
+    },
+    "exclusiveGroups": {
+        "vitality": [
+            "vipr_pos",
+            "vipr_neg"
+        ],
+        "percussion": [
+            "perk_pos",
+            "perk_neg"
+        ],
+        "isolation": [
+            "kofferdam",
+            "rel_trocken"
+        ],
+        "capping": [
+            "cp",
+            "p",
+            "cp_not_required"
+        ],
+        "anesthesia": [
+            "la_leitung",
+            "la_infiltr",
+            "ohne_la"
+        ],
+        "material": [
+            "komposit_basic",
+            "mehrschicht"
+        ]
+    }
+}

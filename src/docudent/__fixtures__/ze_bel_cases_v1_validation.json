@@ -1,0 +1,247 @@
+{
+    "meta": {
+        "validator": "CASE_PACK_REFINER_V1",
+        "timestamp": "2025-12-14T11:55:38.817Z",
+        "patchApplied": {
+            "schema": "docudent.casePackPatch.v1",
+            "targetCasePackVersion": "case-pack-v1",
+            "created": "2025-12-14",
+            "purpose": "Resolve BEL codes not present in BEL II 2022 SSOT; fix one semantic mismatch (BEL_3010)."
+        }
+    },
+    "summary": {
+        "pass": 12,
+        "fail": 0,
+        "missingBelCodesUnique": []
+    },
+    "results": [
+        {
+            "id": "CASE_01",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0120",
+                "BEL_0051",
+                "BEL_1050",
+                "BEL_1021"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": []
+        },
+        {
+            "id": "CASE_02",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0051",
+                "BEL_0120",
+                "BEL_1024",
+                "BEL_1100",
+                "BEL_1620"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": []
+        },
+        {
+            "id": "CASE_03",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0051",
+                "BEL_0120",
+                "BEL_1200",
+                "BEL_2010",
+                "BEL_3010",
+                "BEL_1600"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": [
+                {
+                    "op": "replaceBelCode",
+                    "from": "BEL_2070",
+                    "to": "BEL_2010",
+                    "matchCount": 1
+                },
+                {
+                    "op": "replaceBelCode",
+                    "from": "BEL_2310",
+                    "to": "BEL_3010",
+                    "matchCount": 1
+                }
+            ]
+        },
+        {
+            "id": "CASE_04",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0212",
+                "BEL_0215",
+                "BEL_0120",
+                "BEL_3010",
+                "BEL_3610",
+                "BEL_3620"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": [
+                {
+                    "op": "replaceBelCode",
+                    "from": "BEL_2310",
+                    "to": "BEL_3010",
+                    "matchCount": 1
+                },
+                {
+                    "op": "replaceBelCode",
+                    "from": "BEL_2400",
+                    "to": "BEL_3610",
+                    "matchCount": 1
+                },
+                {
+                    "op": "replaceBelCode",
+                    "from": "BEL_2500",
+                    "to": "BEL_3620",
+                    "matchCount": 1
+                }
+            ]
+        },
+        {
+            "id": "CASE_05",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0051",
+                "BEL_0120",
+                "BEL_1023",
+                "BEL_1100",
+                "BEL_1550",
+                "BEL_1620"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": []
+        },
+        {
+            "id": "CASE_06",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0051",
+                "BEL_0120",
+                "BEL_1021",
+                "BEL_1100",
+                "BEL_2010",
+                "BEL_2021",
+                "BEL_2120",
+                "BEL_3010"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": [
+                {
+                    "op": "replaceBelCode",
+                    "from": "BEL_2070",
+                    "to": "BEL_2010",
+                    "matchCount": 1
+                },
+                {
+                    "op": "replaceBelCode",
+                    "from": "BEL_2310",
+                    "to": "BEL_3010",
+                    "matchCount": 1
+                }
+            ]
+        },
+        {
+            "id": "CASE_07",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0120",
+                "BEL_8010",
+                "BEL_8022",
+                "BEL_8023",
+                "BEL_8027"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": []
+        },
+        {
+            "id": "CASE_08",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_1620",
+                "BEL_8010",
+                "BEL_8030"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": [
+                {
+                    "op": "replaceBelCode",
+                    "from": "BEL_1220",
+                    "to": "BEL_1620",
+                    "matchCount": 1
+                }
+            ]
+        },
+        {
+            "id": "CASE_09",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0120",
+                "BEL_8010",
+                "BEL_8070"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": [
+                {
+                    "op": "dropBelCode",
+                    "code": "BEL_3010",
+                    "matchCount": 1
+                }
+            ]
+        },
+        {
+            "id": "CASE_10",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0112",
+                "BEL_8010",
+                "BEL_8060",
+                "BEL_8070"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": []
+        },
+        {
+            "id": "CASE_11",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0120",
+                "BEL_2031",
+                "BEL_8010",
+                "BEL_8025",
+                "BEL_8070"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": []
+        },
+        {
+            "id": "CASE_12",
+            "status": "PASS",
+            "foundBelCodes": [
+                "BEL_0010",
+                "BEL_0112",
+                "BEL_0120",
+                "BEL_8010",
+                "BEL_8022",
+                "BEL_8023",
+                "BEL_8060",
+                "BEL_8070"
+            ],
+            "missingBelCodes": [],
+            "changesApplied": []
+        }
+    ]
+}

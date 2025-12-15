@@ -61,25 +61,22 @@ interface ResolveOptions {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// LOADER
+// LOADERS — Using centralized registry
 // ═══════════════════════════════════════════════════════════════
+import { loadAnswerMapConfig, type AnswerMapConfig } from '../registry';
 
 const answerMapCache = new Map<string, AnswerMapFile>();
 
-function loadAnswerMap(treatmentId: string): AnswerMapFile | null {
+function loadAnswerMap(treatmentId: string): AnswerMapFile {
     if (answerMapCache.has(treatmentId)) {
         return answerMapCache.get(treatmentId)!;
     }
 
-    try {
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        const data = require(`../mappings/${treatmentId}_answer_map.json`) as AnswerMapFile;
-        answerMapCache.set(treatmentId, data);
-        return data;
-    } catch {
-        console.warn(`[ChipResolver] No answer map for treatment: ${treatmentId}`);
-        return null;
-    }
+    // Use registry loader (validates treatmentId, throws on unknown)
+    const config = loadAnswerMapConfig(treatmentId);
+    const answerMap = config as unknown as AnswerMapFile;
+    answerMapCache.set(treatmentId, answerMap);
+    return answerMap;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -95,11 +92,8 @@ export function inferChipsFromExtractedData(
     extracted: ExtractedData,
     options: ResolveOptions
 ): string[] {
+    // loadAnswerMap throws on unknown treatment (no silent fallback)
     const answerMap = loadAnswerMap(treatmentId);
-    if (!answerMap) {
-        console.warn(`[ChipResolver] No answer map, returning defaults only`);
-        return [];
-    }
 
     const chips: string[] = [];
     const mentioned = extracted.mentioned || {};
@@ -140,17 +134,24 @@ export function applyAnswersToChipSelection(
     answers: Map<string, string>,
     options: ResolveOptions
 ): string[] {
+    // loadAnswerMap throws on unknown treatment (no silent fallback)
     const answerMap = loadAnswerMap(treatmentId);
-    if (!answerMap) {
-        return inferredChipIds;
-    }
 
     const chipSet = new Set<string>(inferredChipIds);
 
+    // Keys that are metadata only, not for chip activation
+    const INTERNAL_KEYS = ['capping_material', 'mkv_betrag', 'mkv_vereinbarung'];
+
     // Process each answer
     for (const [questionId, answerId] of answers) {
-        // Find matching mapping
+        // Skip internal/metadata keys that are not for chip activation
+        if (INTERNAL_KEYS.includes(questionId)) {
+            continue;
+        }
+        // Find matching mapping by questionKey OR questionIdPatterns
+        // IMPORTANT: After translation, questionId may equal questionKey directly
         const mapping = answerMap.map.find(m =>
+            m.questionKey === questionId ||
             m.questionIdPatterns.some(pattern =>
                 questionId.includes(pattern) || questionId === pattern
             )
@@ -182,9 +183,14 @@ export function applyAnswersToChipSelection(
 // RESOLVE (COMBINED)
 // ═══════════════════════════════════════════════════════════════
 
+import { translateAnswers } from './answerIdTranslator';
+
 /**
  * Resolve active chip IDs: inference + answers + defaults.
  * This is the main entry point for V6 outputService.
+ *
+ * IMPORTANT: Answers are translated from semantic QuestionBank IDs
+ * to canonical AnswerMap IDs before processing.
  */
 export function resolveActiveChipIds(
     treatmentId: string,
@@ -196,6 +202,20 @@ export function resolveActiveChipIds(
     if (!answerMap) {
         console.warn(`[ChipResolver] No answer map for ${treatmentId}, using empty set`);
         return [];
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // TRANSLATE: Semantic IDs → Canonical IDs (SSOT)
+    // Skip if already canonical (caller did translation) to prevent double-translation
+    // ═══════════════════════════════════════════════════════════════
+    const isAlreadyCanonical = answers.has('kofferdam') || answers.has('cavity_depth') ||
+        answers.has('capping') || answers.has('capping_material');
+    const canonicalAnswers = isAlreadyCanonical
+        ? answers as Map<string, string>
+        : translateAnswers(treatmentId, answers) as Map<string, string>;
+
+    if (isAlreadyCanonical) {
+        console.debug('[ChipResolver] Answers already canonical, skipping translation');
     }
 
     // 1. Start with always-on defaults from JSON
@@ -213,10 +233,11 @@ export function resolveActiveChipIds(
     }
 
     // 4. Apply answers (overrides inference, handles exclusivity)
+    // Uses CANONICAL answers, not raw semantic IDs
     const withAnswers = applyAnswersToChipSelection(
         treatmentId,
         [...chips],
-        answers,
+        canonicalAnswers,
         options
     );
 

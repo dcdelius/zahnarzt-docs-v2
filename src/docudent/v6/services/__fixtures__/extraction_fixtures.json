@@ -1,0 +1,452 @@
+[
+    {
+        "id": "fx_001",
+        "dictation": "36 mod anästhesie tief kofferdam 80€",
+        "expected": {
+            "tooth": "36",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "diagnosis": "Caries profunda",
+            "costs": 80,
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "unknown"
+                },
+                "kofferdam": true,
+                "tiefe": "tief",
+                "vitality": "unknown",
+                "percussion": "unknown"
+            }
+        }
+    },
+    {
+        "id": "fx_002",
+        "dictation": "36 mo caries profunda 120 euro mehrkosten",
+        "expected": {
+            "tooth": "36",
+            "surfaces": [
+                "m",
+                "o"
+            ],
+            "diagnosis": "Caries profunda",
+            "costs": 120
+        }
+    },
+    {
+        "id": "fx_003",
+        "dictation": "Lokalanästhesie Leitung, Kofferdam, ViPr negativ",
+        "expected": {
+            "tooth": null,
+            "surfaces": [],
+            "diagnosis": null,
+            "costs": null,
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "leitung"
+                },
+                "kofferdam": true,
+                "vitality": "-"
+            }
+        }
+    },
+    {
+        "id": "fx_004",
+        "dictation": "ohne kofferdam, relative trockenlegung",
+        "expected": {
+            "tooth": null,
+            "surfaces": [],
+            "mentioned": {
+                "kofferdam": false
+            }
+        }
+    },
+    {
+        "id": "fx_005",
+        "dictation": "36 okklusal distal, pulpanah, cp CaOH",
+        "expected": {
+            "tooth": "36",
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "diagnosis": "Caries profunda",
+            "mentioned": {
+                "capping": {
+                    "present": true,
+                    "type": "cp",
+                    "material": "CaOH"
+                }
+            }
+        }
+    },
+    {
+        "id": "fx_006",
+        "dictation": "Zahn 15 mesial, oberflächliche Karies, Komposit",
+        "expected": {
+            "tooth": "15",
+            "surfaces": [
+                "m"
+            ],
+            "diagnosis": "Caries superficialis"
+        }
+    },
+    {
+        "id": "fx_007",
+        "dictation": "46 Infiltration ViPr+ Perk- relative Trockenlegung Komposit",
+        "expected": {
+            "tooth": "46",
+            "surfaces": [],
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "infiltr"
+                },
+                "kofferdam": false,
+                "vitality": "+",
+                "percussion": "-"
+            }
+        }
+    },
+    {
+        "id": "fx_008",
+        "dictation": "37 mod Leitungsanästhesie Kofferdam 50€ Mehrkosten",
+        "expected": {
+            "tooth": "37",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "costs": 50,
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "leitung"
+                },
+                "kofferdam": true
+            }
+        }
+    },
+    {
+        "id": "fx_009",
+        "dictation": "25 ob LA tief devital",
+        "expected": {
+            "tooth": "25",
+            "surfaces": [
+                "o",
+                "b"
+            ],
+            "diagnosis": "Caries profunda",
+            "mentioned": {
+                "vitality": "-"
+            }
+        }
+    },
+    {
+        "id": "fx_010",
+        "dictation": "Zahn 14 approximal Karies media ohne Anästhesie",
+        "expected": {
+            "tooth": "14",
+            "surfaces": [
+                "m",
+                "d"
+            ],
+            "diagnosis": "Caries media",
+            "mentioned": {
+                "anesthesia": {
+                    "present": false,
+                    "type": "keine"
+                }
+            }
+        }
+    },
+    {
+        "id": "fx_011",
+        "dictation": "26 okklusaldistal caries profunda Leitung Kofferdam cp MTA ViPr+ Perk- 120€",
+        "expected": {
+            "tooth": "26",
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "diagnosis": "Caries profunda",
+            "costs": 120,
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "leitung"
+                },
+                "kofferdam": true,
+                "vitality": "+",
+                "percussion": "-",
+                "capping": {
+                    "present": true,
+                    "type": "cp",
+                    "material": "MTA"
+                }
+            }
+        }
+    },
+    {
+        "id": "fx_012",
+        "dictation": "47 m/o/d",
+        "expected": {
+            "tooth": "47",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ]
+        }
+    },
+    {
+        "id": "fx_013",
+        "dictation": "Füllung 45 mesial Komposit relative Trockenlegung vital",
+        "expected": {
+            "tooth": "45",
+            "surfaces": [
+                "m"
+            ],
+            "mentioned": {
+                "kofferdam": false,
+                "vitality": "+"
+            }
+        }
+    },
+    {
+        "id": "fx_014",
+        "dictation": "LA 36 mod tief",
+        "expected": {
+            "tooth": "36",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "diagnosis": "Caries profunda",
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "unknown"
+                }
+            }
+        }
+    },
+    {
+        "id": "fx_015",
+        "dictation": "Zahn 16 palatinal Karies Betäubung",
+        "expected": {
+            "tooth": "16",
+            "surfaces": [
+                "l"
+            ],
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "unknown"
+                }
+            }
+        }
+    },
+    {
+        "id": "fx_016",
+        "dictation": "24 do pulpanah direkte Überkappung Biodentine",
+        "expected": {
+            "tooth": "24",
+            "surfaces": [
+                "d",
+                "o"
+            ],
+            "diagnosis": "Caries profunda",
+            "mentioned": {
+                "capping": {
+                    "present": true,
+                    "type": "p",
+                    "material": "Biodentine"
+                }
+            }
+        }
+    },
+    {
+        "id": "fx_017",
+        "dictation": "35 okklusal caries media vipr plus perk minus",
+        "expected": {
+            "tooth": "35",
+            "surfaces": [
+                "o"
+            ],
+            "diagnosis": "Caries media",
+            "mentioned": {
+                "vitality": "+",
+                "percussion": "-"
+            }
+        }
+    },
+    {
+        "id": "fx_018",
+        "dictation": "38 Weisheitszahn mod Leitung absolut trocken 150 EUR",
+        "expected": {
+            "tooth": "38",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "costs": 150,
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "leitung"
+                },
+                "kofferdam": true
+            }
+        }
+    },
+    {
+        "id": "fx_019",
+        "dictation": "11 klasse 4 Komposit Ecke abgebrochen",
+        "expected": {
+            "tooth": "11",
+            "surfaces": [
+                "i"
+            ],
+            "diagnosis": "Fraktur"
+        }
+    },
+    {
+        "id": "fx_020",
+        "dictation": "46 mod und 47 mo LA Kofferdam",
+        "note": "Multiple teeth - needs segmentation",
+        "expected": {
+            "tooth": null,
+            "surfaces": [],
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "unknown"
+                },
+                "kofferdam": true
+            }
+        }
+    },
+    {
+        "id": "fx_021",
+        "dictation": "perkussionsempfindlich 26 do",
+        "expected": {
+            "tooth": "26",
+            "surfaces": [
+                "d",
+                "o"
+            ],
+            "mentioned": {
+                "percussion": "+"
+            }
+        }
+    },
+    {
+        "id": "fx_022",
+        "dictation": "Zahn 34 mesial okklusal",
+        "expected": {
+            "tooth": "34",
+            "surfaces": [
+                "m",
+                "o"
+            ]
+        }
+    },
+    {
+        "id": "fx_023",
+        "dictation": "45er mod profunda LA infiltration Kompositfüllung Mehrschicht 80 Euro",
+        "expected": {
+            "tooth": "45",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "diagnosis": "Caries profunda",
+            "costs": 80,
+            "mentioned": {
+                "anesthesia": {
+                    "present": true,
+                    "type": "infiltr"
+                }
+            }
+        }
+    },
+    {
+        "id": "fx_024",
+        "dictation": "Watterollen 27 ob avital Wurzelbehandlung notwendig",
+        "expected": {
+            "tooth": "27",
+            "surfaces": [
+                "o",
+                "b"
+            ],
+            "mentioned": {
+                "kofferdam": false,
+                "vitality": "-"
+            }
+        }
+    },
+    {
+        "id": "fx_025",
+        "dictation": "21 Inzisal Ecke fehlt keine LA Matritze",
+        "expected": {
+            "tooth": "21",
+            "surfaces": [
+                "i"
+            ],
+            "diagnosis": "Fraktur",
+            "mentioned": {
+                "anesthesia": {
+                    "present": false,
+                    "type": "keine"
+                }
+            }
+        }
+    },
+    {
+        "id": "fx_026",
+        "dictation": "16 mol caries media Amalgam entfernt Komposit",
+        "expected": {
+            "tooth": "16",
+            "surfaces": [
+                "m",
+                "o",
+                "l"
+            ],
+            "diagnosis": "Caries media"
+        }
+    },
+    {
+        "id": "fx_027",
+        "dictation": "Patient 36 mod aber nicht tief",
+        "expected": {
+            "tooth": "36",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "diagnosis": "Caries media",
+            "mentioned": {
+                "tiefe": "normal"
+            }
+        }
+    },
+    {
+        "id": "fx_028",
+        "dictation": "Kostenaufklärung 80€ für Mehrschicht durchgeführt",
+        "expected": {
+            "tooth": null,
+            "surfaces": [],
+            "costs": 80
+        }
+    }
+]

@@ -1,0 +1,330 @@
+{
+    "_meta": {
+        "id": "endo",
+        "version": "2025-01-v1",
+        "label": "Wurzelbehandlung",
+        "kategorie": "endodontie",
+        "stand": "2025-12-13",
+        "architektur": "rule-driven",
+        "hinweis": "Minimal config for ENDO_G1 vertical slice"
+    },
+    "requiredFieldsGlobal": [
+        "zahn",
+        "kanalzahl",
+        "vitality"
+    ],
+    "chips": [
+        {
+            "id": "vipr_pos",
+            "label": "ViPr +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr +",
+                "mittel": "ViPr +",
+                "lang": "Sensibilität positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_neg"
+            ],
+            "requiredFields": []
+        },
+        {
+            "id": "vipr_neg",
+            "label": "ViPr −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr −",
+                "mittel": "ViPr −",
+                "lang": "Sensibilität negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_pos"
+            ],
+            "defaultActive": true,
+            "requiredFields": []
+        },
+        {
+            "id": "perk_neg",
+            "label": "Perk −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk −",
+                "mittel": "Perk −",
+                "lang": "Perkussion negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_pos"
+            ],
+            "defaultActive": true,
+            "requiredFields": []
+        },
+        {
+            "id": "perk_pos",
+            "label": "Perk +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk +",
+                "mittel": "Perk +",
+                "lang": "Perkussion positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_neg"
+            ],
+            "requiredFields": []
+        },
+        {
+            "id": "la_leitung",
+            "label": "LA Leitung",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Leitung.",
+                "mittel": "Leitungsanästhesie N. alv. inf.",
+                "lang": "Leitungsanästhesie des N. alveolaris inf. mit Ultracain D-S."
+            },
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Leitung"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_infiltr"
+            ],
+            "defaultActive": true,
+            "requiredFields": [
+                "zahn"
+            ]
+        },
+        {
+            "id": "la_infiltr",
+            "label": "LA Infiltration",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Infiltr.",
+                "mittel": "LA Infiltration.",
+                "lang": "Infiltrationsanästhesie mit Ultracain D-S."
+            },
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Infiltration"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_leitung"
+            ],
+            "requiredFields": [
+                "zahn"
+            ]
+        },
+        {
+            "id": "kanalaufbereitung_1",
+            "label": "1 Kanal",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "1K.",
+                "mittel": "Aufbereitung von 1 Wurzelkanal.",
+                "lang": "Aufbereitung und Erweiterung von 1 Wurzelkanal."
+            },
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "dataPatches": [
+                {
+                    "field": "kanalzahl",
+                    "value": 1
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4"
+            ],
+            "requiredFields": [
+                "zahn"
+            ]
+        },
+        {
+            "id": "kanalaufbereitung_2",
+            "label": "2 Kanäle",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "2K.",
+                "mittel": "Aufbereitung von 2 Wurzelkanälen.",
+                "lang": "Aufbereitung und Erweiterung von 2 Wurzelkanälen."
+            },
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "dataPatches": [
+                {
+                    "field": "kanalzahl",
+                    "value": 2
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4"
+            ],
+            "requiredFields": [
+                "zahn"
+            ]
+        },
+        {
+            "id": "kanalaufbereitung_3",
+            "label": "3 Kanäle",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "3K.",
+                "mittel": "Aufbereitung von 3 Wurzelkanälen.",
+                "lang": "Aufbereitung und Erweiterung von 3 Wurzelkanälen mittels maschineller Nickel-Titan-Instrumente."
+            },
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "dataPatches": [
+                {
+                    "field": "kanalzahl",
+                    "value": 3
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_4"
+            ],
+            "requiredFields": [
+                "zahn"
+            ]
+        },
+        {
+            "id": "kanalaufbereitung_4",
+            "label": "4 Kanäle",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "4K.",
+                "mittel": "Aufbereitung von 4 Wurzelkanälen.",
+                "lang": "Aufbereitung und Erweiterung von 4 Wurzelkanälen."
+            },
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "dataPatches": [
+                {
+                    "field": "kanalzahl",
+                    "value": 4
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3"
+            ],
+            "requiredFields": [
+                "zahn"
+            ]
+        },
+        {
+            "id": "spuelung_naocl",
+            "label": "NaOCl Spülung",
+            "phase": "spuelung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Spülung NaOCl.",
+                "mittel": "Spülung mit NaOCl.",
+                "lang": "Desinfektion der Wurzelkanäle mit Natriumhypochlorit (NaOCl 3%)."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "spuelung",
+                    "value": "naocl"
+                }
+            ],
+            "mutuallyExclusiveWith": [],
+            "defaultActive": true,
+            "requiredFields": []
+        },
+        {
+            "id": "einlage_caoh2",
+            "label": "Ca(OH)₂ Einlage",
+            "phase": "einlage",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Ca(OH)₂ Einlage.",
+                "mittel": "Medikamentöse Einlage mit Ca(OH)₂.",
+                "lang": "Medikamentöse Einlage mit Calciumhydroxid zur Desinfektion."
+            },
+            "billingRef": {
+                "GKV": "BEMA_35",
+                "PKV": "GOZ_2430"
+            },
+            "dataPatches": [
+                {
+                    "field": "medikament",
+                    "value": "caoh2"
+                }
+            ],
+            "mutuallyExclusiveWith": [],
+            "requiredFields": []
+        }
+    ],
+    "phasen_reihenfolge": [
+        "befund",
+        "anaesthesie",
+        "aufbereitung",
+        "spuelung",
+        "einlage"
+    ]
+}

@@ -41,7 +41,9 @@
             "questionKey": "kofferdam",
             "questionIdPatterns": [
                 "upsell_kofferdam",
-                "kofferdam"
+                "kofferdam",
+                "isolation",
+                "forensic_isolation"
             ],
             "answers": {
                 "yes": "kofferdam",
@@ -107,6 +109,22 @@
                 "mehrschicht"
             ],
             "requiresMKV": true
+        },
+        {
+            "questionKey": "cavity_depth",
+            "questionIdPatterns": [
+                "tiefe",
+                "cavity_depth",
+                "forensic_tiefe"
+            ],
+            "answers": {
+                "normal": null,
+                "deep": "cp",
+                "tief": "cp",
+                "pulpanah": "cp"
+            },
+            "exclusiveGroup": "capping",
+            "mutuallyExclusive": []
         }
     ],
     "extractionMapping": {

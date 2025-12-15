@@ -1,0 +1,1110 @@
+[
+    {
+        "id": "qfx_001",
+        "description": "Empty extraction - all forensic questions needed",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m",
+                    "o",
+                    "d"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "percussion": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "kofferdam": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "tiefe": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": true,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "expectQuestionKeys": [
+            "vitality",
+            "percussion",
+            "tiefe",
+            "isolation",
+            "material"
+        ],
+        "forbidQuestionKeys": [
+            "mkv_betrag",
+            "mkv_vereinbarung",
+            "mehrschicht"
+        ]
+    },
+    {
+        "id": "qfx_002",
+        "description": "GKV with MKV - should show MKV and upsell questions",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m",
+                    "o",
+                    "d"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": 120,
+                "confidence": 1.0,
+                "evidence": [
+                    "120€"
+                ],
+                "needsConfirmation": false
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [
+                        "vital"
+                    ],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [
+                        "perk-"
+                    ],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [
+                        "kofferdam"
+                    ],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "tief",
+                    "confidence": 1.0,
+                    "evidence": [
+                        "tief"
+                    ],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": true,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": true,
+        "expectQuestionKeys": [
+            "material",
+            "mkv_vereinbarung",
+            "mkv_betrag"
+        ],
+        "forbidQuestionKeys": []
+    },
+    {
+        "id": "qfx_003",
+        "description": "All forensic data complete - no forensic questions",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m",
+                    "o",
+                    "d"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "tief",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": {
+                        "present": true,
+                        "type": "leitung"
+                    },
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "capping": {
+                    "value": {
+                        "present": true,
+                        "type": "cp",
+                        "material": "CaOH"
+                    },
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "material": {
+                    "value": "Komposit",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": true,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "expectQuestionKeys": [],
+        "forbidQuestionKeys": [
+            "vitality",
+            "percussion",
+            "tiefe",
+            "isolation",
+            "material",
+            "mkv_betrag"
+        ]
+    },
+    {
+        "id": "qfx_004",
+        "description": "PKV - should show upsell questions",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m",
+                    "o",
+                    "d"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "normal",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": false,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "PKV",
+        "hasMKV": false,
+        "expectQuestionKeys": [
+            "material"
+        ],
+        "forbidQuestionKeys": [
+            "mkv_betrag",
+            "mkv_vereinbarung"
+        ]
+    },
+    {
+        "id": "qfx_005",
+        "description": "Only vitality missing",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "normal",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": {
+                        "present": true,
+                        "type": "leitung"
+                    },
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": "Komposit",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": false,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "expectQuestionKeys": [
+            "vitality"
+        ],
+        "forbidQuestionKeys": [
+            "percussion",
+            "tiefe",
+            "isolation"
+        ]
+    },
+    {
+        "id": "qfx_006",
+        "description": "Only percussion missing",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "normal",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": {
+                        "present": true,
+                        "type": "leitung"
+                    },
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": "Komposit",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": false,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "expectQuestionKeys": [
+            "percussion"
+        ],
+        "forbidQuestionKeys": [
+            "vitality",
+            "tiefe",
+            "isolation"
+        ]
+    },
+    {
+        "id": "qfx_007",
+        "description": "Kofferdam missing (should ask isolation)",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "tiefe": {
+                    "value": "normal",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": "Komposit",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": false,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "expectQuestionKeys": [
+            "isolation"
+        ],
+        "forbidQuestionKeys": [
+            "vitality",
+            "percussion"
+        ]
+    },
+    {
+        "id": "qfx_008",
+        "description": "MKV with pre-filled costs",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m",
+                    "o",
+                    "d"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": 80,
+                "confidence": 1.0,
+                "evidence": [
+                    "80€"
+                ],
+                "needsConfirmation": false
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "tief",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": true,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": true,
+        "expectQuestionKeys": [
+            "material",
+            "mkv_vereinbarung",
+            "mkv_betrag"
+        ],
+        "expectDefaultValue": {
+            "mkv_betrag": 80
+        }
+    },
+    {
+        "id": "qfx_009",
+        "description": "Tiefe missing - should ask tiefe",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": "Komposit",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": false,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "expectQuestionKeys": [
+            "tiefe"
+        ],
+        "forbidQuestionKeys": [
+            "vitality",
+            "percussion",
+            "isolation"
+        ]
+    },
+    {
+        "id": "qfx_010",
+        "description": "Material missing - should ask material",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "tief",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": true,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "expectQuestionKeys": [
+            "material"
+        ],
+        "forbidQuestionKeys": [
+            "vitality",
+            "percussion",
+            "isolation"
+        ]
+    },
+    {
+        "id": "qfx_011",
+        "description": "Stable ID test",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": null,
+                "confidence": 0,
+                "evidence": [],
+                "needsConfirmation": true
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "normal",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": "Komposit",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": false,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "expectStableIds": [
+            "rule_vitality"
+        ]
+    },
+    {
+        "id": "qfx_012",
+        "description": "Full MKV flow - stable IDs",
+        "extracted": {
+            "tooth": {
+                "value": "36",
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "surfaces": {
+                "value": [
+                    "m"
+                ],
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "costs": {
+                "value": 100,
+                "confidence": 1.0,
+                "evidence": [],
+                "needsConfirmation": false
+            },
+            "mentioned": {
+                "vitality": {
+                    "value": "+",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "percussion": {
+                    "value": "-",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "kofferdam": {
+                    "value": true,
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "tiefe": {
+                    "value": "tief",
+                    "confidence": 1.0,
+                    "evidence": [],
+                    "needsConfirmation": false
+                },
+                "anesthesia": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "capping": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                },
+                "material": {
+                    "value": null,
+                    "confidence": 0,
+                    "evidence": [],
+                    "needsConfirmation": true
+                }
+            },
+            "keywordFlags": {
+                "saidDeepCavity": true,
+                "saidSuperficial": false,
+                "saidFracture": false,
+                "saidCaries": true
+            },
+            "raw": {
+                "dictation": "test",
+                "normalized": "test"
+            }
+        },
+        "insuranceType": "GKV",
+        "hasMKV": true,
+        "expectStableIds": [
+            "mkv_mkv_vereinbarung",
+            "mkv_mkv_betrag",
+            "forensic_material"
+        ]
+    }
+]

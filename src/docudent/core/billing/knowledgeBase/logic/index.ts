@@ -144,3 +144,21 @@ export {
     loadBillingRules,
     getRegelIndex
 } from './billingValidation';
+
+export {
+    // Types
+    type Bel2Entry,
+    type Bel2PageRange,
+    type Bel2Meta,
+    type Bel2Catalog,
+
+    // Functions
+    loadBel2Catalog,
+    getBel2Meta,
+    getBel2Entries,
+    lookupBel2,
+    normalizeBel2Code,
+    hasBel2Code,
+    searchBel2ByKurztext
+} from './bel2Catalog';
+

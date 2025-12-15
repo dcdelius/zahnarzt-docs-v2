@@ -14,15 +14,15 @@ import {
     getUpsellChips // Assuming this helper exists or I filter myself
 } from '../../core/billing/knowledgeBase/logic/treatmentEngine';
 import { inferChipsFromExtractedData } from '../../core/billing/knowledgeBase/logic/chipResolver';
-import { getQuestionDef } from '../../core/billing/knowledgeBase/questions/questionBank';
+import { getQuestionDefOrNull } from '../../core/billing/knowledgeBase/questions/questionBank';
 
 export function generateQuestions(
     extracted: ExtractedData,
     insuranceType: InsuranceType,
-    hasMKV: boolean = false
+    hasMKV: boolean = false,
+    treatmentId: string = 'fuellung'  // Treatment type, defaults to fuellung for backward compat
 ): DynamicQuestion[] {
     const questions: DynamicQuestion[] = [];
-    const treatmentId = 'fuellung'; // TODO: derived from context
 
     // 1. Initial Logic: Infer chips from extracted data to know current state
     const activeChipIds = inferChipsFromExtractedData(
@@ -66,7 +66,7 @@ export function generateQuestions(
         const isMentioned = (extracted.mentioned as any)[gap] !== undefined;
 
         if (!isMentioned) {
-            const def = getQuestionDef(treatmentId, key);
+            const def = getQuestionDefOrNull(treatmentId, key);
             if (def) {
                 questions.push({
                     id: def.key,
@@ -92,7 +92,7 @@ export function generateQuestions(
         // MKV Vereinbarung & Betrag
         const mkvKeys = ['mkv_vereinbarung', 'mkv_betrag'];
         mkvKeys.forEach(key => {
-            const def = getQuestionDef(treatmentId, key);
+            const def = getQuestionDefOrNull(treatmentId, key);
             if (def) {
                 // Special handling for number type pre-fill
                 let defaultValue = undefined;
@@ -136,7 +136,7 @@ export function generateQuestions(
                 // Find question definition
                 // Priority: chip.questionKey -> chip.id
                 const questionKey = chip.questionKey || chip.id;
-                const def = getQuestionDef(treatmentId, questionKey);
+                const def = getQuestionDefOrNull(treatmentId, questionKey);
 
                 if (def) {
                     questions.push({

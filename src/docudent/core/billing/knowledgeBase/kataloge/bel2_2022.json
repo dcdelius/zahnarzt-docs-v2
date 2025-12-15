@@ -1,0 +1,1948 @@
+{
+  "_meta": {
+    "schema": "docudent.bel2.v1",
+    "source": {
+      "title": "BEL II – Leistungsverzeichnis (Stand 01.01.2022)",
+      "publisher": "GKV-Spitzenverband",
+      "file": "BEL_II_01_01_2022.pdf",
+      "pages": 135
+    },
+    "extractedOn": "2025-12-14",
+    "extractionNotes": [
+      "Parsed text from PDF using pdfplumber; entries split by 'Leistungsinhalt L-Nr.' markers.",
+      "Codes normalized from 'NNN N' format to 'NNNN' string without spaces (e.g., '020 2' -> '0202').",
+      "Page numbers are 1-indexed and refer to the source PDF."
+    ],
+    "counts": {
+      "entries": 175,
+      "uniqueCodes": 175
+    }
+  },
+  "entries": [
+    {
+      "code": "0010",
+      "codeId": "BEL_0010",
+      "page": {
+        "start": 8,
+        "end": 9
+      },
+      "leistungsinhalt": "Modell",
+      "kurztext": "Modell",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nModell aus Hartgips oder Superhartgips, z.B. als Reparaturmodell, anatomisches Modell\n(auch für Löffel), Funktionsrandmodell, Unterfütterungsmodell, Modell für Metallbasis, KFO-\nModell, Modell zur diagnostischen Auswertung und Planung, Gegenkiefermodell,\nKontrollmodell, Planungsmodell, Hilfsmodell (Gipskonter bei Unterfütterung, Gipsschlüssel\nbei Unterfütterung).\nErläuterungen zur Abrechnung\nFür das Erstellen von Arbeitsmodellen ist die L-Nr. 002 1 „Doublieren“ bis auf die in den\nErläuterungen zur Abrechnung der dort aufgeführten Ausnahmefälle nicht abrechenbar.\nZur Abrechnung von Gipskonter, Gipsschlüssel und Kontrollmodellen gilt:\nDie Abrechnung eines Modells ist nach der L-Nr. 001 0 für alle notwendigen und erbrachten\nModelle möglich. Es besteht kein zwingender technischer Zusammenhang zwischen der Zahl\nder Abformungen und der Zahl der Modelle."
+    },
+    {
+      "code": "0015",
+      "codeId": "BEL_0015",
+      "page": {
+        "start": 9,
+        "end": 10
+      },
+      "leistungsinhalt": "Modell Unterkieferprotrusionsschiene",
+      "kurztext": "Modell UKPS",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nModell aus Hartgips oder Superhartgips, z. B. als Reparaturmodell, anatomisches Modell\n(auch für Löffel), Unterfütterungsmodell, Modell zur diagnostischen Auswertung und\nPlanung, Gegenkiefermodell, Kontrollmodell, Planungsmodell, Hilfsmodell (Gipskonter bei\nUnterfütterung, Gipsschlüssel bei Unterfütterung).\nErläuterungen zur Abrechnung\nFür die Herstellung einer Unterkieferprotrusionsschiene sind bis zu sechs Modelle\nabrechenbar."
+    },
+    {
+      "code": "0018",
+      "codeId": "BEL_0018",
+      "page": {
+        "start": 10,
+        "end": 11
+      },
+      "leistungsinhalt": "Modell bei Implantatversorgung",
+      "kurztext": "Modell bei Implantatversorgung",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nModell aus Hartgips oder Superhartgips, z.B. als Reparaturmodell, anatomisches Modell\n(auch für Löffel), Funktionsrandmodell, Unterfütterungsmodell, Modell für Metallbasis,\nModell zur diagnostischen Auswertung und Planung, Gegenkiefermodell, Kontrollmodell,\nPlanungsmodell, Hilfsmodell (Gipskonter bei Unterfütterung, Gipsschlüssel bei\nUnterfütterung).\nErläuterungen zur Abrechnung\nDie L-Nr. 001 8 ist nur für eine Versorgung nach Nr. 36 der Zahnersatz-Richtlinie\n(Ausnahmefälle zahnbegrenzte Einzelzahnlücke/atrophierter zahnloser Kiefer) abrechenbar.\nZur Abrechnung von Gipskonter, Gipsschlüssel und Kontrollmodellen gilt:\nDie Abrechnung eines Modells ist nach der L-Nr. 001 8 für alle notwendigen und erbrachten\nModelle möglich. Es besteht kein zwingender technischer Zusammenhang zwischen der\nZahl der Abformungen und der Zahl der Modelle."
+    },
+    {
+      "code": "0021",
+      "codeId": "BEL_0021",
+      "page": {
+        "start": 11,
+        "end": 12
+      },
+      "leistungsinhalt": "Weitere Maßnahmen zur Modellherstellung\n- Doublieren eines Modells",
+      "kurztext": "Doublieren eines Modells",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nDoublieren, je Modell für Bissführungsplatte, Kralle, Kappe, eine abnehmbare Schiene über\nmehr als drei Zähne, Set-up-Modell, Crozat-Modell. Auch auf Anweisung des Zahnarztes\nbei medizinischer Indikation, z. B. bei Krankenhausaufenthalt, Kieferverletzung oder\nKieferklemme.\nErläuterungen zur Abrechnung\nNicht abrechenbar bei Duplikatmodell aus Einbettmasse.\nDas nach dem Doublieren gewonnene Modell ist gesondert abrechenbar.\nFür das Erstellen von Arbeitsmodellen ist die L-Nr. 002 1 \"Doublieren\" bis auf die in den\nErläuterungen zum Leistungsinhalt aufgeführten Ausnahmefälle nicht abrechenbar."
+    },
+    {
+      "code": "0022",
+      "codeId": "BEL_0022",
+      "page": {
+        "start": 12,
+        "end": 13
+      },
+      "leistungsinhalt": "Weitere Maßnahmen zur Modellherstellung\n- Platzhalter in Abdruck einfügen",
+      "kurztext": "Platzhalter einfügen",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nEinfügen eines Konfektionsteiles in den Abdruck.\nErläuterungen zur Abrechnung\nDie L-Nr. 002 2 ist je Konfektionsteil abrechenbar.\nNur abrechenbar bei Neuanfertigung oder Wiederherstellung eines kombinierten\nZahnersatzes, sowie bei einer geteilten Brücke, wenn das Primärteil im Mund vorhanden ist.\nAls Platzhalter ist das Konfektionsteil gesondert abrechenbar; für das ggf. erforderliche\nHerstellen und Anbringen einer Retention an das Konfektionsteil ist die L-Nr. 803 0\nabrechenbar."
+    },
+    {
+      "code": "0023",
+      "codeId": "BEL_0023",
+      "page": {
+        "start": 13,
+        "end": 13
+      },
+      "leistungsinhalt": "Weitere Maßnahmen zur Modellherstellung\n- Verwendung von Kunststoff",
+      "kurztext": "Verwendung von Kunststoff",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nz.B. bei Verbleib eines individuellen Primärteiles im Munde des Patienten.\nZur besonderen Darstellung der Zahnfleischpartien abrechenbar je Modell, je Front-\nund/oder Seitenzahngebiet.\nErläuterungen zur Abrechnung\nNicht abrechenbar für Kunststoffstümpfe."
+    },
+    {
+      "code": "0024",
+      "codeId": "BEL_0024",
+      "page": {
+        "start": 13,
+        "end": 14
+      },
+      "leistungsinhalt": "Weitere Maßnahme zur Modellherstellung\n- Galvanisieren oder Metallisieren",
+      "kurztext": "Galvanisieren",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 002 4 ist einmal je Abdruck, auch bei mehreren Stümpfen in einem Abdruck, nicht\nfür das Lackieren abrechenbar."
+    },
+    {
+      "code": "0025",
+      "codeId": "BEL_0025",
+      "page": {
+        "start": 14,
+        "end": 15
+      },
+      "leistungsinhalt": "Doublieren eines Modells Unterkieferprotrusionsschiene",
+      "kurztext": "Doublieren eines Modells UKPS",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nDoublieren eines Modells für UKPS.\nErläuterungen zur Abrechnung\nNicht abrechenbar bei Duplikatmodell aus Einbettmasse. Das nach dem Doublieren\ngewonnene Modell ist gesondert abrechenbar."
+    },
+    {
+      "code": "0030",
+      "codeId": "BEL_0030",
+      "page": {
+        "start": 15,
+        "end": 15
+      },
+      "leistungsinhalt": "Set-up je Segment",
+      "kurztext": "Set-up je Segment",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nSegment herstellen und bearbeiten.\nModellzahn/ -zähne beschleifen und umstellen.\nErläuterungen zur Abrechnung\nDie L-Nr. 003 0 ist in Verbindung mit KFO-Planungen und -Leistungen abrechenbar.\nDie L-Nr. 003 0 ist je ausgesägtem und umgestelltem Segment für Planungs- und\nArbeitsmodelle abrechenbar.\nWird ein einzelner Modellzahn ausgesägt und umgestellt, ist der Begriff Segment erfüllt."
+    },
+    {
+      "code": "0051",
+      "codeId": "BEL_0051",
+      "page": {
+        "start": 15,
+        "end": 16
+      },
+      "leistungsinhalt": "Modell zur Stumpfherstellung\n- Sägemodell",
+      "kurztext": "Sägemodell",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nWird ein Kunststoffmodell gefertigt, so ist zur L-Nr. 005 1 die L-Nr. 002 3 abrechenbar."
+    },
+    {
+      "code": "0052",
+      "codeId": "BEL_0052",
+      "page": {
+        "start": 16,
+        "end": 17
+      },
+      "leistungsinhalt": "Modell zur Stumpfherstellung\n- Einzelstumpfmodell",
+      "kurztext": "Einzelstumpfmodell",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nWird ein Kunststoffmodell gefertigt, so ist zur L-Nr. 005 2 die L-Nr. 002 3 abrechenbar."
+    },
+    {
+      "code": "0053",
+      "codeId": "BEL_0053",
+      "page": {
+        "start": 17,
+        "end": 17
+      },
+      "leistungsinhalt": "Modell zur Stumpfherstellung\n- Modell nach Überabdruck",
+      "kurztext": "Modell nach Überabdruck",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nWird ein Kunststoffmodell gefertigt, so ist zur L-Nr. 005 3 die L-Nr. 002 3 abrechenbar."
+    },
+    {
+      "code": "0054",
+      "codeId": "BEL_0054",
+      "page": {
+        "start": 17,
+        "end": 18
+      },
+      "leistungsinhalt": "Modell zur Stumpfherstellung\n- Set-up Modell",
+      "kurztext": "Set-up Modell für KFO",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 005 4 ist in Verbindung mit KFO-Planungen und -Leistungen nach der L-Nr. 003 0\nabrechenbar."
+    },
+    {
+      "code": "0055",
+      "codeId": "BEL_0055",
+      "page": {
+        "start": 18,
+        "end": 19
+      },
+      "leistungsinhalt": "Modell zur Stumpfherstellung\n- Fräsmodell",
+      "kurztext": "Fräsmodell",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nModell zur Aufnahme von Frässtümpfen.\nErläuterungen zur Abrechnung\nDie L-Nr. 005 5 ist einmal je Kiefer abrechenbar, unabhängig davon, wie viele Fräsungen in\ndem jeweiligen Kiefer anfallen."
+    },
+    {
+      "code": "0060",
+      "codeId": "BEL_0060",
+      "page": {
+        "start": 19,
+        "end": 19
+      },
+      "leistungsinhalt": "Zahnkranz",
+      "kurztext": "Zahnkranz",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nHerstellung eines Zahnkranzes im Praxislabor zur späteren Ergänzung mit einem\nGipssockel zu einem Sägemodell oder einem Einzelstumpfmodell oder einem Set-up Modell\nfür die KFO-Planung oder Herstellung eines Positioners durch das gewerbliche Labor.\nErläuterung zur Abrechnung\nDie L-Nr. 006 0 ist nicht durch das gewerbliche Labor abrechenbar, es sei denn der\nLeistungsinhalt wird durch das gewerbliche Labor in der Zahnarztpraxis erbracht."
+    },
+    {
+      "code": "0070",
+      "codeId": "BEL_0070",
+      "page": {
+        "start": 19,
+        "end": 20
+      },
+      "leistungsinhalt": "Zahnkranz sockeln",
+      "kurztext": "Zahnkranz sockeln",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nVorhandenen Zahnkranz bearbeiten und zum Sägemodell, Einzelstumpfmodell oder Set-up-\nModell zur Herstellung eines Positioners vervollständigen.\nErläuterungen zur Abrechnung\nDie L-Nr. 007 0 ist vom Praxislabor abrechenbar, wenn die L-Nr. 006 0 durch das\ngewerbliche Labor erbracht und abgerechnet wird."
+    },
+    {
+      "code": "0111",
+      "codeId": "BEL_0111",
+      "page": {
+        "start": 20,
+        "end": 20
+      },
+      "leistungsinhalt": "Fixieren der Bisslage\n- Modellpaar trimmen",
+      "kurztext": "Modellpaar trimmen",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nModellpaar trimmen, okklusionsbezogen.\nErläuterungen zur Abrechnung\nDie L-Nr. 011 1 ist in Verbindung mit KFO-Leistungen abrechenbar. Für dasselbe\nModellpaar können die L-Nrn. 011 1 und 013 0 nicht nebeneinander abgerechnet werden."
+    },
+    {
+      "code": "0112",
+      "codeId": "BEL_0112",
+      "page": {
+        "start": 20,
+        "end": 21
+      },
+      "leistungsinhalt": "Fixieren der Bisslage\n- Einstellen im Fixator",
+      "kurztext": "Fixator",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nMontage eines Modellpaares im Fixator zur Sicherung der Bisslage bei Unterfütterung, zur\nHerstellung von Bissregistrierhilfen nach Vorbissnahme und zur Herstellung von\nkieferorthopädischen Geräten mit bimaxillärer Beziehung.\nErläuterungen zur Abrechnung\nBei Wiederherstellungen ist die L-Nr. 011 2 nicht neben der L.-Nr. 012 0 abrechenbar."
+    },
+    {
+      "code": "0115",
+      "codeId": "BEL_0115",
+      "page": {
+        "start": 21,
+        "end": 21
+      },
+      "leistungsinhalt": "Einstellen in Fixator Unterkieferprotrusionsschiene",
+      "kurztext": "Fixator UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nMontage eines Modellpaares im Fixator zum Vorbereiten einer Bissgabel, zur Sicherung der\nBisslage bei Unterfütterung einer Unterkieferprotrusionsschiene und zur Herstellung und\nWiederherstellung einer Unterkieferprotrusionsschiene.\nErläuterungen zur Abrechnung\nBei Wiederherstellungen ist die L-Nr. 011 5 nicht neben der L.-Nr. 012 5 abrechenbar."
+    },
+    {
+      "code": "0120",
+      "codeId": "BEL_0120",
+      "page": {
+        "start": 21,
+        "end": 22
+      },
+      "leistungsinhalt": "Einstellen in Mittelwertartikulator",
+      "kurztext": "Mittelwertartikulator",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nModellpaar in Mittelwertartikulator montieren. Der Artikulator muss Lateral-, Protrusions- und\nÖffnungsbewegungen zulassen.\nErläuterungen zur Abrechnung\nDie L-Nr. 012 0 ist nur abrechenbar, wenn die Modelle die gesamten Kieferverhältnisse\nwiedergeben und nur einmal je Fall, außer wenn der Zahnarzt einen neuen Abdruck oder\nBiss nehmen musste.\nDie L-Nr. 012 0 ist nicht abrechenbar, wenn der gefertigte oder wiederhergestellte\nZahnersatz oder das KFO-Gerät eine Berücksichtigung der Lateral- und\nProtrusionsbewegung nicht erfordert, wie z. B. bei den L-Nrn. 032 0, 104 0, 808 0.\nDie Montage eines Modellpaares in einem Artikulator unter Anwendung von Systemteilen\n(z.B. Gesichtsbogen) ist nicht nach L-Nr. 012 0 abrechenbar."
+    },
+    {
+      "code": "0125",
+      "codeId": "BEL_0125",
+      "page": {
+        "start": 22,
+        "end": 23
+      },
+      "leistungsinhalt": "Einstellen in Mittelwertartikulator Unterkieferprotrusionsschiene",
+      "kurztext": "Mittelwertartikulator UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nModellpaar in Mittelwertartikulator montieren. Der Artikulator muss Lateral-, Protrusions- und\nÖffnungsbewegungen zulassen.\nErläuterungen zur Abrechnung\nDie L-Nr. 012 5 ist nur einmal je Unterkieferprotrusionsschiene abrechenbar, es sei denn,\nder Zahnarzt nimmt einen neuen Abdruck oder Biss. Die Modelle müssen die gesamten\nKieferverhältnisse wiedergeben.\nDie Montage eines Modellpaares in einem Artikulator unter Anwendung von Systemteilen\n(z. B. Gesichtsbogen) ist nicht nach L-Nr. 012 5 abrechenbar."
+    },
+    {
+      "code": "0128",
+      "codeId": "BEL_0128",
+      "page": {
+        "start": 23,
+        "end": 24
+      },
+      "leistungsinhalt": "Einstellen in Mittelwertartikulator bei Implantatversorgung",
+      "kurztext": "Mittelwertartikulator bei Implantatversorgung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nModellpaar in Mittelwertartikulator montieren. Der Artikulator muss Lateral-, Protrusions- und\nÖffnungsbewegungen zulassen.\nErläuterungen zur Abrechnung\nDie L-Nr. 012 8 ist nur für eine Versorgung nach Nr. 36 der Zahnersatz-Richtlinie\n(Ausnahmefälle zahnbegrenzte Einzelzahnlücke/atrophierter zahnloser Kiefer) abrechenbar.\nDie L-Nr. 012 8 ist nur abrechenbar, wenn die Modelle die gesamten Kieferverhältnisse\nwiedergeben und nur einmal je Fall, außer wenn der Zahnarzt einen neuen Abdruck oder\nBiss nehmen musste.\nDie L-Nr. 012 8 ist nicht abrechenbar, wenn der gefertigte oder wiederhergestellte\nZahnersatz eine Berücksichtigung der Lateral- und Protrusionsbewegung nicht erfordert, wie\nz. B. bei der L-Nr. 808 8\nDie Montage eines Modellpaares in einem Artikulator unter Anwendung von Systemteilen\n(z.B. Gesichtsbogen) ist nicht nach L-Nr. 012 8 abrechenbar."
+    },
+    {
+      "code": "0130",
+      "codeId": "BEL_0130",
+      "page": {
+        "start": 24,
+        "end": 24
+      },
+      "leistungsinhalt": "Modellpaar sockeln",
+      "kurztext": "Modellpaar sockeln",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nModellpaar sockeln, dreidimensional orientiert.\nModellpaar sockeln, dreidimensional orientiert in Sockelschalen.\nErläuterungen zur Abrechnung\nDie L-Nr. 013 0 ist für kieferorthopädische Dokumentationsmodelle abrechenbar.\nDie L-Nr. 013 0 ist für dasselbe Modellpaar nicht neben der L-Nr. 011 1 abrechenbar.\nSockelschalen als Konfektionsfertigteile sind abrechenbar, wenn eine Bisslagenfixierung\nnicht möglich ist."
+    },
+    {
+      "code": "0201",
+      "codeId": "BEL_0201",
+      "page": {
+        "start": 24,
+        "end": 25
+      },
+      "leistungsinhalt": "Basis aus thermoplastischem Material mit\nBisswall aus Wachs für Vorbissnahme",
+      "kurztext": "Basis für Vorbissnahme",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellung einer Basis aus thermoplastischem Material mit Bisswall aus Wachs für\nteilbezahnten oder zahnlosen Kiefer für Vorbissnahme, zur Vorbereitung eines\nStützstiftregistrates oder als Erstbissnahme bei Kombinationszahnersatz."
+    },
+    {
+      "code": "0202",
+      "codeId": "BEL_0202",
+      "page": {
+        "start": 25,
+        "end": 25
+      },
+      "leistungsinhalt": "Basis aus thermoplastischem Material mit\nBisswall aus Wachs für Konstruktionsbissnahme",
+      "kurztext": "Basis für Konstruktionsbiss",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 020 2 ist bei der Herstellung von kieferorthopädischen Geräten mit bimaxillärer\nBeziehung abrechenbar."
+    },
+    {
+      "code": "0205",
+      "codeId": "BEL_0205",
+      "page": {
+        "start": 25,
+        "end": 26
+      },
+      "leistungsinhalt": "Vorbereiten einer Bissgabel\nUnterkieferprotrusionsschiene",
+      "kurztext": "Vorbereiten Bissgabel UKPS",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nVorbereiten einer Bissgabel zur Registrierung der Protrusion für eine\nUnterkieferprotrusionsschiene.\nErläuterungen zur Abrechnung\nDie L-Nr. 020 5 ist für die Anfertigung einer UKPS einmal abrechenbar."
+    },
+    {
+      "code": "0211",
+      "codeId": "BEL_0211",
+      "page": {
+        "start": 26,
+        "end": 27
+      },
+      "leistungsinhalt": "Basis aus Kunststoff (ohne Bisswall)\n- Individueller Löffel",
+      "kurztext": "Individueller Löffel",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nIndividueller Abdrucklöffel aus Kunststoff für vollbezahnten oder teilbezahnten oder\nzahnlosen Kiefer, wenn eine Funktionsabformung nicht notwendig oder möglich ist.\nErläuterungen zur Abrechnung:\nDas Doppelabdruckverfahren mit einem Konfektionslöffel erfüllt nicht den Leistungsinhalt."
+    },
+    {
+      "code": "0212",
+      "codeId": "BEL_0212",
+      "page": {
+        "start": 27,
+        "end": 28
+      },
+      "leistungsinhalt": "Basis aus Kunststoff (ohne Bisswall)\n- Funktionslöffel",
+      "kurztext": "Funktionslöffel",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nFunktionsabdrucklöffel aus Kunststoff für einen zahnlosen Kiefer oder bei stark reduziertem\nRestgebiss.\nErläuterungen zur Abrechnung\nDie L-Nr. 021 2 ist bei einem zahnlosen Kiefer oder bei einem Kiefer mit einem\nRestzahnbestand von bis zu drei Zähnen abrechenbar."
+    },
+    {
+      "code": "0213",
+      "codeId": "BEL_0213",
+      "page": {
+        "start": 28,
+        "end": 28
+      },
+      "leistungsinhalt": "Basis aus Kunststoff (ohne Bisswall)\n- für Bissregistrierung",
+      "kurztext": "Basis für Bissregistrierung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis aus Kunststoff für Bissregistrierung bei einem teilbezahnten oder zahnlosen Kiefer für\ndas Aufbringen eines Bisswalls aus Wachs oder Kunststoff.\nErläuterungen zur Abrechnung\nFür das Aufbringen eines Bisswalls aus Wachs oder Kunststoff auf eine Basis nach L-Nr.\n021 3 ist die L-Nr. 022 0 je Basis einmal abrechenbar."
+    },
+    {
+      "code": "0214",
+      "codeId": "BEL_0214",
+      "page": {
+        "start": 28,
+        "end": 29
+      },
+      "leistungsinhalt": "Basis aus Kunststoff (ohne Bisswall)\n- für Stützstiftregistrierung",
+      "kurztext": "Basis für Stützstiftregistrierung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis aus Kunststoff für einen vollbezahnten, teilbezahnten oder zahnlosen Kiefer zur\nAufnahme des Registrierbestecks für eine Stützstiftregistrierung.\nErläuterungen zur Abrechnung\nDie L-Nr. 021 4 ist je Kiefer abrechenbar. Für das Anbringen des aus Registrierplatte und\nRegistrierstift bestehenden Registrierbestecks auf die Basen nach L-Nr. 021 4 für\nOberkiefer und Unterkiefer ist die L-Nr. 023 0 einmal je vorbereitete Stützstiftregistrierung\nabrechenbar. Neben der L-Nr. 021 4 ist die L-Nr. 022 0 nur einmal je vorbereitete\nStützstiftregistrierung abrechenbar."
+    },
+    {
+      "code": "0215",
+      "codeId": "BEL_0215",
+      "page": {
+        "start": 29,
+        "end": 29
+      },
+      "leistungsinhalt": "Basis aus Kunststoff\n- für Aufstellung",
+      "kurztext": "Basis für Aufstellung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis aus Kunststoff zur Aufnahme einer Wachsaufstellung zur Anprobe.\nErläuterungen zur Abrechnung\nDie L-Nr. 021 5 ist bei einem zahnlosen Kiefer, bei einem Kiefer mit einem Restzahnbestand\nvon bis zu drei Zähnen oder bei Interimsprothesen abrechenbar."
+    },
+    {
+      "code": "0216",
+      "codeId": "BEL_0216",
+      "page": {
+        "start": 29,
+        "end": 30
+      },
+      "leistungsinhalt": "Basis aus Kunststoff (ohne Bisswall)\n- für Bissregistrierung bei Implantatversorgung",
+      "kurztext": "Basis für Bissregistr. bei Implantatversorgung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis aus Kunststoff für Bissregistrierung bei einem zahnlosen Kiefer zur Aufnahme eines\nBisswalls aus Wachs oder Kunststoff.\nErläuterungen zur Abrechnung\nDie L-Nr. 021 6 ist nur für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie\n(atrophierter zahnloser Kiefer) abrechenbar.\nFür das Aufbringen eines Bisswalls aus Wachs oder Kunststoff auf eine Basis nach L-Nr.\n021 6 ist die L-Nr. 022 8 je Basis einmal abrechenbar."
+    },
+    {
+      "code": "0217",
+      "codeId": "BEL_0217",
+      "page": {
+        "start": 30,
+        "end": 30
+      },
+      "leistungsinhalt": "Individueller Löffel Unterkieferprotrusionsschiene",
+      "kurztext": "Individueller Löffel UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nIndividueller Abdrucklöffel aus Kunststoff für vollbezahnten oder teilbezahnten oder\nzahnlosen Kiefer zur Herstellung einer Unterkieferprotrusionsschiene.\nErläuterungen zur Abrechnung\nDas Doppelabdruckverfahren mit einem Konfektionslöffel erfüllt nicht den Leistungsinhalt\nder L-Nr. 021 7."
+    },
+    {
+      "code": "0218",
+      "codeId": "BEL_0218",
+      "page": {
+        "start": 30,
+        "end": 31
+      },
+      "leistungsinhalt": "Basis aus Kunststoff\n- für Aufstellung bei Implantatversorgung",
+      "kurztext": "Basis für Aufstellung bei Implantatversorgung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis aus Kunststoff bei einem zahnlosen Kiefer zur Aufnahme einer Wachsaufstellung zur\nAnprobe.\nErläuterungen zur Abrechnung\nDie L-Nr. 021 8 ist nur für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie\n(atrophierter zahnloser Kiefer) abrechenbar."
+    },
+    {
+      "code": "0220",
+      "codeId": "BEL_0220",
+      "page": {
+        "start": 31,
+        "end": 32
+      },
+      "leistungsinhalt": "Bisswall",
+      "kurztext": "Bisswall",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAufbringen eines Bisswalls aus Wachs oder Kunststoff auf eine Basis aus Kunststoff, aus\nMetall oder auf eine Prothese. Der Bisswall ergänzt die genannten Basen zur\nBissregistrierhilfe.\nErläuterungen zur Abrechnung\nDas Aufbringen eines Bisswalls aus Wachs oder Kunststoff nach L-Nr. 022 0 auf eine Basis\nnach L-Nr. 021 2 oder 021 3 ist einmal je Basis abrechenbar.\nDas Aufbringen eines Bisswalls aus Wachs oder Kunststoff nach L-Nr. 022 0 auf eine\nMetallbasis oder eine Prothese ist einmal je Basis abrechenbar.\nDie L-Nr. 022 0 ist neben den Basen für Stützstiftregistrierung für Ober- und Unterkiefer\nnach der L-Nr. 021 4 und dem Anbringen des Registrierbestecks nach L-Nr. 023 0 nur\neinmal je vorbereitete Stützstiftregistrierung abrechenbar."
+    },
+    {
+      "code": "0228",
+      "codeId": "BEL_0228",
+      "page": {
+        "start": 32,
+        "end": 32
+      },
+      "leistungsinhalt": "Bisswall bei Implantatversorgung",
+      "kurztext": "Bisswall bei Implantatversorgung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAufbringen eines Bisswalls aus Wachs oder Kunststoff auf eine Basis aus Kunststoff, Metall\noder auf eine Prothese. Der Bisswall ergänzt die genannten Basen zur Bissregistrierhilfe.\nErläuterungen zur Abrechnung\nDie L-Nr. 022 8 ist nur für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie\n(atrophierter zahnloser Kiefer) abrechenbar.\nDie L-Nr. 022 8 ist je Basis einmal abrechenbar.\nDie L-Nr. 022 8 ist für das Aufbringen eines Bisswalls aus Wachs oder Kunststoff auf eine\nBasis nach L-Nr. 021 6 je Basis einmal abrechenbar."
+    },
+    {
+      "code": "0230",
+      "codeId": "BEL_0230",
+      "page": {
+        "start": 32,
+        "end": 33
+      },
+      "leistungsinhalt": "Registrierplatte und -stift auf Basen für Stützstiftregistrierung",
+      "kurztext": "Registrierplatte und -stift auf Basen",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAnbringen des aus Registrierplatte und Registrierstift bestehenden Registrierbestecks auf\nOberkiefer- und Unterkieferbasis aus Kunststoff zur Vorbereitung einer\nStützstiftregistrierung.\nErläuterungen zur Abrechnung\nDie L-Nr. 023 0 ist für das Anbringen des Registrierbestecks einmal je vorbereitete\nStützstiftregistrierung neben den Basen nach L-Nr. 021 4 abrechenbar.\nNeben der L-Nr. 023 0 ist die L-Nr. 022 0 nur einmal je vorbereitete Stützstiftregistrierung\nabrechenbar."
+    },
+    {
+      "code": "0240",
+      "codeId": "BEL_0240",
+      "page": {
+        "start": 33,
+        "end": 33
+      },
+      "leistungsinhalt": "Übertragungskappe aus Kunststoff oder Metall",
+      "kurztext": "Übertragungskappe Kunststoff/Metall",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 024 0 ist nur einmal je Zahn abrechenbar."
+    },
+    {
+      "code": "0310",
+      "codeId": "BEL_0310",
+      "page": {
+        "start": 33,
+        "end": 34
+      },
+      "leistungsinhalt": "Provisorische Krone oder\nprovisorisches Brückenglied",
+      "kurztext": "Provisorische Krone/Brückenglied",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nProvisorische Krone, Stiftkrone oder Brückenzwischenglied ohne Armierung,\neinschließlich Pin setzen je Stumpfsegment, auch im Bereich des Kieferkammes und des an\ndie Versorgung angrenzenden Zahnes.\nSägeschnitt, Stumpfsegment beschleifen und vorbereiten.\nPräparationsgrenze darstellen .\nggf.\nausblocken, versiegeln oder lackieren, ggf. Einzelstumpf aus Superhartgips einschließlich\nReponieren.\nErläuterungen zur Abrechnung\nFür die Herstellung einer provisorischen Krone, Stiftkrone oder eines\nBrückenzwischengliedes nach L-Nr. 031 0 ist ein Formteil nach L-Nr. 032 0 nicht\nabrechenbar."
+    },
+    {
+      "code": "0320",
+      "codeId": "BEL_0320",
+      "page": {
+        "start": 34,
+        "end": 35
+      },
+      "leistungsinhalt": "Formteil",
+      "kurztext": "Formteil",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nTiefgezogenes Formteil zur Herstellung von provisorischen Kronen, Stiftkronen oder\nBrückenzwischengliedern im direkten Verfahren.\nErläuterungen zur Abrechnung\nEin Formteil nach L-Nr. 032 0 ist abrechenbar für die Herstellung von provisorischen\nBrücken. Bei der Herstellung von provisorischen Kronen und Stiftkronen ist ein Formteil\nnach L-Nr. 032 0 nur abrechenbar, wenn mindestens drei provisorische Kronen bzw.\nStiftkronen auf benachbarten Zähnen hergestellt werden.\nDie L-Nr. 032 0 ist einmal je Kieferhälfte oder Frontzahngebiet abrechenbar.\nEin Formteil nach L-Nr. 032 0 ist nicht abrechenbar für die Herstellung von provisorischen\nKronen, Stiftkronen oder von Brückenzwischengliedern nach L-Nr. 031 0."
+    },
+    {
+      "code": "1013",
+      "codeId": "BEL_1013",
+      "page": {
+        "start": 35,
+        "end": 36
+      },
+      "leistungsinhalt": "Wurzelstiftkappe",
+      "kurztext": "Wurzelstiftkappe",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossene Wurzelstiftkappe aus Metall im indirekten Verfahren.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\nangrenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nPräparationsgrenze darstellen, ggf. ausblocken, versiegeln oder lackieren.\nggf.\nEinzelstumpf aus Superhartgips oder aus Kunststoff, Frässtumpf, Stumpf für reponierte\nElemente einschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nErläuterungen zur Abrechnung\nDie L-Nr. 101 3 ist als Träger eines Kugelknopfankers abrechenbar. Das Anbringen des\nKugelknopfankers wird nach der L-Nr. 134 3 abgerechnet.\nDie L-Nr. 101 3 ist neben L-Nr. 105 0 nicht abrechenbar."
+    },
+    {
+      "code": "1021",
+      "codeId": "BEL_1021",
+      "page": {
+        "start": 36,
+        "end": 37
+      },
+      "leistungsinhalt": "Vollkrone, Metall",
+      "kurztext": "Vollkrone/Metall",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVollgusskrone aus Metall unter Verwendung eines Mittelwertartikulators.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\nangrenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nPräparationsgrenze darstellen, ggf. ausblocken, versiegeln oder lackieren.\nggf.\nEinzelstumpf aus Superhartgips oder aus Kunststoff, Frässtumpf, Stumpf für reponierte\nElemente einschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell."
+    },
+    {
+      "code": "1022",
+      "codeId": "BEL_1022",
+      "page": {
+        "start": 37,
+        "end": 38
+      },
+      "leistungsinhalt": "Teilkrone, Metall",
+      "kurztext": "Teilkrone/Metall",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossene Teilkrone aus Metall unter Verwendung eines Mittelwertartikulators.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\nangrenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nPräparationsgrenze darstellen, ggf. ausblocken, versiegeln oder lackieren.\nggf.\nEinzelstumpf aus Superhartgips oder aus Kunststoff, Frässtumpf, Stumpf für reponierte\nElemente einschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nErläuterungen zur Abrechnung\nDie Teilkrone beinhaltet die Überkupplung aller Höcker eines Zahnes.\nVerblendungen nach den L-Nrn. 160 0, 162 0 und 164 0 sind neben der\nL-Nr. 102 2 nicht abrechenbar."
+    },
+    {
+      "code": "1023",
+      "codeId": "BEL_1023",
+      "page": {
+        "start": 38,
+        "end": 39
+      },
+      "leistungsinhalt": "Flügel für Adhäsivbrücke, je Flügel",
+      "kurztext": "Flügel für Adhäsivbrücke, je Flügel",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossener Anker aus Metall für Klebebrücke, unverblendet.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\nangrenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nPräparationsgrenze darstellen, ggf. ausblocken, versiegeln oder lackieren.\nggf.\nEinzelstumpf aus Superhartgips oder aus Kunststoff, Stumpf für reponierte Elemente\neinschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nErläuterungen zur Abrechnung\nDie L-Nr. 155 0 ist für die Konditionierung eines Flügels zur Vorbereitung des adhäsiven\nBefestigens neben der L-Nr. 102 3 abrechenbar."
+    },
+    {
+      "code": "1024",
+      "codeId": "BEL_1024",
+      "page": {
+        "start": 39,
+        "end": 40
+      },
+      "leistungsinhalt": "Krone für vestibuläre Verblendung",
+      "kurztext": "Krone für vestibuläre Verblendung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossene Krone aus Metall, für vestibuläre Verblendung mit Kunststoff, Komposit oder\nKeramik unter Verwendung eines Mittelwertartikulators.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\nangrenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nPräparationsgrenze darstellen, ggf. ausblocken, versiegeln oder lackieren.\nggf.\nEinzelstumpf aus Superhartgips oder aus Kunststoff, Frässtumpf, Stumpf für reponierte\nElemente einschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nErläuterungen zur Abrechnung\nFür die vestibuläre Verblendung einer Krone nach L-Nr. 102 4 sind die L-Nrn. 160 0, 162 0\noder 164 0 abrechenbar."
+    },
+    {
+      "code": "1026",
+      "codeId": "BEL_1026",
+      "page": {
+        "start": 40,
+        "end": 41
+      },
+      "leistungsinhalt": "Vollkrone/Metall bei Implantatversorgung",
+      "kurztext": "Vollkrone/Metall bei Implantatversorgung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVollgusskrone aus Metall unter Verwendung eines Mittelwertartikulators.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\nangrenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nggf.\nPräparationsgrenze darstellen, ggf. ausblocken, versiegeln oder lackieren. Einzelstumpf aus\nSuperhartgips oder aus Kunststoff, Frässtumpf, Stumpf für reponierte Elemente\neinschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nErläuterungen zur Abrechnung\nAbrechenbar nur für eine Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie\n(zahnbegrenzte Einzelzahnlücke)."
+    },
+    {
+      "code": "1028",
+      "codeId": "BEL_1028",
+      "page": {
+        "start": 41,
+        "end": 42
+      },
+      "leistungsinhalt": "Krone für vestibuläre Verblendung bei Implantatversorgung",
+      "kurztext": "Krone für vestib. Verbl. bei Implantatversorgung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossene, unter Verwendung eines Mittelwertartikulators gestaltete Krone aus Metall für\nvestibuläre Verblendung mit Kunststoff, Komposit oder Keramik.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\nangrenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nggf.\nPräparationsgrenze darstellen ggf. ausblocken, versiegeln oder lackieren. Einzelstumpf aus\nSuperhartgips oder aus Kunststoff, Frässtumpf, Stumpf für reponierte Elemente\neinschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nErläuterungen zur Abrechnung\nAbrechenbar nur für eine Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie\n(zahnbegrenzte Einzelzahnlücke).\nFür die vestibuläre Verblendung einer Krone nach L-Nr. 102 8 sind die L-Nrn. 160 0, 162 8\noder 164 0 abrechenbar."
+    },
+    {
+      "code": "1031",
+      "codeId": "BEL_1031",
+      "page": {
+        "start": 42,
+        "end": 42
+      },
+      "leistungsinhalt": "Weitere Maßnahme bei Krone/Brückenglied:\nVorbereiten einer Krone/eines Brückengliedes zur\nAufnahme einer Halte- und/oder Stützvorrichtung",
+      "kurztext": "Vorbereiten Krone",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 103 1 ist für das Vorbereiten einer neu zu fertigenden Krone oder eines\nBrückengliedes für eine Halte- und/oder Stützvorrichtung abrechenbar.\nDie L-Nr. 103 1 ist nur einmal je Krone oder Brückenglied abrechenbar.\nNeben der L-Nr. 103 1 ist die L-Nr. 103 2 für dieselbe Krone oder dasselbe Brückenglied\nnicht abrechenbar."
+    },
+    {
+      "code": "1032",
+      "codeId": "BEL_1032",
+      "page": {
+        "start": 42,
+        "end": 43
+      },
+      "leistungsinhalt": "Weitere Maßnahme bei Krone/Brückenglied:\nKrone/Brückenglied in vorhandene Halte- und/oder\nStützvorrichtung einarbeiten",
+      "kurztext": "Krone/Brückenglied einarbeiten",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nFür das Einarbeiten einer neu angefertigten Krone oder eines Brückengliedes in eine\nvorhandene Halte- und/oder Stützvorrichtung ist die L-Nr. 103 2 einmal je Krone oder\nBrückenglied abrechenbar.\nNeben der L-Nr. 103 2 ist die L-Nr. 103 1 für dieselbe Krone oder für dasselbe Brückenglied\nnicht abrechenbar."
+    },
+    {
+      "code": "1033",
+      "codeId": "BEL_1033",
+      "page": {
+        "start": 43,
+        "end": 43
+      },
+      "leistungsinhalt": "Weitere Maßnahme bei Krone/Brückenglied:\nStiftaufbau in vorhandene Krone einarbeiten",
+      "kurztext": "Stiftaufbau einarbeiten",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossener Stiftaufbau aus Metall in eine vorhandene Krone oder Primärkrone einarbeiten."
+    },
+    {
+      "code": "1040",
+      "codeId": "BEL_1040",
+      "page": {
+        "start": 43,
+        "end": 44
+      },
+      "leistungsinhalt": "Angelieferte Modellation für Stiftaufbau gießen",
+      "kurztext": "Modellation gießen",
+      "erlaeuterungen": null
+    },
+    {
+      "code": "1050",
+      "codeId": "BEL_1050",
+      "page": {
+        "start": 44,
+        "end": 45
+      },
+      "leistungsinhalt": "Stiftaufbau",
+      "kurztext": "Stiftaufbau",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossener Stiftaufbau (bestehend aus Wurzelstift und Stumpfaufbau) aus Metall nach\nindirektem Verfahren.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\nangrenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nPräparationsgrenze darstellen, ggf. ausblocken, versiegeln oder lackieren.\nggf.\nEinzelstumpf aus Superhartgips oder aus Kunststoff, Stumpf für reponierte Elemente\neinschließlich Reponieren.\nErläuterungen zur Abrechnung\nDie L-Nr. 105 0 ist für denselben Zahn nicht neben der L-Nr. 101 3 abrechenbar."
+    },
+    {
+      "code": "1100",
+      "codeId": "BEL_1100",
+      "page": {
+        "start": 45,
+        "end": 46
+      },
+      "leistungsinhalt": "Brückenglied, Metall",
+      "kurztext": "Brückenglied",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossenes Brückenglied aus Metall unter Verwendung eines Mittelwertartikulators.\nGegossenes Brückenglied aus Metall unter Verwendung eines Mittelwertartikulators für\nTeilverblendung aus Kunststoff, Komposit oder Keramik.\nggf.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nErläuterungen zur Abrechnung\nDie L-Nr. 110 0 ist je tatsächlich gefertigter Zahneinheit abrechenbar.\nFür die vestibuläre Verblendung eines Brückengliedes nach L-Nr. 110 0 sind die\nL-Nrn. 160 0, 162 0 oder 164 0 abrechenbar."
+    },
+    {
+      "code": "1200",
+      "codeId": "BEL_1200",
+      "page": {
+        "start": 46,
+        "end": 47
+      },
+      "leistungsinhalt": "Teleskopierende Krone",
+      "kurztext": "Teleskopierende Krone",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossene Primär- und Sekundärteleskopkrone oder gegossene Primär- und\nSekundärkonuskrone aus Metall unter Verwendung eines Mittelwertartikulators,\nSekundärteleskopkrone oder Sekundärkonuskrone auch zur vestibulären Verblendung.\nUmlaufende Fräsung, Pin setzen, je Segment, auch im Bereich des Kieferkammes und des\nan die Versorgung grenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nPräparationsgrenze darstellen, ggf. ausblocken, versiegeln oder lackieren,\nFügepassung über Hilfsteil je Fügung, formschlüssige Passung zur Fügung eines\nSekundärteiles.\nggf.\nEinzelstumpf aus Superhartgips, Kunststoff oder Metall.\nFrässtumpf, Stumpf für reponierte Elemente einschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung, z. B. Sekundärteil\nan Basis.\nLötmodell.\nLotfreie Verbindung von Sekundärteil an Basis.\nGegossene Retention an Sekundärkrone zum Einarbeiten in Kunststoff- oder Metallbasis.\nErläuterungen zur Abrechnung\nFür die vestibuläre Verblendung einer Sekundärteleskopkrone oder einer\nSekundärkonuskrone sind die L-Nrn. 160 0 oder 164 0 abrechenbar."
+    },
+    {
+      "code": "1201",
+      "codeId": "BEL_1201",
+      "page": {
+        "start": 47,
+        "end": 48
+      },
+      "leistungsinhalt": "Teleskopierende Primär- oder Sekundärkrone",
+      "kurztext": "Teleskopierende Primär- oder Sekundärkrone",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossene Primär- oder Sekundärteleskopkrone oder gegossene Primär- oder\nSekundärkonuskrone aus Metall unter Verwendung eines Mittelwertartikulators,\nSekundärteleskopkrone oder Sekundärkonuskrone auch zur vestibulären Verblendung.\nUmlaufende Fräsung, Pin setzen, je Segment, auch im Bereich des Kieferkammes und des\nan die Versorgung grenzenden Zahnes.\nSägeschnitt, Segment beschleifen und vorbereiten.\nggf.\nPräparationsgrenze darstellen ggf. ausblocken, versiegeln oder lackieren,\nFügepassung über Hilfsteil je Fügung, formschlüssige Passung zur Fügung eines\nSekundärteiles.\nEinzelstumpf aus Superhartgips, Kunststoff oder Metall.\nFrässtumpf, Stumpf für reponierte Elemente einschließlich Reponieren.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung, z. B. Sekundärteil\nan Basis.\nLötmodell.\nLotfreie Verbindung von Sekundärteil an Basis.\nGegossene Retention an Sekundärkrone zum Einarbeiten in Kunststoff- oder Metallbasis.\nMehraufwand bei vorhandenem Sekundärteil.\nMehraufwand bei vorhandenem Primärteil.\nErläuterungen zur Abrechnung\nFür die vestibuläre Verblendung einer Sekundärteleskopkrone oder einer\nSekundärkonuskrone sind die L-Nrn. 160 0 oder 164 0 abrechenbar."
+    },
+    {
+      "code": "1331",
+      "codeId": "BEL_1331",
+      "page": {
+        "start": 48,
+        "end": 49
+      },
+      "leistungsinhalt": "Individuelle Verbindungsvorrichtung\n- Individuelles Geschiebe",
+      "kurztext": "Individuelles Geschiebe",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellen eines individuellen Geschiebes als Brückenteilungsgeschiebe und Einarbeiten\ndes Primär- und Sekundärteils in die Krone oder das Brückenglied.\nGeschiebefräsung.\nggf.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nLotfreie Verbindung."
+    },
+    {
+      "code": "1341",
+      "codeId": "BEL_1341",
+      "page": {
+        "start": 49,
+        "end": 50
+      },
+      "leistungsinhalt": "Konfektionierte Verbindungsvorrichtung einarbeiten\n- Geschiebe",
+      "kurztext": "Konfektions-Geschiebe",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nPrimär- und Sekundärteil eines konfektionierten Geschiebes als Brückenteilungsgeschiebe\nin die Krone oder das Brückenglied einarbeiten.\nFügepassung.\nggf.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nLotfreie Verbindung."
+    },
+    {
+      "code": "1343",
+      "codeId": "BEL_1343",
+      "page": {
+        "start": 50,
+        "end": 51
+      },
+      "leistungsinhalt": "Konfektionierte Verbindungsvorrichtung einarbeiten\n- Anker",
+      "kurztext": "Konfektions-Anker",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinarbeiten des Primärteils eines Konfektionsankers auf die Wurzelstiftkappe und\nEinarbeiten des Sekundärteils in die Kunststoff- oder Metallbasis.\nFügepassung.\nggf.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nLotfreie Verbindung.\nGegossene Retention an Sekundärteil zur Einarbeitung in Kunststoff- oder Metallbasis.\nErläuterungen zur Abrechnung\nDie L-Nr. 134 3 ist für das Anbringen des Kugelknopfankers auf der Wurzelstiftkappe nach\nL-Nr. 101 3 abrechenbar."
+    },
+    {
+      "code": "1347",
+      "codeId": "BEL_1347",
+      "page": {
+        "start": 51,
+        "end": 52
+      },
+      "leistungsinhalt": "Konfektionierte Verbindungsvorrichtung einarbeiten\n- Anker - Primär- oder Sekundärteil",
+      "kurztext": "Primär-/Sek.-Teil Konf.-Anker",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinarbeiten des erneuerungsbedürftigen Primärteils eines Konfektionsankers auf die\nWurzelstiftkappe oder Einarbeiten des erneuerungsbedürftigen Sekundärteils in die\nKunststoff- oder Metallbasis.\nFügepassung.\nggf.\nVorlötung, unterschiedliche Metalle.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLötmodell.\nLotfreie Verbindung.\nGegossene Retention an Sekundärteil zur Einarbeitung in Kunststoff- oder Metallbasis.\nErläuterungen zur Abrechnung\nDie L-Nr. 134 7 ist für das Einarbeiten des erneuerungsbedürftigen Primär- oder\nSekundärteils eines Kugelknopfankers auf der Wurzelstiftkappe nach L-Nr. 101 3\nabrechenbar.\nDie L-Nr. 134 7 ist nicht abrechenbar, wenn bei einem Sekundärteil eines Kugelknopfankers\nein Kunststofffertigteil ausgetauscht wird. Hierfür ist die L-Nr. 813 0 abrechenbar."
+    },
+    {
+      "code": "1349",
+      "codeId": "BEL_1349",
+      "page": {
+        "start": 52,
+        "end": 53
+      },
+      "leistungsinhalt": "Wiederbefestigen eines Sekundärteiles",
+      "kurztext": "Wiederbef. Sek.-Teil",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nWiederbefestigen des Sekundärteils einer Teleskopkrone oder einer Konuskrone, eines\nSekundärteiles eines Konfektionsankers oder eines konfektionierten oder individuellen\nGeschiebes bei geteilter Brücke.\nPin setzen, je Segment, auch im Bereich des Kieferkammes und des an die Versorgung\ngrenzenden Zahnes.\nSekundärteil zur Wiederbefestigung vorbereiten.\nFügepassung über Hilfsteil, je Fügung, formschlüssige Passung zur Fügung eines\nSekundärteiles.\nSekundärteil an Basis.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nggf.\nEinzelstumpf aus Superhartgips oder aus Kunststoff.\nStumpf für reponierte Elemente einschließlich Reponieren.\nLötung, einfach.\nLötmodell.\nLotfreie Verbindung.\nErläuterung zur Abrechnung\nDie L-Nr. 134 9 ist für das Wiederbefestigen eines Sekundärteiles einer Teleskopkrone oder\neiner Konuskrone, eines Sekundärteils eines Kugelknopfankers oder eines konfektionierten\noder individuellen Geschiebes bei geteilter Brücke abrechenbar."
+    },
+    {
+      "code": "1360",
+      "codeId": "BEL_1360",
+      "page": {
+        "start": 53,
+        "end": 54
+      },
+      "leistungsinhalt": "Gefrästes Lager für Schubverteilungsarm",
+      "kurztext": "Gefrästes Lager",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nFräsung eines Lagers für Schubverteilungsarm im Metall (Krone oder Brückenglied).\nErläuterungen zur Abrechnung\nEin nicht gefrästes Lager für eine Auflage eines gegossenen Halte- und/oder\nStützelementes ist nach L-Nr. 103 1 abrechenbar."
+    },
+    {
+      "code": "1370",
+      "codeId": "BEL_1370",
+      "page": {
+        "start": 54,
+        "end": 54
+      },
+      "leistungsinhalt": "Schubverteilungsarm",
+      "kurztext": "Schubverteilungsarm",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossener Schubverteilungsarm für gefrästes Lager.\nggf.\nLötung, einfach.\nLötung, aufwändig bei Vorlötung oder besonderer Qualitätsanforderung.\nLotfreie Verbindung an Metallbasis.\nErläuterungen zur Abrechnung\nDie L-Nr. 137 0 ist nur in Verbindung mit L-Nr. 136 0 oder bei vorhandenem gefrästem\nLager abrechenbar.\nDie L-Nr. 137 0 ist neben der L-Nr. 202 1 einmal abrechenbar, wenn der\nSchubverteilungsarm Teil einer Halte- und Stützvorrichtung ist."
+    },
+    {
+      "code": "1500",
+      "codeId": "BEL_1500",
+      "page": {
+        "start": 54,
+        "end": 55
+      },
+      "leistungsinhalt": "Metallverbindung nach keramischem Brand",
+      "kurztext": "Metallverbindung nach Brand",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nLötung nach keramischem Brand.\nLötmodell.\nErläuterungen zur Abrechnung\nDie L-Nr. 150 0 ist sowohl bei der Neuanfertigung als auch bei Wiederherstellung von\nkeramisch verblendeten Kronen oder Brückengliedern abrechenbar.\nDie L-Nr. 150 0 ist je Verbindungsstelle abrechenbar."
+    },
+    {
+      "code": "1550",
+      "codeId": "BEL_1550",
+      "page": {
+        "start": 55,
+        "end": 55
+      },
+      "leistungsinhalt": "Konditionierung je Zahn/Flügel",
+      "kurztext": "Konditionierung je Zahn/Flügel",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nKonditionierung einer Metallfläche zur Aufnahme einer vestibulären Verblendung mit\nKomposit oder zur Vorbereitung einer adhäsiven Befestigung.\nErläuterungen zur Abrechnung\nDie L-Nr. 155 0 ist je Flügel für Adhäsivbrücke (L-Nr. 102 3) und bei Verblendungen je\nKrone, Brückenglied oder Rückenschutzplatte nach L-Nr. 164 0 abrechenbar.\nBei der L-Nr. 404 0 – semipermanente Schiene – ist die L-Nr. 155 0 je Zahn abrechenbar."
+    },
+    {
+      "code": "1600",
+      "codeId": "BEL_1600",
+      "page": {
+        "start": 55,
+        "end": 56
+      },
+      "leistungsinhalt": "Vestibuläre Verblendung Kunststoff",
+      "kurztext": "Vestibuläre Verblendung Kunststoff",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVestibuläre Verblendung von gegossenen Metallflächen mit Kunststoff durch eine in der\nRegel dreifarbige Standardschichtung.\nErläuterungen zur Abrechnung\nDie L-Nr. 160 0 ist für die vestibuläre Verblendung einer Krone nach L-Nr. 102 4 und\nL-Nr. 102 8, einem Brückenglied nach L-Nr. 110 0, einer teleskopierenden Krone nach\nL-Nr. 120 0 und L-Nr. 120 1 oder einer Rückenschutzplatte nach L-Nr. 208 1\nabrechenbar.\nDie L-Nr. 160 0 ist im Rahmen der Wiederherstellung einer Verblendung auch für die\nHerstellung einer Facette abrechenbar."
+    },
+    {
+      "code": "1610",
+      "codeId": "BEL_1610",
+      "page": {
+        "start": 56,
+        "end": 56
+      },
+      "leistungsinhalt": "Zahnfleisch aus Kunststoff",
+      "kurztext": "Zahnfleisch Kunststoff",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellen von Zahnfleischpartien aus Kunststoff zum Ausgleich von Alveolaratrophien,\nKieferdefekten und Stellungsanomalien.\nErläuterungen zur Abrechnung\nDie L-Nr. 161 0 ist einmal je Zahn abrechenbar."
+    },
+    {
+      "code": "1620",
+      "codeId": "BEL_1620",
+      "page": {
+        "start": 56,
+        "end": 57
+      },
+      "leistungsinhalt": "Vestibuläre Verblendung Keramik",
+      "kurztext": "Vestibuläre Verblendung Keramik",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVestibuläre Verblendung von gegossenen Metallflächen mit Keramik durch eine in der\nRegel dreifarbige Standardschichtung.\nDie L-Nr. 162 0 schließt die Verblendung der Schneidekante bei den Zähnen 1-3 mit ein.\nErläuterungen zur Abrechnung\nDie L-Nr. 162 0 ist für die vestibuläre Verblendung einer Krone oder eines Brückengliedes\nabrechenbar.\nDie L-Nr. 162 0 ist im Rahmen der Wiederherstellung einer Verblendung auch für die\nHerstellung einer Facette abrechenbar."
+    },
+    {
+      "code": "1628",
+      "codeId": "BEL_1628",
+      "page": {
+        "start": 57,
+        "end": 57
+      },
+      "leistungsinhalt": "Vestibuläre Verblendung Keramik bei Implantatversorgung",
+      "kurztext": "Vestib. Verbl. Keramik bei Implantatv.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVestibuläre Verblendung einer implantatgetragenen Einzelkrone mit Keramik durch eine in\nder Regel dreifarbige Standardschichtung.\nDie L-Nr. 162 8 schließt die Verblendung der Schneidekante bei den Zähnen 1-3 mit ein.\nErläuterungen zur Abrechnung\nDie L-Nr. 162 8 ist für die vestibuläre Verblendung einer Krone nach\nL-Nr. 102 8 im Rahmen einer Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie\n(zahnbegrenzte Einzelzahnlücke) abrechenbar.\nDie L-Nr. 162 8 ist im Rahmen der Wiederherstellung einer Verblendung auch für die\nHerstellung einer Facette abrechenbar."
+    },
+    {
+      "code": "1630",
+      "codeId": "BEL_1630",
+      "page": {
+        "start": 57,
+        "end": 58
+      },
+      "leistungsinhalt": "Zahnfleisch aus Keramik",
+      "kurztext": "Zahnfleisch Keramik",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellen von Zahnfleischpartien aus Keramik zum Ausgleich von Alveolaratrophien,\nKieferdefekten und Stellungsanomalien in Verbindung mit einer Verblendung.\nErläuterungen zur Abrechnung\nDie L-Nr. 163 0 ist je Zahn, auch für Wurzelpontic, einmal abrechenbar."
+    },
+    {
+      "code": "1638",
+      "codeId": "BEL_1638",
+      "page": {
+        "start": 58,
+        "end": 58
+      },
+      "leistungsinhalt": "Zahnfleisch aus Keramik bei Implantatversorgung",
+      "kurztext": "Zahnfleisch Keramik bei Implantatv.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellen von Zahnfleischpartien aus Keramik zum Ausgleich von Alveolaratrophien,\nKieferdefekten und Stellungsanomalien in Verbindung mit einer Verblendung.\nErläuterungen zur Abrechnung\nDie L-Nr. 163 8 ist für das Herstellen von Zahnfleischpartien bei einer Krone nach\nL-Nr. 102 8 im Rahmen einer Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie\n(zahnbegrenzte Einzelzahnlücke) abrechenbar.\nDie L-Nr. 163 8 ist je Zahn einmal abrechenbar."
+    },
+    {
+      "code": "1640",
+      "codeId": "BEL_1640",
+      "page": {
+        "start": 58,
+        "end": 59
+      },
+      "leistungsinhalt": "Vestibuläre Verblendung Komposit",
+      "kurztext": "Vestibuläre Verblendung Komposit",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVestibuläre Verblendung von gegossenen Metallflächen mit Komposit durch eine in der\nRegel dreifarbige Standardschichtung.\nDie L-Nr. 164 0 schließt die Verblendung der Schneidekante bei den Zähnen 1-3 mit ein.\nErläuterungen zur Abrechnung\nDie L-Nr. 164 0 ist für die vestibuläre Verblendung einer Krone nach L-Nr. 102 4 und\nL-Nr. 102 8, einem Brückenglied nach L-Nr. 110 0, einer teleskopierenden Krone nach L-Nr.\n120 0 und L-Nr. 120 1 oder einer Rückenschutzplatte nach L-Nr. 208 1 abrechenbar.\nDie L-Nr. 164 0 ist im Rahmen der Wiederherstellung einer Verblendung auch für die\nHerstellung einer Facette abrechenbar."
+    },
+    {
+      "code": "1650",
+      "codeId": "BEL_1650",
+      "page": {
+        "start": 59,
+        "end": 60
+      },
+      "leistungsinhalt": "Zahnfleisch aus Komposit",
+      "kurztext": "Zahnfleisch Komposit",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellen von Zahnfleischpartien aus Komposit zum Ausgleich von Alveolaratrophien,\nKieferdefekten und Stellungsanomalien.\nErläuterungen zur Abrechnung\nDie L-Nr. 165 0 ist einmal je Zahn, auch für Wurzelpontic, abrechenbar."
+    },
+    {
+      "code": "2010",
+      "codeId": "BEL_2010",
+      "page": {
+        "start": 60,
+        "end": 60
+      },
+      "leistungsinhalt": "Metallbasis",
+      "kurztext": "Metallbasis",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis einer Modellgussprothese für eine Ober- oder Unterkieferprothese.\nggf. Kragenfassung.\nDuplikatmodell aus Einbettmasse.\nErläuterungen zur Abrechnung\nKann bei einer Unterkiefer-Modellgussprothese kein Sublingualbügel angefertigt werden,\nsind neben der L-Nr. 201 0 die L-Nr. 202 1 (fortlaufende Klammer), die L-Nrn. 202 5 und\n208 3 abrechenbar.\nFür die Herstellung eines gegossenen Retentionsgitters oder eines gegossenen\nRetentionsbügels bei einer schleimhautgetragenen Deckprothese ist die L-Nr. 201 0\nberechenbar."
+    },
+    {
+      "code": "2021",
+      "codeId": "BEL_2021",
+      "page": {
+        "start": 60,
+        "end": 61
+      },
+      "leistungsinhalt": "Einarmige gegossene Halte-, Stütz- oder Verbindungselemente",
+      "kurztext": "Einarmige gegossene Haltevorrichtung",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nHierzu zählen die einarmige Klammer, die Inlayklammer, die fortlaufende Klammer (je Zahn)\nund die Bonyhardklammer."
+    },
+    {
+      "code": "2025",
+      "codeId": "BEL_2025",
+      "page": {
+        "start": 61,
+        "end": 61
+      },
+      "leistungsinhalt": "Einarmige gegossene Halte-, Stütz- oder Verbindungselemente\n- Kralle",
+      "kurztext": "Kralle",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBei der Kralle handelt es sich um ein einarmiges, gegossenes Halteelement, das einen\nFrontzahn von mesial oder distal umfasst und sich inzisal abstützt.\nErläuterung zur Abrechnung\nDie L-Nr. 202 5 ist je Kralle einmal abrechenbar."
+    },
+    {
+      "code": "2026",
+      "codeId": "BEL_2026",
+      "page": {
+        "start": 61,
+        "end": 62
+      },
+      "leistungsinhalt": "Einarmige gegossene Halte-, Stütz- oder Verbindungselemente\n- Ney-Stiel",
+      "kurztext": "Ney-Stiel",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossenes Element an einer Klammer oder einer teleskopierenden Krone für eine\nsattelferne Verbindung mit der Modellgussbasis.\nDer Ney-Stiel ist ein kleiner Verbinder zwischen Modellgussbasis und Halte- oder\nStützelement oder Teleskopkrone, der nicht vom Sattel ausgeht.\nErläuterung zur Abrechnung\nDie –Nr. 202 6 ist bei sattelferner Anbringung einer Klammer oder einer teleskopierenden\nKrone abrechenbar."
+    },
+    {
+      "code": "2027",
+      "codeId": "BEL_2027",
+      "page": {
+        "start": 62,
+        "end": 62
+      },
+      "leistungsinhalt": "Einarmige gegossene Halte-, Stütz- oder Verbindungselemente\n- Auflage",
+      "kurztext": "Auflage",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nStützelement\nErläuterungen zur Abrechnung\nDie L-Nr. 202 7 ist nur abrechenbar, wenn die gegossene Auflage nicht\nBestandteil einer Halte- und Stützvorrichtung ist."
+    },
+    {
+      "code": "2028",
+      "codeId": "BEL_2028",
+      "page": {
+        "start": 62,
+        "end": 63
+      },
+      "leistungsinhalt": "Einarmige gegossene Halte-, Stütz- oder Verbindungselemente\n- Umgehungsbügel bei Diastema",
+      "kurztext": "Umgehungsbügel bei Diastema",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nErgänzendes gegossenes Element, das zur Verbindung von Metallbasisteilen zur\nUmgehung eines Diastemas dient.\nErläuterungen zur Abrechnung\nDie L-Nr. 202 8 ist auch bei festsitzendem Zahnersatz abrechenbar."
+    },
+    {
+      "code": "2031",
+      "codeId": "BEL_2031",
+      "page": {
+        "start": 63,
+        "end": 63
+      },
+      "leistungsinhalt": "Zweiarmige gegossene Haltevorrichtung",
+      "kurztext": "Zweiarmige gegossene Haltevorrichtung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHierzu zählen die zweiarmige Klammer, die Approximal-, Ring-, Rücklauf-,\nBonyhardklammer mit Gegenlager sowie die zwei Zähne umfassende\nDoppelbogenklammer."
+    },
+    {
+      "code": "2041",
+      "codeId": "BEL_2041",
+      "page": {
+        "start": 63,
+        "end": 64
+      },
+      "leistungsinhalt": "Zweiarmige gegossene Halte- und Stützvorrichtung mit Auflage",
+      "kurztext": "Zweiarmige gegossene Halte- und Stützvorrichtung/ Auflage",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHierzu zählen die zweiarmige Klammer, die Approximal-, Ring-, Rücklauf-,\nBonyhardklammer mit Gegenlager sowie die Überwurfklammer jeweils mit Auflage."
+    },
+    {
+      "code": "2050",
+      "codeId": "BEL_2050",
+      "page": {
+        "start": 64,
+        "end": 65
+      },
+      "leistungsinhalt": "Bonwillklammer",
+      "kurztext": "Bonwillklammer",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 202 6 ist Bestandteil der L-Nr. 205 0.\nErläuterungen zur Abrechnung\nIm Zusammenhang mit der L-Nr. 205 0 ist die L-Nr. 202 6 nicht abrechenbar."
+    },
+    {
+      "code": "2081",
+      "codeId": "BEL_2081",
+      "page": {
+        "start": 65,
+        "end": 66
+      },
+      "leistungsinhalt": "Rückenschutzplatte",
+      "kurztext": "Rückenschutzplatte",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossene Rückenschutzplatte für Verblendung, auch mit Kaufläche.\nErläuterungen zur Abrechnung\nDie L-Nr. 208 1 ist bei ungünstigen Biss- und Okklusionsverhältnissen, einzeln stehenden\nZähnen oder über einem Sekundärteil eines Kugelknopfankers abrechenbar.\nNeben der L-Nr. 208 1 sind die L-Nrn. 302 0, 303 0 und 362 0 nicht abrechenbar."
+    },
+    {
+      "code": "2082",
+      "codeId": "BEL_2082",
+      "page": {
+        "start": 66,
+        "end": 66
+      },
+      "leistungsinhalt": "Metallzahn, gegossen",
+      "kurztext": "Metallzahn, gegossen",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 208 2 ist bei ungünstigen Biss- und Okklusionsverhältnissen oder für die\nVersorgung von verengten Einzelzahnlücken oder über einem Sekundärteil eines\nKugelknopfankers abrechenbar.\nNeben der L-Nr. 208 2 sind die L-Nrn. 302 0, 303 0 und 362 0 für den Metallzahn nicht\nabrechenbar."
+    },
+    {
+      "code": "2083",
+      "codeId": "BEL_2083",
+      "page": {
+        "start": 66,
+        "end": 67
+      },
+      "leistungsinhalt": "Metallkaufläche, gegossen",
+      "kurztext": "Metallkaufläche, gegossen",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 208 3 ist bei ungünstigen Biss- und Okklusionsverhältnissen oder über einem\nSekundärteil eines Kugelknopfankers abrechenbar.\nNeben der L-Nr. 208 3 sind die L-Nrn. 302 0, 303 0, und 362 0 für die Metallkaufläche nicht\nabrechenbar."
+    },
+    {
+      "code": "2100",
+      "codeId": "BEL_2100",
+      "page": {
+        "start": 67,
+        "end": 67
+      },
+      "leistungsinhalt": "Lösungshilfe für Kombinationszahnersatz",
+      "kurztext": "Lösungshilfe",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGegossene Vorrichtung, die der Lösung eines Kombinationszahnersatzes durch den\nPatienten dient.\nEine gebogene Lösungshilfe für Kombinationszahnersatz ist nach L-Nr. 380 0 abrechenbar."
+    },
+    {
+      "code": "2110",
+      "codeId": "BEL_2110",
+      "page": {
+        "start": 67,
+        "end": 68
+      },
+      "leistungsinhalt": "Unterfütterbarer Abschlussrand einer\nOberkiefer-Metallbasis",
+      "kurztext": "Unterfütterbarer Abschlussrand",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 211 0 ist bei einer Totalprothese oder bei einer schleimhautgetragenen\nDeckprothese abrechenbar."
+    },
+    {
+      "code": "2120",
+      "codeId": "BEL_2120",
+      "page": {
+        "start": 68,
+        "end": 69
+      },
+      "leistungsinhalt": "Zuschlag für einzeln gegossene Klammer(n)",
+      "kurztext": "Zuschlag einzelne gegossene Klammer",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nKlammer einzeln gegossen, ggf. einschließlich Duplikatmodell aus Einbettmasse.\nErläuterungen zur Abrechnung\nDie L-Nr. 212 0 ist bei einer wiederherzustellenden Modellgussprothese je Prothese oder\nbei der Herstellung einer Kunststoffprothese mit gegossenen Halte- und/oder\nStützelementen je Prothese einmal abrechenbar."
+    },
+    {
+      "code": "3010",
+      "codeId": "BEL_3010",
+      "page": {
+        "start": 69,
+        "end": 69
+      },
+      "leistungsinhalt": "Aufstellung Grundeinheit, je Kiefer",
+      "kurztext": "Aufstellung, Grundeinheit",
+      "erlaeuterungen": "Erläuterung zur Abrechnung\nDie L-Nr. 301 0 ist als Grundeinheit für die Aufstellung von Konfektionszähnen auf\nWachsbasis, Kunststoffbasis oder Metallbasis unter Verwendung eines Mittelwertartikulators\nabrechenbar."
+    },
+    {
+      "code": "3018",
+      "codeId": "BEL_3018",
+      "page": {
+        "start": 69,
+        "end": 70
+      },
+      "leistungsinhalt": "Aufstellung Grundeinheit, je Kiefer bei Implantatversorgung",
+      "kurztext": "Aufstellung Grundeinheit bei Implantatv.",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 301 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter\nzahnloser Kiefer) abrechenbar.\nDie L-Nr. 301 8 ist als Grundeinheit für die Aufstellung von Konfektionszähnen auf\nWachsbasis, Kunststoffbasis oder Metallbasis unter Verwendung eines Mittelwertartikulators\nabrechenbar."
+    },
+    {
+      "code": "3020",
+      "codeId": "BEL_3020",
+      "page": {
+        "start": 70,
+        "end": 71
+      },
+      "leistungsinhalt": "Aufstellung auf Wachs- oder Kunststoffbasis, je Zahn",
+      "kurztext": "Aufstellen Wachs oder Kunststoff je Zahn",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAufstellung eines Konfektionszahnes auf Wachsbasis oder Kunststoffbasis.\nErläuterungen zur Abrechnung\nDie L-Nr. 302 0 ist entsprechend der Zahl der aufgestellten konfektionierten Zähne\nabrechenbar.\nL-Nr. 302 0 ist erneut abrechenbar, wenn eine weitere Bissnahme erforderlich ist."
+    },
+    {
+      "code": "3028",
+      "codeId": "BEL_3028",
+      "page": {
+        "start": 71,
+        "end": 72
+      },
+      "leistungsinhalt": "Aufstellung auf Wachs- oder Kunststoffbasis, je Zahn\nbei Implantatversorgung",
+      "kurztext": "Aufst. Wachs- oder Kunststoff je Zahn bei Implantatv.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAufstellung eines Konfektionszahnes auf Wachsbasis oder Kunststoffbasis.\nErläuterungen zur Abrechnung\nDie L-Nr. 302 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter\nzahnloser Kiefer) abrechenbar.\nDie L-Nr. 302 8 ist entsprechend der Zahl der aufgestellten konfektionierten Zähne\nabrechenbar.\nL-Nr. 302 8 ist erneut abrechenbar, wenn eine weitere Bissnahme erforderlich ist."
+    },
+    {
+      "code": "3030",
+      "codeId": "BEL_3030",
+      "page": {
+        "start": 72,
+        "end": 73
+      },
+      "leistungsinhalt": "Aufstellung auf Metallbasis, je Zahn",
+      "kurztext": "Aufstellen Metall je Zahn",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAufstellung eines Konfektionszahnes auf einer Metallbasis.\nErläuterungen zur Abrechnung\nDie L-Nr. 303 0 ist entsprechend der Zahl der aufgestellten konfektionierten Zähne\nabrechenbar.\nDie L-Nr. 303 0 ist erneut abrechenbar, wenn eine weitere Bissnahme erforderlich ist."
+    },
+    {
+      "code": "3410",
+      "codeId": "BEL_3410",
+      "page": {
+        "start": 73,
+        "end": 74
+      },
+      "leistungsinhalt": "Übertragung einer Aufstellung auf Metallbasis,\nje Zahn",
+      "kurztext": "Übertragung je Zahn",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nÜbertragung einer auf einer Wachs- oder Kunststoffbasis erfolgten Aufstellung auf eine\nMetallbasis.\nErläuterungen zur Abrechnung\nNeben der L-Nr. 341 0 ist für denselben Konfektionszahn die L-Nr. 303 0 nicht abrechenbar."
+    },
+    {
+      "code": "3610",
+      "codeId": "BEL_3610",
+      "page": {
+        "start": 74,
+        "end": 75
+      },
+      "leistungsinhalt": "Fertigstellung einer Prothese, Grundeinheit,\nje Kiefer",
+      "kurztext": "Fertigstellung Grundeinheit",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGrundeinheit der Fertigstellung einer Prothese mit Kunststoff- oder Metallbasis unter\nVerwendung eines Mittelwertartikulators, einschließlich des ggf. notwendigen Abdeckens\nvon Kieferteilen und/oder des Vornehmens von Radierungen."
+    },
+    {
+      "code": "3618",
+      "codeId": "BEL_3618",
+      "page": {
+        "start": 75,
+        "end": 76
+      },
+      "leistungsinhalt": "Fertigstellung einer Prothese, Grundeinheit,\nje Kiefer bei Implantatversorgung",
+      "kurztext": "Fertigst. Grundeinheit bei Implantatv.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGrundeinheit der Fertigstellung einer Prothese mit Kunststoff- oder Metallbasis unter\nVerwendung eines Mittelwertartikulators, einschließlich des ggf. notwendigen Abdeckens\nvon Kieferteilen und/oder des Vornehmens von Radierungen.\nErläuterungen zur Abrechnung\nDie L-Nr. 361 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter\nzahnloser Kiefer) abrechenbar."
+    },
+    {
+      "code": "3620",
+      "codeId": "BEL_3620",
+      "page": {
+        "start": 76,
+        "end": 76
+      },
+      "leistungsinhalt": "Fertigstellung einer Prothese, je Zahn",
+      "kurztext": "Fertigstellen je Zahn",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 362 0 ist entsprechend der Zahl der aufgestellten konfektionierten Zähne\nabrechenbar."
+    },
+    {
+      "code": "3628",
+      "codeId": "BEL_3628",
+      "page": {
+        "start": 76,
+        "end": 77
+      },
+      "leistungsinhalt": "Fertigstellung einer Prothese, je Zahn bei Implantatversorgung",
+      "kurztext": "Fertigstellen je Zahn bei Implantatv.",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 362 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter\nzahnloser Kiefer) abrechenbar.\nDie L-Nr. 362 8 ist entsprechend der Zahl der aufgestellten Konfektionszähne abrechenbar."
+    },
+    {
+      "code": "3800",
+      "codeId": "BEL_3800",
+      "page": {
+        "start": 77,
+        "end": 77
+      },
+      "leistungsinhalt": "Einfache gebogene Halte- / Stützvorrichtung",
+      "kurztext": "Einfache gebogene Halte- /Stützvorrichtung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHierzu zählen die Einarmige Klammer, Inlayklammer, Interdental-Knopfklammer,\nApproximalklammer, Auflage (nicht Kralle), Bonyhardklammer ohne Auflage, gebogene\nLösungshilfe für Kombinationszahnersatz."
+    },
+    {
+      "code": "3805",
+      "codeId": "BEL_3805",
+      "page": {
+        "start": 77,
+        "end": 77
+      },
+      "leistungsinhalt": "Einfache gebogene Halte- und/oder Stützvorrichtung\n- Gebogene Auflage",
+      "kurztext": "Gebogene Auflage",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHierzu zählt die einfache gebogene Auflage (nicht Kralle)."
+    },
+    {
+      "code": "3810",
+      "codeId": "BEL_3810",
+      "page": {
+        "start": 77,
+        "end": 78
+      },
+      "leistungsinhalt": "Sonstige gebogene Halte- und/oder Stützvorrichtung",
+      "kurztext": "Sonstige gebogene Halte- und/oder Stützvorrichtung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHierzu zählen die Doppelarmklammer, Doppelarmklammer mit Auflage, Bonyhardklammer\nmit Gegenlager, Bonyhardklammer mit Gegenlager und Auflage, Überwurfklammer,\nDoppelbogenklammer mit Gegenlager, Doppelbogenklammer mit Gegenlager und Auflage."
+    },
+    {
+      "code": "3821",
+      "codeId": "BEL_3821",
+      "page": {
+        "start": 78,
+        "end": 78
+      },
+      "leistungsinhalt": "Verarbeitung von Weichkunststoff",
+      "kurztext": "Weichkunststoff",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVerarbeitung von Weichkunststoff bei der Herstellung oder Wiederherstellung der Basis\neiner Prothese, eines Basisteils einer Prothese oder bei der Herstellung eines\nAufbissbehelfs.\nErläuterungen zur Abrechnung\nDie L-Nr. 382 1 ist je Prothese oder je Aufbissbehelf einmal abrechenbar."
+    },
+    {
+      "code": "3822",
+      "codeId": "BEL_3822",
+      "page": {
+        "start": 78,
+        "end": 79
+      },
+      "leistungsinhalt": "Verarbeitung von Sonderkunststoff",
+      "kurztext": "Sonderkunststoff",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVerarbeitung von Sonderkunststoff bei der Herstellung oder Wiederherstellung einer\nProthese oder eines Aufbissbehelfs.\nErläuterungen zur Abrechnung\nDie L-Nr. 382 2 ist nur bei zahnärztlicher Indikationsstellung abrechenbar.\nDie L-Nr. 382 2 ist einmal je Prothese oder je Aufbissbehelf abrechenbar."
+    },
+    {
+      "code": "3830",
+      "codeId": "BEL_3830",
+      "page": {
+        "start": 79,
+        "end": 79
+      },
+      "leistungsinhalt": "Herstellung eines Zahnes aus zahnfarbenem\nKunststoff oder Komposit",
+      "kurztext": "Zahn zahnfarben hergestellt",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellen eines Zahnes aus zahnfarbenem Kunststoff oder Komposit.\nErläuterungen zur Abrechnung\nDie L-Nr. 383 0 ist nur abrechnungsfähig, wenn aus anatomischen Gründen kein\nKonfektionszahn verwendbar ist.\nNeben der L-Nr. 383 0 sind für denselben Zahn die L-Nrn. 302 0, 302 8, 303 0, 341 0 und\n362 0 und 362 8 nicht abrechenbar."
+    },
+    {
+      "code": "3840",
+      "codeId": "BEL_3840",
+      "page": {
+        "start": 79,
+        "end": 80
+      },
+      "leistungsinhalt": "Hinterlegen eines Zahnes mit zahnfarbenem\nKunststoff",
+      "kurztext": "Zahn zahnfarben hinterlegt",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHinterlegen eines Konfektionszahnes mit zahnfarbenem Kunststoff.\nErläuterungen zur Abrechnung\nDie L-Nr. 384 0 ist im Oberkiefer bis einschließlich Zahn 5, im Unterkiefer bis einschließlich\nZahn 4 abrechenbar."
+    },
+    {
+      "code": "4010",
+      "codeId": "BEL_4010",
+      "page": {
+        "start": 80,
+        "end": 81
+      },
+      "leistungsinhalt": "Aufbissbehelf mit adjustierter Oberfläche",
+      "kurztext": "Aufbissbehelf m. adj. Oberfläche",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGrundleistungen für die Herstellung eines Aufbissbehelfs mit adjustierter Oberfläche unter\nVerwendung eines Mittelwertartikulators.\nHierzu zählen Aufbissschiene, Knirscherschiene und Bissführungsplatte.\nErläuterungen zur Abrechnung\nWerden an einem Aufbissbehelf in zahnlosen Kieferabschnitten konfektionierte Zähne\nangebracht, sind die L-Nrn. 302 0 und 362 0, nicht jedoch die L-Nrn. 301 0 oder 361 0\nabrechenbar. Sind Halte- und/oder Stützvorrichtungen sowie weitere Funktionsaufbisse\nerforderlich, können diese zusätzlich abgerechnet werden."
+    },
+    {
+      "code": "4020",
+      "codeId": "BEL_4020",
+      "page": {
+        "start": 81,
+        "end": 82
+      },
+      "leistungsinhalt": "Aufbissbehelf ohne adjustierte Oberfläche",
+      "kurztext": "Aufbissbehelf o. adj. Oberfläche",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGrundleistungen für die Herstellung eines Aufbissbehelfs ohne adjustierte Oberfläche.\nHierzu zählen Miniplastschiene, Retentionsschiene und Verband-/Verschlussplatte\nErläuterungen zur Abrechnung\nWerden an einem Aufbissbehelf in zahnlosen Kieferabschnitten konfektionierte Zähne\nangebracht, sind die L-Nrn. 302 0 und 362 0, nicht jedoch die L-Nrn. 301 0 oder 361 0\nabrechenbar. Sind Halte- und/oder Stützvorrichtungen erforderlich, können diese zusätzlich\nabgerechnet werden."
+    },
+    {
+      "code": "4030",
+      "codeId": "BEL_4030",
+      "page": {
+        "start": 82,
+        "end": 82
+      },
+      "leistungsinhalt": "Umarbeiten einer vorhandenen Prothese oder eines\nAufbissbehelfs zum Aufbissbehelf mit adjustierter Oberfläche",
+      "kurztext": "Umarbeiten zum Aufbissbehelf",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\n- Prothese umarbeiten zum adjustierten Aufbissbehelf,\n- Adjustieren eines vorhandenen nichtadjustierten Aufbissbehelfs,\n- Neu adjustieren eines vorhandenen adjustierten Aufbissbehelfs\njeweils unter Verwendung eines Mittelwertartikulators.\nErläuterungen zur Abrechnung\nSind Halte- und/oder Stützvorrichtungen sowie weitere Funktionsaufbisse erforderlich,\nkönnen diese zusätzlich abgerechnet werden.\nDie L-Nr. 403 0 ist je Aufbissbehelf abrechenbar.\nErneuerungen und Erweiterungen von Prothesenzähnen an der zum Aufbissbehelf\numgearbeiteten Prothese sind mit der L-Nr. 403 0 nicht abrechenbar."
+    },
+    {
+      "code": "4040",
+      "codeId": "BEL_4040",
+      "page": {
+        "start": 82,
+        "end": 83
+      },
+      "leistungsinhalt": "Semipermanente Schiene aus Metall, je Zahn",
+      "kurztext": "Semipermanente Schiene aus Metall, je Zahn",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGrundleistungen für die Herstellung einer gegossenen oder gebogenen semipermanenten\nRetentionsschiene als Retainer in der KFO.\nErläuterung zur Abrechnung\nDie alleinige Verwendung von Drähten, auch verseilt, zur Herstellung einer\nRetentionsschiene erfüllt nicht den Leistungsinhalt der L-Nr. 404 0."
+    },
+    {
+      "code": "5010",
+      "codeId": "BEL_5010",
+      "page": {
+        "start": 83,
+        "end": 83
+      },
+      "leistungsinhalt": "Basen für eine Unterkieferprotrusionsschiene",
+      "kurztext": "Basen UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellung je einer Kunststoffbasis im Ober- und Unterkiefer mit horizontalen Stütz- und\nGleitzonen aus Kunststoff.\nErläuterung zur Abrechnung\nDie L-Nr. 501 0 ist je Unterkieferprotrusionsschiene einmal abrechenbar."
+    },
+    {
+      "code": "5020",
+      "codeId": "BEL_5020",
+      "page": {
+        "start": 83,
+        "end": 84
+      },
+      "leistungsinhalt": "Vestibuläre Protrusionsgleitflächen\nUnterkieferprotrusionsschiene",
+      "kurztext": "Vestibuläre Protrusionsgleitflächen UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinarbeiten von zwei vestibulären Protrusionsgleitflächen im Seitenzahnbereich mit\nparallelen Gleitflächen im Ober- und Unterkiefer.\nErläuterung zur Abrechnung\nDie L-Nr. 502 0 ist je Unterkieferprotrusionsschiene zweimal abrechenbar."
+    },
+    {
+      "code": "5100",
+      "codeId": "BEL_5100",
+      "page": {
+        "start": 84,
+        "end": 84
+      },
+      "leistungsinhalt": "Befestigungselement Protrusionselement\nfür Unterkieferprotrusionsschiene",
+      "kurztext": "Befestigungselement Protrusionselement UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinarbeiten eines individuellen oder konfektionierten Elements in eine Basis der\nUnterkieferprotrusionsschiene zur Aufnahme eines Protrusionselements.\nErläuterung zur Abrechnung\nDie L-Nr. 510 0 ist je Unterkieferprotrusionsschiene bis zu viermal abrechenbar.\nDie L-Nr. 510 0 ist auch für die Erneuerung eines Befestigungselements abrechenbar."
+    },
+    {
+      "code": "5110",
+      "codeId": "BEL_5110",
+      "page": {
+        "start": 84,
+        "end": 85
+      },
+      "leistungsinhalt": "Montage Protrusionselement\nfür Unterkieferprotrusionsschiene",
+      "kurztext": "Protrusionselement UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nMontage und Justierung eines konfektionierten Protrusionselements an bis zu zwei\nBefestigungselementen nach L-Nr. 510 0. Das Protrusionselement nach der L-Nr. 511 0\nmuss eine Justierung der Protrusion mindestens in Millimeterschritten ermöglichen.\nErläuterung zur Abrechnung\nDie L-Nr. 511 0 ist je Unterkieferprotrusionsschiene bis zu zweimal abrechenbar.\nDie L-Nr. 511 0 ist auch für die Erneuerung eines Protrusionselements abrechenbar."
+    },
+    {
+      "code": "5200",
+      "codeId": "BEL_5200",
+      "page": {
+        "start": 85,
+        "end": 85
+      },
+      "leistungsinhalt": "Befestigungselement Mundöffnungsbegrenzung\nfür Unterkieferprotrusionsschiene",
+      "kurztext": "Befestigungselement Mundöffnungsbegrenzung UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinarbeiten eines individuellen oder konfektionierten Befestigungselements zur Aufnahme\neines Elements zur Begrenzung der Mundöffnung in die Basis einer\nUnterkieferprotrusionsschiene.\nErläuterung zur Abrechnung\nDie L-Nr. 520 0 ist je Unterkieferprotrusionsschiene viermal abrechenbar.\nDie L-Nr. 520 0 ist auch für die Erneuerung eines Befestigungselements abrechenbar."
+    },
+    {
+      "code": "5210",
+      "codeId": "BEL_5210",
+      "page": {
+        "start": 85,
+        "end": 86
+      },
+      "leistungsinhalt": "Einfaches gebogenes Halteelement\nfür Unterkieferprotrusionsschiene",
+      "kurztext": "Einfaches gebogenes Halteelement UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinfache gebogene Halte-/Stützvorrichtung Unterkieferprotrusionsschiene.\nErläuterung zur Abrechnung\nDie L-Nr. 521 0 ist auch für die Erneuerung eines Halteelements abrechenbar."
+    },
+    {
+      "code": "7010",
+      "codeId": "BEL_7010",
+      "page": {
+        "start": 86,
+        "end": 86
+      },
+      "leistungsinhalt": "Basis für Einzelkiefergerät",
+      "kurztext": "Basis für Einzelkiefergerät",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis für Einzelkiefergerät aus Kunststoff oder Metall für verschiedene Arten\nkieferorthopädischer Apparaturen (z.B. Crozat-Gerät), einschließlich Radieren nach System\nund Abdecken von Kieferteilen."
+    },
+    {
+      "code": "7020",
+      "codeId": "BEL_7020",
+      "page": {
+        "start": 86,
+        "end": 87
+      },
+      "leistungsinhalt": "Basis für bimaxilläres Gerät",
+      "kurztext": "Basis bimaxilläres Gerät",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis für bimaxilläres Gerät aus Kunststoff für verschiedene Arten kieferorthopädischer\nApparaturen, auch elastisch, einschließlich Radieren nach System und Abdecken von\nKieferteilen.\nErläuterungen zur Abrechnung\nBei horizontaler Teilung ist statt der L-Nr. 702 0 zweimal die L-Nr. 701 0 abrechenbar.\nDie L-Nr. 702 0 ist auch für einen individuell gefertigten Positioner abrechenbar."
+    },
+    {
+      "code": "7030",
+      "codeId": "BEL_7030",
+      "page": {
+        "start": 87,
+        "end": 87
+      },
+      "leistungsinhalt": "Schiefe Ebene",
+      "kurztext": "Schiefe Ebene",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis aus Kunststoff und Herstellung einer schiefen Ebene.\nErläuterungen zur Abrechnung\nWird eine schiefe Ebene in Verbindung mit einer Basis für Einzelkiefergerät nach\nL-Nr. 701 0 gefertigt, so ist sie nicht nach L-Nr. 703 0, sondern nach L-Nr. 710 0\nabrechenbar."
+    },
+    {
+      "code": "7040",
+      "codeId": "BEL_7040",
+      "page": {
+        "start": 87,
+        "end": 88
+      },
+      "leistungsinhalt": "Vorhofplatte",
+      "kurztext": "Vorhofplatte",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt:\nIndividuell gefertigte Mundvorhofplatte."
+    },
+    {
+      "code": "7050",
+      "codeId": "BEL_7050",
+      "page": {
+        "start": 88,
+        "end": 89
+      },
+      "leistungsinhalt": "Kinnkappe",
+      "kurztext": "Kinnkappe",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nIndividuell gefertigte Kinnkappe für extraorale Verankerung in der Kieferorthopädie\neinschließlich Kinnmodell und Befestigungshaken.\nErläuterungen zur Abrechnung\nDie L-Nr. 705 0 ist auch für die Versorgung von Traumata (Kieferbruch) abrechenbar."
+    },
+    {
+      "code": "7100",
+      "codeId": "BEL_7100",
+      "page": {
+        "start": 89,
+        "end": 89
+      },
+      "leistungsinhalt": "Aufbiss",
+      "kurztext": "Aufbiss",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAufbiss, aus Hart- und/oder Weichkunststoff, auch als Vor- oder Rückbiss.\nErläuterungen zur Abrechnung\nDie L-Nr. 710 0 ist einmal je Kieferhälfte oder Frontzahngebiet abrechenbar."
+    },
+    {
+      "code": "7110",
+      "codeId": "BEL_7110",
+      "page": {
+        "start": 89,
+        "end": 90
+      },
+      "leistungsinhalt": "Abschirmelement",
+      "kurztext": "Abschirmelement",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellung eines Abschirmelementes wie z.B.\n- Zungengitter,\n- Kunststoffschild,\n- Kunststoffpelotte.\nErläuterungen zur Abrechnung\nDie L-Nr. 711 0 ist einmal je Kieferhälfte oder Frontzahngebiet abrechenbar."
+    },
+    {
+      "code": "7121",
+      "codeId": "BEL_7121",
+      "page": {
+        "start": 90,
+        "end": 91
+      },
+      "leistungsinhalt": "Verarbeitung von Weichkunststoff",
+      "kurztext": "Weichkunststoff (KFO)",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVerarbeitung von Weichkunststoff bei der Herstellung oder Wiederherstellung eines\nPositioners, von Aufbissen oder von Abschirmelementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 712 1 ist je Kiefer einmal abrechenbar.\nDie L-Nr. 712 1 ist bei der Verwendung von elastischen Fertigteilen neben der L-Nr. 710 0\nnicht abrechenbar."
+    },
+    {
+      "code": "7122",
+      "codeId": "BEL_7122",
+      "page": {
+        "start": 91,
+        "end": 91
+      },
+      "leistungsinhalt": "Verarbeitung von Sonderkunststoff",
+      "kurztext": "Sonderkunststoff (KFO)",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nVerarbeitung von Sonderkunststoff bei der Herstellung oder Wiederherstellung eines KFO-\nGerätes, FKO-Gerätes oder von Aufbissen und Abschirmelementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 712 2 ist nur bei zahnärztlicher Indikationsstellung abrechenbar.\nDie L-Nr. 712 2 ist für die Verarbeitung von Sonderkunststoff einmal je Kiefer abrechenbar."
+    },
+    {
+      "code": "7200",
+      "codeId": "BEL_7200",
+      "page": {
+        "start": 91,
+        "end": 92
+      },
+      "leistungsinhalt": "Schraube einarbeiten",
+      "kurztext": "Schraube einarbeiten",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nEinarbeiten einer Standardschraube (z.B. Dehnschraube) in eine Basis."
+    },
+    {
+      "code": "7210",
+      "codeId": "BEL_7210",
+      "page": {
+        "start": 92,
+        "end": 93
+      },
+      "leistungsinhalt": "Spezial-Schraube einarbeiten",
+      "kurztext": "Spezial-Schraube einarbeiten",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nEinarbeiten einer Spezial-Schraube in eine Basis.\nAls Spezial-Schrauben gelten z.B.\n- Schrauben, deren Konstruktion ausschließlich Einzelzahnbewegung zulässt,\n- Schrauben zur gezielten Sektorenbewegung,\n- Schrauben für asymmetrische Bewegungen,\n- Schrauben zur Metallverbindung,\n- Reziproke Druck- und Zugschraube,\n- Sagittale Druck- oder Zugschraube,\n- Transversale Zugschraube."
+    },
+    {
+      "code": "7220",
+      "codeId": "BEL_7220",
+      "page": {
+        "start": 93,
+        "end": 93
+      },
+      "leistungsinhalt": "Trennen einer Basis",
+      "kurztext": "Trennen einer Basis",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\n- Trennen einer Basis,\n- Trennen einer Basis kompliziert,\n- Trennen einer Basis ohne Schraube,\n- Trennen einer Basis nach Instandsetzung oder Unterfütterung.\nErläuterungen zur Abrechnung\nDie L-Nr. 722 0 ist je Trennung oder je Schraube nach L-Nrn. 720 0 und 721 0 einmal\nabrechenbar."
+    },
+    {
+      "code": "7300",
+      "codeId": "BEL_7300",
+      "page": {
+        "start": 93,
+        "end": 94
+      },
+      "leistungsinhalt": "Labialbogen",
+      "kurztext": "Labialbogen",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nIntramaxillärer Labialbogen mit zwei Schlaufen."
+    },
+    {
+      "code": "7310",
+      "codeId": "BEL_7310",
+      "page": {
+        "start": 94,
+        "end": 94
+      },
+      "leistungsinhalt": "Labialbogen modifiziert",
+      "kurztext": "Labialbogen modifiziert",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nIntramaxillärer Labialbogen mit mehr als zwei Schlaufen."
+    },
+    {
+      "code": "7320",
+      "codeId": "BEL_7320",
+      "page": {
+        "start": 94,
+        "end": 95
+      },
+      "leistungsinhalt": "Labialbogen intermaxillär",
+      "kurztext": "Labialbogen intermaxillär",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nLabialbogen mit Beziehung zum Gegenkiefer."
+    },
+    {
+      "code": "7330",
+      "codeId": "BEL_7330",
+      "page": {
+        "start": 95,
+        "end": 95
+      },
+      "leistungsinhalt": "Feder, offen",
+      "kurztext": "Feder, offen",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 733 0 beinhaltet alle offenen Federn mit einer Retention wie z.B. Protrusionsfeder,\nInterdentalfeder, Feder gekreuzt, auch aktiver Dorn oder Sporn."
+    },
+    {
+      "code": "7340",
+      "codeId": "BEL_7340",
+      "page": {
+        "start": 95,
+        "end": 96
+      },
+      "leistungsinhalt": "Feder, geschlossen",
+      "kurztext": "Feder, geschlossen",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 734 0 beinhaltet alle geschlossenen Federn mit zwei Retentionen wie z.B.\nProtrusionsbogen, Paddelfeder, auch Schlinge, Schlaufe."
+    },
+    {
+      "code": "7400",
+      "codeId": "BEL_7400",
+      "page": {
+        "start": 96,
+        "end": 96
+      },
+      "leistungsinhalt": "Verbindungselement intramaxillär",
+      "kurztext": "Verbindungselement/intramaxillär",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 740 0 beinhaltet ein intramaxilläres Verbindungselement, wie\nz.B. Coffin-Feder, Transversalbügel, orthodontischer Lingual- oder Palatinalbogen,\nVerbindung zwischen Basisteilen."
+    },
+    {
+      "code": "7410",
+      "codeId": "BEL_7410",
+      "page": {
+        "start": 96,
+        "end": 97
+      },
+      "leistungsinhalt": "Verbindungs- oder Führungselemente\nintermaxillär",
+      "kurztext": "Verbindungselemente/intermaxillär",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 741 0 beinhaltet Verbindungselemente wie z.B.\n- U-Bügel,\n- Federbügel,\n- Doppelplattensteg.\nErläuterungen zur Abrechnung\nDie L-Nr. 741 0 ist je Paar einmal abrechenbar.\nDie Erneuerung eines Elementes ist nach der L-Nr. 863 0 abrechenbar."
+    },
+    {
+      "code": "7420",
+      "codeId": "BEL_7420",
+      "page": {
+        "start": 97,
+        "end": 97
+      },
+      "leistungsinhalt": "Verankerungselement",
+      "kurztext": "Verankerungselement",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAnkerband oder Ankerkappe, individuell gefertigt."
+    },
+    {
+      "code": "7430",
+      "codeId": "BEL_7430",
+      "page": {
+        "start": 97,
+        "end": 98
+      },
+      "leistungsinhalt": "Einzelelement einarbeiten",
+      "kurztext": "Einzelelement einarbeiten",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinarbeiten eines Einzelelementes wie z.B. eines Schlosses, eines Röhrchens, eines\nLückenhalters oder Lückendehners."
+    },
+    {
+      "code": "7440",
+      "codeId": "BEL_7440",
+      "page": {
+        "start": 98,
+        "end": 98
+      },
+      "leistungsinhalt": "Metallverbindung (KFO)",
+      "kurztext": "Metallverbindung (KFO)",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 744 0 ist je Verbindungsstelle, auch bei Wiederherstellung und/oder Erweiterung,\nabrechenbar."
+    },
+    {
+      "code": "7500",
+      "codeId": "BEL_7500",
+      "page": {
+        "start": 98,
+        "end": 99
+      },
+      "leistungsinhalt": "Einarmiges Halte- oder Abstützelement,\nje Zahn",
+      "kurztext": "Einarmiges H-/A-Element",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinarmiges Halteelement gebogen (Tropfen-, Ösen-, Dreiecksklammer, Pfeil-, Knopfanker,\nCrozat-Haltesporn) oder Abstützelement gebogen (Dorn, Auflage, Steg).\nErläuterungen zur Abrechnung\nWird ein Halte- oder Abstützelement hergestellt, welches nicht in der Erläuterung zum\nLeistungsinhalt der L-Nr. 750 0 benannt ist, ist dieses nach der L-Nr. 380 0 abzurechnen."
+    },
+    {
+      "code": "7510",
+      "codeId": "BEL_7510",
+      "page": {
+        "start": 99,
+        "end": 100
+      },
+      "leistungsinhalt": "Mehrarmiges Halte- oder Abstützelement,\nje Zahn",
+      "kurztext": "Mehrarmiges H-/A- Element",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nMehrarmiges Halteelement, gebogen (Adams-, Pfeil-, Voß-, Crozatklammer).\nErläuterungen zur Abrechnung\nWird ein mehrarmiges Halte- oder Abstützelement hergestellt, welches nicht mit der\nErläuterung zum Leistungsinhalt der L-Nr. 751 0 benannt ist, ist dieses nach der L-Nr. 381 0\nabzurechnen."
+    },
+    {
+      "code": "8010",
+      "codeId": "BEL_8010",
+      "page": {
+        "start": 100,
+        "end": 101
+      },
+      "leistungsinhalt": "Grundeinheit für Instandsetzung und/oder\nErweiterung einer Prothese",
+      "kurztext": "Grundeinheit ZE",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nInstandsetzung und/oder Erweiterung einer Prothese im Kunststoff- oder Metallbereich.\nErläuterungen zur Abrechnung\nDie L-Nr. 801 0 ist als Grundeinheit einmal je Prothese in Verbindung mit den L-Nrn.\n802 1 – 7, 160 0, 164 0 sowie 383 0 und 384 0 abrechenbar."
+    },
+    {
+      "code": "8018",
+      "codeId": "BEL_8018",
+      "page": {
+        "start": 101,
+        "end": 102
+      },
+      "leistungsinhalt": "Grundeinheit für Instandsetzung und/oder Erweiterung\neiner implantatgestützten Prothese",
+      "kurztext": "Grundeinh. Instands. ZE/implantatgest.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nInstandsetzen und/oder Erweiterung einer Prothese im Kunststoffbereich- oder\nMetallbereich.\nErläuterungen zur Abrechnung\nDie L-Nr. 801 8 ist nur für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie\n(Ausnahmefälle atrophierter zahnloser Kiefer) abrechenbar.\nDie L-Nr. 801 8 ist als Grundeinheit einmal je Prothese in Verbindung mit den L-Nrn. 802 1,\n802 2, 802 3 und 802 4 abrechenbar."
+    },
+    {
+      "code": "8021",
+      "codeId": "BEL_8021",
+      "page": {
+        "start": 102,
+        "end": 102
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Sprung",
+      "kurztext": "LE Sprung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nSprung im Kunststoff/Metall beseitigen; auch bei KFO-Geräten.\nErläuterungen zur Abrechnung\nLeistungseinheit für eine zusammenhängende Sprunglinie."
+    },
+    {
+      "code": "8022",
+      "codeId": "BEL_8022",
+      "page": {
+        "start": 102,
+        "end": 103
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Bruch",
+      "kurztext": "LE Bruch",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBruch im Kunststoff/Metall beseitigen, auch Drahtbruch KFO.\nErläuterungen zur Abrechnung\nLeistungseinheit je Bruch."
+    },
+    {
+      "code": "8023",
+      "codeId": "BEL_8023",
+      "page": {
+        "start": 103,
+        "end": 104
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Einarbeiten eines Zahnes",
+      "kurztext": "LE Einarbeiten Zahn",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nWiederbefestigung, Erweiterung Zahn, auch Erneuerung, Herauslösen eines\nKonfektionszahnes.\nErläuterungen zur Abrechnung\nLeistungseinheit je Zahn."
+    },
+    {
+      "code": "8024",
+      "codeId": "BEL_8024",
+      "page": {
+        "start": 104,
+        "end": 105
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Basisteil Kunststoff",
+      "kurztext": "LE Basisteil Kunststoff",
+      "erlaeuterungen": "Erläuterungen zum Leistungsinhalt\nErläuterungen zur Abrechnung\nDie L-Nr. 802 4 kann für ein Basisteil Kunststoff nur berechnet werden, wenn an derselben\nStelle keine andere Leistung erbracht wird.\nDas Verkleiden der Retention ist Bestandteil der L-Nr. 802 3 „Einarbeiten Zahn“ oder L-Nr.\n802 4 „Basisteil Kunststoff“ und daher als eigenständige Leistung an gleicher Stelle nicht\nabrechenbar.\nDie L.-Nr. 802 4 kann als Gegenlager einer einarmigen Klammer abrechnet werden.\nDie L-Nr. 802 4 kann bei einer Erweiterung nach L-Nr. 802 3 für die Neugestaltung eines\nbukkalen Schildes nicht abgerechnet werden.\nDie L-Nr. 802 4 ist für das Auffüllen einer Sekundärkrone nur dann abrechenbar, wenn eine\nAbformung zur Basiserweiterung erfolgt ist. Sofern eine Unterfütterung notwendig ist, ist\ndiese zusätzlich nach den L-Nrn. 808 0, 808 8, 809 0, 809 8, 810 0 und 810 8 abrechenbar."
+    },
+    {
+      "code": "8025",
+      "codeId": "BEL_8025",
+      "page": {
+        "start": 105,
+        "end": 106
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Halte- und/oder Stützvorrichtung einarbeiten",
+      "kurztext": "LE Halte- und/oder Stützvorrichtung einarbeiten",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHalte- und/oder Stützvorrichtung einarbeiten, gebogen, gegossen, auch bei Verwendung\neiner vorhandenen Vorrichtung.\nErläuterungen zur Abrechnung\nDie L-Nr. 802 5 ist je Halte- und/ oder Stützvorrichtung abrechenbar."
+    },
+    {
+      "code": "8026",
+      "codeId": "BEL_8026",
+      "page": {
+        "start": 106,
+        "end": 106
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Rückenschutzplatte einarbeiten",
+      "kurztext": "LE Rückenschutzplatte einarbeiten",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinarbeitung einer gegossenen Rückenschutzplatte nach L-Nr. 208 1 in Verbindung mit der\nErweiterung oder Erneuerung eines Zahnes."
+    },
+    {
+      "code": "8027",
+      "codeId": "BEL_8027",
+      "page": {
+        "start": 106,
+        "end": 107
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Kunststoffsattel lösen und wieder befestigen",
+      "kurztext": "LE Kunststoffsattel",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 802 7 ist je Sattel einmal abrechenbar."
+    },
+    {
+      "code": "8030",
+      "codeId": "BEL_8030",
+      "page": {
+        "start": 107,
+        "end": 107
+      },
+      "leistungsinhalt": "Retention, gebogen",
+      "kurztext": "Retention, gebogen",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellung der gebogenen Retention, Einarbeiten und Metallverbindung.\nErläuterungen zur Abrechnung\nDie L-Nr. 803 0 ist je Retention einmal abrechenbar."
+    },
+    {
+      "code": "8040",
+      "codeId": "BEL_8040",
+      "page": {
+        "start": 107,
+        "end": 108
+      },
+      "leistungsinhalt": "Retention, gegossen",
+      "kurztext": "Retention, gegossen",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nHerstellung der Retention, Einarbeiten und Metallverbindung, ggf. einschließlich eines\nDuplikatmodells aus Einbettmasse.\nErläuterungen zur Abrechnung\nDie L-Nr. 804 0 ist je Retention einmal abrechenbar."
+    },
+    {
+      "code": "8060",
+      "codeId": "BEL_8060",
+      "page": {
+        "start": 108,
+        "end": 108
+      },
+      "leistungsinhalt": "Gegossenes Basisteil",
+      "kurztext": "Gegossenes Basisteil",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 806 0 beinhaltet\n die Herstellung eines gegossenen Basisteiles zur Erweiterung einer vorhandenen\nBasis sowie das Einarbeiten und die Metallverbindung ggf. einschließlich eines\nDuplikatmodells aus Einbettmasse.\nErläuterungen zur Abrechnung\nDie L-Nr. 806 0 ist je Basisteil abrechenbar.\nNeben der L-Nr. 806 0 ist die L-Nr. 201 0 nicht abrechenbar."
+    },
+    {
+      "code": "8070",
+      "codeId": "BEL_8070",
+      "page": {
+        "start": 108,
+        "end": 109
+      },
+      "leistungsinhalt": "Metallverbindung bei Instandsetzung/\nErweiterung",
+      "kurztext": "Metallverbindung bei Instandsetzung /Erweiterung",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nDie L-Nr. 807 0 ist nicht zusätzlich zu den L-Nrn. 803 0, 804 0 und 806 0 abrechenbar.\nDie für die L-Nr. 807 0 anfallenden Kosten für Lotmaterial können nach § 2 Punkt 4 der\nEinleitenden Bestimmungen zu 75 % abgerechnet werden."
+    },
+    {
+      "code": "8080",
+      "codeId": "BEL_8080",
+      "page": {
+        "start": 109,
+        "end": 110
+      },
+      "leistungsinhalt": "Teilunterfütterung einer Basis",
+      "kurztext": "Teilunterfütterung einer Basis",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasisteil unterfüttern, ggf. einschließlich Sicherung von vorhandenen\nVerbindungselementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 808 0 ist je Prothese oder KFO/ FKO-Basis einmal abrechenbar.\nDie L-Nr. 808 0 ist keine Instandsetzung im Sinne der L-Nrn. 801 0, 802 1 - 802 7,861 0,\n862 0 und 863 0.\nFür die Fixierung der Bisslage mit einem zweiten Modell und dem Einstellen in einen Fixator\nsind die L-Nrn. 001 0 und 011 2, nicht jedoch nach L-Nr. 012 0 abrechenbar."
+    },
+    {
+      "code": "8085",
+      "codeId": "BEL_8085",
+      "page": {
+        "start": 110,
+        "end": 110
+      },
+      "leistungsinhalt": "Teilunterfütterung einer Basis\nUnterkieferprotrusionsschiene",
+      "kurztext": "Teilunterfütterung Basis UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nTeilweise Unterfütterung einer Basis einer Unterkieferprotrusionsschiene, ggf. einschließlich\nSicherung von Protrusions-, Stütz- und Halteelementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 808 5 ist einmal je Basis bei einer Unterkieferprotrusionsschiene abrechenbar.\nFür die Sicherung des Protrusionsgrads mit einem zweiten Modell sind die L-Nrn. 001 5\n(Modell) und 011 5 (Fixator) abrechenbar, die L-Nr. 012 5 (Mittelwertartikulator) ist nicht\nabrechenbar."
+    },
+    {
+      "code": "8088",
+      "codeId": "BEL_8088",
+      "page": {
+        "start": 110,
+        "end": 111
+      },
+      "leistungsinhalt": "Teilunterfütterung einer implantatgestützten Basis",
+      "kurztext": "Teilunterfütterung/implantatgest.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasisteil unterfüttern, ggf. einschließlich Sicherung von vorhandenen\nVerbindungselementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 808 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter\nzahnloser Kiefer) abrechenbar.\nDie L-Nr. 808 8 ist je Prothese einmal abrechenbar.\nDie L-Nr. 808 8 ist keine Instandsetzung im Sinne der L-Nrn. 801 8, 802 1 - 802 7.\nFür die Fixierung der Bisslage mit einem zweiten Modell und dem Einstellen in einen\nFixator sind die L-Nrn. 001 8 und 011 2, nicht jedoch L-Nr. 012 8 abrechenbar."
+    },
+    {
+      "code": "8090",
+      "codeId": "BEL_8090",
+      "page": {
+        "start": 111,
+        "end": 112
+      },
+      "leistungsinhalt": "Vollständige Unterfütterung einer Basis",
+      "kurztext": "Vollständige Unterfütterung",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis unterfüttern (bei Basis FKO-Gerät, je Kiefer).\nBasis unterfüttern mit funktioneller Randgestaltung.\nggf. einschließlich Sicherung von vorhandenen Verbindungselementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 809 0 ist je Prothese und KFO-Basis einmal abrechenbar, bei\nbimaxillärem Gerät je Kiefer.\nDie L-Nr. 809 0 ist keine Instandsetzung im Sinne der L-Nrn. 801 0, 802 1 -802 7, 861 0,\n862 0 und 863 0.\nFür die Fixierung der Bisslage mit einem zweiten Modell und dem Einstellen in einen Fixator\nsind die L-Nrn. 001 0 und 011 2, nicht jedoch L-Nr. 012 0 abrechenbar."
+    },
+    {
+      "code": "8098",
+      "codeId": "BEL_8098",
+      "page": {
+        "start": 112,
+        "end": 113
+      },
+      "leistungsinhalt": "Vollständige Unterfütterung einer implantatgestützten Basis",
+      "kurztext": "Vollst. Unterfütterung/implantatgest.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nBasis unterfüttern.\nBasis unterfüttern mit funktioneller Randgestaltung.\nggf. einschließlich Sicherung von vorhandenen Verbindungselementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 809 8 ist je Prothese einmal abrechenbar.\nDie L-Nr. 809 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter\nzahnloser Kiefer) abrechenbar.\nDie L-Nr. 809 8 ist keine Instandsetzung im Sinne der L-Nrn. 801 8, 802 1 – 802 7.\nFür die Fixierung der Bisslage mit einem zweiten Modell und dem Einstellen in einen Fixator\nsind die L-Nrn. 001 8 und 011 2, nicht jedoch nach L-Nr. 012 8 abrechenbar."
+    },
+    {
+      "code": "8100",
+      "codeId": "BEL_8100",
+      "page": {
+        "start": 113,
+        "end": 114
+      },
+      "leistungsinhalt": "Prothesenbasis erneuern",
+      "kurztext": "Prothesenbasis erneuern",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 810 0 beinhaltet die vollständige Entfernung und Erneuerung der Kunststoffbasis\nbei Erhaltung des Zahnkranzes sowie ggf. einschließlich Sicherung von vorhandenen\nVerbindungselementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 810 0 ist je Prothese einmal abrechenbar.\nDie L-Nr. 810 0 ist keine Instandsetzung im Sinne der L-Nrn. 801 0, 802 1 – 802 7.\nFür die Fixierung der Bisslage mit einem zweiten Modell und dem Einstellen in einen Fixator\nsind die L-Nrn. 001 0 und 011 2, nicht jedoch nach L-Nr. 012 0 abrechenbar."
+    },
+    {
+      "code": "8108",
+      "codeId": "BEL_8108",
+      "page": {
+        "start": 114,
+        "end": 114
+      },
+      "leistungsinhalt": "Prothesenbasis erneuern bei Implantatversorgung",
+      "kurztext": "Prothesenbasis erneuern/Implantatv.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 810 8 beinhaltet die vollständige Entfernung und Erneuerung der Kunststoffbasis\nbei Erhaltung des Zahnkranzes sowie ggf. einschließlich Sicherung von vorhandenen\nVerbindungselementen.\nErläuterungen zur Abrechnung\nDie L-Nr. 810 8 ist je Prothese einmal abrechenbar.\nDie L-Nr. 810 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter\nzahnloser Kiefer) abrechenbar.\nDie L-Nr. 810 8 ist keine Instandsetzung im Sinne der L-Nrn. 801 8, 802 1 – 802 7.\nFür die Fixierung der Bisslage mit einem zweiten Modell und dem Einstellen in einen Fixator\nsind die L-Nrn. 001 8 und 011 2, nicht jedoch nach L-Nr. 012 0 abrechenbar."
+    },
+    {
+      "code": "8130",
+      "codeId": "BEL_8130",
+      "page": {
+        "start": 114,
+        "end": 115
+      },
+      "leistungsinhalt": "Einfaches Auswechseln eines Konfektionsteiles",
+      "kurztext": "Auswechseln Konfektionsteil",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinschrauben eines Sekundärteils eines konfektionierten Kugelknopfankers, ggf. einschl.\ndes Entfernens des defekten Sekundärteils."
+    },
+    {
+      "code": "8200",
+      "codeId": "BEL_8200",
+      "page": {
+        "start": 115,
+        "end": 116
+      },
+      "leistungsinhalt": "Instandsetzung einer Krone/eines Flügels oder eines\nBrückengliedes",
+      "kurztext": "Instandsetzung Krone/Flügel/Brückenglied",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nInstandsetzungsmaßnahmen im Metallbereich bei einer Krone-, einer teleskopierenden\nKrone oder eines Brückengliedes wie z.B.\n- Trennspalt schließen,\n- Kronenrand verlängern,\n- Bruch oder\n- Riss beseitigen,\n- Kontaktpunkt wiederherstellen,\n- Vorbereitung der Metallfläche zur Aufnahme einer neuen Verblendung bei\nInstandsetzungsmaßnahmen im Metallbereich,\nggf. einschließlich Fügung vorbereiten oder Keramikverblendung trocknen.\nErläuterungen zur Abrechnung\nDie L-Nr. 820 0 ist je Maßnahme an einer Krone/Flügel, teleskopierenden Krone oder einem\nBrückenglied abrechenbar.\nDie L-Nr. 807 0 und ggf. die Erneuerung der Verblendung ist zusätzlich abrechenbar."
+    },
+    {
+      "code": "8208",
+      "codeId": "BEL_8208",
+      "page": {
+        "start": 116,
+        "end": 117
+      },
+      "leistungsinhalt": "Instandsetzung einer implantatgestützten Krone",
+      "kurztext": "Instandsetzung Krone/implantatgest.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nInstandsetzungsmaßnahmen im Metallbereich bei einer Krone, wie z.B.\n- Trennspalt schließen,\n- Kronenrand verlängern,\n- Bruch oder\n- Riss beseitigen,\n- Kontaktpunkt wiederherstellen,\n- Vorbereitung der Metallfläche zur Aufnahme einer neuen Verblendung bei\nInstandsetzungsmaßnahmen im Metallbereich,\nggf. einschließlich Fügung vorbereiten oder Keramikverblendung trocknen.\nErläuterungen zur Abrechnung\nDie L-Nr. 820 8 ist für eine Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie\n(Ausnahmefälle Einzelzahnlücke) abrechenbar.\nDie L-Nr. 820 8 ist je Maßnahme an einer Krone abrechenbar.\nDie L-Nr. 807 0 und ggf. die Erneuerung der Verblendung ist zusätzlich abrechenbar."
+    },
+    {
+      "code": "8500",
+      "codeId": "BEL_8500",
+      "page": {
+        "start": 117,
+        "end": 118
+      },
+      "leistungsinhalt": "Grundeinheit für Instandsetzung\nund/oder Erweiterung einer Unterkieferprotrusionsschiene",
+      "kurztext": "Grundeinheit Instandsetzung / Erweiterung UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGrundeinheit für die Instandsetzung und/oder Erweiterung einer\nUnterkieferprotrusionsschiene.\nErläuterungen zur Abrechnung\nDie L-Nr. 850 0 ist in Verbindung mit den L-Nrn.\n510 0 (Befestigungselement / Protrusionselement / UKPS),\n511 0 (Protrusionselement / UKPS),\n520 0 (Befestigungselement Mundöffnungsbegrenzung / UKPS),\n521 0 (Einfaches gebogenes Halteelement / UKPS),\n851 1 (LE Erneuerung Basis / UKPS),\n851 2 (LE Sprung / Bruch UKPS),\n851 3 (LE Basisteil Kunststoff / UKPS),\n851 4 (LE Halte- und/oder Stützvorrichtung einarbeiten / UKPS)\neinmal je Unterkieferprotrusionsschiene abrechenbar."
+    },
+    {
+      "code": "8511",
+      "codeId": "BEL_8511",
+      "page": {
+        "start": 118,
+        "end": 118
+      },
+      "leistungsinhalt": "Leistungseinheit Erneuerung Basis\nUnterkieferprotrusionsschiene",
+      "kurztext": "LE Erneuerung Basis UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nErneuerung einer Kunststoffbasis im Ober- oder Unterkiefer mit horizontalen Stütz- und\nGleitzonen aus Kunststoff.\nErläuterungen zur Abrechnung"
+    },
+    {
+      "code": "8512",
+      "codeId": "BEL_8512",
+      "page": {
+        "start": 118,
+        "end": 119
+      },
+      "leistungsinhalt": "Leistungseinheit je Sprung/Bruch\nUnterkieferprotrusionsschiene",
+      "kurztext": "LE Sprung/Bruch UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nSprung oder Bruch an einer Unterkieferprotrusionsschienen-Basis im Kunststoff beseitigen.\nErläuterungen zur Abrechnung\nDie L-Nr. 851 2 ist je zusammenhängende Sprunglinie und/oder je Bruch einmal\nabrechenbar."
+    },
+    {
+      "code": "8513",
+      "codeId": "BEL_8513",
+      "page": {
+        "start": 119,
+        "end": 119
+      },
+      "leistungsinhalt": "Leistungseinheit Basisteil Kunststoff\nUnterkieferprotrusionsschiene",
+      "kurztext": "LE Basisteil Kunststoff UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nErläuterungen zur Abrechnung\nDie L-Nr. 851 3 kann nur berechnet werden, wenn an derselben Stelle keine andere\nLeistung erbracht wird. Sofern eine Teilunterfütterung notwendig ist, ist diese zusätzlich\nnach der L-Nr. 808 5 abrechenbar."
+    },
+    {
+      "code": "8514",
+      "codeId": "BEL_8514",
+      "page": {
+        "start": 119,
+        "end": 120
+      },
+      "leistungsinhalt": "Leistungseinheit Halte- und/oder Stützvorrichtung einarbeiten\nfür Unterkieferprotrusionsschiene",
+      "kurztext": "LE Halte- und/oder Stützvorrichtung einarbeiten UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGebogene Halte- und/oder Stützvorrichtung einarbeiten, auch bei Verwendung einer\nvorhandenen Vorrichtung.\nErläuterungen zur Abrechnung\nDie L-Nr. 851 4 ist je Halte- und/oder Stützvorrichtung abrechenbar."
+    },
+    {
+      "code": "8610",
+      "codeId": "BEL_8610",
+      "page": {
+        "start": 120,
+        "end": 121
+      },
+      "leistungsinhalt": "Grundeinheit für Instandsetzung und/oder\nErweiterung einer KFO-Basis oder eines\nAufbissbehelfes",
+      "kurztext": "Grundeinheit/Instands. KFO oder Aufbissbehelf",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nGrundeinheit, Instandsetzung und/oder, Erweiterung eines KFO/FKO-Gerätes.\nGrundeinheit, Instandsetzung und/oder, Erweiterung eines Aufbissbehelfs.\nErläuterungen zur Abrechnung\nDie L-Nr. 861 0 ist als Grundeinheit einmal je KFO/FKO-Gerät oder Aufbissbehelf in\nVerbindung mit L-Nrn. 862 0, 863 0, 802 1, 802 2, 802 3 und 802 4 abrechenbar."
+    },
+    {
+      "code": "8620",
+      "codeId": "BEL_8620",
+      "page": {
+        "start": 121,
+        "end": 121
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Einfügen Regulierungs- oder Halteelement",
+      "kurztext": "LE Einfügen Regulierungs- oder Halteelement",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nEinfügen eines neuen Elementes, z.B. Dehn-, Halte-, Regulierungs-, Abstütz- oder\nAbschirmelementes oder eines Aufbisses, ggf. einschließlich des Herauslösens des\ndefekten Elementes.\nErläuterungen zur Abrechnung\nDie L-Nr. 862 0 ist je eingefügtem Element einmal abrechenbar; dies gilt auch für Halte- und\nStützelemente, die nach den L-Nrn. 380 0 und 381 0 abrechenbar sind."
+    },
+    {
+      "code": "8630",
+      "codeId": "BEL_8630",
+      "page": {
+        "start": 121,
+        "end": 122
+      },
+      "leistungsinhalt": "Leistungseinheit\n- Erneuerung eines Verbindungselementes, intermaxillär",
+      "kurztext": "LE Erneuerung eines Elementes/intermaxillär",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nErneuerung eines Elementes bei der Instandsetzung eines intermaxillären Verbindungs-\noder Führungselementes."
+    },
+    {
+      "code": "8640",
+      "codeId": "BEL_8640",
+      "page": {
+        "start": 122,
+        "end": 123
+      },
+      "leistungsinhalt": "KFO-Basis erneuern",
+      "kurztext": "KFO-Basis erneuern",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nDie L-Nr. 864 0 beinhaltet die vollständige Entfernung und Erneuerung der Kunststoffbasis\nbei Erhaltung der herausgelösten Halte-, Dehn- und Regulierungselemente.\nErläuterungen zur Abrechnung\nDie L-Nr. 864 0 ist je KFO-Basis einmal abrechenbar.\nDie L-Nr. 864 0 ist keine Instandsetzung im Sinne der L-Nr. 861 0, 862 0 und 863 0.\nFür die Fixierung der Bisslage mit einem zweiten Modell und dem Einstellen in einen Fixator\nsind die L-Nrn. 001 0 und 011 2, nicht jedoch nach L-Nr. 012 0 abrechenbar."
+    },
+    {
+      "code": "8700",
+      "codeId": "BEL_8700",
+      "page": {
+        "start": 123,
+        "end": 124
+      },
+      "leistungsinhalt": "Remontieren eines Gerätes ohne\nKunststoffbasis",
+      "kurztext": "Remontieren KFO-Gerät",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nRemontage eines kieferorthopädischen Gerätes z.B. Crozat, Retainer, Quad-Helix.\nErläuterungen zur Abrechnung\nDie L-Nr. 870 0 ist je remontiertem kieferorthopädischen Gerät einmal abrechenbar."
+    },
+    {
+      "code": "9330",
+      "codeId": "BEL_9330",
+      "page": {
+        "start": 124,
+        "end": 125
+      },
+      "leistungsinhalt": "Versandkosten",
+      "kurztext": "Versandkosten",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAbgeltung von Auslagen für Versand, wie z.B.\n- Versand durch Laborboten, je Versandgang,\n- Versand durch Kurier, je Versandgang,\n- Versand durch Paketdienst.\nErläuterungen zur Abrechnung\nDie Versandkosten sind pauschal abzurechnen.\nZur Bestimmung der Pauschale ist das Prinzip der Wirtschaftlichkeit der Versorgung\n(§ 12 SGB V) zu beachten.\nDie L-Nr. 933 0 kann nicht für Leistungen, die in Praxislaboratorien erbracht werden,\nabgerechnet werden."
+    },
+    {
+      "code": "9335",
+      "codeId": "BEL_9335",
+      "page": {
+        "start": 125,
+        "end": 126
+      },
+      "leistungsinhalt": "Versandkosten Unterkieferprotrusionsschiene",
+      "kurztext": "Versandkosten UKPS",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAbgeltung von Auslagen für Versand, wie z.B.\n- Versand durch Laborboten, je Versandgang,\n- Versand durch Kurier, je Versandgang,\n- Versand durch Paketdienst für die Herstellung einer Unterkieferprotrusionsschiene.\nErläuterungen zur Abrechnung\nDie Versandkosten sind pauschal abzurechnen.\nZur Bestimmung der Pauschale ist das Prinzip der Wirtschaftlichkeit der Versorgung\n(§ 12 SGB V) zu beachten.\nDie L-Nr. 933 5 kann nicht für Leistungen, die in Praxislaboratorien erbracht werden,\nabgerechnet werden."
+    },
+    {
+      "code": "9338",
+      "codeId": "BEL_9338",
+      "page": {
+        "start": 126,
+        "end": 127
+      },
+      "leistungsinhalt": "Versandkosten bei Implantatversorgung",
+      "kurztext": "Versandkosten bei Implantatv.",
+      "erlaeuterungen": "Erläuterung zum Leistungsinhalt\nAbgeltung von Auslagen für Versand, wie z.B.\n- Versand durch Laborboten, je Versandgang,\n- Versand durch Kurier, je Versandgang,\n- Versand durch Paketdienst.\nErläuterungen zur Abrechnung\nDie L-Nr. 933 8 ist bei einer Versorgung nach Nr. 36 der Zahnersatz-Richtlinie\n(Ausnahmefälle zahnbegrenzte Einzelzahnlücke /atrophierter zahnloser Kiefer)\nabrechenbar.\nDie Versandkosten sind pauschal abzurechnen. Zur Bestimmung der Pauschale ist das\nPrinzip der Wirtschaftlichkeit der Versorgung (§ 12 SGB V) zu beachten.\nDie L-Nr. 933 8 kann nicht für Leistungen, die in Praxislaboratorien erbracht werden,\nabgerechnet werden."
+    },
+    {
+      "code": "9700",
+      "codeId": "BEL_9700",
+      "page": {
+        "start": 127,
+        "end": 135
+      },
+      "leistungsinhalt": "Verarbeitungsaufwand Nichtedelmetall-Legierung",
+      "kurztext": "Verarbeitungsaufwand NEM-Legierung",
+      "erlaeuterungen": "Erläuterungen zur Abrechnung\nAbrechenbar je\n Übertragungskappe (L-Nr. 024 0),\n Wurzelstiftkappe (L-Nr. 101 3),\n Vollkrone/Metall (L-Nr. 102 1),\n Teilkrone (L-Nr. 102 2),\n Flügel für Adhäsivbrücke (L-Nr. 102 3),\n Krone für vestibuläre Verblendung (L-Nr. 102 4),\n Vollkrone/Metall bei Implantatversorgung (L-Nr. 102 6),\n Krone für vestibuläre Verblendung bei Implantatversorgung (L-Nr. 102 8),\n Angelieferte Modellation für Stiftaufbau gießen (L-Nr. 104 0),\n Stiftaufbau (L-Nr. 105 0),\n Brückenglied, Metall (L-Nr. 110 0),\n Primärteil einer teleskopierenden Krone (L-Nr. 120 0),\n Sekundärteil einer teleskopierenden Krone (L-Nr. 120 0),\n Primär- oder Sekundärteil einer teleskopierenden Krone (L-Nr. 120 1),\n Individuelle Verbindungsvorrichtung (L-Nr. 133 1).\n\nAnlage 2\nKurzbezeichnungen nach § 3 „Grundsätze der Rechnungsstellung“ des Vertrages\nArbeitsvorbereitung\nBEL-Nr. Kurztext\n001 0 Modell\n001 5 Modell UKPS\n001 8 Modell bei Implantatversorgung\n002 1 Doublieren eines Modells\n002 2 Platzhalter einfügen\n002 3 Verwendung von Kunststoff\n002 4 Galvanisieren\n002 5 Doublieren eines Modells UKPS\n003 0 Set-up je Segment\n005 1 Sägemodell\n005 2 Einzelstumpfmodell\n005 3 Modell nach Überabdruck\n005 4 Set-up-Modell für KFO\n005 5 Fräsmodell\n006 0 Zahnkranz\n007 0 Zahnkranz sockeln\n011 1 Modellpaar trimmen\n011 2 Fixator\n011 5 Fixator UKPS\n012 0 Mittelwertartikulator\n012 5 Mittelwertartikulator UKPS\n012 8 Mittelwertartikulator bei Implantatversorgung\n013 0 Modellpaar sockeln\n020 1 Basis für Vorbissnahme\n020 2 Basis für Konstruktionsbiss\n020 5 Vorbereiten Bissgabel UKPS\n021 1 Individueller Löffel\n021 2 Funktionslöffel\n021 3 Basis für Bissregistrierung\n021 4 Basis für Stützstiftregistrierung\n021 5 Basis für Aufstellung\n021 6 Basis für Bissregistr. bei Implantatversorgung\n021 7 Individueller Löffel UKPS\n021 8 Basis für Aufstellung bei Implantatversorgung\n022 0 Bisswall\n022 8 Bisswall bei Implantatversorgung\n\n023 0 Registrierplatte und -stift auf Basen\n024 0 Übertragungskappe Kunststoff/Metall\n031 0 Provisorische Krone/Brückenglied\n032 0 Formteil\n\nFestsitzender Zahnersatz\nBEL-Nr. Kurztext\n101 3 Wurzelstiftkappe\n102 1 Vollkrone/Metall\n102 2 Teilkrone/Metall\n102 3 Flügel für Adhäsivbrücke, je Flügel\n102 4 Krone für vestibuläre Verblendung\n102 6 Vollkrone/Metall bei Implantatversorgung\n102 8 Krone für vestib. Verbl. bei Implantatversorgung\n103 1 Vorbereiten Krone\n103 2 Krone/ Brückenglied einarbeiten\n103 3 Stiftaufbau einarbeiten\n104 0 Modellation gießen\n105 0 Stiftaufbau\n110 0 Brückenglied\n120 0 Teleskopierende Krone\n120 1 Teleskopierende Primär- oder Sekundärkrone\n133 1 Individuelles Geschiebe\n134 1 Konfektions-Geschiebe\n134 3 Konfektions-Anker\n134 7 Primär-/Sek.-Teil Konf.-Anker\n134 9 Wiederbef. Sek.-Teil\n136 0 Gefrästes Lager\n137 0 Schubverteilungsarm\n150 0 Metallverbindung nach Brand\n155 0 Konditionierung je Zahn/Flügel\n160 0 Vestibuläre Verblendung Kunststoff\n161 0 Zahnfleisch Kunststoff\n162 0 Vestibuläre Verblendung Keramik\n162 8 Vestib. Verbl. Keramik bei Implantatv.\n163 0 Zahnfleisch Keramik\n163 8 Zahnfleisch Keramik bei Implantatv.\n164 0 Vestibuläre Verblendung Komposit\n165 0 Zahnfleisch Komposit\n\nModellguss\nBEL-Nr. Kurztext\n201 0 Metallbasis\n202 1 Einarmige gegossene Haltevorrichtung\n202 5 Kralle\n202 6 Ney-Stiel\n202 7 Auflage\n202 8 Umgehungsbügel bei Diastema\n203 1 Zweiarmige gegossene Haltevorrichtung\n204 1 Zweiarmige gegossene Halte- und Stützvorrichtung mit Auflage\n205 0 Bonwillklammer\n208 1 Rückenschutzplatte\n208 2 Metallzahn, gegossen\n208 3 Metallkaufläche, gegossen\n210 0 Lösungshilfe\n211 0 Unterfütterbarer Abschlussrand\n212 0 Zuschlag einzelne gegossene Klammer\n\nHerausnehmbarer Zahnersatz\nBEL-Nr. Kurztext\n301 0 Aufstellung, Grundeinheit\n301 8 Aufstellung, Grundeinheit bei Implantatv.\n302 0 Aufstellen Wachs- oder Kunststoff je Zahn\n302 8 Aufst. Wachs- oder Kunststoff je Zahn bei Implantatv.\n303 0 Aufstellen Metall je Zahn\n341 0 Übertragung je Zahn\n361 0 Fertigstellung Grundeinheit\n361 8 Fertigst. Grundeinheit bei Implantatv.\n362 0 Fertigstellen je Zahn\n362 8 Fertigstellen je Zahn bei Implantatv.\n380 0 Einfache gebogene Halte- /Stützvorrichtung\n380 5 Gebogene Auflage\n381 0 Sonstige gebogene Halte- und/oder Stützvorrichtung\n382 1 Weichkunststoff\n382 2 Sonderkunststoff\n383 0 Zahn zahnfarben hergestellt\n384 0 Zahn zahnfarben hinterlegt\nAufbissbehelfe\nBEL-Nr. Kurztext\n401 0 Aufbissbehelf m. adj. Oberfläche\n402 0 Aufbissbehelf o. adj. Oberfläche\n403 0 Umarbeiten zum Aufbissbehelf\n404 0 Semipermanente Schiene aus Metall, je Zahn\n\nUnterkieferprotrusionsschienen\nBEL-Nr. Kurztext\n501 0 Basen UKPS\n502 0 Vestibuläre Protrusionsgleitflächen UKPS\n510 0 Befestigungselement Protrusionselement UKPS\n511 0 Protrusionselement UKPS\n520 0 Befestigungselement Mundöffnungsbegrenzung UKPS\n521 0 Einfaches gebogenes Halteelement UKPS\n\nKieferorthopädie\nBEL-Nr. Kurztext\n701 0 Basis für Einzelkiefergerät\n702 0 Basis bimaxilläres Gerät\n703 0 Schiefe Ebene\n704 0 Vorhofplatte\n705 0 Kinnkappe\n710 0 Aufbiss\n711 0 Abschirmelement\n712 1 Weichkunststoff (KFO)\n712 2 Sonderkunststoff (KFO)\n720 0 Schraube einarbeiten\n721 0 Spezial-Schraube einarbeiten\n722 0 Trennen einer Basis\n730 0 Labialbogen\n731 0 Labialbogen modifiziert\n732 0 Labialbogen intermaxillär\n733 0 Feder, offen\n734 0 Feder, geschlossen\n740 0 Verbindungselement/intramaxillär\n741 0 Verbindungselemente/intermaxillär\n742 0 Verankerungselement\n743 0 Einzelelement einarbeiten\n744 0 Metallverbindung (KFO)\n750 0 Einarmiges H-/A-Element\n751 0 Mehrarmiges H-/A- Element\n\nReparatur/Erweiterungen\nBEL-Nr. Kurztext\n801 0 Grundeinheit ZE\n801 8 Grundeinh. Instands. ZE/implantatgest.\n802 1 LE Sprung\n802 2 LE Bruch\n802 3 LE Einarbeiten Zahn\n802 4 LE Basisteil Kunststoff\n802 5 LE Halte- und/oder Stützvorrichtung einarbeiten\n802 6 LE Rückenschutzplatte einarbeiten\n802 7 LE Kunststoffsattel\n803 0 Retention, gebogen\n804 0 Retention, gegossen\n806 0 Gegossenes Basisteil\n807 0 Metallverbindung bei Instandsetzung/Erweiterung\n808 0 Teilunterfütterung einer Basis\n808 5 Teilunterfütterung Basis UKPS\n808 8 Teilunterfütterung/implantatgest.\n809 0 Vollständige Unterfütterung\n809 8 Vollst. Unterfütterung/implantatgest.\n810 0 Prothesenbasis erneuern\n810 8 Prothesenbasis erneuern/Implantatv.\n813 0 Auswechseln Konfektionsteil\n820 0 Instandsetzung Krone/Flügel/Brückenglied\n820 8 Instandsetzung Krone/implantatgest.\n850 0 Grundeinheit Instandsetzung/Erweiterung UKPS\n851 1 LE Erneuerung Basis UKPS\n851 2 LE Sprung/Bruch UKPS\n851 3 LE Basisteil Kunststoff UKPS\n851 4 LE Halte- und/oder Stützvorrichtung einarbeiten UKPS\n861 0 Grundeinheit/Instands. KFO oder Aufbissbehelf\n862 0 LE Einfügen Regulierungs- oder Halteelement\n863 0 LE Erneuerung eines Elementes/intermaxillär\n864 0 KFO-Basis erneuern\n870 0 Remontieren KFO-Gerät\n933 0 Versandkosten\n933 5 Versandkosten UKPS\n933 8 Versandkosten bei Implantatv.\n970 0 Verarbeitungsaufwand NEM-Legierung"
+    }
+  ]
+}

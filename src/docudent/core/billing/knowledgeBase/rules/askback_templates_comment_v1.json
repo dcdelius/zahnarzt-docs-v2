@@ -1,0 +1,258 @@
+{
+    "_meta": {
+        "version": "v1",
+        "description": "Askback templates for comment-derived rules. Only for rule types that require clinical verification.",
+        "generatedAt": "2025-12-14T22:43:00Z",
+        "coveredConditionTypes": [
+            "contra",
+            "maxCount",
+            "frequency",
+            "analogJustification"
+        ]
+    },
+    "templates": [
+        {
+            "templateId": "ASK_CONTRA_GENERAL",
+            "conditionType": "contra",
+            "questionDE": "Die Leistung {{codeA}} ist laut Kommentar nicht neben {{codeB}} abrechenbar. Wurde diese Kombination bewusst gewählt?",
+            "questionShort": "Ausschluss prüfen",
+            "options": [
+                {
+                    "value": "confirmed",
+                    "label": "Ja, bewusst gewählt",
+                    "triggerJustification": true
+                },
+                {
+                    "value": "remove_codeA",
+                    "label": "{{codeA}} entfernen"
+                },
+                {
+                    "value": "remove_codeB",
+                    "label": "{{codeB}} entfernen"
+                }
+            ],
+            "writeback": {
+                "field": "contraJustification",
+                "type": "text"
+            },
+            "priority": 90,
+            "tags": [
+                "billing",
+                "exclusion"
+            ]
+        },
+        {
+            "templateId": "ASK_CONTRA_SAME_SESSION",
+            "conditionType": "contra",
+            "questionDE": "{{codeA}} und {{codeB}} wurden in derselben Sitzung abgerechnet, obwohl dies laut Abrechnungskommentar ausgeschlossen ist. Bitte bestätigen oder korrigieren.",
+            "questionShort": "Sitzungskonflikt",
+            "options": [
+                {
+                    "value": "different_teeth",
+                    "label": "Verschiedene Zähne behandelt"
+                },
+                {
+                    "value": "different_region",
+                    "label": "Verschiedene Kieferhälften"
+                },
+                {
+                    "value": "remove_one",
+                    "label": "Eine Position entfernen"
+                }
+            ],
+            "writeback": {
+                "field": "sessionConflictResolution",
+                "type": "enum"
+            },
+            "priority": 95,
+            "tags": [
+                "billing",
+                "session"
+            ]
+        },
+        {
+            "templateId": "ASK_MAXCOUNT_EXCEEDED",
+            "conditionType": "maxCount",
+            "questionDE": "{{code}} wurde {{actualCount}}x abgerechnet, maximal sind jedoch {{maxCount}}x erlaubt ({{scope}}). Begründung erforderlich.",
+            "questionShort": "Mengenlimit überschritten",
+            "options": [
+                {
+                    "value": "justified",
+                    "label": "Medizinisch begründet",
+                    "triggerJustification": true
+                },
+                {
+                    "value": "reduce",
+                    "label": "Anzahl reduzieren"
+                }
+            ],
+            "writeback": {
+                "field": "maxCountJustification",
+                "type": "text"
+            },
+            "priority": 85,
+            "tags": [
+                "billing",
+                "quantity"
+            ]
+        },
+        {
+            "templateId": "ASK_MAXCOUNT_SCOPE",
+            "conditionType": "maxCount",
+            "questionDE": "{{code}} ist höchstens {{maxCount}}x je {{scope}} abrechenbar. Bitte Geltungsbereich bestätigen.",
+            "questionShort": "Abrechnungseinheit",
+            "options": [
+                {
+                    "value": "per_tooth",
+                    "label": "Je Zahn"
+                },
+                {
+                    "value": "per_jaw",
+                    "label": "Je Kiefer"
+                },
+                {
+                    "value": "per_session",
+                    "label": "Je Sitzung"
+                },
+                {
+                    "value": "per_quarter",
+                    "label": "Je Quartal"
+                }
+            ],
+            "writeback": {
+                "field": "scopeConfirmation",
+                "type": "enum"
+            },
+            "priority": 70,
+            "tags": [
+                "billing",
+                "scope"
+            ]
+        },
+        {
+            "templateId": "ASK_FREQUENCY_EXCEEDED",
+            "conditionType": "frequency",
+            "questionDE": "{{code}} wurde innerhalb von {{actualDays}} Tagen erneut abgerechnet. Laut Regel frühestens nach {{requiredDays}} Tagen. Begründung?",
+            "questionShort": "Frequenzlimit",
+            "options": [
+                {
+                    "value": "justified",
+                    "label": "Medizinisch notwendig",
+                    "triggerJustification": true
+                },
+                {
+                    "value": "reschedule",
+                    "label": "Datum korrigieren"
+                }
+            ],
+            "writeback": {
+                "field": "frequencyJustification",
+                "type": "text"
+            },
+            "priority": 80,
+            "tags": [
+                "billing",
+                "frequency"
+            ]
+        },
+        {
+            "templateId": "ASK_CONTRA_NOT_BESIDE",
+            "conditionType": "contra",
+            "questionDE": "Hinweis: {{codeA}} ist 'nicht neben' {{codeB}} abrechenbar. Liegt eine Ausnahme vor?",
+            "questionShort": "Nicht-neben-Prüfung",
+            "options": [
+                {
+                    "value": "exception_applies",
+                    "label": "Ausnahme liegt vor",
+                    "triggerJustification": true
+                },
+                {
+                    "value": "will_correct",
+                    "label": "Wird korrigiert"
+                }
+            ],
+            "writeback": {
+                "field": "notBesideException",
+                "type": "text"
+            },
+            "priority": 88,
+            "tags": [
+                "billing",
+                "exclusion"
+            ]
+        },
+        {
+            "templateId": "ASK_ANALOG_JUSTIFICATION",
+            "conditionType": "analogJustification",
+            "questionDE": "Für die Analogleistung '{{title}}' ist eine Begründung gemäß §6 Abs.1 GOZ erforderlich. Ist die Vergleichsleistung dokumentiert?",
+            "questionShort": "Analog-Begründung",
+            "options": [
+                {
+                    "value": "documented",
+                    "label": "Ja, dokumentiert"
+                },
+                {
+                    "value": "will_document",
+                    "label": "Wird nachgetragen",
+                    "triggerJustification": true
+                },
+                {
+                    "value": "not_required",
+                    "label": "Keine Begründung nötig"
+                }
+            ],
+            "writeback": {
+                "field": "analogJustificationStatus",
+                "type": "enum"
+            },
+            "priority": 75,
+            "tags": [
+                "billing",
+                "analog",
+                "legal"
+            ]
+        },
+        {
+            "templateId": "ASK_ANALOG_COMPARABLE_CODE",
+            "conditionType": "analogJustification",
+            "questionDE": "Welche GOZ-Nummer wurde als Vergleichsleistung für die Analogberechnung herangezogen?",
+            "questionShort": "Vergleichsleistung",
+            "options": [
+                {
+                    "value": "select_goz",
+                    "label": "GOZ-Nummer auswählen"
+                },
+                {
+                    "value": "custom_goz",
+                    "label": "Andere GOZ-Nummer eingeben",
+                    "triggerJustification": true
+                },
+                {
+                    "value": "goae",
+                    "label": "GOÄ-Nummer verwendet"
+                }
+            ],
+            "writeback": {
+                "field": "comparableCode",
+                "type": "object",
+                "schema": {
+                    "system": "string",
+                    "code": "string",
+                    "justification": "string"
+                }
+            },
+            "priority": 72,
+            "tags": [
+                "billing",
+                "analog",
+                "code_reference"
+            ]
+        }
+    ],
+    "conditionTypeDefaults": {
+        "contra": "ASK_CONTRA_GENERAL",
+        "maxCount": "ASK_MAXCOUNT_EXCEEDED",
+        "frequency": "ASK_FREQUENCY_EXCEEDED",
+        "analogJustification": "ASK_ANALOG_JUSTIFICATION"
+    }
+}

@@ -17,6 +17,9 @@ import { useState, useEffect } from 'react';
 import TreatmentSetupWizard from '../components/TreatmentSetupWizard';
 import { loadPracticeProfile, getTreatmentDefaults, type PracticeProfile, type TreatmentDefaults } from '../models/PracticeProfile';
 import { lookupBillingCode } from '../../core/billing/knowledgeBase/logic/treatmentEngine';
+import { AnalogJustificationRow } from '../components/AnalogJustificationRow';
+import type { AnalogJustificationMap } from '../../core/billing/knowledgeBase/logic/analogJustificationService';
+import type { AnalogValidationResult } from '../../core/billing/knowledgeBase/logic/analogCompletionValidator';
 
 
 
@@ -516,7 +519,10 @@ function CustomizeStep({
     onBack,
     isLoading,
     insuranceType,
-    zuzahlungBetrag
+    zuzahlungBetrag,
+    analogJustifications,
+    onSaveAnalogJustification,
+    analogValidation
 }: {
     activeChipIds: string[];
     toggleChip: (id: string) => void;
@@ -527,6 +533,9 @@ function CustomizeStep({
     isLoading: boolean;
     insuranceType: 'GKV' | 'PKV';
     zuzahlungBetrag: number | null;
+    analogJustifications: AnalogJustificationMap;
+    onSaveAnalogJustification: (analogCode: string, text: string, code?: string) => void;
+    analogValidation: AnalogValidationResult | null;
 }) {
     const [showAllCodes, setShowAllCodes] = useState(false);
 
@@ -811,6 +820,27 @@ function CustomizeStep({
                 </motion.div>
             )}
 
+            {/* Analog Justification Rows */}
+            {suggestions.filter((s: any) => s.meta?.analogCode).length > 0 && (
+                <motion.div
+                    className="mb-4 space-y-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.18 }}
+                >
+                    {suggestions.filter((s: any) => s.meta?.analogCode).map((s: any) => (
+                        <AnalogJustificationRow
+                            key={s.meta.analogCode}
+                            analogCode={s.meta.analogCode}
+                            analogLabel={s.label}
+                            suggestedComparisonCodes={s.meta.suggestedComparisonCodes || []}
+                            existingJustification={analogJustifications[s.meta.analogCode]}
+                            onSave={onSaveAnalogJustification}
+                        />
+                    ))}
+                </motion.div>
+            )}
+
             {/* Quick Options - Grouped */}
             <motion.div
                 className="mb-5 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm overflow-hidden"
@@ -876,42 +906,78 @@ function CustomizeStep({
 
             {/* Navigation - Elevated */}
             <motion.div
-                className="flex justify-between items-center"
+                className="flex flex-col gap-3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.25 }}
             >
-                <button
-                    onClick={onBack}
-                    className="inline-flex items-center px-4 py-2.5 rounded-xl text-sm font-medium
-                               text-gray-500 hover:text-gray-700 hover:bg-white/60 transition-all duration-200"
-                >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Zurück
-                </button>
-                <button
-                    onClick={onGenerate}
-                    disabled={isLoading}
-                    className={`
-                        inline-flex items-center px-7 py-3 rounded-2xl text-sm font-bold
-                        transition-all duration-300
-                        ${isLoading
-                            ? 'bg-gray-100 text-gray-400 cursor-wait'
-                            : 'bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white shadow-xl shadow-purple-300/40 hover:shadow-2xl hover:shadow-purple-400/50 hover:scale-[1.03] active:scale-[0.98]'}
-                    `}
-                >
-                    {isLoading ? (
-                        <>
-                            <div className="w-4 h-4 mr-2 border-2 border-gray-300 border-t-gray-500 rounded-full animate-spin" />
-                            Generiere...
-                        </>
-                    ) : (
-                        <>
-                            <Sparkles className="w-4 h-4 mr-2" />
-                            Dokumentation erstellen
-                        </>
-                    )}
-                </button>
+                {/* Analog Validation Errors (blocking) */}
+                {analogValidation && !analogValidation.ok && (
+                    <div className="p-3 rounded-xl bg-red-50 border border-red-200">
+                        <div className="flex items-center gap-2 mb-2">
+                            <AlertCircle className="w-4 h-4 text-red-500" />
+                            <span className="text-xs font-semibold text-red-700">
+                                Analog-Begründung erforderlich
+                            </span>
+                        </div>
+                        <ul className="space-y-1">
+                            {analogValidation.missing
+                                .filter(e => e.severity === 'error')
+                                .map(e => (
+                                    <li key={e.analogCode} className="text-[11px] text-red-600 flex items-center gap-1">
+                                        <span className="font-mono bg-red-100 px-1 rounded">{e.analogCode}</span>
+                                        <span>{e.reason}</span>
+                                    </li>
+                                ))}
+                        </ul>
+                    </div>
+                )}
+
+                {/* Analog Validation Warnings (non-blocking) */}
+                {analogValidation?.missing.filter(e => e.severity === 'warning').length > 0 && (
+                    <div className="p-2 rounded-lg bg-amber-50 border border-amber-200">
+                        <div className="flex items-center gap-2">
+                            <AlertCircle className="w-3 h-3 text-amber-500" />
+                            <span className="text-[10px] text-amber-700">
+                                {analogValidation.missing.filter(e => e.severity === 'warning').map(e => e.reason).join(', ')}
+                            </span>
+                        </div>
+                    </div>
+                )}
+
+                <div className="flex justify-between items-center">
+                    <button
+                        onClick={onBack}
+                        className="inline-flex items-center px-4 py-2.5 rounded-xl text-sm font-medium
+                                   text-gray-500 hover:text-gray-700 hover:bg-white/60 transition-all duration-200"
+                    >
+                        <ArrowLeft className="w-4 h-4 mr-2" />
+                        Zurück
+                    </button>
+                    <button
+                        onClick={onGenerate}
+                        disabled={isLoading || (analogValidation && !analogValidation.ok)}
+                        className={`
+                            inline-flex items-center px-7 py-3 rounded-2xl text-sm font-bold
+                            transition-all duration-300
+                            ${isLoading || (analogValidation && !analogValidation.ok)
+                                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                                : 'bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white shadow-xl shadow-purple-300/40 hover:shadow-2xl hover:shadow-purple-400/50 hover:scale-[1.03] active:scale-[0.98]'}
+                        `}
+                    >
+                        {isLoading ? (
+                            <>
+                                <div className="w-4 h-4 mr-2 border-2 border-gray-300 border-t-gray-500 rounded-full animate-spin" />
+                                Generiere...
+                            </>
+                        ) : (
+                            <>
+                                <Sparkles className="w-4 h-4 mr-2" />
+                                Dokumentation erstellen
+                            </>
+                        )}
+                    </button>
+                </div>
             </motion.div>
         </motion.div>
     );
@@ -1012,6 +1078,8 @@ export function DocudentV5Page() {
         festzuschuss,
         activeChipIds,
         suggestions,
+        analogJustifications,
+        analogValidation,
         setDictation,
         setInsuranceType,
         setHasZuzahlung,
@@ -1020,7 +1088,8 @@ export function DocudentV5Page() {
         analyze,
         answerConfirmation,
         generatePreview,
-        reset
+        reset,
+        saveAnalogJustification
     } = useBillingV5Controller('fuellung');
 
     const [currentStep, setCurrentStep] = useState<Step>('dictation');
@@ -1159,6 +1228,9 @@ export function DocudentV5Page() {
                             isLoading={isGenerating}
                             insuranceType={insuranceType}
                             zuzahlungBetrag={zuzahlungBetrag}
+                            analogJustifications={analogJustifications}
+                            onSaveAnalogJustification={saveAnalogJustification}
+                            analogValidation={analogValidation}
                         />
                     )}
 

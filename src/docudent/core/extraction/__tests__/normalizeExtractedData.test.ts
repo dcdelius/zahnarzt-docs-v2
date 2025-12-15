@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { normalizeExtractedData } from '../normalizeExtractedData';
-import { MASTER_TEMPLATE_V3 } from '../../../data/masterTemplate';
+import { MASTER_TEMPLATE_V3 } from '../../../../data/masterTemplate';
 
 describe('normalizeExtractedData', () => {
     it('normalizes tooth notation with dots', () => {

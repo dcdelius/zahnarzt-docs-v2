@@ -1,0 +1,178 @@
+{
+    "meta": {
+        "importer": "Docudent Importer v2",
+        "timestamp": "2025-12-14T16:52:12.706Z",
+        "sourceFile": "ze_bel_cases_v2.json"
+    },
+    "summary": {
+        "pass": 20,
+        "fail": 0,
+        "failCaseIds": [],
+        "failReasonsByCase": {},
+        "total": 20,
+        "missingBelCodesUnique": [],
+        "invalidFzCodesUnique": []
+    },
+    "perCase": [
+        {
+            "id": "CASE_01",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_02",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_03",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_04",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_05",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_06",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_07",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_08",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_09",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_10",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_11",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_12",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_13",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_14",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_15",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_16",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_17",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_18",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_19",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        },
+        {
+            "id": "CASE_20",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "missingFields": [],
+            "errors": []
+        }
+    ]
+}
