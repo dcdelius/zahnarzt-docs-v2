@@ -434,6 +434,20 @@ export const DocudentV7Page: React.FC = () => {
     const hasText = dictation.trim().length > 0;
     const stepNumber = STEP_MAP[currentState] || '01';
 
+    // ═══════════════════════════════════════════════════════════════
+    // STATE-BASED GRADIENT (Prompt A: V6 parity)
+    // ═══════════════════════════════════════════════════════════════
+    const STATE_GRADIENT: Record<string, string> = {
+        idle: gradients.heroDeep,
+        processing: gradients.heroDeep,
+        running: gradients.heroDeep,
+        questions: gradients.questionsWarm,
+        output: gradients.outputLight,
+        multi_output: gradients.outputLight,
+        error: gradients.heroDeep,
+    };
+    const stateGradient = STATE_GRADIENT[currentState] || gradients.heroDeep;
+
     // ─── Render based on state ─────────────────────────────────
     const renderContent = () => {
         // Processing
@@ -680,6 +694,28 @@ export const DocudentV7Page: React.FC = () => {
             {/* Vignette */}
             <div style={styles.vignette} />
 
+            {/* ═══════════════════════════════════════════════════════════════
+                ANIMATED BACKGROUND — State-based gradient transition (Prompt A)
+                Crossfades between heroDeep → questionsWarm → outputLight
+            ═══════════════════════════════════════════════════════════════ */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={`bg-${currentState}`}
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: stateGradient,
+                        zIndex: 0,
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4, ease: motionTokens.easing }}
+                    data-testid="v7-background"
+                    data-state={currentState}
+                />
+            </AnimatePresence>
+
             {/* Background orbs — reduced for breathing space */}
             <motion.div
                 style={styles.orb1}
@@ -746,10 +782,39 @@ export const DocudentV7Page: React.FC = () => {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Main Content */}
+            {/* ═══════════════════════════════════════════════════════════════
+                MAIN CONTENT — AnimatePresence for step transitions (Prompt C)
+                Each state has unique motion for "designed" feel
+            ═══════════════════════════════════════════════════════════════ */}
             <main style={styles.content}>
-                {/* DEBUG: Removing AnimatePresence to test direct rendering */}
-                {renderContent()}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentState}
+                        initial={{
+                            opacity: 0,
+                            y: currentState === 'idle' ? 20 : 0,
+                            x: currentState === 'questions' ? 30 : 0,
+                            scale: currentState === 'output' ? 0.98 : 1,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                            x: 0,
+                            scale: 1,
+                        }}
+                        exit={{
+                            opacity: 0,
+                            y: -10,
+                            scale: 0.99,
+                        }}
+                        transition={{
+                            duration: 0.35,
+                            ease: motionTokens.easing,
+                        }}
+                    >
+                        {renderContent()}
+                    </motion.div>
+                </AnimatePresence>
             </main>
 
             {/* Step Dots — Bottom Center */}

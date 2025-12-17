@@ -5,7 +5,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { normalizeToothInText, extractToothNumber } from '../../../v6/services/toothNormalizer';
+import { normalizeToothInText, extractToothNumber } from '../../../core/extraction/toothNormalizer';
 
 describe('Tooth Normalizer', () => {
     describe('normalizeToothInText', () => {

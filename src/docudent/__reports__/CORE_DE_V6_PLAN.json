@@ -1,0 +1,174 @@
+{
+    "planId": "CORE_DE_V6_PLAN",
+    "timestamp": "2025-12-17T12:07:35+01:00",
+    "description": "Incremental roadmap to remove V6 behind CORE facades",
+    "currentArchitecture": "V7 → core/services (facade) → v6/services (frozen)",
+    "targetArchitecture": "V7 → core/services (native)",
+    "constraints": [
+        "No behavioral change during migration",
+        "Each step independently deployable",
+        "Parity tests before and after each step"
+    ],
+    "phases": [
+        {
+            "phase": 1,
+            "name": "Utility Migration",
+            "services": [
+                "toothNormalizer.ts"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Create core/utilities/toothNormalizer.ts",
+                    "risk": "LOW"
+                },
+                {
+                    "step": 2,
+                    "action": "Copy implementation from v6/services/toothNormalizer.ts",
+                    "risk": "LOW"
+                },
+                {
+                    "step": 3,
+                    "action": "Update extractionService to import from core/utilities/",
+                    "risk": "LOW"
+                },
+                {
+                    "step": 4,
+                    "action": "Run parity tests",
+                    "risk": "LOW"
+                }
+            ],
+            "estimatedEffort": "1-2 hours",
+            "rollbackStrategy": "Revert import path change"
+        },
+        {
+            "phase": 2,
+            "name": "Extraction Migration",
+            "services": [
+                "extractionService.ts"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Create core/services/impl/extractionService.ts",
+                    "risk": "MEDIUM"
+                },
+                {
+                    "step": 2,
+                    "action": "Copy implementation from v6/services/extractionService.ts",
+                    "risk": "MEDIUM"
+                },
+                {
+                    "step": 3,
+                    "action": "Update imports to use core/utilities/toothNormalizer",
+                    "risk": "LOW"
+                },
+                {
+                    "step": 4,
+                    "action": "Update facade to import from impl/ instead of v6/",
+                    "risk": "LOW"
+                },
+                {
+                    "step": 5,
+                    "action": "Run parity tests",
+                    "risk": "LOW"
+                }
+            ],
+            "estimatedEffort": "2-3 hours",
+            "rollbackStrategy": "Revert facade import to v6"
+        },
+        {
+            "phase": 3,
+            "name": "Question Service Migration",
+            "services": [
+                "questionService.ts",
+                "questionServiceV2.ts"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Create core/services/impl/questionService.ts",
+                    "risk": "MEDIUM"
+                },
+                {
+                    "step": 2,
+                    "action": "Copy implementation, update internal imports",
+                    "risk": "MEDIUM"
+                },
+                {
+                    "step": 3,
+                    "action": "Update facade, run parity tests",
+                    "risk": "LOW"
+                }
+            ],
+            "estimatedEffort": "2-3 hours",
+            "rollbackStrategy": "Revert facade import to v6"
+        },
+        {
+            "phase": 4,
+            "name": "Output Service Migration",
+            "services": [
+                "outputService.ts",
+                "mergeFacts.ts",
+                "answerEffectiveness.ts"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Create core/services/impl/outputService.ts",
+                    "risk": "HIGH"
+                },
+                {
+                    "step": 2,
+                    "action": "Migrate mergeFacts to core/services/impl/",
+                    "risk": "MEDIUM"
+                },
+                {
+                    "step": 3,
+                    "action": "Migrate answerEffectiveness to core/services/impl/",
+                    "risk": "LOW"
+                },
+                {
+                    "step": 4,
+                    "action": "Update all internal imports",
+                    "risk": "MEDIUM"
+                },
+                {
+                    "step": 5,
+                    "action": "Update facade, run parity tests",
+                    "risk": "HIGH"
+                }
+            ],
+            "estimatedEffort": "4-6 hours",
+            "rollbackStrategy": "Revert facade import to v6"
+        },
+        {
+            "phase": 5,
+            "name": "V6 Deletion",
+            "services": [
+                "ALL"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Delete v6/services/ directory",
+                    "risk": "HIGH"
+                },
+                {
+                    "step": 2,
+                    "action": "Delete v6/hooks/ if no longer needed",
+                    "risk": "MEDIUM"
+                },
+                {
+                    "step": 3,
+                    "action": "Update V6_FREEZE.md to DELETED status",
+                    "risk": "LOW"
+                }
+            ],
+            "estimatedEffort": "1 hour",
+            "rollbackStrategy": "Git revert entire deletion commit"
+        }
+    ],
+    "totalEstimatedEffort": "10-15 hours",
+    "recommendedApproach": "Execute phases 1-4 over 2-3 days with full suite runs between each phase. Phase 5 only after 1 week of production stability."
+}

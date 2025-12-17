@@ -29,9 +29,11 @@
 import { describe, it, expect } from 'vitest';
 import type { ExtractedDataV2, MentionedFields, KeywordFlags } from '../../../contracts/extraction';
 import type { ValidationWarning } from '../../../contracts/warnings';
-import { deriveDiagnosis } from '../../../core/billing/knowledgeBase/logic/diagnosisDerivation';
-import { generateQuestionsV2 } from '../../../v6/services/questionServiceV2';
-import { getRequiredFieldsFromRules } from '../../../core/billing/knowledgeBase/logic/ruleQuestionTrigger';
+// ═══════════════════════════════════════════════════════════════
+// IMPORTS — V7 tests use facades only
+// ═══════════════════════════════════════════════════════════════
+// Engine logic tests moved to: core/billing/__tests__/engine-logic.test.ts
+import { generateQuestionsV2 } from '../../../core/services/questionService';
 
 // ═══════════════════════════════════════════════════════════════
 // MOCK EXTRACTED DATA — Uses EXACT contract field names
@@ -74,77 +76,12 @@ function createMockExtraction(overrides: Partial<ExtractedDataV2> = {}): Extract
 }
 
 // ═══════════════════════════════════════════════════════════════
-// TESTS
+// TESTS — Pipeline integration only (no Engine internals)
 // ═══════════════════════════════════════════════════════════════
 
-describe('SSOT Reality Integration Tests', () => {
-    describe('Diagnosis Derivation (Engine)', () => {
-        it('should derive Caries profunda from saidDeepCavity', () => {
-            const flags: KeywordFlags = { saidDeepCavity: true, saidSuperficial: false, saidFracture: false, saidCaries: true };
-            const result = deriveDiagnosis(flags);
-
-            expect(result.code).toBe('caries_profunda');
-            expect(result.label).toBe('Caries profunda');
-            expect(result.cpEligible).toBe(true);
-        });
-
-        it('should derive Fraktur from saidFracture', () => {
-            const flags: KeywordFlags = { saidDeepCavity: false, saidSuperficial: false, saidFracture: true, saidCaries: false };
-            const result = deriveDiagnosis(flags);
-
-            expect(result.code).toBe('fraktur');
-            expect(result.label).toBe('Fraktur');
-            expect(result.cpEligible).toBe(false);
-        });
-
-        it('should derive unknown when no flags set', () => {
-            const flags: KeywordFlags = { saidDeepCavity: false, saidSuperficial: false, saidFracture: false, saidCaries: false };
-            const result = deriveDiagnosis(flags);
-
-            expect(result.code).toBe('unknown');
-        });
-    });
-
-    describe('Rule-Triggered Questions', () => {
-        it('should return required fields from rules', () => {
-            const extracted = createMockExtraction();
-            const required = getRequiredFieldsFromRules('fuellung', [], extracted, 'GKV', false);
-
-            // Should have at least vitality and percussion (from rules with questionTrigger)
-            const fieldNames = required.map(r => r.field);
-            expect(fieldNames).toContain('vitality');
-            expect(fieldNames).toContain('percussion');
-        });
-
-        it('should include rule metadata', () => {
-            const extracted = createMockExtraction();
-            const required = getRequiredFieldsFromRules('fuellung', [], extracted, 'GKV', false);
-
-            const vitalityRule = required.find(r => r.field === 'vitality');
-            expect(vitalityRule).toBeDefined();
-            expect(vitalityRule?.ruleId).toBe('RULE_FUELLUNG_VITAL_DOKU');
-            expect(vitalityRule?.riskLevel).toBe('mittel');
-        });
-
-        it('should not include fields that are already filled', () => {
-            const extracted = createMockExtraction({
-                mentioned: {
-                    anesthesia: { value: null, confidence: 0, evidence: [], needsConfirmation: true },
-                    kofferdam: { value: null, confidence: 0, evidence: [], needsConfirmation: true },
-                    tiefe: { value: null, confidence: 0, evidence: [], needsConfirmation: true },
-                    vitality: { value: '+', confidence: 1, evidence: ['vital'], needsConfirmation: false },
-                    percussion: { value: '-', confidence: 1, evidence: ['perk-'], needsConfirmation: false },
-                    capping: { value: null, confidence: 0, evidence: [], needsConfirmation: true },
-                    material: { value: null, confidence: 0, evidence: [], needsConfirmation: true },
-                },
-            });
-            const required = getRequiredFieldsFromRules('fuellung', [], extracted, 'GKV', false);
-
-            const fieldNames = required.map(r => r.field);
-            expect(fieldNames).not.toContain('vitality');
-            expect(fieldNames).not.toContain('percussion');
-        });
-    });
+describe('SSOT Pipeline Integration Tests', () => {
+    // NOTE: Engine logic tests (deriveDiagnosis, getRequiredFieldsFromRules)
+    // have been moved to: core/billing/__tests__/engine-logic.test.ts
 
     describe('Question Generation End-to-End', () => {
         it('should generate questions when fields missing', () => {

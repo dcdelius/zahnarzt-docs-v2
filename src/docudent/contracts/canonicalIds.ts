@@ -40,6 +40,13 @@ export const CANONICAL_QUESTION_IDS = {
 
     // Anesthesia (usually extracted, sometimes asked)
     ANESTHESIA: 'forensic_anesthesia',
+
+    // ─── ENDO-SPECIFIC ─────────────────────────────────────────────
+    ENDO_STEP: 'forensic_endo_step',
+    ENDO_CANAL_COUNT: 'forensic_endo_canal_count',
+    ENDO_IRRIGATION_PROTOCOL: 'forensic_endo_irrigation_protocol',
+    ENDO_MEDICATION: 'forensic_endo_medication',
+    ENDO_OBTURATION: 'endo_obturation',
 } as const;
 
 export type CanonicalQuestionId = typeof CANONICAL_QUESTION_IDS[keyof typeof CANONICAL_QUESTION_IDS];
@@ -74,6 +81,30 @@ export const CANONICAL_OPTION_IDS = {
     INFILTRATION: 'anesthesia_infiltr',
     LEITUNGS: 'anesthesia_leitung',
     KEINE_LA: 'anesthesia_none',
+
+    // ─── ENDO-SPECIFIC ─────────────────────────────────────────────
+    // Endo Step
+    ENDO_START: 'endo_start',
+    ENDO_INTERIM: 'endo_interim',
+    ENDO_COMPLETE: 'endo_complete',
+
+    // Canal Count (1-4 are just numbers, stored as strings)
+    CANAL_1: 'canal_1',
+    CANAL_2: 'canal_2',
+    CANAL_3: 'canal_3',
+    CANAL_4: 'canal_4',
+
+    // Irrigation Protocol
+    IRRIGATION_NAOCL_EDTA: 'irrigation_naocl_edta',
+    IRRIGATION_NAOCL: 'irrigation_naocl',
+
+    // Medication
+    MEDICATION_CAOH2: 'medication_caoh2',
+    MEDICATION_NONE: 'medication_none',
+
+    // Obturation
+    OBTURATION_THERMOPLASTIC: 'obturation_thermoplastic',
+    OBTURATION_LATERAL: 'obturation_lateral',
 } as const;
 
 export type CanonicalOptionId = typeof CANONICAL_OPTION_IDS[keyof typeof CANONICAL_OPTION_IDS];
@@ -166,6 +197,14 @@ export const ANSWER_TO_CHIP: Record<CanonicalQuestionId, Record<string, Canonica
     // MKV questions don't directly activate chips
     [CANONICAL_QUESTION_IDS.MKV_VEREINBARUNG]: {},
     [CANONICAL_QUESTION_IDS.MKV_BETRAG]: {},
+
+    // ─── ENDO-SPECIFIC ─────────────────────────────────────────────
+    // Endo questions are docFact only (no chip activation)
+    [CANONICAL_QUESTION_IDS.ENDO_STEP]: {},
+    [CANONICAL_QUESTION_IDS.ENDO_CANAL_COUNT]: {},
+    [CANONICAL_QUESTION_IDS.ENDO_IRRIGATION_PROTOCOL]: {},
+    [CANONICAL_QUESTION_IDS.ENDO_MEDICATION]: {},
+    [CANONICAL_QUESTION_IDS.ENDO_OBTURATION]: {},
 };
 
 // ═══════════════════════════════════════════════════════════════

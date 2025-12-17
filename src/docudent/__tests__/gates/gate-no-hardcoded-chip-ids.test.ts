@@ -21,6 +21,7 @@
 import { describe, it, expect } from 'vitest';
 import * as fs from 'fs';
 import * as path from 'path';
+import { CANONICAL_CHIP_IDS } from '../../contracts/canonicalIds';
 
 // ════════════════════════════════════════════════════════════════
 // SCAN CONFIGURATION
@@ -59,29 +60,11 @@ const SKIP_DIRS = [
 ];
 
 // ════════════════════════════════════════════════════════════════
-// CHIP ID PATTERNS (violations)
+// CHIP ID PATTERNS (auto-generated from canonicalIds.ts)
 // ════════════════════════════════════════════════════════════════
 
-// All canonical chip IDs that must not be hardcoded
-const CANONICAL_CHIP_STRINGS = [
-    'mehrschicht',
-    'adhasiv',
-    'adhaesiv',
-    'la_infiltr',
-    'la_leitung',
-    'ohne_la',
-    'kofferdam',
-    'rel_trocken',
-    'exkavation',
-    'komposit_basic',
-    'finishing',
-    'cp',
-    'vipr_pos',
-    'vipr_neg',
-    'perk_pos',
-    'perk_neg',
-    'fluor',
-];
+// Auto-generate from CANONICAL_CHIP_IDS — zero maintenance!
+const CANONICAL_CHIP_STRINGS = Object.values(CANONICAL_CHIP_IDS);
 
 // Build regex patterns for chip ID violations
 function buildViolationPatterns(): RegExp[] {

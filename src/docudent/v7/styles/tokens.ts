@@ -59,9 +59,15 @@ export const colors = {
 // ═══════════════════════════════════════════════════════════════
 
 export const gradients = {
-    // Hero
+    // Hero (idle state)
     hero: 'linear-gradient(135deg, #F87A7A 0%, #F69A7C 40%, #F7B88C 70%, #FDD9B5 100%)',
     heroDeep: 'linear-gradient(145deg, #E86A6A 0%, #F87A7A 20%, #F69A7C 50%, #F7B88C 80%, #FDD9B5 100%)',
+
+    // Questions state - warmer, shifted
+    questionsWarm: 'linear-gradient(135deg, #FA8C80 0%, #F8AA86 30%, #F6C79A 80%)',
+
+    // Output state - lighter, more apricot
+    outputLight: 'linear-gradient(135deg, #FBCDB2 0%, #FDDDC8 50%, #FEF0E8 100%)',
 
     // Button
     button: 'linear-gradient(135deg, #FF6B4A 0%, #FF8B6A 100%)',

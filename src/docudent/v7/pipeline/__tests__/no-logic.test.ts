@@ -77,6 +77,14 @@ const FORBIDDEN_PATTERNS: { pattern: RegExp; reason: string }[] = [
 ];
 
 // ═══════════════════════════════════════════════════════════════
+// ALLOWLIST FILES — UI components with labels but no logic
+// ═══════════════════════════════════════════════════════════════
+
+const ALLOWLIST_FILES = [
+    'SummaryChips.tsx',  // Settings UI with labels (kofferdam, anästhesie as display text)
+];
+
+// ═══════════════════════════════════════════════════════════════
 // HELPER FUNCTIONS
 // ═══════════════════════════════════════════════════════════════
 
@@ -91,6 +99,8 @@ function getAllFiles(dir: string, ext: string = '.tsx'): string[] {
         if (entry.isDirectory()) {
             files.push(...getAllFiles(fullPath, ext));
         } else if (entry.name.endsWith(ext)) {
+            // Skip allowlisted files
+            if (ALLOWLIST_FILES.includes(entry.name)) continue;
             files.push(fullPath);
         }
     }

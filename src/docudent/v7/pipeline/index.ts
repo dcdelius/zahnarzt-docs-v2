@@ -16,10 +16,10 @@
 
 import type { PipelineInput, PipelineResult, ComposedOutput } from './types';
 
-// Backend imports — SSOT
-import { extractFromDictation } from '../../v6/services/extractionService';
-import { generateQuestions } from '../../v6/services/questionService';
-import { generateFinalOutput } from '../../v6/services/outputService';
+// Backend imports — CORE FACADES (eliminates V6 direct imports)
+import { extractFromDictation } from '../../core/services/extractionService';
+import { generateQuestions } from '../../core/services/questionService';
+import { generateFinalOutput } from '../../core/services/outputService';
 
 // V7 Canonical Layer
 import { normalizeAnswers, hasUnmappedAnswers, logUnmappedAnswers } from './normalizeAnswers';

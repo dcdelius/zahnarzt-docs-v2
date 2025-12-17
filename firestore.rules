@@ -1,0 +1,244 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ═══════════════════════════════════════════════════════════════
+    // HELPER FUNCTIONS
+    // ═══════════════════════════════════════════════════════════════
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function getOrgs() {
+      return request.auth.token.orgs;
+    }
+
+    function getPractices() {
+      return request.auth.token.practices;
+    }
+
+    function isMemberOfOrg(orgId) {
+      return isSignedIn() && orgId in getOrgs();
+    }
+
+    function hasOrgRole(orgId, role) {
+      return isMemberOfOrg(orgId) && role in getOrgs()[orgId];
+    }
+
+    function isMemberOfPractice(practiceId) {
+      return isSignedIn() && practiceId in getPractices();
+    }
+
+    function hasPracticeRole(practiceId, role) {
+      return isMemberOfPractice(practiceId) && role in getPractices()[practiceId];
+    }
+
+    function canManagePractice(orgId, practiceId) {
+      return hasOrgRole(orgId, 'org_admin') || hasPracticeRole(practiceId, 'practice_admin');
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // ORGS
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId} {
+      allow read: if isMemberOfOrg(orgId);
+      allow create: if isSignedIn();
+      allow update, delete: if hasOrgRole(orgId, 'org_admin');
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // PRACTICES
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId}/practices/{practiceId} {
+      allow read: if isMemberOfOrg(orgId);
+      allow create: if hasOrgRole(orgId, 'org_admin');
+      allow update: if canManagePractice(orgId, practiceId);
+      allow delete: if hasOrgRole(orgId, 'org_admin');
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // PROVIDERS
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId}/practices/{practiceId}/providers/{providerId} {
+      allow read: if isMemberOfPractice(practiceId);
+      allow create, update: if canManagePractice(orgId, practiceId);
+      allow delete: if canManagePractice(orgId, practiceId);
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // ROOMS
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId}/practices/{practiceId}/rooms/{roomId} {
+      allow read: if isMemberOfPractice(practiceId);
+      allow create, update, delete: if hasPracticeRole(practiceId, 'practice_admin');
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // PRACTICE MEMBERSHIPS
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId}/practices/{practiceId}/memberships/{uid} {
+      // Read: own membership OR practice members
+      allow get: if isSignedIn() && request.auth.uid == uid;
+      allow list: if isMemberOfPractice(practiceId);
+      // Write: practice_admin only (or via Cloud Functions for self-serve)
+      allow create, update, delete: if hasPracticeRole(practiceId, 'practice_admin');
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // INVITES
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId}/practices/{practiceId}/invites/{inviteId} {
+      // Read: practice_admin only
+      allow read: if hasPracticeRole(practiceId, 'practice_admin');
+      // Write: practice_admin creates, Cloud Function handles accept
+      allow create: if hasPracticeRole(practiceId, 'practice_admin');
+      allow update: if false; // Only via Cloud Function
+      allow delete: if hasPracticeRole(practiceId, 'practice_admin');
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // MEMBERSHIPS — [B3 FIX] Separate get vs list
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId}/memberships/{membershipId} {
+      // get: org members OR own membership
+      allow get: if isMemberOfOrg(orgId) || 
+                    (isSignedIn() && resource != null && resource.data.userId == request.auth.uid);
+      // list: org members only
+      allow list: if isMemberOfOrg(orgId);
+      // write: org_admin only (or via Cloud Functions for self-serve)
+      allow create, update, delete: if hasOrgRole(orgId, 'org_admin');
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // SETTINGS OVERRIDES — [B1/B2 FIX] practiceId required for room/provider scopes
+    // ═══════════════════════════════════════════════════════════════
+    // Schema requirement: For scope='room' or scope='provider', document MUST include
+    // practiceId field (in addition to scopeId).
+
+    match /orgs/{orgId}/settingsOverrides/{overrideId} {
+      allow read: if isMemberOfOrg(orgId);
+      allow create, update: if canWriteSettingsOverride(orgId, request.resource.data);
+      allow delete: if hasOrgRole(orgId, 'org_admin');
+
+      function canWriteSettingsOverride(orgId, data) {
+        let scope = data.scope;
+        let scopeId = data.scopeId;
+
+        // org scope: org_admin required
+        let orgWrite = scope == 'org' && hasOrgRole(orgId, 'org_admin');
+
+        // practice scope: scopeId is practiceId
+        let practiceWrite = scope == 'practice' && canManagePractice(orgId, scopeId);
+
+        // room scope: practiceId field required in data
+        let roomWrite = scope == 'room' && 
+                        data.practiceId != null && 
+                        canManagePractice(orgId, data.practiceId);
+
+        // provider scope: practiceId required, either practice_admin or own provider
+        let providerWrite = scope == 'provider' && 
+                            data.practiceId != null && 
+                            (canManagePractice(orgId, data.practiceId) || 
+                             isOwnProvider(orgId, data.practiceId, scopeId));
+
+        return orgWrite || practiceWrite || roomWrite || providerWrite;
+      }
+
+      // [B2 FIX] isOwnProvider now takes all needed params
+      function isOwnProvider(orgId, practiceId, providerId) {
+        let providerDoc = get(/databases/$(database)/documents/orgs/$(orgId)/practices/$(practiceId)/providers/$(providerId));
+        return isSignedIn() && 
+               providerDoc != null && 
+               providerDoc.data.userId == request.auth.uid;
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // CASES — IMMUTABILITY MODEL
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId}/practices/{practiceId}/cases/{caseId} {
+      allow read: if isMemberOfPractice(practiceId);
+
+      // Create: must be draft
+      allow create: if canCreateCase(practiceId) && 
+                       request.resource.data.status == 'draft';
+
+      // Update: complex rules for immutability
+      allow update: if canUpdateCase(resource.data, request.resource.data);
+
+      // Delete: only drafts, by practice_admin
+      allow delete: if hasPracticeRole(practiceId, 'practice_admin') && 
+                       resource.data.status == 'draft';
+
+      function canCreateCase(practiceId) {
+        return hasPracticeRole(practiceId, 'provider') || 
+               hasPracticeRole(practiceId, 'assistant') ||
+               hasPracticeRole(practiceId, 'practice_admin');
+      }
+
+      function canUpdateCase(oldData, newData) {
+        let oldStatus = oldData.status;
+        let newStatus = newData.status;
+
+        // Case 1: Draft → Draft update (most common)
+        let draftUpdate = oldStatus == 'draft' && newStatus == 'draft' && canEditCase();
+
+        // Case 2: Draft → Finalized (must have finalizedAt)
+        let finalize = oldStatus == 'draft' && 
+                       newStatus == 'finalized' && 
+                       ('finalizedAt' in newData) &&
+                       canEditCase();
+
+        // Case 3: Finalized → Amended (simple status transition check)
+        // Note: Field restriction enforcement deferred to Cloud Function validation
+        let amend = oldStatus == 'finalized' && newStatus == 'amended';
+
+        // Block all other finalized updates
+        let blockedFinalized = oldStatus == 'finalized' && newStatus != 'amended';
+
+        return (draftUpdate || finalize || amend) && !blockedFinalized;
+      }
+
+      function canEditCase() {
+        return hasPracticeRole(practiceId, 'provider') ||
+               hasPracticeRole(practiceId, 'assistant') ||
+               hasPracticeRole(practiceId, 'practice_admin');
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // PATIENTS PRIVATE (Encrypted PII)
+    // ═══════════════════════════════════════════════════════════════
+
+    match /orgs/{orgId}/patients_private/{patientRef} {
+      allow read: if isMemberOfOrg(orgId) && 
+                     resource != null &&
+                     (hasPracticeRole(resource.data.practiceId, 'provider') ||
+                      hasPracticeRole(resource.data.practiceId, 'practice_admin'));
+      allow create, update: if canWritePatient(orgId, request.resource.data.practiceId);
+      allow delete: if hasOrgRole(orgId, 'org_admin');
+
+      function canWritePatient(orgId, practiceId) {
+        return canManagePractice(orgId, practiceId) ||
+               hasPracticeRole(practiceId, 'provider');
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // MIGRATIONS
+    // ═══════════════════════════════════════════════════════════════
+
+    match /migrations/{userId} {
+      allow read, write: if isSignedIn() && request.auth.uid == userId;
+    }
+  }
+}

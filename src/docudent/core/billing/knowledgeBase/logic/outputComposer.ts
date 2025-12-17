@@ -16,6 +16,16 @@
 import type { ProcessingResult, ChipDefinition } from './treatmentEngine';
 import { type ValidationWarning, createWarningFromString } from '../../../../contracts/warnings';
 
+// Aufklärung Registry (SSOT-safe contextual clauses)
+import {
+    FUELLUNG_AUFKLAERUNG_CLAUSES,
+    buildAufklaerungFromClauses,
+    type VerbosityLevel,
+} from '../registry/aufklaerungRegistry';
+
+// Settings Store (aufklaerungEnabled toggle)
+import { getFuellungDefaults } from '../../../../v7/settings/settingsStore';
+
 // ═══════════════════════════════════════════════════════════════
 // TYPES
 // ═══════════════════════════════════════════════════════════════
@@ -378,11 +388,50 @@ function renderAufklaerung(
     disclosures: Disclosure[],
     insuranceType: string,
     options: ComposeOptions,
-    derived: DerivedFlags
+    derived: DerivedFlags,
+    activeChips: string[],
+    extracted?: Record<string, unknown>
 ): { content: string; evidenceRefs: EvidenceRef[] } {
     const parts: string[] = [];
     const evidenceRefs: EvidenceRef[] = [];
 
+    // ────────────────────────────────────────────────────────────
+    // SSOT-SAFE CHECK: aufklaerungEnabled setting
+    // ────────────────────────────────────────────────────────────
+    const fuellungDefaults = getFuellungDefaults();
+    if (!fuellungDefaults.aufklaerungEnabled) {
+        // Aufklärung disabled by practice setting → return empty
+        return { content: '', evidenceRefs: [] };
+    }
+
+    // ────────────────────────────────────────────────────────────
+    // CONTEXTUAL AUFKLÄRUNG from Registry (SSOT-safe)
+    // Dataflow: activeChips + extracted + answers → aufklaerung text
+    // ────────────────────────────────────────────────────────────
+    const verbosity = (options.textLength || 'mittel') as VerbosityLevel;
+    const evalContext = {
+        activeChips,
+        answers: new Map<string, unknown>(), // TODO: wire from outside if needed
+        extracted: extracted || {},
+    };
+
+    const registryResult = buildAufklaerungFromClauses(
+        FUELLUNG_AUFKLAERUNG_CLAUSES,
+        evalContext,
+        verbosity
+    );
+
+    if (registryResult.text) {
+        parts.push(registryResult.text);
+        // Evidence: clauses used
+        for (const clauseId of registryResult.clauseIds) {
+            evidenceRefs.push({ type: 'disclosure', id: `clause:${clauseId}` });
+        }
+    }
+
+    // ────────────────────────────────────────────────────────────
+    // DISCLOSURE-BASED AUFKLÄRUNG (legacy template disclosures)
+    // ────────────────────────────────────────────────────────────
     for (const discId of section.disclosureIds || []) {
         const disclosure = disclosures.find(d => d.id === discId);
         if (!disclosure) continue;
@@ -714,7 +763,9 @@ export function composeOutput(
                 break;
 
             case 'aufklaerung':
-                sectionResult = renderAufklaerung(sectionDef, disclosures, insuranceType, options, derived);
+                // Pass activeChips and extracted for SSOT-safe clause evaluation
+                const activeChipIds = dedupedChips.map(c => c.id);
+                sectionResult = renderAufklaerung(sectionDef, disclosures, insuranceType, options, derived, activeChipIds, extractedData);
                 break;
 
             case 'behandlung':

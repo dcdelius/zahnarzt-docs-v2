@@ -21,13 +21,45 @@ export interface QuestionOption {
     chipActivation?: string; // Chip to activate when this option is selected
 }
 
+/**
+ * When-condition for conditionally displaying a question.
+ * - noneKeywords: skip if ANY of these keywords are present in dictation
+ * - anyOf: show if ANY of these conditions are met
+ */
+export interface QuestionWhenCondition {
+    /** Skip question if ANY of these keywords are present in dictation */
+    noneKeywords?: string[];
+    /** Show question if ANY of these conditions are met */
+    anyOf?: Array<{
+        requiresAnswers?: Record<string, string>;
+        anyKeywords?: string[];
+    }>;
+}
+
+/**
+ * Settings-based skip configuration.
+ * If settings.{settingsPath} !== skipIfNot, the question is skipped.
+ */
+export interface SettingsSkipConfig {
+    /** Path to setting, e.g., 'endo.defaults.spuelprotokoll' */
+    settingsPath: string;
+    /** Skip if setting value is NOT this value (usually 'fragen') */
+    skipIfNot: string;
+}
+
 export interface QuestionDefinition {
     key: string;
+    /** Canonical ID from canonicalIds.ts (e.g., 'forensic_endo_step') */
+    canonicalId?: string;
     category: 'forensic' | 'upsell' | 'mkv';
     prompt: string;
     type: 'single' | 'number' | 'multi';
     dataField?: string;
     options?: QuestionOption[];
+    /** When-condition for conditional display */
+    when?: QuestionWhenCondition;
+    /** Settings-based skip configuration */
+    settingsSkip?: SettingsSkipConfig;
     // For number type
     min?: number;
     max?: number;

@@ -2,7 +2,7 @@
  * Gate Test: MKV Technique Defaults for Fuellung
  * 
  * Ensures that for fuellung+hasMKV:
- * - mehrschicht and adhasiv are NOT asked as questions
+ * - mehrschicht and adhaesiv are NOT asked as questions
  * - mkv_vereinbarung and mkv_betrag ARE still asked
  * - Output contains technique text (Mehrschicht, Adhäsiv)
  */
@@ -38,7 +38,7 @@ describe('Gate: MKV Technique Defaults', () => {
             expect(mehrschichtQ).toBeUndefined();
         });
 
-        it('should NOT ask adhasiv question for fuellung+MKV', () => {
+        it('should NOT ask adhaesiv question for fuellung+MKV', () => {
             const questions = generateQuestions(
                 baseExtracted,
                 'GKV',
@@ -48,8 +48,8 @@ describe('Gate: MKV Technique Defaults', () => {
                 'Zahn 36 MOD Kofferdam'
             );
 
-            const adhasivQ = questions.find(q => q.id === 'adhasiv');
-            expect(adhasivQ).toBeUndefined();
+            const adhaesivQ = questions.find(q => q.id === 'adhaesiv');
+            expect(adhaesivQ).toBeUndefined();
         });
 
         it('should still ask mkv_vereinbarung for fuellung+MKV', () => {
@@ -84,7 +84,7 @@ describe('Gate: MKV Technique Defaults', () => {
 
         it('should ask other upsell questions for fuellung+MKV (not defaults)', () => {
             // optisch_elektronisch might or might not be defined as upsell
-            // The key assertion is that mehrschicht/adhasiv are NOT asked
+            // The key assertion is that mehrschicht/adhaesiv are NOT asked
             const questions = generateQuestions(
                 baseExtracted,
                 'GKV',
@@ -97,7 +97,7 @@ describe('Gate: MKV Technique Defaults', () => {
             // Verify NO upsell questions for default techniques
             const upsellQuestions = questions.filter(q => q.category === 'upsell');
             const defaultTechniqueQuestions = upsellQuestions.filter(
-                q => q.id === 'mehrschicht' || q.id === 'adhasiv'
+                q => q.id === 'mehrschicht' || q.id === 'adhaesiv'
             );
             expect(defaultTechniqueQuestions).toHaveLength(0);
         });
@@ -125,7 +125,7 @@ describe('Gate: MKV Technique Defaults', () => {
 
             // Check debug info for active chips
             expect(result._debug?.activeChipIds).toContain('mehrschicht');
-            expect(result._debug?.activeChipIds).toContain('adhasiv');
+            expect(result._debug?.activeChipIds).toContain('adhaesiv');
         });
 
         it('output fullText should mention technique for fuellung+MKV', async () => {
@@ -159,7 +159,7 @@ describe('Gate: MKV Technique Defaults', () => {
     // NON-MKV: Normal behavior (upsell questions asked)
     // ═══════════════════════════════════════════════════════════════
     describe('Non-MKV Behavior', () => {
-        it('should NOT add mehrschicht/adhasiv chips for fuellung without MKV', async () => {
+        it('should NOT add mehrschicht/adhaesiv chips for fuellung without MKV', async () => {
             // For non-MKV, we just check that the chips aren't auto-added
             // We can't use the full generateFinalOutput because it has dead-answer checks
             // Instead, we check chipResolver directly
@@ -176,7 +176,7 @@ describe('Gate: MKV Technique Defaults', () => {
 
             // Without MKV, technique chips should NOT be auto-added
             expect(chipIds).not.toContain('mehrschicht');
-            expect(chipIds).not.toContain('adhasiv');
+            expect(chipIds).not.toContain('adhaesiv');
         });
     });
 });

@@ -1,0 +1,53 @@
+{
+    "reportId": "ARCH_BOUNDARY_REPORT",
+    "timestamp": "2025-12-17T12:07:35+01:00",
+    "overallStatus": "WARNING",
+    "boundaryConfidence": "MEDIUM",
+    "checks": [
+        {
+            "id": "v7-no-v6-import",
+            "description": "V7 must NOT import from v6 at runtime",
+            "status": "PASS",
+            "violations": 0,
+            "details": "Zero direct V6 imports in V7 production code"
+        },
+        {
+            "id": "v7-no-core-billing-import",
+            "description": "V7 must NOT import from core/billing/** directly",
+            "status": "WARNING",
+            "violations": 2,
+            "details": [
+                {
+                    "file": "src/docudent/v7/components/SummaryChips.tsx",
+                    "import": "core/billing/knowledgeBase/registry/settingsRegistry",
+                    "severity": "WARNING",
+                    "reason": "settingsRegistry provides UI labels, not billing logic"
+                },
+                {
+                    "file": "src/docudent/v7/components/EditableSummaryChip.tsx",
+                    "import": "core/billing/knowledgeBase/registry/settingsRegistry",
+                    "severity": "WARNING",
+                    "reason": "Type-only import for SettingOptionDef"
+                }
+            ],
+            "mitigationNote": "These imports are for settings labels (UI-safe), not billing logic. Consider moving settingsRegistry to core/registry/ to clarify boundary."
+        },
+        {
+            "id": "facade-integrity",
+            "description": "core/services may only contain re-exports",
+            "status": "PASS",
+            "violations": 0,
+            "details": {
+                "extractionService.ts": "re-export only",
+                "questionService.ts": "re-export only",
+                "outputService.ts": "re-export only",
+                "index.ts": "re-export only"
+            }
+        }
+    ],
+    "summary": {
+        "totalViolations": 2,
+        "severity": "WARNING",
+        "recommendation": "V7→V6 boundary is clean. V7→core/billing boundary has 2 type/label imports which are UI-safe but should be reviewed for long-term architecture."
+    }
+}

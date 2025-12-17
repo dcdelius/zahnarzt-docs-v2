@@ -9,7 +9,7 @@
  * IMPORTANT: This module is for testing only. It MUST NOT be imported in production code.
  */
 
-import type { ExtractedData } from '../../../v6/hooks/useDocudentV6';
+import type { ExtractedData } from '../../../core/services/extractionService';
 
 // ═══════════════════════════════════════════════════════════════
 // STUB EXTRACTION — Fast, deterministic, offline
@@ -120,6 +120,6 @@ export async function getExtractor(): Promise<typeof stubExtractFromDictation> {
         return stubExtractFromDictation;
     }
     // Import real extractor (this path won't be taken in tests)
-    const { extractFromDictation } = await import('../../../v6/services/extractionService');
+    const { extractFromDictation } = await import('../../../core/services/extractionService');
     return extractFromDictation;
 }

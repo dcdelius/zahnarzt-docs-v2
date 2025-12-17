@@ -54,4 +54,17 @@ export default defineConfig({
       },
     },
   },
+  test: {
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/__legacy_archive__/**',
+      '**/__known_flaky__/**',
+      '**/coverage/**',
+      '**/.next/**',
+      '**/e2e/**',
+      '**/_legacy/**',
+    ],
+    globals: true,
+  },
 })

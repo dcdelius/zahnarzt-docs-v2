@@ -35,8 +35,8 @@ interface AnswerMapping {
     questionKey: string;
     questionIdPatterns: string[];
     answers: { [key: string]: string | null };
-    exclusiveGroup: string;
-    mutuallyExclusive: string[];
+    exclusiveGroup?: string;
+    mutuallyExclusive?: string[];
     requiresMKV?: boolean;
 }
 
@@ -164,9 +164,11 @@ export function applyAnswersToChipSelection(
                 continue;
             }
 
-            // Remove mutually exclusive chips
-            for (const exclusiveChip of mapping.mutuallyExclusive) {
-                chipSet.delete(exclusiveChip);
+            // Remove mutually exclusive chips (if defined)
+            if (mapping.mutuallyExclusive) {
+                for (const exclusiveChip of mapping.mutuallyExclusive) {
+                    chipSet.delete(exclusiveChip);
+                }
             }
 
             // Add new chip from answer

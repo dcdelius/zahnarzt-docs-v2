@@ -25,6 +25,7 @@ import { getTreatmentChips } from '../../core/billing/knowledgeBase/logic/treatm
 import { inferChipsFromExtractedData } from '../../core/billing/knowledgeBase/logic/chipResolver';
 import { getRequiredFieldsFromRules } from '../../core/billing/knowledgeBase/logic/ruleQuestionTrigger';
 import { deriveDiagnosis } from '../../core/billing/knowledgeBase/logic/diagnosisDerivation';
+import { getEndoDefaults, type EndoDefaults } from '../../v7/settings/settingsStore';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -92,6 +93,45 @@ function isFieldMissing(extracted: ExtractedDataV2, fieldPath: string): boolean 
     }
 
     return current === null || current === undefined;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// HELPER: Check if question should be skipped based on settingsSkip
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Check if a question should be skipped because settings already define the value.
+ * 
+ * Reads settingsSkip config from the question definition (JSON SSOT).
+ * If settings.{settingsPath} !== skipIfNot, the question is skipped.
+ */
+function shouldSkipForSettings(def: QuestionDefinition): boolean {
+    if (!def.settingsSkip) {
+        return false; // No settingsSkip config = don't skip
+    }
+
+    try {
+        const { settingsPath, skipIfNot } = def.settingsSkip;
+        const endoDefaults = getEndoDefaults();
+
+        // Parse settingsPath (e.g., 'endo.defaults.spuelprotokoll')
+        const parts = settingsPath.split('.');
+        let value: unknown = endoDefaults;
+
+        // Skip 'endo.defaults.' prefix since getEndoDefaults returns just the defaults
+        const keyParts = parts.slice(2); // ['spuelprotokoll']
+
+        for (const part of keyParts) {
+            if (value === null || value === undefined) return false;
+            value = (value as Record<string, unknown>)[part];
+        }
+
+        // Skip if value !== skipIfNot
+        return value !== skipIfNot;
+    } catch {
+        // In Node.js test environment, settings may not be available
+        return false;
+    }
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -194,6 +234,13 @@ export function generateQuestionsV2(
     const forensicDefs = getQuestionsByCategory(treatmentId, 'forensic');
 
     for (const def of forensicDefs) {
+        // STEP C.1: Settings-based skip (reads settingsSkip from question def)
+        if (shouldSkipForSettings(def)) {
+            console.log(`[QuestionService V2] Skipping ${def.key} (settings-based)`);
+            continue;
+        }
+
+        // STEP C.2: Only ask if field is missing
         if (def.dataField && isFieldMissing(extracted, def.dataField)) {
             if (!addedKeys.has(def.key)) {
                 questions.push(definitionToQuestion(def, 'forensic', 'forensic'));

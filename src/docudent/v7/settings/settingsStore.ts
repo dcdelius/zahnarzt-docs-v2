@@ -9,56 +9,54 @@
  */
 
 // ═══════════════════════════════════════════════════════════════
-// TYPES
+// TYPES — Re-exported from contracts/settingsTypes (SSOT)
 // ═══════════════════════════════════════════════════════════════
 
-export interface FuellungMkvDefaults {
-    mehrschicht: boolean;
-    adhasiv: boolean;
-}
+// Re-export types from contracts for backwards compatibility
+export type {
+    FuellungMkvDefaults,
+    TrockenlegungDefault,
+    UeberkappungMaterialDefault,
+    UkPosteriorAnesthesiaMode,
+    OkPosteriorAnesthesiaMode,
+    FrontAnesthesiaMode,
+    AnesthesiaDefaults,
+    MatrixApproximalMode,
+    MatrixWedge,
+    MatrixRing,
+    MatrixDefaults,
+    FuellungDefaults,
+    EndoEalMode,
+    EndoSpuelprotokoll,
+    EndoAktivierung,
+    EndoObturation,
+    EndoDefaults,
+    EndoTreatmentSettings,
+    TreatmentSettings,
+    Settings,
+} from '../../contracts/settingsTypes';
 
-export type TrockenlegungDefault = 'kofferdam' | 'relativ' | 'fragen';
-export type UeberkappungMaterialDefault = 'caoh' | 'mta' | 'biodentine' | 'fragen';
-
-// Anesthesia defaults by region
-export type UkPosteriorAnesthesiaMode = 'leitung' | 'intraligamentaer' | 'infiltration' | 'fragen';
-export type OkPosteriorAnesthesiaMode = 'infiltration' | 'fragen';
-export type FrontAnesthesiaMode = 'infiltration' | 'fragen';
-
-export interface AnesthesiaDefaults {
-    enabled: boolean;
-    ukPosteriorMode: UkPosteriorAnesthesiaMode;
-    okPosteriorMode: OkPosteriorAnesthesiaMode;
-    frontMode: FrontAnesthesiaMode;
-}
-
-// Matrix defaults for approximal restorations
-export type MatrixApproximalMode = 'sektional' | 'tofflemire' | 'fragen';
-export type MatrixWedge = 'holz' | 'kunststoff' | 'fragen';
-export type MatrixRing = 'ja' | 'nein' | 'fragen';
-
-export interface MatrixDefaults {
-    approximalMode: MatrixApproximalMode;
-    wedge: MatrixWedge;
-    ring: MatrixRing;
-}
-
-export interface FuellungDefaults {
-    trockenlegung: TrockenlegungDefault;
-    ueberkappungMaterial: UeberkappungMaterialDefault;
-    anesthesia: AnesthesiaDefaults;
-    matrix: MatrixDefaults;
-}
-
-export interface TreatmentSettings {
-    mkvDefaults?: FuellungMkvDefaults;
-    defaults?: FuellungDefaults;
-}
-
-export interface Settings {
-    fuellung?: TreatmentSettings;
-    // Future: endo, extraction, etc.
-}
+// Import types for local use
+import type {
+    FuellungMkvDefaults,
+    TrockenlegungDefault,
+    UeberkappungMaterialDefault,
+    UkPosteriorAnesthesiaMode,
+    OkPosteriorAnesthesiaMode,
+    FrontAnesthesiaMode,
+    AnesthesiaDefaults,
+    MatrixApproximalMode,
+    MatrixWedge,
+    MatrixRing,
+    MatrixDefaults,
+    FuellungDefaults,
+    EndoEalMode,
+    EndoSpuelprotokoll,
+    EndoAktivierung,
+    EndoObturation,
+    EndoDefaults,
+    Settings,
+} from '../../contracts/settingsTypes';
 
 // ═══════════════════════════════════════════════════════════════
 // CONSTANTS
@@ -89,12 +87,28 @@ const DEFAULT_FUELLUNG_DEFAULTS: FuellungDefaults = {
     ueberkappungMaterial: 'caoh',
     anesthesia: DEFAULT_ANESTHESIA,
     matrix: DEFAULT_MATRIX,
+    aufklaerungEnabled: true,
+};
+
+// ─── ENDO DEFAULTS ─────────────────────────────────────────────
+
+const DEFAULT_ENDO_DEFAULTS: EndoDefaults = {
+    mikroskop: false,
+    eal: 'immer',
+    spuelprotokoll: 'naocl_edta',
+    aktivierung: 'ultraschall',
+    obturation: 'thermoplastisch',
+    kofferdam: true,
+    aufklaerungEnabled: true,
 };
 
 export const DEFAULT_SETTINGS: Settings = {
     fuellung: {
         mkvDefaults: DEFAULT_FUELLUNG_MKV,
         defaults: DEFAULT_FUELLUNG_DEFAULTS,
+    },
+    endo: {
+        defaults: DEFAULT_ENDO_DEFAULTS,
     },
 };
 
@@ -243,7 +257,10 @@ export function getFuellungDefaults(): FuellungDefaults {
             : DEFAULT_MATRIX.ring,
     };
 
-    return { trockenlegung, ueberkappungMaterial, anesthesia, matrix };
+    // Aufklärung enabled (default true)
+    const aufklaerungEnabled = defaults?.aufklaerungEnabled ?? DEFAULT_FUELLUNG_DEFAULTS.aufklaerungEnabled;
+
+    return { trockenlegung, ueberkappungMaterial, anesthesia, matrix, aufklaerungEnabled };
 }
 
 /**
@@ -277,6 +294,72 @@ export function setFuellungDefaults(defaults: Partial<FuellungDefaults>): void {
     });
 }
 
+// ═══════════════════════════════════════════════════════════════
+// ENDO GETTERS/SETTERS
+// ═══════════════════════════════════════════════════════════════
+
+const VALID_EAL: EndoEalMode[] = ['immer', 'bei_aufbereitung', 'fragen'];
+const VALID_SPUELPROTOKOLL: EndoSpuelprotokoll[] = ['naocl_edta', 'naocl', 'fragen'];
+const VALID_AKTIVIERUNG: EndoAktivierung[] = ['ultraschall', 'sonic', 'keine', 'fragen'];
+const VALID_OBTURATION: EndoObturation[] = ['thermoplastisch', 'lateral', 'fragen'];
+
+/**
+ * Get endo defaults with validation.
+ * Returns safe defaults if settings missing or malformed.
+ */
+export function getEndoDefaults(): EndoDefaults {
+    const settings = getSettings();
+    const defaults = settings.endo?.defaults;
+
+    // Validate each field with whitelist
+    const mikroskop = typeof defaults?.mikroskop === 'boolean'
+        ? defaults.mikroskop
+        : DEFAULT_ENDO_DEFAULTS.mikroskop;
+
+    const eal = VALID_EAL.includes(defaults?.eal as EndoEalMode)
+        ? defaults!.eal
+        : DEFAULT_ENDO_DEFAULTS.eal;
+
+    const spuelprotokoll = VALID_SPUELPROTOKOLL.includes(defaults?.spuelprotokoll as EndoSpuelprotokoll)
+        ? defaults!.spuelprotokoll
+        : DEFAULT_ENDO_DEFAULTS.spuelprotokoll;
+
+    const aktivierung = VALID_AKTIVIERUNG.includes(defaults?.aktivierung as EndoAktivierung)
+        ? defaults!.aktivierung
+        : DEFAULT_ENDO_DEFAULTS.aktivierung;
+
+    const obturation = VALID_OBTURATION.includes(defaults?.obturation as EndoObturation)
+        ? defaults!.obturation
+        : DEFAULT_ENDO_DEFAULTS.obturation;
+
+    const kofferdam = typeof defaults?.kofferdam === 'boolean'
+        ? defaults.kofferdam
+        : DEFAULT_ENDO_DEFAULTS.kofferdam;
+
+    const aufklaerungEnabled = defaults?.aufklaerungEnabled ?? DEFAULT_ENDO_DEFAULTS.aufklaerungEnabled;
+
+    return { mikroskop, eal, spuelprotokoll, aktivierung, obturation, kofferdam, aufklaerungEnabled };
+}
+
+/**
+ * Update endo defaults (partial update supported).
+ */
+export function setEndoDefaults(defaults: Partial<EndoDefaults>): void {
+    const settings = getSettings();
+    const currentEndo = settings.endo || {};
+    const currentDefaults = currentEndo.defaults || DEFAULT_ENDO_DEFAULTS;
+
+    setSettings({
+        endo: {
+            ...currentEndo,
+            defaults: {
+                ...currentDefaults,
+                ...defaults,
+            },
+        },
+    });
+}
+
 /**
  * Reset all settings to defaults.
  */
@@ -296,8 +379,11 @@ export default {
     setFuellungMkvDefaults,
     getFuellungDefaults,
     setFuellungDefaults,
+    getEndoDefaults,
+    setEndoDefaults,
     resetSettings,
     DEFAULT_SETTINGS,
     DEFAULT_ANESTHESIA,
     DEFAULT_MATRIX,
+    DEFAULT_ENDO_DEFAULTS,
 };
