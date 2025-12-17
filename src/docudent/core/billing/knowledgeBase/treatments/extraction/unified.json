@@ -1,0 +1,57 @@
+{
+    "_meta": {
+        "id": "extraction",
+        "version": "1.0.0",
+        "label": "Extraktion"
+    },
+    "chips": [
+        {
+            "id": "extraktion_einfach",
+            "label": "Einfache Extraktion",
+            "phase": "behandlung",
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_3000"
+            },
+            "textSnippets": {
+                "kurz": "Extraktion durchgeführt.",
+                "mittel": "Extraktion des Zahnes durchgeführt. Wunde versorgt.",
+                "lang": "Extraktion des Zahnes lege artis durchgeführt. Wundreinigung und Blutstillung. Verhaltenshinweise gegeben."
+            },
+            "defaultActive": true
+        },
+        {
+            "id": "anaesthesie_infiltr",
+            "label": "Infiltrationsanästhesie",
+            "phase": "vorbereitung",
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "textSnippets": {
+                "kurz": "LA infiltr.",
+                "mittel": "Lokalanästhesie (Infiltration).",
+                "lang": "Lokalanästhesie mittels Infiltrationsanästhesie."
+            }
+        },
+        {
+            "id": "wundversorgung",
+            "label": "Wundversorgung",
+            "phase": "nachsorge",
+            "billingRef": {
+                "GKV": null,
+                "PKV": null
+            },
+            "textSnippets": {
+                "kurz": "Wundversorgung.",
+                "mittel": "Wundversorgung durchgeführt.",
+                "lang": "Sorgfältige Wundversorgung mit Tamponade."
+            }
+        }
+    ],
+    "phasen_reihenfolge": [
+        "vorbereitung",
+        "behandlung",
+        "nachsorge"
+    ]
+}

@@ -4,6 +4,7 @@
  * 1. PURE ORCHESTRATOR: No semantics, no hardcoded texts, no heuristics.
  * 2. DATA DRIVEN: All questions come from QuestionBank (JSON).
  * 3. SSOT LOOKUP: Uses chipResolver for active chips, treatmentEngine for candidates.
+ * 4. CONDITIONAL: Questions filtered by `when` clause (anyKeywords, requiresAnswers, etc.)
  */
 
 import type { ExtractedData, InsuranceType } from '../hooks/useDocudentV6';
@@ -14,13 +15,122 @@ import {
     getUpsellChips // Assuming this helper exists or I filter myself
 } from '../../core/billing/knowledgeBase/logic/treatmentEngine';
 import { inferChipsFromExtractedData } from '../../core/billing/knowledgeBase/logic/chipResolver';
-import { getQuestionDefOrNull } from '../../core/billing/knowledgeBase/questions/questionBank';
+import { getQuestionDefOrNull, getQuestionsByCategory } from '../../core/billing/knowledgeBase/questions/questionBank';
+import { detectEndoStep } from '../../core/billing/knowledgeBase/logic/endoStepDetector';
+import type { WhenClause, WhenCondition } from '../../core/billing/knowledgeBase/registry/loaders';
+import { getFuellungDefaults } from '../../v7/settings/settingsStore';
+import { CANONICAL_CHIP_IDS } from '../../contracts/canonicalIds';
+
+// ═══════════════════════════════════════════════════════════════
+// CONDITIONAL QUESTION EVALUATION
+// ═══════════════════════════════════════════════════════════════
+
+interface WhenContext {
+    extracted: ExtractedData;
+    answers: Map<string, unknown>;
+    activeChipIds: string[];
+    rawDictation?: string;
+}
+
+/**
+ * Evaluate a single WhenCondition block.
+ * All specified conditions within a block are ANDed together.
+ */
+function evaluateSingleCondition(condition: WhenCondition, ctx: WhenContext): boolean {
+    // requiresAnswers: ALL key/value pairs must match in answers OR extracted.mentioned
+    if (condition.requiresAnswers) {
+        for (const [key, expectedValue] of Object.entries(condition.requiresAnswers)) {
+            const answerValue = ctx.answers.get(key);
+            const mentionedValue = (ctx.extracted.mentioned as Record<string, unknown>)?.[key];
+            const actualValue = answerValue !== undefined ? answerValue : mentionedValue;
+
+            if (actualValue !== expectedValue) {
+                return false;
+            }
+        }
+    }
+
+    // anyMentioned: TRUE if ANY listed key exists in extracted.mentioned
+    if (condition.anyMentioned && condition.anyMentioned.length > 0) {
+        const mentioned = ctx.extracted.mentioned as Record<string, unknown> | undefined;
+        const hasMention = condition.anyMentioned.some(key => mentioned?.[key] !== undefined);
+        if (!hasMention) {
+            return false;
+        }
+    }
+
+    // anyKeywords: TRUE if rawDictation contains ANY keyword (case-insensitive)
+    if (condition.anyKeywords && condition.anyKeywords.length > 0) {
+        const dictation = (ctx.rawDictation || ctx.extracted.diagnosis || '').toLowerCase();
+        const hasKeyword = condition.anyKeywords.some(kw => dictation.includes(kw.toLowerCase()));
+        if (!hasKeyword) {
+            return false;
+        }
+    }
+
+    // anyChipsActive: TRUE if ANY listed chipId is in activeChipIds
+    if (condition.anyChipsActive && condition.anyChipsActive.length > 0) {
+        const hasChip = condition.anyChipsActive.some(chipId => ctx.activeChipIds.includes(chipId));
+        if (!hasChip) {
+            return false;
+        }
+    }
+
+    // noneKeywords: TRUE if rawDictation does NOT contain ANY of these keywords
+    if (condition.noneKeywords && condition.noneKeywords.length > 0) {
+        const dictation = (ctx.rawDictation || ctx.extracted.diagnosis || '').toLowerCase();
+        const hasKeyword = condition.noneKeywords.some(kw => dictation.includes(kw.toLowerCase()));
+        if (hasKeyword) {
+            return false; // Keyword found = condition fails
+        }
+    }
+
+    return true;
+}
+
+/**
+ * Evaluate a full WhenClause.
+ * - If anyOf is specified: TRUE if ANY condition block in anyOf matches (OR logic)
+ * - Otherwise: evaluate as single condition block
+ */
+function evaluateWhenCondition(when: WhenClause | undefined, ctx: WhenContext): boolean {
+    if (!when) return true; // No condition = always show
+
+    // anyOf: OR logic across condition groups
+    if (when.anyOf && when.anyOf.length > 0) {
+        const anyMatch = when.anyOf.some(cond => evaluateSingleCondition(cond, ctx));
+        if (anyMatch) return true;
+
+        // If anyOf is specified but none match, and no other top-level conditions, return false
+        // But if there ARE top-level conditions, continue checking them
+        const hasTopLevelConditions =
+            when.requiresAnswers || when.anyMentioned || when.anyKeywords || when.anyChipsActive || when.noneKeywords;
+
+        if (!hasTopLevelConditions) {
+            return false;
+        }
+    }
+
+    // noneOf: If this condition matches, HIDE the question (negative matching)
+    if (when.noneOf) {
+        const noneOfMatches = evaluateSingleCondition(when.noneOf, ctx);
+        if (noneOfMatches) {
+            return false; // noneOf matched = hide question
+        }
+    }
+
+    // Evaluate top-level conditions (if any)
+    return evaluateSingleCondition(when, ctx);
+}
+
 
 export function generateQuestions(
     extracted: ExtractedData,
     insuranceType: InsuranceType,
     hasMKV: boolean = false,
-    treatmentId: string = 'fuellung'  // Treatment type, defaults to fuellung for backward compat
+    treatmentId: string = 'fuellung',  // Treatment type, defaults to fuellung for backward compat
+    answers: Map<string, unknown> = new Map(),  // NEW: Answers for dependency checking
+    rawDictation: string = ''  // NEW: Raw dictation for keyword matching
 ): DynamicQuestion[] {
     const questions: DynamicQuestion[] = [];
 
@@ -31,56 +141,105 @@ export function generateQuestions(
         { hasMKV, insuranceType }
     );
 
+    // Build context for when-clause evaluation
+    const whenContext: WhenContext = {
+        extracted,
+        answers,
+        activeChipIds,
+        rawDictation: rawDictation || (extracted as any).rawDictation || extracted.diagnosis || '',
+    };
+
+    // ═══════════════════════════════════════════════════════════════
+    // ENDO STEP DETECTION (MVP) — V7 Wiring Point
+    // ═══════════════════════════════════════════════════════════════
+    if (treatmentId === 'endo') {
+        // Check if endo_step is already set (from previous askback answer)
+        const currentEndoStep = (extracted.mentioned as any)?.endo_step;
+
+        if (!currentEndoStep) {
+            // Detect from rawDictation using keyword matching
+            const rawText = (extracted as any).rawDictation || extracted.diagnosis || '';
+            const detection = detectEndoStep(rawText);
+
+            if (detection.step === null) {
+                // Ambiguous: add askback question
+                const def = getQuestionDefOrNull(treatmentId, 'endo_step');
+                if (def) {
+                    questions.push({
+                        id: def.key,
+                        category: 'forensic',
+                        question: def.prompt,
+                        type: def.type,
+                        options: def.options.map(o => ({
+                            id: o.id,
+                            label: o.label,
+                            dataValue: o.dataValue
+                        })),
+                    });
+                }
+            } else {
+                // Set detected step in extracted.mentioned for downstream use
+                if (!extracted.mentioned) {
+                    (extracted as any).mentioned = {};
+                }
+                (extracted.mentioned as any).endo_step = detection.step;
+            }
+        }
+    }
+
     // 2. Identify Gaps -> Generate 'forensic' questions
-    // Map 'mentioned' gaps to question keys
-    // We assume QuestionBank keys match the gap names or valid identifiers
-    // e.g. 'vitality' -> question key 'vitality'
+    // Get forensic questions from the treatment's OWN question bank
+    // This is now FULLY data-driven — filtered by `when` clause
 
-    // Define mandatory forensic fields we want to check
-    // This could also be data-driven, but for now we iterate extraction.gaps if available
-    // OR we iterate a "standard set" from QuestionBank? 
-    // Usually extraction provides "gaps".
+    const forensicQuestions = getQuestionsByCategory(treatmentId, 'forensic');
 
-    const relevantGaps = [
-        'vitality',
-        'percussion',
-        'tiefe',
-        'kofferdam', // → key 'isolation'
-        'material'
-    ];
+    forensicQuestions.forEach((def) => {
+        // Skip endo_step for endo (handled above)
+        if (treatmentId === 'endo' && def.key === 'endo_step') return;
 
-    relevantGaps.forEach(gap => {
-        // Map gap to question key
-        let key = gap;
-        if (gap === 'kofferdam') key = 'isolation';
+        // ═══════════════════════════════════════════════════════════════
+        // SETTINGS-BASED SKIP: Check praxis defaults
+        // If settings provide a non-'fragen' default, skip the question
+        // ═══════════════════════════════════════════════════════════════
+        if (treatmentId === 'fuellung') {
+            const fuellungDefaults = getFuellungDefaults();
 
-        // If already in extracted.mentioned, skip?
-        // Logic: if not in extracted.mentioned, ask.
-        // But extraction service puts them in 'gaps' if missing.
-        // We'll rely on a simple check or if it's in extracted.gaps
+            // Skip isolation question if default is set (not 'fragen')
+            if (def.key === 'isolation' && fuellungDefaults.trockenlegung !== 'fragen') {
+                return; // Default from praxis settings, don't ask
+            }
 
-        // Check if explicitly answered (isPresent).
-        // For simplicity in V6, we often ask provided it's relevant to the procedure.
-        // But cleaner: if extraction.mentioned[gap] is undefined.
+            // Skip ueberkappung_material if default is set (not 'fragen')
+            // Only if ueberkappung=true (checked via answers)
+            if (def.key === 'ueberkappung_material' && fuellungDefaults.ueberkappungMaterial !== 'fragen') {
+                return; // Default from praxis settings, don't ask
+            }
+        }
 
-        const isMentioned = (extracted.mentioned as any)[gap] !== undefined;
+        // Check if already mentioned in extraction (skip if present)
+        const isMentioned = (extracted.mentioned as any)?.[def.key] !== undefined;
+
+        // ═══════════════════════════════════════════════════════════════
+        // CONDITIONAL FILTERING: Check `when` clause
+        // If when-condition not satisfied, skip this question
+        // ═══════════════════════════════════════════════════════════════
+        const whenCondition = (def as any).when as WhenClause | undefined;
+        if (!evaluateWhenCondition(whenCondition, whenContext)) {
+            return; // Skip: conditions not met
+        }
 
         if (!isMentioned) {
-            const def = getQuestionDefOrNull(treatmentId, key);
-            if (def) {
-                questions.push({
-                    id: def.key,
-                    category: 'forensic',
-                    question: def.prompt,
-                    type: def.type,
-                    options: def.options.map(o => ({
-                        id: o.id,
-                        label: o.label,
-                        dataValue: o.dataValue
-                    })),
-                    // No default value for forensic usually, unless specified
-                });
-            }
+            questions.push({
+                id: def.key,
+                category: 'forensic',
+                question: def.prompt,
+                type: def.type,
+                options: def.options?.map((o) => ({
+                    id: o.id,
+                    label: o.label,
+                    dataValue: o.dataValue
+                })) || [],
+            });
         }
     });
 
@@ -121,12 +280,26 @@ export function generateQuestions(
             }
         });
 
+        // ═══════════════════════════════════════════════════════════════
+        // FUELLUNG + MKV: Apply technique defaults instead of asking
+        // Mehrschicht and Adhäsiv are praxis-standard for MKV fillings
+        // ═══════════════════════════════════════════════════════════════
+        const FUELLUNG_MKV_DEFAULT_CHIPS = [CANONICAL_CHIP_IDS.MEHRSCHICHT, CANONICAL_CHIP_IDS.ADHAESIV];
+        const isFuellungMkv = treatmentId === 'fuellung';
+
         // Upsell Chips (Mehrschicht, Adhäsiv etc.)
         // We fetch chips with upsellCandidate = true
         const allChips = getTreatmentChips(treatmentId);
         const upsellChips = allChips.filter(c => c.upsellCandidate);
 
         upsellChips.forEach(chip => {
+            // For fuellung+MKV: Skip questions for mehrschicht/adhasiv
+            // These are applied as defaults, not asked
+            if (isFuellungMkv && FUELLUNG_MKV_DEFAULT_CHIPS.includes(chip.id)) {
+                // Don't ask - defaults are applied via activeChipIds extension
+                return;
+            }
+
             // Check if already active? If active, maybe don't ask or ask to confirm?
             // Usually we ask to UPSell (add it).
             // If already active (inferred from dictation), we might skip or show as 'answered'.

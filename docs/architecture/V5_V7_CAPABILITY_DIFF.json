@@ -1,0 +1,135 @@
+{
+    "sharedCapabilities": [
+        "DictationInput",
+        "LLMExtraction",
+        "BillingCodeInference",
+        "ChipResolution",
+        "QuestionGeneration",
+        "OutputComposition",
+        "InsuranceTypeToggle",
+        "TreatmentSelection",
+        "BEMACatalogLookup",
+        "GOZCatalogLookup",
+        "TextLengthControl",
+        "CopyToClipboard"
+    ],
+    "v5OnlyCapabilities": [
+        {
+            "capability": "AnalogJustificationFlow",
+            "files": [
+                "src/docudent/v5/hooks/useBillingV5Controller.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/analogJustificationService.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/analogCompletionValidator.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/analogExportGuard.ts"
+            ],
+            "riskIfRemoved": "high"
+        },
+        {
+            "capability": "TieredQuestionEngine",
+            "files": [
+                "src/docudent/v5/hooks/useBillingV5Controller.ts",
+                "src/docudent/core/behandlungen/_shared/questionEngine.ts"
+            ],
+            "riskIfRemoved": "medium"
+        },
+        {
+            "capability": "CrossValidatorCombinationChecks",
+            "files": [
+                "src/docudent/v5/hooks/useBillingV5Controller.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/crossValidator.ts"
+            ],
+            "riskIfRemoved": "high"
+        },
+        {
+            "capability": "BillingValidationWithRegress",
+            "files": [
+                "src/docudent/v5/hooks/useBillingV5Controller.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/billingValidation.ts"
+            ],
+            "riskIfRemoved": "high"
+        },
+        {
+            "capability": "TreatmentSetupWizard",
+            "files": [
+                "src/docudent/v5/components/TreatmentSetupWizard.tsx",
+                "src/docudent/v5/models/PracticeProfile.ts"
+            ],
+            "riskIfRemoved": "medium"
+        },
+        {
+            "capability": "ChipToggleUI",
+            "files": [
+                "src/docudent/v5/pages/DocudentV5Page.tsx"
+            ],
+            "riskIfRemoved": "medium"
+        },
+        {
+            "capability": "ZuzahlungBetragInput",
+            "files": [
+                "src/docudent/v5/hooks/useBillingV5Controller.ts",
+                "src/docudent/v5/pages/DocudentV5Page.tsx"
+            ],
+            "riskIfRemoved": "low"
+        },
+        {
+            "capability": "BonusStatusSelection",
+            "files": [
+                "src/docudent/v5/hooks/useBillingV5Controller.ts"
+            ],
+            "riskIfRemoved": "medium"
+        },
+        {
+            "capability": "StepIndicatorUI",
+            "files": [
+                "src/docudent/v5/pages/DocudentV5Page.tsx"
+            ],
+            "riskIfRemoved": "low"
+        }
+    ],
+    "v7OnlyCapabilities": [
+        "MultiTreatmentMode",
+        "SegmentEditor",
+        "PureUIRendererArchitecture",
+        "ActionDock",
+        "HeroSculpture",
+        "DictationAura"
+    ],
+    "missingInV7": [
+        {
+            "capability": "AnalogJustificationFlow",
+            "suggestedFix": "port"
+        },
+        {
+            "capability": "CrossValidatorCombinationChecks",
+            "suggestedFix": "port"
+        },
+        {
+            "capability": "BillingValidationWithRegress",
+            "suggestedFix": "port"
+        },
+        {
+            "capability": "TieredQuestionEngine",
+            "suggestedFix": "port"
+        },
+        {
+            "capability": "TreatmentSetupWizard",
+            "suggestedFix": "port"
+        },
+        {
+            "capability": "ChipToggleUI",
+            "suggestedFix": "deprecate"
+        },
+        {
+            "capability": "ZuzahlungBetragInput",
+            "suggestedFix": "port"
+        },
+        {
+            "capability": "BonusStatusSelection",
+            "suggestedFix": "port"
+        },
+        {
+            "capability": "StepIndicatorUI",
+            "suggestedFix": "ignore"
+        }
+    ]
+}

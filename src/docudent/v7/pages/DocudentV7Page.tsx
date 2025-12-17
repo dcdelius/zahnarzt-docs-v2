@@ -349,7 +349,24 @@ export const DocudentV7Page: React.FC = () => {
     const [isFocused, setIsFocused] = useState(false);
     const [isRecording, setIsRecording] = useState(false);
     const [recordTime, setRecordTime] = useState(0);
-    const [treatment, setTreatment] = useState<TreatmentType>('fuellung');
+
+    // Treatment persistence with localStorage
+    const [treatment, setTreatmentState] = useState<TreatmentType>(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('v7_treatment');
+            if (saved && ['fuellung', 'kontrolle', 'pzr', 'endo', 'extraktion', 'par', 'ze'].includes(saved)) {
+                return saved as TreatmentType;
+            }
+        }
+        return 'fuellung';
+    });
+    const setTreatment = (t: TreatmentType) => {
+        setTreatmentState(t);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('v7_treatment', t);
+        }
+    };
+
     const recordTimerRef = useRef<NodeJS.Timeout | null>(null);
 
     // Recording timer
@@ -371,13 +388,26 @@ export const DocudentV7Page: React.FC = () => {
         };
     }, [isRecording]);
 
-    // Keyboard shortcut
+    // Keyboard shortcut (for textarea)
     const handleKeyDown = (e: React.KeyboardEvent) => {
+        // Ctrl+Enter → trigger pipeline
         if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && dictation.trim() && !isRecording) {
             e.preventDefault();
             runPipeline();
         }
     };
+
+    // Document-level Escape handler (works regardless of focus)
+    useEffect(() => {
+        const handleGlobalKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && (currentState === 'questions' || currentState === 'output')) {
+                e.preventDefault();
+                reset();
+            }
+        };
+        document.addEventListener('keydown', handleGlobalKeyDown);
+        return () => document.removeEventListener('keydown', handleGlobalKeyDown);
+    }, [currentState, reset]);
 
     // Mic button
     const handleMicClick = () => {
@@ -448,15 +478,17 @@ export const DocudentV7Page: React.FC = () => {
         // Questions — V6 two-column layout
         if (currentState === 'questions' && questions.length > 0) {
             return (
-                <QuestionsLayout
-                    questions={questions}
-                    answers={answers}
-                    onAnswer={answerQuestion}
-                    onComplete={runPipeline}
-                    extracted={extracted}
-                    insuranceType={insuranceType}
-                    hasMKV={hasMKV}
-                />
+                <div data-testid="questions-panel">
+                    <QuestionsLayout
+                        questions={questions}
+                        answers={answers}
+                        onAnswer={answerQuestion}
+                        onComplete={runPipeline}
+                        extracted={extracted}
+                        insuranceType={insuranceType}
+                        hasMKV={hasMKV}
+                    />
+                </div>
             );
         }
 
@@ -470,7 +502,7 @@ export const DocudentV7Page: React.FC = () => {
         // Output
         if (currentState === 'output' && output) {
             return (
-                <div>
+                <div data-testid="output-panel">
                     <motion.div
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -555,6 +587,7 @@ export const DocudentV7Page: React.FC = () => {
                         rows={2}
                         style={styles.textarea}
                         disabled={isRecording}
+                        data-testid="dictation-input"
                     />
                     <style>{`
                         textarea::placeholder {

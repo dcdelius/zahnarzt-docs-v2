@@ -218,7 +218,7 @@ export const OutputRenderer: React.FC<OutputRendererProps> = ({ output }) => {
 
             {/* Render warnings VERBATIM - use properties, not object */}
             {output.warnings.length > 0 && (
-                <div>
+                <div data-testid="warning-list">
                     {output.warnings.map((warning, index) => (
                         <motion.div
                             key={warning.id || index}
@@ -233,14 +233,13 @@ export const OutputRenderer: React.FC<OutputRendererProps> = ({ output }) => {
                 </div>
             )}
 
-            {/* Copy button */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
                 style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}
             >
-                <button style={styles.copyButton} onClick={handleCopy}>
+                <button style={styles.copyButton} onClick={handleCopy} data-testid="copy-button">
                     {copied ? '✓ Kopiert' : '📋 Kopieren'}
                 </button>
             </motion.div>

@@ -6,9 +6,33 @@
     },
     "questions": [
         {
+            "key": "endo_step",
+            "category": "forensic",
+            "prompt": "Was war heute der Endo-Schritt?",
+            "type": "single",
+            "dataField": "mentioned.endo_step",
+            "options": [
+                {
+                    "id": "start",
+                    "label": "Trepanation/Einlage",
+                    "dataValue": "endo_start"
+                },
+                {
+                    "id": "interim",
+                    "label": "Zwischensitzung",
+                    "dataValue": "endo_interim"
+                },
+                {
+                    "id": "complete",
+                    "label": "Wurzelfüllung",
+                    "dataValue": "endo_complete"
+                }
+            ]
+        },
+        {
             "key": "vitality",
             "category": "forensic",
-            "prompt": "🔍 Sensibilitätsprobe?",
+            "prompt": "Sensibilitätsprobe?",
             "type": "single",
             "dataField": "mentioned.vitality",
             "options": [
@@ -27,7 +51,7 @@
         {
             "key": "percussion",
             "category": "forensic",
-            "prompt": "🔍 Perkussionsprobe?",
+            "prompt": "Perkussionsprobe?",
             "type": "single",
             "dataField": "mentioned.percussion",
             "options": [
@@ -46,7 +70,7 @@
         {
             "key": "kanalzahl",
             "category": "forensic",
-            "prompt": "🦷 Anzahl der Wurzelkanäle?",
+            "prompt": "Anzahl der Wurzelkanäle?",
             "type": "single",
             "dataField": "mentioned.kanalzahl",
             "options": [
@@ -75,7 +99,7 @@
         {
             "key": "spuelung",
             "category": "forensic",
-            "prompt": "💧 Spüllösung?",
+            "prompt": "Spüllösung?",
             "type": "single",
             "dataField": "mentioned.spuelung",
             "options": [
@@ -89,7 +113,7 @@
         {
             "key": "medikament",
             "category": "forensic",
-            "prompt": "💊 Medikamentöse Einlage?",
+            "prompt": "Medikamentöse Einlage?",
             "type": "single",
             "dataField": "mentioned.medikament",
             "options": [

@@ -22,6 +22,9 @@ import fuellungRegeln from '../regeln/fuellung_regeln.json';
 // Registry loaders for treatment-specific configs
 import { loadUnifiedConfig, isKnownTreatment } from '../registry';
 
+// SSOT for canonical chip IDs
+import { CANONICAL_CHIP_IDS } from '../../../../contracts/canonicalIds';
+
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -508,16 +511,16 @@ export function inferChipsFromDictation(
     // Explizit Leitungsanästhesie erwähnt
     if (lower.includes('leitungs') || lower.includes('leitung') ||
         lower.includes('n. alv') || lower.includes('mandibular')) {
-        chips.push('la_leitung');
+        chips.push(CANONICAL_CHIP_IDS.LA_LEITUNG);
     }
     // Explizit Infiltration erwähnt
     else if (lower.includes('infiltr') || lower.includes('injektion')) {
-        chips.push('la_infiltr');
+        chips.push(CANONICAL_CHIP_IDS.LA_INFILTR);
     }
     // Explizit keine Anästhesie
     else if (lower.includes('ohne anästhesie') || lower.includes('ohne la') ||
         lower.includes('keine anästhesie')) {
-        chips.push('ohne_la');
+        chips.push(CANONICAL_CHIP_IDS.OHNE_LA);
     }
     // Nur "Anästhesie" oder "mit Spritze" → Automatisch basierend auf Zahnposition
     else if (hasAnesthesiaKeyword && tooth) {
@@ -525,24 +528,24 @@ export function inferChipsFromDictation(
         const toothNum = parseInt(tooth.replace(/\D/g, ''), 10);
         const isUKMolar = (toothNum >= 35 && toothNum <= 38) || (toothNum >= 45 && toothNum <= 48);
         if (isUKMolar) {
-            chips.push('la_leitung');
+            chips.push(CANONICAL_CHIP_IDS.LA_LEITUNG);
         } else {
-            chips.push('la_infiltr');
+            chips.push(CANONICAL_CHIP_IDS.LA_INFILTR);
         }
     }
     // General "anästhesie" ohne Zahn → Default Infiltration
     else if (hasAnesthesiaKeyword) {
-        chips.push('la_infiltr');
+        chips.push(CANONICAL_CHIP_IDS.LA_INFILTR);
     }
 
     // ════════════════════════════════════════════════════════════════
     // TROCKENLEGUNG
     // ════════════════════════════════════════════════════════════════
     if (lower.includes('kofferdam') || lower.includes('absolut')) {
-        chips.push('kofferdam');
+        chips.push(CANONICAL_CHIP_IDS.KOFFERDAM);
     } else if (lower.includes('relativ') || lower.includes('watteroll') ||
         lower.includes('speichel')) {
-        chips.push('rel_trocken');
+        chips.push(CANONICAL_CHIP_IDS.REL_TROCKEN);
     }
 
     // ════════════════════════════════════════════════════════════════
@@ -550,7 +553,7 @@ export function inferChipsFromDictation(
     // ════════════════════════════════════════════════════════════════
     if (lower.includes('exkav') || lower.includes('sondenhart') ||
         lower.includes('karies') || lower.includes('kariös')) {
-        chips.push('exkavation');
+        chips.push(CANONICAL_CHIP_IDS.EXKAVATION);
     }
 
     if (lower.includes('kariesdetektor') || lower.includes('anfärb') ||
@@ -587,10 +590,10 @@ export function inferChipsFromDictation(
     // ════════════════════════════════════════════════════════════════
     if (lower.includes('mehrschicht') || lower.includes('schichttechnik') ||
         lower.includes('schichtweise') || lower.includes('inkrement')) {
-        chips.push('mehrschicht');
+        chips.push(CANONICAL_CHIP_IDS.MEHRSCHICHT);
     } else if (lower.includes('komposit') || lower.includes('adhäsiv') ||
         lower.includes('ätz') || lower.includes('bond')) {
-        chips.push('komposit_basic');
+        chips.push(CANONICAL_CHIP_IDS.KOMPOSIT_BASIC);
     }
 
     // ════════════════════════════════════════════════════════════════
@@ -613,7 +616,7 @@ export function inferChipsFromDictation(
     // FLUORIDIERUNG
     // ════════════════════════════════════════════════════════════════
     if (lower.includes('fluorid') || lower.includes('fluor')) {
-        chips.push('fluor');
+        chips.push(CANONICAL_CHIP_IDS.FLUOR);
     }
 
     // ════════════════════════════════════════════════════════════════
@@ -629,22 +632,22 @@ export function inferChipsFromDictation(
     // ════════════════════════════════════════════════════════════════
     if (lower.includes('politur') || lower.includes('okklusion') ||
         lower.includes('einschleifen') || lower.includes('finish')) {
-        chips.push('finishing');
+        chips.push(CANONICAL_CHIP_IDS.FINISHING);
     }
 
     // ════════════════════════════════════════════════════════════════
     // BEFUND (from extracted data)
     // ════════════════════════════════════════════════════════════════
     if (extracted?.vitality === '+' || (lower.includes('vital') && !lower.includes('devital'))) {
-        chips.push('vipr_pos');
+        chips.push(CANONICAL_CHIP_IDS.VIPR_POS);
     } else if (extracted?.vitality === '-' || lower.includes('devital') || lower.includes('avital')) {
-        chips.push('vipr_neg');
+        chips.push(CANONICAL_CHIP_IDS.VIPR_NEG);
     }
 
     if (lower.includes('perk neg') || lower.includes('perk -') || lower.includes('perkussionsnegativ')) {
-        chips.push('perk_neg');
+        chips.push(CANONICAL_CHIP_IDS.PERK_NEG);
     } else if (lower.includes('perk pos') || lower.includes('perk +') || lower.includes('perkussionspositiv')) {
-        chips.push('perk_pos');
+        chips.push(CANONICAL_CHIP_IDS.PERK_POS);
     }
 
     // Dedupe

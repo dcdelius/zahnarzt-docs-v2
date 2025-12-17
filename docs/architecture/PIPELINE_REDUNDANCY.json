@@ -1,0 +1,249 @@
+{
+    "pipelines": [
+        {
+            "name": "V5",
+            "entryFile": "src/docudent/v5/hooks/useBillingV5Controller.ts",
+            "steps": [
+                {
+                    "name": "DictationInput",
+                    "file": "src/docudent/v5/pages/DocudentV5Page.tsx"
+                },
+                {
+                    "name": "ExtractDictation",
+                    "file": "src/docudent/core/extraction/extractDictationV3.ts"
+                },
+                {
+                    "name": "InferBilling",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/billingRegistry.ts"
+                },
+                {
+                    "name": "ValidateBilling",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/billingValidation.ts"
+                },
+                {
+                    "name": "CrossValidate",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/crossValidator.ts"
+                },
+                {
+                    "name": "GenerateQuestions",
+                    "file": "src/docudent/core/behandlungen/_shared/questionEngine.ts"
+                },
+                {
+                    "name": "InferChips",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts"
+                },
+                {
+                    "name": "ResolveChipStates",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts"
+                },
+                {
+                    "name": "GenerateDocumentation",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts"
+                },
+                {
+                    "name": "AnalogJustification",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/analogJustificationService.ts"
+                },
+                {
+                    "name": "AnalogValidation",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/analogCompletionValidator.ts"
+                },
+                {
+                    "name": "ExportGuard",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/analogExportGuard.ts"
+                }
+            ]
+        },
+        {
+            "name": "V6",
+            "entryFile": "src/docudent/v6/hooks/useV6Pipeline.ts",
+            "steps": [
+                {
+                    "name": "DictationInput",
+                    "file": "src/docudent/v6/pages/DocudentV6Page.tsx"
+                },
+                {
+                    "name": "ExtractFromDictation",
+                    "file": "src/docudent/v6/services/extractionService.ts"
+                },
+                {
+                    "name": "GenerateQuestions",
+                    "file": "src/docudent/v6/services/questionService.ts"
+                },
+                {
+                    "name": "GenerateFinalOutput",
+                    "file": "src/docudent/v6/services/outputService.ts"
+                },
+                {
+                    "name": "ChipResolver",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/chipResolver.ts"
+                },
+                {
+                    "name": "ProcessChipsToBilling",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts"
+                },
+                {
+                    "name": "ComposeOutput",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts"
+                }
+            ]
+        },
+        {
+            "name": "V7",
+            "entryFile": "src/docudent/v7/pipeline/index.ts",
+            "steps": [
+                {
+                    "name": "DictationInput",
+                    "file": "src/docudent/v7/pages/DocudentV7Page.tsx"
+                },
+                {
+                    "name": "ExtractFromDictation",
+                    "file": "src/docudent/v6/services/extractionService.ts"
+                },
+                {
+                    "name": "GenerateQuestions",
+                    "file": "src/docudent/v6/services/questionService.ts"
+                },
+                {
+                    "name": "GenerateFinalOutput",
+                    "file": "src/docudent/v6/services/outputService.ts"
+                },
+                {
+                    "name": "ChipResolver",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/chipResolver.ts"
+                },
+                {
+                    "name": "ProcessChipsToBilling",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts"
+                },
+                {
+                    "name": "ComposeOutput",
+                    "file": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts"
+                },
+                {
+                    "name": "MultiTreatmentRunner",
+                    "file": "src/docudent/v7/multitreatment/index.ts"
+                }
+            ]
+        }
+    ],
+    "duplicateSteps": [
+        {
+            "stepName": "ExtractFromDictation",
+            "pipelines": [
+                "V6",
+                "V7"
+            ],
+            "files": [
+                "src/docudent/v6/services/extractionService.ts"
+            ]
+        },
+        {
+            "stepName": "GenerateQuestions",
+            "pipelines": [
+                "V6",
+                "V7"
+            ],
+            "files": [
+                "src/docudent/v6/services/questionService.ts"
+            ]
+        },
+        {
+            "stepName": "GenerateFinalOutput",
+            "pipelines": [
+                "V6",
+                "V7"
+            ],
+            "files": [
+                "src/docudent/v6/services/outputService.ts"
+            ]
+        },
+        {
+            "stepName": "ChipResolver",
+            "pipelines": [
+                "V6",
+                "V7"
+            ],
+            "files": [
+                "src/docudent/core/billing/knowledgeBase/logic/chipResolver.ts"
+            ]
+        },
+        {
+            "stepName": "ProcessChipsToBilling",
+            "pipelines": [
+                "V5",
+                "V6",
+                "V7"
+            ],
+            "files": [
+                "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts"
+            ]
+        },
+        {
+            "stepName": "ComposeOutput",
+            "pipelines": [
+                "V6",
+                "V7"
+            ],
+            "files": [
+                "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts"
+            ]
+        },
+        {
+            "stepName": "QuestionGeneration",
+            "pipelines": [
+                "V5",
+                "V6",
+                "V7"
+            ],
+            "files": [
+                "src/docudent/core/behandlungen/_shared/questionEngine.ts",
+                "src/docudent/v6/services/questionService.ts"
+            ]
+        }
+    ],
+    "safeToUnify": [
+        {
+            "stepName": "ProcessChipsToBilling",
+            "reason": "Pure function, no UI coupling, no Firestore, already shared in core"
+        },
+        {
+            "stepName": "ChipResolver",
+            "reason": "Pure function, no side effects, deterministic"
+        },
+        {
+            "stepName": "ComposeOutput",
+            "reason": "Pure template rendering, no state mutation"
+        },
+        {
+            "stepName": "ExtractFromDictation",
+            "reason": "V7 already reuses V6 service, no duplication needed"
+        },
+        {
+            "stepName": "GenerateFinalOutput",
+            "reason": "V7 already reuses V6 service, pure orchestration"
+        }
+    ],
+    "unsafeToUnify": [
+        {
+            "stepName": "DictationInput",
+            "reason": "Tightly coupled to page-specific UI and state management"
+        },
+        {
+            "stepName": "QuestionGeneration",
+            "reason": "V5 uses QuestionEngine with tiered questions; V6/V7 use simpler questionService"
+        },
+        {
+            "stepName": "AnalogJustification",
+            "reason": "V5-only feature with complex UI interaction flow"
+        },
+        {
+            "stepName": "CrossValidate",
+            "reason": "V5-only with regress-risk warnings, needs careful porting"
+        },
+        {
+            "stepName": "ValidateBilling",
+            "reason": "V5-only billing guards, different error handling patterns"
+        }
+    ]
+}

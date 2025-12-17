@@ -224,12 +224,12 @@ describe('GATE5: Import Path Validation', () => {
     });
 
     describe('QuestionBank SSOT', () => {
-        it('getQuestionDef should return fuellung question (material)', async () => {
+        it('getQuestionDef should return fuellung question (ueberkappung_material)', async () => {
             const { getQuestionDef } = await import('../../core/billing/knowledgeBase/questions/questionBank');
 
-            const question = getQuestionDef('fuellung', 'material');
+            const question = getQuestionDef('fuellung', 'ueberkappung_material');
             expect(question).toBeDefined();
-            expect(question.key).toBe('material');
+            expect(question.key).toBe('ueberkappung_material');
             expect(question.category).toBe('forensic');
         });
 

@@ -50,6 +50,9 @@ export interface ExtractedData {
 
     // What was NOT mentioned → becomes a question
     gaps: string[];
+
+    // Original dictation text for downstream detection (e.g., endo step)
+    rawDictation?: string;
 }
 
 export interface DynamicQuestion {

@@ -3,6 +3,8 @@
  * 
  * Generiert strukturierte Heil- und Kostenpläne
  * für Zahnersatz-Versorgungen bei GKV-Patienten.
+ * 
+ * BEL2 Integration: Labor positions are validated against BEL2 SSOT catalog.
  */
 
 import {
@@ -14,6 +16,7 @@ import {
     LueckenSituation
 } from './befundLogic';
 import { berechneFestzuschuss, BonusStatus } from './festzuschussMapper';
+import { getBel2ForCodes, normalizeBel2CodeSafe } from './bel2Catalog';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -40,7 +43,8 @@ export interface HKPPosition {
 
 export interface LaborPosition {
     bezeichnung: string;
-    belNr?: string;          // BEL-II Nummer
+    belNr?: string;          // BEL-II Nummer (normalized to BEL_XXXX)
+    belKurztext?: string;    // BEL-II short text from catalog (if found)
     betrag: number;
     privatAnteil?: number;   // Mehrkosten über BEL-II
 }
@@ -196,10 +200,12 @@ export function generiereHKPKrone(
             }
         }
 
-        // Labor
+        // Labor - with BEL2 SSOT validation
+        // BEL_1021 = Vollkrone/Metall (standard crown, Regelversorgung)
+        const rawBelNr = 'BEL_1021';
         laborPositionen.push({
             bezeichnung: `Krone Zahn ${situation.zahnNummer}`,
-            belNr: '001',
+            belNr: rawBelNr,
             betrag: 180, // BEL-II Anteil
             privatAnteil: versorgungsart === 'gleichartig' ? 250 : 0
         });
@@ -208,6 +214,30 @@ export function generiereHKPKrone(
         if (befundResult.warnungen) {
             hinweise.push(...befundResult.warnungen);
         }
+    }
+
+    // BEL2 SSOT validation: catalog-driven resolution
+    // Only rewrite belNr if code exists in catalog; never invent codes
+    const belCodes = laborPositionen.map(lp => lp.belNr).filter((b): b is string => !!b);
+    const bel2Result = getBel2ForCodes(belCodes);
+
+    // Enrich labor positions with BEL2 metadata (only if found in catalog)
+    let belCodeIndex = 0;
+    for (const lp of laborPositionen) {
+        if (lp.belNr) {
+            const lookupResult = bel2Result.results[belCodeIndex++];
+            if (lookupResult && lookupResult.found && lookupResult.resolvedCode) {
+                // Code exists in catalog - update to canonical form
+                lp.belNr = lookupResult.resolvedCode;
+                lp.belKurztext = lookupResult.kurztext ?? undefined;
+            }
+            // If not found: keep original belNr unchanged, kurztext remains undefined
+        }
+    }
+
+    // Add BEL2 warnings to hinweise (deterministic)
+    for (const warning of bel2Result.warnings) {
+        hinweise.push(`[BEL2] ${warning}`);
     }
 
     // Berechne Summen

@@ -1,0 +1,23 @@
+{
+    "_meta": {
+        "treatmentId": "crown_prep",
+        "version": "1.0.0"
+    },
+    "sections": [
+        {
+            "id": "header",
+            "label": "KRONENPRÄPARATION",
+            "template": "KRONENPRÄPARATION — Zahn {{tooth}}"
+        },
+        {
+            "id": "befund",
+            "label": "BEFUND",
+            "template": "Zahn {{tooth}} zur Kronenversorgung vorgesehen."
+        },
+        {
+            "id": "behandlung",
+            "label": "BEHANDLUNG",
+            "template": "{{textLines}}"
+        }
+    ]
+}

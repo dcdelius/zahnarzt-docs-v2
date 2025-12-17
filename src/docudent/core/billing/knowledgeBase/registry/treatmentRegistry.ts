@@ -13,7 +13,7 @@
 // KNOWN TREATMENTS — Add new treatments here
 // ═══════════════════════════════════════════════════════════════
 
-export const KNOWN_TREATMENTS = ['fuellung', 'endo'] as const;
+export const KNOWN_TREATMENTS = ['fuellung', 'endo', 'extraction', 'pzr', 'crown_prep'] as const;
 export type TreatmentId = typeof KNOWN_TREATMENTS[number];
 
 // ═══════════════════════════════════════════════════════════════
@@ -75,8 +75,29 @@ const TREATMENT_CAPABILITIES: Record<TreatmentId, TreatmentCapabilities> = {
         hasUnified: true,
         hasAnswerMap: true,
         hasQuestionBank: true,
-        hasTemplate: true,  // Stub template.json created
-        hasFindingMap: true,  // Stub finding_map.json created
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    extraction: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    pzr: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    crown_prep: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
     },
 };
 

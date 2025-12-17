@@ -1,0 +1,56 @@
+{
+    "_meta": {
+        "id": "pzr",
+        "version": "1.0.0",
+        "label": "PZR"
+    },
+    "chips": [
+        {
+            "id": "pzr_vollstaendig",
+            "label": "PZR vollständig",
+            "phase": "behandlung",
+            "billingRef": {
+                "GKV": "BEMA_107",
+                "PKV": "GOZ_1040"
+            },
+            "textSnippets": {
+                "kurz": "PZR durchgeführt.",
+                "mittel": "Professionelle Zahnreinigung durchgeführt.",
+                "lang": "Professionelle Zahnreinigung aller Zähne durchgeführt."
+            },
+            "defaultActive": true
+        },
+        {
+            "id": "zahnstein_entfernung",
+            "label": "Zahnsteinentfernung",
+            "phase": "behandlung",
+            "billingRef": {
+                "GKV": "BEMA_107a",
+                "PKV": "GOZ_1040"
+            },
+            "textSnippets": {
+                "kurz": "Zahnstein entfernt.",
+                "mittel": "Supragingivale Zahnsteinentfernung.",
+                "lang": "Gründliche supragingivale Zahnsteinentfernung mittels Ultraschall und Handinstrumenten."
+            }
+        },
+        {
+            "id": "fluoridierung",
+            "label": "Fluoridierung",
+            "phase": "nachsorge",
+            "billingRef": {
+                "GKV": null,
+                "PKV": "GOZ_1020"
+            },
+            "textSnippets": {
+                "kurz": "Fluoridierung.",
+                "mittel": "Fluoridierung der Zähne.",
+                "lang": "Lokale Fluoridierung mit Fluoridlack zur Kariesprophylaxe."
+            }
+        }
+    ],
+    "phasen_reihenfolge": [
+        "behandlung",
+        "nachsorge"
+    ]
+}

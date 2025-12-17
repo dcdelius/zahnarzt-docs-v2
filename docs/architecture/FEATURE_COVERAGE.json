@@ -1,0 +1,315 @@
+[
+    {
+        "featureName": "Authentication",
+        "usedIn": [
+            "V5",
+            "V6",
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/App.jsx"
+        ],
+        "coreLogicFiles": [
+            "src/firebase.js",
+            "src/contexts/AuthContext.jsx"
+        ],
+        "persistence": {
+            "type": "firestore",
+            "files": [
+                "src/firebase.js"
+            ]
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "DictationExtraction",
+        "usedIn": [
+            "V5",
+            "V6",
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v5/pages/DocudentV5Page.tsx",
+            "src/docudent/v6/pages/DocudentV6Page.tsx",
+            "src/docudent/v7/pages/DocudentV7Page.tsx"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/core/extraction/extractDictationV3.ts",
+            "src/docudent/v6/services/extractionService.ts"
+        ],
+        "persistence": {
+            "type": "none",
+            "files": []
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "BillingInference",
+        "usedIn": [
+            "V5",
+            "V6",
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v5/hooks/useBillingV5Controller.ts",
+            "src/docudent/v6/services/outputService.ts",
+            "src/docudent/v7/pipeline/index.ts"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/core/billing/knowledgeBase/logic/billingRegistry.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/chipResolver.ts"
+        ],
+        "persistence": {
+            "type": "none",
+            "files": []
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "OutputComposition",
+        "usedIn": [
+            "V5",
+            "V6",
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v5/hooks/useBillingV5Controller.ts",
+            "src/docudent/v6/services/outputService.ts"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts"
+        ],
+        "persistence": {
+            "type": "none",
+            "files": []
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "QuestionEngine",
+        "usedIn": [
+            "V5",
+            "V6",
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v5/hooks/useBillingV5Controller.ts",
+            "src/docudent/v6/services/questionService.ts"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/core/behandlungen/_shared/questionEngine.ts"
+        ],
+        "persistence": {
+            "type": "none",
+            "files": []
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "AnalogResolver",
+        "usedIn": [
+            "V5"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v5/hooks/useBillingV5Controller.ts"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/core/billing/knowledgeBase/logic/analogResolver.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/analogJustificationService.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/analogCompletionValidator.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/analogExportGuard.ts"
+        ],
+        "persistence": {
+            "type": "localState",
+            "files": [
+                "src/docudent/v5/hooks/useBillingV5Controller.ts"
+            ]
+        },
+        "status": "important"
+    },
+    {
+        "featureName": "BillingValidation",
+        "usedIn": [
+            "V5"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v5/hooks/useBillingV5Controller.ts"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/core/billing/knowledgeBase/logic/billingValidation.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/crossValidator.ts"
+        ],
+        "persistence": {
+            "type": "none",
+            "files": []
+        },
+        "status": "important"
+    },
+    {
+        "featureName": "TreatmentSetup",
+        "usedIn": [
+            "V5"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v5/pages/DocudentV5Page.tsx"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/v5/components/TreatmentSetupWizard.tsx",
+            "src/docudent/v5/models/PracticeProfile.ts"
+        ],
+        "persistence": {
+            "type": "localState",
+            "files": [
+                "src/docudent/v5/models/PracticeProfile.ts"
+            ]
+        },
+        "status": "important"
+    },
+    {
+        "featureName": "V7Pipeline",
+        "usedIn": [
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v7/pages/DocudentV7Page.tsx"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/v7/hooks/useV7Pipeline.ts",
+            "src/docudent/v7/pipeline/index.ts",
+            "src/docudent/v7/pipeline/normalizeAnswers.ts",
+            "src/docudent/v7/pipeline/applyUserDefaults.ts"
+        ],
+        "persistence": {
+            "type": "localState",
+            "files": [
+                "src/docudent/v7/hooks/useV7Pipeline.ts"
+            ]
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "V6Workflow",
+        "usedIn": [
+            "V6"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v6/pages/DocudentV6Page.tsx"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/v6/hooks/useV6Pipeline.ts",
+            "src/docudent/v6/services/extractionService.ts",
+            "src/docudent/v6/services/questionService.ts",
+            "src/docudent/v6/services/outputService.ts"
+        ],
+        "persistence": {
+            "type": "localState",
+            "files": [
+                "src/docudent/v6/hooks/useV6Pipeline.ts"
+            ]
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "TreatmentDefinitions",
+        "usedIn": [
+            "V5",
+            "V6",
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/core/behandlungen/index.ts"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/core/behandlungen/fuellung/index.ts",
+            "src/docudent/core/behandlungen/endo/index.ts",
+            "src/docudent/core/behandlungen/_shared/types.ts"
+        ],
+        "persistence": {
+            "type": "none",
+            "files": []
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "BillingCatalogs",
+        "usedIn": [
+            "V5",
+            "V6",
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/core/billing/knowledgeBase/index.ts"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/core/billing/knowledgeBase/kataloge/bema.json",
+            "src/docudent/core/billing/knowledgeBase/kataloge/goz.json",
+            "src/docudent/core/billing/knowledgeBase/kataloge/goae.json"
+        ],
+        "persistence": {
+            "type": "none",
+            "files": []
+        },
+        "status": "critical"
+    },
+    {
+        "featureName": "MultiTreatment",
+        "usedIn": [
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v7/pages/DocudentV7Page.tsx"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/v7/hooks/useV7Pipeline.ts",
+            "src/docudent/v7/components/MultiOutputRenderer.tsx",
+            "src/docudent/v7/components/SegmentEditor.tsx"
+        ],
+        "persistence": {
+            "type": "localState",
+            "files": [
+                "src/docudent/v7/hooks/useV7Pipeline.ts"
+            ]
+        },
+        "status": "important"
+    },
+    {
+        "featureName": "TreatmentSelector",
+        "usedIn": [
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/docudent/v7/pages/DocudentV7Page.tsx"
+        ],
+        "coreLogicFiles": [
+            "src/docudent/v7/components/TreatmentSelector.tsx"
+        ],
+        "persistence": {
+            "type": "none",
+            "files": []
+        },
+        "status": "nice_to_have"
+    },
+    {
+        "featureName": "UserContext",
+        "usedIn": [
+            "V5",
+            "V6",
+            "V7"
+        ],
+        "entryPointFiles": [
+            "src/main.jsx"
+        ],
+        "coreLogicFiles": [
+            "src/contexts/UserContext.jsx"
+        ],
+        "persistence": {
+            "type": "firestore",
+            "files": [
+                "src/contexts/UserContext.jsx"
+            ]
+        },
+        "status": "important"
+    }
+]

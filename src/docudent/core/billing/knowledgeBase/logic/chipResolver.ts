@@ -64,6 +64,7 @@ interface ResolveOptions {
 // LOADERS — Using centralized registry
 // ═══════════════════════════════════════════════════════════════
 import { loadAnswerMapConfig, type AnswerMapConfig } from '../registry';
+import { CANONICAL_CHIP_IDS } from '../../../../contracts/canonicalIds';
 
 const answerMapCache = new Map<string, AnswerMapFile>();
 
@@ -224,6 +225,17 @@ export function resolveActiveChipIds(
     // 2. Add MKV chip if applicable
     if (options.hasMKV && answerMap.defaults.mkvChipId) {
         chips.add(answerMap.defaults.mkvChipId);
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // 2b. FUELLUNG + MKV: Apply technique defaults
+    // Mehrschicht and Adhäsiv are praxis-standard for MKV fillings
+    // These are NOT asked as questions, they're applied as defaults
+    // ═══════════════════════════════════════════════════════════════
+    if (treatmentId === 'fuellung' && options.hasMKV) {
+        // Add default technique chips (from settings in future, hardcoded for MVP)
+        chips.add(CANONICAL_CHIP_IDS.MEHRSCHICHT);
+        chips.add(CANONICAL_CHIP_IDS.ADHAESIV);
     }
 
     // 3. Infer chips from extraction

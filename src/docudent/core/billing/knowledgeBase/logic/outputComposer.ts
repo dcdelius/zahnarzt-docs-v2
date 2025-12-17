@@ -139,6 +139,18 @@ export interface ComposeOptions {
     mkvBetrag?: number;
     // Material for capping placeholder substitution
     cappingMaterial?: 'mta' | 'caoh' | 'biodentine' | string;
+    // Educational context for 'why this matters' notes
+    educationalContext?: EducationalContext;
+}
+
+// Educational context for transparent decision documentation
+export interface EducationalContext {
+    trockenlegung?: { value: string; source: 'default' | 'manual' | 'dictation' };
+    anesthesiaType?: string;
+    diagnoseSeverity?: 'media' | 'profunda' | 'initialkaries';
+    cavityDepth?: 'normal' | 'tief';
+    ueberkappung?: boolean;
+    ueberkappungMaterial?: { value: string; source: 'default' | 'manual' };
 }
 
 // Internal derived flags — computed inside composeOutput from activeChips
@@ -434,10 +446,59 @@ function renderBehandlung(
 
     const { text, usedChipIds } = buildProse(snippets, phrasebank, seed);
 
+    // Build educational context notes (if context provided)
+    const notes = buildEducationalNotes(options?.educationalContext);
+    const contentWithNotes = notes ? `${text}\n\n${notes}` : text;
+
     return {
-        content: text,
+        content: contentWithNotes,
         evidenceRefs: usedChipIds.map(id => ({ type: 'chip' as const, id }))
     };
+}
+
+// ═══════════════════════════════════════════════════════════════
+// EDUCATIONAL NOTES BUILDER (transparent decision documentation)
+// ═══════════════════════════════════════════════════════════════
+
+function buildEducationalNotes(ctx?: EducationalContext): string {
+    if (!ctx) return '';
+
+    const notes: string[] = [];
+
+    // Trockenlegung note
+    if (ctx.trockenlegung) {
+        const sourceLabel = ctx.trockenlegung.source === 'default' ? 'Praxis-Standard' :
+            ctx.trockenlegung.source === 'manual' ? 'Manuell gewählt' : 'Aus Diktat';
+        notes.push(`Trockenlegung: ${ctx.trockenlegung.value} (${sourceLabel}).`);
+    }
+
+    // Anesthesia note
+    if (ctx.anesthesiaType) {
+        notes.push(`Anästhesie: ${ctx.anesthesiaType}.`);
+    }
+
+    // Diagnosis severity note
+    if (ctx.diagnoseSeverity) {
+        const severityText = ctx.diagnoseSeverity === 'profunda' ? 'Caries profunda dokumentiert.' :
+            ctx.diagnoseSeverity === 'media' ? 'Caries media dokumentiert.' :
+                'Initialkaries dokumentiert.';
+        notes.push(severityText);
+    }
+
+    // Cavity depth note (only if deep)
+    if (ctx.cavityDepth === 'tief') {
+        notes.push('Pulpanah dokumentiert.');
+    }
+
+    // Überkappung note
+    if (ctx.ueberkappung) {
+        const materialNote = ctx.ueberkappungMaterial
+            ? `${ctx.ueberkappungMaterial.value} (${ctx.ueberkappungMaterial.source === 'default' ? 'Praxis-Standard' : 'Manuell gewählt'})`
+            : '';
+        notes.push(`Überkappung durchgeführt${materialNote ? ': ' + materialNote : ''}.`);
+    }
+
+    return notes.length > 0 ? `[Dokumentationshinweise] ${notes.join(' ')}` : '';
 }
 
 function renderLeistungen(
@@ -487,7 +548,8 @@ function renderAbrechnung(
     billingDetails: Array<{ code: string; bezeichnung?: string; betrag?: number }>,
     insuranceType: string,
     hasMKV: boolean,
-    disclosures: Disclosure[]
+    disclosures: Disclosure[],
+    options?: ComposeOptions
 ): { content: string; evidenceRefs: EvidenceRef[] } {
     const lines: string[] = [];
     const evidenceRefs: EvidenceRef[] = [];
@@ -513,12 +575,30 @@ function renderAbrechnung(
         }
     }
 
-    if (hasMKV && section.includeDisclosure) {
-        const mkvHinweis = disclosures.find(d => d.id === section.includeDisclosure);
-        if (mkvHinweis) {
-            lines.push('');
-            lines.push(mkvHinweis.text);
-            evidenceRefs.push({ type: 'disclosure', id: section.includeDisclosure });
+    // MKV validation note (if active)
+    if (hasMKV) {
+        const hasMehrschicht = goz.some(d => d.code.includes('2060') || d.code.includes('2080'));
+        const hasAdhasiv = goz.some(d => d.code.includes('2100') || d.code.includes('2197'));
+
+        if (hasMehrschicht || hasAdhasiv) {
+            const validations: string[] = [];
+            if (hasMehrschicht) validations.push('Mehrschichttechnik');
+            if (hasAdhasiv) validations.push('Adhäsivtechnik');
+            lines.push(`[MKV-Validierung] ${validations.join(' + ')} dokumentiert.`);
+        }
+
+        // MKV disclosure
+        if (section.includeDisclosure) {
+            const mkvHinweis = disclosures.find(d => d.id === section.includeDisclosure);
+            if (mkvHinweis) {
+                let text = mkvHinweis.text;
+                if (options?.mkvBetrag) {
+                    text = text.replace('{mkvBetrag}', `${options.mkvBetrag} €`);
+                }
+                lines.push('');
+                lines.push(text);
+                evidenceRefs.push({ type: 'disclosure', id: section.includeDisclosure });
+            }
         }
     }
 
@@ -646,7 +726,7 @@ export function composeOutput(
                 break;
 
             case 'abrechnung':
-                sectionResult = renderAbrechnung(sectionDef, engineResult.billingDetails, insuranceType, options.hasMKV, disclosures);
+                sectionResult = renderAbrechnung(sectionDef, engineResult.billingDetails, insuranceType, options.hasMKV, disclosures, options);
                 break;
 
             case 'hinweise':
@@ -674,6 +754,41 @@ export function composeOutput(
             allRefs.push(...sectionResult.evidenceRefs);
         }
     }
+
+    // ═══════════════════════════════════════════════════════════════
+    // ENDO STEP SECTION INJECTION (MVP)
+    // ═══════════════════════════════════════════════════════════════
+    // For endo treatment, prepend ENDO-SCHRITT section if step is determined
+    if (templateId === 'endo') {
+        const endoStep = (extractedData as any)?.mentioned?.endo_step ||
+            (extractedData as any)?.endo_step;
+
+        if (endoStep) {
+            // Import labels inline to avoid circular deps
+            const ENDO_STEP_LABELS: Record<string, string> = {
+                endo_start: 'Trepanation/Eröffnung',
+                endo_interim: 'Zwischensitzung',
+                endo_complete: 'Wurzelfüllung/Abschluss',
+            };
+
+            const stepLabel = ENDO_STEP_LABELS[endoStep] || endoStep;
+            const content = `ENDO-SCHRITT: ${stepLabel}`;
+
+            // Prepend to sections array (appears first in UI and clipboard)
+            sections.unshift({
+                id: 'endo_schritt',
+                label: 'ENDO-SCHRITT',
+                content,
+                lines: [content],
+                evidenceByLineIndex: [[{ type: 'mapping', id: 'endo_step', source: endoStep }]],
+                format: 'inline',
+                evidenceRefs: [{ type: 'mapping', id: 'endo_step', source: endoStep }]
+            });
+
+            allRefs.push({ type: 'mapping', id: 'endo_step', source: endoStep });
+        }
+    }
+
 
     // Build full text
     const fullText = sections.map(s => `[${s.label}]\n${s.content}`).join('\n\n');

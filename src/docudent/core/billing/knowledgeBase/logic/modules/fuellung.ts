@@ -21,6 +21,7 @@ import {
     lookupBillingCode,
     getDefaultActiveChipsFromJSON
 } from '../treatmentEngine';
+import { CANONICAL_CHIP_IDS } from '../../../../../contracts/canonicalIds';
 
 // ═══════════════════════════════════════════════════════════════
 // KEYWORD DETECTION (beibehalten für Chip-Inferenz)
@@ -83,35 +84,35 @@ function keywordsToChipIds(
 
     // Anästhesie
     if (keywords.leitung) {
-        chips.push('la_leitung');
+        chips.push(CANONICAL_CHIP_IDS.LA_LEITUNG);
     } else if (keywords.infiltration) {
-        chips.push('la_infiltr');
+        chips.push(CANONICAL_CHIP_IDS.LA_INFILTR);
     } else if (keywords.anaesthesieGeneric) {
         // UK-Seitenzähne = Leitung, sonst Infiltration
         const isUkMolar = (zahnNummer >= 36 && zahnNummer <= 38) || (zahnNummer >= 46 && zahnNummer <= 48);
-        chips.push(isUkMolar ? 'la_leitung' : 'la_infiltr');
+        chips.push(isUkMolar ? CANONICAL_CHIP_IDS.LA_LEITUNG : CANONICAL_CHIP_IDS.LA_INFILTR);
     }
 
     // Kofferdam
     if (keywords.kofferdam) {
-        chips.push('kofferdam');
+        chips.push(CANONICAL_CHIP_IDS.KOFFERDAM);
     }
 
     // Überkappung
     if (keywords.cp) {
-        chips.push('cp');
+        chips.push(CANONICAL_CHIP_IDS.CP);
     } else if (keywords.p) {
-        chips.push('p');
+        chips.push(CANONICAL_CHIP_IDS.P);
     }
 
     // Exkavation (immer dabei)
-    chips.push('exkavation');
+    chips.push(CANONICAL_CHIP_IDS.EXKAVATION);
 
     // Füllung - Mehrschicht nur bei MKV oder Keywords
     if (keywords.mehrschicht || hasMKV) {
-        chips.push('mehrschicht');
+        chips.push(CANONICAL_CHIP_IDS.MEHRSCHICHT);
     } else {
-        chips.push('komposit_basic');
+        chips.push(CANONICAL_CHIP_IDS.KOMPOSIT_BASIC);
     }
 
     // Kariesdetektor
@@ -125,7 +126,7 @@ function keywordsToChipIds(
     }
 
     // Finishing (immer dabei)
-    chips.push('finishing');
+    chips.push(CANONICAL_CHIP_IDS.FINISHING);
 
     return chips;
 }

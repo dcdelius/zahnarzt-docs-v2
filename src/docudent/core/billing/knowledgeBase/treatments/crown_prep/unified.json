@@ -1,0 +1,56 @@
+{
+    "_meta": {
+        "id": "crown_prep",
+        "version": "1.0.0",
+        "label": "Kronenpräparation"
+    },
+    "chips": [
+        {
+            "id": "praeparation",
+            "label": "Kronenpräparation",
+            "phase": "behandlung",
+            "billingRef": {
+                "GKV": null,
+                "PKV": "GOZ_2210"
+            },
+            "textSnippets": {
+                "kurz": "Präparation durchgeführt.",
+                "mittel": "Kronenpräparation des Zahnes durchgeführt.",
+                "lang": "Sorgfältige Kronenpräparation mit definierten Präparationsgrenzen."
+            },
+            "defaultActive": true
+        },
+        {
+            "id": "abformung",
+            "label": "Abformung",
+            "phase": "behandlung",
+            "billingRef": {
+                "GKV": null,
+                "PKV": "GOZ_5000"
+            },
+            "textSnippets": {
+                "kurz": "Abformung.",
+                "mittel": "Präzisionsabformung durchgeführt.",
+                "lang": "Präzisionsabformung für Laboranfertigung."
+            }
+        },
+        {
+            "id": "provisorium",
+            "label": "Provisorium",
+            "phase": "nachsorge",
+            "billingRef": {
+                "GKV": null,
+                "PKV": "GOZ_2260"
+            },
+            "textSnippets": {
+                "kurz": "Provisorium.",
+                "mittel": "Provisorische Versorgung.",
+                "lang": "Provisorische Kronenversorgung zum Schutz des präparierten Stumpfes."
+            }
+        }
+    ],
+    "phasen_reihenfolge": [
+        "behandlung",
+        "nachsorge"
+    ]
+}

@@ -10,6 +10,11 @@ import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 import "./index.css"
 
+// DEV-only: Initialize module import error capture
+import { initDevErrorCapture } from './utils/devErrorCapture';
+initDevErrorCapture();
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>

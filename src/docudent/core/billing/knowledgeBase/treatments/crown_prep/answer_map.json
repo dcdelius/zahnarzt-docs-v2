@@ -1,0 +1,15 @@
+{
+    "_meta": {
+        "treatmentId": "crown_prep",
+        "version": "1.0.0"
+    },
+    "map": [],
+    "extractionMapping": {},
+    "defaults": {
+        "alwaysOnChipIds": [
+            "praeparation",
+            "abformung",
+            "provisorium"
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "_meta": {
+        "treatmentId": "pzr",
+        "version": "1.0.0"
+    },
+    "map": [],
+    "extractionMapping": {},
+    "defaults": {
+        "alwaysOnChipIds": [
+            "pzr_vollstaendig"
+        ]
+    }
+}

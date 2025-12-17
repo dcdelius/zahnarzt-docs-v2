@@ -1,0 +1,140 @@
+{
+    "treatmentId": "extraction",
+    "questionBank": {
+        "path": "src/docudent/core/billing/knowledgeBase/treatments/extraction/question_bank.json",
+        "questions": [
+            {
+                "key": "grund",
+                "prompt": "🦷 Extraktionsgrund?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "nicht_erhaltungswuerdig",
+                        "label": "Nicht erhaltungswürdig"
+                    },
+                    {
+                        "id": "paro",
+                        "label": "Parodontal geschädigt"
+                    },
+                    {
+                        "id": "fraktur",
+                        "label": "Fraktur"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "komplikation",
+                "prompt": "⚠️ Komplikationen?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "keine",
+                        "label": "Keine"
+                    },
+                    {
+                        "id": "wurzelrest",
+                        "label": "Wurzelrest verblieben"
+                    }
+                ],
+                "when": null
+            }
+        ],
+        "questionOrder": {
+            "forensic": [
+                "grund",
+                "komplikation"
+            ],
+            "mkv": [],
+            "upsell": []
+        }
+    },
+    "output": {
+        "templatePath": "src/docudent/core/billing/knowledgeBase/treatments/extraction/template.json",
+        "sections": [
+            {
+                "id": "header",
+                "label": "EXTRAKTION"
+            },
+            {
+                "id": "befund",
+                "label": "BEFUND"
+            },
+            {
+                "id": "behandlung",
+                "label": "BEHANDLUNG"
+            },
+            {
+                "id": "hinweis",
+                "label": "HINWEIS"
+            }
+        ],
+        "renderFunctions": {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+            "mainFunction": "composeOutput:562"
+        },
+        "influencingFields": {
+            "extracted": [
+                "tooth",
+                "mentioned.grund"
+            ],
+            "answers": [
+                "grund",
+                "komplikation"
+            ]
+        }
+    },
+    "goldenDictations": [
+        {
+            "dictation": "Zahn 48 Weisheitszahn Extraktion Anästhesie",
+            "expectedQuestions": [
+                "grund",
+                "komplikation"
+            ],
+            "expectedOutput": {
+                "header": "EXTRAKTION — Zahn 48",
+                "befund": "Zahn 48 nicht erhaltungswürdig."
+            }
+        },
+        {
+            "dictation": "36 nicht erhaltungswürdig Extraktion keine Komplikationen",
+            "expectedQuestions": [],
+            "expectedOutput": {
+                "header": "EXTRAKTION — Zahn 36",
+                "behandlung": "Extraktion komplikationslos"
+            }
+        },
+        {
+            "dictation": "17 parodontal geschädigt Lockerung Grad III Extraktion",
+            "expectedQuestions": [
+                "komplikation"
+            ],
+            "expectedOutput": {
+                "header": "EXTRAKTION — Zahn 17",
+                "befund": "Zahn 17 parodontal geschädigt."
+            }
+        },
+        {
+            "dictation": "46 Wurzelrest verblieben Osteotomie geplant",
+            "expectedQuestions": [
+                "grund"
+            ],
+            "expectedOutput": {
+                "header": "EXTRAKTION — Zahn 46",
+                "hinweis": "Wurzelrest verblieben, Kontrolle"
+            }
+        },
+        {
+            "dictation": "38 Fraktur horizontal Extraktion",
+            "expectedQuestions": [
+                "komplikation"
+            ],
+            "expectedOutput": {
+                "header": "EXTRAKTION — Zahn 38",
+                "befund": "Zahn 38 Fraktur."
+            }
+        }
+    ]
+}

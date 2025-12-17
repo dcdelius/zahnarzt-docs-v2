@@ -1,0 +1,52 @@
+{
+    "_meta": {
+        "treatmentId": "crown_prep",
+        "version": "1.0.0",
+        "description": "Question Bank for Crown Prep - chairside only, minimal MVP"
+    },
+    "questions": [
+        {
+            "key": "kronenart",
+            "category": "forensic",
+            "prompt": "👑 Kronenart?",
+            "type": "single",
+            "dataField": "mentioned.kronenart",
+            "options": [
+                {
+                    "id": "vollkeramik",
+                    "label": "Vollkeramik",
+                    "dataValue": "vollkeramik"
+                },
+                {
+                    "id": "vmk",
+                    "label": "VMK",
+                    "dataValue": "vmk"
+                },
+                {
+                    "id": "vollguss",
+                    "label": "Vollguss",
+                    "dataValue": "vollguss"
+                }
+            ]
+        },
+        {
+            "key": "retraktionsfaden",
+            "category": "forensic",
+            "prompt": "🧵 Retraktionsfaden?",
+            "type": "single",
+            "dataField": "mentioned.retraktionsfaden",
+            "options": [
+                {
+                    "id": "ja",
+                    "label": "Ja",
+                    "dataValue": true
+                },
+                {
+                    "id": "nein",
+                    "label": "Nein",
+                    "dataValue": false
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "taskA": {
+        "v7WritesFirestore": false,
+        "primaryRuntimePath": [
+            {
+                "step": 1,
+                "file": "src/docudent/v7/pages/DocudentV7Page.tsx",
+                "symbol": "handleSendClick",
+                "lines": "L397+",
+                "notes": "User clicks Send button"
+            },
+            {
+                "step": 2,
+                "file": "src/docudent/v7/hooks/useV7Pipeline.ts",
+                "symbol": "runPipeline()",
+                "lines": "L193+",
+                "notes": "Triggers pipeline.run()"
+            },
+            {
+                "step": 3,
+                "file": "src/docudent/v7/pipeline/index.ts",
+                "symbol": "run()",
+                "lines": "L53-278",
+                "notes": "Orchestrates extraction → questions → output"
+            },
+            {
+                "step": 4,
+                "file": "src/docudent/v7/components/OutputRenderer.tsx",
+                "symbol": "OutputRenderer",
+                "lines": "L182-249",
+                "notes": "Renders output, NO Firestore write"
+            },
+            {
+                "step": 5,
+                "file": "src/docudent/v7/components/OutputRenderer.tsx",
+                "symbol": "handleCopy()",
+                "lines": "L185-190",
+                "notes": "Only action: clipboard copy via navigator.clipboard.writeText()"
+            }
+        ],
+        "allWriteSites": [
+            {
+                "pipeline": "shared",
+                "uiTrigger": "unknown",
+                "file": "src/utils/noteService.ts",
+                "symbol": "saveNote()",
+                "lines": "L48-50",
+                "writesTo": [
+                    "Firestore: Praxen/{practiceId}/Notes"
+                ],
+                "callChain": [
+                    "saveNote()",
+                    "saveNoteInternal()",
+                    "setDoc()"
+                ],
+                "notes": "EXPORTED but NOT IMPORTED by V5/V6/V7 pages"
+            },
+            {
+                "pipeline": "shared",
+                "uiTrigger": "unknown",
+                "file": "src/utils/noteServiceCore.ts",
+                "symbol": "saveNote()",
+                "lines": "L38+",
+                "writesTo": [
+                    "Firestore: Praxen/{practiceId}/Notes"
+                ],
+                "callChain": [
+                    "saveNote()",
+                    "doc()",
+                    "setDoc()"
+                ],
+                "notes": "Alternative implementation, same pattern"
+            }
+        ],
+        "ifNoWrites": {
+            "exportFunctions": [
+                {
+                    "file": "src/docudent/v7/components/OutputRenderer.tsx",
+                    "symbol": "handleCopy()",
+                    "lines": "L185-190",
+                    "triggeredBy": "Copy button click",
+                    "action": "navigator.clipboard.writeText()"
+                }
+            ],
+            "notes": "V7 has NO Firestore persistence. Output is clipboard-only. noteService.saveNote() exists but is never called from any V5/V6/V7 UI component."
+        }
+    },
+    "taskB": {
+        "bel2FilesFound": [
+            {
+                "path": "src/docudent/core/billing/knowledgeBase/kataloge/bel2_2022.json",
+                "sizeHint": "canonical catalog"
+            },
+            {
+                "path": "src/docudent/bel2_leistungsverzeichnis_2022_extracted.json",
+                "sizeHint": "legacy extraction (may be source for above)"
+            },
+            {
+                "path": "src/docudent/ze_bel_cases_v1_patch_bel2_2022.json",
+                "sizeHint": "patch file for test cases"
+            }
+        ],
+        "runtimeLoads": [
+            {
+                "bel2Path": "kataloge/bel2_2022.json",
+                "importedBy": [
+                    {
+                        "file": "src/docudent/core/billing/knowledgeBase/logic/bel2Catalog.ts",
+                        "symbol": "import bel2Data",
+                        "lines": "L12"
+                    }
+                ],
+                "usedInPipelines": [],
+                "usageType": "SSOT",
+                "callChain": [
+                    "bel2Catalog.ts → loadBel2Catalog() → lookupBel2()"
+                ],
+                "notes": "Catalog is loaded and cached, but lookupBel2() is NOT called by any runtime billing code (treatmentEngine, chipResolver, outputComposer)"
+            }
+        ],
+        "runtimeCallers": {
+            "lookupBel2": {
+                "calledBy": [
+                    "src/docudent/__tests__/gates/gate-bel2-catalog-ssot.test.ts (TEST ONLY)",
+                    "src/docudent/core/billing/knowledgeBase/logic/index.ts (RE-EXPORT ONLY)"
+                ],
+                "calledByRuntimeCode": false
+            }
+        },
+        "summary": {
+            "bel2UsedAtRuntime": false,
+            "whereItMatters": [
+                "SSOT catalog exists at kataloge/bel2_2022.json",
+                "Loader API exists at bel2Catalog.ts (lookupBel2, loadBel2Catalog)",
+                "Re-exported in logic/index.ts"
+            ],
+            "gapsOrRisks": [
+                "BEL2 catalog is NOT integrated into billing pipelines (V5/V6/V7)",
+                "treatmentEngine.ts does NOT call lookupBel2()",
+                "ZE/labor splitting likely needs BEL2 but integration is missing",
+                "Test gate exists (gate-bel2-catalog-ssot.test.ts) but runtime usage = 0"
+            ]
+        }
+    },
+    "conclusions": {
+        "v7PersistenceStatus": "V7 does NOT write to Firestore. The only 'export' action is clipboard copy via navigator.clipboard.writeText() in OutputRenderer.tsx. noteService.saveNote() exists but is never imported or called by V7.",
+        "bel2RuntimeStatus": "BEL2 catalog is loaded and the API (lookupBel2) is exported, but NO runtime billing code calls it. It is SSOT-ready but NOT integrated. Only gate tests use it.",
+        "nextActionRecommended": [
+            "1. Wire noteService.saveNote() to V7 ActionDock or a 'Finalize' button if persistence is needed",
+            "2. Integrate lookupBel2() into labor/ZE splitting logic (treatmentEngine or dedicated laborSplitting.ts)",
+            "3. Add gate test to verify BEL2 is actually used when ZE/labor codes appear in billing"
+        ]
+    }
+}

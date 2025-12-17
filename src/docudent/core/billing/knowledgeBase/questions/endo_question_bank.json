@@ -6,6 +6,30 @@
     },
     "questions": [
         {
+            "key": "endo_step",
+            "category": "forensic",
+            "prompt": "🦷 Was war heute der Endo-Schritt?",
+            "type": "single",
+            "dataField": "mentioned.endo_step",
+            "options": [
+                {
+                    "id": "start",
+                    "label": "Trepanation/Einlage",
+                    "dataValue": "endo_start"
+                },
+                {
+                    "id": "interim",
+                    "label": "Zwischensitzung",
+                    "dataValue": "endo_interim"
+                },
+                {
+                    "id": "complete",
+                    "label": "Wurzelfüllung",
+                    "dataValue": "endo_complete"
+                }
+            ]
+        },
+        {
             "key": "vitality",
             "category": "forensic",
             "prompt": "🔍 Sensibilitätsprobe?",

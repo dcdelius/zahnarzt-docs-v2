@@ -82,7 +82,8 @@ export async function extractFromDictation(dictation: string): Promise<Extracted
     }
 
     // STEP 5: Return with gaps for questionService
-    return addGaps(result);
+    // Include normalized dictation for downstream detection (e.g., endo step)
+    return addGaps(result, normalizedText);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -242,7 +243,7 @@ function extractViaRegex(dictation: string): Partial<ExtractedData> {
 // GAP DETECTION
 // ═══════════════════════════════════════════════════════════════
 
-function addGaps(partial: Partial<ExtractedData>): ExtractedData {
+function addGaps(partial: Partial<ExtractedData>, rawDictation: string = ''): ExtractedData {
     const gaps: string[] = [];
 
     // Forensic required fields
@@ -261,6 +262,8 @@ function addGaps(partial: Partial<ExtractedData>): ExtractedData {
         diagnosis: partial.diagnosis || null,
         costs: partial.costs || null,
         mentioned: partial.mentioned || {},
-        gaps
+        gaps,
+        // Include raw dictation for downstream detection (endo step etc.)
+        rawDictation
     };
 }

@@ -6,6 +6,12 @@
  * - Surfaces
  * - Insurance type
  * - Material (if available)
+ * - Trockenlegung (from settings default or manual answer)
+ * - Überkappungsmaterial (from settings default or manual answer)
+ *
+ * Shows source labels:
+ * - "Praxis-Standard" for settings defaults
+ * - "Manuell" for user-answered values that override defaults
  *
  * ❌ NO logic — pure presentation
  * ✅ Omits chips for missing data (no "—" placeholders)
@@ -19,10 +25,20 @@ import {
     typography,
     motion as motionTokens,
 } from '../styles/tokens';
+import { getFuellungDefaults } from '../settings/settingsStore';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
 // ═══════════════════════════════════════════════════════════════
+
+type ChipSource = 'default' | 'manual' | 'extracted' | 'static';
+
+interface ChipData {
+    label: string;
+    value: string;
+    source?: ChipSource;
+    testId?: string;
+}
 
 interface SummaryChipsProps {
     extracted?: {
@@ -33,6 +49,7 @@ interface SummaryChipsProps {
     insuranceType: 'GKV' | 'PKV';
     hasMKV: boolean;
     answers: Map<string, unknown>;
+    treatmentId?: string;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -68,6 +85,38 @@ const styles = {
     chipValue: {
         fontWeight: typography.semibold,
     },
+    chipSource: {
+        fontSize: '10px',
+        fontWeight: typography.regular,
+        color: colors.textMuted,
+        marginLeft: '4px',
+        opacity: 0.8,
+    },
+    chipSourceDefault: {
+        color: 'rgba(100, 200, 150, 0.9)',
+    },
+    chipSourceManual: {
+        color: 'rgba(150, 180, 255, 0.9)',
+    },
+};
+
+// Label mappings
+const TROCKENLEGUNG_LABELS: Record<string, string> = {
+    kofferdam: 'Kofferdam',
+    relativ: 'Relativ',
+};
+
+const UEBERKAPPUNG_LABELS: Record<string, string> = {
+    caoh: 'Ca(OH)₂',
+    mta: 'MTA',
+    biodentine: 'Biodentine',
+};
+
+const SOURCE_LABELS: Record<ChipSource, string> = {
+    default: '(Praxis-Standard)',
+    manual: '(Manuell)',
+    extracted: '',
+    static: '',
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -79,27 +128,80 @@ export function SummaryChips({
     insuranceType,
     hasMKV,
     answers,
+    treatmentId,
 }: SummaryChipsProps) {
     // Build chips array from available data
-    const chips: Array<{ label: string; value: string }> = [];
+    const chips: ChipData[] = [];
 
-    // Tooth
+    // Tooth (extracted)
     if (extracted?.tooth) {
-        chips.push({ label: 'Zahn', value: extracted.tooth });
+        chips.push({ label: 'Zahn', value: extracted.tooth, source: 'extracted' });
     }
 
-    // Surfaces
+    // Surfaces (extracted)
     if (extracted?.surfaces && extracted.surfaces.length > 0) {
-        chips.push({ label: 'Flächen', value: extracted.surfaces.join(' ') });
+        chips.push({ label: 'Flächen', value: extracted.surfaces.join(' '), source: 'extracted' });
     }
 
-    // Insurance
+    // Insurance (static)
     const insuranceLabel = hasMKV ? 'GKV + MKV' : insuranceType;
-    chips.push({ label: 'Versicherung', value: insuranceLabel });
+    chips.push({ label: 'Versicherung', value: insuranceLabel, source: 'static' });
 
-    // Material from answers (if answered)
-    const materialAnswer = answers.get('forensic_material');
-    if (materialAnswer) {
+    // ═══════════════════════════════════════════════════════════════
+    // Settings-driven chips with source tracking
+    // ═══════════════════════════════════════════════════════════════
+    if (!treatmentId || treatmentId === 'fuellung') {
+        const fuellungDefaults = getFuellungDefaults();
+
+        // Trockenlegung: Check if user manually answered via 'isolation' question
+        const isolationAnswer = answers.get('isolation');
+        if (isolationAnswer) {
+            // User manually answered - show with "Manuell" label
+            const value = isolationAnswer === 'kofferdam' ? 'Kofferdam' : 'Relativ';
+            chips.push({
+                label: 'Trockenlegung',
+                value,
+                source: 'manual',
+                testId: 'chip-trockenlegung',
+            });
+        } else if (fuellungDefaults.trockenlegung !== 'fragen') {
+            // Settings default active - show with "Praxis-Standard" label
+            chips.push({
+                label: 'Trockenlegung',
+                value: TROCKENLEGUNG_LABELS[fuellungDefaults.trockenlegung] || fuellungDefaults.trockenlegung,
+                source: 'default',
+                testId: 'chip-trockenlegung',
+            });
+        }
+
+        // Überkappungsmaterial: Check if user answered ueberkappung=true AND material
+        const ueberkappungAnswer = answers.get('ueberkappung');
+        const materialAnswer = answers.get('ueberkappung_material');
+
+        if (ueberkappungAnswer === true) {
+            if (materialAnswer) {
+                // User manually selected material
+                chips.push({
+                    label: 'Überkappung',
+                    value: UEBERKAPPUNG_LABELS[materialAnswer as string] || String(materialAnswer),
+                    source: 'manual',
+                    testId: 'chip-ueberkappung',
+                });
+            } else if (fuellungDefaults.ueberkappungMaterial !== 'fragen') {
+                // Settings default active
+                chips.push({
+                    label: 'Überkappung',
+                    value: UEBERKAPPUNG_LABELS[fuellungDefaults.ueberkappungMaterial] || fuellungDefaults.ueberkappungMaterial,
+                    source: 'default',
+                    testId: 'chip-ueberkappung',
+                });
+            }
+        }
+    }
+
+    // Material from answers (legacy fallback for older question IDs)
+    const legacyMaterialAnswer = answers.get('forensic_material');
+    if (legacyMaterialAnswer) {
         const materialLabels: Record<string, string> = {
             'komposit': 'Komposit',
             'glasionomer': 'Glasionomer',
@@ -107,13 +209,14 @@ export function SummaryChips({
         };
         chips.push({
             label: 'Material',
-            value: materialLabels[materialAnswer as string] || String(materialAnswer),
+            value: materialLabels[legacyMaterialAnswer as string] || String(legacyMaterialAnswer),
+            source: 'manual',
         });
     }
 
-    // Diagnosis (if available)
+    // Diagnosis (extracted)
     if (extracted?.diagnosis) {
-        chips.push({ label: 'Diagnose', value: extracted.diagnosis });
+        chips.push({ label: 'Diagnose', value: extracted.diagnosis, source: 'extracted' });
     }
 
     return (
@@ -126,6 +229,7 @@ export function SummaryChips({
                 delay: 0.1,
             }}
             style={styles.container}
+            data-testid="summary-chips"
         >
             {chips.map((chip, index) => (
                 <motion.div
@@ -137,9 +241,21 @@ export function SummaryChips({
                         delay: index * 0.03,
                     }}
                     style={styles.chip}
+                    data-testid={chip.testId}
                 >
                     <span style={styles.chipLabel}>{chip.label}</span>
                     <span style={styles.chipValue}>{chip.value}</span>
+                    {chip.source && SOURCE_LABELS[chip.source] && (
+                        <span
+                            style={{
+                                ...styles.chipSource,
+                                ...(chip.source === 'default' ? styles.chipSourceDefault : {}),
+                                ...(chip.source === 'manual' ? styles.chipSourceManual : {}),
+                            }}
+                        >
+                            {SOURCE_LABELS[chip.source]}
+                        </span>
+                    )}
                 </motion.div>
             ))}
         </motion.div>
@@ -147,3 +263,4 @@ export function SummaryChips({
 }
 
 export default SummaryChips;
+

@@ -1,0 +1,13 @@
+{
+    "_meta": {
+        "treatmentId": "extraction",
+        "version": "1.0.0"
+    },
+    "map": [],
+    "extractionMapping": {},
+    "defaults": {
+        "alwaysOnChipIds": [
+            "extraktion_einfach"
+        ]
+    }
+}

@@ -18,7 +18,8 @@
     "test:billing": "vitest run src/test/billing-completeness.test.ts",
     "test:integrity": "vitest run src/test/output-integrity.test.ts",
     "test:golden-output": "vitest run src/test/golden-outputs/golden-output.test.ts",
-    "test:e2e": "npx playwright test e2e/smoke.spec.ts",
+    "test:e2e": "npx playwright test",
+    "test:e2e:v7": "npx playwright test e2e/v7-ui-wiring.spec.ts",
     "test:e2e:ci": "node scripts/e2e-ci-runner.cjs",
     "test:v6-integration": "vitest run src/test/v6-pipeline.integration.test.ts",
     "audit:v6-ssot": "node scripts/v6-ssot-pipeline-audit.cjs",
@@ -62,6 +63,8 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",

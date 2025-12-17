@@ -1,0 +1,57 @@
+{
+    "generatedAt": "2025-12-15T21:38:13+01:00",
+    "primaryRuntime": "V7",
+    "decisionRationale": [
+        "V7 has active route usage via DocudentV7Page.tsx with full UI wiring through useV7Pipeline hook",
+        "V7 has dedicated E2E test coverage: gate10-runMultiFromDictation-e2e.test.ts, contract-drift, reality-integration, no-logic tests",
+        "V7 is designed for extensibility with clean separation: multitreatment/, pipeline/, components/, hooks/ structure",
+        "V7 reuses V6 extraction services internally (extractionService.ts) - no duplication, proper layering"
+    ],
+    "pipelineClassification": {
+        "V5": "legacy",
+        "V6": "secondary",
+        "V7": "primary"
+    },
+    "classificationDetails": {
+        "V7": {
+            "status": "primary",
+            "role": "Runtime UI and orchestration layer",
+            "activeRoutes": [
+                "/docudent/v7"
+            ],
+            "keyFiles": [
+                "v7/hooks/useV7Pipeline.ts",
+                "v7/multitreatment/runMultiFromDictation.ts",
+                "v7/pipeline/index.ts"
+            ]
+        },
+        "V6": {
+            "status": "secondary",
+            "role": "Logic donor - extraction and questions services consumed by V7",
+            "keyFiles": [
+                "v6/services/extractionService.ts",
+                "v6/services/questionsService.ts"
+            ],
+            "note": "V6 services are imported by V7 pipeline - not standalone"
+        },
+        "V5": {
+            "status": "legacy",
+            "role": "Historical reference only - billing logic migrated to core/billing/",
+            "keyFiles": [],
+            "note": "No active development; critical logic extracted to knowledgeBase"
+        }
+    },
+    "rulesGoingForward": [
+        "All new UI features go to V7 (pages, components, hooks)",
+        "Billing logic must live in core/billing/knowledgeBase/logic/",
+        "No new features in V5 - treat as read-only archive",
+        "V6 services may be modified only to support V7 pipeline needs",
+        "New tests should use V7 entry points (runMultiFromDictation, generiereHKP*)"
+    ],
+    "migrationStatus": {
+        "billingLogic": "Migrated to core/billing/knowledgeBase/logic/",
+        "befundLogic": "In core/billing/knowledgeBase/logic/befundLogic.ts",
+        "bel2Catalog": "SSOT in kataloge/bel2_2022.json, API in bel2Catalog.ts",
+        "hkpGenerator": "In core/billing/knowledgeBase/logic/hkpGenerator.ts"
+    }
+}

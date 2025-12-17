@@ -1,0 +1,248 @@
+{
+    "treatmentId": "endo",
+    "questionBank": {
+        "path": "src/docudent/core/billing/knowledgeBase/treatments/endo/question_bank.json",
+        "questions": [
+            {
+                "key": "endo_step",
+                "prompt": "🦷 Was war heute der Endo-Schritt?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "start",
+                        "label": "Trepanation/Einlage"
+                    },
+                    {
+                        "id": "interim",
+                        "label": "Zwischensitzung"
+                    },
+                    {
+                        "id": "complete",
+                        "label": "Wurzelfüllung"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "vitality",
+                "prompt": "🔍 Sensibilitätsprobe?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "pos",
+                        "label": "ViPr +"
+                    },
+                    {
+                        "id": "neg",
+                        "label": "ViPr −"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "percussion",
+                "prompt": "🔍 Perkussionsprobe?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "neg",
+                        "label": "Perk −"
+                    },
+                    {
+                        "id": "pos",
+                        "label": "Perk +"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "kanalzahl",
+                "prompt": "🦷 Anzahl der Wurzelkanäle?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "1",
+                        "label": "1 Kanal"
+                    },
+                    {
+                        "id": "2",
+                        "label": "2 Kanäle"
+                    },
+                    {
+                        "id": "3",
+                        "label": "3 Kanäle"
+                    },
+                    {
+                        "id": "4",
+                        "label": "4 Kanäle"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "spuelung",
+                "prompt": "💧 Spüllösung?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "naocl",
+                        "label": "NaOCl 3%"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "medikament",
+                "prompt": "💊 Medikamentöse Einlage?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "caoh2",
+                        "label": "Ca(OH)₂"
+                    },
+                    {
+                        "id": "none",
+                        "label": "Keine Einlage"
+                    }
+                ],
+                "when": null
+            }
+        ],
+        "questionOrder": {
+            "forensic": [
+                "endo_step",
+                "vitality",
+                "percussion",
+                "kanalzahl",
+                "spuelung",
+                "medikament"
+            ],
+            "mkv": [],
+            "upsell": []
+        }
+    },
+    "output": {
+        "templatePath": "src/docudent/core/billing/knowledgeBase/treatments/endo/template.json",
+        "sections": [
+            {
+                "id": "header",
+                "label": "Übersicht"
+            },
+            {
+                "id": "befund",
+                "label": "Befund"
+            },
+            {
+                "id": "aufklaerung",
+                "label": "Aufklärung"
+            },
+            {
+                "id": "behandlung",
+                "label": "Behandlungsablauf"
+            },
+            {
+                "id": "leistungen",
+                "label": "Durchgeführte Leistungen"
+            },
+            {
+                "id": "abrechnung",
+                "label": "Abrechnung"
+            },
+            {
+                "id": "hinweise",
+                "label": "Hinweise"
+            }
+        ],
+        "renderFunctions": {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+            "mainFunction": "composeOutput:562"
+        },
+        "influencingFields": {
+            "extracted": [
+                "tooth",
+                "diagnosis",
+                "vitality",
+                "percussion",
+                "mentioned.kanalzahl",
+                "mentioned.endo_step"
+            ],
+            "answers": [
+                "endo_step",
+                "kanalzahl",
+                "spuelung",
+                "medikament"
+            ]
+        }
+    },
+    "goldenDictations": [
+        {
+            "dictation": "Zahn 36 Trepanation 3 Kanäle NaOCl Ca(OH)2 Einlage",
+            "expectedQuestions": [
+                "vitality",
+                "percussion"
+            ],
+            "expectedOutput": {
+                "header": "Wurzelbehandlung | Zahn 36 | 3. Quadrant",
+                "befund": "Pulpitis irreversibel, 3 Kanäle dargestellt"
+            }
+        },
+        {
+            "dictation": "46 Zwischensitzung Kanalspülung NaOCl Einlagenwechsel",
+            "expectedQuestions": [
+                "vitality",
+                "percussion",
+                "kanalzahl"
+            ],
+            "expectedOutput": {
+                "header": "Wurzelbehandlung | Zahn 46 | 4. Quadrant",
+                "behandlung": "Zwischensitzung, Einlagenwechsel"
+            }
+        },
+        {
+            "dictation": "Zahn 16 Wurzelfüllung thermoplastisch 4 Kanäle",
+            "expectedQuestions": [
+                "vitality",
+                "percussion"
+            ],
+            "expectedOutput": {
+                "header": "Wurzelbehandlung | Zahn 16 | 1. Quadrant",
+                "behandlung": "Wurzelfüllung thermoplastisch"
+            }
+        },
+        {
+            "dictation": "26 apikale Parodontitis Trepanation Anästhesie",
+            "expectedQuestions": [
+                "endo_step",
+                "vitality",
+                "percussion",
+                "kanalzahl",
+                "spuelung",
+                "medikament"
+            ],
+            "expectedOutput": {
+                "header": "Wurzelbehandlung | Zahn 26 | 2. Quadrant",
+                "befund": "Apikale Parodontitis"
+            }
+        },
+        {
+            "dictation": "14 Endo-Start devitales Pulpagewebe",
+            "expectedQuestions": [
+                "vitality",
+                "percussion",
+                "kanalzahl",
+                "spuelung",
+                "medikament"
+            ],
+            "expectedOutput": {
+                "header": "Wurzelbehandlung | Zahn 14 | 1. Quadrant",
+                "befund": "Devitales Pulpagewebe"
+            }
+        }
+    ]
+}

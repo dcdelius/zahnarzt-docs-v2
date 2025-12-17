@@ -1,0 +1,16 @@
+{
+    "_meta": {
+        "treatmentId": "extraction",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "grund": {
+            "label": "Extraktionsgrund",
+            "template": "{{value}}"
+        },
+        "komplikation": {
+            "label": "Komplikation",
+            "template": "{{value}}"
+        }
+    }
+}

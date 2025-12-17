@@ -58,6 +58,10 @@ import {
     type ComposeOptions
 } from '../../core/billing/knowledgeBase/logic/outputComposer';
 
+// Endo Step Detector - for endo treatment step injection
+import { detectEndoStep } from '../../core/billing/knowledgeBase/logic/endoStepDetector';
+
+
 // Re-export types for UI
 export type { ComposedOutput, ComposedSection, MergedFacts };
 
@@ -151,6 +155,33 @@ export async function generateFinalOutput(params: GenerateOutputParams): Promise
         mkvBetrag: mergedFacts.mkvBetrag,
         cappingMaterial: mergedFacts.cappingMaterial
     });
+
+    // ═══════════════════════════════════════════════════════════════
+    // ENDO STEP ENRICHMENT (MVP) — For endo treatment output
+    // Priority: 1) answer from user, 2) extracted.mentioned, 3) detect from diagnosis
+    // ═══════════════════════════════════════════════════════════════
+    if (treatmentId === 'endo') {
+        let endoStep = answers.get('endo_step') ||
+            (extracted.mentioned as any)?.endo_step;
+
+        // If not set by answer or extraction, detect from rawDictation
+        if (!endoStep) {
+            const rawText = (extracted as any).rawDictation || extracted.diagnosis || '';
+            if (rawText) {
+                const detection = detectEndoStep(rawText);
+                if (detection.step) {
+                    endoStep = detection.step;
+                }
+            }
+        }
+
+        // Inject into mergedFacts for outputComposer
+        if (endoStep) {
+            (mergedFacts as any).mentioned = (mergedFacts as any).mentioned || {};
+            (mergedFacts as any).mentioned.endo_step = endoStep;
+            console.log('[V6 Output] Endo step enriched:', endoStep);
+        }
+    }
 
     // ═══════════════════════════════════════════════════════════════
     // STEP E: Compose output via SSOT outputComposer

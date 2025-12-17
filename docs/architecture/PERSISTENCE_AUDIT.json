@@ -1,0 +1,224 @@
+{
+    "collections": [
+        {
+            "path": "Praxen/1/Vorlagen",
+            "readBy": [
+                "src/_legacy/Settings.jsx:L127,L130,L247,L267,L376,L419",
+                "src/_legacy/Dashboard.jsx:L260",
+                "src/_legacy/pages/SoniaDesigner.jsx:L19,L47",
+                "src/_legacy/pages/labs/SoniaV3Lab.jsx:L25",
+                "src/_legacy/pages/lab/SoniaFlow.jsx:L224"
+            ],
+            "writtenBy": [
+                "src/_legacy/Settings.jsx:L244,L372",
+                "src/_legacy/pages/SoniaDesigner.jsx:L44,L101",
+                "src/_legacy/pages/lab/SoniaFlow.jsx:L426",
+                "src/_legacy/TemplateBuilder.jsx:L517"
+            ],
+            "usedInRuntime": false
+        },
+        {
+            "path": "Praxen/1/Dokumentationen",
+            "readBy": [
+                "src/_legacy/Dashboard.jsx:L264,L486"
+            ],
+            "writtenBy": [
+                "src/_legacy/Dashboard.jsx:L478"
+            ],
+            "usedInRuntime": false
+        },
+        {
+            "path": "Praxen/1/Bausteine",
+            "readBy": [
+                "src/components/BausteinVerwaltung.jsx:L14,L42",
+                "src/_legacy/Dashboard.jsx:L281"
+            ],
+            "writtenBy": [
+                "src/components/BausteinVerwaltung.jsx:L35,L38,L58,L73",
+                "src/utils/firestoreImport.js:L69"
+            ],
+            "usedInRuntime": true
+        },
+        {
+            "path": "Praxen/1/Benutzer",
+            "readBy": [
+                "src/_legacy/Settings.jsx:L127,L150,L159"
+            ],
+            "writtenBy": [
+                "src/_legacy/Settings.jsx:L144,L157"
+            ],
+            "usedInRuntime": false
+        },
+        {
+            "path": "Praxen/{practiceId}/Notes",
+            "readBy": [],
+            "writtenBy": [
+                "src/utils/noteService.ts:L28",
+                "src/utils/noteServiceCore.ts:L38"
+            ],
+            "usedInRuntime": true
+        },
+        {
+            "path": "Praxen/1/Konversationen",
+            "readBy": [
+                "src/_legacy/MedicalKnowledgeDashboard.jsx:L64,L89"
+            ],
+            "writtenBy": [
+                "src/_legacy/MedicalKnowledgeDashboard.jsx:L105,L265,L278"
+            ],
+            "usedInRuntime": false
+        },
+        {
+            "path": "Praxen/1/EmailVerlauf",
+            "readBy": [
+                "src/components/EmailResponder.jsx:L73,L114"
+            ],
+            "writtenBy": [
+                "src/components/EmailResponder.jsx:L105"
+            ],
+            "usedInRuntime": true
+        },
+        {
+            "path": "Praxen/1/TemplatesV3",
+            "readBy": [
+                "src/_legacy/TemplateBuilderV2.jsx:L24"
+            ],
+            "writtenBy": [
+                "src/utils/seedTemplate.ts:L74"
+            ],
+            "usedInRuntime": false
+        },
+        {
+            "path": "Praxen/1/SystemSettings",
+            "readBy": [
+                "src/_legacy/Dashboard.jsx:L291"
+            ],
+            "writtenBy": [],
+            "usedInRuntime": false
+        }
+    ],
+    "localStorageKeys": [
+        {
+            "key": "V7_DEBUG",
+            "readBy": [
+                "src/docudent/v7/pipeline/trace.ts:L53",
+                "src/docudent/v7/pipeline/index.ts:L66"
+            ],
+            "writtenBy": [],
+            "purpose": "debug flag"
+        },
+        {
+            "key": "V7_TRACE",
+            "readBy": [
+                "src/docudent/v7/pipeline/trace.ts:L69"
+            ],
+            "writtenBy": [],
+            "purpose": "trace flag"
+        },
+        {
+            "key": "sonia_settings_v3",
+            "readBy": [
+                "src/docudent/core/settings/settingsManager.ts:L74"
+            ],
+            "writtenBy": [
+                "src/docudent/core/settings/settingsManager.ts:L97"
+            ],
+            "purpose": "chip visibility settings"
+        },
+        {
+            "key": "practice_profile",
+            "readBy": [
+                "src/docudent/v5/models/PracticeProfile.ts:L59"
+            ],
+            "writtenBy": [
+                "src/docudent/v5/models/PracticeProfile.ts:L71",
+                "src/docudent/v5/components/TreatmentSetupWizard.tsx:L196"
+            ],
+            "purpose": "treatment defaults"
+        },
+        {
+            "key": "templates_v3",
+            "readBy": [
+                "src/docudent/core/templates/storage/templateStore.ts:L8"
+            ],
+            "writtenBy": [
+                "src/docudent/core/templates/storage/templateStore.ts:L30"
+            ],
+            "purpose": "template storage"
+        },
+        {
+            "key": "selectedUser",
+            "readBy": [
+                "src/contexts/UserContext.jsx:L10"
+            ],
+            "writtenBy": [
+                "src/contexts/UserContext.jsx:L38"
+            ],
+            "purpose": "current user selection"
+        },
+        {
+            "key": "sonia_session",
+            "readBy": [
+                "src/_legacy/sonia/hooks/useSoniaV3Controller.ts:L18"
+            ],
+            "writtenBy": [
+                "src/_legacy/sonia/hooks/useSoniaV3Controller.ts:L213,L749"
+            ],
+            "purpose": "legacy session (dead)"
+        }
+    ],
+    "practiceIdHandling": {
+        "hardcoded": true,
+        "locations": [
+            "src/_legacy/MedicalKnowledgeDashboard.jsx (hardcoded '1')",
+            "src/_legacy/Settings.jsx (hardcoded '1')",
+            "src/_legacy/Dashboard.jsx (hardcoded '1')",
+            "src/_legacy/pages/SoniaDesigner.jsx (hardcoded '1')",
+            "src/_legacy/pages/labs/SoniaV3Lab.jsx (hardcoded '1')",
+            "src/_legacy/pages/lab/SoniaFlow.jsx (hardcoded '1')",
+            "src/_legacy/TemplateBuilder.jsx (hardcoded '1')",
+            "src/_legacy/TemplateBuilderV2.jsx (hardcoded '1')",
+            "src/components/BausteinVerwaltung.jsx (hardcoded '1')",
+            "src/components/EmailResponder.jsx (hardcoded '1')",
+            "src/utils/seedTemplate.ts (hardcoded '1')",
+            "src/utils/firestoreImport.js (hardcoded '1')"
+        ],
+        "parameterized": [
+            "src/utils/noteService.ts (accepts practiceId param)",
+            "src/utils/noteServiceCore.ts (accepts practiceId param)"
+        ],
+        "supportsMultiTenant": false
+    },
+    "missingPersistence": [
+        {
+            "feature": "V7FinalOutput",
+            "expectedPersistence": "Firestore Notes collection",
+            "currently": "none"
+        },
+        {
+            "feature": "V5FinalOutput",
+            "expectedPersistence": "Firestore Notes collection",
+            "currently": "none"
+        },
+        {
+            "feature": "V6FinalOutput",
+            "expectedPersistence": "Firestore Notes collection",
+            "currently": "none"
+        },
+        {
+            "feature": "AnalogJustifications",
+            "expectedPersistence": "Firestore or localStorage",
+            "currently": "localOnly"
+        },
+        {
+            "feature": "TreatmentSetupDefaults",
+            "expectedPersistence": "Firestore per practice",
+            "currently": "localOnly"
+        },
+        {
+            "feature": "ChipVisibilitySettings",
+            "expectedPersistence": "Firestore per practice",
+            "currently": "localOnly"
+        }
+    ]
+}

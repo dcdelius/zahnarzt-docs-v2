@@ -57,6 +57,36 @@ export interface AnswerMapConfig {
     exclusiveGroups?: Record<string, string[]>;
 }
 
+// ═══════════════════════════════════════════════════════════════
+// CONDITIONAL QUESTION SCHEMA (WhenClause)
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Single condition block for question visibility
+ */
+export interface WhenCondition {
+    /** All key/value pairs must match in answers OR extracted.mentioned */
+    requiresAnswers?: Record<string, unknown>;
+    /** True if any listed key exists in extracted.mentioned */
+    anyMentioned?: string[];
+    /** True if rawDictation contains any keyword (case-insensitive) */
+    anyKeywords?: string[];
+    /** True if any listed chipId is active */
+    anyChipsActive?: string[];
+    /** NEGATIVE: True if rawDictation does NOT contain any of these keywords */
+    noneKeywords?: string[];
+}
+
+/**
+ * Full WhenClause - supports anyOf for OR logic between condition groups
+ */
+export interface WhenClause extends WhenCondition {
+    /** OR logic: question shown if ANY condition group matches */
+    anyOf?: WhenCondition[];
+    /** NEGATIVE MATCHING: If conditions match, question is HIDDEN */
+    noneOf?: WhenCondition;
+}
+
 export interface QuestionBankConfig {
     _meta: { treatmentId: string; version: string };
     questions: Array<{
@@ -65,11 +95,20 @@ export interface QuestionBankConfig {
         prompt: string;
         type: 'single' | 'number' | 'multi';
         dataField?: string;
+        /** Conditional visibility - question only shown when conditions met */
+        when?: WhenClause;
         options?: Array<{
             id: string;
             label: string;
             dataValue: string | number | boolean;
+            chipActivation?: string;
         }>;
+        // Number-specific fields
+        min?: number;
+        max?: number;
+        step?: number;
+        unit?: string;
+        presets?: number[];
     }>;
 }
 
@@ -109,6 +148,27 @@ import endoQuestionBank from '../treatments/endo/question_bank.json';
 import endoTemplate from '../treatments/endo/template.json';
 import endoFindingMap from '../treatments/endo/finding_map.json';
 
+// Extraction
+import extractionUnified from '../treatments/extraction/unified.json';
+import extractionAnswerMap from '../treatments/extraction/answer_map.json';
+import extractionQuestionBank from '../treatments/extraction/question_bank.json';
+import extractionTemplate from '../treatments/extraction/template.json';
+import extractionFindingMap from '../treatments/extraction/finding_map.json';
+
+// PZR
+import pzrUnified from '../treatments/pzr/unified.json';
+import pzrAnswerMap from '../treatments/pzr/answer_map.json';
+import pzrQuestionBank from '../treatments/pzr/question_bank.json';
+import pzrTemplate from '../treatments/pzr/template.json';
+import pzrFindingMap from '../treatments/pzr/finding_map.json';
+
+// Crown Prep
+import crownPrepUnified from '../treatments/crown_prep/unified.json';
+import crownPrepAnswerMap from '../treatments/crown_prep/answer_map.json';
+import crownPrepQuestionBank from '../treatments/crown_prep/question_bank.json';
+import crownPrepTemplate from '../treatments/crown_prep/template.json';
+import crownPrepFindingMap from '../treatments/crown_prep/finding_map.json';
+
 // ═══════════════════════════════════════════════════════════════
 // CONFIG REGISTRIES — Map treatmentId to imported configs
 // ═══════════════════════════════════════════════════════════════
@@ -116,26 +176,41 @@ import endoFindingMap from '../treatments/endo/finding_map.json';
 const unifiedConfigs: Record<TreatmentId, UnifiedConfig> = {
     fuellung: fuellungUnified as unknown as UnifiedConfig,
     endo: endoUnified as unknown as UnifiedConfig,
+    extraction: extractionUnified as unknown as UnifiedConfig,
+    pzr: pzrUnified as unknown as UnifiedConfig,
+    crown_prep: crownPrepUnified as unknown as UnifiedConfig,
 };
 
 const answerMapConfigs: Record<TreatmentId, AnswerMapConfig> = {
     fuellung: fuellungAnswerMap as unknown as AnswerMapConfig,
     endo: endoAnswerMap as unknown as AnswerMapConfig,
+    extraction: extractionAnswerMap as unknown as AnswerMapConfig,
+    pzr: pzrAnswerMap as unknown as AnswerMapConfig,
+    crown_prep: crownPrepAnswerMap as unknown as AnswerMapConfig,
 };
 
 const questionBankConfigs: Record<TreatmentId, QuestionBankConfig> = {
     fuellung: fuellungQuestionBank as unknown as QuestionBankConfig,
     endo: endoQuestionBank as unknown as QuestionBankConfig,
+    extraction: extractionQuestionBank as unknown as QuestionBankConfig,
+    pzr: pzrQuestionBank as unknown as QuestionBankConfig,
+    crown_prep: crownPrepQuestionBank as unknown as QuestionBankConfig,
 };
 
 const templateConfigs: Record<TreatmentId, TemplateConfig> = {
     fuellung: fuellungTemplate as unknown as TemplateConfig,
     endo: endoTemplate as unknown as TemplateConfig,
+    extraction: extractionTemplate as unknown as TemplateConfig,
+    pzr: pzrTemplate as unknown as TemplateConfig,
+    crown_prep: crownPrepTemplate as unknown as TemplateConfig,
 };
 
 const findingMapConfigs: Record<TreatmentId, FindingMapConfig> = {
     fuellung: fuellungFindingMap as unknown as FindingMapConfig,
     endo: endoFindingMap as unknown as FindingMapConfig,
+    extraction: extractionFindingMap as unknown as FindingMapConfig,
+    pzr: pzrFindingMap as unknown as FindingMapConfig,
+    crown_prep: crownPrepFindingMap as unknown as FindingMapConfig,
 };
 
 // ═══════════════════════════════════════════════════════════════

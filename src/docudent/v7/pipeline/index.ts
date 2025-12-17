@@ -81,11 +81,28 @@ export async function run(input: PipelineInput): Promise<PipelineResult> {
 
     // ─── STEP 1: Extract from dictation ────────────────────────
     // Backend decides what was said. UI does not interpret.
+    // In test mode (DOCUDENT_TEST_MODE=stub_extraction), use fast stub extractor.
 
     let extracted;
     try {
-        extracted = await extractFromDictation(dictation);
+        // Check for test mode - use stub extractor for fast, deterministic tests
+        // Uses VITE_ prefix for browser compatibility (Vite exposes these to client)
+        const isStubMode =
+            import.meta.env.VITE_STUB_EXTRACTION === 'true' ||
+            (typeof process !== 'undefined' && process.env?.DOCUDENT_TEST_MODE === 'stub_extraction');
+
+        if (isStubMode) {
+            const { stubExtractFromDictation } = await import('./__test__/stubExtractor');
+            extracted = stubExtractFromDictation(dictation, treatmentId);
+        } else {
+            extracted = await extractFromDictation(dictation);
+        }
     } catch (error) {
+        // DEV-only: Log detailed error context for debugging module import failures
+        if (import.meta.env.DEV) {
+            const { logExtractionError } = await import('../../../utils/devErrorCapture');
+            logExtractionError(error);
+        }
         return {
             state: 'error',
             questions: [],

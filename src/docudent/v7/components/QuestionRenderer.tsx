@@ -82,12 +82,11 @@ const styles = {
         lineHeight: 1.4,
     },
 
-    // Options grid
+    // Options grid — segmented pill row
     optionsGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+        display: 'flex',
+        flexWrap: 'wrap' as const,
         gap: '8px',
-        marginLeft: '26px', // Align with text after icon
     },
 
     // Number input
@@ -270,15 +269,7 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({
         return orderedGroups;
     }, [questions]);
 
-    // Extract emoji icon from question text
-    const getIcon = (text: string) => {
-        const match = text.match(/^(\p{Emoji})/u);
-        return match ? match[1] : '•';
-    };
 
-    const getQuestionText = (text: string) => {
-        return text.replace(/^\p{Emoji}\s*/u, '');
-    };
 
     return (
         <div style={styles.container}>
@@ -305,13 +296,10 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({
                                 }}
                                 style={styles.questionItem}
                             >
-                                {/* Prompt */}
+                                {/* Prompt — Clean text, no icons */}
                                 <div style={styles.questionPrompt}>
-                                    <span style={styles.questionIcon}>
-                                        {getIcon(question.question)}
-                                    </span>
                                     <span style={styles.questionText}>
-                                        {getQuestionText(question.question)}
+                                        {question.question}
                                     </span>
                                 </div>
 

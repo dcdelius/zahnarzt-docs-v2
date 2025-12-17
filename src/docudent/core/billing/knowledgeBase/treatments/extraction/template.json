@@ -1,0 +1,28 @@
+{
+    "_meta": {
+        "treatmentId": "extraction",
+        "version": "1.0.0"
+    },
+    "sections": [
+        {
+            "id": "header",
+            "label": "EXTRAKTION",
+            "template": "EXTRAKTION — Zahn {{tooth}}"
+        },
+        {
+            "id": "befund",
+            "label": "BEFUND",
+            "template": "Zahn {{tooth}} {{grund}}."
+        },
+        {
+            "id": "behandlung",
+            "label": "BEHANDLUNG",
+            "template": "{{textLines}}"
+        },
+        {
+            "id": "hinweis",
+            "label": "HINWEIS",
+            "template": "Verhaltenshinweise gegeben. Kontrolltermin vereinbart."
+        }
+    ]
+}

@@ -1,0 +1,367 @@
+{
+    "treatmentId": "fuellung",
+    "questionBank": {
+        "path": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/question_bank.json",
+        "questions": [
+            {
+                "key": "vitality",
+                "prompt": "🔍 Sensibilitätsprobe?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "pos",
+                        "label": "ViPr +"
+                    },
+                    {
+                        "id": "neg",
+                        "label": "ViPr −"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "percussion",
+                "prompt": "🔍 Perkussionsprobe?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "neg",
+                        "label": "Perk −"
+                    },
+                    {
+                        "id": "pos",
+                        "label": "Perk +"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "tiefe",
+                "prompt": "📏 Kavitätentiefe?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "normal",
+                        "label": "Normale Tiefe"
+                    },
+                    {
+                        "id": "tief",
+                        "label": "Pulpanah (tief)"
+                    }
+                ],
+                "when": {
+                    "anyKeywords": [
+                        "karies",
+                        "caries",
+                        "media",
+                        "profunda",
+                        "tief",
+                        "pulpanah",
+                        "kavität"
+                    ]
+                }
+            },
+            {
+                "key": "ueberkappung",
+                "prompt": "🩹 Überkappung erforderlich?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein"
+                    }
+                ],
+                "when": {
+                    "anyOf": [
+                        {
+                            "anyKeywords": [
+                                "pulpanah",
+                                "profunda",
+                                "überkappung",
+                                "ca(oh)2"
+                            ]
+                        },
+                        {
+                            "requiresAnswers": {
+                                "tiefe": "tief"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "key": "isolation",
+                "prompt": "💧 Trockenlegung?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "kofferdam",
+                        "label": "Kofferdam"
+                    },
+                    {
+                        "id": "relativ",
+                        "label": "Relative Trockenlegung"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "ueberkappung_material",
+                "prompt": "💊 Überkappungsmaterial?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "caoh",
+                        "label": "Ca(OH)₂"
+                    },
+                    {
+                        "id": "mta",
+                        "label": "MTA"
+                    },
+                    {
+                        "id": "biodentine",
+                        "label": "Biodentine"
+                    }
+                ],
+                "when": {
+                    "requiresAnswers": {
+                        "ueberkappung": true
+                    }
+                }
+            },
+            {
+                "key": "mkv_vereinbarung",
+                "prompt": "📝 Mehrkostenvereinbarung vorhanden?",
+                "category": "mkv",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, schriftlich"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "mkv_betrag",
+                "prompt": "💶 Zuzahlungsbetrag (Privatrechnung)?",
+                "category": "mkv",
+                "type": "number",
+                "options": [],
+                "when": null
+            },
+            {
+                "key": "mehrschicht",
+                "prompt": "🎨 Mehrschichttechnik gewünscht?",
+                "category": "upsell",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja (+ Mehrkosten)",
+                        "chipActivation": "mehrschicht"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "adhasiv",
+                "prompt": "🔗 Adhäsive Befestigung?",
+                "category": "upsell",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Adhäsiv befestigen",
+                        "chipActivation": "adhasiv"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Standard"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "optisch_elektronisch",
+                "prompt": "📸 Optisch-elektronischer Abdruck?",
+                "category": "upsell",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja (Scan)",
+                        "chipActivation": "optisch_elektronisch"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Konventionell"
+                    }
+                ],
+                "when": null
+            }
+        ],
+        "questionOrder": {
+            "forensic": [
+                "vitality",
+                "percussion",
+                "tiefe",
+                "ueberkappung",
+                "isolation",
+                "ueberkappung_material"
+            ],
+            "mkv": [
+                "mkv_vereinbarung",
+                "mkv_betrag"
+            ],
+            "upsell": [
+                "mehrschicht",
+                "adhasiv",
+                "optisch_elektronisch"
+            ]
+        }
+    },
+    "output": {
+        "templatePath": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/template.json",
+        "sections": [
+            {
+                "id": "header",
+                "label": "Übersicht"
+            },
+            {
+                "id": "befund",
+                "label": "Befund"
+            },
+            {
+                "id": "aufklaerung",
+                "label": "Aufklärung"
+            },
+            {
+                "id": "behandlung",
+                "label": "Behandlungsablauf"
+            },
+            {
+                "id": "leistungen",
+                "label": "Durchgeführte Leistungen"
+            },
+            {
+                "id": "abrechnung",
+                "label": "Abrechnung"
+            },
+            {
+                "id": "hinweise",
+                "label": "Hinweise"
+            }
+        ],
+        "renderFunctions": {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+            "mainFunction": "composeOutput:562",
+            "sectionRenderers": {
+                "header": "renderHeader:235",
+                "befund": "renderBefundFromMapping:270",
+                "aufklaerung": "renderAufklaerung:335",
+                "behandlung": "renderBehandlung:390",
+                "leistungen": "renderLeistungen:480",
+                "abrechnung": "renderAbrechnung:518",
+                "hinweise": "renderHinweise:545"
+            }
+        },
+        "influencingFields": {
+            "extracted": [
+                "tooth",
+                "surfaces",
+                "diagnosis",
+                "vitality",
+                "percussion",
+                "mentioned.kofferdam"
+            ],
+            "answers": [
+                "tiefe",
+                "ueberkappung",
+                "isolation",
+                "ueberkappung_material",
+                "mkv_betrag"
+            ]
+        }
+    },
+    "goldenDictations": [
+        {
+            "dictation": "Zahn 15 MO Composite",
+            "expectedQuestions": [
+                "vitality",
+                "percussion",
+                "isolation"
+            ],
+            "expectedOutput": {
+                "header": "Kompositfüllung | Zahn 15 | 1. Quadrant | mo",
+                "befund": "Zahn 15, Flächen mo. Diagnose fehlt."
+            }
+        },
+        {
+            "dictation": "Zahn 36 MOD Kofferdam Karies media",
+            "expectedQuestions": [
+                "vitality",
+                "percussion",
+                "tiefe"
+            ],
+            "expectedOutput": {
+                "header": "Kompositfüllung | Zahn 36 | 3. Quadrant | mod",
+                "befund": "Caries media an Zahn 36."
+            }
+        },
+        {
+            "dictation": "Zahn 46 distal Karies profunda pulpanah Überkappung Ca(OH)2",
+            "expectedQuestions": [
+                "vitality",
+                "percussion",
+                "ueberkappung",
+                "isolation"
+            ],
+            "expectedOutput": {
+                "header": "Kompositfüllung | Zahn 46 | 4. Quadrant | d",
+                "behandlung": "Indirekte Überkappung mit Ca(OH)₂"
+            }
+        },
+        {
+            "dictation": "Zahn 24 okklusal Amalgam-Austausch Composite",
+            "expectedQuestions": [
+                "vitality",
+                "percussion",
+                "isolation"
+            ],
+            "expectedOutput": {
+                "header": "Kompositfüllung | Zahn 24 | 2. Quadrant | o",
+                "behandlung": "Adhäsive Kunststofffüllung in Mehrschichttechnik"
+            }
+        },
+        {
+            "dictation": "47 MO Anästhesie relative Trockenlegung",
+            "expectedQuestions": [
+                "vitality",
+                "percussion"
+            ],
+            "expectedOutput": {
+                "header": "Kompositfüllung | Zahn 47 | 4. Quadrant | mo",
+                "behandlung": "Infiltrationsanästhesie...Relative Trockenlegung"
+            }
+        }
+    ]
+}

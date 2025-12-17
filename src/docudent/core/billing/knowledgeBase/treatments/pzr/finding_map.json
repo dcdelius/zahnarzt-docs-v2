@@ -1,0 +1,12 @@
+{
+    "_meta": {
+        "treatmentId": "pzr",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "zahnstein_bereich": {
+            "label": "Zahnsteinbereich",
+            "template": "{{value}}"
+        }
+    }
+}

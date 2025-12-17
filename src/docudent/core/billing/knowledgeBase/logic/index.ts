@@ -151,6 +151,9 @@ export {
     type Bel2PageRange,
     type Bel2Meta,
     type Bel2Catalog,
+    type Bel2LookupResult,
+    type Bel2BatchResult,
+    type Bel2ResolveResult,
 
     // Functions
     loadBel2Catalog,
@@ -158,7 +161,10 @@ export {
     getBel2Entries,
     lookupBel2,
     normalizeBel2Code,
+    normalizeBel2CodeSafe,
+    resolveBel2CodeFromRaw,
     hasBel2Code,
-    searchBel2ByKurztext
+    searchBel2ByKurztext,
+    getBel2ForCodes
 } from './bel2Catalog';
 

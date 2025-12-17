@@ -1,0 +1,23 @@
+{
+    "_meta": {
+        "treatmentId": "pzr",
+        "version": "1.0.0"
+    },
+    "sections": [
+        {
+            "id": "header",
+            "label": "PZR",
+            "template": "PZR — Professionelle Zahnreinigung"
+        },
+        {
+            "id": "befund",
+            "label": "BEFUND",
+            "template": "Zahnbeläge und Zahnstein vorhanden."
+        },
+        {
+            "id": "behandlung",
+            "label": "BEHANDLUNG",
+            "template": "{{textLines}}"
+        }
+    ]
+}
