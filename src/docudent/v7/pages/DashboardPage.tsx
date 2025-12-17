@@ -9,7 +9,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useAuth } from '../app/AuthContext.mock';
+import { useAuth } from '../app/AppShell';
 import { UIRole } from '../app/routes';
 import { colors, gradients, space, radii, typography, shadows, glass, motion as motionTokens } from '../app/designTokens';
 

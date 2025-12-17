@@ -10,7 +10,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { colors, gradients, space, radii, typography, glass, motion as motionTokens } from '../app/designTokens';
-import { useAuth } from '../app/AuthContext.mock';
+import { useAuth } from '../app/AppShell';
 import { useSettingsService } from '../hooks/useSettingsService';
 import { SettingsForm } from '../components/SettingsForm';
 import { JetonToast, useToast } from '../components/JetonToast';
@@ -20,17 +20,16 @@ import { JetonToast, useToast } from '../components/JetonToast';
 // ═══════════════════════════════════════════════════════════════
 
 export function SettingsPage() {
-    const { user } = useAuth();
-    const { state, savePracticeOverrides } = useSettingsService();
+    const { user, orgId, practiceId } = useAuth();
+    const { savePracticeOverrides, state } = useSettingsService();
     const { toast, showToast, hideToast } = useToast();
 
-    // Mock IDs for dev (will come from real auth context)
-    const orgId = user?.orgId ?? 'demo-org';
-    const practiceId = user?.practiceId ?? 'demo-practice';
+    const realOrgId = orgId ?? 'demo-org';
+    const realPracticeId = practiceId ?? 'demo-practice';
     const userId = user?.uid ?? 'dev-user';
 
     const handleSave = async (overrides: Record<string, unknown>) => {
-        const success = await savePracticeOverrides(orgId, practiceId, overrides, userId);
+        const success = await savePracticeOverrides(realOrgId, realPracticeId, overrides, userId);
 
         if (success) {
             showToast('success', 'Einstellungen gespeichert', 'Änderungen wurden übernommen.');

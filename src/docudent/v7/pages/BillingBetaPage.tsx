@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { colors, gradients, space, radii, typography, glass, shadows, motion as motionTokens } from '../app/designTokens';
-import { useAuth } from '../app/AuthContext.mock';
+import { useAuth } from '../app/AppShell';
 import { useCases } from '../hooks/useCases';
 import { reviewCase, type Finding, type FindingSeverity, type ReviewResult } from '../../core/review/caseReviewEngine';
 
@@ -133,11 +133,9 @@ function FindingRow({ finding, onCtaClick }: FindingRowProps) {
 
 export function BillingBetaPage() {
     const navigate = useNavigate();
-    const { user } = useAuth();
-    const orgId = user?.orgId ?? 'demo-org';
-    const practiceId = user?.practiceId ?? 'demo-practice';
+    const { orgId, practiceId } = useAuth();
 
-    const { state, loadCase } = useCases(orgId, practiceId);
+    const { state, loadCase } = useCases(orgId ?? 'demo-org', practiceId ?? 'demo-practice');
 
     const [selectedCaseId, setSelectedCaseId] = useState<string>('');
     const [reviewResult, setReviewResult] = useState<ReviewResult | null>(null);

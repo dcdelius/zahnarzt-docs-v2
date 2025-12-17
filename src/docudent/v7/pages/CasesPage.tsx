@@ -9,8 +9,9 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { colors, gradients, space, radii, typography, glass, shadows, motion as motionTokens } from '../app/designTokens';
-import { useAuth } from '../app/AuthContext.mock';
+import { useAuth } from '../app/AppShell';
 import { useCases, type CaseFilters } from '../hooks/useCases';
 import { JetonToast, useToast } from '../components/JetonToast';
 import type { CaseSummary } from '../../core/case/caseRepository';
@@ -153,9 +154,10 @@ interface CaseDrawerProps {
     isOpen: boolean;
     onClose: () => void;
     onCopyId: (id: string) => void;
+    onStartReview: (caseId: string) => void;
 }
 
-function CaseDrawer({ caseDoc, isOpen, onClose, onCopyId }: CaseDrawerProps) {
+function CaseDrawer({ caseDoc, isOpen, onClose, onCopyId, onStartReview }: CaseDrawerProps) {
     if (!caseDoc) return null;
 
     const config = STATUS_CONFIG[caseDoc.status];
@@ -285,7 +287,31 @@ function CaseDrawer({ caseDoc, isOpen, onClose, onCopyId }: CaseDrawerProps) {
                         <div style={{
                             padding: space['5'],
                             borderTop: `1px solid ${colors.hairline}`,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: space['3'],
                         }}>
+                            {/* Start Review CTA */}
+                            <motion.button
+                                onClick={() => onStartReview(caseDoc.id)}
+                                style={{
+                                    width: '100%',
+                                    padding: `${space['3']} ${space['5']}`,
+                                    borderRadius: radii.pill,
+                                    border: 'none',
+                                    background: gradients.primary,
+                                    color: colors.textOnAccent,
+                                    fontSize: typography.body,
+                                    fontWeight: typography.semibold,
+                                    cursor: 'pointer',
+                                }}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                            >
+                                Check starten
+                            </motion.button>
+
+                            {/* Copy ID */}
                             <motion.button
                                 onClick={() => onCopyId(caseDoc.id)}
                                 style={{
@@ -321,11 +347,10 @@ function CaseDrawer({ caseDoc, isOpen, onClose, onCopyId }: CaseDrawerProps) {
 // ═══════════════════════════════════════════════════════════════
 
 export function CasesPage() {
-    const { user, role } = useAuth();
-    const orgId = user?.orgId ?? 'demo-org';
-    const practiceId = user?.practiceId ?? 'demo-practice';
+    const { role, orgId, practiceId } = useAuth();
+    const navigate = useNavigate();
 
-    const { state, filters, setFilters, loadCase } = useCases(orgId, practiceId);
+    const { state, filters, setFilters, loadCase } = useCases(orgId ?? 'demo-org', practiceId ?? 'demo-practice');
     const { toast, showToast, hideToast } = useToast();
 
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -342,6 +367,11 @@ export function CasesPage() {
     const handleCopyId = (id: string) => {
         navigator.clipboard.writeText(id);
         showToast('success', 'Fall-ID kopiert');
+    };
+
+    const handleStartReview = (caseId: string) => {
+        setDrawerOpen(false);
+        navigate(`/billing?caseId=${caseId}`);
     };
 
     const showProviderFilter = role === 'practice_admin' || role === 'org_admin';
@@ -516,6 +546,7 @@ export function CasesPage() {
                 isOpen={drawerOpen}
                 onClose={() => setDrawerOpen(false)}
                 onCopyId={handleCopyId}
+                onStartReview={handleStartReview}
             />
 
             {/* Toast */}

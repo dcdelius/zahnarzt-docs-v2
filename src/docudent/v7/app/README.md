@@ -89,45 +89,64 @@ function mapClaimsToRole(claims): UIRole {
 
 ---
 
-## What Works Now (V7 Wiring Sprint)
+## Production Status (2025-12-17)
 
-| Page | Status | Notes |
-|------|--------|-------|
-| **DictationPage** | ✅ Functional | Lazy-loads DocudentV7Page (legacy) |
-| **SettingsPage** | ✅ Functional | 5 curated settings, real Firestore write via service |
-| **CasesPage** | ✅ Functional | Case list with filters, drawer, copy-ID |
-| **Case Review** | ✅ Functional | Quality check with findings (Beta) |
-| **TeamPage** | 🟡 Stub | Mock providers/rooms, Coming Soon buttons |
-| **AdminPage** | 🟡 Stub | Impersonate via header, org list placeholder |
-| **DashboardPage** | ✅ Functional | Hero + quick actions |
+### ✅ DONE (Production Ready)
 
-### New Components (N7-N9)
+| Feature | Notes |
+|---------|-------|
+| **AppShell + Routing** | Lazy-loaded pages, role-aware navigation |
+| **DictationPage** | Full pipeline: dictation → extraction → output |
+| **SettingsPage** | 5 curated settings, real Firestore writes |
+| **CasesPage** | List, filters, drawer, copy ID, review CTA |
+| **TeamPage** | Member list, role pills, invite modal |
+| **DashboardPage** | Hero, quick actions, activity feed |
+| **Auth Foundation** | Real Firebase Auth, claims, forceRefreshClaims |
+| **Custom Claims** | org/practice role mapping |
+| **Invite System** | Create invite, copy link, accept flow |
+| **Design Gates** | Jeton compliance enforced |
 
-- `core/case/caseRepository.ts` — Query layer for case listing
-- `core/review/caseReviewEngine.ts` — Quality/compliance rules
-- `core/auth/AuthContext.tsx` — Real Firebase auth
-- `core/auth/mapClaimsToRole.ts` — Claims to UIRole mapping
-- `v7/hooks/useCases.ts` — Hook for case loading
-- `JetonToast`, `SettingsForm`, `useSettingsService` — (N4-N6)
+### 🧪 BETA (Functional, Needs Testing)
+
+| Feature | Notes |
+|---------|-------|
+| **Case Review Engine** | Quality checks, findings UI |
+| **Cloud Functions** | Not deployed yet, need `firebase deploy` |
+| **Real Auth Mode** | Toggle `VITE_USE_MOCK_AUTH=false` to activate |
+
+### 📋 PLANNED (Not Started)
+
+| Feature | Notes |
+|---------|-------|
+| **AdminPage** | Impersonation, org list |
+| **Real-time updates** | Firestore listeners for cases |
+| **Provider docs** | Auto-created on invite accept |
+| **Billing integration** | When billing engine is ready |
 
 ---
 
-## What's Next
+## Architecture Rules (ENFORCED)
 
-1. **Real Auth**: Replace MockAuthProvider with Firebase Auth
-2. **CasesPage**: Case list with filters
-3. **Billing**: Beta features when ready
-
----
-
-## Running Gate Tests
-
-```bash
-npm test src/docudent/__tests__/gates/gate-jeton-design-integrity.test.ts
+```
+✅ V7 imports only from core/services/* and contracts/*
+✅ No direct Firestore access in v7/**
+✅ No v6 imports in v7/**
+✅ Pages are lazy-loadable
+✅ All writes through core services
+❌ No business logic in pages
 ```
 
-Checks:
-- No card grids, no raw hex colors, no magic motion durations
-- All pages import designTokens
-- Legacy DocudentV7Page is excluded
+---
 
+## Running Gates
+
+```bash
+# Jeton design integrity
+npm test src/docudent/__tests__/gates/gate-jeton-design-integrity.test.ts
+
+# No Firestore in v7
+grep -r "firebase/firestore" src/docudent/v7 | wc -l  # must be 0
+
+# No core/billing in v7
+grep -r "core/billing" src/docudent/v7 | wc -l        # must be 0
+```
