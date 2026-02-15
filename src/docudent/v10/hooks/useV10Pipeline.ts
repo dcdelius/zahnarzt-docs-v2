@@ -137,9 +137,24 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
     const lastRunIdRef = useRef(0);
     const settingsRef = useRef<SettingsInput | undefined>(options?.settingsInput);
     settingsRef.current = options?.settingsInput;
+    const sessionKbReleaseIdRef = useRef<string | undefined>(undefined);
 
     const normalizeAnswers = (answers: Map<string, unknown> | Record<string, unknown>) => {
         return answers instanceof Map ? answers : new Map(Object.entries(answers ?? {}));
+    };
+
+    const normalizeKbReleaseId = (value: unknown): string | undefined => {
+        if (typeof value !== 'string') return undefined;
+        const trimmed = value.trim();
+        return trimmed.length > 0 ? trimmed : undefined;
+    };
+
+    const resolveSessionKbReleaseId = (candidate?: string): string | undefined => {
+        const normalizedCandidate = normalizeKbReleaseId(candidate);
+        if (!sessionKbReleaseIdRef.current && normalizedCandidate) {
+            sessionKbReleaseIdRef.current = normalizedCandidate;
+        }
+        return sessionKbReleaseIdRef.current;
     };
 
     // ─── Actions ────────────────────────────────────────────────
@@ -235,6 +250,12 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
         const answers = normalizeAnswers(overrides?.answers ?? current.answers);
         const chipOverrides = overrides?.chipOverrides;
         const userDefaults = overrides?.userDefaults ?? settingsRef.current;
+        const requestedKbReleaseId = normalizeKbReleaseId(
+            overrides?.kbReleaseId
+            ?? userDefaults?.practice?.activeKbReleaseId
+            ?? current.result.kbReleaseId
+        );
+        const sessionKbReleaseId = resolveSessionKbReleaseId(requestedKbReleaseId);
 
         runIdCounterRef.current += 1;
         const thisRunId = runIdCounterRef.current;
@@ -282,6 +303,7 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
                 answers,
                 chipOverrides,
                 userDefaults: userDefaults as Record<string, unknown> | undefined,
+                kbReleaseId: sessionKbReleaseId,
             });
 
             if (thisRunId !== lastRunIdRef.current) {
@@ -301,6 +323,7 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
             // FIX: Preserve V10 output shape - billingCodes at root, NOT billing.codes
             const traceLines = v10Result?.meta?.traceLines ?? (v10Result as any).traceLines ?? [];
             const combinability = (v10Result as any).combinability ?? v10Result?.meta?.combinability;
+            resolveSessionKbReleaseId(v10Result?.meta?.kbReleaseId);
 
             const singlePerInstance = (v10Result as any)?.output?.perInstance as Record<string, {
                 instanceId: string;
@@ -426,6 +449,12 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
         lastRunIdRef.current = thisRunId;
 
         const current = stateRef.current;
+        const sessionKbReleaseId = resolveSessionKbReleaseId(
+            normalizeKbReleaseId(
+                current.result.kbReleaseId
+                ?? settingsRef.current?.practice?.activeKbReleaseId
+            )
+        );
         const seededInstanceAnswers = { ...current.instanceAnswers };
         for (const inst of instances) {
             if (inst.answers) {
@@ -464,12 +493,17 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
                     hasMKV: current.hasMKV,
                     answers: instanceAnswers,
                     userDefaults: settingsRef.current as Record<string, unknown> | undefined,
+                    kbReleaseId: sessionKbReleaseId,
                 });
             }));
 
             if (thisRunId !== lastRunIdRef.current) {
                 console.log(`[useV10Pipeline] createInstancesAndRun STALE_IGNORE (latest=${lastRunIdRef.current})`);
                 return;
+            }
+
+            for (const result of results) {
+                resolveSessionKbReleaseId(result?.meta?.kbReleaseId);
             }
 
             const buildBillingCodes = (): BillingCode[] => {
@@ -624,6 +658,12 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
     const runLastMultiPlan = useCallback(async () => {
         const current = stateRef.current;
         const plan = current.lastMultiPlan;
+        const sessionKbReleaseId = resolveSessionKbReleaseId(
+            normalizeKbReleaseId(
+                current.result.kbReleaseId
+                ?? settingsRef.current?.practice?.activeKbReleaseId
+            )
+        );
 
         if (!plan) {
             console.warn('[useV10Pipeline] runLastMultiPlan: No lastMultiPlan stored');
@@ -650,12 +690,17 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
                     hasMKV: current.hasMKV,
                     answers: instanceAnswers,
                     userDefaults: settingsRef.current as Record<string, unknown> | undefined,
+                    kbReleaseId: sessionKbReleaseId,
                 });
             }));
 
             if (thisRunId !== lastRunIdRef.current) {
                 console.log(`[useV10Pipeline] runLastMultiPlan STALE_IGNORE (latest=${lastRunIdRef.current})`);
                 return;
+            }
+
+            for (const result of results) {
+                resolveSessionKbReleaseId(result?.meta?.kbReleaseId);
             }
 
             const combinedResult = {

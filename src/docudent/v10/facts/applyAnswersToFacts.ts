@@ -331,6 +331,46 @@ export function applyAnswersToFacts(
         if (normalized.includes('-') || normalized.includes('neg')) newFacts.percussion = 'neg';
     }
 
+    // Strict-KZV radiology evidence (facts-only)
+    const radiologyIndication = getAnswer(
+        'medical_roentgen_indikation',
+        'roentgen_indikation',
+        'radiology_indication',
+        'xray_indication'
+    );
+    const radiologyType = getAnswer(
+        'medical_roentgen_typ',
+        'roentgen_typ',
+        'radiology_type',
+        'xray_type'
+    );
+    const radiologyTiming = getAnswer(
+        'medical_roentgen_zeitpunkt',
+        'roentgen_zeitpunkt',
+        'radiology_timing',
+        'xray_timing'
+    );
+    const radiologyFindings = getAnswer(
+        'medical_roentgen_befund',
+        'roentgen_befund',
+        'radiology_findings',
+        'xray_findings'
+    );
+    if (
+        radiologyIndication !== undefined
+        || radiologyType !== undefined
+        || radiologyTiming !== undefined
+        || radiologyFindings !== undefined
+    ) {
+        newFacts.radiology = {
+            ...(newFacts.radiology ?? {}),
+            ...(radiologyIndication !== undefined ? { indication: String(radiologyIndication).trim() } : {}),
+            ...(radiologyType !== undefined ? { type: String(radiologyType).trim() } : {}),
+            ...(radiologyTiming !== undefined ? { timing: String(radiologyTiming).trim() } : {}),
+            ...(radiologyFindings !== undefined ? { findings: String(radiologyFindings).trim() } : {}),
+        };
+    }
+
     // Isolation (Kofferdam / relative)
     const isolationAnswer = getAnswer('isolation', 'medical_isolation', 'fuellung_isolation');
     if (isolationAnswer !== undefined && typeof isolationAnswer === 'string') {

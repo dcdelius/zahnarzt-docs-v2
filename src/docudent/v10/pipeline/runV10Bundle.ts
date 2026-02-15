@@ -107,9 +107,15 @@ interface CollectedInstanceResult {
 export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutput> {
     const startTime = Date.now();
     const isDev = process.env.NODE_ENV !== 'production';
+    const normalizeKbReleaseId = (value: unknown): string | undefined => {
+        if (typeof value !== 'string') return undefined;
+        const trimmed = value.trim();
+        return trimmed.length > 0 ? trimmed : undefined;
+    };
 
     try {
         const { segments, globalAnswers, dictation: fullDictation } = input;
+        let pinnedKbReleaseId = normalizeKbReleaseId(input.kbReleaseId);
 
         // Normalize global answers
         const globalAnswerMap = globalAnswers instanceof Map
@@ -144,7 +150,9 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                     textLength: segment.textLength,
                     answers: mergedAnswers,
                     teeth: instance.tooth ? [instance.tooth] : undefined,
+                    kbReleaseId: pinnedKbReleaseId,
                 });
+                pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
 
                 // Check for required questions
                 const hasUnansweredRequired = result.state === 'questions' &&

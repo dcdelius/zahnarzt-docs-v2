@@ -59,7 +59,6 @@
             "mutuallyExclusiveWith": [
                 "vipr_pos"
             ],
-            "defaultActive": true,
             "requiredFields": [],
             "forensicNotes": [
                 "Devitaler Zahn → Endo indiziert"
@@ -85,7 +84,6 @@
             "mutuallyExclusiveWith": [
                 "perk_pos"
             ],
-            "defaultActive": true,
             "requiredFields": [],
             "forensicNotes": []
         },
@@ -164,7 +162,6 @@
             "mutuallyExclusiveWith": [
                 "la_infiltr"
             ],
-            "defaultActive": true,
             "requiredFields": [
                 "zahn"
             ],
@@ -225,7 +222,6 @@
                     "value": "Kofferdam"
                 }
             ],
-            "defaultActive": true,
             "requiredFields": [
                 "zahn"
             ],
@@ -256,7 +252,6 @@
                     "value": true
                 }
             ],
-            "defaultActive": true,
             "requiredFields": [
                 "zahn"
             ],
@@ -466,7 +461,6 @@
             },
             "billingRef": null,
             "dataPatches": [],
-            "defaultActive": false,
             "requiredFields": [],
             "ruleRefs": [],
             "forensicNotes": []
@@ -483,7 +477,6 @@
             },
             "billingRef": null,
             "dataPatches": [],
-            "defaultActive": false,
             "requiredFields": [],
             "ruleRefs": [],
             "forensicNotes": []
@@ -507,7 +500,6 @@
                 }
             ],
             "mutuallyExclusiveWith": [],
-            "defaultActive": true,
             "requiredFields": [],
             "forensicNotes": [
                 "NaOCl-Desinfektion dokumentieren"
@@ -691,7 +683,6 @@
             },
             "billingRef": null,
             "dataPatches": [],
-            "defaultActive": false,
             "requiredFields": [],
             "ruleRefs": [],
             "forensicNotes": []
@@ -762,7 +753,10 @@
                 "lang": "Intraligamentäre Anästhesie mit {la_agent} 1,7ml."
             },
             "variablen": {
-                "la_agent": { "default": "Ultracain D-S", "required": false }
+                "la_agent": {
+                    "default": "Ultracain D-S",
+                    "required": false
+                }
             },
             "billingRef": null,
             "dataPatches": [
@@ -874,12 +868,14 @@
                 "lang": "Mehrkosten-Begründung: {mkv_justification}."
             },
             "variablen": {
-                "mkv_justification": { "default": "höherwertige Versorgung", "required": false }
+                "mkv_justification": {
+                    "default": "höherwertige Versorgung",
+                    "required": false
+                }
             },
             "billingRef": null,
             "hinweis": "Dokumentationsbaustein für MKV-Begründung.",
             "dataPatches": [],
-            "defaultActive": false,
             "requiredFields": [],
             "ruleRefs": [],
             "forensicNotes": []

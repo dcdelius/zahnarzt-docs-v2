@@ -73,6 +73,7 @@ export interface V10SessionOptions {
     insuranceType?: 'GKV' | 'PKV' | 'MKV';
     textLength?: 'kurz' | 'mittel' | 'lang';
     settings?: SettingsContext;
+    kbReleaseId?: string;
     forceExtraction?: Record<string, unknown>;
     forceAnswers?: Record<string, unknown>;
 }
@@ -108,8 +109,15 @@ export function createV10Session(): V10Session {
     let instances: InstanceState[] = [];
     let currentDictation = '';
     let currentOpts: V10SessionOptions = {};
+    let sessionKbReleaseId: string | undefined;
     const answeredFactsByInstance = new Map<string, Set<string>>();
     let answers = new Map<string, unknown>();
+
+    const normalizeKbReleaseId = (value: unknown): string | undefined => {
+        if (typeof value !== 'string') return undefined;
+        const trimmed = value.trim();
+        return trimmed.length > 0 ? trimmed : undefined;
+    };
 
     /**
      * Start the pipeline with dictation.
@@ -118,6 +126,7 @@ export function createV10Session(): V10Session {
         currentDictation = dictation;
         currentOpts = opts;
         answers = new Map();
+        sessionKbReleaseId = normalizeKbReleaseId(opts.kbReleaseId);
         state = { phase: 'running' };
 
         try {
@@ -141,9 +150,11 @@ export function createV10Session(): V10Session {
                 textLength: opts.textLength || 'mittel',
                 answers,
                 userDefaults: opts.settings as Record<string, unknown> | undefined,
+                kbReleaseId: sessionKbReleaseId,
                 teeth: teeth.length > 0 ? teeth : undefined,  // Pass teeth for perTooth output
                 testOnly,
             });
+            sessionKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? sessionKbReleaseId;
 
             // 2. Build instance states from scoping (use preScoping from above)
             instances = preScoping.instances.map(inst => ({
@@ -243,8 +254,10 @@ export function createV10Session(): V10Session {
             textLength: currentOpts.textLength || 'mittel',
             answers,
             userDefaults: currentOpts.settings as Record<string, unknown> | undefined,
+            kbReleaseId: sessionKbReleaseId,
             testOnly,
         });
+        sessionKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? sessionKbReleaseId;
 
         // 5. Use result state
         if (result.state === 'questions' && result.questions) {

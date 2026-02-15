@@ -127,6 +127,14 @@ export async function runV10Bundle(
         forceChipsByTreatmentId?: Record<string, string[]>;
     }
 ): Promise<V10BundleOutput> {
+    const normalizeKbReleaseId = (value: unknown): string | undefined => {
+        if (typeof value !== 'string') return undefined;
+        const trimmed = value.trim();
+        return trimmed.length > 0 ? trimmed : undefined;
+    };
+    let pinnedKbReleaseId = normalizeKbReleaseId(
+        input.kbReleaseId ?? opts?.settings?.practice?.activeKbReleaseId
+    );
     const runs: SegmentRun[] = [];
     const questions: V10BundleOutput['questions'] = [];
     const failedSegments: Array<{ segmentId: string; state: string; error?: string }> = [];
@@ -141,10 +149,12 @@ export async function runV10Bundle(
             textLength: segment.textLength,
             answers,
             userDefaults: opts?.settings as Record<string, unknown> | undefined,
+            kbReleaseId: pinnedKbReleaseId,
             testOnly: forcedChips
                 ? { enabled: true, forceChips: forcedChips }
                 : undefined,
         });
+        pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
 
         if (result.state === 'questions') {
             const requiredCount = result.questionsBundle?.required?.length ?? 0;
@@ -163,7 +173,9 @@ export async function runV10Bundle(
                     textLength: segment.textLength,
                     answers,
                     userDefaults: opts?.settings as Record<string, unknown> | undefined,
+                    kbReleaseId: pinnedKbReleaseId,
                 });
+                pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
             }
         }
 
@@ -175,11 +187,13 @@ export async function runV10Bundle(
                 textLength: segment.textLength,
                 answers,
                 userDefaults: opts?.settings as Record<string, unknown> | undefined,
+                kbReleaseId: pinnedKbReleaseId,
                 testOnly: {
                     enabled: true,
                     forceChips: opts.forceChipsByTreatmentId[segment.treatmentId],
                 },
             });
+            pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
         }
 
         if (result.state === 'questions' && result.questions) {

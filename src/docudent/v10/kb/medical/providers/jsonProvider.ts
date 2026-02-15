@@ -17,7 +17,7 @@ import medicalKbJson from '../../../../medical_kb/medical_kb.v1.json';
 // ═══════════════════════════════════════════════════════════════
 
 let cachedKb: MedicalKB | null = null;
-let cachedMeta: MedicalKbMeta | null = null;
+const cachedMetaByRelease = new Map<string, MedicalKbMeta>();
 
 // ═══════════════════════════════════════════════════════════════
 // PROVIDER IMPLEMENTATION
@@ -36,16 +36,22 @@ export const jsonMedicalKbProvider: MedicalKbProvider = {
         return cachedKb;
     },
 
-    getMeta(): MedicalKbMeta {
-        if (!cachedMeta) {
-            const kb = this.getMedicalKb();
-            cachedMeta = {
-                version: getActiveKbReleaseId() || kb.version || 'v1',
-                hash: computeKbHash(kb),
-                source: 'json',
-            };
+    getMeta(releaseId?: string): MedicalKbMeta {
+        const kb = this.getMedicalKb();
+        const resolvedRelease = releaseId || getActiveKbReleaseId() || kb.version || 'v1';
+        const cacheKey = resolvedRelease || 'v1';
+        const cached = cachedMetaByRelease.get(cacheKey);
+        if (cached) {
+            return cached;
         }
-        return cachedMeta;
+
+        const meta: MedicalKbMeta = {
+            version: resolvedRelease,
+            hash: computeKbHash(kb),
+            source: 'json',
+        };
+        cachedMetaByRelease.set(cacheKey, meta);
+        return meta;
     },
 };
 
@@ -54,5 +60,5 @@ export const jsonMedicalKbProvider: MedicalKbProvider = {
  */
 export function clearMedicalKbCache(): void {
     cachedKb = null;
-    cachedMeta = null;
+    cachedMetaByRelease.clear();
 }

@@ -47,8 +47,14 @@ function isFirestoreAllowedForTreatment(treatmentId: string): boolean {
     return allowlist.includes(treatmentId);
 }
 
-function getFirestoreVersion(): string | null {
-    return getActiveKbReleaseId() || readFlagValue('VITE_KB_FIRESTORE_VERSION');
+function normalizeReleaseId(value?: string | null): string | null {
+    if (typeof value !== 'string') return null;
+    const trimmed = value.trim();
+    return trimmed.length > 0 ? trimmed : null;
+}
+
+function getFirestoreVersion(releaseId?: string): string | null {
+    return normalizeReleaseId(releaseId) || getActiveKbReleaseId() || readFlagValue('VITE_KB_FIRESTORE_VERSION');
 }
 
 type CacheEntry = {
@@ -67,9 +73,16 @@ function logFallbackOnce(treatmentId: string, reason: string): void {
     console.info(`[FirestoreTreatmentKbProvider] Fallback to JSON for ${treatmentId} (${reason}).`);
 }
 
-async function loadFromFirestore(treatmentId: string): Promise<void> {
-    if (firestoreLoads.has(treatmentId)) {
-        await firestoreLoads.get(treatmentId);
+function getCacheKey(treatmentId: string, version: string): string {
+    return `${treatmentId}::${version}`;
+}
+
+async function loadFromFirestore(treatmentId: string, releaseId?: string): Promise<void> {
+    const requestedVersion = getFirestoreVersion(releaseId);
+    const cacheKey = getCacheKey(treatmentId, requestedVersion || 'default');
+
+    if (firestoreLoads.has(cacheKey)) {
+        await firestoreLoads.get(cacheKey);
         return;
     }
 
@@ -80,8 +93,8 @@ async function loadFromFirestore(treatmentId: string): Promise<void> {
                 import('firebase/firestore'),
             ]);
             const { doc, getDoc } = firestore;
-            const jsonMeta = jsonTreatmentKbProvider.getMeta(treatmentId);
-            const version = getFirestoreVersion() || jsonMeta?.version;
+            const jsonMeta = jsonTreatmentKbProvider.getMeta(treatmentId, releaseId);
+            const version = getFirestoreVersion(releaseId) || jsonMeta?.version;
             if (!version) {
                 logFallbackOnce(treatmentId, 'missing version');
                 return;
@@ -106,14 +119,14 @@ async function loadFromFirestore(treatmentId: string): Promise<void> {
                 source: 'firestore',
             };
 
-            firestoreCache.set(treatmentId, { kb: data, meta });
+            firestoreCache.set(getCacheKey(treatmentId, version), { kb: data, meta });
         } catch (error) {
             console.warn('[FirestoreTreatmentKbProvider] Failed to load from Firestore; using JSON fallback', error);
             logFallbackOnce(treatmentId, 'load error');
         }
     })();
 
-    firestoreLoads.set(treatmentId, loadPromise);
+    firestoreLoads.set(cacheKey, loadPromise);
     await loadPromise;
 }
 
@@ -129,41 +142,43 @@ async function loadFromFirestore(treatmentId: string): Promise<void> {
  * - medical_kb/{activeVersion}/treatments/{treatmentId}
  */
 export const firestoreTreatmentKbProvider: TreatmentKbProvider = {
-    getTreatmentKb(treatmentId: string): TreatmentKb | null {
+    getTreatmentKb(treatmentId: string, releaseId?: string): TreatmentKb | null {
         if (!isFirestoreEnabled()) {
-            return jsonTreatmentKbProvider.getTreatmentKb(treatmentId);
+            return jsonTreatmentKbProvider.getTreatmentKb(treatmentId, releaseId);
         }
         if (!isFirestoreAllowedForTreatment(treatmentId)) {
-            return jsonTreatmentKbProvider.getTreatmentKb(treatmentId);
+            return jsonTreatmentKbProvider.getTreatmentKb(treatmentId, releaseId);
         }
 
-        const cached = firestoreCache.get(treatmentId);
+        const version = getFirestoreVersion(releaseId) || 'default';
+        const cached = firestoreCache.get(getCacheKey(treatmentId, version));
         if (cached) {
             return cached.kb;
         }
 
         // Fire-and-forget load; return JSON fallback for now
-        void loadFromFirestore(treatmentId);
+        void loadFromFirestore(treatmentId, releaseId);
 
-        return jsonTreatmentKbProvider.getTreatmentKb(treatmentId);
+        return jsonTreatmentKbProvider.getTreatmentKb(treatmentId, releaseId);
     },
 
-    getMeta(treatmentId: string): TreatmentKbMeta | null {
+    getMeta(treatmentId: string, releaseId?: string): TreatmentKbMeta | null {
         if (isFirestoreEnabled() && !isFirestoreAllowedForTreatment(treatmentId)) {
-            const jsonMeta = jsonTreatmentKbProvider.getMeta(treatmentId);
+            const jsonMeta = jsonTreatmentKbProvider.getMeta(treatmentId, releaseId);
             return jsonMeta ? { ...jsonMeta, source: 'forced' } : null;
         }
-        const cached = firestoreCache.get(treatmentId);
+        const version = getFirestoreVersion(releaseId) || 'default';
+        const cached = firestoreCache.get(getCacheKey(treatmentId, version));
         if (cached) {
             return cached.meta;
         }
 
-        const jsonMeta = jsonTreatmentKbProvider.getMeta(treatmentId);
+        const jsonMeta = jsonTreatmentKbProvider.getMeta(treatmentId, releaseId);
         if (!jsonMeta) return null;
 
         // M13.1: Mark source as firestore_fallback when flag enabled but using JSON
         if (isFirestoreEnabled()) {
-            void loadFromFirestore(treatmentId);
+            void loadFromFirestore(treatmentId, releaseId);
             return {
                 ...jsonMeta,
                 source: 'firestore_fallback', // Flag enabled but Firestore unavailable
@@ -175,10 +190,8 @@ export const firestoreTreatmentKbProvider: TreatmentKbProvider = {
 
     getAllMetas(): TreatmentKbMeta[] {
         const jsonMetas = jsonTreatmentKbProvider.getAllMetas();
-        return jsonMetas.map(meta => {
-            const cached = firestoreCache.get(meta.treatmentId);
-            return cached?.meta ?? meta;
-        });
+        const firestoreMetas = Array.from(firestoreCache.values()).map(entry => entry.meta);
+        return [...jsonMetas, ...firestoreMetas];
     },
 };
 

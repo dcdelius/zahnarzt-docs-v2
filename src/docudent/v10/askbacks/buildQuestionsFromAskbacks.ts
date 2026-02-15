@@ -14,8 +14,52 @@ type AskbackDefinition = {
     options?: Array<{ id: string; label: string; dataValue?: unknown }>;
 };
 
+const fallbackDefinitions: Record<string, AskbackDefinition> = {
+    vitality: {
+        questionKey: 'vitality',
+        name: 'Vitalitaetstest (ViPr) dokumentiert?',
+        category: 'forensic',
+        options: [
+            { id: 'pos', label: 'Positiv (+)', dataValue: 'pos' },
+            { id: 'neg', label: 'Negativ (-)', dataValue: 'neg' },
+            { id: 'unknown', label: 'Nicht dokumentiert', dataValue: 'unknown' },
+        ],
+    },
+    percussion: {
+        questionKey: 'percussion',
+        name: 'Perkussion dokumentiert?',
+        category: 'forensic',
+        options: [
+            { id: 'pos', label: 'Positiv (+)', dataValue: 'pos' },
+            { id: 'neg', label: 'Negativ (-)', dataValue: 'neg' },
+            { id: 'unknown', label: 'Nicht dokumentiert', dataValue: 'unknown' },
+        ],
+    },
+    radiology_indication: {
+        questionKey: 'radiology_indication',
+        name: 'Roentgen-Indikation dokumentieren',
+        category: 'forensic',
+    },
+    radiology_type: {
+        questionKey: 'radiology_type',
+        name: 'Roentgen-Typ dokumentieren (z. B. Zahnfilm/Bissfluegel/OPG)',
+        category: 'forensic',
+    },
+    radiology_timing: {
+        questionKey: 'radiology_timing',
+        name: 'Roentgen-Zeitpunkt dokumentieren',
+        category: 'forensic',
+    },
+    radiology_findings: {
+        questionKey: 'radiology_findings',
+        name: 'Roentgen-Befund dokumentieren',
+        category: 'forensic',
+    },
+};
+
 function findAskbackDefinition(questionKey: string): AskbackDefinition | undefined {
-    return medicalKbV10.askbacks.find(a => a.questionKey === questionKey) as AskbackDefinition | undefined;
+    const fromKb = medicalKbV10.askbacks.find(a => a.questionKey === questionKey) as AskbackDefinition | undefined;
+    return fromKb ?? fallbackDefinitions[questionKey];
 }
 
 function mapCategory(category?: string): DynamicQuestion['category'] {

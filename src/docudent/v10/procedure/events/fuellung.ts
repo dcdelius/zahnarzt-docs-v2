@@ -1,5 +1,9 @@
 import type { ClinicalEventBundle } from './types';
 
+function isStrictKzv(contract: { values?: Record<string, unknown> }): boolean {
+    return contract?.values?.strictKzv === true;
+}
+
 export const fuellungBaselineBundles: ClinicalEventBundle[] = [
     {
         id: 'fuellung.baseline',
@@ -186,5 +190,74 @@ export const fuellungAskbackBundles: ClinicalEventBundle[] = [
             facts.treatmentId === 'fuellung'
             && (facts.isolationMentioned === undefined || facts.isolationMentioned === 'unknown'),
         askbacks: ['fuellung_isolation'],
+    },
+];
+
+export const fuellungStrictEvidenceBundles: ClinicalEventBundle[] = [
+    {
+        id: 'fuellung.strict.capping.vitality',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'fuellung'
+            && facts.capping?.performed === 'yes'
+            && (facts.vitality === undefined || facts.vitality === 'unknown'),
+        requiresFacts: ['vitality'],
+        askbacks: ['medical_vipr'],
+    },
+    {
+        id: 'fuellung.strict.capping.percussion',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'fuellung'
+            && facts.capping?.performed === 'yes'
+            && (facts.percussion === undefined || facts.percussion === 'unknown'),
+        requiresFacts: ['percussion'],
+        askbacks: ['medical_percussion'],
+    },
+    {
+        id: 'fuellung.strict.capping.roentgen_indikation',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'fuellung'
+            && facts.capping?.performed === 'yes'
+            && !((facts.radiology as { indication?: string } | undefined)?.indication),
+        requiresFacts: ['radiology.indication'],
+        askbacks: ['medical_roentgen_indikation'],
+    },
+    {
+        id: 'fuellung.strict.capping.roentgen_typ',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'fuellung'
+            && facts.capping?.performed === 'yes'
+            && !((facts.radiology as { type?: string } | undefined)?.type),
+        requiresFacts: ['radiology.type'],
+        askbacks: ['medical_roentgen_typ'],
+    },
+    {
+        id: 'fuellung.strict.capping.roentgen_zeitpunkt',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'fuellung'
+            && facts.capping?.performed === 'yes'
+            && !((facts.radiology as { timing?: string } | undefined)?.timing),
+        requiresFacts: ['radiology.timing'],
+        askbacks: ['medical_roentgen_zeitpunkt'],
+    },
+    {
+        id: 'fuellung.strict.capping.roentgen_befund',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'fuellung'
+            && facts.capping?.performed === 'yes'
+            && !((facts.radiology as { findings?: string } | undefined)?.findings),
+        requiresFacts: ['radiology.findings'],
+        askbacks: ['medical_roentgen_befund'],
     },
 ];

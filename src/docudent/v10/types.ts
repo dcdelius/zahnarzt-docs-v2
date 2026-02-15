@@ -89,6 +89,9 @@ export interface V10PipelineInput {
     /** User defaults for pre-filling */
     userDefaults?: Record<string, unknown>;
 
+    /** Optional KB release pin for deterministic session runs */
+    kbReleaseId?: string;
+
     /** Per-instance chip overrides (manual control center) */
     chipOverrides?: OverridesByInstance;
 
@@ -236,6 +239,8 @@ export interface V10ReviewContext {
             mkvJustification?: TreatmentFacts['mkvJustification'];
             endo?: TreatmentFacts['endo'];
         };
+        /** UI-facing provenance labels for displayed fact pills */
+        factSources?: Record<string, 'dictation' | 'settings' | 'askback' | 'manual'>;
     }>;
 }
 
@@ -481,6 +486,8 @@ export interface V10BundleInput {
     segments: V10TreatmentSegmentInput[];
     /** Global answers (applied to all segments) */
     globalAnswers?: Map<string, unknown> | Record<string, unknown>;
+    /** Optional KB release pin used for all segment/instance runs */
+    kbReleaseId?: string;
 }
 
 /** Billing code with scope information */

@@ -1,12 +1,13 @@
 import type { ClinicalEventBundle } from './types';
 import { commonEventBundles } from './common';
 import { crownPrepAskbackBundles, crownPrepBundles } from './crown_prep';
-import { endoAskbackBundles, endoBundles } from './endo';
+import { endoAskbackBundles, endoBundles, endoStrictEvidenceBundles } from './endo';
 import { extractionAskbackBundles, extractionBundles } from './extraction';
 import {
     fuellungBaselineBundles,
     fuellungCappingBundles,
     fuellungAskbackBundles,
+    fuellungStrictEvidenceBundles,
     fuellungMaterialDetailBundles,
     fuellungTechniqueBundles,
 } from './fuellung';
@@ -19,8 +20,10 @@ export const allEventBundles: ClinicalEventBundle[] = [
     ...fuellungTechniqueBundles,
     ...fuellungCappingBundles,
     ...fuellungAskbackBundles,
+    ...fuellungStrictEvidenceBundles,
     ...endoBundles,
     ...endoAskbackBundles,
+    ...endoStrictEvidenceBundles,
     ...extractionBundles,
     ...extractionAskbackBundles,
     ...pzrBundles,

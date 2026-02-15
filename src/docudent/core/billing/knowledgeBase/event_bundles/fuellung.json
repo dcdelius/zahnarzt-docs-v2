@@ -129,6 +129,24 @@
     },
     {
       "id": "fuellung.askback.isolation"
+    },
+    {
+      "id": "fuellung.strict.capping.vitality"
+    },
+    {
+      "id": "fuellung.strict.capping.percussion"
+    },
+    {
+      "id": "fuellung.strict.capping.roentgen_indikation"
+    },
+    {
+      "id": "fuellung.strict.capping.roentgen_typ"
+    },
+    {
+      "id": "fuellung.strict.capping.roentgen_zeitpunkt"
+    },
+    {
+      "id": "fuellung.strict.capping.roentgen_befund"
     }
   ]
 }

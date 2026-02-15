@@ -8,13 +8,14 @@ export function resolveContractContext(params: {
     settings?: SettingsInput;
     treatmentId?: string;
     tooth?: string;
+    kbReleaseId?: string;
 }): ContractContext {
-    const { facts, settings, treatmentId, tooth } = params;
+    const { facts, settings, treatmentId, tooth, kbReleaseId } = params;
     const standardChips = treatmentId
         ? getStandardChipIdsForInstance({ settings, treatmentId, tooth })
         : [];
     const availableChips = treatmentId
-        ? (defaultTreatmentKbProvider.getTreatmentKb(treatmentId)?.chips ?? []).map(chip => chip.id)
+        ? (defaultTreatmentKbProvider.getTreatmentKb(treatmentId, kbReleaseId)?.chips ?? []).map(chip => chip.id)
         : [];
     const strictKzv = settings?.practice?.strictKzvMode === true;
 

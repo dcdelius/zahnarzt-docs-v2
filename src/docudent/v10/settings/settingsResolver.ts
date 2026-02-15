@@ -35,12 +35,28 @@ export function isFactKnownForAskback(askbackId: string, facts: TreatmentFacts):
     switch (key) {
         case 'la_type':
             return facts.anesthesia !== undefined && facts.anesthesia !== 'unknown';
+        case 'vitality':
+            return facts.vitality !== undefined && facts.vitality !== 'unknown';
+        case 'percussion':
+            return facts.percussion !== undefined && facts.percussion !== 'unknown';
         case 'isolation':
             return (
                 typeof facts.kofferdamUsed === 'boolean'
                 || facts.isolationMentioned === 'rubberDam'
                 || facts.isolationMentioned === 'relative'
             );
+        case 'radiology_indication':
+            return typeof (facts.radiology as { indication?: string } | undefined)?.indication === 'string'
+                && ((facts.radiology as { indication?: string } | undefined)?.indication?.trim().length ?? 0) > 0;
+        case 'radiology_type':
+            return typeof (facts.radiology as { type?: string } | undefined)?.type === 'string'
+                && ((facts.radiology as { type?: string } | undefined)?.type?.trim().length ?? 0) > 0;
+        case 'radiology_timing':
+            return typeof (facts.radiology as { timing?: string } | undefined)?.timing === 'string'
+                && ((facts.radiology as { timing?: string } | undefined)?.timing?.trim().length ?? 0) > 0;
+        case 'radiology_findings':
+            return typeof (facts.radiology as { findings?: string } | undefined)?.findings === 'string'
+                && ((facts.radiology as { findings?: string } | undefined)?.findings?.trim().length ?? 0) > 0;
         case 'ueberkappung':
             return facts.capping?.performed !== undefined && facts.capping?.performed !== 'unknown';
         case 'ueberkappung_material':

@@ -19,6 +19,10 @@ import { getActiveKbReleaseId } from '../../release';
 const kbCache: Map<string, TreatmentKb> = new Map();
 const metaCache: Map<string, TreatmentKbMeta> = new Map();
 
+function getMetaCacheKey(treatmentId: string, releaseId?: string): string {
+    return `${treatmentId}::${releaseId || '__default__'}`;
+}
+
 // ═══════════════════════════════════════════════════════════════
 // KB LOADER
 // ═══════════════════════════════════════════════════════════════
@@ -51,26 +55,34 @@ export const jsonTreatmentKbProvider: TreatmentKbProvider = {
         const kb = loadKbFromFile(treatmentId);
         if (kb) {
             kbCache.set(treatmentId, kb);
-
-            // Also compute and cache meta
-            const meta: TreatmentKbMeta = {
-                treatmentId,
-                version: getActiveKbReleaseId() || kb._meta?.version || 'v1',
-                hash: computeKbHash(kb),
-                source: 'json',
-            };
-            metaCache.set(treatmentId, meta);
         }
 
         return kb;
     },
 
-    getMeta(treatmentId: string): TreatmentKbMeta | null {
+    getMeta(treatmentId: string, releaseId?: string): TreatmentKbMeta | null {
         // Ensure KB is loaded first
         if (!kbCache.has(treatmentId)) {
             this.getTreatmentKb(treatmentId);
         }
-        return metaCache.get(treatmentId) ?? null;
+        const kb = kbCache.get(treatmentId);
+        if (!kb) return null;
+
+        const resolvedRelease = releaseId || getActiveKbReleaseId() || kb._meta?.version || 'v1';
+        const cacheKey = getMetaCacheKey(treatmentId, resolvedRelease);
+        const cached = metaCache.get(cacheKey);
+        if (cached) {
+            return cached;
+        }
+
+        const meta: TreatmentKbMeta = {
+            treatmentId,
+            version: resolvedRelease,
+            hash: computeKbHash(kb),
+            source: 'json',
+        };
+        metaCache.set(cacheKey, meta);
+        return meta;
     },
 
     getAllMetas(): TreatmentKbMeta[] {

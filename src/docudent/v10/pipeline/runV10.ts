@@ -147,6 +147,51 @@ interface InstanceResult {
     billingChipIds?: string[];
 }
 
+function mergeQuestionsById(primary: DynamicQuestion[], additional: DynamicQuestion[]): DynamicQuestion[] {
+    if (additional.length === 0) return primary;
+    const merged = [...primary];
+    const seen = new Set(primary.map(question => question.id));
+    for (const question of additional) {
+        if (!question.id || seen.has(question.id)) continue;
+        seen.add(question.id);
+        merged.push(question);
+    }
+    return merged;
+}
+
+type ReviewFactSourceLabel = NonNullable<V10ReviewContext['instances'][number]['factSources']>[string];
+
+function toReviewFactSource(source: FactSource | undefined): ReviewFactSourceLabel {
+    if (source === 'settings') return 'settings';
+    if (source === 'user') return 'askback';
+    if (source === 'inferred' || source === 'default') return 'manual';
+    return 'dictation';
+}
+
+function resolveReviewFactSource(
+    answerSources: Map<string, FactSource>,
+    settingsFactSources: Map<string, FactSource>,
+    keys: string[]
+): ReviewFactSourceLabel | undefined {
+    for (const key of keys) {
+        const normalized = normalizeProvenanceKey(key);
+        if (!normalized) continue;
+        const answerSource = answerSources.get(normalized);
+        if (answerSource) {
+            return toReviewFactSource(answerSource);
+        }
+    }
+    for (const key of keys) {
+        const normalized = normalizeProvenanceKey(key);
+        if (!normalized) continue;
+        const settingsSource = settingsFactSources.get(normalized);
+        if (settingsSource) {
+            return toReviewFactSource(settingsSource);
+        }
+    }
+    return undefined;
+}
+
 function buildReviewContext(results: InstanceResult[], settings?: SettingsInput): V10ReviewContext {
     const instances = results.map(r => {
         const surfaces = (r.facts.surfaces ?? []).map(s => String(s));
@@ -156,6 +201,41 @@ function buildReviewContext(results: InstanceResult[], settings?: SettingsInput)
             treatmentId: r.facts.treatmentId,
             tooth: r.tooth,
         });
+        const factSources: Record<string, ReviewFactSourceLabel> = {};
+        const recordFactSource = (
+            field: string,
+            sourceKeys: string[],
+            isPresent: boolean
+        ) => {
+            if (!isPresent) return;
+            const source = resolveReviewFactSource(r.answerSources, r.settingsFactSources, sourceKeys);
+            factSources[field] = source ?? 'dictation';
+        };
+
+        recordFactSource('anesthesia', ['anesthesia', 'la_type'], !!(r.facts.anesthesia && r.facts.anesthesia !== 'unknown' && r.facts.anesthesia !== 'none'));
+        recordFactSource(
+            'kofferdam',
+            ['kofferdam', 'isolation', 'kofferdam_used'],
+            r.facts.kofferdamUsed === true || r.facts.endo?.kofferdam === true
+        );
+        recordFactSource('cariesDepth', ['tiefe', 'cavity_depth', 'caries_depth'], !!(r.facts.cariesDepth && r.facts.cariesDepth !== 'unknown'));
+        recordFactSource(
+            'capping',
+            ['ueberkappung', 'capping', 'pulpa_opened'],
+            r.facts.pulpaOpened === true
+                || r.facts.pulpaOpened === false
+                || r.facts.capping?.performed === 'yes'
+        );
+        recordFactSource(
+            'workingLengthMethod',
+            ['wl_method', 'working_length_method'],
+            !!r.facts.endo?.workingLengthMethod
+        );
+        recordFactSource(
+            'wfTechnique',
+            ['wf_technique', 'obturation_technique'],
+            !!r.facts.endo?.wfTechnique
+        );
 
         return {
             instanceId: r.instanceId,
@@ -190,6 +270,7 @@ function buildReviewContext(results: InstanceResult[], settings?: SettingsInput)
                 mkvJustification: r.facts.mkvJustification,
                 endo: r.facts.endo,
             },
+            factSources: Object.keys(factSources).length > 0 ? factSources : undefined,
         };
     });
 
@@ -266,6 +347,11 @@ function deriveEffectiveInsuranceType(
     return 'GKV';
 }
 
+function getProcedureGateMode(treatmentId: string): 'warn' | 'block' {
+    // Stage-2 migration hardening: Endo is now enforced as non-bypassable procedure path.
+    return treatmentId === 'endo' ? 'block' : 'warn';
+}
+
 function getMatrixSystemLabel(value: unknown): string | undefined {
     const normalized = String(value ?? '').toLowerCase();
     if (!normalized) return undefined;
@@ -326,7 +412,8 @@ function processInstance(
     isDev: boolean,
     settingsInput?: SettingsInput,  // M62/P3: Settings input (practice + user)
     insuranceType?: 'GKV' | 'PKV' | 'MKV',   // GIGAPROMPT 8: For askback rules
-    docMode: DocMode = 'balanced'
+    docMode: DocMode = 'balanced',
+    kbReleaseId?: string
 ): InstanceResult {
     const startTime = Date.now();
 
@@ -646,6 +733,7 @@ function processInstance(
             settings: settingsInput,
             treatmentId,
             tooth,
+            kbReleaseId,
         });
         const bundleMetaMap = getBundleMetaMap(treatmentId);
         const resolveBundleChips = (nodeId: string, node: { emitChips?: string[]; emitChipsFrom?: (facts: Record<string, unknown>, contract: typeof contractContext) => string[] }) => {
@@ -791,7 +879,7 @@ function processInstance(
 
     // Step 5: Generate questions (endo uses playbook adapter, others use KB askbacks)
     const allQuestions = endoQuestionBuild
-        ? endoQuestionBuild.questions
+        ? mergeQuestionsById(endoQuestionBuild.questions, askbackQuestions)
         : askbackQuestions;
 
     const settingsAnswerKeys = new Set(resolvedSettings.answers.keys());
@@ -1289,6 +1377,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
             userDefaults,
             chipOverrides,
             testOnly,
+            kbReleaseId,
         } = input;
 
         const docMode: DocMode =
@@ -1305,10 +1394,36 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
         // === TRACE: Input ===
         trace.add('input', traceInput(treatmentId, insuranceType, false));
 
+        // === testOnly overrides ===
+        const testOverrides = getTestOnlyOverrides(testOnly);
+        if (testOverrides.applied) {
+            trace.add('testOnly', traceTestOnly(testOverrides.appliedTypes, testOverrides.skipCombinability));
+        }
+
+        const normalizeSettingsInput = (raw: unknown): SettingsInput | undefined => {
+            if (!raw || typeof raw !== 'object') return undefined;
+            const candidate = raw as SettingsInput;
+            if ('practice' in candidate || 'user' in candidate) return candidate;
+            return { user: raw } as unknown as SettingsInput;
+        };
+
+        const settingsInput = normalizeSettingsInput(testOverrides.settings ?? userDefaults);
+        const normalizedRequestedRelease = typeof kbReleaseId === 'string' && kbReleaseId.trim().length > 0
+            ? kbReleaseId.trim()
+            : undefined;
+        const normalizedPracticeRelease = typeof settingsInput?.practice?.activeKbReleaseId === 'string'
+            && settingsInput.practice.activeKbReleaseId.trim().length > 0
+            ? settingsInput.practice.activeKbReleaseId.trim()
+            : undefined;
+        const resolvedKbReleaseId = normalizedRequestedRelease
+            ?? normalizedPracticeRelease
+            ?? getActiveKbReleaseId()
+            ?? undefined;
+
         // === TRACE: KB Sources (M13) ===
-        const medicalKbMeta = defaultMedicalKbProvider.getMeta();
-        const treatmentKb = defaultTreatmentKbProvider.getTreatmentKb(treatmentId);
-        const treatmentKbMeta = defaultTreatmentKbProvider.getMeta(treatmentId);
+        const medicalKbMeta = defaultMedicalKbProvider.getMeta(resolvedKbReleaseId);
+        const treatmentKb = defaultTreatmentKbProvider.getTreatmentKb(treatmentId, resolvedKbReleaseId);
+        const treatmentKbMeta = defaultTreatmentKbProvider.getMeta(treatmentId, resolvedKbReleaseId);
 
         trace.add('kb_medical', traceKbMedical(
             medicalKbMeta.source,
@@ -1325,9 +1440,10 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
         }
 
         const procedureGraphForGate = getProcedureGraphForTreatment(treatmentId);
+        const procedureGateMode = getProcedureGateMode(treatmentId);
         const bundleGate = gateMissingEventBundles(
             procedureGraphForGate,
-            { logger: isDev ? undefined : () => {} }
+            { logger: isDev ? undefined : () => {}, mode: procedureGateMode }
         );
         if (!bundleGate.ok && trace.isEnabled()) {
             trace.add(
@@ -1335,21 +1451,11 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 `eventBundlesMissing=${bundleGate.missing.length};graph=${procedureGraphForGate?.id ?? 'none'}`
             );
         }
-
-        // === testOnly overrides ===
-        const testOverrides = getTestOnlyOverrides(testOnly);
-        if (testOverrides.applied) {
-            trace.add('testOnly', traceTestOnly(testOverrides.appliedTypes, testOverrides.skipCombinability));
+        if (bundleGate.blocked) {
+            throw new Error(
+                `[BLOCK] Procedure graph has nodes without event bundles for ${treatmentId}: ${bundleGate.missing.join(', ')}`
+            );
         }
-
-        const normalizeSettingsInput = (raw: unknown): SettingsInput | undefined => {
-            if (!raw || typeof raw !== 'object') return undefined;
-            const candidate = raw as SettingsInput;
-            if ('practice' in candidate || 'user' in candidate) return candidate;
-            return { user: raw } as unknown as SettingsInput;
-        };
-
-        const settingsInput = normalizeSettingsInput(testOverrides.settings ?? userDefaults);
 
         // Normalize answers to Map (with testOnly defaults merged)
         let answers = rawAnswers instanceof Map
@@ -1463,7 +1569,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                     state: 'questions',
                     questions: [question],
                     questionsBundle: bundle,
-                    meta: buildMeta([], startTime, treatmentId, trace, extractor.engine, testOverrides.applied),
+                    meta: buildMeta([], startTime, treatmentId, trace, extractor.engine, testOverrides.applied, resolvedKbReleaseId),
                     trace: isDev ? buildTrace([]) : undefined,
                 };
             }
@@ -1495,7 +1601,8 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 isDev,
                 settingsInput,  // M62/P3: Pass practice + user settings
                 insuranceType as 'GKV' | 'PKV' | 'MKV',  // GIGAPROMPT 8: For askback rules
-                docMode
+                docMode,
+                resolvedKbReleaseId
             );
             results.push(result);
         }
@@ -1546,7 +1653,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 questions: sortedQuestions,
                 questionsBundle: singleBundle ?? buildQuestionBundleFromQuestions(sortedQuestions, docMode),
                 review: buildReviewContext(results, settingsInput),
-                meta: buildMeta(results, startTime, treatmentId, trace, extractor.engine, testOverrides.applied),
+                meta: buildMeta(results, startTime, treatmentId, trace, extractor.engine, testOverrides.applied, resolvedKbReleaseId),
                 trace: isDev ? buildTrace(results) : undefined,
             };
         }
@@ -1936,7 +2043,17 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                         questions: combinabilityQuestions,
                         questionsBundle: bundle,
                         review: buildReviewContext(results, settingsInput),
-                        meta: buildMeta(results, startTime, treatmentId, trace, extractor.engine, testOverrides.applied, billingGuardResult, combinabilityResult),
+                        meta: buildMeta(
+                            results,
+                            startTime,
+                            treatmentId,
+                            trace,
+                            extractor.engine,
+                            testOverrides.applied,
+                            resolvedKbReleaseId,
+                            billingGuardResult,
+                            combinabilityResult
+                        ),
                         trace: isDev ? buildTrace(results) : undefined,
                     };
                 }
@@ -2198,12 +2315,18 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 && Boolean(facts.mehrkostenConfirmed || facts.mehrkostenMentioned);
             const hasMKV = mkvSignal && !facts.nurKasse;
             const chipEmitterGate = gateNoUnknownChipEmitters(
-                instance.chips.map(id => ({ id, emitter: instance.chipEmitters?.[id] }))
+                instance.chips.map(id => ({ id, emitter: instance.chipEmitters?.[id] })),
+                { mode: getProcedureGateMode(treatmentId) }
             );
             trace.addStructured('procedure-gate', 'gateNoUnknownChipEmitters', {
                 instanceId,
                 result: chipEmitterGate,
             });
+            if (chipEmitterGate.blocked) {
+                throw new Error(
+                    `[BLOCK] Unknown chip emitter(s) for ${treatmentId}/${instanceId}: ${chipEmitterGate.trace.unknownEmitters.map(chip => chip.id).join(', ')}`
+                );
+            }
             const engineResult = {
                 billingCodes: instance.billingRefs,
                 billingDetails: resolveBillingDetailsFromDb(instance.billingRefs),
@@ -2316,6 +2439,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 trace,
                 extractor.engine,
                 testOverrides.applied,
+                resolvedKbReleaseId,
                 billingGuardResult,
                 combinabilityResult,
                 billingCompletenessResult,
@@ -2347,6 +2471,7 @@ function buildMeta(
     trace?: V10TraceCollector,
     extractorEngine?: 'stub' | 'llm' | 'forced',
     testOnlyApplied?: boolean,
+    kbReleaseId?: string,
     billingGuardResult?: { allowed: ChipWithProvenance[]; blocked: ChipWithProvenance[] },
     combinabilityResult?: CombinabilityCheckResult,
     billingCompletenessResult?: BillingCompletenessResult,
@@ -2355,8 +2480,8 @@ function buildMeta(
     debug?: V10PipelineMeta['debug']
 ): V10PipelineMeta {
     // Get KB metadata
-    const medicalMeta = defaultMedicalKbProvider.getMeta();
-    const treatmentMeta = defaultTreatmentKbProvider.getMeta(treatmentId);
+    const medicalMeta = defaultMedicalKbProvider.getMeta(kbReleaseId);
+    const treatmentMeta = defaultTreatmentKbProvider.getMeta(treatmentId, kbReleaseId);
     const combinabilityMeta = getCombinabilityMeta();
 
     // M15: Build provenance metadata
@@ -2428,7 +2553,7 @@ function buildMeta(
         traceLines: trace?.toV7Lines(),
         extractorEngine,
         testOnlyApplied,
-        kbReleaseId: getActiveKbReleaseId() ?? undefined,
+        kbReleaseId: kbReleaseId ?? getActiveKbReleaseId() ?? undefined,
         kb: {
             medical: medicalMeta ? {
                 version: medicalMeta.version,

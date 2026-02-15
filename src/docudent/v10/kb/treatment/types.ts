@@ -74,13 +74,13 @@ export interface TreatmentKbProvider {
      * Get the treatment KB for a specific treatment.
      * @returns KB or null if not found
      */
-    getTreatmentKb(treatmentId: string): TreatmentKb | null;
+    getTreatmentKb(treatmentId: string, releaseId?: string): TreatmentKb | null;
 
     /**
      * Get metadata about the loaded KB.
      * @returns Meta or null if treatment not loaded
      */
-    getMeta(treatmentId: string): TreatmentKbMeta | null;
+    getMeta(treatmentId: string, releaseId?: string): TreatmentKbMeta | null;
 
     /**
      * Get all loaded treatment metas.

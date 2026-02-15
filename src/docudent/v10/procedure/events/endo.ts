@@ -1,5 +1,29 @@
 import type { ClinicalEventBundle } from './types';
 
+function isStrictKzv(contract: { values?: Record<string, unknown> }): boolean {
+    return contract?.values?.strictKzv === true;
+}
+
+function usesRadiology(facts: Record<string, unknown>): boolean {
+    const endo = facts.endo as
+        | {
+            step?: string;
+            obturationMentioned?: boolean;
+            obturated?: boolean;
+            wfTechnique?: string;
+            diagnosticXray?: boolean;
+            workingLengthMethod?: string;
+        }
+        | undefined;
+    if (!endo) return false;
+    if (endo.diagnosticXray === true) return true;
+    if (endo.workingLengthMethod === 'xray') return true;
+    return endo.obturated === true
+        || endo.wfTechnique !== undefined
+        || endo.obturationMentioned === true
+        || endo.step === 'obturation';
+}
+
 export const endoBundles: ClinicalEventBundle[] = [
     {
         id: 'endo.baseline',
@@ -204,5 +228,52 @@ export const endoAskbackBundles: ClinicalEventBundle[] = [
             && typeof (facts.endo as { canalCount?: number } | undefined)?.canalCount !== 'number',
         requiresFacts: ['endo.canalCount'],
         askbacks: ['endo_canal_count'],
+    },
+];
+
+export const endoStrictEvidenceBundles: ClinicalEventBundle[] = [
+    {
+        id: 'endo.strict.roentgen_indikation',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'endo'
+            && usesRadiology(facts)
+            && !((facts.radiology as { indication?: string } | undefined)?.indication),
+        requiresFacts: ['radiology.indication'],
+        askbacks: ['medical_roentgen_indikation'],
+    },
+    {
+        id: 'endo.strict.roentgen_typ',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'endo'
+            && usesRadiology(facts)
+            && !((facts.radiology as { type?: string } | undefined)?.type),
+        requiresFacts: ['radiology.type'],
+        askbacks: ['medical_roentgen_typ'],
+    },
+    {
+        id: 'endo.strict.roentgen_zeitpunkt',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'endo'
+            && usesRadiology(facts)
+            && !((facts.radiology as { timing?: string } | undefined)?.timing),
+        requiresFacts: ['radiology.timing'],
+        askbacks: ['medical_roentgen_zeitpunkt'],
+    },
+    {
+        id: 'endo.strict.roentgen_befund',
+        scope: 'per_instance',
+        match: (facts, contract) =>
+            isStrictKzv(contract)
+            && facts.treatmentId === 'endo'
+            && usesRadiology(facts)
+            && !((facts.radiology as { findings?: string } | undefined)?.findings),
+        requiresFacts: ['radiology.findings'],
+        askbacks: ['medical_roentgen_befund'],
     },
 ];

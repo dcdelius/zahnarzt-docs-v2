@@ -239,6 +239,12 @@ export interface TreatmentFacts {
     // Endo-specific
     rootCanals?: number;
     workingLength?: string;
+    radiology?: {
+        indication?: string;
+        type?: string;
+        timing?: string;
+        findings?: string;
+    };
     endo?: {
         diagnosis?: 'pulpitis' | 'necrosis' | 'apical_periodontitis' | 'trauma' | 'revision' | 'unknown';
         step?: 'trepanation' | 'working_length' | 'preparation' | 'irrigation' | 'medication' | 'obturation' | 'unknown';

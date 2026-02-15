@@ -2,9 +2,9 @@ import type { ProcedureGraph, ProcedureNode } from '../../types';
 import { capabilityNodes } from '../capabilities';
 import { buildProcedureNodesFromBundles } from '../../events/buildProcedureNodes';
 import { crownPrepAskbackBundles, crownPrepBundles } from '../../events/crown_prep';
-import { endoAskbackBundles, endoBundles } from '../../events/endo';
+import { endoAskbackBundles, endoBundles, endoStrictEvidenceBundles } from '../../events/endo';
 import { extractionAskbackBundles, extractionBundles } from '../../events/extraction';
-import { fuellungAskbackBundles, fuellungBaselineBundles, fuellungCappingBundles, fuellungMaterialDetailBundles, fuellungTechniqueBundles } from '../../events/fuellung';
+import { fuellungAskbackBundles, fuellungBaselineBundles, fuellungCappingBundles, fuellungMaterialDetailBundles, fuellungStrictEvidenceBundles, fuellungTechniqueBundles } from '../../events/fuellung';
 import { pzrAskbackBundles, pzrBundles } from '../../events/pzr';
 
 const fuellungCappingNodes: ProcedureNode[] = buildProcedureNodesFromBundles(fuellungCappingBundles);
@@ -12,6 +12,7 @@ const fuellungBaselineNodes: ProcedureNode[] = buildProcedureNodesFromBundles(fu
 const fuellungMaterialDetailNodes: ProcedureNode[] = buildProcedureNodesFromBundles(fuellungMaterialDetailBundles);
 const fuellungTechniqueNodes: ProcedureNode[] = buildProcedureNodesFromBundles(fuellungTechniqueBundles);
 const fuellungAskbackNodes: ProcedureNode[] = buildProcedureNodesFromBundles(fuellungAskbackBundles);
+const fuellungStrictEvidenceNodes: ProcedureNode[] = buildProcedureNodesFromBundles(fuellungStrictEvidenceBundles);
 
 export const treatmentFuellungGraphV1: ProcedureGraph = {
     id: 'treatment.fuellung.graph.v1',
@@ -50,6 +51,12 @@ export const treatmentFuellungGraphV1: ProcedureGraph = {
         'fuellung.askback.adhesive_technique',
         'fuellung.askback.material',
         'fuellung.askback.isolation',
+        'fuellung.strict.capping.vitality',
+        'fuellung.strict.capping.percussion',
+        'fuellung.strict.capping.roentgen_indikation',
+        'fuellung.strict.capping.roentgen_typ',
+        'fuellung.strict.capping.roentgen_zeitpunkt',
+        'fuellung.strict.capping.roentgen_befund',
     ],
     nodes: [
         ...capabilityNodes,
@@ -58,6 +65,7 @@ export const treatmentFuellungGraphV1: ProcedureGraph = {
         ...fuellungMaterialDetailNodes,
         ...fuellungTechniqueNodes,
         ...fuellungAskbackNodes,
+        ...fuellungStrictEvidenceNodes,
     ],
     edges: [],
 };
@@ -77,6 +85,7 @@ const crownPrepNodes: ProcedureNode[] = buildProcedureNodesFromBundles([
 const endoNodes: ProcedureNode[] = buildProcedureNodesFromBundles([
     ...endoBundles,
     ...endoAskbackBundles,
+    ...endoStrictEvidenceBundles,
 ]);
 
 export const treatmentExtractionGraphV1: ProcedureGraph = {

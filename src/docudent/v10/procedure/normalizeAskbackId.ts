@@ -14,6 +14,14 @@ export function normalizeAskbackId(id: string): string {
         vipr: 'vitality',
         perk: 'percussion',
         perkussion: 'percussion',
+        roentgen_indikation: 'radiology_indication',
+        roentgen_typ: 'radiology_type',
+        roentgen_zeitpunkt: 'radiology_timing',
+        roentgen_befund: 'radiology_findings',
+        xray_indication: 'radiology_indication',
+        xray_type: 'radiology_type',
+        xray_timing: 'radiology_timing',
+        xray_findings: 'radiology_findings',
     };
 
     return aliasMap[key] ?? key;

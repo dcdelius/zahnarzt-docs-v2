@@ -36,12 +36,12 @@ export interface MedicalKbProvider {
     /**
      * Get the medical knowledge base.
      */
-    getMedicalKb(): MedicalKB;
+    getMedicalKb(releaseId?: string): MedicalKB;
 
     /**
      * Get metadata about the loaded KB.
      */
-    getMeta(): MedicalKbMeta;
+    getMeta(releaseId?: string): MedicalKbMeta;
 }
 
 // Re-export MedicalKB type for convenience

@@ -38,6 +38,15 @@ const TREATMENT_LABELS: Record<string, string> = {
     pzr: 'Professionelle Zahnreinigung',
 };
 
+const CANONICAL_SECTION_ORDER = [
+    'befund',
+    'aufklaerung',
+    'behandlung',
+    'leistungen',
+    'hinweise',
+    'abrechnung',
+] as const;
+
 // Billing reason enum for diagnostics
 export type BillingReasonCode =
     | 'RULES_DB_UNAVAILABLE'
@@ -169,6 +178,16 @@ export interface ComposedOutput {
         disclosureIds: string[];
         mappingKeys: string[];
     };
+}
+
+function sortSectionsByCanonicalOrder(sections: ComposedSection[]): ComposedSection[] {
+    const order = new Map<string, number>(CANONICAL_SECTION_ORDER.map((id, index) => [id, index]));
+    return [...sections].sort((left, right) => {
+        const leftOrder = order.has(left.id) ? order.get(left.id)! : Number.MAX_SAFE_INTEGER;
+        const rightOrder = order.has(right.id) ? order.get(right.id)! : Number.MAX_SAFE_INTEGER;
+        if (leftOrder !== rightOrder) return leftOrder - rightOrder;
+        return left.id.localeCompare(right.id);
+    });
 }
 
 export interface ComposeOptions {
@@ -1042,9 +1061,10 @@ export function composeOutput(
         }
     }
 
+    const sortedSections = sortSectionsByCanonicalOrder(sections);
 
     // Build full text (exclude billing section to avoid raw codes)
-    const fullTextSections = sections.filter(section => section.id !== 'abrechnung');
+    const fullTextSections = sortedSections.filter(section => section.id !== 'abrechnung');
     const fullText = fullTextSections.map(s => `[${s.label}]\n${s.content}`).join('\n\n');
 
     // Build evidence trace
@@ -1067,7 +1087,7 @@ export function composeOutput(
     }
 
     return {
-        sections,
+        sections: sortedSections,
         fullText,
         billingCodes: engineResult.billingCodes,
         warnings: engineResult.warnings,
