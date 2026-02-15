@@ -61,6 +61,35 @@ export function V10TracePanel({ treatmentId, meta, perInstance }: Props) {
     }, [meta]);
 
     const kbTreatmentMeta = meta?.kb?.treatments?.[treatmentId];
+    const billingTraceRows = useMemo(() => {
+        const origins = meta?.billingCompleteness?.origins ?? [];
+        const chipProvById = new Map<string, NonNullable<V10PipelineMeta['provenance']>['chips'][number]>();
+        for (const byTooth of perToothChipProv.values()) {
+            for (const [chipId, prov] of byTooth.entries()) {
+                if (!chipProvById.has(chipId)) {
+                    chipProvById.set(chipId, prov);
+                }
+            }
+        }
+
+        return origins
+            .map(origin => {
+                const chipId = origin.origin === 'chip.billingRef'
+                    ? origin.ref.split(':')[0]
+                    : undefined;
+                const chipProv = chipId ? chipProvById.get(chipId) : undefined;
+                return {
+                    code: origin.code,
+                    origin: origin.origin,
+                    ref: origin.ref,
+                    chipId,
+                    chipLabel: chipId ? (getChipFromKb(treatmentId, chipId)?.label ?? chipId) : '—',
+                    emittedByRuleId: chipProv?.emittedByRuleId ?? 'n/a',
+                    factSources: formatFactSources(chipProv?.factSources as unknown as string[] | undefined),
+                };
+            })
+            .sort((a, b) => `${a.code}:${a.chipId ?? ''}`.localeCompare(`${b.code}:${b.chipId ?? ''}`));
+    }, [meta, perToothChipProv, treatmentId]);
 
     return (
         <div
@@ -257,6 +286,47 @@ export function V10TracePanel({ treatmentId, meta, perInstance }: Props) {
                                     ))}
                             </div>
                         )}
+
+                        {openBilling && billingTraceRows.length > 0 && (
+                            <div style={{ display: 'grid', gap: 6, marginTop: spacing.sm }}>
+                                <div style={{ color: colors.textSecondary, fontSize: typography.caption, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                                    Code → Chip → Fakt‑Herkunft
+                                </div>
+                                {billingTraceRows.map((row, idx) => (
+                                    <div
+                                        key={`${row.code}-${row.chipId ?? 'none'}-${idx}`}
+                                        style={{
+                                            padding: '8px 10px',
+                                            borderRadius: 12,
+                                            border: `1px solid ${colors.lineDivider}`,
+                                            background: 'rgba(255,255,255,0.04)',
+                                            color: colors.textSecondary,
+                                            fontSize: typography.bodySmall,
+                                            display: 'grid',
+                                            gridTemplateColumns: '1fr 1.6fr 1.6fr',
+                                            gap: spacing.md,
+                                        }}
+                                    >
+                                        <div>
+                                            <code>{row.code}</code>
+                                            <div style={{ marginTop: 4 }}>
+                                                <code>{row.origin}</code>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>{row.chipLabel}</div>
+                                            <div style={{ marginTop: 4 }}>
+                                                <code>{row.chipId ?? row.ref}</code>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>Emitter: <code>{row.emittedByRuleId}</code></div>
+                                            <div style={{ marginTop: 4 }}>Facts: <code>{row.factSources}</code></div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     {/* Askbacks provenance */}
@@ -372,4 +442,3 @@ export function V10TracePanel({ treatmentId, meta, perInstance }: Props) {
         </div>
     );
 }
-

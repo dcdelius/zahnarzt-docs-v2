@@ -11,6 +11,9 @@ type ExtractedFallback = {
     diagnosis?: string | null;
 };
 
+type ReviewFactSource = NonNullable<V10ReviewContext['instances'][number]['factSources']>[string];
+type ReviewPill = { label: string; source: ReviewFactSource };
+
 interface V10ReviewSummaryCardProps {
     review?: V10ReviewContext;
     extractedFallback?: ExtractedFallback;
@@ -82,6 +85,13 @@ function resolveWfLabel(technique?: string) {
     return `Wurzelfüllung: ${technique}`;
 }
 
+function resolveSourceLabel(source: ReviewFactSource): string {
+    if (source === 'settings') return 'Einstellung';
+    if (source === 'askback') return 'Rückfrage';
+    if (source === 'manual') return 'Manuell';
+    return 'Diktat';
+}
+
 function buildFallbackInstance(extractedFallback: ExtractedFallback): V10ReviewContext['instances'][number] {
     const tooth = extractedFallback.tooth ? String(extractedFallback.tooth) : undefined;
     return {
@@ -146,24 +156,31 @@ export function V10ReviewSummaryCard({
                     const surfacesLabel = surfaces.length > 0 ? formatSurfaces(surfaces) : null;
 
                     const facts = inst.facts ?? {};
-                    const pills: string[] = [];
+                    const sources = inst.factSources ?? {};
+                    const pills: ReviewPill[] = [];
+                    const pushPill = (sourceKey: string, label: string | null) => {
+                        if (!label) return;
+                        pills.push({ label, source: sources[sourceKey] ?? 'dictation' });
+                    };
 
                     const anesthesiaLabel = resolveAnesthesiaLabel(facts.anesthesia as any);
-                    if (anesthesiaLabel) pills.push(anesthesiaLabel);
+                    pushPill('anesthesia', anesthesiaLabel);
 
-                    if (facts.kofferdamUsed === true || (facts.endo as any)?.kofferdam === true) pills.push('Kofferdam');
+                    if (facts.kofferdamUsed === true || (facts.endo as any)?.kofferdam === true) {
+                        pushPill('kofferdam', 'Kofferdam');
+                    }
 
                     const depthLabel = resolveCariesDepthLabel(facts.cariesDepth as any);
-                    if (depthLabel) pills.push(depthLabel);
+                    pushPill('cariesDepth', depthLabel);
 
                     const cappingLabel = resolveCappingLabel(facts);
-                    if (cappingLabel) pills.push(cappingLabel);
+                    pushPill('capping', cappingLabel);
 
                     const wlLabel = resolveWlLabel((facts.endo as any)?.workingLengthMethod);
-                    if (wlLabel) pills.push(wlLabel);
+                    pushPill('workingLengthMethod', wlLabel);
 
                     const wfLabel = resolveWfLabel((facts.endo as any)?.wfTechnique);
-                    if (wfLabel) pills.push(wfLabel);
+                    pushPill('wfTechnique', wfLabel);
 
                     const visiblePills = pills.slice(0, maxPills);
                     const standardLabels = (inst.standardChipIds ?? [])
@@ -192,12 +209,13 @@ export function V10ReviewSummaryCard({
 
                             {visiblePills.length > 0 ? (
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: spacing.sm }}>
-                                    {visiblePills.map((label) => (
+                                    {visiblePills.map((pill) => (
                                         <span
-                                            key={`${inst.instanceId}:pill:${label}`}
+                                            key={`${inst.instanceId}:pill:${pill.label}`}
                                             style={{
                                                 display: 'inline-flex',
                                                 alignItems: 'center',
+                                                gap: 8,
                                                 padding: '6px 10px',
                                                 borderRadius: radii.pill,
                                                 background: colors.surfaceGlassActive,
@@ -207,7 +225,21 @@ export function V10ReviewSummaryCard({
                                                 letterSpacing: '0.03em',
                                             }}
                                         >
-                                            {label}
+                                            <span>{pill.label}</span>
+                                            <span
+                                                style={{
+                                                    padding: '2px 6px',
+                                                    borderRadius: radii.pill,
+                                                    background: colors.surfaceGlassHover,
+                                                    color: colors.textSubtle,
+                                                    fontSize: 10,
+                                                    fontWeight: typography.semibold,
+                                                    letterSpacing: '0.08em',
+                                                    textTransform: 'uppercase',
+                                                }}
+                                            >
+                                                {resolveSourceLabel(pill.source)}
+                                            </span>
                                         </span>
                                     ))}
                                 </div>
@@ -263,4 +295,3 @@ export function V10ReviewSummaryCard({
         </motion.div>
     );
 }
-

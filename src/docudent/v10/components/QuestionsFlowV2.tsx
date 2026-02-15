@@ -70,6 +70,7 @@ export function QuestionsFlowV2({
     const allOptionalVisible = bundle.optionalVisible;
     const allOptionalHidden = bundle.optionalHidden;
     const optionalTotal = bundle.optionalTotal;
+    const hasHiddenOptional = allOptionalHidden.length > 0;
 
     // Answers counting
     const answeredRequired = allRequired.filter(q => answers.has(q.id)).length;
@@ -192,88 +193,107 @@ export function QuestionsFlowV2({
                         {/* OPTIONAL SECTION — Collapsible */}
                         {optionalTotal > 0 && (
                             <section data-testid="optional-section">
-                                <motion.button
-                                    onClick={() => setOptionalExpanded(!optionalExpanded)}
-                                    whileHover={{ y: -1 }}
-                                    whileTap={{ scale: 0.99 }}
-                                    style={{
-                                        width: '100%',
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        background: colors.surfaceGlass,
-                                        border: 'none',
-                                        borderRadius: radii.pill,
-                                        cursor: 'pointer',
-                                        padding: '12px 16px',
-                                        boxShadow: shadows.cardHover,
-                                        backdropFilter: 'blur(16px)',
-                                    }}
-                                    data-testid="optional-toggle"
-                                >
-                                    <div style={{ fontSize: typography.label, fontWeight: typography.semibold, letterSpacing: '0.14em', textTransform: 'uppercase', color: colors.textSecondary }}>
-                                        Optional ({optionalTotal})
-                                    </div>
-                                    <div style={{ fontSize: typography.caption, fontWeight: typography.semibold, color: colors.coralAccent }}>
-                                        {optionalExpanded ? 'Weniger' : `Mehr (${allOptionalHidden.length})`}
-                                    </div>
-                                </motion.button>
-
-                                <AnimatePresence>
-                                    {optionalExpanded && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: motionTokens.durationSmall }}
-                                            style={{ marginTop: spacing.md }}
+                                {hasHiddenOptional ? (
+                                    <>
+                                        <motion.button
+                                            onClick={() => setOptionalExpanded(!optionalExpanded)}
+                                            whileHover={{ y: -1 }}
+                                            whileTap={{ scale: 0.99 }}
+                                            style={{
+                                                width: '100%',
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                alignItems: 'center',
+                                                background: colors.surfaceGlass,
+                                                border: 'none',
+                                                borderRadius: radii.pill,
+                                                cursor: 'pointer',
+                                                padding: '12px 16px',
+                                                boxShadow: shadows.cardHover,
+                                                backdropFilter: 'blur(16px)',
+                                            }}
+                                            data-testid="optional-toggle"
                                         >
-                                            <div style={sectionCardStyle}>
-                                                <div style={{ display: 'grid', gap: spacing.md }}>
-                                                    {/* Visible optional */}
-                                                    {allOptionalVisible.map(question => (
-                                                        <V10QuestionRow
-                                                            key={question.id}
-                                                            question={question}
-                                                            value={answers.get(question.id)}
-                                                            onChange={(value) => onAnswer(question.id, value)}
-                                                            isMedical={question.medicalSeverity === 'soft'}
-                                                            variant="bare"
-                                                        />
-                                                    ))}
-                                                    {/* Hidden optional (revealed on expand) */}
-                                                    {allOptionalHidden.map(question => (
-                                                        <V10QuestionRow
-                                                            key={question.id}
-                                                            question={question}
-                                                            value={answers.get(question.id)}
-                                                            onChange={(value) => onAnswer(question.id, value)}
-                                                            isMedical={false}
-                                                            variant="bare"
-                                                        />
-                                                    ))}
+                                            <div style={{ fontSize: typography.label, fontWeight: typography.semibold, letterSpacing: '0.14em', textTransform: 'uppercase', color: colors.textSecondary }}>
+                                                Optional ({optionalTotal})
+                                            </div>
+                                            <div style={{ fontSize: typography.caption, fontWeight: typography.semibold, color: colors.coralAccent }}>
+                                                {optionalExpanded ? 'Weniger' : `Mehr (${allOptionalHidden.length})`}
+                                            </div>
+                                        </motion.button>
+
+                                        <AnimatePresence>
+                                            {optionalExpanded && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: 'auto', opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: motionTokens.durationSmall }}
+                                                    style={{ marginTop: spacing.md }}
+                                                >
+                                                    <div style={sectionCardStyle}>
+                                                        <div style={{ display: 'grid', gap: spacing.md }}>
+                                                            {/* Visible optional */}
+                                                            {allOptionalVisible.map(question => (
+                                                                <V10QuestionRow
+                                                                    key={question.id}
+                                                                    question={question}
+                                                                    value={answers.get(question.id)}
+                                                                    onChange={(value) => onAnswer(question.id, value)}
+                                                                    isMedical={question.medicalSeverity === 'soft'}
+                                                                    variant="bare"
+                                                                />
+                                                            ))}
+                                                            {/* Hidden optional (revealed on expand) */}
+                                                            {allOptionalHidden.map(question => (
+                                                                <V10QuestionRow
+                                                                    key={question.id}
+                                                                    question={question}
+                                                                    value={answers.get(question.id)}
+                                                                    onChange={(value) => onAnswer(question.id, value)}
+                                                                    isMedical={false}
+                                                                    variant="bare"
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+
+                                        {/* Show visible optional even when collapsed */}
+                                        {!optionalExpanded && allOptionalVisible.length > 0 && (
+                                            <div style={{ marginTop: spacing.md }}>
+                                                <div style={sectionCardStyle}>
+                                                    <div style={{ display: 'grid', gap: spacing.md }}>
+                                                        {allOptionalVisible.map(question => (
+                                                            <V10QuestionRow
+                                                                key={question.id}
+                                                                question={question}
+                                                                value={answers.get(question.id)}
+                                                                onChange={(value) => onAnswer(question.id, value)}
+                                                                isMedical={question.medicalSeverity === 'soft'}
+                                                                variant="bare"
+                                                            />
+                                                        ))}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-
-                                {/* Show visible optional even when collapsed */}
-                                {!optionalExpanded && allOptionalVisible.length > 0 && (
-                                    <div style={{ marginTop: spacing.md }}>
-                                        <div style={sectionCardStyle}>
-                                            <div style={{ display: 'grid', gap: spacing.md }}>
-                                                {allOptionalVisible.map(question => (
-                                                    <V10QuestionRow
-                                                        key={question.id}
-                                                        question={question}
-                                                        value={answers.get(question.id)}
-                                                        onChange={(value) => onAnswer(question.id, value)}
-                                                        isMedical={question.medicalSeverity === 'soft'}
-                                                        variant="bare"
-                                                    />
-                                                ))}
-                                            </div>
+                                        )}
+                                    </>
+                                ) : (
+                                    <div style={sectionCardStyle}>
+                                        <div style={{ display: 'grid', gap: spacing.md }}>
+                                            {allOptionalVisible.map(question => (
+                                                <V10QuestionRow
+                                                    key={question.id}
+                                                    question={question}
+                                                    value={answers.get(question.id)}
+                                                    onChange={(value) => onAnswer(question.id, value)}
+                                                    isMedical={question.medicalSeverity === 'soft'}
+                                                    variant="bare"
+                                                />
+                                            ))}
                                         </div>
                                     </div>
                                 )}
