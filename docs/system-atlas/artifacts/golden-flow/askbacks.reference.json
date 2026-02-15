@@ -1,0 +1,125 @@
+{
+    "_comment": "Reference askbacks for the golden flow. Each askback has exactly one chip effect.",
+    "version": "1.0.0",
+    "askbacks": [
+        {
+            "id": "adhesive_technique",
+            "question_de": "Wurde Adhäsivtechnik (Mehrschicht) angewendet?",
+            "trigger_condition": "adhesive_mentioned = true AND tooth in okklusale_molaren",
+            "severity": "hard",
+            "answers": {
+                "yes": {
+                    "chips_add": [
+                        "mehrschicht"
+                    ],
+                    "chips_remove": [
+                        "komposit_basic"
+                    ]
+                },
+                "no": {
+                    "chips_add": [
+                        "komposit_basic"
+                    ],
+                    "chips_remove": []
+                }
+            },
+            "unanswered_behavior": "BLOCK_BILLING",
+            "rationale": "Adhäsivtechnik ist MKV-relevant und darf nicht angenommen werden"
+        },
+        {
+            "id": "kofferdam_used",
+            "question_de": "Wurde Kofferdam angelegt?",
+            "trigger_condition": "always",
+            "severity": "soft",
+            "answers": {
+                "yes": {
+                    "chips_add": [
+                        "kofferdam"
+                    ],
+                    "chips_remove": [
+                        "rel_trocken"
+                    ]
+                },
+                "no": {
+                    "chips_add": [
+                        "rel_trocken"
+                    ],
+                    "chips_remove": []
+                }
+            },
+            "unanswered_behavior": "DEFAULT_TO_NO",
+            "rationale": "Kofferdam muss dokumentiert sein für BEMA 12"
+        },
+        {
+            "id": "capping_material",
+            "question_de": "Welches Material wurde für die Überkappung verwendet?",
+            "trigger_condition": "capping_performed = yes",
+            "severity": "hard",
+            "answers": {
+                "caoh": {
+                    "chips_add": [
+                        "cp"
+                    ],
+                    "context_set": {
+                        "material": "Ca(OH)₂"
+                    }
+                },
+                "mta": {
+                    "chips_add": [
+                        "cp"
+                    ],
+                    "context_set": {
+                        "material": "MTA"
+                    }
+                },
+                "biodentine": {
+                    "chips_add": [
+                        "cp"
+                    ],
+                    "context_set": {
+                        "material": "Biodentine"
+                    }
+                }
+            },
+            "unanswered_behavior": "BLOCK_BILLING",
+            "rationale": "Material muss dokumentiert werden (Forensik + Abrechnung)"
+        },
+        {
+            "id": "anesthesia_type",
+            "question_de": "Welche Anästhesie wurde durchgeführt?",
+            "trigger_condition": "anesthesia_mentioned = true AND tooth_position_ambiguous",
+            "severity": "soft",
+            "answers": {
+                "infiltration": {
+                    "chips_add": [
+                        "la_infiltr"
+                    ],
+                    "chips_remove": [
+                        "la_leitung"
+                    ]
+                },
+                "leitung": {
+                    "chips_add": [
+                        "la_leitung"
+                    ],
+                    "chips_remove": [
+                        "la_infiltr"
+                    ]
+                },
+                "none": {
+                    "chips_add": [],
+                    "chips_remove": [
+                        "la_infiltr",
+                        "la_leitung"
+                    ]
+                }
+            },
+            "unanswered_behavior": "DERIVE_FROM_TOOTH",
+            "rationale": "Typ kann meist aus Zahnposition abgeleitet werden"
+        }
+    ],
+    "severity_definitions": {
+        "hard": "Askback MUSS beantwortet werden, sonst kein Billing",
+        "soft": "Askback hat Default-Verhalten wenn unbeantwortet"
+    }
+}

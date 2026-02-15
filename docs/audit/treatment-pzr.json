@@ -1,0 +1,137 @@
+{
+    "treatmentId": "pzr",
+    "questionBank": {
+        "path": "src/docudent/core/billing/knowledgeBase/treatments/pzr/question_bank.json",
+        "questions": [
+            {
+                "key": "fluoridierung",
+                "prompt": "💧 Fluoridierung?",
+                "category": "upsell",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "ja",
+                        "label": "Ja"
+                    },
+                    {
+                        "id": "nein",
+                        "label": "Nein"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "zahnstein_bereich",
+                "prompt": "🦷 Zahnsteinbereich?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "gesamt",
+                        "label": "Gesamtes Gebiss"
+                    },
+                    {
+                        "id": "uk_front",
+                        "label": "UK Front"
+                    },
+                    {
+                        "id": "partiell",
+                        "label": "Partiell"
+                    }
+                ],
+                "when": null
+            }
+        ],
+        "questionOrder": {
+            "forensic": [
+                "zahnstein_bereich"
+            ],
+            "mkv": [],
+            "upsell": [
+                "fluoridierung"
+            ]
+        }
+    },
+    "output": {
+        "templatePath": "src/docudent/core/billing/knowledgeBase/treatments/pzr/template.json",
+        "sections": [
+            {
+                "id": "header",
+                "label": "PZR"
+            },
+            {
+                "id": "befund",
+                "label": "BEFUND"
+            },
+            {
+                "id": "behandlung",
+                "label": "BEHANDLUNG"
+            }
+        ],
+        "renderFunctions": {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+            "mainFunction": "composeOutput:562"
+        },
+        "influencingFields": {
+            "extracted": [
+                "mentioned.zahnstein_bereich"
+            ],
+            "answers": [
+                "zahnstein_bereich",
+                "fluoridierung"
+            ]
+        }
+    },
+    "goldenDictations": [
+        {
+            "dictation": "PZR gesamtes Gebiss Fluoridierung",
+            "expectedQuestions": [],
+            "expectedOutput": {
+                "header": "PZR — Professionelle Zahnreinigung",
+                "behandlung": "Zahnreinigung gesamtes Gebiss mit Fluoridierung"
+            }
+        },
+        {
+            "dictation": "Professionelle Zahnreinigung UK Front Zahnstein",
+            "expectedQuestions": [
+                "fluoridierung"
+            ],
+            "expectedOutput": {
+                "header": "PZR — Professionelle Zahnreinigung",
+                "befund": "Zahnbeläge und Zahnstein vorhanden."
+            }
+        },
+        {
+            "dictation": "PZR Air-Flow Politur",
+            "expectedQuestions": [
+                "zahnstein_bereich",
+                "fluoridierung"
+            ],
+            "expectedOutput": {
+                "header": "PZR — Professionelle Zahnreinigung",
+                "behandlung": "Air-Flow Behandlung und Politur"
+            }
+        },
+        {
+            "dictation": "Zahnreinigung partiell Oberkiefer",
+            "expectedQuestions": [
+                "fluoridierung"
+            ],
+            "expectedOutput": {
+                "header": "PZR — Professionelle Zahnreinigung",
+                "behandlung": "Partielle Zahnreinigung Oberkiefer"
+            }
+        },
+        {
+            "dictation": "PZR Mundhygieneunterweisung",
+            "expectedQuestions": [
+                "zahnstein_bereich",
+                "fluoridierung"
+            ],
+            "expectedOutput": {
+                "header": "PZR — Professionelle Zahnreinigung",
+                "behandlung": "Mundhygieneunterweisung"
+            }
+        }
+    ]
+}

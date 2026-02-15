@@ -1,0 +1,53 @@
+{
+    "gigaprompt": "G43",
+    "milestone": "m43",
+    "generated_at": "2025-12-29T22:10:00Z",
+    "status": "PARTIAL",
+    "summary": "Playwright networkidle timeout eliminated. Tests execute without infrastructure timeout.",
+    "exit_criteria_status": {
+        "no_webserver_timeout": "PASS",
+        "tests_execute_no_infra_timeout": "PASS",
+        "tests_pass_with_real_assertions": "BLOCKED",
+        "build_passes": "PASS"
+    },
+    "root_cause": {
+        "original_issue": "waitForLoadState('networkidle') never completes due to Firebase/analytics persistent connections",
+        "fix_applied": "Replaced networkidle with domcontentloaded + element-based waits + Firebase route blocking",
+        "remaining_blocker": "Login bypass not working - tests redirect to login page, login credentials work but route blocking also blocks Firebase auth"
+    },
+    "files_changed": [
+        {
+            "file": "e2e/v10-parity/v10-parity.e2e.spec.ts",
+            "action": "MODIFIED",
+            "changes": [
+                "Replaced waitForLoadState('networkidle') with domcontentloaded",
+                "Added setupRouteBlocking() for Firebase/analytics",
+                "Added waitForV10PageReady() with element-based waits",
+                "Added handleLoginIfNeeded() for auth bypass",
+                "Added captureDebugInfo() for failure diagnostics"
+            ]
+        },
+        {
+            "file": "playwright.config.ts",
+            "action": "MODIFIED",
+            "changes": [
+                "Added VITE_STUB_EXTRACTION=true to webServer build command"
+            ]
+        }
+    ],
+    "commands_run": [
+        {
+            "command": "npx playwright test e2e/v10-parity/v10-parity.e2e.spec.ts --reporter=line",
+            "result": "3 tests ran, 3 failed with assertion errors (NOT timeout)",
+            "evidence": "Tests execute in ~30s without networkidle timeout"
+        }
+    ],
+    "fix_summary": "Replaced waitForLoadState('networkidle') with element-based waits (domcontentloaded + data-testid selectors). Added Firebase/analytics route blocking. Tests now execute and fail on real assertions (login redirect issue) instead of infrastructure timeout.",
+    "why_networkidle_wrong": "Firebase/Firestore maintains persistent WebSocket connections and analytics services poll continuously. The page is fully interactive long before network goes 'idle'. Using networkidle causes indefinite waiting.",
+    "next_actions": [
+        "Fix route blocking to allow Firebase Auth while blocking Firestore/analytics",
+        "OR: Use Playwright auth state storage to avoid re-login per test",
+        "Proceed with G44 (test cluster fixes) in parallel"
+    ],
+    "atlas_status": "PASS (880 files, 48 artifacts) - 2025-12-29"
+}

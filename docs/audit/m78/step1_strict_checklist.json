@@ -1,0 +1,70 @@
+{
+    "milestone": "M78_STRICT",
+    "step": 1,
+    "status": "READY",
+    "checklist": {
+        "phase_a_inventory": [
+            "scripts/audit/inventory.ts",
+            "scripts/audit/buildImportGraph.ts",
+            "audit_runner.md"
+        ],
+        "phase_b_wiring": [
+            "src/docudent/v10/trace/traceCollector.ts",
+            "src/docudent/v7/pipeline/traceCollector.ts"
+        ],
+        "phase_c_ui_contract": [
+            "src/docudent/v10/ui/usePackUiContract.ts",
+            "src/docudent/v10/pages/DocudentV10Page.tsx"
+        ],
+        "phase_d_medical": [
+            "src/docudent/medical_kb/engine/applyMedicalKb.ts",
+            "src/docudent/medical_kb/medical_kb.v1.json"
+        ],
+        "phase_e_billing": [
+            "src/docudent/core/billing/knowledgeBase/logic/billingScopeResolver.ts",
+            "src/docudent/v10/billing/combinability/checkCombinabilityFromKb.ts"
+        ],
+        "phase_f_fixes": [
+            "src/docudent/v7/multitreatment/orchestrator.ts",
+            "src/docudent/v7/medical/extractionToFacts/maps/fuellung.v1.ts"
+        ]
+    },
+    "files_to_inspect_first": [
+        "src/docudent/v10/pipeline/runV10.ts",
+        "src/docudent/v10/pipeline/runV10Bundle.ts",
+        "src/docudent/v10/pipeline/billingEligibilityGuard.ts",
+        "src/docudent/v7/pipeline/index.ts",
+        "src/docudent/v7/pipeline/adapters/toV10Input.ts",
+        "src/docudent/v7/pipeline/adapters/fromV10Output.ts",
+        "src/docudent/v7/multitreatment/orchestrator.ts",
+        "src/docudent/v7/medical/extractionToFacts/maps/fuellung.v1.ts",
+        "src/docudent/v7/medical/extractionToFacts/maps/endo.v1.ts",
+        "src/docudent/v7/medical/extractionToFacts/maps/shared.v1.ts",
+        "src/docudent/v7/medical/types.ts",
+        "src/docudent/v7/components/MultiInstancePanel.tsx",
+        "src/docudent/medical_kb/engine/applyMedicalKb.ts",
+        "src/docudent/medical_kb/medical_kb.v1.json",
+        "src/docudent/v7/output/renderFromKbChips.ts",
+        "src/docudent/v10/billing/combinability/checkCombinabilityFromKb.ts",
+        "src/docudent/core/billing/knowledgeBase/logic/billingScopeResolver.ts",
+        "src/docudent/v10/pages/DocudentV10Page.tsx",
+        "src/docudent/v7/pages/DocudentV7Page.tsx",
+        "src/docudent/v6/services/chipProvenanceBuilder.ts",
+        "src/docudent/v6/services/outputService.ts",
+        "src/docudent/contracts/canonicalIds.ts",
+        "src/docudent/contracts/questionEngineTypes.ts",
+        "src/docudent/core/extraction/adapters/llmExtractorAdapter.ts",
+        "src/docudent/v10/trace/traceCollector.ts",
+        "src/docudent/v7/__fixtures__/wiring/fuellung_01_standard.json",
+        "src/docudent/v7/__fixtures__/wiring/endo_01_missing_wl_method.json",
+        "src/docudent/__tests__/gates/gate-v10-parity-ui-vs-replay.test.ts",
+        "src/docudent/__tests__/gates/gate-v7-ssot-boundaries.test.ts",
+        "src/docudent/__tests__/gates/gate-no-hardcoded-chip-ids.test.ts",
+        "src/docudent/v7/__tests__/gates/gate-m12_4-no-core-services-imports.test.ts",
+        "src/docudent/v7/pipeline/__tests__/no-logic.test.ts",
+        "src/docudent/v7/pipeline/__tests__/reality-integration.test.ts",
+        "scripts/audit/inventory.ts",
+        "scripts/audit/buildImportGraph.ts"
+    ],
+    "start_action": "Proceeding to Phase A (Inventory + Reachability Redo)"
+}

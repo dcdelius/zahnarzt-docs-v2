@@ -1,0 +1,59 @@
+{
+    "gigaprompt": "G45",
+    "milestone": "m45",
+    "generated_at": "2025-12-29T23:35:00Z",
+    "status": "PASS_REPORT_MODE",
+    "summary": "V7 consolidation gate passes in report mode. V10 pages clean.",
+    "exit_criteria_status": {
+        "v7_refs_in_v10_ui": 9,
+        "target": 0,
+        "gate_mode": "REPORT (not ENFORCE)"
+    },
+    "v7_refs_found": {
+        "location": "src/docudent/v10/components/index.ts",
+        "reason": "Migration barrel - explicitly re-exports V7 components for gradual migration",
+        "items": [
+            "SoftGradientBackground (shared visual)",
+            "HeroSculpture (shared visual)",
+            "QuestionsFlowV2 (flow component)",
+            "QuestionsFlow (legacy)",
+            "OutputFlow (flow component)",
+            "MultiOutputRenderer (flow component)",
+            "MultiInstancePanel (flow component)",
+            "TreatmentInstance (type)",
+            "UiStep (type)"
+        ]
+    },
+    "analysis": {
+        "direct_v7_imports_in_v10_pages": 0,
+        "v7_refs_through_barrel": 9,
+        "assessment": "V10 pages are clean. The barrel is a deliberate migration shim that can be cleaned up incrementally."
+    },
+    "migration_priority": {
+        "high": [
+            "QuestionsFlowV2",
+            "OutputFlow"
+        ],
+        "medium": [
+            "MultiOutputRenderer",
+            "MultiInstancePanel"
+        ],
+        "low": [
+            "SoftGradientBackground",
+            "HeroSculpture (shared visuals OK to keep)"
+        ],
+        "keep": [
+            "TreatmentInstance type",
+            "UiStep type (types are OK)"
+        ]
+    },
+    "commands_run": [
+        "npx vitest run gate-no-imports-from-v7-in-v10-ui"
+    ],
+    "next_steps": [
+        "Switch gate from report to enforce mode when ready",
+        "Move flow components to V10 native implementation",
+        "Consider moving shared visuals to src/docudent/ui/shared/"
+    ],
+    "atlas_status": "PASS"
+}

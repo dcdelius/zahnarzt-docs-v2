@@ -1,0 +1,19 @@
+{
+    "gigaprompt": "G66",
+    "milestone": "m66",
+    "generated_at": "2025-12-30T07:45:00Z",
+    "status": "PLANNING",
+    "summary": "V10 UI end-to-end functionality needs verification",
+    "verification_targets": [
+        "Deep filling triggers medical askback",
+        "Questions render when state=questions",
+        "Output renders when state=output",
+        "Billing block shows resolved catalog entries"
+    ],
+    "plan": {
+        "step1": "Confirm pipeline hook used by DocudentV10Page",
+        "step2": "Trace output shape through normalizer",
+        "step3": "Fix UI flow (QuestionsFlow, OutputFlow)",
+        "step4": "Add 2 integration tests for askbacks + billing"
+    }
+}

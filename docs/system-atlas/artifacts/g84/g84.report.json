@@ -1,0 +1,13 @@
+{
+    "gigaprompt": "G84",
+    "milestone": "m84",
+    "generated_at": "2025-12-30T08:28:00Z",
+    "status": "PLANNING",
+    "summary": "Wiring Graph v3 + Gears Map + V10 verification",
+    "deliverables": {
+        "wiring_script": "scripts/systemAtlas/generateWiringGraphV3.ts",
+        "wiring_output": "docs/system-atlas/artifacts/g84/wiring.graph.v3.json",
+        "gears_md": "docs/system-atlas/gears.md",
+        "e2e_test": "Playwright test for askbacks + billing in V10 UI"
+    }
+}

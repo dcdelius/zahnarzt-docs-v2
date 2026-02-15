@@ -1,0 +1,651 @@
+{
+    "_meta": {
+        "version": "1.0",
+        "description": "Golden Master fixtures for Füllung flow",
+        "lastUpdated": "2025-12-12"
+    },
+    "cases": [
+        {
+            "id": "gkv_1_surface",
+            "name": "GKV Standard 1 Fläche",
+            "input": {
+                "dictation": "Zahn 36 okklusal Caries media Kofferdam Infiltrationsanästhesie",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "o"
+                    ],
+                    "diagnosis": "Caries media"
+                },
+                "billingCodes": [
+                    "BEMA_13a"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "gkv_2_surfaces",
+            "name": "GKV Standard 2 Flächen",
+            "input": {
+                "dictation": "36 mo Caries media LA Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_13b"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "gkv_3_surfaces",
+            "name": "GKV Standard 3 Flächen (MOD)",
+            "input": {
+                "dictation": "36 mod tief Kofferdam Leitung",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_13c"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "gkv_4_surfaces",
+            "name": "GKV Standard 4+ Flächen",
+            "input": {
+                "dictation": "36 modb Caries profunda Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d",
+                        "b"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_13d"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "mkv_mehrschicht",
+            "name": "MKV Mehrschichttechnik",
+            "input": {
+                "dictation": "36 mod Kofferdam LA Mehrschichttechnik",
+                "insuranceType": "GKV",
+                "hasMKV": true,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_13c",
+                    "GOZ_2197"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "pkv_1_surface",
+            "name": "PKV 1 Fläche",
+            "input": {
+                "dictation": "15 okklusal Caries media Kofferdam",
+                "insuranceType": "PKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "15",
+                    "surfaces": [
+                        "o"
+                    ]
+                },
+                "billingCodes": [
+                    "GOZ_2080"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "pkv_3_surfaces",
+            "name": "PKV 3 Flächen",
+            "input": {
+                "dictation": "16 mod Kofferdam LA profunda",
+                "insuranceType": "PKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "16",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "billingCodes": [
+                    "GOZ_2100"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "pkv_cp",
+            "name": "PKV mit Capping",
+            "input": {
+                "dictation": "26 mod profunda CP mit Calcium Hydroxid Kofferdam LA",
+                "insuranceType": "PKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "26",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "billingCodes": [
+                    "GOZ_2100",
+                    "GOZ_2330"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "normalizer_german_word",
+            "name": "Normalizer: Deutsches Zahlwort",
+            "input": {
+                "dictation": "sechsunddreißig mod Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_13c"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "normalizer_spoken_pair",
+            "name": "Normalizer: Gesprochenes Paar (eins eins)",
+            "input": {
+                "dictation": "eins eins okklusal Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "11",
+                    "surfaces": [
+                        "o"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_13a"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "normalizer_whisper_error",
+            "name": "Normalizer: Whisper-Fehler (110 → 11)",
+            "input": {
+                "dictation": "110 mesial Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "11",
+                    "surfaces": [
+                        "m"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_13a"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "normalizer_hyphen",
+            "name": "Normalizer: Bindestrich (3-6 → 36)",
+            "input": {
+                "dictation": "3-6 mod Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_13c"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "uk_molar_leitung",
+            "name": "UK Molar → Leitungsanästhesie",
+            "input": {
+                "dictation": "36 mod Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_41a",
+                    "BEMA_12",
+                    "BEMA_13c"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "ok_infiltration",
+            "name": "OK → Infiltrationsanästhesie",
+            "input": {
+                "dictation": "16 mod Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "16",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "billingCodes": [
+                    "BEMA_40",
+                    "BEMA_12",
+                    "BEMA_13c"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "missing_vitality",
+            "name": "Fehlende Vitalität → Forensik-Frage",
+            "input": {
+                "dictation": "36 mod Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ]
+                },
+                "generatesQuestion": "vitality",
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "vitality_positive",
+            "name": "Vitalität positiv diktiert",
+            "input": {
+                "dictation": "36 mod vital Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ],
+                    "mentioned": {
+                        "vitality": "+"
+                    }
+                },
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "vitality_negative",
+            "name": "Vitalität negativ diktiert",
+            "input": {
+                "dictation": "36 mod devital Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ],
+                    "mentioned": {
+                        "vitality": "-"
+                    }
+                },
+                "containsWarnings": true,
+                "warningContains": "devital"
+            }
+        },
+        {
+            "id": "kofferdam_explicit",
+            "name": "Kofferdam explizit erwähnt",
+            "input": {
+                "dictation": "36 mod Kofferdam angelegt LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ],
+                    "mentioned": {
+                        "kofferdam": true
+                    }
+                },
+                "billingCodes": [
+                    "BEMA_12"
+                ],
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "relative_trockenlegung",
+            "name": "Relative Trockenlegung (kein Kofferdam)",
+            "input": {
+                "dictation": "36 mod relative Trockenlegung LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ],
+                    "mentioned": {
+                        "kofferdam": false
+                    }
+                },
+                "notContainsBillingCode": "BEMA_12",
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "profunda_cp_required",
+            "name": "Caries profunda → CP Frage",
+            "input": {
+                "dictation": "36 mod Caries profunda Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ],
+                    "diagnosis": "Caries profunda"
+                },
+                "generatesQuestion": "capping",
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "text_length_kurz",
+            "name": "Textlänge: Kurz",
+            "input": {
+                "dictation": "36 mod Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "kurz"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36"
+                },
+                "textLengthAffectsOutput": true
+            }
+        },
+        {
+            "id": "text_length_lang",
+            "name": "Textlänge: Lang",
+            "input": {
+                "dictation": "36 mod Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "lang"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36"
+                },
+                "textLengthAffectsOutput": true
+            }
+        },
+        {
+            "id": "gkv_no_mkv",
+            "name": "GKV ohne MKV → kein GOZ",
+            "input": {
+                "dictation": "36 mod Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "36"
+                },
+                "notContainsBillingCode": "GOZ_",
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "pkv_no_bema",
+            "name": "PKV → kein BEMA",
+            "input": {
+                "dictation": "16 mod Kofferdam LA",
+                "insuranceType": "PKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "16"
+                },
+                "notContainsBillingCode": "BEMA_",
+                "containsWarnings": false
+            }
+        },
+        {
+            "id": "upsell_fluoride_gkv",
+            "name": "Upsell: Fluoridierung bei GKV",
+            "input": {
+                "dictation": "36 mod Kofferdam LA",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "generatesUpsellQuestion": true
+            }
+        },
+        {
+            "id": "quadrant_1",
+            "name": "Quadrant 1 (OK rechts)",
+            "input": {
+                "dictation": "15 mo Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "15"
+                },
+                "toothQuadrant": 1
+            }
+        },
+        {
+            "id": "quadrant_2",
+            "name": "Quadrant 2 (OK links)",
+            "input": {
+                "dictation": "25 mo Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "25"
+                },
+                "toothQuadrant": 2
+            }
+        },
+        {
+            "id": "quadrant_3",
+            "name": "Quadrant 3 (UK links)",
+            "input": {
+                "dictation": "35 mo Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "35"
+                },
+                "toothQuadrant": 3
+            }
+        },
+        {
+            "id": "quadrant_4",
+            "name": "Quadrant 4 (UK rechts)",
+            "input": {
+                "dictation": "45 mo Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "45"
+                },
+                "toothQuadrant": 4
+            }
+        },
+        {
+            "id": "anterior_tooth",
+            "name": "Frontzahn (11)",
+            "input": {
+                "dictation": "11 mesial Kofferdam",
+                "insuranceType": "GKV",
+                "hasMKV": false,
+                "textLength": "mittel"
+            },
+            "expected": {
+                "extracted": {
+                    "tooth": "11",
+                    "surfaces": [
+                        "m"
+                    ]
+                }
+            }
+        }
+    ]
+}

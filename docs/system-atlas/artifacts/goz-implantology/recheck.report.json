@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-12-30T16:55:00.000Z",
+  "stats": {
+    "total_8xxx_found_in_html": 11,
+    "added_to_catalog": 0,
+    "already_present_in_catalog": 11,
+    "expected_but_missing_from_source": 8
+  },
+  "added_codes": [],
+  "present_codes": [
+    "GOZ_8000",
+    "GOZ_8010",
+    "GOZ_8020",
+    "GOZ_8030",
+    "GOZ_8035",
+    "GOZ_8050",
+    "GOZ_8060",
+    "GOZ_8065",
+    "GOZ_8080",
+    "GOZ_8090",
+    "GOZ_8100"
+  ],
+  "missing_from_source_html": [],
+  "note": "The missing codes were listed in allowlist.json as HIGH priority to add, but corresponding HTML files were not found in 'docs/GOZ NEU'. No extraction possible."
+}

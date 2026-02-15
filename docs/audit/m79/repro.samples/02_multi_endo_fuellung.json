@@ -1,0 +1,41 @@
+{
+    "version": "1.0.0",
+    "runId": "repro-multi-endo-fuellung",
+    "timestamp": "2025-12-29T17:45:00Z",
+    "input": {
+        "dictation": "Ich habe eine Wurzelfüllung an Zahn 1.4 mit zwei Kanälen, 18 mm, und danach eine Kompositfüllung okklusal gemacht, mit Mehrschichttechnik, ohne Anästhesie.",
+        "treatmentId": "endo",
+        "insuranceType": "GKV",
+        "textLength": "medium",
+        "hasMKV": false,
+        "answers": {}
+    },
+    "expected": {
+        "state_sequence": [
+            "questions",
+            "output"
+        ],
+        "instances": [
+            {
+                "treatmentId": "endo",
+                "tooth": "14"
+            },
+            {
+                "treatmentId": "fuellung",
+                "tooth": "14"
+            }
+        ],
+        "negation_scope": {
+            "ohne_anaesthesie_applies_to": "fuellung",
+            "endo_should_ask_la": true
+        },
+        "chips_must_include": [
+            "wf_lateral",
+            "mehrschicht"
+        ],
+        "chips_must_exclude_for_fuellung": [
+            "la_infiltration",
+            "la_leitungsanaesthesie"
+        ]
+    }
+}

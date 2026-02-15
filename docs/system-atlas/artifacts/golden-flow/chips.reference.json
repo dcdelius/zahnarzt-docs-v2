@@ -1,0 +1,77 @@
+{
+    "_comment": "Reference chips for the golden flow case (36 okklusal adhäsiv, 14 distal einfach)",
+    "version": "1.0.0",
+    "case_id": "golden_flow_001",
+    "chips_per_tooth": {
+        "36": {
+            "description": "Okklusale Kompositfüllung mit Adhäsivtechnik",
+            "chips": [
+                {
+                    "id": "la_leitung",
+                    "trigger": "UK Seitenzahn + anesthesia_mentioned",
+                    "automatic": true
+                },
+                {
+                    "id": "rel_trocken",
+                    "trigger": "kofferdam_mentioned: false (default)",
+                    "automatic": true
+                },
+                {
+                    "id": "exkavation",
+                    "trigger": "always for fuellung",
+                    "automatic": true
+                },
+                {
+                    "id": "mehrschicht",
+                    "trigger": "askback: adhesive_technique = yes",
+                    "automatic": false,
+                    "requires_askback": "adhesive_technique"
+                },
+                {
+                    "id": "finishing",
+                    "trigger": "always",
+                    "automatic": true
+                }
+            ]
+        },
+        "14": {
+            "description": "Distale einfache Kompositfüllung",
+            "chips": [
+                {
+                    "id": "la_infiltr",
+                    "trigger": "OK + anesthesia_mentioned",
+                    "automatic": true
+                },
+                {
+                    "id": "rel_trocken",
+                    "trigger": "kofferdam_mentioned: false (default)",
+                    "automatic": true
+                },
+                {
+                    "id": "exkavation",
+                    "trigger": "always for fuellung",
+                    "automatic": true
+                },
+                {
+                    "id": "komposit_basic",
+                    "trigger": "no adhesive marker for this tooth",
+                    "automatic": true
+                },
+                {
+                    "id": "finishing",
+                    "trigger": "always",
+                    "automatic": true
+                }
+            ]
+        }
+    },
+    "all_chips_flat": [
+        "la_leitung",
+        "la_infiltr",
+        "rel_trocken",
+        "exkavation",
+        "mehrschicht",
+        "komposit_basic",
+        "finishing"
+    ]
+}

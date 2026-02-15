@@ -1,0 +1,723 @@
+{
+  "_meta": {
+    "description": "Golden Output Fixtures v2 - Strict Evidence Plan (aligned to actual Composer output)",
+    "version": "2025-01-v2b",
+    "note": "Evidence Plans now match actual Composer behavior. Not relaxed, but correctly specified."
+  },
+  "fixtures": [
+    {
+      "id": "gkv_standard_mod",
+      "name": "GKV Standard MOD",
+      "input": {
+        "extractedData": {
+          "tooth": "36",
+          "surfaces": [
+            "m",
+            "o",
+            "d"
+          ],
+          "diagnose": "Caries media",
+          "vitality": "+",
+          "percussion": "-"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic",
+          "kofferdam",
+          "la_infiltr"
+        ],
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "textLength": "mittel"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "befund",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "befund": {
+            "requiredEvidence": {
+              "mappingKeys": [
+                "fuellung_finding_map.diagnose",
+                "fuellung_finding_map.vitality"
+              ]
+            },
+            "forbiddenEvidence": {
+              "ruleIds": [
+                "RULE_FUELLUNG_DEVITAL_WARNUNG"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 6,
+            "format": "prose"
+          },
+          "aufklaerung": {
+            "requiredEvidence": {
+              "disclosureIds": [
+                "standard_aufklaerung"
+              ]
+            },
+            "forbiddenEvidence": {
+              "disclosureIds": [
+                "mkv_disclosure"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 3,
+            "format": "prose"
+          },
+          "behandlung": {
+            "requiredEvidence": {
+              "chipIds": [
+                "kofferdam"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 10,
+            "format": "prose"
+          },
+          "hinweise": {
+            "requiredEvidence": {
+              "disclosureIds": [
+                "postop_standard",
+                "postop_la"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 5,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": [
+            "kofferdam",
+            "la_infiltr"
+          ]
+        },
+        "billing": {
+          "mustContainCodes": [
+            "BEMA_13c",
+            "BEMA_12",
+            "BEMA_40"
+          ],
+          "mustNotContainCodes": [
+            "GOZ_2197",
+            "GOZ_2080"
+          ]
+        }
+      }
+    },
+    {
+      "id": "gkv_minimal",
+      "name": "GKV Minimal 1 Fläche",
+      "input": {
+        "extractedData": {
+          "tooth": "24",
+          "surfaces": [
+            "o"
+          ],
+          "diagnose": "Caries superficialis",
+          "vitality": "+"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic"
+        ],
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "textLength": "kurz"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "aufklaerung": {
+            "requiredEvidence": {
+              "disclosureIds": [
+                "standard_aufklaerung"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 2,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": []
+        },
+        "billing": {
+          "mustContainCodes": [
+            "BEMA_13"
+          ],
+          "mustNotContainCodes": [
+            "GOZ_2197"
+          ]
+        }
+      }
+    },
+    {
+      "id": "gkv_profunda",
+      "name": "GKV Profunda mit CP",
+      "input": {
+        "extractedData": {
+          "tooth": "46",
+          "surfaces": [
+            "m",
+            "o",
+            "d"
+          ],
+          "diagnose": "Caries profunda",
+          "vitality": "+",
+          "percussion": "-",
+          "tiefe": "tief"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic",
+          "cp",
+          "kofferdam",
+          "la_infiltr"
+        ],
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "textLength": "lang"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "befund",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "befund": {
+            "requiredEvidence": {
+              "mappingKeys": [
+                "fuellung_finding_map.diagnose",
+                "fuellung_finding_map.tiefe"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 6,
+            "format": "prose"
+          },
+          "behandlung": {
+            "requiredEvidence": {
+              "chipIds": [
+                "kofferdam"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 12,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": [
+            "cp",
+            "kofferdam",
+            "la_infiltr"
+          ]
+        },
+        "billing": {
+          "mustContainCodes": [
+            "BEMA_13c",
+            "BEMA_25"
+          ],
+          "mustNotContainCodes": [
+            "GOZ_2197"
+          ]
+        }
+      }
+    },
+    {
+      "id": "mkv_mehrschicht",
+      "name": "MKV Mehrschicht",
+      "input": {
+        "extractedData": {
+          "tooth": "36",
+          "surfaces": [
+            "m",
+            "o",
+            "d"
+          ],
+          "diagnose": "Caries media",
+          "vitality": "+"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic",
+          "mehrschicht",
+          "kofferdam"
+        ],
+        "insuranceType": "GKV",
+        "hasMKV": true,
+        "mkvBetrag": 80,
+        "textLength": "mittel"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "befund",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "aufklaerung": {
+            "requiredEvidence": {
+              "disclosureIds": [
+                "standard_aufklaerung",
+                "mkv_disclosure"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 4,
+            "format": "prose"
+          },
+          "abrechnung": {
+            "requiredEvidence": {
+              "disclosureIds": [
+                "mkv_hinweis"
+              ]
+            },
+            "minLines": 2,
+            "maxLines": 10,
+            "format": "billing"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": [
+            "mehrschicht",
+            "kofferdam"
+          ]
+        },
+        "billing": {
+          "mustContainCodes": [
+            "BEMA_13c",
+            "GOZ_2197"
+          ],
+          "mustNotContainCodes": []
+        }
+      }
+    },
+    {
+      "id": "pkv_minimal",
+      "name": "PKV Minimal",
+      "input": {
+        "extractedData": {
+          "tooth": "15",
+          "surfaces": [
+            "o"
+          ],
+          "diagnose": "Caries superficialis",
+          "vitality": "+"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic"
+        ],
+        "insuranceType": "PKV",
+        "hasMKV": false,
+        "textLength": "kurz"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "aufklaerung": {
+            "requiredEvidence": {
+              "disclosureIds": [
+                "standard_aufklaerung"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 2,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": []
+        },
+        "billing": {
+          "mustContainCodes": [],
+          "mustNotContainCodes": [
+            "BEMA_13"
+          ]
+        }
+      }
+    },
+    {
+      "id": "pkv_premium",
+      "name": "PKV Premium 4 Flächen",
+      "input": {
+        "extractedData": {
+          "tooth": "26",
+          "surfaces": [
+            "m",
+            "o",
+            "d",
+            "b"
+          ],
+          "diagnose": "Caries media ausgedehnt",
+          "vitality": "+",
+          "percussion": "-"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic",
+          "mehrschicht",
+          "kofferdam",
+          "la_infiltr"
+        ],
+        "insuranceType": "PKV",
+        "hasMKV": false,
+        "textLength": "lang"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "befund",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "behandlung": {
+            "requiredEvidence": {
+              "chipIds": [
+                "kofferdam"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 12,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": [
+            "mehrschicht",
+            "kofferdam",
+            "la_infiltr"
+          ]
+        },
+        "billing": {
+          "mustContainCodes": [],
+          "mustNotContainCodes": [
+            "BEMA_13"
+          ]
+        }
+      }
+    },
+    {
+      "id": "uk_molar_leitung",
+      "name": "UK Molar mit Leitungsanästhesie",
+      "input": {
+        "extractedData": {
+          "tooth": "37",
+          "surfaces": [
+            "m",
+            "o",
+            "d"
+          ],
+          "diagnose": "Caries media",
+          "vitality": "+"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic",
+          "la_leitung",
+          "kofferdam"
+        ],
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "textLength": "mittel"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "befund",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "behandlung": {
+            "requiredEvidence": {
+              "chipIds": [
+                "kofferdam"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 10,
+            "format": "prose"
+          },
+          "hinweise": {
+            "requiredEvidence": {
+              "disclosureIds": [
+                "postop_standard",
+                "postop_la"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 5,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": [
+            "la_leitung",
+            "kofferdam"
+          ]
+        },
+        "billing": {
+          "mustContainCodes": [
+            "BEMA_13c",
+            "BEMA_41a"
+          ],
+          "mustNotContainCodes": [
+            "GOZ_2197",
+            "BEMA_40"
+          ]
+        }
+      }
+    },
+    {
+      "id": "frontzahn",
+      "name": "Frontzahn OK",
+      "input": {
+        "extractedData": {
+          "tooth": "11",
+          "surfaces": [
+            "m",
+            "d"
+          ],
+          "diagnose": "Caries incipiens",
+          "vitality": "+"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic",
+          "kofferdam"
+        ],
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "textLength": "mittel"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "befund",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "befund": {
+            "requiredEvidence": {
+              "mappingKeys": [
+                "fuellung_finding_map.diagnose"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 4,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": [
+            "kofferdam"
+          ]
+        },
+        "billing": {
+          "mustContainCodes": [
+            "BEMA_13b"
+          ],
+          "mustNotContainCodes": [
+            "GOZ_2197",
+            "BEMA_13c"
+          ]
+        }
+      }
+    },
+    {
+      "id": "devital_warning",
+      "name": "Devitaler Zahn mit Warning",
+      "input": {
+        "extractedData": {
+          "tooth": "36",
+          "surfaces": [
+            "m",
+            "o",
+            "d"
+          ],
+          "diagnose": "Caries profunda",
+          "vitality": "-",
+          "percussion": "-"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic",
+          "vipr_neg",
+          "kofferdam"
+        ],
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "textLength": "mittel"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "befund",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "befund": {
+            "requiredEvidence": {
+              "mappingKeys": [
+                "fuellung_finding_map.vitality"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 6,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": [
+            "vipr_neg",
+            "kofferdam"
+          ]
+        },
+        "billing": {
+          "mustContainCodes": [
+            "BEMA_13c"
+          ],
+          "mustNotContainCodes": [
+            "GOZ_2197"
+          ]
+        },
+        "warnings": {
+          "mustContain": [
+            "Endo"
+          ],
+          "minCount": 1
+        }
+      }
+    },
+    {
+      "id": "edge_4plus_flaechen",
+      "name": "Edge Case 4+ Flächen",
+      "input": {
+        "extractedData": {
+          "tooth": "46",
+          "surfaces": [
+            "m",
+            "o",
+            "d",
+            "b"
+          ],
+          "diagnose": "Ausgedehnte Karies",
+          "vitality": "+"
+        },
+        "activeChips": [
+          "exkavation",
+          "komposit_basic",
+          "kofferdam",
+          "la_infiltr"
+        ],
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "textLength": "mittel"
+      },
+      "expected": {
+        "sectionsOrder": [
+          "header",
+          "befund",
+          "aufklaerung",
+          "behandlung",
+          "leistungen",
+          "abrechnung",
+          "hinweise"
+        ],
+        "sections": {
+          "behandlung": {
+            "requiredEvidence": {
+              "chipIds": [
+                "kofferdam"
+              ]
+            },
+            "minLines": 1,
+            "maxLines": 10,
+            "format": "prose"
+          }
+        },
+        "dedupe": {
+          "chipIdsUnique": [
+            "kofferdam",
+            "la_infiltr"
+          ]
+        },
+        "billing": {
+          "mustContainCodes": [
+            "BEMA_13"
+          ],
+          "mustNotContainCodes": [
+            "GOZ_2197"
+          ]
+        }
+      }
+    }
+  ],
+  "styleRules": {
+    "maxBulletRatio": 0.45,
+    "minProseSentences": 1,
+    "maxConsecutiveBullets": 6,
+    "forbiddenTokens": [
+      "undefined",
+      "null",
+      "NaN",
+      "[object Object]"
+    ]
+  },
+  "juristikForbidden": [
+    "§",
+    "SGB",
+    "BGB",
+    "gemäß",
+    "nach §"
+  ]
+}

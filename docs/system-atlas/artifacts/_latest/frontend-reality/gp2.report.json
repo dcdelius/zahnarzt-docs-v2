@@ -1,0 +1,34 @@
+{
+    "gp": "GP2/6",
+    "title": "Frontend Reality Smoke",
+    "date": "2025-12-31",
+    "status": "PASS",
+    "test_file": "v10/__tests__/ui/v10.reality.smoke.test.tsx",
+    "tests": {
+        "basic_pipeline_flow": {
+            "single_tooth_dictation": "PASS",
+            "questions_when_unknown": "PASS",
+            "output_when_answered": "PASS"
+        },
+        "multi_step_answers": {
+            "update_after_answering": "PASS"
+        },
+        "ssot_contract": {
+            "no_hardcoded_billing_in_text": "PASS",
+            "billing_as_separate_refs": "PASS"
+        },
+        "total": {
+            "tests": 6,
+            "passed": 6
+        }
+    },
+    "warnings": [
+        "Askback 'medical_ueberkappung' not found - needs KB update"
+    ],
+    "verified_flows": [
+        "Dictation → Facts → Pipeline",
+        "Golden mode triggers askbacks",
+        "Answers update state",
+        "SSOT: no inline billing codes"
+    ]
+}

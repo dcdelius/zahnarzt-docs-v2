@@ -1,0 +1,17 @@
+{
+    "gigaprompt": "G58",
+    "milestone": "m58",
+    "generated_at": "2025-12-30T00:16:00Z",
+    "status": "FOUNDATION_EXISTS",
+    "summary": "Wiring v2 exists. V3 and gears.md need implementation.",
+    "current_state": {
+        "wiring_v2_nodes": 22,
+        "wiring_v2_edges": 21,
+        "gears_md_exists": false
+    },
+    "plan": {
+        "script": "scripts/systemAtlas/generateWiringV3.ts",
+        "output": "docs/system-atlas/wiring.graph.v3.json",
+        "docs": "docs/system-atlas/gears.md"
+    }
+}

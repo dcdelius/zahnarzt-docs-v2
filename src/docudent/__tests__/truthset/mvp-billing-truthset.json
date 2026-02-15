@@ -1,0 +1,305 @@
+{
+    "_meta": {
+        "description": "MVP Billing Truthset - 20 realistic Füllung cases",
+        "version": "1.0.0",
+        "created": "2026-01-01",
+        "schema": {
+            "id": "unique case ID",
+            "dictation": "raw German dictation input",
+            "insuranceType": "GKV | PKV | MKV",
+            "expectedBase": "BEMA codes expected",
+            "expectedAddon": "GOZ addon codes (MKV only)",
+            "surfaces": "expected surfaces extraction"
+        }
+    },
+    "cases": [
+        {
+            "id": "gkv_1fl_okklusal",
+            "dictation": "Füllung Zahn 36 okklusal Komposit",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "o"
+            ]
+        },
+        {
+            "id": "gkv_2fl_mod",
+            "dictation": "Füllung Zahn 46 mesial okklusal Komposit Kofferdam",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13b",
+                "BEMA_12"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "m",
+                "o"
+            ]
+        },
+        {
+            "id": "gkv_3fl_mod",
+            "dictation": "Füllung Zahn 14 mod Komposit",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ]
+        },
+        {
+            "id": "gkv_4fl_modbv",
+            "dictation": "Füllung Zahn 26 mesial okklusal distal bukkal Komposit",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b"
+            ]
+        },
+        {
+            "id": "pkv_1fl_distal",
+            "dictation": "Füllung Zahn 17 distal Komposit",
+            "insuranceType": "PKV",
+            "expectedBase": [
+                "GOZ_2060"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "d"
+            ]
+        },
+        {
+            "id": "pkv_2fl_od",
+            "dictation": "Füllung Zahn 36 okklusal distal Komposit Adhäsiv",
+            "insuranceType": "PKV",
+            "expectedBase": [
+                "GOZ_2080"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "o",
+                "d"
+            ]
+        },
+        {
+            "id": "pkv_3fl_mod_kofferdam",
+            "dictation": "Füllung Zahn 46 mod Komposit mit Kofferdam",
+            "insuranceType": "PKV",
+            "expectedBase": [
+                "GOZ_2100",
+                "GOZ_2040"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ]
+        },
+        {
+            "id": "mkv_1fl_ohne_mehrkosten",
+            "dictation": "Füllung Zahn 36 okklusal",
+            "insuranceType": "MKV",
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "o"
+            ],
+            "comments": "No Mehrkosten keyword → only BEMA base"
+        },
+        {
+            "id": "mkv_1fl_mit_mehrkosten",
+            "dictation": "Füllung Zahn 36 okklusal Komposit Mehrkosten",
+            "insuranceType": "MKV",
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [
+                "GOZ_2060"
+            ],
+            "surfaces": [
+                "o"
+            ],
+            "comments": "Mehrkosten keyword → BEMA + GOZ"
+        },
+        {
+            "id": "mkv_2fl_mit_komposit",
+            "dictation": "Füllung Zahn 46 od Komposit",
+            "insuranceType": "MKV",
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": [
+                "GOZ_2080"
+            ],
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "comments": "Komposit keyword triggers addon"
+        },
+        {
+            "id": "mkv_3fl_mit_adhesiv",
+            "dictation": "Füllung Zahn 14 mod Adhäsivtechnik",
+            "insuranceType": "MKV",
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ],
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "comments": "Adhäsiv triggers addon"
+        },
+        {
+            "id": "gkv_giz_1fl",
+            "dictation": "Füllung Zahn 75 okklusal Glasionomerzement",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "o"
+            ],
+            "comments": "Milchzahn GIZ"
+        },
+        {
+            "id": "gkv_profunda_capping",
+            "dictation": "Füllung Zahn 36 okklusal Komposit Caries profunda direkte Überkappung Ca(OH)2",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13",
+                "BEMA_cp"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "o"
+            ],
+            "comments": "Profunda mit Überkappung"
+        },
+        {
+            "id": "gkv_kofferdam_2fl",
+            "dictation": "Füllung Zahn 46 od Komposit Kofferdam",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13b",
+                "BEMA_12"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "comments": "Kofferdam adds BEMA_12"
+        },
+        {
+            "id": "pkv_4fl_plus",
+            "dictation": "Füllung Zahn 26 mesial okklusal distal bukkal lingual Komposit",
+            "insuranceType": "PKV",
+            "expectedBase": [
+                "GOZ_2120"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b",
+                "l"
+            ],
+            "comments": "5 surfaces → 4+ mapping"
+        },
+        {
+            "id": "gkv_amalgam_1fl",
+            "dictation": "Füllung Zahn 36 okklusal Amalgam",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "o"
+            ],
+            "comments": "Amalgam → no adhesive chip"
+        },
+        {
+            "id": "mkv_schichttechnik",
+            "dictation": "Füllung Zahn 14 mod Schichttechnik",
+            "insuranceType": "MKV",
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ],
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "comments": "Schichttechnik triggers addon"
+        },
+        {
+            "id": "gkv_approximal_ambiguous",
+            "dictation": "Füllung Zahn 36 approximal",
+            "insuranceType": "GKV",
+            "expectedBase": [],
+            "expectedAddon": [],
+            "surfaces": [],
+            "expectAskback": "surfaces",
+            "comments": "Approximal is ambiguous → triggers askback"
+        },
+        {
+            "id": "gkv_bukkal_only",
+            "dictation": "Füllung Zahn 24 bukkal Komposit",
+            "insuranceType": "GKV",
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [],
+            "surfaces": [
+                "b"
+            ],
+            "comments": "Bukkal = vestibulär"
+        },
+        {
+            "id": "mkv_4fl_mehrkosten",
+            "dictation": "Füllung Zahn 36 modb Komposit Mehrkosten Kofferdam",
+            "insuranceType": "MKV",
+            "expectedBase": [
+                "BEMA_13d",
+                "BEMA_12"
+            ],
+            "expectedAddon": [
+                "GOZ_2120",
+                "GOZ_2040"
+            ],
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b"
+            ],
+            "comments": "4fl MKV with Kofferdam"
+        }
+    ]
+}

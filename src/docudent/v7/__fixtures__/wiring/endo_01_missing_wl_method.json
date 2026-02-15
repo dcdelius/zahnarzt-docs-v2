@@ -1,0 +1,31 @@
+{
+    "id": "endo_01_missing_wl_method",
+    "description": "Endo T2 ohne WL-Methode — muss WL-Methode fragen",
+    "input": {
+        "treatmentId": "endo",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Wurzelbehandlung Zahn 46 Trepanation durchgeführt 3 Kanäle lokalisiert",
+        "answers": {}
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=endo",
+            "questions:engine=endo"
+        ],
+        "traceExcludes": [
+            "questions:engine=fuellung"
+        ],
+        "noQuestionIdRegex": "(fuellung|aesthetik|mehrschicht)",
+        "outputMustContain": [
+            "46"
+        ],
+        "billingMustNotContain": [
+            "BEMA_13a",
+            "BEMA_13b"
+        ]
+    },
+    "minimalAnswers": {
+        "endo_step": "t2_aufbereitung"
+    }
+}

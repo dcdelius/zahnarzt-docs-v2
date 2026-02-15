@@ -1,0 +1,899 @@
+{
+    "_meta": {
+        "id": "endo",
+        "version": "2025-01-v2",
+        "label": "Wurzelbehandlung",
+        "kategorie": "endodontie",
+        "stand": "2025-12-23",
+        "architektur": "rule-driven",
+        "hinweis": "Vollständige Endo-Chips mit WF-Phase und Kombinierbarkeitsregeln (M17)"
+    },
+    "requiredFieldsGlobal": [
+        "zahn",
+        "kanalzahl",
+        "vitality"
+    ],
+    "chips": [
+        {
+            "id": "vipr_pos",
+            "label": "ViPr +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr +",
+                "mittel": "ViPr +",
+                "lang": "Sensibilität positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_neg"
+            ],
+            "requiredFields": [],
+            "forensicNotes": [
+                "Sensibilitätsprüfung dokumentieren"
+            ]
+        },
+        {
+            "id": "vipr_neg",
+            "label": "ViPr −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr −",
+                "mittel": "ViPr −",
+                "lang": "Sensibilität negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_pos"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "forensicNotes": [
+                "Devitaler Zahn → Endo indiziert"
+            ]
+        },
+        {
+            "id": "perk_neg",
+            "label": "Perk −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk −",
+                "mittel": "Perk −",
+                "lang": "Perkussion negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_pos"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "perk_pos",
+            "label": "Perk +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk +",
+                "mittel": "Perk +",
+                "lang": "Perkussion positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_neg"
+            ],
+            "requiredFields": [],
+            "forensicNotes": [
+                "Perk+ → apikale Pathologie möglich"
+            ]
+        },
+        {
+            "id": "roentgen_einzelzahn",
+            "label": "Rö Einzelzahn",
+            "phase": "befund",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Rö.",
+                "mittel": "Einzelzahnfilm.",
+                "lang": "Röntgenologische Kontrolle mittels Einzelzahnfilm."
+            },
+            "billingRef": {
+                "GKV": "BEMA_Ä925a",
+                "PKV": "GOZ_5000"
+            },
+            "dataPatches": [
+                {
+                    "field": "xray",
+                    "value": true
+                }
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "Röntgenindikation dokumentieren"
+            ]
+        },
+        {
+            "id": "la_leitung",
+            "label": "LA Leitung",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Leitung.",
+                "mittel": "Leitungsanästhesie N. alv. inf.",
+                "lang": "Leitungsanästhesie des N. alveolaris inf. mit Ultracain D-S 1,7ml."
+            },
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Leitung"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_infiltr"
+            ],
+            "defaultActive": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "Standard bei UK-Molaren"
+            ],
+            "ruleRefs": [
+                "RULE_LA_UK_MOLAR"
+            ]
+        },
+        {
+            "id": "la_infiltr",
+            "label": "LA Infiltration",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Infiltr.",
+                "mittel": "LA Infiltration.",
+                "lang": "Infiltrationsanästhesie mit Ultracain D-S 1,7ml."
+            },
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Infiltration"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_leitung"
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "Standard bei OK"
+            ]
+        },
+        {
+            "id": "kofferdam",
+            "label": "Kofferdam",
+            "phase": "vorbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Kofferdam.",
+                "mittel": "Kofferdam angelegt.",
+                "lang": "Anlegen von Kofferdam zur absoluten Trockenlegung und Keimreduktion."
+            },
+            "billingRef": {
+                "GKV": "BEMA_12",
+                "PKV": "GOZ_2040"
+            },
+            "dataPatches": [
+                {
+                    "field": "isolation",
+                    "value": "Kofferdam"
+                }
+            ],
+            "defaultActive": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "PFLICHT bei Endo! Ohne Kofferdam = REGRESS"
+            ],
+            "ruleRefs": [
+                "RULE_ENDO_KOFFERDAM_PFLICHT"
+            ]
+        },
+        {
+            "id": "trepanation",
+            "label": "Trepanation",
+            "phase": "zugang",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Trep.",
+                "mittel": "Trepanation der Pulpakammer.",
+                "lang": "Trepanation der Pulpakammer und Darstellung der Kanaleingänge."
+            },
+            "billingRef": {
+                "GKV": "BEMA_31",
+                "PKV": "GOZ_2360"
+            },
+            "dataPatches": [
+                {
+                    "field": "trepanation",
+                    "value": true
+                }
+            ],
+            "defaultActive": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "BEMA 31 / GOZ 2360 = Trepanation"
+            ]
+        },
+        {
+            "id": "laengenmessung_elek",
+            "label": "Elektr. Längenmessung",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Elektr. AL.",
+                "mittel": "Elektrische Arbeitslängenmessung.",
+                "lang": "Elektrometrische Bestimmung der Arbeitslänge mittels Apex-Lokator."
+            },
+            "billingRef": {
+                "GKV": null,
+                "PKV": "GOZ_2400"
+            },
+            "hinweis": "GKV: Nicht Kassenleistung, nur PKV oder als Zusatzleistung",
+            "dataPatches": [
+                {
+                    "field": "length_measurement",
+                    "value": "electronic"
+                }
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "GOZ 2400 je Kanal (PKV)",
+                "GKV: Rö-Messaufnahme statt Apex-Lokator"
+            ],
+            "ruleRefs": [
+                "RULE_AL_NICHT_NEBEN_2390"
+            ]
+        },
+        {
+            "id": "laengenmessung_roentgen",
+            "label": "Rö-Messaufnahme",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Rö-Mess.",
+                "mittel": "Röntgen-Messaufnahme zur Arbeitslängenbestimmung.",
+                "lang": "Röntgenologische Arbeitslängenbestimmung mittels Messaufnahme mit eingebrachtem Instrument."
+            },
+            "billingRef": {
+                "GKV": "BEMA_Ä925a",
+                "PKV": "GOZ_5000"
+            },
+            "dataPatches": [
+                {
+                    "field": "length_measurement",
+                    "value": "xray"
+                }
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "Kassenstandard für Arbeitslängenbestimmung"
+            ]
+        },
+        {
+            "id": "kanalaufbereitung_1",
+            "label": "1 Kanal",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "1K.",
+                "mittel": "Aufbereitung von 1 Wurzelkanal.",
+                "lang": "Aufbereitung und Erweiterung von 1 Wurzelkanal mittels maschineller Nickel-Titan-Instrumente."
+            },
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "dataPatches": [
+                {
+                    "field": "kanalzahl",
+                    "value": 1
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4"
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "BEMA 32/GOZ 2410 je Kanal"
+            ],
+            "ruleRefs": [
+                "RULE_ENDO_JE_KANAL"
+            ]
+        },
+        {
+            "id": "kanalaufbereitung_2",
+            "label": "2 Kanäle",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "2K.",
+                "mittel": "Aufbereitung von 2 Wurzelkanälen.",
+                "lang": "Aufbereitung und Erweiterung von 2 Wurzelkanälen mittels maschineller Nickel-Titan-Instrumente."
+            },
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "dataPatches": [
+                {
+                    "field": "kanalzahl",
+                    "value": 2
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4"
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "BEMA 32/GOZ 2410 2x"
+            ]
+        },
+        {
+            "id": "kanalaufbereitung_3",
+            "label": "3 Kanäle",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "3K.",
+                "mittel": "Aufbereitung von 3 Wurzelkanälen.",
+                "lang": "Aufbereitung und Erweiterung von 3 Wurzelkanälen mittels maschineller Nickel-Titan-Instrumente."
+            },
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "dataPatches": [
+                {
+                    "field": "kanalzahl",
+                    "value": 3
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_4"
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "BEMA 32/GOZ 2410 3x"
+            ]
+        },
+        {
+            "id": "kanalaufbereitung_4",
+            "label": "4 Kanäle",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "4K.",
+                "mittel": "Aufbereitung von 4 Wurzelkanälen.",
+                "lang": "Aufbereitung und Erweiterung von 4 Wurzelkanälen mittels maschineller Nickel-Titan-Instrumente."
+            },
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "dataPatches": [
+                {
+                    "field": "kanalzahl",
+                    "value": 4
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3"
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "BEMA 32/GOZ 2410 4x"
+            ]
+        },
+        {
+            "id": "endo_instrumentation_rotary",
+            "label": "Aufbereitung maschinell",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Aufbereitung maschinell.",
+                "mittel": "Aufbereitung maschinell (rotierend).",
+                "lang": "Aufbereitung der Wurzelkanäle maschinell (rotierend) durchgeführt."
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "endo_instrumentation_manual",
+            "label": "Aufbereitung manuell",
+            "phase": "aufbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Aufbereitung manuell.",
+                "mittel": "Aufbereitung manuell.",
+                "lang": "Aufbereitung der Wurzelkanäle manuell durchgeführt."
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "spuelung_naocl",
+            "label": "NaOCl Spülung",
+            "phase": "spuelung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Spülung NaOCl.",
+                "mittel": "Spülung mit NaOCl.",
+                "lang": "Desinfektion der Wurzelkanäle mit Natriumhypochlorit (NaOCl 3%)."
+            },
+            "billingRef": null,
+            "hinweis": "Spülung in Aufbereitung inkludiert",
+            "dataPatches": [
+                {
+                    "field": "spuelung",
+                    "value": "naocl"
+                }
+            ],
+            "mutuallyExclusiveWith": [],
+            "defaultActive": true,
+            "requiredFields": [],
+            "forensicNotes": [
+                "NaOCl-Desinfektion dokumentieren"
+            ]
+        },
+        {
+            "id": "spuelung_edta",
+            "label": "EDTA Spülung",
+            "phase": "spuelung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "EDTA.",
+                "mittel": "Spülung mit EDTA.",
+                "lang": "Zusätzliche Spülung mit EDTA 17% zur Entfernung der Schmierschicht."
+            },
+            "billingRef": null,
+            "hinweis": "In Aufbereitung inkludiert, keine separate Abrechnung",
+            "dataPatches": [
+                {
+                    "field": "spuelung_edta",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "einlage_caoh2",
+            "label": "Ca(OH)₂ Einlage",
+            "phase": "einlage",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Ca(OH)₂ Einlage.",
+                "mittel": "Medikamentöse Einlage mit Ca(OH)₂.",
+                "lang": "Medikamentöse Einlage mit Calciumhydroxid zur Desinfektion und antibakteriellen Wirkung."
+            },
+            "billingRef": {
+                "GKV": "BEMA_35",
+                "PKV": "GOZ_2430"
+            },
+            "dataPatches": [
+                {
+                    "field": "medikament",
+                    "value": "caoh2"
+                }
+            ],
+            "mutuallyExclusiveWith": [],
+            "requiredFields": [],
+            "forensicNotes": [
+                "BEMA 35/GOZ 2430 = med. Einlage"
+            ]
+        },
+        {
+            "id": "provisorischer_verschluss",
+            "label": "Prov. Verschluss",
+            "phase": "einlage",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Prov. Verschluss.",
+                "mittel": "Provisorischer Verschluss.",
+                "lang": "Provisorischer bakteriendichter Verschluss der Kavität."
+            },
+            "billingRef": null,
+            "hinweis": "In Sitzungspauschale inkludiert",
+            "dataPatches": [
+                {
+                    "field": "prov_verschluss",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "wf_kalt",
+            "label": "WF Kaltlateral",
+            "phase": "wurzelfuellung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "WF kaltlateral.",
+                "mittel": "Wurzelfüllung in kaltlateraler Kondensation.",
+                "lang": "Definitive Wurzelfüllung mittels kaltlateraler Kondensation mit Guttapercha und Sealer."
+            },
+            "billingRef": {
+                "GKV": "BEMA_34",
+                "PKV": "GOZ_2440"
+            },
+            "dataPatches": [
+                {
+                    "field": "wf_technik",
+                    "value": "kalt"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "wf_warm",
+                "wf_einzel"
+            ],
+            "requiredFields": [
+                "zahn",
+                "kanalzahl"
+            ],
+            "forensicNotes": [
+                "BEMA 34/GOZ 2440 je Kanal"
+            ],
+            "ruleRefs": [
+                "RULE_WF_JE_KANAL"
+            ]
+        },
+        {
+            "id": "wf_warm",
+            "label": "WF Warmvertikal",
+            "phase": "wurzelfuellung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "WF warmvertikal.",
+                "mittel": "Wurzelfüllung in warmer vertikaler Kondensation.",
+                "lang": "Definitive Wurzelfüllung mittels warmer vertikaler Kondensation (Continuous Wave Technik) mit thermoplastischer Guttapercha."
+            },
+            "billingRef": {
+                "GKV": "BEMA_34",
+                "PKV": "GOZ_2440"
+            },
+            "hinweis": "Premium-Technik, ggf. MKV",
+            "dataPatches": [
+                {
+                    "field": "wf_technik",
+                    "value": "warm"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "wf_kalt",
+                "wf_einzel"
+            ],
+            "requiredFields": [
+                "zahn",
+                "kanalzahl"
+            ],
+            "forensicNotes": [
+                "Warmtechnik dokumentieren"
+            ]
+        },
+        {
+            "id": "wf_einzel",
+            "label": "WF Einzelstift",
+            "phase": "wurzelfuellung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "WF Einzelstift.",
+                "mittel": "Wurzelfüllung Einzelstift.",
+                "lang": "Definitive Wurzelfüllung mittels Einzelstifttechnik mit passgenauem Guttaperchastift und Sealer."
+            },
+            "billingRef": {
+                "GKV": "BEMA_34",
+                "PKV": "GOZ_2440"
+            },
+            "dataPatches": [
+                {
+                    "field": "wf_technik",
+                    "value": "einzel"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "wf_kalt",
+                "wf_warm"
+            ],
+            "requiredFields": [
+                "zahn",
+                "kanalzahl"
+            ],
+            "forensicNotes": []
+        },
+        {
+            "id": "endo_sealer",
+            "label": "Sealer",
+            "phase": "wurzelfuellung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Sealer verwendet.",
+                "mittel": "Sealer verwendet.",
+                "lang": "Sealer zur Wurzelfüllung verwendet."
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "roentgen_kontrolle",
+            "label": "Rö-Kontrolle",
+            "phase": "abschluss",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Rö-Kontrolle.",
+                "mittel": "Röntgenkontrolle post WF.",
+                "lang": "Röntgenkontrollaufnahme nach Wurzelfüllung zur Dokumentation der apikalen Dichte."
+            },
+            "billingRef": {
+                "GKV": "BEMA_Ä925a",
+                "PKV": "GOZ_5000"
+            },
+            "dataPatches": [
+                {
+                    "field": "xray_control",
+                    "value": true
+                }
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "Rö-Kontrolle post WF PFLICHT"
+            ]
+        },
+        {
+            "id": "aufbau_postendo",
+            "label": "Aufbau post Endo",
+            "phase": "abschluss",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Aufbau.",
+                "mittel": "Definitiver Aufbau post Endo.",
+                "lang": "Definitiver adhäsiver Aufbau mit Komposit nach abgeschlossener Wurzelbehandlung."
+            },
+            "billingRef": {
+                "GKV": "BEMA_13",
+                "PKV": "GOZ_2060"
+            },
+            "hinweis": "F-Code basierend auf Flächen",
+            "dataPatches": [
+                {
+                    "field": "aufbau",
+                    "value": true
+                }
+            ],
+            "requiredFields": [
+                "zahn"
+            ],
+            "forensicNotes": [
+                "Aufbau als Füllung abrechnen"
+            ]
+        },
+        {
+            "id": "la_ila",
+            "label": "LA Intraligamentär",
+            "phase": "anaesthesie",
+            "category": "dokumentation",
+            "textSnippets": {
+                "kurz": "LA ILA.",
+                "mittel": "Intraligamentäre Anästhesie ({la_agent}).",
+                "lang": "Intraligamentäre Anästhesie mit {la_agent} 1,7ml."
+            },
+            "variablen": {
+                "la_agent": { "default": "Ultracain D-S", "required": false }
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "ILA"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_infiltr",
+                "la_leitung",
+                "ohne_la"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "conditionHint": "Optional bei UK-Seitenzähnen"
+        },
+        {
+            "id": "oberflaeche_la",
+            "label": "Oberflächenanästhesie",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "OA.",
+                "mittel": "Oberflächenanästhesie vor Injektion.",
+                "lang": "Oberflächenanästhesie vor Injektion appliziert (Lidocain-Spray/Gel)."
+            },
+            "billingRef": {
+                "PKV": "GOZ_0080"
+            },
+            "dataPatches": [
+                {
+                    "field": "surface_anesthesia",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_OBERFLAECHE_PKV_UPSELL"
+            ],
+            "forensicNotes": [],
+            "upsellCandidate": true,
+            "upsellNotes": [
+                "Nur bei PKV abrechenbar",
+                "GOZ 0080 zusätzlich zur Injektion"
+            ]
+        },
+        {
+            "id": "rel_trocken",
+            "label": "Rel. Trockenlegung",
+            "phase": "vorbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Rel. Trockenlegung.",
+                "mittel": "Relative Trockenlegung.",
+                "lang": "Relative Trockenlegung mittels Watterollen und kontinuierlicher Absaugung."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "isolation",
+                    "value": "relativ"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kofferdam"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "insurance_gkv_mkv",
+            "label": "Mehrkosten (GKV)",
+            "phase": "info",
+            "category": "insurance",
+            "textSnippets": {
+                "kurz": "Mehrkostenvereinbarung.",
+                "mittel": "Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V).",
+                "lang": "Patientenaufklärung über Mehrkosten für höherwertige Versorgung erfolgt. Schriftliche Mehrkostenvereinbarung gemäß § 28 Abs. 2 SGB V vor Behandlungsbeginn vereinbart."
+            },
+            "billingRef": null,
+            "hinweis": "Marker-Chip für MKV-Dokumentation, keine direkte Abrechnung.",
+            "dataPatches": [
+                {
+                    "field": "mkv",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_MKV_SCHRIFTLICH"
+            ],
+            "forensicNotes": [
+                "MKV-Vereinbarung muss VOR Behandlung unterschrieben sein!"
+            ]
+        },
+        {
+            "id": "mkv_begruendung",
+            "label": "Mehrkosten-Begründung",
+            "phase": "info",
+            "category": "insurance",
+            "textSnippets": {
+                "kurz": "Mehrkosten-Begründung: {mkv_justification}.",
+                "mittel": "Mehrkosten-Begründung: {mkv_justification}.",
+                "lang": "Mehrkosten-Begründung: {mkv_justification}."
+            },
+            "variablen": {
+                "mkv_justification": { "default": "höherwertige Versorgung", "required": false }
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein für MKV-Begründung.",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        }
+    ],
+    "phasen_reihenfolge": [
+        "befund",
+        "anaesthesie",
+        "vorbereitung",
+        "zugang",
+        "aufbereitung",
+        "spuelung",
+        "einlage",
+        "wurzelfuellung",
+        "abschluss"
+    ]
+}

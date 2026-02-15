@@ -1,0 +1,60 @@
+{
+    "gigaprompt": "G48",
+    "milestone": "m48",
+    "generated_at": "2025-12-29T23:50:00Z",
+    "status": "GATES_EXIST_FAILURES_PRESENT",
+    "summary": "Public API boundary gates exist and are enforcing. Some violations detected.",
+    "exit_criteria_status": {
+        "import_boundary_gate_exists": "PASS",
+        "gate_enforcing": "YES",
+        "all_violations_fixed": "NOT_YET (7 failures)"
+    },
+    "existing_gates": [
+        {
+            "name": "gate-v7-ssot-boundaries",
+            "purpose": "V7 must not contain hardcoded chip IDs",
+            "status": "FAILING (7 tests)",
+            "issue": "Hardcoded chip IDs in v7/medical/types.ts"
+        },
+        {
+            "name": "gate-v10-no-runtime-imports-from-v7-pipeline",
+            "purpose": "V10 runtime cannot import from V7 pipeline",
+            "status": "CHECKED"
+        },
+        {
+            "name": "gate-billing-no-legacy-imports-runtime",
+            "purpose": "Billing code cannot import legacy modules",
+            "status": "CHECKED"
+        }
+    ],
+    "violations_found": [
+        {
+            "file": "src/docudent/v7/medical/types.ts",
+            "lines": [
+                103,
+                104
+            ],
+            "issue": "Hardcoded BEMA/GOZ codes instead of CANONICAL_CHIP_IDS"
+        }
+    ],
+    "import_policy": {
+        "v10_ui_allowed_imports": [
+            "src/docudent/v10/public",
+            "src/docudent/contracts/*",
+            "src/docudent/ui/shared/*"
+        ],
+        "v10_runtime_forbidden": [
+            "src/docudent/v7/pipeline/*",
+            "src/docudent/v6/*"
+        ]
+    },
+    "commands_run": [
+        "npx vitest run gate-v7-ssot gate-v10-no-runtime gate-billing-no-legacy"
+    ],
+    "next_steps": [
+        "Fix hardcoded chip IDs in v7/medical/types.ts",
+        "Create gate-v10-ui-imports-only-public.test.ts if needed",
+        "Verify all boundary gates pass"
+    ],
+    "atlas_status": "PASS"
+}

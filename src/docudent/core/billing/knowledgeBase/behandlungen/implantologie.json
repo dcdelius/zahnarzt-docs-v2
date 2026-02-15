@@ -1,0 +1,250 @@
+[
+    {
+        "id": "implantat_einzelzahn_pkv",
+        "titel": "Einzelzahnimplantat mit Krone - PKV Komplett",
+        "kategorie": "implantologie",
+        "versicherung": "PKV",
+        "beschreibung": "Komplette Versorgung einer Einzelzahnlücke mit Implantat und Krone - alle Phasen",
+        "natuerliche_anleitung": "Implantatversorgung hat VIELE abrechenbare Positionen die oft vergessen werden: 1) GOZ 9000 ist JE KIEFER berechenbar (auch wenn kein Implantat gesetzt wird!). 2) Bei GOZ 9010 ist OP-Zuschlag GOZ 0530 möglich (≥1200 Punkte). 3) Material (Implantat, Abutment, Fräsen, Schablone) IMMER separat. 4) Knochenaufbau, Sinuslift sind zusätzliche Leistungen. 5) Steigerungsfaktor 3,5x bei Nerven-Nähe, kompaktem Knochen, schwieriger Parallelisierung.",
+        "phasen": [
+            {
+                "phase": "1. Planung & Diagnostik",
+                "zeitpunkt": "Vor OP",
+                "positionen": [
+                    {
+                        "code": "GOZ_0010",
+                        "bezeichnung": "Eingehende Untersuchung",
+                        "wann": "Falls noch keine U in Quartal",
+                        "betrag_23": 29.76
+                    },
+                    {
+                        "code": "GOZ_5004",
+                        "bezeichnung": "DVT/3D-Röntgen",
+                        "wann": "Zur Implantatplanung",
+                        "betrag_23": 138.46,
+                        "tipp": "Oder Überweisung zum Radiologen"
+                    },
+                    {
+                        "code": "GOZ_9000",
+                        "bezeichnung": "Implantatanalyse und -planung",
+                        "wann": "IMMER - je Kiefer!",
+                        "betrag_23": 114.35,
+                        "tipp": "Bei Planung in beiden Kiefern: 2x! Auch berechenbar wenn Patient sich gegen OP entscheidet."
+                    }
+                ],
+                "material": [
+                    {
+                        "bezeichnung": "Röntgenmessschablone",
+                        "betrag": "50-150€"
+                    },
+                    {
+                        "bezeichnung": "Navigationsschablone (falls verwendet)",
+                        "betrag": "200-500€"
+                    }
+                ]
+            },
+            {
+                "phase": "2. Implantation (OP)",
+                "zeitpunkt": "OP-Tag",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "betrag_23": 7.25
+                    },
+                    {
+                        "code": "GOZ_0100",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei UK",
+                        "betrag_23": 24.31
+                    },
+                    {
+                        "code": "GOZ_0090",
+                        "bezeichnung": "Infiltration",
+                        "wann": "Bei OK, ggf. zusätzlich",
+                        "betrag_23": 16.22
+                    },
+                    {
+                        "code": "GOZ_9010",
+                        "bezeichnung": "Implantatinsertion",
+                        "wann": "Je Implantat!",
+                        "betrag_23": 199.86,
+                        "steigerung": {
+                            "bis_35": true,
+                            "gruende": [
+                                "Besonders lange/dicke Implantate",
+                                "Kompakter Knochen",
+                                "Nerven-Nähe",
+                                "Schwierige Parallelisierung"
+                            ]
+                        }
+                    },
+                    {
+                        "code": "GOZ_0530",
+                        "bezeichnung": "OP-Zuschlag (≥1200 Punkte)",
+                        "wann": "Bei GOZ 9010 IMMER möglich",
+                        "betrag_10": 70.87,
+                        "wichtig": "Nur 1,0-fach, nur 1x pro Tag"
+                    },
+                    {
+                        "code": "GOZ_3300",
+                        "bezeichnung": "Naht",
+                        "betrag_23": 25.16
+                    }
+                ],
+                "zusaetzlich_bei_bedarf": [
+                    {
+                        "code": "GOZ_9090",
+                        "bezeichnung": "Knochenentnahme (autolog)",
+                        "wann": "Bei autologem Knochen",
+                        "betrag_23": 86.94
+                    },
+                    {
+                        "code": "GOZ_9100",
+                        "bezeichnung": "Aufbau Alveolarfortsatz",
+                        "wann": "Bei Knochenaufbau",
+                        "betrag_23": 260.82,
+                        "info": "Je Kieferhälfte"
+                    },
+                    {
+                        "code": "GOZ_9110",
+                        "bezeichnung": "Sinuslift intern",
+                        "wann": "Bei internem Sinuslift",
+                        "betrag_23": 173.88
+                    },
+                    {
+                        "code": "GOZ_9120",
+                        "bezeichnung": "Sinuslift extern",
+                        "wann": "Bei externem Sinuslift",
+                        "betrag_23": 347.76
+                    },
+                    {
+                        "code": "GOZ_4110",
+                        "bezeichnung": "Knochenaugmentation",
+                        "wann": "Bei Auffüllung",
+                        "betrag_23": 52.16
+                    }
+                ],
+                "material": [
+                    {
+                        "bezeichnung": "Implantat",
+                        "betrag": "300-600€"
+                    },
+                    {
+                        "bezeichnung": "Einmalfräsen",
+                        "betrag": "50-100€"
+                    },
+                    {
+                        "bezeichnung": "Knochenersatzmaterial (bei Augmentation)",
+                        "betrag": "80-200€"
+                    },
+                    {
+                        "bezeichnung": "Membran (falls verwendet)",
+                        "betrag": "50-150€"
+                    }
+                ]
+            },
+            {
+                "phase": "3. Freilegung (nach Einheilung)",
+                "zeitpunkt": "3-6 Monate nach OP",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "betrag_23": 7.25
+                    },
+                    {
+                        "code": "GOZ_0090",
+                        "bezeichnung": "Infiltration",
+                        "betrag_23": 16.22
+                    },
+                    {
+                        "code": "GOZ_9020",
+                        "bezeichnung": "Freilegung Implantat",
+                        "betrag_23": 50.07
+                    },
+                    {
+                        "code": "GOZ_5000",
+                        "bezeichnung": "Röntgenkontrolle",
+                        "betrag_23": 11.57
+                    }
+                ],
+                "material": [
+                    {
+                        "bezeichnung": "Gingivaformer/Heilungsabutment",
+                        "betrag": "30-80€"
+                    }
+                ]
+            },
+            {
+                "phase": "4. Prothetische Versorgung",
+                "zeitpunkt": "2-4 Wochen nach Freilegung",
+                "positionen": [
+                    {
+                        "code": "GOZ_5010",
+                        "bezeichnung": "Implantatkrone (als Einzelkrone)",
+                        "wann": "Einzelzahnversorgung",
+                        "betrag_23": 131.43
+                    }
+                ],
+                "material": [
+                    {
+                        "bezeichnung": "Abutment",
+                        "betrag": "100-300€"
+                    },
+                    {
+                        "bezeichnung": "Krone (Zahntechnik)",
+                        "betrag": "200-500€"
+                    }
+                ]
+            }
+        ],
+        "gesamtberechnung_beispiel": {
+            "einzelzahn_implantat_standard": {
+                "phase_1_planung": {
+                    "GOZ_9000": 114.35,
+                    "GOZ_5004": 138.46,
+                    "Material_Schablone": 100.00,
+                    "summe": "352,81€"
+                },
+                "phase_2_op": {
+                    "GOZ_0080": 7.25,
+                    "GOZ_0090": 16.22,
+                    "GOZ_9010": 199.86,
+                    "GOZ_0530": 70.87,
+                    "GOZ_3300": 25.16,
+                    "Material_Implantat": 450.00,
+                    "Material_Fräsen": 75.00,
+                    "summe": "844,36€"
+                },
+                "phase_3_freilegung": {
+                    "GOZ_0080": 7.25,
+                    "GOZ_0090": 16.22,
+                    "GOZ_9020": 50.07,
+                    "Material_Gingivaformer": 50.00,
+                    "summe": "123,54€"
+                },
+                "phase_4_prothetik": {
+                    "GOZ_5010": 131.43,
+                    "Material_Abutment": 200.00,
+                    "Material_Krone": 350.00,
+                    "summe": "681,43€"
+                },
+                "gesamtbetrag": "ca. 2.000€"
+            }
+        },
+        "dokumentation_erforderlich": [
+            "Indikation für Implantat",
+            "Implantatposition, -länge, -durchmesser",
+            "Bei Steigerung: Begründung (Anatomie, Nerven, Knochen)",
+            "Bei Augmentation: Technik und Material"
+        ],
+        "haeufige_fehler": [
+            "GOZ 9000 vergessen",
+            "OP-Zuschlag GOZ 0530 nicht berechnet",
+            "Material nicht separat aufgeführt",
+            "Steigerungsfaktor nicht genutzt bei schwierigen Fällen",
+            "Oberflächenanästhesie vergessen"
+        ]
+    }
+]

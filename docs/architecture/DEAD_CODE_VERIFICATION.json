@@ -1,0 +1,135 @@
+{
+    "safeToArchive": [
+        {
+            "path": "src/_legacy/Dashboard.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/Settings.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/TemplateBuilder.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/TemplateBuilderV2.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/MedicalKnowledgeDashboard.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/AssistantDashboard.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/pages/SoniaDesigner.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/pages/SoniaV3.jsx",
+            "reason": "Legacy redirect target only, not actively used",
+            "lastImportLocation": "App.jsx:L144 (redirect)"
+        },
+        {
+            "path": "src/_legacy/pages/SoniaV3Flow.jsx",
+            "reason": "Legacy redirect target only, not actively used",
+            "lastImportLocation": "App.jsx:L145 (redirect)"
+        },
+        {
+            "path": "src/_legacy/pages/SoniaSettings.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/pages/TreatmentSettings.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/pages/LandingPage.jsx",
+            "reason": "No route in App.jsx, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/pages/lab/*",
+            "reason": "Lab experiments, not routed",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/pages/labs/*",
+            "reason": "Lab experiments, not routed",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/_legacy/sonia/*",
+            "reason": "Legacy Sonia V3 hooks/components, no imports from active code",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/utils/firestoreImport.js",
+            "reason": "One-time import script, not imported by runtime",
+            "lastImportLocation": null
+        },
+        {
+            "path": "src/utils/seedTemplate.ts",
+            "reason": "One-time seed script, not imported by runtime",
+            "lastImportLocation": null
+        }
+    ],
+    "dangerousToRemove": [
+        {
+            "path": "src/utils/noteService.ts",
+            "why": "Active Firestore persistence layer, exported for use"
+        },
+        {
+            "path": "src/utils/noteServiceCore.ts",
+            "why": "Core Firestore persistence, imported by noteService"
+        },
+        {
+            "path": "src/contexts/UserContext.jsx",
+            "why": "Wrapped in main.jsx, active runtime provider"
+        },
+        {
+            "path": "src/contexts/AuthContext.jsx",
+            "why": "Wrapped in main.jsx, active runtime provider"
+        },
+        {
+            "path": "src/firebase.js",
+            "why": "Firebase initialization, critical infrastructure"
+        },
+        {
+            "path": "src/docudent/core/**/*",
+            "why": "Core billing/treatment logic used by V5/V6/V7"
+        },
+        {
+            "path": "src/docudent/v5/**/*",
+            "why": "Active V5 route (/docudent/v5)"
+        },
+        {
+            "path": "src/docudent/v6/**/*",
+            "why": "Active V6 route (/docudent/v6)"
+        },
+        {
+            "path": "src/docudent/v7/**/*",
+            "why": "Active V7 route (/docudent/v7)"
+        },
+        {
+            "path": "src/components/Layout.jsx",
+            "why": "Wrapped around all routes in App.jsx"
+        },
+        {
+            "path": "src/components/ui/*",
+            "why": "UI components used by multiple pages"
+        }
+    ]
+}

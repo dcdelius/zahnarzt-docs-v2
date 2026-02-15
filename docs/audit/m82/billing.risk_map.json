@@ -1,0 +1,165 @@
+{
+    "generated_at": "2025-12-29T19:46:00Z",
+    "milestone": "M82",
+    "do_not_delete": [
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/kataloge/bema.json",
+            "reason": "Primary BEMA catalog, 508+ codes",
+            "consumers": 150
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/kataloge/goz.json",
+            "reason": "Primary GOZ catalog",
+            "consumers": 100
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/kataloge/bel2_2022.json",
+            "reason": "BEL II Laborkosten catalog",
+            "consumers": 20
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/kataloge/goa.json",
+            "reason": "GOÄ catalog for medical billing",
+            "consumers": 5
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/kataloge/festzuschuesse.json",
+            "reason": "Festzuschuss mappings for ZE",
+            "consumers": 10
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/regeln/kombinationen.json",
+            "reason": "Combinability rules - SSOT",
+            "consumers": 15
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/unified.json",
+            "reason": "SSOT for Füllung treatment",
+            "consumers": 50
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/treatments/endo/unified.json",
+            "reason": "SSOT for Endo treatment",
+            "consumers": 40
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts",
+            "reason": "Core billing logic engine",
+            "consumers": 30
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/billingEligibilityGuard.ts",
+            "reason": "Billing eligibility guard",
+            "consumers": 25
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/chipResolver.ts",
+            "reason": "Chip resolution SSOT",
+            "consumers": 20
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+            "reason": "Output text composition",
+            "consumers": 15
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/billingDatabase.ts",
+            "reason": "DB lookup functions",
+            "consumers": 10
+        },
+        {
+            "file": "src/docudent/core/billing/combinability/billingCombinabilityChecker.ts",
+            "reason": "Combinability check logic",
+            "consumers": 12
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/index.ts",
+            "reason": "Main KB barrel export",
+            "consumers": 40
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/bema_knowledge_base.json",
+            "reason": "Extended BEMA KB with comments",
+            "consumers": 5
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/analog_services.json",
+            "reason": "Analog services lookup",
+            "consumers": 3
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/regeln/fuellung_regeln.json",
+            "reason": "Füllung-specific rules",
+            "consumers": 5
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/regeln/fz_zuordnung_gba.json",
+            "reason": "FZ assignment rules",
+            "consumers": 5
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/answerIdTranslator.ts",
+            "reason": "Answer translation SSOT",
+            "consumers": 10
+        }
+    ],
+    "safe_to_delete_candidates": [
+        {
+            "file": "src/docudent/BEMA/*.html",
+            "reason": "690 HTML files - source docs, not runtime",
+            "note": "Keep for reference but not needed at runtime"
+        },
+        {
+            "file": "src/docudent/GOZ/*.html",
+            "reason": "HTML source docs",
+            "note": "Reference only"
+        },
+        {
+            "file": "src/docudent/BEL/*.html",
+            "reason": "HTML source docs",
+            "note": "Reference only"
+        },
+        {
+            "file": "src/docudent/Analogleistungen/*.html",
+            "reason": "HTML source docs",
+            "note": "Reference only"
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/regeln/kombinationen.test_only.json",
+            "reason": "Test fixture",
+            "note": "Move to __fixtures__"
+        }
+    ],
+    "needs_manual_review": [
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/secondary/",
+            "reason": "11 files in secondary - may have dynamic imports"
+        },
+        {
+            "file": "src/docudent/core/billing/staging/",
+            "reason": "5 staging files - unclear usage"
+        },
+        {
+            "file": "src/docudent/v5/hooks/useBillingV5Controller.ts",
+            "reason": "V5 legacy - confirm not used"
+        },
+        {
+            "file": "src/docudent/v7/pages/BillingBetaPage.tsx",
+            "reason": "Beta page - confirm status"
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/llm_prompt_template.md",
+            "reason": "LLM template - for code gen or runtime?"
+        }
+    ],
+    "summary": {
+        "total_billing_files": 833,
+        "catalogs": 5,
+        "rules": 9,
+        "logic_files": 42,
+        "html_reference": 690,
+        "do_not_delete_count": 20,
+        "safe_to_delete_count": 690,
+        "needs_review_count": 5
+    }
+}

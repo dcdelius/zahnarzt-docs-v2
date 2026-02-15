@@ -1,0 +1,234 @@
+{
+    "generated_at": "2025-12-29T20:30:00Z",
+    "gigaprompt_results": {
+        "G0_boot_rules": {
+            "status": "COMPLETE",
+            "reality_snapshot": {
+                "runtime_entry": "DocudentV10Page → useV7Pipeline → v7/pipeline → runV10",
+                "v7_imports_in_v10": 19,
+                "v6_status": "FROZEN - App.jsx still has route",
+                "critical_path_steps": 14,
+                "drop_points": 6
+            },
+            "delete_sprint_safety_net": {
+                "B1_html_move": [
+                    "npm run build",
+                    "npx vitest run"
+                ],
+                "B2_v6_delete": [
+                    "gate-no-runtime-imports-from-v6 PASS",
+                    "Remove App.jsx v6 route FIRST"
+                ],
+                "B3_dead_code": [
+                    "gate-runtime-manifest-consistency",
+                    "manual review"
+                ],
+                "B4_v7_v10": [
+                    "Parity R1+R2",
+                    "C1-C6 contracts"
+                ]
+            },
+            "top_10_risks": [
+                {
+                    "risk": "App.jsx imports v6",
+                    "file": "src/App.jsx:16",
+                    "gate": "Remove route before B2"
+                },
+                {
+                    "risk": "V10 imports 19 V7 modules",
+                    "file": "v10/pipeline/runV10.ts",
+                    "gate": "V7→V10 migration"
+                },
+                {
+                    "risk": "74 missing billing refs",
+                    "file": "billing.refs.closure.json",
+                    "gate": "gate-m82-billingref-closure"
+                },
+                {
+                    "risk": "DP1: Empty extraction",
+                    "file": "runV10.ts:100-130",
+                    "gate": "diagnostics-enforcement"
+                },
+                {
+                    "risk": "DP3: Silent billing drop",
+                    "file": "billingEligibilityGuard.ts",
+                    "gate": "no-silent-billing-drop"
+                },
+                {
+                    "risk": "Tests import v6",
+                    "file": "gate-*.test.ts",
+                    "gate": "Move to __fixtures__"
+                },
+                {
+                    "risk": "QuestionsFlowV2 in V7",
+                    "file": "v7/components",
+                    "gate": "Migrate to V10"
+                },
+                {
+                    "risk": "renderFromKbChips in V7",
+                    "file": "v7/output",
+                    "gate": "Move to v10/output"
+                },
+                {
+                    "risk": "4 HTML still in src/",
+                    "file": "src/docudent",
+                    "gate": "Complete B1"
+                },
+                {
+                    "risk": "No Playwright E2E running",
+                    "file": "playwright.config.ts",
+                    "gate": "Setup headless"
+                }
+            ]
+        },
+        "G1_engine_md": {
+            "status": "COMPLETE",
+            "artifacts": [
+                "docs/system-atlas/ENGINE.md"
+            ],
+            "nodes": 22,
+            "edges": 19,
+            "drop_points": 6,
+            "migration_candidates": 8
+        },
+        "G2_delete_sprint": {
+            "status": "PARTIAL",
+            "B1_html_move": {
+                "status": "COMPLETE",
+                "files_moved": 688,
+                "destination": "docs/reference/html/",
+                "remaining_in_src": 4
+            },
+            "B2_v6_delete": {
+                "status": "BLOCKED",
+                "blocker": "src/App.jsx:16 imports DocudentV6Page",
+                "action_required": "Remove v6 route from App.jsx before deletion",
+                "rollback": "git checkout -- src/docudent/v6 (DONE)"
+            }
+        },
+        "G3_v7_v10_consolidation": {
+            "status": "PLANNED",
+            "v7_modules_in_runtime": 7,
+            "migration_steps": 5,
+            "hook_created": "src/docudent/v10/hooks/useV10Pipeline.ts",
+            "blocker": "Complete B2 first"
+        },
+        "G4_billing_hardening": {
+            "status": "ANALYZED",
+            "refs_used": 157,
+            "refs_missing": 74,
+            "catalog_codes": 508,
+            "missing_samples": [
+                "BEMA_98e",
+                "BEL_II_1220",
+                "BEL_II_8010"
+            ],
+            "gates": [
+                "gate-m82-billingref-closure",
+                "gate-m82-no-silent-billing-drop"
+            ]
+        },
+        "G5_flight_recorder": {
+            "status": "NOT_STARTED",
+            "blocker": "Requires B1+B2+G3 completion first"
+        },
+        "G6_make_it_green": {
+            "status": "NOT_STARTED",
+            "test_status": "45 failed / 360 passed",
+            "blocker": "Complete B1+B2 first"
+        }
+    },
+    "files_created": [
+        "docs/system-atlas/ENGINE.md",
+        "docs/reference/html/BEMA/*.html",
+        "docs/reference/html/GOZ/*.html",
+        "docs/reference/html/BEL/*.html",
+        "docs/reference/html/Analogleistungen/*.html"
+    ],
+    "files_moved": 688,
+    "commands_run": [
+        {
+            "cmd": "find src/docudent -name '*.html' | wc -l",
+            "before": 690,
+            "after": 4
+        },
+        {
+            "cmd": "npm run build",
+            "result": "PASS (4.45s)"
+        },
+        {
+            "cmd": "rm -rf src/docudent/v6",
+            "result": "FAILED - App.jsx depends on v6"
+        },
+        {
+            "cmd": "git checkout -- src/docudent/v6",
+            "result": "RESTORED"
+        }
+    ],
+    "next_5_prs": [
+        {
+            "pr": "PR1",
+            "title": "chore: remove v6 route from App.jsx",
+            "files": 1,
+            "risk": "LOW",
+            "commands": [
+                "Edit App.jsx remove line 16 and 138",
+                "npm run build",
+                "npx vitest run"
+            ],
+            "exit_criteria": "Build PASS, no v6 route accessible",
+            "rollback": "git checkout -- src/App.jsx"
+        },
+        {
+            "pr": "PR2",
+            "title": "chore(B2): delete src/docudent/v6",
+            "files": 27,
+            "risk": "MEDIUM",
+            "precondition": "PR1 merged",
+            "commands": [
+                "rm -rf src/docudent/v6",
+                "npm run build",
+                "npx vitest run"
+            ],
+            "exit_criteria": "Build PASS, gate-no-runtime-imports-from-v6 PASS",
+            "rollback": "git checkout -- src/docudent/v6"
+        },
+        {
+            "pr": "PR3",
+            "title": "feat(V10): migrate renderFromKbChips to v10/output",
+            "files": 5,
+            "risk": "MEDIUM",
+            "commands": [
+                "Create v10/output/renderer/",
+                "Re-export from v7",
+                "Update imports"
+            ],
+            "exit_criteria": "Parity R1 PASS",
+            "rollback": "git checkout"
+        },
+        {
+            "pr": "PR4",
+            "title": "fix: add missing billing refs to catalogs",
+            "files": 3,
+            "risk": "MEDIUM",
+            "commands": [
+                "Add BEMA_98e etc to bema.json",
+                "npx vitest run gate-m82-*"
+            ],
+            "exit_criteria": "Missing refs = 0",
+            "rollback": "git checkout"
+        },
+        {
+            "pr": "PR5",
+            "title": "feat: complete B1 - move remaining 4 HTML files",
+            "files": 4,
+            "risk": "LOW",
+            "commands": [
+                "find + mv remaining HTML",
+                "npm run build"
+            ],
+            "exit_criteria": "find src/docudent -name '*.html' | wc -l = 0",
+            "rollback": "git checkout"
+        }
+    ]
+}

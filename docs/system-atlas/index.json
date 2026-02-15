@@ -1,0 +1,1589 @@
+{
+  "version": "2.0.0",
+  "generatedAt": "2026-02-14T20:29:46.204Z",
+  "gitHash": "unknown",
+  "runtimeFileCount": 477,
+  "artifactCount": 316,
+  "artifacts": {
+    "artifacts/_latest/atlas/gp6.cleanup.report.json": {
+      "path": "artifacts/_latest/atlas/gp6.cleanup.report.json",
+      "size": 242,
+      "hash": "510759218d5c"
+    },
+    "artifacts/_latest/bema-f-truthset/report.json": {
+      "path": "artifacts/_latest/bema-f-truthset/report.json",
+      "size": 12869,
+      "hash": "7fc9e854e2ea"
+    },
+    "artifacts/_latest/bema-f-truthset/summary.md": {
+      "path": "artifacts/_latest/bema-f-truthset/summary.md",
+      "size": 642,
+      "hash": "310b44c1bf1b"
+    },
+    "artifacts/_latest/coverage-reality-map/coverage-reality-map.md": {
+      "path": "artifacts/_latest/coverage-reality-map/coverage-reality-map.md",
+      "size": 2839,
+      "hash": "6ede8cb6eaf3"
+    },
+    "artifacts/_latest/frontend-reality/gp2.report.json": {
+      "path": "artifacts/_latest/frontend-reality/gp2.report.json",
+      "size": 957,
+      "hash": "e91acde152e1"
+    },
+    "artifacts/_latest/golden-flow/askback_contract.v3.md": {
+      "path": "artifacts/_latest/golden-flow/askback_contract.v3.md",
+      "size": 3489,
+      "hash": "86597184ce18"
+    },
+    "artifacts/_latest/golden-flow/askback_priorities.v3.json": {
+      "path": "artifacts/_latest/golden-flow/askback_priorities.v3.json",
+      "size": 2343,
+      "hash": "fa9c60331b6a"
+    },
+    "artifacts/_latest/golden-flow/fuellung_de_knowledge.v3.json": {
+      "path": "artifacts/_latest/golden-flow/fuellung_de_knowledge.v3.json",
+      "size": 25765,
+      "hash": "3af6c6cf3d1c"
+    },
+    "artifacts/_latest/golden-flow/fuellung_de_model.v3.md": {
+      "path": "artifacts/_latest/golden-flow/fuellung_de_model.v3.md",
+      "size": 2315,
+      "hash": "bd9d4e912324"
+    },
+    "artifacts/_latest/legacy-output-forensics/parity-map.md": {
+      "path": "artifacts/_latest/legacy-output-forensics/parity-map.md",
+      "size": 2992,
+      "hash": "c8bede5c3335"
+    },
+    "artifacts/_latest/legacy-output-forensics/report.md": {
+      "path": "artifacts/_latest/legacy-output-forensics/report.md",
+      "size": 6285,
+      "hash": "f6a4c1394043"
+    },
+    "artifacts/_latest/stale_artifacts.md": {
+      "path": "artifacts/_latest/stale_artifacts.md",
+      "size": 1570,
+      "hash": "4d21ad96aa44"
+    },
+    "artifacts/_latest/v10-audit-6prompt/depatch-sweep.md": {
+      "path": "artifacts/_latest/v10-audit-6prompt/depatch-sweep.md",
+      "size": 1457,
+      "hash": "1ed980775195"
+    },
+    "artifacts/_latest/v10-audit-6prompt/report.json": {
+      "path": "artifacts/_latest/v10-audit-6prompt/report.json",
+      "size": 3055,
+      "hash": "65ab299ef700"
+    },
+    "artifacts/_latest/v10-audit-6prompt/summary.md": {
+      "path": "artifacts/_latest/v10-audit-6prompt/summary.md",
+      "size": 3942,
+      "hash": "9021caa4edb3"
+    },
+    "artifacts/_latest/v10-audit-6prompt/wiring-proof.md": {
+      "path": "artifacts/_latest/v10-audit-6prompt/wiring-proof.md",
+      "size": 1797,
+      "hash": "616111fcb311"
+    },
+    "artifacts/_latest/v10-billing-display-contract/report.md": {
+      "path": "artifacts/_latest/v10-billing-display-contract/report.md",
+      "size": 1301,
+      "hash": "8f194596a6bb"
+    },
+    "artifacts/_latest/v10-billing-ssot-reality-proof/report.md": {
+      "path": "artifacts/_latest/v10-billing-ssot-reality-proof/report.md",
+      "size": 1875,
+      "hash": "852842e8de6d"
+    },
+    "artifacts/_latest/v10-billingref-surface/report.json": {
+      "path": "artifacts/_latest/v10-billingref-surface/report.json",
+      "size": 1795,
+      "hash": "92a9c1f91a58"
+    },
+    "artifacts/_latest/v10-billingref-surface/summary.md": {
+      "path": "artifacts/_latest/v10-billingref-surface/summary.md",
+      "size": 1264,
+      "hash": "9ad4b8cc82bd"
+    },
+    "artifacts/_latest/v10-bundle-run/report.json": {
+      "path": "artifacts/_latest/v10-bundle-run/report.json",
+      "size": 326,
+      "hash": "73e82202c6d6"
+    },
+    "artifacts/_latest/v10-bundle-run/summary.md": {
+      "path": "artifacts/_latest/v10-bundle-run/summary.md",
+      "size": 384,
+      "hash": "1aab216a5d90"
+    },
+    "artifacts/_latest/v10-cutover/gp1-6.final.report.json": {
+      "path": "artifacts/_latest/v10-cutover/gp1-6.final.report.json",
+      "size": 2109,
+      "hash": "3b5ffe0c6a20"
+    },
+    "artifacts/_latest/v10-cutover/gp1-6.final.v2.report.json": {
+      "path": "artifacts/_latest/v10-cutover/gp1-6.final.v2.report.json",
+      "size": 1933,
+      "hash": "af7db9c2eeb8"
+    },
+    "artifacts/_latest/v10-cutover/gp1.inventory.json": {
+      "path": "artifacts/_latest/v10-cutover/gp1.inventory.json",
+      "size": 3202,
+      "hash": "03031b2c3061"
+    },
+    "artifacts/_latest/v10-cutover/gp1.inventory.md": {
+      "path": "artifacts/_latest/v10-cutover/gp1.inventory.md",
+      "size": 1569,
+      "hash": "90d67b4c5ec4"
+    },
+    "artifacts/_latest/v10-cutover/gp1.report.json": {
+      "path": "artifacts/_latest/v10-cutover/gp1.report.json",
+      "size": 1531,
+      "hash": "6914b988dce2"
+    },
+    "artifacts/_latest/v10-cutover/gp3-6.report.json": {
+      "path": "artifacts/_latest/v10-cutover/gp3-6.report.json",
+      "size": 1980,
+      "hash": "5d3306bcb69a"
+    },
+    "artifacts/_latest/v10-cutover/inventory.md": {
+      "path": "artifacts/_latest/v10-cutover/inventory.md",
+      "size": 3722,
+      "hash": "e7256c9d4af4"
+    },
+    "artifacts/_latest/v10-cutover/multitreatment-scoping.report.json": {
+      "path": "artifacts/_latest/v10-cutover/multitreatment-scoping.report.json",
+      "size": 1407,
+      "hash": "c9732ff355e6"
+    },
+    "artifacts/_latest/v10-cutover/plan.md": {
+      "path": "artifacts/_latest/v10-cutover/plan.md",
+      "size": 3237,
+      "hash": "5450736317f9"
+    },
+    "artifacts/_latest/v10-doc-perfection/report.md": {
+      "path": "artifacts/_latest/v10-doc-perfection/report.md",
+      "size": 1715,
+      "hash": "8d5b6476b588"
+    },
+    "artifacts/_latest/v10-endo-16/report.json": {
+      "path": "artifacts/_latest/v10-endo-16/report.json",
+      "size": 4557,
+      "hash": "8e71fcd5effa"
+    },
+    "artifacts/_latest/v10-endo-16/summary.md": {
+      "path": "artifacts/_latest/v10-endo-16/summary.md",
+      "size": 1920,
+      "hash": "379cb225b110"
+    },
+    "artifacts/_latest/v10-explain-run/report.json": {
+      "path": "artifacts/_latest/v10-explain-run/report.json",
+      "size": 4618,
+      "hash": "3a9179e1e15c"
+    },
+    "artifacts/_latest/v10-explain-run/report.md": {
+      "path": "artifacts/_latest/v10-explain-run/report.md",
+      "size": 2055,
+      "hash": "b3b92e4a7437"
+    },
+    "artifacts/_latest/v10-explain-run/summary.md": {
+      "path": "artifacts/_latest/v10-explain-run/summary.md",
+      "size": 222,
+      "hash": "0bc623e03361"
+    },
+    "artifacts/_latest/v10-insurance-wiring/wiring-proof.md": {
+      "path": "artifacts/_latest/v10-insurance-wiring/wiring-proof.md",
+      "size": 3907,
+      "hash": "846dde1ba197"
+    },
+    "artifacts/_latest/v10-legacy-mkv-addon-proof.md": {
+      "path": "artifacts/_latest/v10-legacy-mkv-addon-proof.md",
+      "size": 4181,
+      "hash": "5dd48c0a0af4"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/audit-report.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/audit-report.md",
+      "size": 4021,
+      "hash": "f785a42636bc"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/report.json",
+      "size": 4255,
+      "hash": "14f6da88f2ac"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.crown_prep.medical/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.crown_prep.medical/report.json",
+      "size": 2658,
+      "hash": "2e1ffd62625f"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.crown_prep.medical/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.crown_prep.medical/summary.md",
+      "size": 447,
+      "hash": "0f8fa9ca9477"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.e2e10.medical/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.e2e10.medical/report.json",
+      "size": 22028,
+      "hash": "0c4581aaf713"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.e2e10.medical/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.e2e10.medical/summary.md",
+      "size": 1019,
+      "hash": "0d3bc6bdeac8"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.endo.medical/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.endo.medical/report.json",
+      "size": 15807,
+      "hash": "470dad581e25"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.endo.medical/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.endo.medical/summary.md",
+      "size": 823,
+      "hash": "be4c713958bd"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.extraction.medical/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.extraction.medical/report.json",
+      "size": 4088,
+      "hash": "a8cb6ed980c9"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.extraction.medical/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.extraction.medical/summary.md",
+      "size": 493,
+      "hash": "901975cfa726"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.fuellung.medical/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.fuellung.medical/report.json",
+      "size": 23531,
+      "hash": "c6d0d82bc506"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.fuellung.medical/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.fuellung.medical/summary.md",
+      "size": 1011,
+      "hash": "cbac2d5fce9d"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.fuellung.medical.v2/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.fuellung.medical.v2/report.json",
+      "size": 21623,
+      "hash": "253286083970"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.fuellung.medical.v2/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.fuellung.medical.v2/summary.md",
+      "size": 1006,
+      "hash": "223d3c6c6fa9"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.pzr.medical/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.pzr.medical/report.json",
+      "size": 4011,
+      "hash": "dcaa81017d3e"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.pzr.medical/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.pzr.medical/summary.md",
+      "size": 478,
+      "hash": "246fc71fdf9c"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.medical/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.medical/report.json",
+      "size": 25150,
+      "hash": "eda0a2f61b5e"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.medical/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.medical/summary.md",
+      "size": 1052,
+      "hash": "239582ffaaf7"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/summary.md",
+      "size": 708,
+      "hash": "7f64f54058e0"
+    },
+    "artifacts/_latest/v10-medical-scenario-run/summary.v2.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run/summary.v2.md",
+      "size": 1998,
+      "hash": "9793493ee91b"
+    },
+    "artifacts/_latest/v10-medical-scenario-run-v2/report.json": {
+      "path": "artifacts/_latest/v10-medical-scenario-run-v2/report.json",
+      "size": 12300,
+      "hash": "ee70d6aa8d47"
+    },
+    "artifacts/_latest/v10-medical-scenario-run-v2/summary.md": {
+      "path": "artifacts/_latest/v10-medical-scenario-run-v2/summary.md",
+      "size": 2167,
+      "hash": "083d536d7f84"
+    },
+    "artifacts/_latest/v10-mkv-forensic-port-report.md": {
+      "path": "artifacts/_latest/v10-mkv-forensic-port-report.md",
+      "size": 7759,
+      "hash": "8e00cd823aa8"
+    },
+    "artifacts/_latest/v10-mvp/askback-bank-audit.md": {
+      "path": "artifacts/_latest/v10-mvp/askback-bank-audit.md",
+      "size": 4119,
+      "hash": "fe9546e0188f"
+    },
+    "artifacts/_latest/v10-mvp/depatch-plan.md": {
+      "path": "artifacts/_latest/v10-mvp/depatch-plan.md",
+      "size": 3123,
+      "hash": "f02d11c7b38f"
+    },
+    "artifacts/_latest/v10-mvp/facts-sufficiency-audit.md": {
+      "path": "artifacts/_latest/v10-mvp/facts-sufficiency-audit.md",
+      "size": 4427,
+      "hash": "dac789091e52"
+    },
+    "artifacts/_latest/v10-mvp/gkv-mkv-rules.md": {
+      "path": "artifacts/_latest/v10-mvp/gkv-mkv-rules.md",
+      "size": 878,
+      "hash": "1236a79ef1ae"
+    },
+    "artifacts/_latest/v10-mvp/mvp-check.report.json": {
+      "path": "artifacts/_latest/v10-mvp/mvp-check.report.json",
+      "size": 3190,
+      "hash": "b81b28a781cd"
+    },
+    "artifacts/_latest/v10-mvp/mvp-check.summary.md": {
+      "path": "artifacts/_latest/v10-mvp/mvp-check.summary.md",
+      "size": 480,
+      "hash": "c700d61ad0ed"
+    },
+    "artifacts/_latest/v10-mvp/mvp-reality-audit.md": {
+      "path": "artifacts/_latest/v10-mvp/mvp-reality-audit.md",
+      "size": 4928,
+      "hash": "06971fe327fd"
+    },
+    "artifacts/_latest/v10-mvp/per-instance-contract.md": {
+      "path": "artifacts/_latest/v10-mvp/per-instance-contract.md",
+      "size": 1340,
+      "hash": "42dad2e589b1"
+    },
+    "artifacts/_latest/v10-mvp/per-instance-provenance-audit.md": {
+      "path": "artifacts/_latest/v10-mvp/per-instance-provenance-audit.md",
+      "size": 2717,
+      "hash": "b5cb992431ce"
+    },
+    "artifacts/_latest/v10-mvp/question-binding.md": {
+      "path": "artifacts/_latest/v10-mvp/question-binding.md",
+      "size": 1152,
+      "hash": "0d165ff4f31f"
+    },
+    "artifacts/_latest/v10-mvp/reality-audit.md": {
+      "path": "artifacts/_latest/v10-mvp/reality-audit.md",
+      "size": 1644,
+      "hash": "36c8f79b6979"
+    },
+    "artifacts/_latest/v10-mvp/reality-snapshot.md": {
+      "path": "artifacts/_latest/v10-mvp/reality-snapshot.md",
+      "size": 2038,
+      "hash": "c76e5bfe3b1b"
+    },
+    "artifacts/_latest/v10-mvp/report.json": {
+      "path": "artifacts/_latest/v10-mvp/report.json",
+      "size": 2361,
+      "hash": "90fe0818fccc"
+    },
+    "artifacts/_latest/v10-mvp/root-cause-diagnosis.md": {
+      "path": "artifacts/_latest/v10-mvp/root-cause-diagnosis.md",
+      "size": 3948,
+      "hash": "d996a1adc173"
+    },
+    "artifacts/_latest/v10-mvp/session-contract-check.md": {
+      "path": "artifacts/_latest/v10-mvp/session-contract-check.md",
+      "size": 1395,
+      "hash": "67cf85d1056d"
+    },
+    "artifacts/_latest/v10-mvp/settings-question-reduction-audit.md": {
+      "path": "artifacts/_latest/v10-mvp/settings-question-reduction-audit.md",
+      "size": 2408,
+      "hash": "785b8fa15b8b"
+    },
+    "artifacts/_latest/v10-mvp/summary.md": {
+      "path": "artifacts/_latest/v10-mvp/summary.md",
+      "size": 1322,
+      "hash": "6e06cf1f5e99"
+    },
+    "artifacts/_latest/v10-mvp-smoke/report.json": {
+      "path": "artifacts/_latest/v10-mvp-smoke/report.json",
+      "size": 3504,
+      "hash": "e8cbbb576987"
+    },
+    "artifacts/_latest/v10-mvp-smoke/summary.md": {
+      "path": "artifacts/_latest/v10-mvp-smoke/summary.md",
+      "size": 109,
+      "hash": "1440752ad05c"
+    },
+    "artifacts/_latest/v10-mvp-truth/report.json": {
+      "path": "artifacts/_latest/v10-mvp-truth/report.json",
+      "size": 4402,
+      "hash": "b1c3b742a5f9"
+    },
+    "artifacts/_latest/v10-mvp-truth/summary.md": {
+      "path": "artifacts/_latest/v10-mvp-truth/summary.md",
+      "size": 1119,
+      "hash": "cf61a804b515"
+    },
+    "artifacts/_latest/v10-output-reality-proof.md": {
+      "path": "artifacts/_latest/v10-output-reality-proof.md",
+      "size": 2790,
+      "hash": "e02694a8f139"
+    },
+    "artifacts/_latest/v10-perfect-output-recovery.md": {
+      "path": "artifacts/_latest/v10-perfect-output-recovery.md",
+      "size": 5290,
+      "hash": "81471b73d8f0"
+    },
+    "artifacts/_latest/v10-practice-check/report.json": {
+      "path": "artifacts/_latest/v10-practice-check/report.json",
+      "size": 1804,
+      "hash": "b6bea3756b50"
+    },
+    "artifacts/_latest/v10-practice-check/summary.md": {
+      "path": "artifacts/_latest/v10-practice-check/summary.md",
+      "size": 183,
+      "hash": "7bb8eadf512c"
+    },
+    "artifacts/_latest/v10-praxis-16/report.json": {
+      "path": "artifacts/_latest/v10-praxis-16/report.json",
+      "size": 3495,
+      "hash": "174fa4fd6ff3"
+    },
+    "artifacts/_latest/v10-praxis-16/report.md": {
+      "path": "artifacts/_latest/v10-praxis-16/report.md",
+      "size": 2188,
+      "hash": "26fc1905716a"
+    },
+    "artifacts/_latest/v10-questions-contract/report.json": {
+      "path": "artifacts/_latest/v10-questions-contract/report.json",
+      "size": 3251,
+      "hash": "59caa50107b3"
+    },
+    "artifacts/_latest/v10-questions-contract/report.md": {
+      "path": "artifacts/_latest/v10-questions-contract/report.md",
+      "size": 1672,
+      "hash": "393889d7f47e"
+    },
+    "artifacts/_latest/v10-questions-reality-proof.md": {
+      "path": "artifacts/_latest/v10-questions-reality-proof.md",
+      "size": 2051,
+      "hash": "b3b4c9d549ad"
+    },
+    "artifacts/_latest/v10-real-dictation-check/report.json": {
+      "path": "artifacts/_latest/v10-real-dictation-check/report.json",
+      "size": 60669,
+      "hash": "c68dddf0a822"
+    },
+    "artifacts/_latest/v10-real-dictation-check/summary.md": {
+      "path": "artifacts/_latest/v10-real-dictation-check/summary.md",
+      "size": 968,
+      "hash": "42ee849761e2"
+    },
+    "artifacts/_latest/v10-reality/report.json": {
+      "path": "artifacts/_latest/v10-reality/report.json",
+      "size": 3070,
+      "hash": "771597bf578e"
+    },
+    "artifacts/_latest/v10-reality/summary.md": {
+      "path": "artifacts/_latest/v10-reality/summary.md",
+      "size": 1087,
+      "hash": "83a5766c844a"
+    },
+    "artifacts/_latest/v10-reality-audit/report.md": {
+      "path": "artifacts/_latest/v10-reality-audit/report.md",
+      "size": 4673,
+      "hash": "c87449ae2816"
+    },
+    "artifacts/_latest/v10-scenario-run/report.json": {
+      "path": "artifacts/_latest/v10-scenario-run/report.json",
+      "size": 69426,
+      "hash": "68ecb0ca1896"
+    },
+    "artifacts/_latest/v10-scenario-run/summary.md": {
+      "path": "artifacts/_latest/v10-scenario-run/summary.md",
+      "size": 2614,
+      "hash": "7a923ae04c1d"
+    },
+    "artifacts/_latest/v10-scenario-run-endo/report.json": {
+      "path": "artifacts/_latest/v10-scenario-run-endo/report.json",
+      "size": 11878,
+      "hash": "b5ac45552949"
+    },
+    "artifacts/_latest/v10-scenario-run-endo/summary.md": {
+      "path": "artifacts/_latest/v10-scenario-run-endo/summary.md",
+      "size": 747,
+      "hash": "c0a876d46d22"
+    },
+    "artifacts/_latest/v10-scenario-run-fuellung/report.json": {
+      "path": "artifacts/_latest/v10-scenario-run-fuellung/report.json",
+      "size": 92499,
+      "hash": "cad7d41db295"
+    },
+    "artifacts/_latest/v10-scenario-run-fuellung/summary.md": {
+      "path": "artifacts/_latest/v10-scenario-run-fuellung/summary.md",
+      "size": 2652,
+      "hash": "f7dfa0f212a4"
+    },
+    "artifacts/_latest/v10-surfaces/report.json": {
+      "path": "artifacts/_latest/v10-surfaces/report.json",
+      "size": 1326,
+      "hash": "a9425f5a39bd"
+    },
+    "artifacts/_latest/v10-surfaces/summary.md": {
+      "path": "artifacts/_latest/v10-surfaces/summary.md",
+      "size": 1216,
+      "hash": "b267d339fc4e"
+    },
+    "artifacts/_latest/v10-test-catalog.md": {
+      "path": "artifacts/_latest/v10-test-catalog.md",
+      "size": 2902,
+      "hash": "533e6e655261"
+    },
+    "artifacts/_latest/v10-ui-wiring/report.json": {
+      "path": "artifacts/_latest/v10-ui-wiring/report.json",
+      "size": 2026,
+      "hash": "51990be9e6f1"
+    },
+    "artifacts/audit/Audit.Atlas.md": {
+      "path": "artifacts/audit/Audit.Atlas.md",
+      "size": 2549,
+      "hash": "66dc397637e0"
+    },
+    "artifacts/audit/Audit.Billing.md": {
+      "path": "artifacts/audit/Audit.Billing.md",
+      "size": 3529,
+      "hash": "9c56617141c5"
+    },
+    "artifacts/audit/Audit.Concepts.md": {
+      "path": "artifacts/audit/Audit.Concepts.md",
+      "size": 20497,
+      "hash": "e7db7a08db99"
+    },
+    "artifacts/audit/Audit.Medical.md": {
+      "path": "artifacts/audit/Audit.Medical.md",
+      "size": 4690,
+      "hash": "79769534fa38"
+    },
+    "artifacts/audit/Audit.Output.md": {
+      "path": "artifacts/audit/Audit.Output.md",
+      "size": 2701,
+      "hash": "d6d7a14f6415"
+    },
+    "artifacts/audit/Audit.Runtime.md": {
+      "path": "artifacts/audit/Audit.Runtime.md",
+      "size": 3483,
+      "hash": "fdd0936f7ae1"
+    },
+    "artifacts/audit/FINAL_AUDIT_SUMMARY.md": {
+      "path": "artifacts/audit/FINAL_AUDIT_SUMMARY.md",
+      "size": 5026,
+      "hash": "307da6f64a5f"
+    },
+    "artifacts/bel-audit/report.json": {
+      "path": "artifacts/bel-audit/report.json",
+      "size": 1946,
+      "hash": "c378f002185a"
+    },
+    "artifacts/bema-mappe/bema.index.json": {
+      "path": "artifacts/bema-mappe/bema.index.json",
+      "size": 14950,
+      "hash": "89e97ee9a0a4"
+    },
+    "artifacts/bema-mappe/bema.items.jsonl": {
+      "path": "artifacts/bema-mappe/bema.items.jsonl",
+      "size": 109085,
+      "hash": "46d55b717fc4"
+    },
+    "artifacts/bema-mappe/bema.patch.json": {
+      "path": "artifacts/bema-mappe/bema.patch.json",
+      "size": 60856,
+      "hash": "20c8cb3d135a"
+    },
+    "artifacts/bema-mappe/diff.report.md": {
+      "path": "artifacts/bema-mappe/diff.report.md",
+      "size": 21398,
+      "hash": "0c9815f24f2c"
+    },
+    "artifacts/bema-mappe/extraction.report.json": {
+      "path": "artifacts/bema-mappe/extraction.report.json",
+      "size": 1345,
+      "hash": "08d3ba8efce9"
+    },
+    "artifacts/billing-closure/post-html-import.report.json": {
+      "path": "artifacts/billing-closure/post-html-import.report.json",
+      "size": 29814,
+      "hash": "096d60e504c1"
+    },
+    "artifacts/billing-decoupling/README.md": {
+      "path": "artifacts/billing-decoupling/README.md",
+      "size": 1232,
+      "hash": "2c60d7e797a6"
+    },
+    "artifacts/billing-decoupling/hardcode.report.json": {
+      "path": "artifacts/billing-decoupling/hardcode.report.json",
+      "size": 637,
+      "hash": "c7fe26ddaf17"
+    },
+    "artifacts/catalog-coverage/allowlist.json": {
+      "path": "artifacts/catalog-coverage/allowlist.json",
+      "size": 6164,
+      "hash": "09a1fbb0f345"
+    },
+    "artifacts/catalog-coverage/audit.report.json": {
+      "path": "artifacts/catalog-coverage/audit.report.json",
+      "size": 1843,
+      "hash": "042fe03750e3"
+    },
+    "artifacts/fuellung-de-v2/facts.schema.v2.json": {
+      "path": "artifacts/fuellung-de-v2/facts.schema.v2.json",
+      "size": 3664,
+      "hash": "7db4f14245f2"
+    },
+    "artifacts/fuellung-de-v2/fuellung_de_knowledge.v2.json": {
+      "path": "artifacts/fuellung-de-v2/fuellung_de_knowledge.v2.json",
+      "size": 21728,
+      "hash": "0fdcad5b940e"
+    },
+    "artifacts/fuellung-de-v2/fuellung_de_model.v2.md": {
+      "path": "artifacts/fuellung-de-v2/fuellung_de_model.v2.md",
+      "size": 4732,
+      "hash": "66e6420ac9fc"
+    },
+    "artifacts/fuellung-de-v2/report.g115.json": {
+      "path": "artifacts/fuellung-de-v2/report.g115.json",
+      "size": 742,
+      "hash": "6161531981ba"
+    },
+    "artifacts/g44/g44.report.json": {
+      "path": "artifacts/g44/g44.report.json",
+      "size": 2326,
+      "hash": "320d3f2b7859"
+    },
+    "artifacts/g44/vitest.json": {
+      "path": "artifacts/g44/vitest.json",
+      "size": 1886605,
+      "hash": "7256856b18c1"
+    },
+    "artifacts/g45/g45.report.json": {
+      "path": "artifacts/g45/g45.report.json",
+      "size": 1973,
+      "hash": "76bfeb346cc6"
+    },
+    "artifacts/g46/g46.report.json": {
+      "path": "artifacts/g46/g46.report.json",
+      "size": 1686,
+      "hash": "841004501adb"
+    },
+    "artifacts/g47/g47.report.json": {
+      "path": "artifacts/g47/g47.report.json",
+      "size": 1662,
+      "hash": "b929f213b96f"
+    },
+    "artifacts/g48/g48.report.json": {
+      "path": "artifacts/g48/g48.report.json",
+      "size": 1963,
+      "hash": "0d5de8c6ec4a"
+    },
+    "artifacts/g49/g49.report.json": {
+      "path": "artifacts/g49/g49.report.json",
+      "size": 2075,
+      "hash": "2aca51d1ce70"
+    },
+    "artifacts/g50/g50.report.json": {
+      "path": "artifacts/g50/g50.report.json",
+      "size": 1538,
+      "hash": "c8418c8c0aca"
+    },
+    "artifacts/g51/g51.report.json": {
+      "path": "artifacts/g51/g51.report.json",
+      "size": 1117,
+      "hash": "fa42db5b88db"
+    },
+    "artifacts/g52/g52.report.json": {
+      "path": "artifacts/g52/g52.report.json",
+      "size": 984,
+      "hash": "ed8878cfff06"
+    },
+    "artifacts/g53/g53.report.json": {
+      "path": "artifacts/g53/g53.report.json",
+      "size": 901,
+      "hash": "dc57c90a48e7"
+    },
+    "artifacts/g54/g54.report.json": {
+      "path": "artifacts/g54/g54.report.json",
+      "size": 1225,
+      "hash": "765a4dc383ae"
+    },
+    "artifacts/g55/g55.report.json": {
+      "path": "artifacts/g55/g55.report.json",
+      "size": 2041,
+      "hash": "7a30a075e3f3"
+    },
+    "artifacts/g55/vitest.json": {
+      "path": "artifacts/g55/vitest.json",
+      "size": 1883368,
+      "hash": "ca3abc01a528"
+    },
+    "artifacts/g56/g56.report.json": {
+      "path": "artifacts/g56/g56.report.json",
+      "size": 722,
+      "hash": "2847d1422af3"
+    },
+    "artifacts/g57/g57.report.json": {
+      "path": "artifacts/g57/g57.report.json",
+      "size": 495,
+      "hash": "c7c2c9f7243e"
+    },
+    "artifacts/g58/g58.report.json": {
+      "path": "artifacts/g58/g58.report.json",
+      "size": 515,
+      "hash": "71b285817ed7"
+    },
+    "artifacts/g59/g59.report.json": {
+      "path": "artifacts/g59/g59.report.json",
+      "size": 478,
+      "hash": "1d89ae2a5e3d"
+    },
+    "artifacts/g60/g60.report.json": {
+      "path": "artifacts/g60/g60.report.json",
+      "size": 386,
+      "hash": "5f047a45011d"
+    },
+    "artifacts/g67/fails.by_suite.jsonl": {
+      "path": "artifacts/g67/fails.by_suite.jsonl",
+      "size": 9467,
+      "hash": "e0b6c39e9873"
+    },
+    "artifacts/g67/fails.clustered.json": {
+      "path": "artifacts/g67/fails.clustered.json",
+      "size": 5388,
+      "hash": "e2a9636c6f4e"
+    },
+    "artifacts/g67/fix-order.md": {
+      "path": "artifacts/g67/fix-order.md",
+      "size": 2278,
+      "hash": "e98e0463c8b3"
+    },
+    "artifacts/g67/g67.report.json": {
+      "path": "artifacts/g67/g67.report.json",
+      "size": 1435,
+      "hash": "2a8c4231e131"
+    },
+    "artifacts/g67/vitest.report.json": {
+      "path": "artifacts/g67/vitest.report.json",
+      "size": 1848083,
+      "hash": "5ce1ea480309"
+    },
+    "artifacts/g68/g68.report.json": {
+      "path": "artifacts/g68/g68.report.json",
+      "size": 1266,
+      "hash": "09a32077ca23"
+    },
+    "artifacts/g69/g69.report.json": {
+      "path": "artifacts/g69/g69.report.json",
+      "size": 738,
+      "hash": "bf08a3d47327"
+    },
+    "artifacts/g70/g70.report.json": {
+      "path": "artifacts/g70/g70.report.json",
+      "size": 691,
+      "hash": "33c350675db2"
+    },
+    "artifacts/g71/g71.report.json": {
+      "path": "artifacts/g71/g71.report.json",
+      "size": 686,
+      "hash": "c402ff73eaee"
+    },
+    "artifacts/g72/g72.report.json": {
+      "path": "artifacts/g72/g72.report.json",
+      "size": 448,
+      "hash": "211a7a4d4542"
+    },
+    "artifacts/g79/g79.report.json": {
+      "path": "artifacts/g79/g79.report.json",
+      "size": 2718,
+      "hash": "51fbf5b211f3"
+    },
+    "artifacts/g80/g80.report.json": {
+      "path": "artifacts/g80/g80.report.json",
+      "size": 427,
+      "hash": "cdaae9c64e4c"
+    },
+    "artifacts/g81/g81.report.json": {
+      "path": "artifacts/g81/g81.report.json",
+      "size": 393,
+      "hash": "ae28e11280f2"
+    },
+    "artifacts/g82/g82.report.json": {
+      "path": "artifacts/g82/g82.report.json",
+      "size": 402,
+      "hash": "ed989d6d8265"
+    },
+    "artifacts/g83/g83.report.json": {
+      "path": "artifacts/g83/g83.report.json",
+      "size": 543,
+      "hash": "0e2a8d334f48"
+    },
+    "artifacts/g84/g84.report.json": {
+      "path": "artifacts/g84/g84.report.json",
+      "size": 490,
+      "hash": "68913ac70733"
+    },
+    "artifacts/g85/g85.report.json": {
+      "path": "artifacts/g85/g85.report.json",
+      "size": 2242,
+      "hash": "8dc5291a0cf8"
+    },
+    "artifacts/g91/g91.report.json": {
+      "path": "artifacts/g91/g91.report.json",
+      "size": 1864,
+      "hash": "1750d76b0878"
+    },
+    "artifacts/gigaprompt_fuellung_02/report.json": {
+      "path": "artifacts/gigaprompt_fuellung_02/report.json",
+      "size": 1698,
+      "hash": "d90bf8c8c6c0"
+    },
+    "artifacts/gigaprompt_fuellung_03/ui_playbook.md": {
+      "path": "artifacts/gigaprompt_fuellung_03/ui_playbook.md",
+      "size": 2453,
+      "hash": "9606aa63bbee"
+    },
+    "artifacts/gigaprompt_fuellung_04/report.json": {
+      "path": "artifacts/gigaprompt_fuellung_04/report.json",
+      "size": 1384,
+      "hash": "6d452de19419"
+    },
+    "artifacts/gigaprompt_fuellung_04/ui_playbook.md": {
+      "path": "artifacts/gigaprompt_fuellung_04/ui_playbook.md",
+      "size": 3224,
+      "hash": "836580a3b7dc"
+    },
+    "artifacts/gigaprompt_fuellung_05/report.json": {
+      "path": "artifacts/gigaprompt_fuellung_05/report.json",
+      "size": 989,
+      "hash": "52d520cb0e70"
+    },
+    "artifacts/gigaprompt_fuellung_06/catalog_audit.report.json": {
+      "path": "artifacts/gigaprompt_fuellung_06/catalog_audit.report.json",
+      "size": 206,
+      "hash": "1e6d38dae3a8"
+    },
+    "artifacts/gigaprompt_fuellung_06/report.json": {
+      "path": "artifacts/gigaprompt_fuellung_06/report.json",
+      "size": 727,
+      "hash": "492adce107e5"
+    },
+    "artifacts/goae-scope/report.json": {
+      "path": "artifacts/goae-scope/report.json",
+      "size": 12308,
+      "hash": "797795335b45"
+    },
+    "artifacts/golden-flow/askback_chip_matrix.md": {
+      "path": "artifacts/golden-flow/askback_chip_matrix.md",
+      "size": 3765,
+      "hash": "8828bcf4c0f1"
+    },
+    "artifacts/golden-flow/askback_contract.md": {
+      "path": "artifacts/golden-flow/askback_contract.md",
+      "size": 1829,
+      "hash": "8e086da3159c"
+    },
+    "artifacts/golden-flow/askback_contract.v3.md": {
+      "path": "artifacts/golden-flow/askback_contract.v3.md",
+      "size": 3489,
+      "hash": "86597184ce18"
+    },
+    "artifacts/golden-flow/askback_priorities.v3.json": {
+      "path": "artifacts/golden-flow/askback_priorities.v3.json",
+      "size": 2343,
+      "hash": "fa9c60331b6a"
+    },
+    "artifacts/golden-flow/askback_triggers.md": {
+      "path": "artifacts/golden-flow/askback_triggers.md",
+      "size": 4256,
+      "hash": "c0f1dcc58780"
+    },
+    "artifacts/golden-flow/askback_ui_minimal.md": {
+      "path": "artifacts/golden-flow/askback_ui_minimal.md",
+      "size": 2119,
+      "hash": "1c8857cbd1b9"
+    },
+    "artifacts/golden-flow/askbacks.fuellung.v1.json": {
+      "path": "artifacts/golden-flow/askbacks.fuellung.v1.json",
+      "size": 6967,
+      "hash": "d8d3b09a4dc7"
+    },
+    "artifacts/golden-flow/askbacks.reference.json": {
+      "path": "artifacts/golden-flow/askbacks.reference.json",
+      "size": 4219,
+      "hash": "35d6581e76d2"
+    },
+    "artifacts/golden-flow/askbacks.reference.v3.json": {
+      "path": "artifacts/golden-flow/askbacks.reference.v3.json",
+      "size": 4720,
+      "hash": "7336ea6c2506"
+    },
+    "artifacts/golden-flow/chip_ui_contract.md": {
+      "path": "artifacts/golden-flow/chip_ui_contract.md",
+      "size": 3181,
+      "hash": "7384edf13600"
+    },
+    "artifacts/golden-flow/chips.reference.json": {
+      "path": "artifacts/golden-flow/chips.reference.json",
+      "size": 2466,
+      "hash": "16791a643ce4"
+    },
+    "artifacts/golden-flow/composite_ssot_proof.md": {
+      "path": "artifacts/golden-flow/composite_ssot_proof.md",
+      "size": 4203,
+      "hash": "46975bfc7811"
+    },
+    "artifacts/golden-flow/composite_truthcases.json": {
+      "path": "artifacts/golden-flow/composite_truthcases.json",
+      "size": 6942,
+      "hash": "af736f88c96a"
+    },
+    "artifacts/golden-flow/extraction_keywords.v3.md": {
+      "path": "artifacts/golden-flow/extraction_keywords.v3.md",
+      "size": 3681,
+      "hash": "0d08cd8430fc"
+    },
+    "artifacts/golden-flow/facts.example.json": {
+      "path": "artifacts/golden-flow/facts.example.json",
+      "size": 910,
+      "hash": "84c14253ffbf"
+    },
+    "artifacts/golden-flow/facts.schema.json": {
+      "path": "artifacts/golden-flow/facts.schema.json",
+      "size": 4195,
+      "hash": "076124c62aeb"
+    },
+    "artifacts/golden-flow/filling_decision_tree.json": {
+      "path": "artifacts/golden-flow/filling_decision_tree.json",
+      "size": 5100,
+      "hash": "e38872c1e720"
+    },
+    "artifacts/golden-flow/filling_therapy_germany.md": {
+      "path": "artifacts/golden-flow/filling_therapy_germany.md",
+      "size": 7080,
+      "hash": "92b9b72dcbea"
+    },
+    "artifacts/golden-flow/forbidden_derivations.md": {
+      "path": "artifacts/golden-flow/forbidden_derivations.md",
+      "size": 2863,
+      "hash": "bb95b8d712e1"
+    },
+    "artifacts/golden-flow/frontend_failure_modes.md": {
+      "path": "artifacts/golden-flow/frontend_failure_modes.md",
+      "size": 5089,
+      "hash": "4aaa9504ea5d"
+    },
+    "artifacts/golden-flow/frontend_reality_check.md": {
+      "path": "artifacts/golden-flow/frontend_reality_check.md",
+      "size": 6542,
+      "hash": "71cd55bdae62"
+    },
+    "artifacts/golden-flow/frontend_wiring.md": {
+      "path": "artifacts/golden-flow/frontend_wiring.md",
+      "size": 4503,
+      "hash": "1b92bed20947"
+    },
+    "artifacts/golden-flow/fuellung_de_knowledge.v3.json": {
+      "path": "artifacts/golden-flow/fuellung_de_knowledge.v3.json",
+      "size": 25765,
+      "hash": "3af6c6cf3d1c"
+    },
+    "artifacts/golden-flow/fuellung_de_model.v3.md": {
+      "path": "artifacts/golden-flow/fuellung_de_model.v3.md",
+      "size": 2315,
+      "hash": "bd9d4e912324"
+    },
+    "artifacts/golden-flow/golden_composite_flow.json": {
+      "path": "artifacts/golden-flow/golden_composite_flow.json",
+      "size": 5609,
+      "hash": "4084c19b132a"
+    },
+    "artifacts/golden-flow/golden_composite_flow.md": {
+      "path": "artifacts/golden-flow/golden_composite_flow.md",
+      "size": 4762,
+      "hash": "89dd14eb5c99"
+    },
+    "artifacts/golden-flow/golden_dictation_mode.md": {
+      "path": "artifacts/golden-flow/golden_dictation_mode.md",
+      "size": 2203,
+      "hash": "0822b9c62774"
+    },
+    "artifacts/golden-flow/live_output_billing_trace.md": {
+      "path": "artifacts/golden-flow/live_output_billing_trace.md",
+      "size": 2081,
+      "hash": "e92bf7798add"
+    },
+    "artifacts/golden-flow/medical_decisions.md": {
+      "path": "artifacts/golden-flow/medical_decisions.md",
+      "size": 4652,
+      "hash": "57a451dc576a"
+    },
+    "artifacts/golden-flow/medical_layer_expansion.md": {
+      "path": "artifacts/golden-flow/medical_layer_expansion.md",
+      "size": 3569,
+      "hash": "eb9a94f8e89c"
+    },
+    "artifacts/golden-flow/multitreatment_reality.md": {
+      "path": "artifacts/golden-flow/multitreatment_reality.md",
+      "size": 3140,
+      "hash": "10af14c64a21"
+    },
+    "artifacts/golden-flow/reference_case.md": {
+      "path": "artifacts/golden-flow/reference_case.md",
+      "size": 4934,
+      "hash": "c22d37966507"
+    },
+    "artifacts/golden-flow/render_trace.md": {
+      "path": "artifacts/golden-flow/render_trace.md",
+      "size": 2501,
+      "hash": "2fdfe1b5d3ea"
+    },
+    "artifacts/golden-flow/render_trace.v3.md": {
+      "path": "artifacts/golden-flow/render_trace.v3.md",
+      "size": 3551,
+      "hash": "67f5ecad6981"
+    },
+    "artifacts/golden-flow/truthcase.gold.json": {
+      "path": "artifacts/golden-flow/truthcase.gold.json",
+      "size": 3680,
+      "hash": "51ee9b591f0e"
+    },
+    "artifacts/golden-flow/truthcase.gold.md": {
+      "path": "artifacts/golden-flow/truthcase.gold.md",
+      "size": 5290,
+      "hash": "bf252ff40b1b"
+    },
+    "artifacts/goz-implantology/recheck.report.json": {
+      "path": "artifacts/goz-implantology/recheck.report.json",
+      "size": 635,
+      "hash": "fb94bcfda149"
+    },
+    "artifacts/goz-mappe/diff.report.md": {
+      "path": "artifacts/goz-mappe/diff.report.md",
+      "size": 2493,
+      "hash": "f22e64631bad"
+    },
+    "artifacts/goz-mappe/extraction.report.json": {
+      "path": "artifacts/goz-mappe/extraction.report.json",
+      "size": 1451,
+      "hash": "bc6ece013af9"
+    },
+    "artifacts/goz-mappe/goz.index.json": {
+      "path": "artifacts/goz-mappe/goz.index.json",
+      "size": 7033,
+      "hash": "3763f8bcdd34"
+    },
+    "artifacts/goz-mappe/goz.items.jsonl": {
+      "path": "artifacts/goz-mappe/goz.items.jsonl",
+      "size": 37858,
+      "hash": "f09aea53204f"
+    },
+    "artifacts/goz-mappe/goz.patch.json": {
+      "path": "artifacts/goz-mappe/goz.patch.json",
+      "size": 4769,
+      "hash": "84beb2dc46e2"
+    },
+    "artifacts/goz-non-existent/report.json": {
+      "path": "artifacts/goz-non-existent/report.json",
+      "size": 93,
+      "hash": "1fb3753979fb"
+    },
+    "artifacts/index.json": {
+      "path": "artifacts/index.json",
+      "size": 242,
+      "hash": "7e27d739eeea"
+    },
+    "artifacts/index.md": {
+      "path": "artifacts/index.md",
+      "size": 267,
+      "hash": "170e89a38ecf"
+    },
+    "artifacts/m37/parity.e2e.headless.report.json": {
+      "path": "artifacts/m37/parity.e2e.headless.report.json",
+      "size": 149,
+      "hash": "4905b405fe2e"
+    },
+    "artifacts/m38/vitest.failures.clustered.json": {
+      "path": "artifacts/m38/vitest.failures.clustered.json",
+      "size": 1584,
+      "hash": "721e57831b8f"
+    },
+    "artifacts/m43/g43.report.json": {
+      "path": "artifacts/m43/g43.report.json",
+      "size": 2766,
+      "hash": "8d3951dd5c42"
+    },
+    "artifacts/m43/playwright.headless.report.json": {
+      "path": "artifacts/m43/playwright.headless.report.json",
+      "size": 388,
+      "hash": "d3b88a81c58d"
+    },
+    "artifacts/m61/g61.report.json": {
+      "path": "artifacts/m61/g61.report.json",
+      "size": 2315,
+      "hash": "672918849f73"
+    },
+    "artifacts/m61/vitest.json": {
+      "path": "artifacts/m61/vitest.json",
+      "size": 1882631,
+      "hash": "2812b505258f"
+    },
+    "artifacts/m62/g62.report.json": {
+      "path": "artifacts/m62/g62.report.json",
+      "size": 576,
+      "hash": "1ec08800cb1d"
+    },
+    "artifacts/m63/g63.report.json": {
+      "path": "artifacts/m63/g63.report.json",
+      "size": 653,
+      "hash": "de9b815eac3e"
+    },
+    "artifacts/m64/g64.report.json": {
+      "path": "artifacts/m64/g64.report.json",
+      "size": 639,
+      "hash": "e319172a2071"
+    },
+    "artifacts/m65/g65.report.json": {
+      "path": "artifacts/m65/g65.report.json",
+      "size": 545,
+      "hash": "b9ba5582bfeb"
+    },
+    "artifacts/m66/g66.report.json": {
+      "path": "artifacts/m66/g66.report.json",
+      "size": 695,
+      "hash": "ea9053e6dbf6"
+    },
+    "artifacts/m73/g73.pack-gates.report.json": {
+      "path": "artifacts/m73/g73.pack-gates.report.json",
+      "size": 1143,
+      "hash": "ed582101614d"
+    },
+    "artifacts/m74/g74.pipeline-gates.report.json": {
+      "path": "artifacts/m74/g74.pipeline-gates.report.json",
+      "size": 621,
+      "hash": "ba295d744869"
+    },
+    "artifacts/m75/g75.ui-gates.report.json": {
+      "path": "artifacts/m75/g75.ui-gates.report.json",
+      "size": 383,
+      "hash": "2900be7dc14f"
+    },
+    "artifacts/m76/g76.integration.report.json": {
+      "path": "artifacts/m76/g76.integration.report.json",
+      "size": 361,
+      "hash": "43d954cf7b57"
+    },
+    "artifacts/m77/g77.legacy.report.json": {
+      "path": "artifacts/m77/g77.legacy.report.json",
+      "size": 492,
+      "hash": "5591fde5b972"
+    },
+    "artifacts/m78/g78.order-and-wiring.report.json": {
+      "path": "artifacts/m78/g78.order-and-wiring.report.json",
+      "size": 621,
+      "hash": "048322664d2a"
+    },
+    "artifacts/m79/atlas.files.jsonl": {
+      "path": "artifacts/m79/atlas.files.jsonl",
+      "size": 628631,
+      "hash": "ee30441a6b60"
+    },
+    "artifacts/m79/parity.report.json": {
+      "path": "artifacts/m79/parity.report.json",
+      "size": 2487,
+      "hash": "ce00bdb26b86"
+    },
+    "artifacts/m79/repro.schema.json": {
+      "path": "artifacts/m79/repro.schema.json",
+      "size": 8582,
+      "hash": "bc6254526d39"
+    },
+    "artifacts/m79/tests.after.json": {
+      "path": "artifacts/m79/tests.after.json",
+      "size": 3770,
+      "hash": "19b8924ee789"
+    },
+    "artifacts/m79/unknowns.explained.jsonl": {
+      "path": "artifacts/m79/unknowns.explained.jsonl",
+      "size": 307372,
+      "hash": "3b550ffadf59"
+    },
+    "artifacts/m79/wiring.graph.json": {
+      "path": "artifacts/m79/wiring.graph.json",
+      "size": 15667,
+      "hash": "04b207e51ec5"
+    },
+    "artifacts/m80/phase1_findings.json": {
+      "path": "artifacts/m80/phase1_findings.json",
+      "size": 8556,
+      "hash": "dbfdd7d15a74"
+    },
+    "artifacts/m81/status.json": {
+      "path": "artifacts/m81/status.json",
+      "size": 5625,
+      "hash": "9d46e8645fc8"
+    },
+    "artifacts/m82/billing.consumers.jsonl": {
+      "path": "artifacts/m82/billing.consumers.jsonl",
+      "size": 306628,
+      "hash": "1b0aaece512d"
+    },
+    "artifacts/m82/billing.inventory.jsonl": {
+      "path": "artifacts/m82/billing.inventory.jsonl",
+      "size": 221014,
+      "hash": "b51fbb836a97"
+    },
+    "artifacts/m82/billing.refs.closure.json": {
+      "path": "artifacts/m82/billing.refs.closure.json",
+      "size": 4096,
+      "hash": "5185e8ef9ade"
+    },
+    "artifacts/m82/billing.risk_map.json": {
+      "path": "artifacts/m82/billing.risk_map.json",
+      "size": 5795,
+      "hash": "f3566695e7f2"
+    },
+    "artifacts/m82/billing.schema_samples.json": {
+      "path": "artifacts/m82/billing.schema_samples.json",
+      "size": 1655,
+      "hash": "b9472e1adfeb"
+    },
+    "artifacts/m82/billing.stats.json": {
+      "path": "artifacts/m82/billing.stats.json",
+      "size": 438,
+      "hash": "a975b950c4f9"
+    },
+    "artifacts/m82/status.json": {
+      "path": "artifacts/m82/status.json",
+      "size": 6859,
+      "hash": "0d10d7a56fbb"
+    },
+    "artifacts/m83/repro.samples/R1_fuellung_profunda_mkv.json": {
+      "path": "artifacts/m83/repro.samples/R1_fuellung_profunda_mkv.json",
+      "size": 2254,
+      "hash": "2e51ad6d268d"
+    },
+    "artifacts/m83/repro.samples/R2_endo_multi_wl.json": {
+      "path": "artifacts/m83/repro.samples/R2_endo_multi_wl.json",
+      "size": 2006,
+      "hash": "cdcb3a329e5b"
+    },
+    "artifacts/medical-fuellung-de/askbacks.reference.json": {
+      "path": "artifacts/medical-fuellung-de/askbacks.reference.json",
+      "size": 4166,
+      "hash": "3599167342b6"
+    },
+    "artifacts/medical-fuellung-de/askbacks_proposal.md": {
+      "path": "artifacts/medical-fuellung-de/askbacks_proposal.md",
+      "size": 3508,
+      "hash": "14b13a735435"
+    },
+    "artifacts/medical-fuellung-de/chips.reference.json": {
+      "path": "artifacts/medical-fuellung-de/chips.reference.json",
+      "size": 2468,
+      "hash": "8c7ea0fcd597"
+    },
+    "artifacts/medical-fuellung-de/facts.schema.json": {
+      "path": "artifacts/medical-fuellung-de/facts.schema.json",
+      "size": 3140,
+      "hash": "94623b571ead"
+    },
+    "artifacts/medical-fuellung-de/fuellung_de_knowledge.v1.json": {
+      "path": "artifacts/medical-fuellung-de/fuellung_de_knowledge.v1.json",
+      "size": 10884,
+      "hash": "e2424cdfb294"
+    },
+    "artifacts/medical-fuellung-de/fuellung_de_model.md": {
+      "path": "artifacts/medical-fuellung-de/fuellung_de_model.md",
+      "size": 6133,
+      "hash": "0fc3e573286f"
+    },
+    "artifacts/medical-fuellung-de/overview.md": {
+      "path": "artifacts/medical-fuellung-de/overview.md",
+      "size": 4378,
+      "hash": "911fa260f762"
+    },
+    "artifacts/v10-only-cutover/inventory.md": {
+      "path": "artifacts/v10-only-cutover/inventory.md",
+      "size": 3722,
+      "hash": "e7256c9d4af4"
+    },
+    "artifacts/v10-only-cutover/plan.md": {
+      "path": "artifacts/v10-only-cutover/plan.md",
+      "size": 3237,
+      "hash": "5450736317f9"
+    },
+    "CHANGELOG.md": {
+      "path": "CHANGELOG.md",
+      "size": 7500,
+      "hash": "616a059a4544"
+    },
+    "ENGINE.md": {
+      "path": "ENGINE.md",
+      "size": 4186,
+      "hash": "985d00212218"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size": 11422,
+      "hash": "58262a034cc9"
+    },
+    "architecture.md": {
+      "path": "architecture.md",
+      "size": 5209,
+      "hash": "0ef68c075bda"
+    },
+    "architecture.scaling.plan.md": {
+      "path": "architecture.scaling.plan.md",
+      "size": 14485,
+      "hash": "7cfa60c5bbc6"
+    },
+    "atlas.map.md": {
+      "path": "atlas.map.md",
+      "size": 3811,
+      "hash": "09315efd8224"
+    },
+    "benchmark.sonia-vs-dokumaster.md": {
+      "path": "benchmark.sonia-vs-dokumaster.md",
+      "size": 9497,
+      "hash": "ad30d34f41ce"
+    },
+    "billing.md": {
+      "path": "billing.md",
+      "size": 2653,
+      "hash": "5829eb2d73d1"
+    },
+    "catalog-status.md": {
+      "path": "catalog-status.md",
+      "size": 5852,
+      "hash": "23c4e1044613"
+    },
+    "concept-registry.md": {
+      "path": "concept-registry.md",
+      "size": 5413,
+      "hash": "3bdb80d2e004"
+    },
+    "contracts.md": {
+      "path": "contracts.md",
+      "size": 12143,
+      "hash": "c50a5fdd442e"
+    },
+    "coverage.index.v10.md": {
+      "path": "coverage.index.v10.md",
+      "size": 3568,
+      "hash": "3e818940bc1b"
+    },
+    "critical_path.json": {
+      "path": "critical_path.json",
+      "size": 5087,
+      "hash": "390b4422776b"
+    },
+    "dead-code.candidates.jsonl": {
+      "path": "dead-code.candidates.jsonl",
+      "size": 464508,
+      "hash": "939a4625a69f"
+    },
+    "delete-plan.md": {
+      "path": "delete-plan.md",
+      "size": 3061,
+      "hash": "e5ba0f714830"
+    },
+    "delete-sprint.plan.json": {
+      "path": "delete-sprint.plan.json",
+      "size": 4673,
+      "hash": "8f5916d2e77f"
+    },
+    "gear.askback-registry.md": {
+      "path": "gear.askback-registry.md",
+      "size": 2145,
+      "hash": "ba724500f134"
+    },
+    "gear.billing-multiplicity.md": {
+      "path": "gear.billing-multiplicity.md",
+      "size": 1282,
+      "hash": "2532d5c5ab0e"
+    },
+    "gears.md": {
+      "path": "gears.md",
+      "size": 8122,
+      "hash": "9eaca85270a1"
+    },
+    "gigaprompt-final-report.json": {
+      "path": "gigaprompt-final-report.json",
+      "size": 7007,
+      "hash": "929f4db6ec40"
+    },
+    "gigaprompt-g13-g18-report.json": {
+      "path": "gigaprompt-g13-g18-report.json",
+      "size": 8504,
+      "hash": "7f4041ab601a"
+    },
+    "gigaprompt-g19-g24-report.json": {
+      "path": "gigaprompt-g19-g24-report.json",
+      "size": 5658,
+      "hash": "675cb56ce8b3"
+    },
+    "gigaprompt-g25-g30-report.json": {
+      "path": "gigaprompt-g25-g30-report.json",
+      "size": 4935,
+      "hash": "d87c333558ec"
+    },
+    "gigaprompt-g31-g36-report.json": {
+      "path": "gigaprompt-g31-g36-report.json",
+      "size": 3968,
+      "hash": "f2216d071c8c"
+    },
+    "gigaprompt-g37-g42-report.json": {
+      "path": "gigaprompt-g37-g42-report.json",
+      "size": 3541,
+      "hash": "1c82d4a60b4b"
+    },
+    "gigaprompt-g43-g48-report.json": {
+      "path": "gigaprompt-g43-g48-report.json",
+      "size": 1485,
+      "hash": "a54d0ee48d06"
+    },
+    "gigaprompt-g7-g12-report.json": {
+      "path": "gigaprompt-g7-g12-report.json",
+      "size": 6800,
+      "hash": "140a625acedd"
+    },
+    "gigaprompt-summary.json": {
+      "path": "gigaprompt-summary.json",
+      "size": 7857,
+      "hash": "7f1320254690"
+    },
+    "glossary.md": {
+      "path": "glossary.md",
+      "size": 982,
+      "hash": "74900e2624ac"
+    },
+    "index.md": {
+      "path": "index.md",
+      "size": 2830,
+      "hash": "27735970e654"
+    },
+    "known-gaps.md": {
+      "path": "known-gaps.md",
+      "size": 1457,
+      "hash": "581be82bbcda"
+    },
+    "material-catalog.md": {
+      "path": "material-catalog.md",
+      "size": 1695,
+      "hash": "8630a15f36d4"
+    },
+    "no-hardcoded-billing.md": {
+      "path": "no-hardcoded-billing.md",
+      "size": 1065,
+      "hash": "a9d29b36df16"
+    },
+    "plan.kb-releases.md": {
+      "path": "plan.kb-releases.md",
+      "size": 4874,
+      "hash": "54dda4ae2aaf"
+    },
+    "product.plan.md": {
+      "path": "product.plan.md",
+      "size": 9313,
+      "hash": "33eb8280df4c"
+    },
+    "reality.snapshot.v10.md": {
+      "path": "reality.snapshot.v10.md",
+      "size": 6665,
+      "hash": "94519ede0b45"
+    },
+    "runtime-reached.files.jsonl": {
+      "path": "runtime-reached.files.jsonl",
+      "size": 30323,
+      "hash": "ec4b73e88720"
+    },
+    "runtime.manifest.json": {
+      "path": "runtime.manifest.json",
+      "size": 187807,
+      "hash": "3b1457e1d47d"
+    },
+    "settings-coverage.md": {
+      "path": "settings-coverage.md",
+      "size": 1822,
+      "hash": "73735a0d6510"
+    },
+    "settings.design.md": {
+      "path": "settings.design.md",
+      "size": 6134,
+      "hash": "946c677d76ff"
+    },
+    "settings.fuellung.scope-plan.md": {
+      "path": "settings.fuellung.scope-plan.md",
+      "size": 6627,
+      "hash": "49423f4477dc"
+    },
+    "settings.model.md": {
+      "path": "settings.model.md",
+      "size": 2741,
+      "hash": "3121c196618f"
+    },
+    "settings.scopes-and-taxonomy.md": {
+      "path": "settings.scopes-and-taxonomy.md",
+      "size": 6110,
+      "hash": "7a8991c74095"
+    },
+    "stale_artifacts.md": {
+      "path": "stale_artifacts.md",
+      "size": 684,
+      "hash": "002ea81bd3b4"
+    },
+    "status-2026-02-02.md": {
+      "path": "status-2026-02-02.md",
+      "size": 11117,
+      "hash": "aacc779182bb"
+    },
+    "test-strategy.md": {
+      "path": "test-strategy.md",
+      "size": 3254,
+      "hash": "cd133f2ce7a2"
+    },
+    "treatment-registry.md": {
+      "path": "treatment-registry.md",
+      "size": 5237,
+      "hash": "debbd32f905c"
+    },
+    "v10-battle-plan.json": {
+      "path": "v10-battle-plan.json",
+      "size": 17822,
+      "hash": "d16044273b44"
+    },
+    "v10-manual-check.md": {
+      "path": "v10-manual-check.md",
+      "size": 2846,
+      "hash": "d08c1eee4423"
+    },
+    "v7-v10-migration.plan.json": {
+      "path": "v7-v10-migration.plan.json",
+      "size": 5408,
+      "hash": "c87b6c7af970"
+    },
+    "wiring.graph.v2.json": {
+      "path": "wiring.graph.v2.json",
+      "size": 12697,
+      "hash": "a052a96b2193"
+    },
+    "wiring.graph.v3.json": {
+      "path": "wiring.graph.v3.json",
+      "size": 6020,
+      "hash": "e8892e690979"
+    },
+    "wiring.md": {
+      "path": "wiring.md",
+      "size": 1481,
+      "hash": "4b32778c5a9d"
+    },
+    "workflow.contract.json": {
+      "path": "workflow.contract.json",
+      "size": 2873,
+      "hash": "2211bb1b88e2"
+    }
+  }
+}

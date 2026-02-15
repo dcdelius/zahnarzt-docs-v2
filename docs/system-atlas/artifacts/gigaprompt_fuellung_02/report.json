@@ -1,0 +1,57 @@
+{
+    "run_at": "2025-12-30T22:40:00Z",
+    "gigaprompt": "GP2",
+    "status": "PASS",
+    "summary": "Implemented 6 core askbacks + 8 chip emission rules in medical_kb.v1.json",
+    "rules_added": [
+        "rule-material-unknown-askback",
+        "rule-isolation-unknown-askback",
+        "rule-adhesive-unknown-composite-askback",
+        "rule-layering-unknown-medium-large-askback",
+        "rule-deep-caries-protection-askback",
+        "rule-insurance-context-unknown-askback",
+        "rule-material-composite-emits-chip",
+        "rule-material-giz-emits-chip",
+        "rule-isolation-rubberdam-emits-chip",
+        "rule-isolation-relative-emits-chip",
+        "rule-adhesive-yes-emits-chip",
+        "rule-layering-yes-emits-chip",
+        "rule-pulpaschutz-yes-emits-chip"
+    ],
+    "askbacks_defined": [
+        {
+            "id": "fuellung_material",
+            "context_only": false
+        },
+        {
+            "id": "fuellung_isolation",
+            "context_only": false
+        },
+        {
+            "id": "fuellung_adhesive",
+            "context_only": false
+        },
+        {
+            "id": "fuellung_layering",
+            "context_only": false
+        },
+        {
+            "id": "fuellung_pulpaschutz",
+            "context_only": false
+        },
+        {
+            "id": "fuellung_insurance_context",
+            "context_only": true
+        }
+    ],
+    "chips_defined": [
+        "fuellung_material_composite",
+        "fuellung_material_giz",
+        "kofferdam",
+        "fuellung_isolation_relative",
+        "fuellung_adhesivtechnik",
+        "fuellung_schichttechnik",
+        "fuellung_pulpaschutz"
+    ],
+    "no_billing_hardcodes": true
+}

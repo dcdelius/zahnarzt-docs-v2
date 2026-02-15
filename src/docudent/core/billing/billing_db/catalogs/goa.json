@@ -1,0 +1,459 @@
+{
+  "_meta": {
+    "name": "GOÄ Katalog (PKV)",
+    "version": "1996",
+    "stand": "01.01.2025",
+    "quelle": "PKV-GOÄ HTML Source"
+  },
+  "GOÄ_1": {
+    "id": "GOÄ_1",
+    "nummer": "1",
+    "bezeichnung": "Beratungen – auch mittels Fernsprecher –",
+    "punkte": 80,
+    "honorar": {
+      "standard": 10.72
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_2": {
+    "id": "GOÄ_2",
+    "nummer": "2",
+    "bezeichnung": "Ausstellung von Wiederholungsrezepten und/oder Überweisung und/oder Übermittlung von Befunden oder ärztlichen Anordnungen – auch mittels Fernsprecher – durch die Arzthelferin und/oder Messung von Körperzuständen (z. B. Blutdruck, Temperatur) ohne Beratung, bei einer Inanspruchnahme des Arztes",
+    "punkte": 30,
+    "honorar": {
+      "standard": 3.15
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_3": {
+    "id": "GOÄ_3",
+    "nummer": "3",
+    "bezeichnung": "Eingehende, das gewöhnliche Maß übersteigende Beratung – auch mittels Fernsprecher –",
+    "punkte": 150,
+    "honorar": {
+      "standard": 20.1
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_4": {
+    "id": "GOÄ_4",
+    "nummer": "4",
+    "bezeichnung": "Erhebung der Fremdanamnese über einen Kranken und/oder Unterweisung und Führung der Bezugsperson(en) – im Zusammenhang mit der Behandlung eines Kranken",
+    "punkte": 220,
+    "honorar": {
+      "standard": 29.49
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_5": {
+    "id": "GOÄ_5",
+    "nummer": "5",
+    "bezeichnung": "Symptombezogene Untersuchung",
+    "punkte": 80,
+    "honorar": {
+      "standard": 10.72
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_6": {
+    "id": "GOÄ_6",
+    "nummer": "6",
+    "bezeichnung": "Vollständige körperliche Untersuchung mindestens eines der folgenden Organsysteme: Alle Augenabschnitte, der gesamte HNO-Bereich, das stomatognathe System, die Nieren und ableitenden Harnwege (bei Männern auch gegebenenfalls einschließlich der männlichen Geschlechtsorgane) oder Untersuchung zur Erhebung eines vollständigen Gefäßstatus – gegebenenfalls einschließlich Dokumentation –",
+    "punkte": 100,
+    "honorar": {
+      "standard": 13.41
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_15": {
+    "id": "GOÄ_15",
+    "nummer": "15",
+    "bezeichnung": "Einleitung und Koordination flankierender therapeutischer und sozialer Maßnahmen während der kontinuierlichen ambulanten Betreuung eines chronisch Kranken",
+    "punkte": 300,
+    "honorar": {
+      "standard": 40.23
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_Zuschlag A": {
+    "id": "GOÄ_Zuschlag A",
+    "nummer": "Zuschlag A",
+    "bezeichnung": "Zuschlag für außerhalb der Sprechstunde erbrachte Leistungen",
+    "punkte": 70,
+    "honorar": {
+      "standard": null
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_Zuschlag B": {
+    "id": "GOÄ_Zuschlag B",
+    "nummer": "Zuschlag B",
+    "bezeichnung": "Zuschlag für in der Zeit zwischen 20 und 22 Uhr oder 6 und 8 Uhr außerhalb der Sprechstunde erbrachte Leistungen",
+    "punkte": 180,
+    "honorar": {
+      "standard": null
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_Zuschlag C": {
+    "id": "GOÄ_Zuschlag C",
+    "nummer": "Zuschlag C",
+    "bezeichnung": "Zuschlag für in der Zeit zwischen 22 und 6 Uhr erbrachte Leistungen",
+    "punkte": 320,
+    "honorar": {
+      "standard": null
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_Zuschlag D": {
+    "id": "GOÄ_Zuschlag D",
+    "nummer": "Zuschlag D",
+    "bezeichnung": "Zuschlag für an Samstagen, Sonn- oder Feiertagen erbrachte Leistungen",
+    "punkte": 220,
+    "honorar": {
+      "standard": null
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_Zuschlag K 1": {
+    "id": "GOÄ_Zuschlag K 1",
+    "nummer": "Zuschlag K 1",
+    "bezeichnung": "Zuschlag zu Untersuchungen nach den Nummern 5, 6, 7 oder 8 bei Kindern bis zum vollendeten 4. Lebensjahr",
+    "punkte": 120,
+    "honorar": {
+      "standard": null
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_48": {
+    "id": "GOÄ_48",
+    "nummer": "48",
+    "bezeichnung": "Besuch eines Patienten auf einer Pflegestation (z. B. in Alten- oder Pflegeheimen) – bei regelmäßiger Tätigkeit des Arztes auf der Pflegestation zu vorher vereinbarten Zeiten –",
+    "punkte": 120,
+    "honorar": {
+      "standard": 16.08
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_50": {
+    "id": "GOÄ_50",
+    "nummer": "50",
+    "bezeichnung": "Besuch, einschließlich Beratung und symptombezogene Untersuchung",
+    "punkte": 320,
+    "honorar": {
+      "standard": 42.9
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_51": {
+    "id": "GOÄ_51",
+    "nummer": "51",
+    "bezeichnung": "Besuch eines weiteren Kranken in derselben häuslichen Gemeinschaft in unmittelbarem zeitlichen Zusammenhang mit der Leistung nach Nummer 50 – einschl. Beratung und symptombezogener Untersuchung –",
+    "punkte": 250,
+    "honorar": {
+      "standard": 33.51
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_60": {
+    "id": "GOÄ_60",
+    "nummer": "60",
+    "bezeichnung": "Konsiliarische Erörterung zwischen zwei oder mehr liquidationsberechtigten Ärzten, für jeden Arzt",
+    "punkte": 120,
+    "honorar": {
+      "standard": 16.08
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_70": {
+    "id": "GOÄ_70",
+    "nummer": "70",
+    "bezeichnung": "Kurze Bescheinigung oder kurzes Zeugnis, Arbeitsunfähigkeitsbescheinigung",
+    "punkte": 40,
+    "honorar": {
+      "standard": 5.36
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_75": {
+    "id": "GOÄ_75",
+    "nummer": "75",
+    "bezeichnung": "Ausführlicher schriftlicher Krankheits- und Befundbericht (einschl. Angaben zur Anamnese, zu dem(n) Befund(en), zur epikritischen Bewertung und ggf. zur Therapie)",
+    "punkte": 130,
+    "honorar": {
+      "standard": 17.43
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_252": {
+    "id": "GOÄ_252",
+    "nummer": "252",
+    "bezeichnung": "Injektion, subkutan, submuskös, intrakutan oder intramuskulär",
+    "punkte": 40,
+    "honorar": {
+      "standard": 5.36
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_253": {
+    "id": "GOÄ_253",
+    "nummer": "253",
+    "bezeichnung": "Injektion, intravenös",
+    "punkte": 70,
+    "honorar": {
+      "standard": 9.38
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_254": {
+    "id": "GOÄ_254",
+    "nummer": "254",
+    "bezeichnung": "Injektion, intraarteriell",
+    "punkte": 80,
+    "honorar": {
+      "standard": 10.72
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_255": {
+    "id": "GOÄ_255",
+    "nummer": "255",
+    "bezeichnung": "Injektion, intraartikulär oder perineural",
+    "punkte": 95,
+    "honorar": {
+      "standard": 12.74
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_267": {
+    "id": "GOÄ_267",
+    "nummer": "267",
+    "bezeichnung": "Medikamentöse Infiltrationsbehandlung im Bereich einer Körperregion, auch paravertebrale oder perineurale oder perikapsuläre oder retrobulbäre Injektion und/oder Infiltration, je Sitzung",
+    "punkte": 80,
+    "honorar": {
+      "standard": 10.72
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_268": {
+    "id": "GOÄ_268",
+    "nummer": "268",
+    "bezeichnung": "Medikamentöse Infiltrationsbehandlung im Bereich mehrerer Körperregionen (auch eine Körperregion beidseitig), je Sitzung",
+    "punkte": 130,
+    "honorar": {
+      "standard": 17.43
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_297": {
+    "id": "GOÄ_297",
+    "nummer": "297",
+    "bezeichnung": "Entnahme und Aufbereitung von Abstrichmaterial zur zytologischen Untersuchung – gegebenenfalls einschl. Fixierung",
+    "punkte": 45,
+    "honorar": {
+      "standard": 6.03
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_298": {
+    "id": "GOÄ_298",
+    "nummer": "298",
+    "bezeichnung": "Entnahme und gegebenenfalls Aufbereitung von Abstrichmaterial zur mikrobiologischen Untersuchung – gegebenenfalls einschl. Fixierung",
+    "punkte": 40,
+    "honorar": {
+      "standard": 5.36
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_410": {
+    "id": "GOÄ_410",
+    "nummer": "410",
+    "bezeichnung": "Ultraschalluntersuchung eines Organs",
+    "punkte": 200,
+    "honorar": {
+      "standard": 26.81
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_420": {
+    "id": "GOÄ_420",
+    "nummer": "420",
+    "bezeichnung": "Ultraschalluntersuchung von bis zu drei weiteren Organen im Anschluss an eine der Leistungen nach den Nummern 410 bis 418, je Organ",
+    "punkte": 80,
+    "honorar": {
+      "standard": 10.72
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_2381": {
+    "id": "GOÄ_2381",
+    "nummer": "2381",
+    "bezeichnung": "Einfache Hautlappenplastik",
+    "punkte": 370,
+    "honorar": {
+      "standard": 49.6
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_2382": {
+    "id": "GOÄ_2382",
+    "nummer": "2382",
+    "bezeichnung": "Schwierige Hautlappenplastik oder Spalthauttransplantation",
+    "punkte": 739,
+    "honorar": {
+      "standard": 99.07
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_2428": {
+    "id": "GOÄ_2428",
+    "nummer": "2428",
+    "bezeichnung": "Eröffnung eines oberflächlich unter der Haut oder Schleimhaut liegenden Abszesses oder eines Furunkels",
+    "punkte": 80,
+    "honorar": {
+      "standard": 10.72
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_2430": {
+    "id": "GOÄ_2430",
+    "nummer": "2430",
+    "bezeichnung": "Eröffnung eines tiefliegenden Abszesses",
+    "punkte": 303,
+    "honorar": {
+      "standard": 40.62
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_2432": {
+    "id": "GOÄ_2432",
+    "nummer": "2432",
+    "bezeichnung": "Eröffnung einer Phlegmone",
+    "punkte": 473,
+    "honorar": {
+      "standard": 63.41
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_2583": {
+    "id": "GOÄ_2583",
+    "nummer": "2583",
+    "bezeichnung": "Neurolyse, als selbstständige Leistung",
+    "punkte": 924,
+    "honorar": {
+      "standard": 123.88
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_2584": {
+    "id": "GOÄ_2584",
+    "nummer": "2584",
+    "bezeichnung": "Neurolyse mit Nervenverlagerung und Neueinbettung",
+    "punkte": 1480,
+    "honorar": {
+      "standard": 198.41
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_5000": {
+    "id": "GOÄ_5000",
+    "nummer": "5000",
+    "bezeichnung": "Zähne, je Projektion",
+    "punkte": 50,
+    "honorar": {
+      "standard": 5.24
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_5002": {
+    "id": "GOÄ_5002",
+    "nummer": "5002",
+    "bezeichnung": "Panoramaaufnahme(n) eines Kiefers",
+    "punkte": 250,
+    "honorar": {
+      "standard": 26.23
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_5004": {
+    "id": "GOÄ_5004",
+    "nummer": "5004",
+    "bezeichnung": "Panoramaschichtaufnahme der Kiefer",
+    "punkte": 400,
+    "honorar": {
+      "standard": 41.96
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_5037": {
+    "id": "GOÄ_5037",
+    "nummer": "5037",
+    "bezeichnung": "Bestimmung des Skelettalters – gegebenenfalls einschließlich Berechnung der prospektiven Endgröße, einschließlich der zugehörigen Röntgendiagnostik und gutachterlichen Beurteilung –",
+    "punkte": 300,
+    "honorar": {
+      "standard": 31.48
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_5370": {
+    "id": "GOÄ_5370",
+    "nummer": "5370",
+    "bezeichnung": "Computergesteuerte Tomographie im Kopfbereich – gegebenenfalls einschließlich des kranio-zervikalen Übergangs –",
+    "punkte": 2000,
+    "honorar": {
+      "standard": 209.84
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  },
+  "GOÄ_5377": {
+    "id": "GOÄ_5377",
+    "nummer": "5377",
+    "bezeichnung": "Zuschlag für computergesteuerte Analyse – einschließlich spezieller nachfolgender 3D-Rekonstruktion –",
+    "punkte": 800,
+    "honorar": {
+      "standard": null
+    },
+    "system": "GOÄ",
+    "kategorie": "GOÄ"
+  }
+}

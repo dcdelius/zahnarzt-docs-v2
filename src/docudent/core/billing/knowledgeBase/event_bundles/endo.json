@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "treatmentId": "endo",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "endo.baseline",
+      "disclosureIds": ["standard_aufklaerung", "postop_standard"]
+    },
+    {
+      "id": "endo.wl.electronic",
+      "chipIds": ["laengenmessung_elek"],
+      "textRefIds": ["laengenmessung_elek"],
+      "billingRefIds": ["laengenmessung_elek"]
+    },
+    {
+      "id": "endo.wl.xray",
+      "chipIds": ["laengenmessung_roentgen"],
+      "textRefIds": ["laengenmessung_roentgen"],
+      "billingRefIds": ["laengenmessung_roentgen"]
+    },
+    {
+      "id": "endo.wf.warm",
+      "chipIds": ["wf_warm"],
+      "textRefIds": ["wf_warm"],
+      "billingRefIds": ["wf_warm"]
+    },
+    {
+      "id": "endo.wf.einzel",
+      "chipIds": ["wf_einzel"],
+      "textRefIds": ["wf_einzel"],
+      "billingRefIds": ["wf_einzel"]
+    },
+    {
+      "id": "endo.wf.kalt",
+      "chipIds": ["wf_kalt"],
+      "textRefIds": ["wf_kalt"],
+      "billingRefIds": ["wf_kalt"]
+    },
+    {
+      "id": "endo.irrigation.naocl",
+      "chipIds": ["spuelung_naocl"],
+      "textRefIds": ["spuelung_naocl"]
+    },
+    {
+      "id": "endo.irrigation.edta",
+      "chipIds": ["spuelung_edta"],
+      "textRefIds": ["spuelung_edta"]
+    },
+    {
+      "id": "endo.medication.caoh2",
+      "chipIds": ["einlage_caoh2"],
+      "textRefIds": ["einlage_caoh2"],
+      "billingRefIds": ["einlage_caoh2"]
+    },
+    {
+      "id": "endo.canal.count.1",
+      "chipIds": ["kanalaufbereitung_1"],
+      "textRefIds": ["kanalaufbereitung_1"],
+      "billingRefIds": ["kanalaufbereitung_1"]
+    },
+    {
+      "id": "endo.canal.count.2",
+      "chipIds": ["kanalaufbereitung_2"],
+      "textRefIds": ["kanalaufbereitung_2"],
+      "billingRefIds": ["kanalaufbereitung_2"]
+    },
+    {
+      "id": "endo.canal.count.3",
+      "chipIds": ["kanalaufbereitung_3"],
+      "textRefIds": ["kanalaufbereitung_3"],
+      "billingRefIds": ["kanalaufbereitung_3"]
+    },
+    {
+      "id": "endo.canal.count.4",
+      "chipIds": ["kanalaufbereitung_4"],
+      "textRefIds": ["kanalaufbereitung_4"],
+      "billingRefIds": ["kanalaufbereitung_4"]
+    },
+    {
+      "id": "endo.instrumentation.rotary",
+      "chipIds": ["endo_instrumentation_rotary"],
+      "textRefIds": ["endo_instrumentation_rotary"]
+    },
+    {
+      "id": "endo.instrumentation.manual",
+      "chipIds": ["endo_instrumentation_manual"],
+      "textRefIds": ["endo_instrumentation_manual"]
+    },
+    {
+      "id": "endo.sealer",
+      "chipIds": ["endo_sealer"],
+      "textRefIds": ["endo_sealer"]
+    },
+    {
+      "id": "endo.xray.diagnostic",
+      "chipIds": ["roentgen_einzelzahn"],
+      "textRefIds": ["roentgen_einzelzahn"],
+      "billingRefIds": ["roentgen_einzelzahn"]
+    },
+    {
+      "id": "endo.xray.control",
+      "chipIds": ["roentgen_kontrolle"],
+      "textRefIds": ["roentgen_kontrolle"],
+      "billingRefIds": ["roentgen_kontrolle"]
+    },
+    {
+      "id": "endo.post_buildup",
+      "chipIds": ["aufbau_postendo"],
+      "textRefIds": ["aufbau_postendo"],
+      "billingRefIds": ["aufbau_postendo"]
+    },
+    {
+      "id": "endo.temp_closure",
+      "chipIds": ["provisorischer_verschluss"],
+      "textRefIds": ["provisorischer_verschluss"]
+    },
+    {
+      "id": "endo.trepanation",
+      "chipIds": ["trepanation"],
+      "textRefIds": ["trepanation"],
+      "billingRefIds": ["trepanation"]
+    },
+    {
+      "id": "endo.askback.isolation"
+    },
+    {
+      "id": "endo.askback.wl_method"
+    },
+    {
+      "id": "endo.askback.wf_technique"
+    },
+    {
+      "id": "endo.askback.irrigation"
+    },
+    {
+      "id": "endo.askback.medication"
+    },
+    {
+      "id": "endo.askback.canal_count"
+    }
+  ]
+}

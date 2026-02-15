@@ -1,0 +1,146 @@
+{
+    "_meta": {
+        "id": "endo_template",
+        "version": "2025-01-v1",
+        "description": "Output-Template für Endo (Wurzelbehandlung). STUB - minimal structure for SSOT compliance."
+    },
+    "sections": [
+        {
+            "id": "header",
+            "label": "Übersicht",
+            "format": "inline",
+            "slots": [
+                "{behandlung}",
+                "{tooth}",
+                "{quadrant}"
+            ],
+            "separator": " | "
+        },
+        {
+            "id": "befund",
+            "label": "Befund",
+            "format": "prose",
+            "source": "extractedData",
+            "slotRule": {
+                "fields": [
+                    "diagnose",
+                    "vitality",
+                    "percussion",
+                    "kanalzahl"
+                ]
+            },
+            "includeAuditNotes": true
+        },
+        {
+            "id": "aufklaerung",
+            "label": "Aufklärung",
+            "format": "prose",
+            "source": "disclosures",
+            "disclosureIds": [
+                "standard_aufklaerung"
+            ]
+        },
+        {
+            "id": "behandlung",
+            "label": "Behandlungsablauf",
+            "format": "prose",
+            "source": "chips",
+            "slotRule": {
+        "phases": [
+          "anaesthesie",
+          "vorbereitung",
+          "zugang",
+          "zugangskavitaet",
+          "aufbereitung",
+          "kanalaufbereitung",
+          "spuelung",
+          "einlage",
+          "wurzelfuellung",
+          "abschluss"
+        ],
+        "proseAllowed": true
+      },
+            "connectorSource": "phrasebank.behandlung"
+        },
+        {
+            "id": "leistungen",
+            "label": "Durchgeführte Leistungen",
+            "format": "bullets",
+            "source": "chips",
+            "slotRule": {
+        "phases": [
+          "anaesthesie",
+          "vorbereitung",
+          "zugang",
+          "zugangskavitaet",
+          "aufbereitung",
+          "kanalaufbereitung",
+          "spuelung",
+          "einlage",
+          "wurzelfuellung",
+          "abschluss"
+        ],
+        "hasBilling": true
+      },
+            "maxBullets": 8
+        },
+        {
+            "id": "abrechnung",
+            "label": "Abrechnung",
+            "format": "billing",
+            "source": "billingDetails",
+            "groupBy": "insuranceType"
+        },
+        {
+            "id": "hinweise",
+            "label": "Hinweise",
+            "format": "prose",
+            "source": "disclosures",
+            "disclosureIds": [
+                "postop_standard"
+            ]
+        }
+    ],
+    "dedupeRules": {
+        "byChipId": [
+            "la_infiltr",
+            "la_leitung"
+        ],
+        "byCategory": [
+            "anaesthesie",
+            "kanalzahl"
+        ]
+    },
+    "phrasebank": {
+        "behandlung": {
+            "start": [
+                "Zunächst",
+                "Initial"
+            ],
+            "middle": [
+                "Anschließend",
+                "Daraufhin"
+            ],
+            "end": [
+                "Abschließend"
+            ]
+        }
+    },
+    "textLengthPolicy": {
+        "kurz": {
+            "snippetKey": "kurz",
+            "maxSentencesPerChip": 1,
+            "skipSections": [
+                "befund"
+            ]
+        },
+        "mittel": {
+            "snippetKey": "mittel",
+            "maxSentencesPerChip": 2
+        },
+        "lang": {
+            "snippetKey": "lang",
+            "maxSentencesPerChip": 3
+        }
+    }
+}

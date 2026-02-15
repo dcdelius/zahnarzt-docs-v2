@@ -1,0 +1,38 @@
+{
+    "gigaprompt": "G68",
+    "milestone": "m68",
+    "generated_at": "2025-12-30T07:58:00Z",
+    "status": "PARTIAL",
+    "summary": "E2E tests excluded from Vitest. They run via Playwright separately.",
+    "before_after": {
+        "before_failing": 46,
+        "after_failing": 35,
+        "reduction": 11
+    },
+    "fixes_applied": [
+        {
+            "file": "vite.config.js",
+            "change": "Added exclude patterns: *.e2e.spec.ts, *.e2e.test.ts, *.e2e.test.tsx",
+            "reason": "E2E tests need Playwright browser, not Vitest JSDOM"
+        }
+    ],
+    "e2e_tests_excluded": [
+        "v10-golden-path.e2e.spec.ts",
+        "v10-multiinstance.e2e.spec.ts",
+        "v10-prod-repro.e2e.spec.ts",
+        "v10-ui.e2e.spec.ts",
+        "v7-flow.e2e.spec.ts",
+        "v7-live-sanity.e2e.spec.ts",
+        "v7-multiinstance-2teeth.e2e.spec.ts",
+        "v7-multiinstance-questions-2teeth.e2e.spec.ts",
+        "v7-realcases.e2e.spec.ts",
+        "v7-ssot.e2e.spec.ts",
+        "ui-flow-e2e.test.tsx"
+    ],
+    "playwright_status": "PENDING - need storageState setup for stable auth",
+    "next_steps": [
+        "Implement e2e/global-setup.ts for storageState",
+        "Run Playwright tests separately"
+    ],
+    "atlas_status": "PENDING"
+}

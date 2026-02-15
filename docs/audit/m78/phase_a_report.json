@@ -1,0 +1,44 @@
+{
+    "milestone": "M78_STRICT",
+    "phase": "A",
+    "status": "COMPLETE",
+    "exit_criteria_met": true,
+    "artifacts": {
+        "inventory": {
+            "path": "docs/audit/m78/inventory.files.jsonl",
+            "count": 1681,
+            "generated_via": "npx tsx scripts/audit/inventory.ts"
+        },
+        "graph": {
+            "path": "docs/audit/m78/import-graph.edges.jsonl",
+            "edges": 2063,
+            "generated_via": "npx tsx scripts/audit/buildImportGraph.ts"
+        },
+        "classification": {
+            "path": "docs/audit/m78/reachability.classification.jsonl",
+            "runtime_reached": 79,
+            "unknown_risk": 257,
+            "test_only": 402,
+            "legacy": 22
+        },
+        "dead_code_report": {
+            "path": "docs/audit/m78/dead_or_orphaned.jsonl",
+            "top_risks": [
+                "src/docudent/contracts/extraction.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/items.ts",
+                "src/docudent/v7/medical/extractionToFacts/maps/*.ts"
+            ]
+        }
+    },
+    "top_findings": [
+        {
+            "finding": "257 files classified as UNKNOWN (not reached from entry points)",
+            "implication": "High risk of dead code or hidden dependencies via JSON/dynamic imports (e.g. core/billing logic)",
+            "action": "Audit core/billing imports manually or add to entry points if valid"
+        },
+        {
+            "finding": "Tooling is stable (npx tsx)",
+            "implication": "Can proceed to Phase B (Wiring Trace) safely"
+        }
+    ]
+}

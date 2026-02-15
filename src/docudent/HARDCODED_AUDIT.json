@@ -1,0 +1,333 @@
+{
+    "meta": {
+        "generatedAt": "2024-12-18T23:16:50+01:00",
+        "purpose": "Hardcoded Positions Audit + Registry Wiring Check",
+        "verdict": "REGISTRY-BASED (no critical hardcoding found)"
+    },
+    "landkarte": {
+        "v7OutputPath": [
+            "DocudentV7Page.tsx → useV7Pipeline hook",
+            "useV7Pipeline.run() → v7/pipeline/index.ts",
+            "pipeline.run() → core/services/outputService.ts (FACADE)",
+            "outputService → v6/services/outputService.ts (passthrough)",
+            "v6 outputService → core/billing/knowledgeBase/logic/outputComposer.ts",
+            "outputComposer.composeOutput() → reads engineResult.billingCodes (does NOT generate)",
+            "engineResult from: core/billing/knowledgeBase/logic/treatmentEngine.ts"
+        ],
+        "billingCodeSource": [
+            "treatmentEngine.processChipsToBilling()",
+            "reads chips from behandlungen/*.json (fuellung_unified.json, endo_unified.json)",
+            "each chip has: billingRef: { GKV: 'BEMA_13a', PKV: 'GOZ_2060' }",
+            "lookupBillingCode() reads from kataloge/bema.json, goz.json, goa.json",
+            "NO HARDCODED CODES in treatmentEngine except as string prefixes for parsing"
+        ],
+        "registryFiles": {
+            "chipDefinitions": [
+                "core/billing/knowledgeBase/behandlungen/fuellung_unified.json",
+                "core/billing/knowledgeBase/behandlungen/endo_unified.json"
+            ],
+            "billingCatalogs": [
+                "core/billing/knowledgeBase/kataloge/bema.json",
+                "core/billing/knowledgeBase/kataloge/goz.json",
+                "core/billing/knowledgeBase/kataloge/goa.json"
+            ],
+            "rules": [
+                "core/billing/knowledgeBase/regeln/kombinationen.json",
+                "core/billing/knowledgeBase/regeln/fuellung_regeln.json"
+            ]
+        },
+        "gatesForContent": [
+            {
+                "name": "gate-no-logic (V7 pipeline)",
+                "file": "__tests__/gates/gate-v7-pipeline-no-logic.test.ts",
+                "enforces": [
+                    "V7 files must NOT contain BEMA/GOZ literals",
+                    "V7 must NOT know billing code types"
+                ],
+                "verdict": "EXISTS and ENFORCES content, not just imports"
+            },
+            {
+                "name": "gate-fuellung-question-logic",
+                "file": "__tests__/gates/gate-fuellung-question-logic.test.ts",
+                "enforces": [
+                    "Füllung questions triggered correctly"
+                ],
+                "verdict": "Question logic only, NOT billing output"
+            },
+            {
+                "name": "gate-no-text-drives-billing",
+                "file": "__tests__/gates/gate-no-text-drives-billing.test.ts",
+                "enforces": [
+                    "Raw text must not determine billing codes"
+                ],
+                "verdict": "Blocks text→billing leakage"
+            }
+        ]
+    },
+    "hardcodedSearch": {
+        "summary": "BEMA/GOZ strings found mostly in test fixtures and engine internals (valid). V7 UI is CLEAN.",
+        "v7Findings": [
+            {
+                "file": "v7/pipeline/__tests__/contract-drift.test.ts:80",
+                "content": "billingCodes: ['BEMA_13a']",
+                "verdict": "TEST FIXTURE - OK"
+            },
+            {
+                "file": "v7/pipeline/__tests__/reality-flow.test.ts:39",
+                "content": "billingCodes: ['BEMA_13b']",
+                "verdict": "TEST FIXTURE - OK"
+            },
+            {
+                "file": "v7/pipeline/__tests__/render.test.tsx:43",
+                "content": "billingCodes: ['BEMA_13b', 'BEMA_01']",
+                "verdict": "TEST FIXTURE - OK"
+            },
+            {
+                "file": "v7/pipeline/__tests__/no-logic.test.ts:35",
+                "content": "{ pattern: /\\bBEMA\\b/, reason: 'Billing code type not allowed' }",
+                "verdict": "GATE ENFORCEMENT - OK (this is the gate!)"
+            },
+            {
+                "file": "v7/multitreatment/orchestrator.ts:212-219",
+                "content": "inferBillingType() with BEMA/GOZ prefix detection",
+                "verdict": "TYPE INFERENCE ONLY - does not generate codes, just classifies"
+            }
+        ],
+        "coreFindings": [
+            {
+                "file": "core/billing/knowledgeBase/logic/treatmentEngine.ts:191-210",
+                "content": "lookupBillingCode() with BEMA_/GOZ_/GOÄ_ prefix routing",
+                "verdict": "REGISTRY LOOKUP - OK (reads from kataloge/*.json)"
+            },
+            {
+                "file": "core/billing/knowledgeBase/logic/treatmentEngine.ts:439-442",
+                "content": "tip.includes('GOZ 0080') optimization hint check",
+                "verdict": "OPTIMIZATION HINT - reads from behandlungen/*.json optimierung_tipps, not hardcoded"
+            },
+            {
+                "file": "core/billing/knowledgeBase/logic/outputComposer.ts:606-624",
+                "content": "Formatting billingDetails into 'Kassenleistung (BEMA)' sections",
+                "verdict": "RENDER ONLY - reads from engineResult.billingDetails, does not generate"
+            }
+        ],
+        "noHardcodedCodesIn": [
+            "v7/pages/DocudentV7Page.tsx",
+            "v7/hooks/useV7Pipeline.ts",
+            "v7/pipeline/index.ts",
+            "v7/components/*.tsx"
+        ]
+    },
+    "billingCodeFlow": {
+        "trace": [
+            {
+                "step": 1,
+                "file": "v7/pipeline/index.ts",
+                "action": "pipeline.run() calls generateFinalOutput()",
+                "billingCodeSource": "none - just orchestration"
+            },
+            {
+                "step": 2,
+                "file": "v6/services/outputService.ts",
+                "action": "generateFinalOutput() orchestrates engine calls",
+                "billingCodeSource": "calls composeOutput() with engineResult"
+            },
+            {
+                "step": 3,
+                "file": "core/billing/knowledgeBase/logic/outputComposer.ts",
+                "action": "composeOutput(templateId, engineResult, ...)",
+                "billingCodeSource": "receives billingCodes from engineResult parameter"
+            },
+            {
+                "step": 4,
+                "file": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                "action": "processChipsToBilling(treatmentId, activeChipIds, insuranceType, ...)",
+                "billingCodeSource": "THE ACTUAL SOURCE",
+                "mechanism": [
+                    "1. Load treatment JSON: loadTreatmentJSON(treatmentId)",
+                    "2. For each activeChipId, find chip in treatment.chips",
+                    "3. Read chip.billingRef.GKV or chip.billingRef.PKV",
+                    "4. Call lookupBillingCode(codeId) to get details from kataloge/*.json",
+                    "5. Add to billingCodes[] and billingDetails[]"
+                ]
+            },
+            {
+                "step": 5,
+                "file": "behandlungen/fuellung_unified.json",
+                "action": "Chip definition with billingRef",
+                "example": {
+                    "id": "exkavation",
+                    "billingRef": {
+                        "GKV": "BEMA_04",
+                        "PKV": "GOZ_2030"
+                    }
+                },
+                "verdict": "REGISTRY DATA - codes in JSON, not hardcoded in TS"
+            },
+            {
+                "step": 6,
+                "file": "kataloge/bema.json, goz.json",
+                "action": "lookupBillingCode() fetches bezeichnung, punkte, betrag",
+                "verdict": "REGISTRY LOOKUP"
+            }
+        ],
+        "conclusion": "billingCodes come from chip.billingRef in JSON, validated against kataloge/*.json. Flow is DETERMINISTIC and REGISTRY-BASED."
+    },
+    "defaultsCheck": {
+        "issue": "Issue may be DEFAULTS, not hardcoding",
+        "findings": [
+            {
+                "file": "treatmentEngine.ts:469-473",
+                "function": "getDefaultActiveChipsFromJSON",
+                "mechanism": "Returns chips where chip.defaultActive === true",
+                "risk": "If chips have defaultActive=true in JSON, they fire without dictation evidence"
+            },
+            {
+                "file": "treatmentEngine.ts:660-708",
+                "function": "resolveChipStates",
+                "mechanism": "Chips with visibility='locked_on' in settings always activate",
+                "risk": "Settings can force chips on without evidence"
+            }
+        ],
+        "hypothesis": "If BEMA 40 (anesthesia) appears without dictation, likely cause is:",
+        "possibleCauses": [
+            "1. Chip 'la_infiltr' or 'la_leitung' has defaultActive=true in fuellung_unified.json",
+            "2. User settings have chipVisibility['la_infiltr'] = 'locked_on'",
+            "3. inferChipsFromDictation() matches too broadly (e.g., 'spritze' in unrelated context)"
+        ]
+    },
+    "gatesAudit": {
+        "contentGates": [
+            {
+                "name": "gate-no-logic.test.ts",
+                "file": "v7/pipeline/__tests__/no-logic.test.ts",
+                "enforces": [
+                    "No BEMA/GOZ literals in V7 files",
+                    "No billingCodes array manipulation",
+                    "No insurance-based conditionals"
+                ],
+                "verdict": "STRONG - blocks V7 from knowing billing domain"
+            },
+            {
+                "name": "gate-no-text-drives-billing.test.ts",
+                "file": "__tests__/gates/gate-no-text-drives-billing.test.ts",
+                "enforces": [
+                    "Raw text cannot directly determine billing codes"
+                ],
+                "verdict": "GOOD - but may not catch default chips"
+            }
+        ],
+        "missingGate": {
+            "name": "gate-no-billing-without-evidence",
+            "purpose": "Ensure each billingCode has corresponding chip activation evidence",
+            "checks": [
+                "For each code in output.billingCodes, trace back to chip activation",
+                "Chip must have source='dictation' OR source='user', NOT source='default' or source='settings'",
+                "Exception: chips explicitly allowed in settings with '[LOCKED_ON_ALLOWED]' flag"
+            ],
+            "implementation": {
+                "file": "__tests__/gates/gate-no-billing-without-evidence.test.ts",
+                "template": "For golden vector dictations, verify each output code has explicit mention or user toggle"
+            }
+        }
+    },
+    "rootCauseHypotheses": [
+        {
+            "rank": 1,
+            "hypothesis": "Default chips with defaultActive=true fire without evidence",
+            "evidence": "treatmentEngine.getDefaultActiveChipsFromJSON returns chips where defaultActive===true",
+            "impactedFiles": [
+                "behandlungen/fuellung_unified.json",
+                "behandlungen/endo_unified.json"
+            ],
+            "fix": "Remove defaultActive=true from chips that should require evidence (e.g., anesthesia)"
+        },
+        {
+            "rank": 2,
+            "hypothesis": "Settings chipVisibility='locked_on' forces chips without evidence",
+            "evidence": "resolveChipStates() activates locked_on chips regardless of dictation",
+            "impactedFiles": [
+                "v7/settings/settingsStore.ts"
+            ],
+            "fix": "Add audit trail when settings-locked chips are activated"
+        },
+        {
+            "rank": 3,
+            "hypothesis": "inferChipsFromDictation() matches too broadly",
+            "evidence": "Keywords like 'spritze' or 'betäub' activate anesthesia chip without specific type",
+            "impactedFiles": [
+                "treatmentEngine.ts:506-539"
+            ],
+            "fix": "Tighten keyword matching; require more specific terms"
+        }
+    ],
+    "beweise": {
+        "v7CodeClean": {
+            "evidence": "grep -r 'BEMA\\|GOZ' v7/ finds only test fixtures and gate enforcement",
+            "files": [
+                "v7/pipeline/__tests__/*.test.ts"
+            ]
+        },
+        "registryBasedCodes": {
+            "evidence": "treatmentEngine.lookupBillingCode() reads from kataloge/*.json",
+            "files": [
+                "treatmentEngine.ts:183-236"
+            ]
+        },
+        "chipsFromJSON": {
+            "evidence": "processChipsToBilling() reads chip.billingRef from behandlungen/*.json",
+            "files": [
+                "treatmentEngine.ts:328-339"
+            ]
+        }
+    },
+    "fixPlan": [
+        {
+            "priority": "P1",
+            "action": "Audit fuellung_unified.json for defaultActive chips",
+            "file": "core/billing/knowledgeBase/behandlungen/fuellung_unified.json",
+            "change": "Set defaultActive=false for chips that require dictation evidence (anesthesia, etc.)",
+            "gate": "Add gate-no-default-billing-chips.test.ts to block future regressions"
+        },
+        {
+            "priority": "P2",
+            "action": "Add evidence tracking to chip activation",
+            "file": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+            "change": "Add 'evidence' field to ChipState: { text: string, source: 'keyword'|'setting'|'default' }",
+            "gate": "gate-no-billing-without-evidence.test.ts"
+        },
+        {
+            "priority": "P3",
+            "action": "Tighten inferChipsFromDictation keywords",
+            "file": "core/billing/knowledgeBase/logic/treatmentEngine.ts:506-539",
+            "change": "Require more specific keyword matches for anesthesia type inference",
+            "gate": "gate-fuellung-anesthesia-inference.test.ts"
+        }
+    ],
+    "safeToPostpone": [
+        {
+            "item": "V7 multitreatment orchestrator inferBillingType()",
+            "reason": "Only classifies existing codes, does not generate new ones",
+            "file": "v7/multitreatment/orchestrator.ts:212-219"
+        },
+        {
+            "item": "outputComposer Kassenleistung/Privatleistung formatting",
+            "reason": "Renders what it receives, does not add codes",
+            "file": "core/billing/knowledgeBase/logic/outputComposer.ts:606-624"
+        },
+        {
+            "item": "Endo playbook/renderer wiring",
+            "reason": "Separate issue from hardcoding; endo uses separate flow",
+            "file": "core/playbooks/endo/*"
+        }
+    ],
+    "verdict": {
+        "hardcodedCodesInV7": false,
+        "registryBasedArchitecture": true,
+        "mainIssue": "Likely DEFAULT CHIPS or SETTINGS LOCKS, not hardcoding",
+        "gatesExist": true,
+        "gatesMissing": [
+            "gate-no-billing-without-evidence"
+        ],
+        "recommendation": "Check fuellung_unified.json for defaultActive=true on anesthesia chips"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "version": "1.0.0",
+    "runId": "repro-fuellung-milchzahn",
+    "timestamp": "2025-12-29T17:45:00Z",
+    "input": {
+        "dictation": "Kompositfüllung Zahn 54, mesial, Kofferdam, Anästhesie",
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "textLength": "medium",
+        "hasMKV": false,
+        "answers": {}
+    },
+    "expected": {
+        "state_sequence": [
+            "output"
+        ],
+        "is_milchzahn": true,
+        "chips_must_include": [
+            "kofferdam",
+            "la_infiltration"
+        ],
+        "fullText_must_contain": [
+            "Milchzahn",
+            "Kompositfüllung"
+        ]
+    },
+    "feature_flag": "VITE_V7_MILCHZAHN_FUELLUNG=1"
+}

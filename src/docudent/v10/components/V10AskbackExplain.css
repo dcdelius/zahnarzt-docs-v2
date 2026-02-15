@@ -1,0 +1,148 @@
+/**
+ * V10AskbackExplain Styles
+ */
+
+.v10-askback-explain {
+    position: relative;
+    display: inline-block;
+}
+
+.v10-explain-trigger {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #7f8c8d;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.v10-explain-trigger:hover {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.v10-explain-popover {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.5rem;
+    min-width: 220px;
+    background: #16213e;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.v10-explain-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ecf0f1;
+}
+
+.v10-explain-close {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: #7f8c8d;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.v10-explain-close:hover {
+    color: #ecf0f1;
+}
+
+.v10-explain-content {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.v10-explain-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.v10-explain-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #7f8c8d;
+}
+
+.v10-explain-value {
+    font-size: 0.8rem;
+    color: #bdc3c7;
+}
+
+/* Skipped Askbacks List */
+.v10-skipped-askbacks {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+}
+
+.v10-skipped-askbacks.empty {
+    text-align: center;
+}
+
+.v10-skipped-empty {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.v10-skipped-header {
+    margin-bottom: 0.5rem;
+}
+
+.v10-skipped-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.v10-skipped-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.v10-skipped-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+}
+
+.v10-skipped-id {
+    font-size: 0.75rem;
+    color: #3498db;
+    font-weight: 500;
+}
+
+.v10-skipped-reason {
+    font-size: 0.75rem;
+    color: #95a5a6;
+}

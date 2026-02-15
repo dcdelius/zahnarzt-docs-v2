@@ -1,0 +1,90 @@
+{
+    "title": "V10 Frontend Reality Lock",
+    "date": "2025-12-31T09:55:00Z",
+    "status": "PASS",
+    "verification_commands": {
+        "npm_run_build": {
+            "command": "npm run build",
+            "status": "PASS",
+            "duration": "3.68s"
+        },
+        "vitest_v10_ui": {
+            "command": "npx vitest run src/docudent/v10/__tests__/ui",
+            "status": "PASS",
+            "tests_passed": 35,
+            "tests_failed": 0
+        },
+        "gate_v10_no_v7_imports": {
+            "command": "npx vitest run gate-v10-no-imports-from-v7",
+            "status": "PASS",
+            "tests_passed": 5,
+            "v7_imports_found": 0,
+            "allowlist": []
+        },
+        "v10_instance_isolation": {
+            "command": "npx vitest run v10.instance-isolation",
+            "status": "PASS",
+            "tests_passed": 9
+        },
+        "registry_hardening": {
+            "command": "npx vitest run registry.hardening",
+            "status": "PASS",
+            "tests_passed": 11
+        },
+        "atlas_check": {
+            "command": "npm run atlas:refresh && npm run atlas:check",
+            "status": "PASS",
+            "artifacts": 201,
+            "files": 910
+        }
+    },
+    "contracts_verified": {
+        "createV10Session_uses_runV10": {
+            "status": "VERIFIED",
+            "evidence": "Line 128: const result = await runV10({...})"
+        },
+        "no_fake_chips": {
+            "status": "VERIFIED",
+            "evidence": "Chips via rule.chipDelta(value) only, lines 233-240"
+        },
+        "no_shadow_questions": {
+            "status": "VERIFIED",
+            "evidence": "Questions from runV10.questions, line 163"
+        },
+        "answer_scoping_instance_key": {
+            "status": "VERIFIED",
+            "evidence": "answers.set(${inst.instanceId}::${key}, val), line 251"
+        },
+        "instance_isolation": {
+            "status": "VERIFIED",
+            "tests": 9,
+            "test_file": "v10.instance-isolation.test.ts"
+        },
+        "v7_zero_imports": {
+            "status": "VERIFIED",
+            "imports_found": 0,
+            "allowlist_size": 0
+        }
+    },
+    "known_limitations": [
+        {
+            "issue": "perInstance.output is global",
+            "reason": "runV10 returns single output, not per-tooth",
+            "status": "DOCUMENTED",
+            "next_step": "Implement per-instance output in runV10"
+        },
+        {
+            "issue": "Chips assigned to first instance",
+            "reason": "Chip provenance not tracked per instance",
+            "status": "DOCUMENTED",
+            "next_step": "Track chip provenance in pipeline"
+        }
+    ],
+    "files_verified": [
+        "src/docudent/v10/uiController/createV10Session.ts",
+        "src/docudent/v10/__tests__/ui/v10.reality.contract.test.ts",
+        "src/docudent/v10/__tests__/ui/v10.instance-isolation.test.ts",
+        "src/docudent/__tests__/gates/gate-v10-no-imports-from-v7.test.ts",
+        "docs/system-atlas/contracts.md"
+    ]
+}

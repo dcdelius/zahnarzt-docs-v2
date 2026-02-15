@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "description": "V10 Medical Scenario Cases - Crown Prep",
+    "version": "1.0.0",
+    "created": "2026-02-12",
+    "treatmentId": "crown_prep"
+  },
+  "cases": [
+    {
+      "id": "c01",
+      "title": "PKV Kronenpräparation komplett",
+      "insuranceType": "PKV",
+      "dictation": "Zahn 21 Kronenpräparation, Abformung und Provisorium eingesetzt. Leitungsanästhesie.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"],
+        "mustIncludeAnyBillingRefs": ["GOZ_2210"]
+      }
+    },
+    {
+      "id": "c02",
+      "title": "PKV Kronenpräparation unvollständig -> Askbacks",
+      "insuranceType": "PKV",
+      "dictation": "Zahn 21 Kronenpräparation.",
+      "expect": {
+        "phase": "questions",
+        "mustAskbackIds": ["crown_prep_impression", "crown_prep_provisional"]
+      }
+    }
+  ]
+}

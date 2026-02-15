@@ -1,0 +1,49 @@
+{
+    "gigaprompt": "G46",
+    "milestone": "m46",
+    "generated_at": "2025-12-29T23:40:00Z",
+    "status": "PARTIAL",
+    "summary": "Delete sprint B1/B2 complete. B3 needs manifest-driven deletion with waves.",
+    "exit_criteria_status": {
+        "b1_html_move": "COMPLETE",
+        "b2_v6_delete": "COMPLETE",
+        "b3_dead_code": "PLANNING"
+    },
+    "bucket_status": {
+        "bucket_1_html": {
+            "status": "COMPLETE",
+            "action": "Moved to docs/reference/html/",
+            "files_affected": "690 HTML files"
+        },
+        "bucket_2_v6": {
+            "status": "COMPLETE",
+            "action": "Deleted",
+            "verification": "src/docudent/v6/ not found"
+        },
+        "bucket_3_orphaned": {
+            "status": "NEEDS_MANIFEST",
+            "files_to_review": 945,
+            "plan": [
+                "Generate delete-manifest.b3.json using runtime.manifest.json",
+                "Wave 1: guaranteed safe (0 importers, not in manifest)",
+                "Wave 2: probably safe (test-only files)",
+                "Wave 3: manual review (may have dynamic imports)"
+            ]
+        }
+    },
+    "gates_checked": {
+        "gate_no_runtime_imports_from_v6": "PASS (v6 no longer exists)",
+        "build": "PASS"
+    },
+    "commands_run": [
+        "ls src/docudent/v6 (not found - B2 complete)",
+        "ls docs/reference/html (4 subdirs - B1 complete)"
+    ],
+    "next_steps": [
+        "Create scripts/delete/generateDeleteManifest.ts",
+        "Generate docs/system-atlas/delete-manifest.b3.json",
+        "Execute Wave 1 with safety checks",
+        "Execute Wave 2 if gates pass"
+    ],
+    "atlas_status": "PASS"
+}

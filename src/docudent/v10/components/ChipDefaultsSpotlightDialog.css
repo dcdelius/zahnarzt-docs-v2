@@ -1,0 +1,90 @@
+.chip-defaults-dialog {
+    width: min(600px, 92vw);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
+    padding: 20px 20px 16px;
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(18px);
+}
+
+.chip-defaults-header {
+    margin-bottom: 12px;
+}
+
+.chip-defaults-command {
+    background: transparent;
+}
+
+.chip-defaults-scroll {
+    max-height: 320px;
+}
+
+.chip-defaults-item {
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 12px;
+}
+
+.chip-defaults-item.is-on {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.chip-defaults-item.is-off {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.chip-defaults-item-label {
+    font-weight: 600;
+}
+
+.chip-defaults-item-state {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.chip-defaults-separator {
+    margin: 12px 0;
+}
+
+.chip-defaults-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.chip-defaults-footer-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.chip-defaults-footer-btn,
+.chip-defaults-footer-done {
+    height: 32px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 160ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.chip-defaults-footer-btn:hover,
+.chip-defaults-footer-done:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.chip-defaults-footer-done {
+    background: rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.92);
+}

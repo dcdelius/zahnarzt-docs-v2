@@ -1,0 +1,30 @@
+{
+    "gigaprompt": "G51",
+    "milestone": "m51",
+    "generated_at": "2025-12-30T00:00:00Z",
+    "status": "PLANNING",
+    "summary": "Delete manifest script planned but not yet implemented",
+    "exit_criteria_status": {
+        "manifest_script_exists": false,
+        "wave1_executed": false
+    },
+    "plan": {
+        "script_to_create": "scripts/delete/generateDeleteManifest.ts",
+        "output_file": "docs/system-atlas/artifacts/g51/delete.manifest.json",
+        "wave_strategy": {
+            "wave1": "DS_Store, orphaned assets, non-runtime junk (safe delete)",
+            "wave2": "Unused JSON, orphaned docs, unused helpers (likely safe)",
+            "wave3": "Everything else (manual review required)"
+        }
+    },
+    "current_status": {
+        "bucket1_html": "COMPLETE (moved to docs/reference/html)",
+        "bucket2_v6": "COMPLETE (deleted)",
+        "bucket3_dead_code": "NEEDS_MANIFEST"
+    },
+    "next_steps": [
+        "Implement generateDeleteManifest.ts using runtime.manifest.json",
+        "Execute wave1 in dry-run mode",
+        "Verify build + gates after deletion"
+    ]
+}

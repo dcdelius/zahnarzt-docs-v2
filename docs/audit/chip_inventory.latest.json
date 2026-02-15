@@ -1,0 +1,561 @@
+{
+    "generatedAt": "2025-12-26T15:45:00Z",
+    "version": "1.0.0",
+    "totalChips": 43,
+    "treatments": {
+        "fuellung": {
+            "meta": {
+                "id": "fuellung",
+                "version": "2025-01-v2",
+                "label": "Kompositfüllung"
+            },
+            "chipCount": 17,
+            "chips": [
+                {
+                    "id": "vipr_pos",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "vipr_neg",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "perk_neg",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "perk_pos",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "la_infiltr",
+                    "billingRef": {
+                        "GKV": "BEMA_40",
+                        "PKV": "GOZ_0090"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "anaesthesie"
+                },
+                {
+                    "id": "la_leitung",
+                    "billingRef": {
+                        "GKV": "BEMA_41a",
+                        "PKV": "GOZ_0100"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "anaesthesie"
+                },
+                {
+                    "id": "oberflaeche_la",
+                    "billingRef": {
+                        "PKV": "GOZ_0080"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "anaesthesie"
+                },
+                {
+                    "id": "kofferdam",
+                    "billingRef": {
+                        "GKV": "BEMA_12",
+                        "PKV": "GOZ_2040"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "vorbereitung"
+                },
+                {
+                    "id": "rel_trocken",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "vorbereitung"
+                },
+                {
+                    "id": "exkavation",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "exkavation"
+                },
+                {
+                    "id": "cp",
+                    "billingRef": {
+                        "GKV": "BEMA_25",
+                        "PKV": "GOZ_2330"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [
+                        "material"
+                    ],
+                    "variableDefaults": {
+                        "material": "Ca(OH)₂"
+                    },
+                    "phase": "ueberkappung"
+                },
+                {
+                    "id": "cp_not_required",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "ueberkappung"
+                },
+                {
+                    "id": "p",
+                    "billingRef": {
+                        "GKV": "BEMA_26",
+                        "PKV": "GOZ_2340"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [
+                        "material"
+                    ],
+                    "variableDefaults": {
+                        "material": "MTA"
+                    },
+                    "phase": "ueberkappung"
+                },
+                {
+                    "id": "komposit_basic",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "fuellung"
+                },
+                {
+                    "id": "mehrschicht",
+                    "billingRef": {
+                        "MKV": "GOZ_2197"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "fuellung"
+                },
+                {
+                    "id": "finishing",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "finishing"
+                },
+                {
+                    "id": "fluor",
+                    "billingRef": {
+                        "GKV": "BEMA_IP4",
+                        "PKV": "GOZ_1020"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "finishing"
+                }
+            ]
+        },
+        "endo": {
+            "meta": {
+                "id": "endo",
+                "version": "2025-01-v2",
+                "label": "Wurzelbehandlung"
+            },
+            "chipCount": 26,
+            "chips": [
+                {
+                    "id": "vipr_pos",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "vipr_neg",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "perk_neg",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "perk_pos",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "roentgen_einzelzahn",
+                    "billingRef": {
+                        "GKV": "BEMA_Ä925a",
+                        "PKV": "GOZ_5000"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "befund"
+                },
+                {
+                    "id": "la_leitung",
+                    "billingRef": {
+                        "GKV": "BEMA_41a",
+                        "PKV": "GOZ_0100"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "anaesthesie"
+                },
+                {
+                    "id": "la_infiltr",
+                    "billingRef": {
+                        "GKV": "BEMA_40",
+                        "PKV": "GOZ_0090"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "anaesthesie"
+                },
+                {
+                    "id": "kofferdam",
+                    "billingRef": {
+                        "GKV": "BEMA_12",
+                        "PKV": "GOZ_2040"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "vorbereitung"
+                },
+                {
+                    "id": "trepanation",
+                    "billingRef": {
+                        "GKV": "BEMA_31",
+                        "PKV": "GOZ_2360"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "zugang"
+                },
+                {
+                    "id": "laengenmessung_elek",
+                    "billingRef": {
+                        "GKV": null,
+                        "PKV": "GOZ_2400"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "aufbereitung"
+                },
+                {
+                    "id": "laengenmessung_roentgen",
+                    "billingRef": {
+                        "GKV": "BEMA_Ä925a",
+                        "PKV": "GOZ_5000"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "aufbereitung"
+                },
+                {
+                    "id": "kanalaufbereitung_1",
+                    "billingRef": {
+                        "GKV": "BEMA_32",
+                        "PKV": "GOZ_2410"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "aufbereitung"
+                },
+                {
+                    "id": "kanalaufbereitung_2",
+                    "billingRef": {
+                        "GKV": "BEMA_32",
+                        "PKV": "GOZ_2410"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "aufbereitung"
+                },
+                {
+                    "id": "kanalaufbereitung_3",
+                    "billingRef": {
+                        "GKV": "BEMA_32",
+                        "PKV": "GOZ_2410"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "aufbereitung"
+                },
+                {
+                    "id": "kanalaufbereitung_4",
+                    "billingRef": {
+                        "GKV": "BEMA_32",
+                        "PKV": "GOZ_2410"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "aufbereitung"
+                },
+                {
+                    "id": "spuelung_naocl",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "spuelung"
+                },
+                {
+                    "id": "spuelung_edta",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "spuelung"
+                },
+                {
+                    "id": "einlage_caoh2",
+                    "billingRef": {
+                        "GKV": "BEMA_35",
+                        "PKV": "GOZ_2430"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "einlage"
+                },
+                {
+                    "id": "provisorischer_verschluss",
+                    "billingRef": null,
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "einlage"
+                },
+                {
+                    "id": "wf_kalt",
+                    "billingRef": {
+                        "GKV": "BEMA_34",
+                        "PKV": "GOZ_2440"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "wurzelfuellung"
+                },
+                {
+                    "id": "wf_warm",
+                    "billingRef": {
+                        "GKV": "BEMA_34",
+                        "PKV": "GOZ_2440"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "wurzelfuellung"
+                },
+                {
+                    "id": "wf_einzel",
+                    "billingRef": {
+                        "GKV": "BEMA_34",
+                        "PKV": "GOZ_2440"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "wurzelfuellung"
+                },
+                {
+                    "id": "roentgen_kontrolle",
+                    "billingRef": {
+                        "GKV": "BEMA_Ä925a",
+                        "PKV": "GOZ_5000"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "abschluss"
+                },
+                {
+                    "id": "aufbau_postendo",
+                    "billingRef": {
+                        "GKV": "BEMA_13",
+                        "PKV": "GOZ_2060"
+                    },
+                    "textKeys": [
+                        "kurz",
+                        "mittel",
+                        "lang"
+                    ],
+                    "variables": [],
+                    "phase": "abschluss"
+                }
+            ]
+        }
+    }
+}

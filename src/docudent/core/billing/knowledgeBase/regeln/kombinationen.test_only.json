@@ -1,0 +1,40 @@
+[
+    {
+        "id": "regel_e2e_test_warn",
+        "typ": "ausschluss",
+        "titel": "[E2E TEST] Warnung bei Testkombination",
+        "beschreibung": "E2E Test: Diese Kombination erzeugt eine Warnung. Nur für automatisierte Tests.",
+        "betrifft": [
+            "TEST_WARN_A",
+            "TEST_WARN_B"
+        ],
+        "regel": {
+            "operator": "darf_nicht",
+            "bedingung": "TEST_WARN_A nicht mit TEST_WARN_B kombinieren"
+        },
+        "schweregrad": "warnung",
+        "quelle": {
+            "dokument": "E2E Test Fixture"
+        },
+        "_testOnly": true
+    },
+    {
+        "id": "regel_e2e_test_block",
+        "typ": "ausschluss",
+        "titel": "[E2E TEST] BLOCK bei Testkombination",
+        "beschreibung": "E2E Test: Diese Kombination erzeugt BLOCK. Nur für automatisierte Tests.",
+        "betrifft": [
+            "TEST_BLOCK_A",
+            "TEST_BLOCK_B"
+        ],
+        "regel": {
+            "operator": "darf_nicht",
+            "bedingung": "TEST_BLOCK_A nicht mit TEST_BLOCK_B kombinieren"
+        },
+        "schweregrad": "regress",
+        "quelle": {
+            "dokument": "E2E Test Fixture"
+        },
+        "_testOnly": true
+    }
+]

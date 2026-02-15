@@ -1,0 +1,30 @@
+{
+    "id": "fuellung_02_infiltration",
+    "description": "Füllung mit expliziter Infiltrationsanästhesie",
+    "input": {
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Zahn 15 MO Komposit nach Infiltrationsanästhesie",
+        "answers": {}
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=fuellung",
+            "questions:engine=fuellung"
+        ],
+        "traceExcludes": [
+            "questions:engine=endo"
+        ],
+        "noQuestionIdRegex": "(endo|kanal|wl|spül|wurzel)",
+        "outputMustContain": [
+            "15",
+            "Infiltration"
+        ],
+        "billingMustNotContain": [
+            "BEMA_40",
+            "BEMA_41a"
+        ]
+    },
+    "minimalAnswers": {}
+}

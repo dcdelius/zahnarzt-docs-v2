@@ -1,0 +1,219 @@
+{
+    "_meta": {
+        "description": "V10 Medical Scenario Cases v2 - Based on ACTUAL KB/Chips/Askbacks",
+        "version": "2.0.0",
+        "created": "2026-01-05",
+        "inventorySource": [
+            "unified.json",
+            "fuellung.askbacks.ts"
+        ]
+    },
+    "cases": [
+        {
+            "id": "m01",
+            "title": "GKV 1fl okklusal komplett",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 okklusal Komposit. Kofferdam. Infiltrationsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeCodes": [
+                    "BEMA_13",
+                    "BEMA_12",
+                    "BEMA_40"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m02",
+            "title": "GKV 2fl mod",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 46 mod Komposit. Leitungsanästhesie. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeCodes": [
+                    "BEMA_13c",
+                    "BEMA_12",
+                    "BEMA_41"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m03",
+            "title": "GKV profunda ohne Kappungsangabe → Askback",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 okklusal Komposit. Karies profunda. Kofferdam.",
+            "expect": {
+                "phase": "questions",
+                "mustAskIds": [
+                    "ueberkappung"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m04",
+            "title": "PKV 2fl + Kofferdam + LA",
+            "insuranceType": "PKV",
+            "dictation": "Füllung 36 okklusal distal Komposit. Kofferdam. Infiltrationsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustIncludeCodes": [
+                    "GOZ_2080",
+                    "GOZ_2040",
+                    "GOZ_0090"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m05",
+            "title": "MKV Praxis-Default (BEMA + GOZ addon)",
+            "insuranceType": "MKV",
+            "dictation": "Füllung 36 okklusal distal Komposit. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustIncludeCodes": [
+                    "BEMA_13b",
+                    "BEMA_12"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m06",
+            "title": "MKV nur Kasse (GOZ unterdrückt)",
+            "insuranceType": "MKV",
+            "dictation": "Füllung 36 okklusal distal Komposit. Nur Kasse. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeCodes": [
+                    "BEMA_13b",
+                    "BEMA_12"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m07",
+            "title": "GKV ohne Isolation → Askback isolation",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 okklusal Komposit. Infiltrationsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m08",
+            "title": "GKV Multi-Tooth 36+14",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 od Komposit Kofferdam; Füllung 14 o Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "perInstanceCount": 2,
+                "mustIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m09",
+            "title": "GKV ohne Material → Askback material",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 okklusal. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        },
+        {
+            "id": "m10",
+            "title": "GKV 4fl modb komplett",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 modb Komposit. Kofferdam. Leitungsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludeBillingPrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludeBillingPrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeCodes": [
+                    "BEMA_13d",
+                    "BEMA_12",
+                    "BEMA_41"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,163 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Filling Decision Tree",
+    "description": "G116: Deterministic decision tree for filling therapy",
+    "version": "1.0.0",
+    "nodes": {
+        "root": {
+            "type": "decision",
+            "question": "Kassenart bekannt?",
+            "fact": "insuranceType",
+            "branches": {
+                "GKV": "check_tooth_region",
+                "PKV": "pkv_flow",
+                "unknown": "askback_insurance"
+            }
+        },
+        "askback_insurance": {
+            "type": "askback",
+            "id": "insurance_type",
+            "question": "Welche Versicherungsart hat der Patient?",
+            "options": [
+                "GKV",
+                "PKV"
+            ],
+            "blocking": true,
+            "reason": "Bestimmt gesamten Abrechnungsweg"
+        },
+        "check_tooth_region": {
+            "type": "decision",
+            "question": "Frontzahn (13-23, 33-43)?",
+            "fact": "toothRegion",
+            "branches": {
+                "front": "gkv_front_flow",
+                "side": "check_mkv"
+            }
+        },
+        "gkv_front_flow": {
+            "type": "terminal",
+            "result": "GKV_FRONT",
+            "billing": [
+                "BEMA_13x"
+            ],
+            "chips": [
+                "komposit_basic"
+            ],
+            "askbacks_required": [],
+            "note": "Komposit ist Kassenleistung im Frontzahnbereich"
+        },
+        "check_mkv": {
+            "type": "decision",
+            "question": "Material im Diktat?",
+            "fact": "materialMentioned",
+            "branches": {
+                "komposit": "check_mkv_exists",
+                "amalgam": "gkv_amalgam_flow",
+                "unknown": "gkv_amalgam_flow"
+            }
+        },
+        "gkv_amalgam_flow": {
+            "type": "terminal",
+            "result": "GKV_AMALGAM",
+            "billing": [
+                "BEMA_13x"
+            ],
+            "chips": [
+                "amalgam"
+            ],
+            "askbacks_required": [],
+            "note": "Regelversorgung Seitenzahn"
+        },
+        "check_mkv_exists": {
+            "type": "decision",
+            "question": "MKV vorhanden?",
+            "fact": "hasMKV",
+            "branches": {
+                "true": "mkv_adhesive_check",
+                "false": "askback_mkv",
+                "unknown": "askback_mkv"
+            }
+        },
+        "askback_mkv": {
+            "type": "askback",
+            "id": "mkv_confirmed",
+            "question": "Liegt eine schriftliche Mehrkostenvereinbarung vor?",
+            "options": [
+                "Ja",
+                "Nein"
+            ],
+            "blocking": true,
+            "reason": "Ohne MKV darf GOZ nicht an Patient berechnet werden"
+        },
+        "mkv_adhesive_check": {
+            "type": "decision",
+            "question": "Adhäsivtechnik explizit?",
+            "fact": "adhesiveMentioned",
+            "branches": {
+                "true": "gkv_mkv_flow",
+                "false": "askback_adhesive",
+                "unknown": "askback_adhesive"
+            }
+        },
+        "askback_adhesive": {
+            "type": "askback",
+            "id": "adhesive_technique",
+            "question": "Wurde Adhäsivtechnik (Mehrschicht) angewendet?",
+            "options": [
+                "Ja",
+                "Nein"
+            ],
+            "blocking": true,
+            "reason": "GOZ 2197 nur bei echter Adhäsivtechnik"
+        },
+        "gkv_mkv_flow": {
+            "type": "terminal",
+            "result": "GKV_MKV",
+            "billing": [
+                "BEMA_13x",
+                "GOZ_206x_DIFF",
+                "GOZ_2197"
+            ],
+            "chips": [
+                "komposit_mehrschicht",
+                "adhesive"
+            ],
+            "askbacks_required": [
+                "mkv_confirmed",
+                "adhesive_technique"
+            ],
+            "note": "BEMA an Kasse + GOZ-Differenz an Patient"
+        },
+        "pkv_flow": {
+            "type": "terminal",
+            "result": "PKV",
+            "billing": [
+                "GOZ_206x",
+                "GOZ_2197",
+                "GOZ_0090_or_0100"
+            ],
+            "chips": [
+                "komposit_mehrschicht",
+                "adhesive"
+            ],
+            "askbacks_required": [],
+            "note": "PKV = immer GOZ, Adhäsiv ist Standard"
+        }
+    },
+    "common_askbacks": {
+        "capping": {
+            "trigger": "cariesDepth === 'profunda' || pulpaNaehe === true",
+            "question": "Wurde eine Überkappung durchgeführt?",
+            "chip_if_yes": "cp",
+            "chip_if_no": "cp_not_required",
+            "billing_if_yes": "BEMA_25"
+        },
+        "kofferdam": {
+            "trigger": "kofferdamMentioned === true",
+            "question": "Wurde Kofferdam angelegt?",
+            "chip_if_yes": "kofferdam",
+            "chip_if_no": "rel_trocken",
+            "billing_if_yes": "BEMA_12"
+        }
+    }
+}

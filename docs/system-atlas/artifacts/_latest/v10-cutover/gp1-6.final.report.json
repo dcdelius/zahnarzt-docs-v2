@@ -1,0 +1,75 @@
+{
+    "gp": "GP1-6 COMPLETE",
+    "title": "V10 Standalone Migration - Final Report",
+    "date": "2025-12-31",
+    "status": "SUCCESS",
+    "summary": {
+        "v7_imports_before": 16,
+        "v7_imports_after": 5,
+        "v7_runtime_imports": 0,
+        "v7_shared_resources": 5,
+        "gate_tests_passed": true
+    },
+    "modules_migrated": {
+        "facts": {
+            "files": [
+                "types.ts",
+                "buildFactsFromExtraction.ts",
+                "applyAnswersToFacts.ts",
+                "index.ts"
+            ],
+            "replaces": [
+                "v7/medical/extractionToFacts.ts",
+                "v7/medical/facts.ts",
+                "v7/medical/types.ts"
+            ]
+        },
+        "askbacks": {
+            "files": [
+                "compileAskbacksToQuestions.ts",
+                "index.ts"
+            ],
+            "replaces": [
+                "v7/medical/askbacks/"
+            ]
+        },
+        "renderer": {
+            "files": [
+                "renderFromKbChips.ts",
+                "index.ts"
+            ],
+            "replaces": [
+                "v7/output/renderFromKbChips.ts"
+            ]
+        },
+        "components": {
+            "files": [
+                "SoftGradientBackground.tsx",
+                "HeroSculpture.tsx",
+                "QuestionsFlowV2.tsx",
+                "QuestionsFlow.tsx",
+                "OutputFlow.tsx",
+                "MultiOutputRenderer.tsx",
+                "MultiInstancePanel.tsx"
+            ],
+            "replaces": [
+                "v7/components/*.tsx re-exports"
+            ]
+        }
+    },
+    "gate_test": {
+        "file": "src/docudent/__tests__/gates/gate-v10-no-imports-from-v7.test.ts",
+        "tests": 5,
+        "passed": 5,
+        "allowlist": [
+            "v7/styles/tokens",
+            "v7/multitreatment/types"
+        ]
+    },
+    "verification": {
+        "build": "PASS (3.75s)",
+        "atlas_check": "PASS (194 artifacts, 887 files)",
+        "gate_test": "PASS (5/5)"
+    },
+    "wiring_graph": "docs/system-atlas/wiring.graph.v3.json (v3.1.0)"
+}

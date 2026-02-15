@@ -1,0 +1,233 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ruleRecord.schema.json",
+    "title": "Combinability RuleRecord (Compiler Input)",
+    "description": "Schema for DB/source rules that compile into combinability_kb",
+    "type": "object",
+    "required": [
+        "id",
+        "sourceRefs",
+        "codes",
+        "relationType",
+        "severity",
+        "scope"
+    ],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Stable unique identifier",
+            "pattern": "^regel_[a-z0-9_]+$"
+        },
+        "sourceRefs": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "document": {
+                        "type": "string"
+                    },
+                    "anchor": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "filePath": {
+                        "type": "string"
+                    },
+                    "extractHash": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "document"
+                ]
+            }
+        },
+        "codes": {
+            "type": "object",
+            "properties": {
+                "anchor": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Primary code(s) that trigger the rule"
+                },
+                "blockWith": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Codes that conflict with anchor"
+                },
+                "range": {
+                    "type": "object",
+                    "properties": {
+                        "prefix": {
+                            "type": "string"
+                        },
+                        "from": {
+                            "type": "integer"
+                        },
+                        "to": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "anchor"
+            ]
+        },
+        "relationType": {
+            "type": "string",
+            "enum": [
+                "EXCLUDES",
+                "INCLUDES",
+                "RANGE_CONFLICT",
+                "MAX_COUNT",
+                "CONDITIONAL"
+            ],
+            "description": "Type of billing relationship"
+        },
+        "severity": {
+            "type": "string",
+            "enum": [
+                "BLOCK",
+                "WARN",
+                "INFO"
+            ],
+            "description": "Default action (before autoResolve)"
+        },
+        "autoResolvePolicy": {
+            "type": "string",
+            "enum": [
+                "NONE",
+                "DROP_ANCHOR",
+                "DROP_BLOCKWITH",
+                "PREFER_SPECIFIC"
+            ],
+            "default": "NONE"
+        },
+        "scope": {
+            "type": "string",
+            "enum": [
+                "PER_TOOTH",
+                "PER_SESSION",
+                "PER_QUADRANT",
+                "PER_CANAL",
+                "GLOBAL"
+            ]
+        },
+        "conditions": {
+            "type": "object",
+            "description": "Facts-DSL conditions for rule activation",
+            "properties": {
+                "insuranceType": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "treatmentId": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mkvConfirmed": {
+                    "type": "boolean"
+                },
+                "factsMatch": {
+                    "type": "object"
+                }
+            }
+        },
+        "notes": {
+            "type": "string",
+            "description": "Human readable explanation"
+        },
+        "maxCount": {
+            "type": "integer",
+            "description": "For MAX_COUNT rules"
+        },
+        "priority": {
+            "type": "integer",
+            "default": 100
+        }
+    },
+    "examples": [
+        {
+            "id": "regel_goz2197_nicht_neben_2060",
+            "sourceRefs": [
+                {
+                    "document": "GOZ Kommentar BZÄK",
+                    "anchor": "GOZ-2197"
+                }
+            ],
+            "codes": {
+                "anchor": [
+                    "GOZ_2197"
+                ],
+                "blockWith": [
+                    "GOZ_2060",
+                    "GOZ_2080",
+                    "GOZ_2100",
+                    "GOZ_2120"
+                ]
+            },
+            "relationType": "EXCLUDES",
+            "severity": "BLOCK",
+            "autoResolvePolicy": "DROP_ANCHOR",
+            "scope": "PER_SESSION",
+            "notes": "GOZ 2197 (Adhäsive Befestigung) bereits in GOZ 2060-2120 inkludiert"
+        },
+        {
+            "id": "regel_bema12_einmal_kieferhaelfte",
+            "sourceRefs": [
+                {
+                    "document": "BEMA Leistungstext",
+                    "url": "https://bema-goz.de/bema/12"
+                }
+            ],
+            "codes": {
+                "anchor": [
+                    "BEMA_12"
+                ]
+            },
+            "relationType": "MAX_COUNT",
+            "severity": "BLOCK",
+            "autoResolvePolicy": "NONE",
+            "scope": "PER_QUADRANT",
+            "maxCount": 1,
+            "notes": "BEMA 12 maximal 1x pro Kieferhälfte/Sitzung"
+        },
+        {
+            "id": "regel_mkv_goz_addon_only_confirmed",
+            "sourceRefs": [
+                {
+                    "document": "§28 Abs.2 SGB V"
+                }
+            ],
+            "codes": {
+                "anchor": [
+                    "GOZ_2197",
+                    "GOZ_2100"
+                ]
+            },
+            "relationType": "CONDITIONAL",
+            "severity": "BLOCK",
+            "autoResolvePolicy": "DROP_ANCHOR",
+            "scope": "PER_SESSION",
+            "conditions": {
+                "insuranceType": [
+                    "MKV"
+                ],
+                "mkvConfirmed": false
+            },
+            "notes": "GOZ addon nur bei bestätigter Mehrkostenvereinbarung"
+        }
+    ]
+}

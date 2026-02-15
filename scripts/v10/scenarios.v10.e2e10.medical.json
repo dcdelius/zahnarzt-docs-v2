@@ -1,0 +1,128 @@
+{
+    "_meta": {
+        "description": "Custom 10-case E2E dictation→output medical plausibility check (live LLM/Firestore)",
+        "version": "1.0.0",
+        "created": "2026-02-13"
+    },
+    "cases": [
+        {
+            "id": "f01",
+            "title": "GKV 1fl okklusal + LA + Kofferdam",
+            "treatmentId": "fuellung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 okklusal Komposit. Kofferdam. Infiltrationsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        },
+        {
+            "id": "f02",
+            "title": "GKV 2fl MOD + LA Leitung + Kofferdam",
+            "treatmentId": "fuellung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 46 mod Komposit. Leitungsanästhesie. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        },
+        {
+            "id": "f03",
+            "title": "GKV profunda + indirekte Überkappung",
+            "treatmentId": "fuellung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 16 okklusal, Karies profunda, indirekte Überkappung mit Kalziumhydroxid. Komposit. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        },
+        {
+            "id": "f04",
+            "title": "PKV 2fl OD + LA + Kofferdam",
+            "treatmentId": "fuellung",
+            "insuranceType": "PKV",
+            "dictation": "Kompositfüllung 24 okklusal distal. Kofferdam. Infiltrationsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "f05",
+            "title": "MKV mit Mehrkosten",
+            "treatmentId": "fuellung",
+            "insuranceType": "MKV",
+            "dictation": "Füllung 26 okklusal distal Komposit. Kofferdam. Mehrkosten vereinbart, Mehrschichttechnik.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_", "GOZ_"]
+            }
+        },
+        {
+            "id": "f06",
+            "title": "MKV nur Kasse",
+            "treatmentId": "fuellung",
+            "insuranceType": "MKV",
+            "dictation": "Füllung 36 okklusal distal Komposit. Nur Kasse. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        },
+        {
+            "id": "e01",
+            "title": "GKV Endo T3 komplett",
+            "treatmentId": "endo",
+            "insuranceType": "GKV",
+            "dictation": "Endo Zahn 36. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch (Apex-Locator). Gespült mit NaOCl und EDTA. Wurzelfüllung warm vertikal. Röntgenkontrolle.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        },
+        {
+            "id": "e02",
+            "title": "PKV Endo T3 komplett",
+            "treatmentId": "endo",
+            "insuranceType": "PKV",
+            "dictation": "Wurzelbehandlung Zahn 26. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. NaOCl + EDTA. Wurzelfüllung warm vertikal. Röntgenkontrolle.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "e03",
+            "title": "GKV Endo T2 kompletter 2. Termin",
+            "treatmentId": "endo",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 46. Zweiter Termin. Kofferdam. Arbeitslängen per Apex Locator: MB 19, ML 18, D 20. ISO 30. Maschinell aufbereitet. NaOCl + EDTA. Einlage CaOH2. Provisorischer Verschluss.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        },
+        {
+            "id": "e04",
+            "title": "GKV Endo T1 kompletter 1. Termin",
+            "treatmentId": "endo",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 26. Erster Termin. Trepanation durchgeführt. Kofferdam. Arbeitslänge elektronisch (Apex Locator) MB 20, ML 19, D 21. Aufbereitung maschinell. Spülung NaOCl. Einlage CaOH2.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        }
+    ]
+}

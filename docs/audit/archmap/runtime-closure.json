@@ -1,0 +1,64 @@
+{
+    "generatedAt": "2025-12-26T16:15:00Z",
+    "method": "File system scan + grep analysis",
+    "totalRuntimeFiles": 85,
+    "modules": {
+        "v10": {
+            "fileCount": 38,
+            "clusters": [
+                "pipeline (3)",
+                "kb (10)",
+                "packs (5)",
+                "trace (3)",
+                "extraction (2)",
+                "billing (2)",
+                "compat (3)",
+                "testOnly (2)",
+                "qa (2)",
+                "root (3)"
+            ]
+        },
+        "v7": {
+            "fileCount": 43,
+            "clusters": [
+                "pipeline (12)",
+                "output (2)",
+                "medical (~15)",
+                "settings (3)",
+                "hooks (2)",
+                "multitreatment (5)"
+            ]
+        },
+        "medical_kb": {
+            "fileCount": 4,
+            "files": [
+                "engine/applyMedicalKb.ts",
+                "engine/index.ts",
+                "schema.v1.ts",
+                "index.ts"
+            ]
+        }
+    },
+    "criticalPaths": {
+        "entryPoints": [
+            "v10/public.ts",
+            "v10/pipeline/runV10.ts",
+            "v10/pipeline/runV10Bundle.ts"
+        ],
+        "ssotSources": [
+            "medical_kb/medical_kb.v1.json",
+            "core/billing/knowledgeBase/treatments/*/unified.json",
+            "core/billing/knowledgeBase/kombinationen.json"
+        ],
+        "renderer": "v7/output/renderFromKbChips.ts",
+        "medicalEngine": "medical_kb/engine/applyMedicalKb.ts"
+    },
+    "forbiddenImportViolations": 0,
+    "allowedExceptions": [
+        {
+            "file": "v10/extraction/selectExtractor.ts",
+            "import": "core/services/extractionService",
+            "reason": "LLM extractor for production"
+        }
+    ]
+}

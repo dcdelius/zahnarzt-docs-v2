@@ -1,0 +1,134 @@
+{
+    "generatedAt": "2025-12-26T16:40:00Z",
+    "methodology": "find + grep of V10 runtime files, excluding tests",
+    "v10RuntimeFiles": 38,
+    "v7RuntimeFiles": 43,
+    "medicalKbFiles": 4,
+    "totalRuntimeFiles": 85,
+    "entryPoints": [
+        {
+            "symbol": "runV10",
+            "file": "v10/pipeline/runV10.ts",
+            "line": 242,
+            "exportedVia": "v10/public.ts:9"
+        },
+        {
+            "symbol": "runV10Bundle",
+            "file": "v10/pipeline/runV10Bundle.ts",
+            "line": 102,
+            "exportedVia": "v10/public.ts:9"
+        },
+        {
+            "symbol": "run (V7 shim)",
+            "file": "v7/pipeline/index.ts",
+            "line": 49,
+            "delegatesTo": "runV10"
+        }
+    ],
+    "v10Modules": [
+        {
+            "cluster": "pipeline",
+            "files": [
+                "runV10.ts",
+                "runV10Bundle.ts",
+                "billingEligibilityGuard.ts"
+            ],
+            "purpose": "Main orchestration"
+        },
+        {
+            "cluster": "kb",
+            "files": [
+                "kb/medical/*",
+                "kb/treatment/*",
+                "kb/combinability/*",
+                "kb/util/*"
+            ],
+            "purpose": "Knowledge base providers"
+        },
+        {
+            "cluster": "packs",
+            "files": [
+                "packs/fuellung/pack.ts",
+                "packs/endo/pack.ts",
+                "packs/registry.ts",
+                "packs/types.ts"
+            ],
+            "purpose": "Treatment pack definitions"
+        },
+        {
+            "cluster": "trace",
+            "files": [
+                "trace/traceCollector.ts",
+                "trace/traceHelpers.ts",
+                "trace/index.ts"
+            ],
+            "purpose": "Trace line collection"
+        },
+        {
+            "cluster": "extraction",
+            "files": [
+                "extraction/selectExtractor.ts",
+                "extraction/index.ts"
+            ],
+            "purpose": "Extractor selection (stub/llm)"
+        },
+        {
+            "cluster": "billing",
+            "files": [
+                "billing/combinability/checkCombinabilityFromKb.ts"
+            ],
+            "purpose": "SSOT combinability check"
+        },
+        {
+            "cluster": "compat",
+            "files": [
+                "compat/milchzahn.ts",
+                "compat/combinability.ts"
+            ],
+            "purpose": "Compatibility checks"
+        },
+        {
+            "cluster": "testOnly",
+            "files": [
+                "testOnly/fixtures.ts",
+                "testOnly/index.ts"
+            ],
+            "purpose": "Test fixtures"
+        },
+        {
+            "cluster": "qa",
+            "files": [
+                "qa/runClinicalSuite.ts",
+                "qa/packCoverage.ts"
+            ],
+            "purpose": "QA harness"
+        }
+    ],
+    "fanInTop10": [
+        {
+            "file": "v10/public.ts",
+            "importedBy": 3,
+            "reason": "V10 API surface"
+        },
+        {
+            "file": "v7/output/renderFromKbChips.ts",
+            "importedBy": 5,
+            "reason": "SSOT renderer"
+        },
+        {
+            "file": "medical_kb/engine/applyMedicalKb.ts",
+            "importedBy": 4,
+            "reason": "Medical engine"
+        },
+        {
+            "file": "v10/kb/treatment/index.ts",
+            "importedBy": 3,
+            "reason": "Treatment KB provider"
+        },
+        {
+            "file": "v7/medical/types.ts",
+            "importedBy": 10,
+            "reason": "Shared types"
+        }
+    ]
+}

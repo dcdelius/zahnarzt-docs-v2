@@ -1,0 +1,16 @@
+{
+    "gigaprompt": "G80",
+    "milestone": "m80",
+    "generated_at": "2025-12-30T08:28:00Z",
+    "status": "PENDING",
+    "summary": "UI gates need wiring to actual pipeline states",
+    "scope": [
+        "gate-output-coverage",
+        "gate-surface-detection",
+        "gate-treatment-isolation",
+        "gate-v7-ui-wiring",
+        "gate-wiring-matrix",
+        "ui-flow.test.tsx"
+    ],
+    "target": "5 failing -> 0"
+}

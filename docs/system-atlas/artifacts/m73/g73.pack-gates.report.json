@@ -1,0 +1,31 @@
+{
+    "gigaprompt": "G73",
+    "milestone": "m73",
+    "generated_at": "2025-12-30T08:18:00Z",
+    "status": "PARTIAL",
+    "summary": "Pack gates fixed by excluding UI-only extraction_stub from KB tests",
+    "before_after": {
+        "before_failing": 32,
+        "after_failing": 28,
+        "reduction": 4
+    },
+    "fixes_applied": [
+        {
+            "gates": [
+                "gate-m18-pack-completeness",
+                "gate-m20-pack-allowlist-must-be-explicit",
+                "gate-m20-pack-billingref-coverage",
+                "gate-m20-pack-combinability-goldens-are-real",
+                "gate-m25-pack-coverage-still-100"
+            ],
+            "fix": "Added UI_ONLY_PACKS filter to exclude extraction_stub",
+            "reason": "extraction_stub is UI-only pack with no KB (getTreatmentKb returns null by design)"
+        }
+    ],
+    "remaining_pack_gates": [
+        "gate-m19-pack-generator-smoke - generator script issue",
+        "gate-m31-endo-clinical-parity - clinical parity expectations",
+        "gate-m31-fuellung-clinical-parity - clinical parity expectations"
+    ],
+    "atlas_status": "PENDING"
+}

@@ -1,0 +1,338 @@
+{
+    "_meta": {
+        "name": "G-BA Festzuschuss Zuordnungsregeln",
+        "version": "2024/2025",
+        "quelle": "G-BA Zahnersatz-Richtlinie, KZBV Kommentar",
+        "beschreibung": "Vollständige Befund → Festzuschuss Zuordnungslogik nach G-BA",
+        "stand": "Januar 2025 (Beschluss November 2024)"
+    },
+    "grundregeln": {
+        "befundorientiert": "Festzuschuss richtet sich nach BEFUND, nicht nach gewählter Therapie",
+        "kassenzuschuss": {
+            "ohne_bonus": "60%",
+            "mit_5j_bonus": "70%",
+            "mit_10j_bonus": "75%",
+            "haertefall": "100%"
+        },
+        "vorhandener_ze": "Vorhandener funktionsfähiger ZE wird natürlichen Zähnen gleichgestellt",
+        "verblendbereich": {
+            "ok": "15-25 (Zähne 5-5)",
+            "uk": "34-44 (Zähne 4-4)"
+        }
+    },
+    "befundklasse_1": {
+        "name": "Erhaltungswürdiger Zahn",
+        "beschreibung": "Einzelkronen und Stiftaufbauten",
+        "FZ_1.1": {
+            "befund": "Erhaltungswürdiger Zahn mit weitgehender Zerstörung der klinischen Krone oder unzureichende Retentionsmöglichkeit",
+            "regelversorgung": "Metallische Vollkrone",
+            "betrag_2024": 183.84,
+            "abrechnung": "Je Zahn",
+            "wann": [
+                "ww (weitgehend zerstört)",
+                "kw (erneuerungsbedürftige Krone)",
+                "ur (unzureichende Retention)"
+            ],
+            "kombinierbar_mit": [
+                "FZ_1.3",
+                "FZ_1.4",
+                "FZ_1.5"
+            ],
+            "im_verblendbereich": "Verblendung ist Teil der Regelversorgung → FZ 1.3 zusätzlich"
+        },
+        "FZ_1.2": {
+            "befund": "Erhaltungswürdiger Zahn mit großen Substanzdefekten, aber erhaltener vestibulärer und/oder oraler Zahnsubstanz",
+            "regelversorgung": "Metallische Teilkrone",
+            "betrag_2024": 163.50,
+            "abrechnung": "Je Zahn",
+            "wann": [
+                "pw (partielle Substanzdefekte)"
+            ],
+            "kombinierbar_mit": [
+                "FZ_1.4",
+                "FZ_1.5"
+            ],
+            "nicht_kombinierbar": [
+                "FZ_1.3 (keine Verblendung bei Teilkrone)"
+            ]
+        },
+        "FZ_1.3": {
+            "befund": "Verblendung einer Krone im Verblendbereich",
+            "regelversorgung": "Vestibuläre Verblendung (Kunststoff, Komposit, Keramik)",
+            "betrag_2024": 46.72,
+            "abrechnung": "Je Verblendung",
+            "wann": "Zahn liegt im Verblendbereich (OK: 15-25, UK: 34-44)",
+            "kombinierbar_mit": [
+                "FZ_1.1",
+                "FZ_2.7"
+            ],
+            "nicht_kombinierbar": [
+                "FZ_1.2 (Teilkrone unverblendet!)"
+            ],
+            "wichtig": "NUR ZUSÄTZLICH zu FZ 1.1, nicht alleine"
+        },
+        "FZ_1.4": {
+            "befund": "Endodontisch behandelter Zahn mit Erfordernis eines konfektionierten metallischen Stiftaufbaus",
+            "regelversorgung": "Konfektionierter Stiftaufbau (Glasfaser, Titan) mit Zement",
+            "betrag_2024": 44.25,
+            "abrechnung": "Je Zahn",
+            "bema": "BEMA_18a",
+            "kombinierbar_mit": [
+                "FZ_1.1",
+                "FZ_1.2",
+                "FZ_1.3"
+            ],
+            "wichtig": "ZUSÄTZLICHER Festzuschuss zum Kronenbefund"
+        },
+        "FZ_1.5": {
+            "befund": "Endodontisch behandelter Zahn mit Erfordernis eines gegossenen metallischen Stiftaufbaus",
+            "regelversorgung": "Gegossener Stiftaufbau (Labor)",
+            "betrag_2024": 104.17,
+            "abrechnung": "Je Zahn",
+            "bema": "BEMA_18b",
+            "kombinierbar_mit": [
+                "FZ_1.1",
+                "FZ_1.2",
+                "FZ_1.3"
+            ],
+            "wichtig": "ZUSÄTZLICHER Festzuschuss zum Kronenbefund"
+        }
+    },
+    "befundklasse_2": {
+        "name": "Zahnbegrenzte Lücken (Lückensituation I)",
+        "beschreibung": "Brücken bei 1-4 fehlenden Zähnen pro Kiefer, ohne Freiendsituation",
+        "voraussetzung": "Max 4 fehlende Zähne pro Kiefer, geschlossene Zahnreihe, keine Freiendsituation",
+        "ausschluss": "Für lückenangrenzende Zähne KEINE FZ 1.1-1.3 ansetzbar!",
+        "FZ_2.1": {
+            "befund": "Zahnbegrenzte Lücke mit einem fehlenden Zahn",
+            "regelversorgung": "Brücke zum Ersatz von 1 Zahn (3-gliedrig: KBK)",
+            "betrag_2024": 411.12,
+            "abrechnung": "Je Lücke",
+            "kombinierbar_mit": [
+                "FZ_2.5",
+                "FZ_2.6",
+                "FZ_2.7"
+            ]
+        },
+        "FZ_2.2": {
+            "befund": "Zahnbegrenzte Lücke mit zwei nebeneinander fehlenden Zähnen",
+            "regelversorgung": "Brücke zum Ersatz von 2 Zähnen (4-gliedrig)",
+            "betrag_2024": 475.70,
+            "abrechnung": "Je Lücke",
+            "kombinierbar_mit": [
+                "FZ_2.5",
+                "FZ_2.6",
+                "FZ_2.7"
+            ]
+        },
+        "FZ_2.3": {
+            "befund": "Zahnbegrenzte Lücke mit drei nebeneinander fehlenden Zähnen",
+            "regelversorgung": "Brücke zum Ersatz von 3 Zähnen (5-gliedrig)",
+            "betrag_2024": 540.28,
+            "abrechnung": "Je Kiefer",
+            "kombinierbar_mit": [
+                "FZ_2.6",
+                "FZ_2.7"
+            ]
+        },
+        "FZ_2.4": {
+            "befund": "Frontzahnlücke mit vier nebeneinander fehlenden Zähnen",
+            "regelversorgung": "Brücke zum Ersatz von 4 Frontzähnen",
+            "betrag_2024": 604.86,
+            "abrechnung": "Je Kiefer",
+            "wichtig": "NUR für Frontzahnbereich!"
+        },
+        "FZ_2.5": {
+            "befund": "An eine Lücke unmittelbar angrenzende weitere zahnbegrenzte Lücke mit einem fehlenden Zahn",
+            "regelversorgung": "Erweiterung der Brücke um 1 Glied",
+            "betrag_2024": 64.70,
+            "abrechnung": "Je weitere angrenzende Lücke",
+            "kombinierbar_mit": [
+                "FZ_2.1",
+                "FZ_2.2",
+                "FZ_2.3",
+                "FZ_2.7"
+            ],
+            "wichtig": "Ergibt mehrspannige Brücke"
+        },
+        "FZ_2.6": {
+            "befund": "Disparallele (nicht kompensierbare divergente) Pfeilerzähne",
+            "regelversorgung": "Brücke mit Geschiebe (geteilte Brücke)",
+            "betrag_2024": 80.50,
+            "abrechnung": "Zuschlag je Lücke",
+            "kombinierbar_mit": [
+                "FZ_2.1-2.5",
+                "FZ_2.7"
+            ],
+            "wann": "Pfeiler so divergent, dass ohne Geschiebe keine Brücke möglich"
+        },
+        "FZ_2.7": {
+            "befund": "Verblendung an Brückenankern und Brückenzwischengliedern im Verblendbereich",
+            "regelversorgung": "Vestibuläre Verblendung",
+            "betrag_2024": 46.72,
+            "abrechnung": "Je Verblendung (Anker + Zwischenglied)",
+            "wann": "Zahn im Verblendbereich (OK: 15-25, UK: 34-44)",
+            "kombinierbar_mit": [
+                "Alle FZ 2.x Befunde"
+            ]
+        }
+    },
+    "befundklasse_3": {
+        "name": "Lückengebisse / Freiendsituationen (Lückensituation II)",
+        "beschreibung": "Prothesen bei mehr als 4 fehlenden Zähnen oder Freiendsituation",
+        "FZ_3.1": {
+            "befund": "Alle zahnbegrenzten Lücken, die nicht den Befunden 2.1-2.5 und 4 entsprechen, oder Freiendsituationen",
+            "regelversorgung": "Modellgussprothese mit Klammern und Stützen",
+            "betrag_2024": 507.59,
+            "abrechnung": "1× je Kiefer",
+            "wann": [
+                "Mehr als 4 fehlende Zähne",
+                "Freiendsituation",
+                "Kombination aus beidem"
+            ],
+            "kombinierbar_mit": [
+                "FZ_3.2a/b/c"
+            ]
+        },
+        "FZ_3.2a": {
+            "befund": "Beidseitig bis zu den Eckzähnen oder ersten Prämolaren verkürzte Zahnreihe - Teleskopkrone zur dentalen Verankerung",
+            "regelversorgung": "Teleskopkrone (BEMA 91d)",
+            "betrag_2024": 385.97,
+            "abrechnung": "Max 2× je Kiefer (je Eckzahn oder 1. Prämolar)",
+            "wann": "Beidseitig verkürzte Zahnreihe bis 3er oder 4er",
+            "wichtig": [
+                "NUR für Eckzahn (3er) oder 1. Prämolar (4er)!",
+                "NICHT für alle Ankerzähne!",
+                "Bei gleichartiger Versorgung: GOZ 5040 statt BEMA 91d"
+            ],
+            "kombinierbar_mit": [
+                "FZ_3.1",
+                "FZ_4.7"
+            ],
+            "beispiel": "Anker 14-24: FZ 3.2a nur für 14 und 24 = 2×"
+        },
+        "FZ_3.2b": {
+            "befund": "Einseitig bis Eckzahn/1. PM verkürzt UND kontralateral im Seitenzahngebiet unterbrochen",
+            "regelversorgung": "Teleskopkrone",
+            "betrag_2024": 385.97,
+            "abrechnung": "Max 2× je Kiefer",
+            "wann": "Einseitig verkürzt + kontralateral min. 2 fehlende Zähne im SZ-Bereich"
+        },
+        "FZ_3.2c": {
+            "befund": "Beidseitig im Seitenzahngebiet unterbrochen mit je ≥2 fehlenden Zähnen",
+            "regelversorgung": "Teleskopkrone / Kombinationsprothese",
+            "betrag_2024": 385.97,
+            "abrechnung": "Max 2× je Kiefer (je 3er/4er)",
+            "wann": "Beidseitig SZ-Bereich unterbrochen, je ≥2 fehlend, Kombiversorgung"
+        }
+    },
+    "befundklasse_4": {
+        "name": "Restzahnbestand ≤3 Zähne oder zahnloser Kiefer",
+        "beschreibung": "Totalprothesen, Cover-Denture, Teleskopprothesen bei minimalem Restzahnbestand",
+        "FZ_4.1": {
+            "befund": "Restzahnbestand bis zu 3 Zähnen im Oberkiefer",
+            "regelversorgung": "Totalprothese OK oder Cover-Denture mit Teleskopen",
+            "betrag_2024": 564.00,
+            "abrechnung": "1× je Kiefer",
+            "wann": "Max 3 Restzähne im OK",
+            "wichtig": "Topographie der Restzähne irrelevant für diesen FZ"
+        },
+        "FZ_4.2": {
+            "befund": "Zahnloser Oberkiefer",
+            "regelversorgung": "Totalprothese OK",
+            "betrag_2024": 449.24,
+            "abrechnung": "1× je Kiefer"
+        },
+        "FZ_4.3": {
+            "befund": "Restzahnbestand bis zu 3 Zähnen im Unterkiefer",
+            "regelversorgung": "Totalprothese UK oder Cover-Denture mit Teleskopen",
+            "betrag_2024": 564.00,
+            "abrechnung": "1× je Kiefer",
+            "wann": "Max 3 Restzähne im UK"
+        },
+        "FZ_4.4": {
+            "befund": "Zahnloser Unterkiefer",
+            "regelversorgung": "Totalprothese UK",
+            "betrag_2024": 449.24,
+            "abrechnung": "1× je Kiefer"
+        },
+        "FZ_4.5": {
+            "befund": "Verblendung für Teleskopkronen im Verblendbereich bei Befund 3.2, 4.3, 4.6",
+            "regelversorgung": "Verblendung Teleskopkrone",
+            "betrag_2024": 62.32,
+            "abrechnung": "Je Teleskopkrone im Verblendbereich",
+            "kombinierbar_mit": [
+                "FZ_3.2a/b/c",
+                "FZ_4.3",
+                "FZ_4.6"
+            ]
+        },
+        "FZ_4.6": {
+            "befund": "Teleskopkrone bei Restzahnbestand ≤3 Zähne wenn Kombiversorgung",
+            "regelversorgung": "Teleskopkrone für Cover-Denture",
+            "betrag_2024": 385.97,
+            "abrechnung": "Je Ankerzahn",
+            "wann": "Teleskope bei max 3 Restzähnen + tatsächlich Kombiversorgung",
+            "kombinierbar_mit": [
+                "FZ_4.1",
+                "FZ_4.3",
+                "FZ_4.7"
+            ]
+        },
+        "FZ_4.7": {
+            "befund": "Verblendung einer Teleskopkrone im Verblendbereich bei Befund 4.6",
+            "regelversorgung": "Verblendung Teleskopkrone",
+            "betrag_2024": 62.32,
+            "abrechnung": "Je Teleskopkrone im Verblendbereich",
+            "wichtig": [
+                "FOLGT DER LOGIK VON FZ 3.2a/4.6!",
+                "NUR für die Teleskop-Anker im Verblendbereich",
+                "NICHT für alle Kronen im Verblendbereich!"
+            ],
+            "kombinierbar_mit": [
+                "FZ_3.2a/b/c",
+                "FZ_4.6"
+            ],
+            "beispiel": "Bei Teleskop-Ankern 14/24: FZ 4.7 × 2 (nicht × alle Kronen!)"
+        }
+    },
+    "kombinationsregeln": {
+        "regel_1": "Befunde können nebeneinander angesetzt werden wenn unabhängig",
+        "regel_2": "Mehrere gleiche Befunde am gleichen Kiefer möglich (z.B. mehrere 1.1)",
+        "regel_3": "Verschiedene Befunde am gleichen Zahn möglich (z.B. 1.1 + 1.4)",
+        "regel_4": "Bei Lückensituation I (Befund 2.x): KEINE FZ 1.1-1.3 für Pfeilerzähne!",
+        "regel_5": "FZ 3.2 und 4.7 nur für Eckzahn/1.PM, max 2× je Kiefer",
+        "regel_6": "FZ 4.7 folgt der Logik von FZ 3.2a/4.6 - nur Teleskop-Anker!"
+    },
+    "teleskop_sonderregeln": {
+        "gleichartig": {
+            "beschreibung": "Teleskop als gleichartige Versorgung",
+            "bema": [
+                "98a",
+                "19 je Anker",
+                "24c × (Anker×3)",
+                "96b"
+            ],
+            "goz": [
+                "5040 je Anker (komplette Teleskopkrone)"
+            ],
+            "fz": [
+                "3.2a nur für 3er/4er",
+                "3.1 je Kiefer",
+                "4.7 nur für Teleskop-Anker"
+            ],
+            "kein_bema_91d": "Bei gleichartig läuft Teleskop über GOZ 5040!"
+        },
+        "regelversorgung": {
+            "beschreibung": "Teleskop als Regelversorgung (selten)",
+            "bema": [
+                "91d je Teleskop",
+                "96b"
+            ],
+            "fz": [
+                "3.2a für 3er/4er",
+                "3.1 je Kiefer"
+            ]
+        }
+    }
+}

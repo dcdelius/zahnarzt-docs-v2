@@ -1,0 +1,86 @@
+{
+  "runId": "2026-02-13T20:09:20.034Z",
+  "suiteFile": "/Users/david/dokumaster-ui/scripts/v10/scenarios.v10.crown_prep.medical.json",
+  "meta": {
+    "description": "V10 Medical Scenario Cases - Crown Prep",
+    "version": "1.0.0",
+    "created": "2026-02-12",
+    "treatmentId": "crown_prep"
+  },
+  "total": 2,
+  "pass": 2,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "c01",
+      "title": "PKV Kronenpräparation komplett",
+      "treatmentId": "crown_prep",
+      "insuranceType": "PKV",
+      "dictation": "Zahn 21 Kronenpräparation, Abformung und Provisorium eingesetzt. Leitungsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_2210",
+        "GOZ_5000",
+        "GOZ_2260"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 557,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "crown_prep-21-1",
+          "teeth": [
+            "21"
+          ],
+          "facts": {
+            "tooth": "21",
+            "surfaces": []
+          },
+          "chips": [
+            "abformung",
+            "la_leitung",
+            "praeparation",
+            "provisorium"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Kronenpräparation des Zahnes durchgeführt. Anschliessend Präzisionsabformung durchgeführt. Anschliessend Provisorische Versorgung. Abschliessend Leitungsanästhesie N. alv. inf. (Ultracain D-S).\n\n[Durchgefuehrte Leistungen]\n• Präparation durchgeführt.\n• Abformung.\n• Provisorium.\n• LA Leitung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "c02",
+      "title": "PKV Kronenpräparation unvollständig -> Askbacks",
+      "treatmentId": "crown_prep",
+      "insuranceType": "PKV",
+      "dictation": "Zahn 21 Kronenpräparation.",
+      "phase": "questions",
+      "billingRefs": [],
+      "questions": [
+        "crown_prep_impression",
+        "crown_prep_provisional"
+      ],
+      "answersUsed": {},
+      "perInstanceCount": 0,
+      "textLength": 0,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "crown_prep-21-1",
+          "teeth": [
+            "21"
+          ],
+          "facts": {
+            "tooth": "21",
+            "surfaces": []
+          },
+          "chips": []
+        }
+      ],
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

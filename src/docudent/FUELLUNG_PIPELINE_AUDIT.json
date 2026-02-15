@@ -1,0 +1,324 @@
+{
+    "meta": {
+        "generatedAt": "2024-12-18T23:28:42+01:00",
+        "purpose": "Füllung Pipeline Logic Audit — Evidence-Based Report",
+        "verdict": "P0: la_infiltr defaultActive=true causes billing without evidence"
+    },
+    "findingsSummary": [
+        "P0: la_infiltr chip has defaultActive=true (fuellung_unified.json:157) with billingRef.GKV='BEMA_40'",
+        "BUT: defaultActive is NOT consumed by chipResolver.ts — it uses answerMap.defaults.alwaysOnChipIds",
+        "ACTUAL P0: Check fuellung_answer_map.json defaults.alwaysOnChipIds for anesthesia chips",
+        "Anesthesia is a CHIP, not a QUESTION — no askback for anesthesia type in current flow",
+        "ChipState has source field (settings|dictation|user) at treatmentEngine.ts:479-487",
+        "MKV toggle adds MEHRSCHICHT/ADHAESIV chips at chipResolver.ts:237-241",
+        "MKV does NOT add anesthesia chips (no hasMKV→anesthesia logic)",
+        "Question generation generates mkv_vereinbarung/mkv_betrag for MKV, but NO anesthesia questions for Füllung"
+    ],
+    "callGraph": [
+        {
+            "node": "DocudentV7Page.tsx",
+            "file": "src/docudent/v7/pages/DocudentV7Page.tsx:1-700",
+            "function": "DocudentV7Page component",
+            "inputs": [
+                "dictation (textarea)",
+                "insuranceType (context)",
+                "hasMKV (context)",
+                "treatment (selector)"
+            ],
+            "outputs": [
+                "calls useV7Pipeline.run()"
+            ],
+            "nextNode": "useV7Pipeline.ts"
+        },
+        {
+            "node": "useV7Pipeline.ts",
+            "file": "src/docudent/v7/hooks/useV7Pipeline.ts:93-322",
+            "function": "useV7Pipeline()",
+            "inputs": [
+                "dictation",
+                "answers Map",
+                "insuranceType",
+                "hasMKV",
+                "treatmentId"
+            ],
+            "outputs": [
+                "PipelineResult {state, questions, output}"
+            ],
+            "nextNode": "v7/pipeline/index.ts"
+        },
+        {
+            "node": "v7/pipeline/index.ts",
+            "file": "src/docudent/v7/pipeline/index.ts:53-294",
+            "function": "pipeline.run()",
+            "inputs": [
+                "PipelineInput"
+            ],
+            "outputs": [
+                "PipelineResult"
+            ],
+            "calls": [
+                "extractFromDictation()",
+                "generateQuestions()",
+                "generateFinalOutput()"
+            ]
+        },
+        {
+            "node": "core/services/questionService.ts (facade)",
+            "file": "src/docudent/core/services/questionService.ts:15-20",
+            "function": "generateQuestions (re-export)",
+            "outputs": [
+                "DynamicQuestion[]"
+            ],
+            "delegates": "core/questions/questionService.ts"
+        },
+        {
+            "node": "core/questions/questionService.ts",
+            "file": "src/docudent/core/questions/questionService.ts:129-337",
+            "function": "generateQuestions()",
+            "inputs": [
+                "extracted",
+                "insuranceType",
+                "hasMKV",
+                "treatmentId",
+                "answers",
+                "rawDictation"
+            ],
+            "outputs": [
+                "DynamicQuestion[]"
+            ],
+            "calls": [
+                "inferChipsFromExtractedData()",
+                "getQuestionsByCategory('forensic')",
+                "getQuestionDefOrNull()"
+            ],
+            "notes": [
+                "NO anesthesia question generation for Füllung",
+                "MKV questions at lines 252-283"
+            ]
+        },
+        {
+            "node": "core/billing/logic/chipResolver.ts",
+            "file": "src/docudent/core/billing/knowledgeBase/logic/chipResolver.ts:198-260",
+            "function": "resolveActiveChipIds()",
+            "inputs": [
+                "treatmentId",
+                "extracted",
+                "answers Map",
+                "hasMKV",
+                "insuranceType"
+            ],
+            "outputs": [
+                "activeChipIds[]"
+            ],
+            "mechanism": [
+                "Line 225: Start with answerMap.defaults.alwaysOnChipIds",
+                "Line 228-230: Add mkvChipId if hasMKV",
+                "Line 237-241: Add MEHRSCHICHT + ADHAESIV if fuellung + hasMKV",
+                "Line 244: inferChipsFromExtractedData()",
+                "Line 251: applyAnswersToChipSelection()"
+            ]
+        },
+        {
+            "node": "core/billing/logic/treatmentEngine.ts",
+            "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts:287-458",
+            "function": "processChipsToBilling()",
+            "inputs": [
+                "treatmentId",
+                "activeChipIds",
+                "insuranceType",
+                "hasMKV",
+                "extractedData",
+                "textLength"
+            ],
+            "outputs": [
+                "ProcessingResult {billingCodes, textLines, warnings, billingDetails}"
+            ],
+            "mechanism": [
+                "Line 324-371: For each activeChipId, get chip.billingRef.GKV or PKV",
+                "Line 343: lookupBillingCode() from kataloge/*.json",
+                "Line 345: billingCodes.push(codeId)"
+            ]
+        }
+    ],
+    "anesthesiaChips": [
+        {
+            "id": "la_infiltr",
+            "file": "fuellung_unified.json:134-169",
+            "label": "LA Infiltration",
+            "defaultActive": true,
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "mutuallyExclusiveWith": [
+                "la_leitung",
+                "ohne_la"
+            ],
+            "questionForIt": "NONE - is chip-based, not askback",
+            "P0_ISSUE": "defaultActive=true but this field is NOT consumed by chipResolver"
+        },
+        {
+            "id": "la_leitung",
+            "file": "fuellung_unified.json:171-206",
+            "label": "LA Leitung",
+            "defaultActive": false,
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            },
+            "mutuallyExclusiveWith": [
+                "la_infiltr",
+                "ohne_la"
+            ]
+        },
+        {
+            "id": "oberflaeche_la",
+            "file": "fuellung_unified.json:207-235",
+            "label": "Oberflächenanästhesie",
+            "defaultActive": false,
+            "billingRef": {
+                "PKV": "GOZ_0080"
+            }
+        }
+    ],
+    "mkvChips": [
+        {
+            "id": "mehrschicht",
+            "file": "fuellung_unified.json:477-523",
+            "label": "Mehrschichttechnik",
+            "defaultActive": false,
+            "billingRef": {
+                "MKV": "GOZ_2197"
+            },
+            "addedBy": "chipResolver.ts:239 when hasMKV=true"
+        }
+    ],
+    "placesThatAskAnesthesia": [],
+    "placesThatGenerateBilling": [
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts",
+            "lines": "324-358",
+            "function": "processChipsToBilling()",
+            "mechanism": "For each chip in activeChipIds, reads chip.billingRef.GKV/PKV, calls lookupBillingCode(), adds to billingCodes[]",
+            "notes": "This is the ONLY place billing codes are generated"
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts",
+            "lines": "376-396",
+            "function": "processChipsToBilling() - surface_mapping",
+            "mechanism": "Surface count → F-code (BEMA_13/13b/13c/13d)"
+        }
+    ],
+    "mkvPropagation": [
+        {
+            "from": "InsuranceContext (V7 state)",
+            "to": "useV7Pipeline.run()",
+            "mechanism": "hasMKV passed as input parameter"
+        },
+        {
+            "from": "v7/pipeline/index.ts",
+            "to": "generateQuestions()",
+            "mechanism": "hasMKV passed to question generation"
+        },
+        {
+            "from": "v7/pipeline/index.ts",
+            "to": "generateFinalOutput()",
+            "mechanism": "hasMKV passed to output generation"
+        },
+        {
+            "from": "chipResolver.ts:237-241",
+            "to": "activeChipIds",
+            "mechanism": "if (treatmentId === 'fuellung' && hasMKV) { add MEHRSCHICHT + ADHAESIV }"
+        },
+        {
+            "from": "questionService.ts:252-283",
+            "to": "questions[]",
+            "mechanism": "if (hasMKV) { add mkv_vereinbarung, mkv_betrag questions }"
+        }
+    ],
+    "chipStateSourceTracking": {
+        "exists": true,
+        "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts",
+        "lines": "479-487",
+        "type": "ChipState",
+        "sourceValues": [
+            "default",
+            "settings",
+            "dictation",
+            "user"
+        ],
+        "usedBy": [
+            "resolveChipStates() at line 660"
+        ],
+        "notUsedBy": [
+            "chipResolver.ts - uses different mechanism (alwaysOnChipIds)"
+        ]
+    },
+    "defaultActiveAudit": {
+        "chipsWithDefaultActiveTrue": [
+            {
+                "id": "vipr_pos",
+                "line": 37,
+                "hasBilling": false
+            },
+            {
+                "id": "perk_neg",
+                "line": 96,
+                "hasBilling": false
+            },
+            {
+                "id": "la_infiltr",
+                "line": 157,
+                "hasBilling": true,
+                "billingRef": "BEMA_40/GOZ_0090"
+            },
+            {
+                "id": "kofferdam",
+                "line": 260,
+                "hasBilling": true,
+                "billingRef": "BEMA_12/GOZ_2040"
+            },
+            {
+                "id": "exkavation",
+                "line": 315,
+                "hasBilling": false
+            },
+            {
+                "id": "cp_not_required",
+                "line": 397,
+                "hasBilling": false
+            },
+            {
+                "id": "komposit_basic",
+                "line": 463,
+                "hasBilling": false
+            },
+            {
+                "id": "finishing",
+                "line": 545,
+                "hasBilling": false
+            }
+        ],
+        "criticalFinding": "defaultActive is defined in fuellung_unified.json BUT chipResolver.ts does NOT read it!",
+        "actualDefaultsSource": "fuellung_answer_map.json → defaults.alwaysOnChipIds",
+        "needToCheckNext": "fuellung_answer_map.json"
+    },
+    "suspectedRootCauses": [
+        "1. Anesthesia is NOT asked as a question — it's chip-based (la_infiltr/la_leitung)",
+        "2. If la_infiltr is in answerMap.defaults.alwaysOnChipIds, it will fire without evidence",
+        "3. treatmentEngine.inferChipsFromDictation() may match 'anästhesie' keyword too broadly",
+        "4. No askback question exists for anesthesia type selection in Füllung flow",
+        "5. MKV logic is separate: adds MEHRSCHICHT/ADHAESIV but NOT anesthesia"
+    ],
+    "minimalFixCandidates": [
+        "F1: Check fuellung_answer_map.json for la_infiltr in alwaysOnChipIds — if present, REMOVE",
+        "F2: Add 'anesthesia' to forensic questions in fuellung_question_bank.json with when-clause",
+        "F3: In chipResolver.ts, do NOT add anesthesia chips unless explicitly dictated or answered",
+        "F4: Add gate-no-billing-without-evidence.test.ts to block defaultActive billing chips"
+    ],
+    "nextStepsToVerify": [
+        "1. View fuellung_answer_map.json → defaults.alwaysOnChipIds",
+        "2. Grep for 'la_infiltr' in answer maps",
+        "3. Check extractionMapping for anesthesia keyword detection"
+    ]
+}

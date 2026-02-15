@@ -1,0 +1,31 @@
+{
+    "version": "1.0.0",
+    "runId": "repro-fuellung-mkv-standard",
+    "timestamp": "2025-12-29T17:45:00Z",
+    "input": {
+        "dictation": "Zahn 26 mod Kompositfüllung, tiefe Karies, Kofferdam, Anästhesie, 120 Euro",
+        "treatmentId": "fuellung",
+        "insuranceType": "MKV",
+        "textLength": "medium",
+        "hasMKV": true,
+        "answers": {}
+    },
+    "expected": {
+        "state_sequence": [
+            "questions",
+            "output"
+        ],
+        "required_questions": [
+            "medical_ueberkappung"
+        ],
+        "chips_must_include": [
+            "kofferdam",
+            "la_infiltration"
+        ],
+        "fullText_must_contain": [
+            "Kofferdam",
+            "Kompositfüllung"
+        ],
+        "billing_not_empty": true
+    }
+}

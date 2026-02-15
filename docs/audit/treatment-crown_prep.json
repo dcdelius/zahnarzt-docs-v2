@@ -1,0 +1,136 @@
+{
+    "treatmentId": "crown_prep",
+    "questionBank": {
+        "path": "src/docudent/core/billing/knowledgeBase/treatments/crown_prep/question_bank.json",
+        "questions": [
+            {
+                "key": "kronenart",
+                "prompt": "👑 Kronenart?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "vollkeramik",
+                        "label": "Vollkeramik"
+                    },
+                    {
+                        "id": "vmk",
+                        "label": "VMK"
+                    },
+                    {
+                        "id": "vollguss",
+                        "label": "Vollguss"
+                    }
+                ],
+                "when": null
+            },
+            {
+                "key": "retraktionsfaden",
+                "prompt": "🧵 Retraktionsfaden?",
+                "category": "forensic",
+                "type": "single",
+                "options": [
+                    {
+                        "id": "ja",
+                        "label": "Ja"
+                    },
+                    {
+                        "id": "nein",
+                        "label": "Nein"
+                    }
+                ],
+                "when": null
+            }
+        ],
+        "questionOrder": {
+            "forensic": [
+                "kronenart",
+                "retraktionsfaden"
+            ],
+            "mkv": [],
+            "upsell": []
+        }
+    },
+    "output": {
+        "templatePath": "src/docudent/core/billing/knowledgeBase/treatments/crown_prep/template.json",
+        "sections": [
+            {
+                "id": "header",
+                "label": "KRONENPRÄPARATION"
+            },
+            {
+                "id": "befund",
+                "label": "BEFUND"
+            },
+            {
+                "id": "behandlung",
+                "label": "BEHANDLUNG"
+            }
+        ],
+        "renderFunctions": {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+            "mainFunction": "composeOutput:562"
+        },
+        "influencingFields": {
+            "extracted": [
+                "tooth",
+                "mentioned.kronenart"
+            ],
+            "answers": [
+                "kronenart",
+                "retraktionsfaden"
+            ]
+        }
+    },
+    "goldenDictations": [
+        {
+            "dictation": "Zahn 46 Kronenpräparation Vollkeramik Retraktionsfaden",
+            "expectedQuestions": [],
+            "expectedOutput": {
+                "header": "KRONENPRÄPARATION — Zahn 46",
+                "behandlung": "Kronenpräparation für Vollkeramik"
+            }
+        },
+        {
+            "dictation": "36 VMK-Krone Präparation Abdruck",
+            "expectedQuestions": [
+                "retraktionsfaden"
+            ],
+            "expectedOutput": {
+                "header": "KRONENPRÄPARATION — Zahn 36",
+                "befund": "Zahn 36 zur Kronenversorgung vorgesehen."
+            }
+        },
+        {
+            "dictation": "Zahn 16 Vollgusskrone Stumpfaufbau",
+            "expectedQuestions": [
+                "retraktionsfaden"
+            ],
+            "expectedOutput": {
+                "header": "KRONENPRÄPARATION — Zahn 16",
+                "behandlung": "Stumpfaufbau und Präparation"
+            }
+        },
+        {
+            "dictation": "46 Krone Scan optisch-elektronischer Abdruck",
+            "expectedQuestions": [
+                "kronenart",
+                "retraktionsfaden"
+            ],
+            "expectedOutput": {
+                "header": "KRONENPRÄPARATION — Zahn 46",
+                "behandlung": "Optisch-elektronischer Abdruck"
+            }
+        },
+        {
+            "dictation": "24 Vollkeramik provisorische Versorgung",
+            "expectedQuestions": [
+                "retraktionsfaden"
+            ],
+            "expectedOutput": {
+                "header": "KRONENPRÄPARATION — Zahn 24",
+                "behandlung": "Provisorische Versorgung"
+            }
+        }
+    ]
+}

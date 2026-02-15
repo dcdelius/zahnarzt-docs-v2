@@ -1,0 +1,223 @@
+/**
+ * V10MultiQuestionsPanel Styles
+ * 
+ * M35: Jeton-style multi-instance question panel.
+ */
+
+.v10-multi-questions-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.v10-questions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.v10-questions-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #f8f9fa;
+    font-weight: 600;
+}
+
+.v10-instance-count {
+    font-size: 0.875rem;
+    color: #7f8c8d;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+/* Instance Section */
+.v10-instance-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+}
+
+.v10-instance-section:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.v10-instance-section.submitted {
+    opacity: 0.7;
+    background: rgba(39, 174, 96, 0.1);
+    border-color: rgba(39, 174, 96, 0.3);
+}
+
+.v10-instance-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid;
+}
+
+.v10-instance-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.v10-instance-tooth {
+    font-size: 0.875rem;
+    color: #bdc3c7;
+    font-weight: 500;
+}
+
+/* Questions */
+.v10-instance-questions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.v10-question-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.v10-question-label {
+    font-size: 0.9rem;
+    color: #ecf0f1;
+    font-weight: 500;
+}
+
+.v10-question-select,
+.v10-question-input {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: #f8f9fa;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.v10-question-select:focus,
+.v10-question-input:focus {
+    outline: none;
+    border-color: #3498db;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.v10-question-select option {
+    background: #1a1a2e;
+    color: #f8f9fa;
+}
+
+/* Boolean Buttons */
+.v10-question-boolean {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.v10-bool-btn {
+    flex: 1;
+    padding: 0.625rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: #bdc3c7;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.v10-bool-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.v10-bool-btn.selected {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    border-color: #3498db;
+    color: white;
+}
+
+.v10-bool-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Actions */
+.v10-instance-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.v10-instance-submit-btn {
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.v10-instance-submit-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+.v10-instance-submit-btn:disabled {
+    background: #7f8c8d;
+    cursor: not-allowed;
+}
+
+/* Submit All */
+.v10-submit-all-section {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.v10-submit-all-btn {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.v10-submit-all-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.v10-submit-all-btn:disabled {
+    background: #7f8c8d;
+    cursor: not-allowed;
+}
+
+/* Colors */
+:root {
+    --endo-color: #e74c3c;
+    --fuellung-color: #3498db;
+}

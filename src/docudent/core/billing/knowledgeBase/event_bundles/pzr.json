@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "pzr",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "pzr.baseline",
+      "chipIds": ["pzr_vollstaendig"],
+      "textRefIds": ["pzr_vollstaendig"],
+      "billingRefIds": ["pzr_vollstaendig"]
+    },
+    {
+      "id": "pzr.zahnstein_entfernung",
+      "chipIds": ["zahnstein_entfernung"],
+      "textRefIds": ["zahnstein_entfernung"],
+      "billingRefIds": ["zahnstein_entfernung"]
+    },
+    {
+      "id": "pzr.fluoridierung",
+      "chipIds": ["fluoridierung"],
+      "textRefIds": ["fluoridierung"],
+      "billingRefIds": ["fluoridierung"]
+    },
+    {
+      "id": "pzr.askback.zahnstein"
+    },
+    {
+      "id": "pzr.askback.fluoridation"
+    }
+  ]
+}

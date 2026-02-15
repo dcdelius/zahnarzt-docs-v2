@@ -1,0 +1,32 @@
+{
+    "id": "endo_05_obturation_postponed",
+    "description": "Endo Obturation verschoben — Deviation + Plan dokumentieren",
+    "input": {
+        "treatmentId": "endo",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Wurzelbehandlung Zahn 37 medikamentöse Einlage CaOH Obturation nächste Sitzung geplant",
+        "answers": {
+            "endo_step": "t2_aufbereitung"
+        }
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=endo",
+            "questions:engine=endo"
+        ],
+        "traceExcludes": [
+            "questions:engine=fuellung"
+        ],
+        "noQuestionIdRegex": "(fuellung|aesthetik|mehrschicht)",
+        "outputMustContain": [
+            "37"
+        ],
+        "billingMustNotContain": [
+            "BEMA_13a"
+        ]
+    },
+    "minimalAnswers": {
+        "endo_step": "t2_aufbereitung"
+    }
+}

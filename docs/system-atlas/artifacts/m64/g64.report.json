@@ -1,0 +1,22 @@
+{
+    "gigaprompt": "G64",
+    "milestone": "m64",
+    "generated_at": "2025-12-30T07:45:00Z",
+    "status": "FOUNDATION_EXISTS",
+    "summary": "Wiring v2 exists (22 nodes). V3 + gears.md need implementation.",
+    "current_state": {
+        "wiring_v2_nodes": 22,
+        "wiring_v2_edges": 21,
+        "gears_md": false
+    },
+    "plan": {
+        "script": "scripts/systemAtlas/generateWiringV3.ts",
+        "output": "docs/system-atlas/wiring.graph.v3.json",
+        "docs": "docs/system-atlas/gears.md",
+        "enhancements": [
+            "drop points",
+            "edge contracts",
+            "test coverage"
+        ]
+    }
+}

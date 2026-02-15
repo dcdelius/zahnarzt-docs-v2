@@ -1,0 +1,125 @@
+{
+    "_meta": {
+        "description": "V10 Medical Scenario Cases - Endo",
+        "version": "1.0.0",
+        "created": "2026-02-12",
+        "treatmentId": "endo"
+    },
+    "cases": [
+        {
+            "id": "e01",
+            "title": "GKV Endo komplett (T3) - keine Rückfragen",
+            "insuranceType": "GKV",
+            "dictation": "Endo Zahn 36. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch (Apex-Locator). Gespült mit NaOCl und EDTA. Wurzelfüllung warm vertikal (Continuous Wave).",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "mustIncludeAnyBillingRefs": ["BEMA_31", "BEMA_32", "BEMA_34"],
+                "mustIncludeTextSnippets": ["Trepanation", "Kofferdam"],
+                "mustHavePerInstance": true,
+                "perInstanceCount": 1
+            }
+        },
+        {
+            "id": "e02",
+            "title": "PKV Endo komplett (T3) - keine Rückfragen",
+            "insuranceType": "PKV",
+            "dictation": "Wurzelbehandlung Zahn 26. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"],
+                "mustIncludeAnyBillingRefs": ["GOZ_2360", "GOZ_2410", "GOZ_2440"],
+                "mustIncludeTextSnippets": ["Trepanation", "Kofferdam"],
+                "mustHavePerInstance": true,
+                "perInstanceCount": 1
+            }
+        },
+        {
+            "id": "e03",
+            "title": "Endo T2 Baseline - fehlende Details -> Rückfragen",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 36. Zweiter Termin Wurzelkanalbehandlung. Kofferdam angelegt. Kanäle erneut aufbereitet und gespült. Arbeitslängen überprüft. Keine Beschwerden. Neue medikamentöse Einlage mit Kalziumhydroxid. Provisorischer Verschluss.",
+            "expect": {
+                "phase": "questions",
+                "mustAskbackIds": [
+                    "ENDO_T2_WORKING_LENGTH_METHOD",
+                    "ENDO_T2_WORKING_LENGTHS",
+                    "ENDO_T2_APICAL_SIZE_ISO",
+                    "ENDO_T2_IRRIGATION"
+                ]
+            }
+        },
+        {
+            "id": "e04",
+            "title": "Endo T2 Baseline - Auto-Antworten bis Output",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 36. Zweiter Termin Wurzelkanalbehandlung. Kofferdam angelegt. Kanäle erneut aufbereitet und gespült. Arbeitslängen überprüft. Keine Beschwerden. Neue medikamentöse Einlage mit Kalziumhydroxid. Provisorischer Verschluss.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "mustHavePerInstance": true,
+                "perInstanceCount": 1
+            }
+        },
+        {
+            "id": "e05",
+            "title": "Endo T2 - kein Kofferdam möglich (soll nicht blockieren)",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 36. Zweiter Termin. Kein Kofferdam möglich wegen Kronenrand. Arbeitslängen per Apex Locator: MB 20, ML 19, D 21. ISO 30. Maschinell aufbereitet. NaOCl + EDTA Spülung. Einlage CaOH2.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "mustNotIncludeBillingRefs": ["BEMA_12"],
+                "mustHavePerInstance": true,
+                "perInstanceCount": 1
+            }
+        },
+        {
+            "id": "e06",
+            "title": "Endo T1 - EAL erwähnt, WL Zahlen fehlen -> Rückfrage WL",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 26. Erster Termin Wurzelbehandlung. Trepanation durchgeführt. Kofferdam angelegt. Kanäle mit Apex Locator dargestellt. Gespült mit NaOCl. Einlage CaOH2.",
+            "expect": {
+                "phase": "questions",
+                "mustAskbackIds": ["ENDO_T1_WORKING_LENGTHS"]
+            }
+        },
+        {
+            "id": "e07",
+            "title": "Endo T3 - Wurzelfüllung erwähnt, Technik unklar -> Rückfrage Technik",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 16. Dritter Termin. Kofferdam. Wurzelfüllung durchgeführt. Guttapercha mit Sealer. Röntgenkontrolle zeigt homogene Füllung.",
+            "expect": {
+                "phase": "questions",
+                "mustAskbackIds": ["ENDO_T3_OBTURATION_TECHNIQUE"]
+            }
+        },
+        {
+            "id": "e08",
+            "title": "Endo T3 - Technik unklar -> Auto-Antwort bis Output",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 16. Dritter Termin. Kofferdam. Wurzelfüllung durchgeführt. Guttapercha mit Sealer. Röntgenkontrolle zeigt homogene Füllung.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "mustHavePerInstance": true,
+                "perInstanceCount": 1
+            }
+        },
+        {
+            "id": "e09",
+            "title": "Endo T2 - WL vorhanden, Spülung fehlt -> Rückfrage Spülung",
+            "insuranceType": "GKV",
+            "dictation": "Zahn 46. Zweiter Termin. Kofferdam. MB 19mm, ML 18mm, D 20mm per EAL bestimmt. Aufbereitung maschinell. Einlage CaOH2.",
+            "expect": {
+                "phase": "questions",
+                "mustAskbackIds": ["ENDO_T2_IRRIGATION"]
+            }
+        }
+    ]
+}

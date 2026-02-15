@@ -1,0 +1,215 @@
+{"id":"GOZ_0010","system":"GOZ","nummer":"0010","nummer_raw":"0010","bezeichnung":"Eingehende Untersuchung","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0030","system":"GOZ","nummer":"0030","nummer_raw":"0030","bezeichnung":"Heil- und Kostenplan","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0040","system":"GOZ","nummer":"0040","nummer_raw":"0040","bezeichnung":"Heil- u. Kostenplan; KFO, FAL","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0050","system":"GOZ","nummer":"0050","nummer_raw":"0050","bezeichnung":"Situationsmodell, ein Kiefer","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0060","system":"GOZ","nummer":"0060","nummer_raw":"0060","bezeichnung":"Situationsmodelle, beide Kiefer","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0065","system":"GOZ","nummer":"0065","nummer_raw":"0065","bezeichnung":"Optisch-elektronische Abformung","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0070","system":"GOZ","nummer":"0070","nummer_raw":"0070","bezeichnung":"Vitalitätsprüfung","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0080","system":"GOZ","nummer":"0080","nummer_raw":"0080","bezeichnung":"Intraorale Oberflächenanästhesie","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0090","system":"GOZ","nummer":"0090","nummer_raw":"0090","bezeichnung":"Intraorale Infiltrationsanästhesie","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0100","system":"GOZ","nummer":"0100","nummer_raw":"0100","bezeichnung":"Intraorale Leitungsanästhesie","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0110","system":"GOZ","nummer":"0110","nummer_raw":"0110","bezeichnung":"Zuschlag für die Anwendung eines Operationsmikroskops","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0120","system":"GOZ","nummer":"0120","nummer_raw":"0120","bezeichnung":"Zuschlag für die Anwendung eines Lasers","kategorie":"diagnostik","quelle":"monkeymed_html"}
+{"id":"GOZ_0500","system":"GOZ","nummer":"0500","nummer_raw":"0500","bezeichnung":"OP-Zuschlag für Leistungen, 250 bis 499 Punkten","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_0510","system":"GOZ","nummer":"0510","nummer_raw":"0510","bezeichnung":"OP-Zuschlag für Leistungen, 500 bis 799 Punkten","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_0520","system":"GOZ","nummer":"0520","nummer_raw":"0520","bezeichnung":"OP-Zuschlag für Leistungen, 800 bis 1199 Punkten","punkte":1199,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_0530","system":"GOZ","nummer":"0530","nummer_raw":"0530","bezeichnung":"OP-Zuschlag für Leistungen, mehr als 1200 Punkten","punkte":1200,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_1000","system":"GOZ","nummer":"1000","nummer_raw":"1000","bezeichnung":"Mundhygienestatus","kategorie":"prophylaxe","quelle":"monkeymed_html"}
+{"id":"GOZ_1010","system":"GOZ","nummer":"1010","nummer_raw":"1010","bezeichnung":"Mundhygienekontrolle","kategorie":"prophylaxe","quelle":"monkeymed_html"}
+{"id":"GOZ_1020","system":"GOZ","nummer":"1020","nummer_raw":"1020","bezeichnung":"Fluoridierung","kategorie":"prophylaxe","quelle":"monkeymed_html"}
+{"id":"GOZ_1030","system":"GOZ","nummer":"1030","nummer_raw":"1030","bezeichnung":"Medikamententrägerschiene","kategorie":"prophylaxe","quelle":"monkeymed_html"}
+{"id":"GOZ_1040","system":"GOZ","nummer":"1040","nummer_raw":"1040","bezeichnung":"Professionelle Zahnreinigung","kategorie":"prophylaxe","quelle":"monkeymed_html"}
+{"id":"GOZ_2000","system":"GOZ","nummer":"2000","nummer_raw":"2000","bezeichnung":"Fissuren-/Glattflächenversiegelung","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2010","system":"GOZ","nummer":"2010","nummer_raw":"2010","bezeichnung":"Behandlung überempfindlicher Zahnflächen","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2020","system":"GOZ","nummer":"2020","nummer_raw":"2020","bezeichnung":"Provisorischer Verschluss","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2030","system":"GOZ","nummer":"2030","nummer_raw":"2030","bezeichnung":"Besondere Maßnahmen beim Präparieren oder Füllen","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2040","system":"GOZ","nummer":"2040","nummer_raw":"2040","bezeichnung":"Cofferdam","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2050","system":"GOZ","nummer":"2050","nummer_raw":"2050","bezeichnung":"Füllung, einflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2060","system":"GOZ","nummer":"2060","nummer_raw":"2060","bezeichnung":"Kompositfüllung Adhäsivtechnik, einflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2070","system":"GOZ","nummer":"2070","nummer_raw":"2070","bezeichnung":"Füllung, zweiflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2080","system":"GOZ","nummer":"2080","nummer_raw":"2080","bezeichnung":"Kompositfüllung Adhäsivtechnik, zweiflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2090","system":"GOZ","nummer":"2090","nummer_raw":"2090","bezeichnung":"Füllung, dreiflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2100","system":"GOZ","nummer":"2100","nummer_raw":"2100","bezeichnung":"Kompositfüllung Adhäsivtechnik, dreiflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2110","system":"GOZ","nummer":"2110","nummer_raw":"2110","bezeichnung":"Füllung, mehr als dreiflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2120","system":"GOZ","nummer":"2120","nummer_raw":"2120","bezeichnung":"Kompositfüllung Adhäsivtechnik mehr als dreiflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2130","system":"GOZ","nummer":"2130","nummer_raw":"2130","bezeichnung":"Kontrolle, Finieren/Polieren einer Füllung","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2150","system":"GOZ","nummer":"2150","nummer_raw":"2150","bezeichnung":"Einlagefüllung, einflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2160","system":"GOZ","nummer":"2160","nummer_raw":"2160","bezeichnung":"Einlagefüllung, zweiflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2170","system":"GOZ","nummer":"2170","nummer_raw":"2170","bezeichnung":"Einlagefüllung, mehr als zweiflächig","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2180","system":"GOZ","nummer":"2180","nummer_raw":"2180","bezeichnung":"Aufbaufüllung","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2190","system":"GOZ","nummer":"2190","nummer_raw":"2190","bezeichnung":"Gegossener Stiftaufbau","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2195","system":"GOZ","nummer":"2195","nummer_raw":"2195","bezeichnung":"Schraubenaufbau oder Glasfaserstift o. Ä.","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2197","system":"GOZ","nummer":"2197","nummer_raw":"2197","bezeichnung":"Adhäsive Befestigung","kategorie":"konservierend","quelle":"monkeymed_html"}
+{"id":"GOZ_2200","system":"GOZ","nummer":"2200","nummer_raw":"2200","bezeichnung":"Vollkrone (Tangentialpräparation)","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2210","system":"GOZ","nummer":"2210","nummer_raw":"2210","bezeichnung":"Vollkrone (Hohlkehl- oder Stufenpräparation)","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2220","system":"GOZ","nummer":"2220","nummer_raw":"2220","bezeichnung":"Teilkrone, Veneer","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2230","system":"GOZ","nummer":"2230","nummer_raw":"2230","bezeichnung":"Teilleistungen, 1/2 Gebühr","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2240","system":"GOZ","nummer":"2240","nummer_raw":"2240","bezeichnung":"Teilleistungen, 3/4 der Gebühr","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2250","system":"GOZ","nummer":"2250","nummer_raw":"2250","bezeichnung":"Konfektionierte Krone","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2260","system":"GOZ","nummer":"2260","nummer_raw":"2260","bezeichnung":"Provisorium direktes Verfahren ohne Abformung","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2270","system":"GOZ","nummer":"2270","nummer_raw":"2270","bezeichnung":"Provisorium direktes Verfahren mit Abformung","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2290","system":"GOZ","nummer":"2290","nummer_raw":"2290","bezeichnung":"Entfernung Inlay/Krone oder Trennung Brückenglied","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2300","system":"GOZ","nummer":"2300","nummer_raw":"2300","bezeichnung":"Entfernung eines Wurzelstiftes","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2310","system":"GOZ","nummer":"2310","nummer_raw":"2310","bezeichnung":"Wiedereingliederung Einlagefüllung/Teilkrone/Veneer/Krone oder Wiederherstellung Verblendschale an herausnehmbarem Zahnersatz","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2320","system":"GOZ","nummer":"2320","nummer_raw":"2320","bezeichnung":"Wiederherstellung Krone/Teilkrone/Veneer/Brückenanker und Verblendung an festsitzendem ZE","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2330","system":"GOZ","nummer":"2330","nummer_raw":"2330","bezeichnung":"Indirekte Überkappung, je Kavität","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2340","system":"GOZ","nummer":"2340","nummer_raw":"2340","bezeichnung":"Direkte Überkappung, je Kavität","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2350","system":"GOZ","nummer":"2350","nummer_raw":"2350","bezeichnung":"Vitalamputation","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2360","system":"GOZ","nummer":"2360","nummer_raw":"2360","bezeichnung":"Vitalexstirpation","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2380","system":"GOZ","nummer":"2380","nummer_raw":"2380","bezeichnung":"Amputation avitaler Milchzahnpulpa","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2390","system":"GOZ","nummer":"2390","nummer_raw":"2390","bezeichnung":"Trepanation eines Zahnes","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2400","system":"GOZ","nummer":"2400","nummer_raw":"2400","bezeichnung":"Elektrometrische Längenbestimmung","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2410","system":"GOZ","nummer":"2410","nummer_raw":"2410","bezeichnung":"Wurzelkanalaufbereitung","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2420","system":"GOZ","nummer":"2420","nummer_raw":"2420","bezeichnung":"Anwendung elektrophysikalisch-chemischer Methoden","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2430","system":"GOZ","nummer":"2430","nummer_raw":"2430","bezeichnung":"Medikamentöse Einlage","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_2440","system":"GOZ","nummer":"2440","nummer_raw":"2440","bezeichnung":"Füllung eines Wurzelkanals","kategorie":"endodontie","quelle":"monkeymed_html"}
+{"id":"GOZ_3000","system":"GOZ","nummer":"3000","nummer_raw":"3000","bezeichnung":"Entfernung eines einwurzeligen Zahnes/Implantats","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3010","system":"GOZ","nummer":"3010","nummer_raw":"3010","bezeichnung":"Entfernung eines mehrwurzeligen Zahnes","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3020","system":"GOZ","nummer":"3020","nummer_raw":"3020","bezeichnung":"Entfernung eines tief frakturierten/ tief zerstörten Zahnes","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3030","system":"GOZ","nummer":"3030","nummer_raw":"3030","bezeichnung":"Entfernung eines Zahnes/ Implantats durch Ost","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3040","system":"GOZ","nummer":"3040","nummer_raw":"3040","bezeichnung":"Entfernung eines retinierten, impaktierten o.verlagerten Zah","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3045","system":"GOZ","nummer":"3045","nummer_raw":"3045","bezeichnung":"Entfernen eines extrem verlagerten retinierten Zahnes durch","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3050","system":"GOZ","nummer":"3050","nummer_raw":"3050","bezeichnung":"Stillung einer übermäßigen Blutung","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3060","system":"GOZ","nummer":"3060","nummer_raw":"3060","bezeichnung":"Stillung einer Blutung durch Abbinden/Umstechen/Knochenbolzu","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3070","system":"GOZ","nummer":"3070","nummer_raw":"3070","bezeichnung":"Exzision von Schleimhaut/Granulationsgewebe","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3080","system":"GOZ","nummer":"3080","nummer_raw":"3080","bezeichnung":"Exzision einer Schleimhautwucherung größeren Umfangs","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3090","system":"GOZ","nummer":"3090","nummer_raw":"3090","bezeichnung":"Plastischer Verschluss eröffneter Kieferhöhle","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3100","system":"GOZ","nummer":"3100","nummer_raw":"3100","bezeichnung":"Plastische Deckung","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3110","system":"GOZ","nummer":"3110","nummer_raw":"3110","bezeichnung":"Wurzelspitzenresektion, Frontzahn","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3120","system":"GOZ","nummer":"3120","nummer_raw":"3120","bezeichnung":"Wurzelspitzenresektion, Seitenzahn","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3130","system":"GOZ","nummer":"3130","nummer_raw":"3130","bezeichnung":"Hemisektion und Teilextraktion","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3140","system":"GOZ","nummer":"3140","nummer_raw":"3140","bezeichnung":"Reimplantation eines Zahnes","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3160","system":"GOZ","nummer":"3160","nummer_raw":"3160","bezeichnung":"Transplantation eines Zahnes","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3190","system":"GOZ","nummer":"3190","nummer_raw":"3190","bezeichnung":"Zystektomie in Verbindung mit Ost/WSR","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3200","system":"GOZ","nummer":"3200","nummer_raw":"3200","bezeichnung":"Zystektomie, selbständige Leistung","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3210","system":"GOZ","nummer":"3210","nummer_raw":"3210","bezeichnung":"Beseitigung störender Schleimhautbänder","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3230","system":"GOZ","nummer":"3230","nummer_raw":"3230","bezeichnung":"Knochenresektion am Alveolarfortsatz","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3240","system":"GOZ","nummer":"3240","nummer_raw":"3240","bezeichnung":"Vestibulum-/Mundbodenplastik, kleiner Umfang","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3250","system":"GOZ","nummer":"3250","nummer_raw":"3250","bezeichnung":"Tuberplastik, einseitig","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3260","system":"GOZ","nummer":"3260","nummer_raw":"3260","bezeichnung":"Freilegen retinierten oder verlagerten Zahnes","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3270","system":"GOZ","nummer":"3270","nummer_raw":"3270","bezeichnung":"Germektomie","punkte":799,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3280","system":"GOZ","nummer":"3280","nummer_raw":"3280","bezeichnung":"Lösen, Verlegen und Fixieren des Lippenbändchens","punkte":499,"kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3290","system":"GOZ","nummer":"3290","nummer_raw":"3290","bezeichnung":"Kontrolle nach chirurgischem Eingriff","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3300","system":"GOZ","nummer":"3300","nummer_raw":"3300","bezeichnung":"Nachbehandlung nach chirurgischem Eingriff","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_3310","system":"GOZ","nummer":"3310","nummer_raw":"3310","bezeichnung":"Chirurgische Wundrevision","kategorie":"chirurgie","quelle":"monkeymed_html"}
+{"id":"GOZ_4000","system":"GOZ","nummer":"4000","nummer_raw":"4000","bezeichnung":"Parodontalstatus","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4005","system":"GOZ","nummer":"4005","nummer_raw":"4005","bezeichnung":"Erhebung Gingivalindex/Parodontalindex","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4020","system":"GOZ","nummer":"4020","nummer_raw":"4020","bezeichnung":"Lokalbehandlung Mundschleimhauterkrankungen","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4025","system":"GOZ","nummer":"4025","nummer_raw":"4025","bezeichnung":"Subgingivale medikamentöse antibakterielle Lokalapplikation","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4030","system":"GOZ","nummer":"4030","nummer_raw":"4030","bezeichnung":"Beseitigung von scharfen Zahnkanten","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4040","system":"GOZ","nummer":"4040","nummer_raw":"4040","bezeichnung":"Beseitigung grober Vorkontakte","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4050","system":"GOZ","nummer":"4050","nummer_raw":"4050","bezeichnung":"Entfernung harter/weicher Zahnbeläge, einwurzeliger Zahn","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4055","system":"GOZ","nummer":"4055","nummer_raw":"4055","bezeichnung":"Entfernung harter/weicher Zahnbeläge, mehrwurzeliger Zahn","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4060","system":"GOZ","nummer":"4060","nummer_raw":"4060","bezeichnung":"Kontrolle nach Belagsentfernung","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4070","system":"GOZ","nummer":"4070","nummer_raw":"4070","bezeichnung":"Parodontalchirurgische Therapie, einwurzeliger Zahn","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4075","system":"GOZ","nummer":"4075","nummer_raw":"4075","bezeichnung":"Parodontalchirurgische Therapie, mehrwurzeliger Zahn","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4080","system":"GOZ","nummer":"4080","nummer_raw":"4080","bezeichnung":"Gingivektomie","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4090","system":"GOZ","nummer":"4090","nummer_raw":"4090","bezeichnung":"Lappenoperation Frontzahn, je Parodontium","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4100","system":"GOZ","nummer":"4100","nummer_raw":"4100","bezeichnung":"Lappenoperation Seitenzahn, je Parodontium","punkte":499,"kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4110","system":"GOZ","nummer":"4110","nummer_raw":"4110","bezeichnung":"Auffüllen von parodontalen Knochendefekten","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4120","system":"GOZ","nummer":"4120","nummer_raw":"4120","bezeichnung":"Verlegen eines gestielten Schleimhautlappens","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4130","system":"GOZ","nummer":"4130","nummer_raw":"4130","bezeichnung":"Schleimhauttransplantat","punkte":499,"kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4133","system":"GOZ","nummer":"4133","nummer_raw":"4133","bezeichnung":"Bindegewebstransplantation, je Zahnzwischenraum","punkte":1199,"kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4136","system":"GOZ","nummer":"4136","nummer_raw":"4136","bezeichnung":"Osteoplastik","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4138","system":"GOZ","nummer":"4138","nummer_raw":"4138","bezeichnung":"Verwendung einer Membran","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_4150","system":"GOZ","nummer":"4150","nummer_raw":"4150","bezeichnung":"Kontrolle/Nachbehandlung nach PA","kategorie":"parodontologie","quelle":"monkeymed_html"}
+{"id":"GOZ_5000","system":"GOZ","nummer":"5000","nummer_raw":"5000","bezeichnung":"Krone/Tangentialpräparation (Brücken-/Prothesenanker)","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5010","system":"GOZ","nummer":"5010","nummer_raw":"5010","bezeichnung":"Krone, Hohlkehl-/Stufenpräparation (Brücken-/Prothesenanker)","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5020","system":"GOZ","nummer":"5020","nummer_raw":"5020","bezeichnung":"Teilkrone als Brücken- oder Prothesenanker","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5030","system":"GOZ","nummer":"5030","nummer_raw":"5030","bezeichnung":"Wurzelkappe mit Stift","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5040","system":"GOZ","nummer":"5040","nummer_raw":"5040","bezeichnung":"Teleskopkrone/Konuskrone","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5050","system":"GOZ","nummer":"5050","nummer_raw":"5050","bezeichnung":"Teilleistungen nach Nr. 5000 bis 5040 (50 %)","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5060","system":"GOZ","nummer":"5060","nummer_raw":"5060","bezeichnung":"Teilleistungen nach Nr. 5000 bis 5040 (75 %)","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5070","system":"GOZ","nummer":"5070","nummer_raw":"5070","bezeichnung":"Brücken-/ Prothesenspannen oder Stege","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5080","system":"GOZ","nummer":"5080","nummer_raw":"5080","bezeichnung":"Verbindungselement","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5090","system":"GOZ","nummer":"5090","nummer_raw":"5090","bezeichnung":"Wiederherstellung Verbindungselement","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5100","system":"GOZ","nummer":"5100","nummer_raw":"5100","bezeichnung":"Erneuern Sekundärteleskopkrone","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5110","system":"GOZ","nummer":"5110","nummer_raw":"5110","bezeichnung":"Wiedereingliederung einer Brücke","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5120","system":"GOZ","nummer":"5120","nummer_raw":"5120","bezeichnung":"Provisorischer Brückenanker direktes Verfahren mit Abformung","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5140","system":"GOZ","nummer":"5140","nummer_raw":"5140","bezeichnung":"Provisorische Brückenspanne oder Freiendsattel","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5150","system":"GOZ","nummer":"5150","nummer_raw":"5150","bezeichnung":"Adhäsivbrücke, erste Spanne","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5160","system":"GOZ","nummer":"5160","nummer_raw":"5160","bezeichnung":"Adhäsivbrücke, für jede weitere Spanne","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5170","system":"GOZ","nummer":"5170","nummer_raw":"5170","bezeichnung":"Abformung mit indiv.Löffel","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5180","system":"GOZ","nummer":"5180","nummer_raw":"5180","bezeichnung":"Funktionsabformung OK","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5190","system":"GOZ","nummer":"5190","nummer_raw":"5190","bezeichnung":"Funktionsabformung UK","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5200","system":"GOZ","nummer":"5200","nummer_raw":"5200","bezeichnung":"Teilprothese mit einfachen, gebogenen Halteelementen","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5210","system":"GOZ","nummer":"5210","nummer_raw":"5210","bezeichnung":"Modellgussprothese","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5220","system":"GOZ","nummer":"5220","nummer_raw":"5220","bezeichnung":"Totale Prothese/Deckprothese, OK","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5230","system":"GOZ","nummer":"5230","nummer_raw":"5230","bezeichnung":"Totale Prothese/Deckprothese, UK","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5240","system":"GOZ","nummer":"5240","nummer_raw":"5240","bezeichnung":"Teilleistungen nach Nr. 5200 und 5230","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5250","system":"GOZ","nummer":"5250","nummer_raw":"5250","bezeichnung":"Wiederherstellung/Erweiterung Prothese (ohne Abformung)","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5260","system":"GOZ","nummer":"5260","nummer_raw":"5260","bezeichnung":"Wiederherstellung/Erweiterung Prothese (mit Abformung)","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5270","system":"GOZ","nummer":"5270","nummer_raw":"5270","bezeichnung":"Teilunterfütterung","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5280","system":"GOZ","nummer":"5280","nummer_raw":"5280","bezeichnung":"Vollständige Unterfütterung","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5290","system":"GOZ","nummer":"5290","nummer_raw":"5290","bezeichnung":"Vollständige Unterfütterung mit Funktionsrand, OK","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5300","system":"GOZ","nummer":"5300","nummer_raw":"5300","bezeichnung":"Vollständige Unterfütterung mit Funktionsrand, UK","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5310","system":"GOZ","nummer":"5310","nummer_raw":"5310","bezeichnung":"Vollständige Unterfütterung Defektprothese","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5320","system":"GOZ","nummer":"5320","nummer_raw":"5320","bezeichnung":"Obturator","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5330","system":"GOZ","nummer":"5330","nummer_raw":"5330","bezeichnung":"Resektionsprothese","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_5340","system":"GOZ","nummer":"5340","nummer_raw":"5340","bezeichnung":"Epithese","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6000","system":"GOZ","nummer":"6000","nummer_raw":"6000","bezeichnung":"Profil- oder Enfacefotografie","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6010","system":"GOZ","nummer":"6010","nummer_raw":"6010","bezeichnung":"Analyse von Kiefermodellen","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6020","system":"GOZ","nummer":"6020","nummer_raw":"6020","bezeichnung":"Methoden zur Untersuchung des Gesichtsschädels","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6030","system":"GOZ","nummer":"6030","nummer_raw":"6030","bezeichnung":"Umformung eines Kiefers, geringer Umfang","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6040","system":"GOZ","nummer":"6040","nummer_raw":"6040","bezeichnung":"Umformung eines Kiefers, mittlerer Umfang","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6050","system":"GOZ","nummer":"6050","nummer_raw":"6050","bezeichnung":"Umformung eines Kiefers, hoher Umfang","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6060","system":"GOZ","nummer":"6060","nummer_raw":"6060","bezeichnung":"Einstellung der Kiefer-Regelbiss, geringer Umfang","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6070","system":"GOZ","nummer":"6070","nummer_raw":"6070","bezeichnung":"Einstellung der Kiefer-Regelbiss, mittlerer Umfang","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6080","system":"GOZ","nummer":"6080","nummer_raw":"6080","bezeichnung":"Einstellung der Kiefer-Regelbiss, hoher Umfang","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6090","system":"GOZ","nummer":"6090","nummer_raw":"6090","bezeichnung":"Maßnahmen zur Einstellung der Okklusion","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6100","system":"GOZ","nummer":"6100","nummer_raw":"6100","bezeichnung":"Eingliederung Klebebracket","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6110","system":"GOZ","nummer":"6110","nummer_raw":"6110","bezeichnung":"Entfernung Klebebrackets","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6120","system":"GOZ","nummer":"6120","nummer_raw":"6120","bezeichnung":"Eingliederung Band","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6130","system":"GOZ","nummer":"6130","nummer_raw":"6130","bezeichnung":"Entfernung Band","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6140","system":"GOZ","nummer":"6140","nummer_raw":"6140","bezeichnung":"Eingliederung Teilbogens","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6150","system":"GOZ","nummer":"6150","nummer_raw":"6150","bezeichnung":"Eingliederung ungeteilten Bogens","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6160","system":"GOZ","nummer":"6160","nummer_raw":"6160","bezeichnung":"Eingliedern intra-/extraoralen Verankerung","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6170","system":"GOZ","nummer":"6170","nummer_raw":"6170","bezeichnung":"Eingliederung Kopf-Kinn-Kappe","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6180","system":"GOZ","nummer":"6180","nummer_raw":"6180","bezeichnung":"Wiederherstellung/Erweiterung von herausnehmbaren Geräten","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6190","system":"GOZ","nummer":"6190","nummer_raw":"6190","bezeichnung":"Beratendes und belehrendes Gespräch","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6200","system":"GOZ","nummer":"6200","nummer_raw":"6200","bezeichnung":"Mundvorhofplatte","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6210","system":"GOZ","nummer":"6210","nummer_raw":"6210","bezeichnung":"Kontrolle des Behandlungsverlaufs","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6220","system":"GOZ","nummer":"6220","nummer_raw":"6220","bezeichnung":"Vorbereitende Maßnahmen","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6230","system":"GOZ","nummer":"6230","nummer_raw":"6230","bezeichnung":"Eingliederung von KFO-Geräten","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6240","system":"GOZ","nummer":"6240","nummer_raw":"6240","bezeichnung":"Offenhalten einer Lücke","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6250","system":"GOZ","nummer":"6250","nummer_raw":"6250","bezeichnung":"Beseitigung des Diastemas","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_6260","system":"GOZ","nummer":"6260","nummer_raw":"6260","bezeichnung":"Einordnung eines verlagerten Zahnes","kategorie":"prothetik","quelle":"monkeymed_html"}
+{"id":"GOZ_7000","system":"GOZ","nummer":"7000","nummer_raw":"7000","bezeichnung":"Aufbissbehelf ohne adjustierte Oberfläche","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7010","system":"GOZ","nummer":"7010","nummer_raw":"7010","bezeichnung":"Aufbissbehelf mit adjustierter Oberfläche","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7020","system":"GOZ","nummer":"7020","nummer_raw":"7020","bezeichnung":"Umarbeitung vorhandener Prothese zum Aufbissbehelf","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7030","system":"GOZ","nummer":"7030","nummer_raw":"7030","bezeichnung":"Wiederherstellung eines Aufbissbehelfs","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7040","system":"GOZ","nummer":"7040","nummer_raw":"7040","bezeichnung":"Kontrolle eines Aufbissbehelfs","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7050","system":"GOZ","nummer":"7050","nummer_raw":"7050","bezeichnung":"Kontrolle eines Aufbissbehelfs, subtraktive Maßnahmen","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7060","system":"GOZ","nummer":"7060","nummer_raw":"7060","bezeichnung":"Kontrolle eines Aufbissbehelfs, additive Maßnahmen","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7070","system":"GOZ","nummer":"7070","nummer_raw":"7070","bezeichnung":"Semipermanente Schiene","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7080","system":"GOZ","nummer":"7080","nummer_raw":"7080","bezeichnung":"Laborgefertigtes Langzeitprovisorium, je Krone","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7090","system":"GOZ","nummer":"7090","nummer_raw":"7090","bezeichnung":"Laborgefertigtes Langzeitprovisorium, je Brückenglied","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_7100","system":"GOZ","nummer":"7100","nummer_raw":"7100","bezeichnung":"Wiederherstellung Langzeitprovisorium","kategorie":"kfo","quelle":"monkeymed_html"}
+{"id":"GOZ_8000","system":"GOZ","nummer":"8000","nummer_raw":"8000","bezeichnung":"Klinische Funktionsanalyse","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8010","system":"GOZ","nummer":"8010","nummer_raw":"8010","bezeichnung":"Registrieren der Zentrallage des Unterkiefers","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8020","system":"GOZ","nummer":"8020","nummer_raw":"8020","bezeichnung":"Arbiträre Scharnierachsenbestimmung","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8030","system":"GOZ","nummer":"8030","nummer_raw":"8030","bezeichnung":"Kinematische Scharnierachsenbestimmung","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8035","system":"GOZ","nummer":"8035","nummer_raw":"8035","bezeichnung":"Kinematische Scharnierachsenbestimmng mittels elektronischer Aufzeichnung","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8050","system":"GOZ","nummer":"8050","nummer_raw":"8050","bezeichnung":"Registrieren von UK-Bewegungen, halbindiv. Artikulator","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8060","system":"GOZ","nummer":"8060","nummer_raw":"8060","bezeichnung":"Registrieren von Unterkieferbewegungen, voll adjustierbarer Artikulator","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8065","system":"GOZ","nummer":"8065","nummer_raw":"8065","bezeichnung":"Registrieren von Unterkieferbewegungen mittels elektronischer Aufzeichnung","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8080","system":"GOZ","nummer":"8080","nummer_raw":"8080","bezeichnung":"Diagnostische Maßnahmen an Modellen","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8090","system":"GOZ","nummer":"8090","nummer_raw":"8090","bezeichnung":"Aufbau von Funktionsflächen","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_8100","system":"GOZ","nummer":"8100","nummer_raw":"8100","bezeichnung":"Subtraktive Maßnahmen","kategorie":"funktionsanalyse","quelle":"monkeymed_html"}
+{"id":"GOZ_9000","system":"GOZ","nummer":"9000","nummer_raw":"9000","bezeichnung":"Implantatbezogene Analyse","kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9003","system":"GOZ","nummer":"9003","nummer_raw":"9003","bezeichnung":"Verwenden einer Orientierungsschablone/Positionierungsschablone","kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9005","system":"GOZ","nummer":"9005","nummer_raw":"9005","bezeichnung":"Verwenden einer 3D-Navigations-/Führungsschablone","kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9010","system":"GOZ","nummer":"9010","nummer_raw":"9010","bezeichnung":"Implantatinsertion","punkte":1200,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9020","system":"GOZ","nummer":"9020","nummer_raw":"9020","bezeichnung":"Temporäres Implantat","punkte":799,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9040","system":"GOZ","nummer":"9040","nummer_raw":"9040","bezeichnung":"Freilegen eines Implantats","kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9050","system":"GOZ","nummer":"9050","nummer_raw":"9050","bezeichnung":"Auswechseln eines oder mehrerer Aufbauelemente","kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9060","system":"GOZ","nummer":"9060","nummer_raw":"9060","bezeichnung":"Auswechseln von Aufbauelementen im Reparaturfall","kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9090","system":"GOZ","nummer":"9090","nummer_raw":"9090","bezeichnung":"Knochengewinnung/-aufbereitung und -implantation","punkte":499,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9100","system":"GOZ","nummer":"9100","nummer_raw":"9100","bezeichnung":"Aufbau des Alveolarfortsatzes durch Augmentation","punkte":1200,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9110","system":"GOZ","nummer":"9110","nummer_raw":"9110","bezeichnung":"Interner Sinuslift","punkte":1200,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9120","system":"GOZ","nummer":"9120","nummer_raw":"9120","bezeichnung":"Externer Sinuslift","punkte":1200,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9130","system":"GOZ","nummer":"9130","nummer_raw":"9130","bezeichnung":"Bone Splitting","punkte":1200,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9140","system":"GOZ","nummer":"9140","nummer_raw":"9140","bezeichnung":"Intraorale Entnahme von Knochen","punkte":799,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9150","system":"GOZ","nummer":"9150","nummer_raw":"9150","bezeichnung":"Osteosynthesemaßnahmen","punkte":799,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9160","system":"GOZ","nummer":"9160","nummer_raw":"9160","bezeichnung":"Entfernung unter der Schleimhaut liegender Materialien","punkte":499,"kategorie":"implantologie","quelle":"monkeymed_html"}
+{"id":"GOZ_9170","system":"GOZ","nummer":"9170","nummer_raw":"9170","bezeichnung":"Entfernung im Knochen liegender Materialien","punkte":799,"kategorie":"implantologie","quelle":"monkeymed_html"}

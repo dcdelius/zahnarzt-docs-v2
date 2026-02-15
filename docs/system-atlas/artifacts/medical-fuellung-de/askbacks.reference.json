@@ -1,0 +1,125 @@
+{
+    "version": "1.0.0",
+    "description": "GP2: Askbacks Reference for Füllung",
+    "askbacks": [
+        {
+            "id": "fuellung_material",
+            "trigger_rule": "rule-material-unknown-askback",
+            "question": "Welches Material wurde verwendet?",
+            "options": [
+                {
+                    "label": "Komposit",
+                    "chip_effect": "fuellung_material_composite"
+                },
+                {
+                    "label": "GIZ",
+                    "chip_effect": "fuellung_material_giz"
+                }
+            ],
+            "blocking": true,
+            "context_only": false
+        },
+        {
+            "id": "fuellung_isolation",
+            "trigger_rule": "rule-isolation-unknown-askback",
+            "question": "Welche Isolation wurde verwendet?",
+            "options": [
+                {
+                    "label": "Kofferdam",
+                    "chip_effect": "kofferdam"
+                },
+                {
+                    "label": "Relative Trockenlegung",
+                    "chip_effect": "fuellung_isolation_relative"
+                }
+            ],
+            "blocking": true,
+            "context_only": false
+        },
+        {
+            "id": "fuellung_adhesive",
+            "trigger_rule": "rule-adhesive-unknown-composite-askback",
+            "question": "Wurde Adhäsivtechnik durchgeführt?",
+            "options": [
+                {
+                    "label": "Ja",
+                    "chip_effect": "fuellung_adhesivtechnik",
+                    "mode": "On"
+                },
+                {
+                    "label": "Nein",
+                    "chip_effect": "fuellung_adhesivtechnik",
+                    "mode": "Off"
+                }
+            ],
+            "blocking": true,
+            "context_only": false
+        },
+        {
+            "id": "fuellung_layering",
+            "trigger_rule": "rule-layering-unknown-medium-large-askback",
+            "question": "Wurde Schichttechnik/inkrementell gearbeitet?",
+            "options": [
+                {
+                    "label": "Mehrschicht/inkrementell",
+                    "chip_effect": "fuellung_schichttechnik",
+                    "mode": "On"
+                },
+                {
+                    "label": "Einfach",
+                    "chip_effect": "fuellung_schichttechnik",
+                    "mode": "Off"
+                }
+            ],
+            "blocking": true,
+            "context_only": false
+        },
+        {
+            "id": "fuellung_pulpaschutz",
+            "trigger_rule": "rule-deep-caries-protection-askback",
+            "question": "Wurde Pulpaschutz/Unterfüllung angewendet?",
+            "options": [
+                {
+                    "label": "Ja",
+                    "chip_effect": "fuellung_pulpaschutz",
+                    "mode": "On"
+                },
+                {
+                    "label": "Nein",
+                    "chip_effect": "fuellung_pulpaschutz",
+                    "mode": "Off"
+                }
+            ],
+            "blocking": true,
+            "context_only": false
+        },
+        {
+            "id": "fuellung_insurance_context",
+            "trigger_rule": "rule-insurance-context-unknown-askback",
+            "question": "Welcher Versicherungskontext?",
+            "options": [
+                {
+                    "label": "GKV Standard",
+                    "fact_effect": {
+                        "insuranceContextHint": "gkv_standard"
+                    }
+                },
+                {
+                    "label": "GKV Mehrkosten",
+                    "fact_effect": {
+                        "insuranceContextHint": "gkv_mehrkosten"
+                    }
+                },
+                {
+                    "label": "PKV/Privat",
+                    "fact_effect": {
+                        "insuranceContextHint": "pkv"
+                    }
+                }
+            ],
+            "blocking": false,
+            "context_only": true,
+            "note": "Sets fact only, no chip effect - context for billing path"
+        }
+    ]
+}

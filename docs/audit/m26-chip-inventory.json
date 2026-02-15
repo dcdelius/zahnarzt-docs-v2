@@ -1,0 +1,155 @@
+{
+    "generatedAt": "2025-12-24T10:18:00Z",
+    "version": "1",
+    "totalChips": 34,
+    "commonChipsCount": 7,
+    "billingMismatchCount": 0,
+    "textDriftCount": 3,
+    "orphanEmitRulesCount": 0,
+    "classification": {
+        "COMMON_IDENTICAL": [
+            "perk_neg",
+            "perk_pos",
+            "vipr_neg",
+            "vipr_pos"
+        ],
+        "COMMON_BILLING_ONLY": [
+            "kofferdam",
+            "la_infiltr",
+            "la_leitung"
+        ],
+        "TREATMENT_SPECIFIC": {
+            "fuellung": [
+                "cp",
+                "cp_not_required",
+                "exkavation",
+                "finishing",
+                "fluor",
+                "komposit_basic",
+                "mehrschicht",
+                "oberflaeche_la",
+                "p",
+                "rel_trocken"
+            ],
+            "endo": [
+                "aufbau_postendo",
+                "einlage_caoh2",
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4",
+                "laengenmessung_elek",
+                "laengenmessung_roentgen",
+                "provisorischer_verschluss",
+                "roentgen_einzelzahn",
+                "roentgen_kontrolle",
+                "spuelung_edta",
+                "spuelung_naocl",
+                "trepanation",
+                "wf_einzel",
+                "wf_kalt",
+                "wf_warm"
+            ]
+        }
+    },
+    "textDriftAllowlist": {
+        "kofferdam": {
+            "reason": "Fuellung uses detailed text mentioning clamp and visibility; Endo uses concise text mentioning sterility. Billing identical (BEMA_12/GOZ_2040).",
+            "billingRef": {
+                "GKV": "BEMA_12",
+                "PKV": "GOZ_2040"
+            }
+        },
+        "la_infiltr": {
+            "reason": "Fuellung includes surface anesthesia reference and concentration; Endo uses shorter text. Billing identical (BEMA_40/GOZ_0090).",
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            }
+        },
+        "la_leitung": {
+            "reason": "Fuellung includes timing info (3 min wait); Endo uses shorter text. Billing identical (BEMA_41a/GOZ_0100).",
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            }
+        }
+    },
+    "emitRulesByTreatment": {
+        "fuellung": {
+            "ruleCount": 6,
+            "chips": [
+                "fluor",
+                "kofferdam",
+                "la_infiltr",
+                "la_leitung",
+                "oberflaeche_la",
+                "p"
+            ]
+        },
+        "endo": {
+            "ruleCount": 19,
+            "chips": [
+                "aufbau_postendo",
+                "einlage_caoh2",
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4",
+                "kofferdam",
+                "la_infiltr",
+                "la_leitung",
+                "laengenmessung_elek",
+                "laengenmessung_roentgen",
+                "roentgen_einzelzahn",
+                "roentgen_kontrolle",
+                "spuelung_edta",
+                "spuelung_naocl",
+                "trepanation",
+                "wf_einzel",
+                "wf_kalt",
+                "wf_warm"
+            ]
+        }
+    },
+    "billingSharedGroups": [
+        {
+            "billingRef": {
+                "GKV": "BEMA_Ä925a",
+                "PKV": "GOZ_5000"
+            },
+            "chips": [
+                "roentgen_einzelzahn",
+                "laengenmessung_roentgen",
+                "roentgen_kontrolle"
+            ],
+            "reason": "Same X-ray billing code, different clinical purposes"
+        },
+        {
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "chips": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4"
+            ],
+            "reason": "Per-canal billing, different canal counts"
+        },
+        {
+            "billingRef": {
+                "GKV": "BEMA_34",
+                "PKV": "GOZ_2440"
+            },
+            "chips": [
+                "wf_kalt",
+                "wf_warm",
+                "wf_einzel"
+            ],
+            "reason": "Per-canal filling, different techniques"
+        }
+    ],
+    "verdict": "CONTROLLED_DRIFT_COMPLIANT"
+}

@@ -1,0 +1,151 @@
+/* ============================================
+   InlineExpandPanel — Jeton Coral Solid Style
+   ============================================
+   Matches OverlaySelectField and UserSwitcher styling
+*/
+
+.v10-inline-expand {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Trigger capsule — coral solid */
+.v10-inline-expand-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    padding: 0 14px;
+    background: var(--sheet-solid, #E86B5A);
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: filter 0.12s ease-out;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.v10-inline-expand-trigger:hover {
+    filter: brightness(1.06);
+}
+
+.v10-inline-expand-trigger.is-expanded {
+    border-radius: 18px 18px 0 0;
+}
+
+.v10-inline-expand-trigger:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4), 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.v10-inline-expand-count {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--jeton-white, #FFFFFF);
+}
+
+.v10-inline-expand-chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--jeton-offwhite, #FFF6F1);
+    opacity: 0.72;
+}
+
+/* Expanded panel — coral solid, same as trigger */
+.v10-inline-expand-panel {
+    background: var(--sheet-solid, #E86B5A);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+.v10-inline-expand-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Item row */
+.v10-inline-expand-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    padding: 0 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: background 0.1s ease;
+    text-align: left;
+}
+
+.v10-inline-expand-item:last-child {
+    border-bottom: none;
+}
+
+.v10-inline-expand-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.v10-inline-expand-item:focus-visible {
+    outline: none;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.v10-inline-expand-item.is-on {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.v10-inline-expand-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--jeton-white, #FFFFFF);
+}
+
+.v10-inline-expand-item.is-off .v10-inline-expand-label {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.v10-inline-expand-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: var(--jeton-accent, #F73B20);
+}
+
+/* Footer actions */
+.v10-inline-expand-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.v10-inline-expand-action {
+    flex: 1;
+    height: 32px;
+    padding: 0 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.12s ease;
+}
+
+.v10-inline-expand-action:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--jeton-white, #FFFFFF);
+}
+
+.v10-inline-expand-action:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}

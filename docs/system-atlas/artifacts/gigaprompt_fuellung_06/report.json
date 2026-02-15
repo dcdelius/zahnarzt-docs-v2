@@ -1,0 +1,24 @@
+{
+    "run_at": "2025-12-30T22:50:00Z",
+    "gigaprompt": "GP6",
+    "status": "PASS",
+    "summary": "Extended billing enforcement gates and created catalog audit",
+    "tests": {
+        "gate_extended": {
+            "pipeline": "PASS",
+            "medical_kb": "PASS",
+            "hooks": "PASS",
+            "pages": "PASS",
+            "golden_artifacts": "PASS",
+            "truthcase_tests": "PASS",
+            "kb_rules_integrity": "PASS"
+        },
+        "total_passed": 7
+    },
+    "created_files": [
+        "src/docudent/v10/gates/gate-no-hardcoded-billing-refs.test.ts",
+        "scripts/billing/catalog_audit.test.ts",
+        "docs/system-atlas/howto/audits.md"
+    ],
+    "no_billing_violations": true
+}

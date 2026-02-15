@@ -1,0 +1,134 @@
+{
+  "_meta": {
+    "treatmentId": "fuellung",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "contract.mkv.insurance",
+      "chipIds": ["insurance_gkv_mkv"],
+      "textRefIds": ["insurance_gkv_mkv"],
+      "disclosureIds": ["mkv_disclosure", "mkv_hinweis"]
+    },
+    {
+      "id": "fuellung.baseline",
+      "chipIds": ["fuellung_grundleistung"],
+      "textRefIds": ["fuellung_grundleistung"],
+      "billingRefIds": ["fuellung_grundleistung"],
+      "disclosureIds": ["standard_aufklaerung", "postop_standard"]
+    },
+    {
+      "id": "fuellung.fluor",
+      "chipIds": ["fluor"],
+      "textRefIds": ["fluor"],
+      "billingRefIds": ["fluor"]
+    },
+    {
+      "id": "fuellung.exkavation",
+      "chipIds": ["exkavation"],
+      "textRefIds": ["exkavation"]
+    },
+    {
+      "id": "fuellung.finishing",
+      "chipIds": ["finishing"],
+      "textRefIds": ["finishing"]
+    },
+    {
+      "id": "fuellung.material.komposit",
+      "chipIds": ["fuellung_material_komposit"],
+      "textRefIds": ["fuellung_material_komposit"],
+      "billingRefIds": ["fuellung_material_komposit"]
+    },
+    {
+      "id": "fuellung.material.giz",
+      "chipIds": ["fuellung_material_giz"],
+      "textRefIds": ["fuellung_material_giz"],
+      "billingRefIds": ["fuellung_material_giz"]
+    },
+    {
+      "id": "fuellung.capping.indirect",
+      "chipIds": ["cp"],
+      "textRefIds": ["cp"],
+      "billingRefIds": ["cp"]
+    },
+    {
+      "id": "fuellung.capping.direct",
+      "chipIds": ["p"],
+      "textRefIds": ["p"],
+      "billingRefIds": ["p"]
+    },
+    {
+      "id": "fuellung.material.adhesive",
+      "chipIds": ["fuellung_material_adhesive"],
+      "textRefIds": ["fuellung_material_adhesive"]
+    },
+    {
+      "id": "fuellung.material.etch",
+      "chipIds": ["fuellung_material_etch"],
+      "textRefIds": ["fuellung_material_etch"]
+    },
+    {
+      "id": "fuellung.material.matrix",
+      "chipIds": ["fuellung_material_matrix"],
+      "textRefIds": ["fuellung_material_matrix"]
+    },
+    {
+      "id": "fuellung.material.keil",
+      "chipIds": ["fuellung_material_keil"],
+      "textRefIds": ["fuellung_material_keil"]
+    },
+    {
+      "id": "fuellung.material.kontaktpunkt",
+      "chipIds": ["fuellung_kontaktpunkt"],
+      "textRefIds": ["fuellung_kontaktpunkt"]
+    },
+    {
+      "id": "fuellung.material.flowable",
+      "chipIds": ["fuellung_material_flowable"],
+      "textRefIds": ["fuellung_material_flowable"]
+    },
+    {
+      "id": "fuellung.material.bulk",
+      "chipIds": ["fuellung_material_bulk"],
+      "textRefIds": ["fuellung_material_bulk"]
+    },
+    {
+      "id": "fuellung.tech.adhesive.mehrschicht",
+      "chipIds": ["mehrschicht"],
+      "textRefIds": ["mehrschicht"],
+      "billingRefIds": ["mehrschicht"]
+    },
+    {
+      "id": "fuellung.tech.layering.mehrschicht",
+      "chipIds": ["mehrschicht"],
+      "textRefIds": ["mehrschicht"],
+      "billingRefIds": ["mehrschicht"]
+    },
+    {
+      "id": "fuellung.tech.adhesive.basic",
+      "chipIds": ["komposit_basic"],
+      "textRefIds": ["komposit_basic"],
+      "billingRefIds": ["komposit_basic"]
+    },
+    {
+      "id": "fuellung.capping.not_required",
+      "chipIds": ["cp_not_required"],
+      "textRefIds": ["cp_not_required"]
+    },
+    {
+      "id": "fuellung.askback.capping_material"
+    },
+    {
+      "id": "fuellung.askback.layering"
+    },
+    {
+      "id": "fuellung.askback.adhesive_technique"
+    },
+    {
+      "id": "fuellung.askback.material"
+    },
+    {
+      "id": "fuellung.askback.isolation"
+    }
+  ]
+}

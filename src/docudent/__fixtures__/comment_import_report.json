@@ -1,0 +1,390 @@
+{
+  "meta": {
+    "timestamp": "2025-12-14T19:12:50.402Z",
+    "sourceDir": "/Users/david/dokumaster-ui/src/docudent/BEL",
+    "provider": "wissing-kommentar",
+    "options": {
+      "dryRun": false,
+      "writeDb": false,
+      "outJson": true
+    },
+    "totalDirs": 10
+  },
+  "discovery": {
+    "filesDiscovered": 192,
+    "filesProcessed": 185,
+    "filesSkipped": [],
+    "filesFailed": [
+      {
+        "file": "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377955%27%5D.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (1).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (2).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (3).html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht.html",
+        "error": "Could not detect code from content"
+      },
+      {
+        "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=__[@attr_id=%27__lfg61__EBM-IDaenderung_31%27].html",
+        "error": "Could not detect code from content"
+      }
+    ]
+  },
+  "summary": {
+    "totalFiles": 192,
+    "successCount": 185,
+    "errorCount": 7,
+    "uniqueCodes": 92,
+    "dedupeCount": 0,
+    "bySystem": {
+      "BEL": 185,
+      "GOZ": 0,
+      "BEMA": 0,
+      "UNKNOWN": 0
+    }
+  },
+  "uniqueCodesBySystem": {
+    "BEL": [
+      "BEL_0010",
+      "BEL_0030",
+      "BEL_0060",
+      "BEL_0070",
+      "BEL_0120",
+      "BEL_0130",
+      "BEL_0220",
+      "BEL_0230",
+      "BEL_0240",
+      "BEL_0310",
+      "BEL_0320",
+      "BEL_1040",
+      "BEL_1050",
+      "BEL_1100",
+      "BEL_1200",
+      "BEL_1360",
+      "BEL_1370",
+      "BEL_1500",
+      "BEL_1550",
+      "BEL_1600",
+      "BEL_1610",
+      "BEL_1620",
+      "BEL_1630",
+      "BEL_1640",
+      "BEL_1650",
+      "BEL_2004",
+      "BEL_2010",
+      "BEL_2014",
+      "BEL_2050",
+      "BEL_2100",
+      "BEL_2110",
+      "BEL_2120",
+      "BEL_3010",
+      "BEL_3020",
+      "BEL_3030",
+      "BEL_3410",
+      "BEL_3610",
+      "BEL_3620",
+      "BEL_3800",
+      "BEL_3810",
+      "BEL_3830",
+      "BEL_3840",
+      "BEL_4010",
+      "BEL_4020",
+      "BEL_4030",
+      "BEL_4040",
+      "BEL_5010",
+      "BEL_5020",
+      "BEL_5100",
+      "BEL_5110",
+      "BEL_5200",
+      "BEL_5210",
+      "BEL_7010",
+      "BEL_7020",
+      "BEL_7030",
+      "BEL_7040",
+      "BEL_7050",
+      "BEL_7100",
+      "BEL_7110",
+      "BEL_7200",
+      "BEL_7210",
+      "BEL_7220",
+      "BEL_7300",
+      "BEL_7310",
+      "BEL_7320",
+      "BEL_7330",
+      "BEL_7340",
+      "BEL_7400",
+      "BEL_7410",
+      "BEL_7420",
+      "BEL_7430",
+      "BEL_7440",
+      "BEL_7500",
+      "BEL_7510",
+      "BEL_8010",
+      "BEL_8030",
+      "BEL_8040",
+      "BEL_8060",
+      "BEL_8070",
+      "BEL_8080",
+      "BEL_8090",
+      "BEL_8100",
+      "BEL_8130",
+      "BEL_8200",
+      "BEL_8500",
+      "BEL_8610",
+      "BEL_8620",
+      "BEL_8630",
+      "BEL_8640",
+      "BEL_8700",
+      "BEL_9330",
+      "BEL_9700"
+    ],
+    "GOZ": [],
+    "BEMA": [],
+    "UNKNOWN": []
+  },
+  "topCodes": [
+    {
+      "code": "BEL_0010",
+      "count": 37
+    },
+    {
+      "code": "BEL_8010",
+      "count": 19
+    },
+    {
+      "code": "BEL_2010",
+      "count": 12
+    },
+    {
+      "code": "BEL_2014",
+      "count": 8
+    },
+    {
+      "code": "BEL_3010",
+      "count": 8
+    },
+    {
+      "code": "BEL_1600",
+      "count": 5
+    },
+    {
+      "code": "BEL_1050",
+      "count": 3
+    },
+    {
+      "code": "BEL_7010",
+      "count": 3
+    },
+    {
+      "code": "BEL_9330",
+      "count": 3
+    },
+    {
+      "code": "BEL_1360",
+      "count": 2
+    }
+  ],
+  "errors": [
+    {
+      "file": "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377955%27%5D.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (1).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (2).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (3).html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht.html",
+      "error": "Could not detect code from content"
+    },
+    {
+      "file": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=__[@attr_id=%27__lfg61__EBM-IDaenderung_31%27].html",
+      "error": "Could not detect code from content"
+    }
+  ],
+  "sampleEntries": [
+    {
+      "id": "BEL:BEL_0010:01322d89e95b",
+      "system": "BEL",
+      "code": "BEL_0010",
+      "title": "021 5 Basis aus Kunststoff – für Aufstellung",
+      "source": {
+        "provider": "wissing-kommentar",
+        "filePath": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377990%27%5D.html",
+        "fileHash": "caa3c4a25a8af88dff8106dff563425da824ab4556df4bfe14bf0ff3ed3f135c",
+        "importedAt": "2025-12-14T19:12:49.899Z"
+      },
+      "sections": [
+        {
+          "kind": "definition",
+          "heading": "Erläuterungen zum Leistungsinhalt",
+          "snippet": "Basis aus Kunststoff zur Aufnahme einer Wachsaufstellung zur Anprobe."
+        },
+        {
+          "kind": "billing",
+          "heading": "Erläuterungen zur Abrechnung",
+          "snippet": "Die L-Nr. 021 5 ist bei einem zahnlosen Kiefer, bei einem Kiefer mit einem Restzahnbestand von bis zu drei Zähnen oder bei Interimsprothesen abrechenbar."
+        },
+        {
+          "kind": "notes",
+          "heading": "▶ Kommentar zur BEL-L-Nr. 021 5",
+          "snippet": "Im Rahmen der vertragszahnärzlichen Versorgung abrechenbare zahntechnische Leistung:"
+        },
+        {
+          "kind": "definition",
+          "heading": "Leistungsbeschreibung",
+          "snippet": "Eine Basis für Aufstellung wird in der Regel aus selbsthärtendem Kunststoff hergestellt. Wegen ihrer Verwindungssteifheit ist sie einer Wachsbasis zur Aufstellung von Zähnen deutlich überlegen."
+        },
+        {
+          "kind": "unknown",
+          "heading": "Leistungsanwendung",
+          "snippet": "In der vertragszahnärztlichen Versorgung ist die Basis aus Kunststoff für Aufstellung beschränkt auf Totalprothesen oder bei einem Restzahnbestand von bis zu drei Zähnen. Aus zahntechnisch-fachlicher Sicht sollten alle Aufstellungen, die nicht auf einer Metallbasis erfolgen, auf einer Basis aus Kunststoff erfolgen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Basis aus Kunststoff – für Aufstellung",
+          "bullets": [
+            "Zahntechnik",
+            "BEL II-2014 – Kommentar",
+            "Gruppe 0 Arbeitsvorbereitung 001 0 – 032 0",
+            "021 5 Basis aus Kunststoff – für Aufstellung"
+          ]
+        }
+      ],
+      "tags": [
+        "Prothese"
+      ]
+    },
+    {
+      "id": "BEL:BEL_0010:0efa0d044cf8",
+      "system": "BEL",
+      "code": "BEL_0010",
+      "title": "021 8 Basis aus Kunststoff – für Aufstellung bei Implantatversorgung",
+      "source": {
+        "provider": "wissing-kommentar",
+        "filePath": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377993%27%5D.html",
+        "fileHash": "475e340bdbaa0b8670f9e5eff165739bd8b8a423d52dfa879488cbaa3766a6c1",
+        "importedAt": "2025-12-14T19:12:49.907Z"
+      },
+      "sections": [
+        {
+          "kind": "definition",
+          "heading": "Erläuterungen zum Leistungsinhalt",
+          "snippet": "Basis aus Kunststoff bei einem zahnlosen Kiefer zur Aufnahme einer Wachsaufstellung zur Anprobe."
+        },
+        {
+          "kind": "billing",
+          "heading": "Erläuterungen zur Abrechnung",
+          "snippet": "Die L-Nr. 021 8 ist nur für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter zahnloser Kiefer) abrechenbar."
+        },
+        {
+          "kind": "notes",
+          "heading": "▶ Kommentar zur BEL-L-Nr. 021 8",
+          "snippet": "Im Rahmen der vertragszahnärzlichen Versorgung abrechenbare zahntechnische Leistung:"
+        },
+        {
+          "kind": "definition",
+          "heading": "Leistungsbeschreibung",
+          "snippet": "Eine Basis für Aufstellung bei Implantatversorgung wird in der Regel aus selbsthärtendem Kunststoff hergestellt. Wegen ihrer Verwindungssteifheit ist sie einer Wachsbasis zur Aufstellung von Zähnen deutlich überlegen."
+        },
+        {
+          "kind": "unknown",
+          "heading": "Leistungsanwendung",
+          "snippet": "In der vertragszahnärztlichen Versorgung ist die Basis aus Kunststoff für Aufstellung bei Implantatversorgung beschränkt auf diejenigen Fälle, die der Regelung der Nr. 36 b der Zahnersatz-Richtlinie „atrophierter zahnloser Kiefer“ entsprechen. Aus zahntechnisch-fachlicher Sicht sollten alle Aufstellungen, die nicht auf einer Metallbasis erfolgen, auf einer Basis aus Kunststoff erfolgen."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Basis aus Kunststoff – für Aufstellung bei Implantatversorgung",
+          "bullets": [
+            "Zahntechnik",
+            "BEL II-2014 – Kommentar",
+            "Gruppe 0 Arbeitsvorbereitung 001 0 – 032 0",
+            "021 8 Basis aus Kunststoff – für Aufstellung bei Implantatversorgung"
+          ]
+        }
+      ],
+      "tags": [
+        "Prothese"
+      ]
+    },
+    {
+      "id": "BEL:BEL_0010:111130575241",
+      "system": "BEL",
+      "code": "BEL_0010",
+      "title": "002 1 Weitere Maßnahmen zur Modellherstellung – Doublieren eines Modells",
+      "source": {
+        "provider": "wissing-kommentar",
+        "filePath": "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377963%27%5D.html",
+        "fileHash": "44f9a968c6127e5d7ad735ee078b4c5c87b250ccd0ed1776b3186aef787eecba",
+        "importedAt": "2025-12-14T19:12:49.805Z"
+      },
+      "sections": [
+        {
+          "kind": "definition",
+          "heading": "Erläuterungen zum Leistungsinhalt",
+          "snippet": "Doublieren, je Modell für Bissführungsplatte, Kralle, Kappe, eine abnehmbare Schiene über mehr als drei Zähne, Set-up-Modell, Crozat-Modell. Auch auf Anweisung des Zahnarztes bei medizinischer Indikation, z. B. bei Krankenhausaufenthalt, Kieferverletzung oder Kieferklemme."
+        },
+        {
+          "kind": "billing",
+          "heading": "Erläuterungen zur Abrechnung",
+          "snippet": "Nicht abrechenbar bei Duplikatmodell aus Einbettmasse. Das nach dem Doublieren gewonnene Modell ist gesondert abrechenbar. Für das Erstellen von Arbeitsmodellen ist die L-Nr. 002 1 „Doublieren“ bis auf die in der Erläuterung zum Leistungsinhalt aufgeführten Ausnahmefälle nicht abrechenbar."
+        },
+        {
+          "kind": "notes",
+          "heading": "▶ Kommentar zur BEL-L-Nr. 002 1",
+          "snippet": "Im Rahmen der vertragszahnärzlichen Versorgung abrechenbare zahntechnische Leistung:"
+        },
+        {
+          "kind": "definition",
+          "heading": "Leistungsbeschreibung",
+          "snippet": "Mit einer Abdrucknahme vergleichbare vorbereitende Maßnahme zur Herstellung eines Zweitmodells. Die Gewinnung der Negativform vom Erstmodell durch „Doublieren“ geschieht mittels gelartiger Doubliermassen oder (zahnärztlicher) Silikon-Abformmassen."
+        },
+        {
+          "kind": "unknown",
+          "heading": "Leistungsanwendung",
+          "snippet": "Das Doublieren ist eine eigene, aber nicht eigenständige Leistung. Das heißt, dass zu der Leistung „Doublieren“ immer noch das jeweilige Zweitmodell hinzukommt und abrechenbar ist. Neben den in den Erläuterungen aufgeführten Anlässen für die Notwendigkeit eines mittels Doublieren hergestellten Zweitmodells kann auch die „medizinische Indikation“ die Abrechenbarkeit begründen. Inwieweit der Begriff „medizinische Indikation“ definierbar ist, hängt vom Einzelfall ab. So kann beispielsweise eine ..."
+        },
+        {
+          "kind": "unknown",
+          "snippet": "Weitere Maßnahmen zur Modellherstellung – Doublieren eines Modells",
+          "bullets": [
+            "Zahntechnik",
+            "BEL II-2014 – Kommentar",
+            "Gruppe 0 Arbeitsvorbereitung 001 0 – 032 0",
+            "002 1 Weitere Maßnahmen zur Modellherstellung – Doublieren eines Modells"
+          ]
+        }
+      ],
+      "tags": [
+        "Modell"
+      ]
+    }
+  ]
+}

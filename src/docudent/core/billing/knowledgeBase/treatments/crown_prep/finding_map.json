@@ -1,0 +1,12 @@
+{
+    "_meta": {
+        "treatmentId": "crown_prep",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "kronenart": {
+            "label": "Kronenart",
+            "template": "{{value}}"
+        }
+    }
+}

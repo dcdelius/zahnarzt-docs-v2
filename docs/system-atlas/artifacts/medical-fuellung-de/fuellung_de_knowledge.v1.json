@@ -1,0 +1,295 @@
+{
+    "version": "fuellung_de_knowledge_v1",
+    "scope": {
+        "treatments": [
+            "fuellung"
+        ],
+        "focus": [
+            "direct restorations",
+            "composite",
+            "GKV standard vs Mehrkosten vs PKV"
+        ],
+        "non_goals": [
+            "hardcoded billing codes",
+            "settings layer rollout (unless required for minimal UI flow)"
+        ]
+    },
+    "clinical_background": {
+        "principles": [
+            {
+                "id": "p1_isolation",
+                "title": "Isolation ist der Dreh- und Angelpunkt",
+                "why": "Adhäsive Verfahren sind feuchtigkeitssensitiv; bei schlechter Isolation kippt die Prognose.",
+                "implications": [
+                    "askback if isolation unclear",
+                    "doc line must reflect chosen isolation strategy",
+                    "chip should exist to represent isolation choice"
+                ],
+                "sources_hint": [
+                    "DGZMK/consensus/direct composite restorations"
+                ]
+            },
+            {
+                "id": "p2_adhesive_required_for_composite",
+                "title": "Komposit ≈ adhäsiv",
+                "why": "Direkte Kompositrestaurationen erfordern ein definiertes Adhäsivprotokoll (Ätzen/Primer/Bond etc.).",
+                "implications": [
+                    "askback if adhesive technique unclear",
+                    "chips must encode adhesive technique used/not used/unknown"
+                ],
+                "sources_hint": [
+                    "DGZMK/consensus/direct composite restorations"
+                ]
+            },
+            {
+                "id": "p3_incremental_layering",
+                "title": "Schichttechnik/inkrementell ist häufig Standard bei größeren Kavitäten",
+                "why": "Polymerisationsschrumpf/Spannung, Randadaptation; klinisch oft inkrementelles Vorgehen.",
+                "implications": [
+                    "askback if case suggests large cavity but dictation is vague",
+                    "doc should state layering approach if Mehrkosten/PKV context depends on it"
+                ],
+                "sources_hint": [
+                    "DGZMK/consensus",
+                    "operative dentistry texts"
+                ]
+            },
+            {
+                "id": "p4_giz_use_cases",
+                "title": "GIZ ist kein „billiges Komposit", sondern hat klare Indikationen","why": "z.B. temporär, Feuchtigkeitsprobleme, spezielle Karies-/Kinder-/Wurzelkaries-Situationen (je nach Konzept).",
+                "implications": [
+                    "askback material choice if not explicit",
+                    "chips must encode material class (composite vs GIZ/others)"
+                ],
+                "sources_hint": [
+                    "clinical guidance",
+                    "caries management guidance"
+                ]
+            }
+        ],
+        "regulatory_note": {
+            "eu_amalgam": {
+                "fact": "EU law prohibits use/export of mercury-added dental amalgam since 1 Jan 2025.",
+                "source": "EU Commission news",
+                "do_not_encode_as_billing_rule": true
+            }
+        }
+    },
+    "facts_contract": {
+        "facts_minimal": [
+            "toothIds[]",
+            "surfacesByTooth{}",
+            "materialMentioned? (composite|giz|unknown)",
+            "isolationMentioned? (rubberDam|relative|unknown)",
+            "adhesiveMentioned? (yes|no|unknown)",
+            "cavityExtentHint? (small|medium|large|unknown)",
+            "cariesDepthHint? (shallow|medium|deep|unknown)",
+            "insuranceContextHint? (gkv_standard|gkv_mehrkosten|pkv|unknown)"
+        ],
+        "forbidden_derivations": [
+            "Never infer insuranceContext from nothing.",
+            "Never infer adhesive technique just because composite is mentioned; ask if unclear.",
+            "Never set any billing refs here."
+        ]
+    },
+    "askbacks": [
+        {
+            "id": "ab_insurance_context",
+            "title": "Abrechnungs-/Kassenkontext",
+            "when": "insuranceContextHint == unknown",
+            "options": [
+                {
+                    "label": "GKV Standard",
+                    "effects": [
+                        {
+                            "type": "setFact",
+                            "path": "insuranceContextHint",
+                            "value": "gkv_standard"
+                        }
+                    ]
+                },
+                {
+                    "label": "GKV Mehrkosten/Zuzahlung",
+                    "effects": [
+                        {
+                            "type": "setFact",
+                            "path": "insuranceContextHint",
+                            "value": "gkv_mehrkosten"
+                        }
+                    ]
+                },
+                {
+                    "label": "PKV/Privat",
+                    "effects": [
+                        {
+                            "type": "setFact",
+                            "path": "insuranceContextHint",
+                            "value": "pkv"
+                        }
+                    ]
+                }
+            ],
+            "must_have_chip_effect": false,
+            "note": "This askback only sets context fact. Billing must still come via chips->catalog mapping, never hardcoded."
+        },
+        {
+            "id": "ab_material",
+            "title": "Material",
+            "when": "materialMentioned == unknown",
+            "options": [
+                {
+                    "label": "Komposit",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_material_composite",
+                            "mode": "On"
+                        }
+                    ]
+                },
+                {
+                    "label": "GIZ",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_material_giz",
+                            "mode": "On"
+                        }
+                    ]
+                }
+            ],
+            "must_have_chip_effect": true
+        },
+        {
+            "id": "ab_isolation",
+            "title": "Isolation",
+            "when": "isolationMentioned == unknown",
+            "options": [
+                {
+                    "label": "Kofferdam",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "kofferdam",
+                            "mode": "On"
+                        }
+                    ]
+                },
+                {
+                    "label": "Relative Trockenlegung",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_isolation_relative",
+                            "mode": "On"
+                        }
+                    ]
+                }
+            ],
+            "must_have_chip_effect": true
+        },
+        {
+            "id": "ab_adhesive_technique",
+            "title": "Adhäsivtechnik durchgeführt?",
+            "when": "materialMentioned == composite AND adhesiveMentioned == unknown",
+            "options": [
+                {
+                    "label": "Ja",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_adhesivtechnik",
+                            "mode": "On"
+                        }
+                    ]
+                },
+                {
+                    "label": "Nein",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_adhesivtechnik",
+                            "mode": "Off"
+                        }
+                    ]
+                }
+            ],
+            "must_have_chip_effect": true
+        },
+        {
+            "id": "ab_layering",
+            "title": "Schichttechnik / Inkrementell?",
+            "when": "materialMentioned == composite AND cavityExtentHint in (medium, large) AND layeringUnknown",
+            "options": [
+                {
+                    "label": "Mehrschicht / inkrementell",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_schichttechnik",
+                            "mode": "On"
+                        }
+                    ]
+                },
+                {
+                    "label": "Einfach (z.B. kleine Kavität)",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_schichttechnik",
+                            "mode": "Off"
+                        }
+                    ]
+                }
+            ],
+            "must_have_chip_effect": true
+        },
+        {
+            "id": "ab_deep_caries_protection",
+            "title": "Tiefe Karies / Pulpanähe – Schutzmaßnahme?",
+            "when": "cariesDepthHint == deep",
+            "options": [
+                {
+                    "label": "Unterfüllung/Schutz",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_pulpaschutz",
+                            "mode": "On"
+                        }
+                    ]
+                },
+                {
+                    "label": "Nein",
+                    "effects": [
+                        {
+                            "type": "chip",
+                            "chipId": "fuellung_pulpaschutz",
+                            "mode": "Off"
+                        }
+                    ]
+                }
+            ],
+            "must_have_chip_effect": true
+        }
+    ],
+    "hard_rules": [
+        {
+            "id": "r_no_hardcoded_billing",
+            "rule": "Never emit billing positions directly. Only emit chips. BillingRefs must be resolved via chip->catalog mapping."
+        },
+        {
+            "id": "r_frontend_proof_required",
+            "rule": "Every new askback must be proven in V10 UI using goldenMode (not just unit tests)."
+        }
+    ],
+    "ui_expectations": {
+        "must_show": [
+            "askbacks/questions",
+            "chips panel or chip summary",
+            "output text",
+            "billing trace (at least in debug drawer)"
+        ],
+        "golden_mode": "Used to force unknown facts so askbacks appear deterministically in stub extraction."
+    }
+}

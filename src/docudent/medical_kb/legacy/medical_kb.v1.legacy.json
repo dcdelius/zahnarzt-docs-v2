@@ -1,0 +1,5441 @@
+{
+    "version": "1.0.0",
+    "generatedAt": "2025-12-22T20:57:00+01:00",
+    "concepts": [
+        {
+            "id": "caries-profunda",
+            "name": "Caries profunda",
+            "description": "Tiefe Karies mit Annäherung an die Pulpa (< 2mm Restdentin)",
+            "aliases": [
+                "tiefe Karies",
+                "pulpanah",
+                "pulp_near",
+                "deep caries"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-caries-profunda"
+                }
+            ]
+        },
+        {
+            "id": "indirect-capping",
+            "name": "Indirekte Überkappung (Cp)",
+            "description": "Schutz der Pulpa durch Applikation eines bioaktiven Materials bei pulpanaher Kavität ohne Pulpaeröffnung",
+            "aliases": [
+                "Cp",
+                "Überkappung",
+                "overcapping",
+                "pulp capping indirect"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-caries-profunda"
+                },
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-25"
+                }
+            ],
+            "priority": 10,
+            "cases": [
+                {
+                    "id": "decision_required",
+                    "when": [
+                        {
+                            "field": "facts.cariesDepth",
+                            "op": "in",
+                            "value": [
+                                "profunda",
+                                "pulp_near"
+                            ]
+                        },
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.capping.performed",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_ueberkappung"
+                        ]
+                    },
+                    "priority": 10
+                },
+                {
+                    "id": "material_required",
+                    "when": [
+                        {
+                            "field": "facts.capping.performed",
+                            "op": "eq",
+                            "value": "yes"
+                        },
+                        {
+                            "field": "facts.capping.material",
+                            "op": "exists",
+                            "value": false
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_ueberkappung_material"
+                        ]
+                    },
+                    "priority": 15
+                },
+                {
+                    "id": "indirect_cp",
+                    "when": [
+                        {
+                            "field": "facts.capping.performed",
+                            "op": "eq",
+                            "value": "yes"
+                        },
+                        {
+                            "field": "facts.pulpaOpened",
+                            "op": "neq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "cp"
+                        ]
+                    },
+                    "priority": 20
+                },
+                {
+                    "id": "no_cp_not_required",
+                    "when": [
+                        {
+                            "field": "facts.capping.performed",
+                            "op": "eq",
+                            "value": "no"
+                        },
+                        {
+                            "field": "facts.cariesDepth",
+                            "op": "in",
+                            "value": [
+                                "profunda",
+                                "pulp_near"
+                            ]
+                        },
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "cp_not_required"
+                        ]
+                    },
+                    "priority": 25
+                }
+            ]
+        },
+        {
+            "id": "direct-capping",
+            "name": "Direkte Überkappung (P)",
+            "description": "Überkappung bei punktförmiger, iatrogener Pulpaeröffnung",
+            "aliases": [
+                "P",
+                "direct pulp capping"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-26"
+                },
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-caries-profunda"
+                }
+            ],
+            "priority": 11,
+            "cases": [
+                {
+                    "id": "decision_required",
+                    "when": [
+                        {
+                            "field": "facts.cariesDepth",
+                            "op": "in",
+                            "value": [
+                                "profunda",
+                                "pulp_near"
+                            ]
+                        },
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.capping.performed",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_ueberkappung"
+                        ]
+                    },
+                    "priority": 10
+                },
+                {
+                    "id": "material_required",
+                    "when": [
+                        {
+                            "field": "facts.capping.performed",
+                            "op": "eq",
+                            "value": "yes"
+                        },
+                        {
+                            "field": "facts.capping.material",
+                            "op": "exists",
+                            "value": false
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_ueberkappung_material"
+                        ]
+                    },
+                    "priority": 15
+                },
+                {
+                    "id": "direct_p",
+                    "when": [
+                        {
+                            "field": "facts.capping.performed",
+                            "op": "eq",
+                            "value": "yes"
+                        },
+                        {
+                            "field": "facts.pulpaOpened",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "p"
+                        ]
+                    },
+                    "priority": 19
+                },
+                {
+                    "id": "direct_type",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.capping.type",
+                            "op": "eq",
+                            "value": "direct"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "p"
+                        ]
+                    },
+                    "priority": 20
+                }
+            ]
+        },
+        {
+            "id": "pulpitis-risk",
+            "name": "Pulpitis-Risiko",
+            "description": "Risiko einer Pulpabeteiligung bei tiefer Karies, erfordert Patientenaufklärung",
+            "aliases": [
+                "Pulpitisrisiko",
+                "Endo-Risiko"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-pulpitis-risk"
+                }
+            ]
+        },
+        {
+            "id": "pulpa-protection",
+            "name": "Pulpaschutz",
+            "description": "Schutzmaßnahme bei tiefer Karies",
+            "aliases": [
+                "Pulpaschutz",
+                "Unterfüllung",
+                "Liner"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-konserv",
+                    "anchorId": "deep-caries"
+                }
+            ],
+            "priority": 39,
+            "cases": [
+                {
+                    "id": "deep_caries_askback",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.cariesDepthHint",
+                            "op": "eq",
+                            "value": "deep"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "fuellung_pulpaschutz"
+                        ]
+                    },
+                    "priority": 39
+                }
+            ]
+        },
+        {
+            "id": "bleeding-excav",
+            "name": "Blutung bei Exkavation",
+            "description": "Relevante Blutung während der Kariesexkavation, erfordert Dokumentation",
+            "aliases": [
+                "Exkavationsblutung",
+                "Blutung",
+                "bleeding"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-hemostasis"
+                }
+            ],
+            "priority": 34,
+            "cases": [
+                {
+                    "id": "hemostasis_required",
+                    "when": [
+                        {
+                            "field": "facts.bleeding.detected",
+                            "op": "eq",
+                            "value": "yes"
+                        },
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_hemostasis"
+                        ]
+                    },
+                    "priority": 34
+                }
+            ]
+        },
+        {
+            "id": "postop-sensitivity",
+            "name": "Postoperative Hypersensibilität",
+            "description": "Überempfindlichkeit nach Füllungstherapie, Kontrollindikation bei länger als 4 Wochen",
+            "aliases": [
+                "Hypersensibilität",
+                "sensitivity",
+                "Kälteempfindlichkeit"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-sensitivity"
+                }
+            ],
+            "priority": 35,
+            "cases": [
+                {
+                    "id": "sensitivity_followup_required",
+                    "when": [
+                        {
+                            "field": "facts.sensitivity.reported",
+                            "op": "eq",
+                            "value": "yes"
+                        },
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_sensitivity_followup"
+                        ]
+                    },
+                    "priority": 35
+                }
+            ]
+        },
+        {
+            "id": "fluoridation",
+            "name": "Fluoridierung",
+            "description": "Fluoridierung nach Füllungstherapie",
+            "aliases": [
+                "Fluor",
+                "Fluoridierung",
+                "Fluoridlack"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-IP4",
+                    "note": "BEMA IP4 Fluoridierung"
+                }
+            ],
+            "priority": 36,
+            "cases": [
+                {
+                    "id": "fluor_applied",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.fuellung.fluoridation",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "fluor"
+                        ]
+                    },
+                    "priority": 36
+                }
+            ]
+        },
+        {
+            "id": "fuellung-baseline",
+            "name": "Füllung Grundleistung",
+            "description": "Grundleistung bei jeder Füllung (BEMA 13a-d)",
+            "aliases": [
+                "Grundleistung Füllung",
+                "Füllung Basis"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13",
+                    "note": "BEMA Position 13a-d Füllungstherapie"
+                }
+            ],
+            "priority": 1,
+            "cases": [
+                {
+                    "id": "baseline",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "fuellung_grundleistung"
+                        ]
+                    },
+                    "priority": 1
+                }
+            ]
+        },
+        {
+            "id": "billing-context",
+            "name": "Billing-Kontext",
+            "description": "Kontextfragen für Mehrkosten und Abrechnungspfad",
+            "aliases": [
+                "MKV",
+                "Mehrkosten",
+                "Abrechnungskontext"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "sgb-v-paragraph-28",
+                    "anchorId": "sgb-v-28-2"
+                },
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2197"
+                }
+            ],
+            "priority": 5,
+            "cases": [
+                {
+                    "id": "insurance_context_unknown",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.insuranceContextHint",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "optionalAskbacks": [
+                            "fuellung_insurance_context"
+                        ]
+                    },
+                    "priority": 5
+                },
+                {
+                    "id": "mkv_required_side_composite",
+                    "when": [
+                        {
+                            "field": "facts.insuranceTrack",
+                            "op": "eq",
+                            "value": "gkv"
+                        },
+                        {
+                            "field": "facts.toothRegion",
+                            "op": "eq",
+                            "value": "side"
+                        },
+                        {
+                            "field": "facts.material",
+                            "op": "eq",
+                            "value": "komposit"
+                        },
+                        {
+                            "field": "facts.mkvPresent",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_mkv_confirmed"
+                        ]
+                    },
+                    "priority": 6
+                },
+                {
+                    "id": "mkv_justification_required",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.insuranceType",
+                            "op": "eq",
+                            "value": "MKV"
+                        },
+                        {
+                            "field": "facts.nurKasse",
+                            "op": "neq",
+                            "value": true
+                        },
+                        {
+                            "field": "facts.mkvJustification",
+                            "op": "exists",
+                            "value": false
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "fuellung_mkv_justification"
+                        ]
+                    },
+                    "priority": 7
+                },
+                {
+                    "id": "mkv_confirmed_emits_track",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.mkvPresent",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "insurance_gkv_mkv"
+                        ]
+                    },
+                    "priority": 8
+                },
+                {
+                    "id": "mkv_justification_emits_doc",
+                    "when": [
+                        {
+                            "field": "facts.mkvPresent",
+                            "op": "eq",
+                            "value": true
+                        },
+                        {
+                            "field": "facts.mkvJustification",
+                            "op": "exists",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "mkv_begruendung"
+                        ]
+                    },
+                    "priority": 8
+                },
+                {
+                    "id": "mkv_mehrschicht_addon_layering",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.mehrkostenConfirmed",
+                            "op": "eq",
+                            "value": true
+                        },
+                        {
+                            "field": "facts.layeringMentioned",
+                            "op": "eq",
+                            "value": "yes"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "mehrschicht"
+                        ]
+                    },
+                    "priority": 9
+                },
+                {
+                    "id": "mkv_mehrschicht_addon_adhesive",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.mehrkostenConfirmed",
+                            "op": "eq",
+                            "value": true
+                        },
+                        {
+                            "field": "facts.adhesiveTechnique",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "mehrschicht"
+                        ]
+                    },
+                    "priority": 9
+                }
+            ]
+        },
+        {
+            "id": "material-selection",
+            "name": "Materialauswahl",
+            "description": "Dokumentation des verwendeten Füllungsmaterials",
+            "aliases": [
+                "Material",
+                "Füllungsmaterial"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-allgemein",
+                    "note": "Material muss dokumentiert sein"
+                }
+            ],
+            "priority": 37,
+            "cases": [
+                {
+                    "id": "material_unknown",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.materialMentioned",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "fuellung_material"
+                        ]
+                    },
+                    "priority": 37
+                },
+                {
+                    "id": "material_komposit",
+                    "when": [
+                        {
+                            "field": "facts.materialMentioned",
+                            "op": "eq",
+                            "value": "komposit"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "fuellung_material_komposit"
+                        ]
+                    },
+                    "priority": 38
+                },
+                {
+                    "id": "material_giz",
+                    "when": [
+                        {
+                            "field": "facts.materialMentioned",
+                            "op": "eq",
+                            "value": "giz"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "fuellung_material_giz"
+                        ]
+                    },
+                    "priority": 39
+                }
+            ]
+        },
+        {
+            "id": "local-anesthesia-infiltration",
+            "name": "Infiltrationsanästhesie",
+            "description": "Lokalanästhesie durch Infiltration",
+            "aliases": [
+                "Infiltration",
+                "Infiltrationsanästhesie",
+                "LA Infiltration"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-40"
+                }
+            ],
+            "priority": 20,
+            "cases": [
+                {
+                    "id": "infiltr_fuellung",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.fuellung.anesthesiaType",
+                            "op": "eq",
+                            "value": "infiltration"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "la_infiltr"
+                        ]
+                    },
+                    "priority": 20
+                },
+                {
+                    "id": "infiltr_endo",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.anesthesiaType",
+                            "op": "eq",
+                            "value": "infiltration"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "la_infiltr"
+                        ]
+                    },
+                    "priority": 21
+                },
+                {
+                    "id": "infiltr_general",
+                    "when": [
+                        {
+                            "field": "facts.anesthesia",
+                            "op": "eq",
+                            "value": "infiltr"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "la_infiltr"
+                        ]
+                    },
+                    "priority": 22
+                }
+            ]
+        },
+        {
+            "id": "local-anesthesia-leitung",
+            "name": "Leitungsanästhesie",
+            "description": "Lokalanästhesie über Leitungsblock",
+            "aliases": [
+                "Leitung",
+                "Leitungsanästhesie",
+                "LA Leitung"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-41a"
+                }
+            ],
+            "priority": 23,
+            "cases": [
+                {
+                    "id": "leitung_fuellung",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.fuellung.anesthesiaType",
+                            "op": "eq",
+                            "value": "leitung"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "la_leitung"
+                        ]
+                    },
+                    "priority": 23
+                },
+                {
+                    "id": "leitung_endo",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.anesthesiaType",
+                            "op": "eq",
+                            "value": "leitung"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "la_leitung"
+                        ]
+                    },
+                    "priority": 24
+                },
+                {
+                    "id": "leitung_general",
+                    "when": [
+                        {
+                            "field": "facts.anesthesia",
+                            "op": "eq",
+                            "value": "leitung"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "la_leitung"
+                        ]
+                    },
+                    "priority": 25
+                }
+            ]
+        },
+        {
+            "id": "surface-anesthesia",
+            "name": "Oberflächenanästhesie",
+            "description": "Topische Oberflächenanästhesie vor Injektion",
+            "aliases": [
+                "topisch",
+                "Oberflächenanästhesie",
+                "Anästhesiegel"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-anesthesia"
+                }
+            ],
+            "priority": 26,
+            "cases": [
+                {
+                    "id": "surface_general",
+                    "when": [
+                        {
+                            "field": "facts.surfaceAnesthesia",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "oberflaeche_la"
+                        ]
+                    },
+                    "priority": 26
+                },
+                {
+                    "id": "surface_fuellung",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.fuellung.surfaceAnesthesia",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "oberflaeche_la"
+                        ]
+                    },
+                    "priority": 27
+                }
+            ]
+        },
+        {
+            "id": "kofferdam",
+            "name": "Kofferdam",
+            "description": "Absolute Trockenlegung mit Kofferdam",
+            "aliases": [
+                "Rubber Dam",
+                "Kofferdam"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12"
+                }
+            ],
+            "priority": 28,
+            "cases": [
+                {
+                    "id": "kofferdam_used",
+                    "when": [
+                        {
+                            "field": "facts.kofferdamUsed",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "kofferdam"
+                        ]
+                    },
+                    "priority": 28
+                },
+                {
+                    "id": "kofferdam_not_used",
+                    "when": [
+                        {
+                            "field": "facts.kofferdamUsed",
+                            "op": "eq",
+                            "value": false
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "rel_trocken"
+                        ]
+                    },
+                    "priority": 29
+                },
+                {
+                    "id": "kofferdam_askback",
+                    "when": [
+                        {
+                            "field": "facts.kofferdamMentioned",
+                            "op": "eq",
+                            "value": true
+                        },
+                        {
+                            "field": "facts.kofferdamUsed",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "optionalAskbacks": [
+                            "medical_kofferdam"
+                        ]
+                    },
+                    "priority": 30
+                },
+                {
+                    "id": "kofferdam_required_endo",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.kofferdam",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_endo_kofferdam"
+                        ]
+                    },
+                    "priority": 31
+                },
+                {
+                    "id": "kofferdam_endo",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.kofferdam",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "kofferdam"
+                        ]
+                    },
+                    "priority": 32
+                },
+                {
+                    "id": "kofferdam_fuellung",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.fuellung.isolation",
+                            "op": "eq",
+                            "value": "kofferdam"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "kofferdam"
+                        ]
+                    },
+                    "priority": 33
+                },
+                {
+                    "id": "isolation_unknown_askback",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.isolationMentioned",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "fuellung_isolation"
+                        ]
+                    },
+                    "priority": 34
+                },
+                {
+                    "id": "isolation_rubberdam",
+                    "when": [
+                        {
+                            "field": "facts.isolationMentioned",
+                            "op": "eq",
+                            "value": "rubberDam"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "kofferdam"
+                        ]
+                    },
+                    "priority": 35
+                },
+                {
+                    "id": "isolation_relative",
+                    "when": [
+                        {
+                            "field": "facts.isolationMentioned",
+                            "op": "eq",
+                            "value": "relative"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "rel_trocken"
+                        ]
+                    },
+                    "priority": 36
+                }
+            ]
+        },
+        {
+            "id": "relative-isolation",
+            "name": "Relative Trockenlegung",
+            "description": "Relative Trockenlegung (Watterollen/Sauger)",
+            "aliases": [
+                "Relativ",
+                "Relative Trockenlegung"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "relative-isolation"
+                }
+            ]
+        },
+        {
+            "id": "adhesive-technique",
+            "name": "Adhäsivtechnik",
+            "description": "Ätz-/Primer-/Bond-Protokoll bei Komposit",
+            "aliases": [
+                "Adhäsiv",
+                "Adhesive",
+                "Bonding"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "adhesive-protocol"
+                }
+            ],
+            "priority": 34,
+            "cases": [
+                {
+                    "id": "adhesive_mkv_required",
+                    "when": [
+                        {
+                            "field": "facts.mkvPresent",
+                            "op": "eq",
+                            "value": true
+                        },
+                        {
+                            "field": "facts.adhesiveTechnique",
+                            "op": "eq",
+                            "value": "unknown"
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_adhesive_technique"
+                        ]
+                    },
+                    "priority": 34
+                },
+                {
+                    "id": "adhesive_unknown_composite",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.materialMentioned",
+                            "op": "eq",
+                            "value": "komposit"
+                        },
+                        {
+                            "field": "facts.adhesiveTechnique",
+                            "op": "exists",
+                            "value": false
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "fuellung_adhesive"
+                        ]
+                    },
+                    "priority": 35
+                },
+                {
+                    "id": "adhesive_yes_emits_mehrschicht",
+                    "when": [
+                        {
+                            "field": "facts.adhesiveTechnique",
+                            "op": "eq",
+                            "value": true
+                        },
+                        {
+                            "field": "facts.layeringMentioned",
+                            "op": "neq",
+                            "value": "yes"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "mehrschicht"
+                        ]
+                    },
+                    "priority": 36
+                }
+            ]
+        },
+        {
+            "id": "layering-technique",
+            "name": "Mehrschichttechnik",
+            "description": "Schichtweiser Aufbau der Kompositfüllung",
+            "aliases": [
+                "Mehrschicht",
+                "Schichttechnik"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite"
+                }
+            ],
+            "priority": 37,
+            "cases": [
+                {
+                    "id": "layering_unknown_medium_large",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.materialMentioned",
+                            "op": "eq",
+                            "value": "komposit"
+                        },
+                        {
+                            "field": "facts.cavityExtentHint",
+                            "op": "in",
+                            "value": [
+                                "medium",
+                                "large"
+                            ]
+                        },
+                        {
+                            "field": "facts.layeringMentioned",
+                            "op": "exists",
+                            "value": false
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "fuellung_layering"
+                        ]
+                    },
+                    "priority": 37
+                },
+                {
+                    "id": "layering_yes_emits_mehrschicht",
+                    "when": [
+                        {
+                            "field": "facts.layeringMentioned",
+                            "op": "eq",
+                            "value": "yes"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "mehrschicht"
+                        ]
+                    },
+                    "priority": 38
+                }
+            ]
+        },
+        {
+            "id": "caries-excavation",
+            "name": "Kariesexkavation",
+            "description": "Entfernung kariöser Zahnsubstanz",
+            "aliases": [
+                "Exkavation",
+                "Kariesexkavation"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-exkavation"
+                }
+            ],
+            "priority": 37,
+            "cases": [
+                {
+                    "id": "exkavation_performed",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.exkavationPerformed",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "exkavation"
+                        ]
+                    },
+                    "priority": 37
+                }
+            ]
+        },
+        {
+            "id": "finishing-polishing",
+            "name": "Finishing/Politur",
+            "description": "Okklusionskontrolle, Einschleifen und Politur",
+            "aliases": [
+                "Politur",
+                "Okklusionskontrolle",
+                "Finishing"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "finishing-polish"
+                }
+            ],
+            "priority": 38,
+            "cases": [
+                {
+                    "id": "finishing_performed",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "fuellung"
+                        },
+                        {
+                            "field": "facts.finishingPerformed",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "finishing"
+                        ]
+                    },
+                    "priority": 38
+                }
+            ]
+        },
+        {
+            "id": "vitality-test",
+            "name": "Vitalitätsprüfung (ViPr)",
+            "description": "Test der Zahnpulpa-Vitalität",
+            "aliases": [
+                "ViPr",
+                "Vitalitätstest"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-vipr"
+                }
+            ],
+            "priority": 30,
+            "cases": [
+                {
+                    "id": "vipr_pos",
+                    "when": [
+                        {
+                            "field": "facts.vitality",
+                            "op": "eq",
+                            "value": "pos"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "vipr_pos"
+                        ]
+                    },
+                    "priority": 30
+                },
+                {
+                    "id": "vipr_neg",
+                    "when": [
+                        {
+                            "field": "facts.vitality",
+                            "op": "eq",
+                            "value": "neg"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "vipr_neg"
+                        ]
+                    },
+                    "priority": 31
+                }
+            ]
+        },
+        {
+            "id": "percussion-test",
+            "name": "Perkussionstest",
+            "description": "Klopfschmerztest zur Beurteilung",
+            "aliases": [
+                "Perkussion",
+                "Perkussionstest"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-percussion"
+                }
+            ],
+            "priority": 32,
+            "cases": [
+                {
+                    "id": "perk_pos",
+                    "when": [
+                        {
+                            "field": "facts.percussion",
+                            "op": "eq",
+                            "value": "pos"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "perk_pos"
+                        ]
+                    },
+                    "priority": 32
+                },
+                {
+                    "id": "perk_neg",
+                    "when": [
+                        {
+                            "field": "facts.percussion",
+                            "op": "eq",
+                            "value": "neg"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "perk_neg"
+                        ]
+                    },
+                    "priority": 33
+                }
+            ]
+        },
+        {
+            "id": "working-length-measurement",
+            "name": "Arbeitslängenbestimmung",
+            "description": "Bestimmung der Arbeitslänge in der Endodontie",
+            "aliases": [
+                "Arbeitslänge",
+                "WL",
+                "Längenmessung"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-wl"
+                }
+            ],
+            "priority": 34,
+            "cases": [
+                {
+                    "id": "wl_method_required",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.step",
+                            "op": "eq",
+                            "value": "working_length"
+                        },
+                        {
+                            "field": "facts.endo.workingLengthMethod",
+                            "op": "exists",
+                            "value": false
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_endo_wl_method"
+                        ]
+                    },
+                    "priority": 34
+                },
+                {
+                    "id": "wl_electronic",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.workingLengthMethod",
+                            "op": "eq",
+                            "value": "electronic"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "laengenmessung_elek"
+                        ]
+                    },
+                    "priority": 35
+                },
+                {
+                    "id": "wl_xray",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.workingLengthMethod",
+                            "op": "eq",
+                            "value": "xray"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "laengenmessung_roentgen"
+                        ]
+                    },
+                    "priority": 36
+                }
+            ]
+        },
+        {
+            "id": "endo-canal-preparation",
+            "name": "Kanalaufbereitung",
+            "description": "Aufbereitung nach Kanalanzahl in der Endodontie",
+            "aliases": [
+                "Kanalaufbereitung",
+                "Aufbereitung",
+                "Feilen"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-32"
+                }
+            ],
+            "priority": 36,
+            "cases": [
+                {
+                    "id": "canal_1",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.canalCount",
+                            "op": "eq",
+                            "value": 1
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "kanalaufbereitung_1"
+                        ]
+                    },
+                    "priority": 36
+                },
+                {
+                    "id": "canal_2",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.canalCount",
+                            "op": "eq",
+                            "value": 2
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "kanalaufbereitung_2"
+                        ]
+                    },
+                    "priority": 37
+                },
+                {
+                    "id": "canal_3",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.canalCount",
+                            "op": "eq",
+                            "value": 3
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "kanalaufbereitung_3"
+                        ]
+                    },
+                    "priority": 38
+                },
+                {
+                    "id": "canal_4",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.canalCount",
+                            "op": "eq",
+                            "value": 4
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "kanalaufbereitung_4"
+                        ]
+                    },
+                    "priority": 39
+                }
+            ]
+        },
+        {
+            "id": "endo-irrigation",
+            "name": "Wurzelkanalspülung",
+            "description": "Dokumentation der Spüllösungen in der Endodontie",
+            "aliases": [
+                "Spülung",
+                "Irrigation",
+                "Wurzelkanalspülung"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-irrigation"
+                }
+            ],
+            "priority": 40,
+            "cases": [
+                {
+                    "id": "irrigation_required",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.irrigationSolutions",
+                            "op": "empty",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "requiredAskbacks": [
+                            "medical_endo_irrigation"
+                        ]
+                    },
+                    "priority": 40
+                },
+                {
+                    "id": "irrigation_naocl",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.irrigationSolutions",
+                            "op": "contains",
+                            "value": "NaOCl"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "spuelung_naocl"
+                        ]
+                    },
+                    "priority": 41
+                },
+                {
+                    "id": "irrigation_edta",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.irrigationSolutions",
+                            "op": "contains",
+                            "value": "EDTA"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "spuelung_edta"
+                        ]
+                    },
+                    "priority": 42
+                }
+            ]
+        },
+        {
+            "id": "endo-medication",
+            "name": "Medikamentöse Einlage",
+            "description": "Medikamentöse Einlage im Wurzelkanal",
+            "aliases": [
+                "Einlage",
+                "Medikation",
+                "CaOH2"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-35"
+                }
+            ],
+            "priority": 43,
+            "cases": [
+                {
+                    "id": "medication_caoh2",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.medication",
+                            "op": "eq",
+                            "value": "Ca(OH)2"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "einlage_caoh2"
+                        ]
+                    },
+                    "priority": 43
+                }
+            ]
+        },
+        {
+            "id": "endo-temporary-closure",
+            "name": "Provisorischer Verschluss",
+            "description": "Temporärer bakteriendichter Verschluss nach Endo",
+            "aliases": [
+                "Provisorischer Verschluss",
+                "Temporärer Verschluss",
+                "temporär gefüllt"
+            ],
+            "priority": 44,
+            "cases": [
+                {
+                    "id": "temp_closure",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.tempClosure",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "provisorischer_verschluss"
+                        ]
+                    },
+                    "priority": 44
+                }
+            ]
+        },
+        {
+            "id": "endo-obturation",
+            "name": "Wurzelfüllung",
+            "description": "Technik der Wurzelfüllung",
+            "aliases": [
+                "WF",
+                "Wurzelfüllung",
+                "Obturation"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-34"
+                }
+            ],
+            "priority": 44,
+            "cases": [
+                {
+                    "id": "wf_warm",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.wfTechnique",
+                            "op": "eq",
+                            "value": "warm"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "wf_warm"
+                        ]
+                    },
+                    "priority": 44
+                },
+                {
+                    "id": "wf_einzel",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.wfTechnique",
+                            "op": "eq",
+                            "value": "einzel"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "wf_einzel"
+                        ]
+                    },
+                    "priority": 45
+                },
+                {
+                    "id": "wf_kalt",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.wfTechnique",
+                            "op": "eq",
+                            "value": "kalt"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "wf_kalt"
+                        ]
+                    },
+                    "priority": 46
+                },
+                {
+                    "id": "wf_kalt_default",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.obturated",
+                            "op": "eq",
+                            "value": true
+                        },
+                        {
+                            "field": "facts.endo.wfTechnique",
+                            "op": "exists",
+                            "value": false
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "wf_kalt"
+                        ]
+                    },
+                    "priority": 47
+                }
+            ]
+        },
+        {
+            "id": "endo-radiography",
+            "name": "Endo-Röntgen",
+            "description": "Diagnostik- und Kontrollröntgen im Endo-Verlauf",
+            "aliases": [
+                "Röntgen",
+                "Kontrollröntgen",
+                "Einzelzahnfilm"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-925a"
+                }
+            ],
+            "priority": 48,
+            "cases": [
+                {
+                    "id": "diagnostic_xray",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.diagnosticXray",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "roentgen_einzelzahn"
+                        ]
+                    },
+                    "priority": 48
+                },
+                {
+                    "id": "control_xray",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.step",
+                            "op": "eq",
+                            "value": "obturation"
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "roentgen_kontrolle"
+                        ]
+                    },
+                    "priority": 49
+                }
+            ]
+        },
+        {
+            "id": "endo-post-buildup",
+            "name": "Postendodontischer Aufbau",
+            "description": "Aufbau nach Wurzelkanalbehandlung",
+            "aliases": [
+                "Aufbau",
+                "Postendo",
+                "Postendodontischer Aufbau"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13"
+                }
+            ],
+            "priority": 50,
+            "cases": [
+                {
+                    "id": "postendo_aufbau",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.postEndoAufbau",
+                            "op": "eq",
+                            "value": true
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "aufbau_postendo"
+                        ]
+                    },
+                    "priority": 50
+                }
+            ]
+        },
+        {
+            "id": "endo-trepanation",
+            "name": "Trepanation",
+            "description": "Zugang zur Pulpenkammer im Endo-Ablauf",
+            "aliases": [
+                "Trepanation",
+                "Zugang",
+                "Access"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-31"
+                }
+            ],
+            "priority": 51,
+            "cases": [
+                {
+                    "id": "trepanation_step",
+                    "when": [
+                        {
+                            "field": "facts.treatmentId",
+                            "op": "eq",
+                            "value": "endo"
+                        },
+                        {
+                            "field": "facts.endo.step",
+                            "op": "in",
+                            "value": [
+                                "trepanation",
+                                "preparation",
+                                "working_length",
+                                "medication",
+                                "obturation"
+                            ]
+                        }
+                    ],
+                    "effects": {
+                        "emitChips": [
+                            "trepanation"
+                        ]
+                    },
+                    "priority": 51
+                }
+            ]
+        }
+    ],
+    "rules": [
+        {
+            "id": "rule-fuellung-baseline",
+            "name": "Füllung Baseline → Grundleistung-Chip",
+            "description": "Bei jeder Füllung wird mindestens die Grundleistung dokumentiert. Stellt sicher, dass Output nie leer ist.",
+            "tags": [
+                "medical",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "fuellung_grundleistung",
+                    "rationale": "Jede Füllung hat eine Grundleistung (BEMA 13a-d)"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13",
+                    "note": "BEMA Position 13a-d Füllungstherapie"
+                }
+            ],
+            "priority": 1,
+            "active": false
+        },
+        {
+            "id": "rule-mkv-mehrschicht-addon",
+            "name": "MKV + Mehrkosten → Mehrschichttechnik-Addon-Chip",
+            "description": "Bei MKV mit bestätigten Mehrkosten (Komposit/Mehrschicht/Adhäsiv) wird der Mehrschicht-Addon-Chip für GOZ 2197 emittiert",
+            "tags": [
+                "fuellung",
+                "mkv",
+                "addon",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.mehrkostenConfirmed",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "mehrschicht",
+                    "rationale": "Mehrschichttechnik für GOZ 2197 MKV-Addon-Abrechnung"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2197",
+                    "note": "GOZ 2197 Adhäsive Füllung bei Mehrkosten"
+                }
+            ],
+            "priority": 5,
+            "active": false
+        },
+        {
+            "id": "rule-mkv-askback-justification",
+            "name": "GIGAPROMPT 10: MKV unklar → Askback erforderlich",
+            "description": "Bei MKV-Patient ohne klare Signale (Komposit/Adhäsiv/Mehrschicht/Betrag/nurKasse) muss die Begründung erfragt werden",
+            "tags": [
+                "fuellung",
+                "mkv",
+                "askback"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.insuranceType",
+                    "op": "eq",
+                    "value": "MKV"
+                },
+                {
+                    "field": "facts.nurKasse",
+                    "op": "neq",
+                    "value": true
+                },
+                {
+                    "field": "facts.mehrkostenSignalsClear",
+                    "op": "neq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "fuellung_mkv_justification",
+                    "rationale": "MKV erfordert Begründung für Mehrkosten-Abrechnung"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "sgb-v-paragraph-28",
+                    "anchorId": "sgb-v-28-2",
+                    "note": "§ 28 Abs. 2 SGB V Mehrkostenvereinbarung"
+                }
+            ],
+            "priority": 40,
+            "active": false
+        },
+        {
+            "id": "rule-profunda-requires-ueberkappung-askback",
+            "name": "Profunda erfordert Überkappungs-Askback",
+            "description": "Bei Caries profunda muss der Arzt gefragt werden, ob eine Überkappung durchgeführt wurde",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.cariesDepth",
+                    "op": "in",
+                    "value": [
+                        "profunda",
+                        "pulp_near"
+                    ]
+                },
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.capping.performed",
+                    "op": "eq",
+                    "value": "unknown"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_ueberkappung",
+                    "rationale": "Bei pulpanaher Karies ist die Entscheidung zur Überkappung klinisch relevant und muss dokumentiert werden"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-caries-profunda",
+                    "note": "Leitlinie empfiehlt Cp bei < 2mm Restdentin"
+                }
+            ],
+            "priority": 10,
+            "active": false
+        },
+        {
+            "id": "rule-ueberkappung-yes-emits-cp",
+            "name": "Überkappung Ja (indirekt) → Cp-Chip",
+            "description": "Wenn Überkappung durchgeführt wurde und Pulpa NICHT eröffnet, wird der Cp-Chip (indirekte Überkappung) emittiert",
+            "tags": [
+                "medical",
+                "billing",
+                "gp7-ssot"
+            ],
+            "when": [
+                {
+                    "field": "facts.capping.performed",
+                    "op": "eq",
+                    "value": "yes"
+                },
+                {
+                    "field": "facts.pulpaOpened",
+                    "op": "neq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "cp",
+                    "rationale": "Indirekte Überkappung (Cp) - Pulpa nicht eröffnet"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-25",
+                    "note": "BEMA Position 25 für indirekte Überkappung"
+                },
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2330",
+                    "note": "GOZ 2330 für PKV"
+                }
+            ],
+            "priority": 20,
+            "active": false
+        },
+        {
+            "id": "rule-ueberkappung-p-emits",
+            "name": "Überkappung Ja (direkt) + Pulpaeröffnung → P-Chip",
+            "description": "Wenn Überkappung durchgeführt wurde UND Pulpa eröffnet, wird der P-Chip (direkte Überkappung) emittiert",
+            "tags": [
+                "medical",
+                "billing",
+                "gp7-ssot"
+            ],
+            "when": [
+                {
+                    "field": "facts.capping.performed",
+                    "op": "eq",
+                    "value": "yes"
+                },
+                {
+                    "field": "facts.pulpaOpened",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "p",
+                    "rationale": "Direkte Überkappung (P) - Pulpa punktförmig eröffnet"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-26",
+                    "note": "BEMA Position 26 für direkte Überkappung"
+                },
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2340",
+                    "note": "GOZ 2340 für PKV (direkte Überkappung)"
+                }
+            ],
+            "priority": 19,
+            "active": false
+        },
+        {
+            "id": "rule-ueberkappung-no-emits-cp-not-required",
+            "name": "Überkappung Nein → Cp-nicht-erforderlich-Chip",
+            "description": "Bei tiefer Kavität ohne Überkappung wird dokumentiert, dass Cp nicht erforderlich war",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.capping.performed",
+                    "op": "eq",
+                    "value": "no"
+                },
+                {
+                    "field": "facts.cariesDepth",
+                    "op": "in",
+                    "value": [
+                        "profunda",
+                        "pulp_near"
+                    ]
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "cp_not_required",
+                    "rationale": "Forensische Dokumentation: Tiefe Kavität, aber keine Pulpaeröffnung"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-caries-profunda",
+                    "note": "Dokumentation des Exkavationsergebnisses"
+                }
+            ],
+            "priority": 25,
+            "active": false
+        },
+        {
+            "id": "rule-profunda-default-pulpitis-risk-yes",
+            "name": "Profunda → Default Pulpitis-Risiko Ja",
+            "description": "Bei Caries profunda wird standardmäßig davon ausgegangen, dass ein Pulpitis-Risiko besteht",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.cariesDepth",
+                    "op": "in",
+                    "value": [
+                        "profunda",
+                        "pulp_near"
+                    ]
+                }
+            ],
+            "then": [
+                {
+                    "type": "set_default",
+                    "target": "facts.counseling.pulpitisRisk",
+                    "value": "yes",
+                    "rationale": "Leitlinie empfiehlt Aufklärung über Pulpitis-Risiko bei tiefer Karies"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-pulpitis-risk",
+                    "note": "Patient muss über Endo-Risiko aufgeklärt werden"
+                }
+            ],
+            "priority": 5,
+            "active": false
+        },
+        {
+            "id": "rule-ueberkappung-material-required",
+            "name": "Überkappung erfordert Materialangabe",
+            "description": "Wenn Überkappung durchgeführt wird, muss das Material dokumentiert werden",
+            "tags": [
+                "medical",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.capping.performed",
+                    "op": "eq",
+                    "value": "yes"
+                },
+                {
+                    "field": "facts.capping.material",
+                    "op": "exists",
+                    "value": false
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_ueberkappung_material",
+                    "rationale": "Material muss für Abrechnung und Dokumentation angegeben werden"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-pulp-capping-material",
+                    "note": "Materialwahl beeinflusst Prognose"
+                },
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-25",
+                    "note": "Material muss dokumentiert werden"
+                }
+            ],
+            "priority": 15,
+            "active": false
+        },
+        {
+            "id": "rule-bleeding-requires-hemostasis-askback",
+            "name": "Blutung erfordert Hämostase-Askback",
+            "description": "Bei Blutung während der Exkavation muss dokumentiert werden, wie die Blutstillung erfolgte",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.bleeding.detected",
+                    "op": "eq",
+                    "value": "yes"
+                },
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_hemostasis",
+                    "rationale": "Blutstillung muss dokumentiert werden für forensische Nachvollziehbarkeit"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-hemostasis",
+                    "note": "Relevante Blutung muss dokumentiert werden"
+                }
+            ],
+            "priority": 12,
+            "active": false
+        },
+        {
+            "id": "rule-sensitivity-reported-requires-followup-askback",
+            "name": "Hypersensibilität erfordert Nachkontroll-Askback",
+            "description": "Bei berichteter postoperativer Überempfindlichkeit wird nach Kontrolle/Nachsorge gefragt",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.sensitivity.reported",
+                    "op": "eq",
+                    "value": "yes"
+                },
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_sensitivity_followup",
+                    "rationale": "Bei anhaltender Überempfindlichkeit ist Kontrolle indiziert"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-sensitivity",
+                    "note": "Bei länger als 4 Wochen ist Kontrolle indiziert"
+                }
+            ],
+            "priority": 30,
+            "active": false
+        },
+        {
+            "id": "rule-endo-trepanation-emits-chip",
+            "name": "Endo Trepanation → Chip",
+            "description": "Emit trepanation chip when access to pulp chamber is opened",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.step",
+                    "op": "in",
+                    "value": [
+                        "trepanation",
+                        "preparation",
+                        "working_length",
+                        "medication",
+                        "obturation"
+                    ]
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "trepanation",
+                    "rationale": "Trepanation performed as part of endo workflow"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-31",
+                    "note": "BEMA 31 Trepanation"
+                }
+            ],
+            "priority": 50,
+            "active": false
+        },
+        {
+            "id": "rule-endo-kofferdam-emits-chip",
+            "name": "Endo Kofferdam → Chip",
+            "description": "Emit kofferdam chip when isolation detected",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.kofferdam",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "kofferdam",
+                    "rationale": "Kofferdam isolation performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12",
+                    "note": "BEMA 12 Kofferdam"
+                }
+            ],
+            "priority": 45,
+            "active": false
+        },
+        {
+            "id": "rule-endo-wl-elek-emits-chip",
+            "name": "Endo Electronic WL → Chip",
+            "description": "Emit electronic length measurement chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.workingLengthMethod",
+                    "op": "eq",
+                    "value": "electronic"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "laengenmessung_elek",
+                    "rationale": "Electronic apex locator used"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2400",
+                    "note": "GOZ 2400 elektr. Längenmessung"
+                }
+            ],
+            "priority": 52,
+            "active": false
+        },
+        {
+            "id": "rule-endo-wl-xray-emits-chip",
+            "name": "Endo X-ray WL → Chip",
+            "description": "Emit x-ray length measurement chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.workingLengthMethod",
+                    "op": "eq",
+                    "value": "xray"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "laengenmessung_roentgen",
+                    "rationale": "X-ray length measurement performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-925a",
+                    "note": "BEMA Ä925a Röntgen"
+                }
+            ],
+            "priority": 52,
+            "active": false
+        },
+        {
+            "id": "rule-endo-canal-1-emits-chip",
+            "name": "Endo 1 Canal → Chip",
+            "description": "Emit 1-canal preparation chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.canalCount",
+                    "op": "eq",
+                    "value": 1
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "kanalaufbereitung_1",
+                    "rationale": "1 canal prepared"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-32",
+                    "note": "BEMA 32 je Kanal"
+                }
+            ],
+            "priority": 55,
+            "active": false
+        },
+        {
+            "id": "rule-endo-canal-2-emits-chip",
+            "name": "Endo 2 Canals → Chip",
+            "description": "Emit 2-canal preparation chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.canalCount",
+                    "op": "eq",
+                    "value": 2
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "kanalaufbereitung_2",
+                    "rationale": "2 canals prepared"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-32",
+                    "note": "BEMA 32 2x"
+                }
+            ],
+            "priority": 55,
+            "active": false
+        },
+        {
+            "id": "rule-endo-canal-3-emits-chip",
+            "name": "Endo 3 Canals → Chip",
+            "description": "Emit 3-canal preparation chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.canalCount",
+                    "op": "eq",
+                    "value": 3
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "kanalaufbereitung_3",
+                    "rationale": "3 canals prepared"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-32",
+                    "note": "BEMA 32 3x"
+                }
+            ],
+            "priority": 55,
+            "active": false
+        },
+        {
+            "id": "rule-endo-canal-4-emits-chip",
+            "name": "Endo 4 Canals → Chip",
+            "description": "Emit 4-canal preparation chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.canalCount",
+                    "op": "eq",
+                    "value": 4
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "kanalaufbereitung_4",
+                    "rationale": "4 canals prepared"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-32",
+                    "note": "BEMA 32 4x"
+                }
+            ],
+            "priority": 55,
+            "active": false
+        },
+        {
+            "id": "rule-endo-naocl-emits-chip",
+            "name": "Endo NaOCl → Chip",
+            "description": "Emit NaOCl irrigation chip",
+            "tags": [
+                "medical",
+                "endo"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.irrigationSolutions",
+                    "op": "contains",
+                    "value": "NaOCl"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "spuelung_naocl",
+                    "rationale": "NaOCl irrigation documented"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-irrigation",
+                    "note": "NaOCl Standardspülung"
+                }
+            ],
+            "priority": 60,
+            "active": false
+        },
+        {
+            "id": "rule-endo-edta-emits-chip",
+            "name": "Endo EDTA → Chip",
+            "description": "Emit EDTA irrigation chip",
+            "tags": [
+                "medical",
+                "endo"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.irrigationSolutions",
+                    "op": "contains",
+                    "value": "EDTA"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "spuelung_edta",
+                    "rationale": "EDTA irrigation documented"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-irrigation",
+                    "note": "EDTA Abschluss"
+                }
+            ],
+            "priority": 60,
+            "active": false
+        },
+        {
+            "id": "rule-endo-caoh2-emits-chip",
+            "name": "Endo Ca(OH)2 → Chip",
+            "description": "Emit calcium hydroxide medication chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.medication",
+                    "op": "eq",
+                    "value": "Ca(OH)2"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "einlage_caoh2",
+                    "rationale": "Ca(OH)2 medication placed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-35",
+                    "note": "BEMA 35 med. Einlage"
+                }
+            ],
+            "priority": 65,
+            "active": false
+        },
+        {
+            "id": "rule-endo-wf-kalt-emits-chip",
+            "name": "Endo WF Kalt → Chip",
+            "description": "Emit cold lateral condensation chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.obturated",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "wf_kalt",
+                    "rationale": "Root filling performed (default kalt)"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-34",
+                    "note": "BEMA 34 Wurzelfüllung"
+                }
+            ],
+            "priority": 70,
+            "active": false
+        },
+        {
+            "id": "rule-endo-roentgen-kontrolle-emits-chip",
+            "name": "Endo Rö-Kontrolle → Chip",
+            "description": "Emit control x-ray chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.step",
+                    "op": "eq",
+                    "value": "obturation"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "roentgen_kontrolle",
+                    "rationale": "Control x-ray after WF"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-925a",
+                    "note": "BEMA Ä925a Rö-Kontrolle"
+                }
+            ],
+            "priority": 75,
+            "active": false
+        },
+        {
+            "id": "rule-endo-la-leitung-emits-chip",
+            "name": "Endo LA Leitung → Chip",
+            "description": "Emit Leitungsanästhesie chip when LA type is leitung",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.anesthesiaType",
+                    "op": "eq",
+                    "value": "leitung"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "la_leitung",
+                    "rationale": "Leitungsanästhesie performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-41a",
+                    "note": "BEMA 41a Leitungsanästhesie"
+                }
+            ],
+            "priority": 40,
+            "active": false
+        },
+        {
+            "id": "rule-endo-la-infiltr-emits-chip",
+            "name": "Endo LA Infiltration → Chip",
+            "description": "Emit Infiltrationsanästhesie chip when LA type is infiltration",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.anesthesiaType",
+                    "op": "eq",
+                    "value": "infiltration"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "la_infiltr",
+                    "rationale": "Infiltration anesthesia performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-40",
+                    "note": "BEMA 40 Infiltration"
+                }
+            ],
+            "priority": 40,
+            "active": false
+        },
+        {
+            "id": "rule-endo-wf-warm-emits-chip",
+            "name": "Endo WF Warm → Chip",
+            "description": "Emit warm vertical condensation chip when technique is warm",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.wfTechnique",
+                    "op": "eq",
+                    "value": "warm"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "wf_warm",
+                    "rationale": "Warm vertical condensation performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-34",
+                    "note": "BEMA 34 Wurzelfüllung (warm)"
+                }
+            ],
+            "priority": 71,
+            "active": false
+        },
+        {
+            "id": "rule-endo-wf-einzel-emits-chip",
+            "name": "Endo WF Einzel → Chip",
+            "description": "Emit single-cone chip when technique is einzel",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.wfTechnique",
+                    "op": "eq",
+                    "value": "einzel"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "wf_einzel",
+                    "rationale": "Single-cone technique performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-34",
+                    "note": "BEMA 34 Wurzelfüllung (einzel)"
+                }
+            ],
+            "priority": 71,
+            "active": false
+        },
+        {
+            "id": "rule-endo-roentgen-einzelzahn-emits-chip",
+            "name": "Endo Rö Einzelzahn → Chip",
+            "description": "Emit diagnostic single-tooth x-ray chip",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.diagnosticXray",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "roentgen_einzelzahn",
+                    "rationale": "Diagnostic x-ray before endo"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-925a",
+                    "note": "BEMA Ä925a Einzelzahnfilm"
+                }
+            ],
+            "priority": 38,
+            "active": false
+        },
+        {
+            "id": "rule-endo-aufbau-postendo-emits-chip",
+            "name": "Endo Aufbau post Endo → Chip",
+            "description": "Emit post-endo buildup chip when aufbau detected",
+            "tags": [
+                "medical",
+                "endo",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.postEndoAufbau",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "aufbau_postendo",
+                    "rationale": "Post-endo buildup performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13",
+                    "note": "BEMA 13 Aufbau"
+                }
+            ],
+            "priority": 80,
+            "active": false
+        },
+        {
+            "id": "rule-fuellung-la-leitung-emits-chip",
+            "name": "Fuellung LA Leitung → Chip",
+            "description": "Emit Leitungsanästhesie chip when LA type is leitung",
+            "tags": [
+                "medical",
+                "fuellung",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.fuellung.anesthesiaType",
+                    "op": "eq",
+                    "value": "leitung"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "la_leitung",
+                    "rationale": "Leitungsanästhesie performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-41a",
+                    "note": "BEMA 41a Leitungsanästhesie"
+                }
+            ],
+            "priority": 35,
+            "active": false
+        },
+        {
+            "id": "rule-fuellung-la-infiltr-emits-chip",
+            "name": "Fuellung LA Infiltration → Chip",
+            "description": "Emit Infiltrationsanästhesie chip when LA type is infiltration",
+            "tags": [
+                "medical",
+                "fuellung",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.fuellung.anesthesiaType",
+                    "op": "eq",
+                    "value": "infiltration"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "la_infiltr",
+                    "rationale": "Infiltration anesthesia performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-40",
+                    "note": "BEMA 40 Infiltration"
+                }
+            ],
+            "priority": 35,
+            "active": false
+        },
+        {
+            "id": "rule-fuellung-oberflaeche-la-emits-chip",
+            "name": "Fuellung Oberflächenanästhesie → Chip",
+            "description": "Emit surface anesthesia chip when OA applied",
+            "tags": [
+                "medical",
+                "fuellung",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.fuellung.surfaceAnesthesia",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "oberflaeche_la",
+                    "rationale": "Surface anesthesia applied before injection"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-0080",
+                    "note": "GOZ 0080 Oberflächenanästhesie"
+                }
+            ],
+            "priority": 34,
+            "active": false
+        },
+        {
+            "id": "rule-fuellung-kofferdam-emits-chip",
+            "name": "Fuellung Kofferdam → Chip",
+            "description": "Emit kofferdam chip when absolute isolation used",
+            "tags": [
+                "medical",
+                "fuellung",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.fuellung.isolation",
+                    "op": "eq",
+                    "value": "kofferdam"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "kofferdam",
+                    "rationale": "Kofferdam (absolute isolation) performed"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12",
+                    "note": "BEMA 12 Kofferdam"
+                }
+            ],
+            "priority": 36,
+            "active": false
+        },
+        {
+            "id": "rule-fuellung-p-direct-capping-emits-chip",
+            "name": "Fuellung P (direkte Überkappung) → Chip",
+            "description": "Emit direct capping chip when pulp exposure occurred",
+            "tags": [
+                "medical",
+                "fuellung",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.capping.type",
+                    "op": "eq",
+                    "value": "direct"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "p",
+                    "rationale": "Direct pulp capping (P) after exposure"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-26",
+                    "note": "BEMA 26 direkte Überkappung"
+                }
+            ],
+            "priority": 25,
+            "active": false
+        },
+        {
+            "id": "rule-fuellung-fluor-emits-chip",
+            "name": "Fuellung Fluoridierung → Chip",
+            "description": "Emit fluoridation chip when applied",
+            "tags": [
+                "medical",
+                "fuellung",
+                "billing"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.fuellung.fluoridation",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "fluor",
+                    "rationale": "Fluoride application after filling"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-IP4",
+                    "note": "BEMA IP4 Fluoridierung"
+                }
+            ],
+            "priority": 90,
+            "active": false
+        },
+        {
+            "id": "rule-fuellung-exkavation-emits-chip",
+            "name": "Kariesexkavation → Chip",
+            "description": "Emit exkavation chip when excavation documented",
+            "tags": [
+                "medical",
+                "fuellung"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.exkavationPerformed",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "exkavation",
+                    "rationale": "Kariesexkavation dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-exkavation"
+                }
+            ],
+            "priority": 40,
+            "active": false
+        },
+        {
+            "id": "rule-fuellung-finishing-emits-chip",
+            "name": "Finishing/Politur → Chip",
+            "description": "Emit finishing chip when polishing/occlusion check documented",
+            "tags": [
+                "medical",
+                "fuellung"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.finishingPerformed",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "finishing",
+                    "rationale": "Okklusionskontrolle/Politur dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "finishing-polish"
+                }
+            ],
+            "priority": 41,
+            "active": false
+        },
+        {
+            "id": "rule-surface-anesthesia-emits-chip",
+            "name": "Oberflächenanästhesie → Chip",
+            "description": "Emit surface anesthesia chip when applied",
+            "tags": [
+                "medical",
+                "fuellung"
+            ],
+            "when": [
+                {
+                    "field": "facts.surfaceAnesthesia",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "oberflaeche_la",
+                    "rationale": "Oberflächenanästhesie dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-anesthesia"
+                }
+            ],
+            "priority": 42,
+            "active": false
+        },
+        {
+            "id": "rule-vipr-pos-emits-chip",
+            "name": "ViPr positiv → Chip",
+            "description": "Emit ViPr positive chip",
+            "tags": [
+                "medical",
+                "fuellung"
+            ],
+            "when": [
+                {
+                    "field": "facts.vitality",
+                    "op": "eq",
+                    "value": "pos"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "vipr_pos",
+                    "rationale": "Vitalitätsprüfung positiv dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-vipr"
+                }
+            ],
+            "priority": 43,
+            "active": false
+        },
+        {
+            "id": "rule-vipr-neg-emits-chip",
+            "name": "ViPr negativ → Chip",
+            "description": "Emit ViPr negative chip",
+            "tags": [
+                "medical",
+                "fuellung"
+            ],
+            "when": [
+                {
+                    "field": "facts.vitality",
+                    "op": "eq",
+                    "value": "neg"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "vipr_neg",
+                    "rationale": "Vitalitätsprüfung negativ dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-vipr"
+                }
+            ],
+            "priority": 44,
+            "active": false
+        },
+        {
+            "id": "rule-perk-pos-emits-chip",
+            "name": "Perkussion positiv → Chip",
+            "description": "Emit percussion positive chip",
+            "tags": [
+                "medical",
+                "fuellung"
+            ],
+            "when": [
+                {
+                    "field": "facts.percussion",
+                    "op": "eq",
+                    "value": "pos"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "perk_pos",
+                    "rationale": "Perkussion positiv dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-percussion"
+                }
+            ],
+            "priority": 45,
+            "active": false
+        },
+        {
+            "id": "rule-perk-neg-emits-chip",
+            "name": "Perkussion negativ → Chip",
+            "description": "Emit percussion negative chip",
+            "tags": [
+                "medical",
+                "fuellung"
+            ],
+            "when": [
+                {
+                    "field": "facts.percussion",
+                    "op": "eq",
+                    "value": "neg"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "perk_neg",
+                    "rationale": "Perkussion negativ dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-percussion"
+                }
+            ],
+            "priority": 46,
+            "active": false
+        },
+        {
+            "id": "rule-mkv-required-for-side-composite",
+            "name": "MKV-Bestätigung für Seitenzahn-Komposit",
+            "description": "Bei GKV + Seitenzahnbereich + Komposit muss MKV bestätigt werden",
+            "tags": [
+                "administrative",
+                "billing_critical"
+            ],
+            "when": [
+                {
+                    "field": "facts.insuranceTrack",
+                    "op": "eq",
+                    "value": "gkv"
+                },
+                {
+                    "field": "facts.toothRegion",
+                    "op": "eq",
+                    "value": "side"
+                },
+                {
+                    "field": "facts.material",
+                    "op": "eq",
+                    "value": "komposit"
+                },
+                {
+                    "field": "facts.mkvPresent",
+                    "op": "eq",
+                    "value": "unknown"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_mkv_confirmed",
+                    "rationale": "Ohne MKV darf GOZ-Differenz nicht an Patient berechnet werden"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "sgb-v-2025",
+                    "anchorId": "sgb-v-28-abs-2",
+                    "note": "§28 Abs. 2 SGB V: Mehrkostenvereinbarung"
+                }
+            ],
+            "priority": 5,
+            "active": false
+        },
+        {
+            "id": "rule-adhesive-technique-required-for-mkv",
+            "name": "Adhäsivtechnik-Askback bei MKV",
+            "description": "Bei MKV muss Adhäsivtechnik explizit bestätigt werden",
+            "tags": [
+                "medical",
+                "billing_critical"
+            ],
+            "when": [
+                {
+                    "field": "facts.mkvPresent",
+                    "op": "eq",
+                    "value": true
+                },
+                {
+                    "field": "facts.adhesiveTechnique",
+                    "op": "eq",
+                    "value": "unknown"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_adhesive_technique",
+                    "rationale": "Adhäsivtechnik ist Voraussetzung für Mehrschicht-Abrechnung"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2197",
+                    "note": "GOZ 2197 nur bei echter Adhäsivtechnik"
+                }
+            ],
+            "priority": 6,
+            "active": false
+        },
+        {
+            "id": "rule-adhesive-yes-emits-filling-chips",
+            "name": "Adhäsivtechnik Ja → Mehrschicht-Chip",
+            "description": "Bei bestätigter Adhäsivtechnik wird Mehrschicht-Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.adhesiveTechnique",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "mehrschicht",
+                    "rationale": "Mehrschichttechnik dokumentieren (GOZ 2197)"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2197",
+                    "note": "GOZ 2197 Adhäsive Befestigung"
+                }
+            ],
+            "priority": 20,
+            "active": false
+        },
+        {
+            "id": "rule-adhesive-no-emits-basic-filling",
+            "name": "Adhäsivtechnik Nein → Komposit-Basic-Chip",
+            "description": "Ohne Adhäsivtechnik wird Basisfüllung dokumentiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.adhesiveTechnique",
+                    "op": "eq",
+                    "value": false
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "komposit_basic",
+                    "rationale": "Einfache Füllung ohne Adhäsiv"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13",
+                    "note": "BEMA 13a-d Füllung"
+                }
+            ],
+            "priority": 21,
+            "active": false
+        },
+        {
+            "id": "rule-kofferdam-askback",
+            "name": "Kofferdam-Askback wenn erwähnt",
+            "description": "Bei Erwähnung von Kofferdam muss bestätigt werden",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.kofferdamMentioned",
+                    "op": "eq",
+                    "value": true
+                },
+                {
+                    "field": "facts.kofferdamUsed",
+                    "op": "eq",
+                    "value": "unknown"
+                }
+            ],
+            "then": [
+                {
+                    "type": "optional_askback",
+                    "target": "medical_kofferdam",
+                    "rationale": "Kofferdam-Abrechnung nur bei tatsächlicher Anwendung"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12",
+                    "note": "BEMA 12 nur bei Kofferdam-Anlage"
+                }
+            ],
+            "priority": 50,
+            "active": false
+        },
+        {
+            "id": "rule-kofferdam-yes-emits-chip",
+            "name": "Kofferdam Ja → Isolation-Chip",
+            "description": "Bei Kofferdam wird entsprechender Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.kofferdamUsed",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "kofferdam",
+                    "rationale": "Kofferdam dokumentieren (BEMA 12)"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12",
+                    "note": "BEMA 12 Kofferdam"
+                }
+            ],
+            "priority": 55,
+            "active": false
+        },
+        {
+            "id": "rule-kofferdam-no-emits-relative",
+            "name": "Kofferdam Nein → Relative Isolation",
+            "description": "Ohne Kofferdam wird relative Trockenlegung dokumentiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.kofferdamUsed",
+                    "op": "eq",
+                    "value": false
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "rel_trocken",
+                    "rationale": "Relative Trockenlegung dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "relative-isolation",
+                    "note": "Standard für einfache Füllungen"
+                }
+            ],
+            "priority": 56,
+            "active": false
+        },
+        {
+            "id": "rule-mkv-confirmed-emits-insurance-chip",
+            "name": "MKV bestätigt → Insurance-Track-Chip",
+            "description": "Bei bestätigter MKV wird entsprechender Track gesetzt",
+            "tags": [
+                "administrative"
+            ],
+            "when": [
+                {
+                    "field": "facts.mkvPresent",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "insurance_gkv_mkv",
+                    "rationale": "MKV-Track für Billing"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "sgb-v-paragraph-28",
+                    "anchorId": "sgb-v-28-2",
+                    "note": "SGB V § 28 Abs. 2 Mehrkosten"
+                }
+            ],
+            "priority": 3,
+            "active": false
+        },
+        {
+            "id": "rule-material-unknown-askback",
+            "name": "Material unbekannt → Askback",
+            "description": "Wenn Material nicht im Diktat, muss gefragt werden",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.materialMentioned",
+                    "op": "eq",
+                    "value": "unknown"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "fuellung_material",
+                    "rationale": "Material entscheidet über Technik und Dokumentation"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-allgemein",
+                    "note": "Material muss dokumentiert sein"
+                }
+            ],
+            "priority": 10,
+            "active": false
+        },
+        {
+            "id": "rule-isolation-unknown-askback",
+            "name": "Isolation unbekannt → Askback",
+            "description": "Isolationsmethode muss dokumentiert werden",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.isolationMentioned",
+                    "op": "eq",
+                    "value": "unknown"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "fuellung_isolation",
+                    "rationale": "Isolation ist kritisch für Adhäsivtechnik"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite",
+                    "note": "Isolation als Schlüsselfaktor"
+                }
+            ],
+            "priority": 11,
+            "active": false
+        },
+        {
+            "id": "rule-adhesive-unknown-composite-askback",
+            "name": "Adhäsivtechnik unbekannt bei Komposit → Askback",
+            "description": "Bei Komposit muss Adhäsivtechnik bestätigt werden",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.materialMentioned",
+                    "op": "eq",
+                    "value": "komposit"
+                },
+                {
+                    "field": "facts.adhesiveTechnique",
+                    "op": "exists",
+                    "value": false
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "fuellung_adhesive",
+                    "rationale": "Komposit erfordert Adhäsivprotokoll"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "adhesive-protocol",
+                    "note": "Adhäsiv bei Komposit obligat"
+                }
+            ],
+            "priority": 12,
+            "active": false
+        },
+        {
+            "id": "rule-layering-unknown-medium-large-askback",
+            "name": "Schichttechnik unbekannt bei mittlerer/großer Kavität → Askback",
+            "description": "Bei größerer Kavität muss Schichttechnik geklärt werden",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.materialMentioned",
+                    "op": "eq",
+                    "value": "komposit"
+                },
+                {
+                    "field": "facts.cavityExtentHint",
+                    "op": "in",
+                    "value": [
+                        "medium",
+                        "large"
+                    ]
+                },
+                {
+                    "field": "facts.layeringMentioned",
+                    "op": "exists",
+                    "value": false
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "fuellung_layering",
+                    "rationale": "Schichttechnik bei größerer Kavität dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite",
+                    "note": "Schichttechnik bei größerer Kavität empfohlen"
+                }
+            ],
+            "priority": 13,
+            "active": false
+        },
+        {
+            "id": "rule-deep-caries-protection-askback",
+            "name": "Tiefe Karies → Pulpaschutz-Askback",
+            "description": "Bei tiefer Karies muss Schutzmaßnahme geklärt werden",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.cariesDepthHint",
+                    "op": "eq",
+                    "value": "deep"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "fuellung_pulpaschutz",
+                    "rationale": "Schutzmaßnahme bei pulpanaher Karies dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-konserv",
+                    "anchorId": "deep-caries",
+                    "note": "Schutz bei tiefer Karies"
+                }
+            ],
+            "priority": 14,
+            "active": false
+        },
+        {
+            "id": "rule-insurance-context-unknown-askback",
+            "name": "Versicherungskontext unbekannt → Kontext-Askback",
+            "description": "Kassenart muss für Billing-Pfad bekannt sein (fact-only, no chip)",
+            "tags": [
+                "administrative"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "fuellung"
+                },
+                {
+                    "field": "facts.insuranceContextHint",
+                    "op": "eq",
+                    "value": "unknown"
+                }
+            ],
+            "then": [
+                {
+                    "type": "optional_askback",
+                    "target": "fuellung_insurance_context",
+                    "rationale": "Kontext für Billing-Pfad (setzt nur Fact)"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-allgemein",
+                    "note": "Abrechnungskontext muss dokumentiert sein"
+                }
+            ],
+            "priority": 5,
+            "active": false
+        },
+        {
+            "id": "rule-material-composite-emits-chip",
+            "name": "Material Komposit → Chip",
+            "description": "Bei Komposit wird entsprechender Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.materialMentioned",
+                    "op": "eq",
+                    "value": "komposit"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "fuellung_material_komposit",
+                    "rationale": "Kompositfüllung dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13",
+                    "note": "Füllungstherapie (Material dokumentationspflichtig)"
+                },
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite",
+                    "note": "Komposit als Standardmaterial"
+                }
+            ],
+            "priority": 30,
+            "active": false
+        },
+        {
+            "id": "rule-material-giz-emits-chip",
+            "name": "Material GIZ → Chip",
+            "description": "Bei GIZ wird entsprechender Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.materialMentioned",
+                    "op": "eq",
+                    "value": "giz"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "fuellung_material_giz",
+                    "rationale": "Glasionomerfüllung dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13",
+                    "note": "Füllungstherapie (GIZ dokumentieren)"
+                }
+            ],
+            "priority": 30,
+            "active": false
+        },
+        {
+            "id": "rule-isolation-rubberdam-emits-chip",
+            "name": "Isolation Kofferdam → Chip",
+            "description": "Bei Kofferdam wird entsprechender Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.isolationMentioned",
+                    "op": "eq",
+                    "value": "rubberDam"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "kofferdam",
+                    "rationale": "Kofferdam dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12",
+                    "note": "Kofferdam"
+                }
+            ],
+            "priority": 31,
+            "active": false
+        },
+        {
+            "id": "rule-isolation-relative-emits-chip",
+            "name": "Isolation relativ → Chip",
+            "description": "Bei relativer Trockenlegung wird entsprechender Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.isolationMentioned",
+                    "op": "eq",
+                    "value": "relative"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "rel_trocken",
+                    "rationale": "Relative Trockenlegung dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite",
+                    "note": "Isolation als Qualitätsfaktor"
+                }
+            ],
+            "priority": 31,
+            "active": false
+        },
+        {
+            "id": "rule-adhesive-yes-emits-chip",
+            "name": "Adhäsivtechnik Ja → Chip",
+            "description": "Bei Adhäsivtechnik wird entsprechender Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.adhesiveTechnique",
+                    "op": "eq",
+                    "value": true
+                },
+                {
+                    "field": "facts.layeringMentioned",
+                    "op": "neq",
+                    "value": "yes"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "mehrschicht",
+                    "rationale": "Adhäsiv-/Mehrschichttechnik dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "adhesive-protocol",
+                    "note": "Adhäsivprotokoll dokumentationspflichtig"
+                }
+            ],
+            "priority": 32,
+            "active": false
+        },
+        {
+            "id": "rule-layering-yes-emits-chip",
+            "name": "Schichttechnik Ja → Chip",
+            "description": "Bei Mehrschichttechnik wird entsprechender Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.layeringMentioned",
+                    "op": "eq",
+                    "value": "yes"
+                }
+            ],
+            "then": [
+                {
+                    "type": "emit_chip",
+                    "target": "mehrschicht",
+                    "rationale": "Mehrschichttechnik dokumentieren"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite",
+                    "note": "Schichttechnik bei Komposit"
+                }
+            ],
+            "priority": 33,
+            "active": false
+        },
+        {
+            "id": "rule-pulpaschutz-yes-emits-chip",
+            "name": "Pulpaschutz Ja → Chip",
+            "description": "Bei Unterfüllung/Schutz wird entsprechender Chip emittiert",
+            "tags": [
+                "medical"
+            ],
+            "when": [
+                {
+                    "field": "facts.pulpaProtection",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "then": [],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-konserv",
+                    "anchorId": "deep-caries",
+                    "note": "Pulpaschutz bei tiefer Karies"
+                }
+            ],
+            "priority": 34,
+            "active": false
+        }
+    ],
+    "askbacks": [
+        {
+            "id": "askback-ueberkappung",
+            "questionKey": "ueberkappung",
+            "name": "Überkappung durchgeführt?",
+            "rationale": "Bei pulpanaher Karies entscheidet der Behandler, ob eine Überkappung erforderlich war",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.cariesDepth",
+                    "op": "in",
+                    "value": [
+                        "profunda",
+                        "pulp_near"
+                    ]
+                }
+            ],
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-caries-profunda"
+                }
+            ],
+            "options": [
+                {
+                    "id": "indirekt",
+                    "label": "Ja, indirekt (Cp)",
+                    "dataValue": "indirekt"
+                },
+                {
+                    "id": "direkt",
+                    "label": "Ja, direkt (P)",
+                    "dataValue": "direkt"
+                },
+                {
+                    "id": "nein",
+                    "label": "Nein",
+                    "dataValue": "keine"
+                }
+            ]
+        },
+        {
+            "id": "askback-ueberkappung-material",
+            "questionKey": "ueberkappung_material",
+            "name": "Überkappungsmaterial?",
+            "rationale": "Materialwahl ist für Dokumentation und Abrechnung erforderlich",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.capping.performed",
+                    "op": "eq",
+                    "value": "yes"
+                }
+            ],
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-pulp-capping-material"
+                }
+            ],
+            "options": [
+                {
+                    "id": "caoh2",
+                    "label": "Ca(OH)₂",
+                    "dataValue": "Ca(OH)₂"
+                },
+                {
+                    "id": "mta",
+                    "label": "MTA",
+                    "dataValue": "MTA"
+                },
+                {
+                    "id": "biodentine",
+                    "label": "Biodentine",
+                    "dataValue": "Biodentine"
+                }
+            ]
+        },
+        {
+            "id": "askback-hemostasis",
+            "questionKey": "hemostasis",
+            "name": "Blutstillung durchgeführt?",
+            "rationale": "Bei Exkavationsblutung muss die Hämostase dokumentiert werden",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.bleeding.detected",
+                    "op": "eq",
+                    "value": "yes"
+                }
+            ],
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-hemostasis"
+                }
+            ],
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja",
+                    "dataValue": "yes"
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": "no"
+                }
+            ]
+        },
+        {
+            "id": "askback-sensitivity-followup",
+            "questionKey": "sensitivity_followup",
+            "name": "Kontrolle bei Überempfindlichkeit geplant?",
+            "rationale": "Bei postoperativer Hypersensibilität ist zeitnahe Kontrolle empfohlen",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.sensitivity.reported",
+                    "op": "eq",
+                    "value": "yes"
+                }
+            ],
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-sensitivity"
+                }
+            ],
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja",
+                    "dataValue": "yes"
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": "no"
+                }
+            ]
+        },
+        {
+            "id": "askback-kofferdam",
+            "questionKey": "kofferdam",
+            "name": "Kofferdam verwendet?",
+            "rationale": "Dokumentation der Isolationsmethode",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.isolation",
+                    "op": "eq",
+                    "value": null
+                }
+            ],
+            "required": false,
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12"
+                },
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite"
+                }
+            ],
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja",
+                    "dataValue": "yes"
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": "no"
+                }
+            ]
+        },
+        {
+            "id": "askback-mkv-confirmed",
+            "questionKey": "mkv_confirmed",
+            "name": "Mehrkostenvereinbarung?",
+            "rationale": "Mehrkosten müssen vor Behandlung schriftlich vereinbart werden",
+            "category": "billing",
+            "triggerConditions": [
+                {
+                    "field": "facts.mkv.required",
+                    "op": "eq",
+                    "value": true
+                }
+            ],
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "sgb-v-2025",
+                    "anchorId": "sgb-v-28-abs-2"
+                }
+            ],
+            "options": [
+                {
+                    "id": "mehrkosten",
+                    "label": "Mehrkosten vereinbart",
+                    "dataValue": "mehrkosten"
+                },
+                {
+                    "id": "nur_kasse",
+                    "label": "Nur Kassenleistung",
+                    "dataValue": "nur_kasse"
+                }
+            ]
+        },
+        {
+            "id": "askback-mkv-justification",
+            "questionKey": "mkv_justification",
+            "name": "Mehrkosten-Begründung?",
+            "rationale": "Mehrkosten müssen nachvollziehbar begründet werden",
+            "category": "billing",
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "sgb-v-2025",
+                    "anchorId": "sgb-v-28-abs-2"
+                },
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13"
+                }
+            ],
+            "options": [
+                {
+                    "id": "mehrschicht",
+                    "label": "Mehrschichttechnik (adhäsiv)",
+                    "dataValue": "mehrschicht"
+                },
+                {
+                    "id": "aesthetik",
+                    "label": "Ästhetik / Materialwahl (Patientenwunsch)",
+                    "dataValue": "aesthetik"
+                },
+                {
+                    "id": "keine",
+                    "label": "Keine Mehrkosten (nur Kasse)",
+                    "dataValue": "keine"
+                }
+            ]
+        },
+        {
+            "id": "askback-layering",
+            "questionKey": "layering",
+            "name": "Mehrschichttechnik verwendet?",
+            "rationale": "Mehrschichttechnik bei Komposit dokumentieren",
+            "category": "medical",
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite"
+                }
+            ],
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja, Mehrschichttechnik",
+                    "dataValue": "yes"
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": "no"
+                }
+            ]
+        },
+        {
+            "id": "askback-pulpaschutz",
+            "questionKey": "pulpaschutz",
+            "name": "Pulpaschutz durchgeführt?",
+            "rationale": "Schutzmaßnahme bei tiefer Karies dokumentieren",
+            "category": "medical",
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-konserv",
+                    "anchorId": "deep-caries"
+                }
+            ],
+            "options": [
+                {
+                    "id": "indirekt",
+                    "label": "Ja, indirekt (Cp)",
+                    "dataValue": "indirekt"
+                },
+                {
+                    "id": "direkt",
+                    "label": "Ja, direkt (P)",
+                    "dataValue": "direkt"
+                },
+                {
+                    "id": "nein",
+                    "label": "Nein",
+                    "dataValue": "keine"
+                }
+            ]
+        },
+        {
+            "id": "askback-adhesive-technique",
+            "questionKey": "adhesive_technique",
+            "name": "Adhäsivtechnik verwendet?",
+            "rationale": "Adhäsivtechnik ist bei Kompositfüllungen erforderlich",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.material",
+                    "op": "eq",
+                    "value": "komposit"
+                }
+            ],
+            "required": false,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "adhesive-protocol"
+                }
+            ],
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja",
+                    "dataValue": "yes"
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": "no"
+                }
+            ]
+        },
+        {
+            "id": "askback-material",
+            "questionKey": "material",
+            "name": "Welches Füllungsmaterial?",
+            "rationale": "Materialwahl ist für Dokumentation und korrekte Abrechnung erforderlich",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.material",
+                    "op": "eq",
+                    "value": null
+                }
+            ],
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-13"
+                }
+            ],
+            "options": [
+                {
+                    "id": "komposit",
+                    "label": "Komposit",
+                    "dataValue": "komposit"
+                },
+                {
+                    "id": "giz",
+                    "label": "Glasionomerzement (GIZ)",
+                    "dataValue": "giz"
+                }
+            ]
+        },
+        {
+            "id": "askback-isolation",
+            "questionKey": "isolation",
+            "name": "Welche Isolation?",
+            "rationale": "Isolationsmethode muss dokumentiert werden",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.isolation",
+                    "op": "eq",
+                    "value": null
+                }
+            ],
+            "required": false,
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12"
+                },
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "direct-composite"
+                }
+            ],
+            "options": [
+                {
+                    "id": "kofferdam",
+                    "label": "Kofferdam",
+                    "dataValue": "kofferdam"
+                },
+                {
+                    "id": "relativ",
+                    "label": "Relative Trockenlegung",
+                    "dataValue": "relativ"
+                }
+            ]
+        },
+        {
+            "id": "askback-la-type",
+            "questionKey": "la_type",
+            "name": "Welche Anästhesie?",
+            "rationale": "Art der Lokalanästhesie muss dokumentiert werden",
+            "category": "medical",
+            "triggerConditions": [
+                {
+                    "field": "facts.anesthesia",
+                    "op": "eq",
+                    "value": null
+                }
+            ],
+            "required": false,
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-40"
+                },
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-41a"
+                }
+            ],
+            "options": [
+                {
+                    "id": "infiltration",
+                    "label": "Infiltration",
+                    "dataValue": "infiltration"
+                },
+                {
+                    "id": "leitung",
+                    "label": "Leitung",
+                    "dataValue": "leitung"
+                },
+                {
+                    "id": "keine",
+                    "label": "Keine",
+                    "dataValue": "keine"
+                }
+            ]
+        }
+    ],
+    "chips": [
+        {
+            "id": "chip-cp",
+            "name": "Cp (Indirekte Überkappung)",
+            "description": "Chip für indirekte Überkappung bei pulpanaher Kavität",
+            "kbChipId": "cp",
+            "activationRationale": "Wird emittiert wenn capping.performed === 'yes'",
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-25"
+                },
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2330"
+                }
+            ]
+        },
+        {
+            "id": "chip-cp-not-required",
+            "name": "Cp nicht erforderlich",
+            "description": "Dokumentationschip: Tiefe Kavität, aber keine Überkappung nötig",
+            "kbChipId": "cp_not_required",
+            "activationRationale": "Wird emittiert wenn capping.performed === 'no' bei profunda",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-caries-profunda",
+                    "note": "Forensische Dokumentation des Exkavationsergebnisses"
+                }
+            ]
+        },
+        {
+            "id": "chip-exkavation",
+            "name": "Exkavation",
+            "description": "Dokumentationschip für Kariesexkavation",
+            "kbChipId": "exkavation",
+            "activationRationale": "Wird emittiert wenn exkavationPerformed === true",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-exkavation"
+                }
+            ]
+        },
+        {
+            "id": "chip-finishing",
+            "name": "Finishing/Politur",
+            "description": "Okklusionskontrolle und Politur dokumentiert",
+            "kbChipId": "finishing",
+            "activationRationale": "Wird emittiert wenn finishingPerformed === true",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-consensus",
+                    "anchorId": "finishing-polish"
+                }
+            ]
+        },
+        {
+            "id": "chip-oberflaeche-la",
+            "name": "Oberflächenanästhesie",
+            "description": "Topische Anästhesie vor Injektion",
+            "kbChipId": "oberflaeche_la",
+            "activationRationale": "Wird emittiert wenn surfaceAnesthesia === true",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-anesthesia"
+                }
+            ]
+        },
+        {
+            "id": "chip-vipr-pos",
+            "name": "ViPr +",
+            "description": "Vitalitätsprüfung positiv",
+            "kbChipId": "vipr_pos",
+            "activationRationale": "Wird emittiert wenn vitality === 'pos'",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-vipr"
+                }
+            ]
+        },
+        {
+            "id": "chip-vipr-neg",
+            "name": "ViPr −",
+            "description": "Vitalitätsprüfung negativ",
+            "kbChipId": "vipr_neg",
+            "activationRationale": "Wird emittiert wenn vitality === 'neg'",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-vipr"
+                }
+            ]
+        },
+        {
+            "id": "chip-perk-pos",
+            "name": "Perk +",
+            "description": "Perkussion positiv",
+            "kbChipId": "perk_pos",
+            "activationRationale": "Wird emittiert wenn percussion === 'pos'",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-percussion"
+                }
+            ]
+        },
+        {
+            "id": "chip-perk-neg",
+            "name": "Perk −",
+            "description": "Perkussion negativ",
+            "kbChipId": "perk_neg",
+            "activationRationale": "Wird emittiert wenn percussion === 'neg'",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-percussion"
+                }
+            ]
+        },
+        {
+            "id": "chip-endo-kofferdam",
+            "name": "Kofferdam (Endo)",
+            "description": "Dokumentation der absoluten Trockenlegung bei Wurzelkanalbehandlung",
+            "kbChipId": "endo_kofferdam",
+            "activationRationale": "Wird emittiert wenn endo.kofferdam === true",
+            "treatmentId": "endo",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-kofferdam"
+                }
+            ]
+        },
+        {
+            "id": "chip-endo-trepanation",
+            "name": "Trepanation",
+            "description": "Eröffnung der Pulpakammer",
+            "kbChipId": "endo_trepanation",
+            "activationRationale": "Wird emittiert wenn endo.step === 'trepanation'",
+            "treatmentId": "endo",
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-32"
+                }
+            ]
+        },
+        {
+            "id": "chip-endo-wl",
+            "name": "Arbeitslängenbestimmung",
+            "description": "Elektronische oder röntgenologische Längenbestimmung",
+            "kbChipId": "endo_wl",
+            "activationRationale": "Wird emittiert wenn endo.step === 'working_length'",
+            "treatmentId": "endo",
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-33"
+                }
+            ]
+        },
+        {
+            "id": "chip-endo-preparation",
+            "name": "Kanalaufbereitung",
+            "description": "Maschinelle oder manuelle Wurzelkanalaufbereitung",
+            "kbChipId": "endo_preparation",
+            "activationRationale": "Wird emittiert wenn endo.step === 'preparation'",
+            "treatmentId": "endo",
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-34"
+                }
+            ]
+        },
+        {
+            "id": "chip-endo-irrigation",
+            "name": "Wurzelkanalspülung",
+            "description": "Spülung mit NaOCl, EDTA etc.",
+            "kbChipId": "endo_irrigation",
+            "activationRationale": "Wird emittiert wenn endo.step === 'irrigation'",
+            "treatmentId": "endo",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-irrigation"
+                }
+            ]
+        },
+        {
+            "id": "chip-endo-medication",
+            "name": "Medikamentöse Einlage",
+            "description": "Ca(OH)2 oder andere Einlage",
+            "kbChipId": "endo_medication",
+            "activationRationale": "Wird emittiert wenn endo.step === 'medication'",
+            "treatmentId": "endo",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-medication"
+                }
+            ]
+        },
+        {
+            "id": "chip-endo-obturation",
+            "name": "Wurzelfüllung",
+            "description": "Obturation mit Guttapercha und Sealer",
+            "kbChipId": "endo_obturation",
+            "activationRationale": "Wird emittiert wenn endo.obturated === true",
+            "treatmentId": "endo",
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-35"
+                }
+            ]
+        }
+    ],
+    "defaults": [
+        {
+            "id": "default-pulpitis-risk-profunda",
+            "field": "facts.counseling.pulpitisRisk",
+            "value": "yes",
+            "conditions": [
+                {
+                    "field": "facts.cariesDepth",
+                    "op": "in",
+                    "value": [
+                        "profunda",
+                        "pulp_near"
+                    ]
+                }
+            ],
+            "rationale": "Bei tiefer Karies ist Aufklärung über Endo-Risiko Standard",
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-2024-konservierende",
+                    "anchorId": "dgzmk-konserv-pulpitis-risk"
+                }
+            ]
+        }
+    ],
+    "endoConcepts": [
+        {
+            "id": "endo-pulpitis-irreversibilis",
+            "name": "Pulpitis irreversibilis",
+            "description": "Irreversible Entzündung der Pulpa, Indikation zur Wurzelkanalbehandlung",
+            "aliases": [
+                "Pulpitis",
+                "irreversible Pulpitis"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-pulpitis"
+                }
+            ]
+        },
+        {
+            "id": "endo-pulpanekrose",
+            "name": "Pulpanekrose",
+            "description": "Absterben der Pulpa, DevitalerZahn",
+            "aliases": [
+                "Nekrose",
+                "Gangrän",
+                "devital",
+                "avital"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-nekrose"
+                }
+            ]
+        },
+        {
+            "id": "endo-apikale-parodontitis",
+            "name": "Apikale Parodontitis",
+            "description": "Entzündung des periapikalen Gewebes",
+            "aliases": [
+                "PA",
+                "periapikale Läsion",
+                "Granulom"
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-pa"
+                }
+            ]
+        }
+    ],
+    "endoRules": [
+        {
+            "id": "rule-endo-kofferdam-required",
+            "name": "Kofferdam erforderlich bei Endo",
+            "description": "Leitlinienempfehlung: Absolute Trockenlegung bei Wurzelkanalbehandlung",
+            "tags": [
+                "medical",
+                "endo"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.kofferdam",
+                    "op": "eq",
+                    "value": "unknown"
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_endo_kofferdam",
+                    "rationale": "Kofferdam ist Leitlinienstandard bei Endo"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-kofferdam"
+                }
+            ],
+            "priority": 10,
+            "active": false
+        },
+        {
+            "id": "rule-endo-wl-method-required",
+            "name": "Arbeitslängenmethode erfragen",
+            "description": "Bei Längenbestimmung muss die Methode dokumentiert werden",
+            "tags": [
+                "medical",
+                "endo"
+            ],
+            "when": [
+                {
+                    "field": "facts.endo.step",
+                    "op": "eq",
+                    "value": "working_length"
+                },
+                {
+                    "field": "facts.endo.workingLengthMethod",
+                    "op": "exists",
+                    "value": false
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_endo_wl_method",
+                    "rationale": "Methode der Längenbestimmung muss dokumentiert werden"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-wl"
+                }
+            ],
+            "priority": 15,
+            "active": false
+        },
+        {
+            "id": "rule-endo-irrigation-required",
+            "name": "Spüllösung erfragen",
+            "description": "Bei Wurzelkanalbehandlung muss die Spülung dokumentiert werden",
+            "tags": [
+                "medical",
+                "endo"
+            ],
+            "when": [
+                {
+                    "field": "facts.treatmentId",
+                    "op": "eq",
+                    "value": "endo"
+                },
+                {
+                    "field": "facts.endo.irrigationSolutions",
+                    "op": "empty",
+                    "value": true
+                }
+            ],
+            "then": [
+                {
+                    "type": "require_askback",
+                    "target": "medical_endo_irrigation",
+                    "rationale": "Spüllösungen müssen dokumentiert werden"
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-irrigation"
+                }
+            ],
+            "priority": 12,
+            "active": false
+        }
+    ],
+    "endoAskbacks": [
+        {
+            "id": "askback-endo-kofferdam",
+            "questionKey": "endo_kofferdam",
+            "name": "Kofferdam verwendet?",
+            "rationale": "Absolute Trockenlegung ist Standard bei Wurzelkanalbehandlung",
+            "category": "medical",
+            "treatmentId": "endo",
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-kofferdam"
+                }
+            ]
+        },
+        {
+            "id": "askback-endo-wl-method",
+            "questionKey": "endo_wl_method",
+            "name": "Methode der Arbeitslängenbestimmung?",
+            "rationale": "Elektronisch oder röntgenologisch muss dokumentiert werden",
+            "category": "medical",
+            "treatmentId": "endo",
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-wl"
+                }
+            ]
+        },
+        {
+            "id": "askback-endo-irrigation",
+            "questionKey": "endo_irrigation",
+            "name": "Spüllösungen verwendet?",
+            "rationale": "NaOCl, EDTA, CHX etc. müssen dokumentiert werden",
+            "category": "medical",
+            "treatmentId": "endo",
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-irrigation"
+                }
+            ]
+        },
+        {
+            "id": "askback-endo-medication",
+            "questionKey": "endo_medication",
+            "name": "Medikamentöse Einlage?",
+            "rationale": "Ca(OH)2 oder andere Einlage dokumentieren",
+            "category": "medical",
+            "treatmentId": "endo",
+            "required": false,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-medication"
+                }
+            ]
+        },
+        {
+            "id": "askback-endo-obturation-technique",
+            "questionKey": "endo_obturation_technique",
+            "name": "Obturationstechnik?",
+            "rationale": "Warmfülltechnik, Lateralkondensation, Single-Cone etc.",
+            "category": "medical",
+            "treatmentId": "endo",
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "dgzmk-endo-leitlinie-2022",
+                    "anchorId": "dgzmk-endo-obturation"
+                }
+            ]
+        },
+        {
+            "id": "askback-endo-canal-count",
+            "questionKey": "endo_canal_count",
+            "name": "Anzahl behandelter Kanäle?",
+            "rationale": "Kanalanzahl ist abrechnungsrelevant",
+            "category": "billing",
+            "treatmentId": "endo",
+            "required": true,
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-32-35"
+                }
+            ]
+        },
+        {
+            "id": "askback-mkv-confirmed",
+            "questionKey": "mkv_confirmed",
+            "name": "Liegt eine schriftliche Mehrkostenvereinbarung vor?",
+            "rationale": "Ohne MKV darf GOZ-Differenz nicht an Patient berechnet werden",
+            "category": "administrative",
+            "treatmentId": "fuellung",
+            "required": true,
+            "defaultIfUnanswered": null,
+            "sourceRefs": [
+                {
+                    "sourceId": "sgb-v-2025",
+                    "anchorId": "sgb-v-28-abs-2"
+                }
+            ]
+        },
+        {
+            "id": "askback-adhesive-technique",
+            "questionKey": "adhesive_technique",
+            "name": "Wurde Adhäsivtechnik (Mehrschicht) angewendet?",
+            "rationale": "Adhäsivtechnik ist Voraussetzung für Mehrschicht-Abrechnung bei MKV",
+            "category": "medical",
+            "treatmentId": "fuellung",
+            "required": true,
+            "defaultIfUnanswered": null,
+            "sourceRefs": [
+                {
+                    "sourceId": "goz-kommentar-bundeszahnaerztekammer",
+                    "anchorId": "goz-2197"
+                }
+            ]
+        },
+        {
+            "id": "askback-kofferdam",
+            "questionKey": "kofferdam_used",
+            "name": "Wurde Kofferdam angelegt?",
+            "rationale": "Kofferdam-Abrechnung nur bei tatsächlicher Anwendung",
+            "category": "medical",
+            "treatmentId": "fuellung",
+            "required": false,
+            "defaultIfUnanswered": false,
+            "sourceRefs": [
+                {
+                    "sourceId": "bema-katalog-2025",
+                    "anchorId": "bema-pos-12"
+                }
+            ]
+        }
+    ]
+}

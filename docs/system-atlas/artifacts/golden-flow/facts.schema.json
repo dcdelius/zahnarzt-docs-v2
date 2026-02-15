@@ -1,0 +1,115 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "facts.schema.json",
+    "title": "Extraction Facts Schema",
+    "description": "Schema for facts extracted from dictation. ONLY raw facts, NO medical logic, NO billing.",
+    "type": "object",
+    "properties": {
+        "teeth": {
+            "type": "array",
+            "description": "List of teeth mentioned in dictation",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "tooth": {
+                        "type": "string",
+                        "pattern": "^[1-4][1-8]$|^[5-8][1-5]$",
+                        "description": "FDI tooth number (e.g., '36', '14')"
+                    },
+                    "surfaces": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "o",
+                                "m",
+                                "d",
+                                "b",
+                                "l",
+                                "v",
+                                "p",
+                                "i"
+                            ]
+                        },
+                        "description": "Affected surfaces (okklusal, mesial, distal, bukkal, lingual, vestibulär, palatinal, inzisal)"
+                    }
+                },
+                "required": [
+                    "tooth"
+                ]
+            }
+        },
+        "materials": {
+            "type": "object",
+            "description": "Materials mentioned in dictation",
+            "properties": {
+                "filling": {
+                    "type": "string",
+                    "description": "Filling material mentioned (e.g., 'Komposit', 'Amalgam')"
+                },
+                "capping": {
+                    "type": "string",
+                    "description": "Capping material if mentioned (e.g., 'Ca(OH)2', 'MTA')"
+                },
+                "anesthetic": {
+                    "type": "string",
+                    "description": "Anesthetic mentioned (e.g., 'Ultracain')"
+                }
+            }
+        },
+        "markers": {
+            "type": "object",
+            "description": "Keywords/markers detected - NO interpretation",
+            "properties": {
+                "adhesive_mentioned": {
+                    "type": "boolean",
+                    "description": "True if 'adhäsiv', 'Adhäsivtechnik', 'Mehrschicht' mentioned"
+                },
+                "kofferdam_mentioned": {
+                    "type": "boolean",
+                    "description": "True if 'Kofferdam' mentioned"
+                },
+                "anesthesia_mentioned": {
+                    "type": "boolean",
+                    "description": "True if any form of anesthesia mentioned"
+                },
+                "capping_mentioned": {
+                    "type": "boolean",
+                    "description": "True if 'Überkappung', 'Cp', 'P' mentioned"
+                },
+                "xray_mentioned": {
+                    "type": "boolean",
+                    "description": "True if 'Röntgen' mentioned"
+                }
+            }
+        },
+        "negations": {
+            "type": "array",
+            "description": "Explicitly negated items",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "item": {
+                        "type": "string",
+                        "description": "What is negated (e.g., 'kofferdam', 'bleeding')"
+                    },
+                    "scope": {
+                        "type": "string",
+                        "description": "Scope of negation (e.g., 'global', 'tooth:36')"
+                    }
+                }
+            }
+        },
+        "keywords": {
+            "type": "array",
+            "description": "Other relevant keywords extracted verbatim",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "teeth"
+    ],
+    "additionalProperties": false
+}

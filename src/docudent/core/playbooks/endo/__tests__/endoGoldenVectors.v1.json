@@ -1,0 +1,886 @@
+[
+    {
+        "id": "T2_NORMAL_MEDCHANGE_01",
+        "rawDictation": "Zweiter Termin. Med-Wechsel geplant. Beschwerdefrei. Keine Fistel. Kanäle trocken. Gespült mit NaOCl und EDTA. CaOH2 eingelegt. Provisorischer Verschluss.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "plannedAction": "medChange",
+                "fistulaPresent": false,
+                "suppurationPresent": false
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor (geplant: Medikamentenwechsel).\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_NORMAL_MEDCHANGE_02",
+        "rawDictation": "Zweiter Termin Zahn 36. Heute Medikamentenwechsel. Alles gut. Keine Beschwerden. NaOCl und EDTA und NaCl.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "plannedAction": "medChange",
+                "tooth": "36"
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA",
+                    "NACL"
+                ],
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA",
+                    "NACL"
+                ],
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin (Zahn 36)\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor (geplant: Medikamentenwechsel).\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA und NaCl. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_NORMAL_MEDCHANGE_03",
+        "rawDictation": "Patient zum zweiten Termin. Medikamentenwechsel. Symptomfrei. CHX und NaOCl. Ca(OH)2.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "plannedAction": "medChange"
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "CHX",
+                    "NAOCL"
+                ],
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "CHX",
+                    "NAOCL"
+                ],
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor (geplant: Medikamentenwechsel).\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit CHX und NaOCl. Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_NORMAL_MEDCHANGE_04",
+        "rawDictation": "Zweiter Termin 46. Med-Wechsel. Kein Fistelgang. Kein Exsudat. Trocken.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "plannedAction": "medChange",
+                "tooth": "46",
+                "fistulaPresent": false
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin (Zahn 46)\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor (geplant: Medikamentenwechsel).\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_NORMAL_MEDCHANGE_05",
+        "rawDictation": "2. Termin. Med-Wechsel. Symptomfrei. Ledermix eingelegt.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "plannedAction": "medChange"
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_MEDICATION": "LEDERMIX",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "medication": "LEDERMIX",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor (geplant: Medikamentenwechsel).\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage Ledermix eingebracht. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_NORMAL_MEDCHANGE_06",
+        "rawDictation": "Zweiter Termin Endo. Beschwerdefrei. Fistelfrei. Trocken. NaOCl EDTA.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "fistulaPresent": false
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_NORMAL_MEDCHANGE_07",
+        "rawDictation": "2. Termin 26. Med-Wechsel. Keine Beschwerden. Kanäle schön trocken. CHX-Gel.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "plannedAction": "medChange",
+                "tooth": "26"
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_MEDICATION": "CHX_GEL",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "medication": "CHX_GEL",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin (Zahn 26)\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor (geplant: Medikamentenwechsel).\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage CHX-Gel eingebracht. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_NORMAL_MEDCHANGE_08",
+        "rawDictation": "Zweiter Termin. Dritter Kanal gefunden. Aufbereitung komplett. Med-Wechsel. CaOH2.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "plannedAction": "medChange"
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor (geplant: Medikamentenwechsel).\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_INFECTION_FISTULA_ONLY",
+        "rawDictation": "Zweiter Termin. Med-Wechsel geplant. Fistelgang noch vorhanden. Kein Eiter sichtbar.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "plannedAction": "medChange",
+                "fistulaPresent": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_SUPPURATION",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_MEDICATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_DEVIATION_REASON": "FISTULA_EXSUDATE",
+                "ENDO_T2_FISTULA_STATUS": "PRESENT",
+                "ENDO_T2_SUPPURATION": "ABSENT",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_MEDICATION": "CAOH2",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "deviationReason": "FISTULA_EXSUDATE",
+                "fistulaStatus": "PRESENT",
+                "suppurationStatus": "ABSENT",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "medication": "CAOH2",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor (geplant: Medikamentenwechsel).\nPat. berichtet über anhaltende Symptomatik.\nKlinisch weiterhin Fistelgang.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: nächster Termin bei klinischer Beruhigung / fistelfrei: Obturation; andernfalls erneute Medikation/Revision je nach Befund."
+        }
+    },
+    {
+        "id": "T2_INFECTION_SUPPURATION_ONLY",
+        "rawDictation": "Zweiter Termin. Exsudat aus den Kanälen. Kein Fistelgang. Gespült.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "suppurationPresent": true,
+                "fistulaPresent": false
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_SUPPURATION",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_MEDICATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_DEVIATION_REASON": "FISTULA_EXSUDATE",
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_SUPPURATION": "PRESENT",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_MEDICATION": "CAOH2",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "deviationReason": "FISTULA_EXSUDATE",
+                "fistulaStatus": "FREE",
+                "suppurationStatus": "PRESENT",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "medication": "CAOH2",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nPat. berichtet über anhaltende Symptomatik.\nes zeigte sich Eiter-/Exsudataustritt.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: nächster Termin bei klinischer Beruhigung / fistelfrei: Obturation; andernfalls erneute Medikation/Revision je nach Befund."
+        }
+    },
+    {
+        "id": "T2_INFECTION_BOTH_FISTULA_SUPPURATION",
+        "rawDictation": "Zweiter Termin 36. Fistelgang. Eiter austritt. Gemuckert.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "tooth": "36",
+                "fistulaPresent": true,
+                "suppurationPresent": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_SUPPURATION",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_MEDICATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_DEVIATION_REASON": "FISTULA_EXSUDATE",
+                "ENDO_T2_FISTULA_STATUS": "PRESENT",
+                "ENDO_T2_SUPPURATION": "PRESENT",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_MEDICATION": "CAOH2",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "deviationReason": "FISTULA_EXSUDATE",
+                "fistulaStatus": "PRESENT",
+                "suppurationStatus": "PRESENT",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "medication": "CAOH2",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin (Zahn 36)\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nPat. berichtet über anhaltende Symptomatik.\nKlinisch weiterhin Fistelgang; es zeigte sich Eiter-/Exsudataustritt.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: nächster Termin bei klinischer Beruhigung / fistelfrei: Obturation; andernfalls erneute Medikation/Revision je nach Befund."
+        }
+    },
+    {
+        "id": "T2_INFECTION_WITH_NACL_NO_SUFFIX",
+        "rawDictation": "Zweiter Termin. Fistelgang. Gespült NaOCl EDTA NaCl.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "fistulaPresent": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_SUPPURATION",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_MEDICATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_DEVIATION_REASON": "FISTULA_EXSUDATE",
+                "ENDO_T2_FISTULA_STATUS": "PRESENT",
+                "ENDO_T2_SUPPURATION": "ABSENT",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA",
+                    "NACL"
+                ],
+                "ENDO_T2_MEDICATION": "CAOH2",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "deviationReason": "FISTULA_EXSUDATE",
+                "fistulaStatus": "PRESENT",
+                "suppurationStatus": "ABSENT",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA",
+                    "NACL"
+                ],
+                "medication": "CAOH2",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nPat. berichtet über anhaltende Symptomatik.\nKlinisch weiterhin Fistelgang.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA und NaCl. Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: nächster Termin bei klinischer Beruhigung / fistelfrei: Obturation; andernfalls erneute Medikation/Revision je nach Befund."
+        }
+    },
+    {
+        "id": "T2_INFECTION_PAIN_DEVIATION",
+        "rawDictation": "Zweiter Termin. Patient gemuckert. Persistierende Beschwerden. Keine Fistel.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "painPersistent": true,
+                "fistulaPresent": false
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_SUPPURATION",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_MEDICATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_DEVIATION_REASON": "PAIN",
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_SUPPURATION": "ABSENT",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_MEDICATION": "CAOH2",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "deviationReason": "PAIN",
+                "fistulaStatus": "FREE",
+                "suppurationStatus": "ABSENT",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "medication": "CAOH2",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nPat. berichtet über persistierende Beschwerden.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_INFECTION_NOT_DRY",
+        "rawDictation": "Zweiter Termin. Kanäle nicht trocken. Sekretion.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_DEVIATION_REASON": "NOT_DRY_SECRETION",
+                "ENDO_T2_FISTULA_STATUS": "FREE",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_MEDICATION": "CAOH2",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "deviationReason": "NOT_DRY_SECRETION",
+                "fistulaStatus": "FREE",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "medication": "CAOH2",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_INFECTION_CHX_ONLY",
+        "rawDictation": "Zweiter Termin. Fistelgang. Nur CHX verwendet.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "fistulaPresent": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_SUPPURATION",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_MEDICATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_DEVIATION_REASON": "FISTULA_EXSUDATE",
+                "ENDO_T2_FISTULA_STATUS": "PRESENT",
+                "ENDO_T2_SUPPURATION": "ABSENT",
+                "ENDO_T2_IRRIGATION": [
+                    "CHX"
+                ],
+                "ENDO_T2_MEDICATION": "CAOH2",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "deviationReason": "FISTULA_EXSUDATE",
+                "fistulaStatus": "PRESENT",
+                "suppurationStatus": "ABSENT",
+                "irrigationSolutions": [
+                    "CHX"
+                ],
+                "medication": "CAOH2",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nPat. berichtet über anhaltende Symptomatik.\nKlinisch weiterhin Fistelgang.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit CHX. Anschließend Einlage Calciumhydroxid eingebracht. provisorisch verschlossen.\nPlan: nächster Termin bei klinischer Beruhigung / fistelfrei: Obturation; andernfalls erneute Medikation/Revision je nach Befund."
+        }
+    },
+    {
+        "id": "T2_INFECTION_DEFINITIVE_SEAL",
+        "rawDictation": "Zweiter Termin. Fistelgang. Definitiv verschlossen.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "fistulaPresent": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_SUPPURATION",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_MEDICATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_DEVIATION_REASON": "FISTULA_EXSUDATE",
+                "ENDO_T2_FISTULA_STATUS": "PRESENT",
+                "ENDO_T2_SUPPURATION": "ABSENT",
+                "ENDO_T2_IRRIGATION": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "ENDO_T2_MEDICATION": "CAOH2",
+                "ENDO_T2_TEMP_SEAL": "DEFINITIVE"
+            },
+            "normalizedFields": {
+                "deviationReason": "FISTULA_EXSUDATE",
+                "fistulaStatus": "PRESENT",
+                "suppurationStatus": "ABSENT",
+                "irrigationSolutions": [
+                    "NAOCL",
+                    "EDTA"
+                ],
+                "medication": "CAOH2",
+                "tempSeal": "DEFINITIVE"
+            },
+            "renderedNote": "Endodontie – 2. Termin\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nPat. berichtet über anhaltende Symptomatik.\nKlinisch weiterhin Fistelgang.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. Spülung mit NaOCl und EDTA (ggf. abschließend NaCl). Anschließend Einlage Calciumhydroxid eingebracht. definitiv verschlossen.\nPlan: nächster Termin bei klinischer Beruhigung / fistelfrei: Obturation; andernfalls erneute Medikation/Revision je nach Befund."
+        }
+    },
+    {
+        "id": "T2_APEX_BLOCKAGE_MB",
+        "rawDictation": "Dritter Termin Zahn 26. Obturation geplant. Stufe im MB Kanal. Nicht bis Apex.",
+        "expected": {
+            "signals": {
+                "visitNumber": 3,
+                "tooth": "26",
+                "plannedAction": "obturation",
+                "apexNotReachable": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_NEGOTIATION_STATUS",
+                "ENDO_T2_CANALS_AFFECTED",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_MASTER_FILE",
+                "ENDO_T2_PLAN_NEXT"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "NOT_TO_APEX_BLOCKAGE",
+                "ENDO_T2_CANALS_AFFECTED": [
+                    "MB"
+                ],
+                "ENDO_T2_PLAN_NEXT": "RETRY_NEXT_APPT",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "NOT_TO_APEX_BLOCKAGE",
+                "canalsAffected": [
+                    "MB"
+                ],
+                "planNext": "RETRY_NEXT_APPT",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 3. Termin (Zahn 26)\nPat. stellt sich zum 3. Termin der Wurzelkanalbehandlung vor (geplant: Obturation).\nAufbereitung/Längenführung nicht bis Apex möglich (Blockade/Stufe).\nBetroffene Kanäle: MB.\nPlan: nächster Termin erneuter Versuch der Kanalerweiterung/Längenführung."
+        }
+    },
+    {
+        "id": "T2_APEX_BLOCKAGE_MB_ML",
+        "rawDictation": "Dritter Termin 16. Obturation geplant. Blockade. MB und ML nicht passierbar.",
+        "expected": {
+            "signals": {
+                "visitNumber": 3,
+                "tooth": "16",
+                "plannedAction": "obturation",
+                "apexNotReachable": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_NEGOTIATION_STATUS",
+                "ENDO_T2_CANALS_AFFECTED",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_MASTER_FILE",
+                "ENDO_T2_PLAN_NEXT"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "NOT_TO_APEX_BLOCKAGE",
+                "ENDO_T2_CANALS_AFFECTED": [
+                    "MB",
+                    "ML"
+                ],
+                "ENDO_T2_PLAN_NEXT": "RETRY_NEXT_APPT",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "NOT_TO_APEX_BLOCKAGE",
+                "canalsAffected": [
+                    "MB",
+                    "ML"
+                ],
+                "planNext": "RETRY_NEXT_APPT",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 3. Termin (Zahn 16)\nPat. stellt sich zum 3. Termin der Wurzelkanalbehandlung vor (geplant: Obturation).\nAufbereitung/Längenführung nicht bis Apex möglich (Blockade/Stufe).\nBetroffene Kanäle: MB, ML.\nPlan: nächster Termin erneuter Versuch der Kanalerweiterung/Längenführung."
+        }
+    },
+    {
+        "id": "T2_APEX_PARTIAL",
+        "rawDictation": "Dritter Termin 46. Obturation geplant. Teilweise bis Apex. DB nicht komplett.",
+        "expected": {
+            "signals": {
+                "visitNumber": 3,
+                "tooth": "46",
+                "plannedAction": "obturation"
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_DEVIATION_REASON",
+                "ENDO_T2_NEGOTIATION_STATUS",
+                "ENDO_T2_CANALS_AFFECTED",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_MASTER_FILE",
+                "ENDO_T2_PLAN_NEXT"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "PARTIAL",
+                "ENDO_T2_CANALS_AFFECTED": [
+                    "DB"
+                ],
+                "ENDO_T2_PLAN_NEXT": "OBTURATE_TO_REACHED_LENGTH",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "PARTIAL",
+                "canalsAffected": [
+                    "DB"
+                ],
+                "planNext": "OBTURATE_TO_REACHED_LENGTH",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 3. Termin (Zahn 46)\nPat. stellt sich zum 3. Termin der Wurzelkanalbehandlung vor (geplant: Obturation).\nAufbereitung/Längenführung nicht bis Apex möglich (Blockade/Stufe).\nBetroffene Kanäle: DB.\nPlan: Obturation bis zur erreichbaren Länge je nach Befund."
+        }
+    },
+    {
+        "id": "T2_APEX_REFER_REVISION",
+        "rawDictation": "Dritter Termin 36. Stufe. Überweisung nötig.",
+        "expected": {
+            "signals": {
+                "visitNumber": 3,
+                "tooth": "36",
+                "apexNotReachable": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_NEGOTIATION_STATUS",
+                "ENDO_T2_CANALS_AFFECTED",
+                "ENDO_T2_PLAN_NEXT"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "NOT_TO_APEX_BLOCKAGE",
+                "ENDO_T2_CANALS_AFFECTED": [],
+                "ENDO_T2_PLAN_NEXT": "REFER_REVISION"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "NOT_TO_APEX_BLOCKAGE",
+                "canalsAffected": [],
+                "planNext": "REFER_REVISION"
+            },
+            "renderedNote": "Endodontie – 3. Termin (Zahn 36)\nPat. stellt sich zum 3. Termin der Wurzelkanalbehandlung vor.\nAufbereitung/Längenführung nicht bis Apex möglich (Blockade/Stufe).\nPlan: Überweisung zur Revision/MKG."
+        }
+    },
+    {
+        "id": "T2_APEX_OBLITERATED",
+        "rawDictation": "Zweiter Termin 26. Kanal obliteriert. Verkalkt.",
+        "expected": {
+            "signals": {
+                "visitNumber": 2,
+                "tooth": "26",
+                "canalNegotiationIssue": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_NEGOTIATION_STATUS",
+                "ENDO_T2_CANALS_AFFECTED",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL",
+                "ENDO_T2_PLAN_NEXT"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "NOT_TO_APEX_BLOCKAGE",
+                "ENDO_T2_CANALS_AFFECTED": [
+                    "P"
+                ],
+                "ENDO_T2_PLAN_NEXT": "RETRY_NEXT_APPT",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "NOT_TO_APEX_BLOCKAGE",
+                "canalsAffected": [
+                    "P"
+                ],
+                "planNext": "RETRY_NEXT_APPT",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 2. Termin (Zahn 26)\nPat. stellt sich zum 2. Termin der Wurzelkanalbehandlung vor.\nAufbereitung/Längenführung nicht bis Apex möglich (Blockade/Stufe).\nBetroffene Kanäle: P.\nPlan: nächster Termin erneuter Versuch der Kanalerweiterung/Längenführung."
+        }
+    },
+    {
+        "id": "T2_APEX_TO_APEX_OK",
+        "rawDictation": "Dritter Termin 36. Alle Kanäle bis Apex aufbereitet. Obturation geplant.",
+        "expected": {
+            "signals": {
+                "visitNumber": 3,
+                "tooth": "36",
+                "plannedAction": "obturation",
+                "apexNotReachable": false
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_NEGOTIATION_STATUS",
+                "ENDO_T2_CANALS_AFFECTED",
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_MASTER_FILE",
+                "ENDO_T2_PLAN_NEXT"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "TO_APEX",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "TO_APEX",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 3. Termin (Zahn 36)\nPat. stellt sich zum 3. Termin der Wurzelkanalbehandlung vor (geplant: Obturation).\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    },
+    {
+        "id": "T2_APEX_MULTIPLE_CANALS",
+        "rawDictation": "Dritter Termin 16. Stufe MB MB2 DB. Nicht passierbar.",
+        "expected": {
+            "signals": {
+                "visitNumber": 3,
+                "tooth": "16",
+                "apexNotReachable": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_NEGOTIATION_STATUS",
+                "ENDO_T2_CANALS_AFFECTED",
+                "ENDO_T2_PLAN_NEXT"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "NOT_TO_APEX_BLOCKAGE",
+                "ENDO_T2_CANALS_AFFECTED": [
+                    "MB",
+                    "MB2",
+                    "DB"
+                ],
+                "ENDO_T2_PLAN_NEXT": "REFER_REVISION"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "NOT_TO_APEX_BLOCKAGE",
+                "canalsAffected": [
+                    "MB",
+                    "MB2",
+                    "DB"
+                ],
+                "planNext": "REFER_REVISION"
+            },
+            "renderedNote": "Endodontie – 3. Termin (Zahn 16)\nPat. stellt sich zum 3. Termin der Wurzelkanalbehandlung vor.\nAufbereitung/Längenführung nicht bis Apex möglich (Blockade/Stufe).\nBetroffene Kanäle: MB, MB2, DB.\nPlan: Überweisung zur Revision/MKG."
+        }
+    },
+    {
+        "id": "T2_APEX_OBTURATE_SHORT",
+        "rawDictation": "Dritter Termin 46. Verkürzte Aufbereitung. Bis 15mm.",
+        "expected": {
+            "signals": {
+                "visitNumber": 3,
+                "tooth": "46",
+                "apexNotReachable": true
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_NEGOTIATION_STATUS",
+                "ENDO_T2_CANALS_AFFECTED",
+                "ENDO_T2_PLAN_NEXT"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "NOT_TO_APEX_BLOCKAGE",
+                "ENDO_T2_CANALS_AFFECTED": [],
+                "ENDO_T2_PLAN_NEXT": "OBTURATE_TO_REACHED_LENGTH"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "NOT_TO_APEX_BLOCKAGE",
+                "canalsAffected": [],
+                "planNext": "OBTURATE_TO_REACHED_LENGTH"
+            },
+            "renderedNote": "Endodontie – 3. Termin (Zahn 46)\nPat. stellt sich zum 3. Termin der Wurzelkanalbehandlung vor.\nAufbereitung/Längenführung nicht bis Apex möglich (Blockade/Stufe).\nPlan: Obturation bis zur erreichbaren Länge je nach Befund."
+        }
+    },
+    {
+        "id": "T2_APEX_UNCLEAR_STATUS",
+        "rawDictation": "Dritter Termin 36. Nicht sicher ob bis Apex.",
+        "expected": {
+            "signals": {
+                "visitNumber": 3,
+                "tooth": "36"
+            },
+            "questionIdsInOrder": [
+                "ENDO_T2_FISTULA_STATUS",
+                "ENDO_T2_IRRIGATION",
+                "ENDO_T2_TEMP_SEAL"
+            ],
+            "answersByQuestionId": {
+                "ENDO_T2_NEGOTIATION_STATUS": "UNCLEAR",
+                "ENDO_T2_TEMP_SEAL": "PROVISIONAL"
+            },
+            "normalizedFields": {
+                "negotiationStatus": "UNCLEAR",
+                "tempSeal": "PROVISIONAL"
+            },
+            "renderedNote": "Endodontie – 3. Termin (Zahn 36)\nPat. stellt sich zum 3. Termin der Wurzelkanalbehandlung vor.\nDaher heute keine Obturation, stattdessen erneute gründliche Spülung und Medikamentenwechsel. provisorisch verschlossen.\nPlan: Fortsetzung/Abschluss der endodontischen Behandlung."
+        }
+    }
+]

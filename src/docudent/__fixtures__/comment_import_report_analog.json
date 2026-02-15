@@ -1,0 +1,315 @@
+{
+  "meta": {
+    "version": "v1",
+    "timestamp": "2025-12-14T21:33:51.961Z",
+    "sourceDir": "/Users/david/dokumaster-ui/src/docudent/Analogleistungen"
+  },
+  "discovery": {
+    "totalFiles": 104,
+    "filesProcessed": 57,
+    "filesSkipped": [
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (1).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (10).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (11).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (12).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (13).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (14).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (15).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (2).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (3).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (4).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (5).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (6).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (7).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (8).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (9).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (1).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (2).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (3).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (4).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (5).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (6).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (7).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext.html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (1).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (2).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (3).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (4).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (5).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (6).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (7).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht.html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (1).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (2).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (3).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (4).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (5).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (6).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (7).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D (1).html",
+        "reason": "Duplicate copy"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D (2).html",
+        "reason": "Duplicate copy"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D (3).html",
+        "reason": "Duplicate copy"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D (4).html",
+        "reason": "Duplicate copy"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D (5).html",
+        "reason": "Duplicate copy"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D (6).html",
+        "reason": "Duplicate copy"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D (7).html",
+        "reason": "Duplicate copy"
+      }
+    ],
+    "filesFailed": [
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377753%27%5D.html",
+        "error": "Could not extract analog code"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D.html",
+        "error": "Could not extract analog code"
+      }
+    ]
+  },
+  "summary": {
+    "totalCards": 57,
+    "dedupeCount": 0,
+    "uniqueCodes": 57,
+    "analogHints": 57,
+    "crossReferences": {
+      "GOZ": 249,
+      "GOAE": 29,
+      "BEMA": 3
+    }
+  },
+  "topCodes": [
+    {
+      "code": "ANALOG_Aufbiss_01",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_Aufbiss_02",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_Chir_03",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_Chir_04",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_Chir_05",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_Chir_06",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_Chir_Analgosedierung",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_Chir_Autologe_Blutkonzentrate",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_Chir_Wurzelamputation",
+      "count": 1
+    },
+    {
+      "code": "ANALOG_FAL_01",
+      "count": 1
+    }
+  ],
+  "uniqueCodes": [
+    "ANALOG_Aufbiss_01",
+    "ANALOG_Aufbiss_02",
+    "ANALOG_Chir_03",
+    "ANALOG_Chir_04",
+    "ANALOG_Chir_05",
+    "ANALOG_Chir_06",
+    "ANALOG_Chir_Analgosedierung",
+    "ANALOG_Chir_Autologe_Blutkonzentrate",
+    "ANALOG_Chir_Wurzelamputation",
+    "ANALOG_FAL_01",
+    "ANALOG_FAL_02",
+    "ANALOG_FAL_03",
+    "ANALOG_FAL_04",
+    "ANALOG_FAL_05",
+    "ANALOG_FAL_06",
+    "ANALOG_FAL_07",
+    "ANALOG_FAL_08",
+    "ANALOG_FAL_09",
+    "ANALOG_FAL_10",
+    "ANALOG_FAL_11",
+    "ANALOG_FAL_12",
+    "ANALOG_FAL_13",
+    "ANALOG_FAL_14",
+    "ANALOG_FAL_15",
+    "ANALOG_FAL_16",
+    "ANALOG_FAL_Analog_BSI",
+    "ANALOG_Impl_02",
+    "ANALOG_Impl_03",
+    "ANALOG_Impl_Augmentation",
+    "ANALOG_KFO_01",
+    "ANALOG_KFO_03",
+    "ANALOG_KFO_04",
+    "ANALOG_KFO_05",
+    "ANALOG_KFO_06",
+    "ANALOG_KFO_08",
+    "ANALOG_KFO_09",
+    "ANALOG_KFO_10",
+    "ANALOG_KFO_11",
+    "ANALOG_KFO_12",
+    "ANALOG_KFO_ASR",
+    "ANALOG_Kons_01",
+    "ANALOG_Kons_02",
+    "ANALOG_Kons_03",
+    "ANALOG_Kons_04",
+    "ANALOG_Kons_05",
+    "ANALOG_Kons_06",
+    "ANALOG_Kons_07",
+    "ANALOG_Kons_08",
+    "ANALOG_Kons_Analog_Apex",
+    "ANALOG_Kons_Analog_LAI",
+    "ANALOG_Paro_01",
+    "ANALOG_Paro_03",
+    "ANALOG_Paro_aPDT",
+    "ANALOG_ZE_01",
+    "ANALOG_ZE_02",
+    "ANALOG_ZE_03",
+    "ANALOG_ZE_Mesokonstruktion"
+  ]
+}

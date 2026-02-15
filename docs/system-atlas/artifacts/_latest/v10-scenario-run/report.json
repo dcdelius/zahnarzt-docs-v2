@@ -1,0 +1,1164 @@
+{
+  "runId": "2026-02-01T17:03:49.697Z",
+  "total": 30,
+  "pass": 30,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "01",
+      "title": "GKV Standard 1fl + LA + Fluor",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 36 okklusal, Komposit. Infiltrationsanästhesie. Politur, Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13",
+        "BEMA_40",
+        "BEMA_IP4"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "BEMA_40",
+            "BEMA_IP4"
+          ],
+          "textLen": 323
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 987,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Daraufhin Abschließend Fluoridierung. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "02",
+      "title": "GKV 2fl + Kofferdam",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 36 okklusal distal. Kofferdam.",
+      "questionsAsked": [
+        "fuellung-36-1::forensic_anesthesia_type::tooth:36",
+        "fuellung-36-1::forensic_diagnose_confirmation::tooth:36",
+        "fuellung-36-1::forensic_ueberkappung_material::tooth:36",
+        "fuellung-36-1::forensic_ueberkappung::tooth:36",
+        "fuellung-36-1::fuellung_material::tooth:36",
+        "fuellung-36-1::medical_percussion::tooth:36",
+        "fuellung-36-1::medical_vitality::tooth:36"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::forensic_anesthesia_type::tooth:36": "infiltr",
+        "fuellung-36-1::forensic_diagnose_confirmation::tooth:36": "ja",
+        "fuellung-36-1::forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+        "fuellung-36-1::forensic_ueberkappung::tooth:36": "keine",
+        "fuellung-36-1::fuellung_material::tooth:36": "komposit",
+        "fuellung-36-1::medical_percussion::tooth:36": "-",
+        "fuellung-36-1::medical_vitality::tooth:36": "+"
+      },
+      "billingRefs": [
+        "BEMA_13b",
+        "BEMA_12",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13b",
+            "BEMA_12",
+            "BEMA_40"
+          ],
+          "textLen": 159
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (OD): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S). ViPr + Perk −"
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 766,
+      "fullText": "[Befund]\nZahn 36. OD. ViPr+. Perk−\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (OD): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Kofferdam angelegt. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "03",
+      "title": "GKV 3fl + profunda + direkte Überkappung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 26 mesial okklusal distal, Karies profunda. Direkte Überkappung.",
+      "questionsAsked": [
+        "fuellung-26-1::forensic_anesthesia_type::tooth:26",
+        "fuellung-26-1::forensic_diagnose_confirmation::tooth:26",
+        "fuellung-26-1::forensic_ueberkappung::tooth:26",
+        "fuellung-26-1::fuellung_isolation::tooth:26",
+        "fuellung-26-1::fuellung_material::tooth:26",
+        "fuellung-26-1::medical_percussion::tooth:26",
+        "fuellung-26-1::medical_ueberkappung_material::tooth:26",
+        "fuellung-26-1::medical_vitality::tooth:26"
+      ],
+      "answersUsed": {
+        "fuellung-26-1::forensic_anesthesia_type::tooth:26": "infiltr",
+        "fuellung-26-1::forensic_diagnose_confirmation::tooth:26": "ja",
+        "fuellung-26-1::forensic_ueberkappung::tooth:26": "direkt",
+        "fuellung-26-1::fuellung_isolation::tooth:26": "keine",
+        "fuellung-26-1::fuellung_material::tooth:26": "komposit",
+        "fuellung-26-1::medical_percussion::tooth:26": "-",
+        "fuellung-26-1::medical_ueberkappung_material::tooth:26": "MTA",
+        "fuellung-26-1::medical_vitality::tooth:26": "+"
+      },
+      "billingRefs": [
+        "BEMA_13c",
+        "BEMA_26",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-26-1": {
+          "billingRefs": [
+            "BEMA_13c",
+            "BEMA_26",
+            "BEMA_40"
+          ],
+          "textLen": 221
+        }
+      },
+      "perInstanceText": {
+        "fuellung-26-1": "Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Punktförmige Pulpaeröffnung, direkte Überkappung mit MTA. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). ViPr + Perk −"
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 832,
+      "fullText": "[Befund]\nZahn 26. MOD. Caries profunda. ViPr+. Perk−\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Anschließend LA Infiltration ({la_agent}). Daraufhin Punktförmige Pulpaeröffnung, direkte Überkappung mit MTA. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• P (MTA).\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "04",
+      "title": "PKV 1fl + LA + Kofferdam + Fluor",
+      "insuranceType": "PKV",
+      "dictation": "Füllung Zahn 36 okklusal Komposit, Adhäsivtechnik, Kofferdam, Infiltrationsanästhesie, Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "GOZ_2060",
+        "GOZ_2040",
+        "GOZ_0090",
+        "GOZ_1020"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "GOZ_2060",
+            "GOZ_2040",
+            "GOZ_0090",
+            "GOZ_1020"
+          ],
+          "textLen": 283
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S). Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 960,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Kofferdam angelegt. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Abschließend Fluoridierung. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "05",
+      "title": "MKV Mehrkosten explizit + Maßnahmen",
+      "insuranceType": "MKV",
+      "dictation": "Füllung Zahn 36 okklusal Komposit, Mehrkostenvereinbarung. Kofferdam. Infiltrationsanästhesie. Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13",
+        "GOZ_2060",
+        "BEMA_12",
+        "BEMA_40",
+        "BEMA_IP4"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "GOZ_2060",
+            "BEMA_12",
+            "BEMA_40",
+            "BEMA_IP4"
+          ],
+          "textLen": 348
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S). Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 1211,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Kofferdam angelegt. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Abschließend Fluoridierung. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "06",
+      "title": "MKV nur Kasse (Addon muss aus)",
+      "insuranceType": "MKV",
+      "dictation": "Füllung Zahn 36 okklusal Komposit, nur Kasse. Infiltrationsanästhesie. Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13",
+        "BEMA_40",
+        "BEMA_IP4"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "BEMA_40",
+            "BEMA_IP4"
+          ],
+          "textLen": 287
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). Relative Trockenlegung. Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 1005,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Es wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Relative Trockenlegung. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Abschließend Fluoridierung. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "07",
+      "title": "GKV Flächen fehlen → Surface-Askback",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 36 Komposit.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13b"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13b"
+          ],
+          "textLen": 203
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (OD): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 560,
+      "fullText": "[Befund]\nZahn 36. OD\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (OD): Füllungstherapie{depthDisplay}. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "08",
+      "title": "MKV ohne Keyword (Praxis-Default Addon)",
+      "insuranceType": "MKV",
+      "dictation": "Füllung Zahn 36 okklusal Komposit.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13",
+        "GOZ_2060"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "GOZ_2060"
+          ],
+          "textLen": 202
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 809,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "09",
+      "title": "Multi-Tooth Isolation",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 36 okklusal, Infiltrationsanästhesie. Zusätzlich Füllung Zahn 14 okklusal.",
+      "questionsAsked": [
+        "fuellung-14-2::forensic_diagnose_confirmation::tooth:14",
+        "fuellung-14-2::forensic_ueberkappung_material::tooth:14",
+        "fuellung-14-2::forensic_ueberkappung::tooth:14",
+        "fuellung-14-2::fuellung_isolation::tooth:14",
+        "fuellung-14-2::fuellung_material::tooth:14",
+        "fuellung-14-2::medical_percussion::tooth:14",
+        "fuellung-14-2::medical_vitality::tooth:14",
+        "fuellung-36-1::forensic_diagnose_confirmation::tooth:36",
+        "fuellung-36-1::forensic_ueberkappung_material::tooth:36",
+        "fuellung-36-1::forensic_ueberkappung::tooth:36",
+        "fuellung-36-1::fuellung_isolation::tooth:36",
+        "fuellung-36-1::fuellung_material::tooth:36",
+        "fuellung-36-1::medical_percussion::tooth:36",
+        "fuellung-36-1::medical_vitality::tooth:36"
+      ],
+      "answersUsed": {
+        "fuellung-14-2::forensic_diagnose_confirmation::tooth:14": "ja",
+        "fuellung-14-2::forensic_ueberkappung_material::tooth:14": "Ca(OH)2",
+        "fuellung-14-2::forensic_ueberkappung::tooth:14": "keine",
+        "fuellung-14-2::fuellung_isolation::tooth:14": "relativ",
+        "fuellung-14-2::fuellung_material::tooth:14": "komposit",
+        "fuellung-14-2::medical_percussion::tooth:14": "-",
+        "fuellung-14-2::medical_vitality::tooth:14": "+",
+        "fuellung-36-1::forensic_diagnose_confirmation::tooth:36": "ja",
+        "fuellung-36-1::forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+        "fuellung-36-1::forensic_ueberkappung::tooth:36": "keine",
+        "fuellung-36-1::fuellung_isolation::tooth:36": "relativ",
+        "fuellung-36-1::fuellung_material::tooth:36": "komposit",
+        "fuellung-36-1::medical_percussion::tooth:36": "-",
+        "fuellung-36-1::medical_vitality::tooth:36": "+"
+      },
+      "billingRefs": [
+        "BEMA_13",
+        "BEMA_40",
+        "BEMA_13",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "BEMA_40"
+          ],
+          "textLen": 162
+        },
+        "fuellung-14-2": {
+          "billingRefs": [
+            "BEMA_13",
+            "BEMA_40"
+          ],
+          "textLen": 162
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Relative Trockenlegung. LA Infiltration (Ultracain D-S). ViPr + Perk −",
+        "fuellung-14-2": "Zahn 14 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Relative Trockenlegung. LA Infiltration (Ultracain D-S). ViPr + Perk −"
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 1434,
+      "fullText": "[Befund]\nZahn 36. O. ViPr+. Perk−\n\nZahn 14. O. ViPr+. Perk−\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Relative Trockenlegung. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nZu Beginn Zahn 14 (O): Füllungstherapie{depthDisplay}. Anschließend LA Infiltration ({la_agent}). Daraufhin Relative Trockenlegung. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n\n• LA Infiltr.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "10",
+      "title": "GKV profunda ohne Art → Capping-Askback",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 46 okklusal, Karies profunda.",
+      "questionsAsked": [
+        "fuellung-46-1::forensic_anesthesia_type::tooth:46",
+        "fuellung-46-1::forensic_diagnose_confirmation::tooth:46",
+        "fuellung-46-1::forensic_ueberkappung::tooth:46",
+        "fuellung-46-1::fuellung_isolation::tooth:46",
+        "fuellung-46-1::fuellung_material::tooth:46",
+        "fuellung-46-1::medical_percussion::tooth:46",
+        "fuellung-46-1::medical_ueberkappung_material::tooth:46",
+        "fuellung-46-1::medical_vitality::tooth:46"
+      ],
+      "answersUsed": {
+        "fuellung-46-1::forensic_anesthesia_type::tooth:46": "infiltr",
+        "fuellung-46-1::forensic_diagnose_confirmation::tooth:46": "ja",
+        "fuellung-46-1::forensic_ueberkappung::tooth:46": "direkt",
+        "fuellung-46-1::fuellung_isolation::tooth:46": "keine",
+        "fuellung-46-1::fuellung_material::tooth:46": "komposit",
+        "fuellung-46-1::medical_percussion::tooth:46": "-",
+        "fuellung-46-1::medical_ueberkappung_material::tooth:46": "MTA",
+        "fuellung-46-1::medical_vitality::tooth:46": "+"
+      },
+      "billingRefs": [
+        "BEMA_13",
+        "BEMA_25",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-46-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "BEMA_25",
+            "BEMA_40"
+          ],
+          "textLen": 214
+        }
+      },
+      "perInstanceText": {
+        "fuellung-46-1": "Zahn 46 (O): Füllungstherapie tief (caries profunda). Pulpanahe Exkavation, indirekte Überkappung mit MTA. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). ViPr + Perk −"
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 927,
+      "fullText": "[Befund]\nZahn 46. O. Caries profunda. ViPr+. Perk−\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Bei der indirekten Überkappung (Cp) wurde über das Risiko einer späteren Vitalitätsverlust aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Zahn 46 (O): Füllungstherapie tief (caries profunda). Im Weiteren LA Infiltration ({la_agent}). Anschließend Pulpanahe Exkavation, indirekte Überkappung mit MTA. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Cp (MTA).\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "11",
+      "title": "GKV MOD + indirekte Überkappung + Kofferdam",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 26 mod, tiefe Karies. Pulpa nicht eröffnet. Indirekte Überkappung mit Ca(OH)2, Kofferdam, Infiltrationsanästhesie. Komposit, Mehrschichttechnik, Politur, Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13c",
+        "BEMA_25",
+        "BEMA_12",
+        "BEMA_40",
+        "BEMA_IP4"
+      ],
+      "perInstance": {
+        "fuellung-26-1": {
+          "billingRefs": [
+            "BEMA_13c",
+            "BEMA_25",
+            "BEMA_12",
+            "BEMA_40",
+            "BEMA_IP4"
+          ],
+          "textLen": 425
+        }
+      },
+      "perInstanceText": {
+        "fuellung-26-1": "Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S). Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 1252,
+      "fullText": "[Befund]\nZahn 26. MOD. Caries profunda\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Bei der indirekten Überkappung (Cp) wurde über das Risiko einer späteren Vitalitätsverlust aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Anschließend LA Infiltration ({la_agent}). Daraufhin Kofferdam angelegt. Im Weiteren Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Im Weiteren Abschließend Fluoridierung. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Cp (Ca(OH)₂).\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "12",
+      "title": "GKV 1fl + LA + Fluor",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 36 okklusal, Komposit. Infiltrationsanästhesie. Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13",
+        "BEMA_40",
+        "BEMA_IP4"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "BEMA_40",
+            "BEMA_IP4"
+          ],
+          "textLen": 263
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 918,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Abschließend Fluoridierung. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "13",
+      "title": "GKV 2fl + Kofferdam + LA",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 24 okklusal distal, Kofferdam, Infiltrationsanästhesie, Komposit.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13b",
+        "BEMA_12",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-24-1": {
+          "billingRefs": [
+            "BEMA_13b",
+            "BEMA_12",
+            "BEMA_40"
+          ],
+          "textLen": 256
+        }
+      },
+      "perInstanceText": {
+        "fuellung-24-1": "Zahn 24 (OD): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S)."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 908,
+      "fullText": "[Befund]\nZahn 24. OD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 24 (OD): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Kofferdam angelegt. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "14",
+      "title": "GKV 3fl + Cp + Kofferdam + Fluor",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 26 mod, tiefe Karies. Indirekte Überkappung mit Ca(OH)2, Kofferdam, Infiltrationsanästhesie, Komposit, Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13c",
+        "BEMA_25",
+        "BEMA_12",
+        "BEMA_40",
+        "BEMA_IP4"
+      ],
+      "perInstance": {
+        "fuellung-26-1": {
+          "billingRefs": [
+            "BEMA_13c",
+            "BEMA_25",
+            "BEMA_12",
+            "BEMA_40",
+            "BEMA_IP4"
+          ],
+          "textLen": 365
+        }
+      },
+      "perInstanceText": {
+        "fuellung-26-1": "Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S). Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 1181,
+      "fullText": "[Befund]\nZahn 26. MOD. Caries profunda\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Bei der indirekten Überkappung (Cp) wurde über das Risiko einer späteren Vitalitätsverlust aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Anschließend LA Infiltration ({la_agent}). Daraufhin Kofferdam angelegt. Im Weiteren Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Abschließend Fluoridierung. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Cp (Ca(OH)₂).\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "15",
+      "title": "GKV 1fl GIZ ohne LA",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 14 okklusal, GIZ, keine Anästhesie.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13"
+      ],
+      "perInstance": {
+        "fuellung-14-1": {
+          "billingRefs": [
+            "BEMA_13"
+          ],
+          "textLen": 143
+        }
+      },
+      "perInstanceText": {
+        "fuellung-14-1": "Zahn 14 (O): Füllungstherapie. Komposit eingebracht und lichthärtend polymerisiert. Füllung mit selbstadhäsivem Glasionomerzement durchgeführt."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 556,
+      "fullText": "[Befund]\nZahn 14. O\n\n[Aufklärung]\nAllgemeine Risiken der Kompositfüllung (Randspalten, Verfärbung, postoperative Sensibilität) wurden besprochen. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 14 (O): Füllungstherapie{depthDisplay}. Anschließend Komposit eingebracht und lichthärtend polymerisiert. Abschließend Füllung mit selbstadhäsivem Glasionomerzement durchgeführt.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "16",
+      "title": "GKV 2fl + LA",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 34 mesial okklusal, Komposit, Infiltrationsanästhesie.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13b",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-34-1": {
+          "billingRefs": [
+            "BEMA_13b",
+            "BEMA_40"
+          ],
+          "textLen": 236
+        }
+      },
+      "perInstanceText": {
+        "fuellung-34-1": "Zahn 34 (MO): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S)."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 863,
+      "fullText": "[Befund]\nZahn 34. MO\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Zahn 34 (MO): Füllungstherapie{depthDisplay}. Im Weiteren LA Infiltration ({la_agent}). Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "17",
+      "title": "MKV 1fl + Mehrkosten",
+      "insuranceType": "MKV",
+      "dictation": "Füllung Zahn 36 okklusal Komposit, Mehrkostenvereinbarung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13",
+        "GOZ_2060"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "GOZ_2060"
+          ],
+          "textLen": 267
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 809,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "18",
+      "title": "MKV 2fl + Kofferdam",
+      "insuranceType": "MKV",
+      "dictation": "Füllung Zahn 24 okklusal distal Komposit, Kofferdam, Mehrkostenvereinbarung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13b",
+        "GOZ_2080",
+        "BEMA_12"
+      ],
+      "perInstance": {
+        "fuellung-24-1": {
+          "billingRefs": [
+            "BEMA_13b",
+            "GOZ_2080",
+            "BEMA_12"
+          ],
+          "textLen": 288
+        }
+      },
+      "perInstanceText": {
+        "fuellung-24-1": "Zahn 24 (OD): Füllungstherapie. Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 855,
+      "fullText": "[Befund]\nZahn 24. OD\n\n[Aufklärung]\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZunächst Zahn 24 (OD): Füllungstherapie{depthDisplay}. Daraufhin Kofferdam angelegt. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "19",
+      "title": "MKV 3fl + Cp",
+      "insuranceType": "MKV",
+      "dictation": "Füllung Zahn 26 mod, tiefe Karies. Indirekte Überkappung mit Ca(OH)2. Mehrkostenvereinbarung.",
+      "questionsAsked": [
+        "fuellung-26-1::forensic_anesthesia_type::tooth:26",
+        "fuellung-26-1::forensic_diagnose_confirmation::tooth:26",
+        "fuellung-26-1::forensic_ueberkappung_material::tooth:26",
+        "fuellung-26-1::forensic_ueberkappung::tooth:26",
+        "fuellung-26-1::fuellung_isolation::tooth:26",
+        "fuellung-26-1::fuellung_material::tooth:26",
+        "fuellung-26-1::medical_percussion::tooth:26",
+        "fuellung-26-1::medical_vitality::tooth:26"
+      ],
+      "answersUsed": {
+        "fuellung-26-1::forensic_anesthesia_type::tooth:26": "infiltr",
+        "fuellung-26-1::forensic_diagnose_confirmation::tooth:26": "ja",
+        "fuellung-26-1::forensic_ueberkappung_material::tooth:26": "Ca(OH)2",
+        "fuellung-26-1::forensic_ueberkappung::tooth:26": "indirekt",
+        "fuellung-26-1::fuellung_isolation::tooth:26": "keine",
+        "fuellung-26-1::fuellung_material::tooth:26": "komposit",
+        "fuellung-26-1::medical_percussion::tooth:26": "-",
+        "fuellung-26-1::medical_vitality::tooth:26": "+"
+      },
+      "billingRefs": [
+        "BEMA_13c",
+        "GOZ_2100",
+        "BEMA_25",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-26-1": {
+          "billingRefs": [
+            "BEMA_13c",
+            "GOZ_2100",
+            "BEMA_25",
+            "BEMA_40"
+          ],
+          "textLen": 396
+        }
+      },
+      "perInstanceText": {
+        "fuellung-26-1": "Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). ViPr + Perk −"
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 1345,
+      "fullText": "[Befund]\nZahn 26. MOD. Caries profunda. ViPr+. Perk−\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Bei der indirekten Überkappung (Cp) wurde über das Risiko einer späteren Vitalitätsverlust aufgeklärt. Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Anschließend LA Infiltration ({la_agent}). Daraufhin Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Cp (Ca(OH)₂).\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "20",
+      "title": "MKV 1fl + LA + Fluor",
+      "insuranceType": "MKV",
+      "dictation": "Füllung Zahn 16 okklusal Komposit, Infiltrationsanästhesie, Fluoridierung, Mehrkosten.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13",
+        "GOZ_2060",
+        "BEMA_40",
+        "BEMA_IP4"
+      ],
+      "perInstance": {
+        "fuellung-16-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "GOZ_2060",
+            "BEMA_40",
+            "BEMA_IP4"
+          ],
+          "textLen": 328
+        }
+      },
+      "perInstanceText": {
+        "fuellung-16-1": "Zahn 16 (O): Füllungstherapie. Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 1168,
+      "fullText": "[Befund]\nZahn 16. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nInitial Zahn 16 (O): Füllungstherapie{depthDisplay}. Im Weiteren LA Infiltration ({la_agent}). Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Abschließend Fluoridierung. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "21",
+      "title": "MKV 2fl + LA + Fluor",
+      "insuranceType": "MKV",
+      "dictation": "Füllung Zahn 44 okklusal distal Komposit, Infiltrationsanästhesie, Fluoridierung, Mehrkosten.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13b",
+        "GOZ_2080",
+        "BEMA_40",
+        "BEMA_IP4"
+      ],
+      "perInstance": {
+        "fuellung-44-1": {
+          "billingRefs": [
+            "BEMA_13b",
+            "GOZ_2080",
+            "BEMA_40",
+            "BEMA_IP4"
+          ],
+          "textLen": 329
+        }
+      },
+      "perInstanceText": {
+        "fuellung-44-1": "Zahn 44 (OD): Füllungstherapie. Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 1172,
+      "fullText": "[Befund]\nZahn 44. OD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 44 (OD): Füllungstherapie{depthDisplay}. Anschließend LA Infiltration ({la_agent}). Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Im Weiteren Abschließend Fluoridierung. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "22",
+      "title": "PKV 1fl + LA + Fluor",
+      "insuranceType": "PKV",
+      "dictation": "Füllung Zahn 36 okklusal Komposit, Infiltrationsanästhesie, Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "GOZ_2060",
+        "GOZ_0090",
+        "GOZ_1020"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "GOZ_2060",
+            "GOZ_0090",
+            "GOZ_1020"
+          ],
+          "textLen": 263
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. LA Infiltration (Ultracain D-S). Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 918,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Abschließend Fluoridierung. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "23",
+      "title": "PKV 2fl + Kofferdam + LA",
+      "insuranceType": "PKV",
+      "dictation": "Füllung Zahn 24 okklusal distal Komposit, Kofferdam, Infiltrationsanästhesie.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "GOZ_2080",
+        "GOZ_2040",
+        "GOZ_0090"
+      ],
+      "perInstance": {
+        "fuellung-24-1": {
+          "billingRefs": [
+            "GOZ_2080",
+            "GOZ_2040",
+            "GOZ_0090"
+          ],
+          "textLen": 256
+        }
+      },
+      "perInstanceText": {
+        "fuellung-24-1": "Zahn 24 (OD): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S)."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 908,
+      "fullText": "[Befund]\nZahn 24. OD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 24 (OD): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Kofferdam angelegt. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "24",
+      "title": "PKV 3fl + Cp + Kofferdam + LA",
+      "insuranceType": "PKV",
+      "dictation": "Füllung Zahn 26 mod, tiefe Karies. Indirekte Überkappung mit Ca(OH)2. Kofferdam. Infiltrationsanästhesie.",
+      "questionsAsked": [
+        "fuellung-26-1::forensic_diagnose_confirmation::tooth:26",
+        "fuellung-26-1::forensic_ueberkappung_material::tooth:26",
+        "fuellung-26-1::forensic_ueberkappung::tooth:26",
+        "fuellung-26-1::fuellung_material::tooth:26",
+        "fuellung-26-1::medical_percussion::tooth:26",
+        "fuellung-26-1::medical_vitality::tooth:26",
+        "fuellung-26-1::upsell_mehrschicht::tooth:26"
+      ],
+      "answersUsed": {
+        "fuellung-26-1::forensic_diagnose_confirmation::tooth:26": "ja",
+        "fuellung-26-1::forensic_ueberkappung_material::tooth:26": "Ca(OH)2",
+        "fuellung-26-1::forensic_ueberkappung::tooth:26": "indirekt",
+        "fuellung-26-1::fuellung_material::tooth:26": "komposit",
+        "fuellung-26-1::medical_percussion::tooth:26": "-",
+        "fuellung-26-1::medical_vitality::tooth:26": "+",
+        "fuellung-26-1::upsell_mehrschicht::tooth:26": "ja"
+      },
+      "billingRefs": [
+        "GOZ_2100",
+        "GOZ_2330",
+        "GOZ_2040",
+        "GOZ_0090"
+      ],
+      "perInstance": {
+        "fuellung-26-1": {
+          "billingRefs": [
+            "GOZ_2100",
+            "GOZ_2330",
+            "GOZ_2040",
+            "GOZ_0090"
+          ],
+          "textLen": 240
+        }
+      },
+      "perInstanceText": {
+        "fuellung-26-1": "Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S). ViPr + Perk −"
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 985,
+      "fullText": "[Befund]\nZahn 26. MOD. Caries profunda. ViPr+. Perk−\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Bei der indirekten Überkappung (Cp) wurde über das Risiko einer späteren Vitalitätsverlust aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Anschließend LA Infiltration ({la_agent}). Daraufhin Kofferdam angelegt. Im Weiteren Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Cp (Ca(OH)₂).\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "25",
+      "title": "PKV 1fl GIZ",
+      "insuranceType": "PKV",
+      "dictation": "Füllung Zahn 14 okklusal, GIZ.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "GOZ_2060"
+      ],
+      "perInstance": {
+        "fuellung-14-1": {
+          "billingRefs": [
+            "GOZ_2060"
+          ],
+          "textLen": 143
+        }
+      },
+      "perInstanceText": {
+        "fuellung-14-1": "Zahn 14 (O): Füllungstherapie. Komposit eingebracht und lichthärtend polymerisiert. Füllung mit selbstadhäsivem Glasionomerzement durchgeführt."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 556,
+      "fullText": "[Befund]\nZahn 14. O\n\n[Aufklärung]\nAllgemeine Risiken der Kompositfüllung (Randspalten, Verfärbung, postoperative Sensibilität) wurden besprochen. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 14 (O): Füllungstherapie{depthDisplay}. Anschließend Komposit eingebracht und lichthärtend polymerisiert. Abschließend Füllung mit selbstadhäsivem Glasionomerzement durchgeführt.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "26",
+      "title": "PKV 2fl + Fluor",
+      "insuranceType": "PKV",
+      "dictation": "Füllung Zahn 44 okklusal distal Komposit, Fluoridierung.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "GOZ_2080",
+        "GOZ_1020"
+      ],
+      "perInstance": {
+        "fuellung-44-1": {
+          "billingRefs": [
+            "GOZ_2080",
+            "GOZ_1020"
+          ],
+          "textLen": 231
+        }
+      },
+      "perInstanceText": {
+        "fuellung-44-1": "Zahn 44 (OD): Füllungstherapie. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Fluoridierung."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 618,
+      "fullText": "[Befund]\nZahn 44. OD\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 44 (OD): Füllungstherapie{depthDisplay}. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Abschließend Fluoridierung. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "27",
+      "title": "Settings Material Default Komposit (Filtek)",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 36 okklusal, Infiltrationsanästhesie.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-36-1": {
+          "billingRefs": [
+            "BEMA_13",
+            "BEMA_40"
+          ],
+          "textLen": 134
+        }
+      },
+      "perInstanceText": {
+        "fuellung-36-1": "Zahn 36 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (Filtek Supreme XTE) durchgeführt. LA Infiltration (Ultracain D-S)."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 716,
+      "fullText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Abschließend Füllung mit lichthärtendem Komposit (Filtek Supreme XTE) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "28",
+      "title": "Settings Material Default Bulk (Tetric PowerFill)",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 24 okklusal distal, Kofferdam, Infiltrationsanästhesie.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13b",
+        "BEMA_12",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-24-1": {
+          "billingRefs": [
+            "BEMA_13b",
+            "BEMA_12",
+            "BEMA_40"
+          ],
+          "textLen": 153
+        }
+      },
+      "perInstanceText": {
+        "fuellung-24-1": "Zahn 24 (OD): Füllungstherapie. Füllung mit lichthärtendem Komposit (Tetric PowerFill) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S)."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 760,
+      "fullText": "[Befund]\nZahn 24. OD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 24 (OD): Füllungstherapie{depthDisplay}. Daraufhin LA Infiltration ({la_agent}). Im Weiteren Kofferdam angelegt. Zum Schluss Füllung mit lichthärtendem Komposit (Tetric PowerFill) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "29",
+      "title": "Settings Material Default Flowable (SDR flow+)",
+      "insuranceType": "GKV",
+      "dictation": "Füllung Zahn 14 okklusal, keine Anästhesie.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13"
+      ],
+      "perInstance": {
+        "fuellung-14-1": {
+          "billingRefs": [
+            "BEMA_13"
+          ],
+          "textLen": 92
+        }
+      },
+      "perInstanceText": {
+        "fuellung-14-1": "Zahn 14 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (SDR flow+) durchgeführt."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 380,
+      "fullText": "[Befund]\nZahn 14. O\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 14 (O): Füllungstherapie{depthDisplay}. Anschließend Füllung mit lichthärtendem Komposit (SDR flow+) durchgeführt.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "30",
+      "title": "Multi-Tooth MKV: 26 MOD + 36 O",
+      "insuranceType": "MKV",
+      "dictation": "Zahn 26 MOD, tiefe Karies. Komposit Mehrschicht, Kofferdam, Leitungsanästhesie. Zahn 36 okklusal, Bulk-Fill, Infiltrationsanästhesie. Mehrkostenvereinbarung für Komposit liegt vor.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_13c",
+        "GOZ_2100",
+        "BEMA_12",
+        "BEMA_41a",
+        "BEMA_13",
+        "GOZ_2060",
+        "BEMA_12",
+        "BEMA_40"
+      ],
+      "perInstance": {
+        "fuellung-26-1": {
+          "billingRefs": [
+            "BEMA_13c",
+            "GOZ_2100",
+            "BEMA_12",
+            "BEMA_41a"
+          ],
+          "textLen": 420
+        },
+        "fuellung-36-2": {
+          "billingRefs": [
+            "BEMA_13",
+            "GOZ_2060",
+            "BEMA_12",
+            "BEMA_40"
+          ],
+          "textLen": 402
+        }
+      },
+      "perInstanceText": {
+        "fuellung-26-1": "Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Keine Pulpaeröffnung, Cp nicht erforderlich. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. Leitungsanästhesie N. alv. inf. (Ultracain D-S). ViPr + Perk −",
+        "fuellung-36-2": "Zahn 36 (O): Füllungstherapie tief (caries profunda). Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Keine Pulpaeröffnung, Cp nicht erforderlich. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Kofferdam angelegt. LA Infiltration (Ultracain D-S). ViPr + Perk −"
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 2448,
+      "fullText": "[Befund]\nZahn 26. MOD. Caries profunda. ViPr+. Perk−\n\nZahn 36. O. Caries profunda. ViPr+. Perk−\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZu Beginn Zahn 26 (MOD): Füllungstherapie tief (caries profunda). Anschließend Leitungsanästhesie N. alv. inf. ({la_agent}). Daraufhin Kofferdam angelegt. Im Weiteren Keine Pulpaeröffnung, Cp nicht erforderlich. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nZunächst Zahn 36 (O): Füllungstherapie tief (caries profunda). Daraufhin LA Infiltration ({la_agent}). Im Weiteren Kofferdam angelegt. Anschließend Keine Pulpaeröffnung, Cp nicht erforderlich. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    }
+  ]
+}

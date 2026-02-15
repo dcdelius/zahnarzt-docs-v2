@@ -1,0 +1,15 @@
+{
+    "gigaprompt": "G75",
+    "milestone": "m75",
+    "generated_at": "2025-12-30T08:18:00Z",
+    "status": "PENDING",
+    "summary": "UI gates need wiring truth updates",
+    "scope": [
+        "gate-output-coverage",
+        "gate-surface-detection",
+        "gate-treatment-isolation",
+        "gate-v7-ui-wiring",
+        "gate-wiring-matrix",
+        "ui-flow.test.tsx"
+    ]
+}

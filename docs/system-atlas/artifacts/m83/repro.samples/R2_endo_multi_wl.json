@@ -1,0 +1,76 @@
+{
+    "meta": {
+        "runId": "R2_endo_multi_wl",
+        "version": "1.0",
+        "sanitized": true,
+        "createdAt": "2025-12-29T21:26:00Z"
+    },
+    "input": {
+        "dictation": "Endodontische Behandlung Zahn 36, Wurzelkanalaufbereitung mit maschineller Aufbereitung. Arbeitsl\u00e4nge f\u00fcr 3 Kan\u00e4le bestimmt. Leitungsan\u00e4sthesie.",
+        "treatmentId": "endo",
+        "insuranceType": "PKV",
+        "textLength": "mittel",
+        "hasMKV": false,
+        "answers": {
+            "endo_step": "wl",
+            "canal_count": 3,
+            "anesthesia_type": "leitung"
+        }
+    },
+    "captured": {
+        "extraction": {
+            "tooth": "36",
+            "surfaces": [],
+            "diagnosis": null,
+            "mentioned": {
+                "wl": true,
+                "canal_count": 3,
+                "anesthesia": "leitung"
+            }
+        },
+        "facts": {
+            "tooth": "36",
+            "endoStep": "wl",
+            "canalCount": 3,
+            "anesthesiaType": "leitung"
+        },
+        "questions": [
+            {
+                "id": "endo_wl_method",
+                "questionKey": "endo_wl_method"
+            }
+        ],
+        "chips": [
+            {
+                "id": "anesthesia_leitung",
+                "source": "kb"
+            },
+            {
+                "id": "endo_wl",
+                "source": "kb"
+            }
+        ],
+        "billingCodes": [
+            {
+                "code": "GOZ_0090",
+                "system": "GOZ"
+            },
+            {
+                "code": "GOZ_2360",
+                "system": "GOZ"
+            }
+        ],
+        "combinabilityVerdict": "PASS",
+        "finalState": "questions",
+        "fullText": ""
+    },
+    "buildInfo": {
+        "gitSha": "cf8438e",
+        "timestamp": 1735503960000,
+        "kbHashes": {
+            "medicalKb": "abc123",
+            "fuellungUnified": "def456",
+            "endoUnified": "ghi789"
+        }
+    }
+}

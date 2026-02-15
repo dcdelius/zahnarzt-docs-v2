@@ -1,0 +1,451 @@
+{
+  "meta": {
+    "version": "v2",
+    "timestamp": "2025-12-14T20:58:44.414Z",
+    "sourceDir": "/Users/david/dokumaster-ui/src/docudent/GOZ"
+  },
+  "discovery": {
+    "totalFiles": 227,
+    "filesProcessed": 166,
+    "filesSkipped": [
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_choice.xav_tf=xaver.component.Text_0&mode=multi&so=%2F%2F_%5B%40attr_id%3D%27__lfg144__ID0_2_GOZ12_GOZ-Para02%27%5D&db=asgard-bema-xopp&bk=asgard-bema-xopp&sb=asgard-bema-xopp&do=rszu_ID0_2 (1).html",
+        "reason": "Multi-choice page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (1).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (2).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (3).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (6).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D# (7).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#.html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#ltext (1).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_start.xav_fromLogin=1&start=%2F%2F_%5B%40attr_id%3D%27%27%5D#uebersicht (1).html",
+        "reason": "Login/start page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (1).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (2).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (3).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (4).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (6).html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0#.html",
+        "reason": "Search/hitlist page"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=__[@attr_id=%27__lfg61__EBM-IDaenderung_31%27] (1).html",
+        "reason": "EBM change notice"
+      }
+    ],
+    "filesFailed": [
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377512%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377516%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377533%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377534%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377535%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377538%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377539%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377541%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377546%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377547%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377551%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377567%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377578%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377582%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377585%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377594%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377601%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377603%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377605%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377614%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377615%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377621%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377622%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377627%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377629%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377630%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377631%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377637%27%5D (1).html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377637%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377642%27%5D (1).html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377642%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377643%27%5D (1).html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377643%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377645%27%5D (1).html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377645%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377655%27%5D (1).html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377655%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377666%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377669%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377671%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377677%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377679%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377704%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D (2).html",
+        "error": "Could not detect GOZ code from content"
+      },
+      {
+        "file": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40target%3D%27bema_130%27%5D.html",
+        "error": "Could not detect GOZ code from content"
+      }
+    ]
+  },
+  "summary": {
+    "totalCards": 144,
+    "dedupeCount": 22,
+    "uniqueCodes": 142,
+    "analogHints": 110,
+    "crossReferences": 130
+  },
+  "topCodes": [
+    {
+      "code": "GOZ_0040",
+      "count": 2
+    },
+    {
+      "code": "GOZ_5080",
+      "count": 2
+    },
+    {
+      "code": "GOZ_0010",
+      "count": 1
+    },
+    {
+      "code": "GOZ_0030",
+      "count": 1
+    },
+    {
+      "code": "GOZ_0065",
+      "count": 1
+    },
+    {
+      "code": "GOZ_0070",
+      "count": 1
+    },
+    {
+      "code": "GOZ_0080",
+      "count": 1
+    },
+    {
+      "code": "GOZ_0090",
+      "count": 1
+    },
+    {
+      "code": "GOZ_0100",
+      "count": 1
+    },
+    {
+      "code": "GOZ_0110",
+      "count": 1
+    }
+  ],
+  "uniqueCodes": [
+    "GOZ_0010",
+    "GOZ_0030",
+    "GOZ_0040",
+    "GOZ_0065",
+    "GOZ_0070",
+    "GOZ_0080",
+    "GOZ_0090",
+    "GOZ_0100",
+    "GOZ_0110",
+    "GOZ_0120",
+    "GOZ_0500",
+    "GOZ_0510",
+    "GOZ_0520",
+    "GOZ_0530",
+    "GOZ_1000",
+    "GOZ_1010",
+    "GOZ_1020",
+    "GOZ_1030",
+    "GOZ_1040",
+    "GOZ_2030",
+    "GOZ_2040",
+    "GOZ_2130",
+    "GOZ_2180",
+    "GOZ_2190",
+    "GOZ_2195",
+    "GOZ_2197",
+    "GOZ_2250",
+    "GOZ_2260",
+    "GOZ_2270",
+    "GOZ_2310",
+    "GOZ_2320",
+    "GOZ_2330",
+    "GOZ_2340",
+    "GOZ_2350",
+    "GOZ_2360",
+    "GOZ_2380",
+    "GOZ_2390",
+    "GOZ_2400",
+    "GOZ_2410",
+    "GOZ_2420",
+    "GOZ_2430",
+    "GOZ_2440",
+    "GOZ_3020",
+    "GOZ_3030",
+    "GOZ_3040",
+    "GOZ_3045",
+    "GOZ_3050",
+    "GOZ_3060",
+    "GOZ_3070",
+    "GOZ_3080",
+    "GOZ_3090",
+    "GOZ_3100",
+    "GOZ_3130",
+    "GOZ_3140",
+    "GOZ_3160",
+    "GOZ_3210",
+    "GOZ_3230",
+    "GOZ_3250",
+    "GOZ_3260",
+    "GOZ_3270",
+    "GOZ_3280",
+    "GOZ_3290",
+    "GOZ_3300",
+    "GOZ_3310",
+    "GOZ_4000",
+    "GOZ_4005",
+    "GOZ_4020",
+    "GOZ_4025",
+    "GOZ_4030",
+    "GOZ_4040",
+    "GOZ_4060",
+    "GOZ_4080",
+    "GOZ_4110",
+    "GOZ_4120",
+    "GOZ_4130",
+    "GOZ_4133",
+    "GOZ_4136",
+    "GOZ_4138",
+    "GOZ_4150",
+    "GOZ_5070",
+    "GOZ_5080",
+    "GOZ_5100",
+    "GOZ_5110",
+    "GOZ_5170",
+    "GOZ_5180",
+    "GOZ_5200",
+    "GOZ_5210",
+    "GOZ_5240",
+    "GOZ_5310",
+    "GOZ_5320",
+    "GOZ_5330",
+    "GOZ_5340",
+    "GOZ_6000",
+    "GOZ_6010",
+    "GOZ_6020",
+    "GOZ_6090",
+    "GOZ_6100",
+    "GOZ_6110",
+    "GOZ_6120",
+    "GOZ_6130",
+    "GOZ_6140",
+    "GOZ_6150",
+    "GOZ_6160",
+    "GOZ_6170",
+    "GOZ_6180",
+    "GOZ_6190",
+    "GOZ_6200",
+    "GOZ_6210",
+    "GOZ_6220",
+    "GOZ_6230",
+    "GOZ_6240",
+    "GOZ_6250",
+    "GOZ_6260",
+    "GOZ_7030",
+    "GOZ_7040",
+    "GOZ_7070",
+    "GOZ_7100",
+    "GOZ_8000",
+    "GOZ_8010",
+    "GOZ_8020",
+    "GOZ_8050",
+    "GOZ_8080",
+    "GOZ_8090",
+    "GOZ_8100",
+    "GOZ_9000",
+    "GOZ_9003",
+    "GOZ_9005",
+    "GOZ_9010",
+    "GOZ_9020",
+    "GOZ_9040",
+    "GOZ_9050",
+    "GOZ_9060",
+    "GOZ_9090",
+    "GOZ_9100",
+    "GOZ_9110",
+    "GOZ_9120",
+    "GOZ_9130",
+    "GOZ_9140",
+    "GOZ_9150",
+    "GOZ_9160",
+    "GOZ_9170"
+  ]
+}

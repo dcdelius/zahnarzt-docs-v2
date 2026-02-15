@@ -1,0 +1,5274 @@
+{
+  "_meta": {
+    "name": "BEMA Katalog",
+    "version": "2025-01",
+    "stand": "01.01.2025",
+    "punktwert": 1.0375,
+    "quelle": "KZBV"
+  },
+  "BEMA_01": {
+    "id": "BEMA_01",
+    "system": "BEMA",
+    "nummer": "01",
+    "bezeichnung": "Eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten",
+    "kurzform": "U",
+    "punkte": 15.5,
+    "kategorie": "diagnostik",
+    "enthaelt": [
+      "Beratung",
+      "Dokumentation",
+      "Befundaufnahme"
+    ]
+  },
+  "BEMA_Ä1": {
+    "id": "BEMA_Ä1",
+    "system": "BEMA",
+    "nummer": "Ä1",
+    "bezeichnung": "Beratung, auch telefonisch",
+    "punkte": 7,
+    "kategorie": "diagnostik"
+  },
+  "BEMA_04": {
+    "id": "BEMA_04",
+    "system": "BEMA",
+    "nummer": "04",
+    "bezeichnung": "Parodontaler Screening Index (PSI)",
+    "punkte": 10,
+    "kategorie": "parodontologie",
+    "beschreibung": "Erhebung des PSI an allen Zähnen"
+  },
+  "BEMA_12": {
+    "id": "BEMA_12",
+    "system": "BEMA",
+    "nummer": "12",
+    "bezeichnung": "Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich",
+    "punkte": 10,
+    "kategorie": "kfo"
+  },
+  "BEMA_13": {
+    "id": "BEMA_13",
+    "system": "BEMA",
+    "nummer": "13a",
+    "bezeichnung": "Füllung einflächig",
+    "kurzform": "F1",
+    "punkte": 33.5,
+    "kategorie": "konservierend",
+    "leistungsinhalt": [
+      "Präparieren der Kavität",
+      "Füllen mit plastischem Füllungsmaterial",
+      "Erforderliche Unterfüllung",
+      "Anlegen Matrize oder andere Hilfsmittel",
+      "Polieren"
+    ],
+    "stand_2025": {
+      "amalgamverbot": "Ab 01.01.2025 kein Amalgam mehr!",
+      "frontzahn": "Adhäsiv befestigte Füllung = Kassenleistung",
+      "seitenzahn": "Selbstadhäsiv oder Bulkfill = Kassenleistung",
+      "mkv_bei": "Separater Haftvermittler, Mehrschichttechnik, ästhetische Optimierung"
+    },
+    "wichtig": "Jedes ausreichende, zweckmäßige, erprobte plastische Material abgegolten"
+  },
+  "BEMA_13b": {
+    "id": "BEMA_13b",
+    "system": "BEMA",
+    "nummer": "13b",
+    "bezeichnung": "Füllung zweiflächig",
+    "kurzform": "F2",
+    "punkte": 45,
+    "kategorie": "konservierend",
+    "leistungsinhalt": [
+      "Wie BEMA 13a"
+    ],
+    "tipp": "F-Code nach KLINISCHER Ausdehnung, nicht nach Kariesausdehnung"
+  },
+  "BEMA_13c": {
+    "id": "BEMA_13c",
+    "system": "BEMA",
+    "nummer": "13c",
+    "bezeichnung": "Füllung dreiflächig",
+    "kurzform": "F3",
+    "punkte": 56,
+    "kategorie": "konservierend",
+    "leistungsinhalt": [
+      "Wie BEMA 13a"
+    ]
+  },
+  "BEMA_13d": {
+    "id": "BEMA_13d",
+    "system": "BEMA",
+    "nummer": "13d",
+    "bezeichnung": "Füllung mehr als dreiflächig oder Eckenaufbau Frontzahn",
+    "kurzform": "F4",
+    "punkte": 67,
+    "kategorie": "konservierend",
+    "leistungsinhalt": [
+      "Wie BEMA 13a"
+    ],
+    "tipp": "Eckenaufbau Front: Auch wenn nur 2 Flächen betroffen, 13d möglich"
+  },
+  "BEMA_25": {
+    "id": "BEMA_25",
+    "system": "BEMA",
+    "nummer": "25",
+    "bezeichnung": "Indirekte Überkappung (Cp)",
+    "kurzform": "Cp",
+    "punkte": 15,
+    "kategorie": "konservierend",
+    "leistungsinhalt": [
+      "Abdecken pulpanaher Dentinbereiche mit Überkappungsmaterial"
+    ],
+    "dokumentation_erforderlich": [
+      "Material MUSS genannt werden: Ca(OH)2, MTA, Biodentine o.ä."
+    ],
+    "wann": "Bei pulpanaher, aber GESCHLOSSENER Kavität",
+    "regressfalle": "Ohne Materialangabe = REGRESS!"
+  },
+  "BEMA_26": {
+    "id": "BEMA_26",
+    "system": "BEMA",
+    "nummer": "26",
+    "bezeichnung": "Direkte Überkappung (P)",
+    "kurzform": "P",
+    "punkte": 20,
+    "kategorie": "konservierend",
+    "leistungsinhalt": [
+      "Abdecken einer punktförmigen Pulpaeröffnung"
+    ],
+    "dokumentation_erforderlich": [
+      "Material MUSS genannt werden: MTA, Ca(OH)2, Biodentine"
+    ],
+    "wann": "Bei kleiner, punktförmiger Pulpaeröffnung (NICHT große Eröffnung!)",
+    "regressfalle": "Ohne Material oder bei großer Eröffnung = REGRESS!"
+  },
+  "BEMA_28": {
+    "id": "BEMA_28",
+    "system": "BEMA",
+    "nummer": "28",
+    "bezeichnung": "Vitalexstirpation (VitE)",
+    "kurzform": "VitE",
+    "punkte": 9,
+    "kategorie": "endodontie",
+    "leistungsinhalt": [
+      "Exstirpation der vitalen Pulpa aus dem Wurzelkanal"
+    ],
+    "abrechnung": "Je Kanal",
+    "beschreibung": "Bei vitaler, entzündeter Pulpa"
+  },
+  "BEMA_29": {
+    "id": "BEMA_29",
+    "system": "BEMA",
+    "nummer": "29",
+    "bezeichnung": "Devitalisieren (Dev)",
+    "kurzform": "Dev",
+    "punkte": 7,
+    "kategorie": "endodontie",
+    "leistungsinhalt": [
+      "Exkavieren",
+      "Einlage des devitalisierenden Medikaments",
+      "Temporärer Verschluss"
+    ],
+    "beschreibung": "Abtöten der Pulpa (selten verwendet)"
+  },
+  "BEMA_31": {
+    "id": "BEMA_31",
+    "system": "BEMA",
+    "nummer": "31",
+    "bezeichnung": "Trepanation (Trep)",
+    "kurzform": "Trep",
+    "punkte": 12,
+    "kategorie": "endodontie",
+    "leistungsinhalt": [
+      "Eröffnung des koronalen Pulpenkavums bei pulpatotem Zahn"
+    ],
+    "beschreibung": "Eröffnung bei Gangrän oder nekrotischer Pulpa",
+    "wichtig": "Leistung endet mit Eröffnung des Pulpenkavums"
+  },
+  "BEMA_32": {
+    "id": "BEMA_32",
+    "system": "BEMA",
+    "nummer": "32",
+    "bezeichnung": "Wurzelkanalbehandlung (Aufbereitung) - Einwurzeliger Zahn",
+    "kurzform": "WK1",
+    "punkte": 25,
+    "kategorie": "endodontie"
+  },
+  "BEMA_34": {
+    "id": "BEMA_34",
+    "system": "BEMA",
+    "nummer": "34",
+    "bezeichnung": "Medikamentöse Einlage (Med)",
+    "kurzform": "Med",
+    "punkte": 4,
+    "kategorie": "endodontie",
+    "leistungsinhalt": [
+      "Einbringen eines Medikaments in den Wurzelkanal"
+    ],
+    "abrechnung": "Je Zahn",
+    "wichtig": "Max. 3x laut Richtlinien!",
+    "beschreibung": "Ca(OH)2-Einlage zwischen Sitzungen"
+  },
+  "BEMA_35": {
+    "id": "BEMA_35",
+    "system": "BEMA",
+    "nummer": "35",
+    "bezeichnung": "Wurzelfüllung - Einwurzeliger Zahn",
+    "kurzform": "WF1",
+    "punkte": 20,
+    "kategorie": "endodontie"
+  },
+  "BEMA_40": {
+    "id": "BEMA_40",
+    "system": "BEMA",
+    "nummer": "40",
+    "bezeichnung": "Infiltrationsanästhesie",
+    "punkte": 8,
+    "kategorie": "anaesthesie",
+    "beschreibung": "Injektion zur örtlichen Betäubung"
+  },
+  "BEMA_41a": {
+    "id": "BEMA_41a",
+    "system": "BEMA",
+    "nummer": "41a",
+    "bezeichnung": "Leitungsanästhesie, intraoral",
+    "punkte": 12,
+    "kategorie": "anaesthesie",
+    "beschreibung": "Bei Unterkiefer-Behandlungen Standard"
+  },
+  "BEMA_IP4": {
+    "id": "BEMA_IP4",
+    "system": "BEMA",
+    "nummer": "IP4",
+    "bezeichnung": "Lokale Fluoridierung",
+    "punkte": 4,
+    "kategorie": "prophylaxe",
+    "altersgruppe": "6-17 Jahre",
+    "leistungsinhalt": [
+      "Lokale Fluoridierung mit Lack/Gel",
+      "Beseitigung weicher Zahnbeläge",
+      "Trockenlegung der Zähne"
+    ],
+    "abrechnung": "1x pro Kalenderhalbjahr (bei hohem Kariesrisiko: 2x!)",
+    "wichtig": "Harte Beläge separat: BEMA 107",
+    "tipp": "Bei hohem Risiko Abstand von mind. 2 Monaten"
+  },
+  "BEMA_Ä925a": {
+    "id": "BEMA_Ä925a",
+    "system": "BEMA",
+    "nummer": "Ä925a",
+    "bezeichnung": "Röntgen: Aufnahme je Projektion",
+    "punkte": 5,
+    "kategorie": "roentgen",
+    "beschreibung": "Intraorale Zahnaufnahme"
+  },
+  "BEMA_32a": {
+    "id": "BEMA_32a",
+    "system": "BEMA",
+    "nummer": "32a",
+    "bezeichnung": "Wurzelkanalbehandlung (Aufbereitung) - Zweiwurzeliger Zahn",
+    "kurzform": "WK2",
+    "punkte": 35,
+    "kategorie": "endodontie"
+  },
+  "BEMA_32b": {
+    "id": "BEMA_32b",
+    "system": "BEMA",
+    "nummer": "32b",
+    "bezeichnung": "Wurzelkanalbehandlung (Aufbereitung) - Dreiwurzeliger Zahn",
+    "kurzform": "WK3",
+    "punkte": 45,
+    "kategorie": "endodontie"
+  },
+  "BEMA_35a": {
+    "id": "BEMA_35a",
+    "system": "BEMA",
+    "nummer": "35a",
+    "bezeichnung": "Wurzelfüllung - Zweiwurzeliger Zahn",
+    "kurzform": "WF2",
+    "punkte": 30,
+    "kategorie": "endodontie"
+  },
+  "BEMA_35b": {
+    "id": "BEMA_35b",
+    "system": "BEMA",
+    "nummer": "35b",
+    "bezeichnung": "Wurzelfüllung - Dreiwurzeliger Zahn",
+    "kurzform": "WF3",
+    "punkte": 40,
+    "kategorie": "endodontie"
+  },
+  "BEMA_45": {
+    "id": "BEMA_45",
+    "system": "BEMA",
+    "nummer": "45",
+    "bezeichnung": "Extraktion",
+    "kurzform": "X",
+    "punkte": 15,
+    "kategorie": "chirurgie",
+    "beschreibung": "Entfernung eines Zahnes"
+  },
+  "BEMA_46": {
+    "id": "BEMA_46",
+    "system": "BEMA",
+    "nummer": "46",
+    "bezeichnung": "Extraktion eines tief zerstörten Zahnes",
+    "kurzform": "X zerstört",
+    "punkte": 20,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_47a": {
+    "id": "BEMA_47a",
+    "system": "BEMA",
+    "nummer": "47a",
+    "bezeichnung": "Osteotomie eines Zahnes",
+    "kurzform": "Ost",
+    "punkte": 42,
+    "kategorie": "chirurgie",
+    "beschreibung": "Operative Entfernung eines Zahnes"
+  },
+  "BEMA_48": {
+    "id": "BEMA_48",
+    "system": "BEMA",
+    "nummer": "48",
+    "bezeichnung": "Osteotomie eines retinierten/verlagerten Zahnes",
+    "kurzform": "Ost ret",
+    "punkte": 56,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_51": {
+    "id": "BEMA_51",
+    "system": "BEMA",
+    "nummer": "51",
+    "bezeichnung": "WSR - Wurzelspitzenresektion Frontzahn/Prämolar",
+    "kurzform": "WSR FZ/PM",
+    "punkte": 50,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_52": {
+    "id": "BEMA_52",
+    "system": "BEMA",
+    "nummer": "52",
+    "bezeichnung": "WSR - Wurzelspitzenresektion Molar",
+    "kurzform": "WSR M",
+    "punkte": 70,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_54": {
+    "id": "BEMA_54",
+    "system": "BEMA",
+    "nummer": "54",
+    "bezeichnung": "Nahtverschluss einer Wunde",
+    "punkte": 8,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_56": {
+    "id": "BEMA_56",
+    "system": "BEMA",
+    "nummer": "56",
+    "bezeichnung": "Nachbehandlung/Nahtentfernung",
+    "punkte": 4,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_X1": {
+    "id": "BEMA_X1",
+    "system": "BEMA",
+    "nummer": "43",
+    "bezeichnung": "Entfernung einwurzeliger Zahn (X1)",
+    "kurzform": "X1",
+    "punkte": 10,
+    "kategorie": "chirurgie",
+    "leistungsinhalt": [
+      "Ablösen des Zahnfleischrandes",
+      "Extraktion des Zahnes",
+      "Auskratzen von Granulationsgewebe/kleiner Zyste",
+      "Glätten der Knochenkanten",
+      "Wundreinigung",
+      "Wundversorgung inkl. Naht und Blutstillung"
+    ],
+    "wichtig": "Nachbehandlung in gleicher Sitzung nicht separat berechenbar"
+  },
+  "BEMA_X2": {
+    "id": "BEMA_X2",
+    "system": "BEMA",
+    "nummer": "44",
+    "bezeichnung": "Entfernung mehrwurzeliger Zahn (X2)",
+    "kurzform": "X2",
+    "punkte": 15,
+    "kategorie": "chirurgie",
+    "leistungsinhalt": [
+      "Wie X1, zusätzlich:",
+      "Berücksichtigung der mehreren Wurzeln",
+      "Auch für Wurzelrest eines mehrwurzeligen Zahnes"
+    ]
+  },
+  "BEMA_X3": {
+    "id": "BEMA_X3",
+    "system": "BEMA",
+    "nummer": "45",
+    "bezeichnung": "Entfernung tieffrakturierter Zahn (X3)",
+    "kurzform": "X3",
+    "punkte": 25,
+    "kategorie": "chirurgie",
+    "leistungsinhalt": [
+      "Entfernung eines tief zerbrochenen/zerstörten Zahnes",
+      "Erhöhter Aufwand erforderlich",
+      "Inklusive primärer Wundversorgung"
+    ],
+    "wann": "Nur wenn Entfernung NICHT mit Zange/Hebel ohne Mehraufwand möglich",
+    "wichtig": "Wurzelzahl ist unerheblich"
+  },
+  "BEMA_18a": {
+    "id": "BEMA_18a",
+    "system": "BEMA",
+    "nummer": "18a",
+    "bezeichnung": "Konfektionierter Stift- oder Schraubenaufbau (einzeitig)",
+    "punkte": 32,
+    "kategorie": "prothetik",
+    "beschreibung": "Konfektionierter (vorgefertigter) Stift/Schraube mit Aufbau in EINER Sitzung",
+    "typ": "einzeitig",
+    "material": [
+      "Glasfaserstift",
+      "Titanstift",
+      "Schraubenaufbau"
+    ],
+    "festzuschuss": "FZ_1.4",
+    "wichtig": "Nur 1x je Zahn, nur in Verbindung mit Krone"
+  },
+  "BEMA_18b": {
+    "id": "BEMA_18b",
+    "system": "BEMA",
+    "nummer": "18b",
+    "bezeichnung": "Gegossener Stiftaufbau (zweizeitig)",
+    "punkte": 45,
+    "kategorie": "prothetik",
+    "beschreibung": "Gegossener individueller Stiftaufbau, Laborarbeit erforderlich, ZWEI Sitzungen",
+    "typ": "zweizeitig",
+    "ablauf": "1. Sitzung: Abformung → Labor → 2. Sitzung: Einsetzen",
+    "festzuschuss": "FZ_1.5",
+    "wichtig": "Laborkosten separat (BEL II)"
+  },
+  "BEMA_19": {
+    "id": "BEMA_19",
+    "system": "BEMA",
+    "nummer": "19",
+    "bezeichnung": "Provisorische Krone/Brückenglied",
+    "punkte": 20,
+    "kategorie": "prothetik",
+    "beschreibung": "Bis zu 2x pro Zahn (HKP nur 1x)"
+  },
+  "BEMA_20a": {
+    "id": "BEMA_20a",
+    "system": "BEMA",
+    "nummer": "20a",
+    "bezeichnung": "Metallische Vollkrone (unverblendet)",
+    "punkte": 50,
+    "kategorie": "prothetik",
+    "festzuschuss": "FZ_1.1",
+    "leistungsinhalt": [
+      "Präparation des Kronenstumpfes",
+      "Abformung (anatomisch)",
+      "Bissnahme",
+      "Farbbestimmung (ggf.)",
+      "Einprobe",
+      "Einzementieren",
+      "Okklusionskontrolle",
+      "Pflegehinweise"
+    ],
+    "nicht_zusaetzlich_berechenbar": [
+      "Separate Abformung (in BEMA 20a enthalten)",
+      "Separate Bissnahme (in BEMA 20a enthalten)",
+      "Separate Eingliederung (in BEMA 20a enthalten)"
+    ],
+    "wichtig": "Bei gleichartiger Versorgung nur GOZ-MEHRLEISTUNGEN berechenbar, nicht das was in BEMA 20a bereits enthalten ist!"
+  },
+  "BEMA_20b": {
+    "id": "BEMA_20b",
+    "system": "BEMA",
+    "nummer": "20b",
+    "bezeichnung": "Vestibulär verblendete Krone",
+    "punkte": 65,
+    "kategorie": "prothetik"
+  },
+  "BEMA_ATG": {
+    "id": "BEMA_ATG",
+    "system": "BEMA",
+    "nummer": "ATG",
+    "bezeichnung": "Parodontologisches Aufklärungs- und Therapiegespräch",
+    "punkte": 28,
+    "kategorie": "parodontologie",
+    "beschreibung": "PAR 2021 - NICHT mit Ä1 kombinierbar!"
+  },
+  "BEMA_MHU": {
+    "id": "BEMA_MHU",
+    "system": "BEMA",
+    "nummer": "MHU",
+    "bezeichnung": "Patientenindividuelle Mundhygieneunterweisung",
+    "punkte": 25,
+    "kategorie": "parodontologie",
+    "beschreibung": "PAR 2021 - Nur nach genehmigtem PAR-Plan"
+  },
+  "BEMA_AIT": {
+    "id": "BEMA_AIT",
+    "system": "BEMA",
+    "nummer": "AIT",
+    "bezeichnung": "Antiinfektiöse Therapie (geschlossenes Vorgehen)",
+    "kategorie": "parodontologie",
+    "beschreibung": "PAR 2021 - Supragingivale und subgingivale Belagentfernung"
+  },
+  "BEMA_BEVa": {
+    "id": "BEMA_BEVa",
+    "system": "BEMA",
+    "nummer": "BEVa",
+    "bezeichnung": "Befundevaluation nach AIT",
+    "punkte": 15,
+    "kategorie": "parodontologie",
+    "beschreibung": "PAR 2021 - 3-6 Monate nach AIT"
+  },
+  "BEMA_UPTa": {
+    "id": "BEMA_UPTa",
+    "system": "BEMA",
+    "nummer": "UPTa",
+    "bezeichnung": "UPT Grad A (geringes Risiko)",
+    "kategorie": "parodontologie",
+    "beschreibung": "PAR 2021 - 12 Monate, 1x pro Jahr"
+  },
+  "BEMA_UPTb": {
+    "id": "BEMA_UPTb",
+    "system": "BEMA",
+    "nummer": "UPTb",
+    "bezeichnung": "UPT Grad B (mittleres Risiko)",
+    "kategorie": "parodontologie",
+    "beschreibung": "PAR 2021 - 6 Monate, 2x pro Jahr"
+  },
+  "BEMA_UPTc": {
+    "id": "BEMA_UPTc",
+    "system": "BEMA",
+    "nummer": "UPTc",
+    "bezeichnung": "UPT Grad C (hohes Risiko)",
+    "kategorie": "parodontologie",
+    "beschreibung": "PAR 2021 - 3-4 Monate, 3-4x pro Jahr"
+  },
+  "BEMA_CPT": {
+    "id": "BEMA_CPT",
+    "system": "BEMA",
+    "nummer": "CPT",
+    "bezeichnung": "Chirurgische Parodontaltherapie",
+    "kategorie": "parodontologie",
+    "beschreibung": "PAR 2021 - Nach genehmigter Antragsergänzung"
+  },
+  "BEMA_54a": {
+    "id": "BEMA_54a",
+    "system": "BEMA",
+    "nummer": "54a",
+    "bezeichnung": "WSR Frontzahn",
+    "kurzform": "WR1",
+    "punkte": 45,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_54b": {
+    "id": "BEMA_54b",
+    "system": "BEMA",
+    "nummer": "54b",
+    "bezeichnung": "WSR Seitenzahn (erste Wurzelspitze)",
+    "kurzform": "WR2",
+    "punkte": 55,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_54c": {
+    "id": "BEMA_54c",
+    "system": "BEMA",
+    "nummer": "54c",
+    "bezeichnung": "WSR weitere Wurzelspitze (gleicher Zugang)",
+    "kurzform": "WR3",
+    "punkte": 25,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_Ae1": {
+    "id": "BEMA_Ae1",
+    "system": "BEMA",
+    "nummer": "Ä1",
+    "bezeichnung": "Beratung (Ber.)",
+    "kurzform": "Ber",
+    "punkte": 9,
+    "kategorie": "allgemein",
+    "leistungsinhalt": [
+      "Ausführliche Information über Mundgesundheitszustand",
+      "Erläuterung der Behandlungsoptionen",
+      "Vor- und Nachteile der Therapien",
+      "Auch telefonisch möglich"
+    ],
+    "abrechnung": "Eigenständige Leistung",
+    "wichtig": "NICHT mit Ä1 + Ä5/Ä6 am selben Tag (Ausschluss)"
+  },
+  "BEMA_Ae935d": {
+    "id": "BEMA_Ae935d",
+    "system": "BEMA",
+    "nummer": "Ä935d",
+    "bezeichnung": "Orthopantomogramm (OPG)",
+    "kurzform": "OPG",
+    "punkte": 25,
+    "kategorie": "roentgen",
+    "leistungsinhalt": [
+      "Positionierung des Patienten",
+      "Anfertigung der Panorama-Röntgenaufnahme",
+      "Beurteilung der Aufnahme",
+      "Schriftliche Befunddokumentation",
+      "Material- und Archivierungskosten"
+    ],
+    "abrechnung": "Je Aufnahme",
+    "beschreibung": "Übersicht über gesamten Ober- und Unterkiefer"
+  },
+  "BEMA_Ae925": {
+    "id": "BEMA_Ae925",
+    "system": "BEMA",
+    "nummer": "Ä925a-c",
+    "bezeichnung": "Zahnfilm (Einzelaufnahme)",
+    "kurzform": "ZF",
+    "punkte": 4,
+    "kategorie": "roentgen",
+    "beschreibung": "Einzelne Röntgenaufnahme eines Zahnes oder Zahngrupppe"
+  },
+  "BEMA_IP1": {
+    "id": "BEMA_IP1",
+    "system": "BEMA",
+    "nummer": "IP1",
+    "bezeichnung": "Mundhygienestatus",
+    "punkte": 4,
+    "kategorie": "prophylaxe",
+    "altersgruppe": "6-17 Jahre",
+    "leistungsinhalt": [
+      "Erhebung des Mundhygienestatus",
+      "Beurteilung von Mundhygiene und Gingivazustand",
+      "Verwendung eines Index (Plaque, API, PBI)",
+      "Ggf. Anfärben der Zähne",
+      "Feststellung von Plaque-Retentionsstellen"
+    ],
+    "dokumentation_erforderlich": [
+      "Indexwerte im Krankenblatt dokumentieren"
+    ],
+    "abrechnung": "1x pro Kalenderhalbjahr",
+    "bonusheft": "Für 12-17j: Stempel mit Datum!"
+  },
+  "BEMA_IP2": {
+    "id": "BEMA_IP2",
+    "system": "BEMA",
+    "nummer": "IP2",
+    "bezeichnung": "Aufklärung über Mundgesundheit",
+    "punkte": 5,
+    "kategorie": "prophylaxe",
+    "altersgruppe": "6-17 Jahre",
+    "leistungsinhalt": [
+      "Aufklärung über Karies-/Gingivitisursachen",
+      "Vermeidungsstrategien",
+      "Ernährungshinweise",
+      "Mundhygieneberatung",
+      "Fluoridierungsempfehlung",
+      "Praktische Übung Zahnputztechnik (EINZELN!)"
+    ],
+    "abrechnung": "1x pro Kalenderhalbjahr"
+  },
+  "BEMA_IP5": {
+    "id": "BEMA_IP5",
+    "system": "BEMA",
+    "nummer": "IP5",
+    "bezeichnung": "Fissurenversiegelung (Zähne 6 und 7)",
+    "punkte": 23,
+    "kategorie": "prophylaxe",
+    "altersgruppe": "6-17 Jahre",
+    "leistungsinhalt": [
+      "Versiegelung kariesfreier Fissuren",
+      "Grübchen der bleibenden Molaren (6er, 7er)",
+      "Mit aushärtendem Kunststoff",
+      "Beseitigung weicher Beläge",
+      "Trockenlegung"
+    ],
+    "abrechnung": "Je Zahn, 1x im Behandlungsfall",
+    "welche_zaehne": "Nur Zähne 16, 26, 36, 46, 17, 27, 37, 47"
+  },
+  "BEMA_FU1": {
+    "id": "BEMA_FU1",
+    "system": "BEMA",
+    "nummer": "FU1",
+    "bezeichnung": "Zahnärztliche Früherkennungsuntersuchung (6-33 Monate)",
+    "punkte": 10,
+    "kategorie": "prophylaxe",
+    "altersgruppe": "6-33 Monate",
+    "leistungsinhalt": [
+      "Inspektion der Mundhöhle",
+      "Einschätzung Kariesrisiko",
+      "Beratung der Bezugspersonen"
+    ],
+    "abrechnung": "3x in diesem Zeitraum möglich"
+  },
+  "BEMA_FU2": {
+    "id": "BEMA_FU2",
+    "system": "BEMA",
+    "nummer": "FU2",
+    "bezeichnung": "Zahnärztliche Früherkennungsuntersuchung (34-72 Monate)",
+    "punkte": 10,
+    "kategorie": "prophylaxe",
+    "altersgruppe": "34 Monate bis 6. Geburtstag",
+    "leistungsinhalt": [
+      "Wie FU1"
+    ],
+    "abrechnung": "3x in diesem Zeitraum möglich"
+  },
+  "BEMA_24c": {
+    "id": "BEMA_24c",
+    "system": "BEMA",
+    "nummer": "24c",
+    "bezeichnung": "Wiederherstellung Funktion provisorische Krone/Brücke",
+    "punkte": 15,
+    "kategorie": "prothetik",
+    "leistungsinhalt": [
+      "Abnahme der provisorischen Krone",
+      "Untersuchung des Pfeilerzahns",
+      "Notwendige Behandlung",
+      "Wiederbefestigung"
+    ],
+    "abrechnung": "Max 3x pro Krone",
+    "wichtig": "Nur berechenbar wenn BEMA 19 oder 21 vorher abgerechnet",
+    "kombinationsversorgung_regel": {
+      "beschreibung": "Bei Teleskop-Kombinationsversorgung mit Provisorienphase",
+      "formel": "Anzahl_Ankerzähne × 3",
+      "beispiel": "8 Ankerzähne × 3 = 24× BEMA 24c",
+      "grund": "Während Laborarbeit werden Provisorien mehrfach ab- und wiederbefestigt"
+    }
+  },
+  "BEMA_91a": {
+    "id": "BEMA_91a",
+    "system": "BEMA",
+    "nummer": "91a",
+    "bezeichnung": "Vollkrone als Brückenanker",
+    "punkte": 50,
+    "kategorie": "prothetik",
+    "leistungsinhalt": [
+      "Präparation",
+      "Farbbestimmung",
+      "Bissnahme",
+      "Abformung",
+      "Einprobe",
+      "Einzementieren",
+      "Okklusionskontrolle"
+    ],
+    "festzuschuss": "FZ_1.1"
+  },
+  "BEMA_91b": {
+    "id": "BEMA_91b",
+    "system": "BEMA",
+    "nummer": "91b",
+    "bezeichnung": "Vestibuläre Verblendung Brückenanker",
+    "punkte": 15,
+    "kategorie": "prothetik",
+    "festzuschuss": "FZ_1.3"
+  },
+  "BEMA_91c": {
+    "id": "BEMA_91c",
+    "system": "BEMA",
+    "nummer": "91c",
+    "bezeichnung": "Vollverblendung Brückenanker",
+    "punkte": 25,
+    "kategorie": "prothetik"
+  },
+  "BEMA_91d": {
+    "id": "BEMA_91d",
+    "system": "BEMA",
+    "nummer": "91d",
+    "bezeichnung": "Teleskop-/Konuskrone als Anker",
+    "punkte": 70,
+    "kategorie": "prothetik",
+    "beschreibung": "Teleskopkrone bestehend aus Innenteleskop (Primärteil) und Außenteleskop",
+    "leistungsinhalt": [
+      "Präparation für Doppelkrone",
+      "Abformung",
+      "Bissnahme",
+      "Einprobe Primärteil",
+      "Eingliederung beider Teile"
+    ],
+    "festzuschuss": "FZ_3.2 oder FZ_4.1 je nach Situation",
+    "wichtig": "Bei fehlender Indikation kann gesamte Versorgung andersartig werden → GOZ"
+  },
+  "BEMA_92": {
+    "id": "BEMA_92",
+    "system": "BEMA",
+    "nummer": "92",
+    "bezeichnung": "Brückenzwischenglied",
+    "punkte": 40,
+    "kategorie": "prothetik",
+    "festzuschuss": "FZ_2.5"
+  },
+  "BEMA_96a": {
+    "id": "BEMA_96a",
+    "system": "BEMA",
+    "nummer": "96a",
+    "bezeichnung": "Partialprothese 1-4 fehlende Zähne",
+    "punkte": 90,
+    "kategorie": "prothetik",
+    "leistungsinhalt": [
+      "Planung und HKP",
+      "Abformungen",
+      "Einfache Bissnahme",
+      "Einfache Halteelemente (Klammern)",
+      "Farbbestimmung",
+      "Einproben",
+      "Eingliederung",
+      "Nachbehandlung"
+    ],
+    "festzuschuss": "FZ_3.1"
+  },
+  "BEMA_96b": {
+    "id": "BEMA_96b",
+    "system": "BEMA",
+    "nummer": "96b",
+    "bezeichnung": "Partialprothese 5-8 fehlende Zähne",
+    "punkte": 120,
+    "kategorie": "prothetik",
+    "leistungsinhalt": [
+      "Wie BEMA 96a"
+    ],
+    "festzuschuss": "FZ_3.1"
+  },
+  "BEMA_96c": {
+    "id": "BEMA_96c",
+    "system": "BEMA",
+    "nummer": "96c",
+    "bezeichnung": "Partialprothese mehr als 8 fehlende Zähne",
+    "punkte": 150,
+    "kategorie": "prothetik",
+    "leistungsinhalt": [
+      "Wie BEMA 96a"
+    ],
+    "festzuschuss": "FZ_3.1"
+  },
+  "BEMA_97a": {
+    "id": "BEMA_97a",
+    "system": "BEMA",
+    "nummer": "97a",
+    "bezeichnung": "Totalprothese Oberkiefer",
+    "punkte": 180,
+    "kategorie": "prothetik",
+    "festzuschuss": "FZ_4.1"
+  },
+  "BEMA_97b": {
+    "id": "BEMA_97b",
+    "system": "BEMA",
+    "nummer": "97b",
+    "bezeichnung": "Totalprothese Unterkiefer",
+    "punkte": 180,
+    "kategorie": "prothetik",
+    "festzuschuss": "FZ_4.2"
+  },
+  "BEMA_98a": {
+    "id": "BEMA_98a",
+    "system": "BEMA",
+    "nummer": "98a",
+    "bezeichnung": "Abformung mit individuellem Löffel",
+    "punkte": 25,
+    "kategorie": "prothetik",
+    "leistungsinhalt": [
+      "Herstellung individueller Löffel",
+      "Funktionsabformung"
+    ],
+    "wann": [
+      "Ungewöhnliche Kieferform",
+      "Hoher Gaumen",
+      "Hochansetzende Bänder",
+      "Hohe Präzisionsanforderung (lange Brücken)"
+    ],
+    "ausschluesse": [
+      "NICHT bei Einzelkrone (BEMA 20)"
+    ],
+    "wichtig": "Bei Standardlöffel und speziellem Material: Nur Material berechnen (ohne 98a)"
+  },
+  "BEMA_98b": {
+    "id": "BEMA_98b",
+    "system": "BEMA",
+    "nummer": "98b",
+    "bezeichnung": "Bissnahme bei geringer Restbezahnung",
+    "punkte": 20,
+    "kategorie": "prothetik"
+  },
+  "BEMA_98c": {
+    "id": "BEMA_98c",
+    "system": "BEMA",
+    "nummer": "98c",
+    "bezeichnung": "Einprobe bei prothetischer Versorgung",
+    "punkte": 15,
+    "kategorie": "prothetik"
+  },
+  "BEMA_98e": {
+    "id": "BEMA_98e",
+    "system": "BEMA",
+    "nummer": "98e",
+    "bezeichnung": "Bissregistrat zur Kieferrelationsbestimmung",
+    "punkte": 20,
+    "kategorie": "prothetik"
+  },
+  "BEMA_100a": {
+    "id": "BEMA_100a",
+    "system": "BEMA",
+    "nummer": "100a",
+    "bezeichnung": "Wiederherstellung einer Prothese (ohne Abformung)",
+    "punkte": 20,
+    "kategorie": "prothetik"
+  },
+  "BEMA_100b": {
+    "id": "BEMA_100b",
+    "system": "BEMA",
+    "nummer": "100b",
+    "bezeichnung": "Wiederherstellung/Erweiterung Prothese (mit Abformung)",
+    "punkte": 30,
+    "kategorie": "prothetik",
+    "leistungsinhalt": [
+      "Wiederherstellung der Funktion",
+      "Erweiterung um Halte-/Stützelemente",
+      "Abformung inklusive"
+    ]
+  },
+  "BEMA_93": {
+    "id": "BEMA_93",
+    "system": "BEMA",
+    "nummer": "93",
+    "bezeichnung": "Interimsprothese Oberkiefer",
+    "punkte": 90,
+    "kategorie": "prothetik"
+  },
+  "BEMA_89": {
+    "id": "BEMA_89",
+    "system": "BEMA",
+    "nummer": "89",
+    "bezeichnung": "Modellguss-Prothese mit Klammern",
+    "punkte": 120,
+    "kategorie": "prothetik"
+  },
+  "BEMA_41": {
+    "id": "BEMA_41",
+    "system": "BEMA",
+    "nummer": "41",
+    "bezeichnung": "Infiltrationsanästhesie",
+    "alias": "BEMA_41a",
+    "punkte": 7,
+    "kategorie": "anästhesie",
+    "note": "Alias for BEMA_41a"
+  },
+  "BEMA_01k": {
+    "id": "BEMA_01k",
+    "system": "BEMA",
+    "nummer": "01k",
+    "bezeichnung": "Kieferorthopädische Untersuchung zur Klärung von Indikationen und Zeitpunkt kieferorthopädisch-therapeutischer Maßnahmen",
+    "punkte": 28,
+    "kategorie": "kfo"
+  },
+  "BEMA_7": {
+    "id": "BEMA_7",
+    "system": "BEMA",
+    "nummer": "7",
+    "bezeichnung": "Vorbereitende Maßnahmen",
+    "punkte": 0,
+    "kategorie": "kfo"
+  },
+  "BEMA_7a": {
+    "id": "BEMA_7a",
+    "system": "BEMA",
+    "nummer": "7a",
+    "bezeichnung": "Vorbereitende Maßnahmen - Abformung, Bissnahme in habitueller Okklusion für das Erstellen von dreidimensional orientierten Modellen des Ober- und Unterkiefers zur diagnostischen Auswertung und Planung sowie schriftliche Niederlegung",
+    "punkte": 19,
+    "kategorie": "kfo"
+  },
+  "BEMA_5": {
+    "id": "BEMA_5",
+    "system": "BEMA",
+    "nummer": "5",
+    "bezeichnung": "Kieferorthopädische Behandlungsplanung",
+    "punkte": 95,
+    "kategorie": "kfo"
+  },
+  "BEMA_116": {
+    "id": "BEMA_116",
+    "system": "BEMA",
+    "nummer": "116",
+    "bezeichnung": "Fotografie",
+    "punkte": 15,
+    "kategorie": "kfo"
+  },
+  "BEMA_117": {
+    "id": "BEMA_117",
+    "system": "BEMA",
+    "nummer": "117",
+    "bezeichnung": "Modellanalyse",
+    "punkte": 35,
+    "kategorie": "kfo"
+  },
+  "BEMA_118": {
+    "id": "BEMA_118",
+    "system": "BEMA",
+    "nummer": "118",
+    "bezeichnung": "Kephalometrische Auswertung",
+    "punkte": 29,
+    "kategorie": "kfo"
+  },
+  "BEMA_119": {
+    "id": "BEMA_119",
+    "system": "BEMA",
+    "nummer": "119",
+    "bezeichnung": "Maßnahmen zur Umformung eines Kiefers einschließlich Retention",
+    "punkte": 0,
+    "kategorie": "kfo"
+  },
+  "BEMA_119a": {
+    "id": "BEMA_119a",
+    "system": "BEMA",
+    "nummer": "119a",
+    "bezeichnung": "Maßnahmen zur Umformung eines Kiefers einschließlich Retention - einfach durchführbarer Art",
+    "punkte": 132,
+    "kategorie": "kfo"
+  },
+  "BEMA_120": {
+    "id": "BEMA_120",
+    "system": "BEMA",
+    "nummer": "120",
+    "bezeichnung": "Maßnahmen zur Einstellung des Unterkiefers in den Regelbiss in sagittaler oder lateraler Richtung einschließlich Retention",
+    "punkte": 0,
+    "kategorie": "kfo"
+  },
+  "BEMA_120a": {
+    "id": "BEMA_120a",
+    "system": "BEMA",
+    "nummer": "120a",
+    "bezeichnung": "Maßnahmen zur Einstellung des Unterkiefers in den Regelbiss in sagittaler oder lateraler Richtung einschließlich Retention - einfach durchführbarer Art",
+    "punkte": 204,
+    "kategorie": "kfo"
+  },
+  "BEMA_121": {
+    "id": "BEMA_121",
+    "system": "BEMA",
+    "nummer": "121",
+    "bezeichnung": "Beseitigung von Habits bei einem habituellen Distalbiss oder bei einem habituell offenen Biss, je Sitzung",
+    "punkte": 17,
+    "kategorie": "kfo"
+  },
+  "BEMA_122": {
+    "id": "BEMA_122",
+    "system": "BEMA",
+    "nummer": "122",
+    "bezeichnung": "Kieferorthopädische Verrichtungen als alleinige Leistung",
+    "punkte": 0,
+    "kategorie": "kfo"
+  },
+  "BEMA_122a": {
+    "id": "BEMA_122a",
+    "system": "BEMA",
+    "nummer": "122a",
+    "bezeichnung": "Kieferorthopädische Verrichtungen als alleinige Leistung - Kontrolle des Behandlungsverlaufs einschließlich kleiner Änderungen für Behandlungsmittel, für jede Sitzung",
+    "punkte": 21,
+    "kategorie": "kfo"
+  },
+  "BEMA_123 a": {
+    "id": "BEMA_123 a",
+    "system": "BEMA",
+    "nummer": "123 a",
+    "bezeichnung": "Kieferorthopädische Maßnahmen mit herausnehmbaren Geräten zum Offenhalten von Lücken infolge vorzeitigen Milchzahnverlustes, je Kiefer",
+    "punkte": 40,
+    "kategorie": "kfo"
+  },
+  "BEMA_124": {
+    "id": "BEMA_124",
+    "system": "BEMA",
+    "nummer": "124",
+    "bezeichnung": "Einschleifen von Milchzähnen bei Kreuz- oder Zwangsbiss, je Sitzung",
+    "punkte": 16,
+    "kategorie": "kfo"
+  },
+  "BEMA_125": {
+    "id": "BEMA_125",
+    "system": "BEMA",
+    "nummer": "125",
+    "bezeichnung": "Maßnahmen zur Wiederherstellung von Behandlungsmitteln einschließlich Wiedereinfügen, je Kiefer",
+    "punkte": 30,
+    "kategorie": "kfo"
+  },
+  "BEMA_126 a": {
+    "id": "BEMA_126 a",
+    "system": "BEMA",
+    "nummer": "126 a",
+    "bezeichnung": "Eingliedern eines Brackets oder eines Attachments aus Edelstahl oder nickelfreiem Metall einschließlich Material- und Laborkosten",
+    "punkte": 18,
+    "kategorie": "kfo"
+  },
+  "BEMA_127 a": {
+    "id": "BEMA_127 a",
+    "system": "BEMA",
+    "nummer": "127 a",
+    "bezeichnung": "Eingliederung eines Teilbogens einschließlich Material- und Laborkosten",
+    "punkte": 25,
+    "kategorie": "kfo"
+  },
+  "BEMA_128 a": {
+    "id": "BEMA_128 a",
+    "system": "BEMA",
+    "nummer": "128 a",
+    "bezeichnung": "Eingliederung eines konfektionierten Vollbogens aus Edelstahl einschließlich Material- und Laborkosten",
+    "punkte": 32,
+    "kategorie": "kfo"
+  },
+  "BEMA_129": {
+    "id": "BEMA_129",
+    "system": "BEMA",
+    "nummer": "129",
+    "bezeichnung": "Wiedereingliederung eines Voll- oder Teilbogens",
+    "punkte": 24,
+    "kategorie": "kfo"
+  },
+  "BEMA_130": {
+    "id": "BEMA_130",
+    "system": "BEMA",
+    "nummer": "130",
+    "bezeichnung": "Eingliederung ergänzender festsitzender Apparaturen (Palatinal- oder Transversalbogen, Quadhelix, Lingualbogen, Lip Bumper, Headgear über je zwei Ankerbändern) einschließlich Material- und Laborkosten",
+    "punkte": 72,
+    "kategorie": "kfo"
+  },
+  "BEMA_131 a": {
+    "id": "BEMA_131 a",
+    "system": "BEMA",
+    "nummer": "131 a",
+    "bezeichnung": "Eingliederung und Ausgliederung einer Gaumennahterweiterungsapparatur",
+    "punkte": 50,
+    "kategorie": "kfo"
+  },
+  "BEMA_131 b": {
+    "id": "BEMA_131 b",
+    "system": "BEMA",
+    "nummer": "131 b",
+    "bezeichnung": "Eingliederung und Ausgliederung einer festsitzenden Apparatur zur Bisslagekorrektur (Herbstscharnier) bei spätem Behandlungsbeginn, wenn der Wachstumshöhepunkt überschritten ist und die Bisslagekorrektur mit konventionellen Maßnahmen nicht erreicht werden kann, je Seite",
+    "punkte": 50,
+    "kategorie": "kfo"
+  },
+  "BEMA_131 c": {
+    "id": "BEMA_131 c",
+    "system": "BEMA",
+    "nummer": "131 c",
+    "bezeichnung": "Eingliederung einer Gesichtsmaske",
+    "punkte": 50,
+    "kategorie": "kfo"
+  },
+  "BEMA_7b": {
+    "id": "BEMA_7b",
+    "system": "BEMA",
+    "nummer": "7b",
+    "bezeichnung": "Vorbereitende Maßnahmen - Abformung, Bissnahme für das Erstellen von Modellen des Ober- und Unterkiefers zur diagnostischen Auswertung und Planung sowie schriftliche Niederlegung",
+    "punkte": 19,
+    "kategorie": "kfo"
+  },
+  "BEMA_119b": {
+    "id": "BEMA_119b",
+    "system": "BEMA",
+    "nummer": "119b",
+    "bezeichnung": "Maßnahmen zur Umformung eines Kiefers einschließlich Retention - mittelschwer durchführbarer Art",
+    "punkte": 204,
+    "kategorie": "kfo"
+  },
+  "BEMA_119c": {
+    "id": "BEMA_119c",
+    "system": "BEMA",
+    "nummer": "119c",
+    "bezeichnung": "Maßnahmen zur Umformung eines Kiefers einschließlich Retention - schwierig durchführbarer Art",
+    "punkte": 276,
+    "kategorie": "kfo"
+  },
+  "BEMA_119d": {
+    "id": "BEMA_119d",
+    "system": "BEMA",
+    "nummer": "119d",
+    "bezeichnung": "Maßnahmen zur Umformung eines Kiefers einschließlich Retention - besonders schwierig durchführbarer Art",
+    "punkte": 336,
+    "kategorie": "kfo"
+  },
+  "BEMA_120b": {
+    "id": "BEMA_120b",
+    "system": "BEMA",
+    "nummer": "120b",
+    "bezeichnung": "Maßnahmen zur Einstellung des Unterkiefers in den Regelbiss in sagittaler oder lateraler Richtung einschließlich Retention - mittelschwer durchführbarer Art",
+    "punkte": 228,
+    "kategorie": "kfo"
+  },
+  "BEMA_120c": {
+    "id": "BEMA_120c",
+    "system": "BEMA",
+    "nummer": "120c",
+    "bezeichnung": "Maßnahmen zur Einstellung des Unterkiefers in den Regelbiss in sagittaler oder lateraler Richtung einschließlich Retention - schwierig durchführbarer Art",
+    "punkte": 276,
+    "kategorie": "kfo"
+  },
+  "BEMA_120d": {
+    "id": "BEMA_120d",
+    "system": "BEMA",
+    "nummer": "120d",
+    "bezeichnung": "Maßnahmen zur Einstellung des Unterkiefers in den Regelbiss in sagittaler oder lateraler Richtung einschließlich Retention - besonders schwierig durchführbarer Art",
+    "punkte": 336,
+    "kategorie": "kfo"
+  },
+  "BEMA_122b": {
+    "id": "BEMA_122b",
+    "system": "BEMA",
+    "nummer": "122b",
+    "bezeichnung": "Kieferorthopädische Verrichtungen als alleinige Leistung - Vorbereitende Maßnahmen zur Herstellung von kieferorthopädischen Behandlungsmitteln, je Kiefer",
+    "punkte": 43,
+    "kategorie": "kfo"
+  },
+  "BEMA_122c": {
+    "id": "BEMA_122c",
+    "system": "BEMA",
+    "nummer": "122c",
+    "bezeichnung": "Kieferorthopädische Verrichtungen als alleinige Leistung - Einfügen von kieferorthopädischen Behandlungsmitteln, je Kiefer",
+    "punkte": 27,
+    "kategorie": "kfo"
+  },
+  "BEMA_Ä2": {
+    "id": "BEMA_Ä2",
+    "nummer": "Ä2",
+    "bezeichnung": "Ausstellung von Wiederholungsrezepten und/oder",
+    "punkte": 30,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä3": {
+    "id": "BEMA_Ä3",
+    "nummer": "Ä3",
+    "bezeichnung": "Eingehende, das gewöhnliche Maß übersteigende",
+    "punkte": 150,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä4": {
+    "id": "BEMA_Ä4",
+    "nummer": "Ä4",
+    "bezeichnung": "Erhebung der Fremdanamnese über einen Kranken",
+    "punkte": 220,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5": {
+    "id": "BEMA_Ä5",
+    "nummer": "Ä5",
+    "bezeichnung": "Symptombezogene Untersuchung",
+    "punkte": 80,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä6": {
+    "id": "BEMA_Ä6",
+    "nummer": "Ä6",
+    "bezeichnung": "Vollständige körperliche Untersuchung mindestens",
+    "punkte": 100,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä70": {
+    "id": "BEMA_Ä70",
+    "nummer": "Ä70",
+    "bezeichnung": "Kurze Bescheinigung oder kurzes Zeugnis, Arbeits-",
+    "punkte": 40,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä320": {
+    "id": "BEMA_Ä320",
+    "nummer": "Ä320",
+    "bezeichnung": "18,65 erbrachte Leistungen D Zuschlag für an Samstagen, Sonn- oder Feiertagen",
+    "punkte": 220,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä30": {
+    "id": "BEMA_Ä30",
+    "nummer": "Ä30",
+    "bezeichnung": "Erhebung der homöopathischen Erstanamnese mit",
+    "punkte": 900,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä31": {
+    "id": "BEMA_Ä31",
+    "nummer": "Ä31",
+    "bezeichnung": "Homöopathische Folgeanamnese mit einer Mindest-",
+    "punkte": 450,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä34": {
+    "id": "BEMA_Ä34",
+    "nummer": "Ä34",
+    "bezeichnung": "Erörterung (Dauer mindestens 20 Minuten) der Aus-",
+    "punkte": 300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä48": {
+    "id": "BEMA_Ä48",
+    "nummer": "Ä48",
+    "bezeichnung": "Besuch eines Patienten auf einer Pflegestation (z. B.",
+    "punkte": 120,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä50": {
+    "id": "BEMA_Ä50",
+    "nummer": "Ä50",
+    "bezeichnung": "Besuch, einschließlich Beratung und sym  ptom-",
+    "punkte": 320,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä56": {
+    "id": "BEMA_Ä56",
+    "nummer": "Ä56",
+    "bezeichnung": "Verweilen, ohne Unterbrechung und ohne Erbringung",
+    "punkte": 180,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä60": {
+    "id": "BEMA_Ä60",
+    "nummer": "Ä60",
+    "bezeichnung": "Konsiliarische Erörterung zwischen zwei oder mehr",
+    "punkte": 120,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä160": {
+    "id": "BEMA_Ä160",
+    "nummer": "Ä160",
+    "bezeichnung": "9,33 erfolgte Ausführung    Der Zuschlag nach Buchstabe E ist neben Leistungen  nach den Nummern 45 und/oder 46 nicht berech- nungsfähig, es sei denn, die Visite wird durch einen  Belegarzt durchgeführt.  Der Zuschlag nach Buchstabe E ist neben Zuschlägen  nach den Buchstaben F, G und/oder H nicht berech- nungsfähig. F Zuschlag für in der Zeit von 20 bis 22 Uhr oder",
+    "punkte": 260,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä450": {
+    "id": "BEMA_Ä450",
+    "nummer": "Ä450",
+    "bezeichnung": "26,23 erbrachte Leistungen Der Zuschlag nach Buchstabe G ist neben den  Leistungen nach den Nummern 45, 46, 48 und 52  nicht berechnungsfähig.  Neben dem Zuschlag nach Buchstabe G ist der  Zuschlag nach Buchstabe F nicht berechnungsfähig. H Zuschlag für an Samstagen, Sonn- und Feiertagen",
+    "punkte": 340,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä80": {
+    "id": "BEMA_Ä80",
+    "nummer": "Ä80",
+    "bezeichnung": "Schriftliche gutachtliche Äußerung",
+    "punkte": 300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä75": {
+    "id": "BEMA_Ä75",
+    "nummer": "Ä75",
+    "bezeichnung": "Ausführlicher schriftlicher Krankheits- und Be  fund-",
+    "punkte": 130,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä85": {
+    "id": "BEMA_Ä85",
+    "nummer": "Ä85",
+    "bezeichnung": "Schriftliche gutachtliche Äußerung mit einem das",
+    "punkte": 500,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä95": {
+    "id": "BEMA_Ä95",
+    "nummer": "Ä95",
+    "bezeichnung": "Schreibgebühr, je angefangene DIN A 4-Seite",
+    "punkte": 60,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä96": {
+    "id": "BEMA_Ä96",
+    "nummer": "Ä96",
+    "bezeichnung": "Schreibgebühr, je Kopie",
+    "punkte": 3,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä200": {
+    "id": "BEMA_Ä200",
+    "nummer": "Ä200",
+    "bezeichnung": "Verband – ausgenommen Schnell- und Sprühver-",
+    "punkte": 45,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä204": {
+    "id": "BEMA_Ä204",
+    "nummer": "Ä204",
+    "bezeichnung": "Zirkulärer Verband des Kopfes oder des  Rumpfes (auch",
+    "punkte": 65,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä210": {
+    "id": "BEMA_Ä210",
+    "nummer": "Ä210",
+    "bezeichnung": "Kleiner Schienenverband – auch als Notverband bei",
+    "punkte": 75,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä211": {
+    "id": "BEMA_Ä211",
+    "nummer": "Ä211",
+    "bezeichnung": "Kleiner Schienenverband bei Wiederanlegung",
+    "punkte": 60,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä250": {
+    "id": "BEMA_Ä250",
+    "nummer": "Ä250",
+    "bezeichnung": "Blutentnahme mittels Spritze, Kanüle oder Katheter",
+    "punkte": 40,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä251": {
+    "id": "BEMA_Ä251",
+    "nummer": "Ä251",
+    "bezeichnung": "Blutentnahme mittels Spritze oder Kanüle aus der",
+    "punkte": 60,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä252": {
+    "id": "BEMA_Ä252",
+    "nummer": "Ä252",
+    "bezeichnung": "Injektion, subkutan, submukös, intrakutan oder",
+    "punkte": 40,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä253": {
+    "id": "BEMA_Ä253",
+    "nummer": "Ä253",
+    "bezeichnung": "Injektion, intravenös",
+    "punkte": 70,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä254": {
+    "id": "BEMA_Ä254",
+    "nummer": "Ä254",
+    "bezeichnung": "Injektion, intraarteriell",
+    "punkte": 80,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä255": {
+    "id": "BEMA_Ä255",
+    "nummer": "Ä255",
+    "bezeichnung": "Injektion, intraartikulär oder perineural",
+    "punkte": 95,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä267": {
+    "id": "BEMA_Ä267",
+    "nummer": "Ä267",
+    "bezeichnung": "Medikamentöse Infiltrationsbehandlung im Bereich",
+    "punkte": 80,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä269": {
+    "id": "BEMA_Ä269",
+    "nummer": "Ä269",
+    "bezeichnung": "Akupunktur (Nadelstich-Technik) zur Behandlung",
+    "punkte": 200,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä269a": {
+    "id": "BEMA_Ä269a",
+    "nummer": "Ä269a",
+    "bezeichnung": "Akupunktur (Nadelstich-Technik) mit einer Mindest-",
+    "punkte": 350,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä297": {
+    "id": "BEMA_Ä297",
+    "nummer": "Ä297",
+    "bezeichnung": "Entnahme und Aufbereitung von Abstrichmaterial",
+    "punkte": 45,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä298": {
+    "id": "BEMA_Ä298",
+    "nummer": "Ä298",
+    "bezeichnung": "Entnahme und gegebenenfalls Aufbereitung von",
+    "punkte": 40,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä300": {
+    "id": "BEMA_Ä300",
+    "nummer": "Ä300",
+    "bezeichnung": "Punktion eines Gelenks",
+    "punkte": 120,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä370": {
+    "id": "BEMA_Ä370",
+    "nummer": "Ä370",
+    "bezeichnung": "Einbringung des Kontrastmittels zur Darstellung",
+    "punkte": 200,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä429": {
+    "id": "BEMA_Ä429",
+    "nummer": "Ä429",
+    "bezeichnung": "Wiederbelebungsversuch – einschließlich künstlicher",
+    "punkte": 400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä440": {
+    "id": "BEMA_Ä440",
+    "nummer": "Ä440",
+    "bezeichnung": "Zuschlag für die Anwendung eines Opera  tionsmikro-",
+    "punkte": 400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä441": {
+    "id": "BEMA_Ä441",
+    "nummer": "Ä441",
+    "bezeichnung": "Zuschlag für die Anwendung eines Lasers bei  ambulanten operativen Leistungen, je Sitzung Der Zuschlag nach Nummer 441 beträgt 100 v.H.  des einfachen Gebührensatzes der betreffenden  Leistung, jedoch nicht mehr als 132,- Deutsche Mark  (nach amtlichem Umrechnungskurs 67,49 Euro)  Der Zuschlag nach Nummer 441 ist je Behandlungstag  nur einmal berechnungsfähig 442 Zuschlag bei ambulanter Durchführung von",
+    "punkte": 400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä443": {
+    "id": "BEMA_Ä443",
+    "nummer": "Ä443",
+    "bezeichnung": "Zuschlag bei ambulanter Durchführung von",
+    "punkte": 750,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä444": {
+    "id": "BEMA_Ä444",
+    "nummer": "Ä444",
+    "bezeichnung": "Zuschlag bei ambulanter Durchführung von",
+    "punkte": 1300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä445": {
+    "id": "BEMA_Ä445",
+    "nummer": "Ä445",
+    "bezeichnung": "Zuschlag bei ambulanter Durchführung von",
+    "punkte": 2200,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä446": {
+    "id": "BEMA_Ä446",
+    "nummer": "Ä446",
+    "bezeichnung": "Zuschlag bei ambulanter Durchführung von",
+    "punkte": 300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä447": {
+    "id": "BEMA_Ä447",
+    "nummer": "Ä447",
+    "bezeichnung": "Zuschlag bei ambulanter Durchführung von",
+    "punkte": 650,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä538": {
+    "id": "BEMA_Ä538",
+    "nummer": "Ä538",
+    "bezeichnung": "Infrarotbehandlung, je Sitzung",
+    "punkte": 40,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä539": {
+    "id": "BEMA_Ä539",
+    "nummer": "Ä539",
+    "bezeichnung": "Ultraschallbehandlung",
+    "punkte": 44,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä548": {
+    "id": "BEMA_Ä548",
+    "nummer": "Ä548",
+    "bezeichnung": "Kurzwellenikrowellenbehandlung (An  wendung hoch-",
+    "punkte": 37,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä549": {
+    "id": "BEMA_Ä549",
+    "nummer": "Ä549",
+    "bezeichnung": "Kurzwellen-, Mikrowellenbehandlung (An  wendung",
+    "punkte": 55,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä551": {
+    "id": "BEMA_Ä551",
+    "nummer": "Ä551",
+    "bezeichnung": "Reizstrombehandlung (Anwendung nieder  frequenter",
+    "punkte": 48,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1465": {
+    "id": "BEMA_Ä1465",
+    "nummer": "Ä1465",
+    "bezeichnung": "Punktion einer Kieferhöhle – gegebenenfalls ein-",
+    "punkte": 119,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1467": {
+    "id": "BEMA_Ä1467",
+    "nummer": "Ä1467",
+    "bezeichnung": "Operative Eröffnung einer Kieferhöhle vom Mund-",
+    "punkte": 407,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1468": {
+    "id": "BEMA_Ä1468",
+    "nummer": "Ä1468",
+    "bezeichnung": "Operative Eröffnung einer Kieferhöhle von der Nase aus",
+    "punkte": 296,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1479": {
+    "id": "BEMA_Ä1479",
+    "nummer": "Ä1479",
+    "bezeichnung": "Ausspülung der Kiefer-, Keilbein-, Stirnhöhle von der",
+    "punkte": 59,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1508": {
+    "id": "BEMA_Ä1508",
+    "nummer": "Ä1508",
+    "bezeichnung": "Entfernung von eingespießten Fremdkörpern aus",
+    "punkte": 93,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1509": {
+    "id": "BEMA_Ä1509",
+    "nummer": "Ä1509",
+    "bezeichnung": "Operative Behandlung einer Mundbodenphlegmone",
+    "punkte": 463,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1518": {
+    "id": "BEMA_Ä1518",
+    "nummer": "Ä1518",
+    "bezeichnung": "Operation einer Speichelfistel",
+    "punkte": 739,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1519": {
+    "id": "BEMA_Ä1519",
+    "nummer": "Ä1519",
+    "bezeichnung": "Operative Entfernung von Speichelstein(en)",
+    "punkte": 554,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä1559": {
+    "id": "BEMA_Ä1559",
+    "nummer": "Ä1559",
+    "bezeichnung": "Sprachübungsbehandlung – einschließlich aller dazu",
+    "punkte": 207,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2000": {
+    "id": "BEMA_Ä2000",
+    "nummer": "Ä2000",
+    "bezeichnung": "Erstversorgung einer kleinen Wunde",
+    "punkte": 70,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2001": {
+    "id": "BEMA_Ä2001",
+    "nummer": "Ä2001",
+    "bezeichnung": "Versorgung einer kleinen Wunde einschließlich Naht",
+    "punkte": 130,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2006": {
+    "id": "BEMA_Ä2006",
+    "nummer": "Ä2006",
+    "bezeichnung": "Behandlung einer Wunde, die nicht primär heilt oder",
+    "punkte": 63,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2007": {
+    "id": "BEMA_Ä2007",
+    "nummer": "Ä2007",
+    "bezeichnung": "Entfernung von Fäden oder Klammern",
+    "punkte": 40,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2008": {
+    "id": "BEMA_Ä2008",
+    "nummer": "Ä2008",
+    "bezeichnung": "Wund- oder Fistelspaltung",
+    "punkte": 90,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2009": {
+    "id": "BEMA_Ä2009",
+    "nummer": "Ä2009",
+    "bezeichnung": "Entfernung eines unter der Oberfläche der Haut oder",
+    "punkte": 100,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2010": {
+    "id": "BEMA_Ä2010",
+    "nummer": "Ä2010",
+    "bezeichnung": "Entfernung eines tiefsitzenden Fremdkörpers auf",
+    "punkte": 379,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2072": {
+    "id": "BEMA_Ä2072",
+    "nummer": "Ä2072",
+    "bezeichnung": "Offene Sehnen- oder Muskeldurchschneidung",
+    "punkte": 463,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2073": {
+    "id": "BEMA_Ä2073",
+    "nummer": "Ä2073",
+    "bezeichnung": "Sehnen-, Muskel- und/oder Fasziennaht gegebenen-",
+    "punkte": 650,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2074": {
+    "id": "BEMA_Ä2074",
+    "nummer": "Ä2074",
+    "bezeichnung": "Verpflanzung einer Sehne oder eines Muskels",
+    "punkte": 1100,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2118": {
+    "id": "BEMA_Ä2118",
+    "nummer": "Ä2118",
+    "bezeichnung": "Operative Fremdkörperentfernung aus einem Kiefer-,",
+    "punkte": 463,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2123": {
+    "id": "BEMA_Ä2123",
+    "nummer": "Ä2123",
+    "bezeichnung": "Resektion eines Kiefer-, Hand- oder Fußgelenks",
+    "punkte": 1110,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2135": {
+    "id": "BEMA_Ä2135",
+    "nummer": "Ä2135",
+    "bezeichnung": "Arthroplastik eines Kiefer-, Hand- oder Fußgelenks",
+    "punkte": 1400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2156": {
+    "id": "BEMA_Ä2156",
+    "nummer": "Ä2156",
+    "bezeichnung": "Eröffnung eines vereiterten Kiefer-, Hand- oder",
+    "punkte": 463,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2181": {
+    "id": "BEMA_Ä2181",
+    "nummer": "Ä2181",
+    "bezeichnung": "Gewaltsame Lockerung oder Streckung eines Kiefer-,",
+    "punkte": 227,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2253": {
+    "id": "BEMA_Ä2253",
+    "nummer": "Ä2253",
+    "bezeichnung": "Knochenspanentnahme",
+    "punkte": 647,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2254": {
+    "id": "BEMA_Ä2254",
+    "nummer": "Ä2254",
+    "bezeichnung": "Implantation von Knochen",
+    "punkte": 739,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2255": {
+    "id": "BEMA_Ä2255",
+    "nummer": "Ä2255",
+    "bezeichnung": "Freie Verpflanzung eines Knochens oder von",
+    "punkte": 1480,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2256": {
+    "id": "BEMA_Ä2256",
+    "nummer": "Ä2256",
+    "bezeichnung": "Knochenaufmeißelung oder Nekrotomie bei kleinen",
+    "punkte": 463,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2321": {
+    "id": "BEMA_Ä2321",
+    "nummer": "Ä2321",
+    "bezeichnung": "Einrichtung eines gebrochenen Gesichtsknochens",
+    "punkte": 227,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2355": {
+    "id": "BEMA_Ä2355",
+    "nummer": "Ä2355",
+    "bezeichnung": "Operative Stabilisierung einer Pseudarthrose oder",
+    "punkte": 1110,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2356": {
+    "id": "BEMA_Ä2356",
+    "nummer": "Ä2356",
+    "bezeichnung": "Operative Stabilisierung einer Pseudarthrose oder",
+    "punkte": 1480,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2381": {
+    "id": "BEMA_Ä2381",
+    "nummer": "Ä2381",
+    "bezeichnung": "Einfache Hautlappenplastik",
+    "punkte": 370,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2382": {
+    "id": "BEMA_Ä2382",
+    "nummer": "Ä2382",
+    "bezeichnung": "Schwierige Hautlappenplastik oder Spalthaut-  transplantation",
+    "punkte": 739,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2386": {
+    "id": "BEMA_Ä2386",
+    "nummer": "Ä2386",
+    "bezeichnung": "Schleimhauttransplantation – einschließlich",
+    "punkte": 688,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2401": {
+    "id": "BEMA_Ä2401",
+    "nummer": "Ä2401",
+    "bezeichnung": "Probeexzision aus oberflächlich gelegenem Körper-",
+    "punkte": 133,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2402": {
+    "id": "BEMA_Ä2402",
+    "nummer": "Ä2402",
+    "bezeichnung": "Probeexzision aus tiefliegendem Körpergewebe",
+    "punkte": 370,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2428": {
+    "id": "BEMA_Ä2428",
+    "nummer": "Ä2428",
+    "bezeichnung": "Eröffnung eines oberflächlich unter der Haut oder",
+    "punkte": 80,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2430": {
+    "id": "BEMA_Ä2430",
+    "nummer": "Ä2430",
+    "bezeichnung": "Eröffnung eines tiefliegenden Abszesses",
+    "punkte": 303,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2442": {
+    "id": "BEMA_Ä2442",
+    "nummer": "Ä2442",
+    "bezeichnung": "Implantation alloplastischen Materials zur Weichteil-",
+    "punkte": 900,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2650": {
+    "id": "BEMA_Ä2650",
+    "nummer": "Ä2650",
+    "bezeichnung": "Entfernung eines extrem verlagerten oder re  tinierten",
+    "punkte": 740,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2651": {
+    "id": "BEMA_Ä2651",
+    "nummer": "Ä2651",
+    "bezeichnung": "Entfernung tiefliegender Fremdkörper oder",
+    "punkte": 550,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2655": {
+    "id": "BEMA_Ä2655",
+    "nummer": "Ä2655",
+    "bezeichnung": "Operation einer ausgedehnten Kieferzyste – über",
+    "punkte": 950,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2656": {
+    "id": "BEMA_Ä2656",
+    "nummer": "Ä2656",
+    "bezeichnung": "Operation einer ausgedehnten Kieferzyste – über",
+    "punkte": 620,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2657": {
+    "id": "BEMA_Ä2657",
+    "nummer": "Ä2657",
+    "bezeichnung": "Operation einer ausgedehnten Kieferzyste – über",
+    "punkte": 760,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2658": {
+    "id": "BEMA_Ä2658",
+    "nummer": "Ä2658",
+    "bezeichnung": "Operation einer ausgedehnten Kieferzyste über mehr",
+    "punkte": 500,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2660": {
+    "id": "BEMA_Ä2660",
+    "nummer": "Ä2660",
+    "bezeichnung": "Operative Behandlung einer konservativ unstillbaren",
+    "punkte": 400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2670": {
+    "id": "BEMA_Ä2670",
+    "nummer": "Ä2670",
+    "bezeichnung": "Operative Entfernung eines Schlotterkammes oder",
+    "punkte": 500,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2671": {
+    "id": "BEMA_Ä2671",
+    "nummer": "Ä2671",
+    "bezeichnung": "Operative Entfernung eines Schlotterkammes oder",
+    "punkte": 300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2675": {
+    "id": "BEMA_Ä2675",
+    "nummer": "Ä2675",
+    "bezeichnung": "P artielle Vestibulum-oder Mundbodenplastik oder große",
+    "punkte": 850,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2676": {
+    "id": "BEMA_Ä2676",
+    "nummer": "Ä2676",
+    "bezeichnung": "Totale Mundboden- oder Vestibulumplastik zur",
+    "punkte": 2200,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2677": {
+    "id": "BEMA_Ä2677",
+    "nummer": "Ä2677",
+    "bezeichnung": "Submuköse Vestibulumplastik, je Kieferhälfte oder",
+    "punkte": 700,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2680": {
+    "id": "BEMA_Ä2680",
+    "nummer": "Ä2680",
+    "bezeichnung": "Einrenkung der Luxation des Unterkiefers",
+    "punkte": 100,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2681": {
+    "id": "BEMA_Ä2681",
+    "nummer": "Ä2681",
+    "bezeichnung": "Einrenkung der alten Luxation des Unterkie  fers",
+    "punkte": 400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2682": {
+    "id": "BEMA_Ä2682",
+    "nummer": "Ä2682",
+    "bezeichnung": "Operative Einrenkung der Luxation eines Kie  fergelenks",
+    "punkte": 1400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2685": {
+    "id": "BEMA_Ä2685",
+    "nummer": "Ä2685",
+    "bezeichnung": "Reposition eines Zahnes",
+    "punkte": 200,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2686": {
+    "id": "BEMA_Ä2686",
+    "nummer": "Ä2686",
+    "bezeichnung": "Reposition eines zahntragenden Bruchstücks des",
+    "punkte": 300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2687": {
+    "id": "BEMA_Ä2687",
+    "nummer": "Ä2687",
+    "bezeichnung": "Allmähliche Reposition des gebrochenen Ober- oder",
+    "punkte": 1300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2688": {
+    "id": "BEMA_Ä2688",
+    "nummer": "Ä2688",
+    "bezeichnung": "Fixation bei nicht dislozierter Kieferfraktur durch",
+    "punkte": 750,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2690": {
+    "id": "BEMA_Ä2690",
+    "nummer": "Ä2690",
+    "bezeichnung": "Operative Reposition und Fixation durch Osteosynthese",
+    "punkte": 1000,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2691": {
+    "id": "BEMA_Ä2691",
+    "nummer": "Ä2691",
+    "bezeichnung": "Operative Reposition und Fixation durch Osteosynthese 3600 209,83 482,61 734,41 bei Aussprengung des Oberkiefers an der Schädelbasis 2692 Operative Reposition und Fixation durch Osteosynthese",
+    "punkte": 1500,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2693": {
+    "id": "BEMA_Ä2693",
+    "nummer": "Ä2693",
+    "bezeichnung": "Operative Reposition und Fixation einer isolierten",
+    "punkte": 1200,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2694": {
+    "id": "BEMA_Ä2694",
+    "nummer": "Ä2694",
+    "bezeichnung": "Operative Entfernung von Osteosynthesema  terial aus",
+    "punkte": 450,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2695": {
+    "id": "BEMA_Ä2695",
+    "nummer": "Ä2695",
+    "bezeichnung": "Einrichtung und Fixation eines gebrochenen Kiefers",
+    "punkte": 2700,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2696": {
+    "id": "BEMA_Ä2696",
+    "nummer": "Ä2696",
+    "bezeichnung": "Drahtumschlingung des Unterkiefers oder orofaziale",
+    "punkte": 500,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2697": {
+    "id": "BEMA_Ä2697",
+    "nummer": "Ä2697",
+    "bezeichnung": "Anlegen von Drahtligaturen, Drahthäkchen oder",
+    "punkte": 350,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2698": {
+    "id": "BEMA_Ä2698",
+    "nummer": "Ä2698",
+    "bezeichnung": "Anlegen und Fixation einer Schiene am un  verletzten 1500 87,43 201,09 306,01 Ober- oder Unterkiefer   2699 Anlegen und Fixation einer Schiene am gebrochenen",
+    "punkte": 2200,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2700": {
+    "id": "BEMA_Ä2700",
+    "nummer": "Ä2700",
+    "bezeichnung": "Anlegen von Stütz-, Halte- oder Hilfsvorrichtungen",
+    "punkte": 350,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2701": {
+    "id": "BEMA_Ä2701",
+    "nummer": "Ä2701",
+    "bezeichnung": "Anlegen von extraoralen Stütz-, Halte- oder Hilfs-",
+    "punkte": 1800,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2702": {
+    "id": "BEMA_Ä2702",
+    "nummer": "Ä2702",
+    "bezeichnung": "Wiederanbringung einer gelösten Apparatur oder",
+    "punkte": 300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2705": {
+    "id": "BEMA_Ä2705",
+    "nummer": "Ä2705",
+    "bezeichnung": "Osteotomie nach disloziert verheilter Fraktur im",
+    "punkte": 1700,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2706": {
+    "id": "BEMA_Ä2706",
+    "nummer": "Ä2706",
+    "bezeichnung": "Osteotomie nach disloziert verheilter Fraktur im",
+    "punkte": 1300,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2710": {
+    "id": "BEMA_Ä2710",
+    "nummer": "Ä2710",
+    "bezeichnung": "Partielle Resektion des Ober- oder Unterkiefers –",
+    "punkte": 1100,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2720": {
+    "id": "BEMA_Ä2720",
+    "nummer": "Ä2720",
+    "bezeichnung": "Osteotomie im Zusammenhang mit operativen Ein-",
+    "punkte": 800,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2730": {
+    "id": "BEMA_Ä2730",
+    "nummer": "Ä2730",
+    "bezeichnung": "Operative Maßnahmen zur Lagerbildung beim Aufbau",
+    "punkte": 500,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä2732": {
+    "id": "BEMA_Ä2732",
+    "nummer": "Ä2732",
+    "bezeichnung": "Operation zur Lagerbildung für Knochen oder Knorpel",
+    "punkte": 2000,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä3511": {
+    "id": "BEMA_Ä3511",
+    "nummer": "Ä3511",
+    "bezeichnung": "Untersuchung eines Körpermaterials mit vorgefertig-",
+    "punkte": 50,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä3712": {
+    "id": "BEMA_Ä3712",
+    "nummer": "Ä3712",
+    "bezeichnung": "Viskosität (z. B. Blut, Serum, Plasma) viskosimetrisch",
+    "punkte": 250,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä3714": {
+    "id": "BEMA_Ä3714",
+    "nummer": "Ä3714",
+    "bezeichnung": "Wasserstoffionenkonzentration (pH), potentio-",
+    "punkte": 40,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä3715": {
+    "id": "BEMA_Ä3715",
+    "nummer": "Ä3715",
+    "bezeichnung": "Bikarbonat",
+    "punkte": 60,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä4530": {
+    "id": "BEMA_Ä4530",
+    "nummer": "Ä4530",
+    "bezeichnung": "Untersuchung zum Nachweis von Bakterien durch",
+    "punkte": 80,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä4538": {
+    "id": "BEMA_Ä4538",
+    "nummer": "Ä4538",
+    "bezeichnung": "Untersuchung zum Nachweis von Bakterien durch",
+    "punkte": 120,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä4605": {
+    "id": "BEMA_Ä4605",
+    "nummer": "Ä4605",
+    "bezeichnung": "Untersuchung zur Bestimmung der Keimzahl mittels",
+    "punkte": 60,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä4606": {
+    "id": "BEMA_Ä4606",
+    "nummer": "Ä4606",
+    "bezeichnung": "Untersuchung zur Bestimmung der Keimzahl in",
+    "punkte": 250,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä4715": {
+    "id": "BEMA_Ä4715",
+    "nummer": "Ä4715",
+    "bezeichnung": "Untersuchung zum Nachweis von Pilzen durch An-",
+    "punkte": 100,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä4852": {
+    "id": "BEMA_Ä4852",
+    "nummer": "Ä4852",
+    "bezeichnung": "Zytologische Untersuchung von z. B. Punktaten,",
+    "punkte": 174,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5000": {
+    "id": "BEMA_Ä5000",
+    "nummer": "Ä5000",
+    "bezeichnung": "Zähne, je Projektion",
+    "punkte": 50,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5002": {
+    "id": "BEMA_Ä5002",
+    "nummer": "Ä5002",
+    "bezeichnung": "Panoramaaufnahme(n) eines Kiefers",
+    "punkte": 250,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5004": {
+    "id": "BEMA_Ä5004",
+    "nummer": "Ä5004",
+    "bezeichnung": "Panoramaschichtaufnahme der Kiefer",
+    "punkte": 400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5030": {
+    "id": "BEMA_Ä5030",
+    "nummer": "Ä5030",
+    "bezeichnung": "jeweils in zwei Ebenen",
+    "punkte": 360,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5031": {
+    "id": "BEMA_Ä5031",
+    "nummer": "Ä5031",
+    "bezeichnung": "ergänzende Ebene(n)",
+    "punkte": 100,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5035": {
+    "id": "BEMA_Ä5035",
+    "nummer": "Ä5035",
+    "bezeichnung": "Teile des Skeletts in einer Ebene, je Teil",
+    "punkte": 160,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5090": {
+    "id": "BEMA_Ä5090",
+    "nummer": "Ä5090",
+    "bezeichnung": "Schädel-Übersicht, in zwei Ebenen",
+    "punkte": 400,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5095": {
+    "id": "BEMA_Ä5095",
+    "nummer": "Ä5095",
+    "bezeichnung": "Schädelteile in Spezialprojektionen, je Teil",
+    "punkte": 200,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5098": {
+    "id": "BEMA_Ä5098",
+    "nummer": "Ä5098",
+    "bezeichnung": "Nasennebenhöhlen – gegebenenfalls auch in",
+    "punkte": 260,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5298": {
+    "id": "BEMA_Ä5298",
+    "nummer": "Ä5298",
+    "bezeichnung": "Zuschlag zu den Leistungen nach den Nummern  5010 bis 5290 bei Anwendung digitaler Radiographie  (Bildverstärker-Radiographie) Der Zuschlag nach Nummer 5298 beträgt 25 v. H. des  einfachen Gebührensatzes der betreffenden Leistung. GOÄ  |",
+    "punkte": 70,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5370": {
+    "id": "BEMA_Ä5370",
+    "nummer": "Ä5370",
+    "bezeichnung": "Computergesteuerte Tomographie im Kopfbereich –",
+    "punkte": 2000,
+    "system": "GOÄ"
+  },
+  "BEMA_Ä5377": {
+    "id": "BEMA_Ä5377",
+    "nummer": "Ä5377",
+    "bezeichnung": "Zuschlag für computergesteuerte Analyse – ein-",
+    "punkte": 800,
+    "system": "GOÄ"
+  },
+  "BEMA_7003": {
+    "id": "BEMA_7003",
+    "nummer": "7003",
+    "bezeichnung": "Zuschlag zu den Leistungen nach den Nrn. 55 oder 56 bei Kindern bis zum vollendeten 4. Lebensjahr",
+    "punkte": 14,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7550": {
+    "id": "BEMA_7550",
+    "nummer": "7550",
+    "bezeichnung": "Begleitung eines Patienten durch den behandelnden Arzt zur unmittelbar notwendigen stationären Behandlung – ggf. einschließlich organisatorischer Vorbereitung der Krankenhausaufnahme –",
+    "punkte": 56,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7551": {
+    "id": "BEMA_7551",
+    "nummer": "7551",
+    "bezeichnung": "Begleitung, inkl. Zuschlag für dringend angeforderte und unverzügliche erfolgte Ausführung",
+    "punkte": 74,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7552": {
+    "id": "BEMA_7552",
+    "nummer": "7552",
+    "bezeichnung": "Begleitung, inkl. Zuschlag für in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr erbrachte Leistungen",
+    "punkte": 85,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7553": {
+    "id": "BEMA_7553",
+    "nummer": "7553",
+    "bezeichnung": "Begleitung, inkl. Zuschlag für in der Zeit zwischen 22 Uhr und 6 Uhr erbrachte Leistungen",
+    "punkte": 106,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7554": {
+    "id": "BEMA_7554",
+    "nummer": "7554",
+    "bezeichnung": "Begleitung, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen",
+    "punkte": 94,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7555": {
+    "id": "BEMA_7555",
+    "nummer": "7555",
+    "bezeichnung": "Begleitung, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen, inkl. Zuschlag für in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr erbrachte Leistungen",
+    "punkte": 123,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7556": {
+    "id": "BEMA_7556",
+    "nummer": "7556",
+    "bezeichnung": "Begleitung, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen, inkl. Zuschlag für in der Zeit zwischen 22 Uhr und 6 Uhr erbrachte Leistungen",
+    "punkte": 144,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7560": {
+    "id": "BEMA_7560",
+    "nummer": "7560",
+    "bezeichnung": "Verweilen, ohne Unterbrechung und ohne Erbringung anderer ärztlicher Leistungen – wegen Erkrankung erforderlich –, je angefangene halbe Stunde",
+    "punkte": 20,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7561": {
+    "id": "BEMA_7561",
+    "nummer": "7561",
+    "bezeichnung": "Verweilen, inkl. Zuschlag für dringend angeforderte und unverzügliche erfolgte Ausführung",
+    "punkte": 38,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7562": {
+    "id": "BEMA_7562",
+    "nummer": "7562",
+    "bezeichnung": "Verweilen, inkl. Zuschlag für in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr erbrachte Leistungen",
+    "punkte": 49,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7563": {
+    "id": "BEMA_7563",
+    "nummer": "7563",
+    "bezeichnung": "Verweilen, inkl. Zuschlag für in der Zeit zwischen 22 Uhr und 6 Uhr erbrachte Leistungen",
+    "punkte": 70,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7564": {
+    "id": "BEMA_7564",
+    "nummer": "7564",
+    "bezeichnung": "Verweilen, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen",
+    "punkte": 58,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7565": {
+    "id": "BEMA_7565",
+    "nummer": "7565",
+    "bezeichnung": "Verweilen, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen, inkl. Zuschlag für in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr erbrachte Leistungen",
+    "punkte": 87,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7566": {
+    "id": "BEMA_7566",
+    "nummer": "7566",
+    "bezeichnung": "Verweilen, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen, inkl. Zuschlag für in der Zeit zwischen 22 Uhr und 6 Uhr erbrachte Leistungen",
+    "punkte": 108,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7610": {
+    "id": "BEMA_7610",
+    "nummer": "7610",
+    "bezeichnung": "Beistand bei der ärztlichen Leistung eines anderen Arztes (Assistenz), je angefangene halbe Stunde",
+    "punkte": 15,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7611": {
+    "id": "BEMA_7611",
+    "nummer": "7611",
+    "bezeichnung": "Beistand, inkl. Zuschlag für dringend angeforderte und unverzügliche erfolgte Ausführung",
+    "punkte": 33,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7612": {
+    "id": "BEMA_7612",
+    "nummer": "7612",
+    "bezeichnung": "Beistand, inkl. Zuschlag für in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr erbrachte Leistungen",
+    "punkte": 44,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7613": {
+    "id": "BEMA_7613",
+    "nummer": "7613",
+    "bezeichnung": "Beistand, inkl. Zuschlag für in der Zeit zwischen 22 Uhr und 6 Uhr erbrachte Leistungen",
+    "punkte": 65,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7614": {
+    "id": "BEMA_7614",
+    "nummer": "7614",
+    "bezeichnung": "Beistand, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen",
+    "punkte": 53,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7615": {
+    "id": "BEMA_7615",
+    "nummer": "7615",
+    "bezeichnung": "Beistand, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen, inkl. Zuschlag für in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr erbrachte Leistungen",
+    "punkte": 82,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7616": {
+    "id": "BEMA_7616",
+    "nummer": "7616",
+    "bezeichnung": "Beistand, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen, inkl. Zuschlag für in der Zeit zwischen 22 Uhr und 6 Uhr erbrachte Leistungen",
+    "punkte": 103,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7620": {
+    "id": "BEMA_7620",
+    "nummer": "7620",
+    "bezeichnung": "Zuziehung eines Assistenten bei operativen belegärztlichen Leistungen oder bei ambulanter Operation durch niedergelassene Ärzte, je angefangene halbe Stunde",
+    "punkte": 17,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7621": {
+    "id": "BEMA_7621",
+    "nummer": "7621",
+    "bezeichnung": "Zuziehung eines Assistenten, inkl. Zuschlag für dringend angeforderte und unverzügliche erfolgte Ausführung",
+    "punkte": 35,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7622": {
+    "id": "BEMA_7622",
+    "nummer": "7622",
+    "bezeichnung": "Zuziehung eines Assistenten, inkl. Zuschlag für in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr erbrachte Leistungen",
+    "punkte": 46,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7623": {
+    "id": "BEMA_7623",
+    "nummer": "7623",
+    "bezeichnung": "Zuziehung eines Assistenten, inkl. Zuschlag für in der Zeit zwischen 22 Uhr und 6 Uhr erbrachte Leistungen",
+    "punkte": 67,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7624": {
+    "id": "BEMA_7624",
+    "nummer": "7624",
+    "bezeichnung": "Zuziehung eines Assistenten, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen",
+    "punkte": 55,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7625": {
+    "id": "BEMA_7625",
+    "nummer": "7625",
+    "bezeichnung": "Zuziehung eines Assistenten, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen, inkl. Zuschlag für in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr erbrachte Leistungen",
+    "punkte": 84,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7626": {
+    "id": "BEMA_7626",
+    "nummer": "7626",
+    "bezeichnung": "Zuziehung eines Assistenten, inkl. Zuschlag für an Samstagen, Sonn- und Feiertagen erbrachte Leistungen, inkl. Zuschlag für in der Zeit zwischen 22 Uhr und 6 Uhr erbrachte Leistungen",
+    "punkte": 105,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7700": {
+    "id": "BEMA_7700",
+    "nummer": "7700",
+    "bezeichnung": "Kurze Bescheinigung oder kurzes Zeugnis, Arbeitsunfähigkeitsbescheinigung",
+    "punkte": 5,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_7750": {
+    "id": "BEMA_7750",
+    "nummer": "7750",
+    "bezeichnung": "Ausführlicher schriftlicher Krankheits- und Befundbericht (einschließlich Angaben zur Anamnese, zu dem(n) Befund(en), zur epikritischen Bewertung und ggf. zur Therapie)",
+    "punkte": 15,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8200": {
+    "id": "BEMA_8200",
+    "nummer": "8200",
+    "bezeichnung": "Verband – ausgenommen Schnell- und Sprühverbände, Augen-, Ohrenklappen oder Dreiecktücher",
+    "punkte": 5,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8204": {
+    "id": "BEMA_8204",
+    "nummer": "8204",
+    "bezeichnung": "Zirkulärer Verband des Kopfes oder des Rumpfes (auch als Wundverband); stabilisierender Verband des Halses, des Schulter- oder Hüftgelenks oder einer Extremität über mindestens zwei große Gelenke; Schanz'scher Halskrawattenverband; Kompressionsverband",
+    "punkte": 11,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8210": {
+    "id": "BEMA_8210",
+    "nummer": "8210",
+    "bezeichnung": "Kleiner Schienenverband – auch als Notverband bei Frakturen –",
+    "punkte": 9,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8250": {
+    "id": "BEMA_8250",
+    "nummer": "8250",
+    "bezeichnung": "Blutentnahme mittels Spritze, Kanüle oder Katheter aus der Vene",
+    "punkte": 5,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8251": {
+    "id": "BEMA_8251",
+    "nummer": "8251",
+    "bezeichnung": "Blutentnahme mittels Spritze, Kanüle oder Katheter aus der Arterie",
+    "punkte": 7,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8252": {
+    "id": "BEMA_8252",
+    "nummer": "8252",
+    "bezeichnung": "Injektion, subkutan, submukös, intrakutan oder intramuskulär",
+    "punkte": 5,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8253": {
+    "id": "BEMA_8253",
+    "nummer": "8253",
+    "bezeichnung": "Injektion, intravenös",
+    "punkte": 8,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8254": {
+    "id": "BEMA_8254",
+    "nummer": "8254",
+    "bezeichnung": "Injektion, intraarteriell",
+    "punkte": 9,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8255": {
+    "id": "BEMA_8255",
+    "nummer": "8255",
+    "bezeichnung": "Injektion, intraartikulär oder perineural",
+    "punkte": 11,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8271": {
+    "id": "BEMA_8271",
+    "nummer": "8271",
+    "bezeichnung": "Infusion, intravenös, bis zu 30 Minuten Dauer",
+    "punkte": 14,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8272": {
+    "id": "BEMA_8272",
+    "nummer": "8272",
+    "bezeichnung": "Infusion, intravenös, von mehr als 30 Minuten Dauer",
+    "punkte": 20,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8300": {
+    "id": "BEMA_8300",
+    "nummer": "8300",
+    "bezeichnung": "Punktion eines Gelenks",
+    "punkte": 14,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_8303": {
+    "id": "BEMA_8303",
+    "nummer": "8303",
+    "bezeichnung": "Punktion einer Drüse, eines Schleimbeutels, Ganglions, Seroms, Hygroms, Hämatoms oder Abszesses oder oberflächiger Körperteile",
+    "punkte": 9,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1414": {
+    "id": "BEMA_1414",
+    "nummer": "1414",
+    "bezeichnung": "Diaphanoskopie der Nebenhöhlen der Nase",
+    "punkte": 5,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1418": {
+    "id": "BEMA_1418",
+    "nummer": "1418",
+    "bezeichnung": "Endoskopische Untersuchung der Nasenhaupthöhlen und/oder des Nasenrachenraums – ggf. einschließlich der Stimmbänder",
+    "punkte": 20,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1425": {
+    "id": "BEMA_1425",
+    "nummer": "1425",
+    "bezeichnung": "Ausstopfung der Nase von vorn, als selbstständige Leistung",
+    "punkte": 6,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1426": {
+    "id": "BEMA_1426",
+    "nummer": "1426",
+    "bezeichnung": "Ausstopfung der Nase von vorn und hinten, als selbstständige Leistung",
+    "punkte": 12,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1427": {
+    "id": "BEMA_1427",
+    "nummer": "1427",
+    "bezeichnung": "Entfernung von Fremdkörpern aus dem Naseninnern, als selbstständige Leistung",
+    "punkte": 11,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1428": {
+    "id": "BEMA_1428",
+    "nummer": "1428",
+    "bezeichnung": "Operativer Eingriff zur Entfernung festsitzender Fremdkörper aus der Nase",
+    "punkte": 42,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1429": {
+    "id": "BEMA_1429",
+    "nummer": "1429",
+    "bezeichnung": "Kauterisation im Naseninnern, je Sitzung",
+    "punkte": 9,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1435": {
+    "id": "BEMA_1435",
+    "nummer": "1435",
+    "bezeichnung": "Stillung von Nasenbluten mittels Ätzung/Tamponade und/oder Kauterisation, auch beidseitig",
+    "punkte": 11,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1465": {
+    "id": "BEMA_1465",
+    "nummer": "1465",
+    "bezeichnung": "Punktion einer Kieferhöhle – gegebenenfalls einschließlich Spülung und/oder Instillation von Medikamenten",
+    "punkte": 14,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1466": {
+    "id": "BEMA_1466",
+    "nummer": "1466",
+    "bezeichnung": "Endoskopische Untersuchung der Kieferhöhle (Antroskopie), gegebenenfalls einschließlich der Leistung nach Nr. 1465",
+    "punkte": 20,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1467": {
+    "id": "BEMA_1467",
+    "nummer": "1467",
+    "bezeichnung": "Operative Eröffnung einer Kieferhöhle vom Mundvorhof aus – einschließlich Fensterung –",
+    "punkte": 46,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1468": {
+    "id": "BEMA_1468",
+    "nummer": "1468",
+    "bezeichnung": "Operative Eröffnung einer Kieferhöhle von der Nase aus",
+    "punkte": 33,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1479": {
+    "id": "BEMA_1479",
+    "nummer": "1479",
+    "bezeichnung": "Ausspülen der Kiefer-, Keilbein-, Stirnhöhle von der natürlichen oder künstlichen Öffnung aus – auch Spülung mehrerer dieser Höhlen, auch einschließlich Instillation von Arzneimitteln –",
+    "punkte": 7,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1480": {
+    "id": "BEMA_1480",
+    "nummer": "1480",
+    "bezeichnung": "Absaugen der Nebenhöhlen",
+    "punkte": 5,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1485": {
+    "id": "BEMA_1485",
+    "nummer": "1485",
+    "bezeichnung": "Operative Eröffnung und Ausräumung der Stirnhöhle oder der Kieferhöhle oder der Siebbeinzellen von außen",
+    "punkte": 103,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1486": {
+    "id": "BEMA_1486",
+    "nummer": "1486",
+    "bezeichnung": "Radikaloperation der Kieferhöhle",
+    "punkte": 124,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1508": {
+    "id": "BEMA_1508",
+    "nummer": "1508",
+    "bezeichnung": "Entfernung von eingespießten Fremdkörpern aus dem Rachen oder Mund",
+    "punkte": 11,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1505": {
+    "id": "BEMA_1505",
+    "nummer": "1505",
+    "bezeichnung": "Eröffnung eines peritonsillären Abszesses",
+    "punkte": 17,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1506": {
+    "id": "BEMA_1506",
+    "nummer": "1506",
+    "bezeichnung": "Eröffnung eines retropharyngealen Abszesses",
+    "punkte": 21,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1507": {
+    "id": "BEMA_1507",
+    "nummer": "1507",
+    "bezeichnung": "Wiedereröffnung eines peritonsillären Abszesses",
+    "punkte": 7,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1509": {
+    "id": "BEMA_1509",
+    "nummer": "1509",
+    "bezeichnung": "Operative Behandlung einer Mundbodenphlegmone",
+    "punkte": 52,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1510": {
+    "id": "BEMA_1510",
+    "nummer": "1510",
+    "bezeichnung": "Schlitzung des Parotis- oder Submandibularis-Ausführungsganges – ggf. einschließlich Entfernung von Stenosen –",
+    "punkte": 22,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1511": {
+    "id": "BEMA_1511",
+    "nummer": "1511",
+    "bezeichnung": "Eröffnung eines Zungenabszesses",
+    "punkte": 21,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1512": {
+    "id": "BEMA_1512",
+    "nummer": "1512",
+    "bezeichnung": "Teilweise Entfernung der Zunge – ggf. einschließlich Unterbindung der Arteria lingualis –",
+    "punkte": 124,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1513": {
+    "id": "BEMA_1513",
+    "nummer": "1513",
+    "bezeichnung": "Keilexzision aus der Zunge",
+    "punkte": 42,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1518": {
+    "id": "BEMA_1518",
+    "nummer": "1518",
+    "bezeichnung": "Operation einer Speichelfistel",
+    "punkte": 83,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1519": {
+    "id": "BEMA_1519",
+    "nummer": "1519",
+    "bezeichnung": "Operative Entfernung von Speichelstein(en)",
+    "punkte": 62,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1520": {
+    "id": "BEMA_1520",
+    "nummer": "1520",
+    "bezeichnung": "Exstirpation der Unterkiefer- und/oder Unterzungenspeicheldrüse(n)",
+    "punkte": 100,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_1628": {
+    "id": "BEMA_1628",
+    "nummer": "1628",
+    "bezeichnung": "Plastischer Verschluss einer retroaurikulären Öffnung oder einer Kieferhöhlenfistel",
+    "punkte": 83,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2000": {
+    "id": "BEMA_2000",
+    "nummer": "2000",
+    "bezeichnung": "Erstversorgung einer kleinen Wunde",
+    "punkte": 8,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2003": {
+    "id": "BEMA_2003",
+    "nummer": "2003",
+    "bezeichnung": "Erstversorgung einer großen und/oder stark verunreinigten Wunde",
+    "punkte": 15,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2001": {
+    "id": "BEMA_2001",
+    "nummer": "2001",
+    "bezeichnung": "Versorgung einer kleinen Wunde einschließlich Naht",
+    "punkte": 15,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2004": {
+    "id": "BEMA_2004",
+    "nummer": "2004",
+    "bezeichnung": "Versorgung einer großen Wunde einschließlich Naht",
+    "punkte": 27,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2002": {
+    "id": "BEMA_2002",
+    "nummer": "2002",
+    "bezeichnung": "Versorgung einer kleinen Wunde einschließlich Umschneidung und Naht",
+    "punkte": 18,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2005": {
+    "id": "BEMA_2005",
+    "nummer": "2005",
+    "bezeichnung": "Versorgung einer großen und/oder stark verunreinigten Wunde einschließlich Umschneidung und Naht",
+    "punkte": 45,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2006": {
+    "id": "BEMA_2006",
+    "nummer": "2006",
+    "bezeichnung": "Behandlung einer Wunde, die nicht primär heilt oder Entzündungserscheinungen oder Eiterungen aufweist – auch Abtragungen von Nekrosen an einer Wunde –",
+    "punkte": 7,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2007": {
+    "id": "BEMA_2007",
+    "nummer": "2007",
+    "bezeichnung": "Entfernen von Fäden oder Klammern",
+    "punkte": 5,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2008": {
+    "id": "BEMA_2008",
+    "nummer": "2008",
+    "bezeichnung": "Wund- oder Fistelspaltung",
+    "punkte": 10,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2009": {
+    "id": "BEMA_2009",
+    "nummer": "2009",
+    "bezeichnung": "Entfernung eines unter der Oberfläche der Haut oder der Schleimhaut gelegenen fühlbaren Fremdkörpers",
+    "punkte": 12,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2010": {
+    "id": "BEMA_2010",
+    "nummer": "2010",
+    "bezeichnung": "Entfernung eines tiefsitzenden Fremdkörpers auf operativem Wege aus Weichteilen und/oder Knochen",
+    "punkte": 43,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2015": {
+    "id": "BEMA_2015",
+    "nummer": "2015",
+    "bezeichnung": "Anlegen einer oder mehrerer Redondrainage(n) in Gelenke, Weichteile oder Knochen über einen gesonderten Zugang – ggf. einschließlich Spülung –",
+    "punkte": 7,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2101": {
+    "id": "BEMA_2101",
+    "nummer": "2101",
+    "bezeichnung": "Naht der Gelenkkapsel eines Kiefer-, Hand- oder Fußgelenks",
+    "punkte": 62,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2118": {
+    "id": "BEMA_2118",
+    "nummer": "2118",
+    "bezeichnung": "Operative Fremdkörperentfernung aus einem Kiefer-, Finger-, Hand-, Zehen- oder Fußgelenk",
+    "punkte": 52,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2123": {
+    "id": "BEMA_2123",
+    "nummer": "2123",
+    "bezeichnung": "Resektion eines Kiefer-, Hand- oder Fußgelenks",
+    "punkte": 124,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2135": {
+    "id": "BEMA_2135",
+    "nummer": "2135",
+    "bezeichnung": "Arthroplastik eines Kiefer-, Hand- oder Fußgelenks",
+    "punkte": 156,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2156": {
+    "id": "BEMA_2156",
+    "nummer": "2156",
+    "bezeichnung": "Eröffnung eines vereiterten Kiefer-, Hand- oder Fußgelenks",
+    "punkte": 52,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2181": {
+    "id": "BEMA_2181",
+    "nummer": "2181",
+    "bezeichnung": "Gewaltsame Lockerung oder Streckung eines Kiefer-, Hand- oder Fußgelenks",
+    "punkte": 26,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2250": {
+    "id": "BEMA_2250",
+    "nummer": "2250",
+    "bezeichnung": "Keilförmige oder lineare Osteotomie eines kleinen Knochens (Finger-, Zehen-, Mittelhand-, Mittelfußknochen) oder Probeausmeißelung aus einem Knochen",
+    "punkte": 52,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2256": {
+    "id": "BEMA_2256",
+    "nummer": "2256",
+    "bezeichnung": "Knochenaufmeißelung oder Nekrotomie bei kleinen Knochen",
+    "punkte": 52,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2253": {
+    "id": "BEMA_2253",
+    "nummer": "2253",
+    "bezeichnung": "Knochenspanentnahme",
+    "punkte": 72,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2254": {
+    "id": "BEMA_2254",
+    "nummer": "2254",
+    "bezeichnung": "Implantation von Knochen",
+    "punkte": 83,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2255": {
+    "id": "BEMA_2255",
+    "nummer": "2255",
+    "bezeichnung": "Freie Verpflanzung eines Knochens oder von Knochenteilen (Knochenspäne)",
+    "punkte": 165,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2320": {
+    "id": "BEMA_2320",
+    "nummer": "2320",
+    "bezeichnung": "Einrichtung der gebrochenen knöchernen Nase einschließlich Tamponade – ggf. einschließlich Wundverband –",
+    "punkte": 21,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2321": {
+    "id": "BEMA_2321",
+    "nummer": "2321",
+    "bezeichnung": "Einrichtung eines gebrochenen Gesichtsknochens – ggf. einschließlich Wundverband –",
+    "punkte": 26,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2355": {
+    "id": "BEMA_2355",
+    "nummer": "2355",
+    "bezeichnung": "Operative Stabilisierung einer Pseudarthrose oder operative Korrektur eines in Fehlstellung verheilten Knochenbruchs",
+    "punkte": 124,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2356": {
+    "id": "BEMA_2356",
+    "nummer": "2356",
+    "bezeichnung": "Operative Stabilisierung einer Pseudarthrose oder operative Korrektur eines in Fehlstellung verheilten Knochenbruchs nach Osteotomie mittels Nagelung, Verschraubung und/oder Metallplatten und/oder äußerem Spanner – auch zusätzliches Einpflanzen von Knochenspan –",
+    "punkte": 165,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2380": {
+    "id": "BEMA_2380",
+    "nummer": "2380",
+    "bezeichnung": "Überpflanzung von Epidermisstücken",
+    "punkte": 35,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2397": {
+    "id": "BEMA_2397",
+    "nummer": "2397",
+    "bezeichnung": "Operative Ausräumung eines ausgedehnten Hämatoms, als selbstständige Leistung",
+    "punkte": 67,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2431": {
+    "id": "BEMA_2431",
+    "nummer": "2431",
+    "bezeichnung": "Eröffnung eines Karbunkels – auch mit Exzision –",
+    "punkte": 43,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2440": {
+    "id": "BEMA_2440",
+    "nummer": "2440",
+    "bezeichnung": "Operative Entfernung eines Naevus flammeus, je Sitzung",
+    "punkte": 89,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2441": {
+    "id": "BEMA_2441",
+    "nummer": "2441",
+    "bezeichnung": "Operative Korrektur einer entstellenden Gesichtsnarbe",
+    "punkte": 45,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2381": {
+    "id": "BEMA_2381",
+    "nummer": "2381",
+    "bezeichnung": "Einfache Hautlappenplastik",
+    "punkte": 42,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2382": {
+    "id": "BEMA_2382",
+    "nummer": "2382",
+    "bezeichnung": "Schwierige Hautlappenplastik oder Spalthauttransplantation",
+    "punkte": 83,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2386": {
+    "id": "BEMA_2386",
+    "nummer": "2386",
+    "bezeichnung": "Schleimhauttransplantation – einschließlich operativer Unterminierung der Entnahmestelle und plastischer Deckung –",
+    "punkte": 77,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2400": {
+    "id": "BEMA_2400",
+    "nummer": "2400",
+    "bezeichnung": "Öffnung eines Körperkanalverschlusses an der Körperoberfläche",
+    "punkte": 13,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2401": {
+    "id": "BEMA_2401",
+    "nummer": "2401",
+    "bezeichnung": "Probeexzision aus oberflächlich gelegenem Körpergewebe (z. B. Haut, Schleimhaut, Lippe)",
+    "punkte": 15,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2402": {
+    "id": "BEMA_2402",
+    "nummer": "2402",
+    "bezeichnung": "Probeexzision aus tiefliegendem Körpergewebe (z. B. Fettgewebe, Faszie, Muskulatur) oder aus einem Organ ohne Eröffnung einer Körperhöhle (z. B. Zunge)",
+    "punkte": 42,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2403": {
+    "id": "BEMA_2403",
+    "nummer": "2403",
+    "bezeichnung": "Exzision einer in oder unter der Haut oder Schleimhaut liegenden kleinen Geschwulst",
+    "punkte": 15,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2404": {
+    "id": "BEMA_2404",
+    "nummer": "2404",
+    "bezeichnung": "Exzision einer größeren Geschwulst (z. B. Ganglion, Fasziengeschwulst, Fettgeschwulst, Lymphdrüse, Neurom)",
+    "punkte": 62,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2430": {
+    "id": "BEMA_2430",
+    "nummer": "2430",
+    "bezeichnung": "Eröffnung eines tiefliegenden Abszesses",
+    "punkte": 34,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2432": {
+    "id": "BEMA_2432",
+    "nummer": "2432",
+    "bezeichnung": "Eröffnung einer Phlegmone",
+    "punkte": 53,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2442": {
+    "id": "BEMA_2442",
+    "nummer": "2442",
+    "bezeichnung": "Implantation alloplastischen Materials zur Weichteilunterfütterung, als selbstständige Leistung",
+    "punkte": 100,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2583": {
+    "id": "BEMA_2583",
+    "nummer": "2583",
+    "bezeichnung": "Neurolyse, als selbstständige Leistung",
+    "punkte": 103,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2584": {
+    "id": "BEMA_2584",
+    "nummer": "2584",
+    "bezeichnung": "Neurolyse mit Nervenverlagerung und Neueinbettung",
+    "punkte": 165,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2586": {
+    "id": "BEMA_2586",
+    "nummer": "2586",
+    "bezeichnung": "End-zu-End-Naht eines Nerven im Zusammenhang mit einer frischen Verletzung – einschließlich Wundversorgung –",
+    "punkte": 150,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2650": {
+    "id": "BEMA_2650",
+    "nummer": "2650",
+    "bezeichnung": "Entfernung eines extrem verlagerten oder retinierten Zahnes durch umfangreiche Osteotomie bei gefährdeten anatomischen Nachbarstrukturen",
+    "punkte": 83,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2651": {
+    "id": "BEMA_2651",
+    "nummer": "2651",
+    "bezeichnung": "Entfernung tief liegender Fremdkörper oder Sequestrotomie durch Osteotomie aus dem Kiefer",
+    "punkte": 62,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2680": {
+    "id": "BEMA_2680",
+    "nummer": "2680",
+    "bezeichnung": "Einrenkung der Luxation des Unterkiefers",
+    "punkte": 12,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2681": {
+    "id": "BEMA_2681",
+    "nummer": "2681",
+    "bezeichnung": "Einrenkung der alten Luxation des Unterkiefers",
+    "punkte": 45,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2685": {
+    "id": "BEMA_2685",
+    "nummer": "2685",
+    "bezeichnung": "Reposition eines Zahnes",
+    "punkte": 23,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2686": {
+    "id": "BEMA_2686",
+    "nummer": "2686",
+    "bezeichnung": "Reposition eines zahntragenden Bruchstücks des Alveolarfortsatzes",
+    "punkte": 34,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2687": {
+    "id": "BEMA_2687",
+    "nummer": "2687",
+    "bezeichnung": "Allmähliche Reposition des gebrochenen Ober- oder Unterkiefers oder eines schwer einstellbaren oder verkeilten Bruchstücks des Alveolarfortsatzes",
+    "punkte": 145,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2694": {
+    "id": "BEMA_2694",
+    "nummer": "2694",
+    "bezeichnung": "Operative Entfernung von Osteosynthesematerial aus einem Kiefer- oder Gesichtsknochen, je Fraktur",
+    "punkte": 50,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2697": {
+    "id": "BEMA_2697",
+    "nummer": "2697",
+    "bezeichnung": "Anlegen von Drahtligaturen, Drahthäkchen oder dergleichen, je Kieferhälfte oder Frontzahnbereich, als selbstständige Leistung",
+    "punkte": 39,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2698": {
+    "id": "BEMA_2698",
+    "nummer": "2698",
+    "bezeichnung": "Anlegen und Fixation einer Schiene am unverletzten Ober- oder Unterkiefer",
+    "punkte": 167,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2699": {
+    "id": "BEMA_2699",
+    "nummer": "2699",
+    "bezeichnung": "Anlegen und Fixation einer Schiene am gebrochenen Ober- oder Unterkiefer",
+    "punkte": 245,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2700": {
+    "id": "BEMA_2700",
+    "nummer": "2700",
+    "bezeichnung": "Anlegen von Stütz-, Halte- oder Hilfsvorrichtungen (z. B. Verbandsplatte, Pelotte) am Ober- oder Unterkiefer oder bei Kieferklemme",
+    "punkte": 39,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2701": {
+    "id": "BEMA_2701",
+    "nummer": "2701",
+    "bezeichnung": "Anlegen von extraoralen Stütz-, Halte- oder Hilfsvorrichtungen, einer Verbands- oder Verschlussplatte, Pelotte oder dergleichen – im Zusammenhang mit plastischen Operationen oder zur Verhütung oder Behandlung von Narbenkontrakturen –",
+    "punkte": 200,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2702": {
+    "id": "BEMA_2702",
+    "nummer": "2702",
+    "bezeichnung": "Wiederanbringung einer gelösten Apparatur oder kleine Änderungen, teilweise Erneuerung von Schienen oder Stützapparaten – auch Entfernung von Schienen oder Stützapparaten –, je Kiefer",
+    "punkte": 34,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2620": {
+    "id": "BEMA_2620",
+    "nummer": "2620",
+    "bezeichnung": "Operation der isolierten Lippenspalte",
+    "punkte": 84,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2621": {
+    "id": "BEMA_2621",
+    "nummer": "2621",
+    "bezeichnung": "Operation der breiten Lippen-Kieferspalte mit Naseneingangplastik",
+    "punkte": 167,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2625": {
+    "id": "BEMA_2625",
+    "nummer": "2625",
+    "bezeichnung": "Verschluss des weichen oder harten Gaumens oder Verschluss von perforierenden Defekten im Bereich von Gaumen oder Vestibulum",
+    "punkte": 139,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2626": {
+    "id": "BEMA_2626",
+    "nummer": "2626",
+    "bezeichnung": "Velopharyngoplastik",
+    "punkte": 278,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2627": {
+    "id": "BEMA_2627",
+    "nummer": "2627",
+    "bezeichnung": "Verschluss des harten und weichen Gaumens",
+    "punkte": 223,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2640": {
+    "id": "BEMA_2640",
+    "nummer": "2640",
+    "bezeichnung": "Operative Verlagerung des Oberkiefers bei Dysgnathie, je Kieferhälfte",
+    "punkte": 134,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2642": {
+    "id": "BEMA_2642",
+    "nummer": "2642",
+    "bezeichnung": "Operative Verlagerung des Unterkiefers bei Dysgnathie, je Kieferhälfte",
+    "punkte": 206,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2655": {
+    "id": "BEMA_2655",
+    "nummer": "2655",
+    "bezeichnung": "Operation einer ausgedehnten Kieferzyste – über mehr als drei Zähne oder vergleichbarer Größe im unbezahnten Bereich – durch Zystektomie",
+    "punkte": 106,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2656": {
+    "id": "BEMA_2656",
+    "nummer": "2656",
+    "bezeichnung": "Operation einer ausgedehnten Kieferzyste – über mehr als drei Zähne oder vergleichbarer Größe im unbezahnten Bereich – durch Zystektomie in Verbindung mit der Entfernung retinierter oder verlagerter Zähne und/oder Wurzelspitzenresektion",
+    "punkte": 69,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2657": {
+    "id": "BEMA_2657",
+    "nummer": "2657",
+    "bezeichnung": "Operation einer ausgedehnten Kieferzyste – über mehr als drei Zähne oder vergleichbarer Größe im unbezahnten Bereich – durch Zystostomie",
+    "punkte": 85,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2658": {
+    "id": "BEMA_2658",
+    "nummer": "2658",
+    "bezeichnung": "Operation einer ausgedehnten Kieferzyste – über mehr als drei Zähne oder vergleichbarer Größe im unbezahnten Bereich – durch Zystostomie in Verbindung mit der Entfernung retinierter oder verlagerter Zähne und/oder Wurzelspitzenresektion",
+    "punkte": 56,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2676": {
+    "id": "BEMA_2676",
+    "nummer": "2676",
+    "bezeichnung": "Totale Mundboden- oder Vestibulumplastik zur Formung des Prothesenlagers mit partieller Ablösung der Mundbodenmuskulatur, je Kiefer",
+    "punkte": 245,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2682": {
+    "id": "BEMA_2682",
+    "nummer": "2682",
+    "bezeichnung": "Operative Einrenkung der Luxation eines Kiefergelenks",
+    "punkte": 156,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2688": {
+    "id": "BEMA_2688",
+    "nummer": "2688",
+    "bezeichnung": "Fixation bei nicht dislozierter Kieferfraktur durch Osteosynthese oder Aufhängung",
+    "punkte": 84,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2690": {
+    "id": "BEMA_2690",
+    "nummer": "2690",
+    "bezeichnung": "Operative Reposition und Fixation durch Osteosynthese bei Unterkieferbruch, je Kieferhälfte",
+    "punkte": 112,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2691": {
+    "id": "BEMA_2691",
+    "nummer": "2691",
+    "bezeichnung": "Operative Reposition und Fixation durch Osteosynthese bei Aussprengung des Oberkiefers an der Schädelbasis",
+    "punkte": 400,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2692": {
+    "id": "BEMA_2692",
+    "nummer": "2692",
+    "bezeichnung": "Operative Reposition und Fixation durch Osteosynthese bei Kieferbruch im Mittelgesichtsbereich – gegebenenfalls einschließlich Jochbeinbruch und/oder Nasenbeinbruch –, je Kieferhälfte",
+    "punkte": 167,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2693": {
+    "id": "BEMA_2693",
+    "nummer": "2693",
+    "bezeichnung": "Operative Reposition und Fixation einer isolierten Orbitaboden-, Jochbein- oder Jochbogenfraktur",
+    "punkte": 134,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2695": {
+    "id": "BEMA_2695",
+    "nummer": "2695",
+    "bezeichnung": "Einrichtung und Fixation eines gebrochenen Kiefers außerhalb der Zahnreihen durch intra- und extraorale Schienenverbände und Stützapparate",
+    "punkte": 300,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2696": {
+    "id": "BEMA_2696",
+    "nummer": "2696",
+    "bezeichnung": "Drahtumschlingung des Unterkiefers oder orofaziale Drahtaufhängung, auch beidseitig",
+    "punkte": 56,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2705": {
+    "id": "BEMA_2705",
+    "nummer": "2705",
+    "bezeichnung": "Osteotomie nach disloziert verheilter Fraktur im Mittelgesicht – einschließlich Osteosynthese –",
+    "punkte": 189,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2706": {
+    "id": "BEMA_2706",
+    "nummer": "2706",
+    "bezeichnung": "Osteotomie nach disloziert verheilter Fraktur im Unterkiefer – einschließlich Osteosynthese –",
+    "punkte": 145,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2710": {
+    "id": "BEMA_2710",
+    "nummer": "2710",
+    "bezeichnung": "Partielle Resektion des Ober- oder Unterkiefers – auch Segmentosteotomie –, als selbstständige Leistung",
+    "punkte": 123,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2711": {
+    "id": "BEMA_2711",
+    "nummer": "2711",
+    "bezeichnung": "Partielle Resektion des Ober- oder Unterkiefers – auch Segmentosteotomie –, in Verbindung mit den Leistungen nach den Nrn. 2640 oder 2642",
+    "punkte": 84,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2720": {
+    "id": "BEMA_2720",
+    "nummer": "2720",
+    "bezeichnung": "Osteotomie im Zusammenhang mit operativen Eingriffen am Mundboden – einschließlich Osteosynthese –",
+    "punkte": 89,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2730": {
+    "id": "BEMA_2730",
+    "nummer": "2730",
+    "bezeichnung": "Operative Maßnahmen zur Lagerbildung beim Aufbau des Alveolarfortsatzes, je Kieferhälfte oder Frontzahnbereich",
+    "punkte": 56,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2732": {
+    "id": "BEMA_2732",
+    "nummer": "2732",
+    "bezeichnung": "Operation zur Lagerbildung für Knochen oder Knorpel bei ausgedehnten Kieferdefekten",
+    "punkte": 223,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2885": {
+    "id": "BEMA_2885",
+    "nummer": "2885",
+    "bezeichnung": "Entfernung einer kleinen Blutadergeschwulst",
+    "punkte": 124,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_2886": {
+    "id": "BEMA_2886",
+    "nummer": "2886",
+    "bezeichnung": "Entfernung einer großen Blutadergeschwulst",
+    "punkte": 308,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_3300": {
+    "id": "BEMA_3300",
+    "nummer": "3300",
+    "bezeichnung": "Arthroskopie – gegebenenfalls mit Probeexzision –",
+    "punkte": 56,
+    "system": "GKV-GOÄ",
+    "kategorie": "GKV-GOÄ"
+  },
+  "BEMA_02": {
+    "id": "BEMA_02",
+    "system": "BEMA",
+    "nummer": "02",
+    "bezeichnung": "BEMA 02",
+    "beschreibung": "Hilfeleistung bei Ohnmacht oder Kollaps",
+    "punkte": 20,
+    "kategorie": "sonstige"
+  },
+  "BEMA_03": {
+    "id": "BEMA_03",
+    "system": "BEMA",
+    "nummer": "03",
+    "bezeichnung": "BEMA 03",
+    "beschreibung": "Zuschlag für Leistungen außerhalb der Sprechstunde, bei Nacht (20 Uhr bis 8 Uhr) oder an Sonn- und Feiertagen",
+    "punkte": 15,
+    "kategorie": "sonstige"
+  },
+  "BEMA_8": {
+    "id": "BEMA_8",
+    "system": "BEMA",
+    "nummer": "8",
+    "bezeichnung": "BEMA 8",
+    "beschreibung": "Sensibilitätsprüfung der Zähne",
+    "punkte": 6,
+    "kategorie": "sonstige"
+  },
+  "BEMA_10": {
+    "id": "BEMA_10",
+    "system": "BEMA",
+    "nummer": "10",
+    "bezeichnung": "BEMA 10",
+    "beschreibung": "Behandlung überempfindlicher Zähne, für jede Sitzung",
+    "punkte": 6,
+    "kategorie": "sonstige"
+  },
+  "BEMA_11": {
+    "id": "BEMA_11",
+    "system": "BEMA",
+    "nummer": "11",
+    "bezeichnung": "BEMA 11",
+    "beschreibung": "Exkavieren und provisorischer Verschluss einer Kavität als alleinige Leistung, auch unvollendete Füllung",
+    "punkte": 19,
+    "kategorie": "sonstige"
+  },
+  "BEMA_13a": {
+    "id": "BEMA_13a",
+    "system": "BEMA",
+    "nummer": "13a",
+    "bezeichnung": "Füllung, einflächig",
+    "beschreibung": "Präparieren einer Kavität, 1flächig",
+    "punkte": 32,
+    "kategorie": "konservierend"
+  },
+  "BEMA_13e": {
+    "id": "BEMA_13e",
+    "system": "BEMA",
+    "nummer": "13e",
+    "bezeichnung": "Kompositfüllungen im Seitenzahnbereich, einflächig",
+    "beschreibung": "Präparieren einer Kavität, einflächig im Seitenzahnbereich",
+    "punkte": 52,
+    "kategorie": "konservierend"
+  },
+  "BEMA_13f": {
+    "id": "BEMA_13f",
+    "system": "BEMA",
+    "nummer": "13f",
+    "bezeichnung": "Kompositfüllung im Seitenzahnbereich, zweiflächig",
+    "beschreibung": "Präparieren einer Kavität, zweiflächig im Seitenzahnbereich",
+    "punkte": 64,
+    "kategorie": "konservierend"
+  },
+  "BEMA_13g": {
+    "id": "BEMA_13g",
+    "system": "BEMA",
+    "nummer": "13g",
+    "bezeichnung": "Kompositfüllung im Seitenzahnbereich, dreiflächig",
+    "beschreibung": "Präparieren einer Kavität, dreiflächig",
+    "punkte": 84,
+    "kategorie": "konservierend"
+  },
+  "BEMA_13h": {
+    "id": "BEMA_13h",
+    "system": "BEMA",
+    "nummer": "13h",
+    "bezeichnung": "Kompositfüllung im Seitenzahnbereich, mehr als dreiflächig",
+    "beschreibung": "Füllung mehrflächig",
+    "punkte": 100,
+    "kategorie": "konservierend"
+  },
+  "BEMA_14": {
+    "id": "BEMA_14",
+    "system": "BEMA",
+    "nummer": "14",
+    "bezeichnung": "Konfektionierte Krone in der pädiatrischen Zahnheilkunde",
+    "beschreibung": "Konfektionierte Krone (im Seitenzahnbereich in der Regel aus Metall) einschließlich Material- und Laboratoriumskosten in der pädiatrischen Zahnheilkunde",
+    "punkte": 50,
+    "kategorie": "konservierend"
+  },
+  "BEMA_16": {
+    "id": "BEMA_16",
+    "system": "BEMA",
+    "nummer": "16",
+    "bezeichnung": "BEMA 16",
+    "beschreibung": "Stiftverankerung einer Füllung (zusätzlich zu den Nrn. 13 c, d), je Zahn, einschließlich Materialkosten",
+    "punkte": 20,
+    "kategorie": "konservierend"
+  },
+  "BEMA_20c": {
+    "id": "BEMA_20c",
+    "system": "BEMA",
+    "nummer": "20c",
+    "bezeichnung": "Metallische Teilkrone",
+    "beschreibung": "Versorgung eines Einzelzahnes durch eine metallische Teilkrone",
+    "punkte": 187,
+    "kategorie": "konservierend"
+  },
+  "BEMA_21": {
+    "id": "BEMA_21",
+    "system": "BEMA",
+    "nummer": "21",
+    "bezeichnung": "Provisorische Krone mit Stiftverankerung",
+    "beschreibung": "Schutz eines beschliffenen Zahnes und Sicherung der Kaufunktion durch eine provisorische Krone mit Stiftverankerung",
+    "punkte": 28,
+    "kategorie": "konservierend"
+  },
+  "BEMA_22": {
+    "id": "BEMA_22",
+    "system": "BEMA",
+    "nummer": "22",
+    "bezeichnung": "Teilleistungen nach den Nrn. 18 und 20",
+    "beschreibung": "Teilleistungen bei nicht vollendeten Leistungen nach den Nrn. 18 und 20:",
+    "kategorie": "konservierend"
+  },
+  "BEMA_23": {
+    "id": "BEMA_23",
+    "system": "BEMA",
+    "nummer": "23",
+    "bezeichnung": "BEMA 23",
+    "beschreibung": "Entfernen einer Krone bzw. eines Brückenankers oder eines abgebrochenen Wurzelstiftes bzw. das Abtrennen eines Brückengliedes oder Steges, je Trennstelle",
+    "punkte": 17,
+    "kategorie": "konservierend"
+  },
+  "BEMA_24a": {
+    "id": "BEMA_24a",
+    "system": "BEMA",
+    "nummer": "24a",
+    "bezeichnung": "Wiedereinsetzen einer Krone",
+    "beschreibung": "Wiedereinsetzen einer Krone oder dergleichen",
+    "punkte": 25,
+    "kategorie": "konservierend"
+  },
+  "BEMA_24b": {
+    "id": "BEMA_24b",
+    "system": "BEMA",
+    "nummer": "24b",
+    "bezeichnung": "Erneuerung Facette",
+    "beschreibung": "Erneuerung oder Wiedereinsetzen einer Facette, einer Verblendschale oder dergleichen",
+    "punkte": 43,
+    "kategorie": "konservierend"
+  },
+  "BEMA_27": {
+    "id": "BEMA_27",
+    "system": "BEMA",
+    "nummer": "27",
+    "bezeichnung": "BEMA 27",
+    "beschreibung": "Amputation und Versorgung der vitalen Pulpa am Milchzahn und am symptomlosen bleibenden Zahn mit nicht abgeschlossenem Wurzel- wachstum einschließlich Abtragen des Pulpendaches, Amputation der koronalen Pulpa, Spülung und Blutstillung, Aufbringen eines Überkap- pungspräparates, je Zahn",
+    "punkte": 29,
+    "kategorie": "sonstige"
+  },
+  "BEMA_36": {
+    "id": "BEMA_36",
+    "system": "BEMA",
+    "nummer": "36",
+    "bezeichnung": "BEMA 36",
+    "beschreibung": "Stillung einer übermäßigen Blutung",
+    "punkte": 15,
+    "kategorie": "endodontie"
+  },
+  "BEMA_37": {
+    "id": "BEMA_37",
+    "system": "BEMA",
+    "nummer": "37",
+    "bezeichnung": "BEMA 37",
+    "beschreibung": "Stillung einer übermäßigen Blutung durch Abbinden oder Umstechen eines Gefäßes oder durch Knochenbolzung",
+    "punkte": 29,
+    "kategorie": "endodontie"
+  },
+  "BEMA_38": {
+    "id": "BEMA_38",
+    "system": "BEMA",
+    "nummer": "38",
+    "bezeichnung": "BEMA 38",
+    "beschreibung": "Nachbehandlung nach chirurgischem Eingriff oder Tamponieren oder dergleichen, je Kieferhälfte oder Frontzahnbereich, als selbständige Leistung, je Sitzung",
+    "punkte": 10,
+    "kategorie": "endodontie"
+  },
+  "BEMA_41b": {
+    "id": "BEMA_41b",
+    "system": "BEMA",
+    "nummer": "41b",
+    "bezeichnung": "Leitungsanästhesie, extraoral",
+    "beschreibung": "Leitungsanästhesie, extraoral",
+    "punkte": 16,
+    "kategorie": "anaesthesie"
+  },
+  "BEMA_43": {
+    "id": "BEMA_43",
+    "system": "BEMA",
+    "nummer": "43",
+    "bezeichnung": "BEMA 43",
+    "beschreibung": "Entfernen eines einwurzeligen Zahnes einschließlich Wundversorgung",
+    "punkte": 10,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_44": {
+    "id": "BEMA_44",
+    "system": "BEMA",
+    "nummer": "44",
+    "bezeichnung": "BEMA 44",
+    "beschreibung": "Entfernen eines mehrwurzeligen Zahnes einschließlich Wundversorgung",
+    "punkte": 15,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_47b": {
+    "id": "BEMA_47b",
+    "system": "BEMA",
+    "nummer": "47b",
+    "bezeichnung": "BEMA 47b",
+    "beschreibung": "Hemisektion und Teilextraktion eines mehrwurzeligen Zahnes",
+    "punkte": 72,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_49": {
+    "id": "BEMA_49",
+    "system": "BEMA",
+    "nummer": "49",
+    "bezeichnung": "BEMA 49",
+    "beschreibung": "Exzision von Mundschleimhaut oder Granulationsgewebe für das Gebiet eines Zahnes",
+    "punkte": 10,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_50": {
+    "id": "BEMA_50",
+    "system": "BEMA",
+    "nummer": "50",
+    "bezeichnung": "BEMA 50",
+    "beschreibung": "Exzision einer Schleimhautwucherung (z. B. lappiges Fibrom, Epulis)",
+    "punkte": 37,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_51a": {
+    "id": "BEMA_51a",
+    "system": "BEMA",
+    "nummer": "51a",
+    "bezeichnung": "BEMA 51a",
+    "beschreibung": "Plastischer Verschluss einer eröffneten Kieferhöhle durch Zahnfleischplastik als selbständige Leistung oder in Verbindung mit einer Extraktion",
+    "punkte": 80,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_51b": {
+    "id": "BEMA_51b",
+    "system": "BEMA",
+    "nummer": "51b",
+    "bezeichnung": "BEMA 51b",
+    "beschreibung": "Plastischer Verschluss einer eröffneten Kieferhöhle in Verbindung mit Osteotomie",
+    "punkte": 40,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_53": {
+    "id": "BEMA_53",
+    "system": "BEMA",
+    "nummer": "53",
+    "bezeichnung": "BEMA 53",
+    "beschreibung": "Sequestrotomie bei Osteomyelitis der Kiefer",
+    "punkte": 72,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_55": {
+    "id": "BEMA_55",
+    "system": "BEMA",
+    "nummer": "55",
+    "bezeichnung": "BEMA 55",
+    "beschreibung": "Reimplantation eines Zahnes, ggf. einschließlich einfacher Fixation an den benachbarten Zähnen",
+    "punkte": 72,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_56a": {
+    "id": "BEMA_56a",
+    "system": "BEMA",
+    "nummer": "56a",
+    "bezeichnung": "Zystektomie",
+    "beschreibung": "Operation Zyste durch Zystektomie",
+    "punkte": 120,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_56b": {
+    "id": "BEMA_56b",
+    "system": "BEMA",
+    "nummer": "56b",
+    "bezeichnung": "Orale Zystostomie",
+    "beschreibung": "Operation Zyste durch orale Zystostomie",
+    "punkte": 72,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_56c": {
+    "id": "BEMA_56c",
+    "system": "BEMA",
+    "nummer": "56c",
+    "bezeichnung": "Zystektomie in Verbindung mit Osteotomie",
+    "beschreibung": "Operation einer Zyste durch Zystektomie in Verbindung mit einer Osteotomie oder Wurzelspitzenresektion",
+    "punkte": 48,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_56d": {
+    "id": "BEMA_56d",
+    "system": "BEMA",
+    "nummer": "56d",
+    "bezeichnung": "Orale Zystostomie in Verbindung mit Ost/WSR",
+    "beschreibung": "Operation einer Zyste durch orale Zystostomie in Verbindung mit einer Osteotomie oder Wurzelspitzenresektion",
+    "punkte": 48,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_57": {
+    "id": "BEMA_57",
+    "system": "BEMA",
+    "nummer": "57",
+    "bezeichnung": "BEMA 57",
+    "beschreibung": "Beseitigen störender Schleimhautbänder, Muskelansätze oder eines Schlotterkammes im Frontzahnbereich oder in einer Kieferhälfte, je Sitzung",
+    "punkte": 48,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_58": {
+    "id": "BEMA_58",
+    "system": "BEMA",
+    "nummer": "58",
+    "bezeichnung": "BEMA 58",
+    "beschreibung": "Knochenresektion am Alveolarfortsatz zur Formung des Prothesenlagers im Frontzahnbereich oder in einer Kieferhälfte als selbständige Leistung, je Sitzung",
+    "punkte": 48,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_59": {
+    "id": "BEMA_59",
+    "system": "BEMA",
+    "nummer": "59",
+    "bezeichnung": "BEMA 59",
+    "beschreibung": "Mundboden- oder Vestibulumplastik im Frontzahnbereich oder in einer Kieferhälfte",
+    "punkte": 120,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_60": {
+    "id": "BEMA_60",
+    "system": "BEMA",
+    "nummer": "60",
+    "bezeichnung": "BEMA 60",
+    "beschreibung": "Tuberplastik, einseitig",
+    "punkte": 80,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_61": {
+    "id": "BEMA_61",
+    "system": "BEMA",
+    "nummer": "61",
+    "bezeichnung": "BEMA 61",
+    "beschreibung": "Korrektur des Lippenbändchens bei echtem Diastema mediale",
+    "punkte": 72,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_62": {
+    "id": "BEMA_62",
+    "system": "BEMA",
+    "nummer": "62",
+    "bezeichnung": "BEMA 62",
+    "beschreibung": "Alveolotomie",
+    "punkte": 36,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_63": {
+    "id": "BEMA_63",
+    "system": "BEMA",
+    "nummer": "63",
+    "bezeichnung": "BEMA 63",
+    "beschreibung": "Freilegung eines retinierten und/oder verlagerten Zahnes zur kieferorthopädischen Einstellung",
+    "punkte": 80,
+    "kategorie": "chirurgie"
+  },
+  "BEMA_90": {
+    "id": "BEMA_90",
+    "system": "BEMA",
+    "nummer": "90",
+    "bezeichnung": "Wurzelstiftkappe",
+    "beschreibung": "Versorgung eines Zahnes durch eine Wurzelstiftkappe mit Verankerung im Wurzelkanal mit Kugelknopfanker",
+    "punkte": 154,
+    "kategorie": "prothetik"
+  },
+  "BEMA_91e": {
+    "id": "BEMA_91e",
+    "system": "BEMA",
+    "nummer": "91e",
+    "bezeichnung": "Verwendung eines Geschiebes",
+    "beschreibung": "Verwendung eines Geschiebes bei geteilten Brücken mit disparallelen Pfeilern zusätzlich zu den Nrn. 91 a bis c",
+    "punkte": 43,
+    "kategorie": "prothetik"
+  },
+  "BEMA_93a": {
+    "id": "BEMA_93a",
+    "system": "BEMA",
+    "nummer": "93a",
+    "bezeichnung": "Adhäsivbrücke mit Metallgerüst",
+    "beschreibung": "Adhäsivbrücke mit Metallgerüst im Frontzahnbereich mit einem Flügel einschließlich der Präparation von Retentionen an dem Pfeilerzahn, Abformung, Farbbestimmung, Bissnahme, Einprobe und adhäsive Befestigung, Kontrolle und ggf. Korrekturen der Okklusion und Artikulation",
+    "punkte": 240,
+    "kategorie": "prothetik"
+  },
+  "BEMA_93b": {
+    "id": "BEMA_93b",
+    "system": "BEMA",
+    "nummer": "93b",
+    "bezeichnung": "Zweiflügelige Adhäsivbrücke",
+    "beschreibung": "Adhäsivbrücke mit Metallgerüst im Frontzahnbereich mit zwei Flügeln einschließlich der Präparation von Retentionen an den Pfeilerzähnen, Abformung, Farbbestimmung, Bissnahme, Einprobe und adhäsive Befestigung, Kontrolle und ggf. Korrekturen der Okklusion und Artikulation",
+    "punkte": 335,
+    "kategorie": "prothetik"
+  },
+  "BEMA_94a": {
+    "id": "BEMA_94a",
+    "system": "BEMA",
+    "nummer": "94a",
+    "bezeichnung": "Teilleistungen nach den Nrn. 90 bis 92",
+    "beschreibung": "Teilleistungen nach den Nrn. 90 bis 92 bei nicht vollendeten Leistungen",
+    "kategorie": "prothetik"
+  },
+  "BEMA_94b": {
+    "id": "BEMA_94b",
+    "system": "BEMA",
+    "nummer": "94b",
+    "bezeichnung": "Teilleistungen nach der Nr. 93",
+    "beschreibung": "Teilleistungen bei nicht vollendeten Leistungen nach der Nr. 93",
+    "kategorie": "prothetik"
+  },
+  "BEMA_95a": {
+    "id": "BEMA_95a",
+    "system": "BEMA",
+    "nummer": "95a",
+    "bezeichnung": "Maßnahmen zum Wiederherstellen der Funktion von Brücken und provisorischen Brücken",
+    "beschreibung": "Wiedereinsetzen einer Brücke mit 2 Ankern",
+    "punkte": 34,
+    "kategorie": "prothetik"
+  },
+  "BEMA_95b": {
+    "id": "BEMA_95b",
+    "system": "BEMA",
+    "nummer": "95b",
+    "bezeichnung": "Maßnahmen zum Wiederherstellen der Funktion von Brücken und provisorischen Brücken",
+    "beschreibung": "Wiedereinsetzen einer Brücke mit mehr als 2 Ankern",
+    "punkte": 50,
+    "kategorie": "prothetik"
+  },
+  "BEMA_95c": {
+    "id": "BEMA_95c",
+    "system": "BEMA",
+    "nummer": "95c",
+    "bezeichnung": "Maßnahmen zum Wiederherstellen der Funktion von Brücken und provisorischen Brücken",
+    "beschreibung": "Erneuerung oder Wiedereinsetzen einer Facette, einer Verblendschale oder dergleichen",
+    "punkte": 36,
+    "kategorie": "prothetik"
+  },
+  "BEMA_95d": {
+    "id": "BEMA_95d",
+    "system": "BEMA",
+    "nummer": "95d",
+    "bezeichnung": "Maßnahmen zum Wiederherstellen der Funktion von Brücken und provisorischen Brücken",
+    "beschreibung": "Abnahme und Wiedereinsetzen einer provisorischen Brücke",
+    "punkte": 18,
+    "kategorie": "prothetik"
+  },
+  "BEMA_98d": {
+    "id": "BEMA_98d",
+    "system": "BEMA",
+    "nummer": "98d",
+    "bezeichnung": "Intraorale Stützstiftregistrierung",
+    "beschreibung": "Intraorale Stützstiftregistrierung zur Feststellung der Zentrallage",
+    "punkte": 23,
+    "kategorie": "prothetik"
+  },
+  "BEMA_98f": {
+    "id": "BEMA_98f",
+    "system": "BEMA",
+    "nummer": "98f",
+    "bezeichnung": "Doppel/mehrarmige Halte/Stützvorrichtungen",
+    "beschreibung": "Verwendung doppelarmiger Halte- oder einfacher Stützvorrichtungen oder mehrarmiger gebogener Halte- und Stützvorrichtungen zu den Bewertungszahlen nach Nr. 96",
+    "punkte": 22,
+    "kategorie": "prothetik"
+  },
+  "BEMA_98g": {
+    "id": "BEMA_98g",
+    "system": "BEMA",
+    "nummer": "98g",
+    "bezeichnung": "Verwendung einer Metallbasis",
+    "beschreibung": "Verwendung einer Metallbasis in Verbindung mit Halte- und Stützvorrichtungen – nicht bei Interimsprothesen –",
+    "punkte": 44,
+    "kategorie": "prothetik"
+  },
+  "BEMA_99a": {
+    "id": "BEMA_99a",
+    "system": "BEMA",
+    "nummer": "99a",
+    "bezeichnung": "Teilleistungen nach den Nrn. 96, 97 und 98",
+    "beschreibung": "Anatomischer Abdruck zur prothetischen Versorgung eines Kiefers als Teilleistungen nach den Nrn. 96, 97 und 98 bei nicht vollendeten Leistungen",
+    "punkte": 19,
+    "kategorie": "prothetik"
+  },
+  "BEMA_99b": {
+    "id": "BEMA_99b",
+    "system": "BEMA",
+    "nummer": "99b",
+    "bezeichnung": "Teilleistungen nach den Nrn. 96, 97 und 98 (50%)",
+    "beschreibung": "Maßnahmen einschließlich Bissnahme als Teilleistungen nach den Nrn. 96, 97 und 98 bei nicht vollendeten Leistungen",
+    "kategorie": "prothetik"
+  },
+  "BEMA_99c": {
+    "id": "BEMA_99c",
+    "system": "BEMA",
+    "nummer": "99c",
+    "bezeichnung": "Teilleistungen nach den Nrn. 96, 97 und 98 (75%)",
+    "beschreibung": "Weitergehende Maßnahmen als Teilleistungen nach den Nrn. 96, 97 und 98 bei nicht vollendeten Leistungen",
+    "kategorie": "prothetik"
+  },
+  "BEMA_100c": {
+    "id": "BEMA_100c",
+    "system": "BEMA",
+    "nummer": "100c",
+    "bezeichnung": "Teilunterfütterung einer Prothese",
+    "beschreibung": "Teilunterfütterung einer Prothese",
+    "punkte": 44,
+    "kategorie": "prothetik"
+  },
+  "BEMA_100d": {
+    "id": "BEMA_100d",
+    "system": "BEMA",
+    "nummer": "100d",
+    "bezeichnung": "Vollständige Unterfütterung",
+    "beschreibung": "Vollständige Unterfütterung einer Prothese im indirekten Verfahren",
+    "punkte": 55,
+    "kategorie": "prothetik"
+  },
+  "BEMA_100e": {
+    "id": "BEMA_100e",
+    "system": "BEMA",
+    "nummer": "100e",
+    "bezeichnung": "Vollständige Unterfütterung mit FURand (OK)",
+    "beschreibung": "Vollständige Unterfütterung einer Prothese im indirekten Verfahren einschließlich funktioneller Randgestaltung im Oberkiefer",
+    "punkte": 81,
+    "kategorie": "prothetik"
+  },
+  "BEMA_100f": {
+    "id": "BEMA_100f",
+    "system": "BEMA",
+    "nummer": "100f",
+    "bezeichnung": "Vollständige Unterfütterung mit FURand (UK)",
+    "beschreibung": "Vollständige Unterfütterung einer Prothese im indirekten Verfahren einschließlich funktioneller Randgestaltung im Unterkiefer",
+    "punkte": 81,
+    "kategorie": "prothetik"
+  },
+  "BEMA_101a": {
+    "id": "BEMA_101a",
+    "system": "BEMA",
+    "nummer": "101a",
+    "bezeichnung": "Defektverschluss bei Restgebiss",
+    "beschreibung": "Maßnahmen zur Weichteilstützung zum Ausgleich oder zum Verschluss von Defekten im Bereich des Kiefers bei vorhandenem Restgebiss",
+    "punkte": 80,
+    "kategorie": "prothetik"
+  },
+  "BEMA_101b": {
+    "id": "BEMA_101b",
+    "system": "BEMA",
+    "nummer": "101b",
+    "bezeichnung": "Defektverschluss bei zahnlosem Kiefer",
+    "beschreibung": "Maßnahmen zur Weichteilstützung zum Ausgleich oder zum Verschluss von Defekten im Bereich des zahnlosen Kiefers",
+    "punkte": 120,
+    "kategorie": "prothetik"
+  },
+  "BEMA_102": {
+    "id": "BEMA_102",
+    "system": "BEMA",
+    "nummer": "102",
+    "bezeichnung": "Eingliedern eines Obturators",
+    "beschreibung": "Eingliedern eines Obturators zum Verschluss von Defekten des weichen Gaumens",
+    "punkte": 240,
+    "kategorie": "prothetik"
+  },
+  "BEMA_103a": {
+    "id": "BEMA_103a",
+    "system": "BEMA",
+    "nummer": "103a",
+    "bezeichnung": "Resektionsprothese, temporär",
+    "beschreibung": "Eingliedern einer temporären Verschlussprothese nach Resektion oder bei großen Defekten des Oberkiefers",
+    "punkte": 160,
+    "kategorie": "prothetik"
+  },
+  "BEMA_103b": {
+    "id": "BEMA_103b",
+    "system": "BEMA",
+    "nummer": "103b",
+    "bezeichnung": "Ergänzungsmaßnahmen Resektionsprothese",
+    "beschreibung": "Ergänzungsmaßnahmen zur Resektionsprothese im Anschluss an Leistungen nach Buchstabe 103a",
+    "punkte": 80,
+    "kategorie": "prothetik"
+  },
+  "BEMA_103c": {
+    "id": "BEMA_103c",
+    "system": "BEMA",
+    "nummer": "103c",
+    "bezeichnung": "Resektions/Dauerdefektprothese",
+    "beschreibung": "Eingliedern einer Resektionsdauerprothese",
+    "punkte": 300,
+    "kategorie": "prothetik"
+  },
+  "BEMA_104a": {
+    "id": "BEMA_104a",
+    "system": "BEMA",
+    "nummer": "104a",
+    "bezeichnung": "Epithese",
+    "beschreibung": "Eingliedern einer Prothese oder Epithese zum Verschluss extraoraler Weichteildefekte oder zum Ersatz fehlender Gesichtsteile, kleineren Umfanges",
+    "punkte": 300,
+    "kategorie": "prothetik"
+  },
+  "BEMA_104b": {
+    "id": "BEMA_104b",
+    "system": "BEMA",
+    "nummer": "104b",
+    "bezeichnung": "Epithese größerer Umfang",
+    "beschreibung": "Eingliedern einer Prothese oder Epithese zum Verschluss extraoraler Weichteildefekte oder zum Ersatz fehlender Gesichtsteileteildefekte oder zum Ersatz fehlender Gesichtsteile, größeren Umfanges",
+    "punkte": 500,
+    "kategorie": "prothetik"
+  },
+  "BEMA_105": {
+    "id": "BEMA_105",
+    "system": "BEMA",
+    "nummer": "105",
+    "bezeichnung": "BEMA 105",
+    "beschreibung": "Lokale medikamentöse Behandlung von Schleimhauterkrankungen, Aufbringung von auf der Mundschleimhaut haftenden Medikamenten oder Behandlung von Prothesendruckstellen, je Sitzung",
+    "punkte": 8,
+    "kategorie": "prothetik"
+  },
+  "BEMA_106": {
+    "id": "BEMA_106",
+    "system": "BEMA",
+    "nummer": "106",
+    "bezeichnung": "BEMA 106",
+    "beschreibung": "Beseitigen scharfer Zahnkanten oder störender Prothesenränder oder Ähnliches, je Sitzung",
+    "punkte": 10,
+    "kategorie": "prothetik"
+  },
+  "BEMA_107": {
+    "id": "BEMA_107",
+    "system": "BEMA",
+    "nummer": "107",
+    "bezeichnung": "BEMA 107",
+    "beschreibung": "Entfernen harter Zahnbeläge, je Sitzung",
+    "punkte": 16,
+    "kategorie": "prothetik"
+  },
+  "BEMA_107a": {
+    "id": "BEMA_107a",
+    "system": "BEMA",
+    "nummer": "107a",
+    "bezeichnung": "BEMA 107a",
+    "beschreibung": "Entfernen harter Zahnbeläge bei Versicherten, die einem Pflegegrad nach § 15 SGB XI zugeordnet sind oder Eingliederungshilfe nach § 53 SGB XII erhalten, je Sitzung",
+    "punkte": 16,
+    "kategorie": "prothetik"
+  },
+  "BEMA_108": {
+    "id": "BEMA_108",
+    "system": "BEMA",
+    "nummer": "108",
+    "bezeichnung": "Einschleifen des natürlichen Gebisses",
+    "beschreibung": "Einschleifen des natürlichen Gebisses zum Kauebenenausgleich und zur Entlastung, je Sitzung",
+    "punkte": 6,
+    "kategorie": "prothetik"
+  },
+  "BEMA_111": {
+    "id": "BEMA_111",
+    "system": "BEMA",
+    "nummer": "111",
+    "bezeichnung": "Nachbehandlung PAR.",
+    "beschreibung": "Nachbehandlung im Rahmen der systematischen Behandlung von Parodontopathien, je Sitzung",
+    "punkte": 10,
+    "kategorie": "prothetik"
+  },
+  "BEMA_123a": {
+    "id": "BEMA_123a",
+    "system": "BEMA",
+    "nummer": "123a",
+    "bezeichnung": "Lückenhalter",
+    "beschreibung": "Kieferorthopädische Maßnahmen mit herausnehmbaren Geräten zum Offenhalten von Lücken infolge vorzeitigem Milchzahnverlustes, je Kiefer",
+    "punkte": 40,
+    "kategorie": "sonstige"
+  },
+  "BEMA_123b": {
+    "id": "BEMA_123b",
+    "system": "BEMA",
+    "nummer": "123b",
+    "bezeichnung": "Kontrolle eines Lückenhalters",
+    "beschreibung": "Kontrolle eines Lückenhalters, je Behandlungsquartal",
+    "punkte": 14,
+    "kategorie": "sonstige"
+  },
+  "BEMA_126a": {
+    "id": "BEMA_126a",
+    "system": "BEMA",
+    "nummer": "126a",
+    "bezeichnung": "Eingliedern eines Brackets/Attachments",
+    "beschreibung": "Eingliedern eines Brackets oder eines Attachments aus Edelstahl oder nickelfreiem Metall",
+    "punkte": 18,
+    "kategorie": "sonstige"
+  },
+  "BEMA_126b": {
+    "id": "BEMA_126b",
+    "system": "BEMA",
+    "nummer": "126b",
+    "bezeichnung": "Eingliedern eines Bandes",
+    "beschreibung": "Eingliedern eines Bandes einschließlich Material- und Laborkosten",
+    "punkte": 42,
+    "kategorie": "sonstige"
+  },
+  "BEMA_126c": {
+    "id": "BEMA_126c",
+    "system": "BEMA",
+    "nummer": "126c",
+    "bezeichnung": "Wiedereingliederung eines Bandes.",
+    "beschreibung": "Wiedereingliederung eines Bandes",
+    "punkte": 30,
+    "kategorie": "sonstige"
+  },
+  "BEMA_126d": {
+    "id": "BEMA_126d",
+    "system": "BEMA",
+    "nummer": "126d",
+    "bezeichnung": "Entfernung eines Bandes/Brackets oder Attachments",
+    "beschreibung": "Entfernung eines Bandes, eines Brackets oder eines Attachments",
+    "punkte": 6,
+    "kategorie": "sonstige"
+  },
+  "BEMA_127a": {
+    "id": "BEMA_127a",
+    "system": "BEMA",
+    "nummer": "127a",
+    "bezeichnung": "Eingliederung eines Teilbogens",
+    "beschreibung": "Eingliederung eines Teilbogens aus Edelstahl einschließlich Material- und Laborkosten",
+    "punkte": 25,
+    "kategorie": "sonstige"
+  },
+  "BEMA_127b": {
+    "id": "BEMA_127b",
+    "system": "BEMA",
+    "nummer": "127b",
+    "bezeichnung": "Ausgliederung eines Teilbogens",
+    "beschreibung": "Ausgliederung eines Teilbogens",
+    "punkte": 7,
+    "kategorie": "sonstige"
+  },
+  "BEMA_128a": {
+    "id": "BEMA_128a",
+    "system": "BEMA",
+    "nummer": "128a",
+    "bezeichnung": "Eingliederung eines konfektionierten Vollbogens",
+    "beschreibung": "Eingliederung eines konfektionierten Vollbogens aus Edelstahl einschließlich Material- und",
+    "punkte": 32,
+    "kategorie": "sonstige"
+  },
+  "BEMA_128b": {
+    "id": "BEMA_128b",
+    "system": "BEMA",
+    "nummer": "128b",
+    "bezeichnung": "Eingliederung eines individualisierten Vollbogens",
+    "beschreibung": "Eingliederung eines individualisierten Vollbogens aus Edelstahl einschließlich Material- und",
+    "punkte": 40,
+    "kategorie": "sonstige"
+  },
+  "BEMA_128c": {
+    "id": "BEMA_128c",
+    "system": "BEMA",
+    "nummer": "128c",
+    "bezeichnung": "Ausgliederung von Vollbögen",
+    "beschreibung": "Ausgliederung von Vollbögen, je Bogen",
+    "punkte": 9,
+    "kategorie": "sonstige"
+  },
+  "BEMA_131a": {
+    "id": "BEMA_131a",
+    "system": "BEMA",
+    "nummer": "131a",
+    "bezeichnung": "Ein- und Ausgliederung Gaumennahterweiterungsapparatur",
+    "beschreibung": "Eingliederung und Ausgliederung einer Gaumennahterweiterungsapparatur",
+    "punkte": 50,
+    "kategorie": "sonstige"
+  },
+  "BEMA_131b": {
+    "id": "BEMA_131b",
+    "system": "BEMA",
+    "nummer": "131b",
+    "bezeichnung": "Herbstscharnier",
+    "beschreibung": "Eingliederung und Ausgliederung einer festsitzenden Apparatur zur Bisslagekorrektur",
+    "punkte": 50,
+    "kategorie": "sonstige"
+  },
+  "BEMA_131c": {
+    "id": "BEMA_131c",
+    "system": "BEMA",
+    "nummer": "131c",
+    "bezeichnung": "Eingliederung einer Gesichtsmaske",
+    "beschreibung": "Eingliederung einer Gesichtsmaske",
+    "punkte": 50,
+    "kategorie": "sonstige"
+  },
+  "BEMA_151": {
+    "id": "BEMA_151",
+    "system": "BEMA",
+    "nummer": "151",
+    "bezeichnung": "BEMA 151",
+    "beschreibung": "Besuch eines Versicherten, einschließlich Beratung und eingehende Untersuchung",
+    "punkte": 38,
+    "kategorie": "sonstige"
+  },
+  "BEMA_152a": {
+    "id": "BEMA_152a",
+    "system": "BEMA",
+    "nummer": "152a",
+    "bezeichnung": "Besuch je weiteren Versicherten in derselben häusl.Gemeinschaft",
+    "beschreibung": "Besuch je weiterem Versicherten in derselben häuslichen Gemeinschaft in unmittelbarem zeitlichen Zusammenhang mit einer Leistung nach Nr. 151 – einschließlich Beratung und eingehende Untersuchung.",
+    "punkte": 34,
+    "kategorie": "sonstige"
+  },
+  "BEMA_152b": {
+    "id": "BEMA_152b",
+    "system": "BEMA",
+    "nummer": "152b",
+    "bezeichnung": "Besuch je weiteren Versicherten in derselben Einrichtung",
+    "beschreibung": "Besuch je weiteren Versicherten in derselben Einrichtung",
+    "punkte": 26,
+    "kategorie": "sonstige"
+  },
+  "BEMA_153a": {
+    "id": "BEMA_153a",
+    "system": "BEMA",
+    "nummer": "153a",
+    "bezeichnung": "Besuch eines Versicherten in Einrichtung",
+    "beschreibung": "Besuch eines Versicherten zu vorher vereinbarten Zeiten und bei regelmäßiger Tätigkeit in der Einrichtung einschließlich Beratung und eingehende Untersuchung, ohne Vorliegen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V, welcher den verbindlichen Anforderungen der Vereinbarung nach § 119b Abs. 2 SGB V entspricht.",
+    "punkte": 30,
+    "kategorie": "sonstige"
+  },
+  "BEMA_153b": {
+    "id": "BEMA_153b",
+    "system": "BEMA",
+    "nummer": "153b",
+    "bezeichnung": "Besuch je weiteren Versicherten in derselben Einrichtung",
+    "beschreibung": "Besuch weiterer Versicherter in derselben Einrichtung",
+    "punkte": 26,
+    "kategorie": "sonstige"
+  },
+  "BEMA_154": {
+    "id": "BEMA_154",
+    "system": "BEMA",
+    "nummer": "154",
+    "bezeichnung": "BEMA 154",
+    "beschreibung": "Besuch eines pflegebedürftigen Versicherten in einer stationären Pflegeeinrichtung (§ 71 Abs. 2 SGB XI) im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V, einschließlich Beratung und eingehende Untersuchung",
+    "punkte": 30,
+    "kategorie": "sonstige"
+  },
+  "BEMA_155": {
+    "id": "BEMA_155",
+    "system": "BEMA",
+    "nummer": "155",
+    "bezeichnung": "BEMA 155",
+    "beschreibung": "Besuch je weiteren pflegebedürftigen Versicherten in derselben stationären Pflegeeinrichtung (§ 71 Abs. 2 SGB XI) im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V, in unmittelbarem zeitlichen Zusammenhang mit einer Leistung nach Nr. 154 – einschließlich Beratung und eingehende Untersuchung",
+    "punkte": 26,
+    "kategorie": "sonstige"
+  },
+  "BEMA_161a": {
+    "id": "BEMA_161a",
+    "system": "BEMA",
+    "nummer": "161a",
+    "bezeichnung": "Besuch dringend angefordert/unverzüglich durchgeführt",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, dringend angeforderte und unverzüglich durchgeführte Besuche",
+    "punkte": 18,
+    "kategorie": "sonstige"
+  },
+  "BEMA_161b": {
+    "id": "BEMA_161b",
+    "system": "BEMA",
+    "nummer": "161b",
+    "bezeichnung": "Zuschlag Besuch Montag bis Freitag von 20 bis 22 Uhr oder 6 bis 8 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, für Montag bis Freitag in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr durchgeführte Besuche",
+    "punkte": 29,
+    "kategorie": "sonstige"
+  },
+  "BEMA_161c": {
+    "id": "BEMA_161c",
+    "system": "BEMA",
+    "nummer": "161c",
+    "bezeichnung": "Zuschlag Besuch Montag bis Freitag: von 22 bis 6 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, wenn Montag bis Freitag in der Zeit zwischen 22 und 6 Uhr durchgeführte Besuche",
+    "punkte": 50,
+    "kategorie": "sonstige"
+  },
+  "BEMA_161d": {
+    "id": "BEMA_161d",
+    "system": "BEMA",
+    "nummer": "161d",
+    "bezeichnung": "Zuschlag Besuche an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 8 und 20 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 8 und 20 Uhr",
+    "punkte": 38,
+    "kategorie": "sonstige"
+  },
+  "BEMA_161e": {
+    "id": "BEMA_161e",
+    "system": "BEMA",
+    "nummer": "161e",
+    "bezeichnung": "Zuschlag Besuch am Samstag, Sonn- o. Feiertag von 20 bis 22 Uhr/6 bis 8 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, an Samstagen, Sonn- oder Feiertagen in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr",
+    "punkte": 67,
+    "kategorie": "sonstige"
+  },
+  "BEMA_161f": {
+    "id": "BEMA_161f",
+    "system": "BEMA",
+    "nummer": "161f",
+    "bezeichnung": "Zuschlag Besuch am Samstag, Sonn- oder Feiertag von 22 bis 6 Uhr",
+    "beschreibung": "Zuschläge für Besuche nach den Nrn. 151 und 154, an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 22 und 6 Uhr",
+    "punkte": 88,
+    "kategorie": "sonstige"
+  },
+  "BEMA_162a": {
+    "id": "BEMA_162a",
+    "system": "BEMA",
+    "nummer": "162a",
+    "bezeichnung": "Besuch dringend angefordert/unverzüglich durchgeführt",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155, dringend angeforderte und unverzüglich durchgeführte Besuche",
+    "punkte": 9,
+    "kategorie": "sonstige"
+  },
+  "BEMA_162b": {
+    "id": "BEMA_162b",
+    "system": "BEMA",
+    "nummer": "162b",
+    "bezeichnung": "Zuschlag Besuch Montag bis Freitag von 20 bis 22 Uhr oder 6 bis 8 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155, wenn Montag bis Freitag in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr durchgeführt",
+    "punkte": 15,
+    "kategorie": "sonstige"
+  },
+  "BEMA_162c": {
+    "id": "BEMA_162c",
+    "system": "BEMA",
+    "nummer": "162c",
+    "bezeichnung": "Zuschlag Besuch Montag bis Freitag: von 22 bis 6 Uhr",
+    "beschreibung": "Zuschläge für Besuche nach den Nrn. 151 und 154, wenn Montag bis Freitag in der Zeit zwischen 22 und 6 Uhr durchgeführt",
+    "punkte": 25,
+    "kategorie": "sonstige"
+  },
+  "BEMA_162d": {
+    "id": "BEMA_162d",
+    "system": "BEMA",
+    "nummer": "162d",
+    "bezeichnung": "Zuschlag Besuche an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 8 und 20 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155 an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 8 und 20 Uhr",
+    "punkte": 19,
+    "kategorie": "sonstige"
+  },
+  "BEMA_162e": {
+    "id": "BEMA_162e",
+    "system": "BEMA",
+    "nummer": "162e",
+    "bezeichnung": "Zuschlag Besuch am Samstag, Sonn- o. Feiertag von 20 bis 22 Uhr/6 bis 8 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155, wenn an Samstagen, Sonn- oder Feiertagen in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr durchgeführt",
+    "punkte": 34,
+    "kategorie": "sonstige"
+  },
+  "BEMA_162f": {
+    "id": "BEMA_162f",
+    "system": "BEMA",
+    "nummer": "162f",
+    "bezeichnung": "Zuschlag Besuch Samstag, Sonnoder Feiertag von 22 bis 6 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155, wenn an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 22 und 6 Uhr durchgeführt",
+    "punkte": 44,
+    "kategorie": "sonstige"
+  },
+  "BEMA_165": {
+    "id": "BEMA_165",
+    "system": "BEMA",
+    "nummer": "165",
+    "bezeichnung": "BEMA 165",
+    "beschreibung": "Zuschlag zu den Leistungen nach den Nrn. 151, 152 a, 152 b, 153 a, 153 b, 154 und 155 bei Kindern bis zum vollendeten vierten Lebensjahr",
+    "punkte": 14,
+    "kategorie": "sonstige"
+  },
+  "BEMA_171a": {
+    "id": "BEMA_171a",
+    "system": "BEMA",
+    "nummer": "171a",
+    "bezeichnung": "Zuschlag für das Aufsuchen von Pflegebedürftigen/Behinderten",
+    "beschreibung": "Zuschlag nach § 87 Abs. 2i SGB V für das Aufsuchen von Versicherten, die pflegebedürftig sind, eine Behinderung oder eine eingeschränkte Alltagskompetenz aufweisen",
+    "punkte": 37,
+    "kategorie": "sonstige"
+  },
+  "BEMA_171b": {
+    "id": "BEMA_171b",
+    "system": "BEMA",
+    "nummer": "171b",
+    "bezeichnung": "Zuschlag für das Aufsuchen je weiteren Versicherten",
+    "beschreibung": "Zuschlag für das Aufsuchen je weiteren Versicherten, der einem Pflegegrad nach § 15 SGB XI zugeordnet ist oder Eingliederungshilfe nach § 53 SGB XII erhält, in derselben häuslichen Gemeinschaft oder Einrichtung in unmittelbarem zeitlichen Zusammenhang mit einer Leistung nach Nummer 171 a",
+    "punkte": 30,
+    "kategorie": "sonstige"
+  },
+  "BEMA_172a": {
+    "id": "BEMA_172a",
+    "system": "BEMA",
+    "nummer": "172a",
+    "bezeichnung": "Zuschlag für das Aufsuchen eines pflegebedürftigen Versicherten",
+    "beschreibung": "Zuschlag nach § 87 Abs. 2j SGB V für die kooperative und koordinierte zahnärztliche und pflegerische Versorgung von pflegebedürftigen Versicherten in stationären Pflegeeinrichtungen im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V, für das Aufsuchen eines pflegebedürftigen Versicherten in einer stationären Pflegeeinrichtung",
+    "punkte": 40,
+    "kategorie": "sonstige"
+  },
+  "BEMA_172b": {
+    "id": "BEMA_172b",
+    "system": "BEMA",
+    "nummer": "172b",
+    "bezeichnung": "Zuschlag für das Aufsuchen je weiteren pflegebedürftigen Versicherten",
+    "beschreibung": "Zuschlag nach § 87 Abs. 2j SGB V für die kooperative und koordinierte zahnärztliche und pflegerische Versorgung von pflegebedürftigen Versicherten in stationären Pflegeeinrichtungen im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V für das Aufsuchen je weiterem pflegebedürftigen Versicherten in derselben stationären Pflegeeinrichtung in unmittelbarem zeitlichen Zusammenhang mit einer Leistung nach Nr. 172a",
+    "punkte": 32,
+    "kategorie": "sonstige"
+  },
+  "BEMA_173a": {
+    "id": "BEMA_173a",
+    "system": "BEMA",
+    "nummer": "173a",
+    "bezeichnung": "Zuschlag, Besuch Pflegebedürftiger",
+    "beschreibung": "Besuch Pflegebedürftiger",
+    "punkte": 32,
+    "kategorie": "sonstige"
+  },
+  "BEMA_173b": {
+    "id": "BEMA_173b",
+    "system": "BEMA",
+    "nummer": "173b",
+    "bezeichnung": "Zuschlag, Besuch weiterer Pflegebedürftige",
+    "beschreibung": "Zuschlag, Besuch weiteren Pflegebedürftige",
+    "punkte": 24,
+    "kategorie": "sonstige"
+  },
+  "BEMA_174a": {
+    "id": "BEMA_174a",
+    "system": "BEMA",
+    "nummer": "174a",
+    "bezeichnung": "Mundgesundheitsstatus und individueller Mundgesundheitsplan, Pflege",
+    "beschreibung": "Mundgesundheitsstatus und individueller Mundgesundheitsplan",
+    "punkte": 20,
+    "kategorie": "sonstige"
+  },
+  "BEMA_174b": {
+    "id": "BEMA_174b",
+    "system": "BEMA",
+    "nummer": "174b",
+    "bezeichnung": "Mundgesundheitsaufkläung, Pflege",
+    "beschreibung": "Mundgesundheitsaufkläung, Pflege",
+    "punkte": 26,
+    "kategorie": "sonstige"
+  },
+  "BEMA_181": {
+    "id": "BEMA_181",
+    "system": "BEMA",
+    "nummer": "181",
+    "bezeichnung": "BEMA 181",
+    "beschreibung": "Konsiliarische Erörterung mit Ärzten und Zahnärzten",
+    "punkte": 14,
+    "kategorie": "sonstige"
+  },
+  "BEMA_182": {
+    "id": "BEMA_182",
+    "system": "BEMA",
+    "nummer": "182",
+    "bezeichnung": "BEMA 182",
+    "beschreibung": "Konsiliarische Erörterung mit Ärzten und Zahnärzten im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V",
+    "punkte": 14,
+    "kategorie": "sonstige"
+  },
+  "BEMA_601": {
+    "id": "BEMA_601",
+    "system": "BEMA",
+    "nummer": "601",
+    "bezeichnung": "Stiftmaterial",
+    "beschreibung": "Stiftmaterial in Centbeträgen",
+    "punkte": 14,
+    "kategorie": "sonstige"
+  },
+  "BEMA_602": {
+    "id": "BEMA_602",
+    "system": "BEMA",
+    "nummer": "602",
+    "bezeichnung": "Telefon, Porto- und Versandkosten",
+    "beschreibung": "Auslagenersatz für Telefonkosten, Portokosten und Versandkosten",
+    "kategorie": "sonstige"
+  },
+  "BEMA_603": {
+    "id": "BEMA_603",
+    "system": "BEMA",
+    "nummer": "603",
+    "bezeichnung": "Praxislaborkosten",
+    "beschreibung": "Material- und Laborkosten des Vertragszahnarztes in Centbeträgen",
+    "kategorie": "sonstige"
+  },
+  "BEMA_604": {
+    "id": "BEMA_604",
+    "system": "BEMA",
+    "nummer": "604",
+    "bezeichnung": "Fremdlaborkosten",
+    "beschreibung": "Material- und Fremdlaborkosten in Centbeträgen",
+    "kategorie": "sonstige"
+  },
+  "BEMA_ä925a": {
+    "id": "BEMA_ä925a",
+    "system": "BEMA",
+    "nummer": "ä925a",
+    "bezeichnung": "Röntgen, bis zwei Aufnahmen",
+    "beschreibung": "Röntgendiagnostik der Zähne, bis zwei Aufnahmen",
+    "punkte": 12,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä925b": {
+    "id": "BEMA_ä925b",
+    "system": "BEMA",
+    "nummer": "ä925b",
+    "bezeichnung": "Röntgen, bis fünf Aufnahmen",
+    "beschreibung": "Röntgendiagnostik der Zähne, bis fünf Aufnahmen",
+    "punkte": 19,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä925c": {
+    "id": "BEMA_ä925c",
+    "system": "BEMA",
+    "nummer": "ä925c",
+    "bezeichnung": "Röntgen, bis acht Aufnahmen",
+    "beschreibung": "Röntgendiagnostik der Zähne, bis acht Aufnahmen",
+    "punkte": 27,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä925d": {
+    "id": "BEMA_ä925d",
+    "system": "BEMA",
+    "nummer": "ä925d",
+    "bezeichnung": "Röntgen, mehr als acht Aufnahmen",
+    "beschreibung": "Röntgendiagnostik der Zähne, Status bei mehr als acht Aufnahmen",
+    "punkte": 34,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä928": {
+    "id": "BEMA_ä928",
+    "system": "BEMA",
+    "nummer": "ä928",
+    "bezeichnung": "Röntgenaufnahme der Hand",
+    "beschreibung": "Röntgenaufnahme der Hand",
+    "punkte": 30,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä934a": {
+    "id": "BEMA_ä934a",
+    "system": "BEMA",
+    "nummer": "ä934a",
+    "bezeichnung": "Aufnahme des Schädels, eine Aufnahme",
+    "beschreibung": "Röntgenaufnahme Schädel, 1 Aufnahme",
+    "punkte": 19,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä934b": {
+    "id": "BEMA_ä934b",
+    "system": "BEMA",
+    "nummer": "ä934b",
+    "bezeichnung": "Aufnahme des Schädels, zwei Aufnahmen",
+    "beschreibung": "Röntgenaufnahme Schädel, 2 Aufnahmen",
+    "punkte": 30,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä934c": {
+    "id": "BEMA_ä934c",
+    "system": "BEMA",
+    "nummer": "ä934c",
+    "bezeichnung": "Aufnahme des Schädels, mehr als zwei Aufnahmen",
+    "beschreibung": "Röntgenaufnahme Schädel, mehr als 2 Aufnahmen",
+    "punkte": 36,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä935a": {
+    "id": "BEMA_ä935a",
+    "system": "BEMA",
+    "nummer": "ä935a",
+    "bezeichnung": "Teilaufnahme des Schädels, eine Aufnahme",
+    "beschreibung": "Teilaufnahme Schädel, 1 Aufnahme",
+    "punkte": 21,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä935b": {
+    "id": "BEMA_ä935b",
+    "system": "BEMA",
+    "nummer": "ä935b",
+    "bezeichnung": "Teilaufnahme des Schädels, zwei Aufnahmen",
+    "beschreibung": "Teilaufnahme Schädel, 2 Aufnahmen",
+    "punkte": 25,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä935c": {
+    "id": "BEMA_ä935c",
+    "system": "BEMA",
+    "nummer": "ä935c",
+    "bezeichnung": "Teilaufnahme des Schädels, mehr als 2 Aufnahmen",
+    "beschreibung": "Teilaufnahme Schädel, mehr als 2 Aufnahmen",
+    "punkte": 31,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ä935d": {
+    "id": "BEMA_ä935d",
+    "system": "BEMA",
+    "nummer": "ä935d",
+    "bezeichnung": "Orthopantomogramm",
+    "beschreibung": "Orthopantomogramm sowie Panoramaaufnahmen oder Halbseitenaufnahmen aller Zähne des Ober- und Unterkiefers",
+    "punkte": 36,
+    "kategorie": "roentgen"
+  },
+  "BEMA_ae1": {
+    "id": "BEMA_ae1",
+    "system": "BEMA",
+    "nummer": "ae1",
+    "bezeichnung": "BEMA ae1",
+    "beschreibung": "Beratung eines Kranken, auch fernmündlich",
+    "punkte": 9,
+    "kategorie": "sonstige"
+  },
+  "BEMA_ae161": {
+    "id": "BEMA_ae161",
+    "system": "BEMA",
+    "nummer": "ae161",
+    "bezeichnung": "BEMA ae161",
+    "beschreibung": "Eröffnung eines oberflächlichen, unmittelbar unter der Haut oder Schleimhaut gelegenen Abszesses",
+    "punkte": 15,
+    "kategorie": "sonstige"
+  },
+  "BEMA_aita": {
+    "id": "BEMA_aita",
+    "system": "BEMA",
+    "nummer": "aita",
+    "bezeichnung": "Antiinfektiöse Therapie (einwurzeliger Zahn)",
+    "beschreibung": "Antiinfektiöse Therapie je behandeltem einwurzeligen Zahn",
+    "punkte": 14,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_aitb": {
+    "id": "BEMA_aitb",
+    "system": "BEMA",
+    "nummer": "aitb",
+    "bezeichnung": "Antiinfektiöse Therapie (mehrwurzeliger Zahn)",
+    "beschreibung": "Antiinfektiöse Therapie je behandeltem mehrwurzeligen Zahn",
+    "punkte": 26,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_atg": {
+    "id": "BEMA_atg",
+    "system": "BEMA",
+    "nummer": "atg",
+    "bezeichnung": "Aufklärungs- und Therapiegespräch",
+    "beschreibung": "Parodontologisches Aufklärungs- und Therapiegespräch",
+    "punkte": 28,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_beva": {
+    "id": "BEMA_beva",
+    "system": "BEMA",
+    "nummer": "beva",
+    "bezeichnung": "Befundevaluation nach AIT",
+    "beschreibung": "Befundevaluation nach AIT",
+    "punkte": 32,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_bevb": {
+    "id": "BEMA_bevb",
+    "system": "BEMA",
+    "nummer": "bevb",
+    "bezeichnung": "Befundevaluation nach CPT",
+    "beschreibung": "Befundevaluation nach CPT",
+    "punkte": 32,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_cpta": {
+    "id": "BEMA_cpta",
+    "system": "BEMA",
+    "nummer": "cpta",
+    "bezeichnung": "Chirurgische Therapie (einwurzeliger Zahn)",
+    "beschreibung": "Chirurgische Therapie je behandeltem einwurzeligen Zahn",
+    "punkte": 22,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_cptb": {
+    "id": "BEMA_cptb",
+    "system": "BEMA",
+    "nummer": "cptb",
+    "bezeichnung": "Chirurgische Therapie (mehrwurzeliger Zahn)",
+    "beschreibung": "Chirurgische Therapie je behandeltem mehrwurzeligen Zahn",
+    "punkte": 34,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_emp": {
+    "id": "BEMA_emp",
+    "system": "BEMA",
+    "nummer": "emp",
+    "bezeichnung": "elektronischer Medikationsplan",
+    "beschreibung": "Aktualisierung elektronischer Medikationsplan",
+    "punkte": 3,
+    "kategorie": "sonstige"
+  },
+  "BEMA_epa2": {
+    "id": "BEMA_epa2",
+    "system": "BEMA",
+    "nummer": "epa2",
+    "bezeichnung": "Elektronischen Patientenakte",
+    "beschreibung": "Aktualisierung einer elektronischen Patientenakte",
+    "punkte": 2,
+    "kategorie": "sonstige"
+  },
+  "BEMA_fla": {
+    "id": "BEMA_fla",
+    "system": "BEMA",
+    "nummer": "fla",
+    "bezeichnung": "Fluoridlackanwendung (6. - 72. Lebensmonat)",
+    "beschreibung": "Fluoridlackanwendung zur Zahnschmelzhärtung eines Kindes vom 6. bis zum vollendeten 72. Lebensmonat",
+    "punkte": 14,
+    "kategorie": "sonstige"
+  },
+  "BEMA_fu1": {
+    "id": "BEMA_fu1",
+    "system": "BEMA",
+    "nummer": "fu1",
+    "bezeichnung": "Zahnärztliche Früherkennungsuntersuchung (30. - 72. Lebensmonat)",
+    "beschreibung": "Zahnärztliche Früherkennungsuntersuchung eines Kindes vom 6. bis zum vollendeten 33. Lebensmonat, jeweils eine",
+    "punkte": 27,
+    "kategorie": "prophylaxe"
+  },
+  "BEMA_fu2": {
+    "id": "BEMA_fu2",
+    "system": "BEMA",
+    "nummer": "fu2",
+    "bezeichnung": "Zahnärztliche Früherkennungsuntersuchung (34. - 72. Lebensmonat)",
+    "beschreibung": "Zahnärztliche Früherkennungsuntersuchung eines Kindes vom 34. bis zum vollendeten 72. Lebensmonat.",
+    "punkte": 25,
+    "kategorie": "prophylaxe"
+  },
+  "BEMA_ip1": {
+    "id": "BEMA_ip1",
+    "system": "BEMA",
+    "nummer": "ip1",
+    "bezeichnung": "Mundhygienestatus",
+    "beschreibung": "Mundhygienestatus",
+    "punkte": 20,
+    "kategorie": "prophylaxe"
+  },
+  "BEMA_ip2": {
+    "id": "BEMA_ip2",
+    "system": "BEMA",
+    "nummer": "ip2",
+    "bezeichnung": "Mundgesundheitsaufklärung",
+    "beschreibung": "Mundgesundheitsaufklärung bei Kindern und Jugendlichen",
+    "punkte": 17,
+    "kategorie": "prophylaxe"
+  },
+  "BEMA_ip4": {
+    "id": "BEMA_ip4",
+    "system": "BEMA",
+    "nummer": "ip4",
+    "bezeichnung": "Lokale Fluoridierung",
+    "beschreibung": "Lokale Fluoridierung der Zähne",
+    "punkte": 12,
+    "kategorie": "prophylaxe"
+  },
+  "BEMA_ip5": {
+    "id": "BEMA_ip5",
+    "system": "BEMA",
+    "nummer": "ip5",
+    "bezeichnung": "Versiegelung von kariesfreien Fissuren",
+    "beschreibung": "Versiegelung von kariesfreien Fissuren und Grübchen der bleibenden Molaren (Zähne 6 und 7) mit aushärtenden Kunststoffen, je Zahn",
+    "punkte": 16,
+    "kategorie": "prophylaxe"
+  },
+  "BEMA_k1": {
+    "id": "BEMA_k1",
+    "system": "BEMA",
+    "nummer": "k1",
+    "bezeichnung": "Aufbissbehelf mit adjustierter Oberfläche",
+    "beschreibung": "Eingliedern eines Aufbissbehelfs mit adjustierter Oberfläche",
+    "punkte": 106,
+    "kategorie": "sonstige"
+  },
+  "BEMA_k2": {
+    "id": "BEMA_k2",
+    "system": "BEMA",
+    "nummer": "k2",
+    "bezeichnung": "Aufbissbehelf ohne adjustierte Oberfläche",
+    "beschreibung": "Eingliedern eines Aufbissbehelfs zur Unterbrechung der Okklusionskontakte ohne adjustierte Oberfläche",
+    "punkte": 45,
+    "kategorie": "sonstige"
+  },
+  "BEMA_k3": {
+    "id": "BEMA_k3",
+    "system": "BEMA",
+    "nummer": "k3",
+    "bezeichnung": "Umarbeitung Prothese zum Aufbissbehelf",
+    "beschreibung": "Umarbeitung einer vorhandenen Prothese zum Aufbissbehelf zur Unterbrechung der Okklusionskontakte mit adjustierter Oberfläche",
+    "punkte": 61,
+    "kategorie": "sonstige"
+  },
+  "BEMA_k4": {
+    "id": "BEMA_k4",
+    "system": "BEMA",
+    "nummer": "k4",
+    "bezeichnung": "Semipermanente Schienung",
+    "beschreibung": "Semipermanente Schienung unter Anwendung der Ätztechnik, je Interdentalraum",
+    "punkte": 11,
+    "kategorie": "sonstige"
+  },
+  "BEMA_k6": {
+    "id": "BEMA_k6",
+    "system": "BEMA",
+    "nummer": "k6",
+    "bezeichnung": "Wiederherstellung/Unterfütterung Aufbisshehelf",
+    "beschreibung": "Wiederherstellung und/oder Unterfütterung eines Aufbissbehelfs",
+    "punkte": 30,
+    "kategorie": "sonstige"
+  },
+  "BEMA_k7": {
+    "id": "BEMA_k7",
+    "system": "BEMA",
+    "nummer": "k7",
+    "bezeichnung": "Kontrollbehandlung",
+    "beschreibung": "Kontrollbehandlung, ggf. mit einfachen Korrekturen des Aufbissbehelfs oder der Fixierung",
+    "punkte": 6,
+    "kategorie": "sonstige"
+  },
+  "BEMA_k8": {
+    "id": "BEMA_k8",
+    "system": "BEMA",
+    "nummer": "k8",
+    "bezeichnung": "Kontrollbehandlung subtraktive Maßnahme",
+    "beschreibung": "Kontrollbehandlung mit Einschleifen des Aufbissbehelfs oder der Schienung (subtraktive Methode)",
+    "punkte": 12,
+    "kategorie": "sonstige"
+  },
+  "BEMA_k9": {
+    "id": "BEMA_k9",
+    "system": "BEMA",
+    "nummer": "k9",
+    "bezeichnung": "Kontrollbehandlung mit additiver Maßnahme",
+    "beschreibung": "Kontrollbehandlung mit Aufbau einer neuen adjustierten Oberfläche (additive Methode)",
+    "punkte": 35,
+    "kategorie": "sonstige"
+  },
+  "BEMA_mhu": {
+    "id": "BEMA_mhu",
+    "system": "BEMA",
+    "nummer": "mhu",
+    "bezeichnung": "Mundhygieneunterweisung",
+    "beschreibung": "Patientenindividuelle Mundhygieneunterweisung",
+    "punkte": 45,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_nfd": {
+    "id": "BEMA_nfd",
+    "system": "BEMA",
+    "nummer": "nfd",
+    "bezeichnung": "Notfalldatensatz",
+    "beschreibung": "Aktualisierung Notfalldatensatz",
+    "punkte": 6,
+    "kategorie": "sonstige"
+  },
+  "BEMA_p200": {
+    "id": "BEMA_p200",
+    "system": "BEMA",
+    "nummer": "p200",
+    "bezeichnung": "PABehandlung, geschlossen, einwurzeliger Zahn",
+    "beschreibung": "Systematische Behandlung von Parodontopathien (Supra- und subgingivales Debridement), geschlossenes Vorgehen je behandeltem einwurzeligen Zahn",
+    "punkte": 14,
+    "kategorie": "sonstige"
+  },
+  "BEMA_p201": {
+    "id": "BEMA_p201",
+    "system": "BEMA",
+    "nummer": "p201",
+    "bezeichnung": "PABehandlung, geschlossen, mehrwurzeliger Zahn",
+    "beschreibung": "Systematische Behandlung von Parodontopathien (Supra- und subgingivales Debridement), geschlossenes Vorgehen je behandeltem mehrwurzeligen Zahn",
+    "punkte": 26,
+    "kategorie": "sonstige"
+  },
+  "BEMA_p202": {
+    "id": "BEMA_p202",
+    "system": "BEMA",
+    "nummer": "p202",
+    "bezeichnung": "PABehandlung, offen, einwurzeliger Zahn",
+    "beschreibung": "Systematische Behandlung von Parodontopathien (Chirurgische Therapie), offenes Vorgehen je behandeltem einwurzeligen Zahn",
+    "punkte": 22,
+    "kategorie": "sonstige"
+  },
+  "BEMA_p203": {
+    "id": "BEMA_p203",
+    "system": "BEMA",
+    "nummer": "p203",
+    "bezeichnung": "PABehandlung, offen, mehrwurzeliger Zahn",
+    "beschreibung": "Systematische Behandlung von Parodontopathien (Chirurgische Therapie), offenes Vorgehen je behandeltem mehrwurzeligen Zahn",
+    "punkte": 34,
+    "kategorie": "sonstige"
+  },
+  "BEMA_tz": {
+    "id": "BEMA_tz",
+    "system": "BEMA",
+    "nummer": "tz",
+    "bezeichnung": "Technikzuschlag für Videosprechstunde",
+    "beschreibung": "Technikzuschlag für Videosprechstunde, Videofallkonferenz oder Videokonsil",
+    "punkte": 16,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up1": {
+    "id": "BEMA_up1",
+    "system": "BEMA",
+    "nummer": "up1",
+    "bezeichnung": "Unterkieferprotrusionsschiene einschließlich Beratung",
+    "beschreibung": "Untersuchung zur Versorgung mit einer Unterkieferprotrusionsschiene einschließlich Beratung",
+    "punkte": 27,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up2": {
+    "id": "BEMA_up2",
+    "system": "BEMA",
+    "nummer": "up2",
+    "bezeichnung": "Abformung und Registrierung Startprotrusionsposition",
+    "beschreibung": "Abformung und dreidimensionale Registrierung der Startprotrusionsposition",
+    "punkte": 49,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up3": {
+    "id": "BEMA_up3",
+    "system": "BEMA",
+    "nummer": "up3",
+    "bezeichnung": "Eingliedern Unterkieferprotrusionsschiene",
+    "beschreibung": "Eingliedern einer Unterkieferprotrusionsschiene",
+    "punkte": 223,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up4": {
+    "id": "BEMA_up4",
+    "system": "BEMA",
+    "nummer": "up4",
+    "bezeichnung": "Nachadaption des Protrusionsgrads",
+    "beschreibung": "Nachadaption des Protrusionsgrads",
+    "punkte": 10,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up5": {
+    "id": "BEMA_up5",
+    "system": "BEMA",
+    "nummer": "up5",
+    "bezeichnung": "Kontrollbehandlung",
+    "beschreibung": "Kontrollbehandlung, siehe UP5a bis UP5c",
+    "kategorie": "sonstige"
+  },
+  "BEMA_up5a": {
+    "id": "BEMA_up5a",
+    "system": "BEMA",
+    "nummer": "up5a",
+    "bezeichnung": "Kontrollbehandlung - einfachen Korrekturen",
+    "beschreibung": "Kontrollbehandlung, ggf. mit einfachen Korrekturen der UP",
+    "punkte": 8,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up5b": {
+    "id": "BEMA_up5b",
+    "system": "BEMA",
+    "nummer": "up5b",
+    "bezeichnung": "Kontrollbehandlung - Einschleifen Stütz-/Gleitzonen",
+    "beschreibung": "Kontrollbehandlung - mit Einschleifen der Stütz- und Gleitzonen einer UP (subtraktive Methode)",
+    "punkte": 12,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up5c": {
+    "id": "BEMA_up5c",
+    "system": "BEMA",
+    "nummer": "up5c",
+    "bezeichnung": "Kontrollbehandlung - Einschleifen Stütz-/Gleitzonen",
+    "beschreibung": "Kontrollbehandlung - mit Aufbau der Stütz- und Gleitzone einer UP (additive Methode)",
+    "punkte": 35,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up6": {
+    "id": "BEMA_up6",
+    "system": "BEMA",
+    "nummer": "up6",
+    "bezeichnung": "Maßnahmen Unterkiefer- protrusionsschiene",
+    "beschreibung": "Maßnahmen zum Wiederherstellen der Funktion oder zur Erweiterung einer Unterkiefer- protrusionsschiene, siehe UP6a bis UP6e",
+    "kategorie": "sonstige"
+  },
+  "BEMA_up6a": {
+    "id": "BEMA_up6a",
+    "system": "BEMA",
+    "nummer": "up6a",
+    "bezeichnung": "Maßnahmen kleinen Umfanges",
+    "beschreibung": "Maßnahmen kleinen Umfanges (ohne Abformung)",
+    "punkte": 25,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up6b": {
+    "id": "BEMA_up6b",
+    "system": "BEMA",
+    "nummer": "up6b",
+    "bezeichnung": "Maßnahmen größeren Umfanges",
+    "beschreibung": "Maßnahmen kleinen Umfanges (mit Abformung)",
+    "punkte": 42,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up6c": {
+    "id": "BEMA_up6c",
+    "system": "BEMA",
+    "nummer": "up6c",
+    "bezeichnung": "Teilunterfütterung Unterkieferprotrusionsschiene",
+    "beschreibung": "Maßnahmen - Teilunterfütterung einer Unterkieferprotrusionsschiene",
+    "punkte": 37,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up6d": {
+    "id": "BEMA_up6d",
+    "system": "BEMA",
+    "nummer": "up6d",
+    "bezeichnung": "Wiederherstellung Halte-/Stützvorrichtungen",
+    "beschreibung": "Wiederherstellung eines einzelnen oder mehrerer Halte- oder Stützvorrichtungen",
+    "punkte": 19,
+    "kategorie": "sonstige"
+  },
+  "BEMA_up6e": {
+    "id": "BEMA_up6e",
+    "system": "BEMA",
+    "nummer": "up6e",
+    "bezeichnung": "Wiederherstellung Protrusionselemente",
+    "beschreibung": "Wiederherstellung eines einzelnen oder mehrerer Protrusionselemente",
+    "punkte": 19,
+    "kategorie": "sonstige"
+  },
+  "BEMA_upta": {
+    "id": "BEMA_upta",
+    "system": "BEMA",
+    "nummer": "upta",
+    "bezeichnung": "Mundhygienekontrolle",
+    "beschreibung": "Unterstützende Parodontitistherapie: Mundhygienekontrolle",
+    "punkte": 18,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_uptb": {
+    "id": "BEMA_uptb",
+    "system": "BEMA",
+    "nummer": "uptb",
+    "bezeichnung": "Mundhygieneunterweisung",
+    "beschreibung": "Unterstützende Parodontitistherapie: Mundhygieneunterweisung",
+    "punkte": 24,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_uptc": {
+    "id": "BEMA_uptc",
+    "system": "BEMA",
+    "nummer": "uptc",
+    "bezeichnung": "Supragingivale und gingivale Reinigung",
+    "beschreibung": "Unterstützende Parodontitistherapie: Supragingivale und gingivale Reinigung aller Zähne von anhaftenden Biofilmen und Belägen, je Zahn",
+    "punkte": 3,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_uptd": {
+    "id": "BEMA_uptd",
+    "system": "BEMA",
+    "nummer": "uptd",
+    "bezeichnung": "Messung von Sondierungsbluten und Sondierungstiefen",
+    "beschreibung": "Unterstützende Parodontitistherapie: Messung von Sondierungsbluten und Sondierungstiefen, abrechenbar bei Versicherten mit festgestelltem Grad B der Parodontalerkrankung gemäß § 4 PAR-RL im Rahmen der zweiten und vierten UPT gemäß § 13 Abs. 3 PAR-RL, bei Versicherten mit festgestelltem Grad C im Rahmen der zweiten, dritten, fünften und sechsten UPT gemäß § 13 Abs. 3 PAR-RL",
+    "punkte": 15,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_upte": {
+    "id": "BEMA_upte",
+    "system": "BEMA",
+    "nummer": "upte",
+    "bezeichnung": "Subgingivale Instrumentierung (einwurzeliger Zahn)",
+    "beschreibung": "Unterstützende Parodontitistherapie: Subgingivale Instrumentierung bei Sondierungstiefen von 4 mm oder mehr und Sondierungsbluten sowie an allen Stellen mit einer Sondierungstiefe von 5 mm oder mehr, je einwurzeligem Zahn",
+    "punkte": 5,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_uptf": {
+    "id": "BEMA_uptf",
+    "system": "BEMA",
+    "nummer": "uptf",
+    "bezeichnung": "Subgingivale Instrumentierung (mehrwurzeliger Zahn)",
+    "beschreibung": "Unterstützende Parodontitistherapie: Subgingivale Instrumentierung bei Sondierungstiefen von 4 mm oder mehr und Sondierungsbluten sowie an allen Stellen mit einer Sondierungstiefe von 5 mm oder mehr, je mehrwurzeligem Zahn",
+    "punkte": 12,
+    "kategorie": "parodontologie"
+  },
+  "BEMA_uptg": {
+    "id": "BEMA_uptg",
+    "system": "BEMA",
+    "nummer": "uptg",
+    "bezeichnung": "Untersuchung des Parodontalzustands",
+    "beschreibung": "Unterstützende Parodontitistherapie: Untersuchung des Parodontalzustands, die hierzu notwendige Dokumentation des klinischen Befunds umfasst die Sondierungstiefen und die Sondierungsblutung, die Zahnlockerung, den Furkationsbefall, den röntgenologischen Knochenabbau sowie die Angabe des Knochenabbaus in Relation zum Patientenalter. Die erhobenen Befunddaten werden mit den Befunddaten der Untersuchung nach Nr. BEV oder nach Nr. UPT d verglichen. Dem Versicherten werden die Ergebnisse erläutert und es wird mit ihm das weitere Vorgehen besprochen.Die Leistung nach Nr. UPT g ist ab dem Beginn des zweiten Jahres der UPT einmal im Kalenderjahr abrechenbar.",
+    "punkte": 32,
+    "kategorie": "parodontologie"
+  }
+}

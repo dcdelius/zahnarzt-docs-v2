@@ -1,0 +1,122 @@
+{
+  "runId": "2026-02-13T20:09:09.534Z",
+  "suiteFile": "/Users/david/dokumaster-ui/scripts/v10/scenarios.v10.pzr.medical.json",
+  "meta": {
+    "description": "V10 Medical Scenario Cases - PZR",
+    "version": "1.0.0",
+    "created": "2026-02-12",
+    "treatmentId": "pzr"
+  },
+  "total": 3,
+  "pass": 3,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "p01",
+      "title": "GKV PZR komplett (Zahnstein + Fluor + LA)",
+      "treatmentId": "pzr",
+      "insuranceType": "GKV",
+      "dictation": "PZR: supragingivales Scaling mit Ultraschall, Fluoridlack, Infiltrationsanästhesie, Oberflächenanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_107",
+        "BEMA_107a"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 716,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "pzr-unknown-1",
+          "teeth": [
+            "unknown"
+          ],
+          "facts": {
+            "tooth": "unknown",
+            "surfaces": []
+          },
+          "chips": [
+            "fluoridierung",
+            "la_infiltr",
+            "oberflaeche_la",
+            "pzr_vollstaendig",
+            "zahnstein_entfernung"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Professionelle Zahnreinigung durchgeführt. Anschliessend Supragingivale Zahnsteinentfernung. Anschliessend Fluoridierung der Zähne. Anschliessend LA Infiltration (Ultracain D-S). Abschliessend Oberflächenanästhesie vor Injektion.\n\n[Durchgefuehrte Leistungen]\n• PZR durchgeführt.\n• Zahnstein entfernt.\n• Fluoridierung.\n• LA Infiltr.\n• OA.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen. Zusatzinfo: supragingivales Scaling mit Ultraschall; Fluoridlack; Infiltrationsanästhesie; Oberflächenanästhesie.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "p02",
+      "title": "GKV PZR unklar -> Askbacks",
+      "treatmentId": "pzr",
+      "insuranceType": "GKV",
+      "dictation": "PZR heute durchgeführt.",
+      "phase": "questions",
+      "billingRefs": [],
+      "questions": [
+        "pzr_fluoridation",
+        "pzr_zahnstein"
+      ],
+      "answersUsed": {},
+      "perInstanceCount": 0,
+      "textLength": 0,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "pzr-unknown-1",
+          "teeth": [
+            "unknown"
+          ],
+          "facts": {
+            "tooth": "unknown",
+            "surfaces": []
+          },
+          "chips": []
+        }
+      ],
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "p03",
+      "title": "GKV PZR: Fluoridation verneint",
+      "treatmentId": "pzr",
+      "insuranceType": "GKV",
+      "dictation": "PZR mit Ultraschall, keine Fluoridierung.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_107",
+        "BEMA_107a"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 331,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "pzr-unknown-1",
+          "teeth": [
+            "unknown"
+          ],
+          "facts": {
+            "tooth": "unknown",
+            "surfaces": []
+          },
+          "chips": [
+            "pzr_vollstaendig",
+            "zahnstein_entfernung"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Professionelle Zahnreinigung durchgeführt. Anschliessend Supragingivale Zahnsteinentfernung.\n\n[Durchgefuehrte Leistungen]\n• PZR durchgeführt.\n• Zahnstein entfernt.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Zusatzinfo: PZR mit Ultraschall; keine Fluoridierung.",
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

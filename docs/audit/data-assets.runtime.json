@@ -1,0 +1,390 @@
+{
+    "generatedAt": "2025-12-26T16:25:00Z",
+    "totalAssets": 24,
+    "assets": [
+        {
+            "assetPath": "src/docudent/medical_kb/medical_kb.v1.json",
+            "type": "MEDICAL_KB",
+            "loadedBy": [
+                {
+                    "module": "v10/kb/medical/providers/jsonProvider.ts",
+                    "line": 12,
+                    "function": "import"
+                },
+                {
+                    "module": "medical_kb/index.ts",
+                    "line": 10,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "medical_kb/engine/applyMedicalKb.ts",
+                    "line": 305,
+                    "purpose": "Rule evaluation"
+                },
+                {
+                    "module": "v10/pipeline/runV10.ts",
+                    "line": 127,
+                    "purpose": "Medical engine call"
+                }
+            ],
+            "runtime": true,
+            "notes": "Core medical rule engine. Defines emit_chip, require_askback rules."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/unified.json",
+            "type": "TREATMENT_KB",
+            "loadedBy": [
+                {
+                    "module": "v10/kb/treatment/providers/jsonProvider.ts",
+                    "line": 27,
+                    "function": "require"
+                },
+                {
+                    "module": "v7/output/renderFromKbChips.ts",
+                    "line": 119,
+                    "function": "require"
+                },
+                {
+                    "module": "core/billing/knowledgeBase/registry/loaders.ts",
+                    "line": 138,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "v7/output/renderFromKbChips.ts",
+                    "line": 211,
+                    "purpose": "SSOT text/billing render"
+                }
+            ],
+            "runtime": true,
+            "notes": "Fuellung chip definitions. SSOT for text snippets and billingRef."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/treatments/endo/unified.json",
+            "type": "TREATMENT_KB",
+            "loadedBy": [
+                {
+                    "module": "v10/kb/treatment/providers/jsonProvider.ts",
+                    "line": 30,
+                    "function": "require"
+                },
+                {
+                    "module": "v7/output/renderFromKbChips.ts",
+                    "line": 122,
+                    "function": "require"
+                },
+                {
+                    "module": "core/billing/knowledgeBase/registry/loaders.ts",
+                    "line": 145,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "v7/output/renderFromKbChips.ts",
+                    "line": 211,
+                    "purpose": "SSOT text/billing render"
+                }
+            ],
+            "runtime": true,
+            "notes": "Endo chip definitions. SSOT for text snippets and billingRef."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/kataloge/bema.json",
+            "type": "KATALOG",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": 16,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": "*",
+                    "purpose": "GKV billing code catalog"
+                }
+            ],
+            "runtime": true,
+            "notes": "BEMA catalog - GKV billing codes reference."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/kataloge/goz.json",
+            "type": "KATALOG",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": 17,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": "*",
+                    "purpose": "PKV billing code catalog"
+                }
+            ],
+            "runtime": true,
+            "notes": "GOZ catalog - PKV billing codes reference."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/kataloge/goa.json",
+            "type": "KATALOG",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": 18,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": "*",
+                    "purpose": "GOÄ billing code catalog"
+                }
+            ],
+            "runtime": true,
+            "notes": "GOÄ catalog - medical billing codes."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/regeln/kombinationen.json",
+            "type": "COMBINABILITY_KB",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/regelEngine.ts",
+                    "line": 64,
+                    "function": "import"
+                },
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": 19,
+                    "function": "import"
+                },
+                {
+                    "module": "core/billing/knowledgeBase/logic/crossValidator.ts",
+                    "line": 12,
+                    "function": "import"
+                },
+                {
+                    "module": "core/billing/knowledgeBase/logic/billingValidation.ts",
+                    "line": 7,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "v10/billing/combinability/checkCombinabilityFromKb.ts",
+                    "line": "*",
+                    "purpose": "Combinability check"
+                },
+                {
+                    "module": "core/billing/combinability/billingCombinabilityChecker.ts",
+                    "line": "*",
+                    "purpose": "BLOCK/WARN rules"
+                }
+            ],
+            "runtime": true,
+            "notes": "Combinability rules - defines what billing codes can/cannot coexist."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/kataloge/bel2_2022.json",
+            "type": "KATALOG",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/bel2Catalog.ts",
+                    "line": 12,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/bel2Catalog.ts",
+                    "line": "*",
+                    "purpose": "Lab billing codes"
+                }
+            ],
+            "runtime": true,
+            "notes": "BEL2 catalog - lab billing codes."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/regeln/fuellung_regeln.json",
+            "type": "OTHER",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": 20,
+                    "function": "import"
+                },
+                {
+                    "module": "core/billing/knowledgeBase/logic/ruleQuestionTrigger.ts",
+                    "line": 49,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/treatmentEngine.ts",
+                    "line": "*",
+                    "purpose": "Fuellung-specific billing rules"
+                }
+            ],
+            "runtime": true,
+            "notes": "Fuellung-specific billing/question rules."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/regeln/splitting_regeln.json",
+            "type": "OTHER",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/gleichartigCalculator.ts",
+                    "line": 13,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/gleichartigCalculator.ts",
+                    "line": "*",
+                    "purpose": "Splitting calculations"
+                }
+            ],
+            "runtime": true,
+            "notes": "Splitting rules for Gleichartig calculations."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/disclosures/standard_disclosures.json",
+            "type": "OTHER",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/outputComposer.ts",
+                    "line": 195,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/outputComposer.ts",
+                    "line": "*",
+                    "purpose": "Standard disclosures"
+                }
+            ],
+            "runtime": true,
+            "notes": "Standard disclosure text templates."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+            "type": "OTHER",
+            "loadedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/billingScopeResolver.ts",
+                    "line": 15,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/billing/knowledgeBase/logic/billingScopeResolver.ts",
+                    "line": "*",
+                    "purpose": "Comment rules"
+                }
+            ],
+            "runtime": true,
+            "notes": "Comment rules for billing scope resolution."
+        },
+        {
+            "assetPath": "src/docudent/core/medical/medicalAskbackMatrix.v1.json",
+            "type": "OTHER",
+            "loadedBy": [
+                {
+                    "module": "core/medical/medicalEngine.ts",
+                    "line": 19,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "core/medical/medicalEngine.ts",
+                    "line": "*",
+                    "purpose": "Legacy askback matrix"
+                }
+            ],
+            "runtime": false,
+            "notes": "Legacy askback matrix - superseded by medical_kb.v1.json."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/question_bank.json",
+            "type": "TREATMENT_KB",
+            "loadedBy": [
+                {
+                    "module": "v7/medical/askbacks/questionBankAdapter.ts",
+                    "line": 83,
+                    "function": "require"
+                },
+                {
+                    "module": "core/billing/knowledgeBase/registry/loaders.ts",
+                    "line": 140,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "v7/medical/askbacks/compileAskbacksToQuestions.ts",
+                    "line": "*",
+                    "purpose": "Question definitions"
+                }
+            ],
+            "runtime": true,
+            "notes": "Fuellung question bank for askback compilation."
+        },
+        {
+            "assetPath": "src/docudent/core/billing/knowledgeBase/treatments/endo/question_bank.json",
+            "type": "TREATMENT_KB",
+            "loadedBy": [
+                {
+                    "module": "v7/medical/askbacks/questionBankAdapter.ts",
+                    "line": 85,
+                    "function": "require"
+                },
+                {
+                    "module": "core/billing/knowledgeBase/registry/loaders.ts",
+                    "line": 147,
+                    "function": "import"
+                }
+            ],
+            "consumedBy": [
+                {
+                    "module": "v7/medical/askbacks/compileAskbacksToQuestions.ts",
+                    "line": "*",
+                    "purpose": "Question definitions"
+                }
+            ],
+            "runtime": true,
+            "notes": "Endo question bank for askback compilation."
+        },
+        {
+            "assetPath": "src/docudent/v10/qa/textDriftAllowlist.json",
+            "type": "OTHER",
+            "loadedBy": [],
+            "consumedBy": [
+                {
+                    "module": "gates/gate-m26-text-drift-explicit.test.ts",
+                    "line": "*",
+                    "purpose": "Text drift governance"
+                }
+            ],
+            "runtime": false,
+            "notes": "Text drift allowlist - test/audit only."
+        }
+    ],
+    "shadow_assets_check": {
+        "duplicateUnifiedJson": 0,
+        "legacyImports": 0,
+        "notes": "No shadow SSOTs found. All unified.json loads go through jsonTreatmentKbProvider."
+    }
+}

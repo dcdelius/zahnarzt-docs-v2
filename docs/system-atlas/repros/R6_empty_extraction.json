@@ -1,0 +1,25 @@
+{
+    "id": "R6",
+    "name": "Empty extraction must have diagnostic",
+    "description": "If extraction yields nothing, must end in questions or diagnostic",
+    "input": {
+        "treatmentId": "fuellung",
+        "dictation": "",
+        "insuranceType": "GKV",
+        "settings": {}
+    },
+    "expected_state_trajectory": [
+        "input",
+        "processing",
+        "questions"
+    ],
+    "expected_questions_minimum": [
+        "dictation",
+        "tooth"
+    ],
+    "expected_invariants": {
+        "never_silent_output": true,
+        "must_have_diagnostic_or_questions": true,
+        "empty_fullText_forbidden_without_reason": true
+    }
+}

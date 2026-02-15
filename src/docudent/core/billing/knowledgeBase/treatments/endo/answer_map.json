@@ -1,0 +1,200 @@
+{
+  "_meta": {
+    "treatmentId": "endo",
+    "version": "2.0",
+    "description": "SSOT für Answer→Chip Mapping für Endo (Wurzelbehandlung). V2: Canonical alignment."
+  },
+  "map": [
+    {
+      "questionKey": "vitality",
+      "questionIdPatterns": [
+        "forensic_vitality",
+        "vitality"
+      ],
+      "answers": {
+        "positive": "vipr_pos",
+        "negative": "vipr_neg"
+      },
+      "optionAliases": {
+        "pos": "positive",
+        "+": "positive",
+        "neg": "negative",
+        "-": "negative"
+      },
+      "exclusiveGroup": "vitality",
+      "mutuallyExclusive": [
+        "vipr_pos",
+        "vipr_neg"
+      ]
+    },
+    {
+      "questionKey": "percussion",
+      "questionIdPatterns": [
+        "forensic_percussion",
+        "percussion"
+      ],
+      "answers": {
+        "positive": "perk_pos",
+        "negative": "perk_neg"
+      },
+      "optionAliases": {
+        "pos": "positive",
+        "+": "positive",
+        "neg": "negative",
+        "-": "negative"
+      },
+      "exclusiveGroup": "percussion",
+      "mutuallyExclusive": [
+        "perk_pos",
+        "perk_neg"
+      ]
+    },
+    {
+      "questionKey": "endo_step",
+      "questionIdPatterns": [
+        "forensic_endo_step",
+        "endo_step"
+      ],
+      "answers": {
+        "endo_start": null,
+        "endo_interim": null,
+        "endo_complete": null
+      },
+      "optionAliases": {
+        "start": "endo_start",
+        "interim": "endo_interim",
+        "complete": "endo_complete"
+      },
+      "exclusiveGroup": "endo_step"
+    },
+    {
+      "questionKey": "kanalzahl",
+      "questionIdPatterns": [
+        "forensic_endo_canal_count",
+        "kanalzahl"
+      ],
+      "answers": {
+        "canal_1": "kanalaufbereitung_1",
+        "canal_2": "kanalaufbereitung_2",
+        "canal_3": "kanalaufbereitung_3",
+        "canal_4": "kanalaufbereitung_4"
+      },
+      "optionAliases": {
+        "1": "canal_1",
+        "2": "canal_2",
+        "3": "canal_3",
+        "4": "canal_4"
+      },
+      "exclusiveGroup": "kanalzahl",
+      "mutuallyExclusive": [
+        "kanalaufbereitung_1",
+        "kanalaufbereitung_2",
+        "kanalaufbereitung_3",
+        "kanalaufbereitung_4"
+      ]
+    },
+    {
+      "questionKey": "spuelprotokoll",
+      "questionIdPatterns": [
+        "forensic_endo_irrigation_protocol",
+        "spuelprotokoll",
+        "spuelung"
+      ],
+      "answers": {
+        "irrigation_naocl_edta": "spuelung_naocl_edta",
+        "irrigation_naocl": "spuelung_naocl"
+      },
+      "optionAliases": {
+        "naocl_edta": "irrigation_naocl_edta",
+        "naocl": "irrigation_naocl"
+      },
+      "exclusiveGroup": "spuelung"
+    },
+    {
+      "questionKey": "medikament",
+      "questionIdPatterns": [
+        "forensic_endo_medication",
+        "medikament",
+        "einlage"
+      ],
+      "answers": {
+        "medication_caoh2": "einlage_caoh2",
+        "medication_none": null
+      },
+      "optionAliases": {
+        "caoh2": "medication_caoh2",
+        "none": "medication_none"
+      },
+      "exclusiveGroup": "medikament"
+    },
+    {
+      "questionKey": "obturation",
+      "questionIdPatterns": [
+        "endo_obturation",
+        "obturation"
+      ],
+      "answers": {
+        "obturation_thermoplastic": null,
+        "obturation_lateral": null
+      },
+      "optionAliases": {
+        "thermoplastisch": "obturation_thermoplastic",
+        "lateral": "obturation_lateral"
+      },
+      "exclusiveGroup": "obturation"
+    }
+  ],
+  "extractionMapping": {
+    "mentioned.anesthesia.type": {
+      "leitung": "la_leitung",
+      "infiltr": "la_infiltr"
+    },
+    "mentioned.vitality": {
+      "+": "vipr_pos",
+      "-": "vipr_neg",
+      "positive": "vipr_pos",
+      "negative": "vipr_neg"
+    },
+    "mentioned.percussion": {
+      "+": "perk_pos",
+      "-": "perk_neg",
+      "positive": "perk_pos",
+      "negative": "perk_neg"
+    },
+    "mentioned.kanalzahl": {
+      "1": "kanalaufbereitung_1",
+      "2": "kanalaufbereitung_2",
+      "3": "kanalaufbereitung_3",
+      "4": "kanalaufbereitung_4"
+    },
+    "mentioned.endo_step": {
+      "endo_start": null,
+      "endo_interim": null,
+      "endo_complete": null
+    }
+  },
+  "defaults": {
+    "alwaysOnChipIds": [],
+    "mkvChipId": null
+  },
+  "exclusiveGroups": {
+    "vitality": [
+      "vipr_pos",
+      "vipr_neg"
+    ],
+    "percussion": [
+      "perk_pos",
+      "perk_neg"
+    ],
+    "kanalzahl": [
+      "kanalaufbereitung_1",
+      "kanalaufbereitung_2",
+      "kanalaufbereitung_3",
+      "kanalaufbereitung_4"
+    ],
+    "anesthesia": [
+      "la_leitung",
+      "la_infiltr"
+    ]
+  }
+}

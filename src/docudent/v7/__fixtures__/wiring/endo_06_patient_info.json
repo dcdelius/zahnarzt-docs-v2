@@ -1,0 +1,32 @@
+{
+    "id": "endo_06_patient_info",
+    "description": "Endo mit Patienteninfo (Allergie) — muss in Patientenhinweis erscheinen",
+    "input": {
+        "treatmentId": "endo",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Wurzelbehandlung Zahn 21 Patient hat Latex-Allergie Kofferdam latexfrei verwendet",
+        "answers": {
+            "endo_step": "t2_aufbereitung"
+        }
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=endo",
+            "questions:engine=endo"
+        ],
+        "traceExcludes": [
+            "questions:engine=fuellung"
+        ],
+        "noQuestionIdRegex": "(fuellung|aesthetik|mehrschicht)",
+        "outputMustContain": [
+            "21"
+        ],
+        "billingMustNotContain": [
+            "BEMA_13a"
+        ]
+    },
+    "minimalAnswers": {
+        "endo_step": "t2_aufbereitung"
+    }
+}

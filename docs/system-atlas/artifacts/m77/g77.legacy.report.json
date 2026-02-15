@@ -1,0 +1,17 @@
+{
+    "gigaprompt": "G77",
+    "milestone": "m77",
+    "generated_at": "2025-12-30T08:18:00Z",
+    "status": "PENDING",
+    "summary": "Legacy gates need migration or quarantine",
+    "scope": [
+        "gate3-answer-effectiveness-endo",
+        "gate4-pipeline-snapshot-endo",
+        "gate5-import-paths",
+        "gate7-stage-emission"
+    ],
+    "decision_framework": {
+        "KEEP_AS_V10": "Rewrite using runV10 + SSOT",
+        "QUARANTINE": "Move to __legacy_v6_quarantine__"
+    }
+}

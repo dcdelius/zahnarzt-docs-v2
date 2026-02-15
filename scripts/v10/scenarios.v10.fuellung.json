@@ -1,0 +1,1292 @@
+{
+    "_meta": {
+        "description": "V10 Headless Scenario Cases - Füllung",
+        "version": "1.0.0",
+        "created": "2026-01-02"
+    },
+    "cases": [
+        {
+            "id": "01",
+            "title": "GKV Standard 1fl + LA + Fluor",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 36 okklusal, Komposit. Infiltrationsanästhesie. Politur, Fluoridierung.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13",
+                    "BEMA_40",
+                    "BEMA_IP4"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr"
+            }
+        },
+        {
+            "id": "02",
+            "title": "GKV 2fl + Kofferdam",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 36 okklusal distal. Kofferdam.",
+            "forceExtraction": {
+                "tooth": "36",
+                "surfaces": [
+                    "o",
+                    "d"
+                ],
+                "mentioned": {
+                    "kofferdam": true
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13b",
+                    "BEMA_12"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "fuellung.anesthesia": "infiltration",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "kofferdam",
+                "fuellung-36-1::medical_vitality::tooth:36": "+",
+                "fuellung-36-1::medical_percussion::tooth:36": "-",
+                "fuellung-36-1::forensic_anesthesia_type::tooth:36": "infiltr",
+                "fuellung-36-1::forensic_diagnose_confirmation::tooth:36": "ja",
+                "fuellung-36-1::forensic_ueberkappung::tooth:36": "keine",
+                "fuellung-36-1::forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+                "fuellung-36-1::fuellung_isolation::tooth:36": "kofferdam"
+            }
+        },
+        {
+            "id": "03",
+            "title": "GKV 3fl + profunda + direkte Überkappung",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 26 mesial okklusal distal, Karies profunda. Direkte Überkappung.",
+            "forceExtraction": {
+                "tooth": "26",
+                "surfaces": [
+                    "m",
+                    "o",
+                    "d"
+                ],
+                "diagnosis": "profunda",
+                "pulpaOpened": true,
+                "mentioned": {
+                    "ueberkappung": true
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13c",
+                    "BEMA_25"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {
+                    "BEMA_25": [
+                        "BEMA_26"
+                    ]
+                },
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "ueberkappung": "direkt",
+                "ueberkappung_material": "MTA",
+                "fuellung.capping": "direkt",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "direkt",
+                "forensic_ueberkappung_material": "MTA",
+                "fuellung_isolation": "keine",
+                "fuellung-26-1::medical_vitality::tooth:26": "+",
+                "fuellung-26-1::medical_percussion::tooth:26": "-",
+                "fuellung-26-1::forensic_anesthesia_type::tooth:26": "infiltr",
+                "fuellung-26-1::forensic_diagnose_confirmation::tooth:26": "ja",
+                "fuellung-26-1::forensic_ueberkappung::tooth:26": "direkt",
+                "fuellung-26-1::forensic_ueberkappung_material::tooth:26": "MTA",
+                "fuellung-26-1::fuellung_isolation::tooth:26": "keine"
+            }
+        },
+        {
+            "id": "04",
+            "title": "PKV 1fl + LA + Kofferdam + Fluor",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 36 okklusal Komposit, Adhäsivtechnik, Kofferdam, Infiltrationsanästhesie, Fluoridierung.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "GOZ_2060",
+                    "GOZ_2040",
+                    "GOZ_0090",
+                    "GOZ_1020"
+                ],
+                "mustNotIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr"
+            }
+        },
+        {
+            "id": "05",
+            "title": "MKV Mehrkosten explizit + Maßnahmen",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Füllung Zahn 36 okklusal Komposit, Mehrkostenvereinbarung. Kofferdam. Infiltrationsanästhesie. Fluoridierung.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13",
+                    "BEMA_12",
+                    "BEMA_40",
+                    "BEMA_IP4"
+                ],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [
+                    "fuellung.mehrkosten"
+                ],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "mkv_justification": "mehrschicht"
+            }
+        },
+        {
+            "id": "06",
+            "title": "MKV nur Kasse (Addon muss aus)",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Füllung Zahn 36 okklusal Komposit, nur Kasse. Infiltrationsanästhesie. Fluoridierung.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13",
+                    "BEMA_40",
+                    "BEMA_IP4"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "mkv_justification": "keine",
+                "fuellung.mehrkosten": "nein"
+            }
+        },
+        {
+            "id": "07",
+            "title": "GKV Flächen fehlen → Surface-Askback",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 36 Komposit.",
+            "forceExtraction": {
+                "tooth": "36",
+                "surfaces": [
+                    "o",
+                    "d"
+                ]
+            },
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13b"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {
+                    "BEMA_13b": [
+                        "BEMA_13",
+                        "BEMA_13c"
+                    ]
+                },
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "surfaces": "o,d",
+                "fuellung.surfaces": "o,d"
+            }
+        },
+        {
+            "id": "08",
+            "title": "MKV ohne Keyword (Praxis-Default Addon)",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Füllung Zahn 36 okklusal Komposit.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13"
+                ],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "mkv_justification": "mehrschicht",
+                "fuellung.mehrkosten": "ja"
+            }
+        },
+        {
+            "id": "09",
+            "title": "Multi-Tooth Isolation",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 36 okklusal, Infiltrationsanästhesie. Zusätzlich Füllung Zahn 14 okklusal.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "perInstanceMinKeys": 2
+            },
+            "answers": {
+                "material": "komposit",
+                "fuellung-36-1::material": "komposit",
+                "fuellung-14-2::material": "komposit",
+                "fuellung-36-1::la_type": "infiltr",
+                "fuellung-14-2::la_type": "keine",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "relativ",
+                "fuellung-36-1::medical_vitality::tooth:36": "+",
+                "fuellung-36-1::medical_percussion::tooth:36": "-",
+                "fuellung-36-1::forensic_anesthesia_type::tooth:36": "infiltr",
+                "fuellung-36-1::forensic_diagnose_confirmation::tooth:36": "ja",
+                "fuellung-36-1::forensic_ueberkappung::tooth:36": "keine",
+                "fuellung-36-1::forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+                "fuellung-36-1::fuellung_isolation::tooth:36": "relativ",
+                "fuellung-14-2::medical_vitality::tooth:14": "+",
+                "fuellung-14-2::medical_percussion::tooth:14": "-",
+                "fuellung-14-2::forensic_anesthesia_type::tooth:14": "keine",
+                "fuellung-14-2::forensic_diagnose_confirmation::tooth:14": "ja",
+                "fuellung-14-2::forensic_ueberkappung::tooth:14": "keine",
+                "fuellung-14-2::forensic_ueberkappung_material::tooth:14": "Ca(OH)2",
+                "fuellung-14-2::fuellung_isolation::tooth:14": "relativ"
+            }
+        },
+        {
+            "id": "10",
+            "title": "GKV profunda ohne Art → Capping-Askback",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 46 okklusal, Karies profunda.",
+            "forceExtraction": {
+                "tooth": "46",
+                "surfaces": [
+                    "o"
+                ],
+                "diagnosis": "profunda",
+                "pulpaOpened": false,
+                "mentioned": {
+                    "ueberkappung": true
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13",
+                    "BEMA_25"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {
+                    "BEMA_25": [
+                        "BEMA_26"
+                    ]
+                },
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "ueberkappung": "direkt",
+                "ueberkappung_material": "MTA",
+                "fuellung.capping": "direkt",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "direkt",
+                "forensic_ueberkappung_material": "MTA",
+                "fuellung_isolation": "keine",
+                "fuellung-46-1::medical_vitality::tooth:46": "+",
+                "fuellung-46-1::medical_percussion::tooth:46": "-",
+                "fuellung-46-1::forensic_anesthesia_type::tooth:46": "infiltr",
+                "fuellung-46-1::forensic_diagnose_confirmation::tooth:46": "ja",
+                "fuellung-46-1::forensic_ueberkappung::tooth:46": "direkt",
+                "fuellung-46-1::forensic_ueberkappung_material::tooth:46": "MTA",
+                "fuellung-46-1::fuellung_isolation::tooth:46": "keine"
+            }
+        },
+        {
+            "id": "11",
+            "title": "GKV MOD + indirekte Überkappung + Kofferdam",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Zahn 26 mod, tiefe Karies. Pulpa nicht eröffnet. Indirekte Überkappung mit Ca(OH)2, Kofferdam, Infiltrationsanästhesie. Komposit, Mehrschichttechnik, Politur, Fluoridierung.",
+            "forceExtraction": {
+                "tooth": "26",
+                "surfaces": [
+                    "m",
+                    "o",
+                    "d"
+                ],
+                "diagnosis": "profunda",
+                "pulpaOpened": false,
+                "mentioned": {
+                    "material": "Komposit",
+                    "kofferdam": true,
+                    "capping": {
+                        "type": "cp"
+                    }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_13c",
+                    "BEMA_25",
+                    "BEMA_12",
+                    "BEMA_40",
+                    "BEMA_IP4"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {
+                    "BEMA_25": [
+                        "BEMA_26"
+                    ]
+                },
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "ueberkappung": "indirekt",
+                "ueberkappung_material": "Ca(OH)2",
+                "upsell_mehrschicht": "ja",
+                "fuellung-26-1::upsell_mehrschicht": "ja",
+                "fuellung-26-1::upsell_mehrschicht::tooth:26": "ja",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "indirekt",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "kofferdam",
+                "fuellung-26-1::medical_vitality::tooth:26": "+",
+                "fuellung-26-1::medical_percussion::tooth:26": "-",
+                "fuellung-26-1::forensic_anesthesia_type::tooth:26": "infiltr",
+                "fuellung-26-1::forensic_diagnose_confirmation::tooth:26": "ja",
+                "fuellung-26-1::forensic_ueberkappung::tooth:26": "indirekt",
+                "fuellung-26-1::forensic_ueberkappung_material::tooth:26": "Ca(OH)2",
+                "fuellung-26-1::fuellung_isolation::tooth:26": "kofferdam",
+                "fuellung-26-1::upsell_mehrschicht::tooth:26": "ja"
+            }
+        },
+        {
+            "id": "12",
+            "title": "GKV 1fl + LA + Fluor",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 36 okklusal, Komposit. Infiltrationsanästhesie. Fluoridierung.",
+            "forceExtraction": {
+                "tooth": "36",
+                "surfaces": ["o"],
+                "mentioned": {
+                    "material": "Komposit",
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13", "BEMA_40", "BEMA_IP4"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-36-1::medical_vitality::tooth:36": "+",
+                "fuellung-36-1::medical_percussion::tooth:36": "-",
+                "fuellung-36-1::forensic_anesthesia_type::tooth:36": "infiltr",
+                "fuellung-36-1::forensic_diagnose_confirmation::tooth:36": "ja",
+                "fuellung-36-1::forensic_ueberkappung::tooth:36": "keine",
+                "fuellung-36-1::forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+                "fuellung-36-1::fuellung_isolation::tooth:36": "keine"
+            }
+        },
+        {
+            "id": "13",
+            "title": "GKV 2fl + Kofferdam + LA",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 24 okklusal distal, Kofferdam, Infiltrationsanästhesie, Komposit.",
+            "forceExtraction": {
+                "tooth": "24",
+                "surfaces": ["o", "d"],
+                "mentioned": {
+                    "material": "Komposit",
+                    "kofferdam": true,
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13b", "BEMA_12", "BEMA_40"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "kofferdam",
+                "fuellung-24-1::medical_vitality::tooth:24": "+",
+                "fuellung-24-1::medical_percussion::tooth:24": "-",
+                "fuellung-24-1::forensic_anesthesia_type::tooth:24": "infiltr",
+                "fuellung-24-1::forensic_diagnose_confirmation::tooth:24": "ja",
+                "fuellung-24-1::forensic_ueberkappung::tooth:24": "keine",
+                "fuellung-24-1::forensic_ueberkappung_material::tooth:24": "Ca(OH)2",
+                "fuellung-24-1::fuellung_isolation::tooth:24": "kofferdam"
+            }
+        },
+        {
+            "id": "14",
+            "title": "GKV 3fl + Cp + Kofferdam + Fluor",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 26 mod, tiefe Karies. Indirekte Überkappung mit Ca(OH)2, Kofferdam, Infiltrationsanästhesie, Komposit, Fluoridierung.",
+            "forceExtraction": {
+                "tooth": "26",
+                "surfaces": ["m", "o", "d"],
+                "diagnosis": "profunda",
+                "pulpaOpened": false,
+                "mentioned": {
+                    "material": "Komposit",
+                    "kofferdam": true,
+                    "capping": { "type": "cp" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13c", "BEMA_25", "BEMA_12", "BEMA_40", "BEMA_IP4"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "allowAliases": { "BEMA_25": ["BEMA_26"] },
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "ueberkappung": "indirekt",
+                "ueberkappung_material": "Ca(OH)2",
+                "upsell_mehrschicht": "ja",
+                "fuellung-26-1::upsell_mehrschicht": "ja",
+                "fuellung-26-1::upsell_mehrschicht::tooth:26": "ja",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "indirekt",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "kofferdam",
+                "fuellung-26-1::medical_vitality::tooth:26": "+",
+                "fuellung-26-1::medical_percussion::tooth:26": "-",
+                "fuellung-26-1::forensic_anesthesia_type::tooth:26": "infiltr",
+                "fuellung-26-1::forensic_diagnose_confirmation::tooth:26": "ja",
+                "fuellung-26-1::forensic_ueberkappung::tooth:26": "indirekt",
+                "fuellung-26-1::forensic_ueberkappung_material::tooth:26": "Ca(OH)2",
+                "fuellung-26-1::fuellung_isolation::tooth:26": "kofferdam"
+            }
+        },
+        {
+            "id": "15",
+            "title": "GKV 1fl GIZ ohne LA",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 14 okklusal, GIZ, keine Anästhesie.",
+            "forceExtraction": {
+                "tooth": "14",
+                "surfaces": ["o"],
+                "mentioned": {
+                    "material": "GIZ"
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "giz",
+                "la_type": "none",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "none",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-14-1::medical_vitality::tooth:14": "+",
+                "fuellung-14-1::medical_percussion::tooth:14": "-",
+                "fuellung-14-1::forensic_anesthesia_type::tooth:14": "none",
+                "fuellung-14-1::forensic_diagnose_confirmation::tooth:14": "ja",
+                "fuellung-14-1::forensic_ueberkappung::tooth:14": "keine",
+                "fuellung-14-1::forensic_ueberkappung_material::tooth:14": "Ca(OH)2",
+                "fuellung-14-1::fuellung_isolation::tooth:14": "keine"
+            }
+        },
+        {
+            "id": "16",
+            "title": "GKV 2fl + LA",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 34 mesial okklusal, Komposit, Infiltrationsanästhesie.",
+            "forceExtraction": {
+                "tooth": "34",
+                "surfaces": ["m", "o"],
+                "mentioned": {
+                    "material": "Komposit",
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13b", "BEMA_40"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-34-1::medical_vitality::tooth:34": "+",
+                "fuellung-34-1::medical_percussion::tooth:34": "-",
+                "fuellung-34-1::forensic_anesthesia_type::tooth:34": "infiltr",
+                "fuellung-34-1::forensic_diagnose_confirmation::tooth:34": "ja",
+                "fuellung-34-1::forensic_ueberkappung::tooth:34": "keine",
+                "fuellung-34-1::forensic_ueberkappung_material::tooth:34": "Ca(OH)2",
+                "fuellung-34-1::fuellung_isolation::tooth:34": "keine"
+            }
+        },
+        {
+            "id": "17",
+            "title": "MKV 1fl + Mehrkosten",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Füllung Zahn 36 okklusal Komposit, Mehrkostenvereinbarung.",
+            "forceExtraction": {
+                "tooth": "36",
+                "surfaces": ["o"],
+                "mentioned": {
+                    "material": "Komposit"
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13", "GOZ_2060"],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "mkv_justification": "mehrschicht",
+                "fuellung.mehrkosten": "ja",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-36-1::medical_vitality::tooth:36": "+",
+                "fuellung-36-1::medical_percussion::tooth:36": "-",
+                "fuellung-36-1::forensic_anesthesia_type::tooth:36": "infiltr",
+                "fuellung-36-1::forensic_diagnose_confirmation::tooth:36": "ja",
+                "fuellung-36-1::forensic_ueberkappung::tooth:36": "keine",
+                "fuellung-36-1::forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+                "fuellung-36-1::fuellung_isolation::tooth:36": "keine"
+            }
+        },
+        {
+            "id": "18",
+            "title": "MKV 2fl + Kofferdam",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Füllung Zahn 24 okklusal distal Komposit, Kofferdam, Mehrkostenvereinbarung.",
+            "forceExtraction": {
+                "tooth": "24",
+                "surfaces": ["o", "d"],
+                "mentioned": {
+                    "material": "Komposit",
+                    "kofferdam": true
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13b", "BEMA_12", "GOZ_2080"],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "mkv_justification": "mehrschicht",
+                "fuellung.mehrkosten": "ja",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "kofferdam",
+                "fuellung-24-1::medical_vitality::tooth:24": "+",
+                "fuellung-24-1::medical_percussion::tooth:24": "-",
+                "fuellung-24-1::forensic_anesthesia_type::tooth:24": "infiltr",
+                "fuellung-24-1::forensic_diagnose_confirmation::tooth:24": "ja",
+                "fuellung-24-1::forensic_ueberkappung::tooth:24": "keine",
+                "fuellung-24-1::forensic_ueberkappung_material::tooth:24": "Ca(OH)2",
+                "fuellung-24-1::fuellung_isolation::tooth:24": "kofferdam"
+            }
+        },
+        {
+            "id": "19",
+            "title": "MKV 3fl + Cp",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Füllung Zahn 26 mod, tiefe Karies. Indirekte Überkappung mit Ca(OH)2. Mehrkostenvereinbarung.",
+            "forceExtraction": {
+                "tooth": "26",
+                "surfaces": ["m", "o", "d"],
+                "diagnosis": "profunda",
+                "pulpaOpened": false,
+                "mentioned": {
+                    "material": "Komposit",
+                    "capping": { "type": "cp" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13c", "BEMA_25", "GOZ_2100"],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": { "BEMA_25": ["BEMA_26"] },
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "mkv_justification": "mehrschicht",
+                "fuellung.mehrkosten": "ja",
+                "ueberkappung": "indirekt",
+                "ueberkappung_material": "Ca(OH)2",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "indirekt",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-26-1::medical_vitality::tooth:26": "+",
+                "fuellung-26-1::medical_percussion::tooth:26": "-",
+                "fuellung-26-1::forensic_anesthesia_type::tooth:26": "infiltr",
+                "fuellung-26-1::forensic_diagnose_confirmation::tooth:26": "ja",
+                "fuellung-26-1::forensic_ueberkappung::tooth:26": "indirekt",
+                "fuellung-26-1::forensic_ueberkappung_material::tooth:26": "Ca(OH)2",
+                "fuellung-26-1::fuellung_isolation::tooth:26": "keine"
+            }
+        },
+        {
+            "id": "20",
+            "title": "MKV 1fl + LA + Fluor",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Füllung Zahn 16 okklusal Komposit, Infiltrationsanästhesie, Fluoridierung, Mehrkosten.",
+            "forceExtraction": {
+                "tooth": "16",
+                "surfaces": ["o"],
+                "mentioned": {
+                    "material": "Komposit",
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13", "BEMA_40", "BEMA_IP4", "GOZ_2060"],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "mkv_justification": "mehrschicht",
+                "fuellung.mehrkosten": "ja",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-16-1::medical_vitality::tooth:16": "+",
+                "fuellung-16-1::medical_percussion::tooth:16": "-",
+                "fuellung-16-1::forensic_anesthesia_type::tooth:16": "infiltr",
+                "fuellung-16-1::forensic_diagnose_confirmation::tooth:16": "ja",
+                "fuellung-16-1::forensic_ueberkappung::tooth:16": "keine",
+                "fuellung-16-1::forensic_ueberkappung_material::tooth:16": "Ca(OH)2",
+                "fuellung-16-1::fuellung_isolation::tooth:16": "keine"
+            }
+        },
+        {
+            "id": "21",
+            "title": "MKV 2fl + LA + Fluor",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Füllung Zahn 44 okklusal distal Komposit, Infiltrationsanästhesie, Fluoridierung, Mehrkosten.",
+            "forceExtraction": {
+                "tooth": "44",
+                "surfaces": ["o", "d"],
+                "mentioned": {
+                    "material": "Komposit",
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13b", "BEMA_40", "BEMA_IP4", "GOZ_2080"],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "mkv_justification": "mehrschicht",
+                "fuellung.mehrkosten": "ja",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-44-1::medical_vitality::tooth:44": "+",
+                "fuellung-44-1::medical_percussion::tooth:44": "-",
+                "fuellung-44-1::forensic_anesthesia_type::tooth:44": "infiltr",
+                "fuellung-44-1::forensic_diagnose_confirmation::tooth:44": "ja",
+                "fuellung-44-1::forensic_ueberkappung::tooth:44": "keine",
+                "fuellung-44-1::forensic_ueberkappung_material::tooth:44": "Ca(OH)2",
+                "fuellung-44-1::fuellung_isolation::tooth:44": "keine"
+            }
+        },
+        {
+            "id": "22",
+            "title": "PKV 1fl + LA + Fluor",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 36 okklusal Komposit, Infiltrationsanästhesie, Fluoridierung.",
+            "forceExtraction": {
+                "tooth": "36",
+                "surfaces": ["o"],
+                "mentioned": {
+                    "material": "Komposit",
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["GOZ_2060", "GOZ_0090", "GOZ_1020"],
+                "mustNotIncludePrefixes": ["BEMA_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-36-1::medical_vitality::tooth:36": "+",
+                "fuellung-36-1::medical_percussion::tooth:36": "-",
+                "fuellung-36-1::forensic_anesthesia_type::tooth:36": "infiltr",
+                "fuellung-36-1::forensic_diagnose_confirmation::tooth:36": "ja",
+                "fuellung-36-1::forensic_ueberkappung::tooth:36": "keine",
+                "fuellung-36-1::forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+                "fuellung-36-1::fuellung_isolation::tooth:36": "keine"
+            }
+        },
+        {
+            "id": "23",
+            "title": "PKV 2fl + Kofferdam + LA",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 24 okklusal distal Komposit, Kofferdam, Infiltrationsanästhesie.",
+            "forceExtraction": {
+                "tooth": "24",
+                "surfaces": ["o", "d"],
+                "mentioned": {
+                    "material": "Komposit",
+                    "kofferdam": true,
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["GOZ_2080", "GOZ_2040", "GOZ_0090"],
+                "mustNotIncludePrefixes": ["BEMA_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "kofferdam",
+                "fuellung-24-1::medical_vitality::tooth:24": "+",
+                "fuellung-24-1::medical_percussion::tooth:24": "-",
+                "fuellung-24-1::forensic_anesthesia_type::tooth:24": "infiltr",
+                "fuellung-24-1::forensic_diagnose_confirmation::tooth:24": "ja",
+                "fuellung-24-1::forensic_ueberkappung::tooth:24": "keine",
+                "fuellung-24-1::forensic_ueberkappung_material::tooth:24": "Ca(OH)2",
+                "fuellung-24-1::fuellung_isolation::tooth:24": "kofferdam"
+            }
+        },
+        {
+            "id": "24",
+            "title": "PKV 3fl + Cp + Kofferdam + LA",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 26 mod, tiefe Karies. Indirekte Überkappung mit Ca(OH)2. Kofferdam. Infiltrationsanästhesie.",
+            "forceExtraction": {
+                "tooth": "26",
+                "surfaces": ["m", "o", "d"],
+                "diagnosis": "profunda",
+                "pulpaOpened": false,
+                "mentioned": {
+                    "material": "Komposit",
+                    "kofferdam": true,
+                    "capping": { "type": "cp" }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["GOZ_2100", "GOZ_2040", "GOZ_0090"],
+                "mustNotIncludePrefixes": ["BEMA_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "infiltr",
+                "ueberkappung": "indirekt",
+                "ueberkappung_material": "Ca(OH)2",
+                "upsell_mehrschicht": "ja",
+                "fuellung-26-1::upsell_mehrschicht": "ja",
+                "fuellung-26-1::upsell_mehrschicht::tooth:26": "ja",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "indirekt",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "kofferdam",
+                "fuellung-26-1::medical_vitality::tooth:26": "+",
+                "fuellung-26-1::medical_percussion::tooth:26": "-",
+                "fuellung-26-1::forensic_anesthesia_type::tooth:26": "infiltr",
+                "fuellung-26-1::forensic_diagnose_confirmation::tooth:26": "ja",
+                "fuellung-26-1::forensic_ueberkappung::tooth:26": "indirekt",
+                "fuellung-26-1::forensic_ueberkappung_material::tooth:26": "Ca(OH)2",
+                "fuellung-26-1::fuellung_isolation::tooth:26": "kofferdam"
+            }
+        },
+        {
+            "id": "25",
+            "title": "PKV 1fl GIZ",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 14 okklusal, GIZ.",
+            "forceExtraction": {
+                "tooth": "14",
+                "surfaces": ["o"],
+                "mentioned": {
+                    "material": "GIZ"
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["GOZ_2060"],
+                "mustNotIncludePrefixes": ["BEMA_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "giz",
+                "la_type": "none",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "none",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-14-1::medical_vitality::tooth:14": "+",
+                "fuellung-14-1::medical_percussion::tooth:14": "-",
+                "fuellung-14-1::forensic_anesthesia_type::tooth:14": "none",
+                "fuellung-14-1::forensic_diagnose_confirmation::tooth:14": "ja",
+                "fuellung-14-1::forensic_ueberkappung::tooth:14": "keine",
+                "fuellung-14-1::forensic_ueberkappung_material::tooth:14": "Ca(OH)2",
+                "fuellung-14-1::fuellung_isolation::tooth:14": "keine"
+            }
+        },
+        {
+            "id": "26",
+            "title": "PKV 2fl + Fluor",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 44 okklusal distal Komposit, Fluoridierung.",
+            "forceExtraction": {
+                "tooth": "44",
+                "surfaces": ["o", "d"],
+                "mentioned": {
+                    "material": "Komposit"
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["GOZ_2080", "GOZ_1020"],
+                "mustNotIncludePrefixes": ["BEMA_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"]
+            },
+            "answers": {
+                "material": "komposit",
+                "la_type": "none",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "none",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-44-1::medical_vitality::tooth:44": "+",
+                "fuellung-44-1::medical_percussion::tooth:44": "-",
+                "fuellung-44-1::forensic_anesthesia_type::tooth:44": "none",
+                "fuellung-44-1::forensic_diagnose_confirmation::tooth:44": "ja",
+                "fuellung-44-1::forensic_ueberkappung::tooth:44": "keine",
+                "fuellung-44-1::forensic_ueberkappung_material::tooth:44": "Ca(OH)2",
+                "fuellung-44-1::fuellung_isolation::tooth:44": "keine"
+            }
+        },
+        {
+            "id": "27",
+            "title": "Settings Material Default Komposit (Filtek)",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 36 okklusal, Infiltrationsanästhesie.",
+            "forceExtraction": {
+                "tooth": "36",
+                "surfaces": ["o"],
+                "mentioned": {
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "settings": {
+                "user": {
+                    "treatments": {
+                        "fuellung": {
+                            "defaultCompositeMaterialId": "comp_universal_filtek_supreme"
+                        }
+                    }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13", "BEMA_40"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"],
+                "textMustInclude": ["Filtek Supreme XTE"]
+            },
+            "answers": {
+                "la_type": "infiltr",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-36-1::medical_vitality::tooth:36": "+",
+                "fuellung-36-1::medical_percussion::tooth:36": "-",
+                "fuellung-36-1::forensic_anesthesia_type::tooth:36": "infiltr",
+                "fuellung-36-1::forensic_diagnose_confirmation::tooth:36": "ja",
+                "fuellung-36-1::forensic_ueberkappung::tooth:36": "keine",
+                "fuellung-36-1::forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+                "fuellung-36-1::fuellung_isolation::tooth:36": "keine"
+            }
+        },
+        {
+            "id": "28",
+            "title": "Settings Material Default Bulk (Tetric PowerFill)",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 24 okklusal distal, Kofferdam, Infiltrationsanästhesie.",
+            "forceExtraction": {
+                "tooth": "24",
+                "surfaces": ["o", "d"],
+                "mentioned": {
+                    "kofferdam": true,
+                    "anesthesia": { "type": "infiltr" }
+                }
+            },
+            "settings": {
+                "user": {
+                    "treatments": {
+                        "fuellung": {
+                            "defaultBulkMaterialId": "comp_bulk_tetric_powerfill"
+                        }
+                    }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13b", "BEMA_12", "BEMA_40"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"],
+                "textMustInclude": ["Tetric PowerFill"]
+            },
+            "answers": {
+                "la_type": "infiltr",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "infiltr",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "kofferdam",
+                "fuellung-24-1::medical_vitality::tooth:24": "+",
+                "fuellung-24-1::medical_percussion::tooth:24": "-",
+                "fuellung-24-1::forensic_anesthesia_type::tooth:24": "infiltr",
+                "fuellung-24-1::forensic_diagnose_confirmation::tooth:24": "ja",
+                "fuellung-24-1::forensic_ueberkappung::tooth:24": "keine",
+                "fuellung-24-1::forensic_ueberkappung_material::tooth:24": "Ca(OH)2",
+                "fuellung-24-1::fuellung_isolation::tooth:24": "kofferdam"
+            }
+        },
+        {
+            "id": "29",
+            "title": "Settings Material Default Flowable (SDR flow+)",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Füllung Zahn 14 okklusal, keine Anästhesie.",
+            "forceExtraction": {
+                "tooth": "14",
+                "surfaces": ["o"],
+                "mentioned": {}
+            },
+            "settings": {
+                "user": {
+                    "treatments": {
+                        "fuellung": {
+                            "defaultFlowableMaterialId": "comp_flow_sdr_plus"
+                        }
+                    }
+                }
+            },
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13"],
+                "mustNotIncludePrefixes": ["GOZ_"],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"],
+                "textMustInclude": ["SDR flow+"]
+            },
+            "answers": {
+                "la_type": "none",
+                "medical_vitality": "+",
+                "medical_percussion": "-",
+                "forensic_anesthesia_type": "none",
+                "forensic_diagnose_confirmation": "ja",
+                "forensic_ueberkappung": "keine",
+                "forensic_ueberkappung_material": "Ca(OH)2",
+                "fuellung_isolation": "keine",
+                "fuellung-14-1::medical_vitality::tooth:14": "+",
+                "fuellung-14-1::medical_percussion::tooth:14": "-",
+                "fuellung-14-1::forensic_anesthesia_type::tooth:14": "none",
+                "fuellung-14-1::forensic_diagnose_confirmation::tooth:14": "ja",
+                "fuellung-14-1::forensic_ueberkappung::tooth:14": "keine",
+                "fuellung-14-1::forensic_ueberkappung_material::tooth:14": "Ca(OH)2",
+                "fuellung-14-1::fuellung_isolation::tooth:14": "keine"
+            }
+        },
+        {
+            "id": "30",
+            "title": "Multi-Tooth MKV: 26 MOD + 36 O",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Zahn 26 MOD, tiefe Karies. Komposit Mehrschicht, Kofferdam, Leitungsanästhesie. Zahn 36 okklusal, Bulk-Fill, Infiltrationsanästhesie. Mehrkostenvereinbarung für Komposit liegt vor.",
+            "expected": {
+                "mustIncludeCodes": ["BEMA_13c", "BEMA_13", "GOZ_2100", "GOZ_2060"],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": { "BEMA_13": ["BEMA_13a"] },
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": ["BLOCK"],
+                "perInstanceMinKeys": 2
+            },
+            "forceAnswers": {
+                "medical_vitality::tooth:26": "+",
+                "medical_percussion::tooth:26": "-",
+                "forensic_anesthesia_type::tooth:26": "leitung",
+                "forensic_diagnose_confirmation::tooth:26": "ja",
+                "forensic_ueberkappung::tooth:26": "keine",
+                "forensic_ueberkappung_material::tooth:26": "Ca(OH)2",
+                "fuellung_isolation::tooth:26": "kofferdam",
+                "fuellung_material::tooth:26": "komposit",
+                "upsell_mehrschicht::tooth:26": "ja",
+                "surfaces::tooth:26": "m,o,d",
+                "medical_vitality::tooth:36": "+",
+                "medical_percussion::tooth:36": "-",
+                "forensic_anesthesia_type::tooth:36": "infiltr",
+                "forensic_diagnose_confirmation::tooth:36": "ja",
+                "forensic_ueberkappung::tooth:36": "keine",
+                "forensic_ueberkappung_material::tooth:36": "Ca(OH)2",
+                "fuellung_isolation::tooth:36": "keine",
+                "fuellung_material::tooth:36": "komposit",
+                "surfaces::tooth:36": "o"
+            },
+            "answers": {
+            }
+        }
+    ]
+}

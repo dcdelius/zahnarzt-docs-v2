@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2025-12-15T20:23:59.016Z",
+  "items": [
+    {
+      "file": "src/docudent/core/billing/knowledgeBase/logic/hkpGenerator.ts",
+      "line": 205,
+      "context": "rawBelNr",
+      "belNrLiteral": "1021",
+      "snippet": "const rawBelNr = 'BEL_1021';",
+      "candidate": {
+        "normalized": "BEL_1021",
+        "existsInCatalog": true
+      }
+    }
+  ],
+  "countsByBelNrLiteral": {
+    "1021": 1
+  },
+  "countsByCandidate": {
+    "BEL_1021": 1
+  }
+}

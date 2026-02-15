@@ -1,0 +1,56 @@
+/**
+ * V10InstanceFilter Styles
+ */
+
+.v10-instance-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.v10-filter-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #7f8c8d;
+}
+
+.v10-filter-buttons {
+    display: flex;
+    gap: 0.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.25rem;
+    border-radius: 8px;
+}
+
+.v10-filter-btn {
+    padding: 0.375rem 0.75rem;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: #95a5a6;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.v10-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #bdc3c7;
+}
+
+.v10-filter-btn.active {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ecf0f1;
+}
+
+.v10-filter-btn.endo.active {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.v10-filter-btn.fuellung.active {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+}

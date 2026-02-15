@@ -1,0 +1,131 @@
+{
+    "generatedAt": "2026-01-11T09:45:00Z",
+    "status": "ALL_PASS",
+    "summary": "16/16 Praxis dictation scenarios passed E2E verification.",
+    "result": {
+        "passed": 16,
+        "failed": 0,
+        "total": 16,
+        "duration": "4.3m"
+    },
+    "scenarios": [
+        {
+            "id": "A01",
+            "title": "GKV Simple Filling",
+            "status": "pass",
+            "channel": "BEMA_ONLY"
+        },
+        {
+            "id": "A02",
+            "title": "PKV Simple Filling",
+            "status": "pass",
+            "channel": "GOZ_ONLY"
+        },
+        {
+            "id": "A03",
+            "title": "MKV mit Mehrkosten",
+            "status": "pass",
+            "channel": "BOTH",
+            "addon": true
+        },
+        {
+            "id": "A04",
+            "title": "MKV nur Kasse",
+            "status": "pass",
+            "channel": "BEMA_ONLY",
+            "addon": false
+        },
+        {
+            "id": "A05",
+            "title": "Askback: Material fehlt",
+            "status": "pass",
+            "phase": "questions"
+        },
+        {
+            "id": "A06",
+            "title": "Askback: Profunda/Capping",
+            "status": "pass",
+            "phase": "questions"
+        },
+        {
+            "id": "A07",
+            "title": "Askback: Surfaces ambiguous",
+            "status": "pass",
+            "phase": "questions"
+        },
+        {
+            "id": "A08",
+            "title": "Multi-Tooth GKV",
+            "status": "pass",
+            "instances": 2
+        },
+        {
+            "id": "A09",
+            "title": "Multi-Tooth PKV",
+            "status": "pass",
+            "instances": 2
+        },
+        {
+            "id": "A10",
+            "title": "Multi-Tooth MKV",
+            "status": "pass",
+            "instances": 2,
+            "addon": true
+        },
+        {
+            "id": "A11",
+            "title": "Negation: ohne Kofferdam",
+            "status": "pass",
+            "negation": "verified"
+        },
+        {
+            "id": "A12",
+            "title": "Combinability WARN candidate",
+            "status": "pass",
+            "combinability": "observed"
+        },
+        {
+            "id": "A13",
+            "title": "Combinability BLOCK candidate",
+            "status": "pass",
+            "combinability": "observed"
+        },
+        {
+            "id": "A14",
+            "title": "Complex + LA Leitung",
+            "status": "pass",
+            "channel": "BEMA_ONLY"
+        },
+        {
+            "id": "A15",
+            "title": "Profunda with explicit capping",
+            "status": "pass",
+            "askback": "none"
+        },
+        {
+            "id": "A16",
+            "title": "Isolation unclear (L2 optional)",
+            "status": "pass",
+            "phase": "either"
+        }
+    ],
+    "contracts": {
+        "noHardcodedBillingRuntime": true,
+        "askbacksFromSSOT": true,
+        "channelizationStrict": true,
+        "perInstanceSSOT": true
+    },
+    "coverageGaps": [
+        {
+            "id": "GAP-01",
+            "area": "Combinability",
+            "description": "A12/A13 verdicts recorded as 'unknown' - need explicit rules in combinability_kb.v1.json"
+        },
+        {
+            "id": "GAP-02",
+            "area": "Debug Drawer",
+            "description": "Debug button click sometimes intercepted by output panel - UI z-index issue"
+        }
+    ],
+    "command": "npm run e2e:v10:praxis16"
+}

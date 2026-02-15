@@ -1,0 +1,192 @@
+{
+    "version": "1.0.0",
+    "id": "golden_composite_36_14_mkv",
+    "name": "Golden Composite Flow: Zahn 36 + 14 mit MKV",
+    "description": "DER Referenzfall für alle Änderungen",
+    "input": {
+        "dictation": "An Zahn 36 okklusal eine Kompositfüllung adhäsiv, an Zahn 14 distal eine einfache Füllung. Mehrkostenvereinbarung liegt vor. Lokalanästhesie durchgeführt.",
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "context": {
+            "hasMKV": true
+        }
+    },
+    "extraction": {
+        "teeth": [
+            "36",
+            "14"
+        ],
+        "perTooth": {
+            "36": {
+                "surfaces": [
+                    "o"
+                ],
+                "material": "komposit",
+                "adhesiveMentioned": true
+            },
+            "14": {
+                "surfaces": [
+                    "d"
+                ],
+                "material": "komposit",
+                "adhesiveMentioned": false
+            }
+        },
+        "mentioned": {
+            "mkv": true,
+            "localAnesthesia": true
+        }
+    },
+    "facts": {
+        "tooth:36": {
+            "tooth": "36",
+            "surfaces": [
+                "o"
+            ],
+            "toothRegion": "side",
+            "insuranceType": "GKV",
+            "hasMKV": true,
+            "materialMentioned": "komposit",
+            "adhesiveMentioned": true
+        },
+        "tooth:14": {
+            "tooth": "14",
+            "surfaces": [
+                "d"
+            ],
+            "toothRegion": "side",
+            "insuranceType": "GKV",
+            "hasMKV": true,
+            "materialMentioned": "komposit",
+            "adhesiveMentioned": false
+        }
+    },
+    "askbacks": {
+        "required": [
+            {
+                "id": "adhesive_technique::tooth:14",
+                "question": "Zahn 14: Wurde Adhäsivtechnik (Mehrschicht) angewendet?",
+                "forTooth": "14",
+                "blocking": true
+            }
+        ],
+        "optional": []
+    },
+    "answers": {
+        "adhesive_technique::tooth:14": false
+    },
+    "chips": {
+        "tooth:36": [
+            "mkv_valid",
+            "komposit_mehrschicht",
+            "adhesive",
+            "la_leitung",
+            "exkavation",
+            "finishing"
+        ],
+        "tooth:14": [
+            "mkv_valid",
+            "komposit_basic",
+            "la_infiltr",
+            "exkavation",
+            "finishing"
+        ]
+    },
+    "output": {
+        "fullText": "ZAHN 36 (OKKLUSAL)\nLeitungsanästhesie N. alv. inf.\nExkavation, Kavitätenpräparation.\nEinflächige Kompositfüllung in Mehrschichttechnik.\nÄtz-/Adhäsivtechnik (Schmelz/Dentin).\nPolitur und Okklusionskontrolle.\n\nZAHN 14 (DISTAL)\nInfiltrationsanästhesie.\nExkavation, Kavitätenpräparation.\nEinflächige Kompositfüllung.\nPolitur und Okklusionskontrolle.\n\nMehrkostenvereinbarung liegt vor.",
+        "perTooth": {
+            "36": "Leitungsanästhesie N. alv. inf.\nExkavation, Kavitätenpräparation.\nEinflächige Kompositfüllung in Mehrschichttechnik.\nÄtz-/Adhäsivtechnik (Schmelz/Dentin).\nPolitur und Okklusionskontrolle.",
+            "14": "Infiltrationsanästhesie.\nExkavation, Kavitätenpräparation.\nEinflächige Kompositfüllung.\nPolitur und Okklusionskontrolle."
+        }
+    },
+    "billing": {
+        "bema": [
+            {
+                "code": "BEMA_41a",
+                "tooth": "36",
+                "label": "Leitungsanästhesie"
+            },
+            {
+                "code": "BEMA_13a",
+                "tooth": "36",
+                "label": "Füllung einflächig"
+            },
+            {
+                "code": "BEMA_40",
+                "tooth": "14",
+                "label": "Infiltrationsanästhesie"
+            },
+            {
+                "code": "BEMA_13a",
+                "tooth": "14",
+                "label": "Füllung einflächig"
+            }
+        ],
+        "goz_patient": [
+            {
+                "code": "GOZ_2060_DIFF",
+                "tooth": "36",
+                "label": "Füllung Mehrkosten"
+            },
+            {
+                "code": "GOZ_2197",
+                "tooth": "36",
+                "label": "Adhäsivtechnik"
+            },
+            {
+                "code": "GOZ_2060_DIFF",
+                "tooth": "14",
+                "label": "Füllung Mehrkosten"
+            }
+        ]
+    },
+    "uiStates": [
+        {
+            "step": 1,
+            "state": "idle",
+            "description": "Dictation input"
+        },
+        {
+            "step": 2,
+            "state": "processing",
+            "description": "runV10() running"
+        },
+        {
+            "step": 3,
+            "state": "questions",
+            "description": "Shows adhesive_technique for tooth:14"
+        },
+        {
+            "step": 4,
+            "state": "processing",
+            "description": "runV10() with answers"
+        },
+        {
+            "step": 5,
+            "state": "output",
+            "description": "Final output displayed"
+        }
+    ],
+    "invariants": [
+        {
+            "rule": "no_goz_without_mkv",
+            "pass": true
+        },
+        {
+            "rule": "goz_2197_only_with_adhesive",
+            "pass": true
+        },
+        {
+            "rule": "no_text_without_chip",
+            "pass": true
+        },
+        {
+            "rule": "no_billing_without_chip",
+            "pass": true
+        },
+        {
+            "rule": "tooth_scoping",
+            "pass": true
+        }
+    ]
+}

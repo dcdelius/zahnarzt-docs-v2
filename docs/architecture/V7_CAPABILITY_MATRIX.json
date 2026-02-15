@@ -1,0 +1,395 @@
+{
+    "generatedAt": "2025-12-15T21:42:07+01:00",
+    "capabilityMatrix": [
+        {
+            "capability": "Single-treatment dictation → documentation",
+            "category": "Chairside",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "present",
+            "sourceOfTruth": [
+                "src/docudent/v7/pipeline/index.ts",
+                "src/docudent/v7/hooks/useV7Pipeline.ts"
+            ],
+            "notes": "Core flow works: dictation → extraction → questions → output",
+            "migrationAction": "none",
+            "blockingRisks": []
+        },
+        {
+            "capability": "Multi-treatment segmentation",
+            "category": "Chairside",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "present",
+            "sourceOfTruth": [
+                "src/docudent/v7/multitreatment/runMultiFromDictation.ts",
+                "src/docudent/v7/multitreatment/orchestrator.ts"
+            ],
+            "notes": "Full E2E tested via gate10",
+            "migrationAction": "none",
+            "blockingRisks": []
+        },
+        {
+            "capability": "Insurance type selection (GKV/PKV)",
+            "category": "Chairside",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "present",
+            "sourceOfTruth": [
+                "src/docudent/v7/pages/DocudentV7Page.tsx"
+            ],
+            "notes": "UI selector exists, flows to pipeline",
+            "migrationAction": "none",
+            "blockingRisks": []
+        },
+        {
+            "capability": "BEMA/GOZ billing code lookup",
+            "category": "Chairside",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "present",
+            "sourceOfTruth": [
+                "src/docudent/core/billing/knowledgeBase/logic/billingRegistry.ts",
+                "src/docudent/core/billing/knowledgeBase/kataloge/bema.json",
+                "src/docudent/core/billing/knowledgeBase/kataloge/goz.json"
+            ],
+            "notes": "SSOT catalogs wired via billingRegistry",
+            "migrationAction": "none",
+            "blockingRisks": []
+        },
+        {
+            "capability": "Mehrkosten split (GKV base + GOZ Zusatz)",
+            "category": "Chairside",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "partial",
+            "sourceOfTruth": [
+                "src/docudent/core/billing/knowledgeBase/behandlungen/fuellung_unified.json"
+            ],
+            "notes": "Data exists in JSON, not fully wired to UI output preview",
+            "migrationAction": "reuseCoreLogic",
+            "blockingRisks": [
+                "Output template must show split explicitly"
+            ]
+        },
+        {
+            "capability": "Analog service suggestion",
+            "category": "Analog",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "present",
+            "sourceOfTruth": [
+                "src/docudent/core/billing/knowledgeBase/logic/analogResolver.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/billingRegistry.ts"
+            ],
+            "notes": "analogResolver exists, integrated as fallback in billingRegistry",
+            "migrationAction": "none",
+            "blockingRisks": []
+        },
+        {
+            "capability": "Analog justification (no commentary leak)",
+            "category": "Analog",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "present",
+            "sourceOfTruth": [
+                "src/docudent/core/billing/knowledgeBase/logic/analogJustificationService.ts"
+            ],
+            "notes": "Gate tests exist: gate-analog-justification, gate-no-comment-index-in-ui",
+            "migrationAction": "none",
+            "blockingRisks": []
+        },
+        {
+            "capability": "HKP generation (ZE planning)",
+            "category": "ZE_Planning",
+            "requiredForClinicUse": false,
+            "currentStatusInV7": "partial",
+            "sourceOfTruth": [
+                "src/docudent/core/billing/knowledgeBase/logic/hkpGenerator.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/befundLogic.ts"
+            ],
+            "notes": "Logic exists, no UI in V7 yet. HKP planning may be separate module.",
+            "migrationAction": "excludeFromRuntime",
+            "blockingRisks": [
+                "Separate HKP planning module recommended"
+            ]
+        },
+        {
+            "capability": "ZE chairside documentation (prep/insertion)",
+            "category": "ZE_Chairside",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "partial",
+            "sourceOfTruth": [
+                "src/docudent/core/billing/knowledgeBase/behandlungen/zahnersatz/krone.json"
+            ],
+            "notes": "Treatment definitions exist, extraction should recognize ZE steps",
+            "migrationAction": "reuseCoreLogic",
+            "blockingRisks": [
+                "Extraction must recognize 'Krone eingesetzt' etc."
+            ]
+        },
+        {
+            "capability": "BEL2 labor position validation",
+            "category": "ZE_Chairside",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "present",
+            "sourceOfTruth": [
+                "src/docudent/core/billing/knowledgeBase/logic/bel2Catalog.ts",
+                "src/docudent/core/billing/knowledgeBase/logic/hkpGenerator.ts"
+            ],
+            "notes": "Catalog-driven resolution with BEL_1021, gate tested",
+            "migrationAction": "none",
+            "blockingRisks": []
+        },
+        {
+            "capability": "Festzuschuss calculation",
+            "category": "ZE_Planning",
+            "requiredForClinicUse": false,
+            "currentStatusInV7": "present",
+            "sourceOfTruth": [
+                "src/docudent/core/billing/knowledgeBase/logic/festzuschussMapper.ts"
+            ],
+            "notes": "Gate tests: gate-festzuschuss-realworld-v1, gate-festzuschuss-ssot-guard",
+            "migrationAction": "none",
+            "blockingRisks": []
+        },
+        {
+            "capability": "Persistence to Firestore",
+            "category": "Persistence",
+            "requiredForClinicUse": false,
+            "currentStatusInV7": "missing",
+            "sourceOfTruth": [
+                "src/firebase.js"
+            ],
+            "notes": "Firebase configured but V7 does not persist. Session-only for now.",
+            "migrationAction": "newBuild",
+            "blockingRisks": [
+                "Not blocking for MVP - session-only acceptable initially"
+            ]
+        },
+        {
+            "capability": "Practice defaults (chair, materials)",
+            "category": "Admin",
+            "requiredForClinicUse": false,
+            "currentStatusInV7": "missing",
+            "sourceOfTruth": [],
+            "notes": "Admin/backoffice feature, not runtime critical",
+            "migrationAction": "excludeFromRuntime",
+            "blockingRisks": []
+        },
+        {
+            "capability": "Export to PVS/PDF",
+            "category": "Chairside",
+            "requiredForClinicUse": true,
+            "currentStatusInV7": "partial",
+            "sourceOfTruth": [
+                "src/docudent/v7/components/OutputPreview.tsx"
+            ],
+            "notes": "Copy-to-clipboard exists, structured PDF/PVS export TBD",
+            "migrationAction": "newBuild",
+            "blockingRisks": [
+                "Copy-paste is acceptable MVP"
+            ]
+        }
+    ],
+    "top10Priorities": [
+        {
+            "rank": 1,
+            "item": "Mehrkosten split display in output",
+            "why": "GKV patients with private upgrades need clear cost breakdown",
+            "howToValidate": [
+                "gate-test to verify split shown",
+                "manual UI check"
+            ]
+        },
+        {
+            "rank": 2,
+            "item": "ZE chairside step extraction",
+            "why": "Must recognize 'Krone präpariert', 'Krone eingesetzt' in dictation",
+            "howToValidate": [
+                "gate-e2e-golden-dictations with ZE cases",
+                "manual test"
+            ]
+        },
+        {
+            "rank": 3,
+            "item": "Analog justification output safety",
+            "why": "Commentary text must never leak to patient-facing docs",
+            "howToValidate": [
+                "gate-no-comment-index-in-ui",
+                "gate-analog-justification"
+            ]
+        },
+        {
+            "rank": 4,
+            "item": "Error handling for LLM failures",
+            "why": "Clinic cannot have crashes mid-documentation",
+            "howToValidate": [
+                "gate with mock LLM failure",
+                "fallback path test"
+            ]
+        },
+        {
+            "rank": 5,
+            "item": "Output determinism verification",
+            "why": "Same input must produce same output for audit trail",
+            "howToValidate": [
+                "gate-pipeline-snapshot tests",
+                "JSON.stringify equality"
+            ]
+        },
+        {
+            "rank": 6,
+            "item": "Treatment ID routing completeness",
+            "why": "All treatment types need extraction definitions",
+            "howToValidate": [
+                "gate0-treatmentId-routing",
+                "review billingRegistry coverage"
+            ]
+        },
+        {
+            "rank": 7,
+            "item": "BEL2 code coverage beyond crowns",
+            "why": "Bridges, prosthetics need proper BEL codes",
+            "howToValidate": [
+                "gate-bel2-placeholder-inventory shows no placeholders"
+            ]
+        },
+        {
+            "rank": 8,
+            "item": "Questions step UX",
+            "why": "Dictation may miss details, questions must be clear",
+            "howToValidate": [
+                "manual UX review",
+                "gate-askback-priority-dedupe"
+            ]
+        },
+        {
+            "rank": 9,
+            "item": "Copy output to clipboard",
+            "why": "Minimum viable export for clinic use",
+            "howToValidate": [
+                "manual test",
+                "browser API works"
+            ]
+        },
+        {
+            "rank": 10,
+            "item": "Session-only data (no persistence MVP)",
+            "why": "Document acceptance that persistence is Phase 2",
+            "howToValidate": [
+                "decision documented",
+                "no blocking on Firestore"
+            ]
+        }
+    ],
+    "migrationChecklist": [
+        {
+            "step": 1,
+            "title": "Verify V7 golden dictation coverage",
+            "filesToTouch": [],
+            "testsToAddOrUpdate": [
+                "gate-e2e-golden-dictations.test.ts"
+            ],
+            "definitionOfDone": [
+                "All treatment types have at least one golden case",
+                "Tests pass with deterministic output"
+            ]
+        },
+        {
+            "step": 2,
+            "title": "Wire Mehrkosten split to output template",
+            "filesToTouch": [
+                "src/docudent/v7/components/OutputPreview.tsx",
+                "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts"
+            ],
+            "testsToAddOrUpdate": [
+                "gate-mehrkosten-split.test.ts"
+            ],
+            "definitionOfDone": [
+                "GKV + Zusatz shows 'BEMA: X€, GOZ-Zusatz: Y€'",
+                "Gate test verifies split amounts"
+            ]
+        },
+        {
+            "step": 3,
+            "title": "Add ZE chairside extraction patterns",
+            "filesToTouch": [
+                "src/docudent/v6/services/extractionService.ts",
+                "src/docudent/core/billing/knowledgeBase/behandlungen/zahnersatz/"
+            ],
+            "testsToAddOrUpdate": [
+                "gate-ze-chairside-extraction.test.ts"
+            ],
+            "definitionOfDone": [
+                "Dictation 'Krone 26 eingesetzt' extracts correctly",
+                "Billing codes appear in output"
+            ]
+        },
+        {
+            "step": 4,
+            "title": "Extend BEL2 mapping beyond BEL_1021",
+            "filesToTouch": [
+                "src/docudent/core/billing/knowledgeBase/logic/hkpGenerator.ts"
+            ],
+            "testsToAddOrUpdate": [
+                "gate-bel2-runtime-wiring.test.ts"
+            ],
+            "definitionOfDone": [
+                "generiereHKPBruecke uses valid BEL codes",
+                "Placeholder inventory shows 0 invalid codes"
+            ]
+        },
+        {
+            "step": 5,
+            "title": "LLM fallback path testing",
+            "filesToTouch": [
+                "src/docudent/v6/services/extractionService.ts"
+            ],
+            "testsToAddOrUpdate": [
+                "gate-llm-fallback.test.ts"
+            ],
+            "definitionOfDone": [
+                "LLM failure triggers fallback extraction",
+                "No crash, graceful degradation"
+            ]
+        },
+        {
+            "step": 6,
+            "title": "Analog output safety audit",
+            "filesToTouch": [],
+            "testsToAddOrUpdate": [
+                "gate-no-comment-index-in-ui.test.ts",
+                "gate-analog-justification.test.ts"
+            ],
+            "definitionOfDone": [
+                "All existing analog gates pass",
+                "No commentary text in any output field"
+            ]
+        },
+        {
+            "step": 7,
+            "title": "Document persistence deferral",
+            "filesToTouch": [
+                "docs/architecture/PERSISTENCE_STRATEGY.md"
+            ],
+            "testsToAddOrUpdate": [],
+            "definitionOfDone": [
+                "Document states MVP is session-only",
+                "Firestore integration marked as Phase 2"
+            ]
+        },
+        {
+            "step": 8,
+            "title": "Full gate suite green",
+            "filesToTouch": [],
+            "testsToAddOrUpdate": [],
+            "definitionOfDone": [
+                "npm test -- src/docudent/__tests__/gates/ passes all",
+                "No skipped blocking tests"
+            ]
+        }
+    ],
+    "summary": {
+        "clinicUsableToday": "Partially - filling/endo workflows work, ZE chairside needs wiring",
+        "criticalGaps": [
+            "Mehrkosten split not shown in output",
+            "ZE chairside extraction incomplete",
+            "Persistence deferred to Phase 2"
+        ],
+        "recommendation": "Focus on Mehrkosten + ZE chairside extraction for clinic MVP"
+    }
+}

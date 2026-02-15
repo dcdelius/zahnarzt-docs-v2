@@ -1,0 +1,135 @@
+{
+    "milestone": "M78",
+    "status": "IN_PROGRESS",
+    "phase_completion": {
+        "phase_a_inventory_reachability": "COMPLETE",
+        "phase_b_e2e_wiring_trace": "PENDING",
+        "phase_c_ui_controls_payload": "PENDING",
+        "phase_d_medical_layer_quality": "PENDING",
+        "phase_e_billing_ssot_provenance": "PENDING",
+        "phase_f_fix_failures": "IN_PROGRESS"
+    },
+    "phase_a_results": {
+        "inventory_files": 1681,
+        "ts_tsx_files": 760,
+        "json_files": 134,
+        "import_edges": 2063,
+        "classification": {
+            "RUNTIME_REACHED": 79,
+            "TEST_ONLY": 402,
+            "LEGACY": 22,
+            "UNKNOWN_PROD": 254
+        },
+        "artifacts_generated": [
+            "docs/audit/m78/inventory.files.jsonl",
+            "docs/audit/m78/import-graph.edges.jsonl",
+            "docs/audit/m78/reachability.classification.jsonl",
+            "docs/audit/m78/audit_runner.md"
+        ]
+    },
+    "phase_f_progress": {
+        "cluster_IMPORT_RESOLUTION": {
+            "status": "PARTIALLY_FIXED",
+            "fix_applied": {
+                "file": "src/docudent/v7/multitreatment/orchestrator.ts",
+                "lines": "29-30",
+                "before": "import from ../../core/billing/combinability/billingCombinabilityChecker",
+                "after": "import from ../../v10/compat",
+                "evidence": "Extended v10/compat/index.ts to re-export checkCombinability and getBillingScopeWithFallback"
+            },
+            "remaining_violations": [
+                {
+                    "file": "v7/medical/extractionToFacts/maps/fuellung.v1.ts",
+                    "issue": "hardcoded 'kofferdam' string literals"
+                },
+                {
+                    "file": "v7/medical/extractionToFacts/maps/shared.v1.ts",
+                    "issue": "hardcoded chip ID array"
+                },
+                {
+                    "file": "v7/medical/types.ts",
+                    "issue": "hardcoded chip ID enum values"
+                }
+            ],
+            "gate_test": "gate-v7-ssot-boundaries.test.ts",
+            "gate_result": "2 failed | 4 passed"
+        },
+        "remaining_clusters": [
+            "MEDICAL_GATE",
+            "V7_BOUNDARY_VIOLATION",
+            "CONTRACT_MISMATCH",
+            "NULL_SAFETY",
+            "GATE_FAILURE",
+            "UNCATEGORIZED"
+        ]
+    },
+    "commands_run": [
+        {
+            "cmd": "npx tsx scripts/audit/inventory.ts",
+            "exitCode": 0,
+            "output": "1681 files inventoried"
+        },
+        {
+            "cmd": "npx tsx scripts/audit/buildImportGraph.ts",
+            "exitCode": 0,
+            "output": "2063 edges extracted"
+        },
+        {
+            "cmd": "npx vitest run gate-v7-ssot-boundaries.test.ts",
+            "exitCode": 1,
+            "output": "2 failed | 4 passed"
+        }
+    ],
+    "files_modified": [
+        {
+            "path": "src/docudent/v10/compat/index.ts",
+            "action": "EXTENDED",
+            "added_exports": [
+                "checkCombinability",
+                "getBillingScopeWithFallback"
+            ]
+        },
+        {
+            "path": "src/docudent/v7/multitreatment/orchestrator.ts",
+            "action": "FIXED",
+            "change": "Import from v10/compat instead of core/billing"
+        }
+    ],
+    "top_findings": [
+        {
+            "id": "F1",
+            "symptom": "V7 imports from core/billing directly",
+            "root_cause": "orchestrator.ts L29-30 had forbidden imports",
+            "fix": "Created V10 facade re-exports, updated V7 imports",
+            "status": "FIXED",
+            "evidence": "orchestrator.ts now imports from ../../v10/compat"
+        },
+        {
+            "id": "F2",
+            "symptom": "254 UNKNOWN production files",
+            "root_cause": "Fragmented module graph, many core/billing/knowledgeBase/logic files not traced from entry points",
+            "fix": "Requires import graph review - likely indirect imports via JSON loaders",
+            "status": "DIAGNOSED"
+        },
+        {
+            "id": "F3",
+            "symptom": "Hardcoded chip IDs in V7 medical layer",
+            "root_cause": "extractionToFacts maps use literal strings instead of CANONICAL_CHIP_IDS",
+            "fix": "Convert to CANONICAL_CHIP_IDS imports",
+            "status": "PENDING"
+        }
+    ],
+    "next_actions": [
+        "Fix remaining hardcoded chip IDs in v7/medical/extractionToFacts",
+        "Run gate-no-hardcoded-chip-ids.test.ts after fixes",
+        "Address MEDICAL_GATE cluster (invalid sourceRefs)",
+        "Address V7_BOUNDARY_VIOLATION cluster (no-logic.test.ts)",
+        "Continue through clusters until failing tests reduced"
+    ],
+    "stop_criteria_status": {
+        "repro1_e2e_passing": false,
+        "repro2_e2e_passing": false,
+        "cli_replay_parity": false,
+        "failing_tests_systemic_clusters_zero": false
+    }
+}

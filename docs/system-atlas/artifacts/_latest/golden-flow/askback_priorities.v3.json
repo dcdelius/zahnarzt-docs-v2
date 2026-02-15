@@ -1,0 +1,71 @@
+{
+    "version": "askback_priorities_v3",
+    "levels": {
+        "level_1_blocking": {
+            "description": "Ohne Antwort KEINE Abrechnung möglich",
+            "askbacks": [
+                "ab_insurance_context",
+                "ab_material_choice",
+                "ab_adhesive_technique"
+            ],
+            "ux_behavior": "Must answer before proceeding"
+        },
+        "level_2_recommended": {
+            "description": "Verbessert Qualität/Compliance, hat aber Defaults",
+            "askbacks": [
+                "ab_layering_technique",
+                "ab_isolation_level",
+                "ab_pulp_protection"
+            ],
+            "ux_behavior": "Show with default pre-selected, can skip"
+        },
+        "level_3_optional": {
+            "description": "Nur bei spezifischem Trigger",
+            "askbacks": [
+                "ab_matrix_system"
+            ],
+            "ux_behavior": "Only show if trigger condition met"
+        }
+    },
+    "priority_order": [
+        "ab_insurance_context",
+        "ab_material_choice",
+        "ab_adhesive_technique",
+        "ab_layering_technique",
+        "ab_isolation_level",
+        "ab_pulp_protection",
+        "ab_matrix_system"
+    ],
+    "anti_double_ask_rules": [
+        {
+            "condition": "insurance_context == gkv_regelversorgung AND restoration_material == self_adhesive",
+            "skip": [
+                "ab_material_choice"
+            ],
+            "reason": "Self-adhesive bereits klar"
+        },
+        {
+            "condition": "restoration_material IN [self_adhesive, giz]",
+            "skip": [
+                "ab_adhesive_technique"
+            ],
+            "reason": "Selbstadhäsive brauchen kein separates Adhäsiv"
+        },
+        {
+            "condition": "cavity_extent_hint == small",
+            "skip": [
+                "ab_layering_technique"
+            ],
+            "reason": "Kleine Kavität braucht keine Schichttechnik"
+        },
+        {
+            "condition": "tooth_region == anterior",
+            "skip": [
+                "ab_adhesive_technique blocking"
+            ],
+            "reason": "Frontzahn: Adhäsiv nicht abrechnungsrelevant"
+        }
+    ],
+    "max_questions_standard_case": 4,
+    "note": "Im Standardfall (GKV, self-adhesive, klein, okklusal) nur 2-3 Fragen"
+}

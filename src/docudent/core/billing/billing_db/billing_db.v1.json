@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "id": "billing_db.v1",
+    "version": "1.0.0",
+    "source": "externalized"
+  },
+  "treatments": {
+    "fuellung": {
+      "billingRefs": {
+        "cp": {
+          "GKV": "BEMA_25",
+          "PKV": "GOZ_2330"
+        },
+        "fluor": {
+          "GKV": "BEMA_IP4",
+          "PKV": "GOZ_1020"
+        },
+        "kofferdam": {
+          "GKV": "BEMA_12",
+          "PKV": "GOZ_2040"
+        },
+        "la_infiltr": {
+          "GKV": "BEMA_40",
+          "PKV": "GOZ_0090"
+        },
+        "la_leitung": {
+          "GKV": "BEMA_41a",
+          "PKV": "GOZ_0100"
+        },
+        "mehrschicht": {
+          "MKV": "GOZ_2197"
+        },
+        "oberflaeche_la": {
+          "PKV": "GOZ_0080"
+        },
+        "p": {
+          "GKV": "BEMA_26",
+          "PKV": "GOZ_2340"
+        }
+      },
+      "surfaceMappedChips": [
+        "fuellung_grundleistung",
+        "fuellung_material_giz",
+        "fuellung_material_komposit",
+        "komposit_basic"
+      ],
+      "surfaceMapping": {
+        "1": {
+          "GKV": "BEMA_13",
+          "PKV": "GOZ_2060",
+          "MKV": "BEMA_13",
+          "MKV_addon": "GOZ_2060"
+        },
+        "2": {
+          "GKV": "BEMA_13b",
+          "PKV": "GOZ_2080",
+          "MKV": "BEMA_13b",
+          "MKV_addon": "GOZ_2080"
+        },
+        "3": {
+          "GKV": "BEMA_13c",
+          "PKV": "GOZ_2100",
+          "MKV": "BEMA_13c",
+          "MKV_addon": "GOZ_2100"
+        },
+        "4+": {
+          "GKV": "BEMA_13d",
+          "PKV": "GOZ_2120",
+          "MKV": "BEMA_13d",
+          "MKV_addon": "GOZ_2120"
+        }
+      }
+    },
+    "endo": {
+      "billingRefs": {
+        "aufbau_postendo": {
+          "GKV": "BEMA_13",
+          "PKV": "GOZ_2060"
+        },
+        "einlage_caoh2": {
+          "GKV": "BEMA_35",
+          "PKV": "GOZ_2430"
+        },
+        "kanalaufbereitung_1": {
+          "GKV": "BEMA_32",
+          "PKV": "GOZ_2410"
+        },
+        "kanalaufbereitung_2": {
+          "GKV": "BEMA_32",
+          "PKV": "GOZ_2410"
+        },
+        "kanalaufbereitung_3": {
+          "GKV": "BEMA_32",
+          "PKV": "GOZ_2410"
+        },
+        "kanalaufbereitung_4": {
+          "GKV": "BEMA_32",
+          "PKV": "GOZ_2410"
+        },
+        "kofferdam": {
+          "GKV": "BEMA_12",
+          "PKV": "GOZ_2040"
+        },
+        "la_infiltr": {
+          "GKV": "BEMA_40",
+          "PKV": "GOZ_0090"
+        },
+        "la_leitung": {
+          "GKV": "BEMA_41a",
+          "PKV": "GOZ_0100"
+        },
+        "laengenmessung_elek": {
+          "PKV": "GOZ_2400"
+        },
+        "laengenmessung_roentgen": {
+          "GKV": "BEMA_Ä925a",
+          "PKV": "GOZ_5000"
+        },
+        "roentgen_einzelzahn": {
+          "GKV": "BEMA_Ä925a",
+          "PKV": "GOZ_5000"
+        },
+        "roentgen_kontrolle": {
+          "GKV": "BEMA_Ä925a",
+          "PKV": "GOZ_5000"
+        },
+        "trepanation": {
+          "GKV": "BEMA_31",
+          "PKV": "GOZ_2360"
+        },
+        "wf_einzel": {
+          "GKV": "BEMA_34",
+          "PKV": "GOZ_2440"
+        },
+        "wf_kalt": {
+          "GKV": "BEMA_34",
+          "PKV": "GOZ_2440"
+        },
+        "wf_warm": {
+          "GKV": "BEMA_34",
+          "PKV": "GOZ_2440"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "extraction": {
+      "billingRefs": {
+        "extraktion_einfach": {
+          "GKV": "BEMA_41a",
+          "PKV": "GOZ_3000"
+        },
+        "la_infiltr": {
+          "GKV": "BEMA_40",
+          "PKV": "GOZ_0090"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "pzr": {
+      "billingRefs": {
+        "fluoridierung": {
+          "PKV": "GOZ_1020"
+        },
+        "pzr_vollstaendig": {
+          "GKV": "BEMA_107",
+          "PKV": "GOZ_1040"
+        },
+        "zahnstein_entfernung": {
+          "GKV": "BEMA_107a",
+          "PKV": "GOZ_1040"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "crown_prep": {
+      "billingRefs": {
+        "abformung": {
+          "PKV": "GOZ_5000"
+        },
+        "praeparation": {
+          "PKV": "GOZ_2210"
+        },
+        "provisorium": {
+          "PKV": "GOZ_2260"
+        }
+      },
+      "surfaceMappedChips": []
+    }
+  }
+}

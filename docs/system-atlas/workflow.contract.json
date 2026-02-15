@@ -1,0 +1,86 @@
+{
+    "generated_at": "2025-12-29T20:25:00Z",
+    "version": "v1",
+    "contracts": {
+        "C1_sufficiency": {
+            "name": "Output Sufficiency",
+            "description": "Output has tooth + chips + billing explained OR diagnostic",
+            "invariant": "output.fullText != '' OR output.diagnostic != null",
+            "gate_tests": [
+                "gate-v10-workflow-diagnostics-enforcement.test.ts"
+            ]
+        },
+        "C2_non_redundancy": {
+            "name": "No Redundant Questions",
+            "description": "No double-asking, skippableBy respected",
+            "invariant": "questions.filter(duplicate).length == 0",
+            "gate_tests": [
+                "gate-v10-askback-nonredundancy.test.ts"
+            ]
+        },
+        "C3_critical_askbacks": {
+            "name": "Critical Askbacks",
+            "description": "Missing tooth ALWAYS triggers tooth question",
+            "invariant": "if (!facts.tooth) then questions.includes('tooth')",
+            "gate_tests": [
+                "gate-v10-workflow-critical-tooth-required.test.ts"
+            ]
+        },
+        "C4_no_silent_erase": {
+            "name": "No Silent Billing Drop",
+            "description": "MKV etc never leads to 0 billing without diagnostic",
+            "invariant": "if (billing.length == 0) then diagnostic.blocked_chips.length > 0",
+            "gate_tests": [
+                "gate-m82-no-silent-billing-drop.test.ts"
+            ]
+        },
+        "C5_multi_scoping": {
+            "name": "Multi-Instance Scoping",
+            "description": "Answers do not leak across instances",
+            "invariant": "instances.forEach(i => i.answers scoped to i.instanceId)",
+            "gate_tests": [
+                "gate-v10-workflow-multi-scoping-endo-fuellung-la.test.ts"
+            ]
+        },
+        "C6_guard_transparency": {
+            "name": "Guard Transparency",
+            "description": "BillingEligibilityGuard blocked chips visible in trace/diagnostic",
+            "invariant": "diagnostic.blocked_chips includes all guard rejections",
+            "gate_tests": [
+                "gate-v10-unknown-chip-error-has-provenance.test.ts"
+            ]
+        }
+    },
+    "repros_covered": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+    ],
+    "tests_per_contract": {
+        "C1": 3,
+        "C2": 2,
+        "C3": 2,
+        "C4": 2,
+        "C5": 2,
+        "C6": 1
+    },
+    "total_contract_tests": 12,
+    "diagnostics_requirements": {
+        "always_present": [
+            "runId",
+            "treatmentId",
+            "insuranceType"
+        ],
+        "on_empty_billing": [
+            "blocked_chips",
+            "billing_empty_reason"
+        ],
+        "on_questions_state": [
+            "pending_askbacks",
+            "critical_missing"
+        ]
+    }
+}

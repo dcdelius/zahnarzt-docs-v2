@@ -1,0 +1,16 @@
+{
+    "gigaprompt": "G57",
+    "milestone": "m57",
+    "generated_at": "2025-12-30T00:16:00Z",
+    "status": "NEEDS_AUDIT",
+    "summary": "BillingRef closure needs audit to find and fix missing refs",
+    "current_state": {
+        "missing_in_catalog": 74,
+        "closure_gate_mode": "REPORT"
+    },
+    "plan": {
+        "step1": "Re-run billing closure gate",
+        "step2": "Classify missing refs (typo/missing/obsolete)",
+        "step3": "Fix consumers or add catalog entries"
+    }
+}

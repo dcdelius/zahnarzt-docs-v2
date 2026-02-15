@@ -1,0 +1,32 @@
+{
+    "id": "endo_03_persistent_fistula",
+    "description": "Endo mit persistierender Fistel/Exsudat — Deviation dokumentieren",
+    "input": {
+        "treatmentId": "endo",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Wurzelbehandlung Zahn 26 nach Spülung persistiert Fistel bukkal Exsudat aus Kanal MB",
+        "answers": {
+            "endo_step": "t2_aufbereitung"
+        }
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=endo",
+            "questions:engine=endo"
+        ],
+        "traceExcludes": [
+            "questions:engine=fuellung"
+        ],
+        "noQuestionIdRegex": "(fuellung|aesthetik|mehrschicht)",
+        "outputMustContain": [
+            "26"
+        ],
+        "billingMustNotContain": [
+            "BEMA_13a"
+        ]
+    },
+    "minimalAnswers": {
+        "endo_step": "t2_aufbereitung"
+    }
+}

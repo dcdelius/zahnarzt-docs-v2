@@ -1,0 +1,125 @@
+{
+  "runId": "2026-02-13T20:08:55.215Z",
+  "suiteFile": "/Users/david/dokumaster-ui/scripts/v10/scenarios.v10.extraction.medical.json",
+  "meta": {
+    "description": "V10 Medical Scenario Cases - Extraction",
+    "version": "1.0.0",
+    "created": "2026-02-12",
+    "treatmentId": "extraction"
+  },
+  "total": 3,
+  "pass": 3,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "x01",
+      "title": "GKV Extraktion + Wundversorgung + LA Leitung",
+      "treatmentId": "extraction",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 18 extrahiert, Leitungsanästhesie, Oberflächenanästhesie, Naht gelegt.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 587,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "extraction-18-1",
+          "teeth": [
+            "18"
+          ],
+          "facts": {
+            "tooth": "18",
+            "surfaces": []
+          },
+          "chips": [
+            "extraktion_einfach",
+            "la_leitung",
+            "oberflaeche_la",
+            "wundversorgung"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Extraktion des Zahnes durchgeführt. Anschliessend Wundversorgung durchgeführt. Anschliessend Leitungsanästhesie N. alv. inf. (Ultracain D-S). Abschliessend Oberflächenanästhesie vor Injektion.\n\nKlinische Zusatzinfo: Naht gelegt.\n\n[Durchgefuehrte Leistungen]\n• Extraktion durchgeführt.\n• Wundversorgung.\n• LA Leitung.\n• OA.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "x02",
+      "title": "GKV Extraktion ohne Wundversorgung -> Askback",
+      "treatmentId": "extraction",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 18 extrahiert.",
+      "phase": "questions",
+      "billingRefs": [],
+      "questions": [
+        "la_type",
+        "wound_care"
+      ],
+      "answersUsed": {},
+      "perInstanceCount": 0,
+      "textLength": 0,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "extraction-18-1",
+          "teeth": [
+            "18"
+          ],
+          "facts": {
+            "tooth": "18",
+            "surfaces": []
+          },
+          "chips": []
+        }
+      ],
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "x03",
+      "title": "GKV Extraktion: Wundversorgung explizit verneint",
+      "treatmentId": "extraction",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 18 extrahiert, keine Wundversorgung.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_40",
+        "BEMA_41a"
+      ],
+      "questions": [
+        "la_type"
+      ],
+      "answersUsed": {
+        "extraction-18-1::medical_la_type::tooth:18": "infiltration"
+      },
+      "perInstanceCount": 1,
+      "textLength": 450,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "extraction-18-1",
+          "teeth": [
+            "18"
+          ],
+          "facts": {
+            "tooth": "18",
+            "surfaces": [],
+            "la_type": "infiltration"
+          },
+          "chips": [
+            "extraktion_einfach",
+            "la_infiltr"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Extraktion des Zahnes durchgeführt. Anschliessend Lokalanästhesie (Infiltration).\n\n[Durchgefuehrte Leistungen]\n• Extraktion durchgeführt.\n• LA infiltr.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen. Zusatzinfo: keine Wundversorgung.",
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

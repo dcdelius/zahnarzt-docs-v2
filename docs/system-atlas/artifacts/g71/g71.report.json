@@ -1,0 +1,18 @@
+{
+    "gigaprompt": "G71",
+    "milestone": "m71",
+    "generated_at": "2025-12-30T08:05:00Z",
+    "status": "PENDING",
+    "summary": "Gate + Integration Wave 2 - replace legacy gates with V10",
+    "quarantined_v6_gates": [
+        "gate-festzuschuss-ssot-guard.test.ts",
+        "gate-fuellung-defaults.test.ts",
+        "gate-fuellung-medical-golden.test.ts",
+        "gate-fuellung-question-logic.test.ts",
+        "gate-mkv-technique-defaults.test.ts",
+        "gate-question-conditions.test.ts",
+        "gate0-treatmentId-routing.test.ts",
+        "gate1234-golden-output.test.ts"
+    ],
+    "migration_plan": "Replace V6 question logic gates with V10 runV10-based assertions"
+}

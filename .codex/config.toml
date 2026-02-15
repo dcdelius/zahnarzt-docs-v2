@@ -1,0 +1,15 @@
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+
+[defaults]
+network_access = "enabled"
+
+[sandbox_workspace_write]
+network_access = true
+
+[features]
+web_search_request = true
+
+# Deprecated:
+[tools]
+web_search = true

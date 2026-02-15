@@ -1,0 +1,17 @@
+{
+    "gigaprompt": "G78",
+    "milestone": "m78",
+    "generated_at": "2025-12-30T08:18:00Z",
+    "status": "PLANNING",
+    "summary": "Delete B3 + Wiring v3 + Gears Map - final chaos elimination",
+    "deliverables": {
+        "delete_manifest": "scripts/systemAtlas/generateDeleteManifest.ts → delete.manifest.json",
+        "wiring_v3": "docs/system-atlas/wiring.graph.v3.json",
+        "gears_md": "docs/system-atlas/gears.md"
+    },
+    "waves": {
+        "wave1": "Safe junk (.DS_Store, orphan html/pdf)",
+        "wave2": "Dead JSON (unreferenced via runtime manifest)",
+        "wave3": "Manual review"
+    }
+}

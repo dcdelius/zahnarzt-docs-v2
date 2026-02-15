@@ -1,0 +1,40 @@
+.v10-value-capsule {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    height: 34px;
+    min-width: 220px;
+    padding: 0 14px 0 16px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--control);
+    color: var(--txt-primary);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.v10-value-capsule:hover:not(:disabled) {
+    background: var(--control-hover);
+}
+
+.v10-value-capsule:active:not(:disabled) {
+    background: var(--control-active);
+    transform: translateY(1px);
+}
+
+.v10-value-capsule:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.v10-value-capsule-text {
+    color: var(--txt-primary);
+}
+
+.v10-value-capsule-icon {
+    color: var(--txt-helper);
+    display: inline-flex;
+    align-items: center;
+}

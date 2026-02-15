@@ -1,0 +1,107 @@
+{
+  "generated": "2026-02-15T13:22:17.213Z",
+  "duration": "0ms",
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "gkv_basic",
+      "passed": true,
+      "expected": {
+        "bema": true,
+        "goz": false
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_basic",
+      "passed": true,
+      "expected": {
+        "bema": false,
+        "goz": true
+      },
+      "actual": {
+        "base": "GOZ_2060",
+        "addon": null
+      }
+    },
+    {
+      "id": "mkv_basic",
+      "passed": true,
+      "expected": {
+        "bema": true,
+        "goz": true
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    },
+    {
+      "id": "1fl",
+      "passed": true,
+      "expected": {
+        "bema": true,
+        "goz": false
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": null
+      }
+    },
+    {
+      "id": "2fl",
+      "passed": true,
+      "expected": {
+        "bema": true,
+        "goz": false
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": null
+      }
+    },
+    {
+      "id": "3fl",
+      "passed": true,
+      "expected": {
+        "bema": true,
+        "goz": false
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": null
+      }
+    },
+    {
+      "id": "4fl",
+      "passed": true,
+      "expected": {
+        "bema": true,
+        "goz": false
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": null
+      }
+    },
+    {
+      "id": "mkv_nurKasse",
+      "passed": true,
+      "expected": {
+        "bema": true,
+        "goz": false
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+name: E2E Playwright Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  e2e:
+    name: Playwright E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build (optional, ensures no build errors)
+        run: npm run build
+        env:
+          VITE_STUB_EXTRACTION: 'true'
+
+      - name: Run Playwright tests
+        run: npm run e2e:v7
+        env:
+          CI: true
+          VITE_STUB_EXTRACTION: 'true'
+          VITE_V7_MILCHZAHN_FUELLUNG: '0'
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            src/docudent/v7/__e2e__/playwright-report/
+            src/docudent/v7/__e2e__/test-results/
+          retention-days: 7

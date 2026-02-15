@@ -1,0 +1,73 @@
+{
+    "gp": "GP1-6 Complete (New Series)",
+    "title": "V10 Reality Lock + Kill V7 Imports",
+    "date": "2025-12-31",
+    "status": "SUCCESS",
+    "summary": {
+        "v7_imports_before": 16,
+        "v7_imports_after": 0,
+        "gate_tests": 2,
+        "gate_tests_passed": true
+    },
+    "deliverables": {
+        "gp1": {
+            "status": "COMPLETE",
+            "items": [
+                "gp1.inventory.json",
+                "gp1.inventory.md"
+            ]
+        },
+        "gp2": {
+            "status": "COMPLETE",
+            "items": [
+                "v10/styles/tokens.ts (copied from v7)",
+                "v10/multitreatment/types.ts (copied from v7)",
+                "Gate updated to 0 allowlist"
+            ]
+        },
+        "gp3": {
+            "status": "COMPLETE",
+            "items": [
+                "gate-v10-module-boundaries.test.ts",
+                "wiring.graph.v3.json v3.2.0"
+            ]
+        },
+        "gp4": {
+            "status": "COMPLETE",
+            "items": [
+                "v10-manual-check.md runbook"
+            ]
+        },
+        "gp5": {
+            "status": "COMPLETE",
+            "items": [
+                "Atlas cleanup verified",
+                "195 artifacts indexed"
+            ]
+        },
+        "gp6": {
+            "status": "COMPLETE",
+            "items": [
+                "Integration fixtures in existing tests"
+            ]
+        }
+    },
+    "verification": {
+        "build": "PASS (3.94s)",
+        "atlas_check": "PASS (195 artifacts, 889 files)",
+        "gate_v10_no_v7": "PASS (5/5, 0 imports)",
+        "gate_module_boundaries": "PASS (5/5)"
+    },
+    "gates": [
+        {
+            "name": "gate-v10-no-imports-from-v7.test.ts",
+            "tests": 5,
+            "passed": 5
+        },
+        {
+            "name": "gate-v10-module-boundaries.test.ts",
+            "tests": 5,
+            "passed": 5
+        }
+    ]
+}

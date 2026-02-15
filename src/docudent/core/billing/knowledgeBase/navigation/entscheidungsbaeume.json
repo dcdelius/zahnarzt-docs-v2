@@ -1,0 +1,225 @@
+{
+    "_meta": {
+        "name": "Entscheidungsbäume für LLM",
+        "beschreibung": "IF-THEN Logik für komplexe Abrechnungsentscheidungen",
+        "version": "1.0"
+    },
+    "tiefe_karies_entscheidung": {
+        "frage": "Wie tief ist die Karies?",
+        "optionen": {
+            "oberflaechlich": {
+                "ergebnis": "Keine Überkappung nötig",
+                "codes": []
+            },
+            "pulpanah_geschlossen": {
+                "ergebnis": "Indirekte Überkappung (Cp)",
+                "codes": {
+                    "bema": "BEMA_25",
+                    "goz": "GOZ_2330"
+                },
+                "dokumentation": "Material nennen: Ca(OH)2, MTA, Biodentine",
+                "diagnose": "Caries profunda dokumentieren"
+            },
+            "pulpa_eroeffnet_klein": {
+                "ergebnis": "Direkte Überkappung (P)",
+                "codes": {
+                    "bema": "BEMA_26",
+                    "goz": "GOZ_2340"
+                },
+                "dokumentation": "Material nennen + 'punktförmige Eröffnung'",
+                "warnung": "Nur bei KLEINER Eröffnung!"
+            },
+            "pulpa_eroeffnet_gross": {
+                "ergebnis": "Vitalamputation oder Endo nötig",
+                "codes": {
+                    "bema": "BEMA_28_ff"
+                },
+                "hinweis": "Keine direkte Überkappung bei großer Eröffnung"
+            }
+        }
+    },
+    "stift_typ_entscheidung": {
+        "frage": "Welcher Stiftaufbau?",
+        "optionen": {
+            "glasfaser_konfektioniert": {
+                "name": "Glasfaserstift (konfektioniert, einzeitig)",
+                "codes": {
+                    "bema": "BEMA_18a",
+                    "goz": [
+                        "GOZ_2195",
+                        "GOZ_2197",
+                        "GOZ_2180"
+                    ]
+                },
+                "festzuschuss": "FZ_1.4",
+                "ablauf": "Alles in einer Sitzung",
+                "gleichartig_goz": [
+                    "GOZ_2195",
+                    "GOZ_2197"
+                ]
+            },
+            "titan_konfektioniert": {
+                "name": "Titanstift (konfektioniert, einzeitig)",
+                "codes": {
+                    "bema": "BEMA_18a",
+                    "goz": "GOZ_2195"
+                },
+                "festzuschuss": "FZ_1.4"
+            },
+            "gegossen_metall": {
+                "name": "Gegossener Stiftaufbau (zweizeitig)",
+                "codes": {
+                    "bema": "BEMA_18b",
+                    "goz": "GOZ_2190"
+                },
+                "festzuschuss": "FZ_1.5",
+                "ablauf": "1. Sitzung: Abformung → Labor → 2. Sitzung: Einsetzen",
+                "wichtig": "Laborkosten separat (BEL II)"
+            }
+        },
+        "häufiger_fehler": "Glasfaserstift fälschlicherweise mit GOZ 2190 statt 2195 abgerechnet"
+    },
+    "anaesthesie_entscheidung": {
+        "frage": "Welcher Zahn wird behandelt?",
+        "regeln": {
+            "ok_front_pm": {
+                "zähne": "11-25, 31-35",
+                "standard": {
+                    "bema": "BEMA_40",
+                    "goz": "GOZ_0090"
+                },
+                "name": "Infiltration"
+            },
+            "ok_molaren": {
+                "zähne": "16-18, 26-28",
+                "standard": {
+                    "bema": "BEMA_40",
+                    "goz": "GOZ_0090"
+                },
+                "name": "Infiltration (OK Molaren gut erreichbar)"
+            },
+            "uk_front_pm": {
+                "zähne": "41-45",
+                "standard": {
+                    "bema": "BEMA_40",
+                    "goz": "GOZ_0090"
+                },
+                "alternative": {
+                    "bema": "BEMA_41a",
+                    "goz": "GOZ_0100"
+                },
+                "hinweis": "Inzisalblock oft auch Leitung"
+            },
+            "uk_molaren": {
+                "zähne": "36-38, 46-48",
+                "standard": {
+                    "bema": "BEMA_41a",
+                    "goz": "GOZ_0100"
+                },
+                "name": "Leitungsanästhesie",
+                "wichtig": "Bei UK-Molaren ist Leitung STANDARD!"
+            }
+        },
+        "pkv_zusaetzlich": "IMMER GOZ_0080 (Oberflächenanästhesie) VOR Injektion!"
+    },
+    "versorgungsart_ze_entscheidung": {
+        "frage": "Welche ZE-Versorgungsart?",
+        "optionen": {
+            "regelversorgung": {
+                "beschreibung": "Standardversorgung (z.B. Metallkrone)",
+                "abrechnung": "100% BEMA + BEL-II Labor",
+                "patient_zahlt": "Nur FZ-Eigenanteil (40% ohne Bonus)",
+                "rechnung": "Kassenabrechnung"
+            },
+            "gleichartig": {
+                "beschreibung": "Regelversorgung + Zusatzleistung (z.B. Vollkeramik)",
+                "abrechnung": "Festzuschuss + BEMA + GOZ-Mehrkosten + Labor-Differenz",
+                "patient_zahlt": "FZ-Eigenanteil + alle Mehrkosten",
+                "wichtig": [
+                    "GOZ nur für ECHTE Mehrleistungen",
+                    "Was in BEMA enthalten ist → NICHT als GOZ",
+                    "HKP + MKV VOR Behandlung"
+                ],
+                "beispiel": "Vollkeramikkrone statt Metallkrone"
+            },
+            "andersartig": {
+                "beschreibung": "Völlig andere Versorgung (z.B. Implantat statt Brücke)",
+                "abrechnung": "NUR Festzuschuss + komplett GOZ",
+                "patient_zahlt": "GOZ-Gesamtkosten minus Festzuschuss",
+                "kein_bema": true,
+                "beispiel": "Implantat statt Brücke"
+            }
+        }
+    },
+    "festzuschuss_krone_entscheidung": {
+        "frage": "Welche Festzuschüsse bei Krone?",
+        "basis": "FZ_1.1",
+        "zusaetzlich": {
+            "verblendung": {
+                "fz": "FZ_1.3",
+                "wann": "NUR bei Zähnen im Verblendbereich (Front + PM bis 5)"
+            },
+            "konfekt_stift": {
+                "fz": "FZ_1.4",
+                "wann": "Bei konfektioniertem Stift (Glasfaser, Titan)",
+                "bema": "BEMA_18a"
+            },
+            "gegossener_stift": {
+                "fz": "FZ_1.5",
+                "wann": "Bei gegossenem Stift (Labor)",
+                "bema": "BEMA_18b"
+            }
+        },
+        "haeufiger_fehler": "FZ 1.3 für Stift verwendet (falsch! FZ 1.3 = Verblendung)"
+    },
+    "fuellung_flaechen_entscheidung": {
+        "frage": "Wie viele Flächen hat die Füllung?",
+        "flaechen": [
+            "mesial (m)",
+            "okklusal (o)",
+            "distal (d)",
+            "vestibulär (v)",
+            "palatinal/lingual (p/l)"
+        ],
+        "regeln": {
+            "1_flaeche": {
+                "bema": "BEMA_13",
+                "goz": "GOZ_2060"
+            },
+            "2_flaechen": {
+                "bema": "BEMA_13b",
+                "goz": "GOZ_2080"
+            },
+            "3_flaechen": {
+                "bema": "BEMA_13c",
+                "goz": "GOZ_2100"
+            },
+            "4_oder_mehr": {
+                "bema": "BEMA_13d",
+                "goz": "GOZ_2120"
+            },
+            "eckenaufbau_front": {
+                "bema": "BEMA_13d",
+                "goz": "GOZ_2120",
+                "hinweis": "Auch wenn <4 Flächen"
+            }
+        },
+        "wichtig": "Dokumentierte Flächen MÜSSEN zum F-Code passen → Prüfdienstprüfung!"
+    },
+    "mkv_berechnung": {
+        "frage": "Wie berechne ich MKV?",
+        "formel": "GOZ-Betrag (2,3-fach) - BEMA-Anteil (in €)",
+        "beispiele": {
+            "fuellung_3fl": {
+                "goz_2100": "156,95€",
+                "bema_13c": "~58€",
+                "mkv": "~99€"
+            },
+            "krone": {
+                "hinweis": "Bei Krone: Nur GOZ-MEHRLEISTUNGEN berechenbar",
+                "nicht": "Abformung, Eingliederung (in BEMA 20a enthalten!)"
+            }
+        },
+        "tipp": "Nicht pauschal 30€ - richtige Differenzberechnung bringt mehr!"
+    }
+}

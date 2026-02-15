@@ -1,0 +1,92 @@
+{
+    "milestone": "M79",
+    "generated_at": "2025-12-29T17:50:00Z",
+    "test_run_summary": {
+        "total_files": 406,
+        "passed_files": 359,
+        "failed_files": 46,
+        "skipped_files": 1,
+        "total_tests": 4341,
+        "passed_tests": 4172,
+        "failed_tests": 111,
+        "skipped_tests": 2,
+        "duration_seconds": 16.62
+    },
+    "clusters_remaining": {
+        "UNCATEGORIZED": {
+            "count": 14,
+            "files": [
+                "tests/firebase/case.flow.test.ts",
+                "tests/firebase/firestore.rules.test.ts",
+                "tests/firebase/settingsOverrides.service.test.ts",
+                "src/docudent/__tests__/gates/gate7-stage-emission.test.ts",
+                "src/docudent/v7/__e2e__/v7-flow.e2e.spec.ts",
+                "src/docudent/v7/__e2e__/v7-live-sanity.e2e.spec.ts",
+                "src/docudent/v7/__e2e__/v7-multiinstance-2teeth.e2e.spec.ts",
+                "src/docudent/v7/__e2e__/v7-multiinstance-questions-2teeth.e2e.spec.ts",
+                "src/docudent/v7/__e2e__/v7-realcases.e2e.spec.ts",
+                "src/docudent/v7/__e2e__/v7-ssot.e2e.spec.ts",
+                "src/docudent/v10/__e2e__/v10-golden-path.e2e.spec.ts",
+                "src/docudent/v10/__e2e__/v10-multiinstance.e2e.spec.ts",
+                "src/docudent/v10/__e2e__/v10-prod-repro.e2e.spec.ts",
+                "src/docudent/v10/__e2e__/v10-ui.e2e.spec.ts"
+            ],
+            "note": "E2E tests require Playwright setup, not Vitest"
+        },
+        "IMPORT_RESOLUTION": {
+            "count": 4,
+            "files": [
+                "src/docudent/__tests__/gates/gate-billing-no-legacy-imports-runtime.test.ts",
+                "src/docudent/__tests__/gates/gate-no-hardcoded-chip-ids.test.ts",
+                "src/docudent/__tests__/gates/gate-v7-ssot-boundaries.test.ts",
+                "src/docudent/v7/__tests__/gates/gate-m12_4-no-core-services-imports.test.ts"
+            ],
+            "root_causes": [
+                "v6/services/chipProvenanceBuilder.ts has hardcoded chip IDs",
+                "v6/services/outputService.ts has hardcoded chip IDs",
+                "v7/components/MultiInstancePanel.tsx has hardcoded kofferdam regex",
+                "extraction/adapters/llmExtractorAdapter.ts imports core/services"
+            ]
+        },
+        "MEDICAL_GATE": {
+            "count": 1,
+            "files": [
+                "src/docudent/__tests__/gates/gate-m6-engine-golden-case-01.test.ts"
+            ],
+            "root_cause": "Invalid sourceRef anchors in sources.v1.yaml"
+        },
+        "NULL_SAFETY": {
+            "count": 6,
+            "files": [
+                "Various UI/flow tests"
+            ],
+            "root_cause": "Optional chaining needed in unstable state transitions"
+        },
+        "CONTRACT_MISMATCH": {
+            "count": 1,
+            "files": [
+                "src/docudent/v7/pipeline/__tests__/reality-integration.test.ts"
+            ],
+            "root_cause": "Stale expected values"
+        },
+        "OTHER": {
+            "count": 20,
+            "note": "Firebase, settings, and mixed failures"
+        }
+    },
+    "fixes_applied_this_session": [
+        {
+            "fix": "V7 orchestrator imports now use v10/compat facade",
+            "evidence": {
+                "file": "src/docudent/v7/multitreatment/orchestrator.ts",
+                "lines": "29-30"
+            }
+        }
+    ],
+    "recommended_next_actions": [
+        "Fix hardcoded chip IDs in v6/services (use CANONICAL_CHIP_IDS)",
+        "Fix llmExtractorAdapter.ts forbidden core/services import",
+        "Update E2E tests to run via Playwright, not Vitest",
+        "Add missing sourceRef anchors to sources.v1.yaml"
+    ]
+}

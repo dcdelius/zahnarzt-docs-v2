@@ -1,0 +1,874 @@
+{
+    "meta": {
+        "generated": "2024-12-18T22:55:00+01:00",
+        "purpose": "V7 System Wiring Analysis",
+        "goldenMaster": "DocudentV7Page with InsuranceSelector + TreatmentSelector"
+    },
+    "systemMap": {
+        "frontendEntrypoints": {
+            "mainRouter": "src/App.jsx",
+            "v7Router": "src/docudent/v7/app/V7Router.tsx",
+            "v7Entry": "src/docudent/v7/pages/DocudentV7Page.tsx",
+            "routes": [
+                {
+                    "path": "/docudent/v7",
+                    "component": "DocudentV7Page",
+                    "role": "golden_master"
+                },
+                {
+                    "path": "/docudent/v7/cases",
+                    "component": "CasesPageV7"
+                },
+                {
+                    "path": "/docudent/v7/review",
+                    "component": "ReviewPageV7"
+                },
+                {
+                    "path": "/docudent/v7/settings",
+                    "component": "SettingsPage"
+                },
+                {
+                    "path": "/docudent/v7/team",
+                    "component": "TeamPage"
+                },
+                {
+                    "path": "/docudent/v7/onboarding",
+                    "component": "OnboardingPage"
+                },
+                {
+                    "path": "/docudent/v7/lab/endo",
+                    "component": "EndoLabPage",
+                    "role": "dev_only"
+                }
+            ]
+        },
+        "coreDomainModules": {
+            "questionEngine": {
+                "path": "core/questionEngine",
+                "files": [
+                    "vocabRegistry.ts",
+                    "answerNormalization.ts",
+                    "fieldValidation.ts",
+                    "questionServiceV2.ts"
+                ],
+                "purpose": "Domain-agnostic question/answer validation"
+            },
+            "playbooks": {
+                "endo": {
+                    "path": "core/playbooks/endo",
+                    "files": [
+                        "endoSignalParser.ts",
+                        "endoPlaybookV2.ts",
+                        "endoPlaybookT2Deviation.ts",
+                        "endoTextRenderer.ts"
+                    ],
+                    "purpose": "Endo T1/T2/T3 question + output logic"
+                }
+            },
+            "filling": {
+                "path": "core/filling",
+                "files": [
+                    "fillingSignalParser.ts",
+                    "fillingPlaybookV1.ts",
+                    "fillingTextRenderer.ts"
+                ],
+                "purpose": "Füllung question + output logic"
+            },
+            "caseRepo": {
+                "path": "core/case",
+                "files": [
+                    "caseRepository.ts",
+                    "caseTypes.ts"
+                ],
+                "purpose": "Case CRUD abstraction"
+            },
+            "reviewEngine": {
+                "path": "core/review",
+                "files": [
+                    "caseReviewEngine.ts",
+                    "reviewTypes.ts"
+                ],
+                "purpose": "Compliance/quality findings"
+            },
+            "settings": {
+                "path": "core/settings",
+                "files": [
+                    "settingsValidator.ts",
+                    "settingsOverridesService.ts",
+                    "settingsRegistry.ts"
+                ],
+                "purpose": "Settings validation + persistence abstraction"
+            },
+            "auth": {
+                "path": "core/auth",
+                "files": [
+                    "authTypes.ts",
+                    "membershipService.ts"
+                ],
+                "purpose": "Org/Practice/Membership types"
+            },
+            "onboarding": {
+                "path": "core/onboarding",
+                "files": [
+                    "onboardingService.ts"
+                ],
+                "purpose": "Onboarding gating logic"
+            }
+        },
+        "dataLayer": {
+            "firestore": {
+                "collections": [
+                    "orgs",
+                    "orgs/{orgId}/practices",
+                    "orgs/{orgId}/practices/{practiceId}/cases",
+                    "orgs/{orgId}/practices/{practiceId}/settings"
+                ],
+                "rulesFile": "firestore.rules"
+            },
+            "cloudFunctions": {
+                "path": "functions/src",
+                "endpoints": [
+                    "createInviteLink",
+                    "acceptInvite",
+                    "createPractice"
+                ]
+            }
+        },
+        "contracts": {
+            "caseTypes": "core/case/caseTypes.ts",
+            "reviewTypes": "core/review/reviewTypes.ts",
+            "settingsTypes": "core/settings/settingsTypes.ts",
+            "pipelineTypes": "v7/pipeline/pipelineTypes.ts"
+        }
+    },
+    "inventoryTable": [
+        {
+            "feature": "V7 Golden Master UI (Insurance + Treatment selector)",
+            "status": "implemented",
+            "code_locations": [
+                "v7/pages/DocudentV7Page.tsx",
+                "v7/components/InsuranceSelector.tsx",
+                "v7/components/TreatmentSelector.tsx"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "/docudent/v7 route",
+            "depends_on": [
+                "useV7Pipeline hook"
+            ],
+            "missing_glue": [],
+            "quick_fix": "Already working"
+        },
+        {
+            "feature": "Dictation capture (textarea + mic)",
+            "status": "implemented",
+            "code_locations": [
+                "v7/pages/DocudentV7Page.tsx",
+                "v7/components/ActionDock.tsx"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "DocudentV7Page textarea + mic button",
+            "depends_on": [
+                "useV7Pipeline.setDictation"
+            ],
+            "missing_glue": [],
+            "quick_fix": "Already working"
+        },
+        {
+            "feature": "Dictation transcription (speech-to-text)",
+            "status": "partial",
+            "code_locations": [
+                "v7/hooks/useRecording.ts"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "ActionDock mic button",
+            "depends_on": [
+                "Web Audio API",
+                "Whisper/browser STT"
+            ],
+            "missing_glue": [
+                "No confirmed STT service integration"
+            ],
+            "quick_fix": "Verify useRecording actually transcribes; if not, add lightweight STT adapter"
+        },
+        {
+            "feature": "Signal parsing (Endo)",
+            "status": "implemented",
+            "code_locations": [
+                "core/playbooks/endo/endoSignalParser.ts"
+            ],
+            "runtime_wired": false,
+            "entrypoint": "ONLY in EndoLabPage (DEV); NOT in DocudentV7Page main flow",
+            "depends_on": [],
+            "missing_glue": [
+                "useV7Pipeline does NOT call parseEndoSignals when treatment=endo"
+            ],
+            "quick_fix": "In useV7Pipeline.run(), detect treatment='endo' and call parseEndoSignals(dictation)"
+        },
+        {
+            "feature": "Signal parsing (Füllung)",
+            "status": "implemented",
+            "code_locations": [
+                "core/filling/fillingSignalParser.ts"
+            ],
+            "runtime_wired": false,
+            "entrypoint": "NOT called from V7 UI",
+            "depends_on": [],
+            "missing_glue": [
+                "useV7Pipeline does NOT call fillling signal parser"
+            ],
+            "quick_fix": "In useV7Pipeline.run(), detect treatment='fuellung' and call fillingSignalParser"
+        },
+        {
+            "feature": "Endo Playbook + Questions",
+            "status": "implemented",
+            "code_locations": [
+                "core/playbooks/endo/endoPlaybookV2.ts",
+                "core/playbooks/endo/endoPlaybookT2Deviation.ts"
+            ],
+            "runtime_wired": false,
+            "entrypoint": "NOT called from main flow",
+            "depends_on": [
+                "endoSignalParser output"
+            ],
+            "missing_glue": [
+                "No hook calls ENDO_QUESTIONS_BY_PHASE_V2 with filter logic"
+            ],
+            "quick_fix": "After parseEndoSignals, lookup ENDO_QUESTIONS_BY_PHASE_V2[phase] and set pipeline.questions"
+        },
+        {
+            "feature": "Füllung Playbook + Questions",
+            "status": "partial",
+            "code_locations": [
+                "core/filling/fillingPlaybookV1.ts",
+                "core/behandlungen/fuellung/questions.json"
+            ],
+            "runtime_wired": false,
+            "entrypoint": "NOT called from main flow",
+            "depends_on": [
+                "fillingSignalParser output"
+            ],
+            "missing_glue": [
+                "V7 pipeline does NOT call filling playbook"
+            ],
+            "quick_fix": "Wire fillingPlaybookV1 into useV7Pipeline similar to endo"
+        },
+        {
+            "feature": "Question rendering in UI",
+            "status": "implemented",
+            "code_locations": [
+                "v7/components/QuestionsLayout.tsx",
+                "v7/components/QuestionCard.tsx"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "DocudentV7Page when state='questions'",
+            "depends_on": [
+                "pipeline.questions array"
+            ],
+            "missing_glue": [
+                "Works IF questions array is populated"
+            ],
+            "quick_fix": "Already wired; just need pipeline to actually populate questions"
+        },
+        {
+            "feature": "Answer capture + normalization",
+            "status": "partial",
+            "code_locations": [
+                "core/questionEngine/answerNormalization.ts",
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "DocudentV7Page.answerQuestion callback",
+            "depends_on": [
+                "QuestionsLayout onAnswer prop"
+            ],
+            "missing_glue": [
+                "Answers stored in Map but not passed to answerNormalization module"
+            ],
+            "quick_fix": "Before output generation, call normalizeAnswers(answers) from core module"
+        },
+        {
+            "feature": "Output text generation (Endo)",
+            "status": "implemented",
+            "code_locations": [
+                "core/playbooks/endo/endoTextRenderer.ts"
+            ],
+            "runtime_wired": false,
+            "entrypoint": "NOT called from main flow",
+            "depends_on": [
+                "Normalized answers",
+                "endoSignals"
+            ],
+            "missing_glue": [
+                "useV7Pipeline does NOT call endoTextRenderer"
+            ],
+            "quick_fix": "After answers collected, call renderEndoText(signals, normalizedAnswers)"
+        },
+        {
+            "feature": "Output text generation (Füllung)",
+            "status": "implemented",
+            "code_locations": [
+                "core/filling/fillingTextRenderer.ts"
+            ],
+            "runtime_wired": false,
+            "entrypoint": "NOT called from main flow",
+            "depends_on": [
+                "Normalized answers",
+                "fillingSignals"
+            ],
+            "missing_glue": [
+                "useV7Pipeline does NOT call fillingTextRenderer"
+            ],
+            "quick_fix": "After answers collected, call renderFillingText(signals, normalizedAnswers)"
+        },
+        {
+            "feature": "Output rendering in UI",
+            "status": "implemented",
+            "code_locations": [
+                "v7/components/OutputRenderer.tsx",
+                "v7/components/MultiOutputRenderer.tsx"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "DocudentV7Page when state='output'",
+            "depends_on": [
+                "pipeline.output object"
+            ],
+            "missing_glue": [
+                "Works IF output is populated by renderers"
+            ],
+            "quick_fix": "Already wired"
+        },
+        {
+            "feature": "Case creation + persistence",
+            "status": "implemented",
+            "code_locations": [
+                "core/case/caseRepository.ts"
+            ],
+            "runtime_wired": false,
+            "entrypoint": "NOT called after output generated",
+            "depends_on": [
+                "Firestore db instance"
+            ],
+            "missing_glue": [
+                "useV7Pipeline does NOT call caseRepository.createCase()"
+            ],
+            "quick_fix": "Add 'Save' action that calls caseRepository.createCase() with output data"
+        },
+        {
+            "feature": "Case list (Cases page)",
+            "status": "implemented",
+            "code_locations": [
+                "v7/pages/CasesPageV7.tsx",
+                "v7/hooks/useCases.ts"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "/docudent/v7/cases",
+            "depends_on": [
+                "caseRepository.listCases"
+            ],
+            "missing_glue": [
+                "Currently uses mock mode; need real Firestore connection"
+            ],
+            "quick_fix": "Pass real db instance to createCaseRepository(db, false)"
+        },
+        {
+            "feature": "Review engine",
+            "status": "implemented",
+            "code_locations": [
+                "core/review/caseReviewEngine.ts",
+                "core/review/reviewTypes.ts"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "ReviewPageV7.tsx calls reviewCase()",
+            "depends_on": [
+                "CaseDocument"
+            ],
+            "missing_glue": [
+                "Works but depends on real case data"
+            ],
+            "quick_fix": "Already wired IF cases are real"
+        },
+        {
+            "feature": "Settings overrides",
+            "status": "partial",
+            "code_locations": [
+                "core/settings/settingsValidator.ts",
+                "core/settings/settingsOverridesService.ts",
+                "v7/hooks/useSettingsService.ts"
+            ],
+            "runtime_wired": false,
+            "entrypoint": "SettingsPage.tsx imports useSettingsService but may not persist",
+            "depends_on": [
+                "Firestore settings collection"
+            ],
+            "missing_glue": [
+                "Verify useSettingsService actually writes to Firestore"
+            ],
+            "quick_fix": "Check useSettingsService.save() calls settingsOverridesService.saveOverrides()"
+        },
+        {
+            "feature": "Auth + memberships",
+            "status": "partial",
+            "code_locations": [
+                "core/auth/authTypes.ts",
+                "core/onboarding/onboardingService.ts",
+                "contexts/AuthContext.tsx"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "V7 uses contexts/AuthContext (real Firebase auth)",
+            "depends_on": [
+                "Firebase Auth SDK"
+            ],
+            "missing_glue": [
+                "Membership lookup may be incomplete"
+            ],
+            "quick_fix": "Verify org/practice/membership resolution in AuthContext"
+        },
+        {
+            "feature": "Invites (create + accept)",
+            "status": "partial",
+            "code_locations": [
+                "functions/src/invites.ts",
+                "v7/pages/TeamPage.tsx",
+                "v7/pages/AcceptInvitePage.tsx"
+            ],
+            "runtime_wired": true,
+            "entrypoint": "TeamPage 'Invite' button, AcceptInvitePage route",
+            "depends_on": [
+                "Cloud Functions deployed"
+            ],
+            "missing_glue": [
+                "Verify functions are deployed and callable"
+            ],
+            "quick_fix": "Deploy functions if not done; test invite flow"
+        }
+    ],
+    "wiringDiagram": {
+        "happyPath": [
+            {
+                "step": 1,
+                "action": "User selects insurance + treatment",
+                "who": "DocudentV7Page + InsuranceSelector + TreatmentSelector",
+                "input": "User clicks/taps",
+                "output": "insuranceType, hasMKV, treatmentType stored in hook state",
+                "where_persisted": "localStorage (InsuranceContext)",
+                "wired": true
+            },
+            {
+                "step": 2,
+                "action": "User dictates or types",
+                "who": "DocudentV7Page textarea + ActionDock mic",
+                "input": "Voice or text",
+                "output": "dictation string in hook state",
+                "where_persisted": "memory only",
+                "wired": true
+            },
+            {
+                "step": 3,
+                "action": "User submits (Send button)",
+                "who": "ActionDock → useV7Pipeline.run()",
+                "input": "dictation, treatment, insurance",
+                "output": "Triggers pipeline.run()",
+                "where_persisted": "none",
+                "wired": true,
+                "notes": "run() is called, but internal logic may not route to correct parser"
+            },
+            {
+                "step": 4,
+                "action": "System extracts signals",
+                "who": "SHOULD BE: core/playbooks/endo/endoSignalParser OR core/filling/fillingSignalParser",
+                "input": "dictation string, treatmentType",
+                "output": "ExtractedSignals object",
+                "where_persisted": "memory",
+                "wired": false,
+                "gap": "useV7Pipeline does NOT call parseEndoSignals/fillingSignalParser"
+            },
+            {
+                "step": 5,
+                "action": "Engine decides questions",
+                "who": "SHOULD BE: endoPlaybookV2 / fillingPlaybookV1",
+                "input": "ExtractedSignals",
+                "output": "Question[] array",
+                "where_persisted": "memory",
+                "wired": false,
+                "gap": "Playbooks not called; questions not populated from domain modules"
+            },
+            {
+                "step": 6,
+                "action": "Questions displayed",
+                "who": "DocudentV7Page → QuestionsLayout",
+                "input": "questions array from pipeline state",
+                "output": "UI renders questions",
+                "where_persisted": "none",
+                "wired": true,
+                "notes": "Works IF questions array is populated"
+            },
+            {
+                "step": 7,
+                "action": "User answers",
+                "who": "QuestionsLayout → answerQuestion callback",
+                "input": "questionId, answer value",
+                "output": "answers Map updated",
+                "where_persisted": "memory",
+                "wired": true
+            },
+            {
+                "step": 8,
+                "action": "User clicks Continue",
+                "who": "QuestionsLayout onComplete → useV7Pipeline.runPipeline()",
+                "input": "answers Map, signals",
+                "output": "Should trigger text generation",
+                "where_persisted": "none",
+                "wired": false,
+                "gap": "runPipeline does NOT call text renderers"
+            },
+            {
+                "step": 9,
+                "action": "System generates output",
+                "who": "SHOULD BE: endoTextRenderer / fillingTextRenderer",
+                "input": "signals, normalizedAnswers",
+                "output": "DocumentationOutput object",
+                "where_persisted": "memory",
+                "wired": false,
+                "gap": "Text renderers not called"
+            },
+            {
+                "step": 10,
+                "action": "Output displayed",
+                "who": "DocudentV7Page → OutputRenderer",
+                "input": "output object from pipeline state",
+                "output": "UI shows documentation + billing",
+                "where_persisted": "none",
+                "wired": true,
+                "notes": "Works IF output populated"
+            },
+            {
+                "step": 11,
+                "action": "User saves case",
+                "who": "SHOULD BE: Save button → caseRepository.createCase()",
+                "input": "output, metadata",
+                "output": "Case document ID",
+                "where_persisted": "Firestore cases collection",
+                "wired": false,
+                "gap": "No Save action wired to caseRepository"
+            },
+            {
+                "step": 12,
+                "action": "Case reviewed",
+                "who": "ReviewPageV7 → reviewCase()",
+                "input": "CaseDocument",
+                "output": "ReviewResult with findings",
+                "where_persisted": "none",
+                "wired": true,
+                "notes": "Works IF case exists in Firestore"
+            }
+        ]
+    },
+    "missingWires": [
+        {
+            "rank": 1,
+            "gap": "Signal parser not called for Endo/Füllung",
+            "impact": "high",
+            "fix": "In useV7Pipeline.run(), route to parseEndoSignals or fillingSignalParser based on treatment",
+            "files_to_edit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "test_to_add_or_update": [
+                "v7/hooks/__tests__/useV7Pipeline.test.ts"
+            ]
+        },
+        {
+            "rank": 2,
+            "gap": "Playbook questions not populated from domain modules",
+            "impact": "high",
+            "fix": "After parsing signals, call ENDO_QUESTIONS_BY_PHASE_V2 or filling equivalent with askCondition filter",
+            "files_to_edit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "test_to_add_or_update": [
+                "v7/hooks/__tests__/useV7Pipeline.test.ts"
+            ]
+        },
+        {
+            "rank": 3,
+            "gap": "Text renderer not called after answers",
+            "impact": "high",
+            "fix": "In runPipeline(), call endoTextRenderer or fillingTextRenderer based on treatment",
+            "files_to_edit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "test_to_add_or_update": [
+                "v7/hooks/__tests__/useV7Pipeline.test.ts"
+            ]
+        },
+        {
+            "rank": 4,
+            "gap": "No Save action to persist case",
+            "impact": "high",
+            "fix": "Add 'Save' button in output state that calls caseRepository.createCase()",
+            "files_to_edit": [
+                "v7/pages/DocudentV7Page.tsx",
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "test_to_add_or_update": [
+                "v7/pages/__tests__/DocudentV7Page.test.tsx"
+            ]
+        },
+        {
+            "rank": 5,
+            "gap": "Cases page uses mock mode",
+            "impact": "medium",
+            "fix": "Pass real Firestore db to createCaseRepository(db, false)",
+            "files_to_edit": [
+                "v7/pages/CasesPageV7.tsx",
+                "v7/hooks/useCases.ts"
+            ],
+            "test_to_add_or_update": [
+                "v7/hooks/__tests__/useCases.test.ts"
+            ]
+        },
+        {
+            "rank": 6,
+            "gap": "Answer normalization not integrated",
+            "impact": "medium",
+            "fix": "Before text rendering, call normalizeAnswers(rawAnswers, domain)",
+            "files_to_edit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "test_to_add_or_update": [
+                "core/questionEngine/__tests__/answerNormalization.test.ts"
+            ]
+        },
+        {
+            "rank": 7,
+            "gap": "Field validation not enforced",
+            "impact": "medium",
+            "fix": "After normalization, call validateNormalizedFields()",
+            "files_to_edit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "test_to_add_or_update": [
+                "core/questionEngine/__tests__/fieldValidation.test.ts"
+            ]
+        },
+        {
+            "rank": 8,
+            "gap": "Settings not persisted to Firestore",
+            "impact": "medium",
+            "fix": "Verify useSettingsService.save() calls settingsOverridesService.saveOverrides()",
+            "files_to_edit": [
+                "v7/hooks/useSettingsService.ts"
+            ],
+            "test_to_add_or_update": [
+                "v7/hooks/__tests__/useSettingsService.test.ts"
+            ]
+        },
+        {
+            "rank": 9,
+            "gap": "Onboarding gating not enforced",
+            "impact": "low",
+            "fix": "Add useOnboardingGate hook that redirects if no membership",
+            "files_to_edit": [
+                "v7/hooks/useOnboardingGate.ts (new)",
+                "v7/app/V7Router.tsx"
+            ],
+            "test_to_add_or_update": [
+                "v7/hooks/__tests__/useOnboardingGate.test.ts"
+            ]
+        },
+        {
+            "rank": 10,
+            "gap": "QuickActions not visible when dictation has text",
+            "impact": "low",
+            "fix": "Already intentional; verify this is desired behavior",
+            "files_to_edit": [],
+            "test_to_add_or_update": []
+        }
+    ],
+    "nextSprintPlan": {
+        "goal": "End-to-end Endo T2 flow with questions, output, and case save",
+        "tasks": [
+            {
+                "id": "S1_T1",
+                "title": "Wire signal parser routing in useV7Pipeline",
+                "files": [
+                    "v7/hooks/useV7Pipeline.ts"
+                ],
+                "acceptance": [
+                    "When treatment='endo', parseEndoSignals() is called with dictation",
+                    "When treatment='fuellung', fillingSignalParser() is called",
+                    "Signals stored in pipeline state"
+                ],
+                "tests": [
+                    "v7/hooks/__tests__/useV7Pipeline.test.ts"
+                ],
+                "notes": "Import parsers from core/playbooks/endo and core/filling"
+            },
+            {
+                "id": "S1_T2",
+                "title": "Wire playbook question generation",
+                "files": [
+                    "v7/hooks/useV7Pipeline.ts"
+                ],
+                "acceptance": [
+                    "After signals parsed, questions populated from ENDO_QUESTIONS_BY_PHASE_V2",
+                    "askCondition filters applied",
+                    "Questions include id, prompt, answerType, options"
+                ],
+                "tests": [
+                    "v7/hooks/__tests__/useV7Pipeline.test.ts"
+                ],
+                "notes": "Map QuestionTemplate to V7 Question format"
+            },
+            {
+                "id": "S1_T3",
+                "title": "Wire text renderer after answers",
+                "files": [
+                    "v7/hooks/useV7Pipeline.ts"
+                ],
+                "acceptance": [
+                    "When all required questions answered and Continue clicked, text renderer called",
+                    "output.noteText populated with German documentation",
+                    "output.billingCodes populated"
+                ],
+                "tests": [
+                    "v7/hooks/__tests__/useV7Pipeline.test.ts"
+                ],
+                "notes": "Use endoTextRenderer for endo, fillingTextRenderer for füllung"
+            },
+            {
+                "id": "S1_T4",
+                "title": "Add Save button in output state",
+                "files": [
+                    "v7/pages/DocudentV7Page.tsx",
+                    "v7/hooks/useV7Pipeline.ts"
+                ],
+                "acceptance": [
+                    "Save button visible in output state",
+                    "Clicking Save calls caseRepository.createCase()",
+                    "Toast confirms save success"
+                ],
+                "tests": [
+                    "v7/pages/__tests__/DocudentV7Page.test.tsx"
+                ],
+                "notes": "Use existing JetonToast for feedback"
+            },
+            {
+                "id": "S1_T5",
+                "title": "Connect CasesPageV7 to real Firestore",
+                "files": [
+                    "v7/pages/CasesPageV7.tsx",
+                    "v7/hooks/useCases.ts"
+                ],
+                "acceptance": [
+                    "createCaseRepository receives real db instance",
+                    "Mock mode only in dev/test environments",
+                    "Cases list shows real saved cases"
+                ],
+                "tests": [
+                    "v7/hooks/__tests__/useCases.test.ts"
+                ],
+                "notes": "Use getFirestore() from firebase config"
+            },
+            {
+                "id": "S1_T6",
+                "title": "Integrate answer normalization",
+                "files": [
+                    "v7/hooks/useV7Pipeline.ts"
+                ],
+                "acceptance": [
+                    "Before text rendering, answers passed through normalizeAnswers()",
+                    "Codes validated via vocabRegistry",
+                    "Invalid codes rejected with error"
+                ],
+                "tests": [
+                    "core/questionEngine/__tests__/answerNormalization.test.ts"
+                ],
+                "notes": "Ensure answers are codes, not labels"
+            },
+            {
+                "id": "S1_T7",
+                "title": "Add E2E golden path test",
+                "files": [
+                    "__tests__/gates/gate-e2e-v7-endo-t2.test.ts (new)"
+                ],
+                "acceptance": [
+                    "Test: dictate T2 → questions shown → answer → output generated → case saved",
+                    "Verifies full wiring without UI",
+                    "Uses mock Firestore"
+                ],
+                "tests": [
+                    "gate-e2e-v7-endo-t2.test.ts"
+                ],
+                "notes": "Regression-locks the wiring"
+            },
+            {
+                "id": "S1_T8",
+                "title": "Verify ReviewPageV7 works with real cases",
+                "files": [
+                    "v7/pages/ReviewPageV7.tsx"
+                ],
+                "acceptance": [
+                    "Select a saved case → reviewCase() runs",
+                    "Findings displayed grouped by category",
+                    "No errors with real case data"
+                ],
+                "tests": [
+                    "v7/pages/__tests__/ReviewPageV7.test.tsx"
+                ],
+                "notes": "May need to adjust ReviewPageV7 to handle real CaseDocument shape"
+            },
+            {
+                "id": "S1_T9",
+                "title": "Update gate-v7-no-core-imports if needed",
+                "files": [
+                    "__tests__/gates/gate-v7-no-core-imports.test.ts"
+                ],
+                "acceptance": [
+                    "Gate allows import of core/playbooks, core/case, core/review",
+                    "Gate still blocks core/billing direct imports",
+                    "Justification documented"
+                ],
+                "tests": [
+                    "gate-v7-no-core-imports.test.ts"
+                ],
+                "notes": "Minimal gate update with clear rationale"
+            },
+            {
+                "id": "S1_T10",
+                "title": "Add Füllung flow (if time permits)",
+                "files": [
+                    "v7/hooks/useV7Pipeline.ts"
+                ],
+                "acceptance": [
+                    "treatment='fuellung' routes to filling pipeline",
+                    "fillingSignalParser + fillingPlaybookV1 + fillingTextRenderer called",
+                    "Output generated for simple filling case"
+                ],
+                "tests": [
+                    "v7/hooks/__tests__/useV7Pipeline.test.ts"
+                ],
+                "notes": "Lower priority than Endo; stretch goal"
+            }
+        ]
+    },
+    "sanityCheckCommands": [
+        "# Check if signal parsers are imported in V7 pipeline",
+        "grep -r 'parseEndoSignals' src/docudent/v7/hooks/useV7Pipeline.ts",
+        "# Check if playbook questions are used in V7",
+        "grep -r 'ENDO_QUESTIONS_BY_PHASE' src/docudent/v7/",
+        "# Check if text renderers are called in V7",
+        "grep -r 'endoTextRenderer\\|renderEndoText' src/docudent/v7/",
+        "# Check if caseRepository.createCase is called from V7",
+        "grep -r 'createCase' src/docudent/v7/",
+        "# Check for direct firestore imports in V7 (should be 0)",
+        "grep -r 'firebase/firestore' src/docudent/v7/ | wc -l",
+        "# Run all gate tests",
+        "npm test -- --run gates",
+        "# Run V7 pipeline tests specifically",
+        "npm test -- --run useV7Pipeline",
+        "# Check build passes",
+        "npm run build",
+        "# Count passing vs failing tests",
+        "npm test -- --passWithNoTests 2>&1 | tail -5"
+    ]
+}

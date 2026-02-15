@@ -1,0 +1,25 @@
+# V10 Real Dictation Check
+
+Scenarios: 21
+
+- gkv-fuellung-profunda-la: OK (0 issues)
+- gkv-fuellung-multizahn-kontext: OK (0 issues)
+- gkv-fuellung-approximal-matrix: OK (0 issues)
+- gkv-fuellung-seitenzahn-komposit-askback: OK (0 issues)
+- gkv-fuellung-anesthesia-unclear: OK (0 issues)
+- gkv-fuellung-ueberkappung: OK (0 issues)
+- gkv-fuellung-tief-exkavation-askback-ueberkappung: OK (0 issues)
+- mkv-fuellung-mehrkosten: OK (0 issues)
+- mkv-fuellung-betrag-toothless: OK (0 issues)
+- mkv-fuellung-ohne-betrag: ISSUES (6 issues)
+- mkv-fuellung-nur-kasse: OK (0 issues)
+- mkv-fuellung-nur-kasse-varianten: OK (0 issues)
+- mkv-fuellung-seiteninfo: OK (0 issues)
+- pkv-fuellung-simple: OK (0 issues)
+- pkv-fuellung-la-leitung: OK (0 issues)
+- pkv-fuellung-approximal-matrix-keil: ISSUES (1 issues)
+- pkv-endo-basic: OK (0 issues)
+- pkv-endo-warm-vertikal: OK (0 issues)
+- gkv-extraction-naht: OK (0 issues)
+- gkv-pzr-fluor: OK (0 issues)
+- pkv-crown-prep-provi: OK (0 issues)

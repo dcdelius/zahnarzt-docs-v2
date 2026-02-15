@@ -1,0 +1,167 @@
+{
+  "generated": "2026-02-15T08:23:29.021Z",
+  "summary": {
+    "total": 12,
+    "pass": 12,
+    "fail": 0,
+    "questions": 11,
+    "exitCode": 0
+  },
+  "hardAcceptance": {
+    "noEmptyText": true,
+    "gkvHasBilling": true,
+    "noGozInGkv": true,
+    "perInstancePresent": true
+  },
+  "results": [
+    {
+      "id": "gkv_01",
+      "dictation": "Füllung 36 okklusal Komposit",
+      "insuranceType": "GKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (2)"
+    },
+    {
+      "id": "gkv_02",
+      "dictation": "Füllung 36 okklusal distal Komposit",
+      "insuranceType": "GKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (3)"
+    },
+    {
+      "id": "gkv_03",
+      "dictation": "Füllung 36 und 37 okklusal Komposit",
+      "insuranceType": "GKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (4)"
+    },
+    {
+      "id": "gkv_04",
+      "dictation": "Füllung 46 mod Komposit mit Kofferdam",
+      "insuranceType": "GKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (2)"
+    },
+    {
+      "id": "gkv_05",
+      "dictation": "Füllung 14 distal GIZ",
+      "insuranceType": "GKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (1)"
+    },
+    {
+      "id": "gkv_06",
+      "dictation": "Füllung 36 okklusal Komposit Bulkfill",
+      "insuranceType": "GKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (2)"
+    },
+    {
+      "id": "pkv_01",
+      "dictation": "Füllung 36 okklusal Komposit adhäsiv",
+      "insuranceType": "PKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (1)"
+    },
+    {
+      "id": "pkv_02",
+      "dictation": "Füllung 14 mod Komposit Mehrschicht Kofferdam",
+      "insuranceType": "PKV",
+      "state": "output",
+      "pass": true,
+      "perInstanceKeys": [
+        "fuellung-14-1"
+      ],
+      "textLength": 224,
+      "billingCount": 2,
+      "billingRefs": [
+        "GOZ_2040",
+        "GOZ_2100"
+      ]
+    },
+    {
+      "id": "pkv_03",
+      "dictation": "Füllung 24 und 25 okklusal Komposit",
+      "insuranceType": "PKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (2)"
+    },
+    {
+      "id": "mkv_01",
+      "dictation": "Füllung 36 okklusal Komposit Mehrschichttechnik Mehrkosten",
+      "insuranceType": "MKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (3)"
+    },
+    {
+      "id": "mkv_02",
+      "dictation": "Füllung 36 mod Komposit Adhäsivtechnik MKV",
+      "insuranceType": "MKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (4)"
+    },
+    {
+      "id": "mkv_03",
+      "dictation": "Füllung 46 okklusal Komposit MKV Kofferdam",
+      "insuranceType": "MKV",
+      "state": "questions",
+      "pass": true,
+      "perInstanceKeys": [],
+      "textLength": 0,
+      "billingCount": 0,
+      "billingRefs": [],
+      "failReason": "Questions pending (2)"
+    }
+  ],
+  "failingDictations": []
+}

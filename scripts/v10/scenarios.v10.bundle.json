@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "id": "MT_01",
+      "title": "Fuellung + Extraction (Multi-Treatment)",
+      "bundle": {
+        "segments": [
+          {
+            "segmentId": "seg-1",
+            "treatmentId": "fuellung",
+            "insuranceType": "MKV",
+            "textLength": "mittel",
+            "dictation": "Zahn 26 MOD, Komposit Mehrschicht, Kofferdam, Leitungsanästhesie. Mehrkostenvereinbarung liegt vor.",
+            "instances": [
+              { "instanceId": "tooth:26", "tooth": "26" }
+            ]
+          },
+          {
+            "segmentId": "seg-2",
+            "treatmentId": "extraction",
+            "insuranceType": "GKV",
+            "textLength": "mittel",
+            "dictation": "Zahn 28 Extraktion, Infiltrationsanästhesie.",
+            "instances": [
+              { "instanceId": "tooth:28", "tooth": "28" }
+            ]
+          }
+        ],
+        "globalAnswers": {
+          "medical_vitality::tooth:26": "+",
+          "medical_percussion::tooth:26": "-",
+          "forensic_anesthesia_type::tooth:26": "leitung",
+          "forensic_diagnose_confirmation::tooth:26": "ja",
+          "forensic_ueberkappung::tooth:26": "keine",
+          "forensic_ueberkappung_material::tooth:26": "Ca(OH)2",
+          "fuellung_isolation::tooth:26": "kofferdam",
+          "fuellung_material::tooth:26": "komposit",
+          "upsell_mehrschicht::tooth:26": "ja",
+          "surfaces::tooth:26": "m,o,d",
+          "forensic_anesthesia_type::tooth:28": "infiltr",
+          "forensic_grund::tooth:28": "einfach",
+          "forensic_komplikation::tooth:28": "keine"
+        }
+      },
+      "expected": {
+        "mustIncludeCodes": ["BEMA_13c", "GOZ_2100", "BEMA_41a", "BEMA_40"],
+        "mustNotIncludePrefixes": [],
+        "allowAliases": { "BEMA_13c": ["BEMA_13"] }
+      }
+    }
+  ]
+}

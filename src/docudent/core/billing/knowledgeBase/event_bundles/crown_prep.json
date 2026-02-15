@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "treatmentId": "crown_prep",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "crown_prep.praeparation",
+      "chipIds": ["praeparation"],
+      "textRefIds": ["praeparation"],
+      "billingRefIds": ["praeparation"]
+    },
+    {
+      "id": "crown_prep.abformung",
+      "chipIds": ["abformung"],
+      "textRefIds": ["abformung"],
+      "billingRefIds": ["abformung"]
+    },
+    {
+      "id": "crown_prep.provisorium",
+      "chipIds": ["provisorium"],
+      "textRefIds": ["provisorium"],
+      "billingRefIds": ["provisorium"]
+    },
+    {
+      "id": "crown_prep.askback.preparation"
+    },
+    {
+      "id": "crown_prep.askback.impression"
+    },
+    {
+      "id": "crown_prep.askback.provisional"
+    }
+  ]
+}

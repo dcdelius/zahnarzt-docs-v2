@@ -1,0 +1,84 @@
+{
+    "generated": "2025-12-31T15:28:00Z",
+    "prompts": 6,
+    "findings": {
+        "prompt1_surface_resolution": {
+            "issue": "surfaceCount always defaults to 1",
+            "evidence": {
+                "gkv_02": {
+                    "dictation": "okklusal distal",
+                    "surfaces": 2,
+                    "expected": "BEMA_13b",
+                    "actual": "BEMA_13"
+                },
+                "gkv_04": {
+                    "dictation": "mod",
+                    "surfaces": 3,
+                    "expected": "BEMA_13c",
+                    "actual": "BEMA_13"
+                }
+            },
+            "root_cause": {
+                "file": "v10/facts/buildFactsFromExtraction.ts",
+                "issue": "surfaces array not extracted from dictation",
+                "resolver_behavior": "surfaceBillingResolver.ts:54 defaults to 1 if not specified"
+            },
+            "fix": "Extract surfaces in buildFactsFromExtraction and pass to renderer context"
+        },
+        "prompt2_db_refs": {
+            "status": "PASS",
+            "gate": "gate-billingref-closure.test.ts",
+            "tests": 7,
+            "all_refs_in_catalog": true
+        },
+        "prompt3_gear_design": {
+            "status": "CLEAN",
+            "surfaceBillingResolver_is_gear": true,
+            "responsibilities_clear": true,
+            "no_dual_render": true,
+            "rules": [
+                "surface_mapping lives in unified.json only",
+                "resolver reads from KB, never hardcodes",
+                "renderer calls resolver, doesn't duplicate logic"
+            ]
+        },
+        "prompt4_insurance_rules": {
+            "status": "PASS",
+            "noGozInGkv_gate": "gate-no-hardcoded-billing-codes.test.ts",
+            "new_truthcases_needed": [
+                "GKV profunda with MKV upsell refusal",
+                "MKV Mehrschicht without explicit marker",
+                "PKV downgrade to BEMA (patient choice)",
+                "GKV multi-surface with Kofferdam + GIZ",
+                "Mixed insurance within multi-tooth"
+            ]
+        },
+        "prompt5_askbacks_zero": {
+            "reason": "Extraction provides sufficient defaults",
+            "flow": [
+                "dictation",
+                "extraction",
+                "facts (filled)",
+                "applyMedicalKb (no askbacks needed)"
+            ],
+            "when_questions_appear": [
+                "profunda (Überkappung question)",
+                "unknown material",
+                "Kariestiefe unclear"
+            ]
+        },
+        "prompt6_mvp_gaps": {
+            "must_before_launch": [
+                "surfaceCount extraction (billing accuracy)",
+                "Error logging/repro bundle",
+                "UI copy button for output"
+            ],
+            "can_defer": [
+                "Full multi-treatment Endo support",
+                "Export to PVS",
+                "Settings persistence",
+                "Dark mode"
+            ]
+        }
+    }
+}

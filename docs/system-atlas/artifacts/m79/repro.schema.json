@@ -1,0 +1,281 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "V10 Repro Bundle Schema",
+    "description": "Schema for deterministic pipeline replay and parity verification",
+    "type": "object",
+    "required": [
+        "version",
+        "runId",
+        "timestamp",
+        "input",
+        "output"
+    ],
+    "properties": {
+        "version": {
+            "type": "string",
+            "const": "1.0.0"
+        },
+        "runId": {
+            "type": "string",
+            "description": "Unique identifier for this run"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "input": {
+            "type": "object",
+            "required": [
+                "dictation",
+                "treatmentId",
+                "insuranceType"
+            ],
+            "properties": {
+                "dictation": {
+                    "type": "string"
+                },
+                "treatmentId": {
+                    "type": "string"
+                },
+                "insuranceType": {
+                    "type": "string",
+                    "enum": [
+                        "GKV",
+                        "PKV",
+                        "MKV"
+                    ]
+                },
+                "textLength": {
+                    "type": "string",
+                    "enum": [
+                        "short",
+                        "medium",
+                        "long"
+                    ]
+                },
+                "hasMKV": {
+                    "type": "boolean"
+                },
+                "answers": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "userSettings": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            }
+        },
+        "extraction": {
+            "type": "object",
+            "properties": {
+                "engine": {
+                    "type": "string"
+                },
+                "teeth": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "surfaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mentioned": {
+                    "type": "object"
+                },
+                "raw": {
+                    "type": "object"
+                }
+            }
+        },
+        "medical": {
+            "type": "object",
+            "properties": {
+                "facts": {
+                    "type": "object"
+                },
+                "askbacksEmitted": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "reason": {
+                                "type": "string"
+                            },
+                            "ruleId": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "askbacksSkipped": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "reason": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "chipsEmitted": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "chipId": {
+                                "type": "string"
+                            },
+                            "ruleId": {
+                                "type": "string"
+                            },
+                            "sourceRefs": {
+                                "type": "array"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "billing": {
+            "type": "object",
+            "properties": {
+                "allowedChips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "blockedChips": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "chipId": {
+                                "type": "string"
+                            },
+                            "reason": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "billingCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "chipId": {
+                                "type": "string"
+                            },
+                            "sourceRef": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "combinabilityVerdict": {
+                    "type": "string",
+                    "enum": [
+                        "PASS",
+                        "WARN",
+                        "BLOCK"
+                    ]
+                },
+                "combinabilityDetails": {
+                    "type": "array"
+                }
+            }
+        },
+        "output": {
+            "type": "object",
+            "required": [
+                "state"
+            ],
+            "properties": {
+                "state": {
+                    "type": "string",
+                    "enum": [
+                        "idle",
+                        "processing",
+                        "questions",
+                        "output",
+                        "error",
+                        "unsupported"
+                    ]
+                },
+                "questions": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "label": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "fullText": {
+                    "type": "string"
+                },
+                "sections": {
+                    "type": "array"
+                },
+                "billingRefs": {
+                    "type": "array"
+                },
+                "copyText": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                }
+            }
+        },
+        "trace": {
+            "type": "object",
+            "properties": {
+                "markers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "stage": {
+                                "type": "string"
+                            },
+                            "detail": {
+                                "type": "string"
+                            },
+                            "data": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "durations": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+{
+    "gp": "1/6",
+    "title": "V7 Rest-Inventory + Protection",
+    "date": "2025-12-31",
+    "status": "COMPLETE",
+    "summary": {
+        "total_v7_imports": 9,
+        "all_in_single_file": "v10/components/index.ts",
+        "v10_modules_verified": true
+    },
+    "imports_by_category": {
+        "UI_COMPONENT": [
+            {
+                "file": "v10/components/index.ts",
+                "line": 19,
+                "component": "SoftGradientBackground"
+            },
+            {
+                "file": "v10/components/index.ts",
+                "line": 20,
+                "component": "HeroSculpture"
+            },
+            {
+                "file": "v10/components/index.ts",
+                "line": 23,
+                "component": "QuestionsFlowV2"
+            },
+            {
+                "file": "v10/components/index.ts",
+                "line": 24,
+                "component": "QuestionsFlow"
+            },
+            {
+                "file": "v10/components/index.ts",
+                "line": 25,
+                "component": "OutputFlow"
+            },
+            {
+                "file": "v10/components/index.ts",
+                "line": 26,
+                "component": "MultiOutputRenderer"
+            },
+            {
+                "file": "v10/components/index.ts",
+                "line": 27,
+                "component": "MultiInstancePanel"
+            }
+        ],
+        "TYPE_ONLY": [
+            {
+                "file": "v10/components/index.ts",
+                "line": 30,
+                "type": "TreatmentInstance",
+                "from": "v7/multitreatment/types"
+            },
+            {
+                "file": "v10/components/index.ts",
+                "line": 31,
+                "type": "UiStep",
+                "from": "v7/ui/normalizePipelineResultForUi"
+            }
+        ],
+        "RUNTIME_IMPORT": []
+    },
+    "imports_by_location": {
+        "v10/components/": 9,
+        "v10/pages/": 0,
+        "v10/hooks/": 0,
+        "v10/pipeline/": 0,
+        "other": 0
+    },
+    "v10_modules_status": {
+        "facts": {
+            "exists": true,
+            "files": [
+                "types.ts",
+                "buildFactsFromExtraction.ts",
+                "applyAnswersToFacts.ts",
+                "index.ts"
+            ],
+            "used_by": [
+                "v10/pipeline/runV10.ts",
+                "v10/types.ts"
+            ]
+        },
+        "askbacks": {
+            "exists": true,
+            "files": [
+                "compileAskbacksToQuestions.ts",
+                "index.ts"
+            ],
+            "used_by": [
+                "v10/pipeline/runV10.ts"
+            ]
+        },
+        "renderer": {
+            "exists": true,
+            "files": [
+                "renderFromKbChips.ts",
+                "index.ts"
+            ],
+            "used_by": [
+                "v10/pipeline/runV10.ts",
+                "v10/pipeline/runV10Bundle.ts"
+            ]
+        }
+    },
+    "duplicates_found": false,
+    "protection_status": "V10 modules are canonical; V7 equivalents exist but are not imported",
+    "next_action": "GP2: Copy UI components to V10, remove all V7 re-exports"
+}

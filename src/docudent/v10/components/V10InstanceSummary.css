@@ -1,0 +1,124 @@
+/**
+ * V10InstanceSummary Styles
+ * 
+ * M35: Compact instance summary cards.
+ */
+
+.v10-instance-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.v10-summary-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v10-summary-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.v10-summary-cards {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* Instance Card */
+.v10-instance-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.875rem;
+    min-width: 140px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.v10-instance-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.v10-instance-card.selected {
+    border-color: var(--instance-color, #3498db);
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.v10-instance-card.state-output {
+    border-left: 3px solid #27ae60;
+}
+
+.v10-instance-card.state-questions {
+    border-left: 3px solid #f39c12;
+}
+
+.v10-instance-card.state-error {
+    border-left: 3px solid #e74c3c;
+}
+
+.v10-instance-card.state-idle {
+    border-left: 3px solid #7f8c8d;
+}
+
+/* Card Header */
+.v10-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v10-card-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.v10-card-state {
+    font-size: 1rem;
+}
+
+/* Card Content */
+.v10-card-tooth {
+    font-size: 0.875rem;
+    color: #ecf0f1;
+    font-weight: 500;
+}
+
+.v10-card-stats {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.v10-card-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    color: #95a5a6;
+}
+
+.stat-icon {
+    font-size: 0.8rem;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: #bdc3c7;
+}

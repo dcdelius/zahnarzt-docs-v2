@@ -1,0 +1,29 @@
+{
+    "id": "fuellung_05_deviation_kofferdam",
+    "description": "Füllung mit Kofferdam-Abweichung — Deviation captured",
+    "input": {
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Zahn 14 DO Komposit Füllung Kofferdam nicht möglich aufgrund starker Würgereiz",
+        "answers": {}
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=fuellung",
+            "questions:engine=fuellung"
+        ],
+        "traceExcludes": [
+            "questions:engine=endo"
+        ],
+        "noQuestionIdRegex": "(endo|kanal|wl|spül|wurzel)",
+        "outputMustContain": [
+            "14"
+        ],
+        "billingMustNotContain": [
+            "BEMA_40",
+            "BEMA_41a"
+        ]
+    },
+    "minimalAnswers": {}
+}

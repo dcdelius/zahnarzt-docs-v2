@@ -1,0 +1,330 @@
+# External Truth Set
+# Curated billing rules from official sources (BZÄK, KZV, court cases)
+# Used by gate tests to verify combinability KB is correct
+#
+# Format:
+#   id: stable identifier
+#   source: official source reference
+#   mentionsCodes: affected billing codes
+#   claims: structured assertions
+
+_meta:
+  version: "v1"
+  generatedAt: "2025-12-23"
+  curator: "Billing Audit"
+  purpose: "Verify combinability KB against official sources"
+
+entries:
+  # ════════════════════════════════════════════════════════════════
+  # GOZ 2197 (Mehrschichttechnik) - Critical cluster
+  # ════════════════════════════════════════════════════════════════
+
+  - id: "goz_2197_not_beside_2060_2120"
+    source:
+      title: "GOZ Kommentar - BZÄK"
+      url: "https://www.bzaek.de/goz-kommentar"
+      retrievedAt: "2025-01-15"
+      type: "official_commentary"
+    mentionsCodes: ["GOZ_2197", "GOZ_2060", "GOZ_2080", "GOZ_2100", "GOZ_2120"]
+    claims:
+      - kind: "COMBINABILITY_BLOCK"
+        codes: ["GOZ_2197", "GOZ_2060"]
+        scope: "TOOTH"
+        notes: "2197 includes adhesive technique, cannot bill with filling codes"
+      - kind: "COMBINABILITY_BLOCK"
+        codes: ["GOZ_2197", "GOZ_2080"]
+        scope: "TOOTH"
+        notes: "2197 not beside 2-surface filling"
+      - kind: "COMBINABILITY_BLOCK"
+        codes: ["GOZ_2197", "GOZ_2100"]
+        scope: "TOOTH"
+        notes: "2197 not beside 3-surface filling"
+      - kind: "COMBINABILITY_BLOCK"
+        codes: ["GOZ_2197", "GOZ_2120"]
+        scope: "TOOTH"
+        notes: "2197 not beside 4+ surface filling"
+
+  - id: "goz_2040_isolation_rule"
+    source:
+      title: "GOZ Kommentar - Kofferdam"
+      url: "https://www.bzaek.de/goz-kommentar"
+      retrievedAt: "2025-01-15"
+      type: "official_commentary"
+    mentionsCodes: ["GOZ_2040", "GOZ_2060", "GOZ_2080", "GOZ_2100", "GOZ_2120"]
+    claims:
+      - kind: "COMBINABILITY_BLOCK"
+        codes: ["GOZ_2040", "GOZ_2060"]
+        scope: "TOOTH"
+        notes: "GOZ 2040 (absolute Trockenlegung) nicht neben 2060-2120"
+      - kind: "COMBINABILITY_BLOCK"
+        codes: ["GOZ_2040", "GOZ_2080"]
+        scope: "TOOTH"
+        notes: "Kofferdam already included in filling codes"
+
+  # ════════════════════════════════════════════════════════════════
+  # BEMA Füllung - Cp/P Rules
+  # ════════════════════════════════════════════════════════════════
+
+  - id: "bema_25_cp_voraussetzung"
+    source:
+      title: "BEMA Kommentar - Indirekte Überkappung"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_25"]
+    claims:
+      - kind: "REQUIRES"
+        codes: ["BEMA_25"]
+        scope: "TOOTH"
+        notes: "Cp nur bei Caries profunda (pulpanahe Karies)"
+
+  - id: "bema_26_p_punktfoermig"
+    source:
+      title: "BEMA Kommentar - Direkte Überkappung"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_26"]
+    claims:
+      - kind: "REQUIRES"
+        codes: ["BEMA_26"]
+        scope: "TOOTH"
+        notes: "P nur bei punktförmiger Pulpaeröffnung"
+
+  - id: "bema_12_kofferdam_pflicht"
+    source:
+      title: "BEMA Kommentar - bMF"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_12"]
+    claims:
+      - kind: "REQUIRES"
+        codes: ["BEMA_12"]
+        scope: "SESSION"
+        notes: "BEMA 12 nur mit Kofferdam ODER Blutstillung dokumentiert"
+      - kind: "MAXCOUNT"
+        codes: ["BEMA_12"]
+        scope: "QUADRANT"
+        notes: "Maximal 1x pro Kieferhälfte/Frontzahnbereich je Sitzung"
+
+  # ════════════════════════════════════════════════════════════════
+  # Endo Rules
+  # ════════════════════════════════════════════════════════════════
+
+  - id: "bema_32_35_endo_basis"
+    source:
+      title: "BEMA Richtlinien - Endodontie"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_32", "BEMA_33", "BEMA_34", "BEMA_35"]
+    claims:
+      - kind: "SCOPE"
+        codes: ["BEMA_32"]
+        scope: "TOOTH"
+        notes: "Trepanation je Zahn abrechenbar"
+      - kind: "SCOPE"
+        codes: ["BEMA_33", "BEMA_34", "BEMA_35"]
+        scope: "TOOTH"
+        notes: "Aufbereitung je Kanal abrechenbar"
+
+  - id: "goz_endo_kanalzahl"
+    source:
+      title: "GOZ Kommentar - Wurzelbehandlung"
+      url: "https://www.bzaek.de/goz-kommentar"
+      retrievedAt: "2025-01-15"
+      type: "official_commentary"
+    mentionsCodes: ["GOZ_2360", "GOZ_2380", "GOZ_2390", "GOZ_2400", "GOZ_2410"]
+    claims:
+      - kind: "SCOPE"
+        codes: ["GOZ_2360"]
+        scope: "TOOTH"
+        notes: "Trepanation je Zahn"
+      - kind: "SCOPE"
+        codes: ["GOZ_2380"]
+        scope: "CANAL"
+        notes: "Aufbereitung je Kanal"
+
+  # ════════════════════════════════════════════════════════════════
+  # LA / Anästhesie Rules
+  # ════════════════════════════════════════════════════════════════
+
+  - id: "bema_40_41_la_quadrant"
+    source:
+      title: "BEMA Kommentar - Anästhesie"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_40", "BEMA_41a"]
+    claims:
+      - kind: "MAXCOUNT"
+        codes: ["BEMA_40"]
+        scope: "SESSION"
+        notes: "Infiltration 1x pro Sitzung"
+      - kind: "REQUIRES"
+        codes: ["BEMA_41a"]
+        scope: "SESSION"
+        notes: "Leitung nur bei UK-Seitenzähnen indiziert"
+
+  - id: "la_exclusions"
+    source:
+      title: "BEMA/GOZ Kombinationsregeln"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_40", "BEMA_41a"]
+    claims:
+      - kind: "COMBINABILITY_BLOCK"
+        codes: ["BEMA_40", "BEMA_41a"]
+        scope: "SESSION"
+        notes: "Infiltration und Leitung schließen sich aus"
+
+  # ════════════════════════════════════════════════════════════════
+  # Court Cases
+  # ════════════════════════════════════════════════════════════════
+
+  - id: "bverwg_2197_cluster"
+    source:
+      title: "BVerwG Urteil zur Mehrschichttechnik"
+      url: "https://www.bverwg.de"
+      retrievedAt: "2024-11-20"
+      type: "court_case"
+    mentionsCodes: ["GOZ_2197"]
+    claims:
+      - kind: "COMBINABILITY_BLOCK"
+        codes: ["GOZ_2197", "GOZ_2060"]
+        scope: "TOOTH"
+        notes: "Court confirmed: 2197 subsumes adhesive work"
+
+  - id: "lg_stuttgart_mkv"
+    source:
+      title: "LG Stuttgart - Mehrkostenvereinbarung"
+      url: "https://openjur.de"
+      retrievedAt: "2024-10-15"
+      type: "court_case"
+    mentionsCodes: ["GOZ_2197"]
+    claims:
+      - kind: "REQUIRES"
+        codes: ["GOZ_2197"]
+        scope: "SESSION"
+        notes: "MKV muss VOR Behandlung schriftlich vereinbart sein"
+
+  # ════════════════════════════════════════════════════════════════
+  # Frequency Rules
+  # ════════════════════════════════════════════════════════════════
+
+  - id: "bema_01_einmal_sitzung"
+    source:
+      title: "BEMA Richtlinien - Untersuchung"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_01"]
+    claims:
+      - kind: "MAXCOUNT"
+        codes: ["BEMA_01"]
+        scope: "SESSION"
+        notes: "Eingehende Untersuchung nur 1x pro Sitzung"
+
+  - id: "bema_roentgen_limits"
+    source:
+      title: "StrlSchV - Röntgen"
+      url: "https://www.gesetze-im-internet.de"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_Ä925", "BEMA_Ä935"]
+    claims:
+      - kind: "REQUIRES"
+        codes: ["BEMA_Ä925"]
+        scope: "SESSION"
+        notes: "OPG nur bei rechtfertigender Indikation"
+
+  # ════════════════════════════════════════════════════════════════
+  # Additional Füllung Rules
+  # ════════════════════════════════════════════════════════════════
+
+  - id: "bema_13_fcode_flaechen"
+    source:
+      title: "BEMA Richtlinien - Füllungen"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_13", "BEMA_13b", "BEMA_13c", "BEMA_13d"]
+    claims:
+      - kind: "SCOPE"
+        codes: ["BEMA_13"]
+        scope: "TOOTH"
+        notes: "1-flächig je Zahn"
+      - kind: "SCOPE"
+        codes: ["BEMA_13b"]
+        scope: "TOOTH"
+        notes: "2-flächig je Zahn"
+      - kind: "SCOPE"
+        codes: ["BEMA_13c"]
+        scope: "TOOTH"
+        notes: "3-flächig je Zahn"
+      - kind: "SCOPE"
+        codes: ["BEMA_13d"]
+        scope: "TOOTH"
+        notes: "4+ flächig je Zahn"
+
+  - id: "goz_filling_scope"
+    source:
+      title: "GOZ Kommentar - Füllungen"
+      url: "https://www.bzaek.de/goz-kommentar"
+      retrievedAt: "2025-01-15"
+      type: "official_commentary"
+    mentionsCodes: ["GOZ_2060", "GOZ_2080", "GOZ_2100", "GOZ_2120"]
+    claims:
+      - kind: "SCOPE"
+        codes: ["GOZ_2060"]
+        scope: "TOOTH"
+        notes: "1-flächige Füllung je Zahn"
+      - kind: "SCOPE"
+        codes: ["GOZ_2080"]
+        scope: "TOOTH"
+        notes: "2-flächige Füllung je Zahn"
+
+  - id: "wdh_fuellung_2_jahre"
+    source:
+      title: "BEMA Richtlinien - Wiederholungsfüllung"
+      url: "https://www.kzbv.de/bema-kommentar"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_13", "BEMA_13b", "BEMA_13c", "BEMA_13d"]
+    claims:
+      - kind: "MAXCOUNT"
+        codes: ["BEMA_13"]
+        scope: "UNKNOWN"
+        notes: "Wiederholungsfüllung am gleichen Zahn binnen 2 Jahren nur mit Begründung"
+
+  # ════════════════════════════════════════════════════════════════
+  # PKV/MKV Rules
+  # ════════════════════════════════════════════════════════════════
+
+  - id: "mkv_schriftform"
+    source:
+      title: "§ 2 Abs. 3 GOZ"
+      url: "https://www.gesetze-im-internet.de/goz"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["GOZ_2197"]
+    claims:
+      - kind: "REQUIRES"
+        codes: ["GOZ_2197"]
+        scope: "SESSION"
+        notes: "Mehrkostenvereinbarung bedarf der Schriftform"
+
+  - id: "sgb_v_28_kassenleistung"
+    source:
+      title: "§ 28 SGB V - Leistungsumfang"
+      url: "https://www.gesetze-im-internet.de/sgb_5"
+      retrievedAt: "2025-01-10"
+      type: "official_commentary"
+    mentionsCodes: ["BEMA_13"]
+    claims:
+      - kind: "SCOPE"
+        codes: ["BEMA_13"]
+        scope: "SESSION"
+        notes: "Kompositfüllung im Seitenzahn seit 2025 Kassenleistung (Amalgamverbot)"

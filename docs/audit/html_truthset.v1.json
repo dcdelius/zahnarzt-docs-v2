@@ -1,0 +1,3491 @@
+{
+  "meta": {
+    "sourceRoots": [
+      "src/docudent/core/billing/knowledgeBase/secondary/commentIndex*.json"
+    ],
+    "generatedAt": "2025-12-23T20:36:55.391Z",
+    "parser": {
+      "name": "truthSetGenerator",
+      "version": "1.0.0"
+    },
+    "stats": {
+      "totalCards": 527,
+      "totalCodes": 221,
+      "codesWithExclusions": 1,
+      "codesWithMaxCount": 16
+    }
+  },
+  "codes": {
+    "ANALOG_ANALOG_Aufbiss_01": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377800%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Derzeit sind Strahlenschutzschienen im Heilmittelverzeichnis für gesetzliche Krankenkassen des Gesundheitsministeriums nicht gelistet. Das heißt: es besteht von dieser Seite her kein Anspruch auf Kost"
+        ]
+      }
+    },
+    "ANALOG_ANALOG_Aufbiss_02": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377801%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Chir_03": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377766%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Chir_04": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377767%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Chir_05": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377768%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Chir_06": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377769%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Chir_Analgosedierung": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377770%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Chir_Autologe_Blutkonzentrate": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377771%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "der Regel von Beihilfestellen ausgeschlossenen sogenannten Eigenbluttherapien der Alternativmedizin (im genannten VG-Urteil"
+        ]
+      }
+    },
+    "ANALOG_ANALOG_Chir_Wurzelamputation": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377765%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_01": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377804%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_02": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377807%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Anders als die gewaltsame Streckung des Kiefergelenkes zielt die Einrenkung der alten Luxation des Unterkiefers darauf ab, den Kondylus nach einer nicht mehr akuten Kondylusluxation wieder nach poster"
+        ]
+      }
+    },
+    "ANALOG_ANALOG_FAL_03": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377809%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_04": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377810%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_05": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377811%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_06": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377812%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_07": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377802%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_08": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377814%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_09": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377815%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_10": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377816%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_11": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377817%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_12": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377818%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_13": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377819%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_14": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377808%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_15": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377813%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_16": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377806%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_FAL_Analog_BSI": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377805%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Impl_02": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377821%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Laserlichtapplikation ohne morphologische Veränderung der Implantatoberfläche und ohne ablative Wirkung. Das Laserlicht dient hierbei alleinig zur Dekontamination (Entfernung des Biofilms) der Oberflä",
+          "Geb.-Nr. 4070 GOZ ist daneben nicht berechnungsfähig.Aus grundsätzlichen Erwägungen empfiehlt die BZÄK keine konkrete Analoggebühr."
+        ]
+      }
+    },
+    "ANALOG_ANALOG_Impl_03": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377822%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Impl_Augmentation": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377823%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_01": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377788%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_03": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377790%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_04": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377791%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_05": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377792%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_06": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377793%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_08": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377794%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_09": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377795%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_10": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377796%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_11": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377797%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_12": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377798%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_KFO_ASR": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377789%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Demgegenüber können Gebühren für die von dem jeweiligen Gebührentatbestand nach den GOZ-Nrn. 6100 ff. erfasste handwerkliche Tätigkeit einzeln (ggf. sogar je Zahn) angesetzt werden. Wären mit den GOZ-"
+        ]
+      }
+    },
+    "ANALOG_ANALOG_Kons_01": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377755%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Kons_02": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377757%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Kons_03": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377758%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Kons_04": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377754%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Kons_05": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377759%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Kons_06": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377756%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "eistungen sind sitzungsgleich nicht berechnungsfähig. Aus grundsätzlichen Erwägungen empfiehlt die Bundeszahnärztekammer keine konk"
+        ]
+      }
+    },
+    "ANALOG_ANALOG_Kons_07": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377761%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Kons_08": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377762%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "In einer ersten Phase der laserunterstützten Endodontie verzichteten die Aachener Laserwissenschaftler um Gutknecht sogar auf eine Wurzelfüllung, so sehr waren sie vom Erfolg ihres „Verglasungsprinzip"
+        ]
+      }
+    },
+    "ANALOG_ANALOG_Kons_Analog_Apex": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377760%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Kons_Analog_LAI": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377763%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Paro_01": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377780%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Paro_03": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377773%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_Paro_aPDT": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377781%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "dem Hinweis von der Beihilfe ausgeschlossen, dass derzeit kein wissenschaftlicher Konsens im Hinblick auf die Geeignetheit"
+        ]
+      }
+    },
+    "ANALOG_ANALOG_ZE_01": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377783%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_ZE_02": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377784%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_ZE_03": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377785%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "ANALOG_ANALOG_ZE_Mesokonstruktion": {
+      "codeSystem": "ANALOG",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377786%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_0010": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377990%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377993%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377963%27%5D.html",
+        "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377948%27%5D.html",
+        "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377951%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377970%27%5D.html",
+        "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377950%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377969%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377966%27%5D.html",
+        "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377952%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377962%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377984%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377965%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377980%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377981%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377985%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377989%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377976%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377973%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377971%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377972%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377978%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377961%27%5D.html",
+        "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377954%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377988%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377992%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377977%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377991%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377967%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377986%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377987%27%5D.html",
+        "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377949%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377983%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377964%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377960%27%5D.html",
+        "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377953%27%5D.html",
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377995%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377058%27%5D.html",
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377028%27%5D.html",
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377030%27%5D.html",
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377029%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Unterkieferprotrusionsschiene"
+        },
+        "notes": [
+          "Die L-Nr. 021 5 ist bei einem zahnlosen Kiefer, bei einem Kiefer mit einem Restzahnbestand von bis zu drei Zähnen oder bei Interimsprothesen abrechenbar.",
+          "Die L-Nr. 021 8 ist nur für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter zahnloser Kiefer) abrechenbar.",
+          "Nicht abrechenbar bei Duplikatmodell aus Einbettmasse. Das nach dem Doublieren gewonnene Modell ist gesondert abrechenbar. Für das Erstellen von Arbeitsmodellen ist die L-Nr. 002 1 „Doublieren“ bis au",
+          "Wird ein Kunststoffmodell gefertigt, so ist zur L-Nr. 005 2 die L-Nr. 002 3 abrechenbar.",
+          "Wird ein Kunststoffmodell gefertigt, so ist zur L-Nr. 005 1 die L-Nr. 002 3 abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_0030": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377968%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 003 0 ist in Verbindung mit KFO-Planungen und -Leistungen abrechenbar. Die L-Nr. 003 0 ist je ausgesägtem und umgestelltem Segment für Planungs- und Arbeitsmodelle abrechenbar. Wird ein einz"
+        ]
+      }
+    },
+    "BEL_BEL_0060": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377974%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 006 0 ist nicht durch das gewerbliche Labor abrechenbar, es sei denn, der Leistungsinhalt wird durch das gewerbliche Labor in der Zahnarztpraxis erbracht."
+        ]
+      }
+    },
+    "BEL_BEL_0070": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377975%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 007 0 ist vom Praxislabor abrechenbar, wenn die L-Nr. 006 0 durch das gewerbliche Labor erbracht und abgerechnet wird."
+        ]
+      }
+    },
+    "BEL_BEL_0120": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377979%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Fall"
+        },
+        "notes": [
+          "Die L-Nr. 012 0 ist nur abrechenbar, wenn die Modelle die gesamten Kieferverhältnisse wiedergeben und nur einmal je Fall, außer wenn der Zahnarzt einen neuen Abdruck oder Biss nehmen musste. Die L-Nr."
+        ]
+      }
+    },
+    "BEL_BEL_0130": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377982%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 013 0 ist für kieferorthopädische Dokumentationsmodelle abrechenbar. Die L-Nr. 013 0 ist für dasselbe Modellpaar nicht neben der L-Nr. 011 1 abrechenbar. Sockelschalen als Konfektionsfertigt",
+          "enbar.Die L-Nr. 013 0 ist für dasselbe Modellpaar nicht neben der L-Nr. 011 1 abrechenbar.Sockelschalen als Konfektionsfertigteile sind abrechenbar, w"
+        ]
+      }
+    },
+    "BEL_BEL_0220": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377994%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "vorbereitete"
+        },
+        "notes": [
+          "Das Aufbringen eines Bisswalls aus Wachs oder Kunststoff nach L-Nr. 022 0 auf eine Basis nach L-Nr. 021 2 oder 021 3 ist einmal je Basis abrechenbar. Das Aufbringen eines Bisswalls aus Wachs oder Kuns"
+        ]
+      }
+    },
+    "BEL_BEL_0230": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377996%27%5D.html",
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377130%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "vorbereitete"
+        },
+        "notes": [
+          "Die L-Nr. 023 0 ist für das Anbringen des Registrierbestecks einmal je vorbereitete Stützstiftregistrierung neben den Basen nach L-Nr. 021 4 abrechenbar. Neben der L-Nr. 023 0 ist die L-Nr. 022 0 nur ",
+          "Eine Leistung nach der Nr. 98 d ist nur neben der Leistung nach Nr. 97 (Totalprothese, Cover-Denture-Prothese) abrechnungsfähig, auch auf implantatgestützten Totalprothesen im Ober- und Unterkiefer, w",
+          "Bei der Versorgung eines zahnlosen Kiefers durch eine implantatgetragene totale Prothese in den vom Gemeinsamen Bundesausschuss festgelegten Ausnahmefällen ist die Nr. 98 d abrechenbar und bei der Abr",
+          "Die zusätzliche Abrechnung von zahnärztlichem Honorar bei Anwendung besonderer Abdruckverfahren ist nicht zulässig.",
+          "BEMA-Nr. 98 d i abrechnungsfähig bei der Versorgung eines zahnlosen Kiefers durch eine implantatgetragene totale Prothese in Ausnahmefällen nach Ziffer 36 b der Zahnersatz-Richtlinien"
+        ]
+      }
+    },
+    "BEL_BEL_0240": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377997%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Zahn"
+        },
+        "notes": [
+          "Die L-Nr. 024 0 ist nur einmal je Zahn abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_0310": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377998%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Für die Herstellung einer provisorischen Krone, Stiftkrone oder eines Brückenzwischengliedes nach L-Nr. 031 0 ist ein Formteil nach L-Nr. 032 0 nicht abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_0320": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 0/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377999%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Ein Formteil nach der L-Nr. 032 0 ist abrechenbar für die Herstellung von provisorischen Brücken. Bei der Herstellung von provisorischen Kronen und Stiftkronen ist ein Formteil nach L-Nr. 032 0 nur ab"
+        ]
+      }
+    },
+    "BEL_BEL_1040": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378011%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_1050": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378012%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378001%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378010%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 105 0 ist für denselben Zahn nicht neben der L-Nr. 101 3 abrechenbar.",
+          "AbrechnungDie L-Nr. 105 0 ist für denselben Zahn nicht neben der L-Nr. 101 3 abrechenbar.▶ Kommentar zur BEL-L-Nr. 105 0Im Rahmen der vertragszahnärzl",
+          "Die L-Nr. 101 3 ist als Träger eines Kugelknopfankers abrechenbar. Das Anbringen des Kugelknopfankers wird nach der L-Nr. 134 3 abgerechnet. Die L-Nr. 101 3 ist neben der L-Nr. 105 0 nicht abrechenbar",
+          "ist durch den Wegfall der Position „Steg“ im BEL ausgeschlossen.LeistungsanwendungDer Hinweis in den Erläuterungen zur Abrechnung „Die L-Nr. 101 3 ist"
+        ]
+      }
+    },
+    "BEL_BEL_1100": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378013%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 110 0 ist je tatsächlich gefertigter Zahneinheit abrechenbar. Für die vestibuläre Verblendung eines Brückengliedes nach L-Nr. 110 0 sind die L-Nrn. 160 0, 162 0 oder 164 0 abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_1200": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378014%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Für die vestibuläre Verblendung einer Sekundärteleskopkrone oder einer Sekundärkonuskrone sind die L-Nrn. 160 0 und 164 0 abrechenbar.",
+          "ch den L-Nrn. 160 0 und 164 0 abgerechnet werden. Nicht abrechnungsfähig sind dagegen Verblendungen aus Keramik (L-Nr. 162 0).Die Anwendung einer Tele"
+        ]
+      }
+    },
+    "BEL_BEL_1360": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378008%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378021%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Krone"
+        },
+        "notes": [
+          "Die L-Nr. 103 1 ist für das Vorbereiten einer neu zu fertigenden Krone oder eines Brückengliedes für eine Halte- und/oder Stützvorrichtung abrechenbar. Die L-Nr. 103 1 ist nur einmal je Krone oder Brü",
+          "Ein nicht gefrästes Lager für eine Auflage eines gegossenen Halte- und/oder Stützelementes ist nach L-Nr. 103 1 abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_1370": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378022%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 137 0 ist nur in Verbindung mit L-Nr. 136 0 oder bei vorhandenem gefrästen Lager abrechenbar. Die L-Nr. 137 0 ist neben der L-Nr. 202 1 einmal abrechenbar, wenn der Schubverteilungsarm Teil "
+        ]
+      }
+    },
+    "BEL_BEL_1500": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378023%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 150 0 ist sowohl bei der Neuanfertigung als auch bei Wiederherstellung von keramisch verblendeten Kronen oder Brückengliedern abrechenbar. Die L-Nr. 150 0 ist je Verbindungsstelle abrechenba"
+        ]
+      }
+    },
+    "BEL_BEL_1550": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378004%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378024%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 155 0 ist für die Konditionierung eines Flügels zur Vorbereitung des adhäsiven Befestigens neben der L-Nr. 102 3 abrechenbar.",
+          "Die L-Nr. 155 0 ist je Flügel für Adhäsivbrücke (L-Nr. 102 3) und bei Verblendungen je Krone, Brückenglied oder Rückenschutzplatte nach L-Nr. 164 0 abrechenbar. Bei der L-Nr. 404 0 – semipermanente Sc"
+        ]
+      }
+    },
+    "BEL_BEL_1600": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378015%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378005%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378025%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378007%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378003%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Für die vestibuläre Verblendung einer Sekundärteleskopkrone oder einer Sekundärkonuskrone sind die L-Nrn. 160 0 und 164 0 abrechenbar.",
+          "Für die vestibuläre Verblendung einer Krone nach der L-Nr. 102 4 sind die L-Nrn. 160 0, 162 0 oder 164 0 abrechenbar.",
+          "Die L-Nr. 160 0 ist für die vestibuläre Verblendung einer Krone nach L-Nr. 102 4 und L-Nr. 102 8, einem Brückenglied nach L-Nr. 110 0, einer teleskopierenden Krone nach L-Nr. 120 0 und L-Nr. 120 1 ode",
+          "Abrechenbar nur für eine Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie (zahnbegrenzte Einzelzahnlücke). Für die vestibuläre Verblendung einer Krone nach der L-Nr. 102 8 sind die L-Nrn. 160 0, 162",
+          "Die Teilkrone beinhaltet die Überkupplung aller Höcker eines Zahnes. Verblendungen nach den L-Nrn. 160 0, 162 0 und 164 0 sind neben der L-Nr. 102 2 nicht abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_1610": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378026%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 161 0 ist einmal je Zahn abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_1620": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378027%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 162 0 ist für die vestibuläre Verblendung einer Krone oder eines Brückengliedes abrechenbar. Die L-Nr. 162 0 ist im Rahmen der Wiederherstellung einer Verblendung auch für die Herstellung ei"
+        ]
+      }
+    },
+    "BEL_BEL_1630": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378029%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 163 0 ist je Zahn, auch für Wurzelpontic, einmal abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_1640": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378031%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 164 0 ist für die vestibuläre Verblendung einer Krone nach L-Nr. 102 4 und L-Nr. 102 8, einem Brückenglied nach L-Nr. 110 0, einer teleskopierenden Krone nach L-Nr. 120 0 und L-Nr. 120 1 ode"
+        ]
+      }
+    },
+    "BEL_BEL_1650": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378032%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 165 0 ist einmal je Zahn, auch für Wurzelpontic, abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_2004": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Befundklassen 1-8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0#.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Der Regelleistungskatalog ist als Anlage zu den Festzuschuss-Richtlinien des Gemeinsamen Bundesausschusses (G-BA) vereinbart und schreibt vor, welche BEMA- und BEL II-Leistungen im Rahmen der Regelver",
+          "Richtlinie des Gemeinsamen Bundesausschusses zur Bestimmung der Befunde und der Regelversorgungsleistungen, für die Festzuschüsse nach §§ 55, 56 SGB V zu gewähren sind (Festzuschuss-Richtlinie), vom 3",
+          "Der Gemeinsame Bundesausschuss in der Besetzung für die vertragszahnärztliche Versorgung nach § 91 Abs. 6 SGB V bestimmt auf der Grundlage der Zahnersatz-Richtlinien die Befunde, für die Festzuschüsse",
+          "Dem Verband Deutscher Zahntechniker-Innungen ist nach § 56 Abs. 3 SGB V Gelegenheit zur Stellungnahme gegeben worden. Die Stellungnahme ist in die Entscheidung des Gemeinsamen Bundesausschusses einbez"
+        ]
+      }
+    },
+    "BEL_BEL_2010": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378039%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378045%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378040%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378038%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378043%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378037%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378041%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378044%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378036%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378035%27%5D.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0#.html",
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378034%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 202 8 ist auch bei festsitzendem Zahnersatz abrechenbar.",
+          "Die L-Nr. 208 3 ist bei ungünstigen Biss- und Okklusionsverhältnissen oder über einem Sekundärteil eines Kugelknopfankers abrechenbar. Neben der L-Nr. 208 3 sind die L-Nrn. 302 0, 303 0 und 362 0 für ",
+          "Die L-Nr. 202 7 ist nur abrechenbar, wenn die gegossene Auflage nicht Bestandteil einer Halte- und Stützvorrichtung ist.",
+          "Die L-Nr. 208 1 ist bei ungünstigen Biss- und Okklusionsverhältnissen, einzeln stehenden Zähnen oder über einem Sekundärteil eines Kugelknopfankers abrechenbar. Neben der L-Nr. 208 1 sind die L-Nrn. 3",
+          "Die L-Nr. 202 6 ist bei sattelferner Anbringung einer Klammer oder einer teleskopierenden Krone abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_2014": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378006%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378017%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378018%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378030%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378002%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378028%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378009%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378016%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Abrechenbar nur für eine Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie (zahnbegrenzte Einzelzahnlücke).",
+          "Die L-Nr. 134 3 ist für das Anbringen des Kugelknopfankers auf der Wurzelstiftkappe nach L-Nr. 101 3 abrechenbar.",
+          "t im Rahmen der vertragszahnärztlichen Versorgung ausgeschlossen.LeistungsanwendungVerbindungselement bei festsitzend-herausnehmbarem Zahnersatz.",
+          "Die L-Nr. 163 8 ist für das Herstellen von Zahnfleischpartien bei einer Krone nach L-Nr. 102 8 im Rahmen einer Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie (zahnbegrenzte Einzelzahnlücke) abrech",
+          "Die L-Nr. 162 8 ist für die vestibuläre Verblendung einer Krone nach L-Nr. 102 8 im Rahmen einer Versorgung nach Nr. 36 a der Zahnersatz-Richtlinie (zahnbegrenzte Einzelzahnlücke) abrechenbar. Die L-N"
+        ]
+      }
+    },
+    "BEL_BEL_2050": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378042%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Im Zusammenhang mit der L-Nr. 205 0 ist die L-Nr. 202 6 nicht abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_2100": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378046%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Lösungshilfe für Kombinationszahnersatz"
+        ]
+      }
+    },
+    "BEL_BEL_2110": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378047%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 211 0 ist bei einer Totalprothese oder bei einer schleimhautgetragenen Deckprothese abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_2120": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 2/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378048%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 212 0 ist bei einer wiederherzustellenden Modellgussprothese je Prothese oder bei der Herstellung einer Kunststoffprothese mit gegossenen Halte- und/oder Stützelementen je Prothese einmal ab"
+        ]
+      }
+    },
+    "BEL_BEL_3010": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378057%27%5D.html",
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378061%27%5D.html",
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378050%27%5D.html",
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378051%27%5D.html",
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378063%27%5D.html",
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378059%27%5D.html",
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378064%27%5D.html",
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378053%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 361 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter zahnloser Kiefer) abrechenbar.",
+          "Die L-Nr. 301 0 ist als Grundeinheit für die Aufstellung von Konfektionszähnen auf Wachsbasis, Kunststoffbasis oder Metallbasis unter Verwendung eines Mittelwertartikulators abrechenbar.",
+          "Die L-Nr. 301 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter zahnloser Kiefer) abrechenbar. Die L-Nr. 301 8 ist als Grundeinheit für die Aufstellung von Konfektionszäh",
+          "Die L-Nr. 382 1 ist je Prothese oder je Aufbissbehelf einmal abrechenbar.",
+          "Die L-Nr. 362 8 ist für eine Versorgung nach Nr. 36 b der Zahnersatz-Richtlinie (atrophierter zahnloser Kiefer) abrechenbar. Die L-Nr. 362 8 ist entsprechend der Zahl der aufgestellten konfektionierte"
+        ]
+      }
+    },
+    "BEL_BEL_3020": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378052%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 302 0 ist entsprechend der Zahl der aufgestellten konfektionierten Zähne abrechenbar. Die L-Nr. 302 0 ist erneut abrechenbar, wenn eine weitere Bissnahme erforderlich ist."
+        ]
+      }
+    },
+    "BEL_BEL_3030": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378054%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 303 0 ist entsprechend der Zahl der aufgestellten konfektionierten Zähne abrechenbar. Die L-Nr. 303 0 ist erneut abrechenbar, wenn eine weitere Bissnahme erforderlich ist."
+        ]
+      }
+    },
+    "BEL_BEL_3410": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378055%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Neben der L-Nr. 341 0 ist für denselben Konfektionszahn die L-Nr. 303 0 nicht abrechenbar.",
+          "sorgung ist die Übertragung auf Metallbasis nicht ausgeschlossen.LeistungsanwendungJe „übertragener“ Zahn, also in der Regel analog der abgerechneten "
+        ]
+      }
+    },
+    "BEL_BEL_3610": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378056%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_3620": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378058%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 362 0 ist entsprechend der Zahl der aufgestellten konfektionierten Zähne abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_3800": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378060%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_3810": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378062%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_3830": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378065%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 383 0 ist nur abrechnungsfähig, wenn aus anatomischen Gründen kein Konfektionszahn verwendbar ist. Neben der L-Nr. 383 0 sind für denselben Zahn die L-Nrn. 302 0, 302 8, 303 0, 341 0 und 362"
+        ]
+      }
+    },
+    "BEL_BEL_3840": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 3/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378066%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_4010": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 4/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378068%27%5D.html",
+        "Gruppe 4/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0#.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Werden an einem Aufbissbehelf in zahnlosen Kieferabschnitten konfektionierte Zähne angebracht, sind die L-Nrn. 302 0 und 362 0, nicht jedoch die L-Nrn. 301 0 oder 361 0 abrechenbar. Sind Halte- und/od"
+        ]
+      }
+    },
+    "BEL_BEL_4020": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 4/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378069%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Werden an einem Aufbissbehelf in zahnlosen Kieferabschnitten konfektionierte Zähne angebracht, sind die L-Nrn. 302 0 und 362 0, nicht jedoch die L-Nrn. 301 0 oder 361 0 abrechenbar. Sind Halte- und/od"
+        ]
+      }
+    },
+    "BEL_BEL_4030": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 4/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378070%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Sind Halte- und/oder Stützvorrichtungen sowie weitere Funktionsaufbisse erforderlich, können diese zusätzlich abgerechnet werden. Die L-Nr. 403 0 ist je Aufbissbehelf abrechenbar. Erneuerungen und Erw"
+        ]
+      }
+    },
+    "BEL_BEL_4040": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 4/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378071%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die alleinige Verwendung von Drähten, auch verseilt, zur Herstellung einer Retentionsschiene erfüllt nicht den Leistungsinhalt der L-Nr. 404 0."
+        ]
+      }
+    },
+    "BEL_BEL_5010": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 5/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378073%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Unterkieferprotrusionsschiene"
+        },
+        "notes": [
+          "Die L-Nr. 501 0 ist je Unterkieferprotrusionsschiene einmal abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_5020": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 5/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378074%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 502 0 ist je Unterkieferprotrusionsschiene zweimal abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_5100": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 5/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378075%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 510 0 ist je Unterkieferprotrusionsschiene bis zu viermal abrechenbar. Die L-Nr. 510 0 ist auch für die Erneuerung eines Befestigungselements abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_5110": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 5/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378076%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 511 0 ist je Unterkieferprotrusionsschiene bis zu zweimal abrechenbar. Die L-Nr. 511 0 ist auch für die Erneuerung eines Protrusionselements abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_5200": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 5/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378077%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 520 0 ist je Unterkieferprotrusionsschiene viermal abrechenbar. Die L-Nr. 520 0 ist auch für die Erneuerung eines Befestigungselements abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_5210": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 5/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378078%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 521 0 ist auch für die Erneuerung dieses Halteelements abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7010": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378080%27%5D.html",
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378088%27%5D.html",
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378087%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 712 2 ist nur bei zahnärztlicher Indikationsstellung abrechenbar. Die L-Nr. 712 2 ist für die Verarbeitung von Sonderkunststoff einmal je Kiefer abrechenbar.",
+          "Die L-Nr. 712 1 ist je Kiefer einmal abrechenbar. Die L-Nr. 712 1 ist bei der Verwendung von elastischen Fertigteilen neben der L-Nr. 710 0 nicht abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7020": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378081%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Bei horizontaler Teilung ist statt der L-Nr. 702 0 zweimal die L-Nr. 701 0 abrechenbar. Die L-Nr. 702 0 ist auch für einen individuell gefertigten Positioner abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7030": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378082%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Wird eine schiefe Ebene in Verbindung mit einer Basis für Einzelkiefergerät nach L-Nr. 701 0 gefertigt, so ist sie nicht nach L-Nr. 703 0, sondern nach L-Nr. 710 0 abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7040": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378083%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7050": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378084%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 705 0 ist auch für die Versorgung von Traumata (Kieferbruch) abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7100": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378085%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 710 0 ist einmal je Kieferhälfte oder Frontzahngebiet abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7110": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378086%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 711 0 ist einmal je Kieferhälfte oder Frontzahngebiet abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7200": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378089%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7210": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378090%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7220": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378091%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 722 0 ist je Trennung oder je Schraube nach L-Nrn. 720 0 und 721 0 einmal abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7300": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378092%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7310": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378093%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7320": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378094%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7330": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378095%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7340": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378096%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7400": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378097%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7410": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378098%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 741 0 ist je Paar einmal abrechenbar. Die Erneuerung eines Elementes ist nach der L-Nr. 863 0 abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7420": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378099%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7430": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378100%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_7440": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378101%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 744 0 ist je Verbindungsstelle, auch bei Wiederherstellung und/oder Erweiterung, abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_7500": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378102%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Wird ein Halte- oder Abstützelement hergestellt, welches nicht in der Erläuterung zum Leistungsinhalt der L-Nr. 750 0 benannt ist, ist dieses nach der L-Nr. 380 0 abzurechnen."
+        ]
+      }
+    },
+    "BEL_BEL_7510": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 7/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378103%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Wird ein mehrarmiges Halte- oder Abstützelement hergestellt, welches nicht mit der Erläuterung zum Leistungsinhalt der L-Nr. 751 0 benannt ist, ist dieses nach der L-Nr. 381 0 abzurechnen."
+        ]
+      }
+    },
+    "BEL_BEL_8010": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378105%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378130%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378111%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378110%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378112%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378132%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378020%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378113%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378108%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378107%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378127%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378124%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378119%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378122%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378131%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378129%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378106%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378120%27%5D.html",
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378109%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 801 0 ist als Grundeinheit einmal je Prothese in Verbindung mit den L-Nrn. 802 1-7, 160 0, 164 0 sowie 383 0 und 384 0 abrechenbar.",
+          "Die L-Nr. 851 2 ist je zusammenhängende Sprunglinie und/oder je Bruch einmal abrechenbar.",
+          "Die L-Nr. 802 5 ist je Halte- und/oder Stützvorrichtung abrechenbar.",
+          "Die L-Nr. 802 4 kann für ein Basisteil Kunststoff nur abgerechnet werden, wenn an derselben Stelle keine andere Leistung erbracht wird. Das Verkleiden der Retention ist Bestandteil der L-Nr. 802 3 „Ei",
+          "Die L-Nr. 851 4 ist je Halte- und/oder Stützvorrichtung abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_8030": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378114%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 803 0 ist je Retention einmal abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_8040": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378115%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 804 0 ist je Retention einmal abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_8060": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378116%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 806 0 ist je Basisteil abrechenbar. Neben der L-Nr. 806 0 ist die L-Nr. 201 0 nicht abrechenbar.",
+          "g der L-Nr. 806 0 ist für denselben Kieferbereich ausgeschlossen neben:– L-Nr. 201 0 (Metallbasis)– L-Nr. 303 0 (Aufstellung auf Metallbasis, je Zahn)"
+        ]
+      }
+    },
+    "BEL_BEL_8070": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378117%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 807 0 ist nicht zusätzlich zu den L-Nrn. 803 0, 804 0 und 806 0 abrechenbar. Die für die L-Nr. 807 0 anfallenden Kosten für Lotmaterial können nach § 2 Punkt 4 der Einleitenden Bestimmungen "
+        ]
+      }
+    },
+    "BEL_BEL_8080": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378118%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 808 0 ist je Prothese oder KFO-/FKO-Basis einmal abrechenbar. Die L-Nr. 808 0 ist keine Instandsetzung im Sinne der L-Nrn. 801 0, 802 1 – 802 7, 861 0, 862 0 und 863 0. Für die Fixierung der"
+        ]
+      }
+    },
+    "BEL_BEL_8090": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378121%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 809 0 ist je Prothese und KFO-Basis einmal abrechenbar, bei bimaxillärem Gerät je Kiefer. Die L-Nr. 809 0 ist keine Instandsetzung im Sinne der L-Nrn. 801 0, 802 1 – 802 7, 861 0, 862 0 und "
+        ]
+      }
+    },
+    "BEL_BEL_8100": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378123%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 810 0 ist je Prothese einmal abrechenbar. Die L-Nr. 810 0 ist keine Instandsetzung im Sinne der L-Nrn. 801 0, 802 1 – 802 7. Für die Fixierung der Bisslage mit einem zweiten Modell und dem E"
+        ]
+      }
+    },
+    "BEL_BEL_8130": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378125%27%5D.html",
+        "Gruppe 1/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378019%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 134 7 ist für das Einarbeiten des erneuerungsbedürftigen Primär- oder Sekundärteils eines Kugelknopfankers auf der Wurzelstiftkappe nach L-Nr. 101 3 abrechenbar. Die L-Nr. 134 7 ist nicht ab"
+        ]
+      }
+    },
+    "BEL_BEL_8200": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378126%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 820 0 ist je Maßnahme an einer Krone/Flügel, teleskopierenden Krone oder einem Brückenglied abrechenbar. Die L-Nr. 807 0 und ggf. die Erneuerung der Verblendung ist zusätzlich abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_8500": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378128%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 850 0 ist in Verbindung mit den L-Nrn. einmal je Unterkieferprotrusionsschiene abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_8610": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378133%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 861 0 ist als Grundeinheit einmal je KFO-/FKO-Gerät oder Aufbissbehelf in Verbindung mit den L-Nrn. 862 0, 863 0, 802 1, 802 2, 802 3 und 802 4 abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_8620": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378134%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 862 0 ist je eingefügtem Element einmal abrechenbar; dies gilt auch für Halte- und Stützelemente, die nach den L-Nrn. 388 0 und 381 0 abrechenbar sind."
+        ]
+      }
+    },
+    "BEL_BEL_8630": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378135%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEL_BEL_8640": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378136%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 864 0 ist je KFO-Basis einmal abrechenbar. Die L-Nr. 864 0 ist keine Instandsetzung im Sinne der L-Nrn. 861 0, 862 0 und 863 0. Für die Fixierung der Bisslage mit einem zweiten Modell und de"
+        ]
+      }
+    },
+    "BEL_BEL_8700": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 8/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378137%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die L-Nr. 870 0 ist je remontiertem kieferorthopädischen Gerät einmal abrechenbar."
+        ]
+      }
+    },
+    "BEL_BEL_9330": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 9/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378139%27%5D.html",
+        "Gruppe 9/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378141%27%5D.html",
+        "Gruppe 9/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378140%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Versandkosten sind pauschal abzurechnen. Zur Bestimmung der Pauschale ist das Prinzip der Wirtschaftlichkeit der Versorgung (§ 12 SGB V) zu beachten. Die L-Nr. 933 0 kann nicht für Leistungen, die",
+          "Die L-Nr. 933 8 ist bei einer Versorgung nach Nr. 36 der Zahnersatz-Richtlinie (Ausnahmefälle zahnbegrenzte Einzelzahnlücke/atrophierter zahnloser Kiefer) abrechenbar. Die Versandkosten sind pauschal ",
+          "Die Versandkosten sind pauschal abzurechnen. Zur Bestimmung der Pauschale ist das Prinzip der Wirtschaftlichkeit der Versorgung (§ 12 SGB V) zu beachten. Die L-Nr. 933 5 kann nicht für Leistungen, die"
+        ]
+      }
+    },
+    "BEL_BEL_9700": {
+      "codeSystem": "BEL",
+      "rawFiles": [
+        "Gruppe 9/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273378142%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": []
+      }
+    },
+    "BEMA_BEMA_01": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377096%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376929%27%5D.html",
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377013%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377066%27%5D.html",
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377015%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377069%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376930%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377064%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377070%27%5D.html",
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377014%27%5D.html",
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377098%27%5D.html",
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377017%27%5D.html",
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377092%27%5D.html",
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377011%27%5D.html",
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377012%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376924%27%5D.html",
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0#.html",
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377513%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Kalenderjahr"
+        },
+        "notes": [
+          "(1) Nach dem geschlossenen Vorgehen ist zu prüfen, ob die zahnmedizinische Notwendigkeit besteht, an einzelnen Parodontien zusätzlich ein offenes Vorgehen durchzuführen. Dies kann für Parodontien ange",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV",
+          "auf dem digitalen PAR-Abrechnungsformular"
+        ]
+      }
+    },
+    "BEMA_BEMA_03": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376928%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376990%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376927%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Eine Leistung nach Nr. 03 kann nicht neben Leistungen nach Nrn. 151 bis 173 und nicht neben Leistungen nach Nrn. 55, 56, 61, 62 aus Abschnitt B IV der GOÄ abgerechnet werden.",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Mit Beschluss des Bewertungsausschusses vom 19.08.2020 ist der überholte Verweis auf den gesamten Abschnitt B. IV. der Gebührenordnung für Ärzte in Abrechnungsbestimmung Ziffer 3 zu BEMA-Nr. 03 überar",
+          "Die BEMA-Nr. 03 ist immer dann berechnungsfähig, wenn der Zahnarzt außerhalb seiner Sprechzeit von einem nicht bestellten Patienten in einem dringenden notwendigen Fall innerhalb der eigenen Praxisräu"
+        ]
+      }
+    },
+    "BEMA_BEMA_10": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376936%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Auch bei der Prüfung mehrerer Zähne ist die BEMA-Nr. 8 je Sitzung nur einmal abrechnungsfähig.",
+          "Die Abrechnung erfolgt über geeignete digitale Datenübertragung."
+        ]
+      }
+    },
+    "BEMA_BEMA_100": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377136%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Neben Leistungen nach Nr. 100 sind Leistungen nach Nr. 98 a, b oder c nicht abrechnungsfähig.",
+          "Leistungen nach Nr. 98 f oder h sind neben Leistungen nach der Nr. 100 abrechnungsfähig, wenn eine Prothese um eine entsprechende Halte- oder Stützvorrichtung erweitert wird oder beim Ersatz einer Hal",
+          "Durch Leistungen nach der Nr. 100 sind Nachbehandlungen abgegolten. Maßnahmen zur Wiederherstellung von Wurzelstiftkappen sind nach Nr. 100 b abrechnungsfähig.",
+          "Leistungen nach Nrn. 100 e und f sind bei zahnlosem Kiefer und bei stark reduziertem Restgebiss – in der Regel bis zu drei Zähnen – abrechnungsfähig.",
+          "Das Auffüllen eines Sekundärteleskops mit Kunststoffmassen bei einer Prothesenerweiterung ohne weitergehende Maßnahme ist nach Nr. 100 a abrechnungsfähig."
+        ]
+      }
+    },
+    "BEMA_BEMA_101": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377042%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV",
+          "mit dem digitalen Kieferbruch-Abrechnungsformular",
+          "erfolgt mit der KBR-Abrechnungsdatei und zeitgleich mit der ZE-Abrechnungsdatei, die die Befunde nach den Klassen 3 oder 4 ausweist",
+          "Die Abrechnung der Leistungen nach den BEMA-Nrn. 101 bis 104 wird mit dem KCH-Punktwert vorgenommen."
+        ]
+      }
+    },
+    "BEMA_BEMA_103": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377044%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV",
+          "mit dem digitalen Kieferbruch-Abrechnungsformular",
+          "erfolgt mit der KBR-Abrechnungsdatei und zeitgleich mit der ZE-Abrechnungsdatei, die die Befunde nach den Klassen 3 oder 4 ausweist",
+          "Die Abrechnung der Leistungen nach den BEMA-Nrn. 101 bis 104 wird mit dem KCH-Punktwert vorgenommen."
+        ]
+      }
+    },
+    "BEMA_BEMA_104": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377045%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Stütz-, Halte- oder Hilfsvorrichtungen sind nach den Allgemeinen Bestimmungen des BEMA abrechnungsfähig.",
+          "Zusätzlich abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV",
+          "mit dem digitalen Kieferbruch-Abrechnungsformular",
+          "erfolgt mit der KBR-Abrechnungsdatei und zeitgleich mit der ZE-Abrechnungsdatei, die die Befunde nach den Klassen 3 oder 4 ausweist"
+        ]
+      }
+    },
+    "BEMA_BEMA_105": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376982%27%5D.html",
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377097%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376980%27%5D.html",
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377095%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376981%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Leistung nach Nr. 107 a ist einmal pro Kalenderhalbjahr abrechnungsfähig. Sie kann nicht abgerechnet werden, wenn in demselben Kalenderhalbjahr bereits eine Leistung nach Nr. 107 abgerechnet worde",
+          "Die Richtlinie des Gemeinsamen Bundesausschusses über Maßnahmen zur Verhütung von Zahnerkrankungen bei Pflegebedürftigen und Menschen mit Behinderungen (Richtlinie nach § 22 a SGB V) finden Sie in der",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "In BEMA-Nr. 107 a hat der Bewertungsausschuss für die zahnärztlichen Leistungen den in § 7 der Richtlinie des Gemeinsamen Bundesausschusses über Maßnahmen zur Verhütung von Zahnerkrankungen bei Pflege"
+        ]
+      }
+    },
+    "BEMA_BEMA_106": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376979%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376937%27%5D.html",
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377093%27%5D.html",
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377094%27%5D.html",
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377599%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Die Abrechnung der BEMA-Nr. 105 setzt bei der Behandlung von Schleimhauterkrankungen des Mundes voraus, dass die Behandlung mithilfe von Medikamenten erfolgt.",
+          "Wird allein ein Arzneimittel zur häuslichen Anwendung verordnet, kann die BEMA-Nr. 105 nicht angesetzt werden, evtl. jedoch die BEMA-Nr. Ä 1, wenn die sonstigen Bestimmungen zur Abrechnung dieser Gebü",
+          "Wenn erforderlich und wirtschaftlich, können Maßnahmen nach den BEMA-Nrn. 105, 106 und 107 nebeneinander in einer Sitzung erbracht werden. Dann sind auch die betreffenden Gebührennummern nebeneinander"
+        ]
+      }
+    },
+    "BEMA_BEMA_107": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377018%27%5D.html",
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377530%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Versicherte im Alter vom 6. bis zum vollendeten 72. Lebensmonat haben zweimal je Kalenderhalbjahr Anspruch auf die Anwendung von Fluoridlack zur Schmelzhärtung. Die Formulierung „Anwendung von Fluorid",
+          "Die Fluoridierung nach BEMA-Nr. FLA lässt sich von der lokalen Fluoridierung der Zähne nach BEMA-Nr. IP 4 anhand des Alters der in die jeweiligen Leistungspositionen einbezogenen Versicherten klar abg",
+          "Zwar ist dort zudem geregelt, dass Leistungen nach den BEMA-Nrn. IP 4 und IP 5 auch für andere Versicherte abgerechnet werden können, soweit dies in den Abrechnungsbestimmungen ausdrücklich vereinbart"
+        ]
+      }
+    },
+    "BEMA_BEMA_12": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377059%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376938%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377078%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377077%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377076%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Die Abrechnung der BEMA-Nr. 12 ist neben der BEMA-Nr. 126 b einmal je Kieferhälfte oder Frontzahnbereich möglich.",
+          "hten diagnostischen und therapeutischen LeistungenNicht abrechnungsfähig– alleiniges Verdrängen des Zahnfleisches zum Zwecke der AbformungAbrechnung– ",
+          "Die Möglichkeiten für die Abrechnung der BEMA-Nr. 11 sind stark begrenzt."
+        ]
+      }
+    },
+    "BEMA_BEMA_122": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377067%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Neben Leistungen nach den Nrn. 119/120 sind die Nrn. 122 a bis c nicht abrechnungsfähig.",
+          "Zusätzlich abrechnungsfähig",
+          "Früherkennungsuntersuchung (BEMA-Nrn. FU 1, FU Pr, FU 2, FLA) entsprechend den Abrechnungsbestimmungen",
+          "Individualprophylaxe (BEMA-Nrn. IP 1 bis IP 5) entsprechend den Abrechnungsbestimmungen",
+          "Nicht abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_123": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377068%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Neben Leistungen nach den Nrn. 119/120 sind Leistungen nach Nrn. 123 a oder 123 b nicht abrechnungsfähig.",
+          "Für eine Leistung nach Nr. 123 a ist kein Behandlungsplan nach Nr. 5 abrechnungsfähig.",
+          "Neben einer Leistung nach Nr. 123 a kann ein Orthopantomogramm abgerechnet werden, wenn es nicht bereits erbracht wurde. Andere Röntgenaufnahmen sind daneben nicht abrechnungsfähig.",
+          "Für eine Leistung nach Nr. 123 b ist kein Behandlungsplan nach Nr. 5 abrechnungsfähig.",
+          "Neben einer Leistung nach Nr. 123 b kann ein Orthopantomogramm abgerechnet werden, wenn es nicht bereits erbracht wurde. Andere Röntgenaufnahmen sind daneben nicht abrechnungsfähig."
+        ]
+      }
+    },
+    "BEMA_BEMA_126": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376978%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377071%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "In besonderen, günstig gelagerten Fällen ist es möglich, solche Zähne doch noch durch die Kombination zuerst chirurgischer, dann kieferorthopädischer Maßnahmen als vollwertiges funktionelles Glied in ",
+          "Die Leistungslegende zur BEMA-Nr. 63 stellt klar, dass mit dieser Gebühr nur das Freilegen eines retinierten oder verlagerten Zahnes abgegolten ist. Die nachfolgenden kieferorthopädischen Behandlungsm",
+          "Ä-Nr. 2700)– Zystektomie (BEMA-Nr. 56 a)– u. v. m.Nicht abrechnungsfähig– BEMA-Nrn. 56 b, 56 c, 56 d neben BEMA-Nr. 63Abrechnung– entsprechend regiona"
+        ]
+      }
+    },
+    "BEMA_BEMA_127": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377072%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Individualprophylaxe (BEMA-Nrn. IP 1 bis IP 5) entsprechend den Abrechnungsbestimmungen",
+          "Nicht abrechnungsfähig",
+          "Außerdem zeichnen sich hochwertige Drähte durch präzisere Dimensionen aus, was mit entsprechend hochwertigen Brackets eine ideale Kombination darstellt.",
+          "Die Eingliederung eines Teilbogens wird nach BEMA-Nr. 127 a abgerechnet. Werden Zwei- oder Mehrteilbögen in einem Kiefer eingegliedert, so erfolgt die Abrechnung wie ein ungeteilter Bogen. Ein ungetei"
+        ]
+      }
+    },
+    "BEMA_BEMA_128": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377074%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377073%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Nicht abrechnungsfähig",
+          "Zusätzlich abrechnungsfähig",
+          "Individualprophylaxe (BEMA-Nrn. IP 1 bis IP 5) entsprechend den Abrechnungsbestimmungen",
+          "Die Abrechnung der BEMA-Nr. 129 erfolgt über Formular „Abrechnung für kieferorthopädische Behandlung“ oder über EDV-Ausdruck. Siehe hierzu Beschreibung unter Abrechnung kieferorthopädischer Behandlung",
+          "urleistungAbgegolten– Anpassung und/oder UmformungNicht abrechnungsfähig– BEMA-Nr. 128 c Ausgliederung von Vollbögen Zusätzlich abrechnungsfähig– Sepa"
+        ]
+      }
+    },
+    "BEMA_BEMA_130": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377075%27%5D.html",
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_SID=&hlf=xaver.component.Hitlist_0&tf=xaver.component.Text_0# (4).html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Individualprophylaxe (BEMA-Nrn. IP 1 bis IP 5) entsprechend den Abrechnungsbestimmungen",
+          "Nicht abrechnungsfähig",
+          "Die Abrechnung der BEMA-Nr. 130 erfolgt über Formular „Abrechnung für kieferorthopädische Behandlung“ oder über EDV-Ausdruck. Siehe hierzu Beschreibung unter Abrechnung kieferorthopädischer Behandlung",
+          "kosten zur extraoralen Fixierung und Aktivierung– Nicht abrechnungsfähig: Material- und Laboratoriumskosten für festsitzende Apparaturen– Die Einglied"
+        ]
+      }
+    },
+    "BEMA_BEMA_151": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376984%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Leistung nach Nr. 152 a ist nur abrechnungsfähig für Versicherte, die in derselben Privatwohnung des nach Nr. 151 aufgesuchten Versicherten leben.",
+          "Die Leistung nach Nr. 152 b ist abrechnungsfähig für Versicherte in derselben Einrichtung (z. B. betreute Wohngemeinschaft, stationäre Pflegeeinrichtung).",
+          "Neben den Leistungen nach Nrn. 152 a und 152 b sind die Leistungen nach Nrn. 153 a, 153 b, 154 und 155 nicht abrechnungsfähig. Die Nrn. 152 a und 152 b können zusätzlich zum Wegegeld und zur Reiseents",
+          "Abrechnungsfähige Zuschläge",
+          "Zusätzlich abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_154": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376987%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Leistung nach Nr. 155 ist nur abrechnungsfähig für pflegebedürftige Versicherte, die in einer stationären Pflegeeinrichtung betreut werden, wenn der Vertragszahnarzt mit der stationären Pflegeeinr",
+          "Neben der Leistung nach Nr. 155 sind die Leistungen nach Nrn. 151, 152 a, 152 b, 153 a und 153 b nicht abrechnungsfähig. Die Nr. 155 kann zusätzlich zum Wegegeld und zur Reiseentschädigung abgerechnet",
+          "Abrechnungsfähige Zuschläge",
+          "Zusätzlich abrechnungsfähig",
+          "Die Abrechnung der BEMA-Nr. 155 kann nur erfolgen, wenn in unmittelbarem zeitlichen Zusammenhang bei einem anderen Versicherten derselben stationären Pflegeeinrichtung die BEMA-Nr. 154 abgerechnet wur"
+        ]
+      }
+    },
+    "BEMA_BEMA_161": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376983%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376986%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Neben der Leistung nach Nr. 151 sind die Leistungen nach Nrn. 153 a, 153 b, 154 und 155 nicht abrechnungsfähig. Die Nr. 151 kann zusätzlich zum Wegegeld und zur Reiseentschädigung abgerechnet werden.",
+          "Abrechnungsfähige Zuschläge",
+          "Zusätzlich abrechnungsfähig",
+          "für den Besuch eines weiteren Versicherten in derselben häuslichen Gemeinschaft oder Einrichtung im unmittelbaren zeitlichen Zusammenhang ist die BEMA-Nr. 152 a oder 152 b abrechnungsfähig",
+          "Nicht abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_165": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376989%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376985%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376988%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Zuschläge nach den Nrn. 162 a bis 162 f sind nicht nebeneinander abrechnungsfähig.",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "über KCH mittels elektronischer/m Datenübermittlung/Datenträger (BEMA-Teil 1 – KCH-Quartalsabrechnung)",
+          "nur dann im Rahmen der Abrechnung für Kiefergelenkserkrankung und Kieferbruch (BEMA-Teil 2 – KG/KB-Monatsabrechnung), wenn Leistungen im Rahmen der Behandlung von Kiefergelenkserkrankung oder Kieferbr"
+        ]
+      }
+    },
+    "BEMA_BEMA_171": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376991%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Zuschläge nach Nrn. 171 a und 171 b sind abrechnungsfähig für Versicherte, die einem Pflegegrad nach § 15 SGB XI zugeordnet sind oder Eingliederungshilfe nach § 99 SGB IX erhalten und die Zahnarzt",
+          "Der Zuschlag nach Nr. 171 a ist nur in Verbindung mit einem Besuch nach Nr. 151, der Zuschlag nach Nr. 171 b ist nur in Verbindung mit einem Besuch nach Nr. 152 a oder Nr. 152 b abrechnungsfähig. Der ",
+          "kognitive und kommunikative Fähigkeiten sowie Verhaltensweisen und psychische Problemlagen zusammen mit 15 Prozent,",
+          "(3) Zur Ermittlung des Pflegegrades sind die bei der Begutachtung festgestellten Einzelpunkte in jedem Modul zu addieren und dem in Anlage 2 festgelegten Punktbereich sowie den sich daraus ergebenden ",
+          "Zusätzlich abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_172": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376992%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Zuschläge nach Nrn. 172 a und 172 b sind nur abrechnungsfähig für pflegebedürftige Versicherte, die in einer stationären Pflegeeinrichtung (§ 71 Abs. 2 SGB XI) betreut werden, wenn der Vertragszah",
+          "Der Zuschlag nach Nr. 172 a ist nur in Verbindung mit einem Besuch nach Nr. 154, der Zuschlag nach Nr. 172 b ist nur in Verbindung mit einem Besuch nach Nr. 155 abrechnungsfähig. Der Zuschlag nach Nr.",
+          "Der Vertragszahnarzt kann für pflegebedürftige Versicherte, die in einer stationären Pflegeeinrichtung (§ 71 Abs. 2 SGB XI) betreut werden, mit welcher der Vertragszahnarzt einen Kooperationsvertrag g",
+          "(2 j) Für Leistungen, die im Rahmen eines Vertrages nach § 119 b Abs. 1 erbracht werden, ist im einheitlichen Bewertungsmaßstab für zahnärztliche Leistungen eine zusätzliche, in der Bewertung über Abs",
+          "(1) Stationäre Pflegeeinrichtungen sollen einzeln oder gemeinsam bei entsprechendem Bedarf unbeschadet des § 75 Abs. 1 Kooperationsverträge mit dafür geeigneten vertragsärztlichen Leistungserbringern "
+        ]
+      }
+    },
+    "BEMA_BEMA_173": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376993%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Zuschläge nach Nrn. 173 a und 173 b sind abrechnungsfähig für Versicherte, die einem Pflegegrad nach § 15 SGB XI zugeordnet sind oder Eingliederungshilfe nach § 99 SGB IX erhalten und die Zahnarzt",
+          "Der Zuschlag nach Nr. 173 a ist nur in Verbindung mit einem Besuch nach Nr. 153 a, der Zuschlag nach Nr. 173 b ist nur in Verbindung mit einem Besuch nach Nr. 153 b abrechnungsfähig. Die Zuschläge nac",
+          "kognitive und kommunikative Fähigkeiten sowie Verhaltensweisen und psychische Problemlagen zusammen mit 15 Prozent,",
+          "(3) Zur Ermittlung des Pflegegrades sind die bei der Begutachtung festgestellten Einzelpunkte in jedem Modul zu addieren und dem in Anlage 2 festgelegten Punktbereich sowie den sich daraus ergebenden ",
+          "Zusätzlich abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_174": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376998%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376994%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Leistung nach Nr. VS kann in derselben Sitzung nicht neben Leistungen nach Nrn. VFK, 181 oder 182 abgerechnet werden.",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV über die KCH-Quartalsabrechnung",
+          "nur dann über Abrechnungsformular für Kiefergelenkserkrankung und Kieferbruch (BEMA-Teil 2 – KG/KB-Monatsabrechnung), wenn Leistungen im Rahmen der Behandlung von Kiefergelenkserkrankung oder Kieferbr"
+        ]
+      }
+    },
+    "BEMA_BEMA_18": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377117%27%5D.html",
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377113%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Zahn"
+        },
+        "notes": [
+          "Soweit der Zahnarzt erklären kann, warum es nicht zur Vollendung der vorgesehenen Leistungen gekommen ist, vermerkt er dies im Rahmen der Abrechnung.",
+          "anteilige Abrechnung von Gebühren der BEMA-Nrn. 18 und 20 in Fällen, in denen die Behandlung aus nicht vorhersehbaren Gründen, die der Zahnarzt nicht zu vertreten hat, nicht abgeschlossen werden kann",
+          "Abrechnung des zahnärztlichen Honorars entsprechend dem Stand der zahnärztlichen Behandlung bei Behandlungsabbruch bzw. -unterbrechung",
+          "Zusätzlich abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV"
+        ]
+      }
+    },
+    "BEMA_BEMA_181": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376996%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "(1) Bei einem Telekonsilium muss der Konsiliar(zahn-)arzt gemeinsam mit der konsiliarischen Beurteilung mindestens die Daten nach § 3 Absatz 2 Buchstaben a bis e übermitteln, um eine Zuordnung zu ermö",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV über die KCH-Quartalsabrechnung",
+          "nur dann über Abrechnungsformular für Kiefergelenkserkrankung und Kieferbruch (BEMA-Teil 2 – KG/KB-Monatsabrechnung), wenn Leistungen im Rahmen der Behandlung von Kiefergelenkserkrankung oder Kieferbr"
+        ]
+      }
+    },
+    "BEMA_BEMA_182": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376997%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Leistungen nach Nr. 182 a und Nr. 182 b sind nur abrechenbar für die konsiliarische Erörterung einer versichertenbezogenen Fragestellung, die pflegebedürftige Versicherte betreffen, welche in eine",
+          "Die Leistungen nach Nr. 182 a und Nr. 182 b sind nicht abrechnungsfähig, wenn die Zahnärzte Mitglieder derselben Berufsausübungsgemeinschaft, einer Praxisgemeinschaft von Ärzten/Zahnärzten gleicher od",
+          "(1) Stationäre Pflegeeinrichtungen haben einzeln oder gemeinsam bei entsprechendem Bedarf unbeschadet des § 75 Abs. 1 Kooperationsverträge mit dafür geeigneten vertragsärztlichen Leistungserbringern z",
+          "(3) Der Bewertungsausschuss für ärztliche Leistungen evaluiert die mit der Vergütungsregelung nach § 87 Absatz 2 a verbundenen Auswirkungen auf das Versorgungsgeschehen im Bereich der vertragsärztlich",
+          "(1) Bei einem Telekonsilium muss der Konsiliar(zahn-)arzt gemeinsam mit der konsiliarischen Beurteilung mindestens die Daten nach § 3 Absatz 2 Buchstaben a bis e übermitteln, um eine Zuordnung zu ermö"
+        ]
+      }
+    },
+    "BEMA_BEMA_19": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377114%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Zahn"
+        },
+        "notes": [
+          "Neben Leistungen nach den Nrn. 19 und 21 ist eine Leistung nach Nr. 23 für das Entfernen des provisorischen Schutzes nicht abrechnungsfähig. Dies gilt nicht für das Entfernen eines provisorischen Schu",
+          "Provisorische Versorgungen in den vom Gemeinsamen Bundesausschuss festgelegten Ausnahmefällen sind nach der Nr. 19 abrechnungsfähig und bei der Abrechnung als Nr. 19 i zu kennzeichnen.",
+          "BEMA-Nr. 19 i abrechnungsfähig für provisorische Versorgungen bei Ausnahmefällen nach Ziffer 36 a der Zahnersatz-Richtlinien",
+          "nur einmal in Teil III „Kostenplanung“ ansatzfähig; höchstens zweimal je Zahn abrechnungsfähig",
+          "in Ausnahmefällen abrechnungsfähig für im zahntechnischen Labor hergestellte Provisorien (Laborprovisorien)"
+        ]
+      }
+    },
+    "BEMA_BEMA_20": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377115%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Einzelkronen auf Implantaten sind in den vom Gemeinsamen Bundesausschuss festgelegten Ausnahmefällen nach den Nrn. 20 a/20 b abrechnungsfähig und bei der Abrechnung mit i zu kennzeichnen.",
+          "Wählen Versicherte einen über die Regelversorgung gemäß § 56 Abs. 2 SGB V hinausgehenden gleichartigen Zahnersatz, haben sie die Mehrkosten gegenüber den in § 56 Abs. 2 Satz 10 SGB V aufgelisteten Lei",
+          "BEMA-Nrn. 20 a bis c abrechnungsfähig für Einzelkronen",
+          "BEMA-Nr. 20 c nur abrechnungsfähig bei",
+          "BEMA-Nr. 20 b i abrechnungsfähig für Einzelkronen als Suprakonstruktionen bei Ausnahmefällen nach Ziffer 36 a der Zahnersatz-Richtlinien"
+        ]
+      }
+    },
+    "BEMA_BEMA_23": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377120%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Eine Leistung nach der Nr. 90 ist nur im Zusammenhang mit der Eingliederung einer Cover-Denture-Prothese bei einem Restzahnbestand von bis zu drei Zähnen je Kiefer abrechnungsfähig.",
+          "IV. Kombinationsversorgung",
+          "Über eine Kombinationsversorgung wird festsitzender mit herausnehmbarem Zahnersatz zu einer funktionalen Einheit unter Verwendung von Verbindungselementen zusammengefügt.",
+          "Kombinationsversorgungen sind angezeigt, wenn gegenüber anderen Zahnersatzformen eine statisch und funktionell günstigere Belastung der Restzähne und eine günstige Retention erreicht werden kann. Die ",
+          "Zusätzlich abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_24": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377118%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Maßnahmen zur Wiederherstellung der Funktion von Einzelkronen auf Implantaten sind in den vom Gemeinsamen Bundesausschuss festgelegten Ausnahmefällen nach Nrn. 24 a, 24 b und 24 c abrechnungsfähig und",
+          "Versicherte haben Anspruch auf Erstattung bewilligter Festzuschüsse nach § 55 Abs. 5 SGB V, wenn eine von der Regelversorgung abweichende, andersartige Versorgung durchgeführt wird. Eine andersartige ",
+          "BEMA-Nrn. 24 a bis c abrechnungsfähig für die Wiederherstellung der Funktion von Einzelkronen, Wiederherstellung von Verblendungen an Einzelkronen sowie die Abnahme und Wiederbefestigung provisorische",
+          "BEMA-Nrn. 24 a i und b i abrechnungsfähig für Wiederherstellungsmaßnahmen der Funktion von Einzelkronen auf Implantaten bei Ausnahmefällen nach Ziffer 36 a der Zahnersatz-Richtlinien",
+          "höchstens dreimal je Krone abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_25": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376939%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Abrechnung der Nr. 12 im Zusammenhang mit den Nrn. 18, 20 und 91 für das Verdrängen des Zahnfleisches zum Zwecke der Abformung, z. B. mittels Retraktionsringen oder -fäden, ist nicht möglich.",
+          "Muss jedoch störendes Zahnfleisch z. B. zum Zwecke des Erkennens von unter sich gehenden Stellen, zur Darstellung der Präparationsgrenze oder zur subgingivalen Stufenpräparation, z. B. durch Retraktio",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Die BEMA-Umrelationierung, die mit dem 01.01.2004 in Kraft getreten ist, unterscheidet wieder zwischen den besonderen Maßnahmen zum Verdrängen des Zahnfleisches und der Entfernung störenden Zahnfleisc"
+        ]
+      }
+    },
+    "BEMA_BEMA_28": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376950%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376952%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376951%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "unvollendete Wurzelbehandlung: die Abrechnung endet mit der BEMA-Nr., die zuletzt ausgeführt wurde",
+          "Diese Abgrenzung ist von Bedeutung bei der Abrechnung von unvollendeten Wurzelbehandlungen, bei getrennter Abrechnung bei Übergang ins nächste Quartal und besonders im Zusammenhang mit der Abrechnung ",
+          "Die Aufbereitung des Wurzelkanalsystems erfolgt heute sehr häufig mit sogenannten Normbestecken. In diesem Falle sind die Wurzelkanalinstrumente, Wurzelkanalfüller und die Stifte, die im Zusammenhang "
+        ]
+      }
+    },
+    "BEMA_BEMA_31": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376967%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376970%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Seit der Möglichkeit der antibiotischen (keimhemmenden oder keimabtötenden) Therapie zur Eliminierung der infizierenden Keime aus dem Knochen ist die Bedeutung knochen-chirurgischer Maßnahmen beim Vor",
+          "So ist die BEMA-Nr. 52 in einer Sitzung zusätzlich zur BEMA-Nr. 31 (Trep1) oder anderen BEMA-Nummern mit endodontischem Sachverhalt abrechenbar. Eine Kombination der BEMA-Nr. 52 mit den Ziffern der BE",
+          "Eine Kombination mit Inzisionen (vgl. BEMA-Nr. Ä 161, GOÄ-Nrn. 2430 und 2432) ist ebenfalls logisch nur sehr schwer nachvollziehbar, da in einem Stadium der akuten Entzündung, in dem bereits eine Inzi"
+        ]
+      }
+    },
+    "BEMA_BEMA_36": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376960%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376961%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376958%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376954%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376959%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376964%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Die Abrechnung erfolgt heutzutage über geeignete digitale Datenübertragung.",
+          "Eine Nachbehandlung ist ebenfalls für dieselbe Sitzung nicht berechnungsfähig. Desgleichen kann die in derselben Sitzung den Extraktionen nachfolgende Resektion der Alveolarfortsätze dann nicht berech",
+          "In der Regel kann ein überkronter Zahn, der extrahiert werden muss, mitsamt der Krone entfernt werden, so dass die BEMA-Nr. 23 nicht zusammen mit der BEMA-Nummer für die Entfernung des Zahnes (BEMA-Nr"
+        ]
+      }
+    },
+    "BEMA_BEMA_37": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376968%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376953%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376963%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Seit der Möglichkeit der antibiotischen (keimhemmenden oder keimabtötenden) Therapie zur Eliminierung der infizierenden Keime aus dem Knochen ist die Bedeutung knochen-chirurgischer Maßnahmen beim Vor",
+          "Ist in sehr seltenen Fällen eine Sequestrotomie des Kiefers in zwei voneinander getrennten Operationsbereichen erforderlich, so kann die BEMA-Nr. 53 zweimal (je Osteotomie, nicht je Sequester) angeset",
+          "nen Zysten in Verbindung mit Osteotomien– u. v. m.Nicht abrechnungsfähigfür– Entfernung eines tiefsitzenden Fremdkörpers auf operativem Wege (GOÄ-Nr. "
+        ]
+      }
+    },
+    "BEMA_BEMA_38": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376931%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Aufgrund der Tatsache, dass zahnärztliche Leistungen, die nicht im BEMA enthalten sind, ab 01.01.2004 nach der GOÄ vom 12.11.1982 in der jeweils gültigen Fassung bewertet werden (gemäß Nr. 3 der Allge",
+          ", Ä 935)– Anästhesien (BEMA-Nrn. 40, 41)– u. v. m.Nicht abrechnungsfähigfür– Eröffnung tiefliegender Abszesse (GOÄ-Nr. 2430)– Eröffnung einer ausgedeh"
+        ]
+      }
+    },
+    "BEMA_BEMA_4": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377099%27%5D.html",
+        "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377100%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV",
+          "auf dem digitalen PAR-Abrechnungsformular",
+          "Durch die Abrechnungsbestimmungen ausgeschlossen ist die Abrechnung der BEMA-Nr. 108 im Zusammenhang mit konservierenden, prothetischen und chirurgischen Leistungen."
+        ]
+      }
+    },
+    "BEMA_BEMA_41": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376957%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376956%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Sitzung"
+        },
+        "notes": [
+          "Leistungen nach den Nrn. 40 und 41 sind auch bei der Versorgung mit Zahnersatz und Zahnkronen auf dem Erfassungsschein* abzurechnen. Dies ist bei der Abrechnung zu kennzeichnen.",
+          "Die Abrechnung einer Leistung nach der Nr. 41 kann nur erfolgen, wenn die Infiltrationsanästhesie (Nr. 40) nicht ausreicht. Dies ist gegeben:",
+          "Bei lang dauernden Eingriffen ist die Nr. 41 ein zweites Mal abrechnungsfähig.",
+          "Zusätzlich abrechnungsfähig",
+          "alle erbrachten abrechnungsfähigen Leistungen"
+        ]
+      }
+    },
+    "BEMA_BEMA_46": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376955%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376973%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376977%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Nachbehandlungen sind abrechnungsfähig, wenn sie in besonderen Sitzungen, nicht jedoch in unmittelbarem zeitlichen Zusammenhang mit einer Extraktion oder Operation erforderlich sind.",
+          "Eine Leistung nach Nr. 38 kann nicht neben Leistungen nach den Nrn. 36, 37 oder 46 abgerechnet werden, soweit Maßnahmen in derselben Sitzung an derselben Stelle erfolgen.",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Für die BEMA-Nr. 38 bedeutet die selbstständige Ausführung, dass diese Leistung nur dann abrechnungsfähig ist, wenn sie für die betroffene Kieferhälfte bzw. den betroffenen Frontzahnbereich in der bet"
+        ]
+      }
+    },
+    "BEMA_BEMA_47": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376962%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die Abrechnung einer Leistung nach der Nr. 47 a setzt die Aufklappung des Zahnfleisches voraus.",
+          "Eine Leistung nach Nr. 47 b ist nur in begründeten Ausnahmefällen zum Erhalt einer geschlossenen Zahnreihe und/oder zum Erhalt einer bestehenden prothetischen Versorgung abrechnungsfähig.",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Durchtrennung von Schleimhaut (Mucosa) und Knochenhaut (Periost) und die Bildung eines Mucoperiostlappens, um sich einen Zugang zum Operationsgebiet zu schaffen und eine übersichtliche Darstellung des"
+        ]
+      }
+    },
+    "BEMA_BEMA_5": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377061%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377063%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Die Beurteilung des Profils nimmt im Rahmen der kieferorthopädischen Behandlungsplanung einen hohen Stellenwert ein. Bereits Angle wies um die Jahrhundertwende auf die fotografische Dokumentation sein",
+          "Im Verlauf einer kieferorthopädischen Behandlung darf die BEMA-Nr. 116 nach den Abrechnungsbestimmungen lediglich viermal abgerechnet werden, da die Fotografie nur für diagnostische Zwecke abrechnungs",
+          "Die Worte „im Verlauf einer kieferorthopädischen Behandlung“ beziehen sich auf eine genehmigungspflichtige Behandlungsplanung. So ist unbedingt darauf zu achten, dass Fotografien neu zu beantragen sin"
+        ]
+      }
+    },
+    "BEMA_BEMA_51": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376966%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Ebenfalls ist die BEMA-Nr. 51 a bei all denjenigen anderen Fällen berechenbar, bei denen eigens zur Deckung der Mund-Antrum-Verbindung die Aufklappung erfolgen muss. Diese eher seltenen Fälle sind z. ",
+          "In den Fällen der transalveolären Kieferhöhlentherapie sind selbstverständlich alle die Therapie der Kieferhöhle betreffenden Maßnahmen neben der BEMA-Nr. 51 nach der geltenden GOÄ nach Maßgabe von Nr",
+          "Ist im Rahmen der Zahnentfernung bereits eine Aufklappung erfolgt (Zahnentfernung durch Osteotomie, vgl. BEMA-Nr. 47 und 48), so erfolgt die Abrechnung des plastischen Verschlusses nach der BEMA-Nr. 5",
+          "Wurzelspitzenresektion (vgl. BEMA-Nr. 54) an oberen Prämolaren und Molaren. Besonders bei Resektionen der Wurzelspitze mit ihrer sehr engen Nachbarschaft zur Kieferhöhle kann es leicht zur ungewollten"
+        ]
+      }
+    },
+    "BEMA_BEMA_54": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376969%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Die Berücksichtigung von Wurzelspitzenresektionen an benachbarten Zähnen, die bei der Abrechnung immer wieder zu Auslegungsschwierigkeiten geführt hatte, ist zum 01.01.2004 aus dem BEMA gestrichen wor",
+          "So ist die neue, klar definierte Regelung der Abrechnung der Wurzelspitzenresektion sehr zu begrüßen und stellt sich en detail wie folgt dar:",
+          "Um diesem unterschiedlichen operativen Aufwand bei getrennten oder konfluierenden Osteotomien bei der Resektion gerecht zu werden, unterscheidet die BEMA-Nr. 54 c (Abrechnung jeder weiteren Wurzelspit"
+        ]
+      }
+    },
+    "BEMA_BEMA_55": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377031%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Leistungen nach den Nrn. K 1 bis K 4 sind nur dann abrechnungsfähig, wenn eine Kostenübernahmeerklärung der Krankenkasse vorliegt. Die Gesamtvertragspartner auf Landesebene können Abweichendes vereinb",
+          "Leistungen nach den Nrn. K 1 und K 4 sind auch für die Parodontalbehandlung abrechnungsfähig.",
+          "nur dann abrechnungsfähig, wenn die Genehmigung der Krankenkasse vorliegt (regionale Vereinbarungen der KZV können bzgl. des Genehmigungsverfahrens Abweichendes vereinbaren)",
+          "Zusätzlich abrechnungsfähig",
+          "alle abrechnungsfähigen therapeutischen Leistungen"
+        ]
+      }
+    },
+    "BEMA_BEMA_56": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376971%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Das Entfernen von Granulationsgewebe und kleinen Zysten ist nicht nach Nr. 56 abrechnungsfähig.",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "verschiedene Zystenarten, deren Gemeinsamkeit darin besteht, dass bereits während der Embryonalzeit Störungen in der Entwicklung verschiedener Drüsenanlagen stattgefunden haben. Hierzu zählen z. B. di",
+          "Eine Zystektomie als selbstständige Leistung kommt dann nach BEMA-Nr. 56 zur Abrechnung, wenn es sich entweder um zahnlose Knochenzysten handelt (z. B. Residualzysten, nicht-odontogene Zysten, Keratoz"
+        ]
+      }
+    },
+    "BEMA_BEMA_57": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376976%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376965%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Die der Diastemaoperation nachfolgenden kieferorthopädischen Behandlungsmaßnahmen sind nach BEMA-Teil 3 gesondert abrechnungsfähig (vgl. z. B. BEMA-Nrn. 119 a – d).",
+          "(siehe BEMA-Teil 3 bzw. Gebührentarif D)– u. v. m.Nicht abrechnungsfähigfür– Beseitigung störender Schleimhautbänder (BEMA-Nr. 57)– Durchtrennen des L",
+          "Eine Leistung nach Nr. 50 ist in derselben Sitzung nicht für dasselbe Operationsgebiet neben einer anderen chirurgischen Leistung abrechnungsfähig."
+        ]
+      }
+    },
+    "BEMA_BEMA_58": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376974%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Gegebenenfalls ist auch eine Kombination der Alveolarkammchirurgie mit in gleicher oder nachfolgender Sitzung vorgenommener Implantation indiziert. Insofern die Sulkusplastik nicht wegen der Implantat",
+          "Die Mundboden- oder Vestibulumplastik ist je Frontzahngebiet oder je Kieferhälfte als präprothetische Maßnahme abrechnungsfähig.",
+          "Auch wenn nunmehr – entsprechend der Maßgabe der Nr. 3 der Allgemeinen Bestimmungen zum BEMA – zahnärztliche Leistungen, die nicht im BEMA enthalten sind, nach der jeweils gültigen Fassung der GOÄ abg"
+        ]
+      }
+    },
+    "BEMA_BEMA_59": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376972%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376975%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Auch wenn nunmehr – entsprechend der Maßgabe der Nr. 3 der Allgemeinen Bestimmungen zum BEMA – zahnärztliche Leistungen, die nicht im BEMA enthalten sind, nach der jeweils gültigen Fassung der GOÄ abg",
+          "BEMA-Nr. 57 kann nur einmal (Frontzahnbereich) abgerechnet werden. Daneben erfolgt die Abrechnung der Anästhesie zweimal nach BEMA-Nr. 41.",
+          "e und plastischer Deckung (GOÄ-Nr. 2386)– u. v. m.Nicht abrechnungsfähig– neben Mundboden- oder Vestibulumplastik an derselben Stelle, in derselben Si"
+        ]
+      }
+    },
+    "BEMA_BEMA_7": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377112%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377060%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377062%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376926%27%5D.html",
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377026%27%5D.html",
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377027%27%5D.html",
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377057%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die vorbereitenden Maßnahmen (Nr. 7 a) sind nur im Rahmen einer kieferorthopädischen Behandlung abrechnungsfähig. Sie sind bis zu dreimal im Verlauf einer kieferorthopädischen Behandlung, bei kombinie",
+          "Die vorbereitenden Maßnahmen (Nr. 7 b) sind nur im Rahmen der Versorgung mit Zahnersatz und Zahnkronen, der Behandlung von Verletzungen und Erkrankungen des Gesichtsschädels und bei Unterkieferprotrus",
+          "Im Rahmen der Versorgung mit Zahnersatz und Zahnkronen sind Leistungen nach der Nr. 7 b neben alleinigen Maßnahmen nach Nrn. 20 und 100 in der Regel nicht abrechnungsfähig.",
+          "BEMA-Nr. 7 b im Zusammenhang mit Zahnersatz und Zahnkronen nur abrechnungsfähig, wenn mit der Herstellung der Modelle eine notwendige Auswertung und Planung verbunden ist.",
+          "Nicht abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_8": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376933%27%5D.html",
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377116%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376943%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376948%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376941%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376949%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376932%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376945%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376944%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376946%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376925%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376947%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376935%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376934%27%5D.html",
+        "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376942%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Zahn"
+        },
+        "notes": [
+          "Mit der Abrechnung der Nrn. Ä 925 bis Ä 935 sind auch die Beurteilung und die obligatorische schriftliche Befunddokumentation abgegolten.",
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Im Zusammenhang mit einer KFO-Behandlung kommt die BEMA-Nr. Ä 928 für die Aufnahme der Hand zur Abrechnung. Sie muss bereits im KFO-Behandlungsplan unter den notwendigen Maßnahmen aufgeführt sein.",
+          "Ä 1, 01)– Vitalitätsprüfung (BEMA-Nr. 8)– u. v. m.Nicht abrechnungsfähig– wenn keine Indikation gegeben entsprechend der KFO-Richtlinie B. 5. d)– für "
+        ]
+      }
+    },
+    "BEMA_BEMA_89": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377119%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Heil"
+        },
+        "notes": [
+          "nur einmal je Heil- und Kostenplan, d. h. je Behandlungsfall, abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV",
+          "Die Beantragung und Abrechnung der BEMA-Nr. 89 erfolgt immer aufgrund eines individuell für diesen Patienten erstellten Heil- und Kostenplans.",
+          "Die BEMA-Nr. 89 kann abgerechnet werden, wenn grobe Artikulations- und Okklusionsstörungen vor der Eingliederung von Prothesen und Brücken beseitigt werden. Eine routinemäßige Abrechnung der Beseitigu"
+        ]
+      }
+    },
+    "BEMA_BEMA_8c": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377065%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Im Zusammenhang mit einer Leistung nach Nrn. 119/120 ist eine Leistung nach Nr. 01 nur abrechnungsfähig, wenn sie anderen als kieferorthopädischen Zwecken dient.",
+          "Im Verlauf einer kieferorthopädischen Behandlung ist die Abrechnung von Leistungen der Nrn. 121 bis 124 neben einer Leistung der Nrn. 119/120 nicht möglich.",
+          "Für Kalenderquartale, in denen keine kieferorthopädischen Leistungen erbracht wurden, entfällt die Abrechnung der Abschlagszahlung. In diesen Fällen verlängert sich die Behandlungszeit entsprechend. I",
+          "Mit den Gebühren nach Nrn. 119/120 ist eine Behandlungszeit bis zu 16 Behandlungsquartalen abgegolten. Bei vorzeitigem Behandlungsabschluss können in den Fällen nach den Nrn. 119 a und b sowie 120 a u",
+          "Bei der Frühbehandlung eines Distalbisses, eines lateralen Kreuz- oder Zwangsbisses, sofern dieser durch präventive Maßnahmen (Einschleifen) nicht zu korrigieren ist, einer Bukkalokklusion (Nonokklusi"
+        ]
+      }
+    },
+    "BEMA_BEMA_90": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377127%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Bei der Versorgung eines zahnlosen Kiefers durch eine implantatgetragene Prothese in den vom Gemeinsamen Bundesausschuss festgelegten Ausnahmefällen sind die Nrn. 97 a und 97 b abrechnungsfähig und be",
+          "Die zusätzliche Abrechnung von zahnärztlichem Honorar bei Anwendung besonderer Abdruckverfahren ist nicht zulässig.",
+          "Versicherte haben Anspruch auf Erstattung bewilligter Festzuschüsse nach § 55 Abs. 5 SGB V, wenn eine von der Regelversorgung abweichende, andersartige Versorgung durchgeführt wird. Eine andersartige ",
+          "Kombinationsversorgung",
+          "Über eine Kombinationsversorgung wird festsitzender mit herausnehmbarem Zahnersatz zu einer funktionalen Einheit unter Verwendung von Verbindungselementen zusammengefügt. Kombinationsversorgungen sind"
+        ]
+      }
+    },
+    "BEMA_BEMA_91": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377121%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Gegossene Einlagefüllungen als Brückenanker sind nicht abrechnungsfähig.",
+          "Versicherte haben Anspruch auf Erstattung bewilligter Festzuschüsse nach § 55 Abs. 5 SGB V, wenn eine von der Regelversorgung abweichende, andersartige Versorgung durchgeführt wird. Eine andersartige ",
+          "IV. Kombinationsversorgung",
+          "Über eine Kombinationsversorgung wird festsitzender mit herausnehmbarem Zahnersatz zu einer funktionalen Einheit unter Verwendung von Verbindungselementen zusammengefügt. Kombinationsversorgungen sind",
+          "Teilkrone nur abrechnungsfähig bei:"
+        ]
+      }
+    },
+    "BEMA_BEMA_92": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377122%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Versicherte haben Anspruch auf Erstattung bewilligter Festzuschüsse nach § 55 Abs. 5 SGB V, wenn eine von der Regelversorgung abweichende, andersartige Versorgung durchgeführt wird. Eine andersartige ",
+          "BEMA-Nr. 92 auch abrechnungsfähig für Freiendbrücken bis zur Prämolarenbreite und unter Einbeziehung von mindestens zwei Pfeilerzähnen. In Schaltlücken ist der Ersatz von Molaren und von Eckzähnen dur",
+          "Zusätzlich abrechnungsfähig",
+          "Abrechnung von Teilleistungen in Fällen, in denen die Behandlung aus nicht vorhersehbaren Gründen, die der Zahnarzt nicht zu vertreten hat, nicht abgeschlossen werden kann, erfolgt nach BEMA-Nr. 94 a.",
+          "Nicht abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_93": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377123%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Als Folge der am 04.05.2016 in Kraft getretenen Änderungen der Richtlinien für die Versorgung mit Zahnersatz und Zahnkronen sowie der darauf aufbauenden Ersetzung der BEMA-Nr. 93 durch die BEMA-Nrn. 9",
+          "Zusätzlich abrechnungsfähig",
+          "Abrechnung von Teilleistungen in Fällen, in denen die Behandlung aus nicht vorhersehbaren Gründen, die der Zahnarzt nicht zu vertreten hat, nicht abgeschlossen werden kann, erfolgt nach BEMA-Nr. 94 b",
+          "Nicht abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV"
+        ]
+      }
+    },
+    "BEMA_BEMA_94": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377124%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Soweit der Zahnarzt erklären kann, warum es nicht zur Vollendung der vorgesehenen Leistungen gekommen ist, vermerkt er dies im Rahmen der Abrechnung.",
+          "anteilige Abrechnung von Gebühren der BEMA-Nrn. 90, 91, 92 und 93 a/b in Fällen, in denen die Behandlung aus nicht vorhersehbaren Gründen, die der Zahnarzt nicht zu vertreten hat, nicht abgeschlossen ",
+          "Abrechnung des zahnärztlichen Honorars entsprechend dem Stand der zahnärztlichen Behandlung bei Behandlungsabbruch bzw. -unterbrechung",
+          "Zusätzlich abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV"
+        ]
+      }
+    },
+    "BEMA_BEMA_95": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377125%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Versicherte haben Anspruch auf Erstattung bewilligter Festzuschüsse nach § 55 Abs. 5 SGB V, wenn eine von der Regelversorgung abweichende, andersartige Versorgung durchgeführt wird. Eine andersartige ",
+          "BEMA-Nrn. 95 a bis f abrechnungsfähig für die Wiederherstellung der Funktion von Brücken, Wiederherstellung von Verblendungen an Brücken sowie die Abnahme und Wiederbefestigung provisorischer Brücken",
+          "höchstens dreimal je Brücke abrechnungsfähig",
+          "abrechnungsfähig für die Wiedereingliederung von Adhäsivbrücken (BEMA-Nrn. 93 a/b)",
+          "Zusätzlich abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_96": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377043%27%5D.html",
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377134%27%5D.html",
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377132%27%5D.html",
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377126%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": {
+          "value": 1,
+          "scope": "Prothese"
+        },
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV",
+          "mit dem digitalen Kieferbruch-Abrechnungsformular",
+          "erfolgt mit der KBR-Abrechnungsdatei und zeitgleich mit der ZE-Abrechnungsdatei, die die Befunde nach den Klassen 3 oder 4 ausweist",
+          "Die Abrechnung der Leistungen nach den BEMA-Nrn. 101 bis 104 wird mit dem KCH-Punktwert vorgenommen."
+        ]
+      }
+    },
+    "BEMA_BEMA_97": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377131%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Eine Leistung nach der Nr. 98 e ist nur in begründeten Ausnahmefällen (z. B. Torus palatinus und Exostosen) abrechnungsfähig. Sie ist nicht abrechnungsfähig für Verstärkungs- und Beschwerungseinlagen ",
+          "Bei der Versorgung eines zahnlosen Kiefers durch eine implantatgetragene totale Prothese in den vom Gemeinsamen Bundesausschuss festgelegten Ausnahmefällen gemäß § 56 Abs. 2 SGB V in Verbindung mit de",
+          "Die zusätzliche Abrechnung von zahnärztlichem Honorar bei Anwendung besonderer Abdruckverfahren ist nicht zulässig.",
+          "BEMA-Nr. 98 e i abrechnungsfähig für die Versorgung eines zahnlosen Kiefers durch eine implantatgetragene totale Prothese in Ausnahmefällen nach Ziffer 36 b der Zahnersatz-Richtlinien",
+          "Abrechnung von Teilleistungen in Fällen, in denen die Behandlung aus nicht vorhersehbaren Gründen, die der Zahnarzt nicht zu vertreten hat, nicht abgeschlossen werden kann, erfolgt nach BEMA-Nr. 99."
+        ]
+      }
+    },
+    "BEMA_BEMA_98": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377129%27%5D.html",
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377128%27%5D.html",
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377133%27%5D.html",
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377037%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Leistungen nach Nr. 98 b sind bei zahnlosem Kiefer und bei stark reduziertem Restgebiss – in der Regel bis zu drei Zähnen – abrechnungsfähig.",
+          "Bei der Versorgung eines zahnlosen Kiefers durch eine implantatgetragene totale Prothese in den vom Gemeinsamen Bundesausschuss festgelegten Ausnahmefällen sind die Nrn. 98 b und 98 c abrechnungsfähig",
+          "Leistungen nach Nr. 98 c sind bei zahnlosem Kiefer und bei stark reduziertem Restgebiss – in der Regel bis zu drei Zähnen – abrechnungsfähig.",
+          "Die zusätzliche Abrechnung von zahnärztlichem Honorar bei Anwendung besonderer Abdruckverfahren ist nicht zulässig.",
+          "BEMA-Nrn. 98 b i und 98 c i abrechnungsfähig bei der Versorgung eines zahnlosen Kiefers durch eine implantatgetragene totale Prothese in Ausnahmefällen nach Ziffer 36 b der Zahnersatz-Richtlinien"
+        ]
+      }
+    },
+    "BEMA_BEMA_99": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377135%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Leistungen nach den Nrn. 98 a, b und c sind voll abrechnungsfähig, wenn die Abformung in ein Modell übertragen worden ist.",
+          "In den Fällen der Nr. 99 c sind die Leistungen nach den Nrn. 98 e, f, g und h vor der funktionsgerechten Eingliederung des Zahnersatzes zu drei Viertel ihrer Bewertungszahl abrechnungsfähig.",
+          "Ist bei Leistungen nach den Nrn. 98 e, g und h noch keine Einprobe der Metallbasis erfolgt, ist die halbe Bewertungszahl dieser Nummern berechenbar. Nach Einprobe der Metallbasis sind auch vor einer e",
+          "Soweit der Zahnarzt erklären kann, warum es nicht zur Vollendung der vorgesehenen Leistungen gekommen ist, vermerkt er dies im Rahmen der Abrechnung.",
+          "anteilige Abrechnung von Gebühren der BEMA-Nrn. 96, 97 und 98 in Fällen, in denen die Behandlung aus nicht vorhersehbaren Gründen, die der Zahnarzt nicht zu vertreten hat (Ausbleiben des Patienten, To"
+        ]
+      }
+    },
+    "BEMA_BEMA_FUP": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377010%27%5D.html",
+        "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377016%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Beachtung der regionalen Gegebenheiten der KZVen (teilweise ist die FU Pr nur in derselben Sitzung mit der FU1 abrechnungsfähig)",
+          "bei hohem Kariesrisiko IP 4 2-mal pro Halbjahr abrechnungsfähig",
+          "Die Abrechnung der Leistung nach Nr. FU Pr setzt die Einzelunterweisung voraus.",
+          "einmal abrechnungsfähig jeweils",
+          "Zusätzlich abrechnungsfähig"
+        ]
+      }
+    },
+    "BEMA_BEMA_Ä1": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377036%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Zusätzlich abrechnungsfähig",
+          "Nicht abrechnungsfähig",
+          "Abrechnung entsprechend regionalen Vorgaben der zuständigen KZV",
+          "Grundlage für die Aufnahme der Versorgung mit einer Unterkieferprotrusionsschiene (UPS) in den BEMA zum 01.02.2022 bildet zum einen der Beschluss des Gemeinsamen Bundesausschusses über eine Änderung d",
+          "Die Therapieart einer obstruktiven Schlafapnoe ist unter anderem vom Schweregrad der Erkrankung und von den ursächlichen Faktoren abhängig. Bei leichter obstruktiver Schlafapnoe können konservative Ma"
+        ]
+      }
+    },
+    "BEMA_BEMA_Ä2655": {
+      "codeSystem": "BEMA",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377582%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Verschiedene Zystenarten, deren Gemeinsamkeit darin besteht, dass bereits während der Embryonalzeit Störungen in der Entwicklung verschiedener Drüsenanlagen stattgefunden haben. Hierzu zählen z. B. di",
+          "Eine Zystektomie als selbstständige Leistung kommt dann zur Anwendung, wenn es sich entweder um zahnlose Zysten handelt (z. B. Residualzysten, nicht-odontogene Zysten, Keratozysten) oder nach Extrakti",
+          "Auch in der GOÄ gibt es zwei Gebührennummern für die vollständige Entfernung von Kieferzysten. Voraussetzung für die Berechenbarkeit der GOÄ-Nrn. 2655 und 2656 ist die in der Leistungslegende dieser N",
+          "Während die GOÄ-Nr. 2655 die Entfernung einer solchermaßen ausgedehnten Kieferzyste ohne Verbindung mit anderen chirurgischen Eingriffen beschreibt, gilt die GOÄ-Nr. 2656 für Zystektomien, bei denen w",
+          "sten, soweit deren Berechnung nach Absatz 3 nicht ausgeschlossen ist,3. die im Zusammenhang mit Leistungen nach Abschnitt O bei der Anwendung radioakt"
+        ]
+      }
+    },
+    "GOZ_GOZ_3310": {
+      "codeSystem": "GOZ",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377590%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Das bedeutet jedoch nicht, dass die GOZ-Nr. 3290 nur als „alleinige“ Leistung, also nicht neben anderen Leistungen, berechnet werden darf.",
+          "Gleiches gilt für das angebliche offensichtliche Missverhältnis der Bewertung der Nachkontrolle (55 Punkte) und Nachbehandlung (65 Punkte). Das führe dazu, dass bei Verneinung einer Nebeneinanderberec",
+          "festgelegte Prinzip der Zielleistung. Damit soll ausgeschlossen werden, dass die Wundkontrolle gesondert berechnet wird, wenn sie Leistungsinhalt eine"
+        ]
+      }
+    },
+    "GOZ_GOZ_9010": {
+      "codeSystem": "GOZ",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377690%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Da trotz der vereinfachten Insertion der Interimsimplantate es in komplexen Fällen erforderlich sein kann, die Implantationsorte mittels Orientierungsschablone, evtl. auch eine exakte dreidimensionale"
+        ]
+      }
+    },
+    "GOZ_GOZ_9040": {
+      "codeSystem": "GOZ",
+      "rawFiles": [
+        "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377691%27%5D.html"
+      ],
+      "constraints": {
+        "exclusions": [],
+        "requires": [],
+        "maxCount": null,
+        "notes": [
+          "Die GOZ-Nr. 9040 ist grundsätzlich einmal je Implantat bzw. Implantatpfosten eines subgingival (unter dem Zahnfleisch) einheilenden zweiphasigen enossalen Implantatsystems berechenbar.",
+          "Voraussetzung für die Berechnung der GOZ-Nr. 9040 ist, dass zu einem früheren Zeitpunkt eine enossale Implantation (vgl. GOZ-Nr. 9010) eines zweiphasigen Systems durchgeführt wurde, dass also das Impl",
+          "Kommt es in seltenen Ausnahmefällen zur Notwendigkeit eines erneuten Freilegens (z. B. wenn der Patient infolge eines Krankenhausaufenthalts bei einem bereits früher freigelegten Implantat das Sekundä",
+          "Diese sogenannten mucogingivalen Eingriffe haben jedoch mit der eigentlichen Freilegung nichts zu tun und sind daher entsprechend der durchgeführten Leistung gesondert berechenbar (z. B. GOZ-Nrn. 3210",
+          "Dass dies auch zeitgleich mit der Freilegung erfolgen kann, ergibt sich aus der Allgemeinen Bestimmung 1 des Abschnitts K der GOZ, in der ausdrücklich zur Beendigung früherer gebührenrechtlicher Unkla"
+        ]
+      }
+    }
+  }
+}

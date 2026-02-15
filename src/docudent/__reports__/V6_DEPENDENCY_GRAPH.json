@@ -1,0 +1,135 @@
+{
+    "reportId": "V6_DEPENDENCY_GRAPH",
+    "timestamp": "2025-12-17T12:07:35+01:00",
+    "description": "Dependency graph of V6 services for migration planning",
+    "services": {
+        "extractionService.ts": {
+            "path": "src/docudent/v6/services/extractionService.ts",
+            "exports": [
+                "extractFromDictation"
+            ],
+            "internalDependencies": [
+                "v6/hooks/useDocudentV6 (types)",
+                "v6/services/toothNormalizer"
+            ],
+            "externalDependencies": [],
+            "usedBy": [
+                "core/services/extractionService.ts (facade)"
+            ],
+            "complexity": "MEDIUM",
+            "migrationPriority": 1,
+            "notes": "Contains LLM + regex extraction logic, gap detection"
+        },
+        "questionService.ts": {
+            "path": "src/docudent/v6/services/questionService.ts",
+            "exports": [
+                "generateQuestions"
+            ],
+            "internalDependencies": [
+                "v6/hooks/useDocudentV6 (types)",
+                "core/behandlungen/_shared/questionEngine"
+            ],
+            "externalDependencies": [],
+            "usedBy": [
+                "core/services/questionService.ts (facade)"
+            ],
+            "complexity": "MEDIUM",
+            "migrationPriority": 2,
+            "notes": "Orchestrates questionEngine, evaluates when-conditions"
+        },
+        "questionServiceV2.ts": {
+            "path": "src/docudent/v6/services/questionServiceV2.ts",
+            "exports": [
+                "generateQuestionsV2"
+            ],
+            "internalDependencies": [
+                "v6/services/questionService"
+            ],
+            "externalDependencies": [],
+            "usedBy": [
+                "core/services/questionService.ts (facade)"
+            ],
+            "complexity": "LOW",
+            "migrationPriority": 2,
+            "notes": "Thin wrapper over questionService"
+        },
+        "outputService.ts": {
+            "path": "src/docudent/v6/services/outputService.ts",
+            "exports": [
+                "generateFinalOutput"
+            ],
+            "internalDependencies": [
+                "v6/hooks/useDocudentV6 (types)",
+                "v6/services/mergeFacts",
+                "v6/services/answerEffectiveness",
+                "core/billing/knowledgeBase/logic/outputComposer",
+                "core/billing/knowledgeBase/logic/answerIdTranslator",
+                "core/billing/knowledgeBase/logic/chipResolver"
+            ],
+            "externalDependencies": [],
+            "usedBy": [
+                "core/services/outputService.ts (facade)"
+            ],
+            "complexity": "HIGH",
+            "migrationPriority": 3,
+            "notes": "Most complex - orchestrates answer translation, chip resolution, output composition"
+        },
+        "toothNormalizer.ts": {
+            "path": "src/docudent/v6/services/toothNormalizer.ts",
+            "exports": [
+                "normalizeToothInText",
+                "extractToothNumber",
+                "isValidFDI",
+                "getToothQuadrant",
+                "requiresLeitungsanaesthesie"
+            ],
+            "internalDependencies": [],
+            "externalDependencies": [],
+            "usedBy": [
+                "v6/services/extractionService"
+            ],
+            "complexity": "LOW",
+            "migrationPriority": 0,
+            "notes": "Pure utility functions, should move to core/utilities/"
+        },
+        "mergeFacts.ts": {
+            "path": "src/docudent/v6/services/mergeFacts.ts",
+            "exports": [
+                "mergeFacts",
+                "MergedFacts"
+            ],
+            "internalDependencies": [],
+            "externalDependencies": [],
+            "usedBy": [
+                "v6/services/outputService"
+            ],
+            "complexity": "MEDIUM",
+            "migrationPriority": 3,
+            "notes": "Merges extraction + answers for output"
+        },
+        "answerEffectiveness.ts": {
+            "path": "src/docudent/v6/services/answerEffectiveness.ts",
+            "exports": [
+                "computeAnswerEffects",
+                "assertNoDeadAnswers"
+            ],
+            "internalDependencies": [],
+            "externalDependencies": [],
+            "usedBy": [
+                "v6/services/outputService"
+            ],
+            "complexity": "MEDIUM",
+            "migrationPriority": 3,
+            "notes": "Dev-only dead answer detection"
+        }
+    },
+    "migrationOrder": [
+        "toothNormalizer.ts",
+        "extractionService.ts",
+        "questionService.ts",
+        "questionServiceV2.ts",
+        "mergeFacts.ts",
+        "answerEffectiveness.ts",
+        "outputService.ts"
+    ]
+}

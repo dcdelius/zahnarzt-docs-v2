@@ -1,0 +1,147 @@
+/**
+ * V10ReviewStep Styles
+ * V8-style: generous spacing, large typography, transparent controls
+ */
+
+.v10-review-step {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem 1.5rem 2.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.v10-review-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.v10-review-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #f8f9fa;
+    margin: 0 0 0.5rem 0;
+}
+
+.v10-review-subtitle {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Instance Tabs */
+.v10-review-tabs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.v10-review-tab {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.v10-review-tab:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.v10-review-tab.active {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #f8f9fa;
+}
+
+/* Chips Panel */
+.v10-review-chips {
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+}
+
+/* Change Summary */
+.v10-review-changes {
+    margin-top: 0.5rem;
+}
+
+/* Actions Row */
+.v10-review-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.v10-review-btn {
+    padding: 0.625rem 1rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+}
+
+.v10-review-btn.secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.v10-review-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.v10-review-btn.tertiary {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.v10-review-btn.tertiary:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Navigation */
+.v10-review-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.v10-review-nav-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.v10-review-nav-btn.back {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.v10-review-nav-btn.back:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.v10-review-nav-btn.primary {
+    background: linear-gradient(135deg, #FA7366 0%, #FF8E53 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(250, 115, 102, 0.25);
+}
+
+.v10-review-nav-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(250, 115, 102, 0.35);
+}

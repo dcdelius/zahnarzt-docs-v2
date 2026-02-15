@@ -1,0 +1,260 @@
+/**
+ * V10ChipsControlPanel Styles
+ * 
+ * M38: V8-identical look with interactive chips.
+ */
+
+.v10-chips-control {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.v10-chips-control.empty {
+    padding: 2rem;
+    text-align: center;
+}
+
+.v10-chips-empty {
+    color: #7f8c8d;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.v10-chips-control-header h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #bdc3c7;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Instance Control */
+.v10-instance-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.v10-instance-control-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid;
+}
+
+.v10-instance-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.v10-instance-tooth {
+    font-size: 0.75rem;
+    color: #95a5a6;
+}
+
+/* Chips Grid */
+.v10-chips-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Chip Control Wrapper */
+.v10-chip-control-wrapper {
+    position: relative;
+}
+
+.v10-chip-control {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.625rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: #bdc3c7;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.v10-chip-control:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.v10-chip-control.enabled {
+    background: rgba(39, 174, 96, 0.15);
+    border-color: rgba(39, 174, 96, 0.3);
+    color: #27ae60;
+}
+
+.v10-chip-control.disabled {
+    opacity: 0.6;
+}
+
+.v10-chip-control.overridden {
+    border-style: dashed;
+}
+
+.v10-chip-control-label {
+    font-weight: 500;
+}
+
+.v10-chip-control-value {
+    color: #7f8c8d;
+    font-size: 0.7rem;
+}
+
+.v10-chip-source-badge {
+    display: inline-block;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.55rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    margin-left: 0.25rem;
+}
+
+/* Popover */
+.v10-chip-popover {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    min-width: 200px;
+    background: #16213e;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.v10-popover-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ecf0f1;
+}
+
+.v10-popover-close {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: #7f8c8d;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.v10-popover-close:hover {
+    color: #ecf0f1;
+}
+
+.v10-popover-content {
+    padding: 0.5rem;
+}
+
+/* Simple Options */
+.v10-simple-options {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.v10-mode-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    color: #7f8c8d;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.v10-mode-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #bdc3c7;
+}
+
+.v10-mode-btn.active {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.v10-mode-icon {
+    font-size: 1rem;
+}
+
+.v10-mode-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.v10-mode-sub {
+    font-size: 0.6rem;
+    opacity: 0.7;
+}
+
+/* Parametrized Options */
+.v10-param-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.v10-param-btn {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    color: #bdc3c7;
+    font-size: 0.8rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.v10-param-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.v10-param-btn.active {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.v10-param-btn.auto {
+    border-style: dashed;
+}
+
+.v10-param-current {
+    opacity: 0.7;
+    margin-left: 0.5rem;
+}

@@ -1,0 +1,17 @@
+{
+    "run_at": "2025-12-30T22:30:00Z",
+    "total_violations": 0,
+    "violations_by_file": {},
+    "allowed_paths": [
+        "src/docudent/core/billing/knowledgeBase/kataloge/*.json",
+        "src/docudent/core/billing/knowledgeBase/kataloge/**/*.json",
+        "src/docudent/core/billing/knowledgeBase/treatments/**/*.json",
+        "src/docudent/**/__tests__/**/*.ts",
+        "src/docudent/**/__fixtures__/**/*",
+        "src/docudent/**/gates/**/*.ts",
+        "docs/**/*.md",
+        "docs/**/*.json",
+        "scripts/audit_no_hardcoded_billing_refs.ts"
+    ],
+    "notes": "Initial run - no violations found in checked paths"
+}

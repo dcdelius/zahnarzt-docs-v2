@@ -1,0 +1,518 @@
+{
+  "runId": "2026-02-13T21:49:26.141Z",
+  "suiteFile": "/Users/david/dokumaster-ui/scripts/v10/scenarios.v10.fuellung.medical.v2.json",
+  "meta": {
+    "description": "V10 Medical Scenario Cases v2 - Based on ACTUAL KB/Chips/Askbacks",
+    "version": "2.0.0",
+    "created": "2026-01-05",
+    "inventorySource": [
+      "unified.json",
+      "fuellung.askbacks.ts"
+    ]
+  },
+  "total": 10,
+  "pass": 10,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "m01",
+      "title": "GKV 1fl okklusal komplett",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 36 okklusal Komposit. Kofferdam. Infiltrationsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_40",
+        "BEMA_12",
+        "BEMA_13"
+      ],
+      "questions": [
+        "mkv_confirmed"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::medical_mkv_confirmed::tooth:36": "nur_kasse"
+      },
+      "perInstanceCount": 1,
+      "textLength": 949,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o"
+            ],
+            "mkv_confirmed": "nur_kasse"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_infiltr",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Es wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie. Daraufhin LA Infiltration (Ultracain D-S). Im Weiteren Kofferdam angelegt. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m02",
+      "title": "GKV 2fl mod",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 46 mod Komposit. Leitungsanästhesie. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13c"
+      ],
+      "questions": [
+        "layering",
+        "mkv_confirmed"
+      ],
+      "answersUsed": {
+        "fuellung-46-1::fuellung_layering::tooth:46": "no",
+        "fuellung-46-1::medical_mkv_confirmed::tooth:46": "nur_kasse"
+      },
+      "perInstanceCount": 1,
+      "textLength": 968,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-46-1",
+          "teeth": [
+            "46"
+          ],
+          "facts": {
+            "tooth": "46",
+            "surfaces": [
+              "m",
+              "o",
+              "d"
+            ],
+            "fuellung_layering": "no",
+            "mkv_confirmed": "nur_kasse"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_leitung",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 46. MOD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Es wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Zahn 46 (MOD): Füllungstherapie. Im Weiteren Leitungsanästhesie N. alv. inf. (Ultracain D-S). Anschließend Kofferdam angelegt. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m03",
+      "title": "GKV profunda ohne Kappungsangabe → Askback",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 36 okklusal Komposit. Karies profunda. Kofferdam.",
+      "phase": "questions",
+      "billingRefs": [],
+      "questions": [
+        "mkv_confirmed",
+        "ueberkappung"
+      ],
+      "answersUsed": {},
+      "perInstanceCount": 0,
+      "textLength": 0,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o"
+            ]
+          },
+          "chips": []
+        }
+      ],
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m04",
+      "title": "PKV 2fl + Kofferdam + LA",
+      "treatmentId": "fuellung",
+      "insuranceType": "PKV",
+      "dictation": "Füllung 36 okklusal distal Komposit. Kofferdam. Infiltrationsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_0090",
+        "GOZ_2040",
+        "GOZ_2080"
+      ],
+      "questions": [
+        "layering"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::fuellung_layering::tooth:36": "no"
+      },
+      "perInstanceCount": 1,
+      "textLength": 897,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o",
+              "d"
+            ],
+            "fuellung_layering": "no"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_infiltr",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. OD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (OD): Füllungstherapie. Daraufhin LA Infiltration (Ultracain D-S). Im Weiteren Kofferdam angelegt. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m05",
+      "title": "MKV Praxis-Default (BEMA + GOZ addon)",
+      "treatmentId": "fuellung",
+      "insuranceType": "MKV",
+      "dictation": "Füllung 36 okklusal distal Komposit. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13b",
+        "GOZ_2080"
+      ],
+      "questions": [
+        "layering",
+        "mkv_justification"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::fuellung_layering::tooth:36": "no",
+        "fuellung-36-1::fuellung_mkv_justification::tooth:36": "mehrschicht"
+      },
+      "perInstanceCount": 1,
+      "textLength": 965,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o",
+              "d"
+            ],
+            "fuellung_layering": "no",
+            "fuellung_mkv_justification": "mehrschicht"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "insurance_gkv_mkv",
+            "kofferdam",
+            "mehrschicht",
+            "mkv_begruendung"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. OD\n\n[Aufklärung]\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (OD): Füllungstherapie. Daraufhin Kofferdam angelegt. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Daraufhin Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Zum Schluss Mehrkosten-Begründung: mehrschicht.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m06",
+      "title": "MKV nur Kasse (GOZ unterdrückt)",
+      "treatmentId": "fuellung",
+      "insuranceType": "MKV",
+      "dictation": "Füllung 36 okklusal distal Komposit. Nur Kasse. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13b"
+      ],
+      "questions": [
+        "layering"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::fuellung_layering::tooth:36": "no"
+      },
+      "perInstanceCount": 1,
+      "textLength": 644,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o",
+              "d"
+            ],
+            "fuellung_layering": "no"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. OD\n\n[Aufklärung]\nEs wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (OD): Füllungstherapie. Daraufhin Kofferdam angelegt. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m07",
+      "title": "GKV ohne Isolation → Askback isolation",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 36 okklusal Komposit. Infiltrationsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_40",
+        "BEMA_13"
+      ],
+      "questions": [
+        "isolation",
+        "mkv_confirmed"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::fuellung_isolation::tooth:36": "relativ",
+        "fuellung-36-1::medical_mkv_confirmed::tooth:36": "nur_kasse"
+      },
+      "perInstanceCount": 1,
+      "textLength": 940,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o"
+            ],
+            "fuellung_isolation": "relativ",
+            "mkv_confirmed": "nur_kasse"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "la_infiltr",
+            "mehrschicht",
+            "rel_trocken"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Es wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie. Daraufhin LA Infiltration (Ultracain D-S). Im Weiteren Relative Trockenlegung. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m08",
+      "title": "GKV Multi-Tooth 36+14",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 36 od Komposit Kofferdam; Füllung 14 o Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13b",
+        "BEMA_12",
+        "BEMA_13b"
+      ],
+      "questions": [
+        "layering",
+        "mkv_confirmed"
+      ],
+      "answersUsed": {
+        "fuellung-14-2::fuellung_layering::tooth:14": "no",
+        "fuellung-14-2::medical_mkv_confirmed::tooth:14": "nur_kasse",
+        "fuellung-36-1::fuellung_layering::tooth:36": "no",
+        "fuellung-36-1::medical_mkv_confirmed::tooth:36": "nur_kasse"
+      },
+      "perInstanceCount": 2,
+      "textLength": 1282,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o",
+              "d"
+            ],
+            "fuellung_layering": "no",
+            "mkv_confirmed": "nur_kasse"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "mehrschicht"
+          ]
+        },
+        {
+          "instanceId": "fuellung-14-2",
+          "teeth": [
+            "14"
+          ],
+          "facts": {
+            "tooth": "14",
+            "surfaces": [
+              "o"
+            ],
+            "fuellung_layering": "no",
+            "mkv_confirmed": "nur_kasse"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. OD\n\nZahn 14. OD\n\n[Aufklärung]\nEs wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\nEs wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (OD): Füllungstherapie. Daraufhin Kofferdam angelegt. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nZu Beginn Zahn 14 (OD): Füllungstherapie. Anschließend Kofferdam angelegt. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Zusatzinfo: Füllung 36 od Komposit Kofferdam; Füllung 14 o Kofferdam.\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m09",
+      "title": "GKV ohne Material → Askback material",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 36 okklusal. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13"
+      ],
+      "questions": [
+        "material",
+        "adhesive_technique",
+        "mkv_confirmed"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::fuellung_material::tooth:36": "komposit",
+        "fuellung-36-1::fuellung_adhesive::tooth:36": "no",
+        "fuellung-36-1::medical_mkv_confirmed::tooth:36": "nur_kasse"
+      },
+      "perInstanceCount": 1,
+      "textLength": 676,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o"
+            ],
+            "fuellung_material": "komposit",
+            "fuellung_adhesive": "no",
+            "mkv_confirmed": "nur_kasse"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "komposit_basic"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. O\n\n[Aufklärung]\nAllgemeine Risiken der Kompositfüllung (Randspalten, Verfärbung, postoperative Sensibilität) wurden besprochen. Es wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (O): Füllungstherapie. Daraufhin Kofferdam angelegt. Im Weiteren Komposit (komposit) eingebracht und lichthärtend polymerisiert. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "m10",
+      "title": "GKV 4fl modb komplett",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 36 modb Komposit. Kofferdam. Leitungsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13d"
+      ],
+      "questions": [
+        "layering",
+        "mkv_confirmed"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::fuellung_layering::tooth:36": "no",
+        "fuellung-36-1::medical_mkv_confirmed::tooth:36": "nur_kasse"
+      },
+      "perInstanceCount": 1,
+      "textLength": 971,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [],
+            "fuellung_layering": "no",
+            "mkv_confirmed": "nur_kasse"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_leitung",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. MODB\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Es wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (MODB): Füllungstherapie. Daraufhin Leitungsanästhesie N. alv. inf. (Ultracain D-S). Im Weiteren Kofferdam angelegt. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

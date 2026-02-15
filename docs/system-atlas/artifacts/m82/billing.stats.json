@@ -1,0 +1,29 @@
+{
+  "total_files": 833,
+  "by_kind": {
+    "other": 747,
+    "test": 1,
+    "catalog": 5,
+    "logic": 42,
+    "mapping": 13,
+    "rules": 9,
+    "treatment": 16
+  },
+  "by_format": {
+    "other": 8,
+    "ts": 58,
+    "json": 77,
+    "html": 690
+  },
+  "by_domain": {
+    "other": 86,
+    "combinability": 4,
+    "bema": 702,
+    "bel": 198,
+    "goae": 3,
+    "fz": 7,
+    "goz": 698,
+    "treatment": 26
+  },
+  "total_bytes": 69613458
+}

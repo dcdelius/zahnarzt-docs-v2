@@ -1,0 +1,408 @@
+[
+    {
+        "id": "extraktion_einfach_gkv",
+        "titel": "Einfache Extraktion - GKV",
+        "kategorie": "chirurgie",
+        "versicherung": "GKV",
+        "beschreibung": "Entfernung eines Zahnes ohne operative Maßnahmen",
+        "natuerliche_anleitung": "Bei einer einfachen Extraktion bei GKV-Patienten wird BEMA 40 oder 41a für die Anästhesie berechnet (41a bei UK-Molaren!), dann BEMA 43 (einwurzelig) oder 44 (mehrwurzelig). Wenn genäht wird: BEMA 54 dazu. Nachbehandlung mit Nahtentfernung: BEMA 56. WICHTIG: Extraktionsgrund dokumentieren (nicht erhaltungsfähig, pa, Patient wünscht), sonst droht Nachfrage der KZV.",
+        "phasen": [
+            {
+                "phase": "Anästhesie",
+                "positionen": [
+                    {
+                        "code": "BEMA_40",
+                        "bezeichnung": "Infiltrationsanästhesie",
+                        "wann": "Bei OK und UK-Front",
+                        "punkte": 8
+                    },
+                    {
+                        "code": "BEMA_41a",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei UK-Seitenzähnen STANDARD",
+                        "punkte": 12,
+                        "tipp": "Höherer Punktwert als Infiltration!"
+                    }
+                ]
+            },
+            {
+                "phase": "Extraktion",
+                "positionen": [
+                    {
+                        "code": "BEMA_X1",
+                        "bezeichnung": "Extraktion einwurzelig (BEMA 43)",
+                        "wann": "Frontzähne, Prämolaren, obere Weisheitszähne",
+                        "punkte": 10
+                    },
+                    {
+                        "code": "BEMA_X2",
+                        "bezeichnung": "Extraktion mehrwurzelig (BEMA 44)",
+                        "wann": "Molaren",
+                        "punkte": 15
+                    },
+                    {
+                        "code": "BEMA_X3",
+                        "bezeichnung": "Schwierige Extraktion mit Wurzeltrennung (BEMA 45)",
+                        "wann": "Bei notwendiger Trennung",
+                        "punkte": 25,
+                        "dokumentation": "Wurzeltrennung muss dokumentiert sein!"
+                    }
+                ]
+            },
+            {
+                "phase": "Wundversorgung",
+                "positionen": [
+                    {
+                        "code": "BEMA_54",
+                        "bezeichnung": "Naht",
+                        "wann": "Bei Nahtversorgung",
+                        "punkte": 8,
+                        "tipp": "Immer wenn genäht wird - separat berechenbar!"
+                    }
+                ]
+            },
+            {
+                "phase": "Nachsorge",
+                "positionen": [
+                    {
+                        "code": "BEMA_56",
+                        "bezeichnung": "Nachbehandlung/Nahtentfernung",
+                        "wann": "Bei Kontrolle/Fädenziehen",
+                        "punkte": 4
+                    }
+                ]
+            }
+        ],
+        "dokumentation_erforderlich": [
+            "Extraktionsgrund (nicht erhaltungsfähig wegen..., pa, Patient wünscht)",
+            "Bei Wurzeltrennung: im Text erwähnen",
+            "Bei Naht: dokumentieren"
+        ],
+        "regressfallen": [
+            "BEMA 47a (Osteotomie) ohne echte Knochenabtragung = REGRESS!",
+            "Extraktion ohne dokumentierten Grund kann hinterfragt werden"
+        ]
+    },
+    {
+        "id": "osteotomie_weisheitszahn_gkv",
+        "titel": "Osteotomie Weisheitszahn (retiniert) - GKV",
+        "kategorie": "chirurgie",
+        "versicherung": "GKV",
+        "beschreibung": "Operative Entfernung eines retinierten/verlagerten Weisheitszahnes",
+        "natuerliche_anleitung": "Bei retinierten Weisheitszähnen: BEMA 48 (höchster Punktwert bei Osteotomie). WICHTIG: BEMA 47a (einfache Osteotomie) nur wenn TATSÄCHLICH Knochen abgetragen wurde - nicht bei 'schwieriger Extraktion' ohne Knochenabtragung! Naht (BEMA 54) immer separat. Röntgen (OPG oder Zahnfilm) zur Diagnostik/Planung.",
+        "phasen": [
+            {
+                "phase": "Diagnostik",
+                "positionen": [
+                    {
+                        "code": "BEMA_Ä925a",
+                        "bezeichnung": "Röntgen",
+                        "wann": "Vor OP zur Planung",
+                        "punkte": 5
+                    }
+                ]
+            },
+            {
+                "phase": "Anästhesie",
+                "positionen": [
+                    {
+                        "code": "BEMA_41a",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei UK IMMER",
+                        "punkte": 12
+                    },
+                    {
+                        "code": "BEMA_40",
+                        "bezeichnung": "Infiltration zusätzlich",
+                        "wann": "Ggf. im OP-Gebiet zusätzlich",
+                        "punkte": 8
+                    }
+                ]
+            },
+            {
+                "phase": "Operation",
+                "positionen": [
+                    {
+                        "code": "BEMA_47a",
+                        "bezeichnung": "Osteotomie einfach",
+                        "wann": "Bei Knochenabtragung, nicht retiniert",
+                        "punkte": 42,
+                        "bedingung": "NUR wenn Knochen TATSÄCHLICH abgetragen!"
+                    },
+                    {
+                        "code": "BEMA_48",
+                        "bezeichnung": "Osteotomie retiniert/verlagert",
+                        "wann": "Bei retiniertem oder verlagertem Zahn",
+                        "punkte": 56,
+                        "dokumentation": "Verlagerung/Retention beschreiben"
+                    }
+                ]
+            },
+            {
+                "phase": "Wundversorgung",
+                "positionen": [
+                    {
+                        "code": "BEMA_54",
+                        "bezeichnung": "Naht",
+                        "wann": "IMMER bei Osteotomie",
+                        "punkte": 8
+                    }
+                ]
+            }
+        ],
+        "gesamtberechnung_beispiel": {
+            "retinierter_uk8": {
+                "positionen": [
+                    "BEMA_Ä925a (5P)",
+                    "BEMA_41a (12P)",
+                    "BEMA_48 (56P)",
+                    "BEMA_54 (8P)"
+                ],
+                "punkte_gesamt": "81 Punkte",
+                "betrag": "ca. 84€"
+            }
+        },
+        "regressfallen": [
+            "BEMA 47a ohne dokumentierte Knochenabtragung = REGRESS!",
+            "BEMA 48 bei nicht retiniertem/verlagertem Zahn = REGRESS!"
+        ]
+    },
+    {
+        "id": "extraktion_pkv",
+        "titel": "Extraktion und Osteotomie - PKV",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "beschreibung": "Zahnentfernung bei Privatpatient mit allen Zusatzpositionen",
+        "natuerliche_anleitung": "Bei PKV-Patienten gibt es viele zusätzliche Positionen: Oberflächenanästhesie (GOZ 0080) VOR Injektion, OP-Zuschläge bei höheren Punktzahlen, Blutstillung bei übermäßiger Blutung, Naht separat. Bei Osteotomie mit hoher Punktzahl: OP-Zuschlag GOZ 0510 oder 0520 möglich!",
+        "phasen": [
+            {
+                "phase": "Anästhesie",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "wann": "VOR Injektion - IMMER",
+                        "betrag_23": 7.25,
+                        "tipp": "Nie vergessen!"
+                    },
+                    {
+                        "code": "GOZ_0090",
+                        "bezeichnung": "Infiltration",
+                        "wann": "Standard OK",
+                        "betrag_23": 16.22
+                    },
+                    {
+                        "code": "GOZ_0100",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "UK-Seitenzähne",
+                        "betrag_23": 24.31
+                    }
+                ]
+            },
+            {
+                "phase": "Extraktion/Osteotomie",
+                "positionen": [
+                    {
+                        "code": "GOZ_3000",
+                        "bezeichnung": "Extraktion einwurzelig",
+                        "betrag_23": 24.31
+                    },
+                    {
+                        "code": "GOZ_3010",
+                        "bezeichnung": "Extraktion mehrwurzelig",
+                        "betrag_23": 32.59
+                    },
+                    {
+                        "code": "GOZ_3020",
+                        "bezeichnung": "Extraktion tief zerstörter Zahn",
+                        "betrag_23": 54.33
+                    },
+                    {
+                        "code": "GOZ_3100",
+                        "bezeichnung": "Osteotomie einwurzelig",
+                        "betrag_23": 86.94
+                    },
+                    {
+                        "code": "GOZ_3110",
+                        "bezeichnung": "Osteotomie mehrwurzelig",
+                        "betrag_23": 130.39,
+                        "op_zuschlag": "GOZ 0520 möglich (800-1199 Punkte)"
+                    }
+                ]
+            },
+            {
+                "phase": "OP-Zuschläge",
+                "info": "NUR 1x pro Tag, NUR 1,0-fach!",
+                "positionen": [
+                    {
+                        "code": "GOZ_0500",
+                        "bezeichnung": "OP-Zuschlag 250-499 Punkte",
+                        "wann": "z.B. bei GOZ 3020",
+                        "betrag_10": 14.17
+                    },
+                    {
+                        "code": "GOZ_0510",
+                        "bezeichnung": "OP-Zuschlag 500-799 Punkte",
+                        "wann": "z.B. bei GOZ 3100",
+                        "betrag_10": 28.35
+                    },
+                    {
+                        "code": "GOZ_0520",
+                        "bezeichnung": "OP-Zuschlag 800-1199 Punkte",
+                        "wann": "z.B. bei GOZ 3110",
+                        "betrag_10": 42.52
+                    }
+                ]
+            },
+            {
+                "phase": "Wundversorgung",
+                "positionen": [
+                    {
+                        "code": "GOZ_3060",
+                        "bezeichnung": "Blutstillung besondere Maßnahmen",
+                        "wann": "Bei übermäßiger Blutung, Umstechung, Kollagen",
+                        "betrag_23": 24.31,
+                        "tipp": "Normale Blutstillung inkludiert, BESONDERE separat!"
+                    },
+                    {
+                        "code": "GOZ_3300",
+                        "bezeichnung": "Naht/Wundversorgung",
+                        "wann": "Bei Nahtversorgung",
+                        "betrag_23": 25.16
+                    }
+                ]
+            }
+        ],
+        "gesamtberechnung_beispiel": {
+            "osteotomie_8er_komplett": {
+                "positionen": [
+                    "GOZ_0080 (7,25€)",
+                    "GOZ_0100 (24,31€)",
+                    "GOZ_3110 (130,39€)",
+                    "GOZ_0520 (42,52€)",
+                    "GOZ_3300 (25,16€)"
+                ],
+                "summe": "229,63€"
+            }
+        }
+    },
+    {
+        "id": "wsr_molar_pkv",
+        "titel": "Wurzelspitzenresektion Molar - PKV",
+        "kategorie": "chirurgie",
+        "versicherung": "PKV",
+        "beschreibung": "WSR an mehrwurzeligem Zahn mit allen Zusatzpositionen",
+        "natuerliche_anleitung": "Bei WSR an Molaren: GOZ 3120 ist JE WURZELSPITZE berechenbar! Bei 3-wurzeligem Molar = 3x GOZ 3120. Dazu: OP-Zuschlag, ggf. Zystektomie wenn Zyste vorhanden, Knochendefektfüllung, retrograde Wurzelfüllung. Operationsmikroskop (GOZ 0110) bei Verwendung. Material (Knochenersatz) separat!",
+        "phasen": [
+            {
+                "phase": "Anästhesie",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "betrag_23": 7.25
+                    },
+                    {
+                        "code": "GOZ_0100",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "betrag_23": 24.31
+                    }
+                ]
+            },
+            {
+                "phase": "Wurzelspitzenresektion (JE WURZELSPITZE!)",
+                "wichtig": "Bei 3-wurzeligem Molar = 3x berechenbar!",
+                "positionen": [
+                    {
+                        "code": "GOZ_3120",
+                        "bezeichnung": "WSR Seitenzahn",
+                        "anzahl": "Je resezierte Wurzelspitze",
+                        "betrag_23_pro_wurzel": 97.80,
+                        "beispiel_3_wurzeln": 293.40
+                    }
+                ]
+            },
+            {
+                "phase": "Zusätzliche Leistungen",
+                "positionen": [
+                    {
+                        "code": "GOZ_3190",
+                        "bezeichnung": "Zystektomie",
+                        "wann": "Bei radiologisch sichtbarer Zyste",
+                        "betrag_23": 65.21,
+                        "tipp": "IMMER prüfen ob Zyste vorhanden!"
+                    },
+                    {
+                        "code": "GOZ_4110",
+                        "bezeichnung": "Knochendefektauffüllung",
+                        "wann": "Bei Auffüllung des Defekts",
+                        "betrag_23": 52.16,
+                        "material_separat": true
+                    },
+                    {
+                        "code": "GOZ_0110",
+                        "bezeichnung": "Operationsmikroskop",
+                        "wann": "Bei Mikroskop-Einsatz",
+                        "betrag_23": 29.76
+                    },
+                    {
+                        "code": "GOZ_0120",
+                        "bezeichnung": "Laser",
+                        "wann": "Bei Laser-Desinfektion",
+                        "betrag_23": 14.88
+                    }
+                ]
+            },
+            {
+                "phase": "OP-Zuschlag & Wundversorgung",
+                "positionen": [
+                    {
+                        "code": "GOZ_0520",
+                        "bezeichnung": "OP-Zuschlag",
+                        "wann": "Bei WSR Seitenzahn",
+                        "betrag_10": 42.52
+                    },
+                    {
+                        "code": "GOZ_3300",
+                        "bezeichnung": "Naht",
+                        "betrag_23": 25.16
+                    }
+                ]
+            },
+            {
+                "phase": "Material",
+                "positionen": [
+                    {
+                        "code": "MATERIAL",
+                        "bezeichnung": "Knochenersatzmaterial (Bio-Oss o.ä.)",
+                        "betrag": "50-150€",
+                        "tipp": "IMMER separat berechnen!"
+                    },
+                    {
+                        "code": "MATERIAL",
+                        "bezeichnung": "Membran (falls verwendet)",
+                        "betrag": "30-100€"
+                    }
+                ]
+            }
+        ],
+        "gesamtberechnung_beispiel": {
+            "wsr_46_3_wurzeln_mit_zyste": {
+                "positionen": [
+                    "GOZ_0080 (7,25€)",
+                    "GOZ_0100 (24,31€)",
+                    "3x GOZ_3120 (293,40€)",
+                    "GOZ_3190 (65,21€)",
+                    "GOZ_4110 (52,16€)",
+                    "GOZ_0110 (29,76€)",
+                    "GOZ_0520 (42,52€)",
+                    "GOZ_3300 (25,16€)",
+                    "Material Bio-Oss (~80€)"
+                ],
+                "summe_honorar": "539,77€",
+                "summe_material": "~80€",
+                "gesamtbetrag": "ca. 620€"
+            }
+        }
+    }
+]

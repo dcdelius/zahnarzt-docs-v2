@@ -1,0 +1,149 @@
+/* ============================================
+   UserSwitcher — Jeton Dropdown (matches OverlaySelectField)
+   ============================================
+   - Solid opaque surface
+   - Height-reveal animation
+   - Soft ambient shadow
+*/
+
+.user-switcher {
+    position: relative;
+    z-index: 100;
+}
+
+/* Trigger pill */
+.user-switcher-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 18px;
+    background: var(--sheet-solid, #E86B5A);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--jeton-white, #FFFFFF);
+    cursor: pointer;
+    transition: filter 0.12s ease-out;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.user-switcher-trigger:hover {
+    filter: brightness(1.06);
+}
+
+.user-switcher-trigger.is-open {
+    border-radius: 18px 18px 0 0;
+}
+
+.user-switcher-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+}
+
+.user-switcher-chevron {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* Panel (dropdown) — matches OverlaySelectField */
+.user-switcher-panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 200px;
+    width: 100%;
+    max-height: 280px;
+    display: flex;
+    flex-direction: column;
+    background: var(--sheet-solid, #E86B5A);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+/* Search */
+.user-switcher-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-switcher-search-icon {
+    color: rgba(255, 255, 255, 0.52);
+    flex-shrink: 0;
+}
+
+.user-switcher-search-input {
+    flex: 1;
+    height: 24px;
+    padding: 0;
+    font-size: 14px;
+    color: var(--jeton-white, #FFFFFF);
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.user-switcher-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.52);
+}
+
+/* User list */
+.user-switcher-list {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 220px;
+}
+
+.user-switcher-empty {
+    padding: 16px 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.52);
+    text-align: center;
+}
+
+/* Option row */
+.user-switcher-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.72);
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.1s ease, color 0.1s ease;
+}
+
+.user-switcher-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--jeton-white, #FFFFFF);
+}
+
+.user-switcher-option.is-selected {
+    color: var(--jeton-white, #FFFFFF);
+}
+
+.user-switcher-option-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-switcher-option-check {
+    flex-shrink: 0;
+    color: var(--jeton-accent, #F73B20);
+}

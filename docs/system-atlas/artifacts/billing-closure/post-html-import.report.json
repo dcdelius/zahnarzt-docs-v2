@@ -1,0 +1,997 @@
+{
+  "generated": "2025-12-30T11:08:27.422Z",
+  "summary": {
+    "totalRefs": 7436,
+    "uniqueRefs": 938,
+    "missingCount": 82,
+    "testMockCount": 1
+  },
+  "missing": {
+    "BEMA": [
+      "BEMA_100",
+      "BEMA_101",
+      "BEMA_103",
+      "BEMA_104",
+      "BEMA_123",
+      "BEMA_98",
+      "BEMA_96",
+      "BEMA_4",
+      "BEMA_126",
+      "BEMA_95",
+      "BEMA_8c",
+      "BEMA_SPECIAL",
+      "BEMA_0",
+      "BEMA_NR",
+      "BEMA_127",
+      "BEMA_128",
+      "BEMA_161",
+      "BEMA_171",
+      "BEMA_172",
+      "BEMA_173",
+      "BEMA_174",
+      "BEMA_18",
+      "BEMA_20",
+      "BEMA_24",
+      "BEMA_47",
+      "BEMA_91",
+      "BEMA_94",
+      "BEMA_97",
+      "BEMA_99",
+      "BEMA_FUP",
+      "BEMA_33",
+      "BEMA_VIPR",
+      "BEMA_925A",
+      "BEMA_CP",
+      "BEMA_P",
+      "BEMA_199",
+      "BEMA_42",
+      "BEMA_19a",
+      "BEMA_1",
+      "BEMA_925",
+      "BEMA_28_ff",
+      "BEMA_36_37",
+      "BEMA_23_nicht_neben_19_21",
+      "BEMA_24c_nur_nach_19_21",
+      "BEMA_91d_nicht_bei_gleichartig",
+      "BEMA_Cp",
+      "BEMA_13C"
+    ],
+    "GOZ": [
+      "GOZ_PATTERN",
+      "GOZ_ANALOG_MATRIX",
+      "GOZ_ANALOG_DETECTOR",
+      "GOZ_2020_ANALOG",
+      "GOZ_2020a",
+      "GOZ_5040_differenz"
+    ],
+    "GOÄ": [],
+    "BEL": [
+      "BEL_2004",
+      "BEL_2014",
+      "BEL_II_1220",
+      "BEL_2070",
+      "BEL_2310",
+      "BEL_2400",
+      "BEL_2500",
+      "BEL_1220",
+      "BEL_9999",
+      "BEL_0001",
+      "BEL_II",
+      "BEL_II_ALIAS_MAP",
+      "BEL_II_",
+      "BEL_XXXX"
+    ],
+    "UNKNOWN": []
+  },
+  "by_source": {
+    "pipeline": [
+      "BEMA_100",
+      "BEMA_104",
+      "BEMA_4",
+      "BEL_II_1220",
+      "BEL_1220",
+      "FZ_abc",
+      "FZ_CODE_PATTERN",
+      "BEL_9999",
+      "BEL_0001",
+      "BEL_II",
+      "BEL_II_ALIAS_MAP",
+      "BEMA_33",
+      "BEL_II_",
+      "BEMA_VIPR",
+      "BEMA_925A",
+      "BEMA_CP",
+      "BEMA_P",
+      "BEMA_199",
+      "GOZ_ANALOG_MATRIX",
+      "GOZ_ANALOG_DETECTOR",
+      "GOZ_2020_ANALOG",
+      "GOZ_2020a",
+      "BEL_XXXX",
+      "BEMA_1",
+      "BEMA_925"
+    ],
+    "ui": [
+      "BEMA_33",
+      "BEMA_42",
+      "BEMA_Cp",
+      "BEMA_13C"
+    ],
+    "fixtures": [
+      "BEMA_100",
+      "BEMA_101",
+      "BEMA_103",
+      "BEMA_104",
+      "BEMA_123",
+      "BEMA_98",
+      "BEMA_96",
+      "BEMA_4",
+      "BEMA_126",
+      "BEMA_95",
+      "BEMA_8c",
+      "BEMA_SPECIAL",
+      "BEMA_0",
+      "BEMA_NR",
+      "GOZ_PATTERN",
+      "BEL_2004",
+      "BEL_2014",
+      "BEMA_127",
+      "BEMA_128",
+      "BEMA_161",
+      "BEMA_171",
+      "BEMA_172",
+      "BEMA_173",
+      "BEMA_174",
+      "BEMA_18",
+      "BEMA_20",
+      "BEMA_24",
+      "BEMA_47",
+      "BEMA_91",
+      "BEMA_94",
+      "BEMA_97",
+      "BEMA_99",
+      "BEMA_FUP",
+      "BEL_II_1220",
+      "BEL_2070",
+      "BEL_2310",
+      "BEL_2400",
+      "BEL_2500",
+      "BEL_1220"
+    ],
+    "legacy": []
+  },
+  "testMockIds": [
+    "BEMA_TEST"
+  ],
+  "details": [
+    {
+      "system": "GOZ",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_goz.json",
+        "pipeline:src/docudent/__tests__/gates/gate-m17-endo-combinability-goldens.test.ts",
+        "pipeline:src/docudent/__tests__/gates/gate-truthset-highseverity-goz-sources-present.test.ts",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_analog.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_analog_thin.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz_v2.json",
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json",
+        "ui:src/docudent/v10/packs/endo/pack.ts"
+      ],
+      "count": 302
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_goz.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_goz_v2.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_analog.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_analog_thin.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz_v2.json"
+      ],
+      "count": 71
+    },
+    {
+      "ref": "BEMA_98",
+      "normalized": "BEMA_98",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz_v2.json"
+      ],
+      "count": 16
+    },
+    {
+      "ref": "BEMA_96",
+      "normalized": "BEMA_96",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 13
+    },
+    {
+      "ref": "BEMA_33",
+      "normalized": "BEMA_33",
+      "system": "BEMA",
+      "sources": [
+        "pipeline:src/docudent/__tests__/gates/gate-compose-treatment-isolation.test.ts",
+        "pipeline:src/docudent/__tests__/gates/gate-m30-truthcases-expanded.test.ts",
+        "pipeline:src/docudent/__tests__/gates/gate-m32-no-false-positive-negations-expanded.test.ts",
+        "ui:src/docudent/v10/qa/clinicalTruthcases.v3.ts",
+        "ui:src/docudent/v10/qa/combinabilityTruthcases.v1.ts"
+      ],
+      "count": 12
+    },
+    {
+      "ref": "BEL_2014",
+      "normalized": "BEL_2014",
+      "system": "BEL",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex.json"
+      ],
+      "count": 11
+    },
+    {
+      "ref": "BEMA_100",
+      "normalized": "BEMA_100",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "pipeline:src/docudent/__tests__/gates/gate-bema-comment-regression.test.ts",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 9
+    },
+    {
+      "ref": "BEMA_4",
+      "normalized": "BEMA_4",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz_v2.json",
+        "pipeline:src/docudent/v5/hooks/useBillingV5Controller.ts"
+      ],
+      "count": 9
+    },
+    {
+      "ref": "BEMA_18",
+      "normalized": "BEMA_18",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/behandlungen/zahnersatz/krone.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz_v2.json"
+      ],
+      "count": 9
+    },
+    {
+      "ref": "GOZ_2020a",
+      "normalized": "GOZ_2020a",
+      "system": "GOZ",
+      "sources": [
+        "json:src/docudent/core/behandlungen/fuellung/questions.json",
+        "json:src/docudent/core/billing/knowledgeBase/behandlungen/fuellung.json",
+        "pipeline:src/docudent/core/billing/knowledgeBase/logic/billingInference.ts",
+        "json:src/docudent/core/billing/knowledgeBase/navigation/workflows.json",
+        "json:src/docudent/core/billing/knowledgeBase/optimierung/tipps.json"
+      ],
+      "count": 9
+    },
+    {
+      "ref": "BEMA_126",
+      "normalized": "BEMA_126",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 8
+    },
+    {
+      "ref": "BEMA_174",
+      "normalized": "BEMA_174",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 8
+    },
+    {
+      "ref": "BEMA_91",
+      "normalized": "BEMA_91",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/regeln/bema_ze_regeln_komplett.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz_v2.json"
+      ],
+      "count": 8
+    },
+    {
+      "ref": "BEMA_8c",
+      "normalized": "BEMA_8c",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 7
+    },
+    {
+      "ref": "BEMA_161",
+      "normalized": "BEMA_161",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 7
+    },
+    {
+      "ref": "BEL_2310",
+      "normalized": "BEL_2310",
+      "system": "BEL",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/ze_bel_cases_v1_validation.json",
+        "json:src/docudent/ze_bel_cases_v1_patch_bel2_2022.json"
+      ],
+      "count": 7
+    },
+    {
+      "ref": "BEMA_95",
+      "normalized": "BEMA_95",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 6
+    },
+    {
+      "ref": "BEMA_128",
+      "normalized": "BEMA_128",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 6
+    },
+    {
+      "ref": "BEMA_97",
+      "normalized": "BEMA_97",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz_v2.json"
+      ],
+      "count": 6
+    },
+    {
+      "ref": "BEL_II_1220",
+      "normalized": "BEL_1220",
+      "system": "BEL",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/wiederherstellungen_cases_v1.ts",
+        "pipeline:src/docudent/__tests__/gates/gate-billing-ref-normalization.test.ts",
+        "pipeline:src/docudent/core/billing/billingRefNormalization.ts"
+      ],
+      "count": 6
+    },
+    {
+      "ref": "BEMA_104",
+      "normalized": "BEMA_104",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEMA_123",
+      "normalized": "BEMA_123",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEMA_171",
+      "normalized": "BEMA_171",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEMA_173",
+      "normalized": "BEMA_173",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEMA_20",
+      "normalized": "BEMA_20",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEMA_24",
+      "normalized": "BEMA_24",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEMA_FUP",
+      "normalized": "BEMA_FUP",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEL_2070",
+      "normalized": "BEL_2070",
+      "system": "BEL",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/ze_bel_cases_v1_validation.json",
+        "json:src/docudent/ze_bel_cases_v1_patch_bel2_2022.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEL_1220",
+      "normalized": "BEL_1220",
+      "system": "BEL",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/ze_bel_cases_v1_validation.json",
+        "pipeline:src/docudent/__tests__/gates/gate-billing-ref-normalization.test.ts",
+        "pipeline:src/docudent/core/billing/billingRefNormalization.ts",
+        "json:src/docudent/ze_bel_cases_v1_patch_bel2_2022.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEL_II",
+      "normalized": "BEL_II",
+      "system": "BEL",
+      "sources": [
+        "pipeline:src/docudent/__tests__/gates/gate-billing-ref-normalization.test.ts",
+        "pipeline:src/docudent/core/billing/billingRefNormalization.ts",
+        "json:src/docudent/core/billing/knowledgeBase/regeln/bema_ze_regeln_komplett.json"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "BEL_II_",
+      "normalized": "BEL_",
+      "system": "BEL",
+      "sources": [
+        "pipeline:src/docudent/__tests__/gates/gate-wiederherstellungen-realworld-v1.test.ts",
+        "pipeline:src/docudent/core/billing/billingRefNormalization.ts"
+      ],
+      "count": 5
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "pipeline:src/docudent/core/billing/knowledgeBase/logic/begruendungsGenerator.ts"
+      ],
+      "count": 5
+    },
+    {
+      "ref": "GOZ_PATTERN",
+      "normalized": "GOZ_PATTERN",
+      "system": "GOZ",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_discovery_report.json"
+      ],
+      "count": 4
+    },
+    {
+      "ref": "BEMA_127",
+      "normalized": "BEMA_127",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 4
+    },
+    {
+      "ref": "BEMA_172",
+      "normalized": "BEMA_172",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 4
+    },
+    {
+      "ref": "BEMA_47",
+      "normalized": "BEMA_47",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 4
+    },
+    {
+      "ref": "BEMA_101",
+      "normalized": "BEMA_101",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 3
+    },
+    {
+      "ref": "BEMA_103",
+      "normalized": "BEMA_103",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_audit_v2.json",
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 3
+    },
+    {
+      "ref": "BEMA_SPECIAL",
+      "normalized": "BEMA_SPECIAL",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_discovery_report.json"
+      ],
+      "count": 3
+    },
+    {
+      "ref": "BEMA_99",
+      "normalized": "BEMA_99",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_goz_v2.json"
+      ],
+      "count": 3
+    },
+    {
+      "ref": "BEL_2400",
+      "normalized": "BEL_2400",
+      "system": "BEL",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/ze_bel_cases_v1_validation.json",
+        "json:src/docudent/ze_bel_cases_v1_patch_bel2_2022.json"
+      ],
+      "count": 3
+    },
+    {
+      "ref": "BEL_2500",
+      "normalized": "BEL_2500",
+      "system": "BEL",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/ze_bel_cases_v1_validation.json",
+        "json:src/docudent/ze_bel_cases_v1_patch_bel2_2022.json"
+      ],
+      "count": 3
+    },
+    {
+      "ref": "BEMA_0",
+      "normalized": "BEMA_0",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_discovery_report.json"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "BEMA_NR",
+      "normalized": "BEMA_NR",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/bema_comment_discovery_report.json"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "BEL_2004",
+      "normalized": "BEL_2004",
+      "system": "BEL",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex.json"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "BEMA_94",
+      "normalized": "BEMA_94",
+      "system": "BEMA",
+      "sources": [
+        "fixtures:src/docudent/__fixtures__/comment_import_report_bema.json",
+        "json:src/docudent/core/billing/knowledgeBase/secondary/commentIndex_bema.json"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "pipeline:src/docudent/__tests__/gates/gate-analog-justification.test.ts"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "BEL_9999",
+      "normalized": "BEL_9999",
+      "system": "BEL",
+      "sources": [
+        "pipeline:src/docudent/__tests__/gates/gate-bel2-catalog-ssot.test.ts",
+        "pipeline:src/docudent/__tests__/gates/gate-bel2-runtime-wiring.test.ts"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "BEL_0001",
+      "normalized": "BEL_0001",
+      "system": "BEL",
+      "sources": [
+        "pipeline:src/docudent/__tests__/gates/gate-bel2-runtime-wiring.test.ts",
+        "pipeline:src/docudent/core/billing/knowledgeBase/logic/bel2Catalog.ts"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "BEMA_42",
+      "normalized": "BEMA_42",
+      "system": "BEMA",
+      "sources": [
+        "json:src/docudent/core/behandlungen/konservierend/fuellung/fuellung.config.json",
+        "ui:src/docudent/v10/qa/combinabilityTruthcases.v1.ts"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "GOZ_5040_differenz",
+      "normalized": "GOZ_5040_differenz",
+      "system": "GOZ",
+      "sources": [
+        "json:src/docudent/core/billing/knowledgeBase/behandlungen/prothetik.json"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "BEMA_19a",
+      "normalized": "BEMA_19a",
+      "system": "BEMA",
+      "sources": [
+        "json:src/docudent/core/billing/knowledgeBase/behandlungen/zahnersatz/krone.json"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "BEL_XXXX",
+      "normalized": "BEL_XXXX",
+      "system": "BEL",
+      "sources": [
+        "pipeline:src/docudent/core/billing/knowledgeBase/logic/bel2Catalog.ts"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json"
+      ],
+      "count": 2
+    },
+    {
+      "system": "GOZ",
+      "sources": [
+        "ui:src/docudent/v10/kb/combinability/combinability_kb.v1.json"
+      ],
+      "count": 2
+    },
+    {
+      "ref": "FZ_abc",
+      "normalized": "FZ_abc",
+      "system": "FZ",
+      "sources": [
+        "pipeline:src/docudent/__tests__/fzCode.test.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "FZ_CODE_PATTERN",
+      "normalized": "FZ_CODE_PATTERN",
+      "system": "FZ",
+      "sources": [
+        "pipeline:src/docudent/__tests__/fzCode.test.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEL_II_ALIAS_MAP",
+      "normalized": "BEL_ALIAS_MAP",
+      "system": "BEL",
+      "sources": [
+        "pipeline:src/docudent/__tests__/gates/gate-billing-ref-normalization.test.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_VIPR",
+      "normalized": "BEMA_VIPR",
+      "system": "BEMA",
+      "sources": [
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_925A",
+      "normalized": "BEMA_925A",
+      "system": "BEMA",
+      "sources": [
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_CP",
+      "normalized": "BEMA_CP",
+      "system": "BEMA",
+      "sources": [
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_P",
+      "normalized": "BEMA_P",
+      "system": "BEMA",
+      "sources": [
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_199",
+      "normalized": "BEMA_199",
+      "system": "BEMA",
+      "sources": [
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "GOZ_ANALOG_MATRIX",
+      "normalized": "GOZ_ANALOG_MATRIX",
+      "system": "GOZ",
+      "sources": [
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "GOZ_ANALOG_DETECTOR",
+      "normalized": "GOZ_ANALOG_DETECTOR",
+      "system": "GOZ",
+      "sources": [
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "GOZ_2020_ANALOG",
+      "normalized": "GOZ_2020_ANALOG",
+      "system": "GOZ",
+      "sources": [
+        "pipeline:src/docudent/core/behandlungen/_shared/feeCatalog.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_1",
+      "normalized": "BEMA_1",
+      "system": "BEMA",
+      "sources": [
+        "pipeline:src/docudent/core/billing/knowledgeBase/logic/billingScopeResolver.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_925",
+      "normalized": "BEMA_925",
+      "system": "BEMA",
+      "sources": [
+        "pipeline:src/docudent/core/billing/knowledgeBase/logic/billingScopeResolver.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_28_ff",
+      "normalized": "BEMA_28_ff",
+      "system": "BEMA",
+      "sources": [
+        "json:src/docudent/core/billing/knowledgeBase/navigation/entscheidungsbaeume.json"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_36_37",
+      "normalized": "BEMA_36_37",
+      "system": "BEMA",
+      "sources": [
+        "json:src/docudent/core/billing/knowledgeBase/regeln/bema_frequenzregeln_komplett.json"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_23_nicht_neben_19_21",
+      "normalized": "BEMA_23_nicht_neben_19_21",
+      "system": "BEMA",
+      "sources": [
+        "json:src/docudent/core/billing/knowledgeBase/regeln/bema_prothetik_regeln.json"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_24c_nur_nach_19_21",
+      "normalized": "BEMA_24c_nur_nach_19_21",
+      "system": "BEMA",
+      "sources": [
+        "json:src/docudent/core/billing/knowledgeBase/regeln/bema_prothetik_regeln.json"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_91d_nicht_bei_gleichartig",
+      "normalized": "BEMA_91d_nicht_bei_gleichartig",
+      "system": "BEMA",
+      "sources": [
+        "json:src/docudent/core/billing/knowledgeBase/regeln/bema_prothetik_regeln.json"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "FZ_1x_nicht_bei_Brueckenpfeiler",
+      "normalized": "FZ_1x_nicht_bei_Brueckenpfeiler",
+      "system": "FZ",
+      "sources": [
+        "json:src/docudent/core/billing/knowledgeBase/regeln/bema_prothetik_regeln.json"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_Cp",
+      "normalized": "BEMA_Cp",
+      "system": "BEMA",
+      "sources": [
+        "ui:src/docudent/v10/packs/fuellung/pack.ts"
+      ],
+      "count": 1
+    },
+    {
+      "ref": "BEMA_13C",
+      "normalized": "BEMA_13C",
+      "system": "BEMA",
+      "sources": [
+        "ui:src/docudent/v7/multitreatment/orchestrator.ts"
+      ],
+      "count": 1
+    }
+  ]
+}

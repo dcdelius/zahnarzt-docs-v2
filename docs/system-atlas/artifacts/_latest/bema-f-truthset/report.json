@@ -1,0 +1,758 @@
+{
+  "generated": "2026-01-01T12:30:30.636Z",
+  "summary": {
+    "total": 50,
+    "passed": 46,
+    "failed": 4
+  },
+  "results": [
+    {
+      "id": "gkv_1fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_1fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_1fl_03",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_1fl_04",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_1fl_05",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_2fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_2fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_2fl_03",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_3fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_3fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_4fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13d"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": null
+      }
+    },
+    {
+      "id": "gkv_4fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13d"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_1fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2060"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2060",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_1fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2060"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2060",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_2fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2080"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2080",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_2fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2080"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2080",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_3fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2100"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2100",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_4fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2120"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2120",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_4fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2120"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2120",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_1fl_03",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2060"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2060",
+        "addon": null
+      }
+    },
+    {
+      "id": "mkv_1fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": [
+          "GOZ_2060"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    },
+    {
+      "id": "mkv_1fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": [
+          "GOZ_2060"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    },
+    {
+      "id": "mkv_1fl_03",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": [
+          "GOZ_2060"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    },
+    {
+      "id": "mkv_1fl_04",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": [
+          "GOZ_2060"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    },
+    {
+      "id": "mkv_1fl_05",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": [
+          "GOZ_2060"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    },
+    {
+      "id": "mkv_1fl_no_addon",
+      "passed": false,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    },
+    {
+      "id": "mkv_2fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": [
+          "GOZ_2080"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": "GOZ_2080"
+      }
+    },
+    {
+      "id": "mkv_2fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": [
+          "GOZ_2080"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": "GOZ_2080"
+      }
+    },
+    {
+      "id": "mkv_2fl_03",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": [
+          "GOZ_2080"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": "GOZ_2080"
+      }
+    },
+    {
+      "id": "mkv_2fl_04",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": [
+          "GOZ_2080"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": "GOZ_2080"
+      }
+    },
+    {
+      "id": "mkv_2fl_no_addon",
+      "passed": false,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": "GOZ_2080"
+      }
+    },
+    {
+      "id": "mkv_3fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": [
+          "GOZ_2100"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": "GOZ_2100"
+      }
+    },
+    {
+      "id": "mkv_3fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": [
+          "GOZ_2100"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": "GOZ_2100"
+      }
+    },
+    {
+      "id": "mkv_3fl_03",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": [
+          "GOZ_2100"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": "GOZ_2100"
+      }
+    },
+    {
+      "id": "mkv_3fl_04",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": [
+          "GOZ_2100"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": "GOZ_2100"
+      }
+    },
+    {
+      "id": "mkv_3fl_no_addon",
+      "passed": false,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": "GOZ_2100"
+      }
+    },
+    {
+      "id": "mkv_4fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13d"
+        ],
+        "addon": [
+          "GOZ_2120"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": "GOZ_2120"
+      }
+    },
+    {
+      "id": "mkv_4fl_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13d"
+        ],
+        "addon": [
+          "GOZ_2120"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": "GOZ_2120"
+      }
+    },
+    {
+      "id": "mkv_4fl_03",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13d"
+        ],
+        "addon": [
+          "GOZ_2120"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": "GOZ_2120"
+      }
+    },
+    {
+      "id": "mkv_4fl_04",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13d"
+        ],
+        "addon": [
+          "GOZ_2120"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": "GOZ_2120"
+      }
+    },
+    {
+      "id": "mkv_4fl_no_addon",
+      "passed": false,
+      "expected": {
+        "base": [
+          "BEMA_13d"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": "GOZ_2120"
+      }
+    },
+    {
+      "id": "mkv_5fl_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13d"
+        ],
+        "addon": [
+          "GOZ_2120"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13d",
+        "addon": "GOZ_2120"
+      }
+    },
+    {
+      "id": "mkv_adhäsiv_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": [
+          "GOZ_2100"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": "GOZ_2100"
+      }
+    },
+    {
+      "id": "mkv_schicht_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": [
+          "GOZ_2080"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": "GOZ_2080"
+      }
+    },
+    {
+      "id": "mkv_explicit_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": [
+          "GOZ_2060"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": "GOZ_2060"
+      }
+    },
+    {
+      "id": "mkv_explicit_02",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13b"
+        ],
+        "addon": [
+          "GOZ_2080"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13b",
+        "addon": "GOZ_2080"
+      }
+    },
+    {
+      "id": "mkv_komposit_adhesiv",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": [
+          "GOZ_2100"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": "GOZ_2100"
+      }
+    },
+    {
+      "id": "gkv_profunda_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "BEMA_13",
+        "addon": null
+      }
+    },
+    {
+      "id": "pkv_profunda_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "GOZ_2080"
+        ],
+        "addon": []
+      },
+      "actual": {
+        "base": "GOZ_2080",
+        "addon": null
+      }
+    },
+    {
+      "id": "mkv_profunda_01",
+      "passed": true,
+      "expected": {
+        "base": [
+          "BEMA_13c"
+        ],
+        "addon": [
+          "GOZ_2100"
+        ]
+      },
+      "actual": {
+        "base": "BEMA_13c",
+        "addon": "GOZ_2100"
+      }
+    }
+  ]
+}

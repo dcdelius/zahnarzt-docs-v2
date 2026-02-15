@@ -1,0 +1,12 @@
+{
+  "run_at": "2026-02-15T08:23:31.586Z",
+  "total_refs_found": 9375,
+  "in_allowed_paths": 8167,
+  "violations": 0,
+  "by_catalog": {
+    "GOZ": 3956,
+    "BEMA": 3887,
+    "BEL": 1020,
+    "GOA": 512
+  }
+}

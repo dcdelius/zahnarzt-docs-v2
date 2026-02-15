@@ -1,0 +1,65 @@
+/* ============================================
+   ScopePill — Jeton/Apple Segmented Control
+   ============================================
+   - Solid opaque surface
+   - Sliding thumb animation
+   - Hover lift, press scale
+*/
+
+.scope-pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 4px;
+    border-radius: 999px;
+    background: var(--sheet-solid, #E86B5A);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+/* Sliding thumb */
+.scope-pill-thumb {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: 32px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.20);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Item buttons */
+.scope-pill-item {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--jeton-white, #FFFFFF);
+    cursor: pointer;
+    transition: transform 0.12s ease-out, filter 0.12s ease-out;
+    flex: 1;
+}
+
+.scope-pill-item:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+}
+
+.scope-pill-item:active {
+    transform: translateY(0) scale(0.99);
+}
+
+.scope-pill-item:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}

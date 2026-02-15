@@ -1,0 +1,383 @@
+{
+    "_meta": {
+        "treatmentId": "fuellung",
+        "version": "1.0.0",
+        "description": "Question Bank for Füllung treatment - UI semantics only, no fachliche Logik"
+    },
+    "questions": [
+        {
+            "key": "vitality",
+            "category": "forensic",
+            "prompt": "Sensibilitätsprobe?",
+            "type": "single",
+            "dataField": "mentioned.vitality",
+            "options": [
+                {
+                    "id": "pos",
+                    "label": "ViPr +",
+                    "dataValue": "+"
+                },
+                {
+                    "id": "neg",
+                    "label": "ViPr −",
+                    "dataValue": "-"
+                }
+            ]
+        },
+        {
+            "key": "percussion",
+            "category": "forensic",
+            "prompt": "Perkussionsprobe?",
+            "type": "single",
+            "dataField": "mentioned.percussion",
+            "options": [
+                {
+                    "id": "neg",
+                    "label": "Perk −",
+                    "dataValue": "-"
+                },
+                {
+                    "id": "pos",
+                    "label": "Perk +",
+                    "dataValue": "+"
+                }
+            ]
+        },
+        {
+            "key": "tiefe",
+            "category": "forensic",
+            "prompt": "Kavitätentiefe?",
+            "type": "single",
+            "dataField": "mentioned.tiefe",
+            "when": {
+                "anyKeywords": [
+                    "karies",
+                    "caries",
+                    "media",
+                    "profunda",
+                    "tief",
+                    "pulpanah",
+                    "kavität"
+                ]
+            },
+            "options": [
+                {
+                    "id": "normal",
+                    "label": "Normale Tiefe",
+                    "dataValue": "normal"
+                },
+                {
+                    "id": "tief",
+                    "label": "Pulpanah (tief)",
+                    "dataValue": "tief"
+                }
+            ]
+        },
+        {
+            "key": "ueberkappung",
+            "category": "forensic",
+            "prompt": "Überkappung erforderlich?",
+            "type": "single",
+            "dataField": "mentioned.ueberkappung",
+            "when": {
+                "anyOf": [
+                    {
+                        "anyKeywords": [
+                            "pulpanah",
+                            "profunda",
+                            "überkappung",
+                            "überkapp",
+                            "indirekte",
+                            "direkte",
+                            "ca(oh)2",
+                            "calciumhydroxid",
+                            "mta",
+                            "biodentine"
+                        ]
+                    },
+                    {
+                        "requiresAnswers": {
+                            "tiefe": "tief"
+                        }
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "anesthesia_type",
+            "category": "forensic",
+            "prompt": "Anästhesieform?",
+            "type": "single",
+            "dataField": "mentioned.anesthesia_type",
+            "when": {
+                "anyKeywords": [
+                    "anästhesie",
+                    "anaesthesie",
+                    "la",
+                    "ubistesin",
+                    "ultracain",
+                    "infiltration",
+                    "leitung",
+                    "leitungsanästhesie",
+                    "infiltrationsanästhesie"
+                ]
+            },
+            "options": [
+                {
+                    "id": "infiltr",
+                    "label": "Infiltration",
+                    "dataValue": "infiltr"
+                },
+                {
+                    "id": "leitung",
+                    "label": "Leitungsanästhesie",
+                    "dataValue": "leitung"
+                }
+            ]
+        },
+        {
+            "key": "diagnose_confirmation",
+            "category": "forensic",
+            "prompt": "Kariestiefe bestätigen?",
+            "type": "single",
+            "dataField": "mentioned.diagnose_type",
+            "when": {
+                "anyKeywords": [
+                    "karies",
+                    "caries"
+                ],
+                "noneKeywords": [
+                    "media",
+                    "profunda",
+                    "sekundär",
+                    "sekundaer",
+                    "rezidiv",
+                    "initialkaries"
+                ]
+            },
+            "options": [
+                {
+                    "id": "media",
+                    "label": "Caries media",
+                    "dataValue": "media"
+                },
+                {
+                    "id": "profunda",
+                    "label": "Caries profunda",
+                    "dataValue": "profunda"
+                },
+                {
+                    "id": "sekundaer",
+                    "label": "Sekundärkaries",
+                    "dataValue": "sekundaer"
+                },
+                {
+                    "id": "rezidiv",
+                    "label": "Rezidivkaries",
+                    "dataValue": "rezidiv"
+                }
+            ]
+        },
+        {
+            "key": "isolation",
+            "category": "forensic",
+            "prompt": "Trockenlegung?",
+            "type": "single",
+            "dataField": "mentioned.kofferdam",
+            "when": {
+                "_comment": "Only ask if not already recognized from dictation",
+                "noneOf": {
+                    "anyKeywords": [
+                        "kofferdam",
+                        "cofferdam",
+                        "relative trockenlegung",
+                        "watterollen",
+                        "watte"
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "id": "kofferdam",
+                    "label": "Kofferdam",
+                    "dataValue": true
+                },
+                {
+                    "id": "relativ",
+                    "label": "Relative Trockenlegung",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "ueberkappung_material",
+            "category": "forensic",
+            "prompt": "Überkappungsmaterial?",
+            "type": "single",
+            "dataField": "mentioned.ueberkappung_material",
+            "when": {
+                "requiresAnswers": {
+                    "ueberkappung": true
+                }
+            },
+            "options": [
+                {
+                    "id": "caoh",
+                    "label": "Ca(OH)₂",
+                    "dataValue": "Ca(OH)₂"
+                },
+                {
+                    "id": "mta",
+                    "label": "MTA",
+                    "dataValue": "MTA"
+                },
+                {
+                    "id": "biodentine",
+                    "label": "Biodentine",
+                    "dataValue": "Biodentine"
+                }
+            ]
+        },
+        {
+            "key": "mkv_vereinbarung",
+            "category": "mkv",
+            "prompt": "Mehrkostenvereinbarung vorhanden?",
+            "type": "single",
+            "dataField": "mkvVereinbarung",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja, schriftlich",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "mkv_betrag",
+            "category": "mkv",
+            "prompt": "Zuzahlungsbetrag (Privatrechnung)?",
+            "type": "number",
+            "dataField": "costs",
+            "min": 0,
+            "step": 10,
+            "unit": "€",
+            "presets": [
+                50,
+                80,
+                100,
+                120,
+                150
+            ]
+        },
+        {
+            "key": "mehrschicht",
+            "category": "upsell",
+            "prompt": "Mehrschichttechnik gewünscht?",
+            "type": "single",
+            "dataField": "upsell.mehrschicht",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja (+ Mehrkosten)",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "adhasiv",
+            "category": "upsell",
+            "prompt": "Adhäsive Befestigung?",
+            "type": "single",
+            "dataField": "upsell.adhasiv",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Adhäsiv befestigen",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Standard",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "hemostasis",
+            "category": "medical",
+            "prompt": "Blutstillung durchgeführt?",
+            "type": "single",
+            "dataField": "mentioned.hemostasis",
+            "when": {
+                "anyKeywords": [
+                    "blutung",
+                    "blutet",
+                    "blutend",
+                    "blutstillung",
+                    "hämostase"
+                ]
+            },
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja (Blutstillung erfolgt)",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein (keine Blutstillung nötig)",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "sensitivity_followup",
+            "category": "medical",
+            "prompt": "Desensibilisierung/Kontrolle geplant?",
+            "type": "single",
+            "dataField": "mentioned.sensitivity_followup",
+            "when": {
+                "anyKeywords": [
+                    "empfindlich",
+                    "sensibel",
+                    "hypersensibel",
+                    "überempfindlich"
+                ]
+            },
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja (Kontrolltermin/Maßnahmen)",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein (keine Maßnahmen)",
+                    "dataValue": false
+                }
+            ]
+        }
+    ]
+}

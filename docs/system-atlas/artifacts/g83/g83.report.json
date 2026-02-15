@@ -1,0 +1,16 @@
+{
+    "gigaprompt": "G83",
+    "milestone": "m83",
+    "generated_at": "2025-12-30T08:28:00Z",
+    "status": "PLANNING",
+    "summary": "Delete Sprint B3 - manifest generation + safe wave execution",
+    "deliverables": {
+        "script": "scripts/delete/generateDeleteManifest.ts",
+        "output": "docs/system-atlas/artifacts/g83/delete.manifest.json",
+        "waves": {
+            "wave1": "Safe junk (.DS_Store, orphan html/pdf)",
+            "wave2": "Dead JSON (unreferenced)",
+            "wave3": "Manual review"
+        }
+    }
+}

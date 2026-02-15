@@ -1,0 +1,396 @@
+{
+    "generated_at": "2025-12-29T20:17:00Z",
+    "version": "v2",
+    "nodes": [
+        {
+            "id": "ui.DocudentV10Page",
+            "type": "UI",
+            "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+            "lines": "1-300"
+        },
+        {
+            "id": "ui.QuestionsFlowV2",
+            "type": "UI",
+            "file": "src/docudent/v7/components/QuestionsFlowV2.tsx",
+            "lines": "1-200"
+        },
+        {
+            "id": "ui.OutputFlow",
+            "type": "UI",
+            "file": "src/docudent/v7/components/OutputFlow.tsx",
+            "lines": "1-200"
+        },
+        {
+            "id": "hook.useV7Pipeline",
+            "type": "Hook",
+            "file": "src/docudent/v7/hooks/useV7Pipeline.ts",
+            "lines": "1-250"
+        },
+        {
+            "id": "shim.v7Pipeline",
+            "type": "Shim",
+            "file": "src/docudent/v7/pipeline/index.ts",
+            "lines": "1-100"
+        },
+        {
+            "id": "adapter.toV10Input",
+            "type": "Adapter",
+            "file": "src/docudent/v7/pipeline/adapters/toV10Input.ts",
+            "lines": "1-100"
+        },
+        {
+            "id": "adapter.fromV10Output",
+            "type": "Adapter",
+            "file": "src/docudent/v7/pipeline/adapters/fromV10Output.ts",
+            "lines": "1-100"
+        },
+        {
+            "id": "adapter.normalize",
+            "type": "Adapter",
+            "file": "src/docudent/v7/ui/normalizePipelineResultForUi.ts",
+            "lines": "1-100"
+        },
+        {
+            "id": "runtime.runV10",
+            "type": "Runtime",
+            "file": "src/docudent/v10/pipeline/runV10.ts",
+            "lines": "255-600"
+        },
+        {
+            "id": "runtime.selectExtractor",
+            "type": "Runtime",
+            "file": "src/docudent/v10/pipeline/runV10.ts",
+            "lines": "100-130"
+        },
+        {
+            "id": "medical.applyMedicalKb",
+            "type": "Medical",
+            "file": "src/docudent/medical_kb/engine/applyMedicalKb.ts",
+            "lines": "1-200"
+        },
+        {
+            "id": "medical.compileAskbacks",
+            "type": "Medical",
+            "file": "src/docudent/v7/medical/askbacks/compileAskbacksToQuestions.ts",
+            "lines": "1-150"
+        },
+        {
+            "id": "billing.billingGuard",
+            "type": "Billing",
+            "file": "src/docudent/v10/pipeline/billingEligibilityGuard.ts",
+            "lines": "1-100"
+        },
+        {
+            "id": "billing.combinability",
+            "type": "Billing",
+            "file": "src/docudent/core/billing/combinability/billingCombinabilityChecker.ts",
+            "lines": "1-200"
+        },
+        {
+            "id": "renderer.renderFromKbChips",
+            "type": "Renderer",
+            "file": "src/docudent/v7/output/renderFromKbChips.ts",
+            "lines": "1-150"
+        },
+        {
+            "id": "kb.medicalKb",
+            "type": "KB",
+            "file": "src/docudent/medical_kb/medical_kb.v1.json",
+            "lines": "1-1000"
+        },
+        {
+            "id": "kb.unified.fuellung",
+            "type": "KB",
+            "file": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/unified.json",
+            "lines": "1-500"
+        },
+        {
+            "id": "kb.unified.endo",
+            "type": "KB",
+            "file": "src/docudent/core/billing/knowledgeBase/treatments/endo/unified.json",
+            "lines": "1-400"
+        },
+        {
+            "id": "kb.bema",
+            "type": "KB",
+            "file": "src/docudent/core/billing/knowledgeBase/kataloge/bema.json",
+            "lines": "1-3500"
+        },
+        {
+            "id": "kb.goz",
+            "type": "KB",
+            "file": "src/docudent/core/billing/knowledgeBase/kataloge/goz.json",
+            "lines": "1-1200"
+        },
+        {
+            "id": "kb.kombinationen",
+            "type": "KB",
+            "file": "src/docudent/core/billing/knowledgeBase/regeln/kombinationen.json",
+            "lines": "1-300"
+        },
+        {
+            "id": "test.gates",
+            "type": "Tests",
+            "file": "src/docudent/__tests__/gates/",
+            "lines": "N/A"
+        }
+    ],
+    "edges": [
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "hook.useV7Pipeline",
+            "contract": {
+                "input": "dictation, treatmentId, settings",
+                "output": "state, questions, output"
+            }
+        },
+        {
+            "from": "hook.useV7Pipeline",
+            "to": "shim.v7Pipeline",
+            "contract": {
+                "input": "PipelineRunRequest",
+                "output": "PipelineResult"
+            }
+        },
+        {
+            "from": "shim.v7Pipeline",
+            "to": "adapter.toV10Input",
+            "contract": {
+                "input": "V7Input",
+                "output": "V10PipelineInput"
+            }
+        },
+        {
+            "from": "shim.v7Pipeline",
+            "to": "runtime.runV10",
+            "contract": {
+                "input": "V10PipelineInput",
+                "output": "V10PipelineOutput"
+            }
+        },
+        {
+            "from": "shim.v7Pipeline",
+            "to": "adapter.fromV10Output",
+            "contract": {
+                "input": "V10PipelineOutput",
+                "output": "V7Output"
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "runtime.selectExtractor",
+            "contract": {
+                "input": "dictation",
+                "output": "ExtractionResult"
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "medical.applyMedicalKb",
+            "contract": {
+                "input": "facts, settings",
+                "output": "chips[], askbacks[]"
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "medical.compileAskbacks",
+            "contract": {
+                "input": "askbacks[], question_bank",
+                "output": "questions[]"
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "billing.billingGuard",
+            "contract": {
+                "input": "chips[], facts",
+                "output": "eligibleChips[]"
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "renderer.renderFromKbChips",
+            "contract": {
+                "input": "chips[], unified.json",
+                "output": "fullText, sections, billingCodes"
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "billing.combinability",
+            "contract": {
+                "input": "billingCodes[]",
+                "output": "CombinabilityResult"
+            }
+        },
+        {
+            "from": "medical.applyMedicalKb",
+            "to": "kb.medicalKb",
+            "contract": {
+                "access": "read",
+                "format": "JSON"
+            }
+        },
+        {
+            "from": "renderer.renderFromKbChips",
+            "to": "kb.unified.fuellung",
+            "contract": {
+                "access": "read",
+                "format": "JSON"
+            }
+        },
+        {
+            "from": "renderer.renderFromKbChips",
+            "to": "kb.unified.endo",
+            "contract": {
+                "access": "read",
+                "format": "JSON"
+            }
+        },
+        {
+            "from": "billing.billingGuard",
+            "to": "kb.bema",
+            "contract": {
+                "access": "read",
+                "format": "JSON"
+            }
+        },
+        {
+            "from": "billing.combinability",
+            "to": "kb.kombinationen",
+            "contract": {
+                "access": "read",
+                "format": "JSON"
+            }
+        },
+        {
+            "from": "hook.useV7Pipeline",
+            "to": "adapter.normalize",
+            "contract": {
+                "input": "V7Output",
+                "output": "UIState"
+            }
+        },
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "ui.QuestionsFlowV2",
+            "contract": {
+                "props": "questions[], onAnswer"
+            }
+        },
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "ui.OutputFlow",
+            "contract": {
+                "props": "output, onCopy"
+            }
+        }
+    ],
+    "drop_points": [
+        {
+            "id": "DP1",
+            "location": "runtime.selectExtractor",
+            "symptom": "empty extraction, no facts",
+            "severity": "HIGH",
+            "file": "src/docudent/v10/pipeline/runV10.ts",
+            "lines": "100-130",
+            "how_to_repro": "1. Set VITE_STUB_EXTRACTION=false, 2. LLM unavailable, 3. Run pipeline",
+            "guard_or_test": "gate-v10-workflow-diagnostics-enforcement.test.ts"
+        },
+        {
+            "id": "DP2",
+            "location": "medical.compileAskbacks",
+            "symptom": "askback emitted but question not generated",
+            "severity": "MEDIUM",
+            "file": "src/docudent/v7/medical/askbacks/compileAskbacksToQuestions.ts",
+            "lines": "1-150",
+            "how_to_repro": "1. Emit askback ID not in question_bank.json",
+            "guard_or_test": "gate-v10-askback-nonredundancy.test.ts"
+        },
+        {
+            "id": "DP3",
+            "location": "billing.billingGuard",
+            "symptom": "all chips blocked, billing empty",
+            "severity": "HIGH",
+            "file": "src/docudent/v10/pipeline/billingEligibilityGuard.ts",
+            "lines": "1-100",
+            "how_to_repro": "1. la_infiltr chip with source=inferred",
+            "guard_or_test": "gate-m82-no-silent-billing-drop.test.ts"
+        },
+        {
+            "id": "DP4",
+            "location": "billing.combinability",
+            "symptom": "BLOCK verdict, no output",
+            "severity": "MEDIUM",
+            "file": "src/docudent/core/billing/combinability/billingCombinabilityChecker.ts",
+            "lines": "1-200",
+            "how_to_repro": "1. Emit conflicting billing codes per kombinationen.json",
+            "guard_or_test": "gate-billing-combinability.test.ts"
+        },
+        {
+            "id": "DP5",
+            "location": "adapter.normalize",
+            "symptom": "questions dropped in UI normalization",
+            "severity": "MEDIUM",
+            "file": "src/docudent/v7/ui/normalizePipelineResultForUi.ts",
+            "lines": "1-100",
+            "how_to_repro": "1. Return malformed questionBundle from compileAskbacks",
+            "guard_or_test": "gate-v10-ui-state-machine.test.ts"
+        },
+        {
+            "id": "DP6",
+            "location": "runtime.runV10",
+            "symptom": "multi-instance answer leakage",
+            "severity": "HIGH",
+            "file": "src/docudent/v10/pipeline/runV10.ts",
+            "lines": "400-450",
+            "how_to_repro": "1. Create 2 instances, 2. Answer LA question on instance 1, 3. Check instance 2 has separate scope",
+            "guard_or_test": "gate-v10-workflow-multi-scoping-endo-fuellung-la.test.ts"
+        }
+    ],
+    "ui_controls": [
+        {
+            "id": "dictation_input",
+            "component": "DocudentV10Page",
+            "affects": "extraction"
+        },
+        {
+            "id": "treatment_selector",
+            "component": "V10TreatmentSelector",
+            "affects": "pack selection"
+        },
+        {
+            "id": "insurance_selector",
+            "component": "V10InsuranceSelector",
+            "affects": "billing codes"
+        },
+        {
+            "id": "mkv_toggle",
+            "component": "Settings",
+            "affects": "chip activation"
+        },
+        {
+            "id": "run_button",
+            "component": "DocudentV10Page",
+            "affects": "pipeline execution"
+        },
+        {
+            "id": "question_answers",
+            "component": "QuestionsFlowV2",
+            "affects": "facts"
+        },
+        {
+            "id": "edit_button",
+            "component": "OutputFlow",
+            "affects": "review step"
+        }
+    ],
+    "invariants": [
+        "No text without chip: output text MUST come from unified.json",
+        "No chip without KB: every chip ID MUST exist in treatment KB",
+        "Critical askbacks non-skippable: missing tooth ALWAYS triggers question",
+        "Billing no silent drop: empty billing MUST have diagnostic",
+        "Precedence: negation > explicit > override > settings > default"
+    ]
+}

@@ -1,0 +1,234 @@
+{
+    "status": "PHASE_1_COMPLETE",
+    "time_spent_min": 12,
+    "proof_of_work": {
+        "commands": [
+            {
+                "cmd": "cat docs/audit/m79/wiring.graph.json | jq '.nodes | length'",
+                "stdout_excerpt": "22",
+                "exitCode": 0
+            },
+            {
+                "cmd": "cat docs/audit/m79/wiring.graph.json | jq '.edges | length'",
+                "stdout_excerpt": "21",
+                "exitCode": 0
+            },
+            {
+                "cmd": "cat docs/audit/m79/tests.after.json | jq '.test_run_summary'",
+                "stdout_excerpt": "{\"total_files\":406,\"passed_files\":359,\"failed_files\":46}",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep -c '\"dead_code\"' docs/audit/m79/unknowns.explained.jsonl",
+                "stdout_excerpt": "945",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'runPipeline' src/docudent/v10/pages/DocudentV10Page.tsx",
+                "stdout_excerpt": "LineNumber:57,LineContent:runPipeline",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'runV10' src/docudent/v7/pipeline/index.ts",
+                "stdout_excerpt": "LineNumber:66,LineContent:const v10Output = await runV10(v10Input)",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'applyMedicalKb' src/docudent/v10/pipeline/runV10.ts",
+                "stdout_excerpt": "LineNumber:140,LineContent:const engineResult = applyMedicalKb({",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'compileAskbacksToQuestions' src/docudent/v10/pipeline/runV10.ts",
+                "stdout_excerpt": "LineNumber:152,LineContent:const compiledBundle = compileAskbacksToQuestions({",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'renderFromKbChips' src/docudent/v10/pipeline/runV10.ts",
+                "stdout_excerpt": "LineNumber:471,LineContent:const renderResult = renderFromKbChips({",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'kofferdam' src/docudent/v6/services/chipProvenanceBuilder.ts",
+                "stdout_excerpt": "LineNumber:209,LineContent:answerDerivedChips.add('kofferdam')",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'exkavation' src/docudent/v6/services/outputService.ts",
+                "stdout_excerpt": "LineNumber:135,LineContent:const alwaysOnChipIds = ['exkavation', 'komposit_basic', 'finishing']",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'kofferdam' src/docudent/v7/components/MultiInstancePanel.tsx",
+                "stdout_excerpt": "LineNumber:216,LineContent:if (/kofferdam/i.test(slice)) mentioned['kofferdam'] = true",
+                "exitCode": 0
+            },
+            {
+                "cmd": "grep 'core/services' src/docudent/v10/extraction/adapters/llmExtractorAdapter.ts",
+                "stdout_excerpt": "LineNumber:11,LineContent:import { extractionService } from '../../../core/services/extractionService'",
+                "exitCode": 0
+            },
+            {
+                "cmd": "npx vitest run gate-no-hardcoded-chip-ids.test.ts",
+                "stdout_excerpt": "Test Files 1 failed (1), Tests 1 failed | 3 passed (4)",
+                "exitCode": 1
+            }
+        ],
+        "files_touched": []
+    },
+    "findings": {
+        "critical_path_map": {
+            "ui_to_pipeline": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 57,
+                "symbol": "runPipeline"
+            },
+            "pipeline_to_shim": {
+                "file": "src/docudent/v7/hooks/useV7Pipeline.ts",
+                "evidence": "calls v7/pipeline/index.run()"
+            },
+            "shim_to_v10": {
+                "file": "src/docudent/v7/pipeline/index.ts",
+                "line": 66,
+                "symbol": "runV10"
+            },
+            "v10_medical": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 140,
+                "symbol": "applyMedicalKb"
+            },
+            "v10_askbacks": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 152,
+                "symbol": "compileAskbacksToQuestions"
+            },
+            "v10_renderer": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 471,
+                "symbol": "renderFromKbChips"
+            }
+        },
+        "unknowns_analysis": {
+            "total_unknown": 1043,
+            "dead_code": 945,
+            "test_misclassified": 51,
+            "barrel_export": 29,
+            "dynamic_import": 18,
+            "reduction_achieved": "90.6% explained (945 dead_code + 51 test + 29 barrel + 18 dynamic = 1043)",
+            "exit_criteria_met": true
+        },
+        "import_resolution_violations": [
+            {
+                "file": "src/docudent/v6/services/chipProvenanceBuilder.ts",
+                "lines": [
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214
+                ],
+                "violation": "hardcoded chip IDs",
+                "fix": "Use CANONICAL_CHIP_IDS.KOFFERDAM etc"
+            },
+            {
+                "file": "src/docudent/v6/services/outputService.ts",
+                "line": 135,
+                "violation": "hardcoded chip IDs",
+                "fix": "Import and use CANONICAL_CHIP_IDS"
+            },
+            {
+                "file": "src/docudent/v7/components/MultiInstancePanel.tsx",
+                "line": 216,
+                "violation": "FALSE_POSITIVE",
+                "reason": "matches German word 'kofferdam' in dictation text, not chip ID reference",
+                "fix": "Update gate test to exclude dictation text matching"
+            }
+        ],
+        "llm_extractor_adapter": {
+            "file": "src/docudent/v10/extraction/adapters/llmExtractorAdapter.ts",
+            "line": 11,
+            "status": "ALLOWED_EXCEPTION",
+            "evidence": "Lines 4-5 comment: 'This is the ONLY file in v10/** that may import from core/services'"
+        }
+    },
+    "fixes": [],
+    "tests": {
+        "before": {
+            "total_files": 406,
+            "passed": 359,
+            "failed": 46
+        },
+        "after": {
+            "total_files": 406,
+            "passed": 359,
+            "failed": 46
+        },
+        "clusters": {
+            "UNCATEGORIZED": {
+                "count": 14,
+                "note": "E2E tests require Playwright"
+            },
+            "IMPORT_RESOLUTION": {
+                "count": 4,
+                "root_causes": [
+                    "hardcoded chip IDs in v6/services"
+                ]
+            },
+            "MEDICAL_GATE": {
+                "count": 1
+            },
+            "NULL_SAFETY": {
+                "count": 6
+            },
+            "CONTRACT_MISMATCH": {
+                "count": 1
+            },
+            "OTHER": {
+                "count": 20
+            }
+        }
+    },
+    "next_actions": [
+        {
+            "phase": 2,
+            "action": "Implement Flight Recorder structured trace at boundaries",
+            "priority": 1
+        },
+        {
+            "phase": 2,
+            "action": "Add repro bundle capture to runV10",
+            "priority": 2
+        },
+        {
+            "phase": 3,
+            "action": "Create CLI replay script with parity comparator",
+            "priority": 3
+        },
+        {
+            "phase": 4,
+            "action": "Add sufficiency/non-redundancy/critical askback gates",
+            "priority": 4
+        },
+        {
+            "phase": 5,
+            "action": "Fix hardcoded chip IDs in v6/services/chipProvenanceBuilder.ts:209-214",
+            "priority": 5
+        },
+        {
+            "phase": 5,
+            "action": "Fix hardcoded chip IDs in v6/services/outputService.ts:135",
+            "priority": 6
+        },
+        {
+            "phase": 5,
+            "action": "Update gate-no-hardcoded-chip-ids.test.ts to exclude dictation text matching",
+            "priority": 7
+        },
+        {
+            "phase": 5,
+            "action": "Run Playwright install and execute E2E for Repro 1/2",
+            "priority": 8
+        }
+    ]
+}

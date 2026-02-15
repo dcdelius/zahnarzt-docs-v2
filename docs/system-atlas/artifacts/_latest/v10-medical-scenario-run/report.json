@@ -1,0 +1,201 @@
+{
+  "runId": "2026-02-12T09:41:18.847Z",
+  "total": 10,
+  "pass": 10,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "01",
+      "title": "GKV Standard 1fl + LA + Fluor",
+      "insuranceType": "GKV",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_40",
+        "BEMA_13",
+        "BEMA_IP4"
+      ],
+      "questions": [
+        "isolation",
+        "mkv_confirmed"
+      ],
+      "perInstanceCount": 1,
+      "textLength": 1049,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "02",
+      "title": "GKV 2fl + Kofferdam",
+      "insuranceType": "GKV",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13b"
+      ],
+      "questions": [
+        "layering",
+        "mkv_confirmed"
+      ],
+      "perInstanceCount": 1,
+      "textLength": 644,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "03",
+      "title": "GKV profunda ohne Kappungsangabe -> Askback",
+      "insuranceType": "GKV",
+      "phase": "questions",
+      "billingRefs": [],
+      "questions": [
+        "isolation",
+        "layering",
+        "mkv_confirmed",
+        "ueberkappung"
+      ],
+      "perInstanceCount": 0,
+      "textLength": 0,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "04",
+      "title": "GKV profunda + direkte Überkappung",
+      "insuranceType": "GKV",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_13c",
+        "BEMA_25"
+      ],
+      "questions": [
+        "isolation",
+        "layering",
+        "mkv_confirmed",
+        "ueberkappung_material",
+        "ueberkappung"
+      ],
+      "perInstanceCount": 1,
+      "textLength": 909,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "05",
+      "title": "GKV LA Leitung",
+      "insuranceType": "GKV",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_13b"
+      ],
+      "questions": [
+        "isolation",
+        "layering",
+        "mkv_confirmed"
+      ],
+      "perInstanceCount": 1,
+      "textLength": 958,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "06",
+      "title": "PKV 1fl + LA + Kofferdam + Fluor",
+      "insuranceType": "PKV",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_0090",
+        "GOZ_2040",
+        "GOZ_2060",
+        "GOZ_1020"
+      ],
+      "questions": [],
+      "perInstanceCount": 1,
+      "textLength": 987,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "07",
+      "title": "MKV Mehrkosten explizit",
+      "insuranceType": "MKV",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_13b",
+        "GOZ_2080"
+      ],
+      "questions": [
+        "isolation",
+        "layering",
+        "mkv_justification"
+      ],
+      "perInstanceCount": 1,
+      "textLength": 990,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "08",
+      "title": "MKV nur Kasse absolute precedence",
+      "insuranceType": "MKV",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_13b"
+      ],
+      "questions": [
+        "isolation",
+        "layering"
+      ],
+      "perInstanceCount": 1,
+      "textLength": 635,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "09",
+      "title": "GKV Multi-Tooth 36+14",
+      "insuranceType": "GKV",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13b",
+        "BEMA_12",
+        "BEMA_13b"
+      ],
+      "questions": [
+        "layering",
+        "mkv_confirmed"
+      ],
+      "perInstanceCount": 2,
+      "textLength": 1212,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "10",
+      "title": "GKV Surface approximal → Askback",
+      "insuranceType": "GKV",
+      "phase": "questions",
+      "billingRefs": [],
+      "questions": [
+        "isolation",
+        "mkv_confirmed",
+        "surfaces"
+      ],
+      "perInstanceCount": 0,
+      "textLength": 0,
+      "combinability": "n/a",
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

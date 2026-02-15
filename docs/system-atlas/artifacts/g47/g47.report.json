@@ -1,0 +1,49 @@
+{
+    "gigaprompt": "G47",
+    "milestone": "m47",
+    "generated_at": "2025-12-29T23:45:00Z",
+    "status": "FOUNDATION_EXISTS",
+    "summary": "Wiring graph v2 exists. V3 upgrade and gears.md needed.",
+    "exit_criteria_status": {
+        "wiring_graph_v3": "PENDING",
+        "gears_md": "PENDING"
+    },
+    "current_state": {
+        "wiring_graph_v2": {
+            "location": "docs/system-atlas/artifacts/m79/wiring.graph.json",
+            "summary_doc": "docs/system-atlas/wiring.md",
+            "nodes": 22,
+            "edges": 21,
+            "ui_controls": 10
+        },
+        "critical_path_documented": true,
+        "evidence_format": "file:line references in wiring.md"
+    },
+    "v3_enhancements_needed": [
+        "Add drop points (where data can be lost)",
+        "Add edge contracts (expected payload shapes)",
+        "Add test coverage per edge",
+        "Add critical path highlighting"
+    ],
+    "gears_map_spec": {
+        "purpose": "Human-readable 'Gear Cards' for each component",
+        "format": "docs/system-atlas/gears.md",
+        "per_component": [
+            "Purpose (what it does)",
+            "Contract (inputs/outputs)",
+            "Invariants (what must always be true)",
+            "Failure modes (how it can break)"
+        ]
+    },
+    "commands_run": [
+        "ls docs/system-atlas/*.json",
+        "view wiring.md"
+    ],
+    "next_steps": [
+        "Create scripts/systemAtlas/generateWiringGraphV3.ts",
+        "Generate wiring.graph.v3.json with enhanced metadata",
+        "Create gears.md with component documentation",
+        "Verify with npm run atlas:check"
+    ],
+    "atlas_status": "PASS"
+}

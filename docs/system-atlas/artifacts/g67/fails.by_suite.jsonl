@@ -1,0 +1,232 @@
+[
+  {
+    "file": "case.flow.test.ts",
+    "path": "/Users/david/dokumaster-ui/tests/firebase/case.flow.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "firestore.rules.test.ts",
+    "path": "/Users/david/dokumaster-ui/tests/firebase/firestore.rules.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "settingsOverrides.service.test.ts",
+    "path": "/Users/david/dokumaster-ui/tests/firebase/settingsOverrides.service.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "billing-eligibility-integration.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/integration/billing-eligibility-integration.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m18-pack-completeness.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m18-pack-completeness.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m19-pack-generator-smoke.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m19-pack-generator-smoke.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m20-pack-allowlist-must-be-explicit.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m20-pack-allowlist-must-be-explicit.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m20-pack-billingref-coverage.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m20-pack-billingref-coverage.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m20-pack-combinability-goldens-are-real.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m20-pack-combinability-goldens-are-real.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m25-pack-coverage-still-100.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m25-pack-coverage-still-100.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m31-endo-clinical-parity.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m31-endo-clinical-parity.test.ts",
+    "error": "expected false to be true // Object.is equality"
+  },
+  {
+    "file": "gate-m31-fuellung-clinical-parity.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m31-fuellung-clinical-parity.test.ts",
+    "error": "expected false to be true // Object.is equality"
+  },
+  {
+    "file": "gate-m39-clinical-v4-determinism-100x.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m39-clinical-v4-determinism-100x.test.ts",
+    "error": "expected 37 to be 35 // Object.is equality"
+  },
+  {
+    "file": "gate-mvp-no-error.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-mvp-no-error.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-no-mock-output-strings.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-no-mock-output-strings.test.ts",
+    "error": "MOCK OUTPUT STRINGS DETECTED IN V7 SOURCE!\n\nFound 3 violation(s):\n  __e2e__/helpers/truthRules.ts:42 → \"Max Müller\"\n  __e2e__/helpers/truthRules.ts:43"
+  },
+  {
+    "file": "gate-no-v6-mutation.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-no-v6-mutation.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-pipeline-questionbundle-always-present.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-pipeline-questionbundle-always-present.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-surface-detection.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-surface-detection.test.ts",
+    "error": "expected [ 'm', 'o', 'd' ] to deeply equal [ 'o', 'd' ]"
+  },
+  {
+    "file": "gate-v7-ui-wiring.test.tsx",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-v7-ui-wiring.test.tsx",
+    "error": "expected [Function] to not throw an error but 'Error: useNavigate() may be used only…' was thrown"
+  },
+  {
+    "file": "gate3-answer-effectiveness-endo.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate3-answer-effectiveness-endo.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate4-pipeline-snapshot-endo.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate4-pipeline-snapshot-endo.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate5-import-paths.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate5-import-paths.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate7-stage-emission.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate7-stage-emission.test.ts",
+    "error": "expected 0 to be greater than or equal to 6"
+  },
+  {
+    "file": "v10-golden-path.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v10/__e2e__/v10-golden-path.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v10-multiinstance.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v10/__e2e__/v10-multiinstance.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v10-prod-repro.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v10/__e2e__/v10-prod-repro.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v10-ui.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v10/__e2e__/v10-ui.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v7-flow.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-flow.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v7-live-sanity.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-live-sanity.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v7-multiinstance-2teeth.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-multiinstance-2teeth.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v7-multiinstance-questions-2teeth.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-multiinstance-questions-2teeth.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v7-realcases.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-realcases.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "v7-ssot.e2e.spec.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-ssot.e2e.spec.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-wiring-matrix.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gate-wiring-matrix.test.ts",
+    "error": "expected false to be true // Object.is equality"
+  },
+  {
+    "file": "ui-flow-e2e.test.tsx",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/ui-flow-e2e.test.tsx",
+    "error": "the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a"
+  },
+  {
+    "file": "ui-flow.test.tsx",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/ui-flow.test.tsx",
+    "error": "unknown"
+  },
+  {
+    "file": "no-logic.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/pipeline/__tests__/no-logic.test.ts",
+    "error": "expected [ { …(2) }, { …(2) }, { …(2) }, …(2) ] to have a length of +0 but got 5"
+  },
+  {
+    "file": "reality-integration.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/pipeline/__tests__/reality-integration.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-combinability-rules-lock.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-combinability-rules-lock.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m12_4-no-core-services-imports.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-m12_4-no-core-services-imports.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-m16-parity-with-existing.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-m16-parity-with-existing.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-medical-kb-anchors-valid.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-medical-kb-anchors-valid.test.ts",
+    "error": "Invalid sourceRefs (not found in sources.v1.yaml):\nrule:rule-endo-trepanation-emits-chip -> bema-katalog-2025::bema-pos-31\nrule:rule-endo-kofferdam-em"
+  },
+  {
+    "file": "gate-no-patient-fields-in-output.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-no-patient-fields-in-output.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-output-coverage.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-output-coverage.test.ts",
+    "error": "Output missing tooth number 14. Check extraction and output composition. Output: \"kofferdam angelegt. kofferdam angelegt....\": expected false to be tr"
+  },
+  {
+    "file": "gate-p14-deep-filling-e2e.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-p14-deep-filling-e2e.test.ts",
+    "error": "unknown"
+  },
+  {
+    "file": "gate-treatment-isolation.test.ts",
+    "path": "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-treatment-isolation.test.ts",
+    "error": "expected 'Trepanation der Pulpakammer.' to contain 'Wurzelbehandlung'"
+  }
+]

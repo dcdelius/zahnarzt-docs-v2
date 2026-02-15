@@ -1,0 +1,236 @@
+{
+    "generatedAt": "2025-12-24T10:07:00Z",
+    "version": "2",
+    "totalChips": 43,
+    "uniqueChipIds": 36,
+    "commonChipsCount": 7,
+    "collisionsCount": 0,
+    "conceptDuplicatesCount": 0,
+    "treatments": {
+        "fuellung": {
+            "chipCount": 17,
+            "billingChipCount": 7,
+            "chips": [
+                "vipr_pos",
+                "vipr_neg",
+                "perk_neg",
+                "perk_pos",
+                "la_infiltr",
+                "la_leitung",
+                "oberflaeche_la",
+                "kofferdam",
+                "rel_trocken",
+                "exkavation",
+                "cp",
+                "cp_not_required",
+                "p",
+                "komposit_basic",
+                "mehrschicht",
+                "finishing",
+                "fluor"
+            ]
+        },
+        "endo": {
+            "chipCount": 26,
+            "billingChipCount": 17,
+            "chips": [
+                "vipr_pos",
+                "vipr_neg",
+                "perk_neg",
+                "perk_pos",
+                "roentgen_einzelzahn",
+                "la_leitung",
+                "la_infiltr",
+                "kofferdam",
+                "trepanation",
+                "laengenmessung_elek",
+                "laengenmessung_roentgen",
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4",
+                "spuelung_naocl",
+                "spuelung_edta",
+                "einlage_caoh2",
+                "provisorischer_verschluss",
+                "wf_kalt",
+                "wf_warm",
+                "wf_einzel",
+                "roentgen_kontrolle",
+                "aufbau_postendo"
+            ]
+        }
+    },
+    "commonChips": [
+        {
+            "chipId": "kofferdam",
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "billingRef": {
+                "GKV": "BEMA_12",
+                "PKV": "GOZ_2040"
+            },
+            "billingMatch": true,
+            "textDrift": true,
+            "textSnippetsFuellung": {
+                "kurz": "Kofferdam.",
+                "mittel": "Kofferdam angelegt.",
+                "lang": "Absolute Trockenlegung durch sorgfältiges Anlegen von Kofferdam mit anatomisch angepasster Klammer unter Sichterhaltung des Operationsfeldes."
+            },
+            "textSnippetsEndo": {
+                "kurz": "Kofferdam.",
+                "mittel": "Kofferdam angelegt.",
+                "lang": "Anlegen von Kofferdam zur absoluten Trockenlegung und Keimreduktion."
+            }
+        },
+        {
+            "chipId": "la_infiltr",
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "billingMatch": true,
+            "textDrift": true,
+            "textSnippetsFuellung": {
+                "kurz": "LA Infiltr.",
+                "mittel": "LA Infiltration (Ultracain D-S).",
+                "lang": "Nach Oberflächenanästhesie Infiltrationsanästhesie mit Ultracain D-S 1,7ml (Articain 4% + Adrenalin 1:200.000)."
+            },
+            "textSnippetsEndo": {
+                "kurz": "LA Infiltr.",
+                "mittel": "LA Infiltration.",
+                "lang": "Infiltrationsanästhesie mit Ultracain D-S 1,7ml."
+            }
+        },
+        {
+            "chipId": "la_leitung",
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            },
+            "billingMatch": true,
+            "textDrift": true,
+            "textSnippetsFuellung": {
+                "kurz": "LA Leitung.",
+                "mittel": "Leitungsanästhesie N. alv. inf. (Ultracain D-S).",
+                "lang": "Leitungsanästhesie des N. alveolaris inf. mit Ultracain D-S 1,7ml (Articain 4% + Adrenalin 1:200.000); Wirkungseintritt nach ca. 3 min."
+            },
+            "textSnippetsEndo": {
+                "kurz": "LA Leitung.",
+                "mittel": "Leitungsanästhesie N. alv. inf.",
+                "lang": "Leitungsanästhesie des N. alveolaris inf. mit Ultracain D-S 1,7ml."
+            }
+        },
+        {
+            "chipId": "perk_neg",
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "billingRef": null,
+            "billingMatch": true,
+            "textDrift": false,
+            "textSnippets": {
+                "kurz": "Perk −",
+                "mittel": "Perk −",
+                "lang": "Perkussion negativ"
+            }
+        },
+        {
+            "chipId": "perk_pos",
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "billingRef": null,
+            "billingMatch": true,
+            "textDrift": false,
+            "textSnippets": {
+                "kurz": "Perk +",
+                "mittel": "Perk +",
+                "lang": "Perkussion positiv"
+            }
+        },
+        {
+            "chipId": "vipr_neg",
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "billingRef": null,
+            "billingMatch": true,
+            "textDrift": false,
+            "textSnippets": {
+                "kurz": "ViPr −",
+                "mittel": "ViPr −",
+                "lang": "Sensibilität negativ"
+            }
+        },
+        {
+            "chipId": "vipr_pos",
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "billingRef": null,
+            "billingMatch": true,
+            "textDrift": false,
+            "textSnippets": {
+                "kurz": "ViPr +",
+                "mittel": "ViPr +",
+                "lang": "Sensibilität positiv"
+            }
+        }
+    ],
+    "billingSharedGroups": [
+        {
+            "billingRef": {
+                "GKV": "BEMA_Ä925a",
+                "PKV": "GOZ_5000"
+            },
+            "chips": [
+                "roentgen_einzelzahn",
+                "laengenmessung_roentgen",
+                "roentgen_kontrolle"
+            ],
+            "reason": "Same X-ray billing code, different clinical purposes"
+        },
+        {
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "chips": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4"
+            ],
+            "reason": "Per-canal billing, different canal counts"
+        },
+        {
+            "billingRef": {
+                "GKV": "BEMA_34",
+                "PKV": "GOZ_2440"
+            },
+            "chips": [
+                "wf_kalt",
+                "wf_warm",
+                "wf_einzel"
+            ],
+            "reason": "Per-canal filling, different techniques"
+        }
+    ],
+    "conceptDuplicates": [],
+    "verdict": "NO_CRITICAL_ISSUES"
+}

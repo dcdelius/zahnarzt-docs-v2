@@ -1,0 +1,215 @@
+{
+  "runId": "2026-02-14T21:08:39.368Z",
+  "total": 16,
+  "pass": 16,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "E01",
+      "title": "GKV Endo komplett (T3) → Output",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_31",
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_41a",
+        "BEMA_Ä925a"
+      ],
+      "errors": [],
+      "phase": "output"
+    },
+    {
+      "id": "E02",
+      "title": "PKV Endo komplett (T3) → Output (GOZ only)",
+      "status": "pass",
+      "billingRefs": [
+        "GOZ_0100",
+        "GOZ_2040",
+        "GOZ_2360",
+        "GOZ_2400",
+        "GOZ_2410",
+        "GOZ_2440",
+        "GOZ_5000"
+      ],
+      "errors": [],
+      "phase": "output"
+    },
+    {
+      "id": "E03",
+      "title": "GKV: Kein Kofferdam möglich → kein BEMA_12",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_31",
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_41a",
+        "BEMA_Ä925a"
+      ],
+      "errors": [],
+      "phase": "output"
+    },
+    {
+      "id": "E04",
+      "title": "GKV: Spülung fehlt → Questions (Irrigation askback)",
+      "status": "pass",
+      "billingRefs": [],
+      "errors": [],
+      "phase": "questions"
+    },
+    {
+      "id": "E05",
+      "title": "GKV: WL-Längen (18/19/20mm) erzeugen keine Phantom-Zähne",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_Ä925a"
+      ],
+      "errors": [],
+      "phase": "output"
+    },
+    {
+      "id": "E06",
+      "title": "GKV: T3 Technik unklar → Questions (Obturations-Technik)",
+      "status": "pass",
+      "billingRefs": [],
+      "errors": [],
+      "phase": "questions"
+    },
+    {
+      "id": "E07",
+      "title": "GKV: T2 Baseline unvollständig → Questions (WL/Spülung)",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_32"
+      ],
+      "errors": [],
+      "phase": "questions"
+    },
+    {
+      "id": "E08",
+      "title": "GKV: T1 EAL erwähnt, WL‑Zahlen fehlen → Questions",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_31",
+        "BEMA_32",
+        "BEMA_35"
+      ],
+      "errors": [],
+      "phase": "questions"
+    },
+    {
+      "id": "E09",
+      "title": "GKV Endo komplett (T3) → Output (Variante)",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_31",
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_41a",
+        "BEMA_Ä925a"
+      ],
+      "errors": [],
+      "phase": "output"
+    },
+    {
+      "id": "E10",
+      "title": "PKV Endo komplett (T3) → Output (Variante)",
+      "status": "pass",
+      "billingRefs": [
+        "GOZ_0100",
+        "GOZ_2040",
+        "GOZ_2360",
+        "GOZ_2400",
+        "GOZ_2410",
+        "GOZ_2440",
+        "GOZ_5000"
+      ],
+      "errors": [],
+      "phase": "output"
+    },
+    {
+      "id": "E11",
+      "title": "GKV: T2 kein Kofferdam möglich → kein BEMA_12",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_35"
+      ],
+      "errors": [],
+      "phase": "output"
+    },
+    {
+      "id": "E12",
+      "title": "GKV: WL vorhanden, Spülung fehlt → Questions",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_35"
+      ],
+      "errors": [],
+      "phase": "questions"
+    },
+    {
+      "id": "E13",
+      "title": "GKV: T1 EAL erwähnt (anderer Zahn) → Questions",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_31",
+        "BEMA_32",
+        "BEMA_35"
+      ],
+      "errors": [],
+      "phase": "questions"
+    },
+    {
+      "id": "E14",
+      "title": "GKV: T3 Technik unklar → Questions (Variante)",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_34",
+        "BEMA_Ä925a"
+      ],
+      "errors": [],
+      "phase": "questions"
+    },
+    {
+      "id": "E15",
+      "title": "GKV: T3 mit Röntgenkontrolle → Output",
+      "status": "pass",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_31",
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_41a",
+        "BEMA_Ä925a"
+      ],
+      "errors": [],
+      "phase": "output"
+    },
+    {
+      "id": "E16",
+      "title": "PKV: T3 mit Röntgenkontrolle → Output",
+      "status": "pass",
+      "billingRefs": [
+        "GOZ_0100",
+        "GOZ_2040",
+        "GOZ_2360",
+        "GOZ_2400",
+        "GOZ_2410",
+        "GOZ_2440",
+        "GOZ_5000"
+      ],
+      "errors": [],
+      "phase": "output"
+    }
+  ]
+}

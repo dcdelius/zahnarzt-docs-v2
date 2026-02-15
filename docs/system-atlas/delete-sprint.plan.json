@@ -1,0 +1,138 @@
+{
+    "generated_at": "2025-12-29T20:20:00Z",
+    "version": "v1",
+    "buckets": [
+        {
+            "id": "B1",
+            "name": "Move HTML docs out of src/",
+            "description": "Move 690 HTML reference files to docs/reference/",
+            "risk": "LOW",
+            "paths": [
+                "src/docudent/BEMA/*.html",
+                "src/docudent/GOZ/*.html",
+                "src/docudent/BEL/*.html",
+                "src/docudent/Analogleistungen/*.html"
+            ],
+            "file_count": 690,
+            "preconditions": [
+                "npm run build PASS",
+                "npx vitest run PASS"
+            ],
+            "commands": [
+                "mkdir -p docs/reference/html/{BEMA,GOZ,BEL,Analogleistungen}",
+                "mv src/docudent/BEMA/*.html docs/reference/html/BEMA/",
+                "mv src/docudent/GOZ/*.html docs/reference/html/GOZ/",
+                "mv src/docudent/BEL/*.html docs/reference/html/BEL/",
+                "mv src/docudent/Analogleistungen/*.html docs/reference/html/Analogleistungen/"
+            ],
+            "postconditions": [
+                "npm run build PASS",
+                "npx vitest run PASS",
+                "No HTML files in src/docudent/**"
+            ],
+            "rollback": "git checkout -- src/docudent/{BEMA,GOZ,BEL,Analogleistungen}/*.html"
+        },
+        {
+            "id": "B2",
+            "name": "Delete legacy v6 directory",
+            "description": "Remove src/docudent/v6/** after confirming no runtime imports",
+            "risk": "MEDIUM",
+            "paths": [
+                "src/docudent/v6/**"
+            ],
+            "file_count": 256,
+            "preconditions": [
+                "gate-no-runtime-imports-from-v6.test.ts PASS",
+                "B1 merged"
+            ],
+            "commands": [
+                "rm -rf src/docudent/v6"
+            ],
+            "postconditions": [
+                "gate-no-runtime-imports-from-v6.test.ts PASS",
+                "npm run build PASS",
+                "npx vitest run PASS"
+            ],
+            "rollback": "git checkout -- src/docudent/v6"
+        },
+        {
+            "id": "B3",
+            "name": "Delete dead_code candidates",
+            "description": "Remove files with 0 importers and not in runtime manifest",
+            "risk": "HIGH",
+            "paths": [
+                "See dead-code.candidates.jsonl"
+            ],
+            "file_count": 945,
+            "preconditions": [
+                "B1 + B2 merged",
+                "Manual review of each file",
+                "gate-runtime-manifest-consistency.test.ts PASS"
+            ],
+            "commands": [
+                "Review dead-code.candidates.jsonl",
+                "Delete files marked SAFE_DELETE",
+                "Run tests after each batch of 50 files"
+            ],
+            "postconditions": [
+                "npm run build PASS",
+                "npx vitest run PASS",
+                "No runtime regressions"
+            ],
+            "rollback": "git checkout -- <deleted files>"
+        },
+        {
+            "id": "B4",
+            "name": "Consolidate V7 to V10",
+            "description": "Move/merge V7 modules to V10 after parity confirmed",
+            "risk": "HIGH",
+            "paths": [
+                "src/docudent/v7/medical/**",
+                "src/docudent/v7/output/**",
+                "src/docudent/v7/pipeline/**"
+            ],
+            "file_count": 50,
+            "preconditions": [
+                "B1 + B2 + B3 merged",
+                "Parity tests PASS (R1+R2)",
+                "V10 replacements exist"
+            ],
+            "commands": [
+                "See V7→V10 migration plan"
+            ],
+            "postconditions": [
+                "gate-no-runtime-imports-from-v7-shim.test.ts PASS",
+                "Parity tests PASS"
+            ],
+            "rollback": "git checkout -- src/docudent/v7"
+        }
+    ],
+    "gates_required": [
+        {
+            "gate": "gate-no-runtime-imports-from-v6.test.ts",
+            "for_bucket": "B2",
+            "status": "PASS"
+        },
+        {
+            "gate": "gate-m82-billingref-closure.test.ts",
+            "for_bucket": "B3",
+            "status": "PASS"
+        },
+        {
+            "gate": "gate-runtime-manifest-consistency.test.ts",
+            "for_bucket": "B3",
+            "status": "TODO"
+        }
+    ],
+    "execution_order": [
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+    ],
+    "max_files_per_pr": 200,
+    "rollback_plan": {
+        "strategy": "git revert",
+        "verification": "All gates green after revert"
+    }
+}

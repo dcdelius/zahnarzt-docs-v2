@@ -1,0 +1,21 @@
+{
+    "gigaprompt": "G63",
+    "milestone": "m63",
+    "generated_at": "2025-12-30T07:45:00Z",
+    "status": "PLANNING",
+    "summary": "Delete Sprint B3 needs manifest script implementation",
+    "context": {
+        "b1_html": "COMPLETE",
+        "b2_v6": "COMPLETE (deleted)",
+        "b3_dead_code": "NEEDS_MANIFEST"
+    },
+    "plan": {
+        "script1": "scripts/delete/generateDeleteManifest.ts",
+        "script2": "scripts/delete/applyDeleteWave.ts",
+        "waves": {
+            "wave1": "Guaranteed safe (DS_Store, orphan artifacts)",
+            "wave2": "Unused runtime candidates",
+            "wave3": "Manual review"
+        }
+    }
+}

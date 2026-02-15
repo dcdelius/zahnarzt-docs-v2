@@ -1,0 +1,24 @@
+{
+    "id": "R4",
+    "name": "Multi-instance endo+fuellung LA scoping",
+    "description": "Two treatments with separate LA scoping per instance",
+    "input": {
+        "treatmentId": "multi",
+        "dictation": "Wurzelbehandlung 1.4, danach Füllung 2.6, ohne Anästhesie für die Füllung",
+        "insuranceType": "GKV",
+        "settings": {}
+    },
+    "expected_state_trajectory": [
+        "input",
+        "processing",
+        "questions",
+        "output"
+    ],
+    "expected_questions_minimum": [],
+    "expected_invariants": {
+        "instances_count": 2,
+        "la_negation_scoped_to_fuellung": true,
+        "endo_la_not_affected": true,
+        "no_answer_leakage": true
+    }
+}

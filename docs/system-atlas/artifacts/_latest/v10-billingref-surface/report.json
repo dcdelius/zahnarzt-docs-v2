@@ -1,0 +1,62 @@
+{
+    "generated": "2025-12-31T13:36:00Z",
+    "audit": "v10-billingref-surface",
+    "summary": {
+        "violations": 0,
+        "gateTests": 2,
+        "testsPass": 18
+    },
+    "currentFlow": {
+        "source": "chips in unified.json",
+        "billingRef": "DB keys (BEMA_13, GOZ_2060)",
+        "surfaceMapping": "unified.json:surface_mapping",
+        "resolver": "v10/billing/surfaceBillingResolver.ts",
+        "output": "perInstance.billingRefs[]"
+    },
+    "contracts": [
+        {
+            "name": "No Hardcoded Codes",
+            "gate": "gate-no-hardcoded-billing-codes.test.ts",
+            "tests": 11,
+            "status": "PASS"
+        },
+        {
+            "name": "BillingRef Closure",
+            "gate": "gate-billingref-closure.test.ts",
+            "tests": 7,
+            "status": "PASS"
+        }
+    ],
+    "surfaceMapping": {
+        "location": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/unified.json:679-696",
+        "format": "DB keys only",
+        "entries": {
+            "1": {
+                "GKV": "BEMA_13",
+                "PKV": "GOZ_2060"
+            },
+            "2": {
+                "GKV": "BEMA_13b",
+                "PKV": "GOZ_2080"
+            },
+            "3": {
+                "GKV": "BEMA_13c",
+                "PKV": "GOZ_2100"
+            },
+            "4+": {
+                "GKV": "BEMA_13d",
+                "PKV": "GOZ_2120"
+            }
+        }
+    },
+    "finder": {
+        "hardcodedInRuntime": [],
+        "hardcodedInTestData": [
+            "clinicalTruthcases.v2.ts",
+            "clinicalTruthcases.v3.ts",
+            "combinability_kb.v1.json",
+            "textDriftAllowlist.json"
+        ],
+        "note": "Test data uses DB keys for assertions, not hardcoded raw codes"
+    }
+}

@@ -1,0 +1,601 @@
+{
+  "_meta": {
+    "version": "1.1.0",
+    "generatedAt": "2025-12-23T22:00:00Z",
+    "sourceFile": "kombinationen.json + html_truthset_v2",
+    "ruleCount": 21,
+    "hash": "m16-v1-truthset+la"
+  },
+  "rules": [
+    {
+      "id": "regel_bema12_nur_kofferdam",
+      "typ": "bedingung",
+      "titel": "BEMA 12 nur mit Kofferdam oder Blutstillung",
+      "beschreibung": "BEMA 12 (bMF) ist NUR abrechnungsfähig bei: Anlegen von Kofferdam, Beseitigung störenden Zahnfleisches, oder Stillung übermäßiger Papillenblutung.",
+      "betrifft": [
+        "BEMA_12"
+      ],
+      "regel": {
+        "operator": "nur_wenn",
+        "bedingung": "Kofferdam dokumentiert ODER Blutstillung dokumentiert ODER Zahnfleischentfernung dokumentiert"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "BEMA-12",
+          "document": "BEMA Kommentar",
+          "url": "https://bema-goz.de/bema/12"
+        }
+      ],
+      "scope": "SESSION",
+      "priority": 100
+    },
+    {
+      "id": "regel_bema12_einmal_kieferhaelfte",
+      "typ": "haeufigkeit",
+      "titel": "BEMA 12 maximal 1x pro Kieferhälfte",
+      "beschreibung": "BEMA 12 kann je Sitzung nur einmal pro Kieferhälfte oder Frontzahnbereich abgerechnet werden.",
+      "betrifft": [
+        "BEMA_12"
+      ],
+      "regel": {
+        "operator": "max_anzahl",
+        "wert": 1,
+        "zeitraum": "pro_sitzung",
+        "bezug": "pro_kieferhaelfte"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "BEMA-12-freq",
+          "document": "BEMA Leistungstext",
+          "url": "https://bema-goz.de/bema/12"
+        }
+      ],
+      "scope": "QUADRANT",
+      "priority": 100
+    },
+    {
+      "id": "regel_bema13_flaechen_korrekt",
+      "typ": "bedingung",
+      "titel": "F-Code muss zur Flächenzahl passen",
+      "beschreibung": "Der F-Code (BEMA 13/13b/13c/13d) muss exakt zur dokumentierten Flächenzahl passen.",
+      "betrifft": [
+        "BEMA_13",
+        "BEMA_13b",
+        "BEMA_13c",
+        "BEMA_13d"
+      ],
+      "regel": {
+        "operator": "nur_wenn",
+        "bedingung": "Dokumentierte Flächen entsprechen abgerechnetem Code"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "KZV-F-Code",
+          "document": "KZV Prüfrichtlinien"
+        }
+      ],
+      "scope": "TOOTH",
+      "priority": 90
+    },
+    {
+      "id": "regel_bema25_tiefe_karies",
+      "typ": "bedingung",
+      "titel": "Cp (BEMA 25) nur bei pulpanaher Kavität",
+      "beschreibung": "BEMA 25 (Cp) ist nur bei tiefer, pulpanaher Karies abrechnungsfähig.",
+      "betrifft": [
+        "BEMA_25"
+      ],
+      "regel": {
+        "operator": "nur_wenn",
+        "bedingung": "Diagnose enthält 'profunda' oder 'pulpanah' UND Überkappungsmaterial dokumentiert"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "BEMA-25",
+          "document": "BEMA Kommentar"
+        }
+      ],
+      "scope": "TOOTH",
+      "priority": 90
+    },
+    {
+      "id": "regel_bema26_pulpaeroeffnung",
+      "typ": "bedingung",
+      "titel": "P (BEMA 26) nur bei sichtbarer Pulpaeröffnung",
+      "beschreibung": "BEMA 26 (P, direkte Überkappung) ist nur bei punktförmiger, sichtbarer Pulpaeröffnung erlaubt.",
+      "betrifft": [
+        "BEMA_26"
+      ],
+      "regel": {
+        "operator": "nur_wenn",
+        "bedingung": "Pulpaeröffnung dokumentiert UND Material dokumentiert"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "BEMA-26",
+          "document": "BEMA Kommentar"
+        }
+      ],
+      "scope": "TOOTH",
+      "priority": 90
+    },
+    {
+      "id": "regel_bema41_uk_standard",
+      "typ": "bedingung",
+      "titel": "Leitungsanästhesie bei UK-Molaren Standard",
+      "beschreibung": "Bei Unterkiefer-Molaren ist Leitungsanästhesie (BEMA 41a) die Regel.",
+      "betrifft": [
+        "BEMA_40",
+        "BEMA_41a"
+      ],
+      "regel": {
+        "operator": "nur_wenn",
+        "bedingung": "Bei UK-Molar: Leitung empfohlen"
+      },
+      "schweregrad": "warnung",
+      "sourceRefs": [
+        {
+          "anchor": "LA-UK",
+          "document": "Klinische Empfehlung"
+        }
+      ],
+      "scope": "TOOTH",
+      "priority": 50
+    },
+    {
+      "id": "regel_goz2197_nicht_neben_2060",
+      "typ": "ausschluss",
+      "titel": "GOZ 2197 nicht neben GOZ 2060-2120",
+      "beschreibung": "GOZ 2197 (Adhäsive Befestigung) ist NICHT neben GOZ 2060-2120 abrechnungsfähig, da dort bereits inkludiert!",
+      "betrifft": [
+        "GOZ_2197",
+        "GOZ_2060",
+        "GOZ_2080",
+        "GOZ_2100",
+        "GOZ_2120"
+      ],
+      "regel": {
+        "operator": "darf_nicht",
+        "bedingung": "2197 nicht mit 2060-2120 kombinieren"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ-2197",
+          "document": "GOZ Kommentar BZÄK"
+        }
+      ],
+      "scope": "SESSION",
+      "blockWith": [
+        "GOZ_2060",
+        "GOZ_2080",
+        "GOZ_2100",
+        "GOZ_2120"
+      ],
+      "autoResolve": "drop_anchor",
+      "priority": 100
+    },
+    {
+      "id": "regel_goz2040_mehrfach",
+      "typ": "haeufigkeit",
+      "titel": "GOZ 2040 mehrfach pro Sitzung möglich",
+      "beschreibung": "GOZ 2040 (Kofferdam) kann mehrfach pro Sitzung abgerechnet werden.",
+      "betrifft": [
+        "GOZ_2040"
+      ],
+      "regel": {
+        "operator": "max_anzahl",
+        "wert": 99,
+        "bezug": "pro_abnehmen_und_neuanlegen"
+      },
+      "schweregrad": "info",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ-2040",
+          "document": "GOZ Kommentar",
+          "url": "https://bema-goz.de/goz/2040"
+        }
+      ],
+      "scope": "SESSION",
+      "priority": 30
+    },
+    {
+      "id": "regel_endo_je_kanal",
+      "typ": "haeufigkeit",
+      "titel": "Endo-Leistungen je Kanal berechenbar",
+      "beschreibung": "GOZ 2390-2440 sind JE KANAL berechenbar!",
+      "betrifft": [
+        "GOZ_2390",
+        "GOZ_2400",
+        "GOZ_2410",
+        "GOZ_2420",
+        "GOZ_2430",
+        "GOZ_2440"
+      ],
+      "regel": {
+        "operator": "max_anzahl",
+        "wert": 4,
+        "bezug": "pro_kanal"
+      },
+      "schweregrad": "info",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ-Endo",
+          "document": "GOZ Leistungstext"
+        }
+      ],
+      "scope": "CANAL",
+      "priority": 30
+    },
+    {
+      "id": "regel_mkv_schriftlich",
+      "typ": "dokumentation",
+      "titel": "Mehrkostenvereinbarung schriftlich VOR Behandlung",
+      "beschreibung": "Bei GKV-Patienten mit Mehrkosten MUSS die Vereinbarung SCHRIFTLICH und VOR Behandlungsbeginn erfolgen!",
+      "betrifft": [
+        "MKV"
+      ],
+      "regel": {
+        "operator": "muss",
+        "bedingung": "Schriftliche MKV vor Behandlung dokumentiert"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "SGB-V-28",
+          "document": "§28 Abs.2 SGB V"
+        }
+      ],
+      "scope": "SESSION",
+      "priority": 100
+    },
+    {
+      "id": "regel_wiederholungsfuellung_2_jahre",
+      "typ": "haeufigkeit",
+      "titel": "Wiederholungsfüllung innerhalb 2 Jahren",
+      "beschreibung": "Füllungen am gleichen Zahn/Fläche innerhalb von 2 Jahren erfordern Begründung.",
+      "betrifft": [
+        "BEMA_13",
+        "BEMA_13b",
+        "BEMA_13c",
+        "BEMA_13d"
+      ],
+      "regel": {
+        "operator": "nur_wenn",
+        "bedingung": "Begründung bei Wiederholung <2 Jahre",
+        "zeitraum": "innerhalb_2_jahre"
+      },
+      "schweregrad": "warnung",
+      "sourceRefs": [
+        {
+          "anchor": "BEMA-Wdh",
+          "document": "BEMA Bestimmungen"
+        }
+      ],
+      "scope": "TOOTH",
+      "priority": 60
+    },
+    {
+      "id": "regel_extraktion_begruendung",
+      "typ": "dokumentation",
+      "titel": "Extraktion erfordert Begründung",
+      "beschreibung": "Bei Extraktion muss der Grund dokumentiert werden.",
+      "betrifft": [
+        "BEMA_45",
+        "BEMA_46",
+        "BEMA_47a",
+        "BEMA_48"
+      ],
+      "regel": {
+        "operator": "muss",
+        "bedingung": "Extraktionsgrund dokumentiert"
+      },
+      "schweregrad": "warnung",
+      "sourceRefs": [
+        {
+          "anchor": "KZV-Ex",
+          "document": "KZV Prüfrichtlinien"
+        }
+      ],
+      "scope": "TOOTH",
+      "priority": 60
+    },
+    {
+      "id": "regel_wsr_vor_extraktion",
+      "typ": "bedingung",
+      "titel": "WSR vor Extraktion erwägen",
+      "beschreibung": "Vor Extraktion eines Zahnes mit apikaler Pathologie sollte WSR als Alternative geprüft werden.",
+      "betrifft": [
+        "BEMA_45",
+        "BEMA_51",
+        "BEMA_52"
+      ],
+      "regel": {
+        "operator": "nur_wenn",
+        "bedingung": "Alternativbehandlung (WSR) geprüft und dokumentiert"
+      },
+      "schweregrad": "info",
+      "sourceRefs": [
+        {
+          "anchor": "Forensik-WSR",
+          "document": "Forensische Empfehlung"
+        }
+      ],
+      "scope": "TOOTH",
+      "priority": 30
+    },
+    {
+      "id": "regel_roentgen_wirtschaftlichkeit",
+      "typ": "haeufigkeit",
+      "titel": "Röntgen: Wirtschaftlichkeitsgebot",
+      "beschreibung": "Röntgenaufnahmen nur bei medizinischer Indikation.",
+      "betrifft": [
+        "BEMA_Ä925a",
+        "GOZ_5000",
+        "GOZ_5002"
+      ],
+      "regel": {
+        "operator": "nur_wenn",
+        "bedingung": "Medizinische Indikation dokumentiert"
+      },
+      "schweregrad": "warnung",
+      "sourceRefs": [
+        {
+          "anchor": "StrlSchV",
+          "document": "Strahlenschutzverordnung"
+        }
+      ],
+      "scope": "SESSION",
+      "priority": 50
+    },
+    {
+      "id": "regel_e2e_test_warn",
+      "typ": "ausschluss",
+      "titel": "[E2E TEST] Warnung bei Testkombination",
+      "beschreibung": "E2E Test: Diese Kombination erzeugt eine Warnung. Nur für automatisierte Tests.",
+      "betrifft": [
+        "TEST_WARN_A",
+        "TEST_WARN_B"
+      ],
+      "regel": {
+        "operator": "darf_nicht",
+        "bedingung": "TEST_WARN_A nicht mit TEST_WARN_B kombinieren"
+      },
+      "schweregrad": "warnung",
+      "sourceRefs": [
+        {
+          "anchor": "E2E-Test",
+          "document": "E2E Test Fixture"
+        }
+      ],
+      "scope": "SESSION",
+      "blockWith": [
+        "TEST_WARN_B"
+      ],
+      "priority": 10
+    },
+    {
+      "id": "regel_goz2012_nicht_neben_impl_kfo",
+      "typ": "ausschluss",
+      "titel": "GOZ 2012 nicht neben Implantat-/KFO-Leistungen",
+      "beschreibung": "GOZ 2012 ist NICHT neben GOZ 2410, 2440, 3090, 9010, 9040, 9120, 9130 abrechnungsfähig (HTML-Truthset).",
+      "betrifft": [
+        "GOZ_2410",
+        "GOZ_2440",
+        "GOZ_3090",
+        "GOZ_9010",
+        "GOZ_9040",
+        "GOZ_9120",
+        "GOZ_9130"
+      ],
+      "regel": {
+        "operator": "darf_nicht",
+        "bedingung": "GOZ 2012 nicht mit Implantat-/KFO-Codes kombinieren"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "document": "HTML-Truthset v2",
+          "filePath": "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376940%27%5D.html",
+          "htmlExtractHash": "1301a6c81a8b4e50afa403a070762d03e069a55b9be2c725f274962dc6724403"
+        }
+      ],
+      "scope": "TOOTH",
+      "blockWith": [
+        "GOZ_2410",
+        "GOZ_2440",
+        "GOZ_3090",
+        "GOZ_9010",
+        "GOZ_9040",
+        "GOZ_9120",
+        "GOZ_9130"
+      ],
+      "priority": 2000,
+      "added_from_html_truthset": true
+    },
+    {
+      "id": "regel_goz2390_nicht_neben_endo",
+      "typ": "ausschluss",
+      "titel": "GOZ 2390 nicht neben bestimmten Endo-Leistungen",
+      "beschreibung": "GOZ 2390 ist NICHT neben GOZ 2440, 3110, 3120 abrechnungsfähig (HTML-Truthset).",
+      "betrifft": [
+        "GOZ_2390",
+        "GOZ_2440",
+        "GOZ_3110",
+        "GOZ_3120"
+      ],
+      "regel": {
+        "operator": "darf_nicht",
+        "bedingung": "GOZ 2390 nicht mit bestimmten Endo-Codes kombinieren"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ:GOZ_2390:d088214320f3",
+          "document": "HTML-Truthset v2",
+          "filePath": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377559%27%5D.html",
+          "htmlExtractHash": "1301a6c81a8b4e50afa403a070762d03e069a55b9be2c725f274962dc6724403"
+        }
+      ],
+      "scope": "TOOTH",
+      "blockWith": [
+        "GOZ_2440",
+        "GOZ_3110",
+        "GOZ_3120"
+      ],
+      "priority": 2000,
+      "added_from_html_truthset": true
+    },
+    {
+      "id": "regel_goz3100_nicht_neben_chir",
+      "typ": "ausschluss",
+      "titel": "GOZ 3100 nicht neben bestimmten Chirurgie-Leistungen",
+      "beschreibung": "GOZ 3100 ist NICHT neben GOZ 3000, 3030, 3040, 3050, 3060, 3070, 3080, 3090 abrechnungsfähig (HTML-Truthset).",
+      "betrifft": [
+        "GOZ_3100",
+        "GOZ_3000",
+        "GOZ_3030",
+        "GOZ_3040",
+        "GOZ_3050",
+        "GOZ_3060",
+        "GOZ_3070",
+        "GOZ_3080",
+        "GOZ_3090"
+      ],
+      "regel": {
+        "operator": "darf_nicht",
+        "bedingung": "GOZ 3100 nicht mit Chirurgie-Codes 3000-3090 kombinieren"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ:GOZ_3100:38ead7e2b717",
+          "document": "HTML-Truthset v2",
+          "filePath": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377577%27%5D.html",
+          "htmlExtractHash": "1301a6c81a8b4e50afa403a070762d03e069a55b9be2c725f274962dc6724403"
+        }
+      ],
+      "scope": "SESSION",
+      "blockWith": [
+        "GOZ_3000",
+        "GOZ_3030",
+        "GOZ_3040",
+        "GOZ_3050",
+        "GOZ_3060",
+        "GOZ_3070",
+        "GOZ_3080",
+        "GOZ_3090"
+      ],
+      "priority": 2000,
+      "added_from_html_truthset": true
+    },
+    {
+      "id": "regel_goz9050_nicht_neben_impl_fal",
+      "typ": "ausschluss",
+      "titel": "GOZ 9050 nicht neben Implantat-/FAL-Leistungen",
+      "beschreibung": "GOZ 9050 ist NICHT neben GOZ 3000, 3100, 3120, 8010-8250, 9010, 9040 abrechnungsfähig (HTML-Truthset).",
+      "betrifft": [
+        "GOZ_9050",
+        "GOZ_3000",
+        "GOZ_3100",
+        "GOZ_3120",
+        "GOZ_8010",
+        "GOZ_8020",
+        "GOZ_8030",
+        "GOZ_8050",
+        "GOZ_8060",
+        "GOZ_8080",
+        "GOZ_8090",
+        "GOZ_8100"
+      ],
+      "regel": {
+        "operator": "darf_nicht",
+        "bedingung": "GOZ 9050 nicht mit Implantat-/FAL-Codes kombinieren"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ:GOZ_9050:8d70163c93fe",
+          "document": "HTML-Truthset v2",
+          "filePath": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377692%27%5D.html",
+          "htmlExtractHash": "1301a6c81a8b4e50afa403a070762d03e069a55b9be2c725f274962dc6724403"
+        }
+      ],
+      "scope": "SESSION",
+      "blockWith": [
+        "GOZ_3000",
+        "GOZ_3100",
+        "GOZ_3120",
+        "GOZ_8010",
+        "GOZ_8020",
+        "GOZ_8030",
+        "GOZ_8050",
+        "GOZ_8060",
+        "GOZ_8080",
+        "GOZ_8090",
+        "GOZ_8100"
+      ],
+      "priority": 2000,
+      "added_from_html_truthset": true
+    },
+    {
+      "id": "regel_goz9110_nicht_neben_sinus",
+      "typ": "ausschluss",
+      "titel": "GOZ 9110 nicht neben Sinuslift-Leistungen",
+      "beschreibung": "GOZ 9110 ist NICHT neben GOZ 9120, 9130 abrechnungsfähig (HTML-Truthset).",
+      "betrifft": [
+        "GOZ_9110",
+        "GOZ_9120",
+        "GOZ_9130"
+      ],
+      "regel": {
+        "operator": "darf_nicht",
+        "bedingung": "GOZ 9110 nicht mit Sinuslift-Codes kombinieren"
+      },
+      "schweregrad": "regress",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ:GOZ_9110:5992291c599f",
+          "document": "HTML-Truthset v2",
+          "filePath": "kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377696%27%5D.html",
+          "htmlExtractHash": "1301a6c81a8b4e50afa403a070762d03e069a55b9be2c725f274962dc6724403"
+        }
+      ],
+      "scope": "TOOTH",
+      "blockWith": [
+        "GOZ_9120",
+        "GOZ_9130"
+      ],
+      "priority": 2000,
+      "added_from_html_truthset": true
+    },
+    {
+      "id": "regel_goz_la_codes_documented",
+      "typ": "dokumentation",
+      "titel": "GOZ LA-Codes dokumentieren",
+      "beschreibung": "GOZ 0090/0100 sind dokumentationspflichtige LA-Leistungen (Coverage, keine Ausschlussregel).",
+      "betrifft": [
+        "GOZ_0090",
+        "GOZ_0100"
+      ],
+      "regel": {
+        "operator": "muss",
+        "bedingung": "LA dokumentiert"
+      },
+      "schweregrad": "info",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ-0090-0100",
+          "document": "GOZ Leistungstext"
+        }
+      ],
+      "scope": "SESSION",
+      "priority": 50
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+[
+    {
+        "id": "bruecke_pkv",
+        "titel": "Brückenversorgung - PKV",
+        "kategorie": "zahnersatz",
+        "versicherung": "PKV",
+        "beschreibung": "Festsitzende Brückenversorgung bei Privatpatient",
+        "phasen": [
+            {
+                "phase": "Anästhesie",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "wann": "VOR Injektion",
+                        "anzahl": 1,
+                        "betrag_23": 7.25
+                    },
+                    {
+                        "code": "GOZ_0090",
+                        "bezeichnung": "Infiltrationsanästhesie",
+                        "wann": "Pro Pfeiler ggf. mehrfach",
+                        "anzahl_hinweis": "Je nach Pfeileranzahl",
+                        "betrag_23": 16.22
+                    },
+                    {
+                        "code": "GOZ_0100",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei UK-Seitenzähnen",
+                        "betrag_23": 24.31
+                    }
+                ]
+            },
+            {
+                "phase": "Präparation (pro Pfeiler)",
+                "positionen": [
+                    {
+                        "code": "GOZ_2200",
+                        "bezeichnung": "Vollkrone am Pfeilerzahn",
+                        "wann": "Einmal pro Pfeiler",
+                        "anzahl_hinweis": "Anzahl = Pfeiler",
+                        "betrag_23": 217.59
+                    }
+                ]
+            },
+            {
+                "phase": "Brückenglied (pro Zwischenglied)",
+                "positionen": [
+                    {
+                        "code": "GOZ_2230",
+                        "bezeichnung": "Brückenglied",
+                        "wann": "Einmal pro fehlendem Zahn",
+                        "anzahl_hinweis": "Anzahl = fehlende Zähne",
+                        "betrag_23": 108.78,
+                        "tipp": "Bei Schwebebrücke ggf. höherer Faktor"
+                    }
+                ]
+            },
+            {
+                "phase": "Provisorium",
+                "positionen": [
+                    {
+                        "code": "GOZ_2260",
+                        "bezeichnung": "Direktes Brückenprovisorium (je Glied)",
+                        "wann": "Pro Glied der Brücke",
+                        "anzahl_hinweis": "Pfeiler + Zwischenglieder",
+                        "betrag_23": 43.54
+                    }
+                ]
+            },
+            {
+                "phase": "Einprobe",
+                "positionen": [
+                    {
+                        "code": "GOZ_2290",
+                        "bezeichnung": "Einprobe Brückengerüst",
+                        "wann": "Bei Metallgerüst oder Zirkon",
+                        "anzahl": 1,
+                        "betrag_23": 21.74
+                    }
+                ]
+            },
+            {
+                "phase": "Eingliederung",
+                "positionen": [
+                    {
+                        "code": "GOZ_2310",
+                        "bezeichnung": "Zementieren / Adhäsives Befestigen",
+                        "wann": "Einmal für gesamte Brücke",
+                        "anzahl": 1,
+                        "betrag_23": 43.54
+                    }
+                ]
+            }
+        ],
+        "berechnungslogik": {
+            "pfeiler": "GOZ_2200 × Anzahl Pfeiler",
+            "glieder": "GOZ_2230 × Anzahl fehlende Zähne",
+            "provisorium": "GOZ_2260 × (Pfeiler + Zwischenglieder)"
+        },
+        "dokumentation_erforderlich": [
+            "Pfeiler-Zähne",
+            "Fehlende Zähne",
+            "Material (VMK, Zirkon, Vollkeramik)",
+            "Aufklärung über Alternativen (Implantat)"
+        ]
+    },
+    {
+        "id": "bruecke_gkv",
+        "titel": "Brückenversorgung - GKV mit Festzuschuss",
+        "kategorie": "zahnersatz",
+        "versicherung": "GKV",
+        "beschreibung": "Brückenversorgung bei GKV-Patient mit Festzuschuss nach §55 SGB V",
+        "phasen": [
+            {
+                "phase": "Festzuschuss Pfeiler",
+                "positionen": [
+                    {
+                        "code": "FZ_2.1",
+                        "bezeichnung": "Pfeiler für Brücke",
+                        "wann": "Pro Pfeilerzahn",
+                        "anzahl_hinweis": "Anzahl = Pfeiler",
+                        "betrag_60": 199.02,
+                        "betrag_70": 232.19,
+                        "betrag_75": 248.78
+                    },
+                    {
+                        "code": "FZ_1.3",
+                        "bezeichnung": "Verblendung Pfeiler im VB",
+                        "wann": "Zähne 13-25, 33-35, 43-45",
+                        "betrag_60": 52.35,
+                        "betrag_70": 61.08,
+                        "betrag_75": 65.44
+                    }
+                ]
+            },
+            {
+                "phase": "Festzuschuss Zwischenglied",
+                "positionen": [
+                    {
+                        "code": "FZ_2.5",
+                        "bezeichnung": "Brückenglied (angrenzende Lücke)",
+                        "wann": "Pro fehlendem Zahn",
+                        "anzahl_hinweis": "Anzahl = fehlende Zähne",
+                        "betrag_60": 96.48,
+                        "betrag_70": 112.56,
+                        "betrag_75": 120.60
+                    },
+                    {
+                        "code": "FZ_2.7",
+                        "bezeichnung": "Verblendung Brückenglied im VB",
+                        "wann": "Zähne im Verblendbereich",
+                        "betrag_60": 52.35,
+                        "betrag_70": 61.08,
+                        "betrag_75": 65.44
+                    }
+                ]
+            },
+            {
+                "phase": "Kassenleistung (BEMA)",
+                "positionen": [
+                    {
+                        "code": "BEMA_91a",
+                        "bezeichnung": "Brückenpfeiler Vollguss",
+                        "punkte": 100,
+                        "wann": "Bei Regelversorgung"
+                    },
+                    {
+                        "code": "BEMA_91b",
+                        "bezeichnung": "Brückenpfeiler VMK",
+                        "punkte": 150,
+                        "wann": "Bei Regelversorgung mit Verblendung"
+                    },
+                    {
+                        "code": "BEMA_93",
+                        "bezeichnung": "Brückenzwischenglied",
+                        "punkte": 60,
+                        "wann": "Pro fehlendem Zahn"
+                    }
+                ]
+            }
+        ],
+        "festzuschuss_regeln": {
+            "verblendbereich": [
+                13,
+                14,
+                15,
+                23,
+                24,
+                25,
+                33,
+                34,
+                35,
+                43,
+                44,
+                45
+            ],
+            "bonus_staffel": {
+                "ohne": 0.6,
+                "5_jahre": 0.7,
+                "10_jahre": 0.75
+            },
+            "max_spannweite": "4 Glieder bei zahnbegrenzter Lücke",
+            "freiendsituation": "Max 1 Glied als Freiendbrücke"
+        },
+        "g_ba_regeln": [
+            "Zahnbegrenzte Lücke: ≤4 Glieder",
+            "Freiendsituation: max 1 Zwischenglied",
+            "Verblendung nur im VB (13-25, 33-35, 43-45)"
+        ]
+    }
+]

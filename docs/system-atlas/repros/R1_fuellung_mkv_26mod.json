@@ -1,0 +1,32 @@
+{
+    "id": "R1",
+    "name": "Fuellung profunda MKV 26 MOD",
+    "description": "Deep filling with MKV requiring medical capping question",
+    "input": {
+        "treatmentId": "fuellung",
+        "dictation": "Zahn 26, MOD-Kavität, tiefe Karies, pulpanah, Kofferdam angelegt, Infiltrationsanästhesie",
+        "insuranceType": "GKV",
+        "settings": {
+            "hasMKV": true
+        }
+    },
+    "expected_state_trajectory": [
+        "input",
+        "processing",
+        "questions",
+        "output"
+    ],
+    "expected_questions_minimum": [
+        "medical_ueberkappung"
+    ],
+    "expected_invariants": {
+        "tooth_present": "26",
+        "surfaces_present": [
+            "m",
+            "o",
+            "d"
+        ],
+        "capping_question_visible": true,
+        "output_has_billing_or_diagnostic": true
+    }
+}

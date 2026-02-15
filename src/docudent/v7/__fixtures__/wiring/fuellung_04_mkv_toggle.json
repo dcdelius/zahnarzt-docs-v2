@@ -1,0 +1,37 @@
+{
+    "id": "fuellung_04_mkv_toggle",
+    "description": "Füllung mit MKV aktiviert — GOZ-Codes und Mehrkosten-Policy",
+    "input": {
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "hasMKV": true,
+        "dictation": "Zahn 26 MOD Komposit Füllungstherapie Patient wünscht ästhetisches Ergebnis",
+        "answers": {
+            "mkv_vereinbarung": true,
+            "mkv_betrag": 120
+        }
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=fuellung",
+            "input:treatment=fuellung;insurance=GKV;mkv=true",
+            "questions:engine=fuellung"
+        ],
+        "traceExcludes": [
+            "questions:engine=endo"
+        ],
+        "noQuestionIdRegex": "(endo|kanal|wl|spül|wurzel)",
+        "outputMustContain": [
+            "26",
+            "Mehrkosten"
+        ],
+        "billingMustNotContain": [
+            "BEMA_40",
+            "BEMA_41a"
+        ]
+    },
+    "minimalAnswers": {
+        "mkv_vereinbarung": true,
+        "mkv_betrag": 120
+    }
+}

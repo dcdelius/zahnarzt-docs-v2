@@ -1,0 +1,153 @@
+{
+    "_meta": {
+        "description": "V10 Headless Scenario Cases - Endo",
+        "version": "1.0.0",
+        "created": "2026-02-01",
+        "treatmentId": "endo"
+    },
+    "cases": [
+        {
+            "id": "en01",
+            "title": "GKV Endo (3 Kanaele) + WL elektronisch + WF warm",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Endo Zahn 36. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch (Apex-Locator). Gespült mit NaOCl und EDTA. Wurzelfüllung warm vertikal (Continuous Wave).",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_31",
+                    "BEMA_12",
+                    "BEMA_41a",
+                    "BEMA_32",
+                    "BEMA_34"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "textMustInclude": [
+                    "Trepanation",
+                    "Kofferdam",
+                    "Wurzelfüllung"
+                ]
+            },
+            "answers": {}
+        },
+        {
+            "id": "en02",
+            "title": "PKV Endo (3 Kanaele) + WL elektronisch + WF warm",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Wurzelbehandlung Zahn 26. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "GOZ_2360",
+                    "GOZ_2040",
+                    "GOZ_0100",
+                    "GOZ_2410",
+                    "GOZ_2440"
+                ],
+                "mustNotIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "allowAliases": {
+                    "GOZ_2410": [
+                        "GOZ_2400"
+                    ]
+                },
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "textMustInclude": [
+                    "Trepanation",
+                    "Kofferdam"
+                ]
+            },
+            "answers": {}
+        },
+        {
+            "id": "en03",
+            "title": "GKV Endo ohne Kofferdam (negiert)",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Endo Zahn 46. Leitungsanästhesie. Kein Kofferdam möglich (eingeschränkte Mundöffnung). Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_31"
+                ],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "mustNotIncludeBillingRefs": [
+                    "BEMA_12"
+                ],
+                "textMustInclude": [
+                    "Trepanation",
+                    "Wurzelfüllung"
+                ],
+                "textMustNotInclude": [
+                    "Kofferdam angelegt"
+                ]
+            },
+            "answers": {}
+        },
+        {
+            "id": "en04",
+            "title": "GKV Endo mit Röntgenkontrolle",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Zahn 16. Dritter Termin. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal. Röntgenkontrolle durchgeführt.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_Ä925a"
+                ],
+                "mustNotIncludePrefixes": [],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "textMustInclude": [
+                    "Röntgenkontrolle"
+                ]
+            },
+            "answers": {}
+        },
+        {
+            "id": "en05",
+            "title": "PKV Endo mit Röntgenkontrolle",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Zahn 25. Dritter Termin. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal. Röntgenkontrolle durchgeführt.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "GOZ_5000"
+                ],
+                "mustNotIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "textMustInclude": [
+                    "Röntgenkontrolle"
+                ]
+            },
+            "answers": {}
+        }
+    ]
+}

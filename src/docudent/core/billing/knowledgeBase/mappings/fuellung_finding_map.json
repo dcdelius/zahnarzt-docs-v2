@@ -1,0 +1,113 @@
+{
+    "_meta": {
+        "id": "fuellung_finding_map",
+        "version": "2025-01-v1",
+        "description": "SSOT Field→Text Mapping für Befund/Diagnose. Alle Befundaussagen werden nur aus diesem Mapping gerendert, nicht frei formuliert."
+    },
+    "fields": {
+        "diagnose": {
+            "label": "Diagnose",
+            "renderTemplate": "{value}",
+            "required": true,
+            "auditNoteIfMissing": "Diagnose nicht dokumentiert"
+        },
+        "vitality": {
+            "label": "Sensibilität",
+            "valueMap": {
+                "+": {
+                    "text": "ViPr+",
+                    "meaning": "Sensibilität positiv"
+                },
+                "-": {
+                    "text": "ViPr−",
+                    "meaning": "Sensibilität negativ"
+                },
+                "positiv": {
+                    "text": "ViPr+",
+                    "meaning": "Sensibilität positiv"
+                },
+                "negativ": {
+                    "text": "ViPr−",
+                    "meaning": "Sensibilität negativ"
+                }
+            },
+            "required": true,
+            "auditNoteIfMissing": "Sensibilitätsprüfung nicht dokumentiert"
+        },
+        "percussion": {
+            "label": "Perkussion",
+            "valueMap": {
+                "+": {
+                    "text": "Perk+",
+                    "meaning": "Perkussion positiv (schmerzhaft)"
+                },
+                "-": {
+                    "text": "Perk−",
+                    "meaning": "Perkussion negativ (unauffällig)"
+                },
+                "positiv": {
+                    "text": "Perk+",
+                    "meaning": "Perkussion positiv"
+                },
+                "negativ": {
+                    "text": "Perk−",
+                    "meaning": "Perkussion negativ"
+                }
+            },
+            "required": false
+        },
+        "roentgen": {
+            "label": "Röntgen",
+            "renderTemplate": "{value}",
+            "required": false
+        },
+        "tiefe": {
+            "label": "Kavitätenausdehnung",
+            "valueMap": {
+                "oberflächlich": {
+                    "text": "Schmelzkaries",
+                    "meaning": "Läsion im Schmelz"
+                },
+                "mittel": {
+                    "text": "Dentinkaries",
+                    "meaning": "Läsion im Dentin"
+                },
+                "tief": {
+                    "text": "Caries profunda",
+                    "meaning": "Pulpanahe Läsion"
+                },
+                "profunda": {
+                    "text": "Caries profunda",
+                    "meaning": "Pulpanahe Läsion"
+                }
+            },
+            "required": false
+        },
+        "zahn": {
+            "label": "Zahn",
+            "renderTemplate": "Zahn {value}",
+            "required": true,
+            "auditNoteIfMissing": "Zahnangabe fehlt"
+        },
+        "flaechen": {
+            "label": "Flächen",
+            "renderTemplate": "{value}",
+            "required": true,
+            "auditNoteIfMissing": "Flächenangabe fehlt"
+        }
+    },
+    "sectionOrder": [
+        "zahn",
+        "flaechen",
+        "diagnose",
+        "tiefe",
+        "vitality",
+        "percussion",
+        "roentgen"
+    ],
+    "rendering": {
+        "separator": ". ",
+        "emptyValueBehavior": "skip",
+        "labelPrefix": false
+    }
+}

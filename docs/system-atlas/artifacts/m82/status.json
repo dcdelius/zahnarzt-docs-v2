@@ -1,0 +1,187 @@
+{
+    "milestone": "M82",
+    "status": "COMPLETE",
+    "time_spent_min": 20,
+    "proof_of_work": {
+        "commands": [
+            {
+                "cmd": "npx tsx scripts/audit/generateBillingInventory.ts",
+                "exitCode": 0,
+                "stdout_tail": "Wrote 833 entries to billing.inventory.jsonl"
+            },
+            {
+                "cmd": "npx tsx scripts/audit/generateBillingConsumers.ts",
+                "exitCode": 0,
+                "stdout_tail": "Wrote 1406 consumer entries"
+            },
+            {
+                "cmd": "npx vitest run gate-m82-*.test.ts",
+                "exitCode": 0,
+                "stdout_tail": "Test Files  2 passed (2), Tests  8 passed (8)"
+            }
+        ],
+        "files_changed": [
+            {
+                "file": "scripts/audit/generateBillingInventory.ts",
+                "diffstat": "+160 new"
+            },
+            {
+                "file": "scripts/audit/generateBillingConsumers.ts",
+                "diffstat": "+140 new"
+            },
+            {
+                "file": "src/docudent/__tests__/gates/gate-m82-billingref-closure.test.ts",
+                "diffstat": "+100 new"
+            },
+            {
+                "file": "src/docudent/__tests__/gates/gate-m82-no-silent-billing-drop.test.ts",
+                "diffstat": "+80 new"
+            },
+            {
+                "file": "docs/audit/m82/billing.inventory.jsonl",
+                "diffstat": "+833 lines"
+            },
+            {
+                "file": "docs/audit/m82/billing.stats.json",
+                "diffstat": "+25 lines"
+            },
+            {
+                "file": "docs/audit/m82/billing.schema_samples.json",
+                "diffstat": "+50 lines"
+            },
+            {
+                "file": "docs/audit/m82/billing.consumers.jsonl",
+                "diffstat": "+1406 lines"
+            },
+            {
+                "file": "docs/audit/m82/billing.refs.closure.json",
+                "diffstat": "+180 lines"
+            },
+            {
+                "file": "docs/audit/m82/billing.risk_map.json",
+                "diffstat": "+70 lines"
+            }
+        ],
+        "tests_run": [
+            {
+                "suite": "gate-m82-billingref-closure",
+                "result": "PASS (3/3)"
+            },
+            {
+                "suite": "gate-m82-no-silent-billing-drop",
+                "result": "PASS (5/5)"
+            }
+        ]
+    },
+    "findings": {
+        "phase_a_inventory": {
+            "total_files": 833,
+            "catalogs": {
+                "bema": 1,
+                "goz": 1,
+                "goa": 1,
+                "bel": 1,
+                "fz": 1
+            },
+            "rules": 9,
+            "logic": 42,
+            "html_docs": 690,
+            "total_bytes": 69613458
+        },
+        "phase_b_structure": {
+            "bema": {
+                "primaryKey": "id",
+                "fields": [
+                    "nummer",
+                    "punkte",
+                    "kategorie",
+                    "bezeichnung"
+                ]
+            },
+            "goz": {
+                "primaryKey": "id",
+                "fields": [
+                    "nummer",
+                    "punkte",
+                    "kategorie"
+                ]
+            },
+            "unified_json": {
+                "sections": [
+                    "chips",
+                    "answer_map",
+                    "text_templates",
+                    "billing_mappings"
+                ]
+            }
+        },
+        "phase_c_consumers": {
+            "total_consumers": 1406,
+            "unique_files": 150,
+            "import_refs": 185,
+            "string_refs": 1221,
+            "refs_found": 157,
+            "catalog_codes": 508,
+            "missing_in_catalog": 74
+        },
+        "phase_d_gates": {
+            "G1_billingref_closure": "PASS (report mode - 10 missing refs)",
+            "G3_no_silent_billing_drop": "PASS (5/5 tests)"
+        },
+        "phase_e_risk_map": {
+            "do_not_delete": 20,
+            "safe_to_delete": 690,
+            "needs_review": 5
+        }
+    },
+    "artifacts": {
+        "billing.inventory.jsonl": "docs/audit/m82/billing.inventory.jsonl",
+        "billing.stats.json": "docs/audit/m82/billing.stats.json",
+        "billing.schema_samples.json": "docs/audit/m82/billing.schema_samples.json",
+        "billing.consumers.jsonl": "docs/audit/m82/billing.consumers.jsonl",
+        "billing.refs.closure.json": "docs/audit/m82/billing.refs.closure.json",
+        "billing.risk_map.json": "docs/audit/m82/billing.risk_map.json"
+    },
+    "next_actions": [
+        {
+            "priority": "P1",
+            "action": "Review 74 missing catalog refs and fix or add to catalogs"
+        },
+        {
+            "priority": "P2",
+            "action": "Move 690 HTML docs to /docs/reference/ if not needed at runtime"
+        },
+        {
+            "priority": "P2",
+            "action": "Add G2 SourceRef/Anchor closure gate"
+        },
+        {
+            "priority": "P2",
+            "action": "Add G4 No Raw Code Strings gate (strict mode)"
+        }
+    ],
+    "plan": {
+        "files_to_inspect_first": [
+            "src/docudent/core/billing/knowledgeBase/kataloge/bema.json",
+            "src/docudent/core/billing/knowledgeBase/kataloge/goz.json",
+            "src/docudent/core/billing/knowledgeBase/kataloge/bel2_2022.json",
+            "src/docudent/core/billing/knowledgeBase/kataloge/festzuschuesse.json",
+            "src/docudent/core/billing/knowledgeBase/regeln/kombinationen.json",
+            "src/docudent/core/billing/knowledgeBase/treatments/fuellung/unified.json",
+            "src/docudent/core/billing/knowledgeBase/treatments/endo/unified.json",
+            "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/billingEligibilityGuard.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/chipResolver.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+            "src/docudent/core/billing/knowledgeBase/index.ts",
+            "src/docudent/core/billing/combinability/billingCombinabilityChecker.ts",
+            "src/docudent/core/billing/knowledgeBase/logic/billingDatabase.ts",
+            "src/docudent/core/billing/knowledgeBase/mappings/",
+            "src/docudent/core/billing/knowledgeBase/regeln/fuellung_regeln.json",
+            "src/docudent/core/billing/knowledgeBase/regeln/fz_zuordnung_gba.json",
+            "src/docudent/core/billing/knowledgeBase/bema_knowledge_base.json",
+            "src/docudent/core/billing/knowledgeBase/analog_services.json",
+            "src/docudent/core/billing/knowledgeBase/logic/answerIdTranslator.ts"
+        ]
+    }
+}

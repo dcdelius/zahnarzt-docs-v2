@@ -1,0 +1,40 @@
+{
+    "run_at": "2025-12-30T22:50:00Z",
+    "gigaprompt": "GP5",
+    "status": "PASS",
+    "summary": "Multi-tooth truthcases defined with scoping proofs",
+    "truthcases": [
+        {
+            "id": "case_a",
+            "name": "Different Materials",
+            "teeth": [
+                "36",
+                "14"
+            ],
+            "scoping_proven": true
+        },
+        {
+            "id": "case_b",
+            "name": "Different Caries Depths",
+            "teeth": [
+                "36",
+                "14"
+            ],
+            "scoping_proven": true
+        },
+        {
+            "id": "case_c",
+            "name": "Different Isolation",
+            "teeth": [
+                "36",
+                "14"
+            ],
+            "scoping_proven": true
+        }
+    ],
+    "invariants_checked": [
+        "chips_do_not_leak_between_teeth",
+        "askbacks_scope_to_correct_instance",
+        "isolation_chips_mutually_exclusive_per_tooth"
+    ]
+}

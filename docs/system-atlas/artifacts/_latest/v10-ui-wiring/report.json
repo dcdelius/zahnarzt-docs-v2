@@ -1,0 +1,82 @@
+{
+    "generatedAt": "2026-01-10T12:35:00Z",
+    "status": "ALL_PASS",
+    "summary": "10/10 E2E tests pass. Auth bypass hardened with 4 guards. 3 new tests added.",
+    "result": {
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "duration": "1.0m"
+    },
+    "tests": [
+        {
+            "name": "GKV Channelization",
+            "status": "passed"
+        },
+        {
+            "name": "PKV Channelization",
+            "status": "passed"
+        },
+        {
+            "name": "MKV Mehrkosten",
+            "status": "passed"
+        },
+        {
+            "name": "MKV nurKasse",
+            "status": "passed"
+        },
+        {
+            "name": "Profunda Askback",
+            "status": "passed"
+        },
+        {
+            "name": "Material Askback",
+            "status": "passed"
+        },
+        {
+            "name": "Multi-Tooth",
+            "status": "passed"
+        },
+        {
+            "name": "Error Handling",
+            "status": "passed",
+            "new": true
+        },
+        {
+            "name": "Multi-Instance",
+            "status": "passed",
+            "new": true
+        },
+        {
+            "name": "Auth Bypass Guard",
+            "status": "passed",
+            "new": true
+        }
+    ],
+    "authBypass": {
+        "guards": [
+            "VITE_E2E_BYPASS_AUTH=1",
+            "localhost or 127.0.0.1",
+            "navigator.webdriver === true",
+            "window.__DOCUDENT_E2E_BYPASS_AUTH === true"
+        ],
+        "status": "HARDENED"
+    },
+    "audit": {
+        "noHardcodedBillingRuntime": true,
+        "billingRefsOnly": true,
+        "channelizationVerified": true,
+        "combinabilityUIVerified": true
+    },
+    "changedFiles": [
+        "src/contexts/AuthContext.jsx",
+        "e2e/v10-wiring.e2e.spec.ts",
+        "playwright.config.ts",
+        "package.json",
+        "docs/e2e-auth-bypass.md"
+    ],
+    "commands": {
+        "e2e": "npm run e2e:v10:wiring",
+        "full": "npm run e2e:full"
+    }
+}

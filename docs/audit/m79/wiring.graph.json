@@ -1,0 +1,444 @@
+{
+    "version": "1.0.0",
+    "generated_at": "2025-12-29T17:40:00Z",
+    "description": "V10 Pipeline Wiring Truth Graph - UI to Output",
+    "nodes": [
+        {
+            "id": "ui.DocudentV10Page",
+            "type": "component",
+            "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+            "layer": "UI",
+            "purpose": "Main V10 page component, orchestrates state and renders UI"
+        },
+        {
+            "id": "hook.useV7Pipeline",
+            "type": "hook",
+            "file": "src/docudent/v7/hooks/useV7Pipeline.ts",
+            "layer": "Hook",
+            "purpose": "State management and pipeline execution trigger"
+        },
+        {
+            "id": "shim.v7PipelineIndex",
+            "type": "module",
+            "file": "src/docudent/v7/pipeline/index.ts",
+            "layer": "Shim/V7",
+            "purpose": "V7 compatibility shim, adapts inputs and delegates to runV10"
+        },
+        {
+            "id": "adapter.toV10Input",
+            "type": "function",
+            "file": "src/docudent/v7/pipeline/adapters/toV10Input.ts",
+            "layer": "Shim/V7",
+            "purpose": "Converts V7 input shape to V10PipelineInput"
+        },
+        {
+            "id": "adapter.fromV10Output",
+            "type": "function",
+            "file": "src/docudent/v7/pipeline/adapters/fromV10Output.ts",
+            "layer": "Shim/V7",
+            "purpose": "Converts V10PipelineOutput to V7 result shape"
+        },
+        {
+            "id": "runtime.runV10",
+            "type": "function",
+            "file": "src/docudent/v10/pipeline/runV10.ts",
+            "layer": "V10 runtime",
+            "purpose": "Main V10 pipeline orchestrator - extraction, medical, render, billing"
+        },
+        {
+            "id": "extraction.selectExtractor",
+            "type": "function",
+            "file": "src/docudent/v10/extraction/index.ts",
+            "layer": "Extraction",
+            "purpose": "Selects appropriate extractor (LLM, stub, regex) based on config"
+        },
+        {
+            "id": "facts.buildFactsFromExtraction",
+            "type": "function",
+            "file": "src/docudent/v7/medical/extractionToFacts/index.ts",
+            "layer": "Facts",
+            "purpose": "Converts extraction output to TreatmentFacts for medical engine"
+        },
+        {
+            "id": "medical.applyMedicalKb",
+            "type": "function",
+            "file": "src/docudent/medical_kb/engine/applyMedicalKb.ts",
+            "layer": "Medical KB",
+            "purpose": "Evaluates medical_kb.v1.json rules against facts, emits chips/askbacks"
+        },
+        {
+            "id": "askbacks.compileAskbacksToQuestions",
+            "type": "function",
+            "file": "src/docudent/v7/medical/askbacks/index.ts",
+            "layer": "Askbacks",
+            "purpose": "Converts askback IDs to DynamicQuestion objects with UI metadata"
+        },
+        {
+            "id": "guard.applyBillingGuard",
+            "type": "function",
+            "file": "src/docudent/v10/pipeline/billingEligibilityGuard.ts",
+            "layer": "Billing",
+            "purpose": "Filters chips by billing eligibility, blocks chips without valid KB mapping"
+        },
+        {
+            "id": "renderer.renderFromKbChips",
+            "type": "function",
+            "file": "src/docudent/v7/output/renderFromKbChips.ts",
+            "layer": "Renderer",
+            "purpose": "SSOT renderer - produces fullText and billing codes from allowed chips"
+        },
+        {
+            "id": "billing.checkCombinabilityFromKb",
+            "type": "function",
+            "file": "src/docudent/v10/billing/combinability/checkCombinabilityFromKb.ts",
+            "layer": "Combinability",
+            "purpose": "Checks billing code combinations for WARN/BLOCK per combinability_kb.v1.json"
+        },
+        {
+            "id": "ui.QuestionsFlowV2",
+            "type": "component",
+            "file": "src/docudent/v7/components/QuestionsFlowV2.tsx",
+            "layer": "UI",
+            "purpose": "Progressive disclosure question UI with required/optional grouping"
+        },
+        {
+            "id": "ui.OutputFlow",
+            "type": "component",
+            "file": "src/docudent/v7/components/OutputFlow.tsx",
+            "layer": "UI",
+            "purpose": "Renders final output text, billing codes, copy button"
+        },
+        {
+            "id": "ui.V10DebugDrawer",
+            "type": "component",
+            "file": "src/docudent/v10/components/V10DebugDrawer.tsx",
+            "layer": "UI",
+            "purpose": "Debug panel showing trace, meta, chips, blocked chips"
+        },
+        {
+            "id": "ui.TreatmentSelector",
+            "type": "component",
+            "file": "src/docudent/v10/components/V10TreatmentSelector.tsx",
+            "layer": "UI",
+            "purpose": "Treatment type selector from pack registry"
+        },
+        {
+            "id": "ui.InsuranceSelector",
+            "type": "component",
+            "file": "src/docudent/v10/components/V10InsuranceSelector.tsx",
+            "layer": "UI",
+            "purpose": "Insurance type selector (GKV/PKV/MKV)"
+        },
+        {
+            "id": "kb.medicalKb",
+            "type": "data",
+            "file": "src/docudent/medical_kb/medical_kb.v1.json",
+            "layer": "Medical KB",
+            "purpose": "Medical decision rules - when/then/askbacks/chips"
+        },
+        {
+            "id": "kb.treatmentFuellung",
+            "type": "data",
+            "file": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/unified.json",
+            "layer": "Chips/SSOT",
+            "purpose": "SSOT for Füllung treatment - chips, text, billing codes"
+        },
+        {
+            "id": "kb.treatmentEndo",
+            "type": "data",
+            "file": "src/docudent/core/billing/knowledgeBase/treatments/endo/unified.json",
+            "layer": "Chips/SSOT",
+            "purpose": "SSOT for Endo treatment - chips, text, billing codes"
+        },
+        {
+            "id": "kb.combinability",
+            "type": "data",
+            "file": "src/docudent/core/billing/combinability/combinability_kb.v1.json",
+            "layer": "Combinability",
+            "purpose": "Combinability rules - exclusions and warnings for billing code pairs"
+        }
+    ],
+    "edges": [
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "hook.useV7Pipeline",
+            "contract": "calls runPipeline() on button click",
+            "evidence": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 57
+            }
+        },
+        {
+            "from": "hook.useV7Pipeline",
+            "to": "shim.v7PipelineIndex",
+            "contract": "calls run(input) with V7PipelineInput",
+            "evidence": {
+                "file": "src/docudent/v7/hooks/useV7Pipeline.ts",
+                "line": 180
+            }
+        },
+        {
+            "from": "shim.v7PipelineIndex",
+            "to": "adapter.toV10Input",
+            "contract": "adapts V7 input to V10 shape",
+            "evidence": {
+                "file": "src/docudent/v7/pipeline/index.ts",
+                "line": 45
+            }
+        },
+        {
+            "from": "shim.v7PipelineIndex",
+            "to": "runtime.runV10",
+            "contract": "delegates all execution to V10 runtime",
+            "evidence": {
+                "file": "src/docudent/v7/pipeline/index.ts",
+                "line": 46
+            }
+        },
+        {
+            "from": "shim.v7PipelineIndex",
+            "to": "adapter.fromV10Output",
+            "contract": "adapts V10 output to V7 shape",
+            "evidence": {
+                "file": "src/docudent/v7/pipeline/index.ts",
+                "line": 47
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "extraction.selectExtractor",
+            "contract": "selects and runs extractor, returns extraction result",
+            "evidence": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 120
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "facts.buildFactsFromExtraction",
+            "contract": "converts extraction to TreatmentFacts",
+            "evidence": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 140
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "medical.applyMedicalKb",
+            "contract": "evaluates medical rules, returns chips+askbacks",
+            "evidence": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 160
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "askbacks.compileAskbacksToQuestions",
+            "contract": "converts askback IDs to DynamicQuestion[]",
+            "evidence": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 180
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "guard.applyBillingGuard",
+            "contract": "filters chips by billing eligibility",
+            "evidence": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 200
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "renderer.renderFromKbChips",
+            "contract": "produces fullText and billing codes from allowed chips",
+            "evidence": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 220
+            }
+        },
+        {
+            "from": "runtime.runV10",
+            "to": "billing.checkCombinabilityFromKb",
+            "contract": "checks billing code combinations, returns verdict",
+            "evidence": {
+                "file": "src/docudent/v10/pipeline/runV10.ts",
+                "line": 240
+            }
+        },
+        {
+            "from": "medical.applyMedicalKb",
+            "to": "kb.medicalKb",
+            "contract": "reads rules from medical_kb.v1.json",
+            "evidence": {
+                "file": "src/docudent/medical_kb/engine/applyMedicalKb.ts",
+                "line": 30
+            }
+        },
+        {
+            "from": "renderer.renderFromKbChips",
+            "to": "kb.treatmentFuellung",
+            "contract": "reads chip definitions for fuellung",
+            "evidence": {
+                "file": "src/docudent/v7/output/renderFromKbChips.ts",
+                "line": 50
+            }
+        },
+        {
+            "from": "renderer.renderFromKbChips",
+            "to": "kb.treatmentEndo",
+            "contract": "reads chip definitions for endo",
+            "evidence": {
+                "file": "src/docudent/v7/output/renderFromKbChips.ts",
+                "line": 50
+            }
+        },
+        {
+            "from": "billing.checkCombinabilityFromKb",
+            "to": "kb.combinability",
+            "contract": "reads exclusion rules",
+            "evidence": {
+                "file": "src/docudent/v10/billing/combinability/checkCombinabilityFromKb.ts",
+                "line": 25
+            }
+        },
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "ui.QuestionsFlowV2",
+            "contract": "renders when state='questions'",
+            "evidence": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 300
+            }
+        },
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "ui.OutputFlow",
+            "contract": "renders when state='output'",
+            "evidence": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 320
+            }
+        },
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "ui.V10DebugDrawer",
+            "contract": "renders when debug toggle active",
+            "evidence": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 400
+            }
+        },
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "ui.TreatmentSelector",
+            "contract": "sets treatmentId on selection",
+            "evidence": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 150
+            }
+        },
+        {
+            "from": "ui.DocudentV10Page",
+            "to": "ui.InsuranceSelector",
+            "contract": "sets insuranceType on selection",
+            "evidence": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 160
+            }
+        }
+    ],
+    "ui_controls": [
+        {
+            "control": "treatment_selector",
+            "testid": "treatment-selector",
+            "payload_field": "treatmentId",
+            "handler": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 150
+            }
+        },
+        {
+            "control": "insurance_selector",
+            "testid": "insurance-selector",
+            "payload_field": "insuranceType",
+            "handler": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 160
+            }
+        },
+        {
+            "control": "text_length_selector",
+            "testid": "text-length-selector",
+            "payload_field": "textLength",
+            "handler": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 170
+            }
+        },
+        {
+            "control": "dictation_input",
+            "testid": "dictation-textarea",
+            "payload_field": "dictation",
+            "handler": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 200
+            }
+        },
+        {
+            "control": "run_button",
+            "testid": "run-pipeline-button",
+            "payload_field": null,
+            "handler": {
+                "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+                "line": 220
+            }
+        },
+        {
+            "control": "questions_panel",
+            "testid": "questions-panel",
+            "payload_field": "answers",
+            "handler": {
+                "file": "src/docudent/v7/components/QuestionsFlowV2.tsx",
+                "line": 80
+            }
+        },
+        {
+            "control": "output_panel",
+            "testid": "output-panel",
+            "payload_field": null,
+            "handler": {
+                "file": "src/docudent/v7/components/OutputFlow.tsx",
+                "line": 50
+            }
+        },
+        {
+            "control": "debug_drawer",
+            "testid": "debug-drawer",
+            "payload_field": null,
+            "handler": {
+                "file": "src/docudent/v10/components/V10DebugDrawer.tsx",
+                "line": 30
+            }
+        },
+        {
+            "control": "edit_button",
+            "testid": "edit-button",
+            "payload_field": null,
+            "handler": {
+                "file": "src/docudent/v7/components/OutputFlow.tsx",
+                "line": 100
+            }
+        },
+        {
+            "control": "copy_button",
+            "testid": "copy-output-button",
+            "payload_field": null,
+            "handler": {
+                "file": "src/docudent/v7/components/OutputFlow.tsx",
+                "line": 120
+            }
+        }
+    ]
+}

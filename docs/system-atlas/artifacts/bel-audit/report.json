@@ -1,0 +1,92 @@
+{
+  "generated": "2025-12-30T11:08:27.423Z",
+  "missing_after_normalization": [
+    "BEL_2004",
+    "BEL_2014",
+    "BEL_II_1220",
+    "BEL_2070",
+    "BEL_2310",
+    "BEL_2400",
+    "BEL_2500",
+    "BEL_1220",
+    "BEL_9999",
+    "BEL_0001",
+    "BEL_II",
+    "BEL_II_ALIAS_MAP",
+    "BEL_II_",
+    "BEL_XXXX"
+  ],
+  "unused_in_catalog": [],
+  "recommendations": [
+    {
+      "code": "BEL_2004",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_2014",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_II_1220",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_2070",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_2310",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_2400",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_2500",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_1220",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_9999",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_0001",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_II",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_II_ALIAS_MAP",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_II_",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    },
+    {
+      "code": "BEL_XXXX",
+      "action": "add",
+      "reason": "Used in code but not in catalog"
+    }
+  ]
+}

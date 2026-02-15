@@ -1,0 +1,50 @@
+{
+    "version": "1.0",
+    "description": "Allowlist for approved text drift in common chips. Each chip must have identical billingRef - only text may differ.",
+    "allowlist": {
+        "kofferdam": {
+            "billingRef": {
+                "GKV": "BEMA_12",
+                "PKV": "GOZ_2040"
+            },
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "reason": "Fuellung: Detailed text mentioning clamp and visibility. Endo: Concise text mentioning sterility. Both describe same clinical procedure.",
+            "approvedBy": "M26 Audit",
+            "approvedDate": "2025-12-24"
+        },
+        "la_infiltr": {
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "reason": "Fuellung: Includes surface anesthesia reference and concentration details. Endo: Shorter, procedural focus. Same anesthesia technique.",
+            "approvedBy": "M26 Audit",
+            "approvedDate": "2025-12-24"
+        },
+        "la_leitung": {
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            },
+            "treatments": [
+                "fuellung",
+                "endo"
+            ],
+            "reason": "Fuellung: Includes timing info (3 min wait). Endo: Shorter. Same block anesthesia technique.",
+            "approvedBy": "M26 Audit",
+            "approvedDate": "2025-12-24"
+        }
+    },
+    "rules": {
+        "billingMustMatch": true,
+        "newDriftRequiresApproval": true,
+        "gateEnforced": "gate-m26-text-drift-explicit.test.ts"
+    }
+}

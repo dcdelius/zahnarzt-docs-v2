@@ -1,0 +1,90 @@
+{
+  "bema_catalog": {
+    "_meta": {
+      "name": "BEMA Katalog",
+      "version": "2025-01",
+      "stand": "01.01.2025",
+      "punktwert": 1.0375,
+      "quelle": "KZBV"
+    },
+    "sample_entry": {
+      "id": "BEMA_01",
+      "system": "BEMA",
+      "nummer": "01",
+      "bezeichnung": "Eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kieferkrankheiten",
+      "kurzform": "U",
+      "punkte": 15.5,
+      "kategorie": "diagnostik",
+      "enthaelt": [
+        "Beratung",
+        "Dokumentation",
+        "Befundaufnahme"
+      ]
+    },
+    "keys": [
+      "id",
+      "system",
+      "nummer",
+      "bezeichnung",
+      "kurzform",
+      "punkte",
+      "kategorie",
+      "enthaelt"
+    ]
+  },
+  "goz_catalog": {
+    "_meta": {
+      "name": "GOZ Katalog",
+      "version": "2024",
+      "stand": "01.01.2025",
+      "quelle": "BZÄK GOZ-Kommentar"
+    },
+    "sample_entry": {
+      "id": "GOZ_0010",
+      "system": "GOZ",
+      "nummer": "0010",
+      "bezeichnung": "Eingehende Untersuchung",
+      "honorar": {
+        "einfach": 12.94,
+        "standard": 29.76,
+        "hoch": 45.29
+      },
+      "kategorie": "diagnostik"
+    }
+  },
+  "treatment_unified": {
+    "top_keys": [
+      "_meta",
+      "requiredFieldsGlobal",
+      "chips",
+      "surface_mapping",
+      "phasen_reihenfolge"
+    ],
+    "chips_sample": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  "kombinationen_rules": {
+    "top_keys": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13"
+    ],
+    "sample_rule": null
+  }
+}

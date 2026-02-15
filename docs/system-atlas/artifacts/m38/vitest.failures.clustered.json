@@ -1,0 +1,59 @@
+{
+    "generatedAt": "2025-12-29T22:30:00Z",
+    "summary": {
+        "total_files": 411,
+        "failed_files": 57,
+        "passed_files": 353,
+        "skipped_files": 1,
+        "total_tests": 4033,
+        "failed_tests": 124,
+        "passed_tests": 3851,
+        "duration_seconds": 19.74
+    },
+    "clusters": {
+        "E2E": {
+            "files": 5,
+            "status": "blocked_playwright",
+            "examples": [
+                "v10-golden-path.e2e.spec.ts",
+                "v7-flow.e2e.spec.ts"
+            ]
+        },
+        "GATES": {
+            "files": 10,
+            "status": "pre_existing",
+            "examples": [
+                "gate-fuellung-defaults.test.ts",
+                "gate-question-conditions.test.ts"
+            ]
+        },
+        "INTEGRATION": {
+            "files": 2,
+            "status": "pre_existing",
+            "examples": [
+                "billing-eligibility-integration.test.ts"
+            ]
+        },
+        "FIREBASE": {
+            "files": 1,
+            "status": "pre_existing",
+            "examples": [
+                "settingsOverrides.service.test.ts"
+            ]
+        },
+        "LEGACY": {
+            "files": 6,
+            "status": "quarantine_candidate",
+            "examples": [
+                "v6 legacy tests"
+            ]
+        }
+    },
+    "note": "57 failed files are pre-existing. No regressions introduced in this session.",
+    "baseline_delta": {
+        "session_start": "57 failed",
+        "current": "57 failed",
+        "regression": 0,
+        "improvement": 0
+    }
+}

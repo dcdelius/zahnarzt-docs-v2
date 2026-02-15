@@ -1,0 +1,13 @@
+# Cursor ignore file
+# Diese Datei steuert, welche Dateien Cursor AI ignorieren soll
+
+# .env Dateien ERLAUBEN (explizit nicht ignorieren)
+!.env
+!.env.local
+
+# Standard-Ignores
+node_modules/
+dist/
+.git/
+*.log
+

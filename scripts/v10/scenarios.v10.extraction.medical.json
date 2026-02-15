@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "description": "V10 Medical Scenario Cases - Extraction",
+    "version": "1.0.0",
+    "created": "2026-02-12",
+    "treatmentId": "extraction"
+  },
+  "cases": [
+    {
+      "id": "x01",
+      "title": "GKV Extraktion + Wundversorgung + LA Leitung",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 18 extrahiert, Leitungsanästhesie, Oberflächenanästhesie, Naht gelegt.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"],
+        "mustIncludeAnyBillingRefs": ["BEMA_41a"]
+      }
+    },
+    {
+      "id": "x02",
+      "title": "GKV Extraktion ohne Wundversorgung -> Askback",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 18 extrahiert.",
+      "expect": {
+        "phase": "questions",
+        "mustAskbackIds": ["wound_care"]
+      }
+    },
+    {
+      "id": "x03",
+      "title": "GKV Extraktion: Wundversorgung explizit verneint",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 18 extrahiert, keine Wundversorgung.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"],
+        "mustIncludeAnyBillingRefs": ["BEMA_41a"],
+        "mustNotIncludeTextSnippets": ["Wundversorgung durchgeführt", "Wunde versorgt"]
+      }
+    }
+  ]
+}

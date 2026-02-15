@@ -1,0 +1,134 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FuellungFactsV2",
+    "description": "G117: Extended facts schema for Füllung treatment - aligned with v2 knowledge pack",
+    "type": "object",
+    "properties": {
+        "treatmentId": {
+            "type": "string",
+            "const": "fuellung"
+        },
+        "toothIds": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of treated teeth (FDI notation)"
+        },
+        "surfacesByTooth": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "m",
+                        "o",
+                        "d",
+                        "b",
+                        "l"
+                    ]
+                }
+            }
+        },
+        "insurance_context": {
+            "type": "string",
+            "enum": [
+                "gkv_regelversorgung",
+                "gkv_mehrkosten",
+                "pkv",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Versicherungs-/Abrechnungskontext"
+        },
+        "restoration_material": {
+            "type": "string",
+            "enum": [
+                "self_adhesive",
+                "bulk_fill",
+                "composite",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Füllungsmaterial"
+        },
+        "tooth_region": {
+            "type": "string",
+            "enum": [
+                "anterior",
+                "posterior",
+                "unknown"
+            ],
+            "default": "unknown"
+        },
+        "adhesive_technique": {
+            "type": "string",
+            "enum": [
+                "yes",
+                "no",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Adhäsivtechnik durchgeführt"
+        },
+        "layering_technique": {
+            "type": "string",
+            "enum": [
+                "yes",
+                "no",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Schichttechnik/inkrementell"
+        },
+        "isolation_level": {
+            "type": "string",
+            "enum": [
+                "kofferdam",
+                "relative",
+                "unknown"
+            ],
+            "default": "unknown"
+        },
+        "pulp_protection": {
+            "type": "string",
+            "enum": [
+                "liner",
+                "base",
+                "none",
+                "unknown"
+            ],
+            "default": "unknown"
+        },
+        "caries_depth": {
+            "type": "string",
+            "enum": [
+                "shallow",
+                "medium",
+                "deep",
+                "unknown"
+            ],
+            "default": "unknown"
+        },
+        "moisture_control_difficulty": {
+            "type": "string",
+            "enum": [
+                "easy",
+                "moderate",
+                "difficult",
+                "unknown"
+            ],
+            "default": "unknown"
+        },
+        "subgingival_margin": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "required": [
+        "treatmentId",
+        "toothIds"
+    ],
+    "$comment": "G117: This schema includes all facts needed for askback triggering. In stub mode, most values should be 'unknown' to force askbacks."
+}

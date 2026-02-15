@@ -1,0 +1,121 @@
+/**
+ * V10ChipsPanel Styles
+ */
+
+.v10-chips-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.v10-chips-panel.empty {
+    padding: 2rem;
+    text-align: center;
+}
+
+.v10-chips-empty {
+    color: #7f8c8d;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.v10-chips-header h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #bdc3c7;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Instance Chips */
+.v10-instance-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.v10-chips-instance-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid;
+}
+
+.v10-chips-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.v10-chips-tooth {
+    font-size: 0.75rem;
+    color: #95a5a6;
+}
+
+/* Chips List */
+.v10-chips-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.v10-chip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.625rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    transition: all 0.15s ease;
+}
+
+.v10-chip-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.v10-chip-label {
+    color: #ecf0f1;
+}
+
+.v10-chip-source {
+    font-size: 0.65rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.v10-chip-toggle {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin-left: 0.25rem;
+    background: rgba(231, 76, 60, 0.2);
+    border: none;
+    border-radius: 4px;
+    color: #e74c3c;
+    font-size: 0.75rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.15s ease;
+}
+
+.v10-chip-item:hover .v10-chip-toggle {
+    opacity: 1;
+}
+
+.v10-chip-toggle:hover {
+    background: rgba(231, 76, 60, 0.3);
+}

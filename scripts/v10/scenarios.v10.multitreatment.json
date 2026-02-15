@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "description": "V10 Multi-Treatment Scenario Suite (Headless, deterministic)",
+    "version": "1.0.0",
+    "created": "2026-02-01"
+  },
+  "cases": [
+    {
+      "id": "mt01",
+      "title": "Endo + Fuellung (MKV addon) + Extraction in einer Sitzung",
+      "insuranceType": "MKV",
+      "textLength": "mittel",
+      "dictation": "Endo Zahn 36. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal.; Füllung Zahn 26 MOD Komposit. ViPr positiv, Perkussion negativ. Kofferdam. Leitungsanästhesie. Mehrkostenvereinbarung liegt vor.; Extraktion Zahn 28. Infiltrationsanästhesie.",
+      "answers": {
+        "surfaces::tooth:26": "m,o,d"
+      },
+      "expected": {
+        "minSegments": 3,
+        "mustIncludeTreatmentIds": ["endo", "fuellung", "extraction"],
+        "mustIncludeCodes": [
+          "BEMA_31",
+          "BEMA_32",
+          "BEMA_34",
+          "BEMA_13c",
+          "GOZ_2100",
+          "BEMA_41a",
+          "BEMA_40"
+        ],
+        "mustNotIncludePrefixes": [],
+        "allowAliases": {
+          "BEMA_13c": ["BEMA_13", "BEMA_13b", "BEMA_13d"]
+        },
+        "combinabilityMustNotBe": ["BLOCK"],
+        "textMustInclude": [
+          "Trepanation",
+          "Extraktion"
+        ]
+      }
+    },
+    {
+      "id": "mt02",
+      "title": "Endo + Fuellung (nur Kasse -> kein GOZ addon) + Extraction",
+      "insuranceType": "MKV",
+      "textLength": "mittel",
+      "dictation": "Endo Zahn 36. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal.; Füllung Zahn 26 MOD Komposit, nur Kasse. ViPr positiv, Perkussion negativ. Kofferdam. Leitungsanästhesie.; Extraktion Zahn 28. Infiltrationsanästhesie.",
+      "answers": {
+        "surfaces::tooth:26": "m,o,d"
+      },
+      "expected": {
+        "minSegments": 3,
+        "mustIncludeTreatmentIds": ["endo", "fuellung", "extraction"],
+        "mustIncludeCodes": [
+          "BEMA_13c",
+          "BEMA_31",
+          "BEMA_41a",
+          "BEMA_40"
+        ],
+        "mustNotIncludePrefixes": ["GOZ_"],
+        "allowAliases": {
+          "BEMA_13c": ["BEMA_13", "BEMA_13b", "BEMA_13d"]
+        },
+        "combinabilityMustNotBe": ["BLOCK"],
+        "textMustInclude": [
+          "Trepanation",
+          "Extraktion"
+        ]
+      }
+    }
+  ]
+}

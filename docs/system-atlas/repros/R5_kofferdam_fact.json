@@ -1,0 +1,22 @@
+{
+    "id": "R5",
+    "name": "Kofferdam mentioned isolation fact",
+    "description": "Kofferdam in dictation should set isolation fact without question",
+    "input": {
+        "treatmentId": "fuellung",
+        "dictation": "Zahn 36 MO, Kofferdam angelegt, Komposit",
+        "insuranceType": "GKV",
+        "settings": {}
+    },
+    "expected_state_trajectory": [
+        "input",
+        "processing",
+        "output"
+    ],
+    "expected_questions_minimum": [],
+    "expected_invariants": {
+        "isolation_fact_set": "kofferdam",
+        "no_isolation_question": true,
+        "kofferdam_chip_present": true
+    }
+}

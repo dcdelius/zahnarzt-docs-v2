@@ -1,0 +1,1738 @@
+{
+  "BEMA_02": {
+    "id": "BEMA_02",
+    "system": "BEMA",
+    "nummer": "02",
+    "bezeichnung": "BEMA 02",
+    "beschreibung": "Hilfeleistung bei Ohnmacht oder Kollaps",
+    "punkte": 20,
+    "source": "monkeymed_html"
+  },
+  "BEMA_2": {
+    "id": "BEMA_2",
+    "system": "BEMA",
+    "nummer": "2",
+    "bezeichnung": "Heil- und Kostenplan",
+    "beschreibung": "Schriftliche Niederlegung eines Heil- und Kostenplanes",
+    "punkte": 20,
+    "source": "monkeymed_html"
+  },
+  "BEMA_03": {
+    "id": "BEMA_03",
+    "system": "BEMA",
+    "nummer": "03",
+    "bezeichnung": "BEMA 03",
+    "beschreibung": "Zuschlag für Leistungen außerhalb der Sprechstunde, bei Nacht (20 Uhr bis 8 Uhr) oder an Sonn- und Feiertagen",
+    "punkte": 15,
+    "source": "monkeymed_html"
+  },
+  "BEMA_4": {
+    "id": "BEMA_4",
+    "system": "BEMA",
+    "nummer": "4",
+    "bezeichnung": "Heil- und Kostenplan PAR./ Parodontalstatus",
+    "beschreibung": "Befundaufnahme und Erstellen eines Heil- und Kostenplanes bei Erkrankungen der Mundschleimhaut und des Parodontiums",
+    "punkte": 44,
+    "source": "monkeymed_html"
+  },
+  "BEMA_05": {
+    "id": "BEMA_05",
+    "system": "BEMA",
+    "nummer": "05",
+    "bezeichnung": "Gewinnung Zellmaterial Mundhöhle",
+    "beschreibung": "Gewinnung von Zellmaterial aus der Mundhöhle und Aufbereitung zur zytologischen Untersuchung, einschließlich Materialkosten",
+    "punkte": 20,
+    "source": "monkeymed_html"
+  },
+  "BEMA_8": {
+    "id": "BEMA_8",
+    "system": "BEMA",
+    "nummer": "8",
+    "bezeichnung": "BEMA 8",
+    "beschreibung": "Sensibilitätsprüfung der Zähne",
+    "punkte": 6,
+    "source": "monkeymed_html"
+  },
+  "BEMA_10": {
+    "id": "BEMA_10",
+    "system": "BEMA",
+    "nummer": "10",
+    "bezeichnung": "BEMA 10",
+    "beschreibung": "Behandlung überempfindlicher Zähne, für jede Sitzung",
+    "punkte": 6,
+    "source": "monkeymed_html"
+  },
+  "BEMA_11": {
+    "id": "BEMA_11",
+    "system": "BEMA",
+    "nummer": "11",
+    "bezeichnung": "BEMA 11",
+    "beschreibung": "Exkavieren und provisorischer Verschluss einer Kavität als alleinige Leistung, auch unvollendete Füllung",
+    "punkte": 19,
+    "source": "monkeymed_html"
+  },
+  "BEMA_13a": {
+    "id": "BEMA_13a",
+    "system": "BEMA",
+    "nummer": "13a",
+    "bezeichnung": "Füllung, einflächig",
+    "beschreibung": "Präparieren einer Kavität, 1flächig",
+    "punkte": 32,
+    "source": "monkeymed_html"
+  },
+  "BEMA_13e": {
+    "id": "BEMA_13e",
+    "system": "BEMA",
+    "nummer": "13e",
+    "bezeichnung": "Kompositfüllungen im Seitenzahnbereich, einflächig",
+    "beschreibung": "Präparieren einer Kavität, einflächig im Seitenzahnbereich",
+    "punkte": 52,
+    "source": "monkeymed_html"
+  },
+  "BEMA_13f": {
+    "id": "BEMA_13f",
+    "system": "BEMA",
+    "nummer": "13f",
+    "bezeichnung": "Kompositfüllung im Seitenzahnbereich, zweiflächig",
+    "beschreibung": "Präparieren einer Kavität, zweiflächig im Seitenzahnbereich",
+    "punkte": 64,
+    "source": "monkeymed_html"
+  },
+  "BEMA_13g": {
+    "id": "BEMA_13g",
+    "system": "BEMA",
+    "nummer": "13g",
+    "bezeichnung": "Kompositfüllung im Seitenzahnbereich, dreiflächig",
+    "beschreibung": "Präparieren einer Kavität, dreiflächig",
+    "punkte": 84,
+    "source": "monkeymed_html"
+  },
+  "BEMA_13h": {
+    "id": "BEMA_13h",
+    "system": "BEMA",
+    "nummer": "13h",
+    "bezeichnung": "Kompositfüllung im Seitenzahnbereich, mehr als dreiflächig",
+    "beschreibung": "Füllung mehrflächig",
+    "punkte": 100,
+    "source": "monkeymed_html"
+  },
+  "BEMA_14": {
+    "id": "BEMA_14",
+    "system": "BEMA",
+    "nummer": "14",
+    "bezeichnung": "Konfektionierte Krone in der pädiatrischen Zahnheilkunde",
+    "beschreibung": "Konfektionierte Krone (im Seitenzahnbereich in der Regel aus Metall) einschließlich Material- und Laboratoriumskosten in der pädiatrischen Zahnheilkunde",
+    "punkte": 50,
+    "source": "monkeymed_html"
+  },
+  "BEMA_16": {
+    "id": "BEMA_16",
+    "system": "BEMA",
+    "nummer": "16",
+    "bezeichnung": "BEMA 16",
+    "beschreibung": "Stiftverankerung einer Füllung (zusätzlich zu den Nrn. 13 c, d), je Zahn, einschließlich Materialkosten",
+    "punkte": 20,
+    "source": "monkeymed_html"
+  },
+  "BEMA_20c": {
+    "id": "BEMA_20c",
+    "system": "BEMA",
+    "nummer": "20c",
+    "bezeichnung": "Metallische Teilkrone",
+    "beschreibung": "Versorgung eines Einzelzahnes durch eine metallische Teilkrone",
+    "punkte": 187,
+    "source": "monkeymed_html"
+  },
+  "BEMA_21": {
+    "id": "BEMA_21",
+    "system": "BEMA",
+    "nummer": "21",
+    "bezeichnung": "Provisorische Krone mit Stiftverankerung",
+    "beschreibung": "Schutz eines beschliffenen Zahnes und Sicherung der Kaufunktion durch eine provisorische Krone mit Stiftverankerung",
+    "punkte": 28,
+    "source": "monkeymed_html"
+  },
+  "BEMA_22": {
+    "id": "BEMA_22",
+    "system": "BEMA",
+    "nummer": "22",
+    "bezeichnung": "Teilleistungen nach den Nrn. 18 und 20",
+    "beschreibung": "Teilleistungen bei nicht vollendeten Leistungen nach den Nrn. 18 und 20:",
+    "source": "monkeymed_html"
+  },
+  "BEMA_23": {
+    "id": "BEMA_23",
+    "system": "BEMA",
+    "nummer": "23",
+    "bezeichnung": "BEMA 23",
+    "beschreibung": "Entfernen einer Krone bzw. eines Brückenankers oder eines abgebrochenen Wurzelstiftes bzw. das Abtrennen eines Brückengliedes oder Steges, je Trennstelle",
+    "punkte": 17,
+    "source": "monkeymed_html"
+  },
+  "BEMA_24a": {
+    "id": "BEMA_24a",
+    "system": "BEMA",
+    "nummer": "24a",
+    "bezeichnung": "Wiedereinsetzen einer Krone",
+    "beschreibung": "Wiedereinsetzen einer Krone oder dergleichen",
+    "punkte": 25,
+    "source": "monkeymed_html"
+  },
+  "BEMA_24b": {
+    "id": "BEMA_24b",
+    "system": "BEMA",
+    "nummer": "24b",
+    "bezeichnung": "Erneuerung Facette",
+    "beschreibung": "Erneuerung oder Wiedereinsetzen einer Facette, einer Verblendschale oder dergleichen",
+    "punkte": 43,
+    "source": "monkeymed_html"
+  },
+  "BEMA_27": {
+    "id": "BEMA_27",
+    "system": "BEMA",
+    "nummer": "27",
+    "bezeichnung": "BEMA 27",
+    "beschreibung": "Amputation und Versorgung der vitalen Pulpa am Milchzahn und am symptomlosen bleibenden Zahn mit nicht abgeschlossenem Wurzel- wachstum einschließlich Abtragen des Pulpendaches, Amputation der koronalen Pulpa, Spülung und Blutstillung, Aufbringen eines Überkap- pungspräparates, je Zahn",
+    "punkte": 29,
+    "source": "monkeymed_html"
+  },
+  "BEMA_36": {
+    "id": "BEMA_36",
+    "system": "BEMA",
+    "nummer": "36",
+    "bezeichnung": "BEMA 36",
+    "beschreibung": "Stillung einer übermäßigen Blutung",
+    "punkte": 15,
+    "source": "monkeymed_html"
+  },
+  "BEMA_37": {
+    "id": "BEMA_37",
+    "system": "BEMA",
+    "nummer": "37",
+    "bezeichnung": "BEMA 37",
+    "beschreibung": "Stillung einer übermäßigen Blutung durch Abbinden oder Umstechen eines Gefäßes oder durch Knochenbolzung",
+    "punkte": 29,
+    "source": "monkeymed_html"
+  },
+  "BEMA_38": {
+    "id": "BEMA_38",
+    "system": "BEMA",
+    "nummer": "38",
+    "bezeichnung": "BEMA 38",
+    "beschreibung": "Nachbehandlung nach chirurgischem Eingriff oder Tamponieren oder dergleichen, je Kieferhälfte oder Frontzahnbereich, als selbständige Leistung, je Sitzung",
+    "punkte": 10,
+    "source": "monkeymed_html"
+  },
+  "BEMA_41b": {
+    "id": "BEMA_41b",
+    "system": "BEMA",
+    "nummer": "41b",
+    "bezeichnung": "Leitungsanästhesie, extraoral",
+    "beschreibung": "Leitungsanästhesie, extraoral",
+    "punkte": 16,
+    "source": "monkeymed_html"
+  },
+  "BEMA_43": {
+    "id": "BEMA_43",
+    "system": "BEMA",
+    "nummer": "43",
+    "bezeichnung": "BEMA 43",
+    "beschreibung": "Entfernen eines einwurzeligen Zahnes einschließlich Wundversorgung",
+    "punkte": 10,
+    "source": "monkeymed_html"
+  },
+  "BEMA_44": {
+    "id": "BEMA_44",
+    "system": "BEMA",
+    "nummer": "44",
+    "bezeichnung": "BEMA 44",
+    "beschreibung": "Entfernen eines mehrwurzeligen Zahnes einschließlich Wundversorgung",
+    "punkte": 15,
+    "source": "monkeymed_html"
+  },
+  "BEMA_47b": {
+    "id": "BEMA_47b",
+    "system": "BEMA",
+    "nummer": "47b",
+    "bezeichnung": "BEMA 47b",
+    "beschreibung": "Hemisektion und Teilextraktion eines mehrwurzeligen Zahnes",
+    "punkte": 72,
+    "source": "monkeymed_html"
+  },
+  "BEMA_49": {
+    "id": "BEMA_49",
+    "system": "BEMA",
+    "nummer": "49",
+    "bezeichnung": "BEMA 49",
+    "beschreibung": "Exzision von Mundschleimhaut oder Granulationsgewebe für das Gebiet eines Zahnes",
+    "punkte": 10,
+    "source": "monkeymed_html"
+  },
+  "BEMA_50": {
+    "id": "BEMA_50",
+    "system": "BEMA",
+    "nummer": "50",
+    "bezeichnung": "BEMA 50",
+    "beschreibung": "Exzision einer Schleimhautwucherung (z. B. lappiges Fibrom, Epulis)",
+    "punkte": 37,
+    "source": "monkeymed_html"
+  },
+  "BEMA_51a": {
+    "id": "BEMA_51a",
+    "system": "BEMA",
+    "nummer": "51a",
+    "bezeichnung": "BEMA 51a",
+    "beschreibung": "Plastischer Verschluss einer eröffneten Kieferhöhle durch Zahnfleischplastik als selbständige Leistung oder in Verbindung mit einer Extraktion",
+    "punkte": 80,
+    "source": "monkeymed_html"
+  },
+  "BEMA_51b": {
+    "id": "BEMA_51b",
+    "system": "BEMA",
+    "nummer": "51b",
+    "bezeichnung": "BEMA 51b",
+    "beschreibung": "Plastischer Verschluss einer eröffneten Kieferhöhle in Verbindung mit Osteotomie",
+    "punkte": 40,
+    "source": "monkeymed_html"
+  },
+  "BEMA_53": {
+    "id": "BEMA_53",
+    "system": "BEMA",
+    "nummer": "53",
+    "bezeichnung": "BEMA 53",
+    "beschreibung": "Sequestrotomie bei Osteomyelitis der Kiefer",
+    "punkte": 72,
+    "source": "monkeymed_html"
+  },
+  "BEMA_55": {
+    "id": "BEMA_55",
+    "system": "BEMA",
+    "nummer": "55",
+    "bezeichnung": "BEMA 55",
+    "beschreibung": "Reimplantation eines Zahnes, ggf. einschließlich einfacher Fixation an den benachbarten Zähnen",
+    "punkte": 72,
+    "source": "monkeymed_html"
+  },
+  "BEMA_56a": {
+    "id": "BEMA_56a",
+    "system": "BEMA",
+    "nummer": "56a",
+    "bezeichnung": "Zystektomie",
+    "beschreibung": "Operation Zyste durch Zystektomie",
+    "punkte": 120,
+    "source": "monkeymed_html"
+  },
+  "BEMA_56b": {
+    "id": "BEMA_56b",
+    "system": "BEMA",
+    "nummer": "56b",
+    "bezeichnung": "Orale Zystostomie",
+    "beschreibung": "Operation Zyste durch orale Zystostomie",
+    "punkte": 72,
+    "source": "monkeymed_html"
+  },
+  "BEMA_56c": {
+    "id": "BEMA_56c",
+    "system": "BEMA",
+    "nummer": "56c",
+    "bezeichnung": "Zystektomie in Verbindung mit Osteotomie",
+    "beschreibung": "Operation einer Zyste durch Zystektomie in Verbindung mit einer Osteotomie oder Wurzelspitzenresektion",
+    "punkte": 48,
+    "source": "monkeymed_html"
+  },
+  "BEMA_56d": {
+    "id": "BEMA_56d",
+    "system": "BEMA",
+    "nummer": "56d",
+    "bezeichnung": "Orale Zystostomie in Verbindung mit Ost/WSR",
+    "beschreibung": "Operation einer Zyste durch orale Zystostomie in Verbindung mit einer Osteotomie oder Wurzelspitzenresektion",
+    "punkte": 48,
+    "source": "monkeymed_html"
+  },
+  "BEMA_57": {
+    "id": "BEMA_57",
+    "system": "BEMA",
+    "nummer": "57",
+    "bezeichnung": "BEMA 57",
+    "beschreibung": "Beseitigen störender Schleimhautbänder, Muskelansätze oder eines Schlotterkammes im Frontzahnbereich oder in einer Kieferhälfte, je Sitzung",
+    "punkte": 48,
+    "source": "monkeymed_html"
+  },
+  "BEMA_58": {
+    "id": "BEMA_58",
+    "system": "BEMA",
+    "nummer": "58",
+    "bezeichnung": "BEMA 58",
+    "beschreibung": "Knochenresektion am Alveolarfortsatz zur Formung des Prothesenlagers im Frontzahnbereich oder in einer Kieferhälfte als selbständige Leistung, je Sitzung",
+    "punkte": 48,
+    "source": "monkeymed_html"
+  },
+  "BEMA_59": {
+    "id": "BEMA_59",
+    "system": "BEMA",
+    "nummer": "59",
+    "bezeichnung": "BEMA 59",
+    "beschreibung": "Mundboden- oder Vestibulumplastik im Frontzahnbereich oder in einer Kieferhälfte",
+    "punkte": 120,
+    "source": "monkeymed_html"
+  },
+  "BEMA_60": {
+    "id": "BEMA_60",
+    "system": "BEMA",
+    "nummer": "60",
+    "bezeichnung": "BEMA 60",
+    "beschreibung": "Tuberplastik, einseitig",
+    "punkte": 80,
+    "source": "monkeymed_html"
+  },
+  "BEMA_61": {
+    "id": "BEMA_61",
+    "system": "BEMA",
+    "nummer": "61",
+    "bezeichnung": "BEMA 61",
+    "beschreibung": "Korrektur des Lippenbändchens bei echtem Diastema mediale",
+    "punkte": 72,
+    "source": "monkeymed_html"
+  },
+  "BEMA_62": {
+    "id": "BEMA_62",
+    "system": "BEMA",
+    "nummer": "62",
+    "bezeichnung": "BEMA 62",
+    "beschreibung": "Alveolotomie",
+    "punkte": 36,
+    "source": "monkeymed_html"
+  },
+  "BEMA_63": {
+    "id": "BEMA_63",
+    "system": "BEMA",
+    "nummer": "63",
+    "bezeichnung": "BEMA 63",
+    "beschreibung": "Freilegung eines retinierten und/oder verlagerten Zahnes zur kieferorthopädischen Einstellung",
+    "punkte": 80,
+    "source": "monkeymed_html"
+  },
+  "BEMA_90": {
+    "id": "BEMA_90",
+    "system": "BEMA",
+    "nummer": "90",
+    "bezeichnung": "Wurzelstiftkappe",
+    "beschreibung": "Versorgung eines Zahnes durch eine Wurzelstiftkappe mit Verankerung im Wurzelkanal mit Kugelknopfanker",
+    "punkte": 154,
+    "source": "monkeymed_html"
+  },
+  "BEMA_91e": {
+    "id": "BEMA_91e",
+    "system": "BEMA",
+    "nummer": "91e",
+    "bezeichnung": "Verwendung eines Geschiebes",
+    "beschreibung": "Verwendung eines Geschiebes bei geteilten Brücken mit disparallelen Pfeilern zusätzlich zu den Nrn. 91 a bis c",
+    "punkte": 43,
+    "source": "monkeymed_html"
+  },
+  "BEMA_93a": {
+    "id": "BEMA_93a",
+    "system": "BEMA",
+    "nummer": "93a",
+    "bezeichnung": "Adhäsivbrücke mit Metallgerüst",
+    "beschreibung": "Adhäsivbrücke mit Metallgerüst im Frontzahnbereich mit einem Flügel einschließlich der Präparation von Retentionen an dem Pfeilerzahn, Abformung, Farbbestimmung, Bissnahme, Einprobe und adhäsive Befestigung, Kontrolle und ggf. Korrekturen der Okklusion und Artikulation",
+    "punkte": 240,
+    "source": "monkeymed_html"
+  },
+  "BEMA_93b": {
+    "id": "BEMA_93b",
+    "system": "BEMA",
+    "nummer": "93b",
+    "bezeichnung": "Zweiflügelige Adhäsivbrücke",
+    "beschreibung": "Adhäsivbrücke mit Metallgerüst im Frontzahnbereich mit zwei Flügeln einschließlich der Präparation von Retentionen an den Pfeilerzähnen, Abformung, Farbbestimmung, Bissnahme, Einprobe und adhäsive Befestigung, Kontrolle und ggf. Korrekturen der Okklusion und Artikulation",
+    "punkte": 335,
+    "source": "monkeymed_html"
+  },
+  "BEMA_94a": {
+    "id": "BEMA_94a",
+    "system": "BEMA",
+    "nummer": "94a",
+    "bezeichnung": "Teilleistungen nach den Nrn. 90 bis 92",
+    "beschreibung": "Teilleistungen nach den Nrn. 90 bis 92 bei nicht vollendeten Leistungen",
+    "source": "monkeymed_html"
+  },
+  "BEMA_94b": {
+    "id": "BEMA_94b",
+    "system": "BEMA",
+    "nummer": "94b",
+    "bezeichnung": "Teilleistungen nach der Nr. 93",
+    "beschreibung": "Teilleistungen bei nicht vollendeten Leistungen nach der Nr. 93",
+    "source": "monkeymed_html"
+  },
+  "BEMA_95a": {
+    "id": "BEMA_95a",
+    "system": "BEMA",
+    "nummer": "95a",
+    "bezeichnung": "Maßnahmen zum Wiederherstellen der Funktion von Brücken und provisorischen Brücken",
+    "beschreibung": "Wiedereinsetzen einer Brücke mit 2 Ankern",
+    "punkte": 34,
+    "source": "monkeymed_html"
+  },
+  "BEMA_95b": {
+    "id": "BEMA_95b",
+    "system": "BEMA",
+    "nummer": "95b",
+    "bezeichnung": "Maßnahmen zum Wiederherstellen der Funktion von Brücken und provisorischen Brücken",
+    "beschreibung": "Wiedereinsetzen einer Brücke mit mehr als 2 Ankern",
+    "punkte": 50,
+    "source": "monkeymed_html"
+  },
+  "BEMA_95c": {
+    "id": "BEMA_95c",
+    "system": "BEMA",
+    "nummer": "95c",
+    "bezeichnung": "Maßnahmen zum Wiederherstellen der Funktion von Brücken und provisorischen Brücken",
+    "beschreibung": "Erneuerung oder Wiedereinsetzen einer Facette, einer Verblendschale oder dergleichen",
+    "punkte": 36,
+    "source": "monkeymed_html"
+  },
+  "BEMA_95d": {
+    "id": "BEMA_95d",
+    "system": "BEMA",
+    "nummer": "95d",
+    "bezeichnung": "Maßnahmen zum Wiederherstellen der Funktion von Brücken und provisorischen Brücken",
+    "beschreibung": "Abnahme und Wiedereinsetzen einer provisorischen Brücke",
+    "punkte": 18,
+    "source": "monkeymed_html"
+  },
+  "BEMA_98d": {
+    "id": "BEMA_98d",
+    "system": "BEMA",
+    "nummer": "98d",
+    "bezeichnung": "Intraorale Stützstiftregistrierung",
+    "beschreibung": "Intraorale Stützstiftregistrierung zur Feststellung der Zentrallage",
+    "punkte": 23,
+    "source": "monkeymed_html"
+  },
+  "BEMA_98f": {
+    "id": "BEMA_98f",
+    "system": "BEMA",
+    "nummer": "98f",
+    "bezeichnung": "Doppel/mehrarmige Halte/Stützvorrichtungen",
+    "beschreibung": "Verwendung doppelarmiger Halte- oder einfacher Stützvorrichtungen oder mehrarmiger gebogener Halte- und Stützvorrichtungen zu den Bewertungszahlen nach Nr. 96",
+    "punkte": 22,
+    "source": "monkeymed_html"
+  },
+  "BEMA_98g": {
+    "id": "BEMA_98g",
+    "system": "BEMA",
+    "nummer": "98g",
+    "bezeichnung": "Verwendung einer Metallbasis",
+    "beschreibung": "Verwendung einer Metallbasis in Verbindung mit Halte- und Stützvorrichtungen – nicht bei Interimsprothesen –",
+    "punkte": 44,
+    "source": "monkeymed_html"
+  },
+  "BEMA_99a": {
+    "id": "BEMA_99a",
+    "system": "BEMA",
+    "nummer": "99a",
+    "bezeichnung": "Teilleistungen nach den Nrn. 96, 97 und 98",
+    "beschreibung": "Anatomischer Abdruck zur prothetischen Versorgung eines Kiefers als Teilleistungen nach den Nrn. 96, 97 und 98 bei nicht vollendeten Leistungen",
+    "punkte": 19,
+    "source": "monkeymed_html"
+  },
+  "BEMA_99b": {
+    "id": "BEMA_99b",
+    "system": "BEMA",
+    "nummer": "99b",
+    "bezeichnung": "Teilleistungen nach den Nrn. 96, 97 und 98 (50%)",
+    "beschreibung": "Maßnahmen einschließlich Bissnahme als Teilleistungen nach den Nrn. 96, 97 und 98 bei nicht vollendeten Leistungen",
+    "source": "monkeymed_html"
+  },
+  "BEMA_99c": {
+    "id": "BEMA_99c",
+    "system": "BEMA",
+    "nummer": "99c",
+    "bezeichnung": "Teilleistungen nach den Nrn. 96, 97 und 98 (75%)",
+    "beschreibung": "Weitergehende Maßnahmen als Teilleistungen nach den Nrn. 96, 97 und 98 bei nicht vollendeten Leistungen",
+    "source": "monkeymed_html"
+  },
+  "BEMA_100c": {
+    "id": "BEMA_100c",
+    "system": "BEMA",
+    "nummer": "100c",
+    "bezeichnung": "Teilunterfütterung einer Prothese",
+    "beschreibung": "Teilunterfütterung einer Prothese",
+    "punkte": 44,
+    "source": "monkeymed_html"
+  },
+  "BEMA_100d": {
+    "id": "BEMA_100d",
+    "system": "BEMA",
+    "nummer": "100d",
+    "bezeichnung": "Vollständige Unterfütterung",
+    "beschreibung": "Vollständige Unterfütterung einer Prothese im indirekten Verfahren",
+    "punkte": 55,
+    "source": "monkeymed_html"
+  },
+  "BEMA_100e": {
+    "id": "BEMA_100e",
+    "system": "BEMA",
+    "nummer": "100e",
+    "bezeichnung": "Vollständige Unterfütterung mit FURand (OK)",
+    "beschreibung": "Vollständige Unterfütterung einer Prothese im indirekten Verfahren einschließlich funktioneller Randgestaltung im Oberkiefer",
+    "punkte": 81,
+    "source": "monkeymed_html"
+  },
+  "BEMA_100f": {
+    "id": "BEMA_100f",
+    "system": "BEMA",
+    "nummer": "100f",
+    "bezeichnung": "Vollständige Unterfütterung mit FURand (UK)",
+    "beschreibung": "Vollständige Unterfütterung einer Prothese im indirekten Verfahren einschließlich funktioneller Randgestaltung im Unterkiefer",
+    "punkte": 81,
+    "source": "monkeymed_html"
+  },
+  "BEMA_101a": {
+    "id": "BEMA_101a",
+    "system": "BEMA",
+    "nummer": "101a",
+    "bezeichnung": "Defektverschluss bei Restgebiss",
+    "beschreibung": "Maßnahmen zur Weichteilstützung zum Ausgleich oder zum Verschluss von Defekten im Bereich des Kiefers bei vorhandenem Restgebiss",
+    "punkte": 80,
+    "source": "monkeymed_html"
+  },
+  "BEMA_101b": {
+    "id": "BEMA_101b",
+    "system": "BEMA",
+    "nummer": "101b",
+    "bezeichnung": "Defektverschluss bei zahnlosem Kiefer",
+    "beschreibung": "Maßnahmen zur Weichteilstützung zum Ausgleich oder zum Verschluss von Defekten im Bereich des zahnlosen Kiefers",
+    "punkte": 120,
+    "source": "monkeymed_html"
+  },
+  "BEMA_102": {
+    "id": "BEMA_102",
+    "system": "BEMA",
+    "nummer": "102",
+    "bezeichnung": "Eingliedern eines Obturators",
+    "beschreibung": "Eingliedern eines Obturators zum Verschluss von Defekten des weichen Gaumens",
+    "punkte": 240,
+    "source": "monkeymed_html"
+  },
+  "BEMA_103a": {
+    "id": "BEMA_103a",
+    "system": "BEMA",
+    "nummer": "103a",
+    "bezeichnung": "Resektionsprothese, temporär",
+    "beschreibung": "Eingliedern einer temporären Verschlussprothese nach Resektion oder bei großen Defekten des Oberkiefers",
+    "punkte": 160,
+    "source": "monkeymed_html"
+  },
+  "BEMA_103b": {
+    "id": "BEMA_103b",
+    "system": "BEMA",
+    "nummer": "103b",
+    "bezeichnung": "Ergänzungsmaßnahmen Resektionsprothese",
+    "beschreibung": "Ergänzungsmaßnahmen zur Resektionsprothese im Anschluss an Leistungen nach Buchstabe 103a",
+    "punkte": 80,
+    "source": "monkeymed_html"
+  },
+  "BEMA_103c": {
+    "id": "BEMA_103c",
+    "system": "BEMA",
+    "nummer": "103c",
+    "bezeichnung": "Resektions/Dauerdefektprothese",
+    "beschreibung": "Eingliedern einer Resektionsdauerprothese",
+    "punkte": 300,
+    "source": "monkeymed_html"
+  },
+  "BEMA_104a": {
+    "id": "BEMA_104a",
+    "system": "BEMA",
+    "nummer": "104a",
+    "bezeichnung": "Epithese",
+    "beschreibung": "Eingliedern einer Prothese oder Epithese zum Verschluss extraoraler Weichteildefekte oder zum Ersatz fehlender Gesichtsteile, kleineren Umfanges",
+    "punkte": 300,
+    "source": "monkeymed_html"
+  },
+  "BEMA_104b": {
+    "id": "BEMA_104b",
+    "system": "BEMA",
+    "nummer": "104b",
+    "bezeichnung": "Epithese größerer Umfang",
+    "beschreibung": "Eingliedern einer Prothese oder Epithese zum Verschluss extraoraler Weichteildefekte oder zum Ersatz fehlender Gesichtsteileteildefekte oder zum Ersatz fehlender Gesichtsteile, größeren Umfanges",
+    "punkte": 500,
+    "source": "monkeymed_html"
+  },
+  "BEMA_105": {
+    "id": "BEMA_105",
+    "system": "BEMA",
+    "nummer": "105",
+    "bezeichnung": "BEMA 105",
+    "beschreibung": "Lokale medikamentöse Behandlung von Schleimhauterkrankungen, Aufbringung von auf der Mundschleimhaut haftenden Medikamenten oder Behandlung von Prothesendruckstellen, je Sitzung",
+    "punkte": 8,
+    "source": "monkeymed_html"
+  },
+  "BEMA_106": {
+    "id": "BEMA_106",
+    "system": "BEMA",
+    "nummer": "106",
+    "bezeichnung": "BEMA 106",
+    "beschreibung": "Beseitigen scharfer Zahnkanten oder störender Prothesenränder oder Ähnliches, je Sitzung",
+    "punkte": 10,
+    "source": "monkeymed_html"
+  },
+  "BEMA_107": {
+    "id": "BEMA_107",
+    "system": "BEMA",
+    "nummer": "107",
+    "bezeichnung": "BEMA 107",
+    "beschreibung": "Entfernen harter Zahnbeläge, je Sitzung",
+    "punkte": 16,
+    "source": "monkeymed_html"
+  },
+  "BEMA_107a": {
+    "id": "BEMA_107a",
+    "system": "BEMA",
+    "nummer": "107a",
+    "bezeichnung": "BEMA 107a",
+    "beschreibung": "Entfernen harter Zahnbeläge bei Versicherten, die einem Pflegegrad nach § 15 SGB XI zugeordnet sind oder Eingliederungshilfe nach § 53 SGB XII erhalten, je Sitzung",
+    "punkte": 16,
+    "source": "monkeymed_html"
+  },
+  "BEMA_108": {
+    "id": "BEMA_108",
+    "system": "BEMA",
+    "nummer": "108",
+    "bezeichnung": "Einschleifen des natürlichen Gebisses",
+    "beschreibung": "Einschleifen des natürlichen Gebisses zum Kauebenenausgleich und zur Entlastung, je Sitzung",
+    "punkte": 6,
+    "source": "monkeymed_html"
+  },
+  "BEMA_111": {
+    "id": "BEMA_111",
+    "system": "BEMA",
+    "nummer": "111",
+    "bezeichnung": "Nachbehandlung PAR.",
+    "beschreibung": "Nachbehandlung im Rahmen der systematischen Behandlung von Parodontopathien, je Sitzung",
+    "punkte": 10,
+    "source": "monkeymed_html"
+  },
+  "BEMA_123a": {
+    "id": "BEMA_123a",
+    "system": "BEMA",
+    "nummer": "123a",
+    "bezeichnung": "Lückenhalter",
+    "beschreibung": "Kieferorthopädische Maßnahmen mit herausnehmbaren Geräten zum Offenhalten von Lücken infolge vorzeitigem Milchzahnverlustes, je Kiefer",
+    "punkte": 40,
+    "source": "monkeymed_html"
+  },
+  "BEMA_123b": {
+    "id": "BEMA_123b",
+    "system": "BEMA",
+    "nummer": "123b",
+    "bezeichnung": "Kontrolle eines Lückenhalters",
+    "beschreibung": "Kontrolle eines Lückenhalters, je Behandlungsquartal",
+    "punkte": 14,
+    "source": "monkeymed_html"
+  },
+  "BEMA_126a": {
+    "id": "BEMA_126a",
+    "system": "BEMA",
+    "nummer": "126a",
+    "bezeichnung": "Eingliedern eines Brackets/Attachments",
+    "beschreibung": "Eingliedern eines Brackets oder eines Attachments aus Edelstahl oder nickelfreiem Metall",
+    "punkte": 18,
+    "source": "monkeymed_html"
+  },
+  "BEMA_126b": {
+    "id": "BEMA_126b",
+    "system": "BEMA",
+    "nummer": "126b",
+    "bezeichnung": "Eingliedern eines Bandes",
+    "beschreibung": "Eingliedern eines Bandes einschließlich Material- und Laborkosten",
+    "punkte": 42,
+    "source": "monkeymed_html"
+  },
+  "BEMA_126c": {
+    "id": "BEMA_126c",
+    "system": "BEMA",
+    "nummer": "126c",
+    "bezeichnung": "Wiedereingliederung eines Bandes.",
+    "beschreibung": "Wiedereingliederung eines Bandes",
+    "punkte": 30,
+    "source": "monkeymed_html"
+  },
+  "BEMA_126d": {
+    "id": "BEMA_126d",
+    "system": "BEMA",
+    "nummer": "126d",
+    "bezeichnung": "Entfernung eines Bandes/Brackets oder Attachments",
+    "beschreibung": "Entfernung eines Bandes, eines Brackets oder eines Attachments",
+    "punkte": 6,
+    "source": "monkeymed_html"
+  },
+  "BEMA_127a": {
+    "id": "BEMA_127a",
+    "system": "BEMA",
+    "nummer": "127a",
+    "bezeichnung": "Eingliederung eines Teilbogens",
+    "beschreibung": "Eingliederung eines Teilbogens aus Edelstahl einschließlich Material- und Laborkosten",
+    "punkte": 25,
+    "source": "monkeymed_html"
+  },
+  "BEMA_127b": {
+    "id": "BEMA_127b",
+    "system": "BEMA",
+    "nummer": "127b",
+    "bezeichnung": "Ausgliederung eines Teilbogens",
+    "beschreibung": "Ausgliederung eines Teilbogens",
+    "punkte": 7,
+    "source": "monkeymed_html"
+  },
+  "BEMA_128a": {
+    "id": "BEMA_128a",
+    "system": "BEMA",
+    "nummer": "128a",
+    "bezeichnung": "Eingliederung eines konfektionierten Vollbogens",
+    "beschreibung": "Eingliederung eines konfektionierten Vollbogens aus Edelstahl einschließlich Material- und",
+    "punkte": 32,
+    "source": "monkeymed_html"
+  },
+  "BEMA_128b": {
+    "id": "BEMA_128b",
+    "system": "BEMA",
+    "nummer": "128b",
+    "bezeichnung": "Eingliederung eines individualisierten Vollbogens",
+    "beschreibung": "Eingliederung eines individualisierten Vollbogens aus Edelstahl einschließlich Material- und",
+    "punkte": 40,
+    "source": "monkeymed_html"
+  },
+  "BEMA_128c": {
+    "id": "BEMA_128c",
+    "system": "BEMA",
+    "nummer": "128c",
+    "bezeichnung": "Ausgliederung von Vollbögen",
+    "beschreibung": "Ausgliederung von Vollbögen, je Bogen",
+    "punkte": 9,
+    "source": "monkeymed_html"
+  },
+  "BEMA_131a": {
+    "id": "BEMA_131a",
+    "system": "BEMA",
+    "nummer": "131a",
+    "bezeichnung": "Ein- und Ausgliederung Gaumennahterweiterungsapparatur",
+    "beschreibung": "Eingliederung und Ausgliederung einer Gaumennahterweiterungsapparatur",
+    "punkte": 50,
+    "source": "monkeymed_html"
+  },
+  "BEMA_131b": {
+    "id": "BEMA_131b",
+    "system": "BEMA",
+    "nummer": "131b",
+    "bezeichnung": "Herbstscharnier",
+    "beschreibung": "Eingliederung und Ausgliederung einer festsitzenden Apparatur zur Bisslagekorrektur",
+    "punkte": 50,
+    "source": "monkeymed_html"
+  },
+  "BEMA_131c": {
+    "id": "BEMA_131c",
+    "system": "BEMA",
+    "nummer": "131c",
+    "bezeichnung": "Eingliederung einer Gesichtsmaske",
+    "beschreibung": "Eingliederung einer Gesichtsmaske",
+    "punkte": 50,
+    "source": "monkeymed_html"
+  },
+  "BEMA_151": {
+    "id": "BEMA_151",
+    "system": "BEMA",
+    "nummer": "151",
+    "bezeichnung": "BEMA 151",
+    "beschreibung": "Besuch eines Versicherten, einschließlich Beratung und eingehende Untersuchung",
+    "punkte": 38,
+    "source": "monkeymed_html"
+  },
+  "BEMA_152a": {
+    "id": "BEMA_152a",
+    "system": "BEMA",
+    "nummer": "152a",
+    "bezeichnung": "Besuch je weiteren Versicherten in derselben häusl.Gemeinschaft",
+    "beschreibung": "Besuch je weiterem Versicherten in derselben häuslichen Gemeinschaft in unmittelbarem zeitlichen Zusammenhang mit einer Leistung nach Nr. 151 – einschließlich Beratung und eingehende Untersuchung.",
+    "punkte": 34,
+    "source": "monkeymed_html"
+  },
+  "BEMA_152b": {
+    "id": "BEMA_152b",
+    "system": "BEMA",
+    "nummer": "152b",
+    "bezeichnung": "Besuch je weiteren Versicherten in derselben Einrichtung",
+    "beschreibung": "Besuch je weiteren Versicherten in derselben Einrichtung",
+    "punkte": 26,
+    "source": "monkeymed_html"
+  },
+  "BEMA_153a": {
+    "id": "BEMA_153a",
+    "system": "BEMA",
+    "nummer": "153a",
+    "bezeichnung": "Besuch eines Versicherten in Einrichtung",
+    "beschreibung": "Besuch eines Versicherten zu vorher vereinbarten Zeiten und bei regelmäßiger Tätigkeit in der Einrichtung einschließlich Beratung und eingehende Untersuchung, ohne Vorliegen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V, welcher den verbindlichen Anforderungen der Vereinbarung nach § 119b Abs. 2 SGB V entspricht.",
+    "punkte": 30,
+    "source": "monkeymed_html"
+  },
+  "BEMA_153b": {
+    "id": "BEMA_153b",
+    "system": "BEMA",
+    "nummer": "153b",
+    "bezeichnung": "Besuch je weiteren Versicherten in derselben Einrichtung",
+    "beschreibung": "Besuch weiterer Versicherter in derselben Einrichtung",
+    "punkte": 26,
+    "source": "monkeymed_html"
+  },
+  "BEMA_154": {
+    "id": "BEMA_154",
+    "system": "BEMA",
+    "nummer": "154",
+    "bezeichnung": "BEMA 154",
+    "beschreibung": "Besuch eines pflegebedürftigen Versicherten in einer stationären Pflegeeinrichtung (§ 71 Abs. 2 SGB XI) im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V, einschließlich Beratung und eingehende Untersuchung",
+    "punkte": 30,
+    "source": "monkeymed_html"
+  },
+  "BEMA_155": {
+    "id": "BEMA_155",
+    "system": "BEMA",
+    "nummer": "155",
+    "bezeichnung": "BEMA 155",
+    "beschreibung": "Besuch je weiteren pflegebedürftigen Versicherten in derselben stationären Pflegeeinrichtung (§ 71 Abs. 2 SGB XI) im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V, in unmittelbarem zeitlichen Zusammenhang mit einer Leistung nach Nr. 154 – einschließlich Beratung und eingehende Untersuchung",
+    "punkte": 26,
+    "source": "monkeymed_html"
+  },
+  "BEMA_161a": {
+    "id": "BEMA_161a",
+    "system": "BEMA",
+    "nummer": "161a",
+    "bezeichnung": "Besuch dringend angefordert/unverzüglich durchgeführt",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, dringend angeforderte und unverzüglich durchgeführte Besuche",
+    "punkte": 18,
+    "source": "monkeymed_html"
+  },
+  "BEMA_161b": {
+    "id": "BEMA_161b",
+    "system": "BEMA",
+    "nummer": "161b",
+    "bezeichnung": "Zuschlag Besuch Montag bis Freitag von 20 bis 22 Uhr oder 6 bis 8 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, für Montag bis Freitag in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr durchgeführte Besuche",
+    "punkte": 29,
+    "source": "monkeymed_html"
+  },
+  "BEMA_161c": {
+    "id": "BEMA_161c",
+    "system": "BEMA",
+    "nummer": "161c",
+    "bezeichnung": "Zuschlag Besuch Montag bis Freitag: von 22 bis 6 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, wenn Montag bis Freitag in der Zeit zwischen 22 und 6 Uhr durchgeführte Besuche",
+    "punkte": 50,
+    "source": "monkeymed_html"
+  },
+  "BEMA_161d": {
+    "id": "BEMA_161d",
+    "system": "BEMA",
+    "nummer": "161d",
+    "bezeichnung": "Zuschlag Besuche an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 8 und 20 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 8 und 20 Uhr",
+    "punkte": 38,
+    "source": "monkeymed_html"
+  },
+  "BEMA_161e": {
+    "id": "BEMA_161e",
+    "system": "BEMA",
+    "nummer": "161e",
+    "bezeichnung": "Zuschlag Besuch am Samstag, Sonn- o. Feiertag von 20 bis 22 Uhr/6 bis 8 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 151 und 154, an Samstagen, Sonn- oder Feiertagen in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr",
+    "punkte": 67,
+    "source": "monkeymed_html"
+  },
+  "BEMA_161f": {
+    "id": "BEMA_161f",
+    "system": "BEMA",
+    "nummer": "161f",
+    "bezeichnung": "Zuschlag Besuch am Samstag, Sonn- oder Feiertag von 22 bis 6 Uhr",
+    "beschreibung": "Zuschläge für Besuche nach den Nrn. 151 und 154, an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 22 und 6 Uhr",
+    "punkte": 88,
+    "source": "monkeymed_html"
+  },
+  "BEMA_162a": {
+    "id": "BEMA_162a",
+    "system": "BEMA",
+    "nummer": "162a",
+    "bezeichnung": "Besuch dringend angefordert/unverzüglich durchgeführt",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155, dringend angeforderte und unverzüglich durchgeführte Besuche",
+    "punkte": 9,
+    "source": "monkeymed_html"
+  },
+  "BEMA_162b": {
+    "id": "BEMA_162b",
+    "system": "BEMA",
+    "nummer": "162b",
+    "bezeichnung": "Zuschlag Besuch Montag bis Freitag von 20 bis 22 Uhr oder 6 bis 8 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155, wenn Montag bis Freitag in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr durchgeführt",
+    "punkte": 15,
+    "source": "monkeymed_html"
+  },
+  "BEMA_162c": {
+    "id": "BEMA_162c",
+    "system": "BEMA",
+    "nummer": "162c",
+    "bezeichnung": "Zuschlag Besuch Montag bis Freitag: von 22 bis 6 Uhr",
+    "beschreibung": "Zuschläge für Besuche nach den Nrn. 151 und 154, wenn Montag bis Freitag in der Zeit zwischen 22 und 6 Uhr durchgeführt",
+    "punkte": 25,
+    "source": "monkeymed_html"
+  },
+  "BEMA_162d": {
+    "id": "BEMA_162d",
+    "system": "BEMA",
+    "nummer": "162d",
+    "bezeichnung": "Zuschlag Besuche an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 8 und 20 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155 an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 8 und 20 Uhr",
+    "punkte": 19,
+    "source": "monkeymed_html"
+  },
+  "BEMA_162e": {
+    "id": "BEMA_162e",
+    "system": "BEMA",
+    "nummer": "162e",
+    "bezeichnung": "Zuschlag Besuch am Samstag, Sonn- o. Feiertag von 20 bis 22 Uhr/6 bis 8 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155, wenn an Samstagen, Sonn- oder Feiertagen in der Zeit von 20 bis 22 Uhr oder 6 bis 8 Uhr durchgeführt",
+    "punkte": 34,
+    "source": "monkeymed_html"
+  },
+  "BEMA_162f": {
+    "id": "BEMA_162f",
+    "system": "BEMA",
+    "nummer": "162f",
+    "bezeichnung": "Zuschlag Besuch Samstag, Sonnoder Feiertag von 22 bis 6 Uhr",
+    "beschreibung": "Zuschlag für Besuche nach den Nrn. 152 und 155, wenn an Samstagen, Sonn- oder Feiertagen in der Zeit zwischen 22 und 6 Uhr durchgeführt",
+    "punkte": 44,
+    "source": "monkeymed_html"
+  },
+  "BEMA_165": {
+    "id": "BEMA_165",
+    "system": "BEMA",
+    "nummer": "165",
+    "bezeichnung": "BEMA 165",
+    "beschreibung": "Zuschlag zu den Leistungen nach den Nrn. 151, 152 a, 152 b, 153 a, 153 b, 154 und 155 bei Kindern bis zum vollendeten vierten Lebensjahr",
+    "punkte": 14,
+    "source": "monkeymed_html"
+  },
+  "BEMA_171a": {
+    "id": "BEMA_171a",
+    "system": "BEMA",
+    "nummer": "171a",
+    "bezeichnung": "Zuschlag für das Aufsuchen von Pflegebedürftigen/Behinderten",
+    "beschreibung": "Zuschlag nach § 87 Abs. 2i SGB V für das Aufsuchen von Versicherten, die pflegebedürftig sind, eine Behinderung oder eine eingeschränkte Alltagskompetenz aufweisen",
+    "punkte": 37,
+    "source": "monkeymed_html"
+  },
+  "BEMA_171b": {
+    "id": "BEMA_171b",
+    "system": "BEMA",
+    "nummer": "171b",
+    "bezeichnung": "Zuschlag für das Aufsuchen je weiteren Versicherten",
+    "beschreibung": "Zuschlag für das Aufsuchen je weiteren Versicherten, der einem Pflegegrad nach § 15 SGB XI zugeordnet ist oder Eingliederungshilfe nach § 53 SGB XII erhält, in derselben häuslichen Gemeinschaft oder Einrichtung in unmittelbarem zeitlichen Zusammenhang mit einer Leistung nach Nummer 171 a",
+    "punkte": 30,
+    "source": "monkeymed_html"
+  },
+  "BEMA_172a": {
+    "id": "BEMA_172a",
+    "system": "BEMA",
+    "nummer": "172a",
+    "bezeichnung": "Zuschlag für das Aufsuchen eines pflegebedürftigen Versicherten",
+    "beschreibung": "Zuschlag nach § 87 Abs. 2j SGB V für die kooperative und koordinierte zahnärztliche und pflegerische Versorgung von pflegebedürftigen Versicherten in stationären Pflegeeinrichtungen im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V, für das Aufsuchen eines pflegebedürftigen Versicherten in einer stationären Pflegeeinrichtung",
+    "punkte": 40,
+    "source": "monkeymed_html"
+  },
+  "BEMA_172b": {
+    "id": "BEMA_172b",
+    "system": "BEMA",
+    "nummer": "172b",
+    "bezeichnung": "Zuschlag für das Aufsuchen je weiteren pflegebedürftigen Versicherten",
+    "beschreibung": "Zuschlag nach § 87 Abs. 2j SGB V für die kooperative und koordinierte zahnärztliche und pflegerische Versorgung von pflegebedürftigen Versicherten in stationären Pflegeeinrichtungen im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V für das Aufsuchen je weiterem pflegebedürftigen Versicherten in derselben stationären Pflegeeinrichtung in unmittelbarem zeitlichen Zusammenhang mit einer Leistung nach Nr. 172a",
+    "punkte": 32,
+    "source": "monkeymed_html"
+  },
+  "BEMA_173a": {
+    "id": "BEMA_173a",
+    "system": "BEMA",
+    "nummer": "173a",
+    "bezeichnung": "Zuschlag, Besuch Pflegebedürftiger",
+    "beschreibung": "Besuch Pflegebedürftiger",
+    "punkte": 32,
+    "source": "monkeymed_html"
+  },
+  "BEMA_173b": {
+    "id": "BEMA_173b",
+    "system": "BEMA",
+    "nummer": "173b",
+    "bezeichnung": "Zuschlag, Besuch weiterer Pflegebedürftige",
+    "beschreibung": "Zuschlag, Besuch weiteren Pflegebedürftige",
+    "punkte": 24,
+    "source": "monkeymed_html"
+  },
+  "BEMA_174a": {
+    "id": "BEMA_174a",
+    "system": "BEMA",
+    "nummer": "174a",
+    "bezeichnung": "Mundgesundheitsstatus und individueller Mundgesundheitsplan, Pflege",
+    "beschreibung": "Mundgesundheitsstatus und individueller Mundgesundheitsplan",
+    "punkte": 20,
+    "source": "monkeymed_html"
+  },
+  "BEMA_174b": {
+    "id": "BEMA_174b",
+    "system": "BEMA",
+    "nummer": "174b",
+    "bezeichnung": "Mundgesundheitsaufkläung, Pflege",
+    "beschreibung": "Mundgesundheitsaufkläung, Pflege",
+    "punkte": 26,
+    "source": "monkeymed_html"
+  },
+  "BEMA_181": {
+    "id": "BEMA_181",
+    "system": "BEMA",
+    "nummer": "181",
+    "bezeichnung": "BEMA 181",
+    "beschreibung": "Konsiliarische Erörterung mit Ärzten und Zahnärzten",
+    "punkte": 14,
+    "source": "monkeymed_html"
+  },
+  "BEMA_182": {
+    "id": "BEMA_182",
+    "system": "BEMA",
+    "nummer": "182",
+    "bezeichnung": "BEMA 182",
+    "beschreibung": "Konsiliarische Erörterung mit Ärzten und Zahnärzten im Rahmen eines Kooperationsvertrags nach § 119b Abs. 1 SGB V",
+    "punkte": 14,
+    "source": "monkeymed_html"
+  },
+  "BEMA_601": {
+    "id": "BEMA_601",
+    "system": "BEMA",
+    "nummer": "601",
+    "bezeichnung": "Stiftmaterial",
+    "beschreibung": "Stiftmaterial in Centbeträgen",
+    "punkte": 14,
+    "source": "monkeymed_html"
+  },
+  "BEMA_602": {
+    "id": "BEMA_602",
+    "system": "BEMA",
+    "nummer": "602",
+    "bezeichnung": "Telefon, Porto- und Versandkosten",
+    "beschreibung": "Auslagenersatz für Telefonkosten, Portokosten und Versandkosten",
+    "source": "monkeymed_html"
+  },
+  "BEMA_603": {
+    "id": "BEMA_603",
+    "system": "BEMA",
+    "nummer": "603",
+    "bezeichnung": "Praxislaborkosten",
+    "beschreibung": "Material- und Laborkosten des Vertragszahnarztes in Centbeträgen",
+    "source": "monkeymed_html"
+  },
+  "BEMA_604": {
+    "id": "BEMA_604",
+    "system": "BEMA",
+    "nummer": "604",
+    "bezeichnung": "Fremdlaborkosten",
+    "beschreibung": "Material- und Fremdlaborkosten in Centbeträgen",
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä925a": {
+    "id": "BEMA_ä925a",
+    "system": "BEMA",
+    "nummer": "ä925a",
+    "bezeichnung": "Röntgen, bis zwei Aufnahmen",
+    "beschreibung": "Röntgendiagnostik der Zähne, bis zwei Aufnahmen",
+    "punkte": 12,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä925b": {
+    "id": "BEMA_ä925b",
+    "system": "BEMA",
+    "nummer": "ä925b",
+    "bezeichnung": "Röntgen, bis fünf Aufnahmen",
+    "beschreibung": "Röntgendiagnostik der Zähne, bis fünf Aufnahmen",
+    "punkte": 19,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä925c": {
+    "id": "BEMA_ä925c",
+    "system": "BEMA",
+    "nummer": "ä925c",
+    "bezeichnung": "Röntgen, bis acht Aufnahmen",
+    "beschreibung": "Röntgendiagnostik der Zähne, bis acht Aufnahmen",
+    "punkte": 27,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä925d": {
+    "id": "BEMA_ä925d",
+    "system": "BEMA",
+    "nummer": "ä925d",
+    "bezeichnung": "Röntgen, mehr als acht Aufnahmen",
+    "beschreibung": "Röntgendiagnostik der Zähne, Status bei mehr als acht Aufnahmen",
+    "punkte": 34,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä928": {
+    "id": "BEMA_ä928",
+    "system": "BEMA",
+    "nummer": "ä928",
+    "bezeichnung": "Röntgenaufnahme der Hand",
+    "beschreibung": "Röntgenaufnahme der Hand",
+    "punkte": 30,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä934a": {
+    "id": "BEMA_ä934a",
+    "system": "BEMA",
+    "nummer": "ä934a",
+    "bezeichnung": "Aufnahme des Schädels, eine Aufnahme",
+    "beschreibung": "Röntgenaufnahme Schädel, 1 Aufnahme",
+    "punkte": 19,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä934b": {
+    "id": "BEMA_ä934b",
+    "system": "BEMA",
+    "nummer": "ä934b",
+    "bezeichnung": "Aufnahme des Schädels, zwei Aufnahmen",
+    "beschreibung": "Röntgenaufnahme Schädel, 2 Aufnahmen",
+    "punkte": 30,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä934c": {
+    "id": "BEMA_ä934c",
+    "system": "BEMA",
+    "nummer": "ä934c",
+    "bezeichnung": "Aufnahme des Schädels, mehr als zwei Aufnahmen",
+    "beschreibung": "Röntgenaufnahme Schädel, mehr als 2 Aufnahmen",
+    "punkte": 36,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä935a": {
+    "id": "BEMA_ä935a",
+    "system": "BEMA",
+    "nummer": "ä935a",
+    "bezeichnung": "Teilaufnahme des Schädels, eine Aufnahme",
+    "beschreibung": "Teilaufnahme Schädel, 1 Aufnahme",
+    "punkte": 21,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä935b": {
+    "id": "BEMA_ä935b",
+    "system": "BEMA",
+    "nummer": "ä935b",
+    "bezeichnung": "Teilaufnahme des Schädels, zwei Aufnahmen",
+    "beschreibung": "Teilaufnahme Schädel, 2 Aufnahmen",
+    "punkte": 25,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä935c": {
+    "id": "BEMA_ä935c",
+    "system": "BEMA",
+    "nummer": "ä935c",
+    "bezeichnung": "Teilaufnahme des Schädels, mehr als 2 Aufnahmen",
+    "beschreibung": "Teilaufnahme Schädel, mehr als 2 Aufnahmen",
+    "punkte": 31,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ä935d": {
+    "id": "BEMA_ä935d",
+    "system": "BEMA",
+    "nummer": "ä935d",
+    "bezeichnung": "Orthopantomogramm",
+    "beschreibung": "Orthopantomogramm sowie Panoramaaufnahmen oder Halbseitenaufnahmen aller Zähne des Ober- und Unterkiefers",
+    "punkte": 36,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ae1": {
+    "id": "BEMA_ae1",
+    "system": "BEMA",
+    "nummer": "ae1",
+    "bezeichnung": "BEMA ae1",
+    "beschreibung": "Beratung eines Kranken, auch fernmündlich",
+    "punkte": 9,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ae161": {
+    "id": "BEMA_ae161",
+    "system": "BEMA",
+    "nummer": "ae161",
+    "bezeichnung": "BEMA ae161",
+    "beschreibung": "Eröffnung eines oberflächlichen, unmittelbar unter der Haut oder Schleimhaut gelegenen Abszesses",
+    "punkte": 15,
+    "source": "monkeymed_html"
+  },
+  "BEMA_aita": {
+    "id": "BEMA_aita",
+    "system": "BEMA",
+    "nummer": "aita",
+    "bezeichnung": "Antiinfektiöse Therapie (einwurzeliger Zahn)",
+    "beschreibung": "Antiinfektiöse Therapie je behandeltem einwurzeligen Zahn",
+    "punkte": 14,
+    "source": "monkeymed_html"
+  },
+  "BEMA_aitb": {
+    "id": "BEMA_aitb",
+    "system": "BEMA",
+    "nummer": "aitb",
+    "bezeichnung": "Antiinfektiöse Therapie (mehrwurzeliger Zahn)",
+    "beschreibung": "Antiinfektiöse Therapie je behandeltem mehrwurzeligen Zahn",
+    "punkte": 26,
+    "source": "monkeymed_html"
+  },
+  "BEMA_atg": {
+    "id": "BEMA_atg",
+    "system": "BEMA",
+    "nummer": "atg",
+    "bezeichnung": "Aufklärungs- und Therapiegespräch",
+    "beschreibung": "Parodontologisches Aufklärungs- und Therapiegespräch",
+    "punkte": 28,
+    "source": "monkeymed_html"
+  },
+  "BEMA_beva": {
+    "id": "BEMA_beva",
+    "system": "BEMA",
+    "nummer": "beva",
+    "bezeichnung": "Befundevaluation nach AIT",
+    "beschreibung": "Befundevaluation nach AIT",
+    "punkte": 32,
+    "source": "monkeymed_html"
+  },
+  "BEMA_bevb": {
+    "id": "BEMA_bevb",
+    "system": "BEMA",
+    "nummer": "bevb",
+    "bezeichnung": "Befundevaluation nach CPT",
+    "beschreibung": "Befundevaluation nach CPT",
+    "punkte": 32,
+    "source": "monkeymed_html"
+  },
+  "BEMA_cpta": {
+    "id": "BEMA_cpta",
+    "system": "BEMA",
+    "nummer": "cpta",
+    "bezeichnung": "Chirurgische Therapie (einwurzeliger Zahn)",
+    "beschreibung": "Chirurgische Therapie je behandeltem einwurzeligen Zahn",
+    "punkte": 22,
+    "source": "monkeymed_html"
+  },
+  "BEMA_cptb": {
+    "id": "BEMA_cptb",
+    "system": "BEMA",
+    "nummer": "cptb",
+    "bezeichnung": "Chirurgische Therapie (mehrwurzeliger Zahn)",
+    "beschreibung": "Chirurgische Therapie je behandeltem mehrwurzeligen Zahn",
+    "punkte": 34,
+    "source": "monkeymed_html"
+  },
+  "BEMA_emp": {
+    "id": "BEMA_emp",
+    "system": "BEMA",
+    "nummer": "emp",
+    "bezeichnung": "elektronischer Medikationsplan",
+    "beschreibung": "Aktualisierung elektronischer Medikationsplan",
+    "punkte": 3,
+    "source": "monkeymed_html"
+  },
+  "BEMA_epa2": {
+    "id": "BEMA_epa2",
+    "system": "BEMA",
+    "nummer": "epa2",
+    "bezeichnung": "Elektronischen Patientenakte",
+    "beschreibung": "Aktualisierung einer elektronischen Patientenakte",
+    "punkte": 2,
+    "source": "monkeymed_html"
+  },
+  "BEMA_fla": {
+    "id": "BEMA_fla",
+    "system": "BEMA",
+    "nummer": "fla",
+    "bezeichnung": "Fluoridlackanwendung (6. - 72. Lebensmonat)",
+    "beschreibung": "Fluoridlackanwendung zur Zahnschmelzhärtung eines Kindes vom 6. bis zum vollendeten 72. Lebensmonat",
+    "punkte": 14,
+    "source": "monkeymed_html"
+  },
+  "BEMA_fu1": {
+    "id": "BEMA_fu1",
+    "system": "BEMA",
+    "nummer": "fu1",
+    "bezeichnung": "Zahnärztliche Früherkennungsuntersuchung (30. - 72. Lebensmonat)",
+    "beschreibung": "Zahnärztliche Früherkennungsuntersuchung eines Kindes vom 6. bis zum vollendeten 33. Lebensmonat, jeweils eine",
+    "punkte": 27,
+    "source": "monkeymed_html"
+  },
+  "BEMA_fu2": {
+    "id": "BEMA_fu2",
+    "system": "BEMA",
+    "nummer": "fu2",
+    "bezeichnung": "Zahnärztliche Früherkennungsuntersuchung (34. - 72. Lebensmonat)",
+    "beschreibung": "Zahnärztliche Früherkennungsuntersuchung eines Kindes vom 34. bis zum vollendeten 72. Lebensmonat.",
+    "punkte": 25,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ip1": {
+    "id": "BEMA_ip1",
+    "system": "BEMA",
+    "nummer": "ip1",
+    "bezeichnung": "Mundhygienestatus",
+    "beschreibung": "Mundhygienestatus",
+    "punkte": 20,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ip2": {
+    "id": "BEMA_ip2",
+    "system": "BEMA",
+    "nummer": "ip2",
+    "bezeichnung": "Mundgesundheitsaufklärung",
+    "beschreibung": "Mundgesundheitsaufklärung bei Kindern und Jugendlichen",
+    "punkte": 17,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ip4": {
+    "id": "BEMA_ip4",
+    "system": "BEMA",
+    "nummer": "ip4",
+    "bezeichnung": "Lokale Fluoridierung",
+    "beschreibung": "Lokale Fluoridierung der Zähne",
+    "punkte": 12,
+    "source": "monkeymed_html"
+  },
+  "BEMA_ip5": {
+    "id": "BEMA_ip5",
+    "system": "BEMA",
+    "nummer": "ip5",
+    "bezeichnung": "Versiegelung von kariesfreien Fissuren",
+    "beschreibung": "Versiegelung von kariesfreien Fissuren und Grübchen der bleibenden Molaren (Zähne 6 und 7) mit aushärtenden Kunststoffen, je Zahn",
+    "punkte": 16,
+    "source": "monkeymed_html"
+  },
+  "BEMA_k1": {
+    "id": "BEMA_k1",
+    "system": "BEMA",
+    "nummer": "k1",
+    "bezeichnung": "Aufbissbehelf mit adjustierter Oberfläche",
+    "beschreibung": "Eingliedern eines Aufbissbehelfs mit adjustierter Oberfläche",
+    "punkte": 106,
+    "source": "monkeymed_html"
+  },
+  "BEMA_k2": {
+    "id": "BEMA_k2",
+    "system": "BEMA",
+    "nummer": "k2",
+    "bezeichnung": "Aufbissbehelf ohne adjustierte Oberfläche",
+    "beschreibung": "Eingliedern eines Aufbissbehelfs zur Unterbrechung der Okklusionskontakte ohne adjustierte Oberfläche",
+    "punkte": 45,
+    "source": "monkeymed_html"
+  },
+  "BEMA_k3": {
+    "id": "BEMA_k3",
+    "system": "BEMA",
+    "nummer": "k3",
+    "bezeichnung": "Umarbeitung Prothese zum Aufbissbehelf",
+    "beschreibung": "Umarbeitung einer vorhandenen Prothese zum Aufbissbehelf zur Unterbrechung der Okklusionskontakte mit adjustierter Oberfläche",
+    "punkte": 61,
+    "source": "monkeymed_html"
+  },
+  "BEMA_k4": {
+    "id": "BEMA_k4",
+    "system": "BEMA",
+    "nummer": "k4",
+    "bezeichnung": "Semipermanente Schienung",
+    "beschreibung": "Semipermanente Schienung unter Anwendung der Ätztechnik, je Interdentalraum",
+    "punkte": 11,
+    "source": "monkeymed_html"
+  },
+  "BEMA_k6": {
+    "id": "BEMA_k6",
+    "system": "BEMA",
+    "nummer": "k6",
+    "bezeichnung": "Wiederherstellung/Unterfütterung Aufbisshehelf",
+    "beschreibung": "Wiederherstellung und/oder Unterfütterung eines Aufbissbehelfs",
+    "punkte": 30,
+    "source": "monkeymed_html"
+  },
+  "BEMA_k7": {
+    "id": "BEMA_k7",
+    "system": "BEMA",
+    "nummer": "k7",
+    "bezeichnung": "Kontrollbehandlung",
+    "beschreibung": "Kontrollbehandlung, ggf. mit einfachen Korrekturen des Aufbissbehelfs oder der Fixierung",
+    "punkte": 6,
+    "source": "monkeymed_html"
+  },
+  "BEMA_k8": {
+    "id": "BEMA_k8",
+    "system": "BEMA",
+    "nummer": "k8",
+    "bezeichnung": "Kontrollbehandlung subtraktive Maßnahme",
+    "beschreibung": "Kontrollbehandlung mit Einschleifen des Aufbissbehelfs oder der Schienung (subtraktive Methode)",
+    "punkte": 12,
+    "source": "monkeymed_html"
+  },
+  "BEMA_k9": {
+    "id": "BEMA_k9",
+    "system": "BEMA",
+    "nummer": "k9",
+    "bezeichnung": "Kontrollbehandlung mit additiver Maßnahme",
+    "beschreibung": "Kontrollbehandlung mit Aufbau einer neuen adjustierten Oberfläche (additive Methode)",
+    "punkte": 35,
+    "source": "monkeymed_html"
+  },
+  "BEMA_mhu": {
+    "id": "BEMA_mhu",
+    "system": "BEMA",
+    "nummer": "mhu",
+    "bezeichnung": "Mundhygieneunterweisung",
+    "beschreibung": "Patientenindividuelle Mundhygieneunterweisung",
+    "punkte": 45,
+    "source": "monkeymed_html"
+  },
+  "BEMA_nfd": {
+    "id": "BEMA_nfd",
+    "system": "BEMA",
+    "nummer": "nfd",
+    "bezeichnung": "Notfalldatensatz",
+    "beschreibung": "Aktualisierung Notfalldatensatz",
+    "punkte": 6,
+    "source": "monkeymed_html"
+  },
+  "BEMA_p200": {
+    "id": "BEMA_p200",
+    "system": "BEMA",
+    "nummer": "p200",
+    "bezeichnung": "PABehandlung, geschlossen, einwurzeliger Zahn",
+    "beschreibung": "Systematische Behandlung von Parodontopathien (Supra- und subgingivales Debridement), geschlossenes Vorgehen je behandeltem einwurzeligen Zahn",
+    "punkte": 14,
+    "source": "monkeymed_html"
+  },
+  "BEMA_p201": {
+    "id": "BEMA_p201",
+    "system": "BEMA",
+    "nummer": "p201",
+    "bezeichnung": "PABehandlung, geschlossen, mehrwurzeliger Zahn",
+    "beschreibung": "Systematische Behandlung von Parodontopathien (Supra- und subgingivales Debridement), geschlossenes Vorgehen je behandeltem mehrwurzeligen Zahn",
+    "punkte": 26,
+    "source": "monkeymed_html"
+  },
+  "BEMA_p202": {
+    "id": "BEMA_p202",
+    "system": "BEMA",
+    "nummer": "p202",
+    "bezeichnung": "PABehandlung, offen, einwurzeliger Zahn",
+    "beschreibung": "Systematische Behandlung von Parodontopathien (Chirurgische Therapie), offenes Vorgehen je behandeltem einwurzeligen Zahn",
+    "punkte": 22,
+    "source": "monkeymed_html"
+  },
+  "BEMA_p203": {
+    "id": "BEMA_p203",
+    "system": "BEMA",
+    "nummer": "p203",
+    "bezeichnung": "PABehandlung, offen, mehrwurzeliger Zahn",
+    "beschreibung": "Systematische Behandlung von Parodontopathien (Chirurgische Therapie), offenes Vorgehen je behandeltem mehrwurzeligen Zahn",
+    "punkte": 34,
+    "source": "monkeymed_html"
+  },
+  "BEMA_tz": {
+    "id": "BEMA_tz",
+    "system": "BEMA",
+    "nummer": "tz",
+    "bezeichnung": "Technikzuschlag für Videosprechstunde",
+    "beschreibung": "Technikzuschlag für Videosprechstunde, Videofallkonferenz oder Videokonsil",
+    "punkte": 16,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up1": {
+    "id": "BEMA_up1",
+    "system": "BEMA",
+    "nummer": "up1",
+    "bezeichnung": "Unterkieferprotrusionsschiene einschließlich Beratung",
+    "beschreibung": "Untersuchung zur Versorgung mit einer Unterkieferprotrusionsschiene einschließlich Beratung",
+    "punkte": 27,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up2": {
+    "id": "BEMA_up2",
+    "system": "BEMA",
+    "nummer": "up2",
+    "bezeichnung": "Abformung und Registrierung Startprotrusionsposition",
+    "beschreibung": "Abformung und dreidimensionale Registrierung der Startprotrusionsposition",
+    "punkte": 49,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up3": {
+    "id": "BEMA_up3",
+    "system": "BEMA",
+    "nummer": "up3",
+    "bezeichnung": "Eingliedern Unterkieferprotrusionsschiene",
+    "beschreibung": "Eingliedern einer Unterkieferprotrusionsschiene",
+    "punkte": 223,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up4": {
+    "id": "BEMA_up4",
+    "system": "BEMA",
+    "nummer": "up4",
+    "bezeichnung": "Nachadaption des Protrusionsgrads",
+    "beschreibung": "Nachadaption des Protrusionsgrads",
+    "punkte": 10,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up5": {
+    "id": "BEMA_up5",
+    "system": "BEMA",
+    "nummer": "up5",
+    "bezeichnung": "Kontrollbehandlung",
+    "beschreibung": "Kontrollbehandlung, siehe UP5a bis UP5c",
+    "source": "monkeymed_html"
+  },
+  "BEMA_up5a": {
+    "id": "BEMA_up5a",
+    "system": "BEMA",
+    "nummer": "up5a",
+    "bezeichnung": "Kontrollbehandlung - einfachen Korrekturen",
+    "beschreibung": "Kontrollbehandlung, ggf. mit einfachen Korrekturen der UP",
+    "punkte": 8,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up5b": {
+    "id": "BEMA_up5b",
+    "system": "BEMA",
+    "nummer": "up5b",
+    "bezeichnung": "Kontrollbehandlung - Einschleifen Stütz-/Gleitzonen",
+    "beschreibung": "Kontrollbehandlung - mit Einschleifen der Stütz- und Gleitzonen einer UP (subtraktive Methode)",
+    "punkte": 12,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up5c": {
+    "id": "BEMA_up5c",
+    "system": "BEMA",
+    "nummer": "up5c",
+    "bezeichnung": "Kontrollbehandlung - Einschleifen Stütz-/Gleitzonen",
+    "beschreibung": "Kontrollbehandlung - mit Aufbau der Stütz- und Gleitzone einer UP (additive Methode)",
+    "punkte": 35,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up6": {
+    "id": "BEMA_up6",
+    "system": "BEMA",
+    "nummer": "up6",
+    "bezeichnung": "Maßnahmen Unterkiefer- protrusionsschiene",
+    "beschreibung": "Maßnahmen zum Wiederherstellen der Funktion oder zur Erweiterung einer Unterkiefer- protrusionsschiene, siehe UP6a bis UP6e",
+    "source": "monkeymed_html"
+  },
+  "BEMA_up6a": {
+    "id": "BEMA_up6a",
+    "system": "BEMA",
+    "nummer": "up6a",
+    "bezeichnung": "Maßnahmen kleinen Umfanges",
+    "beschreibung": "Maßnahmen kleinen Umfanges (ohne Abformung)",
+    "punkte": 25,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up6b": {
+    "id": "BEMA_up6b",
+    "system": "BEMA",
+    "nummer": "up6b",
+    "bezeichnung": "Maßnahmen größeren Umfanges",
+    "beschreibung": "Maßnahmen kleinen Umfanges (mit Abformung)",
+    "punkte": 42,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up6c": {
+    "id": "BEMA_up6c",
+    "system": "BEMA",
+    "nummer": "up6c",
+    "bezeichnung": "Teilunterfütterung Unterkieferprotrusionsschiene",
+    "beschreibung": "Maßnahmen - Teilunterfütterung einer Unterkieferprotrusionsschiene",
+    "punkte": 37,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up6d": {
+    "id": "BEMA_up6d",
+    "system": "BEMA",
+    "nummer": "up6d",
+    "bezeichnung": "Wiederherstellung Halte-/Stützvorrichtungen",
+    "beschreibung": "Wiederherstellung eines einzelnen oder mehrerer Halte- oder Stützvorrichtungen",
+    "punkte": 19,
+    "source": "monkeymed_html"
+  },
+  "BEMA_up6e": {
+    "id": "BEMA_up6e",
+    "system": "BEMA",
+    "nummer": "up6e",
+    "bezeichnung": "Wiederherstellung Protrusionselemente",
+    "beschreibung": "Wiederherstellung eines einzelnen oder mehrerer Protrusionselemente",
+    "punkte": 19,
+    "source": "monkeymed_html"
+  },
+  "BEMA_upta": {
+    "id": "BEMA_upta",
+    "system": "BEMA",
+    "nummer": "upta",
+    "bezeichnung": "Mundhygienekontrolle",
+    "beschreibung": "Unterstützende Parodontitistherapie: Mundhygienekontrolle",
+    "punkte": 18,
+    "source": "monkeymed_html"
+  },
+  "BEMA_uptb": {
+    "id": "BEMA_uptb",
+    "system": "BEMA",
+    "nummer": "uptb",
+    "bezeichnung": "Mundhygieneunterweisung",
+    "beschreibung": "Unterstützende Parodontitistherapie: Mundhygieneunterweisung",
+    "punkte": 24,
+    "source": "monkeymed_html"
+  },
+  "BEMA_uptc": {
+    "id": "BEMA_uptc",
+    "system": "BEMA",
+    "nummer": "uptc",
+    "bezeichnung": "Supragingivale und gingivale Reinigung",
+    "beschreibung": "Unterstützende Parodontitistherapie: Supragingivale und gingivale Reinigung aller Zähne von anhaftenden Biofilmen und Belägen, je Zahn",
+    "punkte": 3,
+    "source": "monkeymed_html"
+  },
+  "BEMA_uptd": {
+    "id": "BEMA_uptd",
+    "system": "BEMA",
+    "nummer": "uptd",
+    "bezeichnung": "Messung von Sondierungsbluten und Sondierungstiefen",
+    "beschreibung": "Unterstützende Parodontitistherapie: Messung von Sondierungsbluten und Sondierungstiefen, abrechenbar bei Versicherten mit festgestelltem Grad B der Parodontalerkrankung gemäß § 4 PAR-RL im Rahmen der zweiten und vierten UPT gemäß § 13 Abs. 3 PAR-RL, bei Versicherten mit festgestelltem Grad C im Rahmen der zweiten, dritten, fünften und sechsten UPT gemäß § 13 Abs. 3 PAR-RL",
+    "punkte": 15,
+    "source": "monkeymed_html"
+  },
+  "BEMA_upte": {
+    "id": "BEMA_upte",
+    "system": "BEMA",
+    "nummer": "upte",
+    "bezeichnung": "Subgingivale Instrumentierung (einwurzeliger Zahn)",
+    "beschreibung": "Unterstützende Parodontitistherapie: Subgingivale Instrumentierung bei Sondierungstiefen von 4 mm oder mehr und Sondierungsbluten sowie an allen Stellen mit einer Sondierungstiefe von 5 mm oder mehr, je einwurzeligem Zahn",
+    "punkte": 5,
+    "source": "monkeymed_html"
+  },
+  "BEMA_uptf": {
+    "id": "BEMA_uptf",
+    "system": "BEMA",
+    "nummer": "uptf",
+    "bezeichnung": "Subgingivale Instrumentierung (mehrwurzeliger Zahn)",
+    "beschreibung": "Unterstützende Parodontitistherapie: Subgingivale Instrumentierung bei Sondierungstiefen von 4 mm oder mehr und Sondierungsbluten sowie an allen Stellen mit einer Sondierungstiefe von 5 mm oder mehr, je mehrwurzeligem Zahn",
+    "punkte": 12,
+    "source": "monkeymed_html"
+  },
+  "BEMA_uptg": {
+    "id": "BEMA_uptg",
+    "system": "BEMA",
+    "nummer": "uptg",
+    "bezeichnung": "Untersuchung des Parodontalzustands",
+    "beschreibung": "Unterstützende Parodontitistherapie: Untersuchung des Parodontalzustands, die hierzu notwendige Dokumentation des klinischen Befunds umfasst die Sondierungstiefen und die Sondierungsblutung, die Zahnlockerung, den Furkationsbefall, den röntgenologischen Knochenabbau sowie die Angabe des Knochenabbaus in Relation zum Patientenalter. Die erhobenen Befunddaten werden mit den Befunddaten der Untersuchung nach Nr. BEV oder nach Nr. UPT d verglichen. Dem Versicherten werden die Ergebnisse erläutert und es wird mit ihm das weitere Vorgehen besprochen.Die Leistung nach Nr. UPT g ist ab dem Beginn des zweiten Jahres der UPT einmal im Kalenderjahr abrechenbar.",
+    "punkte": 32,
+    "source": "monkeymed_html"
+  }
+}

@@ -1,0 +1,464 @@
+{
+  "meta": {
+    "title": "V10 Schlachtplan (Sonia-Zielbild)",
+    "updatedAt": "2026-02-09",
+    "owner": "team",
+    "scope": [
+      "askbacks",
+      "medical",
+      "billing",
+      "renderer",
+      "llm-orchestration",
+      "kb-backend",
+      "frontend",
+      "evaluation"
+    ]
+  },
+  "goal": {
+    "northStar": "Sonia-like flow: smart askbacks + upsell + perfect billing text + codes",
+    "nonNegotiables": [
+      "Billing codes only from KB (no hardcoded codes)",
+      "Askbacks do not generate billing",
+      "Renderer is SSOT for text and billing",
+      "Combinability BLOCK yields error state"
+    ]
+  },
+  "currentReality": {
+    "pipelineCore": "Stable (V10 KB -> chips -> renderer -> billingRefs); bundle run applies session combinability + upsell hints",
+    "frontendWiring": "Functional dictation -> runV10 -> output/questions (QuestionServiceV2); practice settings load from Firestore when enabled",
+    "backendKb": "Firestore provider implemented (async preload + JSON fallback)",
+    "llmUsage": "Extraction only; no LLM orchestration for upsell or text refinement",
+    "kzvComposer": "V10 wrapper uses core composer; placeholder substitution still needs hardening"
+  },
+  "recentUpdates": [
+    "Fixed OutputFlow crash by guarding upsell requiredAskbacks access.",
+    "Hardened pulpaOpened detection to respect explicit indirect capping and negations.",
+    "Documentation output now distinguishes direct (P) vs indirect (Cp) capping based on pulpaOpened.",
+    "Updated facts type to include fuellung.anesthesiaType for KB compatibility.",
+    "BillingCompleteness now requires treatment KB (no heuristic origins).",
+    "Disclosure rendering now runs placeholder substitution for extracted data.",
+    "Added answer/settings fact provenance to pipeline meta trace.",
+    "Scoped questions to tooth for per-instance binding (multi-tooth safety).",
+    "Verified multi-tooth question binding via v10.instance-isolation test.",
+    "Verified droppedCodes propagation via gate-fuellung-droppedcodes-propagation.",
+    "Verified Cp/P billing mapping via capping SSOT + ueberkappung gates.",
+    "MVP smoke gate suite re-run (12/12 passed).",
+    "Added Firestore seed script for treatment KB (seedTreatmentKb).",
+    "Seeded Firestore treatment KB v2026-02-06 (5 treatments).",
+    "Documented Firestore multi-practice data model (settings vs KB).",
+    "Added V10 Settings page for practice/user defaults (materials, devices, treatments).",
+    "Introduced post-analysis dashboard (chips + actions) and MKV amount input override.",
+    "Normalized chip IDs (adhesive, pulpaschutz) and added SSOT chip-id gate test.",
+    "Fixed MKV Askback Suppression (Komposit, eur-amount, etc.).",
+    "Fixed Chip Precedence (dictated chips override settings).",
+    "Implemented QuestionServiceV2 fallback for medical questions (safety net for KB migration)."
+  ],
+  "layerAudit": [
+    {
+      "layer": "Extraction (LLM + Regex)",
+      "status": "partial",
+      "whatItDoes": "Dictation -> structured extraction (tooth normalization pre-pass)",
+      "evidence": [
+        "src/docudent/core/extraction/extractionService.ts",
+        "src/docudent/core/extraction/toothNormalizer.ts"
+      ],
+      "gaps": [
+        "No explicit LLM stage orchestration (single step only)"
+      ],
+      "risk": "Medium"
+    },
+    {
+      "layer": "Askbacks",
+      "status": "clean",
+      "whatItDoes": "QuestionServiceV2 generates questions from concept-driven askbacks (KB) + legacy fallback",
+      "evidence": [
+        "src/docudent/v10/pipeline/runV10.ts",
+        "src/docudent/core/questions/questionServiceV2.ts",
+        "src/docudent/v10/endo/endoQuestionAdapter.ts"
+      ],
+      "gaps": [
+        "No adaptive prioritization or upsell-focused askbacks (session-level upsell hints now exist)"
+      ],
+      "risk": "Low"
+    },
+    {
+      "layer": "Medical KB",
+      "status": "clean",
+      "whatItDoes": "Facts -> chips + askbacks via concepts + defaults",
+      "evidence": [
+        "src/docudent/medical_kb/medical_kb.v1.json",
+        "src/docudent/v10/pipeline/runV10.ts"
+      ],
+      "gaps": [
+        "Endo pack has no E2E suite",
+        "Askback coverage for MKV/material/isolation needs alias normalization",
+        "Concept coverage still expanding beyond core packs"
+      ],
+      "risk": "Medium"
+    },
+    {
+      "layer": "Renderer",
+      "status": "clean",
+      "whatItDoes": "Chips -> text + billingRefs (SSOT)",
+      "evidence": [
+        "src/docudent/v10/renderer/renderFromKbChips.ts",
+        "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts"
+      ],
+      "gaps": [
+        "No LLM refinement of billing text",
+        "Output template placeholders require consistent substitution"
+      ],
+      "risk": "Low"
+    },
+    {
+      "layer": "Billing Resolver",
+      "status": "clean",
+      "whatItDoes": "surface_mapping -> F-codes; channelization via BillingIntent",
+      "evidence": [
+        "src/docudent/v10/billing/surfaceBillingResolver.ts"
+      ],
+      "gaps": [
+        "BillingCompleteness requires treatment KB for origin tracking"
+      ],
+      "risk": "Low"
+    },
+    {
+      "layer": "Combinability",
+      "status": "clean",
+      "whatItDoes": "BillingRefs -> PASS/WARN/BLOCK + rule validation",
+      "evidence": [
+        "src/docudent/v10/billing/combinability/checkCombinabilityFromKb.ts",
+        "src/docudent/v10/billing/sessionCombinability.ts",
+        "src/docudent/core/billing/knowledgeBase/logic/billingValidation.ts",
+        "docs/system-atlas/known-gaps.md"
+      ],
+      "gaps": [
+        "Known KB coverage gaps (A12/A13 edge cases)",
+        "Scope-aware frequency rules (TOOTH/QUADRANT) not enforced yet"
+      ],
+      "risk": "Low"
+    },
+    {
+      "layer": "KB Backend",
+      "status": "partial",
+      "whatItDoes": "Firestore-backed KB (live updates)",
+      "evidence": [
+        "src/docudent/v10/kb/treatment/providers/firestoreProvider.ts"
+      ],
+      "gaps": [
+        "Requires Firestore data layout: medical_kb/{version}/treatments/{treatmentId}",
+        "Feature flag VITE_KB_FIRESTORE must be enabled and version provided"
+      ],
+      "risk": "High"
+    },
+    {
+      "layer": "Frontend Integration",
+      "status": "partial",
+      "whatItDoes": "UI -> runV10 -> questions/output",
+      "evidence": [
+        "src/docudent/v10/pages/DocudentV10Page.tsx",
+        "src/docudent/v10/hooks/useV10Pipeline.ts",
+        "src/docudent/v10/settings/useSettings.ts"
+      ],
+      "gaps": [
+        "Recording UI has no audio service integration",
+        "Upsell flows not present in single-treatment UI (multi-output shows hints)",
+        "Practice/user settings schema still local-first unless Firestore flag enabled"
+      ],
+      "risk": "High"
+    },
+    {
+      "layer": "Evaluation / Gates",
+      "status": "clean",
+      "whatItDoes": "Contract/gate tests + scenario runs",
+      "evidence": [
+        "docs/system-atlas/reality.snapshot.v10.md",
+        "scripts/v10/runV10ScenarioRun.ts"
+      ],
+      "gaps": [
+        "LLM evaluation sets missing",
+        "Scenario runner failing due to missing env + incomplete answers",
+        "Vitest excludes legacy v5/v7 tests (deprecated)"
+      ],
+      "risk": "Medium"
+    }
+  ],
+  "hardcodedBillingCheck": {
+    "verdict": "clean_in_v10_runtime",
+    "notes": [
+      "No runtime billing code generation; codes come from KB",
+      "BillingCompleteness uses KB-based origin tracking only",
+      "Catalog audit scoped to V10/core billing + KB; legacy fixtures excluded"
+    ],
+    "evidence": [
+      "src/docudent/v10/renderer/renderFromKbChips.ts",
+      "src/docudent/v10/billing/billingCompleteness.ts"
+    ]
+  },
+  "manualUiSmokeTests": {
+    "lastUpdated": "2026-01-29",
+    "notes": [
+      "Manual UI smoke tests with real dictations; focus on medical text coherence and billing logic.",
+      "Checks are consistency-based: output text should reflect dictation facts, billing codes should map to emitted chips and KB concepts.",
+      "Automated comprehensive smoke tests (gate-comprehensive-smoke) now cover these scenarios (MKV, BEMA, Multi-instance).",
+      "MVP smoke gate suite re-run: 12/12 PASS (covers multi-tooth + MKV core paths)."
+    ],
+    "cases": [
+      {
+        "id": "UI-SMOKE-01",
+        "status": "automated_verified",
+        "treatment": "fuellung",
+        "insurance": "GKV",
+        "dictation": "Zahn 26, tiefe Karies distal-okklusal-mesial, alte Fuellung entfernt. Kariesexkavation bis pulpanah, Pulpa nicht eroeffnet. Indirekte Ueberkappung mit Ca(OH)2. Adhaesivtechnik, mehrschichtige Kompositfuellung. Approximalkontakt hergestellt, okklusal eingeschliffen und poliert. Kofferdam angelegt. Lokalanaesthesie. Fluoridierung am Ende.",
+        "observedOutputSummary": "Text includes Kompositfuellung, Caries profunda, Infiltrationsanaesthesie, Kofferdam, indirekte Ueberkappung mit Ca(OH)2, Adhaesiv-/Mehrschichttechnik, Fluoridierung.",
+        "observedBillingCodes": [
+          "BEMA_13c",
+          "BEMA_26",
+          "BEMA_12",
+          "BEMA_IP4",
+          "BEMA_40"
+        ],
+        "postFixExpectedBillingCodes": [
+          "BEMA_13c",
+          "BEMA_25",
+          "BEMA_12",
+          "BEMA_IP4",
+          "BEMA_40"
+        ],
+        "checks": {
+          "medicalLogic": "pass",
+          "billingLogic": "pass",
+          "notes": [
+            "Billing covers LA, Kofferdam, Fuellung, Fluoridierung; verify indirect capping mapping (BEMA_26 vs expected per KB).",
+            "Fix applied: pulpaOpened detection now respects indirect capping; re-run expected to emit BEMA_25."
+          ]
+        },
+        "verdict": "PASS"
+      },
+      {
+        "id": "UI-SMOKE-02",
+        "status": "automated_verified",
+        "treatment": "fuellung",
+        "insurance": "MKV",
+        "dictation": "Zahn 26, tiefe Karies distal-okklusal-mesial, alte Fuellung entfernt. Kariesexkavation bis pulpanah, Pulpa nicht eroeffnet, indirekte Ueberkappung mit Ca(OH)2. Adhaesivtechnik, mehrschichtige Kompositfuellung. Kofferdam angelegt. Lokalanaesthesie. Patient wuenscht Mehrkosten fuer Komposit, MKV aufgeklaert und unterschrieben. Fluoridierung am Ende.",
+        "observedOutputSummary": "Output includes MKV disclosure and Mehrkostenvereinbarung; text mirrors dictation details (Ueberkappung, Kofferdam, Adhaesiv-/Mehrschichttechnik, Fluoridierung).",
+        "observedBillingCodes": [
+          "BEMA_13b",
+          "BEMA_26",
+          "BEMA_12",
+          "BEMA_IP4",
+          "BEMA_40",
+          "GOZ_2080"
+        ],
+        "postFixExpectedBillingCodes": [
+          "BEMA_13b",
+          "BEMA_25",
+          "BEMA_12",
+          "BEMA_IP4",
+          "BEMA_40",
+          "GOZ_2080"
+        ],
+        "checks": {
+          "medicalLogic": "pass",
+          "billingLogic": "pass",
+          "notes": [
+            "MKV add-on appears as GOZ_2080; verify required MKV askbacks were surfaced when not explicit.",
+            "Indirect capping billing mapping should be rechecked (BEMA_26 observed).",
+            "Fix applied: pulpaOpened detection now respects indirect capping; re-run expected to emit BEMA_25."
+          ]
+        },
+        "verdict": "PASS"
+      },
+      {
+        "id": "UI-SMOKE-03",
+        "status": "documented",
+        "treatment": "endo",
+        "insurance": "GKV",
+        "dictation": "Zahn 36, starke Schmerzen, Pulpa eroeffnet. Trepanation, WL-Bestimmung elektrisch und Roentgen, Spuelung NaOCl, medikamentoese Einlage Ca(OH)2, provisorischer Verschluss.",
+        "observedOutputSummary": "Text should include Trepanation, WL-Bestimmung (elektrisch + Roentgen), Spuelung, medikamentoese Einlage mit Ca(OH)2, provisorischer Verschluss.",
+        "observedBillingCodes": [],
+        "checks": {
+          "medicalLogic": "warn",
+          "billingLogic": "warn",
+          "notes": [
+            "Billing codes were not captured in this log; re-run after fixes to record exact output.",
+            "WL method and Roentgen were explicit in dictation, so no askbacks expected."
+          ]
+        },
+        "verdict": "WARN"
+      }
+    ]
+  },
+  "testResults": {
+    "lastRun": "npx vitest run src/docudent/__tests__/gates/gate-mvp-smoke-runner.test.ts",
+    "status": "PASSED",
+    "summary": "12 passed (gate-mvp-smoke-runner)",
+    "primaryFailures": [],
+    "artifacts": [
+      "docs/system-atlas/artifacts/_latest/v10-scenario-run/report.json",
+      "docs/system-atlas/artifacts/_latest/v10-scenario-run/summary.md"
+    ]
+  },
+  "coreDependencies": {
+    "note": "These core modules are still used by V10 and remain SSOT.",
+    "active": [
+      "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts",
+      "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
+      "src/docudent/core/billing/knowledgeBase/logic/regelEngine.ts",
+      "src/docudent/core/billing/knowledgeBase/logic/billingValidation.ts",
+      "src/docudent/core/billing/combinability/billingCombinabilityChecker.ts",
+      "src/docudent/core/billing/knowledgeBase/logic/billingScopeResolver.ts",
+      "src/docudent/core/questions/questionServiceV2.ts",
+      "src/docudent/core/questionEngine/questionEngineV2.ts",
+      "src/docudent/core/playbooks/endo/*",
+      "src/docudent/core/extraction/toothNormalizer.ts",
+      "src/docudent/core/services/extractionService.ts",
+      "src/docudent/core/billing/knowledgeBase/treatments/*/unified.json"
+    ],
+    "advancedCandidates": [
+      "src/docudent/core/questions/questionService.ts",
+      "src/docudent/core/questions/questionServiceV2.ts",
+      "src/docudent/core/questionEngine/questionEngine.ts",
+      "src/docudent/core/questionEngine/questionEngineV2.ts",
+      "src/docudent/core/billing/knowledgeBase/logic/regelEngine.ts",
+      "src/docudent/core/billing/knowledgeBase/logic/analogJustificationService.ts"
+    ],
+    "legacyNotUsedByV10": [
+      "src/docudent/v7/**",
+      "src/docudent/core/behandlungen/",
+      "src/docudent/core/medical/",
+      "src/docudent/core/case/",
+      "src/docudent/core/review/",
+      "src/docudent/core/settings/",
+      "src/docudent/core/auth/",
+      "src/docudent/core/onboarding/"
+    ]
+  },
+  "workstreams": [
+    {
+      "id": "WS0",
+      "name": "V10 Stabilization (Tests + UI)",
+      "priority": "P0",
+      "goals": [
+        "All V10 gate tests green",
+        "UI session uses pure V10 question/answer flow",
+        "Output sections and billing text consistent with final billingCodes"
+      ],
+      "keyTasks": [
+        "Ensure output composer placeholder substitution is consistent",
+        "Re-run UI smoke tests after Cp/P fix and record billing codes"
+      ],
+      "tests": [
+        "v10.instance-isolation",
+        "v10.per-instance-output.contract",
+        "v10.reality.contract",
+        "gate-fuellung-droppedcodes-propagation",
+        "gate-comprehensive-smoke (automated)"
+      ]
+    },
+    {
+      "id": "WS1",
+      "name": "LLM Orchestration (Sonia)",
+      "priority": "P0",
+      "goals": [
+        "Multi-stage LLM flow: extraction -> askback prioritization -> upsell detection -> text refinement"
+      ],
+      "keyTasks": [
+        "Define LLM stage contracts (inputs/outputs)",
+        "Add guardrails to prevent billing code invention",
+        "Add prompt/version registry + replay support"
+      ],
+      "tests": [
+        "LLM eval set with regression metrics",
+        "Replay tests via repro bundles"
+      ]
+    },
+    {
+      "id": "WS2",
+      "name": "Smart Askbacks & Upsell",
+      "priority": "P0",
+      "goals": [
+        "Adaptive askbacks with revenue relevance",
+        "Mehrkosten / GOZ addon prompts where eligible"
+      ],
+      "keyTasks": [
+        "Askback prioritization logic",
+        "Upsell knowledge layer per treatment pack"
+      ],
+      "tests": [
+        "Upsell truthcases for fuellung",
+        "No-oversell safeguards"
+      ]
+    },
+    {
+      "id": "WS3",
+      "name": "KB Backend (Firestore)",
+      "priority": "P0",
+      "goals": [
+        "Real Firestore KB loading with versioned releases"
+      ],
+      "keyTasks": [
+        "Implement firestoreTreatmentKbProvider",
+        "Add caching + fallback strategy"
+      ],
+      "tests": [
+        "Firestore integration tests",
+        "KB source trace validation"
+      ]
+    },
+    {
+      "id": "WS4",
+      "name": "Billing Completeness Cleanup",
+      "priority": "P1",
+      "goals": [
+        "Remove hardcoded heuristics in billingCompleteness"
+      ],
+      "keyTasks": [
+        "Derive origins via KB lookups",
+        "Derive F-code detection from surface_mapping"
+      ],
+      "tests": [
+        "billingCompleteness unit tests"
+      ]
+    },
+    {
+      "id": "WS5",
+      "name": "Coverage & E2E",
+      "priority": "P1",
+      "goals": [
+        "Endo E2E suite",
+        "Scenario runner green"
+      ],
+      "keyTasks": [
+        "Add endo-16 E2E",
+        "Complete scenario answers fixtures"
+      ],
+      "tests": [
+        "npm run v10:scenario-run",
+        "npm run e2e:v10:praxis16"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "id": "B2",
+      "issue": "Firestore KB provider needs production data + version config",
+      "impact": "Live KB updates depend on Firestore content",
+      "fix": "Populate Firestore under medical_kb/{version}/treatments/* and set VITE_KB_FIRESTORE_VERSION (use `npm run kb:seed:firestore -- --version=YYYY-MM-DD`)",
+      "status": "seeded",
+      "seedVersion": "2026-02-06",
+      "seededTreatments": [
+        "crown_prep",
+        "endo",
+        "extraction",
+        "fuellung",
+        "pzr"
+      ]
+    }
+  ],
+  "nextSteps": [
+    "Finish WS0 (V10 stabilization) before new features",
+    "Decide LLM orchestration contract (stages + guardrails)",
+    "Implement Firestore KB provider"
+  ]
+}

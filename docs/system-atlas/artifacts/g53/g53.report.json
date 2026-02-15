@@ -1,0 +1,25 @@
+{
+    "gigaprompt": "G53",
+    "milestone": "m53",
+    "generated_at": "2025-12-30T00:00:00Z",
+    "status": "NEEDS_AUDIT",
+    "summary": "Billing backbone needs closure audit to find missing refs",
+    "exit_criteria_status": {
+        "missing_billing_refs": "UNKNOWN (needs audit)",
+        "normalization_integrated": "NEEDS_VERIFICATION"
+    },
+    "plan": {
+        "step1": "Re-run billing closure gate to find missing refs",
+        "step2": "Normalize refs via mappings (BEL_II → BEL, etc.)",
+        "step3": "Add missing refs to catalogs or fix callers"
+    },
+    "known_normalization": {
+        "location": "src/docudent/core/billing/knowledgeBase/normalizers/",
+        "covers": "BEL code variants, GOZ padding, BEMA aliases"
+    },
+    "next_steps": [
+        "Run gate-m82-billingref-closure",
+        "Collect missing refs list",
+        "Fix each ref (ADD/ALIAS/REMOVE)"
+    ]
+}

@@ -1,0 +1,246 @@
+{
+    "_meta": {
+        "treatmentId": "endo",
+        "version": "2.0.0",
+        "description": "Question Bank for Endo (Wurzelbehandlung) - Canonical IDs + when-clauses"
+    },
+    "questions": [
+        {
+            "key": "endo_step",
+            "canonicalId": "forensic_endo_step",
+            "category": "forensic",
+            "prompt": "🦷 Was war heute der Endo-Schritt?",
+            "type": "single",
+            "dataField": "mentioned.endo_step",
+            "when": {
+                "noneKeywords": [
+                    "trepanation",
+                    "zwischensitzung",
+                    "einlage",
+                    "wurzelfüll",
+                    "wf ",
+                    "wurzelfüllung",
+                    "obturation",
+                    "guttapercha"
+                ]
+            },
+            "options": [
+                {
+                    "id": "endo_start",
+                    "label": "Trepanation/Einlage",
+                    "dataValue": "start"
+                },
+                {
+                    "id": "endo_interim",
+                    "label": "Zwischensitzung",
+                    "dataValue": "interim"
+                },
+                {
+                    "id": "endo_complete",
+                    "label": "Wurzelfüllung",
+                    "dataValue": "complete"
+                }
+            ]
+        },
+        {
+            "key": "vitality",
+            "canonicalId": "forensic_vitality",
+            "category": "forensic",
+            "prompt": "🔍 Sensibilitätsprobe?",
+            "type": "single",
+            "dataField": "mentioned.vitality",
+            "options": [
+                {
+                    "id": "positive",
+                    "label": "ViPr +",
+                    "dataValue": "positive"
+                },
+                {
+                    "id": "negative",
+                    "label": "ViPr −",
+                    "dataValue": "negative"
+                }
+            ]
+        },
+        {
+            "key": "percussion",
+            "canonicalId": "forensic_percussion",
+            "category": "forensic",
+            "prompt": "🔍 Perkussionsprobe?",
+            "type": "single",
+            "dataField": "mentioned.percussion",
+            "options": [
+                {
+                    "id": "negative",
+                    "label": "Perk −",
+                    "dataValue": "negative"
+                },
+                {
+                    "id": "positive",
+                    "label": "Perk +",
+                    "dataValue": "positive"
+                }
+            ]
+        },
+        {
+            "key": "kanalzahl",
+            "canonicalId": "forensic_endo_canal_count",
+            "category": "forensic",
+            "prompt": "🦷 Anzahl der Wurzelkanäle?",
+            "type": "single",
+            "dataField": "mentioned.kanalzahl",
+            "options": [
+                {
+                    "id": "canal_1",
+                    "label": "1 Kanal",
+                    "dataValue": 1
+                },
+                {
+                    "id": "canal_2",
+                    "label": "2 Kanäle",
+                    "dataValue": 2
+                },
+                {
+                    "id": "canal_3",
+                    "label": "3 Kanäle",
+                    "dataValue": 3
+                },
+                {
+                    "id": "canal_4",
+                    "label": "4 Kanäle",
+                    "dataValue": 4
+                }
+            ]
+        },
+        {
+            "key": "spuelprotokoll",
+            "canonicalId": "forensic_endo_irrigation_protocol",
+            "category": "forensic",
+            "prompt": "💧 Spülprotokoll?",
+            "type": "single",
+            "dataField": "mentioned.spuelung",
+            "settingsSkip": {
+                "settingsPath": "endo.defaults.spuelprotokoll",
+                "skipIfNot": "fragen"
+            },
+            "options": [
+                {
+                    "id": "irrigation_naocl_edta",
+                    "label": "NaOCl + EDTA",
+                    "dataValue": "naocl_edta"
+                },
+                {
+                    "id": "irrigation_naocl",
+                    "label": "NaOCl 3%",
+                    "dataValue": "naocl"
+                }
+            ]
+        },
+        {
+            "key": "medikament",
+            "canonicalId": "forensic_endo_medication",
+            "category": "forensic",
+            "prompt": "💊 Medikamentöse Einlage?",
+            "type": "single",
+            "dataField": "mentioned.medikament",
+            "when": {
+                "anyOf": [
+                    {
+                        "requiresAnswers": {
+                            "endo_step": "endo_start"
+                        }
+                    },
+                    {
+                        "requiresAnswers": {
+                            "endo_step": "endo_interim"
+                        }
+                    },
+                    {
+                        "anyKeywords": [
+                            "einlage",
+                            "caoh",
+                            "calciumhydroxid",
+                            "wechsel",
+                            "medikament"
+                        ]
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": "medication_caoh2",
+                    "label": "Ca(OH)₂",
+                    "dataValue": "caoh2"
+                },
+                {
+                    "id": "medication_none",
+                    "label": "Keine Einlage",
+                    "dataValue": "none"
+                }
+            ]
+        },
+        {
+            "key": "obturation",
+            "canonicalId": "endo_obturation",
+            "category": "forensic",
+            "prompt": "🦷 Obturationstechnik?",
+            "type": "single",
+            "dataField": "mentioned.obturation",
+            "settingsSkip": {
+                "settingsPath": "endo.defaults.obturation",
+                "skipIfNot": "fragen"
+            },
+            "when": {
+                "anyOf": [
+                    {
+                        "requiresAnswers": {
+                            "endo_step": "endo_complete"
+                        }
+                    },
+                    {
+                        "anyKeywords": [
+                            "wurzelfüll",
+                            "wf",
+                            "obturation",
+                            "thermoplastisch",
+                            "lateral",
+                            "guttapercha"
+                        ]
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": "obturation_thermoplastic",
+                    "label": "Thermoplastisch",
+                    "dataValue": "thermoplastisch"
+                },
+                {
+                    "id": "obturation_lateral",
+                    "label": "Laterale Kondensation",
+                    "dataValue": "lateral"
+                }
+            ]
+        },
+        {
+            "key": "isolation",
+            "canonicalId": "forensic_endo_isolation",
+            "category": "forensic",
+            "prompt": "💧 Trockenlegung bei Endo?",
+            "type": "single",
+            "dataField": "mentioned.kofferdam",
+            "options": [
+                {
+                    "id": "kofferdam",
+                    "label": "Kofferdam",
+                    "dataValue": true
+                },
+                {
+                    "id": "relativ",
+                    "label": "Relative Trockenlegung",
+                    "dataValue": false
+                }
+            ]
+        }
+    ]
+}

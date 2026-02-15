@@ -1,0 +1,32 @@
+{
+    "id": "endo_02_missing_iso_sizes",
+    "description": "Endo WL vorhanden aber ISO-Größen fehlen — muss ISO fragen",
+    "input": {
+        "treatmentId": "endo",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Wurzelkanalbehandlung Zahn 36 Aufbereitung elektrometrisch WL bestimmt 3 Kanäle aufbereitet",
+        "answers": {
+            "endo_step": "t2_aufbereitung"
+        }
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=endo",
+            "questions:engine=endo"
+        ],
+        "traceExcludes": [
+            "questions:engine=fuellung"
+        ],
+        "noQuestionIdRegex": "(fuellung|aesthetik|mehrschicht)",
+        "outputMustContain": [
+            "36"
+        ],
+        "billingMustNotContain": [
+            "BEMA_13a"
+        ]
+    },
+    "minimalAnswers": {
+        "endo_step": "t2_aufbereitung"
+    }
+}

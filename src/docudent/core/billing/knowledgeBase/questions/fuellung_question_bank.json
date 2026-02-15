@@ -1,0 +1,202 @@
+{
+    "_meta": {
+        "treatmentId": "fuellung",
+        "version": "1.0.0",
+        "description": "Question Bank for Füllung treatment - UI semantics only, no fachliche Logik"
+    },
+    "questions": [
+        {
+            "key": "vitality",
+            "category": "forensic",
+            "prompt": "🔍 Sensibilitätsprobe?",
+            "type": "single",
+            "dataField": "mentioned.vitality",
+            "options": [
+                {
+                    "id": "pos",
+                    "label": "ViPr +",
+                    "dataValue": "+"
+                },
+                {
+                    "id": "neg",
+                    "label": "ViPr −",
+                    "dataValue": "-"
+                }
+            ]
+        },
+        {
+            "key": "percussion",
+            "category": "forensic",
+            "prompt": "🔍 Perkussionsprobe?",
+            "type": "single",
+            "dataField": "mentioned.percussion",
+            "options": [
+                {
+                    "id": "neg",
+                    "label": "Perk −",
+                    "dataValue": "-"
+                },
+                {
+                    "id": "pos",
+                    "label": "Perk +",
+                    "dataValue": "+"
+                }
+            ]
+        },
+        {
+            "key": "tiefe",
+            "category": "forensic",
+            "prompt": "📏 Kavitätentiefe?",
+            "type": "single",
+            "dataField": "mentioned.tiefe",
+            "options": [
+                {
+                    "id": "normal",
+                    "label": "Normale Tiefe",
+                    "dataValue": "normal"
+                },
+                {
+                    "id": "tief",
+                    "label": "Pulpanah (tief)",
+                    "dataValue": "tief"
+                }
+            ]
+        },
+        {
+            "key": "isolation",
+            "category": "forensic",
+            "prompt": "💧 Trockenlegung?",
+            "type": "single",
+            "dataField": "mentioned.kofferdam",
+            "options": [
+                {
+                    "id": "kofferdam",
+                    "label": "Kofferdam",
+                    "dataValue": true
+                },
+                {
+                    "id": "relativ",
+                    "label": "Relative Trockenlegung",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "material",
+            "category": "forensic",
+            "prompt": "💊 Überkappungsmaterial?",
+            "type": "single",
+            "dataField": "mentioned.material",
+            "options": [
+                {
+                    "id": "caoh",
+                    "label": "Ca(OH)₂",
+                    "dataValue": "Ca(OH)₂"
+                },
+                {
+                    "id": "mta",
+                    "label": "MTA",
+                    "dataValue": "MTA"
+                },
+                {
+                    "id": "biodentine",
+                    "label": "Biodentine",
+                    "dataValue": "Biodentine"
+                }
+            ]
+        },
+        {
+            "key": "mkv_vereinbarung",
+            "category": "mkv",
+            "prompt": "Mehrkostenvereinbarung vorhanden?",
+            "type": "single",
+            "dataField": "mkvVereinbarung",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja, schriftlich",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "mkv_betrag",
+            "category": "mkv",
+            "prompt": "Zuzahlungsbetrag (Privatrechnung)?",
+            "type": "number",
+            "dataField": "costs",
+            "min": 0,
+            "step": 10,
+            "unit": "€",
+            "presets": [
+                50,
+                80,
+                100,
+                120,
+                150
+            ]
+        },
+        {
+            "key": "mehrschicht",
+            "category": "upsell",
+            "prompt": "Mehrschichttechnik gewünscht?",
+            "type": "single",
+            "dataField": "upsell.mehrschicht",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja (+ Mehrkosten)",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "adhasiv",
+            "category": "upsell",
+            "prompt": "Adhäsive Befestigung?",
+            "type": "single",
+            "dataField": "upsell.adhasiv",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Adhäsiv befestigen",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Standard",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "optisch_elektronisch",
+            "category": "upsell",
+            "prompt": "Optisch-elektronischer Abdruck?",
+            "type": "single",
+            "dataField": "upsell.scan",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja (Scan)",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Konventionell",
+                    "dataValue": false
+                }
+            ]
+        }
+    ]
+}

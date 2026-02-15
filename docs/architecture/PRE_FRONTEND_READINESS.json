@@ -1,0 +1,197 @@
+{
+    "verdict": "READY",
+    "generated_at": "2025-12-16T09:59:00+01:00",
+    "checks": [
+        {
+            "id": "ROUTING_WIRING",
+            "status": "pass",
+            "evidence": [
+                {
+                    "file": "src/App.jsx",
+                    "lines": "17,140",
+                    "note": "Route path=\"/docudent/v7\" element={<DocudentV7 />} with lazy import from DocudentV7Page.tsx"
+                }
+            ],
+            "action_if_fail": null
+        },
+        {
+            "id": "PIPELINE_CALL_CHAIN",
+            "status": "pass",
+            "evidence": [
+                {
+                    "file": "src/docudent/v7/pipeline/index.ts",
+                    "lines": "20-22",
+                    "note": "Imports extractFromDictation, generateQuestions, generateFinalOutput from V6 services"
+                }
+            ],
+            "action_if_fail": null
+        },
+        {
+            "id": "TREATMENT_REGISTRY_ENFORCED",
+            "status": "pass",
+            "evidence": [
+                {
+                    "file": "src/docudent/core/billing/knowledgeBase/registry/treatmentRegistry.ts",
+                    "lines": "16",
+                    "note": "KNOWN_TREATMENTS = ['fuellung', 'endo', 'extraction', 'pzr', 'crown_prep']"
+                },
+                {
+                    "file": "src/docudent/core/billing/knowledgeBase/registry/treatmentRegistry.ts",
+                    "lines": "36-42",
+                    "note": "assertKnownTreatment throws Error with 'Unknown treatment'"
+                }
+            ],
+            "action_if_fail": null
+        },
+        {
+            "id": "MVP_GOLDEN_GATE_FAST_OFFLINE",
+            "status": "pass",
+            "evidence": [
+                {
+                    "file": "src/docudent/__tests__/gates/gate-mvp-v7-golden-dictations.test.ts",
+                    "lines": "25",
+                    "note": "process.env.DOCUDENT_TEST_MODE = 'stub_extraction'"
+                },
+                {
+                    "file": "src/docudent/__tests__/gates/gate-mvp-v7-golden-dictations.test.ts",
+                    "lines": "215-216",
+                    "note": "Asserts runtime < 5000ms"
+                },
+                {
+                    "file": "src/docudent/__tests__/gates/gate-mvp-v7-golden-dictations.test.ts",
+                    "lines": "223-238",
+                    "note": "Asserts stubExtractor NOT statically imported in production V7 files"
+                }
+            ],
+            "action_if_fail": null
+        },
+        {
+            "id": "REAL_EXTRACTOR_SMOKE",
+            "status": "warn",
+            "evidence": [
+                {
+                    "file": "src/docudent/v7/pipeline/index.ts",
+                    "lines": "89-95",
+                    "note": "Conditional: uses stubExtractor if DOCUDENT_TEST_MODE=stub_extraction, else real extractFromDictation"
+                },
+                {
+                    "file": null,
+                    "lines": null,
+                    "note": "Real extractor uses LLM. To run: unset DOCUDENT_TEST_MODE && OPENAI_API_KEY=xxx npm test -- gate-mvp"
+                }
+            ],
+            "action_if_fail": "Set OPENAI_API_KEY in CI secrets for full integration smoke"
+        },
+        {
+            "id": "ASKBACK_BEHAVIOR",
+            "status": "pass",
+            "evidence": [
+                {
+                    "file": "src/docudent/__tests__/gates/gate-mvp-v7-golden-dictations.test.ts",
+                    "lines": "89-91",
+                    "note": "Test 'B: Missing tooth → asks question' verifies state='questions'"
+                },
+                {
+                    "file": "src/docudent/__tests__/gates/gate-mvp-v7-golden-dictations.test.ts",
+                    "lines": "117-119",
+                    "note": "Test 'B: WKB only → askback endo_step' verifies endo_step question present"
+                }
+            ],
+            "action_if_fail": null
+        },
+        {
+            "id": "OUTPUT_RENDER_CONTRACT",
+            "status": "pass",
+            "evidence": [
+                {
+                    "file": "src/docudent/v7/components/OutputRenderer.tsx",
+                    "lines": "186",
+                    "note": "const text = output.sections.map(s => ...).join() — uses sections, not fullText"
+                },
+                {
+                    "file": "src/docudent/__tests__/gates/gate-mvp-v7-golden-dictations.test.ts",
+                    "lines": "113-114",
+                    "note": "Asserts endo_schritt section exists in output.sections"
+                }
+            ],
+            "action_if_fail": null
+        },
+        {
+            "id": "FORBIDDEN_IMPORT_GATES",
+            "status": "pass",
+            "evidence": [
+                {
+                    "file": "src/docudent/__tests__/gates/gate-no-comment-index-in-ui.test.ts",
+                    "lines": "88-97",
+                    "note": "Gate: 'no UI files import commentIndex_*.json'"
+                },
+                {
+                    "file": "src/docudent/__tests__/gates/gate-build-smoke.test.ts",
+                    "lines": "170-194",
+                    "note": "Gate: 'No large commentIndex imports in UI code'"
+                }
+            ],
+            "action_if_fail": null
+        },
+        {
+            "id": "DOCS_FRESHNESS_GATE",
+            "status": "warn",
+            "evidence": [
+                {
+                    "file": "src/docudent/__tests__/gates/gate-architecture-docs-freshness.test.ts",
+                    "lines": "65-87",
+                    "note": "Section C) Mehrkosten Feature Documented — tests renderAbrechnung, Mehrkostenvereinbarung"
+                },
+                {
+                    "file": "src/docudent/__tests__/gates/gate-architecture-docs-freshness.test.ts",
+                    "lines": "93-115",
+                    "note": "Section D) BEL2 Feature Documented — tests resolveBel2CodeFromRaw, gate-bel2-placeholder-inventory"
+                },
+                {
+                    "file": null,
+                    "lines": null,
+                    "note": "MISSING: No test for Endo Step Detection (detectEndoStep, endo_schritt section) in architecture gate"
+                }
+            ],
+            "action_if_fail": "Add endo step documentation to ARCHITECTURE.md and corresponding freshness assertion"
+        },
+        {
+            "id": "LEGACY_DETACHMENT",
+            "status": "pass",
+            "evidence": [
+                {
+                    "file": null,
+                    "lines": null,
+                    "note": "grep for 'from.*_legacy' in src/docudent/v7 returned 0 results"
+                },
+                {
+                    "file": null,
+                    "lines": null,
+                    "note": "V7 pages/components have no imports from _legacy/"
+                }
+            ],
+            "action_if_fail": null
+        }
+    ],
+    "commands_run": [
+        "grep -r '/docudent/v7' src/",
+        "grep -r 'DocudentV7Page' src/",
+        "cat src/docudent/v7/pipeline/index.ts | head -35",
+        "cat src/docudent/core/billing/knowledgeBase/registry/treatmentRegistry.ts | head -50",
+        "cat src/docudent/__tests__/gates/gate-mvp-v7-golden-dictations.test.ts",
+        "grep -r 'Missing tooth' src/docudent/__tests__/",
+        "grep -r 'output.sections' src/docudent/v7/",
+        "grep -r 'commentIndex' src/docudent/__tests__/gates/",
+        "grep -i 'architecture' src/docudent/__tests__/gates/",
+        "grep -r 'from.*_legacy' src/docudent/v7/",
+        "npm test -- gate-mvp-v7-golden-dictations.test.ts --run"
+    ],
+    "top_risks": [
+        "REAL_EXTRACTOR_SMOKE requires API key for full integration test — CI may need secrets",
+        "Endo Step Detection not yet documented in ARCHITECTURE.md — freshness gate incomplete",
+        "extraction/pzr/crown_prep treatments return 'error' state — no full output pipeline yet",
+        "Gate runtime measured in test context (15ms) — real usage may differ",
+        "No E2E browser test verifying actual /docudent/v7 route renders correctly"
+    ],
+    "recommended_next_step": "Add Endo Step Detection section to docs/architecture/ARCHITECTURE.md, then add corresponding test assertion to gate-architecture-docs-freshness.test.ts"
+}

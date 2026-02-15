@@ -1,0 +1,216 @@
+{
+    "version": "3.3.0",
+    "lastUpdated": "2025-12-31",
+    "v7Status": {
+        "usedByV10": false,
+        "runtimeImports": 0,
+        "sharedResourceImports": 0,
+        "note": "V10 is fully standalone. Zero V7 imports."
+    },
+    "nodes": [
+        {
+            "id": "dictation",
+            "type": "input",
+            "file": "v10/pages/DocudentV10Page.tsx",
+            "responsibility": "User input"
+        },
+        {
+            "id": "useV10Pipeline",
+            "type": "hook",
+            "file": "v10/hooks/useV10Pipeline.ts",
+            "responsibility": "State management"
+        },
+        {
+            "id": "runV10",
+            "type": "orchestrator",
+            "file": "v10/pipeline/runV10.ts",
+            "responsibility": "Pipeline coordination"
+        },
+        {
+            "id": "extraction",
+            "type": "gear",
+            "file": "v10/extraction/",
+            "responsibility": "Raw data extraction"
+        },
+        {
+            "id": "factsMapping",
+            "type": "gear",
+            "file": "v10/facts/buildFactsFromExtraction.ts",
+            "responsibility": "Extraction → Facts interpretation"
+        },
+        {
+            "id": "applyAnswers",
+            "type": "gear",
+            "file": "v10/facts/applyAnswersToFacts.ts",
+            "responsibility": "User answer application"
+        },
+        {
+            "id": "medicalKb",
+            "type": "gear",
+            "file": "medical_kb/engine/applyMedicalKb.ts",
+            "responsibility": "Rule evaluation, askback triggering"
+        },
+        {
+            "id": "askbacksCompiler",
+            "type": "gear",
+            "file": "v10/askbacks/compileAskbacksToQuestions.ts",
+            "responsibility": "Askback → Question translation"
+        },
+        {
+            "id": "chipStore",
+            "type": "gear",
+            "file": "v10/chips/",
+            "responsibility": "Chip state + provenance"
+        },
+        {
+            "id": "ssotRenderer",
+            "type": "gear",
+            "file": "v10/renderer/renderFromKbChips.ts",
+            "responsibility": "SSOT text + billing output"
+        },
+        {
+            "id": "billingResolver",
+            "type": "gear",
+            "file": "core/billing/resolveBillingRefs.ts",
+            "responsibility": "Billing code resolution"
+        },
+        {
+            "id": "combinability",
+            "type": "gear",
+            "file": "core/billing/combinability/checkCombinability.ts",
+            "responsibility": "Combinability checks"
+        },
+        {
+            "id": "output",
+            "type": "output",
+            "file": "v10/pages/DocudentV10Page.tsx",
+            "responsibility": "User output"
+        }
+    ],
+    "edges": [
+        {
+            "from": "dictation",
+            "to": "useV10Pipeline",
+            "contract": "string"
+        },
+        {
+            "from": "useV10Pipeline",
+            "to": "runV10",
+            "contract": "V10PipelineInput"
+        },
+        {
+            "from": "runV10",
+            "to": "extraction",
+            "contract": "dictation string"
+        },
+        {
+            "from": "extraction",
+            "to": "factsMapping",
+            "contract": "ExtractedDataLike"
+        },
+        {
+            "from": "factsMapping",
+            "to": "applyAnswers",
+            "contract": "TreatmentFacts"
+        },
+        {
+            "from": "applyAnswers",
+            "to": "medicalKb",
+            "contract": "TreatmentFacts"
+        },
+        {
+            "from": "medicalKb",
+            "to": "askbacksCompiler",
+            "contract": "Askbacks[]"
+        },
+        {
+            "from": "medicalKb",
+            "to": "chipStore",
+            "contract": "ChipDelta[]"
+        },
+        {
+            "from": "askbacksCompiler",
+            "to": "output",
+            "contract": "DynamicQuestion[]"
+        },
+        {
+            "from": "chipStore",
+            "to": "ssotRenderer",
+            "contract": "ChipId[]"
+        },
+        {
+            "from": "ssotRenderer",
+            "to": "billingResolver",
+            "contract": "BillingRef[]"
+        },
+        {
+            "from": "billingResolver",
+            "to": "combinability",
+            "contract": "ResolvedBilling[]"
+        },
+        {
+            "from": "combinability",
+            "to": "output",
+            "contract": "CombinabilityResult"
+        }
+    ],
+    "v10Modules": {
+        "facts": {
+            "path": "v10/facts/",
+            "files": [
+                "types.ts",
+                "buildFactsFromExtraction.ts",
+                "applyAnswersToFacts.ts",
+                "index.ts"
+            ]
+        },
+        "askbacks": {
+            "path": "v10/askbacks/",
+            "files": [
+                "compileAskbacksToQuestions.ts",
+                "index.ts"
+            ]
+        },
+        "renderer": {
+            "path": "v10/renderer/",
+            "files": [
+                "renderFromKbChips.ts",
+                "index.ts"
+            ]
+        },
+        "components": {
+            "path": "v10/components/",
+            "files": [
+                "SoftGradientBackground.tsx",
+                "HeroSculpture.tsx",
+                "QuestionsFlowV2.tsx",
+                "OutputFlow.tsx",
+                "MultiInstancePanel.tsx",
+                "MultiOutputRenderer.tsx"
+            ]
+        },
+        "styles": {
+            "path": "v10/styles/",
+            "files": [
+                "tokens.ts"
+            ]
+        },
+        "multitreatment": {
+            "path": "v10/multitreatment/",
+            "files": [
+                "types.ts"
+            ]
+        }
+    },
+    "invariants": [
+        "NO_TEXT_WITHOUT_CHIP",
+        "NO_BILLING_WITHOUT_CHIP",
+        "NO_HARDCODED_BILLING",
+        "NO_PII_IN_OUTPUT",
+        "NO_V7_IN_V10"
+    ],
+    "gateTests": [
+        "gate-v10-no-imports-from-v7.test.ts",
+        "gate-v10-module-boundaries.test.ts"
+    ]
+}

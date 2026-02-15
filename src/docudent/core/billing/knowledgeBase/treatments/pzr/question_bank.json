@@ -1,0 +1,52 @@
+{
+    "_meta": {
+        "treatmentId": "pzr",
+        "version": "1.0.0",
+        "description": "Question Bank for PZR - minimal MVP"
+    },
+    "questions": [
+        {
+            "key": "fluoridierung",
+            "category": "upsell",
+            "prompt": "💧 Fluoridierung?",
+            "type": "single",
+            "dataField": "mentioned.fluoridierung",
+            "options": [
+                {
+                    "id": "ja",
+                    "label": "Ja",
+                    "dataValue": true
+                },
+                {
+                    "id": "nein",
+                    "label": "Nein",
+                    "dataValue": false
+                }
+            ]
+        },
+        {
+            "key": "zahnstein_bereich",
+            "category": "forensic",
+            "prompt": "🦷 Zahnsteinbereich?",
+            "type": "single",
+            "dataField": "mentioned.zahnstein_bereich",
+            "options": [
+                {
+                    "id": "gesamt",
+                    "label": "Gesamtes Gebiss",
+                    "dataValue": "gesamt"
+                },
+                {
+                    "id": "uk_front",
+                    "label": "UK Front",
+                    "dataValue": "uk_front"
+                },
+                {
+                    "id": "partiell",
+                    "label": "Partiell",
+                    "dataValue": "partiell"
+                }
+            ]
+        }
+    ]
+}

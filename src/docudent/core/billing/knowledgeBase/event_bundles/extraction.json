@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "treatmentId": "extraction",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "extraction.baseline",
+      "chipIds": ["extraktion_einfach"],
+      "textRefIds": ["extraktion_einfach"],
+      "billingRefIds": ["extraktion_einfach"],
+      "disclosureIds": ["postop_standard"]
+    },
+    {
+      "id": "extraction.woundcare",
+      "chipIds": ["wundversorgung"],
+      "textRefIds": ["wundversorgung"]
+    },
+    {
+      "id": "extraction.askback.la_type"
+    },
+    {
+      "id": "extraction.askback.wound_care"
+    }
+  ]
+}

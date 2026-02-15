@@ -1,0 +1,210 @@
+{
+  "runId": "2026-02-13T15:31:55.277Z",
+  "total": 5,
+  "pass": 5,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "en01",
+      "title": "GKV Endo (3 Kanaele) + WL elektronisch + WF warm",
+      "insuranceType": "GKV",
+      "dictation": "Endo Zahn 36. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch (Apex-Locator). Gespült mit NaOCl und EDTA. Wurzelfüllung warm vertikal (Continuous Wave).",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_34",
+        "BEMA_32",
+        "BEMA_Ä925a",
+        "BEMA_31"
+      ],
+      "perInstance": {
+        "endo-36-1": {
+          "billingRefs": [
+            "BEMA_41a",
+            "BEMA_12",
+            "BEMA_34",
+            "BEMA_32",
+            "BEMA_Ä925a",
+            "BEMA_31"
+          ],
+          "textLen": 260
+        }
+      },
+      "perInstanceText": {
+        "endo-36-1": "Leitungsanästhesie N. alv. inf. Kofferdam angelegt. Elektrische Arbeitslängenmessung. Wurzelfüllung in warmer vertikaler Kondensation. Spülung mit NaOCl. Spülung mit EDTA. Aufbereitung von 3 Wurzelkanälen. Röntgenkontrolle post WF. Trepanation der Pulpakammer."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 973,
+      "fullText": "[Befund]\nZahn 36\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "en02",
+      "title": "PKV Endo (3 Kanaele) + WL elektronisch + WF warm",
+      "insuranceType": "PKV",
+      "dictation": "Wurzelbehandlung Zahn 26. ViPr negativ, Perkussion negativ. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "GOZ_0100",
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_2440",
+        "GOZ_2410",
+        "GOZ_5000",
+        "GOZ_2360"
+      ],
+      "perInstance": {
+        "endo-26-1": {
+          "billingRefs": [
+            "GOZ_0100",
+            "GOZ_2040",
+            "GOZ_2400",
+            "GOZ_2440",
+            "GOZ_2410",
+            "GOZ_5000",
+            "GOZ_2360"
+          ],
+          "textLen": 260
+        }
+      },
+      "perInstanceText": {
+        "endo-26-1": "Leitungsanästhesie N. alv. inf. Kofferdam angelegt. Elektrische Arbeitslängenmessung. Wurzelfüllung in warmer vertikaler Kondensation. Spülung mit NaOCl. Spülung mit EDTA. Aufbereitung von 3 Wurzelkanälen. Röntgenkontrolle post WF. Trepanation der Pulpakammer."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 973,
+      "fullText": "[Befund]\nZahn 26\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "en03",
+      "title": "GKV Endo ohne Kofferdam (negiert)",
+      "insuranceType": "GKV",
+      "dictation": "Endo Zahn 46. Leitungsanästhesie. Kein Kofferdam möglich (eingeschränkte Mundöffnung). Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_34",
+        "BEMA_32",
+        "BEMA_Ä925a",
+        "BEMA_31"
+      ],
+      "perInstance": {
+        "endo-46-1": {
+          "billingRefs": [
+            "BEMA_41a",
+            "BEMA_34",
+            "BEMA_32",
+            "BEMA_Ä925a",
+            "BEMA_31"
+          ],
+          "textLen": 240
+        }
+      },
+      "perInstanceText": {
+        "endo-46-1": "Leitungsanästhesie N. alv. inf. Elektrische Arbeitslängenmessung. Wurzelfüllung in warmer vertikaler Kondensation. Spülung mit NaOCl. Spülung mit EDTA. Aufbereitung von 3 Wurzelkanälen. Röntgenkontrolle post WF. Trepanation der Pulpakammer."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 930,
+      "fullText": "[Befund]\nZahn 46\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Trep.\n• Elektr. AL.\n• 3K.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "en04",
+      "title": "GKV Endo mit Röntgenkontrolle",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 16. Dritter Termin. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal. Röntgenkontrolle durchgeführt.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_34",
+        "BEMA_32",
+        "BEMA_Ä925a",
+        "BEMA_31"
+      ],
+      "perInstance": {
+        "endo-16-1": {
+          "billingRefs": [
+            "BEMA_41a",
+            "BEMA_12",
+            "BEMA_34",
+            "BEMA_32",
+            "BEMA_Ä925a",
+            "BEMA_31"
+          ],
+          "textLen": 260
+        }
+      },
+      "perInstanceText": {
+        "endo-16-1": "Leitungsanästhesie N. alv. inf. Kofferdam angelegt. Elektrische Arbeitslängenmessung. Wurzelfüllung in warmer vertikaler Kondensation. Spülung mit NaOCl. Spülung mit EDTA. Aufbereitung von 3 Wurzelkanälen. Röntgenkontrolle post WF. Trepanation der Pulpakammer."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 973,
+      "fullText": "[Befund]\nZahn 16\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "en05",
+      "title": "PKV Endo mit Röntgenkontrolle",
+      "insuranceType": "PKV",
+      "dictation": "Zahn 25. Dritter Termin. Leitungsanästhesie. Kofferdam. Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal. Röntgenkontrolle durchgeführt.",
+      "questionsAsked": [],
+      "answersUsed": {},
+      "billingRefs": [
+        "GOZ_0100",
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_2440",
+        "GOZ_2410",
+        "GOZ_5000",
+        "GOZ_2360"
+      ],
+      "perInstance": {
+        "endo-25-1": {
+          "billingRefs": [
+            "GOZ_0100",
+            "GOZ_2040",
+            "GOZ_2400",
+            "GOZ_2440",
+            "GOZ_2410",
+            "GOZ_5000",
+            "GOZ_2360"
+          ],
+          "textLen": 260
+        }
+      },
+      "perInstanceText": {
+        "endo-25-1": "Leitungsanästhesie N. alv. inf. Kofferdam angelegt. Elektrische Arbeitslängenmessung. Wurzelfüllung in warmer vertikaler Kondensation. Spülung mit NaOCl. Spülung mit EDTA. Aufbereitung von 3 Wurzelkanälen. Röntgenkontrolle post WF. Trepanation der Pulpakammer."
+      },
+      "combinability": {
+        "result": "PASS",
+        "reasons": []
+      },
+      "textLen": 975,
+      "fullText": "[Befund]\nZahn 25\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "status": "PASS",
+      "failures": []
+    }
+  ]
+}

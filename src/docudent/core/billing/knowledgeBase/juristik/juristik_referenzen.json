@@ -1,0 +1,42 @@
+{
+    "_meta": {
+        "id": "juristik_referenzen",
+        "version": "2025-01-v1",
+        "description": "Juristik-Referenz-Layer. Enthält nur Paragraphen-Referenzen, KEINE Volltexte. Volltexte kommen aus separater Quelle."
+    },
+    "referenzen": {
+        "mkv_grundlage": {
+            "paragraph": "§28 Abs.2 SGB V",
+            "kurztitel": "Mehrkosten bei Füllungen",
+            "context": "mkv"
+        },
+        "aufklaerungspflicht": {
+            "paragraph": "§630e BGB",
+            "kurztitel": "Patientenaufklärung",
+            "context": "aufklaerung"
+        },
+        "dokumentationspflicht": {
+            "paragraph": "§630f BGB",
+            "kurztitel": "Dokumentation ärztlicher Behandlung",
+            "context": "dokumentation"
+        },
+        "wirtschaftlichkeitsgebot": {
+            "paragraph": "§12 SGB V",
+            "kurztitel": "Wirtschaftlichkeitsgebot",
+            "context": "gkv"
+        },
+        "bema_gebuehrenordnung": {
+            "paragraph": "BEMA-Z",
+            "kurztitel": "Bewertungsmaßstab Zahnärztliche Leistungen",
+            "context": "billing_gkv"
+        },
+        "goz_gebuehrenordnung": {
+            "paragraph": "GOZ 1988 (2012)",
+            "kurztitel": "Gebührenordnung für Zahnärzte",
+            "context": "billing_pkv"
+        }
+    },
+    "hinweise": {
+        "_info": "Konkrete Hinweistexte werden aus disclosures/standard_disclosures.json geladen. Diese Datei enthält nur die rechtlichen Referenzen."
+    }
+}

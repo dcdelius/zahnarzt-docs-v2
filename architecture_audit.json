@@ -1,0 +1,583 @@
+{
+    "meta": {
+        "title": "Architecture & Pipeline Audit",
+        "version": "1.0",
+        "generatedAt": "2025-12-15T17:02:32+01:00",
+        "repo": "/Users/david/dokumaster-ui"
+    },
+    "pipelineFlow": [
+        {
+            "step": 1,
+            "name": "Dictation Input",
+            "file": "useBillingV5Controller.ts"
+        },
+        {
+            "step": 2,
+            "name": "LLM Extraction",
+            "file": "extractDictationV3.ts",
+            "async": true
+        },
+        {
+            "step": 3,
+            "name": "Module Selection",
+            "file": "billingRegistry.ts",
+            "function": "findModuleForData"
+        },
+        {
+            "step": 4,
+            "name": "Module Inference",
+            "file": "modules/fuellung.ts",
+            "function": "infer",
+            "condition": "if module matched"
+        },
+        {
+            "step": 5,
+            "name": "Analog Fallback",
+            "file": "analogResolver.ts",
+            "condition": "if no module matched"
+        },
+        {
+            "step": 6,
+            "name": "Chip Processing",
+            "file": "treatmentEngine.ts",
+            "function": "processChipsToBilling"
+        },
+        {
+            "step": 7,
+            "name": "Final Documentation",
+            "file": "treatmentEngine.ts",
+            "function": "generateFinalDocumentation"
+        },
+        {
+            "step": 8,
+            "name": "UI Render",
+            "file": "DocudentV5Page.tsx"
+        },
+        {
+            "step": 9,
+            "name": "Analog Validation",
+            "file": "analogCompletionValidator.ts",
+            "condition": "if analog"
+        },
+        {
+            "step": 10,
+            "name": "Export Guard",
+            "file": "analogExportGuard.ts",
+            "function": "assertNoCommentaryLeak"
+        }
+    ],
+    "fileMap": [
+        {
+            "file": "src/docudent/core/extraction/extractDictationV3.ts",
+            "responsibility": "LLM extraction from dictation text",
+            "runtimeUsed": true,
+            "calledBy": [
+                "useBillingV5Controller.ts",
+                "useSoniaV3Controller.ts (legacy)"
+            ],
+            "callsInto": [
+                "normalizeExtractedData.ts",
+                "safeJsonParse.ts",
+                "OpenAI API"
+            ],
+            "dataIn": "rawText, template",
+            "dataOut": "extracted: Record<string, any>, meta",
+            "classification": "CORE",
+            "lines": 260
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/billingRegistry.ts",
+            "responsibility": "Module dispatcher for treatment billing",
+            "runtimeUsed": true,
+            "calledBy": [
+                "useBillingV5Controller.ts",
+                "useDocudentV5.ts"
+            ],
+            "callsInto": [
+                "modules/fuellung.ts",
+                "analogResolver.ts (require)"
+            ],
+            "dataIn": "BillingContext",
+            "dataOut": "BillingInferenceResult",
+            "classification": "CORE",
+            "lines": 241,
+            "exports": [
+                "inferBillingV2",
+                "registerBillingModule",
+                "findModuleForData"
+            ]
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/treatmentEngine.ts",
+            "responsibility": "Central chip-to-billing processing",
+            "runtimeUsed": true,
+            "calledBy": [
+                "modules/fuellung.ts",
+                "outputService.ts",
+                "50+ test files"
+            ],
+            "callsInto": [
+                "bema.json",
+                "goz.json",
+                "fuellung_unified.json"
+            ],
+            "dataIn": "treatmentId, activeChipIds, insuranceType, extractedData",
+            "dataOut": "billingCodes[], textLines[], warnings[], billingDetails[]",
+            "classification": "CORE",
+            "lines": 1285,
+            "exports": [
+                "processChipsToBilling",
+                "lookupBillingCode",
+                "generateFinalDocumentation"
+            ]
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/analogResolver.ts",
+            "responsibility": "Fallback analog suggestion resolver",
+            "runtimeUsed": true,
+            "calledBy": [
+                "billingRegistry.ts (via require)"
+            ],
+            "callsInto": [
+                "commentIndex_analog_thin.json",
+                "analogConfig.ts"
+            ],
+            "dataIn": "BillingContext",
+            "dataOut": "AnalogResolverResult with BillingSuggestion[]",
+            "classification": "OPTIONAL",
+            "lines": 421,
+            "notes": "Uses thin index only, full index never loaded"
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/analogJustificationService.ts",
+            "responsibility": "Analog justification state and validation",
+            "runtimeUsed": true,
+            "calledBy": [
+                "useBillingV5Controller.ts"
+            ],
+            "callsInto": [],
+            "dataIn": "analogCode, justificationText, comparisonCode",
+            "dataOut": "AnalogJustification, validation status",
+            "classification": "OPTIONAL",
+            "lines": 241
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/analogCompletionValidator.ts",
+            "responsibility": "Block finalize without valid analog justification",
+            "runtimeUsed": true,
+            "calledBy": [
+                "useBillingV5Controller.ts"
+            ],
+            "callsInto": [],
+            "dataIn": "AnalogSuggestion[], AnalogJustificationMap",
+            "dataOut": "AnalogValidationResult { ok, missing[] }",
+            "classification": "OPTIONAL",
+            "lines": 136
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/analogExportGuard.ts",
+            "responsibility": "Prevent commentary leaks in export",
+            "runtimeUsed": true,
+            "calledBy": [
+                "useBillingV5Controller.ts"
+            ],
+            "callsInto": [],
+            "dataIn": "AnalogJustificationMap, any payload",
+            "dataOut": "AnalogExportItem[], violations[]",
+            "classification": "OPTIONAL",
+            "lines": 165,
+            "exports": [
+                "buildAnalogExportPayload",
+                "assertNoCommentaryLeak",
+                "checkForCommentaryLeaks"
+            ]
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/secondary/commentCardStore.ts",
+            "responsibility": "Load comment cards from JSON files",
+            "runtimeUsed": false,
+            "calledBy": [
+                "gate tests only (6 files)"
+            ],
+            "callsInto": [
+                "commentIndex_*.json files"
+            ],
+            "dataIn": "none",
+            "dataOut": "CommentCard[]",
+            "classification": "DEAD",
+            "lines": 427,
+            "notes": "Heavy file-based loader, never used at runtime"
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/askbackRunner.ts",
+            "responsibility": "Askback simulation and selection",
+            "runtimeUsed": false,
+            "calledBy": [],
+            "callsInto": [
+                "askbackQueue.ts",
+                "askback_templates_*.json"
+            ],
+            "dataIn": "CasePack, templates",
+            "dataOut": "SimulationReport",
+            "classification": "DEAD",
+            "lines": 746,
+            "notes": "0 runtime imports found - abandoned mid-development"
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/askbackQueue.ts",
+            "responsibility": "Askback queue state management",
+            "runtimeUsed": false,
+            "calledBy": [
+                "askbackRunner.ts only"
+            ],
+            "callsInto": [],
+            "dataIn": "AskbackTemplate[], CaseState",
+            "dataOut": "AskbackQueueState",
+            "classification": "DEAD",
+            "lines": 300
+        },
+        {
+            "file": "src/docudent/v5/hooks/useBillingV5Controller.ts",
+            "responsibility": "Main UI controller hook for V5",
+            "runtimeUsed": true,
+            "calledBy": [
+                "DocudentV5Page.tsx"
+            ],
+            "callsInto": [
+                "extractDictationV3",
+                "billingRegistry",
+                "treatmentEngine",
+                "analog*"
+            ],
+            "dataIn": "dictation, insuranceType, bonusStatus",
+            "dataOut": "BillingV5State, actions",
+            "classification": "CORE",
+            "lines": 1120,
+            "exports": [
+                "useBillingV5Controller"
+            ]
+        },
+        {
+            "file": "src/docudent/v5/hooks/useDocudentV5.ts",
+            "responsibility": "Alternate/legacy V5 hook",
+            "runtimeUsed": true,
+            "calledBy": [
+                "unknown"
+            ],
+            "callsInto": [
+                "billingRegistry"
+            ],
+            "dataIn": "similar to useBillingV5Controller",
+            "dataOut": "similar state",
+            "classification": "LEGACY",
+            "notes": "Duplicate functionality with useBillingV5Controller"
+        },
+        {
+            "file": "src/docudent/v5/pages/DocudentV5Page.tsx",
+            "responsibility": "Main V5 UI page with steps",
+            "runtimeUsed": true,
+            "calledBy": [
+                "Router"
+            ],
+            "callsInto": [
+                "useBillingV5Controller",
+                "AnalogJustificationRow"
+            ],
+            "dataIn": "controller state",
+            "dataOut": "rendered UI",
+            "classification": "CORE",
+            "lines": 1216
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/secondary/commentRuleExtractor.ts",
+            "responsibility": "Extract rules from comment cards",
+            "runtimeUsed": false,
+            "calledBy": [
+                "gate tests only"
+            ],
+            "callsInto": [
+                "commentCardStore.ts"
+            ],
+            "dataIn": "CommentCard[]",
+            "dataOut": "ExtractedRule[]",
+            "classification": "LEGACY",
+            "notes": "Rules extracted but never applied to billing"
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/rules/comment_rules_v1.json",
+            "responsibility": "Extracted comment rules",
+            "runtimeUsed": false,
+            "calledBy": [],
+            "callsInto": [],
+            "dataIn": "n/a",
+            "dataOut": "n/a",
+            "classification": "LEGACY",
+            "notes": "Not imported anywhere in runtime code"
+        }
+    ],
+    "dataFiles": [
+        {
+            "file": "commentIndex_analog_thin.json",
+            "usedBy": [
+                "analogResolver.ts"
+            ],
+            "runtimeUsed": true,
+            "classification": "DATA"
+        },
+        {
+            "file": "commentIndex_analog.json",
+            "usedBy": [
+                "gate tests only"
+            ],
+            "runtimeUsed": false,
+            "classification": "DATA",
+            "notes": "Full index, blocked from UI"
+        },
+        {
+            "file": "commentIndex_bema.json",
+            "usedBy": [
+                "commentCardStore.ts (tests)"
+            ],
+            "runtimeUsed": false,
+            "classification": "DATA"
+        },
+        {
+            "file": "commentIndex_goz.json",
+            "usedBy": [
+                "commentCardStore.ts (tests)"
+            ],
+            "runtimeUsed": false,
+            "classification": "DATA"
+        },
+        {
+            "file": "fuellung_unified.json",
+            "usedBy": [
+                "treatmentEngine.ts"
+            ],
+            "runtimeUsed": true,
+            "classification": "DATA"
+        },
+        {
+            "file": "bema.json",
+            "usedBy": [
+                "treatmentEngine.ts::lookupBillingCode"
+            ],
+            "runtimeUsed": true,
+            "classification": "DATA"
+        },
+        {
+            "file": "goz.json",
+            "usedBy": [
+                "treatmentEngine.ts::lookupBillingCode"
+            ],
+            "runtimeUsed": true,
+            "classification": "DATA"
+        }
+    ],
+    "gateTests": {
+        "total": 40,
+        "directory": "src/docudent/__tests__/gates",
+        "categories": [
+            {
+                "prefix": "gate-analog-*",
+                "count": 9,
+                "focus": "Analog pipeline and safety"
+            },
+            {
+                "prefix": "gate-askback-*",
+                "count": 3,
+                "focus": "Askback logic (dead code)"
+            },
+            {
+                "prefix": "gate-comment-*",
+                "count": 4,
+                "focus": "Comment card loading"
+            },
+            {
+                "prefix": "gate-festzuschuss-*",
+                "count": 4,
+                "focus": "Festzuschuss calculations"
+            },
+            {
+                "prefix": "gate-e2e-*",
+                "count": 1,
+                "focus": "End-to-end golden dictations"
+            },
+            {
+                "prefix": "gate0-9*",
+                "count": 12,
+                "focus": "V7 pipeline contracts"
+            }
+        ]
+    },
+    "criticalFindings": {
+        "deadCode": [
+            {
+                "file": "askbackRunner.ts",
+                "lines": 746,
+                "reason": "0 runtime imports"
+            },
+            {
+                "file": "askbackQueue.ts",
+                "lines": 300,
+                "reason": "only imported by askbackRunner"
+            },
+            {
+                "file": "commentCardStore.ts",
+                "reason": "used in tests only, never at runtime"
+            }
+        ],
+        "duplicateLogic": [
+            {
+                "files": [
+                    "useBillingV5Controller.ts",
+                    "useDocudentV5.ts"
+                ],
+                "issue": "Two controller hooks with similar logic"
+            },
+            {
+                "files": [
+                    "treatmentEngine.ts",
+                    "registry/loaders.ts"
+                ],
+                "issue": "Treatment loading in multiple places"
+            }
+        ],
+        "unwiredFeatures": [
+            {
+                "file": "comment_rules_v1.json",
+                "issue": "Rules extracted but never applied to billing"
+            },
+            {
+                "file": "askback_templates_*.json",
+                "issue": "Templates exist but runner is dead"
+            }
+        ],
+        "riskySingletons": [
+            {
+                "file": "treatmentEngine.ts",
+                "issue": "50+ call sites, any change is high risk"
+            },
+            {
+                "file": "fuellung_unified.json",
+                "issue": "No schema validation, silent failures"
+            }
+        ]
+    },
+    "riskAssessment": {
+        "billingBreakRisks": [
+            {
+                "risk": "processChipsToBilling change",
+                "severity": "HIGH",
+                "mitigation": "No type safety on chip IDs"
+            },
+            {
+                "risk": "fuellung_unified.json schema change",
+                "severity": "HIGH",
+                "mitigation": "No validation"
+            },
+            {
+                "risk": "billingRegistry require() failure",
+                "severity": "MEDIUM",
+                "mitigation": "Returns warning suggestion"
+            }
+        ],
+        "regressionRisks": [
+            {
+                "risk": "Removing dead files imported via require()",
+                "severity": "HIGH"
+            },
+            {
+                "risk": "Changing chip IDs without updating JSON",
+                "severity": "MEDIUM"
+            },
+            {
+                "risk": "Changing suggestion.meta shape",
+                "severity": "LOW"
+            }
+        ],
+        "safeToRefactor": [
+            "commentCardStore.ts",
+            "askbackRunner.ts",
+            "useDocudentV5.ts"
+        ],
+        "dangerousToRefactor": [
+            "treatmentEngine.ts",
+            "billingRegistry.ts",
+            "useBillingV5Controller.ts"
+        ]
+    },
+    "confidenceScores": {
+        "billingCorrectness": {
+            "score": 70,
+            "reasoning": "Core path tested, but comment rules not wired"
+        },
+        "analogSafety": {
+            "score": 90,
+            "reasoning": "139 tests, export guard enforced"
+        },
+        "copyrightSafety": {
+            "score": 85,
+            "reasoning": "Thin index used, full index blocked from UI"
+        },
+        "maintainability": {
+            "score": 40,
+            "reasoning": "Dead code, two hooks, dynamic requires"
+        }
+    },
+    "recommendations": {
+        "immediate": [
+            {
+                "action": "DELETE",
+                "files": [
+                    "askbackRunner.ts",
+                    "askbackQueue.ts"
+                ],
+                "reason": "Confirmed dead code"
+            },
+            {
+                "action": "MARK_LEGACY",
+                "files": [
+                    "useDocudentV5.ts"
+                ],
+                "reason": "Duplicate of useBillingV5Controller"
+            },
+            {
+                "action": "ADD_LINT_RULE",
+                "target": "commentIndex imports in UI",
+                "reason": "Prevent copyright leaks"
+            }
+        ],
+        "mediumTerm": [
+            {
+                "action": "WIRE_OR_DELETE",
+                "files": [
+                    "comment_rules_v1.json"
+                ],
+                "reason": "Rules not applied"
+            },
+            {
+                "action": "CONVERT",
+                "target": "dynamic require() to static imports",
+                "reason": "Better bundling"
+            },
+            {
+                "action": "ADD",
+                "target": "JSON schema validation",
+                "reason": "Catch silent failures"
+            }
+        ],
+        "longTerm": [
+            {
+                "action": "CONSOLIDATE",
+                "target": "Single controller hook",
+                "reason": "Remove duplication"
+            },
+            {
+                "action": "ADD",
+                "target": "E2E test through actual billingRegistry",
+                "reason": "Current tests bypass it"
+            }
+        ]
+    }
+}

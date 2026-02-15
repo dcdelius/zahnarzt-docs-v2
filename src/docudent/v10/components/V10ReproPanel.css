@@ -1,0 +1,120 @@
+/**
+ * V10ReproPanel Styles
+ */
+
+.v10-repro-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.875rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.v10-repro-header {
+    display: flex;
+    align-items: center;
+}
+
+.v10-repro-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.v10-repro-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.v10-repro-btn {
+    padding: 0.5rem 0.75rem;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.v10-repro-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+.v10-repro-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.v10-repro-btn.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #bdc3c7;
+}
+
+.v10-repro-btn.secondary:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.v10-repro-hash {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.v10-hash-label {
+    color: #7f8c8d;
+}
+
+.v10-hash-value {
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: #27ae60;
+}
+
+.v10-repro-import {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.v10-repro-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 0.625rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #f8f9fa;
+    font-family: monospace;
+    font-size: 0.75rem;
+    resize: vertical;
+}
+
+.v10-repro-textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.v10-import-error {
+    font-size: 0.75rem;
+    color: #e74c3c;
+}
+
+.v10-import-actions {
+    display: flex;
+    gap: 0.5rem;
+}

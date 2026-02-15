@@ -1,0 +1,37 @@
+{
+    "reportId": "FRAGMENTATION_REPORT",
+    "timestamp": "2025-12-17T12:07:35+01:00",
+    "overallStatus": "CLEAN",
+    "boundaryConfidence": "HIGH",
+    "signals": {
+        "duplicate-logic": {
+            "status": "OK",
+            "severity": "WARNING",
+            "count": 0,
+            "details": "No duplicate logic detected across layers"
+        },
+        "boundary-erosion": {
+            "status": "OK",
+            "severity": "ERROR",
+            "count": 0,
+            "details": "V7 → V6 direct imports: 0"
+        },
+        "semantic-string-leak": {
+            "status": "OK",
+            "severity": "ERROR",
+            "count": 0,
+            "details": "No hardcoded canonical IDs in V7 UI (allowlisted files excluded)"
+        }
+    },
+    "gateTests": [
+        "gate-no-v6-mutation.test.ts",
+        "gate-v7-ssot-boundaries.test.ts",
+        "gate-fragmentation-sentinel.test.ts",
+        "gate-no-hardcoded-chip-ids.test.ts"
+    ],
+    "enforcement": {
+        "ciFailOnBoundaryErosion": true,
+        "ciFailOnSemanticLeak": true,
+        "ciWarnOnDuplicateLogic": true
+    }
+}

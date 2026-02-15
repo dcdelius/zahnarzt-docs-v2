@@ -1,0 +1,220 @@
+{
+    "_meta": {
+        "name": "ZE Kombinationsversorgung Regeln",
+        "beschreibung": "Spezielle Regeln für Teleskop und Kombinationsversorgung nach Spitta/KZBV",
+        "version": "1.0",
+        "quelle": "Spitta ZE-Abrechnung, KZBV Richtlinien"
+    },
+    "teleskop_kombinationsversorgung": {
+        "name": "Teleskopierende Kombinationsversorgung",
+        "beschreibung": "Teleskopkronen als Anker für herausnehmbaren ZE",
+        "bema_struktur": {
+            "wichtig": "Bei Teleskop-Kombinationsversorgung gleichartig NICHT BEMA 91d verwenden!",
+            "korrekte_positionen": [
+                {
+                    "code": "BEMA_98a",
+                    "bezeichnung": "Individueller Löffel",
+                    "anzahl": "1× pro Kiefer",
+                    "wann": "Bei Kombinationsversorgung immer"
+                },
+                {
+                    "code": "BEMA_19",
+                    "bezeichnung": "Provisorium",
+                    "anzahl": "1× pro Ankerzahn",
+                    "wann": "Für jeden Pfeilerzahn der Teleskope"
+                },
+                {
+                    "code": "BEMA_24c",
+                    "bezeichnung": "Wiederherstellung Provisorium",
+                    "anzahl": "BERECHNUNG: Ankerzähne × 3 (max 3 pro Krone)",
+                    "wann": "Bei Kombiversorgung mit Teleskopen + Provisorienphase",
+                    "beispiel": "8 Ankerzähne × 3 = 24× BEMA 24c",
+                    "regel": "Jedes Provisorium kann bis zu 3× wiederbefestigt werden während der Laborarbeit"
+                },
+                {
+                    "code": "BEMA_96b",
+                    "bezeichnung": "Partialprothese 5-8 fehlende Zähne",
+                    "anzahl": "1× pro Kiefer",
+                    "wann": "Für den herausnehmbaren Anteil"
+                }
+            ],
+            "falsch": {
+                "code": "BEMA_91d",
+                "grund": "Bei gleichartiger Teleskopversorgung läuft der Teleskop-Anteil über GOZ 5040 als Mehrkosten, NICHT über BEMA 91d"
+            }
+        },
+        "goz_mehrkosten": {
+            "code": "GOZ_5040",
+            "bezeichnung": "Krone (Teleskop-/Konuskrone als Anker)",
+            "anzahl": "1× pro Ankerzahn",
+            "faktor": "2,3 bis 3,5 (bei paralleler Präparation oft 3,2)",
+            "hinweis": "Dies ist die Krone im privaten Anteil, NICHT nur Präparation!",
+            "beispiel": "8 Ankerzähne × GOZ 5040 Faktor 3,2"
+        },
+        "festzuschuss_regeln": {
+            "FZ_3.2a": {
+                "bezeichnung": "Teleskopkrone als Verankerungsanker",
+                "zuweisung": "NUR für Eckzähne oder erste Prämolaren",
+                "max": "2× je Kiefer",
+                "beispiel": "Bei Ankerzähnen 14-24: FZ 3.2a nur für 14 und 24 (= 2×)",
+                "falsch": "NICHT für alle Ankerzähne vergeben!"
+            },
+            "FZ_3.1": {
+                "bezeichnung": "Freiendsituation",
+                "zuweisung": "1× pro Kiefer",
+                "beispiel": "OK = 1× FZ 3.1"
+            },
+            "FZ_4.7": {
+                "bezeichnung": "Verblendung Teleskopkrone",
+                "zuweisung": "NUR für die Teleskop-ANKER im Verblendbereich",
+                "regel": "Folgt der Logik von FZ 3.2a - nur für 14/24 etc.",
+                "beispiel": "Bei Ankern 14/24: FZ 4.7 × 2 (NICHT × alle Ankerzähne!)",
+                "falsch": "NICHT für alle Kronen im Verblendbereich, sondern NUR für die Teleskop-Anker!"
+            },
+            "FZ_1.1": {
+                "bezeichnung": "Krone bei Zerstörung",
+                "zuweisung": "Für die übrigen Ankerzähne (ohne FZ 3.2a)",
+                "beispiel": "Bei 8 Ankern, davon 2 mit FZ 3.2a: 6× FZ 1.1"
+            },
+            "FZ_1.3": {
+                "bezeichnung": "Verblendung",
+                "zuweisung": "Für Kronen im Verblendbereich (13-23 = 6 Zähne)",
+                "hinweis": "Unabhängig von FZ 4.7 - das ist für normale Kronenverblendung"
+            }
+        }
+    },
+    "berechnungsformel_24c": {
+        "regel": "Bei Kombinationsversorgung mit Provisorienphase",
+        "formel": "Anzahl_Ankerzähne × 3 (max pro Krone)",
+        "beispiele": [
+            {
+                "anker": 8,
+                "24c": 24,
+                "erklärung": "8 Anker × 3 Wiederbefestigungen = 24"
+            },
+            {
+                "anker": 4,
+                "24c": 12,
+                "erklärung": "4 Anker × 3 = 12"
+            },
+            {
+                "anker": 6,
+                "24c": 18,
+                "erklärung": "6 Anker × 3 = 18"
+            }
+        ],
+        "voraussetzung": "BEMA 19 muss vorher abgerechnet worden sein"
+    },
+    "spitta_beispiel_validierung": {
+        "fall": "Teleskop OK 14-24 gaumenfreie Kombiversorgung",
+        "anker": [
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "21",
+            "22",
+            "23",
+            "24"
+        ],
+        "anker_anzahl": 9,
+        "korrekte_abrechnung": {
+            "BEMA": [
+                {
+                    "code": "98a",
+                    "anzahl": 1
+                },
+                {
+                    "code": "19",
+                    "anzahl": 8,
+                    "zaehne": "14-24"
+                },
+                {
+                    "code": "24c",
+                    "anzahl": 24,
+                    "berechnung": "8 × 3"
+                },
+                {
+                    "code": "96b",
+                    "anzahl": 1
+                }
+            ],
+            "GOZ": [
+                {
+                    "code": "5040",
+                    "anzahl": 8,
+                    "faktor": 3.2,
+                    "bezeichnung": "Teleskopkrone (nicht Präparation!)"
+                }
+            ],
+            "FZ": [
+                {
+                    "code": "3.2a",
+                    "anzahl": 2,
+                    "zaehne": [
+                        "14",
+                        "24"
+                    ],
+                    "grund": "Eckzahn/PM als Teleskop-Anker"
+                },
+                {
+                    "code": "3.1",
+                    "anzahl": 1,
+                    "kiefer": "OK"
+                },
+                {
+                    "code": "4.7",
+                    "anzahl": 2,
+                    "zaehne": [
+                        "14",
+                        "24"
+                    ],
+                    "grund": "Verblendung NUR der Teleskop-Anker"
+                },
+                {
+                    "code": "1.1",
+                    "anzahl": 6,
+                    "zaehne": [
+                        "13-23 ohne 14/24"
+                    ],
+                    "grund": "Übrige Kronen"
+                },
+                {
+                    "code": "1.3",
+                    "anzahl": 6,
+                    "zaehne": [
+                        "13-23"
+                    ],
+                    "grund": "Verblendung im Verblendbereich"
+                }
+            ]
+        },
+        "sanity_checks": {
+            "labor_gesamt": "~4000€",
+            "patient_anteil": "~5100€"
+        }
+    },
+    "haeufige_fehler": [
+        {
+            "fehler": "BEMA 91d bei gleichartiger Teleskopversorgung",
+            "korrektur": "Teleskop läuft über GOZ 5040 als Mehrkosten"
+        },
+        {
+            "fehler": "BEMA 24c vergessen",
+            "korrektur": "Bei Provisorienphase: Ankerzähne × 3"
+        },
+        {
+            "fehler": "FZ 4.7 für alle Verblendungen",
+            "korrektur": "FZ 4.7 nur für Teleskop-ANKER (folgt FZ 3.2a Logik)"
+        },
+        {
+            "fehler": "FZ 3.2 statt 3.2a",
+            "korrektur": "Präzise Katalog-Version verwenden"
+        },
+        {
+            "fehler": "GOZ 5040 als 'Präparation'",
+            "korrektur": "Es ist die komplette Krone (Teleskop) im GOZ-Anteil"
+        }
+    ]
+}

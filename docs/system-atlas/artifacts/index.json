@@ -1,0 +1,15 @@
+{
+  "lastUpdated": "2025-12-31",
+  "policy": {
+    "latestOnly": "_latest/<topic>/",
+    "historyMax": 10
+  },
+  "topics": [
+    "billing",
+    "frontend-reality",
+    "golden-flow",
+    "medical",
+    "v10-cutover"
+  ],
+  "historyCount": 0
+}

@@ -1,0 +1,237 @@
+/* ============================================
+   OverlaySelectField — Jeton Solid Sheet Style
+   ============================================
+   
+   AUDIT:
+   - Reflow: NO (uses Radix Portal)
+   - Portal: YES
+   - Motion: 280ms open, 220ms close (height reveal)
+   - Style: SOLID OPAQUE (no transparency, no blur)
+   - Direction: Dropdown (opens DOWN)
+*/
+
+/* ============================================
+   Jeton-Inspired Color Tokens
+   ============================================
+   NO rgba backgrounds, NO backdrop-filter blur
+*/
+:root {
+    /* Core palette */
+    --jeton-accent: #F73B20;
+    --jeton-ink900: #18191A;
+    --jeton-ember900: #360802;
+    --jeton-white: #FFFFFF;
+    --jeton-offwhite: #FFF6F1;
+    --jeton-muted: #FFE6DC;
+
+    /* Sheet surfaces (SOLID opaque) */
+    --sheet-solid: #E86B5A;
+    --sheet-solid-hover: #F07B4B;
+}
+
+/* Row container */
+.overlay-select-row {
+    display: grid;
+    grid-template-columns: 1fr var(--control-w, 340px);
+    gap: 16px;
+    align-items: center;
+    min-height: var(--row-min-h, 56px);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.overlay-select-row:last-child {
+    border-bottom: none;
+}
+
+/* Label column */
+.overlay-select-label-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.overlay-select-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--jeton-white);
+}
+
+.overlay-select-helper {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
+}
+
+/* Control column */
+.overlay-select-control-col {
+    position: relative;
+    width: 100%;
+}
+
+/* Trigger button — SOLID surface */
+.overlay-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--jeton-white);
+    background: var(--sheet-solid);
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.overlay-select-trigger:hover:not(:disabled) {
+    background: var(--sheet-solid-hover);
+}
+
+.overlay-select-trigger[data-state="open"] {
+    border-radius: 18px 18px 0 0;
+}
+
+.overlay-select-trigger:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.overlay-select-trigger:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--jeton-accent), 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.overlay-select-value {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.overlay-select-chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--jeton-offwhite);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.overlay-select-trigger[data-state="open"] .overlay-select-chevron {
+    transform: rotate(180deg);
+}
+
+/* Panel — SOLID surface, same as trigger */
+.overlay-select-panel {
+    width: var(--radix-popover-trigger-width, 340px);
+    max-height: 280px;
+    display: flex;
+    flex-direction: column;
+    background: var(--sheet-solid);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    z-index: 100;
+    /* NO backdrop-filter, NO border */
+}
+
+/* Search input */
+.overlay-select-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.overlay-select-search-icon {
+    flex-shrink: 0;
+    color: var(--jeton-offwhite);
+}
+
+.overlay-select-search-input {
+    flex: 1;
+    height: 24px;
+    padding: 0;
+    font-size: 14px;
+    color: var(--jeton-white);
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.overlay-select-search-input::placeholder {
+    color: var(--jeton-muted);
+}
+
+/* Options list */
+.overlay-select-list {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 220px;
+}
+
+.overlay-select-empty {
+    padding: 20px 14px;
+    font-size: 13px;
+    color: var(--jeton-muted);
+    text-align: center;
+}
+
+/* Option row */
+.overlay-select-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--jeton-offwhite);
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.1s ease, color 0.1s ease;
+}
+
+.overlay-select-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--jeton-white);
+}
+
+.overlay-select-option:focus-visible {
+    outline: none;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.overlay-select-option.is-selected {
+    color: var(--jeton-white);
+}
+
+.overlay-select-option-label {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.overlay-select-option-check {
+    flex-shrink: 0;
+    color: var(--jeton-accent);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .overlay-select-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}

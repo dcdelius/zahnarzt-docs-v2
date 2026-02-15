@@ -1,0 +1,222 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "version": "1.0.0",
+    "treatment": "fuellung",
+    "description": "G117: Minimal askbacks für Composite-Füllungen",
+    "askbacks": [
+        {
+            "id": "insurance_type",
+            "medicalReason": "Kassenart bestimmt gesamten Abrechnungsweg",
+            "question": "Welche Versicherungsart hat der Patient?",
+            "questionShort": "Versicherung?",
+            "type": "single",
+            "options": [
+                {
+                    "id": "gkv",
+                    "label": "GKV (gesetzlich)",
+                    "dataValue": "GKV"
+                },
+                {
+                    "id": "pkv",
+                    "label": "PKV (privat)",
+                    "dataValue": "PKV"
+                }
+            ],
+            "trigger": {
+                "fact": "insuranceType",
+                "condition": "undefined"
+            },
+            "blocking": true,
+            "unansweredBehavior": "BLOCK_OUTPUT",
+            "chipEffect": {
+                "GKV": {
+                    "sets": {
+                        "billingPath": "BEMA"
+                    }
+                },
+                "PKV": {
+                    "sets": {
+                        "billingPath": "GOZ"
+                    }
+                }
+            }
+        },
+        {
+            "id": "mkv_confirmed",
+            "medicalReason": "Ohne MKV darf GOZ nicht an GKV-Patient berechnet werden",
+            "question": "Liegt eine schriftliche Mehrkostenvereinbarung vor?",
+            "questionShort": "MKV vorhanden?",
+            "type": "single",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja, MKV liegt vor",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein, keine MKV",
+                    "dataValue": false
+                }
+            ],
+            "trigger": {
+                "facts": [
+                    "insuranceType === 'GKV'",
+                    "toothRegion === 'side'",
+                    "materialMentioned === 'komposit'",
+                    "hasMKV === undefined"
+                ]
+            },
+            "blocking": true,
+            "unansweredBehavior": "BLOCK_OUTPUT",
+            "chipEffect": {
+                "true": {
+                    "adds": [
+                        "mkv_valid"
+                    ],
+                    "enables": "GOZ_DIFF_BILLING"
+                },
+                "false": {
+                    "error": "Seitenzahn-Komposit ohne MKV nicht möglich"
+                }
+            }
+        },
+        {
+            "id": "adhesive_technique",
+            "medicalReason": "GOZ 2197 nur bei echter Adhäsivtechnik (Mehrschicht)",
+            "question": "Wurde Adhäsivtechnik (Mehrschicht) angewendet?",
+            "questionShort": "Adhäsivtechnik?",
+            "type": "single",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja, Mehrschichttechnik",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein, Bulk-Fill o.ä.",
+                    "dataValue": false
+                }
+            ],
+            "trigger": {
+                "facts": [
+                    "hasMKV === true",
+                    "adhesiveMentioned !== true"
+                ]
+            },
+            "blocking": true,
+            "unansweredBehavior": "BLOCK_OUTPUT",
+            "chipEffect": {
+                "true": {
+                    "adds": [
+                        "mehrschicht",
+                        "adhesive"
+                    ],
+                    "billing": [
+                        "GOZ_2197"
+                    ]
+                },
+                "false": {
+                    "adds": [
+                        "komposit_basic"
+                    ],
+                    "removes": [
+                        "GOZ_2197"
+                    ],
+                    "warn": "Keine GOZ 2197 ohne Mehrschicht"
+                }
+            }
+        },
+        {
+            "id": "capping_performed",
+            "medicalReason": "BEMA 25 / Überkappung bei pulpanaher Karies dokumentieren",
+            "question": "Wurde eine Überkappung durchgeführt?",
+            "questionShort": "Überkappung?",
+            "type": "single",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein",
+                    "dataValue": false
+                }
+            ],
+            "trigger": {
+                "facts": [
+                    "cariesDepth === 'profunda'",
+                    "cappingPerformed === undefined"
+                ]
+            },
+            "blocking": true,
+            "unansweredBehavior": "BLOCK_OUTPUT",
+            "chipEffect": {
+                "true": {
+                    "adds": [
+                        "cp"
+                    ],
+                    "billing": [
+                        "BEMA_25"
+                    ]
+                },
+                "false": {
+                    "adds": [
+                        "cp_not_required"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "kofferdam_used",
+            "medicalReason": "BEMA 12 nur abrechenbar wenn Kofferdam tatsächlich angelegt",
+            "question": "Wurde Kofferdam angelegt?",
+            "questionShort": "Kofferdam?",
+            "type": "single",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Ja",
+                    "dataValue": true
+                },
+                {
+                    "id": "no",
+                    "label": "Nein, relative Trockenlegung",
+                    "dataValue": false
+                }
+            ],
+            "trigger": {
+                "facts": [
+                    "kofferdamMentioned === true",
+                    "kofferdamUsed === undefined"
+                ]
+            },
+            "blocking": false,
+            "unansweredBehavior": "DEFAULT_FALSE",
+            "chipEffect": {
+                "true": {
+                    "adds": [
+                        "kofferdam"
+                    ],
+                    "billing": [
+                        "BEMA_12"
+                    ]
+                },
+                "false": {
+                    "adds": [
+                        "rel_trocken"
+                    ]
+                }
+            }
+        }
+    ],
+    "summary": {
+        "totalAskbacks": 5,
+        "blocking": 4,
+        "optional": 1,
+        "coverage": "GKV ohne MKV, GKV mit MKV, PKV"
+    }
+}

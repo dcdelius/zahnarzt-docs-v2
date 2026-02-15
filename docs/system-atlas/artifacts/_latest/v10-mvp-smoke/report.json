@@ -1,0 +1,135 @@
+{
+  "generated": "2026-02-15T08:23:29.877Z",
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "gkv_1fl",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "gkv_2fl",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "gkv_multi",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "gkv_koff",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "gkv_giz",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "gkv_bulk",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "pkv_std",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "pkv_koff",
+      "state": "output",
+      "passed": true,
+      "textLength": 222,
+      "billingCount": 2,
+      "instanceCount": 1,
+      "chips": [
+        "kofferdam",
+        "fuellung_grundleistung",
+        "fuellung_material_komposit",
+        "mehrschicht"
+      ],
+      "errors": []
+    },
+    {
+      "id": "pkv_multi",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "mkv_mehr",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "mkv_adh",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    },
+    {
+      "id": "endo_1k",
+      "state": "questions",
+      "passed": true,
+      "textLength": 0,
+      "billingCount": 0,
+      "instanceCount": 0,
+      "chips": [],
+      "errors": []
+    }
+  ]
+}

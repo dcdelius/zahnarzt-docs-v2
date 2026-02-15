@@ -1,0 +1,167 @@
+{
+    "_meta": {
+        "description": "Real-life dictation set with extra clinical details (LLM+Firestore live)",
+        "version": "1.0.0",
+        "created": "2026-02-13"
+    },
+    "cases": [
+        {
+            "id": "r01",
+            "title": "GKV Füllung MOD + Okklusionshinweis",
+            "treatmentId": "fuellung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 mod Komposit. Kofferdam. Leitungsanästhesie. Okklusion eingeschliffen, Politur, Bisskontrolle geplant.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        },
+        {
+            "id": "r02",
+            "title": "GKV Füllung 1fl + Matrize/Keil",
+            "treatmentId": "fuellung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 24 o Komposit. Kofferdam. Infiltrationsanästhesie. Matrize und Keil, Kontaktpunkt geprüft.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        },
+        {
+            "id": "r03",
+            "title": "GKV profunda + indirekte Überkappung",
+            "treatmentId": "fuellung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 37 o Komposit. Karies profunda. Indirekte Überkappung mit Calciumhydroxid. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        },
+        {
+            "id": "r04",
+            "title": "MKV Füllung + Mehrkostenbegründung",
+            "treatmentId": "fuellung",
+            "insuranceType": "MKV",
+            "dictation": "Füllung 16 od Komposit. Mehrkostenvereinbarung unterschrieben, Begründung: ästhetischer Anspruch. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ]
+            }
+        },
+        {
+            "id": "r05",
+            "title": "PKV Füllung + Mehrschichttechnik",
+            "treatmentId": "fuellung",
+            "insuranceType": "PKV",
+            "dictation": "Füllung 45 modb Komposit. Kofferdam. Infiltrationsanästhesie. Mehrschichttechnik, lichthärtend.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "BEMA_"
+                ]
+            }
+        },
+        {
+            "id": "r06",
+            "title": "GKV Endo mit WL + Spülung + Einlage",
+            "treatmentId": "endo",
+            "insuranceType": "GKV",
+            "dictation": "Endo 46: Trepanation. Arbeitslänge elektronisch mit Apex-Locator, Röntgenkontrolle. Aufbereitung maschinell. Spülung NaOCl und EDTA. Medikamentöse Einlage Calciumhydroxid. Provisorischer Verschluss mit Cavit. Kofferdam. Leitungsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        },
+        {
+            "id": "r07",
+            "title": "PKV Endo warm vertikal",
+            "treatmentId": "endo",
+            "insuranceType": "PKV",
+            "dictation": "Endo 11: Trepanation. Arbeitslänge elektronisch. Aufbereitung rotierend. Spülung NaOCl. Wurzelfüllung warm vertikal mit Sealer. Kofferdam. Infiltrationsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "BEMA_"
+                ]
+            }
+        },
+        {
+            "id": "r08",
+            "title": "GKV Endo + Einlage + Provisorium",
+            "treatmentId": "endo",
+            "insuranceType": "GKV",
+            "dictation": "Endo 36: Zugang. Arbeitslänge röntgenologisch. Spülung NaOCl. Medikamentöse Einlage Ledermix. Provisorischer Verschluss. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        },
+        {
+            "id": "r09",
+            "title": "GKV Endo kalt lateral",
+            "treatmentId": "endo",
+            "insuranceType": "GKV",
+            "dictation": "Endo 27: Trepanation. Arbeitslänge elektronisch. Aufbereitung manuell. Spülung CHX. Wurzelfüllung kalt lateral. Kofferdam. Leitungsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        },
+        {
+            "id": "r10",
+            "title": "GKV Multi-Tooth + Bisskontrolle",
+            "treatmentId": "fuellung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 od Komposit Kofferdam; Füllung 14 o Kofferdam. Bisskontrolle geplant.",
+            "expect": {
+                "phase": "output",
+                "perInstanceCount": 2,
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        }
+    ]
+}

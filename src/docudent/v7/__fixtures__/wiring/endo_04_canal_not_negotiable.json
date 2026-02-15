@@ -1,0 +1,32 @@
+{
+    "id": "endo_04_canal_not_negotiable",
+    "description": "Endo Kanal nicht gangbar — Limitation dokumentieren",
+    "input": {
+        "treatmentId": "endo",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Wurzelbehandlung Zahn 16 DB Kanal obliteriert nicht sondierbar MB und P aufbereitet bis ISO 30",
+        "answers": {
+            "endo_step": "t2_aufbereitung"
+        }
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=endo",
+            "questions:engine=endo"
+        ],
+        "traceExcludes": [
+            "questions:engine=fuellung"
+        ],
+        "noQuestionIdRegex": "(fuellung|aesthetik|mehrschicht)",
+        "outputMustContain": [
+            "16"
+        ],
+        "billingMustNotContain": [
+            "BEMA_13a"
+        ]
+    },
+    "minimalAnswers": {
+        "endo_step": "t2_aufbereitung"
+    }
+}

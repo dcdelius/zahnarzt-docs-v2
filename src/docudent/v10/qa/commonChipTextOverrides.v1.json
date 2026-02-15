@@ -1,0 +1,82 @@
+{
+    "_meta": {
+        "version": "v1",
+        "description": "Common chip text overrides for COMMON_BILLING_ONLY chips",
+        "lastUpdated": "2025-12-26"
+    },
+    "kofferdam": {
+        "baseline": {
+            "textSnippets": {
+                "kurz": "Kofferdam angelegt",
+                "mittel": "Zur Trockenlegung wurde Kofferdam angelegt.",
+                "lang": "Zur Gewährleistung einer optimalen Trockenlegung und Kontaminationsschutz wurde Kofferdam am behandelten Zahn angelegt."
+            }
+        },
+        "overrides": {
+            "fuellung": {
+                "textSnippets": {
+                    "kurz": "Kofferdam",
+                    "mittel": "Kofferdam zur Trockenlegung",
+                    "lang": "Kofferdam zur Trockenlegung während der Füllungstherapie angelegt."
+                }
+            },
+            "endo": {
+                "textSnippets": {
+                    "kurz": "Kofferdam",
+                    "mittel": "Kofferdam für WKB",
+                    "lang": "Kofferdam angelegt zur aseptischen Durchführung der Wurzelkanalbehandlung."
+                }
+            }
+        }
+    },
+    "la_infiltr": {
+        "baseline": {
+            "textSnippets": {
+                "kurz": "Infiltrationsanästhesie",
+                "mittel": "Lokalanästhesie mittels Infiltration",
+                "lang": "Schmerzausschaltung durch Infiltrationsanästhesie im Behandlungsgebiet."
+            }
+        },
+        "overrides": {
+            "fuellung": {
+                "textSnippets": {
+                    "kurz": "LA Infiltration",
+                    "mittel": "Infiltrationsanästhesie für Füllung",
+                    "lang": "Vor der Füllungstherapie wurde eine Infiltrationsanästhesie im Behandlungsgebiet durchgeführt."
+                }
+            },
+            "endo": {
+                "textSnippets": {
+                    "kurz": "LA Infiltration",
+                    "mittel": "Infiltrationsanästhesie für Endo",
+                    "lang": "Vor der Wurzelkanalbehandlung wurde eine Infiltrationsanästhesie durchgeführt."
+                }
+            }
+        }
+    },
+    "la_leitung": {
+        "baseline": {
+            "textSnippets": {
+                "kurz": "Leitungsanästhesie",
+                "mittel": "Lokalanästhesie mittels Leitungsblock",
+                "lang": "Schmerzausschaltung durch Leitungsanästhesie des zuständigen Nervs."
+            }
+        },
+        "overrides": {
+            "fuellung": {
+                "textSnippets": {
+                    "kurz": "LA Leitung",
+                    "mittel": "Leitungsanästhesie für Füllung",
+                    "lang": "Vor der Füllungstherapie wurde eine Leitungsanästhesie durchgeführt."
+                }
+            },
+            "endo": {
+                "textSnippets": {
+                    "kurz": "LA Leitung",
+                    "mittel": "Leitungsanästhesie für Endo",
+                    "lang": "Vor der Wurzelkanalbehandlung wurde eine Leitungsanästhesie des N. alveolaris inferior durchgeführt."
+                }
+            }
+        }
+    }
+}

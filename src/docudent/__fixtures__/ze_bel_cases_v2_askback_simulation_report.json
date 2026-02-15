@@ -1,0 +1,336 @@
+{
+    "meta": {
+        "timestamp": "2025-12-14T13:24:06.924Z",
+        "casesProcessed": 20
+    },
+    "summary": {
+        "inconclusiveBefore": 0,
+        "inconclusiveAfter": 0,
+        "reduction": 0,
+        "templatesTriggered": 17,
+        "writebacksApplied": 17
+    },
+    "perCase": [
+        {
+            "caseId": "CASE_01",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_02",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_03",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_04",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_05",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_06",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS",
+                "ASK_MULTI_BK_TOOTH_MAPPING"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                },
+                {
+                    "templateId": "ASK_MULTI_BK_TOOTH_MAPPING",
+                    "field": "fzToTeethMap",
+                    "value": {
+                        "FZ_1.1": [
+                            "34",
+                            "36"
+                        ],
+                        "FZ_2.1": [
+                            "35"
+                        ],
+                        "FZ_3.1": [
+                            "37",
+                            "38",
+                            "47",
+                            "48"
+                        ]
+                    },
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_07",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_08",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_09",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_10",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_11",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_12",
+            "triggeredTemplates": [
+                "ASK_BK6_MULTI_FZ_DOCUMENTED",
+                "ASK_BONUS_STATUS",
+                "ASK_UNTERFUETTERUNG_TYPE"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BK6_MULTI_FZ_DOCUMENTED",
+                    "field": "bk6ComboStatus",
+                    "value": "yes_documented",
+                    "action": "set"
+                },
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                },
+                {
+                    "templateId": "ASK_UNTERFUETTERUNG_TYPE",
+                    "field": "unterfuetterungType",
+                    "value": "indirect_lab",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_13",
+            "triggeredTemplates": [],
+            "writebacksApplied": [],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_14",
+            "triggeredTemplates": [],
+            "writebacksApplied": [],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_15",
+            "triggeredTemplates": [],
+            "writebacksApplied": [],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_16",
+            "triggeredTemplates": [],
+            "writebacksApplied": [],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_17",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_18",
+            "triggeredTemplates": [
+                "ASK_BONUS_STATUS"
+            ],
+            "writebacksApplied": [
+                {
+                    "templateId": "ASK_BONUS_STATUS",
+                    "field": "bonusStatus",
+                    "value": "none",
+                    "action": "set"
+                }
+            ],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_19",
+            "triggeredTemplates": [],
+            "writebacksApplied": [],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        },
+        {
+            "caseId": "CASE_20",
+            "triggeredTemplates": [],
+            "writebacksApplied": [],
+            "inconclusiveBefore": 0,
+            "inconclusiveAfter": 0,
+            "notes": []
+        }
+    ]
+}

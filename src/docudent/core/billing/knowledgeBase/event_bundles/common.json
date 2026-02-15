@@ -1,0 +1,88 @@
+{
+  "_meta": {
+    "id": "common",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "contract.standard_chips",
+      "chipsFromContractKey": "standardChips"
+    },
+    {
+      "id": "contract.mkv.insurance",
+      "chipIds": ["insurance_gkv_mkv"],
+      "textRefIds": ["insurance_gkv_mkv"]
+    },
+    {
+      "id": "contract.mkv.justification",
+      "chipIds": ["mkv_begruendung"],
+      "textRefIds": ["mkv_begruendung"]
+    },
+    {
+      "id": "common.disclosure.postop_standard",
+      "disclosureIds": ["postop_standard"]
+    },
+    {
+      "id": "common.anesthesia.surface",
+      "chipIds": ["oberflaeche_la"],
+      "textRefIds": ["oberflaeche_la"],
+      "billingRefIds": ["oberflaeche_la"]
+    },
+    {
+      "id": "common.anesthesia.infiltration",
+      "chipIds": ["la_infiltr"],
+      "textRefIds": ["la_infiltr"],
+      "billingRefIds": ["la_infiltr"]
+    },
+    {
+      "id": "common.anesthesia.generic",
+      "chipIds": ["la_generic"],
+      "textRefIds": ["la_generic"]
+    },
+    {
+      "id": "common.anesthesia.block",
+      "chipIds": ["la_leitung"],
+      "textRefIds": ["la_leitung"],
+      "billingRefIds": ["la_leitung"]
+    },
+    {
+      "id": "common.anesthesia.ila",
+      "chipIds": ["la_ila"],
+      "textRefIds": ["la_ila"]
+    },
+    {
+      "id": "common.askback.la_type"
+    },
+    {
+      "id": "common.isolation.kofferdam",
+      "chipIds": ["kofferdam"],
+      "textRefIds": ["kofferdam"],
+      "billingRefIds": ["kofferdam"]
+    },
+    {
+      "id": "common.isolation.relative",
+      "chipIds": ["rel_trocken"],
+      "textRefIds": ["rel_trocken"]
+    },
+    {
+      "id": "common.vitality.pos",
+      "chipIds": ["vipr_pos"],
+      "textRefIds": ["vipr_pos"]
+    },
+    {
+      "id": "common.vitality.neg",
+      "chipIds": ["vipr_neg"],
+      "textRefIds": ["vipr_neg"]
+    },
+    {
+      "id": "common.percussion.pos",
+      "chipIds": ["perk_pos"],
+      "textRefIds": ["perk_pos"]
+    },
+    {
+      "id": "common.percussion.neg",
+      "chipIds": ["perk_neg"],
+      "textRefIds": ["perk_neg"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+    "gigaprompt": "G82",
+    "milestone": "m82",
+    "generated_at": "2025-12-30T08:28:00Z",
+    "status": "PENDING",
+    "summary": "Legacy gates need migration or quarantine",
+    "scope": [
+        "gate3-answer-effectiveness-endo",
+        "gate4-pipeline-snapshot-endo",
+        "gate5-import-paths",
+        "gate7-stage-emission"
+    ],
+    "target": "4 failing -> 0 (migrate or quarantine)"
+}

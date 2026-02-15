@@ -1,0 +1,755 @@
+{
+    "_meta": {
+        "description": "BEMA-F Regression Suite - 50 cases (30 MKV)",
+        "version": "1.0.0",
+        "created": "2026-01-01",
+        "purpose": "Verify correct F-code (BEMA_13/13b/13c/13d) and GOZ addon mapping"
+    },
+    "cases": [
+        {
+            "id": "gkv_1fl_01",
+            "dictation": "Füllung 36 okklusal",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_1fl_02",
+            "dictation": "Füllung 46 mesial",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "m"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_1fl_03",
+            "dictation": "Füllung 16 distal",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_1fl_04",
+            "dictation": "Füllung 26 bukkal",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_1fl_05",
+            "dictation": "Füllung 14 lingual",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "l"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_2fl_01",
+            "dictation": "Füllung 36 mo",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "m",
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_2fl_02",
+            "dictation": "Füllung 46 od",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_2fl_03",
+            "dictation": "Füllung 16 mb",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "m",
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_3fl_01",
+            "dictation": "Füllung 36 mod",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_3fl_02",
+            "dictation": "Füllung 46 mob",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "m",
+                "o",
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_4fl_01",
+            "dictation": "Füllung 36 modb",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "gkv_4fl_02",
+            "dictation": "Füllung 46 modbl",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b",
+                "l"
+            ],
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_1fl_01",
+            "dictation": "Füllung 36 okklusal",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "o"
+            ],
+            "expectedBase": [
+                "GOZ_2060"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_1fl_02",
+            "dictation": "Füllung 46 distal",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "d"
+            ],
+            "expectedBase": [
+                "GOZ_2060"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_2fl_01",
+            "dictation": "Füllung 36 mo",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "m",
+                "o"
+            ],
+            "expectedBase": [
+                "GOZ_2080"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_2fl_02",
+            "dictation": "Füllung 46 od",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "GOZ_2080"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_3fl_01",
+            "dictation": "Füllung 36 mod",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "GOZ_2100"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_4fl_01",
+            "dictation": "Füllung 36 modb",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b"
+            ],
+            "expectedBase": [
+                "GOZ_2120"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_4fl_02",
+            "dictation": "Füllung 46 modbl",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b",
+                "l"
+            ],
+            "expectedBase": [
+                "GOZ_2120"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_1fl_03",
+            "dictation": "Füllung 14 palatinal",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "l"
+            ],
+            "expectedBase": [
+                "GOZ_2060"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "mkv_1fl_01",
+            "dictation": "Füllung 36 o Komposit",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [
+                "GOZ_2060"
+            ]
+        },
+        {
+            "id": "mkv_1fl_02",
+            "dictation": "Füllung 46 m Adhäsiv",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [
+                "GOZ_2060"
+            ]
+        },
+        {
+            "id": "mkv_1fl_03",
+            "dictation": "Füllung 16 d Schichttechnik",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [
+                "GOZ_2060"
+            ]
+        },
+        {
+            "id": "mkv_1fl_04",
+            "dictation": "Füllung 26 b Mehrkosten",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [
+                "GOZ_2060"
+            ]
+        },
+        {
+            "id": "mkv_1fl_05",
+            "dictation": "Füllung 14 l Komposit",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "l"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [
+                "GOZ_2060"
+            ]
+        },
+        {
+            "id": "mkv_1fl_no_addon",
+            "dictation": "Füllung 36 o",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": false,
+            "surfaces": [
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "mkv_2fl_01",
+            "dictation": "Füllung 36 mo Komposit",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": [
+                "GOZ_2080"
+            ]
+        },
+        {
+            "id": "mkv_2fl_02",
+            "dictation": "Füllung 46 od Adhäsiv",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": [
+                "GOZ_2080"
+            ]
+        },
+        {
+            "id": "mkv_2fl_03",
+            "dictation": "Füllung 16 mb Mehrkosten",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": [
+                "GOZ_2080"
+            ]
+        },
+        {
+            "id": "mkv_2fl_04",
+            "dictation": "Füllung 26 dl Schichttechnik",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "d",
+                "l"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": [
+                "GOZ_2080"
+            ]
+        },
+        {
+            "id": "mkv_2fl_no_addon",
+            "dictation": "Füllung 36 mo",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": false,
+            "surfaces": [
+                "m",
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "mkv_3fl_01",
+            "dictation": "Füllung 36 mod Komposit",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ]
+        },
+        {
+            "id": "mkv_3fl_02",
+            "dictation": "Füllung 46 mob Adhäsiv",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ]
+        },
+        {
+            "id": "mkv_3fl_03",
+            "dictation": "Füllung 16 dob Mehrkosten",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "d",
+                "o",
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ]
+        },
+        {
+            "id": "mkv_3fl_04",
+            "dictation": "Füllung 26 mol Schichttechnik",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "l"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ]
+        },
+        {
+            "id": "mkv_3fl_no_addon",
+            "dictation": "Füllung 36 mod",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": false,
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "mkv_4fl_01",
+            "dictation": "Füllung 36 modb Komposit",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": [
+                "GOZ_2120"
+            ]
+        },
+        {
+            "id": "mkv_4fl_02",
+            "dictation": "Füllung 46 modbl Adhäsiv",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b",
+                "l"
+            ],
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": [
+                "GOZ_2120"
+            ]
+        },
+        {
+            "id": "mkv_4fl_03",
+            "dictation": "Füllung 16 mobl Mehrkosten",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "b",
+                "l"
+            ],
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": [
+                "GOZ_2120"
+            ]
+        },
+        {
+            "id": "mkv_4fl_04",
+            "dictation": "Füllung 26 odkl Schichttechnik",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "o",
+                "d",
+                "b",
+                "l"
+            ],
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": [
+                "GOZ_2120"
+            ]
+        },
+        {
+            "id": "mkv_4fl_no_addon",
+            "dictation": "Füllung 36 modb",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": false,
+            "surfaces": [
+                "m",
+                "o",
+                "d",
+                "b"
+            ],
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "mkv_5fl_01",
+            "dictation": "Füllung 36 mobld Komposit",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "b",
+                "l",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13d"
+            ],
+            "expectedAddon": [
+                "GOZ_2120"
+            ]
+        },
+        {
+            "id": "mkv_adhäsiv_01",
+            "dictation": "Füllung 14 mod Adhäsivtechnik",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ]
+        },
+        {
+            "id": "mkv_schicht_01",
+            "dictation": "Füllung 24 od Schichttechnik",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": [
+                "GOZ_2080"
+            ]
+        },
+        {
+            "id": "mkv_explicit_01",
+            "dictation": "Füllung 34 o Mehrkosten vereinbart",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": [
+                "GOZ_2060"
+            ]
+        },
+        {
+            "id": "mkv_explicit_02",
+            "dictation": "Füllung 44 mo Mehrkostenvereinbarung",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13b"
+            ],
+            "expectedAddon": [
+                "GOZ_2080"
+            ]
+        },
+        {
+            "id": "mkv_komposit_adhesiv",
+            "dictation": "Füllung 15 mod Komposit Adhäsiv",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ]
+        },
+        {
+            "id": "gkv_profunda_01",
+            "dictation": "Füllung 36 o Caries profunda",
+            "insuranceType": "GKV",
+            "surfaces": [
+                "o"
+            ],
+            "expectedBase": [
+                "BEMA_13"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "pkv_profunda_01",
+            "dictation": "Füllung 46 od Caries profunda",
+            "insuranceType": "PKV",
+            "surfaces": [
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "GOZ_2080"
+            ],
+            "expectedAddon": []
+        },
+        {
+            "id": "mkv_profunda_01",
+            "dictation": "Füllung 36 mod Caries profunda Komposit",
+            "insuranceType": "MKV",
+            "mehrkostenMentioned": true,
+            "surfaces": [
+                "m",
+                "o",
+                "d"
+            ],
+            "expectedBase": [
+                "BEMA_13c"
+            ],
+            "expectedAddon": [
+                "GOZ_2100"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "gigaprompt": "G62",
+    "milestone": "m62",
+    "generated_at": "2025-12-30T07:45:00Z",
+    "status": "PLANNING",
+    "summary": "BillingRef closure needs re-audit and catalog fixes",
+    "context": {
+        "missing_in_catalog": 74,
+        "closure_gate_mode": "REPORT (10 missing refs)"
+    },
+    "plan": {
+        "step1": "Re-run gate-m82-billingref-closure to get fresh missing list",
+        "step2": "Classify missing: ADD/ALIAS/REMOVE",
+        "step3": "Fix consumers or add catalog entries",
+        "step4": "Reduce allowlist, document exceptions"
+    }
+}

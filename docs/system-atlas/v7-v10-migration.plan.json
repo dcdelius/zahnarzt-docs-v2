@@ -1,0 +1,158 @@
+{
+    "generated_at": "2025-12-29T20:22:00Z",
+    "version": "v1",
+    "runtime_v7_modules": [
+        {
+            "path": "src/docudent/v7/hooks/useV7Pipeline.ts",
+            "purpose": "Pipeline hook",
+            "importers": [
+                "v10/pages/DocudentV10Page.tsx",
+                "v7/pages/DocudentV7Page.tsx"
+            ]
+        },
+        {
+            "path": "src/docudent/v7/pipeline/index.ts",
+            "purpose": "Pipeline shim",
+            "importers": [
+                "v7/hooks/useV7Pipeline.ts"
+            ]
+        },
+        {
+            "path": "src/docudent/v7/medical/askbacks/compileAskbacksToQuestions.ts",
+            "purpose": "Askback compiler",
+            "importers": [
+                "v10/pipeline/runV10.ts"
+            ]
+        },
+        {
+            "path": "src/docudent/v7/output/renderFromKbChips.ts",
+            "purpose": "Renderer",
+            "importers": [
+                "v10/pipeline/runV10.ts"
+            ]
+        },
+        {
+            "path": "src/docudent/v7/ui/normalizePipelineResultForUi.ts",
+            "purpose": "UI normalizer",
+            "importers": [
+                "v7/hooks/useV7Pipeline.ts"
+            ]
+        },
+        {
+            "path": "src/docudent/v7/components/QuestionsFlowV2.tsx",
+            "purpose": "Questions UI",
+            "importers": [
+                "v10/pages/DocudentV10Page.tsx"
+            ]
+        },
+        {
+            "path": "src/docudent/v7/components/OutputFlow.tsx",
+            "purpose": "Output UI",
+            "importers": [
+                "v10/pages/DocudentV10Page.tsx"
+            ]
+        }
+    ],
+    "target_structure": {
+        "v10/hooks/useV10Pipeline.ts": "Replaces useV7Pipeline",
+        "v10/pipeline/runV10.ts": "Keep as-is (already V10)",
+        "v10/medical/askbacks/compileAskbacksToQuestions.ts": "Move from v7",
+        "v10/output/renderer/renderFromKbChips.ts": "Move from v7",
+        "v10/ui/normalizePipelineResultForUi.ts": "Move from v7",
+        "v10/components/QuestionsFlowV10.tsx": "Replace v7 component",
+        "v10/components/OutputFlowV10.tsx": "Replace v7 component"
+    },
+    "steps": [
+        {
+            "id": "S1",
+            "name": "Create useV10Pipeline shell",
+            "description": "Create v10 hook that delegates to v7 hook",
+            "files": [
+                {
+                    "action": "CREATE",
+                    "path": "src/docudent/v10/hooks/useV10Pipeline.ts"
+                }
+            ],
+            "gate": "None needed - pure delegation",
+            "rollback": "Delete new file"
+        },
+        {
+            "id": "S2",
+            "name": "Move compileAskbacksToQuestions",
+            "description": "Duplicate in v10, re-export from v7",
+            "files": [
+                {
+                    "action": "CREATE",
+                    "path": "src/docudent/v10/medical/askbacks/compileAskbacksToQuestions.ts"
+                },
+                {
+                    "action": "MODIFY",
+                    "path": "src/docudent/v7/medical/askbacks/compileAskbacksToQuestions.ts",
+                    "change": "re-export from v10"
+                }
+            ],
+            "gate": "gate-v10-askback-nonredundancy.test.ts PASS",
+            "rollback": "git checkout"
+        },
+        {
+            "id": "S3",
+            "name": "Move renderFromKbChips",
+            "description": "Duplicate in v10, re-export from v7",
+            "files": [
+                {
+                    "action": "CREATE",
+                    "path": "src/docudent/v10/output/renderer/renderFromKbChips.ts"
+                },
+                {
+                    "action": "MODIFY",
+                    "path": "src/docudent/v7/output/renderFromKbChips.ts",
+                    "change": "re-export from v10"
+                }
+            ],
+            "gate": "Parity R1+R2 PASS",
+            "rollback": "git checkout"
+        },
+        {
+            "id": "S4",
+            "name": "Switch importers to V10 paths",
+            "description": "Update runV10.ts to import from v10 paths",
+            "files": [
+                {
+                    "action": "MODIFY",
+                    "path": "src/docudent/v10/pipeline/runV10.ts"
+                }
+            ],
+            "gate": "npx vitest run PASS",
+            "rollback": "git checkout"
+        },
+        {
+            "id": "S5",
+            "name": "Delete V7 originals",
+            "description": "Remove v7 re-export files after cutover verified",
+            "files": [
+                {
+                    "action": "DELETE",
+                    "path": "src/docudent/v7/medical/askbacks/compileAskbacksToQuestions.ts"
+                },
+                {
+                    "action": "DELETE",
+                    "path": "src/docudent/v7/output/renderFromKbChips.ts"
+                }
+            ],
+            "gate": "gate-no-runtime-imports-from-v7-shim.test.ts PASS",
+            "rollback": "git checkout"
+        }
+    ],
+    "gates": [
+        {
+            "name": "gate-no-runtime-imports-from-v7-shim.test.ts",
+            "purpose": "Ensure v10 does not import v7 internals",
+            "status": "TODO"
+        },
+        {
+            "name": "gate-v10-only-renderer.test.ts",
+            "purpose": "Renderer must be imported from v10",
+            "status": "TODO"
+        }
+    ]
+}

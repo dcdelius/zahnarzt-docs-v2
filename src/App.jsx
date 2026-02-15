@@ -1,0 +1,173 @@
+import React, { Suspense, lazy, useState } from "react";
+import { FiMail, FiLock } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase";
+import { useAuth } from "./contexts/AuthContext";
+import Layout from './components/Layout';
+import { Toaster } from 'sonner';
+
+// ═══════════════════════════════════════════════════════════════
+// LAZY IMPORTS - Active Tools Only
+// ═══════════════════════════════════════════════════════════════
+const HomePage = lazy(() => import('./pages/HomePage'));
+const DocudentV5 = lazy(() => import('./docudent/v5/pages/DocudentV5Page'));
+// V6 REMOVED - B2 Delete Sprint (2025-12-29)
+const V7Router = lazy(() => import('./docudent/v7/app/V7Router').then(m => ({ default: m.V7Router })));
+const V8Router = lazy(() => import('./docudent/v8/app/V8Router').then(m => ({ default: m.V8Router })));
+const V10Router = lazy(() => import('./docudent/v10/app/V10Router').then(m => ({ default: m.V10Router })));
+const LandingPage = lazy(() => import('./docudent/v7/pages/LandingPage'));
+
+function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      setError("");
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error("Login failed:", error.message);
+      setError("Login fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.");
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+      <motion.h1
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+        className="text-white text-5xl tracking-[0.3em] font-bold mb-4 drop-shadow-xl"
+      >
+        DOCUDENT
+      </motion.h1>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.4 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+        className="w-[180px] h-[3px] bg-white mb-10 rounded-full"
+      />
+
+      <motion.div
+        initial={{ opacity: 0, x: 0 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -200 }}
+        transition={{ duration: 0.6 }}
+        className="backdrop-blur-md bg-white/50 rounded-2xl shadow-2xl p-8 w-full max-w-sm"
+      >
+        <h2 className="text-xl font-semibold text-center mb-1 text-gray-900">Login</h2>
+        <p className="text-sm text-center text-gray-600 mb-6">
+          Willkommen zurück! Bitte logge dich ein.
+        </p>
+
+        <div className="space-y-4">
+          <div className="relative">
+            <FiMail className="absolute top-3.5 left-3 text-gray-400" />
+            <input
+              type="email"
+              placeholder="E-Mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <div className="relative">
+            <FiLock className="absolute top-3.5 left-3 text-gray-400" />
+            <input
+              type="password"
+              placeholder="Passwort"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+        </div>
+
+        <button
+          onClick={handleLogin}
+          className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition"
+        >
+          Einloggen
+        </button>
+
+        {error && (
+          <p className="text-red-500 text-sm text-center mt-2">{error}</p>
+        )}
+      </motion.div>
+    </div>
+  );
+}
+
+function App() {
+  const { loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
+  const PageLoader = () => (
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+    </div>
+  );
+
+  return (
+    <div className="relative">
+      <Toaster position="bottom-right" expand={true} richColors />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route element={<Layout />}>
+            {/* ═══════════════════════════════════════════════════════════ */}
+            {/* CLEAN ROUTES - Only Docudent */}
+            {/* ═══════════════════════════════════════════════════════════ */}
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<HomePage />} />
+
+            <Route path="/docudent/v5" element={<DocudentV5 />} />
+
+            {/* V6 removed - redirect to V10 */}
+            <Route path="/docudent/v6" element={<Navigate to="/docudent/v10" replace />} />
+
+            {/* Docudent V7 - Pure Renderer (Reality Gate) */}
+            <Route path="/docudent/v7/*" element={<V7Router />} />
+
+            {/* Legacy redirects */}
+            <Route path="/dashboard" element={<Navigate to="/home" replace />} />
+            <Route path="/sonia-v3" element={<Navigate to="/docudent" replace />} />
+            <Route path="/sonia-flow" element={<Navigate to="/docudent" replace />} />
+            <Route path="/docudent-v5" element={<Navigate to="/docudent" replace />} />
+          </Route>
+
+
+          {/* ═══════════════════════════════════════════════════════════════ */}
+          {/* STANDALONE LAYOUTS - No Global Nav */}
+          {/* ═══════════════════════════════════════════════════════════════ */}
+
+          {/* Docudent V8 - Jeton Redesign (Standalone) */}
+          <Route path="/docudent/v8/*" element={<V8Router />} />
+
+          {/* Docudent V10 - V10 Pipeline Direct (Standalone) */}
+          <Route path="/docudent/v10/*" element={<V10Router />} />
+
+          {/* Docudent Landing - Premium Entry (Self-Contained Layout) */}
+          <Route path="/docudent" element={<LandingPage />} />
+
+          {/* V7 App Shell (Optional: can also be standalone if it has its own layout) */}
+          {/* Keeping V7Router inside Layout for now if it needs it, or check if it should be out too */}
+          {/* User only complained about landing page for now */}
+        </Routes>
+      </Suspense>
+    </div>
+  );
+}
+
+export default App;

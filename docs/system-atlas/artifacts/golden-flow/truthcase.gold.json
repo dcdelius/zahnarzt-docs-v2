@@ -1,0 +1,129 @@
+{
+    "id": "golden_flow_001",
+    "version": "1.0.0",
+    "created": "2025-12-30",
+    "description": "2-Zahn-Fall: 36 okkl adhäsiv, 14 dist einfach",
+    "input": {
+        "dictation": "An Zahn 36 okklusal eine Kompositfüllung adhäsiv, an Zahn 14 distal eine kleine Füllung. Lokalanästhesie durchgeführt.",
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV"
+    },
+    "extraction": {
+        "teeth": [
+            {
+                "tooth": "36",
+                "surfaces": [
+                    "o"
+                ]
+            },
+            {
+                "tooth": "14",
+                "surfaces": [
+                    "d"
+                ]
+            }
+        ],
+        "materials": {
+            "filling": "Komposit"
+        },
+        "markers": {
+            "adhesive_mentioned": true,
+            "anesthesia_mentioned": true,
+            "kofferdam_mentioned": false
+        }
+    },
+    "askbacks": [
+        {
+            "id": "adhesive_technique",
+            "scope": "tooth:36",
+            "question": "Wurde Adhäsivtechnik (Mehrschicht) angewendet?",
+            "answer": "yes"
+        }
+    ],
+    "chips_final": {
+        "36": [
+            "la_leitung",
+            "rel_trocken",
+            "exkavation",
+            "mehrschicht",
+            "finishing"
+        ],
+        "14": [
+            "la_infiltr",
+            "rel_trocken",
+            "exkavation",
+            "komposit_basic",
+            "finishing"
+        ]
+    },
+    "expected_output": {
+        "text_36": "Leitungsanästhesie N. alv. inf. (Ultracain D-S). Relative Trockenlegung. Exkavation kariöser Anteile bis sondenharter Konsistenz. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.",
+        "text_14": "LA Infiltration (Ultracain D-S). Relative Trockenlegung. Exkavation kariöser Anteile bis sondenharter Konsistenz. Komposit eingebracht und lichthärtend polymerisiert. Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.",
+        "billing_codes": [
+            {
+                "code": "BEMA_41a",
+                "count": 1,
+                "source": "la_leitung",
+                "tooth": "36"
+            },
+            {
+                "code": "BEMA_40",
+                "count": 1,
+                "source": "la_infiltr",
+                "tooth": "14"
+            },
+            {
+                "code": "BEMA_13",
+                "count": 2,
+                "source": "surface_mapping[1]",
+                "teeth": [
+                    "36",
+                    "14"
+                ]
+            }
+        ]
+    },
+    "combinability_check": {
+        "verdict": "PASS",
+        "conflicts": []
+    },
+    "assertions": [
+        {
+            "type": "chip_present",
+            "tooth": "36",
+            "chip": "mehrschicht"
+        },
+        {
+            "type": "chip_absent",
+            "tooth": "36",
+            "chip": "komposit_basic"
+        },
+        {
+            "type": "chip_present",
+            "tooth": "14",
+            "chip": "komposit_basic"
+        },
+        {
+            "type": "chip_absent",
+            "tooth": "14",
+            "chip": "mehrschicht"
+        },
+        {
+            "type": "billing_present",
+            "code": "BEMA_41a"
+        },
+        {
+            "type": "billing_present",
+            "code": "BEMA_40"
+        },
+        {
+            "type": "billing_count",
+            "code": "BEMA_13",
+            "expected": 2
+        },
+        {
+            "type": "combinability",
+            "expected": "PASS"
+        }
+    ]
+}

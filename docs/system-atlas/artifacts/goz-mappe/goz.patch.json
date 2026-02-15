@@ -1,0 +1,186 @@
+{
+  "GOZ_0070": {
+    "id": "GOZ_0070",
+    "system": "GOZ",
+    "nummer": "0070",
+    "bezeichnung": "Vitalitätsprüfung",
+    "kategorie": "diagnostik",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_2070": {
+    "id": "GOZ_2070",
+    "system": "GOZ",
+    "nummer": "2070",
+    "bezeichnung": "Füllung, zweiflächig",
+    "kategorie": "konservierend",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_2090": {
+    "id": "GOZ_2090",
+    "system": "GOZ",
+    "nummer": "2090",
+    "bezeichnung": "Füllung, dreiflächig",
+    "kategorie": "konservierend",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_2110": {
+    "id": "GOZ_2110",
+    "system": "GOZ",
+    "nummer": "2110",
+    "bezeichnung": "Füllung, mehr als dreiflächig",
+    "kategorie": "konservierend",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_2350": {
+    "id": "GOZ_2350",
+    "system": "GOZ",
+    "nummer": "2350",
+    "bezeichnung": "Vitalamputation",
+    "kategorie": "endodontie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3030": {
+    "id": "GOZ_3030",
+    "system": "GOZ",
+    "nummer": "3030",
+    "bezeichnung": "Entfernung eines Zahnes/ Implantats durch Ost",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3045": {
+    "id": "GOZ_3045",
+    "system": "GOZ",
+    "nummer": "3045",
+    "bezeichnung": "Entfernen eines extrem verlagerten retinierten Zahnes durch",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3050": {
+    "id": "GOZ_3050",
+    "system": "GOZ",
+    "nummer": "3050",
+    "bezeichnung": "Stillung einer übermäßigen Blutung",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3070": {
+    "id": "GOZ_3070",
+    "system": "GOZ",
+    "nummer": "3070",
+    "bezeichnung": "Exzision von Schleimhaut/Granulationsgewebe",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3080": {
+    "id": "GOZ_3080",
+    "system": "GOZ",
+    "nummer": "3080",
+    "bezeichnung": "Exzision einer Schleimhautwucherung größeren Umfangs",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3130": {
+    "id": "GOZ_3130",
+    "system": "GOZ",
+    "nummer": "3130",
+    "bezeichnung": "Hemisektion und Teilextraktion",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3140": {
+    "id": "GOZ_3140",
+    "system": "GOZ",
+    "nummer": "3140",
+    "bezeichnung": "Reimplantation eines Zahnes",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3200": {
+    "id": "GOZ_3200",
+    "system": "GOZ",
+    "nummer": "3200",
+    "bezeichnung": "Zystektomie, selbständige Leistung",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3210": {
+    "id": "GOZ_3210",
+    "system": "GOZ",
+    "nummer": "3210",
+    "bezeichnung": "Beseitigung störender Schleimhautbänder",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3240": {
+    "id": "GOZ_3240",
+    "system": "GOZ",
+    "nummer": "3240",
+    "bezeichnung": "Vestibulum-/Mundbodenplastik, kleiner Umfang",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3250": {
+    "id": "GOZ_3250",
+    "system": "GOZ",
+    "nummer": "3250",
+    "bezeichnung": "Tuberplastik, einseitig",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3260": {
+    "id": "GOZ_3260",
+    "system": "GOZ",
+    "nummer": "3260",
+    "bezeichnung": "Freilegen retinierten oder verlagerten Zahnes",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3270": {
+    "id": "GOZ_3270",
+    "system": "GOZ",
+    "nummer": "3270",
+    "bezeichnung": "Germektomie",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3280": {
+    "id": "GOZ_3280",
+    "system": "GOZ",
+    "nummer": "3280",
+    "bezeichnung": "Lösen, Verlegen und Fixieren des Lippenbändchens",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_3310": {
+    "id": "GOZ_3310",
+    "system": "GOZ",
+    "nummer": "3310",
+    "bezeichnung": "Chirurgische Wundrevision",
+    "kategorie": "chirurgie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_4030": {
+    "id": "GOZ_4030",
+    "system": "GOZ",
+    "nummer": "4030",
+    "bezeichnung": "Beseitigung von scharfen Zahnkanten",
+    "kategorie": "parodontologie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_4050": {
+    "id": "GOZ_4050",
+    "system": "GOZ",
+    "nummer": "4050",
+    "bezeichnung": "Entfernung harter/weicher Zahnbeläge, einwurzeliger Zahn",
+    "kategorie": "parodontologie",
+    "quelle": "monkeymed_html"
+  },
+  "GOZ_4055": {
+    "id": "GOZ_4055",
+    "system": "GOZ",
+    "nummer": "4055",
+    "bezeichnung": "Entfernung harter/weicher Zahnbeläge, mehrwurzeliger Zahn",
+    "kategorie": "parodontologie",
+    "quelle": "monkeymed_html"
+  }
+}

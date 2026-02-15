@@ -1,0 +1,69 @@
+{
+    "gp": "3-6/6",
+    "title": "V7 to V10 Migration - Facts/Askbacks/Renderer",
+    "date": "2025-12-31",
+    "status": "PARTIAL_COMPLETE",
+    "migration_completed": {
+        "facts_module": {
+            "new_files": [
+                "v10/facts/types.ts",
+                "v10/facts/buildFactsFromExtraction.ts",
+                "v10/facts/applyAnswersToFacts.ts",
+                "v10/facts/index.ts"
+            ],
+            "replaces": [
+                "v7/medical/extractionToFacts.ts",
+                "v7/medical/facts.ts",
+                "v7/medical/types.ts"
+            ]
+        },
+        "askbacks_module": {
+            "new_files": [
+                "v10/askbacks/compileAskbacksToQuestions.ts",
+                "v10/askbacks/index.ts"
+            ],
+            "replaces": [
+                "v7/medical/askbacks/"
+            ]
+        },
+        "renderer_module": {
+            "new_files": [
+                "v10/renderer/renderFromKbChips.ts",
+                "v10/renderer/index.ts"
+            ],
+            "replaces": [
+                "v7/output/renderFromKbChips.ts"
+            ]
+        }
+    },
+    "imports_updated": [
+        {
+            "file": "v10/pipeline/runV10.ts",
+            "lines": "22-39",
+            "v7_removed": 5
+        },
+        {
+            "file": "v10/pipeline/runV10Bundle.ts",
+            "lines": "17-19",
+            "v7_removed": 1
+        },
+        {
+            "file": "v10/types.ts",
+            "line": 9,
+            "v7_removed": 1
+        }
+    ],
+    "v7_imports_before": 16,
+    "v7_imports_after": 9,
+    "remaining_v7_imports": {
+        "location": "v10/components/index.ts",
+        "count": 9,
+        "type": "UI components re-exports",
+        "note": "These are UI components that need GP3 (component migration)"
+    },
+    "build_status": "PASS",
+    "next_steps": [
+        "GP3: Copy UI components to v10/components/",
+        "GP6: Add gate-v10-no-v7-runtime-imports.test.ts"
+    ]
+}

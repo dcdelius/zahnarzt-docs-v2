@@ -1,0 +1,32 @@
+{
+    "id": "fuellung_01_standard",
+    "description": "Standard Füllung ohne Anästhesieangabe — keine Endo-Fragen",
+    "input": {
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Zahn 36 MOD Komposit Füllung bei Karies",
+        "answers": {}
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=fuellung",
+            "questions:engine=fuellung"
+        ],
+        "traceExcludes": [
+            "questions:engine=endo",
+            "extract:engine=endo"
+        ],
+        "noQuestionIdRegex": "(endo|kanal|wl|spül|wurzel|aufbereitung)",
+        "mustQuestionIds": [],
+        "outputMustContain": [
+            "36"
+        ],
+        "billingMustNotContain": [
+            "BEMA_40",
+            "BEMA_41a",
+            "BEMA_41b"
+        ]
+    },
+    "minimalAnswers": {}
+}

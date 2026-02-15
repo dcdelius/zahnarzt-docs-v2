@@ -1,0 +1,209 @@
+{
+  "version": "1.0.0",
+  "description": "Allowlist for BillingRef codes that are not in catalogs but are intentionally allowed",
+  "generated": "2025-12-30",
+  "entries": [
+    {
+      "code": "GOZ_2020a",
+      "category": "ANALOG_PLACEHOLDER",
+      "reason": "Analog position GOZ 2020a (Kariesdetektor) - uses §6 GOZ analog billing, not a direct catalog entry",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 2370 may be used in begruendungsGenerator - verify if catalog addition needed",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_42",
+      "category": "KNOWN_PATTERN",
+      "reason": "BEMA 42 (Oberflächenanästhesie) - referenced in configs, should be added to catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "GOZ_5040_differenz",
+      "category": "RULE_REFERENCE",
+      "reason": "Computed difference position, not a real catalog code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_19a",
+      "category": "KNOWN_PATTERN",
+      "reason": "BEMA 19a referenced in krone.json - verify catalog presence",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEL_XXXX",
+      "category": "RULE_REFERENCE",
+      "reason": "Pattern placeholder in bel2Catalog.ts, not a real code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 8040 (Implantologie) - should be added to goz.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 8070 (Implantologie) - should be added to goz.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 8200 (Implantologie) - should be added to goz.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 8210 (Implantologie) - should be added to goz.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 8220 (Implantologie) - should be added to goz.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 8230 (Implantologie) - should be added to goz.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 8240 (Implantologie) - should be added to goz.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "category": "KNOWN_PATTERN",
+      "reason": "GOZ 8250 (Implantologie) - should be added to goz.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_VIPR",
+      "category": "UI_STUB",
+      "reason": "Placeholder for vitality test display, not a billing code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_925A",
+      "category": "KNOWN_PATTERN",
+      "reason": "Variant format of BEMA_Ä925a - normalization should handle this",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_CP",
+      "category": "UI_STUB",
+      "reason": "Shorthand for BEMA_25 (Cp), used in UI display",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_P",
+      "category": "UI_STUB",
+      "reason": "Shorthand for BEMA_26 (P), used in UI display",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_199",
+      "category": "TEST_ARTIFACT",
+      "reason": "Test/invalid code reference",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "GOZ_ANALOG_MATRIX",
+      "category": "RULE_REFERENCE",
+      "reason": "Reference pattern for analog position system, not a real code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "GOZ_ANALOG_DETECTOR",
+      "category": "RULE_REFERENCE",
+      "reason": "Reference pattern for analog position system, not a real code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "GOZ_2020_ANALOG",
+      "category": "ANALOG_PLACEHOLDER",
+      "reason": "Analog position reference, not a catalog code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_1",
+      "category": "KNOWN_PATTERN",
+      "reason": "BEMA 1 (Untersuchung) - should be added to bema.json catalog",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_925",
+      "category": "KNOWN_PATTERN",
+      "reason": "Variant format of BEMA_Ä925a - normalization should handle this",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_28_ff",
+      "category": "RULE_REFERENCE",
+      "reason": "Rule reference pattern (28ff), not a real code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_36_37",
+      "category": "RULE_REFERENCE",
+      "reason": "Rule reference pattern (36/37), not a real code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_23_nicht_neben_19_21",
+      "category": "RULE_REFERENCE",
+      "reason": "Exclusion rule reference, not a real code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_24c_nur_nach_19_21",
+      "category": "RULE_REFERENCE",
+      "reason": "Condition rule reference, not a real code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_91d_nicht_bei_gleichartig",
+      "category": "RULE_REFERENCE",
+      "reason": "Exclusion rule reference, not a real code",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_Cp",
+      "category": "UI_STUB",
+      "reason": "UI-friendly alias for BEMA_25",
+      "addedOn": "2025-12-30"
+    },
+    {
+      "code": "BEMA_13C",
+      "category": "KNOWN_PATTERN",
+      "reason": "Case variant of BEMA_13c - normalization should handle this",
+      "addedOn": "2025-12-30"
+    }
+  ],
+  "actions_required": [
+    {
+      "priority": "HIGH",
+      "action": "Add GOZ 8xxx (Implantologie) codes to goz.json",
+      "codes": []
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Verify BEMA_42, BEMA_1, BEMA_19a should be in catalog",
+      "codes": [
+        "BEMA_42",
+        "BEMA_1",
+        "BEMA_19a"
+      ]
+    },
+    {
+      "priority": "LOW",
+      "action": "Improve normalization for case variants",
+      "codes": [
+        "BEMA_925A",
+        "BEMA_925",
+        "BEMA_13C"
+      ]
+    }
+  ]
+}

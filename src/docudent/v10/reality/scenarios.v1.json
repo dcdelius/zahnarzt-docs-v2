@@ -1,0 +1,159 @@
+{
+    "version": "1.0",
+    "description": "V10 Frontend Reality Check Scenarios",
+    "scenarios": [
+        {
+            "id": "TC1_basic_single",
+            "name": "Basic single tooth filling",
+            "dictation": "Füllung Zahn 36 okklusal Komposit",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 1,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [
+                    "fuellung.adhesive"
+                ],
+                "mustNotLeak": null
+            }
+        },
+        {
+            "id": "TC2_material_unknown",
+            "name": "Material needs askback",
+            "dictation": "Füllung 36 okklusal tiefe Karies",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 1,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [
+                    "fuellung.material",
+                    "fuellung.capping"
+                ],
+                "mustNotLeak": null
+            }
+        },
+        {
+            "id": "TC3_mehrkosten_schicht",
+            "name": "Mehrkosten/Schichttechnik trigger",
+            "dictation": "Füllung 36 mod Komposit GKV Mehrkosten",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 1,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [
+                    "fuellung.layering"
+                ],
+                "mustNotLeak": null
+            }
+        },
+        {
+            "id": "TC4_multi_tooth_isolation",
+            "name": "Multi-tooth with different isolation",
+            "dictation": "36 ohne Kofferdam; 14 mit Kofferdam",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 2,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [],
+                "mustNotLeak": {
+                    "fromTooth": "36",
+                    "toTooth": "14",
+                    "fields": [
+                        "negations"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "TC5_multi_segment_complex",
+            "name": "Complex multi-segment dictation",
+            "dictation": "36 mod. Danach 14 okklusal. Auch 46 distal ohne Adhäsiv",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 3,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [],
+                "mustNotLeak": {
+                    "fromTooth": "46",
+                    "toTooth": "36",
+                    "fields": [
+                        "negations"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "TC6_surface_isolation",
+            "name": "Surface isolation per tooth",
+            "dictation": "36 mod; 14 okklusal",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 2,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [],
+                "mustNotLeak": {
+                    "fromTooth": "36",
+                    "toTooth": "14",
+                    "fields": [
+                        "surfaces"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "TC7_adhesive_scoped",
+            "name": "Adhesive negation scoped",
+            "dictation": "36 okklusal adhäsiv; 14 distal ohne Adhäsiv",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 2,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [],
+                "mustNotLeak": {
+                    "fromTooth": "14",
+                    "toTooth": "36",
+                    "fields": [
+                        "negations"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "TC8_pkv_full",
+            "name": "PKV full flow",
+            "dictation": "Füllung 36 okklusal Komposit adhäsiv PKV",
+            "goldenMode": false,
+            "expected": {
+                "minInstances": 1,
+                "expectBlockingQuestions": false,
+                "mustContainQuestions": [],
+                "mustNotLeak": null
+            }
+        },
+        {
+            "id": "TC9_capping_trigger",
+            "name": "Deep caries triggers capping question",
+            "dictation": "36 okklusal Caries profunda",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 1,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [
+                    "fuellung.capping"
+                ],
+                "mustNotLeak": null
+            }
+        },
+        {
+            "id": "TC10_global_scope",
+            "name": "Global scope marker",
+            "dictation": "36 und 14, bei beiden adhäsiv",
+            "goldenMode": true,
+            "expected": {
+                "minInstances": 2,
+                "expectBlockingQuestions": true,
+                "mustContainQuestions": [],
+                "mustNotLeak": null
+            }
+        }
+    ]
+}

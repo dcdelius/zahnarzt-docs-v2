@@ -1,0 +1,23 @@
+{
+    "id": "R3",
+    "name": "Missing tooth must trigger question",
+    "description": "Dictation without clear tooth must trigger tooth question",
+    "input": {
+        "treatmentId": "fuellung",
+        "dictation": "Karies, distale Läsion, Komposit",
+        "insuranceType": "GKV",
+        "settings": {}
+    },
+    "expected_state_trajectory": [
+        "input",
+        "processing",
+        "questions"
+    ],
+    "expected_questions_minimum": [
+        "tooth"
+    ],
+    "expected_invariants": {
+        "tooth_question_visible": true,
+        "never_silent_output_without_tooth": true
+    }
+}

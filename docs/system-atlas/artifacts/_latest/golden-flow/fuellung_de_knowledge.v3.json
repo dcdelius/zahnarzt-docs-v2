@@ -1,0 +1,744 @@
+{
+    "version": "fuellung_de_knowledge_v3",
+    "meta": {
+        "created": "2025-12-30",
+        "regulatory_context": "Germany 2025",
+        "hard_rules": [
+            "r_no_hardcoded_billing: KEINE Billing-Positionen/GOZ/BEMA/GOÄ Nummern hardcoden",
+            "r_chip_provenance: Jede Output-Zeile und BillingRef muss zu Chip tracebar sein",
+            "r_no_test_tricks: Keine Allowlist-Erweiterung, Quarantine, Skip um grün zu werden"
+        ],
+        "sources": [
+            {
+                "id": "amalgam-ban-2025",
+                "note": "EU Amalgam ban effective 01.01.2025 - selbstadhäsive Materialien als Regelversorgung"
+            },
+            {
+                "id": "bema-13e-h",
+                "note": "Kompositfüllungen Seitenzahn nur mit Adhäsivtechnik abrechnungsfähig"
+            },
+            {
+                "id": "s3-leitlinie-2024",
+                "note": "S3-Leitlinie direkte Kompositrestaurationen - Qualitätsstandards"
+            }
+        ]
+    },
+    "scope": {
+        "treatment": "fuellung",
+        "region": "DE",
+        "non_goals": [
+            "hardcoded billing codes",
+            "PII storage",
+            "silent derivations without askback"
+        ]
+    },
+    "facts": {
+        "schema": {
+            "insurance_context": {
+                "type": "string",
+                "enum": [
+                    "gkv_regelversorgung",
+                    "gkv_mehrkosten",
+                    "pkv",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "restoration_material": {
+                "type": "string",
+                "enum": [
+                    "self_adhesive",
+                    "giz",
+                    "bulk_fill",
+                    "composite",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "tooth_region": {
+                "type": "string",
+                "enum": [
+                    "anterior",
+                    "posterior",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "cavity_extent_hint": {
+                "type": "string",
+                "enum": [
+                    "small",
+                    "medium",
+                    "large",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "approx_contact_involved": {
+                "type": "string",
+                "enum": [
+                    "yes",
+                    "no",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "adhesive_technique": {
+                "type": "string",
+                "enum": [
+                    "yes",
+                    "no",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "layering_technique": {
+                "type": "string",
+                "enum": [
+                    "yes",
+                    "no",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "isolation_level": {
+                "type": "string",
+                "enum": [
+                    "kofferdam",
+                    "relative",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "matrix_used": {
+                "type": "string",
+                "enum": [
+                    "sectional",
+                    "tofflemire",
+                    "none",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "pulp_protection": {
+                "type": "string",
+                "enum": [
+                    "liner",
+                    "base",
+                    "none",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "caries_depth": {
+                "type": "string",
+                "enum": [
+                    "shallow",
+                    "medium",
+                    "deep",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "subgingival_margin": {
+                "type": "string",
+                "enum": [
+                    "yes",
+                    "no",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "moisture_control_difficulty": {
+                "type": "string",
+                "enum": [
+                    "easy",
+                    "moderate",
+                    "difficult",
+                    "unknown"
+                ],
+                "default": "unknown"
+            },
+            "patient_group": {
+                "type": "string",
+                "enum": [
+                    "standard",
+                    "pediatric",
+                    "pregnancy_lactation",
+                    "unknown"
+                ],
+                "default": "standard"
+            },
+            "amalgam_contraindicated": {
+                "type": "boolean",
+                "default": true,
+                "note": "Ab 2025 immer true (Amalgam-Ban)"
+            }
+        }
+    },
+    "decisions": [
+        {
+            "id": "d01_regelversorgung_posterior_default",
+            "priority": 1,
+            "condition": "insurance_context == gkv_regelversorgung AND tooth_region == posterior",
+            "result": "default_material = self_adhesive OR giz",
+            "rationale": "01.01.2025: Selbstadhäsive/GIZ sind Regelversorgung Seitenzahn",
+            "source": "amalgam-ban-2025"
+        },
+        {
+            "id": "d02_regelversorgung_anterior_composite",
+            "priority": 2,
+            "condition": "insurance_context == gkv_regelversorgung AND tooth_region == anterior",
+            "result": "material_options = [composite, self_adhesive]",
+            "rationale": "Frontzahn: Komposit ist auch bei GKV Regelversorgung zulässig"
+        },
+        {
+            "id": "d03_bulkfill_exception",
+            "priority": 3,
+            "condition": "insurance_context == gkv_regelversorgung AND restoration_material == bulk_fill",
+            "result": "requires_exception_documentation = true",
+            "rationale": "Bulk-Fill nur Ausnahme bei GKV-Regel (Kind, tiefe Kavität, etc.)",
+            "source": "amalgam-ban-2025"
+        },
+        {
+            "id": "d04_composite_requires_adhesive",
+            "priority": 4,
+            "condition": "(restoration_material == composite OR restoration_material == bulk_fill) AND tooth_region == posterior",
+            "result": "adhesive_technique = MUST_BE_CONFIRMED",
+            "rationale": "BEMA 13e-h: Seitenzahn-Komposit nur mit Adhäsiv abrechnungsfähig",
+            "source": "bema-13e-h"
+        },
+        {
+            "id": "d05_mehrkosten_requires_mkv",
+            "priority": 5,
+            "condition": "insurance_context == gkv_mehrkosten",
+            "result": "requires_mkv_chip = true",
+            "rationale": "MKV-Dokumentation erforderlich für Mehrkostenabrechnungen"
+        },
+        {
+            "id": "d06_pkv_composite_standard",
+            "priority": 6,
+            "condition": "insurance_context == pkv",
+            "result": "material_options = [composite], adhesive_technique = expected",
+            "rationale": "PKV: Hochwertige Kompositversorgung ist Standard"
+        },
+        {
+            "id": "d07_deep_caries_pulpaschutz",
+            "priority": 7,
+            "condition": "caries_depth == deep",
+            "result": "pulp_protection = ASKBACK_REQUIRED",
+            "rationale": "Tiefe Karies: Pulpaschutz muss explizit geklärt werden",
+            "source": "s3-leitlinie-2024"
+        },
+        {
+            "id": "d08_difficult_moisture_kofferdam",
+            "priority": 8,
+            "condition": "moisture_control_difficulty == difficult OR subgingival_margin == yes",
+            "result": "isolation_level = SHOULD_BE_KOFFERDAM",
+            "rationale": "Schwierige Trockenlegung/subgingival → Kofferdam empfohlen"
+        },
+        {
+            "id": "d09_approx_contact_matrix",
+            "priority": 9,
+            "condition": "approx_contact_involved == yes",
+            "result": "matrix_used = SHOULD_BE_DOCUMENTED",
+            "rationale": "Approximalkontakt: Matrize/Keil dokumentieren"
+        },
+        {
+            "id": "d10_medium_large_layering",
+            "priority": 10,
+            "condition": "(cavity_extent_hint == medium OR cavity_extent_hint == large) AND restoration_material == composite",
+            "result": "layering_technique = ASKBACK_IF_UNKNOWN",
+            "rationale": "Mittlere/große Kavität: Schichttechnik empfohlen (S3)"
+        },
+        {
+            "id": "d11_pediatric_bulk_allowed",
+            "priority": 11,
+            "condition": "patient_group == pediatric AND insurance_context == gkv_regelversorgung",
+            "result": "bulk_fill_as_exception = true",
+            "rationale": "Kind: Bulk-Fill als Ausnahme leichter begründbar"
+        }
+    ],
+    "askbacks": [
+        {
+            "id": "ab_insurance_context",
+            "question": "Welcher Abrechnungskontext liegt vor?",
+            "trigger": "insurance_context == unknown",
+            "level": 1,
+            "blocking": true,
+            "options": [
+                {
+                    "label": "GKV Regelversorgung",
+                    "chip_delta": [
+                        {
+                            "chip": "insurance_gkv_regel",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "insurance_context": "gkv_regelversorgung"
+                    }
+                },
+                {
+                    "label": "GKV Mehrkosten (mit MKV)",
+                    "chip_delta": [
+                        {
+                            "chip": "insurance_gkv_mehrkosten",
+                            "mode": "On"
+                        },
+                        {
+                            "chip": "mkv_vorhanden",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "insurance_context": "gkv_mehrkosten"
+                    }
+                },
+                {
+                    "label": "PKV / Privat",
+                    "chip_delta": [
+                        {
+                            "chip": "insurance_pkv",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "insurance_context": "pkv"
+                    }
+                }
+            ],
+            "if_unanswered": "BLOCK",
+            "rationale": "Ohne Kontext ist Billing-Pfad falsch"
+        },
+        {
+            "id": "ab_material_choice",
+            "question": "Welches Füllungsmaterial wurde verwendet?",
+            "trigger": "restoration_material == unknown",
+            "level": 1,
+            "blocking": true,
+            "options": [
+                {
+                    "label": "Selbstadhäsiv (GIZ/RMGI)",
+                    "chip_delta": [
+                        {
+                            "chip": "material_self_adhesive",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "restoration_material": "self_adhesive"
+                    }
+                },
+                {
+                    "label": "Glasionomerzement (GIZ)",
+                    "chip_delta": [
+                        {
+                            "chip": "material_giz",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "restoration_material": "giz"
+                    }
+                },
+                {
+                    "label": "Bulk-Fill Komposit",
+                    "chip_delta": [
+                        {
+                            "chip": "material_bulk_fill",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "restoration_material": "bulk_fill"
+                    }
+                },
+                {
+                    "label": "Konventionelles Komposit",
+                    "chip_delta": [
+                        {
+                            "chip": "material_composite",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "restoration_material": "composite"
+                    }
+                }
+            ],
+            "if_unanswered": "BLOCK",
+            "rationale": "Material bestimmt Technik und Eligibility"
+        },
+        {
+            "id": "ab_adhesive_technique",
+            "question": "Wurde Adhäsivtechnik angewendet?",
+            "trigger": "(restoration_material IN [composite, bulk_fill]) AND adhesive_technique == unknown AND tooth_region == posterior",
+            "level": 1,
+            "blocking": true,
+            "options": [
+                {
+                    "label": "Ja (Etch/Prime/Bond)",
+                    "chip_delta": [
+                        {
+                            "chip": "technique_adhesive",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "adhesive_technique": "yes"
+                    }
+                },
+                {
+                    "label": "Nein",
+                    "chip_delta": [
+                        {
+                            "chip": "technique_adhesive",
+                            "mode": "Off"
+                        }
+                    ],
+                    "fact_delta": {
+                        "adhesive_technique": "no"
+                    },
+                    "warning": "Seitenzahn-Komposit ohne Adhäsiv ist bei GKV nicht abrechnungsfähig"
+                }
+            ],
+            "if_unanswered": "BLOCK",
+            "rationale": "BEMA 13e-h: Adhäsiv erforderlich für Seitenzahn-Komposit"
+        },
+        {
+            "id": "ab_layering_technique",
+            "question": "Wurde Schichttechnik/inkrementell gearbeitet?",
+            "trigger": "restoration_material == composite AND (cavity_extent_hint IN [medium, large]) AND layering_technique == unknown",
+            "level": 2,
+            "blocking": false,
+            "options": [
+                {
+                    "label": "Ja (Mehrschicht/inkrementell)",
+                    "chip_delta": [
+                        {
+                            "chip": "technique_layering",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "layering_technique": "yes"
+                    }
+                },
+                {
+                    "label": "Nein (einfach/bulk)",
+                    "chip_delta": [
+                        {
+                            "chip": "technique_layering",
+                            "mode": "Off"
+                        }
+                    ],
+                    "fact_delta": {
+                        "layering_technique": "no"
+                    }
+                }
+            ],
+            "if_unanswered": {
+                "default": "yes",
+                "reason": "S3-Standard bei mittel/groß"
+            },
+            "rationale": "Schichttechnik reduziert Polymerisationsschrumpf"
+        },
+        {
+            "id": "ab_isolation_level",
+            "question": "Welche Isolation wurde verwendet?",
+            "trigger": "(adhesive_technique == yes OR moisture_control_difficulty == difficult) AND isolation_level == unknown",
+            "level": 2,
+            "blocking": false,
+            "options": [
+                {
+                    "label": "Kofferdam (absolut)",
+                    "chip_delta": [
+                        {
+                            "chip": "isolation_kofferdam",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "isolation_level": "kofferdam"
+                    }
+                },
+                {
+                    "label": "Relative Trockenlegung",
+                    "chip_delta": [
+                        {
+                            "chip": "isolation_relative",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "isolation_level": "relative"
+                    }
+                }
+            ],
+            "if_unanswered": {
+                "default": "relative",
+                "reason": "Fallback"
+            },
+            "rationale": "Isolation kritisch für Adhäsiv"
+        },
+        {
+            "id": "ab_pulp_protection",
+            "question": "Wurde Pulpaschutz angewendet?",
+            "trigger": "caries_depth == deep AND pulp_protection == unknown",
+            "level": 2,
+            "blocking": false,
+            "options": [
+                {
+                    "label": "Liner (dünn, CaOH/GIZ)",
+                    "chip_delta": [
+                        {
+                            "chip": "pulp_liner",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "pulp_protection": "liner"
+                    }
+                },
+                {
+                    "label": "Base/Unterfüllung",
+                    "chip_delta": [
+                        {
+                            "chip": "pulp_base",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "pulp_protection": "base"
+                    }
+                },
+                {
+                    "label": "Nein (direkter Kontakt)",
+                    "chip_delta": [
+                        {
+                            "chip": "pulp_protection_none",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "pulp_protection": "none"
+                    }
+                }
+            ],
+            "if_unanswered": {
+                "default": "none"
+            },
+            "rationale": "Tiefe Karies: Schutz dokumentieren"
+        },
+        {
+            "id": "ab_matrix_system",
+            "question": "Welches Matrizensystem wurde verwendet?",
+            "trigger": "approx_contact_involved == yes AND matrix_used == unknown",
+            "level": 3,
+            "blocking": false,
+            "options": [
+                {
+                    "label": "Teilmatrize/Sektionalmatrize",
+                    "chip_delta": [
+                        {
+                            "chip": "matrix_sectional",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "matrix_used": "sectional"
+                    }
+                },
+                {
+                    "label": "Tofflemire/Ringmatrize",
+                    "chip_delta": [
+                        {
+                            "chip": "matrix_tofflemire",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "matrix_used": "tofflemire"
+                    }
+                },
+                {
+                    "label": "Keine (nur okklusal)",
+                    "chip_delta": [
+                        {
+                            "chip": "matrix_none",
+                            "mode": "On"
+                        }
+                    ],
+                    "fact_delta": {
+                        "matrix_used": "none"
+                    }
+                }
+            ],
+            "if_unanswered": {
+                "default": "none"
+            },
+            "rationale": "Approximalkontakt: Matrize dokumentieren"
+        }
+    ],
+    "chips": {
+        "definitions": [
+            {
+                "id": "insurance_gkv_regel",
+                "name": "GKV Regelversorgung",
+                "category": "insurance"
+            },
+            {
+                "id": "insurance_gkv_mehrkosten",
+                "name": "GKV Mehrkosten",
+                "category": "insurance"
+            },
+            {
+                "id": "insurance_pkv",
+                "name": "PKV/Privat",
+                "category": "insurance"
+            },
+            {
+                "id": "mkv_vorhanden",
+                "name": "MKV vorhanden",
+                "category": "insurance"
+            },
+            {
+                "id": "material_self_adhesive",
+                "name": "Selbstadhäsiv",
+                "category": "material"
+            },
+            {
+                "id": "material_giz",
+                "name": "GIZ",
+                "category": "material"
+            },
+            {
+                "id": "material_bulk_fill",
+                "name": "Bulk-Fill",
+                "category": "material"
+            },
+            {
+                "id": "material_composite",
+                "name": "Komposit",
+                "category": "material"
+            },
+            {
+                "id": "technique_adhesive",
+                "name": "Adhäsivtechnik",
+                "category": "technique"
+            },
+            {
+                "id": "technique_layering",
+                "name": "Schichttechnik",
+                "category": "technique"
+            },
+            {
+                "id": "isolation_kofferdam",
+                "name": "Kofferdam",
+                "category": "isolation"
+            },
+            {
+                "id": "isolation_relative",
+                "name": "Relative Trockenlegung",
+                "category": "isolation"
+            },
+            {
+                "id": "pulp_liner",
+                "name": "Liner",
+                "category": "pulp_protection"
+            },
+            {
+                "id": "pulp_base",
+                "name": "Unterfüllung",
+                "category": "pulp_protection"
+            },
+            {
+                "id": "pulp_protection_none",
+                "name": "Kein Pulpaschutz",
+                "category": "pulp_protection"
+            },
+            {
+                "id": "matrix_sectional",
+                "name": "Sektionalmatrize",
+                "category": "matrix"
+            },
+            {
+                "id": "matrix_tofflemire",
+                "name": "Tofflemire",
+                "category": "matrix"
+            },
+            {
+                "id": "matrix_none",
+                "name": "Keine Matrize",
+                "category": "matrix"
+            }
+        ],
+        "note": "Chips sind KEINE Billing-Codes. Mapping via SSOT unified.json"
+    },
+    "minimal_askback_set": {
+        "level_1_blocking": [
+            "ab_insurance_context",
+            "ab_material_choice",
+            "ab_adhesive_technique"
+        ],
+        "level_2_recommended": [
+            "ab_layering_technique",
+            "ab_isolation_level",
+            "ab_pulp_protection"
+        ],
+        "level_3_optional": [
+            "ab_matrix_system"
+        ],
+        "note": "Level 1 muss beantwortet werden. Level 2 hat Defaults. Level 3 nur bei Trigger."
+    },
+    "forbidden_derivations": [
+        {
+            "id": "fd01",
+            "forbidden": "Aus 'Komposit' automatisch 'Adhäsiv: ja' ableiten",
+            "reason": "Muss explizit bestätigt werden (abrechnungsrelevant)"
+        },
+        {
+            "id": "fd02",
+            "forbidden": "Aus 'GKV' automatisch 'self-adhesive' ableiten",
+            "reason": "Mehrkosten-Option muss berücksichtigt werden"
+        },
+        {
+            "id": "fd03",
+            "forbidden": "Aus 'tief' automatisch 'Pulpaschutz: ja' ableiten",
+            "reason": "Behandler-Entscheidung"
+        },
+        {
+            "id": "fd04",
+            "forbidden": "Aus 'Kofferdam nicht erwähnt' automatisch 'relative' ableiten",
+            "reason": "Askback nötig bei Adhäsiv"
+        },
+        {
+            "id": "fd05",
+            "forbidden": "Billing-Position aus Material ableiten",
+            "reason": "Muss via Chip → SSOT → Catalog laufen"
+        }
+    ],
+    "edge_cases": [
+        {
+            "id": "ec01_bulkfill_pediatric",
+            "scenario": "Kind + GKV-Regel + Bulk-Fill",
+            "handling": "Ausnahme-Chip setzen + Begründung dokumentieren"
+        },
+        {
+            "id": "ec02_anterior_gkv",
+            "scenario": "Frontzahn + GKV-Regel + Komposit",
+            "handling": "Erlaubt ohne Mehrkosten (Ästhetikzone)"
+        },
+        {
+            "id": "ec03_subgingival_difficult",
+            "scenario": "Subgingivaler Rand + schwierige Feuchtigkeit",
+            "handling": "Kofferdam empfohlen, Split-Dam möglich"
+        },
+        {
+            "id": "ec04_deep_no_liner",
+            "scenario": "Tiefe Karies ohne Liner/Base",
+            "handling": "Nur bei Bulk-Fill mit Bioaktivität oder bewusster Entscheidung"
+        }
+    ]
+}

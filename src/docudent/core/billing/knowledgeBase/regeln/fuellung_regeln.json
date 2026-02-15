@@ -1,0 +1,218 @@
+{
+    "_meta": {
+        "id": "fuellung_regeln",
+        "version": "1.0",
+        "source": "BEMA/GOZ-Kommentare, Abrechnungsrichtlinien",
+        "beschreibung": "Regeln für Füllungsbehandlung - steuern Fragen und Audit-Hinweise"
+    },
+    "rules": [
+        {
+            "id": "RULE_FUELLUNG_VITAL_DOKU",
+            "appliesTo": [
+                "vipr_pos",
+                "vipr_neg"
+            ],
+            "shortSummary": "Sensibilitätsprüfung im Befund dokumentieren (ViPr+/-)",
+            "triggerField": "vitality",
+            "riskLevel": "mittel",
+            "questionTrigger": true,
+            "source": "Forensische Dokumentationspflicht"
+        },
+        {
+            "id": "RULE_FUELLUNG_DEVITAL_WARNUNG",
+            "appliesTo": [
+                "vipr_neg"
+            ],
+            "shortSummary": "Bei devitalem Zahn → Endokontrolle erwägen",
+            "triggerField": "vitality",
+            "triggerValue": "-",
+            "riskLevel": "hoch",
+            "auditWarning": "ViPr − dokumentiert: Ist Füllung indiziert oder Endo erforderlich?",
+            "source": "Klinische Leitlinie"
+        },
+        {
+            "id": "RULE_FUELLUNG_PERK_DOKU",
+            "appliesTo": [
+                "perk_neg",
+                "perk_pos"
+            ],
+            "shortSummary": "Perkussion dokumentieren (Perk+/-)",
+            "triggerField": "percussion",
+            "riskLevel": "niedrig",
+            "questionTrigger": true,
+            "source": "Forensische Dokumentationspflicht"
+        },
+        {
+            "id": "RULE_FUELLUNG_PERK_POS_WARNUNG",
+            "appliesTo": [
+                "perk_pos"
+            ],
+            "shortSummary": "Perk+ = mögliche Pulpitis",
+            "triggerField": "percussion",
+            "triggerValue": "+",
+            "riskLevel": "hoch",
+            "auditWarning": "Perk + dokumentiert: Reversible oder irreversible Pulpitis prüfen!",
+            "source": "Klinische Leitlinie"
+        },
+        {
+            "id": "RULE_LA_QUADRANT",
+            "appliesTo": [
+                "la_infiltr",
+                "la_leitung"
+            ],
+            "shortSummary": "Anästhesieart vom Quadranten abhängig",
+            "triggerField": "zahn",
+            "riskLevel": "niedrig",
+            "source": "Anatomische Regel"
+        },
+        {
+            "id": "RULE_LA_LEITUNG_UK",
+            "appliesTo": [
+                "la_leitung"
+            ],
+            "shortSummary": "Bei UK-Molaren (36-38, 46-48) Leitungsanästhesie",
+            "triggerField": "zahn",
+            "condition": "quadrant_uk_molar",
+            "riskLevel": "niedrig",
+            "auditOptimization": "UK-Molar: Leitungsanästhesie (BEMA 41a/GOZ 0100) statt Infiltration",
+            "source": "Anatomische Regel"
+        },
+        {
+            "id": "RULE_OBERFLAECHE_PKV_UPSELL",
+            "appliesTo": [
+                "oberflaeche_la"
+            ],
+            "shortSummary": "Oberflächenanästhesie bei PKV additional abrechenbar",
+            "triggerField": "anesthesia",
+            "insuranceCondition": "PKV",
+            "riskLevel": "niedrig",
+            "auditOptimization": "PKV: Oberflächenanästhesie (GOZ 0080) zusätzlich abrechenbar",
+            "source": "GOZ-Gebührenordnung"
+        },
+        {
+            "id": "RULE_KOFFERDAM_PFLICHT",
+            "appliesTo": [
+                "kofferdam"
+            ],
+            "shortSummary": "Kofferdam muss dokumentiert sein für BEMA 12",
+            "triggerField": "isolation",
+            "triggerValue": "Kofferdam",
+            "riskLevel": "hoch",
+            "regressRisk": true,
+            "auditWarning": "BEMA 12 nur bei dokumentiertem Kofferdam! Sonst REGRESS.",
+            "source": "BEMA-Kommentar zu Nr. 12"
+        },
+        {
+            "id": "RULE_TIEFE_CP_TRIGGER",
+            "appliesTo": [
+                "exkavation",
+                "cp",
+                "p"
+            ],
+            "shortSummary": "Bei tiefer Karies (profunda) → Cp/P prüfen",
+            "triggerField": "tiefe",
+            "triggerValue": "tief",
+            "riskLevel": "mittel",
+            "questionTrigger": true,
+            "questionText": "Pulpanah? Überkappung erforderlich?",
+            "source": "Klinische Indikation"
+        },
+        {
+            "id": "RULE_CP_MATERIAL_PFLICHT",
+            "appliesTo": [
+                "cp"
+            ],
+            "shortSummary": "Cp-Material muss genannt werden",
+            "triggerField": "material",
+            "riskLevel": "hoch",
+            "regressRisk": true,
+            "auditWarning": "BEMA 25 (Cp) ohne Materialangabe = REGRESS!",
+            "source": "BEMA-Kommentar zu Nr. 25"
+        },
+        {
+            "id": "RULE_CP_TIEFE_VORAUSSETZUNG",
+            "appliesTo": [
+                "cp"
+            ],
+            "shortSummary": "Cp nur bei dokumentierter pulpanaher Lage",
+            "triggerField": "tiefe",
+            "triggerValue": "tief",
+            "riskLevel": "hoch",
+            "regressRisk": true,
+            "auditWarning": "Cp nur bei pulpanaher Kavität (Cp profunda) abrechenbar!",
+            "source": "BEMA-Richtlinie"
+        },
+        {
+            "id": "RULE_P_MATERIAL_PFLICHT",
+            "appliesTo": [
+                "p"
+            ],
+            "shortSummary": "P-Material muss genannt werden",
+            "triggerField": "material",
+            "riskLevel": "hoch",
+            "regressRisk": true,
+            "auditWarning": "BEMA 26 (P) ohne Materialangabe = REGRESS!",
+            "source": "BEMA-Kommentar zu Nr. 26"
+        },
+        {
+            "id": "RULE_P_NUR_KLEIN",
+            "appliesTo": [
+                "p"
+            ],
+            "shortSummary": "P nur bei kleiner punktförmiger Eröffnung",
+            "triggerField": "pulpa_eroeffnung",
+            "riskLevel": "hoch",
+            "regressRisk": true,
+            "auditWarning": "P (BEMA 26) nur bei KLEINER Eröffnung! Bei großer → Vitalexstirpation.",
+            "source": "BEMA-Kommentar zu Nr. 26"
+        },
+        {
+            "id": "RULE_FCODE_FLAECHEN",
+            "appliesTo": [
+                "komposit_basic",
+                "mehrschicht"
+            ],
+            "shortSummary": "F-Code wird aus Flächenanzahl abgeleitet",
+            "triggerField": "flaechen",
+            "riskLevel": "hoch",
+            "regressRisk": true,
+            "auditWarning": "F-Code muss zur dokumentierten Flächenzahl passen!",
+            "source": "BEMA-Richtlinie"
+        },
+        {
+            "id": "RULE_MKV_SCHRIFTLICH",
+            "appliesTo": [
+                "mehrschicht"
+            ],
+            "shortSummary": "MKV nur mit schriftlicher Vereinbarung VOR Behandlung",
+            "triggerField": "mkv_vereinbarung",
+            "insuranceCondition": "MKV",
+            "riskLevel": "hoch",
+            "regressRisk": true,
+            "auditWarning": "MKV ohne schriftliche Vereinbarung VOR Behandlung = KEIN ZAHLUNGSANSPRUCH!",
+            "source": "SGB V"
+        },
+        {
+            "id": "RULE_GOZ2197_NICHT_NEBEN_2060",
+            "appliesTo": [
+                "mehrschicht"
+            ],
+            "shortSummary": "GOZ 2197 nicht neben GOZ 2060-2120",
+            "insuranceCondition": "PKV",
+            "riskLevel": "mittel",
+            "auditWarning": "GOZ 2197 bei PKV NICHT neben GOZ 2060-2120 (bereits inkludiert!)",
+            "source": "BZÄK-Kommentar"
+        },
+        {
+            "id": "RULE_FLUORID_UPSELL",
+            "appliesTo": [
+                "fluor"
+            ],
+            "shortSummary": "Fluoridierung als Upsell-Leistung",
+            "triggerField": "fluoridation",
+            "riskLevel": "niedrig",
+            "auditOptimization": "Fluoridierung (BEMA IP4 / GOZ 1020) nicht vergessen",
+            "source": "Billing-Optimierung"
+        }
+    ]
+}

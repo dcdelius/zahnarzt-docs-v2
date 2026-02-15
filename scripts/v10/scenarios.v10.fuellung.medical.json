@@ -1,0 +1,226 @@
+{
+    "_meta": {
+        "description": "V10 Medical Scenario Cases - Fuellung",
+        "version": "1.0.0",
+        "created": "2026-01-05"
+    },
+    "cases": [
+        {
+            "id": "01",
+            "title": "GKV Standard 1fl + LA + Fluor",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 okklusal Komposit. Infiltrationsanästhesie. Fluoridierung.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeAnyBillingRefs": [
+                    "BEMA_13",
+                    "BEMA_40",
+                    "BEMA_IP4"
+                ],
+                "mustIncludeTextSnippets": [],
+                "mustHavePerInstance": true,
+                "perInstanceCount": 1
+            }
+        },
+        {
+            "id": "02",
+            "title": "GKV 2fl + Kofferdam",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 okklusal distal Komposit. Kofferdam.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeAnyBillingRefs": [
+                    "BEMA_13b",
+                    "BEMA_12"
+                ],
+                "mustIncludeTextSnippets": [],
+                "mustHavePerInstance": true
+            }
+        },
+        {
+            "id": "03",
+            "title": "GKV profunda ohne Kappungsangabe -> Askback",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 profunda mod Komposit.",
+            "expect": {
+                "phase": "questions",
+                "mustAskbackIds": [
+                    "ueberkappung"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        },
+        {
+            "id": "04",
+            "title": "GKV profunda + direkte Überkappung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 profunda mod Komposit, direkte Überkappung durchgeführt.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeAllBillingRefs": [
+                    "BEMA_13c",
+                    "BEMA_26"
+                ],
+                "mustIncludeTextSnippets": []
+            }
+        },
+        {
+            "id": "05",
+            "title": "GKV LA Leitung",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 od Komposit. Leitungsanästhesie.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeAnyBillingRefs": [
+                    "BEMA_13b",
+                    "BEMA_41"
+                ],
+                "mustIncludeTextSnippets": []
+            }
+        },
+        {
+            "id": "06",
+            "title": "PKV 1fl + LA + Kofferdam + Fluor",
+            "insuranceType": "PKV",
+            "dictation": "Füllung 36 okklusal Komposit. Kofferdam. Infiltrationsanästhesie. Fluoridierung.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustIncludeAnyBillingRefs": [
+                    "GOZ_2060",
+                    "GOZ_2040",
+                    "GOZ_0090",
+                    "GOZ_1020"
+                ],
+                "mustIncludeTextSnippets": []
+            }
+        },
+        {
+            "id": "07",
+            "title": "MKV Mehrkosten explizit",
+            "insuranceType": "MKV",
+            "dictation": "Füllung 36 okklusal distal Komposit Mehrkosten.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [],
+                "mustIncludeAnyBillingRefs": [
+                    "BEMA_13b"
+                ],
+                "mustIncludeTextSnippets": []
+            }
+        },
+        {
+            "id": "08",
+            "title": "MKV nur Kasse absolute precedence",
+            "insuranceType": "MKV",
+            "dictation": "Füllung 36 okklusal distal Komposit, nur Kasse.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeAnyBillingRefs": [
+                    "BEMA_13b"
+                ],
+                "mustIncludeTextSnippets": [],
+                "mustNotIncludeTextSnippets": [
+                    "Mehrkostenvereinbarung"
+                ]
+            }
+        },
+        {
+            "id": "09",
+            "title": "GKV Multi-Tooth 36+14",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 od Komposit mit Kofferdam; danach Füllung 14 o GIZ.",
+            "expect": {
+                "phase": "output",
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustHavePerInstance": true,
+                "perInstanceCount": 2,
+                "mustIncludeAnyBillingRefs": [
+                    "BEMA_13"
+                ]
+            }
+        },
+        {
+            "id": "10",
+            "title": "GKV Surface approximal → Askback",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 approximal Komposit.",
+            "expect": {
+                "phase": "questions",
+                "mustAskbackIds": [
+                    "surfaces"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ]
+            }
+        },
+        {
+            "id": "11",
+            "title": "GKV profunda + indirekte Überkappung (Cp, nicht P)",
+            "insuranceType": "GKV",
+            "dictation": "Füllung 36 profunda mod Komposit, indirekte Überkappung mit Ca(OH)2.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "mustIncludeAllBillingRefs": [
+                    "BEMA_13c",
+                    "BEMA_25"
+                ],
+                "mustNotIncludeBillingRefs": [
+                    "BEMA_26"
+                ],
+                "mustIncludeTextSnippets": [
+                    "indirekte Überkappung"
+                ]
+            }
+        }
+    ]
+}

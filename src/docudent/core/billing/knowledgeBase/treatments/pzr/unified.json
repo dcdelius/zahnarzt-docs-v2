@@ -1,0 +1,421 @@
+{
+    "_meta": {
+        "id": "pzr",
+        "version": "1.0.0",
+        "label": "PZR"
+    },
+    "chips": [
+        {
+            "id": "pzr_vollstaendig",
+            "label": "PZR vollständig",
+            "phase": "behandlung",
+            "billingRef": {
+                "GKV": "BEMA_107",
+                "PKV": "GOZ_1040"
+            },
+            "textSnippets": {
+                "kurz": "PZR durchgeführt.",
+                "mittel": "Professionelle Zahnreinigung durchgeführt.",
+                "lang": "Professionelle Zahnreinigung aller Zähne durchgeführt."
+            },
+            "defaultActive": true
+        },
+        {
+            "id": "zahnstein_entfernung",
+            "label": "Zahnsteinentfernung",
+            "phase": "behandlung",
+            "billingRef": {
+                "GKV": "BEMA_107a",
+                "PKV": "GOZ_1040"
+            },
+            "textSnippets": {
+                "kurz": "Zahnstein entfernt.",
+                "mittel": "Supragingivale Zahnsteinentfernung.",
+                "lang": "Gründliche supragingivale Zahnsteinentfernung mittels Ultraschall und Handinstrumenten."
+            }
+        },
+        {
+            "id": "fluoridierung",
+            "label": "Fluoridierung",
+            "phase": "nachsorge",
+            "billingRef": {
+                "GKV": null,
+                "PKV": "GOZ_1020"
+            },
+            "textSnippets": {
+                "kurz": "Fluoridierung.",
+                "mittel": "Fluoridierung der Zähne.",
+                "lang": "Lokale Fluoridierung mit Fluoridlack zur Kariesprophylaxe."
+            }
+        },
+        {
+            "id": "la_infiltr",
+            "label": "LA Infiltration",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Infiltr.",
+                "mittel": "LA Infiltration ({la_agent}).",
+                "lang": "Nach Oberflächenanästhesie Infiltrationsanästhesie mit {la_agent} 1,7ml."
+            },
+            "variablen": {
+                "la_agent": { "default": "Ultracain D-S", "required": false }
+            },
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Infiltration"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_leitung",
+                "ohne_la"
+            ],
+            "defaultActive": true,
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_LA_QUADRANT"
+            ],
+            "forensicNotes": [
+                "Bei OK: Infiltration Standard",
+                "Material und Menge dokumentieren"
+            ]
+        },
+        {
+            "id": "la_leitung",
+            "label": "LA Leitung",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Leitung.",
+                "mittel": "Leitungsanästhesie N. alv. inf. ({la_agent}).",
+                "lang": "Leitungsanästhesie des N. alveolaris inf. mit {la_agent} 1,7ml; Wirkungseintritt nach ca. 3 min."
+            },
+            "variablen": {
+                "la_agent": { "default": "Ultracain D-S", "required": false }
+            },
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Leitung"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_infiltr",
+                "ohne_la"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_LA_QUADRANT",
+                "RULE_LA_LEITUNG_UK"
+            ],
+            "forensicNotes": [
+                "Standard bei UK-Seitenzähnen (36-38, 46-48)"
+            ],
+            "conditionHint": "Standard bei UK-Seitenzähnen"
+        },
+        {
+            "id": "la_ila",
+            "label": "LA Intraligamentär",
+            "phase": "anaesthesie",
+            "category": "dokumentation",
+            "textSnippets": {
+                "kurz": "LA ILA.",
+                "mittel": "Intraligamentäre Anästhesie ({la_agent}).",
+                "lang": "Intraligamentäre Anästhesie mit {la_agent} 1,7ml."
+            },
+            "variablen": {
+                "la_agent": { "default": "Ultracain D-S", "required": false }
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "ILA"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_infiltr",
+                "la_leitung",
+                "ohne_la"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "conditionHint": "Optional bei UK-Seitenzähnen"
+        },
+        {
+            "id": "oberflaeche_la",
+            "label": "Oberflächenanästhesie",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "OA.",
+                "mittel": "Oberflächenanästhesie vor Injektion.",
+                "lang": "Oberflächenanästhesie vor Injektion appliziert (Lidocain-Spray/Gel)."
+            },
+            "billingRef": {
+                "PKV": "GOZ_0080"
+            },
+            "dataPatches": [
+                {
+                    "field": "surface_anesthesia",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_OBERFLAECHE_PKV_UPSELL"
+            ],
+            "forensicNotes": [],
+            "upsellCandidate": true,
+            "upsellNotes": [
+                "Nur bei PKV abrechenbar",
+                "GOZ 0080 zusätzlich zur Injektion"
+            ]
+        },
+        {
+            "id": "kofferdam",
+            "label": "Kofferdam",
+            "phase": "vorbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Kofferdam.",
+                "mittel": "Kofferdam angelegt.",
+                "lang": "Absolute Trockenlegung durch sorgfältiges Anlegen von Kofferdam mit anatomisch angepasster Klammer unter Sichterhaltung des Operationsfeldes."
+            },
+            "billingRef": {
+                "GKV": "BEMA_12",
+                "PKV": "GOZ_2040"
+            },
+            "dataPatches": [
+                {
+                    "field": "isolation",
+                    "value": "Kofferdam"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "rel_trocken"
+            ],
+            "defaultActive": true,
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_KOFFERDAM_PFLICHT"
+            ],
+            "forensicNotes": [
+                "Kofferdam MUSS dokumentiert sein für BEMA 12!",
+                "Ohne Dokumentation → REGRESS"
+            ]
+        },
+        {
+            "id": "rel_trocken",
+            "label": "Rel. Trockenlegung",
+            "phase": "vorbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Rel. Trockenlegung.",
+                "mittel": "Relative Trockenlegung.",
+                "lang": "Relative Trockenlegung mittels Watterollen und kontinuierlicher Absaugung."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "isolation",
+                    "value": "relativ"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kofferdam"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "vipr_pos",
+            "label": "ViPr +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr +",
+                "mittel": "ViPr +",
+                "lang": "Sensibilität positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_neg"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_VITAL_DOKU"
+            ],
+            "forensicNotes": [
+                "Sensibilitätsprüfung dokumentieren: ViPr+/ViPr-"
+            ]
+        },
+        {
+            "id": "vipr_neg",
+            "label": "ViPr −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr −",
+                "mittel": "ViPr −",
+                "lang": "Sensibilität negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_pos"
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_VITAL_DOKU",
+                "RULE_FUELLUNG_DEVITAL_WARNUNG"
+            ],
+            "forensicNotes": [
+                "Bei ViPr- → Endokontrolle erwägen",
+                "Devitaler Zahn bei Füllung dokumentieren"
+            ]
+        },
+        {
+            "id": "perk_neg",
+            "label": "Perk −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk −",
+                "mittel": "Perk −",
+                "lang": "Perkussion negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_pos"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_PERK_DOKU"
+            ],
+            "forensicNotes": []
+        },
+        {
+            "id": "perk_pos",
+            "label": "Perk +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk +",
+                "mittel": "Perk +",
+                "lang": "Perkussion positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_neg"
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_PERK_DOKU",
+                "RULE_FUELLUNG_PERK_POS_WARNUNG"
+            ],
+            "forensicNotes": [
+                "Perk+ kann auf Pulpitis hinweisen",
+                "Ggf. Endo erwägen"
+            ]
+        },
+        {
+            "id": "insurance_gkv_mkv",
+            "label": "Mehrkosten (GKV)",
+            "phase": "info",
+            "category": "insurance",
+            "textSnippets": {
+                "kurz": "Mehrkostenvereinbarung.",
+                "mittel": "Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V).",
+                "lang": "Patientenaufklärung über Mehrkosten für höherwertige Versorgung erfolgt. Schriftliche Mehrkostenvereinbarung gemäß § 28 Abs. 2 SGB V vor Behandlungsbeginn vereinbart."
+            },
+            "billingRef": null,
+            "hinweis": "Marker-Chip für MKV-Dokumentation, keine direkte Abrechnung.",
+            "dataPatches": [
+                {
+                    "field": "mkv",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_MKV_SCHRIFTLICH"
+            ],
+            "forensicNotes": [
+                "MKV-Vereinbarung muss VOR Behandlung unterschrieben sein!"
+            ]
+        },
+        {
+            "id": "mkv_begruendung",
+            "label": "Mehrkosten-Begründung",
+            "phase": "info",
+            "category": "insurance",
+            "textSnippets": {
+                "kurz": "Mehrkosten-Begründung: {mkv_justification}.",
+                "mittel": "Mehrkosten-Begründung: {mkv_justification}.",
+                "lang": "Mehrkosten-Begründung: {mkv_justification}."
+            },
+            "variablen": {
+                "mkv_justification": { "default": "höherwertige Versorgung", "required": false }
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein für MKV-Begründung.",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        }
+    ],
+    "phasen_reihenfolge": [
+        "behandlung",
+        "nachsorge"
+    ]
+}

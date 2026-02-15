@@ -1,0 +1,14 @@
+{
+    "gigaprompt": "G65",
+    "milestone": "m65",
+    "generated_at": "2025-12-30T07:45:00Z",
+    "status": "PLANNING",
+    "summary": "Playwright auth needs storageState approach for stability",
+    "current_issue": "Tests land on login page, login helper blocked by route blocking",
+    "plan": {
+        "approach": "storageState (one-time login, persist auth)",
+        "setup": "e2e/auth/setup.storageState.ts",
+        "config": "playwright.config.ts use storageState",
+        "critical": "Must NOT block Firebase Auth endpoints"
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "_meta": {
+        "treatmentId": "extraction",
+        "version": "1.0.0",
+        "description": "Question Bank for Extraction - minimal MVP"
+    },
+    "questions": [
+        {
+            "key": "grund",
+            "category": "forensic",
+            "prompt": "🦷 Extraktionsgrund?",
+            "type": "single",
+            "dataField": "mentioned.grund",
+            "options": [
+                {
+                    "id": "nicht_erhaltungswuerdig",
+                    "label": "Nicht erhaltungswürdig",
+                    "dataValue": "nicht_erhaltungswuerdig"
+                },
+                {
+                    "id": "paro",
+                    "label": "Parodontal geschädigt",
+                    "dataValue": "parodontal"
+                },
+                {
+                    "id": "fraktur",
+                    "label": "Fraktur",
+                    "dataValue": "fraktur"
+                }
+            ]
+        },
+        {
+            "key": "komplikation",
+            "category": "forensic",
+            "prompt": "⚠️ Komplikationen?",
+            "type": "single",
+            "dataField": "mentioned.komplikation",
+            "options": [
+                {
+                    "id": "keine",
+                    "label": "Keine",
+                    "dataValue": "keine"
+                },
+                {
+                    "id": "wurzelrest",
+                    "label": "Wurzelrest verblieben",
+                    "dataValue": "wurzelrest"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+  "generated_at": "2025-12-29T13:19:36.999Z",
+  "status": "PASS",
+  "steps": {
+    "build": {
+      "status": "pass",
+      "duration_ms": 4760
+    },
+    "preview": {
+      "status": "available"
+    },
+    "playwright": {
+      "status": "available"
+    },
+    "repro_capture": {
+      "status": "pass",
+      "fixtures": [
+        "endo_01_missing_wl_method.json",
+        "endo_02_missing_iso_sizes.json",
+        "endo_03_persistent_fistula.json",
+        "endo_04_canal_not_negotiable.json",
+        "endo_05_obturation_postponed.json",
+        "endo_06_patient_info.json",
+        "fuellung_01_standard.json",
+        "fuellung_02_infiltration.json",
+        "fuellung_03_conduction.json",
+        "fuellung_04_mkv_toggle.json",
+        "fuellung_05_deviation_kofferdam.json",
+        "fuellung_06_patient_info.json"
+      ]
+    },
+    "cli_replay": {
+      "status": "pass"
+    },
+    "diff": {
+      "status": "pass",
+      "matches": 1,
+      "mismatches": 0
+    }
+  },
+  "blocking_issues": []
+}

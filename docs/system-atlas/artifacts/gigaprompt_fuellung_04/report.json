@@ -1,0 +1,44 @@
+{
+    "run_at": "2025-12-30T22:45:00Z",
+    "gigaprompt": "GP4",
+    "status": "DESIGN_COMPLETE",
+    "summary": "Chips visibility design documented, implementation requires OutputFlow component update",
+    "requirements": {
+        "chips_summary": {
+            "location": [
+                "questions-screen",
+                "output-screen"
+            ],
+            "per_chip_info": [
+                "chipId",
+                "name",
+                "source",
+                "instanceScope"
+            ]
+        },
+        "chip_override": {
+            "chips": [
+                "fuellung_material_composite",
+                "fuellung_material_giz",
+                "kofferdam",
+                "fuellung_isolation_relative",
+                "fuellung_adhesivtechnik",
+                "fuellung_schichttechnik",
+                "fuellung_pulpaschutz"
+            ],
+            "states": [
+                "Auto",
+                "On",
+                "Off"
+            ],
+            "precedence": "Dictation > Manual > Askback > Settings > Default"
+        }
+    },
+    "testids": {
+        "chips_container": "chips-summary",
+        "chip_item": "chip-{chipId}",
+        "chip_status": "chip-{chipId}-status",
+        "override_button": "chip-{chipId}-override"
+    },
+    "note": "Full implementation deferred to component-level work; design contract established"
+}

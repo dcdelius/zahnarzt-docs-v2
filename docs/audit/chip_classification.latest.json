@@ -1,0 +1,197 @@
+{
+    "generatedAt": "2025-12-26T15:45:00Z",
+    "version": "1.0.0",
+    "summary": {
+        "totalChips": 43,
+        "uniqueChipIds": 36,
+        "commonChips": 7,
+        "COMMON_IDENTICAL": 4,
+        "COMMON_BILLING_ONLY": 3,
+        "TREATMENT_SPECIFIC": 29,
+        "billingMismatches": 0,
+        "textDriftUnapproved": 0
+    },
+    "classification": {
+        "COMMON_IDENTICAL": [
+            {
+                "chipId": "vipr_pos",
+                "treatments": [
+                    "fuellung",
+                    "endo"
+                ],
+                "billingRef": null,
+                "textMatch": true
+            },
+            {
+                "chipId": "vipr_neg",
+                "treatments": [
+                    "fuellung",
+                    "endo"
+                ],
+                "billingRef": null,
+                "textMatch": true
+            },
+            {
+                "chipId": "perk_neg",
+                "treatments": [
+                    "fuellung",
+                    "endo"
+                ],
+                "billingRef": null,
+                "textMatch": true
+            },
+            {
+                "chipId": "perk_pos",
+                "treatments": [
+                    "fuellung",
+                    "endo"
+                ],
+                "billingRef": null,
+                "textMatch": true
+            }
+        ],
+        "COMMON_BILLING_ONLY": [
+            {
+                "chipId": "kofferdam",
+                "treatments": [
+                    "fuellung",
+                    "endo"
+                ],
+                "billingRef": {
+                    "GKV": "BEMA_12",
+                    "PKV": "GOZ_2040"
+                },
+                "billingMatch": true,
+                "textMatch": false,
+                "textDriftApproved": true,
+                "allowlistEntry": "textDriftAllowlist.json"
+            },
+            {
+                "chipId": "la_infiltr",
+                "treatments": [
+                    "fuellung",
+                    "endo"
+                ],
+                "billingRef": {
+                    "GKV": "BEMA_40",
+                    "PKV": "GOZ_0090"
+                },
+                "billingMatch": true,
+                "textMatch": false,
+                "textDriftApproved": true,
+                "allowlistEntry": "textDriftAllowlist.json"
+            },
+            {
+                "chipId": "la_leitung",
+                "treatments": [
+                    "fuellung",
+                    "endo"
+                ],
+                "billingRef": {
+                    "GKV": "BEMA_41a",
+                    "PKV": "GOZ_0100"
+                },
+                "billingMatch": true,
+                "textMatch": false,
+                "textDriftApproved": true,
+                "allowlistEntry": "textDriftAllowlist.json"
+            }
+        ],
+        "TREATMENT_SPECIFIC": {
+            "fuellung": [
+                "oberflaeche_la",
+                "rel_trocken",
+                "exkavation",
+                "cp",
+                "cp_not_required",
+                "p",
+                "komposit_basic",
+                "mehrschicht",
+                "finishing",
+                "fluor"
+            ],
+            "endo": [
+                "roentgen_einzelzahn",
+                "trepanation",
+                "laengenmessung_elek",
+                "laengenmessung_roentgen",
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4",
+                "spuelung_naocl",
+                "spuelung_edta",
+                "einlage_caoh2",
+                "provisorischer_verschluss",
+                "wf_kalt",
+                "wf_warm",
+                "wf_einzel",
+                "roentgen_kontrolle",
+                "aufbau_postendo"
+            ]
+        }
+    },
+    "billingSharedGroups": [
+        {
+            "billingRef": {
+                "GKV": "BEMA_Ä925a",
+                "PKV": "GOZ_5000"
+            },
+            "chips": [
+                "roentgen_einzelzahn",
+                "laengenmessung_roentgen",
+                "roentgen_kontrolle"
+            ],
+            "reason": "X-ray billing code shared for different clinical purposes"
+        },
+        {
+            "billingRef": {
+                "GKV": "BEMA_32",
+                "PKV": "GOZ_2410"
+            },
+            "chips": [
+                "kanalaufbereitung_1",
+                "kanalaufbereitung_2",
+                "kanalaufbereitung_3",
+                "kanalaufbereitung_4"
+            ],
+            "reason": "Per-canal billing, canal count variants"
+        },
+        {
+            "billingRef": {
+                "GKV": "BEMA_34",
+                "PKV": "GOZ_2440"
+            },
+            "chips": [
+                "wf_kalt",
+                "wf_warm",
+                "wf_einzel"
+            ],
+            "reason": "Per-canal WF, technique variants"
+        }
+    ],
+    "textDriftDetails": {
+        "approved": [
+            {
+                "chipId": "kofferdam",
+                "fuellung": "Absolute Trockenlegung durch sorgfältiges Anlegen von Kofferdam mit anatomisch angepasster Klammer unter Sichterhaltung des Operationsfeldes.",
+                "endo": "Anlegen von Kofferdam zur absoluten Trockenlegung und Keimreduktion.",
+                "reason": "Fuellung: detail focus. Endo: sterility focus."
+            },
+            {
+                "chipId": "la_infiltr",
+                "fuellung": "Nach Oberflächenanästhesie Infiltrationsanästhesie mit Ultracain D-S 1,7ml (Articain 4% + Adrenalin 1:200.000).",
+                "endo": "Infiltrationsanästhesie mit Ultracain D-S 1,7ml.",
+                "reason": "Fuellung: includes OA reference. Endo: concise."
+            },
+            {
+                "chipId": "la_leitung",
+                "fuellung": "Leitungsanästhesie des N. alveolaris inf. mit Ultracain D-S 1,7ml (Articain 4% + Adrenalin 1:200.000); Wirkungseintritt nach ca. 3 min.",
+                "endo": "Leitungsanästhesie des N. alveolaris inf. mit Ultracain D-S 1,7ml.",
+                "reason": "Fuellung: timing info. Endo: concise."
+            }
+        ],
+        "unapproved": []
+    },
+    "verdict": "SSOT_COMPLIANT"
+}

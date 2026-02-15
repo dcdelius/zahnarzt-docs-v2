@@ -1,0 +1,19 @@
+{
+    "gigaprompt": "G74",
+    "milestone": "m74",
+    "generated_at": "2025-12-30T08:18:00Z",
+    "status": "PENDING",
+    "summary": "Pipeline gates need contract/invariant fixes",
+    "scope": [
+        "gate-combinability-rules-lock",
+        "gate-m12_4-no-core-services-imports",
+        "gate-m16-parity-with-existing",
+        "gate-m39-clinical-v4-determinism-100x",
+        "gate-medical-kb-anchors-valid",
+        "gate-mvp-no-error",
+        "gate-no-mock-output-strings",
+        "gate-no-patient-fields-in-output",
+        "gate-no-v6-mutation",
+        "gate-pipeline-questionbundle-always-present"
+    ]
+}

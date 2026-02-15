@@ -1,0 +1,28 @@
+{
+    "version": "1.0.0",
+    "runId": "repro-endo-wl-missing",
+    "timestamp": "2025-12-29T17:45:00Z",
+    "input": {
+        "dictation": "Wurzelkanalbehandlung Zahn 21, ein Kanal, elektrometrische Längenbestimmung",
+        "treatmentId": "endo",
+        "insuranceType": "PKV",
+        "textLength": "long",
+        "hasMKV": false,
+        "answers": {}
+    },
+    "expected": {
+        "state_sequence": [
+            "questions",
+            "output"
+        ],
+        "required_questions": [
+            "endo_wl_method"
+        ],
+        "chips_must_include": [
+            "elektrometrisch"
+        ],
+        "fullText_must_contain": [
+            "elektrometrische Längenbestimmung"
+        ]
+    }
+}

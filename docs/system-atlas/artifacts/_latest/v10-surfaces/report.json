@@ -1,0 +1,50 @@
+{
+    "generated": "2025-12-31T16:26:00Z",
+    "module": "v10/extraction/surfaces",
+    "status": "complete",
+    "features": {
+        "ssot": {
+            "module": "normalizeSurfaces.ts",
+            "description": "Single Source of Truth for surface extraction"
+        },
+        "noGuessing": {
+            "ambiguousTerms": [
+                "approximal",
+                "seitlich",
+                "großflächig",
+                "mehrflächig",
+                "zwischenzahn",
+                "interproximal"
+            ],
+            "behavior": "Returns surfaces=[], hasAmbiguity=true"
+        },
+        "canonicalSurfaces": [
+            "m",
+            "o",
+            "d",
+            "b",
+            "l"
+        ],
+        "mappings": {
+            "palatinal": "l",
+            "labial": "b",
+            "vestibulär": "b"
+        }
+    },
+    "factsFields": {
+        "surfaces": "CanonicalSurface[]",
+        "surfaceSource": "'extraction' | 'dictation' | 'none'",
+        "surfaceWarnings": "string[]",
+        "surfaceAmbiguous": "boolean"
+    },
+    "tests": {
+        "gate-f-code-surface-truthcases": 7,
+        "v10.instance-isolation": 9,
+        "mvp-smoke-runner": 12
+    },
+    "verification": {
+        "build": "pass",
+        "atlas:check": "pass",
+        "allTestsGreen": true
+    }
+}

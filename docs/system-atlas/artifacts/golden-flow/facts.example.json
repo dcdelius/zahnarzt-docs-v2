@@ -1,0 +1,36 @@
+{
+    "_comment": "Example facts for reference dictation. NO medical logic, NO billing codes.",
+    "_dictation": "An Zahn 36 okklusal eine Kompositfüllung adhäsiv, an Zahn 14 distal eine kleine Füllung. Lokalanästhesie durchgeführt.",
+    "teeth": [
+        {
+            "tooth": "36",
+            "surfaces": [
+                "o"
+            ]
+        },
+        {
+            "tooth": "14",
+            "surfaces": [
+                "d"
+            ]
+        }
+    ],
+    "materials": {
+        "filling": "Komposit"
+    },
+    "markers": {
+        "adhesive_mentioned": true,
+        "kofferdam_mentioned": false,
+        "anesthesia_mentioned": true,
+        "capping_mentioned": false,
+        "xray_mentioned": false
+    },
+    "negations": [],
+    "keywords": [
+        "okklusal",
+        "adhäsiv",
+        "distal",
+        "kleine Füllung",
+        "Lokalanästhesie durchgeführt"
+    ]
+}

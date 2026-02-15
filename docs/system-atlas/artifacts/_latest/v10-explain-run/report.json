@@ -1,0 +1,189 @@
+{
+  "version": "v1",
+  "generatedAt": "2026-02-03T19:35:46.711Z",
+  "stableHash": "ad72a056ac11a69a",
+  "input": {
+    "treatmentId": "fuellung",
+    "insuranceType": "GKV",
+    "dictationPreview": "Zahn 36 mo Komposit",
+    "teethCount": 1
+  },
+  "extraction": {
+    "engine": "llm",
+    "treatmentId": "fuellung",
+    "insuranceType": "GKV",
+    "tooth": "36",
+    "surfaces": [
+      "m",
+      "o"
+    ],
+    "rawExtractKeys": []
+  },
+  "facts": [
+    {
+      "factKey": "bleeding",
+      "value": {
+        "detected": "unknown"
+      },
+      "source": "dictation",
+      "confirmed": true
+    },
+    {
+      "factKey": "capping",
+      "value": {
+        "performed": "unknown"
+      },
+      "source": "dictation",
+      "confirmed": true
+    },
+    {
+      "factKey": "cariesDepth",
+      "value": "unknown",
+      "source": "dictation",
+      "confirmed": true
+    },
+    {
+      "factKey": "sensitivity",
+      "value": {
+        "reported": "unknown"
+      },
+      "source": "dictation",
+      "confirmed": true
+    },
+    {
+      "factKey": "treatmentId",
+      "value": "fuellung",
+      "source": "dictation",
+      "confirmed": true
+    }
+  ],
+  "firedRules": [],
+  "askbacks": [],
+  "chips": [
+    {
+      "chipId": "fuellung_grundleistung",
+      "scope": "session",
+      "emittedByRule": "unknown",
+      "factSources": [
+        "dictation"
+      ],
+      "billingEligible": true,
+      "blockedByGuard": false
+    },
+    {
+      "chipId": "fuellung_material_komposit",
+      "scope": "session",
+      "emittedByRule": "unknown",
+      "factSources": [
+        "dictation"
+      ],
+      "billingEligible": true,
+      "blockedByGuard": false
+    },
+    {
+      "chipId": "mehrschicht",
+      "scope": "session",
+      "emittedByRule": "unknown",
+      "factSources": [
+        "dictation"
+      ],
+      "billingEligible": true,
+      "blockedByGuard": false
+    }
+  ],
+  "billingCodes": [
+    {
+      "code": "BEMA_13b",
+      "codeSystem": "BEMA",
+      "sourceChipId": "unknown",
+      "billingRefField": "GKV",
+      "scope": "session"
+    }
+  ],
+  "combinability": {
+    "verdict": "PASS",
+    "conflicts": [],
+    "warnings": [],
+    "checkedAt": "2026-02-03T19:35:46.711Z"
+  },
+  "textBlocks": [
+    {
+      "blockIndex": 0,
+      "sectionKey": "main",
+      "text": "[Befund]\nZahn 36. MO\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 36 (MO): Füllungstherapie{depthDisplay}. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "sourceChipIds": [
+        "fuellung_grundleistung",
+        "fuellung_material_komposit",
+        "mehrschicht"
+      ],
+      "textLength": "mittel"
+    }
+  ],
+  "kbMeta": {
+    "medical": {
+      "source": "json",
+      "version": "1.0.0",
+      "hash": "b7d403b22d6b"
+    },
+    "treatment": {
+      "source": "firestore_fallback",
+      "version": "2025-01-v2",
+      "hash": "259a2bc94ef6"
+    },
+    "combinability": {
+      "source": "json",
+      "version": "1.1.0",
+      "hash": "m16-v1-truthset+la"
+    }
+  },
+  "traceLines": [
+    {
+      "key": "input",
+      "value": "treatment=fuellung;insurance=GKV;mkv=false"
+    },
+    {
+      "key": "kb_medical",
+      "value": "source=json;version=1.0.0;hash=b7d403b22d6b"
+    },
+    {
+      "key": "kb_treatment",
+      "value": "source=firestore_fallback;treatment=fuellung;version=2025-01-v2;hash=259a2bc94ef6"
+    },
+    {
+      "key": "extract",
+      "value": "engine=llm;tooth=36;surfaces=m,o"
+    },
+    {
+      "key": "extract_detail",
+      "value": "method=llm;llmError=none"
+    },
+    {
+      "key": "medical_summary",
+      "value": "minimalDataset=false;hard=2;soft=5;findings=1"
+    },
+    {
+      "key": "gate",
+      "value": "canProceed=true;missing=none"
+    },
+    {
+      "key": "billing_guard",
+      "value": "billing_guard:blocked=0;allowed=3"
+    },
+    {
+      "key": "billing_inputs",
+      "value": "treatmentId=fuellung;endo_step=none;canal_count=0;insurance=GKV;mkv=false;tooth=36"
+    },
+    {
+      "key": "render",
+      "value": "sections=none"
+    },
+    {
+      "key": "billing_result",
+      "value": "codes=1;blocked=0;reason=none"
+    },
+    {
+      "key": "combinability",
+      "value": "verdict=PASS;conflicts=0"
+    }
+  ]
+}

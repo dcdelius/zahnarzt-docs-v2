@@ -1,0 +1,83 @@
+{
+    "meta": {
+        "runId": "R1_fuellung_profunda_mkv",
+        "version": "1.0",
+        "sanitized": true,
+        "createdAt": "2025-12-29T21:26:00Z"
+    },
+    "input": {
+        "dictation": "F\u00fcllung Zahn 26 mesial und distal, profunda Behandlung mit MKV, Infiltrationsan\u00e4sthesie durchgef\u00fchrt",
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "textLength": "mittel",
+        "hasMKV": true,
+        "answers": {
+            "surfaces": [
+                "mesial",
+                "distal"
+            ],
+            "anesthesia_type": "infiltration"
+        }
+    },
+    "captured": {
+        "extraction": {
+            "tooth": "26",
+            "surfaces": [
+                "mesial",
+                "distal"
+            ],
+            "diagnosis": "profunda",
+            "mentioned": {
+                "mkv": true,
+                "anesthesia": "infiltration"
+            }
+        },
+        "facts": {
+            "tooth": "26",
+            "surfaces": [
+                "mesial",
+                "distal"
+            ],
+            "diagnosis": "profunda",
+            "hasMKV": true,
+            "anesthesiaType": "infiltration"
+        },
+        "questions": [],
+        "chips": [
+            {
+                "id": "anesthesia_infiltr",
+                "source": "kb"
+            },
+            {
+                "id": "fuellung_composite",
+                "source": "kb"
+            },
+            {
+                "id": "mkv_mehrkosten",
+                "source": "kb"
+            }
+        ],
+        "billingCodes": [
+            {
+                "code": "BEMA_13d",
+                "system": "BEMA"
+            },
+            {
+                "code": "BEMA_41a",
+                "system": "BEMA"
+            }
+        ],
+        "combinabilityVerdict": "PASS",
+        "finalState": "output",
+        "fullText": "Zahn 26 mod. Kompositf\u00fcllung nach Exkavation einer Caries profunda. Infiltrationsan\u00e4sthesie. MKV-Vereinbarung."
+    },
+    "buildInfo": {
+        "gitSha": "cf8438e",
+        "timestamp": 1735503960000,
+        "kbHashes": {
+            "medicalKb": "abc123",
+            "fuellungUnified": "def456",
+            "endoUnified": "ghi789"
+        }
+    }
+}

@@ -1,0 +1,102 @@
+/**
+ * V10SegmentPreview Styles
+ */
+
+.v10-segment-preview {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.v10-segment-preview.loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.v10-segment-loading {
+    color: #7f8c8d;
+    font-size: 0.875rem;
+}
+
+.v10-segment-header {
+    margin-bottom: 0.75rem;
+}
+
+.v10-segment-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.v10-segment-cards {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* Segment Card */
+.v10-segment-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.875rem;
+    min-width: 180px;
+    max-width: 250px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 3px solid;
+    border-radius: 8px;
+}
+
+.v10-segment-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.v10-segment-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.v10-segment-tooth {
+    font-size: 0.8rem;
+    color: #bdc3c7;
+    font-weight: 500;
+}
+
+.v10-segment-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+}
+
+.v10-segment-keyword {
+    display: inline-block;
+    padding: 0.15rem 0.4rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #95a5a6;
+}
+
+.v10-segment-negations {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.v10-segment-negation {
+    font-size: 0.75rem;
+    color: #e74c3c;
+}

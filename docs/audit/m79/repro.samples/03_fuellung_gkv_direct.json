@@ -1,0 +1,30 @@
+{
+    "version": "1.0.0",
+    "runId": "repro-fuellung-gkv-no-questions",
+    "timestamp": "2025-12-29T17:45:00Z",
+    "input": {
+        "dictation": "Kompositfüllung Zahn 36 okklusal, oberflächliche Karies, relative Trockenlegung, keine Anästhesie",
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "textLength": "short",
+        "hasMKV": false,
+        "answers": {}
+    },
+    "expected": {
+        "state_sequence": [
+            "output"
+        ],
+        "required_questions": [],
+        "chips_must_include": [
+            "rel_trocken",
+            "komposit_basic"
+        ],
+        "chips_must_exclude": [
+            "kofferdam",
+            "la_infiltration"
+        ],
+        "fullText_must_contain": [
+            "relative Trockenlegung"
+        ]
+    }
+}

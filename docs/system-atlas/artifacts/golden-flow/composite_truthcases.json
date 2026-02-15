@@ -1,0 +1,214 @@
+{
+    "version": "1.0.0",
+    "description": "G118: Truthcases für Composite-Füllungen",
+    "cases": [
+        {
+            "id": "gkv_front_simple",
+            "name": "GKV Frontzahn: Standard",
+            "dictation": "Füllung Zahn 21 mesial, Komposit.",
+            "context": {
+                "insuranceType": "GKV"
+            },
+            "expected": {
+                "facts": {
+                    "tooth": "21",
+                    "surfaces": [
+                        "m"
+                    ],
+                    "toothRegion": "front",
+                    "materialMentioned": "komposit"
+                },
+                "askbacks": [],
+                "chips": [
+                    "komposit_basic",
+                    "la_infiltr",
+                    "exkavation",
+                    "finishing"
+                ],
+                "billing": {
+                    "bema": [
+                        "BEMA_40",
+                        "BEMA_13a"
+                    ],
+                    "goz": []
+                },
+                "outputContains": [
+                    "Zahn 21",
+                    "mesial",
+                    "Kompositfüllung",
+                    "Infiltrationsanästhesie"
+                ]
+            }
+        },
+        {
+            "id": "gkv_mkv_side",
+            "name": "GKV+MKV Seitenzahn: Adhäsiv explizit",
+            "dictation": "Füllung Zahn 36 okklusal Komposit adhäsiv, MKV vorhanden.",
+            "context": {
+                "insuranceType": "GKV",
+                "hasMKV": true
+            },
+            "expected": {
+                "facts": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "o"
+                    ],
+                    "toothRegion": "side",
+                    "materialMentioned": "komposit",
+                    "adhesiveMentioned": true,
+                    "hasMKV": true
+                },
+                "askbacks": [],
+                "chips": [
+                    "mkv_valid",
+                    "komposit_mehrschicht",
+                    "adhesive",
+                    "la_leitung",
+                    "exkavation",
+                    "finishing"
+                ],
+                "billing": {
+                    "bema": [
+                        "BEMA_41a",
+                        "BEMA_13a"
+                    ],
+                    "goz_diff": [
+                        "GOZ_2060_DIFF",
+                        "GOZ_2197"
+                    ]
+                },
+                "outputContains": [
+                    "Zahn 36",
+                    "okklusal",
+                    "Mehrschichttechnik",
+                    "Adhäsivtechnik",
+                    "Mehrkostenvereinbarung"
+                ]
+            }
+        },
+        {
+            "id": "gkv_mkv_side_askback",
+            "name": "GKV+MKV Seitenzahn: Adhäsiv per Askback",
+            "dictation": "Füllung Zahn 36 okklusal Komposit, MKV vorhanden.",
+            "context": {
+                "insuranceType": "GKV",
+                "hasMKV": true
+            },
+            "expected": {
+                "facts": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "o"
+                    ],
+                    "toothRegion": "side",
+                    "materialMentioned": "komposit",
+                    "adhesiveMentioned": false,
+                    "hasMKV": true
+                },
+                "askbacks": [
+                    {
+                        "id": "adhesive_technique",
+                        "question": "Wurde Adhäsivtechnik (Mehrschicht) angewendet?"
+                    }
+                ],
+                "answersProvided": {
+                    "adhesive_technique": true
+                },
+                "chipsAfterAnswer": [
+                    "mkv_valid",
+                    "komposit_mehrschicht",
+                    "adhesive",
+                    "la_leitung",
+                    "exkavation",
+                    "finishing"
+                ],
+                "billing": {
+                    "bema": [
+                        "BEMA_41a",
+                        "BEMA_13a"
+                    ],
+                    "goz_diff": [
+                        "GOZ_2060_DIFF",
+                        "GOZ_2197"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "pkv_mod_capping",
+            "name": "PKV Seitenzahn: 3-flächig mit Überkappung",
+            "dictation": "Füllung Zahn 46 mod Komposit, Caries profunda, Überkappung durchgeführt.",
+            "context": {
+                "insuranceType": "PKV"
+            },
+            "expected": {
+                "facts": {
+                    "tooth": "46",
+                    "surfaces": [
+                        "m",
+                        "o",
+                        "d"
+                    ],
+                    "toothRegion": "side",
+                    "materialMentioned": "komposit",
+                    "cariesDepth": "profunda",
+                    "cappingPerformed": true
+                },
+                "askbacks": [],
+                "chips": [
+                    "komposit_mehrschicht",
+                    "adhesive",
+                    "la_leitung",
+                    "exkavation",
+                    "cp",
+                    "finishing"
+                ],
+                "billing": {
+                    "bema": [],
+                    "goz": [
+                        "GOZ_0100",
+                        "GOZ_2100",
+                        "GOZ_2197",
+                        "GOZ_2330"
+                    ]
+                },
+                "outputContains": [
+                    "Zahn 46",
+                    "mesial-okklusal-distal",
+                    "Überkappung",
+                    "Caries profunda"
+                ]
+            }
+        },
+        {
+            "id": "gkv_side_no_mkv_askback",
+            "name": "GKV Seitenzahn: MKV fehlt → Askback",
+            "dictation": "Füllung Zahn 36 okklusal Komposit.",
+            "context": {
+                "insuranceType": "GKV"
+            },
+            "expected": {
+                "facts": {
+                    "tooth": "36",
+                    "surfaces": [
+                        "o"
+                    ],
+                    "toothRegion": "side",
+                    "materialMentioned": "komposit",
+                    "hasMKV": null
+                },
+                "askbacks": [
+                    {
+                        "id": "mkv_confirmed",
+                        "question": "Liegt eine schriftliche Mehrkostenvereinbarung vor?",
+                        "blocking": true
+                    }
+                ],
+                "ifAnswerNo": {
+                    "error": "Seitenzahn-Komposit ohne MKV nicht möglich"
+                }
+            }
+        }
+    ]
+}

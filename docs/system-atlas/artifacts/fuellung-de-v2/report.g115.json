@@ -1,0 +1,28 @@
+{
+    "run_at": "2025-12-30T23:00:00Z",
+    "gigaprompt": "G115",
+    "status": "PASS",
+    "summary": "Created v2 decision model with 2025 regulatory compliance",
+    "deliverables": {
+        "knowledge_pack": "fuellung_de_knowledge.v2.json",
+        "model_doc": "fuellung_de_model.v2.md"
+    },
+    "metrics": {
+        "decisions": 8,
+        "askbacks": 6,
+        "askbacks_blocking": 3,
+        "askbacks_recommended": 3,
+        "chips": 13,
+        "edge_cases": 7
+    },
+    "regulatory_sources": [
+        "EU Amalgam Ban 2025",
+        "BEMA 13e-h",
+        "S3-Leitlinie 2024"
+    ],
+    "verification": {
+        "every_answer_has_chip": true,
+        "no_billing_hardcodes": true,
+        "no_informational_only": true
+    }
+}

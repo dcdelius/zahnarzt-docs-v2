@@ -1,0 +1,142 @@
+{
+    "generated_at": "2025-12-30T07:50:00Z",
+    "total_failing_files": 46,
+    "clusters": {
+        "E2E_PLAYWRIGHT": {
+            "count": 12,
+            "files": [
+                "v10-golden-path.e2e.spec.ts",
+                "v10-multiinstance.e2e.spec.ts",
+                "v10-prod-repro.e2e.spec.ts",
+                "v10-ui.e2e.spec.ts",
+                "v7-flow.e2e.spec.ts",
+                "v7-live-sanity.e2e.spec.ts",
+                "v7-multiinstance-2teeth.e2e.spec.ts",
+                "v7-multiinstance-questions-2teeth.e2e.spec.ts",
+                "v7-realcases.e2e.spec.ts",
+                "v7-ssot.e2e.spec.ts",
+                "ui-flow-e2e.test.tsx",
+                "gate-p14-deep-filling-e2e.test.ts"
+            ],
+            "root_cause": "Runs in Vitest but expects Playwright browser",
+            "fix_bucket": "G68",
+            "fix_action": "Move to Playwright suite or mock browser context"
+        },
+        "FIREBASE_EMULATOR": {
+            "count": 1,
+            "files": [
+                "firestore.rules.test.ts"
+            ],
+            "root_cause": "Needs Firebase emulator running",
+            "fix_bucket": "G69",
+            "fix_action": "Add emulator guard or mock Firestore"
+        },
+        "GATES_PACK": {
+            "count": 8,
+            "files": [
+                "gate-m18-pack-completeness.test.ts",
+                "gate-m19-pack-generator-smoke.test.ts",
+                "gate-m20-pack-allowlist-must-be-explicit.test.ts",
+                "gate-m20-pack-billingref-coverage.test.ts",
+                "gate-m20-pack-combinability-goldens-are-real.test.ts",
+                "gate-m25-pack-coverage-still-100.test.ts",
+                "gate-m31-endo-clinical-parity.test.ts",
+                "gate-m31-fuellung-clinical-parity.test.ts"
+            ],
+            "root_cause": "Pack tests expect specific KB data or extraction_stub issues",
+            "fix_bucket": "G70",
+            "fix_action": "Update pack expectations or fix extraction_stub KB"
+        },
+        "GATES_PIPELINE": {
+            "count": 10,
+            "files": [
+                "gate-combinability-rules-lock.test.ts",
+                "gate-m12_4-no-core-services-imports.test.ts",
+                "gate-m16-parity-with-existing.test.ts",
+                "gate-m39-clinical-v4-determinism-100x.test.ts",
+                "gate-medical-kb-anchors-valid.test.ts",
+                "gate-mvp-no-error.test.ts",
+                "gate-no-mock-output-strings.test.ts",
+                "gate-no-patient-fields-in-output.test.ts",
+                "gate-no-v6-mutation.test.ts",
+                "gate-pipeline-questionbundle-always-present.test.ts"
+            ],
+            "root_cause": "Pipeline contract mismatches or boundary violations",
+            "fix_bucket": "G70",
+            "fix_action": "Fix imports, update expectations, or add allowlist with docs"
+        },
+        "GATES_UI": {
+            "count": 5,
+            "files": [
+                "gate-output-coverage.test.ts",
+                "gate-surface-detection.test.ts",
+                "gate-treatment-isolation.test.ts",
+                "gate-v7-ui-wiring.test.tsx",
+                "gate-wiring-matrix.test.ts"
+            ],
+            "root_cause": "UI wiring or coverage expectations",
+            "fix_bucket": "G70",
+            "fix_action": "Update coverage expectations or fix UI references"
+        },
+        "GATES_LEGACY": {
+            "count": 4,
+            "files": [
+                "gate3-answer-effectiveness-endo.test.ts",
+                "gate4-pipeline-snapshot-endo.test.ts",
+                "gate5-import-paths.test.ts",
+                "gate7-stage-emission.test.ts"
+            ],
+            "root_cause": "Legacy numbered gates with V6 dependencies",
+            "fix_bucket": "G71",
+            "fix_action": "Migrate to V10 or quarantine"
+        },
+        "INTEGRATION": {
+            "count": 5,
+            "files": [
+                "billing-eligibility-integration.test.ts",
+                "case.flow.test.ts",
+                "no-logic.test.ts",
+                "reality-integration.test.ts",
+                "settingsOverrides.service.test.ts"
+            ],
+            "root_cause": "Integration contract mismatches",
+            "fix_bucket": "G70",
+            "fix_action": "Update fixtures or contracts"
+        },
+        "UI_TESTS": {
+            "count": 1,
+            "files": [
+                "ui-flow.test.tsx"
+            ],
+            "root_cause": "UI component test with rendering issues",
+            "fix_bucket": "G70",
+            "fix_action": "Fix component mocks or assertions"
+        }
+    },
+    "priority_order": [
+        {
+            "bucket": "G68",
+            "cluster": "E2E_PLAYWRIGHT",
+            "count": 12,
+            "leverage": "HIGH - move to Playwright"
+        },
+        {
+            "bucket": "G69",
+            "cluster": "FIREBASE_EMULATOR",
+            "count": 1,
+            "leverage": "LOW - just mock"
+        },
+        {
+            "bucket": "G70",
+            "cluster": "GATES_PACK+PIPELINE+UI+INTEGRATION",
+            "count": 29,
+            "leverage": "HIGH - contract fixes"
+        },
+        {
+            "bucket": "G71",
+            "cluster": "GATES_LEGACY",
+            "count": 4,
+            "leverage": "MEDIUM - migrate or quarantine"
+        }
+    ]
+}

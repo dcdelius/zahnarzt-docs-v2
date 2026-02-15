@@ -1,0 +1,491 @@
+{
+    "meta": {
+        "generated": "2024-12-18T22:52:00+01:00",
+        "period": "2024-12-04 to 2024-12-18",
+        "version": "v7",
+        "status": "production-ready"
+    },
+    "vision": {
+        "oneLiner": "Dental treatment documentation via dictation → complete BEMA/GOZ-compliant billing — without the doctor needing to know anything",
+        "principles": [
+            "Codes are SSOT — Labels are derived at render time",
+            "Zero LLM in runtime — All processing is deterministic regex/keywords",
+            "Playbook-driven questions — Questions have code options, not label strings",
+            "Golden vector testing — Regression-locked by real-world test cases"
+        ]
+    },
+    "stats": {
+        "tsFiles": 317,
+        "gateTests": 59,
+        "totalTests": 2011,
+        "passingTests": 1947,
+        "failingTests": 7,
+        "bemaKnowledgeBaseSizeMB": 3.5,
+        "bemaKnowledgeBaseLines": 3501,
+        "analogServicesSizeKB": 713,
+        "gozPositions": 227,
+        "bemaPositions": 167,
+        "belPositions": 192,
+        "commitsLast2Weeks": 15,
+        "buildTimeSeconds": 2.44
+    },
+    "architecture": {
+        "layers": [
+            {
+                "name": "Frontend",
+                "components": [
+                    {
+                        "id": "v7",
+                        "name": "V7 Jeton UI",
+                        "status": "active"
+                    },
+                    {
+                        "id": "v6",
+                        "name": "V6 Legacy",
+                        "status": "legacy"
+                    },
+                    {
+                        "id": "v5",
+                        "name": "V5 Prototype",
+                        "status": "legacy"
+                    }
+                ]
+            },
+            {
+                "name": "Core",
+                "components": [
+                    {
+                        "id": "playbooks",
+                        "name": "Playbook Engine"
+                    },
+                    {
+                        "id": "questionEngine",
+                        "name": "Question Engine"
+                    },
+                    {
+                        "id": "billing",
+                        "name": "Billing Knowledge Base"
+                    }
+                ]
+            }
+        ],
+        "entrypoint": {
+            "file": "src/main.jsx",
+            "chain": [
+                "BrowserRouter",
+                "AuthProvider",
+                "UserProvider",
+                "App.jsx"
+            ]
+        }
+    },
+    "dataFlow": {
+        "steps": [
+            {
+                "step": 1,
+                "name": "Signal Parser",
+                "files": [
+                    "endoSignalParser.ts",
+                    "fillingSignalParser.ts"
+                ],
+                "type": "deterministic",
+                "usesLLM": false,
+                "input": "Raw dictation text",
+                "output": "ExtractedSignals object"
+            },
+            {
+                "step": 2,
+                "name": "Playbook Engine",
+                "files": [
+                    "endoPlaybookV2.ts",
+                    "T2DeviationPlaybook.ts"
+                ],
+                "type": "deterministic",
+                "usesLLM": false,
+                "input": "Signals",
+                "output": "Questions with CODE options"
+            },
+            {
+                "step": 3,
+                "name": "Answer Normalization + Validation",
+                "files": [
+                    "answerNormalization.ts",
+                    "fieldValidation.ts",
+                    "vocabRegistry.ts"
+                ],
+                "type": "deterministic",
+                "usesLLM": false,
+                "input": "Answers (codes)",
+                "output": "Validated Fields (codes)"
+            },
+            {
+                "step": 4,
+                "name": "Text Renderer",
+                "files": [
+                    "endoTextRenderer.ts",
+                    "fillingTextRenderer.ts"
+                ],
+                "type": "deterministic",
+                "usesLLM": false,
+                "input": "Validated Fields (codes)",
+                "output": "German documentation + billing codes"
+            }
+        ]
+    },
+    "billingDatabase": {
+        "basePath": "src/docudent/core/billing/knowledgeBase",
+        "files": {
+            "bema_knowledge_base.json": {
+                "size": "3.5MB",
+                "lines": 3501,
+                "purpose": "All BEMA positions with rules"
+            },
+            "analog_services.json": {
+                "size": "713KB",
+                "purpose": "Analog services (§6 GOZ)"
+            }
+        },
+        "catalogs": [
+            {
+                "name": "GOZ",
+                "path": "kataloge/goz_catalog.json",
+                "count": 227
+            },
+            {
+                "name": "BEMA",
+                "path": "kataloge/bema_catalog.json",
+                "count": 167
+            },
+            {
+                "name": "BEL-II",
+                "path": "kataloge/bel2_catalog.json",
+                "count": 192
+            }
+        ],
+        "rules": [
+            "fuellung_regeln.json",
+            "bema_frequenzregeln_komplett.json",
+            "bema_ze_regeln_komplett.json",
+            "kombinationen.json",
+            "fz_zuordnung_gba.json"
+        ]
+    },
+    "playbooks": {
+        "endo": {
+            "path": "core/playbooks/endo",
+            "phases": [
+                "t1",
+                "t2",
+                "t3"
+            ],
+            "files": [
+                "endoSignalParser.ts",
+                "endoPlaybookV2.ts",
+                "endoPlaybookT2Deviation.ts",
+                "endoTextRenderer.ts"
+            ],
+            "features": [
+                "Multi-visit logic (T1/T2/T3)",
+                "Deviation handling",
+                "Working length per canal",
+                "ISO file sizes"
+            ]
+        },
+        "fuellung": {
+            "path": "core/filling",
+            "files": [
+                "fillingSignalParser.ts",
+                "fillingPlaybookV1.ts",
+                "fillingTextRenderer.ts"
+            ],
+            "features": [
+                "Surface detection (mod, odb, etc.)",
+                "Material selection",
+                "MKV calculation",
+                "Trockenlegung options"
+            ]
+        }
+    },
+    "gateTests": {
+        "total": 59,
+        "categories": {
+            "endo": {
+                "count": 5,
+                "tests": [
+                    "gate-endo-canonical-alignment.test.ts",
+                    "gate-endo-medical-golden.test.ts",
+                    "gate-endo-output-verbosity.test.ts",
+                    "gate-endo-defaults.test.ts"
+                ]
+            },
+            "fuellung": {
+                "count": 6,
+                "tests": [
+                    "gate-fuellung-defaults.test.ts",
+                    "gate-fuellung-medical-golden.test.ts",
+                    "gate-fuellung-question-logic.test.ts",
+                    "gate-fuellung-output-verbosity.test.ts",
+                    "gate-fuellung-aufklaerung-setting.test.ts"
+                ]
+            },
+            "analog": {
+                "count": 8,
+                "tests": [
+                    "gate-analog-resolver-v1.test.ts",
+                    "gate-analog-justification.test.ts",
+                    "gate-analog-pipeline.test.ts",
+                    "gate-analog-completion.test.ts",
+                    "gate-analog-e2e-finalize.test.ts",
+                    "gate-analog-thin-index.test.ts",
+                    "gate-analog-comment-regression.test.ts"
+                ]
+            },
+            "festzuschuss": {
+                "count": 4,
+                "tests": [
+                    "gate-festzuschuss-realworld-v1.test.ts",
+                    "gate-festzuschuss-evidence-guard.test.ts",
+                    "gate-festzuschuss-ssot-guard.test.ts",
+                    "gate-festzuschuss-kzv-abrechnungshilfe-1.test.ts"
+                ]
+            },
+            "bema_bel": {
+                "count": 5,
+                "tests": [
+                    "gate-bel2-catalog-ssot.test.ts",
+                    "gate-bel2-runtime-wiring.test.ts",
+                    "gate-bel2-placeholder-inventory.test.ts",
+                    "gate-bema-comment-regression.test.ts",
+                    "gate-billing-goae-lookup.test.ts"
+                ]
+            },
+            "architecture": {
+                "count": 4,
+                "tests": [
+                    "gate-architecture-docs-freshness.test.ts",
+                    "gate-no-hardcoded-chip-ids.test.ts",
+                    "gate-build-smoke.test.ts",
+                    "gate-jeton-design-integrity.test.ts"
+                ]
+            }
+        }
+    },
+    "v7Routes": [
+        {
+            "path": "/docudent/v7",
+            "component": "DocudentV7Page",
+            "status": "golden_master"
+        },
+        {
+            "path": "/docudent/v7/cases",
+            "component": "CasesPageV7",
+            "status": "implemented"
+        },
+        {
+            "path": "/docudent/v7/review",
+            "component": "ReviewPageV7",
+            "status": "implemented"
+        },
+        {
+            "path": "/docudent/v7/settings",
+            "component": "SettingsPage",
+            "status": "exists"
+        },
+        {
+            "path": "/docudent/v7/team",
+            "component": "TeamPage",
+            "status": "exists"
+        },
+        {
+            "path": "/docudent/v7/onboarding",
+            "component": "OnboardingPage",
+            "status": "exists"
+        },
+        {
+            "path": "/docudent/v7/accept-invite",
+            "component": "AcceptInvitePage",
+            "status": "exists"
+        },
+        {
+            "path": "/docudent/v7/lab/endo",
+            "component": "EndoLabPage",
+            "status": "dev_only"
+        }
+    ],
+    "designTokens": {
+        "colors": {
+            "warmPink": "#F87A7A",
+            "warmPeach": "#F69A7C",
+            "softApricot": "#F7B88C",
+            "coralAccent": "#FF6B4A",
+            "textPrimary": "#FFFFFF",
+            "textSecondary": "rgba(255,255,255,0.8)",
+            "textMuted": "rgba(255,255,255,0.6)",
+            "surfaceGlass": "rgba(255,255,255,0.08)"
+        },
+        "gradients": {
+            "heroDeep": "linear-gradient(145deg, #E86A6A, #F87A7A, #F69A7C, #FDD9B5)",
+            "insuranceBar": "linear-gradient(135deg, #FF6B4A, #FFB199)"
+        },
+        "typography": {
+            "headline": "clamp(48px, 7vw, 80px)",
+            "fontFamily": "Inter"
+        }
+    },
+    "commits": [
+        {
+            "date": "2024-12-18",
+            "hash": "910f189",
+            "message": "Post-foundation sprint: Team, Invites, Cases UX"
+        },
+        {
+            "date": "2024-12-18",
+            "hash": "9ab034c",
+            "message": "Auth Invites & Self-Serve Practice V1"
+        },
+        {
+            "date": "2024-12-17",
+            "hash": "c67b289",
+            "message": "SSOT wiring audit, fix hardcoded chip IDs"
+        },
+        {
+            "date": "2024-12-17",
+            "hash": "501ec79",
+            "message": "Analog justification flow + completion gate"
+        },
+        {
+            "date": "2024-12-16",
+            "hash": "87bebc3",
+            "message": "V6 SSOT Complete: QuestionBank, strict types"
+        },
+        {
+            "date": "2024-12-15",
+            "hash": "a2536a9",
+            "message": "Rebrand to Docudent, UI/UX navigation"
+        },
+        {
+            "date": "2024-12-14",
+            "hash": "a96e680",
+            "message": "Redesign Wissensdatenbank, billing optimization"
+        },
+        {
+            "date": "2024-12-13",
+            "hash": "a732588",
+            "message": "GPT-5-mini switch, prompt templates"
+        },
+        {
+            "date": "2024-12-12",
+            "hash": "e28c62f",
+            "message": "GPT-5 optimization, Firebase instructions"
+        },
+        {
+            "date": "2024-12-10",
+            "hash": "fa8f095",
+            "message": "Bausteine in Vorlagenverwaltung"
+        },
+        {
+            "date": "2024-12-08",
+            "hash": "fb6a22c",
+            "message": "Sidebar und Auswahl UX/UI V3"
+        },
+        {
+            "date": "2024-12-06",
+            "hash": "b498b2a",
+            "message": "Firestore-Regeln, Landingpage, Navigation"
+        },
+        {
+            "date": "2024-12-05",
+            "hash": "155f987",
+            "message": "Auth-Provider, Safari-Fix"
+        },
+        {
+            "date": "2024-12-04",
+            "hash": "11f1b95",
+            "message": "Initial: Wissensdatenbank-Implementierung"
+        }
+    ],
+    "featureStatus": {
+        "working": [
+            {
+                "feature": "Füllung Dictation",
+                "description": "Signal parsing → Questions → Output"
+            },
+            {
+                "feature": "Endo T1/T2/T3",
+                "description": "Multi-visit logic, deviation handling"
+            },
+            {
+                "feature": "Insurance Selector",
+                "description": "GKV/GKV+MKV/PKV"
+            },
+            {
+                "feature": "Treatment Selector",
+                "description": "Füllung, Endo, Extraktion, etc."
+            },
+            {
+                "feature": "Questions Engine",
+                "description": "Playbook-driven, minimal"
+            },
+            {
+                "feature": "Output Renderer",
+                "description": "German Fließtext"
+            },
+            {
+                "feature": "Cases List",
+                "description": "Mock data, filters"
+            },
+            {
+                "feature": "Review Engine",
+                "description": "Quality + Compliance check"
+            },
+            {
+                "feature": "Settings UI",
+                "description": "UI exists"
+            },
+            {
+                "feature": "Team/Invites",
+                "description": "UI exists"
+            },
+            {
+                "feature": "Endo Lab",
+                "description": "DEV QA harness"
+            },
+            {
+                "feature": "Build",
+                "description": "Passing in 2.44s"
+            }
+        ],
+        "pending": [
+            {
+                "feature": "D3 Pipeline Wiring",
+                "description": "Case creation → Engine → Questions"
+            },
+            {
+                "feature": "D6 Settings Persistence",
+                "description": "Firestore real persistence"
+            },
+            {
+                "feature": "D7 Team Invites",
+                "description": "Callable functions"
+            },
+            {
+                "feature": "D8 Onboarding Gating",
+                "description": "Membership check"
+            }
+        ],
+        "issues": [
+            {
+                "feature": "7 Failing Tests",
+                "description": "Timeouts, no-logic violations"
+            }
+        ]
+    },
+    "ssotRegistry": {
+        "v7Routes": "v7/app/routes.ts",
+        "v7DesignTokens": "v7/app/designTokens.ts",
+        "endoCodes": "core/endo/vocab/endoCanonicalVocab.ts",
+        "fillingCodes": "core/filling/vocab/fillingCanonicalVocab.ts",
+        "vocabRegistry": "core/questionEngine/vocabRegistry.ts",
+        "fieldValidation": "core/questionEngine/fieldValidation.ts"
+    }
+}

@@ -1,0 +1,127 @@
+{
+    "milestone": "G31-G36",
+    "generated_at": "2025-12-29T22:11:00Z",
+    "overall_status": "PARTIAL_COMPLETE",
+    "G31_atlas_automation": {
+        "milestone": "G31",
+        "status": "PASS",
+        "files_created": [
+            "scripts/systemAtlas/refresh.ts",
+            "scripts/systemAtlas/check.ts"
+        ],
+        "npm_scripts_added": [
+            "atlas:refresh",
+            "atlas:check"
+        ],
+        "proof": {
+            "commands": [
+                {
+                    "cmd": "npm run atlas:refresh",
+                    "exitCode": 0,
+                    "output": "879 files, 40 artifacts in 0.08s"
+                },
+                {
+                    "cmd": "npm run atlas:check",
+                    "exitCode": 0,
+                    "output": "4 checks PASSED"
+                }
+            ]
+        },
+        "stats": {
+            "runtime_files": 346,
+            "test_files": 397,
+            "artifacts": 40
+        }
+    },
+    "G32_billing_backbone": {
+        "milestone": "G32",
+        "status": "PASS",
+        "files_modified": [
+            "src/docudent/__tests__/gates/gate-m82-billingref-closure.test.ts"
+        ],
+        "change": "Integrated normalizeBillingRefId into closure gate lookup",
+        "proof": {
+            "commands": [
+                {
+                    "cmd": "npx vitest run gate-m82-billingref-closure.test.ts",
+                    "exitCode": 0,
+                    "output": "3 passed (3)"
+                },
+                {
+                    "cmd": "npm run build",
+                    "exitCode": 0,
+                    "output": "built in 3.61s"
+                }
+            ]
+        },
+        "note": "BEL_II refs now normalized before catalog lookup"
+    },
+    "G33_playwright_parity": {
+        "milestone": "G33",
+        "status": "SKIPPED",
+        "reason": "Playwright installation requires npx playwright install --with-deps"
+    },
+    "G34_v7_ui_consolidation": {
+        "milestone": "G34",
+        "status": "ANALYZED",
+        "components_to_migrate": 7,
+        "pending_action": "Move SoftGradientBackground, HeroSculpture, etc. to v10/components"
+    },
+    "G35_make_green_clusters": {
+        "milestone": "G35",
+        "status": "ANALYZED",
+        "test_summary": {
+            "failed": 57,
+            "passed": 353
+        },
+        "clusters_pending": [
+            "GATES",
+            "INTEGRATION",
+            "LEGACY"
+        ]
+    },
+    "G36_delete_sprint": {
+        "milestone": "G36",
+        "status": "ANALYZED",
+        "completed_batches": [
+            "B1_html_move (688)",
+            "B2_v6_delete (27)"
+        ],
+        "pending_batches": [
+            "B3_dead_code",
+            "B4_v7_consolidation"
+        ]
+    },
+    "cumulative_session_summary": {
+        "gigaprompts_executed": 30,
+        "files_created": 22,
+        "files_modified": 25,
+        "files_deleted": 27,
+        "files_moved": 688,
+        "npm_scripts_added": 2,
+        "gates_created": 8,
+        "builds_passed": 12
+    },
+    "key_accomplishments": [
+        "G31: Atlas automation (atlas:refresh + atlas:check) working",
+        "G31: 879 files indexed, 40 artifacts tracked",
+        "G32: Billing normalization integrated into closure gate",
+        "G25: BillingRef normalization layer (14 BEL_II aliases)",
+        "G13-G14: V10 runtime decoupled from V7 hooks",
+        "All builds PASS"
+    ],
+    "open_issues": [
+        "G33: Playwright not installed",
+        "G34: 7 V7 UI components need migration to V10",
+        "G35: 57 test files failing (pre-existing)",
+        "G36: B3/B4 delete waves pending",
+        "DocudentV10Page has type lint errors (output shape mismatches)"
+    ],
+    "next_actions": [
+        "Run npx playwright install --with-deps",
+        "Move V7 components to V10 directory",
+        "Fix GATES test cluster",
+        "Execute B3 delete wave",
+        "Fix DocudentV10Page type errors"
+    ]
+}

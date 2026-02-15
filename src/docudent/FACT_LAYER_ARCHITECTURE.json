@@ -1,0 +1,175 @@
+{
+    "meta": {
+        "generatedAt": "2024-12-18T23:47:00+01:00",
+        "purpose": "Fact Layer Consolidation — Architecture Summary",
+        "verdict": "MINIMAL ADDITIONS — No rewrites, surgical changes only"
+    },
+    "executiveSummary": [
+        "Introduced Fact layer with provenance tracking (contracts/facts.ts)",
+        "Created billing eligibility guard to filter chips before billing (billingEligibilityGuard.ts)",
+        "Gate test verifies V4 scenario: inferred anesthesia BLOCKED from billing",
+        "12/12 gate tests pass",
+        "NO changes to treatmentEngine, chipResolver, outputComposer",
+        "NO UI changes",
+        "MKV policy made explicit via source='settings_policy'"
+    ],
+    "concreteChanges": [
+        {
+            "file": "src/docudent/contracts/facts.ts",
+            "action": "NEW",
+            "what": "Fact type with source provenance, billing eligibility rules, factory functions"
+        },
+        {
+            "file": "src/docudent/core/billing/knowledgeBase/logic/billingEligibilityGuard.ts",
+            "action": "NEW",
+            "what": "ChipWithProvenance, buildChipsWithProvenance(), filterBillingEligibleChips(), getBillingEligibleChipIds()"
+        },
+        {
+            "file": "src/docudent/__tests__/gates/gate-no-billing-without-confirmed-fact.test.ts",
+            "action": "NEW",
+            "what": "12 test cases verifying anesthesia/MKV billing eligibility rules"
+        }
+    ],
+    "factModelExplanation": {
+        "whatAreFacts": "Facts are clinical assertions with explicit provenance",
+        "structure": {
+            "key": "what is being asserted (e.g., 'anesthesia_type')",
+            "value": "the asserted value",
+            "source": "'dictation' | 'user' | 'settings_policy' | 'inferred' | 'default'",
+            "evidence": "optional backing text or reference",
+            "chipId": "optional: the chip this fact activates"
+        },
+        "whereFactsLive": "Currently computed lazily from chip provenance; future: explicit FactStore",
+        "howDerived": [
+            "Dictation keywords → source='dictation'",
+            "User answers → source='user'",
+            "MKV toggle + policy → source='settings_policy'",
+            "Tooth position heuristic → source='inferred'",
+            "answer_map.defaults → source='default'"
+        ],
+        "replacesImplicitTruth": "Chips no longer implicitly mean 'billing OK' — must have eligible source"
+    },
+    "billingEligibilityRules": {
+        "summary": "A chip may only generate billing if its Fact has source ∈ {dictation, user, settings_policy}",
+        "alwaysEligible": [
+            "exkavation — fundamental step",
+            "komposit_basic — fundamental step",
+            "finishing — fundamental step",
+            "kofferdam — explicit action",
+            "rel_trocken — explicit action",
+            "cp, p — requires explicit dictation (pulpanah, überkappung)",
+            "fluor — upsell, explicit request"
+        ],
+        "requireConfirmation": [
+            "la_infiltr → must have anesthesia_type Fact confirmed",
+            "la_leitung → must have anesthesia_type Fact confirmed",
+            "ohne_la → must have anesthesia_type Fact confirmed"
+        ],
+        "mkvPolicy": [
+            "mehrschicht → eligible ONLY when hasMKV=true",
+            "adhaesiv → eligible ONLY when hasMKV=true"
+        ],
+        "codePointers": [
+            "billingEligibilityGuard.ts:46-57 — ALWAYS_BILLING_ELIGIBLE_CHIPS",
+            "billingEligibilityGuard.ts:35-40 — CHIPS_REQUIRING_BILLING_CONFIRMATION",
+            "billingEligibilityGuard.ts:62-65 — MKV_POLICY_CHIPS",
+            "billingEligibilityGuard.ts:157-193 — filterBillingEligibleChips()"
+        ]
+    },
+    "mkvPolicyClarification": {
+        "policy": "MKV fillings include Mehrschicht+Adhäsiv technique (GOZ 2197) by practice policy",
+        "implementation": [
+            "chipResolver.ts:237-241 adds MEHRSCHICHT+ADHAESIV when hasMKV=true",
+            "billingEligibilityGuard marks these as source='settings_policy'",
+            "Output can trace: 'GOZ 2197 added due to MKV technique policy'"
+        ],
+        "noSilentDefaults": "MKV chips require hasMKV=true toggle — not auto-added"
+    },
+    "v4Fix": {
+        "observed": "'Lokalanästhesie' triggers la_infiltr chip AND billing BEFORE type confirmation",
+        "rootCause": "inferChipsFromDictation() at treatmentEngine.ts:525-539 auto-selects based on tooth position",
+        "fix": "billingEligibilityGuard.ts blocks la_* chips from billing unless anesthesia_type Fact is confirmed",
+        "result": [
+            "Chip still activated (for UI/context)",
+            "Question still generated (anesthesia_type)",
+            "Billing DELAYED until user answers or type is explicit in dictation"
+        ],
+        "noChangesTo": [
+            "inferChipsFromDictation()",
+            "questionService.ts",
+            "UI"
+        ]
+    },
+    "gateDescription": {
+        "name": "gate-no-billing-without-confirmed-fact.test.ts",
+        "location": "src/docudent/__tests__/gates/",
+        "testCases": 12,
+        "keyTests": [
+            "BLOCKS la_infiltr when only inferred (no confirmed Fact)",
+            "ALLOWS la_infiltr when Fact source is dictation",
+            "BLOCKS billing when generic 'Lokalanästhesie' inferred without type",
+            "mehrschicht NOT eligible when hasMKV=false"
+        ],
+        "status": "ALL PASS"
+    },
+    "redundancyMap": {
+        "overview": "Identified overlaps for future refactoring (NOT changed in this sprint)",
+        "overlaps": [
+            {
+                "area": "Anesthesia Type Inference",
+                "locations": [
+                    "treatmentEngine.ts:505-539 (inferChipsFromDictation)",
+                    "chipResolver.ts extractionMapping",
+                    "questionService.ts anesthesia_type question"
+                ],
+                "owner": "Should be: chipResolver (extraction) + questionService (confirmation)",
+                "action": "treatmentEngine inference could be simplified to just keywords, not heuristics"
+            },
+            {
+                "area": "MKV Chip Addition",
+                "locations": [
+                    "chipResolver.ts:237-241 (auto-add MEHRSCHICHT+ADHAESIV)",
+                    "answer_map.json defaults.mkvChipId",
+                    "settingsStore.ts mkvDefaults"
+                ],
+                "owner": "Should be: chipResolver with settings_policy source",
+                "action": "Consolidate into single policy definition"
+            },
+            {
+                "area": "Capping Material",
+                "locations": [
+                    "answer_map optionAliases",
+                    "mergeFacts.ts cappingMaterial",
+                    "chip cp/p variablen"
+                ],
+                "owner": "Should be: answer_map → mergeFacts",
+                "action": "Remove redundant mappings in chip variablen"
+            }
+        ],
+        "futureRefactors": [
+            "Unify settings influence into single settingsPolicy.ts",
+            "Move inference heuristics from treatmentEngine to dedicated inferenceService",
+            "Add Fact creation to mergeFacts.ts (currently implicit)"
+        ]
+    },
+    "whatWasNotChanged": [
+        "treatmentEngine.ts — NO changes to processChipsToBilling or inferChipsFromDictation",
+        "chipResolver.ts — NO changes to resolveActiveChipIds",
+        "outputComposer.ts — NO changes",
+        "v6/outputService.ts — NO changes (guard not wired into pipeline yet)",
+        "v7/pipeline/index.ts — NO changes",
+        "UI components — NO changes",
+        "Existing billing registries (kataloge/*.json) — NO changes"
+    ],
+    "integrationSteps": {
+        "toWireGuardIntoPipeline": [
+            "1. In v6/outputService.ts after resolveActiveChipIds():",
+            "   - Build ChipWithProvenance[] from resolution sources",
+            "   - Build confirmedFacts Map from mergeFacts + answers",
+            "   - Call getBillingEligibleChipIds() to filter",
+            "   - Pass filtered IDs to processChipsToBilling()",
+            "2. This is a FUTURE STEP — current gate tests verify the logic works"
+        ],
+        "note": "Guard is standalone and testable without pipeline wiring"
+    }
+}

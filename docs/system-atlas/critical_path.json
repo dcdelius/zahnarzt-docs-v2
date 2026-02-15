@@ -1,0 +1,133 @@
+{
+    "generated_at": "2026-01-29T00:00:00Z",
+    "version": "v3",
+    "steps": [
+        {
+            "order": 1,
+            "symbol": "V10Router",
+            "type": "Router",
+            "file": "src/docudent/v10/app/V10Router.tsx",
+            "lines": "1-200",
+            "how_called": "React route component",
+            "evidence": "route /docudent/v10 renders DocudentV10Page"
+        },
+        {
+            "order": 2,
+            "symbol": "DocudentV10Page",
+            "type": "UI",
+            "file": "src/docudent/v10/pages/DocudentV10Page.tsx",
+            "lines": "1-999",
+            "how_called": "Rendered by V10Router",
+            "evidence": "DocudentV10Page uses useV10Pipeline()"
+        },
+        {
+            "order": 3,
+            "symbol": "useV10Pipeline",
+            "type": "Hook",
+            "file": "src/docudent/v10/hooks/useV10Pipeline.ts",
+            "lines": "1-999",
+            "how_called": "DocudentV10Page imports and uses useV10Pipeline",
+            "evidence": "runPipeline() calls runV10()"
+        },
+        {
+            "order": 4,
+            "symbol": "runV10",
+            "type": "Runtime",
+            "file": "src/docudent/v10/pipeline/runV10.ts",
+            "lines": "1-999",
+            "how_called": "useV10Pipeline calls runV10(input)",
+            "evidence": "export async function runV10"
+        },
+        {
+            "order": 5,
+            "symbol": "scopeExtractionToInstances",
+            "type": "Runtime",
+            "file": "src/docudent/v10/multitreatment/scoping.ts",
+            "lines": "1-999",
+            "how_called": "runV10 builds real instanceIds for multi-tooth/multi-treatment",
+            "evidence": "scopeExtractionToInstances(...)"
+        },
+        {
+            "order": 6,
+            "symbol": "selectExtractor",
+            "type": "Extraction",
+            "file": "src/docudent/v10/extraction/selectExtractor.ts",
+            "lines": "1-200",
+            "how_called": "runV10 selects stub/llm/forced extraction",
+            "evidence": "selectExtractor()"
+        },
+        {
+            "order": 7,
+            "symbol": "buildFactsFromExtraction",
+            "type": "Facts",
+            "file": "src/docudent/v10/facts/buildFactsFromExtraction.ts",
+            "lines": "1-999",
+            "how_called": "runV10 maps extraction -> TreatmentFacts",
+            "evidence": "buildFactsFromExtraction(...)"
+        },
+        {
+            "order": 8,
+            "symbol": "applyMedicalKb",
+            "type": "Medical",
+            "file": "src/docudent/medical_kb/engine/applyMedicalKb.ts",
+            "lines": "1-999",
+            "how_called": "runV10 evaluates medical KB concepts",
+            "evidence": "applyMedicalKb({ facts, treatmentId, instanceScope })"
+        },
+        {
+            "order": 9,
+            "symbol": "buildMedicalQuestionsFromKb",
+            "type": "Questions",
+            "file": "src/docudent/v10/medical/medicalAskbackAdapter.ts",
+            "lines": "1-200",
+            "how_called": "runV10 maps requiredAskbacks -> DynamicQuestion[]",
+            "evidence": "buildMedicalQuestionsFromKb(engineResult.requiredAskbacks)"
+        },
+        {
+            "order": 10,
+            "symbol": "QuestionServiceV2",
+            "type": "Questions",
+            "file": "src/docudent/core/questions/questionServiceV2.ts",
+            "lines": "1-999",
+            "how_called": "runV10 generates non-medical questions and merges with medical askbacks",
+            "evidence": "generateQuestionsV2Bundle(...)"
+        },
+        {
+            "order": 11,
+            "symbol": "applyBillingGuard",
+            "type": "Billing",
+            "file": "src/docudent/v10/pipeline/billingEligibilityGuard.ts",
+            "lines": "1-260",
+            "how_called": "runV10 filters chips by billing eligibility + provenance",
+            "evidence": "applyBillingGuard(...)"
+        },
+        {
+            "order": 12,
+            "symbol": "renderFromKbChips",
+            "type": "Renderer",
+            "file": "src/docudent/v10/renderer/renderFromKbChips.ts",
+            "lines": "1-999",
+            "how_called": "runV10 renders per-instance text + billingRefs from unified.json",
+            "evidence": "renderFromKbChips({ chips, treatmentId, insuranceType })"
+        },
+        {
+            "order": 13,
+            "symbol": "checkCombinabilityFromKb",
+            "type": "Combinability",
+            "file": "src/docudent/v10/billing/combinability/checkCombinabilityFromKb.ts",
+            "lines": "1-999",
+            "how_called": "runV10 checks conflicts and computes droppedCodes",
+            "evidence": "checkCombinabilityFromKb(...)"
+        },
+        {
+            "order": 14,
+            "symbol": "composeOutput",
+            "type": "Composer",
+            "file": "src/docudent/v10/output/outputComposerV10.ts",
+            "lines": "1-80",
+            "how_called": "runV10 composes final sections using core output composer",
+            "evidence": "composeOutput(...)"
+        }
+    ]
+}
+

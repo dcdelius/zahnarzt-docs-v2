@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "description": "V10 Medical Scenario Cases - PZR",
+    "version": "1.0.0",
+    "created": "2026-02-12",
+    "treatmentId": "pzr"
+  },
+  "cases": [
+    {
+      "id": "p01",
+      "title": "GKV PZR komplett (Zahnstein + Fluor + LA)",
+      "insuranceType": "GKV",
+      "dictation": "PZR: supragingivales Scaling mit Ultraschall, Fluoridlack, Infiltrationsanästhesie, Oberflächenanästhesie.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"],
+        "mustIncludeAnyBillingRefs": ["BEMA_107"]
+      }
+    },
+    {
+      "id": "p02",
+      "title": "GKV PZR unklar -> Askbacks",
+      "insuranceType": "GKV",
+      "dictation": "PZR heute durchgeführt.",
+      "expect": {
+        "phase": "questions",
+        "mustAskbackIds": ["pzr_zahnstein", "pzr_fluoridation"]
+      }
+    },
+    {
+      "id": "p03",
+      "title": "GKV PZR: Fluoridation verneint",
+      "insuranceType": "GKV",
+      "dictation": "PZR mit Ultraschall, keine Fluoridierung.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"],
+        "mustIncludeAnyBillingRefs": ["BEMA_107"]
+      }
+    }
+  ]
+}

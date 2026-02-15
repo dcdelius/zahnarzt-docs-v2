@@ -1,0 +1,267 @@
+/* ============================================
+   HeaderDock — Solid Opaque DockBar with 3 Tabs
+   ============================================
+   ONE pill body with brand + 3 tabs.
+   - Einstellungen ▾ (scope dropdown)
+   - Dokumentation (no dropdown)
+   - Benutzer ▾ (user dropdown)
+*/
+
+/* Color tokens */
+:root {
+    --dock-bg: rgba(255, 255, 255, 0.16);
+    --dock-inset: rgba(255, 255, 255, 0.08);
+    --dock-thumb: rgba(255, 255, 255, 0.22);
+    --dock-border: rgba(255, 255, 255, 0.22);
+    --dock-shadow: 0 22px 54px rgba(0, 0, 0, 0.22);
+    --dock-text-primary: rgba(255, 255, 255, 0.94);
+    --dock-text-secondary: rgba(255, 255, 255, 0.72);
+}
+
+/* ============== MAIN DOCK ============== */
+.header-dock {
+    position: sticky;
+    top: 18px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: min(840px, calc(100vw - 380px));
+    height: 64px;
+    margin: 0 auto 24px;
+    padding: 10px 20px;
+    background: var(--dock-bg);
+    border: 1px solid var(--dock-border);
+    border-radius: 999px;
+    box-shadow: var(--dock-shadow);
+    backdrop-filter: blur(18px);
+}
+
+.header-dock-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-dock.is-docs {
+    width: min(980px, calc(100vw - 120px));
+}
+
+/* ============== BRAND WORDMARK ============== */
+.header-dock-brand {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--dock-text-primary);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.12s ease;
+    flex-shrink: 0;
+}
+
+.header-dock-brand:hover {
+    opacity: 0.85;
+}
+
+/* ============== TABS CONTAINER ============== */
+.header-dock-tabs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 44px;
+    padding: 4px;
+    background: var(--dock-inset);
+    border-radius: 999px;
+}
+
+.header-dock-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 44px;
+    padding: 6px 16px;
+    background: var(--dock-inset);
+    border-radius: 999px;
+}
+
+.header-dock-divider {
+    width: 1px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.header-dock-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-dock-link {
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--dock-text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.header-dock-link:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-1px);
+}
+
+/* ============== TAB (shared base) ============== */
+.header-dock-tab-container {
+    position: relative;
+}
+
+.header-dock-tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dock-text-secondary);
+    background: transparent;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.header-dock-tab:hover {
+    color: var(--dock-text-primary);
+    transform: translateY(-1px);
+}
+
+.header-dock-tab.is-active {
+    color: var(--dock-text-primary);
+    background: var(--dock-thumb);
+}
+
+.header-dock-tab.is-open {
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 18px 18px 0 0;
+}
+
+.header-dock-tab.is-active.is-open {
+    background: var(--dock-thumb);
+    border-radius: 18px 18px 0 0;
+}
+
+.header-dock-tab:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.header-dock-tab-chevron {
+    opacity: 0.72;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.header-dock-tab.is-open .header-dock-tab-chevron {
+    transform: rotate(180deg);
+}
+
+/* ============== DROPDOWN PANEL ============== */
+.header-dock-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: none;
+    min-width: 160px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid var(--dock-border);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+    z-index: 200;
+    backdrop-filter: blur(18px);
+}
+
+.header-dock-dropdown-wide {
+    min-width: 240px;
+    max-height: 360px;
+    left: auto;
+    right: 0;
+}
+
+.header-dock-dropdown-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 44px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dock-text-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.1s ease;
+}
+
+.header-dock-dropdown-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.header-dock-dropdown-option.is-selected {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.header-dock-dropdown-option:focus-visible {
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ============== DROPDOWN SEARCH ============== */
+.header-dock-dropdown-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.header-dock-dropdown-search-icon {
+    color: var(--dock-text-secondary);
+    flex-shrink: 0;
+}
+
+.header-dock-dropdown-search-input {
+    flex: 1;
+    height: 100%;
+    font-size: 13px;
+    color: var(--dock-text-primary);
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.header-dock-dropdown-search-input::placeholder {
+    color: var(--dock-text-secondary);
+}
+
+.header-dock-dropdown-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.header-dock-dropdown-empty {
+    padding: 20px 16px;
+    font-size: 13px;
+    color: var(--dock-text-secondary);
+    text-align: center;
+}

@@ -1,0 +1,186 @@
+{
+    "version": "1.3",
+    "_meta": {
+        "description": "SSOT trigger matrix for medical askbacks. Zero patient data.",
+        "invariants": [
+            "All IDs namespaced by treatmentId",
+            "All questionId must exist in *_question_bank.json",
+            "No patient identity fields referenced",
+            "questionId is FULLY QUALIFIED (e.g., 'fuellung.vitality', not just 'vitality')"
+        ]
+    },
+    "treatments": {
+        "fuellung": {
+            "minimalDataset": [
+                "tooth",
+                "surfaces"
+            ],
+            "hardAskbacks": [
+                {
+                    "id": "fuellung.vitality_required",
+                    "trigger": {
+                        "field": "vitality",
+                        "is": null
+                    },
+                    "questionId": "fuellung.vitality",
+                    "priority": 1,
+                    "reason": "Vitalität nicht aus Diktat erkennbar"
+                },
+                {
+                    "id": "fuellung.percussion_required",
+                    "trigger": {
+                        "field": "percussion",
+                        "is": null
+                    },
+                    "questionId": "fuellung.percussion",
+                    "priority": 2,
+                    "reason": "Perkussion nicht aus Diktat erkennbar"
+                }
+            ],
+            "softAskbacks": [
+                {
+                    "id": "fuellung.material_recommended",
+                    "trigger": {
+                        "field": "material",
+                        "is": null
+                    },
+                    "questionId": "fuellung.material",
+                    "priority": 6,
+                    "reason": "Füllungsmaterial für BEMA-Dokumentation empfohlen"
+                },
+                {
+                    "id": "fuellung.tiefe_recommended",
+                    "trigger": {
+                        "field": "tiefe",
+                        "is": null
+                    },
+                    "questionId": "fuellung.tiefe",
+                    "priority": 10,
+                    "reason": "Kavitätentiefe nicht dokumentiert"
+                },
+                {
+                    "id": "fuellung.isolation_recommended",
+                    "trigger": {
+                        "field": "kofferdam",
+                        "is": null
+                    },
+                    "questionId": "fuellung.isolation",
+                    "priority": 11,
+                    "reason": "Trockenlegungsmethode nicht dokumentiert"
+                }
+            ],
+            "contradictions": []
+        },
+        "endo": {
+            "minimalDataset": [
+                "tooth",
+                "endoStep",
+                "canalCount"
+            ],
+            "hardAskbacks": [
+                {
+                    "id": "endo.step_required",
+                    "trigger": {
+                        "field": "endoStep",
+                        "is": null
+                    },
+                    "questionId": "endo.endo_step",
+                    "priority": 1,
+                    "reason": "Behandlungsschritt nicht erkennbar"
+                },
+                {
+                    "id": "endo.canal_count_required",
+                    "trigger": {
+                        "field": "canalCount",
+                        "is": null
+                    },
+                    "questionId": "endo.kanalzahl",
+                    "priority": 2,
+                    "reason": "Kanalzahl nicht aus Diktat erkennbar"
+                },
+                {
+                    "id": "endo.obturation_required_for_complete",
+                    "trigger": {
+                        "AND": [
+                            {
+                                "field": "endoStep",
+                                "is": "complete"
+                            },
+                            {
+                                "field": "obturation",
+                                "is": null
+                            }
+                        ]
+                    },
+                    "questionId": "endo.obturation",
+                    "priority": 3,
+                    "reason": "Wurzelfülltechnik für Abschluss erforderlich"
+                }
+            ],
+            "softAskbacks": [
+                {
+                    "id": "endo.vitality_recommended",
+                    "trigger": {
+                        "field": "vitality",
+                        "is": null
+                    },
+                    "questionId": "endo.vitality",
+                    "priority": 6,
+                    "reason": "Sensibilitätstest für Endo-Diagnostik empfohlen"
+                },
+                {
+                    "id": "endo.percussion_recommended",
+                    "trigger": {
+                        "field": "percussion",
+                        "is": null
+                    },
+                    "questionId": "endo.percussion",
+                    "priority": 7,
+                    "reason": "Perkussionstest für Endo-Diagnostik empfohlen"
+                },
+                {
+                    "id": "endo.kofferdam_recommended",
+                    "trigger": {
+                        "field": "kofferdam",
+                        "is": null
+                    },
+                    "questionId": "endo.isolation",
+                    "priority": 8,
+                    "reason": "Kofferdam-Isolation bei Endo empfohlen"
+                },
+                {
+                    "id": "endo.irrigation_recommended",
+                    "trigger": {
+                        "field": "irrigationProtocol",
+                        "is": null
+                    },
+                    "questionId": "endo.spuelprotokoll",
+                    "priority": 10,
+                    "reason": "Spülprotokoll nicht dokumentiert"
+                },
+                {
+                    "id": "endo.medication_recommended",
+                    "trigger": {
+                        "AND": [
+                            {
+                                "field": "endoStep",
+                                "in": [
+                                    "start",
+                                    "interim"
+                                ]
+                            },
+                            {
+                                "field": "medication",
+                                "is": null
+                            }
+                        ]
+                    },
+                    "questionId": "endo.medikament",
+                    "priority": 11,
+                    "reason": "Medikamentöse Einlage nicht dokumentiert"
+                }
+            ],
+            "contradictions": []
+        }
+    }
+}

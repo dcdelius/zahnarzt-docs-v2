@@ -1,0 +1,1125 @@
+{
+    "repo": {
+        "assessedAt": "2024-12-18T23:01:12+01:00",
+        "packageManager": "npm",
+        "buildTool": "Vite",
+        "testRunner": "Vitest",
+        "entrypoints": {
+            "webEntry": "src/main.jsx",
+            "router": "src/App.jsx",
+            "v7Router": "src/docudent/v7/app/V7Router.tsx",
+            "goldenV7Route": "/docudent/v7",
+            "goldenV7Component": "src/docudent/v7/pages/DocudentV7Page.tsx"
+        }
+    },
+    "routes": [
+        {
+            "path": "/docudent/v7",
+            "component": "DocudentV7Page",
+            "file": "v7/pages/DocudentV7Page.tsx",
+            "role": "golden_master"
+        },
+        {
+            "path": "/docudent/v7/cases",
+            "component": "CasesPageV7",
+            "file": "v7/pages/CasesPageV7.tsx"
+        },
+        {
+            "path": "/docudent/v7/review",
+            "component": "ReviewPageV7",
+            "file": "v7/pages/ReviewPageV7.tsx"
+        },
+        {
+            "path": "/docudent/v7/billing",
+            "component": "ReviewPageV7",
+            "file": "v7/pages/ReviewPageV7.tsx",
+            "note": "alias"
+        },
+        {
+            "path": "/docudent/v7/settings",
+            "component": "SettingsPage",
+            "file": "v7/pages/SettingsPage.tsx"
+        },
+        {
+            "path": "/docudent/v7/team",
+            "component": "TeamPage",
+            "file": "v7/pages/TeamPage.tsx"
+        },
+        {
+            "path": "/docudent/v7/onboarding",
+            "component": "OnboardingPage",
+            "file": "v7/pages/OnboardingPage.tsx"
+        },
+        {
+            "path": "/docudent/v7/accept-invite",
+            "component": "AcceptInvitePage",
+            "file": "v7/pages/AcceptInvitePage.tsx"
+        },
+        {
+            "path": "/docudent/v7/lab/endo",
+            "component": "EndoLabPage",
+            "file": "v7/pages/lab/EndoLabPage.tsx",
+            "role": "dev_only"
+        },
+        {
+            "path": "/docudent/v6",
+            "component": "DocudentV6Page",
+            "file": "v6/pages/DocudentV6Page.tsx",
+            "role": "legacy"
+        },
+        {
+            "path": "/docudent/v5",
+            "component": "DocudentV5Page",
+            "file": "v5/pages/DocudentV5Page.tsx",
+            "role": "legacy"
+        }
+    ],
+    "uiInventory": [
+        {
+            "area": "v7",
+            "file": "v7/pages/DocudentV7Page.tsx",
+            "role": "Golden Master hero dictation UI",
+            "importsCore": [
+                "v7/hooks/useV7Pipeline",
+                "v7/pipeline/index",
+                "v7/pipeline/outputService"
+            ],
+            "directFirestoreImport": false,
+            "notes": [
+                "Uses useV7Pipeline hook",
+                "Does NOT import parseEndoSignals directly"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/pages/CasesPageV7.tsx",
+            "role": "Case list with filters",
+            "importsCore": [
+                "core/case/caseRepository"
+            ],
+            "directFirestoreImport": false,
+            "notes": [
+                "Uses createCaseRepository(null, true) = MOCK MODE"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/pages/ReviewPageV7.tsx",
+            "role": "Review findings display",
+            "importsCore": [
+                "core/case/caseRepository",
+                "core/review/caseReviewEngine"
+            ],
+            "directFirestoreImport": false,
+            "notes": [
+                "Calls reviewCase() with case doc"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/pages/SettingsPage.tsx",
+            "role": "Settings UI",
+            "importsCore": [
+                "v7/settings/settingsStore"
+            ],
+            "directFirestoreImport": false,
+            "notes": [
+                "Uses localStorage-based settingsStore, NOT Firestore"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/pages/TeamPage.tsx",
+            "role": "Team + invites",
+            "importsCore": [],
+            "directFirestoreImport": false,
+            "notes": [
+                "UI exists but invite callable may not be wired"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/pages/lab/EndoLabPage.tsx",
+            "role": "DEV QA harness",
+            "importsCore": [
+                "core/playbooks/endo/endoSignalParser",
+                "core/playbooks/endo/endoPlaybookV2"
+            ],
+            "directFirestoreImport": false,
+            "notes": [
+                "ONLY place that uses parseEndoSignals in V7 runtime"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/hooks/useV7Pipeline.ts",
+            "role": "Main pipeline state hook",
+            "importsCore": [
+                "v7/pipeline/index"
+            ],
+            "directFirestoreImport": false,
+            "notes": [
+                "Does NOT call parseEndoSignals or endoPlaybook",
+                "Missing signal-to-question wiring"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/pipeline/index.ts",
+            "role": "Pipeline orchestrator",
+            "importsCore": [
+                "v7/pipeline/treatmentEngine",
+                "v7/pipeline/outputService"
+            ],
+            "directFirestoreImport": false,
+            "notes": [
+                "treatmentEngine.run() is called but may not route to endo parser"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/components/InsuranceSelector.tsx",
+            "role": "GKV/GKV+MKV/PKV slider",
+            "importsCore": [],
+            "directFirestoreImport": false,
+            "notes": [
+                "Part of Golden Master, works correctly"
+            ]
+        },
+        {
+            "area": "v7",
+            "file": "v7/components/TreatmentSelector.tsx",
+            "role": "Treatment type dropdown",
+            "importsCore": [],
+            "directFirestoreImport": false,
+            "notes": [
+                "Part of Golden Master, works correctly"
+            ]
+        }
+    ],
+    "coreInventory": {
+        "endo": [
+            {
+                "file": "core/playbooks/endo/endoSignalParser.ts",
+                "exports": [
+                    "parseEndoSignals",
+                    "EndoExtractedSignals"
+                ],
+                "dependsOn": [],
+                "touchesStorage": [],
+                "usedBy": [
+                    "EndoLabPage (DEV)",
+                    "core/questionEngine",
+                    "core/endoTextRenderer"
+                ],
+                "usedByV7MainFlow": false
+            },
+            {
+                "file": "core/playbooks/endo/endoPlaybookV2.ts",
+                "exports": [
+                    "endoPlaybookV2",
+                    "ENDO_QUESTIONS_BY_PHASE_V2",
+                    "ENDO_PHASES_V2"
+                ],
+                "dependsOn": [
+                    "endoTypes"
+                ],
+                "touchesStorage": [],
+                "usedBy": [
+                    "EndoLabPage (DEV)",
+                    "questionEngineV2"
+                ],
+                "usedByV7MainFlow": false
+            },
+            {
+                "file": "core/playbooks/endo/endoPlaybookT2Deviation.ts",
+                "exports": [
+                    "evaluateT2DeviationQuestions",
+                    "T2_DEVIATION_QUESTION_IDS"
+                ],
+                "dependsOn": [
+                    "endoPlaybookV2"
+                ],
+                "touchesStorage": [],
+                "usedBy": [
+                    "endoTextRenderer"
+                ],
+                "usedByV7MainFlow": false
+            },
+            {
+                "file": "core/playbooks/endo/endoTextRenderer.ts",
+                "exports": [
+                    "renderEndoText",
+                    "renderEndoNote"
+                ],
+                "dependsOn": [
+                    "parseEndoSignals",
+                    "evaluateT2DeviationQuestions"
+                ],
+                "touchesStorage": [],
+                "usedBy": [
+                    "tests"
+                ],
+                "usedByV7MainFlow": false
+            }
+        ],
+        "fuellung": [
+            {
+                "file": "core/filling/fillingSignalParser.ts",
+                "exports": [
+                    "parseFillingSignals",
+                    "FillingExtractedSignals"
+                ],
+                "dependsOn": [],
+                "touchesStorage": [],
+                "usedByV7MainFlow": false
+            },
+            {
+                "file": "core/filling/fillingPlaybookV1.ts",
+                "exports": [
+                    "fillingPlaybookV1"
+                ],
+                "dependsOn": [],
+                "touchesStorage": [],
+                "usedByV7MainFlow": false
+            },
+            {
+                "file": "core/filling/fillingTextRenderer.ts",
+                "exports": [
+                    "renderFillingText"
+                ],
+                "dependsOn": [
+                    "parseFillingSignals"
+                ],
+                "touchesStorage": [],
+                "usedByV7MainFlow": false
+            }
+        ],
+        "questionEngine": [
+            {
+                "file": "core/questionEngine/vocabRegistry.ts",
+                "exports": [
+                    "registerVocab",
+                    "isValidCode",
+                    "getLabel"
+                ],
+                "dependsOn": [],
+                "touchesStorage": []
+            },
+            {
+                "file": "core/questionEngine/answerNormalization.ts",
+                "exports": [
+                    "normalizeAnswers"
+                ],
+                "dependsOn": [
+                    "vocabRegistry"
+                ],
+                "touchesStorage": []
+            },
+            {
+                "file": "core/questionEngine/fieldValidation.ts",
+                "exports": [
+                    "validateNormalizedFields",
+                    "looksLikeLabel"
+                ],
+                "dependsOn": [
+                    "vocabRegistry"
+                ],
+                "touchesStorage": []
+            },
+            {
+                "file": "core/questionEngine/questionEngineV2.ts",
+                "exports": [
+                    "evaluateQuestionsV2"
+                ],
+                "dependsOn": [
+                    "parseEndoSignals",
+                    "endoPlaybookV2"
+                ],
+                "touchesStorage": [],
+                "usedByV7MainFlow": false
+            },
+            {
+                "file": "core/questionEngine/questionServiceV2.ts",
+                "exports": [
+                    "questionServiceV2"
+                ],
+                "dependsOn": [
+                    "settingsRegistry",
+                    "questionBankRegistry"
+                ],
+                "touchesStorage": []
+            }
+        ],
+        "review": [
+            {
+                "file": "core/review/caseReviewEngine.ts",
+                "exports": [
+                    "reviewCase",
+                    "groupFindingsByCategory"
+                ],
+                "dependsOn": [
+                    "reviewTypes"
+                ],
+                "touchesStorage": [],
+                "usedBy": [
+                    "ReviewPageV7",
+                    "BillingBetaPage"
+                ],
+                "usedByV7MainFlow": true
+            },
+            {
+                "file": "core/review/reviewTypes.ts",
+                "exports": [
+                    "Finding",
+                    "ReviewResult",
+                    "ReviewCategory",
+                    "FindingSeverity"
+                ],
+                "dependsOn": [],
+                "touchesStorage": []
+            }
+        ],
+        "settings": [
+            {
+                "file": "core/settings/settingsValidator.ts",
+                "exports": [
+                    "validateSettings"
+                ],
+                "dependsOn": [],
+                "touchesStorage": []
+            },
+            {
+                "file": "core/settings/settingsOverridesService.ts",
+                "exports": [
+                    "createSettingsOverridesService",
+                    "saveOverrides",
+                    "getOverrides"
+                ],
+                "dependsOn": [],
+                "touchesStorage": [
+                    "Firestore: orgs/{orgId}/practices/{practiceId}/settings"
+                ],
+                "usedByV7MainFlow": false,
+                "note": "V7 uses localStorage-based settingsStore instead"
+            },
+            {
+                "file": "v7/settings/settingsStore.ts",
+                "exports": [
+                    "getSettings",
+                    "saveSettings",
+                    "clearSettings"
+                ],
+                "dependsOn": [],
+                "touchesStorage": [
+                    "localStorage: docudent_settings_v7"
+                ],
+                "usedByV7MainFlow": true
+            }
+        ],
+        "authInvites": [
+            {
+                "file": "functions/src/index.ts",
+                "exports": [
+                    "createInviteLink",
+                    "acceptInvite",
+                    "createPractice"
+                ],
+                "dependsOn": [
+                    "firebase-admin",
+                    "firebase-functions"
+                ],
+                "touchesStorage": [
+                    "Firestore: invites, orgs, practices"
+                ]
+            },
+            {
+                "file": "core/auth/authTypes.ts",
+                "exports": [
+                    "OrgRole",
+                    "PracticeRole",
+                    "Membership"
+                ],
+                "dependsOn": [],
+                "touchesStorage": []
+            },
+            {
+                "file": "core/onboarding/onboardingService.ts",
+                "exports": [
+                    "checkOnboardingStatus"
+                ],
+                "dependsOn": [],
+                "touchesStorage": []
+            }
+        ],
+        "cases": [
+            {
+                "file": "core/case/caseRepository.ts",
+                "exports": [
+                    "createCaseRepository",
+                    "CaseSummary",
+                    "CaseDocument"
+                ],
+                "dependsOn": [
+                    "caseTypes"
+                ],
+                "touchesStorage": [
+                    "Firestore: orgs/{orgId}/practices/{practiceId}/cases"
+                ],
+                "usedBy": [
+                    "CasesPageV7",
+                    "ReviewPageV7"
+                ],
+                "usedByV7MainFlow": true,
+                "note": "Currently used in MOCK mode only"
+            },
+            {
+                "file": "core/case/caseTypes.ts",
+                "exports": [
+                    "CaseStatus",
+                    "CaseDocument",
+                    "TreatmentData"
+                ],
+                "dependsOn": [],
+                "touchesStorage": []
+            }
+        ],
+        "contracts": [
+            {
+                "file": "core/case/caseTypes.ts"
+            },
+            {
+                "file": "core/review/reviewTypes.ts"
+            },
+            {
+                "file": "core/settings/settingsTypes.ts"
+            },
+            {
+                "file": "v7/pipeline/pipelineTypes.ts"
+            },
+            {
+                "file": "core/playbooks/endo/endoTypes.ts"
+            }
+        ]
+    },
+    "storageMap": {
+        "firestoreCollections": [
+            {
+                "path": "orgs/{orgId}",
+                "shape": {
+                    "name": "string",
+                    "createdAt": "timestamp"
+                },
+                "rulesNotes": "read: isMemberOfOrg; write: org_admin"
+            },
+            {
+                "path": "orgs/{orgId}/practices/{practiceId}",
+                "shape": {
+                    "name": "string",
+                    "orgId": "string",
+                    "createdAt": "timestamp"
+                },
+                "rulesNotes": "read: isMemberOfPractice; write: practice_admin or org_admin"
+            },
+            {
+                "path": "orgs/{orgId}/practices/{practiceId}/cases/{caseId}",
+                "shape": {
+                    "patientRef": "string",
+                    "treatmentId": "string",
+                    "status": "draft|finalized|amended",
+                    "createdAt": "timestamp"
+                },
+                "rulesNotes": "read/write: isMemberOfPractice"
+            },
+            {
+                "path": "orgs/{orgId}/practices/{practiceId}/settings",
+                "shape": {
+                    "overrides": "object"
+                },
+                "rulesNotes": "read/write: practice_admin"
+            },
+            {
+                "path": "invites/{inviteId}",
+                "shape": {
+                    "orgId": "string",
+                    "practiceId": "string",
+                    "role": "string",
+                    "createdBy": "string",
+                    "expiresAt": "timestamp"
+                },
+                "rulesNotes": "read: public for accept; create: practice_admin"
+            }
+        ],
+        "cloudFunctions": [
+            {
+                "name": "createInviteLink",
+                "params": {
+                    "orgId": "string",
+                    "practiceId": "string",
+                    "role": "string"
+                },
+                "returns": {
+                    "inviteUrl": "string"
+                },
+                "file": "functions/src/index.ts"
+            },
+            {
+                "name": "acceptInvite",
+                "params": {
+                    "inviteId": "string"
+                },
+                "returns": {
+                    "success": "boolean"
+                },
+                "file": "functions/src/index.ts"
+            },
+            {
+                "name": "createPractice",
+                "params": {
+                    "orgId": "string",
+                    "name": "string"
+                },
+                "returns": {
+                    "practiceId": "string"
+                },
+                "file": "functions/src/index.ts"
+            }
+        ],
+        "localStorage": [
+            {
+                "key": "docudent_settings_v7",
+                "writer": "v7/settings/settingsStore.ts",
+                "reader": "v7/settings/settingsStore.ts"
+            },
+            {
+                "key": "docudent.insuranceType",
+                "writer": "v7/state/InsuranceContext.tsx",
+                "reader": "v7/state/InsuranceContext.tsx"
+            },
+            {
+                "key": "docudent.hasMKV",
+                "writer": "v7/state/InsuranceContext.tsx",
+                "reader": "v7/state/InsuranceContext.tsx"
+            },
+            {
+                "key": "V7_DEBUG",
+                "writer": "user (manual)",
+                "reader": "v7/pipeline/trace.ts"
+            }
+        ]
+    },
+    "gates": [
+        {
+            "name": "gate-v7-ssot-boundaries",
+            "file": "__tests__/gates/gate-v7-ssot-boundaries.test.ts",
+            "enforces": [
+                "V7 files must not import core/billing directly"
+            ],
+            "exclusions": [
+                "v7/settings/settingOptions.ts (allowed bridge)"
+            ]
+        },
+        {
+            "name": "gate-v7-settings-writes",
+            "file": "__tests__/gates/gate-v7-settings-writes.test.ts",
+            "enforces": [
+                "V7 must use core/settings/settingsOverridesService for persistence"
+            ],
+            "exclusions": []
+        },
+        {
+            "name": "gate-endo-canonical-alignment",
+            "file": "__tests__/gates/gate-endo-canonical-alignment.test.ts",
+            "enforces": [
+                "Endo codes align with vocab registry"
+            ],
+            "exclusions": []
+        },
+        {
+            "name": "gate-endo-medical-golden",
+            "file": "__tests__/gates/gate-endo-medical-golden.test.ts",
+            "enforces": [
+                "Endo clinical logic matches golden vectors"
+            ],
+            "exclusions": []
+        },
+        {
+            "name": "gate-fuellung-question-logic",
+            "file": "__tests__/gates/gate-fuellung-question-logic.test.ts",
+            "enforces": [
+                "Füllung questions triggered correctly by signals"
+            ],
+            "exclusions": []
+        },
+        {
+            "name": "gate-festzuschuss-realworld-v1",
+            "file": "__tests__/gates/gate-festzuschuss-realworld-v1.test.ts",
+            "enforces": [
+                "Festzuschuss calculation matches KZV evidence"
+            ],
+            "exclusions": []
+        },
+        {
+            "name": "gate-no-v6-mutation",
+            "file": "__tests__/gates/gate-no-v6-mutation.test.ts",
+            "enforces": [
+                "V6 files not modified"
+            ],
+            "exclusions": []
+        },
+        {
+            "name": "gate-architecture-docs-freshness",
+            "file": "__tests__/gates/gate-architecture-docs-freshness.test.ts",
+            "enforces": [
+                "ARCHITECTURE.md updated within X days"
+            ],
+            "exclusions": []
+        }
+    ],
+    "wiringMatrix": [
+        {
+            "module": "endoSignalParser",
+            "status": "not_wired",
+            "wiredTo": [
+                "EndoLabPage (DEV only)"
+            ],
+            "runtimeTrigger": [
+                "NONE in main flow"
+            ],
+            "inputSource": [
+                "dictation text"
+            ],
+            "outputSink": [
+                "EndoExtractedSignals object"
+            ],
+            "missingLinks": [
+                "useV7Pipeline does NOT call parseEndoSignals when treatment=endo"
+            ]
+        },
+        {
+            "module": "endoPlaybookV2",
+            "status": "not_wired",
+            "wiredTo": [
+                "EndoLabPage (DEV only)",
+                "questionEngineV2"
+            ],
+            "runtimeTrigger": [
+                "NONE in main flow"
+            ],
+            "inputSource": [
+                "EndoExtractedSignals"
+            ],
+            "outputSink": [
+                "Question[] array"
+            ],
+            "missingLinks": [
+                "useV7Pipeline does NOT call ENDO_QUESTIONS_BY_PHASE_V2"
+            ]
+        },
+        {
+            "module": "endoTextRenderer",
+            "status": "not_wired",
+            "wiredTo": [
+                "tests only"
+            ],
+            "runtimeTrigger": [
+                "NONE in main flow"
+            ],
+            "inputSource": [
+                "signals + answers"
+            ],
+            "outputSink": [
+                "German documentation text"
+            ],
+            "missingLinks": [
+                "No caller from V7 pipeline after answers collected"
+            ]
+        },
+        {
+            "module": "fillingSignalParser",
+            "status": "not_wired",
+            "wiredTo": [
+                "tests only"
+            ],
+            "runtimeTrigger": [
+                "NONE"
+            ],
+            "inputSource": [
+                "dictation text"
+            ],
+            "outputSink": [
+                "FillingExtractedSignals"
+            ],
+            "missingLinks": [
+                "useV7Pipeline does NOT call fillingSignalParser"
+            ]
+        },
+        {
+            "module": "fillingPlaybookV1",
+            "status": "not_wired",
+            "wiredTo": [
+                "tests only"
+            ],
+            "runtimeTrigger": [
+                "NONE"
+            ],
+            "inputSource": [
+                "FillingExtractedSignals"
+            ],
+            "outputSink": [
+                "Question[] array"
+            ],
+            "missingLinks": [
+                "useV7Pipeline does NOT use filling playbook"
+            ]
+        },
+        {
+            "module": "caseRepository",
+            "status": "partially_wired",
+            "wiredTo": [
+                "CasesPageV7",
+                "ReviewPageV7"
+            ],
+            "runtimeTrigger": [
+                "Page load"
+            ],
+            "inputSource": [
+                "orgId, practiceId"
+            ],
+            "outputSink": [
+                "CaseSummary[]"
+            ],
+            "missingLinks": [
+                "Uses MOCK mode (null db)",
+                "No createCase() call from main flow"
+            ]
+        },
+        {
+            "module": "reviewEngine",
+            "status": "wired",
+            "wiredTo": [
+                "ReviewPageV7",
+                "BillingBetaPage"
+            ],
+            "runtimeTrigger": [
+                "User selects case in Review page"
+            ],
+            "inputSource": [
+                "CaseDocument"
+            ],
+            "outputSink": [
+                "ReviewResult with findings"
+            ],
+            "missingLinks": [
+                "Works IF case exists"
+            ]
+        },
+        {
+            "module": "settingsOverridesService",
+            "status": "not_wired",
+            "wiredTo": [
+                "gate test only"
+            ],
+            "runtimeTrigger": [
+                "NONE"
+            ],
+            "inputSource": [
+                "settings overrides"
+            ],
+            "outputSink": [
+                "Firestore settings collection"
+            ],
+            "missingLinks": [
+                "V7 uses localStorage settingsStore instead"
+            ]
+        },
+        {
+            "module": "invites (Cloud Functions)",
+            "status": "partially_wired",
+            "wiredTo": [
+                "TeamPage UI exists",
+                "AcceptInvitePage exists"
+            ],
+            "runtimeTrigger": [
+                "User clicks Invite button"
+            ],
+            "inputSource": [
+                "orgId, practiceId, role"
+            ],
+            "outputSink": [
+                "Firestore invites collection"
+            ],
+            "missingLinks": [
+                "Functions must be deployed",
+                "Callable not verified"
+            ]
+        }
+    ],
+    "clickthroughTruth": {
+        "endoT2": {
+            "current": [
+                "User visits /docudent/v7",
+                "DocudentV7Page renders with InsuranceSelector + TreatmentSelector",
+                "User selects 'Endo' treatment",
+                "User types/dictates: 'Zahn 46 WB T2 Medikamenteneinlage'",
+                "User clicks Send",
+                "useV7Pipeline.run() is called",
+                "pipeline.run() calls treatmentEngine.run()",
+                "treatmentEngine does NOT route to parseEndoSignals",
+                "Questions are generated by LEGACY extraction path (LLM or fallback)",
+                "Output generated but NOT by endoTextRenderer"
+            ],
+            "target": [
+                "User visits /docudent/v7",
+                "User selects 'Endo' treatment + insurance",
+                "User dictates: 'Zahn 46 WB T2 Medikamenteneinlage'",
+                "useV7Pipeline.run() detects treatment='endo'",
+                "Calls parseEndoSignals(dictation) → EndoExtractedSignals",
+                "Calls ENDO_QUESTIONS_BY_PHASE_V2['t2'] with askCondition filter",
+                "Sets pipeline.questions = filtered questions",
+                "UI shows questions via QuestionsLayout",
+                "User answers",
+                "Calls endoTextRenderer(signals, answers)",
+                "Sets pipeline.output with German documentation",
+                "User clicks Save → caseRepository.createCase()",
+                "Case persisted to Firestore"
+            ],
+            "gaps": [
+                "parseEndoSignals not called from main flow",
+                "ENDO_QUESTIONS_BY_PHASE_V2 not used",
+                "endoTextRenderer not called",
+                "caseRepository.createCase not called after output"
+            ]
+        },
+        "fuellung": {
+            "current": [
+                "User visits /docudent/v7",
+                "User selects 'Füllung' treatment",
+                "User dictates filling details",
+                "useV7Pipeline.run() is called",
+                "fillingSignalParser NOT called",
+                "fillingPlaybookV1 NOT called",
+                "Legacy extraction path used",
+                "Output generated but NOT by fillingTextRenderer"
+            ],
+            "target": [
+                "User selects 'Füllung' treatment",
+                "useV7Pipeline detects treatment='fuellung'",
+                "Calls parseFillingSignals(dictation)",
+                "Calls fillingPlaybookV1 question generation",
+                "UI shows filling-specific questions",
+                "User answers",
+                "Calls fillingTextRenderer(signals, answers)",
+                "Output with note + billing codes",
+                "Case saved"
+            ],
+            "gaps": [
+                "fillingSignalParser not called",
+                "fillingPlaybookV1 not used",
+                "fillingTextRenderer not called"
+            ]
+        }
+    },
+    "wiringSprintNext": [
+        {
+            "id": "W1",
+            "title": "Wire Endo signal parser into useV7Pipeline",
+            "filesToEdit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "filesToCreate": [],
+            "acceptance": [
+                "When treatment='endo', parseEndoSignals(dictation) is called",
+                "EndoExtractedSignals stored in pipeline state"
+            ],
+            "tests": [
+                "v7/hooks/__tests__/useV7Pipeline.test.ts"
+            ]
+        },
+        {
+            "id": "W2",
+            "title": "Wire Endo playbook questions after signals",
+            "filesToEdit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "filesToCreate": [],
+            "acceptance": [
+                "After signal parsing, ENDO_QUESTIONS_BY_PHASE_V2[phase] is queried",
+                "askCondition filters applied",
+                "pipeline.questions populated with mapped QuestionTemplate objects"
+            ],
+            "tests": [
+                "v7/hooks/__tests__/useV7Pipeline.test.ts"
+            ]
+        },
+        {
+            "id": "W3",
+            "title": "Wire Endo text renderer after answers",
+            "filesToEdit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "filesToCreate": [],
+            "acceptance": [
+                "When all required answers provided, endoTextRenderer called",
+                "output.noteText populated with German documentation",
+                "State transitions to 'output'"
+            ],
+            "tests": [
+                "v7/hooks/__tests__/useV7Pipeline.test.ts"
+            ]
+        },
+        {
+            "id": "W4",
+            "title": "Add Save button that calls caseRepository.createCase",
+            "filesToEdit": [
+                "v7/pages/DocudentV7Page.tsx",
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "filesToCreate": [],
+            "acceptance": [
+                "Save button visible in output state",
+                "Clicking calls caseRepository.createCase()",
+                "Toast confirms success",
+                "Case appears in CasesPageV7"
+            ],
+            "tests": [
+                "e2e test or integration test"
+            ]
+        },
+        {
+            "id": "W5",
+            "title": "Connect CasesPageV7 to real Firestore",
+            "filesToEdit": [
+                "v7/pages/CasesPageV7.tsx",
+                "v7/hooks/useCases.ts"
+            ],
+            "filesToCreate": [],
+            "acceptance": [
+                "createCaseRepository receives real db",
+                "Mock mode only in test environment",
+                "Real cases visible in list"
+            ],
+            "tests": [
+                "v7/hooks/__tests__/useCases.test.ts"
+            ]
+        },
+        {
+            "id": "W6",
+            "title": "Wire Füllung signal parser",
+            "filesToEdit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "filesToCreate": [],
+            "acceptance": [
+                "When treatment='fuellung', parseFillingSignals called",
+                "FillingExtractedSignals stored"
+            ],
+            "tests": [
+                "v7/hooks/__tests__/useV7Pipeline.test.ts"
+            ]
+        },
+        {
+            "id": "W7",
+            "title": "Wire Füllung playbook + renderer",
+            "filesToEdit": [
+                "v7/hooks/useV7Pipeline.ts"
+            ],
+            "filesToCreate": [],
+            "acceptance": [
+                "fillingPlaybookV1 questions used",
+                "fillingTextRenderer generates output"
+            ],
+            "tests": [
+                "v7/hooks/__tests__/useV7Pipeline.test.ts"
+            ]
+        },
+        {
+            "id": "W8",
+            "title": "Add E2E gate test for Endo T2 flow",
+            "filesToEdit": [],
+            "filesToCreate": [
+                "__tests__/gates/gate-e2e-endo-t2-wiring.test.ts"
+            ],
+            "acceptance": [
+                "Test dictates T2 → signals parsed → questions generated → output rendered",
+                "No mocking of core modules",
+                "Regression-locks the wiring"
+            ],
+            "tests": [
+                "gate-e2e-endo-t2-wiring.test.ts"
+            ]
+        },
+        {
+            "id": "W9",
+            "title": "Migrate Settings from localStorage to Firestore",
+            "filesToEdit": [
+                "v7/hooks/useSettingsService.ts",
+                "v7/pages/SettingsPage.tsx"
+            ],
+            "filesToCreate": [],
+            "acceptance": [
+                "useSettingsService calls settingsOverridesService",
+                "Settings persisted to Firestore",
+                "localStorage used as cache only"
+            ],
+            "tests": [
+                "v7/hooks/__tests__/useSettingsService.test.ts"
+            ]
+        },
+        {
+            "id": "W10",
+            "title": "Verify invites callable deployment",
+            "filesToEdit": [],
+            "filesToCreate": [],
+            "acceptance": [
+                "firebase deploy --only functions succeeds",
+                "createInviteLink callable works from TeamPage",
+                "acceptInvite works from AcceptInvitePage"
+            ],
+            "tests": [
+                "Manual verification or functions emulator test"
+            ]
+        }
+    ],
+    "redFlags": [
+        {
+            "issue": "parseEndoSignals NOT called from main V7 flow",
+            "evidence": "grep shows only EndoLabPage imports it in v7/, no imports in useV7Pipeline or DocudentV7Page",
+            "impact": "high: Endo questions not generated from signals",
+            "fixHint": "Wire parseEndoSignals call in useV7Pipeline when treatment='endo'"
+        },
+        {
+            "issue": "endoTextRenderer NOT called from V7 flow",
+            "evidence": "grep shows no imports in v7/ except tests",
+            "impact": "high: Endo output text not generated by canonical renderer",
+            "fixHint": "Call endoTextRenderer after answers collected"
+        },
+        {
+            "issue": "caseRepository uses MOCK mode in V7 pages",
+            "evidence": "CasesPageV7.tsx calls createCaseRepository(null, true)",
+            "impact": "medium: Real cases not persisted or displayed",
+            "fixHint": "Pass real Firestore db instance, set mock=false"
+        },
+        {
+            "issue": "settingsOverridesService NOT used by V7",
+            "evidence": "V7 uses v7/settings/settingsStore.ts (localStorage) instead",
+            "impact": "medium: Settings not synced to Firestore",
+            "fixHint": "Wire useSettingsService to call settingsOverridesService"
+        },
+        {
+            "issue": "7 failing tests in test suite",
+            "evidence": "npm test output shows 7 failed",
+            "impact": "medium: Test stability",
+            "fixHint": "Fix timeouts and no-logic violations"
+        }
+    ],
+    "grepEvidence": {
+        "docudentV7Route": "src/App.jsx: <Route path=\"/docudent/v7/*\" element={<V7Router />} />",
+        "docudentV7Page": "V7Router.tsx imports DocudentV7Page, renders at index route",
+        "parseEndoSignalsInV7": "ONLY in v7/pages/lab/EndoLabPage.tsx - NOT in main flow",
+        "endoPlaybookInV7": "ONLY in EndoLabPage and core/questionEngine",
+        "firebaseFirestoreInV7": "0 results - CLEAN",
+        "gateCount": "58 gate test files",
+        "localStorageUsage": "settingsStore, InsuranceContext, pipeline trace"
+    }
+}

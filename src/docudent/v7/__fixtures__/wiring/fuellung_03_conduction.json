@@ -1,0 +1,30 @@
+{
+    "id": "fuellung_03_conduction",
+    "description": "Füllung mit expliziter Leitungsanästhesie",
+    "input": {
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Zahn 46 DO Füllung nach Leitungsanästhesie regio 46",
+        "answers": {}
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=fuellung",
+            "questions:engine=fuellung"
+        ],
+        "traceExcludes": [
+            "questions:engine=endo"
+        ],
+        "noQuestionIdRegex": "(endo|kanal|wl|spül|wurzel)",
+        "outputMustContain": [
+            "46",
+            "Leitung"
+        ],
+        "billingMustNotContain": [
+            "BEMA_40",
+            "BEMA_41a"
+        ]
+    },
+    "minimalAnswers": {}
+}

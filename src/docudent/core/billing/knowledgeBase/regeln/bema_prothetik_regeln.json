@@ -1,0 +1,211 @@
+{
+    "_meta": {
+        "name": "BEMA Prothetik Abrechnungsregeln",
+        "version": "2024",
+        "quellen": [
+            "KZBV BEMA-Kommentar",
+            "KZVB (Bayern) Abrechnungshilfen",
+            "KZV Berlin Merkblätter",
+            "G-BA Zahnersatz-Richtlinien"
+        ],
+        "beschreibung": "Offizielle BEMA-Regeln für Prothetik/Zahnersatz mit Häufigkeiten und Kombinationsregeln"
+    },
+    "provisorien": {
+        "BEMA_19": {
+            "bezeichnung": "Provisorische Krone oder Brückenglied",
+            "zweck": "Schutz des beschliffenen Zahnes, Sicherung der Kaufunktion",
+            "punkte": 20,
+            "haeufigkeit": {
+                "regel": "Max 2× je Zahn pro Behandlungsfall",
+                "hkp": "Im HKP nur 1× je Zahn in Gebührenvorausberechnung",
+                "zweites": "Zweites Provisorium ohne erneute HKP-Vorlage abrechenbar"
+            },
+            "leistungsinhalt": [
+                "Direkt hergestelltes Provisorium (Chairside)",
+                "Material und Laborkosten ZUSÄTZLICH berechnungsfähig"
+            ],
+            "varianten": {
+                "19i": "Für Implantate in Ausnahmefällen (§30 SGB V)"
+            },
+            "quelle": "KZVB.de, bema-goz.de"
+        },
+        "BEMA_21": {
+            "bezeichnung": "Provisorische Krone mit Stiftverankerung",
+            "punkte": 25,
+            "haeufigkeit": "Max 2× je Zahn",
+            "quelle": "KZBV"
+        },
+        "BEMA_23": {
+            "bezeichnung": "Entfernung eines definitiv befestigten Provisoriums",
+            "punkte": 10,
+            "nicht_neben": [
+                "BEMA_19",
+                "BEMA_21"
+            ],
+            "nur_wenn": "Provisorium war fest zementiert",
+            "quelle": "KZVB.de"
+        },
+        "BEMA_24c": {
+            "bezeichnung": "Abnahme und Wiederbefestigung einer provisorischen Krone nach Nr. 19 oder 21",
+            "punkte": 15,
+            "haeufigkeit": {
+                "regel": "Höchstens 3× je Krone",
+                "berechnung": "Bei Kombinationsversorgung: Je Ankerzahn × max 3",
+                "beispiel": "8 Ankerzähne = max 8 × 3 = 24× BEMA 24c"
+            },
+            "hkp": "Kann NICHT in Gebührenvorausberechnung angesetzt werden, nur in Teil V Rechnungsbeträge",
+            "voraussetzung": "BEMA 19 oder 21 muss vorher abgerechnet worden sein",
+            "leistungsinhalt": [
+                "Abnahme der provisorischen Krone",
+                "Wiederbefestigung",
+                "Reparaturarbeiten am Provisorium NICHT enthalten (nur Material/Labor)"
+            ],
+            "wichtig": "Es muss sich um Abnahme UND Wiederbefestigung handeln - alleine Wiederbefestigung reicht nicht",
+            "varianten": {
+                "24ci": "Für Implantate in Ausnahmefällen"
+            },
+            "quelle": "KZVB.de, KZV-Berlin.de, bema-goz.de, dentclub.de"
+        }
+    },
+    "kronen": {
+        "BEMA_20a": {
+            "bezeichnung": "Metallische Vollkrone",
+            "punkte": 50,
+            "leistungsinhalt": [
+                "Präparation",
+                "Abformung",
+                "Bissnahme",
+                "Farbbestimmung",
+                "Einprobe",
+                "Einzementieren",
+                "Okklusionskontrolle"
+            ],
+            "wichtig": "All dies ist in BEMA 20a ENTHALTEN - bei gleichartiger Versorgung nur echte MEHRLEISTUNGEN als GOZ berechenbar!",
+            "quelle": "KZBV BEMA-Kommentar"
+        },
+        "BEMA_91d": {
+            "bezeichnung": "Teleskop- oder Konuskrone",
+            "punkte": 70,
+            "leistungsinhalt": [
+                "Präparation",
+                "Farbbestimmung",
+                "Bissnahme",
+                "Abformung",
+                "Einprobe",
+                "Einzementierung",
+                "Kontrolle und Adjustierung der Okklusion"
+            ],
+            "wann_regelversorgung": [
+                "Teleskope auf Eckzähnen (3er)",
+                "Teleskope auf ersten Prämolaren (4er)",
+                "Bei Befund 3.2a/b/c"
+            ],
+            "wann_gleichartig_goz": "Teleskope auf anderen Zähnen → GOZ 5040",
+            "erneuerung": "Bei Erneuerung Primär- oder Sekundärteil: halbe Gebühr (35P)",
+            "quelle": "KZVB.de, dentclub.de"
+        }
+    },
+    "prothesen": {
+        "BEMA_96a": {
+            "bezeichnung": "Partialprothese 1-4 fehlende Zähne",
+            "punkte": 90,
+            "leistungsinhalt": [
+                "Planung und HKP-Erstellung",
+                "Abformungen",
+                "Einfache Bissnahme",
+                "Einfache Halteelemente (Klammern)",
+                "Farbbestimmung",
+                "Einproben",
+                "Eingliederung",
+                "Nachbehandlung"
+            ]
+        },
+        "BEMA_96b": {
+            "bezeichnung": "Partialprothese 5-8 fehlende Zähne",
+            "punkte": 120,
+            "leistungsinhalt": "Wie BEMA 96a"
+        },
+        "BEMA_96c": {
+            "bezeichnung": "Partialprothese >8 fehlende Zähne",
+            "punkte": 150,
+            "leistungsinhalt": "Wie BEMA 96a"
+        },
+        "BEMA_98a": {
+            "bezeichnung": "Abformung mit individuellem Löffel",
+            "punkte": 25,
+            "wann": [
+                "Ungewöhnliche Kieferform",
+                "Hoher Gaumen",
+                "Hochansetzende Bänder",
+                "Hohe Präzisionsanforderung (lange Brücken)"
+            ],
+            "nicht_bei": "Einzelkrone (BEMA 20)",
+            "quelle": "KZVB.de, bema-goz.de"
+        }
+    },
+    "kombinationsversorgung_workflow": {
+        "beschreibung": "Teleskop-Kombinationsversorgung (z.B. gaumenfreie Prothese)",
+        "einordnung": "Meist gleichartig, da Teleskope auf anderen Zähnen als 3er/4er oder gaumenfreie Gestaltung",
+        "bema_standard": {
+            "98a": {
+                "anzahl": 1,
+                "pro": "Kiefer"
+            },
+            "19": {
+                "anzahl": "je Ankerzahn",
+                "formel": "Anzahl_Anker × 1"
+            },
+            "24c": {
+                "anzahl": "je Ankerzahn × max 3",
+                "formel": "Anzahl_Anker × 3",
+                "quelle_offiziell": "KZBV/KZV: max 3× je Krone"
+            },
+            "96a_b_c": {
+                "anzahl": 1,
+                "pro": "Kiefer",
+                "wahl": "Je nach Anzahl fehlender Zähne"
+            }
+        },
+        "goz_mehrkosten": {
+            "5040": {
+                "bezeichnung": "Teleskopkrone (vollständige Krone im privaten Anteil)",
+                "anzahl": "je Ankerzahn",
+                "wichtig": "Bei gleichartiger Versorgung: Teleskop läuft über GOZ 5040, NICHT über BEMA 91d!"
+            }
+        },
+        "festzuschuss": {
+            "3.2a": "Nur für Eckzahn/1. PM - max 2× je Kiefer",
+            "3.1": "1× je Kiefer bei Freiendsituation",
+            "4.7": "Nur für Teleskop-Anker im Verblendbereich - folgt FZ 3.2a Logik"
+        },
+        "quelle": "KZBV, KZV, G-BA Zahnersatz-Richtlinie"
+    },
+    "ausschluesse_und_kombinationen": {
+        "BEMA_23_nicht_neben_19_21": "Entfernung (23) nicht neben Provisorium (19/21) wenn nicht fest zementiert",
+        "BEMA_24c_nur_nach_19_21": "24c nur berechenbar wenn 19 oder 21 vorher abgerechnet",
+        "BEMA_91d_nicht_bei_gleichartig": "Bei gleichartiger Teleskopversorgung: GOZ 5040 statt BEMA 91d",
+        "FZ_1x_nicht_bei_Brueckenpfeiler": "Für lückenangrenzende Zähne (Brückenpfeiler) KEINE FZ 1.1-1.3!"
+    },
+    "wichtige_quellen": [
+        {
+            "name": "KZBV BEMA-Kommentar",
+            "url": "https://www.kzbv.de",
+            "inhalt": "Offizielle Leistungsbeschreibungen und Abrechnungsregeln"
+        },
+        {
+            "name": "KZVB Abrechnungshilfen Bayern",
+            "url": "https://www.kzvb.de",
+            "inhalt": "Detaillierte Merkblätter zu BEMA 19, 24c, 91d"
+        },
+        {
+            "name": "bema-goz.de",
+            "url": "https://www.bema-goz.de",
+            "inhalt": "Umfassende Kommentare zu allen BEMA-Positionen"
+        },
+        {
+            "name": "G-BA Zahnersatz-Richtlinie",
+            "url": "https://www.g-ba.de/richtlinien/65/",
+            "inhalt": "Festzuschuss-Zuordnung und Befundklassen"
+        }
+    ]
+}

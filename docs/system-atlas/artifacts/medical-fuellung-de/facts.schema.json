@@ -1,0 +1,109 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FuellungFacts",
+    "description": "Minimal facts for Füllung treatment - NO BILLING REFS",
+    "type": "object",
+    "properties": {
+        "toothIds": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of treated teeth (FDI notation)"
+        },
+        "surfacesByTooth": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "m",
+                        "o",
+                        "d",
+                        "b",
+                        "l"
+                    ]
+                }
+            },
+            "description": "Surfaces per tooth: { '36': ['o'], '14': ['m', 'd'] }"
+        },
+        "materialMentioned": {
+            "type": "string",
+            "enum": [
+                "composite",
+                "giz",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Material mentioned in dictation"
+        },
+        "isolationMentioned": {
+            "type": "string",
+            "enum": [
+                "rubberDam",
+                "relative",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Isolation method mentioned"
+        },
+        "adhesiveMentioned": {
+            "type": "string",
+            "enum": [
+                "yes",
+                "no",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Adhesive technique explicitly mentioned"
+        },
+        "cavityExtentHint": {
+            "type": "string",
+            "enum": [
+                "small",
+                "medium",
+                "large",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Estimated cavity size"
+        },
+        "cariesDepthHint": {
+            "type": "string",
+            "enum": [
+                "shallow",
+                "medium",
+                "deep",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Caries depth indication"
+        },
+        "insuranceContextHint": {
+            "type": "string",
+            "enum": [
+                "gkv_standard",
+                "gkv_mehrkosten",
+                "pkv",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Insurance context for billing path determination"
+        },
+        "layeringMentioned": {
+            "type": "string",
+            "enum": [
+                "yes",
+                "no",
+                "unknown"
+            ],
+            "default": "unknown",
+            "description": "Layering/incremental technique mentioned"
+        }
+    },
+    "required": [
+        "toothIds"
+    ],
+    "$comment": "NEVER add billing-related fields like billingCode, gozPosition, bemaPosition etc."
+}

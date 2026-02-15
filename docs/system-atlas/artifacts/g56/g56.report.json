@@ -1,0 +1,21 @@
+{
+    "gigaprompt": "G56",
+    "milestone": "m56",
+    "generated_at": "2025-12-30T00:16:00Z",
+    "status": "PLANNING",
+    "summary": "Delete sprint B3 needs manifest script implementation",
+    "plan": {
+        "script_needed": "scripts/delete/generateDeleteManifestB3.ts",
+        "output": "docs/system-atlas/artifacts/g56/delete-manifest.b3.json",
+        "waves": {
+            "wave1": "Guaranteed safe (not in manifest, 0 importers)",
+            "wave2": "Test-only / dev-only files",
+            "wave3": "Manual review required"
+        }
+    },
+    "current_state": {
+        "bucket1_html": "COMPLETE",
+        "bucket2_v6": "COMPLETE (deleted)",
+        "bucket3_dead_code": "NEEDS_MANIFEST_SCRIPT"
+    }
+}

@@ -1,0 +1,242 @@
+[
+    {
+        "id": "krone_pkv",
+        "titel": "Vollkrone - PKV",
+        "kategorie": "zahnersatz",
+        "versicherung": "PKV",
+        "beschreibung": "Vollständige Kronenversorgung bei Privatpatient",
+        "phasen": [
+            {
+                "phase": "Anästhesie",
+                "positionen": [
+                    {
+                        "code": "GOZ_0080",
+                        "bezeichnung": "Oberflächenanästhesie",
+                        "wann": "VOR Injektion - IMMER ansetzen!",
+                        "anzahl": 1,
+                        "betrag_23": 7.25
+                    },
+                    {
+                        "code": "GOZ_0090",
+                        "bezeichnung": "Infiltrationsanästhesie",
+                        "wann": "Standard bei OK und UK-Front",
+                        "anzahl": 1,
+                        "betrag_23": 16.22
+                    },
+                    {
+                        "code": "GOZ_0100",
+                        "bezeichnung": "Leitungsanästhesie",
+                        "wann": "Bei UK-Seitenzähnen empfohlen",
+                        "anzahl": 1,
+                        "betrag_23": 24.31
+                    }
+                ]
+            },
+            {
+                "phase": "Präparation",
+                "positionen": [
+                    {
+                        "code": "GOZ_2200",
+                        "bezeichnung": "Vollkrone (Präparation, Abformung, prov. Versorgung, Einsetzen)",
+                        "wann": "Einmal pro Krone",
+                        "anzahl": 1,
+                        "betrag_23": 217.59,
+                        "tipp": "Steigerungsfaktor bis 3.5 bei schwierigen Verhältnissen!"
+                    },
+                    {
+                        "code": "GOZ_2210",
+                        "bezeichnung": "Teilkrone",
+                        "wann": "Wenn weniger als vollständige Präparation",
+                        "anzahl": 1,
+                        "betrag_23": 173.65
+                    }
+                ]
+            },
+            {
+                "phase": "Stift (optional)",
+                "bedingung": "Nur bei devitalen Zähnen",
+                "positionen": [
+                    {
+                        "code": "GOZ_2195",
+                        "bezeichnung": "Stiftpräparation und Einbringen eines konfektionierten Stiftes",
+                        "wann": "Bei devitalem Zahn mit wenig Restsubstanz",
+                        "anzahl": 1,
+                        "betrag_23": 108.78
+                    },
+                    {
+                        "code": "GOZ_2180",
+                        "bezeichnung": "Aufbau aus plastischem Material",
+                        "wann": "Zusätzlich zum Stift",
+                        "anzahl": 1,
+                        "betrag_23": 65.27
+                    }
+                ]
+            },
+            {
+                "phase": "Provisorium",
+                "positionen": [
+                    {
+                        "code": "GOZ_2260",
+                        "bezeichnung": "Direktes Provisorium",
+                        "wann": "Standard bei Kronenversorgung",
+                        "anzahl": 1,
+                        "betrag_23": 43.54,
+                        "tipp": "Oft in GOZ 2200 nicht inkludiert - separat abrechenbar!"
+                    },
+                    {
+                        "code": "GOZ_2270",
+                        "bezeichnung": "Langzeitprovisorium (Schalenprovisorium)",
+                        "wann": "Bei längerer Tragezeit >4 Wochen",
+                        "anzahl": 1,
+                        "betrag_23": 65.27
+                    }
+                ]
+            },
+            {
+                "phase": "Einprobe",
+                "positionen": [
+                    {
+                        "code": "GOZ_2290",
+                        "bezeichnung": "Einprobe Gerüst",
+                        "wann": "Bei Metallgerüst oder Zirkon",
+                        "anzahl": 1,
+                        "betrag_23": 21.74
+                    }
+                ]
+            },
+            {
+                "phase": "Eingliederung",
+                "positionen": [
+                    {
+                        "code": "GOZ_2310",
+                        "bezeichnung": "Zementieren / Adhäsives Befestigen",
+                        "wann": "Immer bei Eingliederung",
+                        "anzahl": 1,
+                        "betrag_23": 43.54,
+                        "tipp": "Bei Vollkeramik: Adhäsive Befestigung höher abrechnen!"
+                    }
+                ]
+            }
+        ],
+        "steigerung": {
+            "bis_35": true,
+            "gruende": [
+                "Schwierige Zugänglichkeit",
+                "Subgingivale Präparation",
+                "Stark destruierter Zahn",
+                "Besondere ästhetische Anforderungen",
+                "Multimorbidität"
+            ]
+        },
+        "dokumentation_erforderlich": [
+            "Zahnangabe",
+            "Präparationsart",
+            "Material",
+            "Aufklärung über Alternativen"
+        ],
+        "haeufige_fehler": [
+            "Oberflächenanästhesie (GOZ 0080) vergessen",
+            "Provisorium nicht separat berechnet",
+            "Steigerungsfaktor nicht genutzt"
+        ]
+    },
+    {
+        "id": "krone_gkv",
+        "titel": "Vollkrone - GKV mit Festzuschuss",
+        "kategorie": "zahnersatz",
+        "versicherung": "GKV",
+        "beschreibung": "Kronenversorgung bei GKV-Patient mit Festzuschuss nach §55 SGB V",
+        "phasen": [
+            {
+                "phase": "Festzuschuss",
+                "positionen": [
+                    {
+                        "code": "FZ_1.1",
+                        "bezeichnung": "Erhaltungswürdiger Zahn mit weitgehender Zerstörung",
+                        "wann": "Grundbefund für Krone",
+                        "betrag_60": 199.02,
+                        "betrag_70": 232.19,
+                        "betrag_75": 248.78,
+                        "tipp": "60%/70%/75% je nach Bonusheft!"
+                    },
+                    {
+                        "code": "FZ_1.2",
+                        "bezeichnung": "Erhaltungswürdiger Zahn mit partieller Kronenzerstörung",
+                        "wann": "Bei Teilkrone",
+                        "betrag_60": 155.10,
+                        "betrag_70": 180.95,
+                        "betrag_75": 193.88
+                    },
+                    {
+                        "code": "FZ_1.3",
+                        "bezeichnung": "Verblendung im Verblendbereich",
+                        "wann": "Zähne 13-23, 33-35, 43-45",
+                        "betrag_60": 52.35,
+                        "betrag_70": 61.08,
+                        "betrag_75": 65.44
+                    }
+                ]
+            },
+            {
+                "phase": "Kassenleistung (BEMA)",
+                "positionen": [
+                    {
+                        "code": "BEMA_18",
+                        "bezeichnung": "Präparation für Vollkrone",
+                        "punkte": 32,
+                        "wann": "Bei Regelversorgung (VMK NEM)"
+                    },
+                    {
+                        "code": "BEMA_19a",
+                        "bezeichnung": "Eingliederung einer Krone",
+                        "punkte": 20,
+                        "wann": "Eingliederung der Regelversorgung"
+                    }
+                ]
+            },
+            {
+                "phase": "Gleichartig/Andersartig (GOZ)",
+                "bedingung": "Bei höherwertiger Versorgung",
+                "positionen": [
+                    {
+                        "code": "GOZ_2200",
+                        "bezeichnung": "Vollkrone (Differenz zu BEMA)",
+                        "wann": "Bei gleichartiger Versorgung (z.B. Zirkon statt VMK)",
+                        "tipp": "MKV erforderlich! BEMA-Kassenanteil + GOZ-Mehrkosten"
+                    }
+                ]
+            }
+        ],
+        "festzuschuss_regeln": {
+            "verblendbereich": [
+                13,
+                14,
+                15,
+                23,
+                24,
+                25,
+                33,
+                34,
+                35,
+                43,
+                44,
+                45
+            ],
+            "bonus_staffel": {
+                "ohne": 0.6,
+                "5_jahre": 0.7,
+                "10_jahre": 0.75
+            }
+        },
+        "dokumentation_erforderlich": [
+            "Bonusheft-Status",
+            "HKP genehmigt",
+            "MKV bei gleichartig/andersartig"
+        ],
+        "haeufige_fehler": [
+            "FZ 1.3 (Verblendung) außerhalb VB angesetzt",
+            "Bonusstaffel nicht korrekt",
+            "MKV nicht VOR Behandlung unterschrieben"
+        ]
+    }
+]

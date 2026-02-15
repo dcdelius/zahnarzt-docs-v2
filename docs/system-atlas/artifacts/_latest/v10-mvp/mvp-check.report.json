@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-12-31T11:36:42.800Z",
+  "verdict": "PASS",
+  "results": [
+    {
+      "step": "Build",
+      "status": "PASS",
+      "durationMs": 3880,
+      "output": "react-vendor-C733eHZ9.js                                   141.29 kB │ gzip:  45.44 kB\ndist/assets/DocudentV5Page-CjrsUhKD.js                                 425.70 kB │ gzip: 110.25 kB\ndist/assets/index-hjWPMRur.js                                          625.11 kB │ gzip: 163.24 kB\ndist/assets/react-three-fiber.esm-zmyTJqT9.js                          855.02 kB │ gzip: 231.23 kB\ndist/assets/TreatmentSelector-BLM30DA7.js                            2,663.53 kB │ gzip: 717.50 kB\n✓ built in 3.61s\n"
+    },
+    {
+      "step": "V10 UI Tests",
+      "status": "PASS",
+      "durationMs": 910,
+      "output": "ent/v10/__tests__/ui/v10.instance-isolation.test.ts  (9 tests) 9ms\n ✓ src/docudent/v10/__tests__/ui/v10.reality.contract.test.ts  (15 tests) 13ms\n ✓ src/docudent/v10/__tests__/ui/v10.per-instance-output.contract.test.ts  (15 tests) 14ms\n ✓ src/docudent/v10/__tests__/ui/v10.ui.snapshots.test.tsx  (5 tests) 61ms\n\n Test Files  5 passed (5)\n      Tests  50 passed (50)\n   Start at  12:36:40\n   Duration  586ms (transform 206ms, setup 0ms, collect 607ms, tests 114ms, environment 1.06s, prepare 193ms)\n\n"
+    },
+    {
+      "step": "V10/V7 Gate",
+      "status": "PASS",
+      "durationMs": 540,
+      "output": "\n RUN  v1.6.1 /Users/david/dokumaster-ui\n\n ✓ src/docudent/__tests__/gates/gate-v10-no-imports-from-v7.test.ts  (5 tests) 37ms\nstdout | src/docudent/__tests__/gates/gate-v10-no-imports-from-v7.test.ts > Gate: V10 No V7 Imports > should report V7 import count as zero\n\n📊 V7 Import Status: 0 imports (target: 0)\n\n\n Test Files  1 passed (1)\n      Tests  5 passed (5)\n   Start at  12:36:41\n   Duration  234ms (transform 15ms, setup 0ms, collect 13ms, tests 37ms, environment 0ms, prepare 30ms)\n\n"
+    },
+    {
+      "step": "Atlas Refresh",
+      "status": "PASS",
+      "durationMs": 706,
+      "output": "\n> dokumaster-ui@0.0.0 atlas:refresh\n> npx tsx scripts/systemAtlas/refresh.ts\n\n🔄 Atlas Refresh Started\n\n📦 Generating runtime manifest...\n   Found 911 files\n📝 Updated CHANGELOG.md\n📋 Generating index...\n   Found 216 artifacts\n🔐 Generating hashes...\n\n✅ Atlas refresh complete in 0.11s\n   Runtime: 370 files\n   Tests: 404 files\n   Artifacts: 216\n"
+    },
+    {
+      "step": "Atlas Check",
+      "status": "PASS",
+      "durationMs": 614,
+      "output": "\n> dokumaster-ui@0.0.0 atlas:check\n> npx tsx scripts/systemAtlas/check.ts\n\n🔍 Atlas Check Started\n\nChecking: Index consistency...\n  ✅ PASS: 216 artifacts verified\nChecking: Manifest integrity...\n  ✅ PASS: 911 files in manifest\nChecking: Hashes file...\n  ✅ PASS: 7 hash entries\nChecking: No deleted refs...\n  ✅ PASS: No deleted paths in wiring\n\n══════════════════════════════════════════════════\n✅ Atlas check PASSED\n"
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "durationMs": 6650
+  }
+}

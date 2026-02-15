@@ -1,0 +1,1058 @@
+{
+    "_meta": {
+        "id": "fuellung",
+        "version": "2025-01-v2",
+        "label": "Kompositfüllung",
+        "kategorie": "konservierend",
+        "stand": "2025-01-11",
+        "architektur": "rule-driven",
+        "hinweis": "Seit 01.01.2025: Amalgamverbot! Komposit (Bulkfill) = Kassenleistung im Seitenzahn."
+    },
+    "requiredFieldsGlobal": [
+        "zahn",
+        "flaechen",
+        "vitality"
+    ],
+    "chips": [
+        {
+            "id": "fuellung_grundleistung",
+            "label": "Füllung",
+            "phase": "fuellung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Zahn {tooth} ({surfacesFormatted}): Füllung.",
+                "mittel": "Zahn {tooth} ({surfacesFormatted}): Füllungstherapie{depthDisplay}.",
+                "lang": "Zahn {tooth} ({surfacesFormatted}): Füllungstherapie{depthDisplay}. Kavitätenpräparation lege artis."
+            },
+            "billingRef": null,
+            "hinweis": "Grundleistung - F-Code wird durch surface_mapping bestimmt",
+            "dataPatches": [],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_BASELINE"
+            ],
+            "forensicNotes": []
+        },
+        {
+            "id": "vipr_pos",
+            "label": "ViPr +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr +",
+                "mittel": "ViPr +",
+                "lang": "Sensibilität positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_neg"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_VITAL_DOKU"
+            ],
+            "forensicNotes": [
+                "Sensibilitätsprüfung dokumentieren: ViPr+/ViPr-"
+            ]
+        },
+        {
+            "id": "vipr_neg",
+            "label": "ViPr −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "ViPr −",
+                "mittel": "ViPr −",
+                "lang": "Sensibilität negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "vitality",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "vipr_pos"
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_VITAL_DOKU",
+                "RULE_FUELLUNG_DEVITAL_WARNUNG"
+            ],
+            "forensicNotes": [
+                "Bei ViPr- → Endokontrolle erwägen",
+                "Devitaler Zahn bei Füllung dokumentieren"
+            ]
+        },
+        {
+            "id": "perk_neg",
+            "label": "Perk −",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk −",
+                "mittel": "Perk −",
+                "lang": "Perkussion negativ"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "-"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_pos"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_PERK_DOKU"
+            ],
+            "forensicNotes": []
+        },
+        {
+            "id": "perk_pos",
+            "label": "Perk +",
+            "phase": "befund",
+            "category": "befund",
+            "textSnippets": {
+                "kurz": "Perk +",
+                "mittel": "Perk +",
+                "lang": "Perkussion positiv"
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "percussion",
+                    "value": "+"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "perk_neg"
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_PERK_DOKU",
+                "RULE_FUELLUNG_PERK_POS_WARNUNG"
+            ],
+            "forensicNotes": [
+                "Perk+ kann auf Pulpitis hinweisen",
+                "Ggf. Endo erwägen"
+            ]
+        },
+        {
+            "id": "la_generic",
+            "label": "LA (unspezifiziert)",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA.",
+                "mittel": "Lokalanästhesie durchgeführt.",
+                "lang": "Lokalanästhesie durchgeführt (Technik nicht spezifiziert)."
+            },
+            "billingRef": null,
+            "mutuallyExclusiveWith": [
+                "la_infiltr",
+                "la_leitung",
+                "la_ila",
+                "ohne_la"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ]
+        },
+        {
+            "id": "la_infiltr",
+            "label": "LA Infiltration",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Infiltr.",
+                "mittel": "LA Infiltration ({la_agent}).",
+                "lang": "Nach Oberflächenanästhesie Infiltrationsanästhesie mit {la_agent} 1,7ml."
+            },
+            "variablen": {
+                "la_agent": { "default": "Ultracain D-S", "required": false }
+            },
+            "billingRef": {
+                "GKV": "BEMA_40",
+                "PKV": "GOZ_0090"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Infiltration"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_leitung",
+                "ohne_la"
+            ],
+            "defaultActive": true,
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_LA_QUADRANT"
+            ],
+            "forensicNotes": [
+                "Bei OK: Infiltration Standard",
+                "Material und Menge dokumentieren"
+            ]
+        },
+        {
+            "id": "la_leitung",
+            "label": "LA Leitung",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "LA Leitung.",
+                "mittel": "Leitungsanästhesie N. alv. inf. ({la_agent}).",
+                "lang": "Leitungsanästhesie des N. alveolaris inf. mit {la_agent} 1,7ml; Wirkungseintritt nach ca. 3 min."
+            },
+            "variablen": {
+                "la_agent": { "default": "Ultracain D-S", "required": false }
+            },
+            "billingRef": {
+                "GKV": "BEMA_41a",
+                "PKV": "GOZ_0100"
+            },
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "Leitung"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_infiltr",
+                "ohne_la"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_LA_QUADRANT",
+                "RULE_LA_LEITUNG_UK"
+            ],
+            "forensicNotes": [
+                "Standard bei UK-Seitenzähnen (36-38, 46-48)"
+            ],
+            "conditionHint": "Standard bei UK-Seitenzähnen"
+        },
+        {
+            "id": "la_ila",
+            "label": "LA Intraligamentär",
+            "phase": "anaesthesie",
+            "category": "dokumentation",
+            "textSnippets": {
+                "kurz": "LA ILA.",
+                "mittel": "Intraligamentäre Anästhesie ({la_agent}).",
+                "lang": "Intraligamentäre Anästhesie mit {la_agent} 1,7ml."
+            },
+            "variablen": {
+                "la_agent": { "default": "Ultracain D-S", "required": false }
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "anesthesia",
+                    "value": "ILA"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "la_infiltr",
+                "la_leitung",
+                "ohne_la"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "conditionHint": "Optional bei UK-Seitenzähnen"
+        },
+        {
+            "id": "oberflaeche_la",
+            "label": "Oberflächenanästhesie",
+            "phase": "anaesthesie",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "OA.",
+                "mittel": "Oberflächenanästhesie vor Injektion.",
+                "lang": "Oberflächenanästhesie vor Injektion appliziert (Lidocain-Spray/Gel)."
+            },
+            "billingRef": {
+                "PKV": "GOZ_0080"
+            },
+            "dataPatches": [
+                {
+                    "field": "surface_anesthesia",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_OBERFLAECHE_PKV_UPSELL"
+            ],
+            "forensicNotes": [],
+            "upsellCandidate": true,
+            "upsellNotes": [
+                "Nur bei PKV abrechenbar",
+                "GOZ 0080 zusätzlich zur Injektion"
+            ]
+        },
+        {
+            "id": "kofferdam",
+            "label": "Kofferdam",
+            "phase": "vorbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Kofferdam.",
+                "mittel": "Kofferdam angelegt.",
+                "lang": "Absolute Trockenlegung durch sorgfältiges Anlegen von Kofferdam mit anatomisch angepasster Klammer unter Sichterhaltung des Operationsfeldes."
+            },
+            "billingRef": {
+                "GKV": "BEMA_12",
+                "PKV": "GOZ_2040"
+            },
+            "dataPatches": [
+                {
+                    "field": "isolation",
+                    "value": "Kofferdam"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "rel_trocken"
+            ],
+            "defaultActive": true,
+            "showInQuickView": true,
+            "requiredFields": [
+                "zahn"
+            ],
+            "ruleRefs": [
+                "RULE_KOFFERDAM_PFLICHT"
+            ],
+            "forensicNotes": [
+                "Kofferdam MUSS dokumentiert sein für BEMA 12!",
+                "Ohne Dokumentation → REGRESS"
+            ]
+        },
+        {
+            "id": "rel_trocken",
+            "label": "Rel. Trockenlegung",
+            "phase": "vorbereitung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Rel. Trockenlegung.",
+                "mittel": "Relative Trockenlegung.",
+                "lang": "Relative Trockenlegung mittels Watterollen und kontinuierlicher Absaugung."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "isolation",
+                    "value": "relativ"
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "kofferdam"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "exkavation",
+            "label": "Exkavation",
+            "phase": "exkavation",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Exkavation bis sondenhart.",
+                "mittel": "Exkavation kariöser Anteile bis sondenharter Konsistenz.",
+                "lang": "Selektive Exkavation kariöser Anteile unter Schonung gesunder Zahnhartsubstanz mittels Rosenbohrer und Handexkavatoren bis zur sondenharten Konsistenz im Kavitätenboden."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "excavation",
+                    "value": true
+                }
+            ],
+            "defaultActive": true,
+            "requiredFields": [
+                "tiefe"
+            ],
+            "ruleRefs": [
+                "RULE_TIEFE_CP_TRIGGER"
+            ],
+            "forensicNotes": [
+                "Bei tiefer Karies → Cp/P prüfen"
+            ]
+        },
+        {
+            "id": "cp",
+            "label": "Cp",
+            "phase": "ueberkappung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Cp ({material}).",
+                "mittel": "Pulpanahe Exkavation, indirekte Überkappung mit {material}.",
+                "lang": "Aufgrund pulpanaher Exkavation indirekte Überkappung mit {material} zur Stimulation der Tertiärdentinbildung."
+            },
+            "variablen": {
+                "material": {
+                    "required": true,
+                    "default": "Ca(OH)₂",
+                    "options": [
+                        "Ca(OH)₂",
+                        "MTA",
+                        "Biodentine"
+                    ]
+                }
+            },
+            "billingRef": {
+                "GKV": "BEMA_25",
+                "PKV": "GOZ_2330"
+            },
+            "dataPatches": [
+                {
+                    "field": "cp",
+                    "value": true
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "p",
+                "cp_not_required"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "tiefe",
+                "material"
+            ],
+            "ruleRefs": [
+                "RULE_CP_MATERIAL_PFLICHT",
+                "RULE_CP_TIEFE_VORAUSSETZUNG"
+            ],
+            "forensicNotes": [
+                "Material MUSS genannt werden!",
+                "Nur bei pulpanaher Karies (Cp profunda)",
+                "Ohne Materialangabe = REGRESS!"
+            ]
+        },
+        {
+            "id": "cp_not_required",
+            "label": "CP nicht erf.",
+            "phase": "ueberkappung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Keine Pulpaeröffnung.",
+                "mittel": "Keine Pulpaeröffnung, Cp nicht erforderlich.",
+                "lang": "Keine Pulpaeröffnung während der Exkavation, indirekte Überkappung (Cp) nicht erforderlich."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "cp_required",
+                    "value": false
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "cp",
+                "p"
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "p",
+            "label": "P",
+            "phase": "ueberkappung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "P ({material}).",
+                "mittel": "Punktförmige Pulpaeröffnung, direkte Überkappung mit {material}.",
+                "lang": "Punktförmige Pulpaeröffnung bei der Exkavation, Blutstillung mit NaOCl, direkte Überkappung mit {material}."
+            },
+            "variablen": {
+                "material": {
+                    "required": true,
+                    "default": "MTA",
+                    "options": [
+                        "MTA",
+                        "Biodentine",
+                        "Ca(OH)₂"
+                    ]
+                }
+            },
+            "billingRef": {
+                "GKV": "BEMA_26",
+                "PKV": "GOZ_2340"
+            },
+            "dataPatches": [
+                {
+                    "field": "p",
+                    "value": true
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "cp",
+                "cp_not_required"
+            ],
+            "requiredFields": [
+                "material"
+            ],
+            "ruleRefs": [
+                "RULE_P_MATERIAL_PFLICHT",
+                "RULE_P_NUR_KLEIN"
+            ],
+            "forensicNotes": [
+                "Material MUSS genannt werden!",
+                "Nur bei KLEINER punktförmiger Eröffnung!",
+                "Bei großer Eröffnung → Vitalexstirpation"
+            ]
+        },
+        {
+            "id": "komposit_basic",
+            "label": "Komposit",
+            "phase": "fuellung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Komposit ({fill_material}).",
+                "mittel": "Komposit ({fill_material}) eingebracht und lichthärtend polymerisiert.",
+                "lang": "Kavität präpariert. Komposit ({fill_material}) eingebracht und lichthärtend polymerisiert. Okklusion kontrolliert."
+            },
+            "billingRef": null,
+            "hinweis": "F-Code (BEMA 13/GOZ 2060) kommt aus surface_mapping",
+            "dataPatches": [],
+            "defaultActive": true,
+            "mutuallyExclusiveWith": [
+                "mehrschicht"
+            ],
+            "requiredFields": [
+                "flaechen"
+            ],
+            "ruleRefs": [
+                "RULE_FCODE_FLAECHEN"
+            ],
+            "forensicNotes": [
+                "Flächenangabe (m,o,d,b,l) erforderlich für F-Code"
+            ]
+        },
+        {
+            "id": "mehrschicht",
+            "label": "Mehrschichttechnik",
+            "phase": "fuellung",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Komposit Mehrschichttechnik.",
+                "mittel": "Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend.",
+                "lang": "Selektive Schmelzätzung mit 37% Phosphorsäure (15s), Spülung, Trocknung. Applikation eines Universaladhäsivs, Verblasen und Lichthärtung. Schichtweises Einbringen des Komposits in max. 2mm-Inkrementen mit jeweils separater Lichthärtung zur Minimierung der Polymerisationsschrumpfung."
+            },
+            "billingRef": {
+                "MKV": "GOZ_2197"
+            },
+            "hinweis": "GKV: Als Mehrkostenvereinbarung abrechnen!",
+            "dataPatches": [
+                {
+                    "field": "adhesive",
+                    "value": true
+                },
+                {
+                    "field": "layering",
+                    "value": true
+                }
+            ],
+            "mutuallyExclusiveWith": [
+                "komposit_basic"
+            ],
+            "showInQuickView": true,
+            "requiredFields": [
+                "flaechen",
+                "mkv_vereinbarung"
+            ],
+            "ruleRefs": [
+                "RULE_MKV_SCHRIFTLICH",
+                "RULE_GOZ2197_NICHT_NEBEN_2060"
+            ],
+            "forensicNotes": [
+                "MKV nur mit schriftlicher Vereinbarung VOR Behandlung!",
+                "GOZ 2197 NICHT neben GOZ 2060-2120 (bereits inkludiert!)"
+            ],
+            "upsellCandidate": true,
+            "upsellNotes": [
+                "Nur bei GKV mit Mehrkostenvereinbarung",
+                "Schichtweiser Aufbau statt Bulk-Fill"
+            ],
+            "conditionHint": "Nur bei Zuzahlung (Mehrkostenvereinbarung)"
+        },
+        {
+            "id": "finishing",
+            "label": "Finishing",
+            "phase": "finishing",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Okkl. geprüft, Politur.",
+                "mittel": "Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.",
+                "lang": "Okklusionsprüfung mit Shimstock und Artikulationsfolie, selektives Einschleifen störender Kontakte bis zur physiologischen Okklusion. Ausarbeitung der Füllungsränder mit rotierenden Instrumenten, abschließende Hochglanzpolitur mit Silikonpolierer und Polierpaste."
+            },
+            "billingRef": null,
+            "dataPatches": [
+                {
+                    "field": "occlusion_check",
+                    "value": true
+                },
+                {
+                    "field": "polish",
+                    "value": true
+                }
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "fluor",
+            "label": "Fluoridierung",
+            "phase": "finishing",
+            "category": "leistung",
+            "textSnippets": {
+                "kurz": "Fluoridierung.",
+                "mittel": "Abschließend Fluoridierung.",
+                "lang": "Abschließende Applikation von Fluoridlack zur Remineralisation des Randschmelzes."
+            },
+            "billingRef": {
+                "GKV": "BEMA_IP4",
+                "PKV": "GOZ_1020"
+            },
+            "dataPatches": [
+                {
+                    "field": "fluoridation",
+                    "value": true
+                }
+            ],
+            "showInQuickView": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FLUORID_UPSELL"
+            ],
+            "forensicNotes": [],
+            "upsellCandidate": true,
+            "upsellNotes": [
+                "Bei GKV: IP4 zusätzlich abrechenbar",
+                "Bei PKV: GOZ 1020"
+            ]
+        },
+        {
+            "id": "fuellung_material_giz",
+            "label": "Material: GIZ",
+            "phase": "fuellung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Kavität mit Glasionomerzement versorgt.",
+                "mittel": "Füllung mit selbstadhäsivem Glasionomerzement durchgeführt.",
+                "lang": "Kavitätenfüllung mit selbstadhäsivem Glasionomerzement, konditioniert und appliziert gemäß Herstellerangaben."
+            },
+            "billingRef": null,
+            "hinweis": "GIZ ist selbstadhäsiv, keine separate Adhäsivtechnik nötig. F-Code aus surface_mapping.",
+            "dataPatches": [
+                {
+                    "field": "material",
+                    "value": "giz"
+                }
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_MATERIAL_GIZ"
+            ],
+            "forensicNotes": []
+        },
+        {
+            "id": "fuellung_material_komposit",
+            "label": "Material: Komposit",
+            "phase": "fuellung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Kompositfüllung mit {fill_material}.",
+                "mittel": "Füllung mit lichthärtendem Komposit ({fill_material}) durchgeführt.",
+                "lang": "Kavitätenfüllung mit lichthärtendem Komposit ({fill_material}) in Schicht- oder Bulk-Technik."
+            },
+            "variablen": {
+                "fill_material": { "default": "Komposit", "required": false }
+            },
+            "billingRef": null,
+            "hinweis": "F-Code aus surface_mapping.",
+            "dataPatches": [
+                {
+                    "field": "material",
+                    "value": "komposit"
+                }
+            ],
+            "defaultActive": true,
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_FUELLUNG_MATERIAL_KOMPOSIT"
+            ],
+            "forensicNotes": []
+        },
+        {
+            "id": "fuellung_material_adhesive",
+            "label": "Material: Adhäsiv",
+            "phase": "vorbereitung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Adhäsiv: {adhesive_material}.",
+                "mittel": "Adhäsivsystem {adhesive_material} appliziert.",
+                "lang": "Adhäsivsystem {adhesive_material} appliziert, sorgfältig verblasen und lichthärtend polymerisiert."
+            },
+            "variablen": {
+                "adhesive_material": { "default": "Adhäsiv", "required": false }
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "fuellung_material_etch",
+            "label": "Material: Ätzgel",
+            "phase": "vorbereitung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Ätzgel: {etch_material}.",
+                "mittel": "Schmelz/Dentin mit {etch_material} geätzt.",
+                "lang": "Selektive Schmelz/Dentinätzung mit {etch_material} durchgeführt, anschließend gespült und getrocknet."
+            },
+            "variablen": {
+                "etch_material": { "default": "Ätzgel", "required": false }
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "fuellung_material_matrix",
+            "label": "Material: Matrix",
+            "phase": "vorbereitung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Matrix: {matrix_system}.",
+                "mittel": "Matrizensystem {matrix_system} eingesetzt.",
+                "lang": "Matrizensystem {matrix_system} zur approximalen Formgebung eingesetzt."
+            },
+            "variablen": {
+                "matrix_system": { "default": "Matrix", "required": false }
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "fuellung_material_keil",
+            "label": "Material: Keil",
+            "phase": "vorbereitung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Keil eingesetzt.",
+                "mittel": "Keil zur Separation eingesetzt.",
+                "lang": "Keil zur approximalen Separation eingesetzt."
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "fuellung_kontaktpunkt",
+            "label": "Kontaktpunkt",
+            "phase": "abschluss",
+            "category": "info",
+            "textSnippets": {
+                "kurz": "Kontaktpunkt geprüft.",
+                "mittel": "Kontaktpunkt geprüft.",
+                "lang": "Kontaktpunkt geprüft und angepasst."
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "fuellung_material_flowable",
+            "label": "Material: Flowable",
+            "phase": "fuellung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Flowable: {flowable_material}.",
+                "mittel": "Flowable Base {flowable_material} appliziert.",
+                "lang": "Flowable Base {flowable_material} als Basis appliziert und lichthärtend polymerisiert."
+            },
+            "variablen": {
+                "flowable_material": { "default": "Flowable", "required": false }
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "fuellung_material_bulk",
+            "label": "Material: Bulk-Fill",
+            "phase": "fuellung",
+            "category": "material",
+            "textSnippets": {
+                "kurz": "Bulk-Fill: {bulk_material}.",
+                "mittel": "Bulk-Fill Komposit {bulk_material} verwendet.",
+                "lang": "Bulk-Fill Komposit {bulk_material} in Bulk-Technik appliziert und lichthärtend polymerisiert."
+            },
+            "variablen": {
+                "bulk_material": { "default": "Bulk-Fill", "required": false }
+            },
+            "billingRef": null,
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "insurance_gkv_mkv",
+            "label": "Mehrkosten (GKV)",
+            "phase": "info",
+            "category": "insurance",
+            "textSnippets": {
+                "kurz": "Mehrkostenvereinbarung.",
+                "mittel": "Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V).",
+                "lang": "Patientenaufklärung über Mehrkosten für höherwertige Versorgung erfolgt. Schriftliche Mehrkostenvereinbarung gemäß § 28 Abs. 2 SGB V vor Behandlungsbeginn vereinbart."
+            },
+            "billingRef": null,
+            "hinweis": "Marker-Chip für MKV-Dokumentation, keine direkte Abrechnung.",
+            "dataPatches": [
+                {
+                    "field": "mkv",
+                    "value": true
+                }
+            ],
+            "requiredFields": [],
+            "ruleRefs": [
+                "RULE_MKV_SCHRIFTLICH"
+            ],
+            "forensicNotes": [
+                "MKV-Vereinbarung muss VOR Behandlung unterschrieben sein!"
+            ]
+        },
+        {
+            "id": "mkv_begruendung",
+            "label": "Mehrkosten-Begründung",
+            "phase": "info",
+            "category": "insurance",
+            "textSnippets": {
+                "kurz": "Mehrkosten-Begründung: {mkv_justification}.",
+                "mittel": "Mehrkosten-Begründung: {mkv_justification}.",
+                "lang": "Mehrkosten-Begründung: {mkv_justification}."
+            },
+            "variablen": {
+                "mkv_justification": { "default": "höherwertige Versorgung", "required": false }
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein für MKV-Begründung.",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "doc_aufklaerung",
+            "label": "Aufklärung erfolgt",
+            "phase": "doku",
+            "category": "doku",
+            "textSnippets": {
+                "kurz": "Aufklärung erfolgt.",
+                "mittel": "Patientenaufklärung erfolgte.",
+                "lang": "Patientenaufklärung über Befund, Vorgehen und Nachsorge erfolgte."
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein (kein Billing).",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "doc_alternativen",
+            "label": "Alternativen besprochen",
+            "phase": "doku",
+            "category": "doku",
+            "textSnippets": {
+                "kurz": "Alternativen besprochen.",
+                "mittel": "Behandlungsalternativen wurden besprochen.",
+                "lang": "Behandlungsalternativen und Therapieoptionen wurden besprochen."
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein (kein Billing).",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "doc_risiken",
+            "label": "Risiken besprochen",
+            "phase": "doku",
+            "category": "doku",
+            "textSnippets": {
+                "kurz": "Risiken besprochen.",
+                "mittel": "Risiken/Nebenwirkungen wurden besprochen.",
+                "lang": "Risiken und mögliche Nebenwirkungen wurden erläutert."
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein (kein Billing).",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "doc_einverstaendnis",
+            "label": "Einverständnis eingeholt",
+            "phase": "doku",
+            "category": "doku",
+            "textSnippets": {
+                "kurz": "Einverständnis eingeholt.",
+                "mittel": "Einverständnis wurde eingeholt.",
+                "lang": "Einverständnis/Einwilligung zur Behandlung wurde eingeholt."
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein (kein Billing).",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "doc_okklusion",
+            "label": "Okklusion kontrolliert",
+            "phase": "finishing",
+            "category": "doku",
+            "textSnippets": {
+                "kurz": "Okklusion kontrolliert.",
+                "mittel": "Okklusionskontrolle durchgeführt.",
+                "lang": "Okklusionskontrolle (Artikulationspapier) und ggf. Einschleifen durchgeführt."
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein (kein Billing).",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "doc_politur",
+            "label": "Politur/Finierung",
+            "phase": "finishing",
+            "category": "doku",
+            "textSnippets": {
+                "kurz": "Politur.",
+                "mittel": "Finierung/Politur durchgeführt.",
+                "lang": "Finierung und Politur der Restauration durchgeführt."
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein (kein Billing).",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        },
+        {
+            "id": "optisch_elektronisch",
+            "label": "Optisch/elektronisch unterstützt",
+            "phase": "doku",
+            "category": "doku",
+            "textSnippets": {
+                "kurz": "Optisch/elektronisch unterstützt.",
+                "mittel": "Optische/elektronische Hilfsmittel wurden eingesetzt.",
+                "lang": "Optische/elektronische Hilfsmittel wurden unterstützend eingesetzt."
+            },
+            "billingRef": null,
+            "hinweis": "Dokumentationsbaustein (kein Billing).",
+            "dataPatches": [],
+            "defaultActive": false,
+            "requiredFields": [],
+            "ruleRefs": [],
+            "forensicNotes": []
+        }
+    ],
+    "surface_mapping": {
+        "_comment": "F-Code basierend auf Flächenzahl - MKV: base=BEMA, addon=GOZ bei Mehrkosten",
+        "1": {
+            "GKV": "BEMA_13",
+            "PKV": "GOZ_2060",
+            "MKV": "BEMA_13",
+            "MKV_addon": "GOZ_2060"
+        },
+        "2": {
+            "GKV": "BEMA_13b",
+            "PKV": "GOZ_2080",
+            "MKV": "BEMA_13b",
+            "MKV_addon": "GOZ_2080"
+        },
+        "3": {
+            "GKV": "BEMA_13c",
+            "PKV": "GOZ_2100",
+            "MKV": "BEMA_13c",
+            "MKV_addon": "GOZ_2100"
+        },
+        "4+": {
+            "GKV": "BEMA_13d",
+            "PKV": "GOZ_2120",
+            "MKV": "BEMA_13d",
+            "MKV_addon": "GOZ_2120"
+        }
+    },
+    "phasen_reihenfolge": [
+        "befund",
+        "anaesthesie",
+        "vorbereitung",
+        "exkavation",
+        "ueberkappung",
+        "fuellung",
+        "finishing"
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "task": "GOZ HTML Extraction and Catalog Update",
+    "generated_at": "2025-12-30T11:30:00Z",
+    "status": "COMPLETE",
+    "summary": "Extracted all 215 GOZ codes from local HTML files and updated catalog",
+    "source": {
+        "directory": "/Users/david/dokumaster-ui/docs/GOZ NEU/",
+        "files_found": 215,
+        "files_parsed": 215,
+        "files_skipped": 0,
+        "source_type": "monkeymed_html"
+    },
+    "extraction": {
+        "total_items_extracted": 215,
+        "new_codes_found": 23,
+        "codes_already_in_catalog": 192
+    },
+    "catalog_update": {
+        "codes_added": 23,
+        "codes_skipped": 0,
+        "catalog_before": 198,
+        "catalog_after": 221
+    },
+    "artifacts_generated": [
+        "docs/system-atlas/artifacts/goz-mappe/goz.items.jsonl",
+        "docs/system-atlas/artifacts/goz-mappe/goz.index.json",
+        "docs/system-atlas/artifacts/goz-mappe/goz.patch.json",
+        "docs/system-atlas/artifacts/goz-mappe/diff.report.md"
+    ],
+    "scripts_modified": [
+        "scripts/gozMappe/extractFromHtml.ts"
+    ],
+    "fix_applied": {
+        "issue": "58 HTML files skipped due to Next.js SSR hydration markers breaking H1 regex",
+        "solution": "Added extractFromTitle() fallback to parse <title> tag format: GOZ XXXX - X - Title"
+    },
+    "normalization": {
+        "format": "GOZ_XXXX (4-digit)",
+        "example": "GOZ 520 → GOZ_0520"
+    },
+    "atlas_status": "PASS"
+}

@@ -1,0 +1,225 @@
+{
+    "_meta": {
+        "treatmentId": "endo",
+        "version": "2.0.0",
+        "description": "Endo QuestionBank — SSOT aligned with canonicalIds.ts"
+    },
+    "questions": [
+        {
+            "key": "endo_step",
+            "canonicalId": "forensic_endo_step",
+            "category": "forensic",
+            "prompt": "Was war heute der Endo-Schritt?",
+            "type": "single",
+            "dataField": "mentioned.endo_step",
+            "options": [
+                {
+                    "id": "endo_start",
+                    "label": "Trepanation/Einlage",
+                    "dataValue": "endo_start"
+                },
+                {
+                    "id": "endo_interim",
+                    "label": "Zwischensitzung",
+                    "dataValue": "endo_interim"
+                },
+                {
+                    "id": "endo_complete",
+                    "label": "Wurzelfüllung",
+                    "dataValue": "endo_complete"
+                }
+            ],
+            "when": {
+                "noneKeywords": [
+                    "trepanation",
+                    "wkb",
+                    "wurzelbehandlung",
+                    "zwischensitzung",
+                    "einlage",
+                    "wechsel",
+                    "wurzelfüllung",
+                    "wf",
+                    "obturation"
+                ]
+            }
+        },
+        {
+            "key": "vitality",
+            "canonicalId": "forensic_vitality",
+            "category": "forensic",
+            "prompt": "Sensibilitätsprobe?",
+            "type": "single",
+            "dataField": "mentioned.vitality",
+            "options": [
+                {
+                    "id": "positive",
+                    "label": "ViPr +",
+                    "dataValue": "positive"
+                },
+                {
+                    "id": "negative",
+                    "label": "ViPr −",
+                    "dataValue": "negative"
+                }
+            ]
+        },
+        {
+            "key": "percussion",
+            "canonicalId": "forensic_percussion",
+            "category": "forensic",
+            "prompt": "Perkussionsprobe?",
+            "type": "single",
+            "dataField": "mentioned.percussion",
+            "options": [
+                {
+                    "id": "negative",
+                    "label": "Perk −",
+                    "dataValue": "negative"
+                },
+                {
+                    "id": "positive",
+                    "label": "Perk +",
+                    "dataValue": "positive"
+                }
+            ]
+        },
+        {
+            "key": "kanalzahl",
+            "canonicalId": "forensic_endo_canal_count",
+            "category": "forensic",
+            "prompt": "Anzahl der Wurzelkanäle?",
+            "type": "single",
+            "dataField": "mentioned.kanalzahl",
+            "options": [
+                {
+                    "id": "canal_1",
+                    "label": "1 Kanal",
+                    "dataValue": 1
+                },
+                {
+                    "id": "canal_2",
+                    "label": "2 Kanäle",
+                    "dataValue": 2
+                },
+                {
+                    "id": "canal_3",
+                    "label": "3 Kanäle",
+                    "dataValue": 3
+                },
+                {
+                    "id": "canal_4",
+                    "label": "4 Kanäle",
+                    "dataValue": 4
+                }
+            ]
+        },
+        {
+            "key": "spuelprotokoll",
+            "canonicalId": "forensic_endo_irrigation_protocol",
+            "category": "forensic",
+            "prompt": "Spülprotokoll?",
+            "type": "single",
+            "dataField": "mentioned.spuelprotokoll",
+            "settingsSkip": {
+                "settingsPath": "endo.defaults.spuelprotokoll",
+                "skipIfNot": "fragen"
+            },
+            "options": [
+                {
+                    "id": "irrigation_naocl_edta",
+                    "label": "NaOCl + EDTA",
+                    "dataValue": "naocl_edta"
+                },
+                {
+                    "id": "irrigation_naocl",
+                    "label": "NaOCl 3%",
+                    "dataValue": "naocl"
+                }
+            ]
+        },
+        {
+            "key": "medikament",
+            "canonicalId": "forensic_endo_medication",
+            "category": "forensic",
+            "prompt": "Medikamentöse Einlage?",
+            "type": "single",
+            "dataField": "mentioned.medikament",
+            "when": {
+                "anyOf": [
+                    {
+                        "requiresAnswers": {
+                            "endo_step": "endo_start"
+                        }
+                    },
+                    {
+                        "requiresAnswers": {
+                            "endo_step": "endo_interim"
+                        }
+                    },
+                    {
+                        "anyKeywords": [
+                            "einlage",
+                            "caoh",
+                            "wechsel",
+                            "hydroxid"
+                        ]
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": "medication_caoh2",
+                    "label": "Ca(OH)₂",
+                    "dataValue": "caoh2"
+                },
+                {
+                    "id": "medication_none",
+                    "label": "Keine Einlage",
+                    "dataValue": "none"
+                }
+            ]
+        },
+        {
+            "key": "obturation",
+            "canonicalId": "endo_obturation",
+            "category": "forensic",
+            "prompt": "Obturationstechnik?",
+            "type": "single",
+            "dataField": "mentioned.obturation",
+            "settingsSkip": {
+                "settingsPath": "endo.defaults.obturation",
+                "skipIfNot": "fragen"
+            },
+            "when": {
+                "anyOf": [
+                    {
+                        "requiresAnswers": {
+                            "endo_step": "endo_complete"
+                        }
+                    },
+                    {
+                        "anyKeywords": [
+                            "wurzelfüllung",
+                            "wf",
+                            "obturation",
+                            "thermoplastisch",
+                            "lateral"
+                        ]
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "id": "obturation_thermoplastic",
+                    "label": "Thermoplastisch",
+                    "dataValue": "thermoplastisch"
+                },
+                {
+                    "id": "obturation_lateral",
+                    "label": "Lateralkondensation",
+                    "dataValue": "lateral"
+                }
+            ]
+        }
+    ]
+}

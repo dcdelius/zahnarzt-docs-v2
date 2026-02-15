@@ -1,0 +1,44 @@
+{
+    "gigaprompt": "G50",
+    "milestone": "m50",
+    "generated_at": "2025-12-29T23:58:00Z",
+    "status": "PASS",
+    "summary": "V7 import gate switched to ENFORCE mode. V10 UI is clean.",
+    "exit_criteria_status": {
+        "v7_refs_in_v10_ui_excluding_barrel": 0,
+        "gate_mode": "ENFORCE",
+        "barrel_allowlisted": true
+    },
+    "before_after": {
+        "before": "Gate in REPORT mode, 9 V7 refs counted but not enforced",
+        "after": "Gate in ENFORCE mode, 0 violations (barrel explicitly allowlisted)"
+    },
+    "design_decision": {
+        "barrel_policy": "v10/components/index.ts is INTENTIONALLY allowed to re-export V7",
+        "rationale": "This is the controlled migration pathway. V10 consumers import from barrel, then we migrate components one-by-one.",
+        "enforcement": "Actual V10 components/pages/hooks must NOT import from v7 directly"
+    },
+    "migration_status": {
+        "migrated_to_v10": [],
+        "via_barrel": [
+            "SoftGradientBackground",
+            "HeroSculpture",
+            "QuestionsFlowV2",
+            "QuestionsFlow",
+            "OutputFlow",
+            "MultiOutputRenderer",
+            "MultiInstancePanel"
+        ],
+        "types_via_barrel": [
+            "TreatmentInstance",
+            "UiStep"
+        ]
+    },
+    "files_changed": [
+        "src/docudent/__tests__/gates/gate-no-imports-from-v7-in-v10-ui.test.ts"
+    ],
+    "commands_run": [
+        "npx vitest run gate-no-imports-from-v7-in-v10-ui"
+    ],
+    "atlas_status": "PENDING"
+}

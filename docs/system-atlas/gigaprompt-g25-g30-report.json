@@ -1,0 +1,158 @@
+{
+    "milestone": "G25-G30",
+    "generated_at": "2025-12-29T22:02:00Z",
+    "overall_status": "PARTIAL_COMPLETE",
+    "G25_bel_ii_normalization": {
+        "milestone": "G25",
+        "status": "PASS",
+        "files_created": [
+            "src/docudent/core/billing/billingRefNormalization.ts",
+            "src/docudent/__tests__/gates/gate-billing-ref-normalization.test.ts"
+        ],
+        "bel_ii_aliases_count": 14,
+        "missing_before": 10,
+        "missing_after_in_alias_map": 0,
+        "note": "Normalization layer created. Gate PASS (21/21). Integration with closure gate pending.",
+        "proof": {
+            "commands": [
+                {
+                    "cmd": "npm run build",
+                    "exitCode": 0,
+                    "stdoutTail": "✓ built in 3.57s"
+                },
+                {
+                    "cmd": "npx vitest run gate-billing-ref-normalization.test.ts",
+                    "exitCode": 0,
+                    "stdoutTail": "21 passed (21)"
+                }
+            ]
+        },
+        "gate_result": {
+            "name": "gate-billing-ref-normalization",
+            "pass": true,
+            "tests": 21
+        }
+    },
+    "G26_playwright_parity": {
+        "milestone": "G26",
+        "status": "SKIPPED",
+        "reason": "Playwright installation requires npx playwright install --with-deps"
+    },
+    "G27_make_green_clusters": {
+        "milestone": "G27",
+        "status": "ANALYZED",
+        "tests_before": {
+            "failed_files": 57,
+            "passed_files": 352
+        },
+        "tests_after": {
+            "failed_files": 57,
+            "passed_files": 353
+        },
+        "delta": "+1 passed (gate-billing-ref-normalization added)",
+        "clusters": {
+            "E2E": {
+                "files": 5,
+                "status": "blocked_playwright"
+            },
+            "GATES": {
+                "files": 10,
+                "status": "needs_contract_review"
+            },
+            "INTEGRATION": {
+                "files": 2,
+                "status": "needs_review"
+            },
+            "FIREBASE": {
+                "files": 1,
+                "status": "needs_review"
+            },
+            "LEGACY": {
+                "files": 6,
+                "status": "quarantine_candidate"
+            }
+        }
+    },
+    "G28_v7_ui_consolidation": {
+        "milestone": "G28",
+        "status": "ANALYZED",
+        "v7_exports_in_v10_barrel": 7,
+        "pending_action": "Move components to v10/components",
+        "components_to_migrate": [
+            "SoftGradientBackground",
+            "HeroSculpture",
+            "QuestionsFlowV2",
+            "QuestionsFlow",
+            "OutputFlow",
+            "MultiOutputRenderer",
+            "MultiInstancePanel"
+        ]
+    },
+    "G29_atlas_automation": {
+        "milestone": "G29",
+        "status": "ANALYZED",
+        "pending_scripts": [
+            "scripts/systemAtlas/refresh.ts",
+            "npm run atlas:refresh",
+            "npm run atlas:check"
+        ]
+    },
+    "G30_delete_sprint_b3_b4": {
+        "milestone": "G30",
+        "status": "ANALYZED",
+        "completed_waves": [
+            {
+                "name": "B1_html_move",
+                "count": 688
+            },
+            {
+                "name": "B2_v6_delete",
+                "count": 27
+            }
+        ],
+        "pending_waves": [
+            {
+                "name": "B3_dead_code",
+                "candidates": 12
+            },
+            {
+                "name": "B4_v7_consolidation",
+                "estimated": 50
+            }
+        ]
+    },
+    "cumulative_session_summary": {
+        "gigaprompts_executed": 24,
+        "files_created": 18,
+        "files_modified": 22,
+        "files_deleted": 27,
+        "files_moved": 688,
+        "catalog_entries_added": 7,
+        "normalization_aliases": 14,
+        "gates_created": 7,
+        "builds_passed": 10
+    },
+    "key_accomplishments": [
+        "G25: BillingRef normalization layer with 14 BEL_II aliases",
+        "G25: Gate PASS (21/21 normalization tests)",
+        "G13-G14: V10 runtime decoupled from V7 hooks",
+        "G19: Added 7 billing catalog entries",
+        "All builds PASS",
+        "Total tests: 4033 (57 failed, 353 passed files)"
+    ],
+    "open_issues": [
+        "G25: Normalization needs integration into closure gate",
+        "G26: Playwright not installed",
+        "G27: 57 test files failing (pre-existing)",
+        "G28: 7 V7 components need migration",
+        "G29: Atlas automation scripts needed",
+        "G30: B3/B4 delete waves pending"
+    ],
+    "next_actions": [
+        "Integrate normalizeBillingRefId into closure gate lookup",
+        "Run npx playwright install --with-deps",
+        "Fix GATES cluster by addressing contract mismatches",
+        "Move V7 components to V10 directory",
+        "Create atlas:refresh script"
+    ]
+}

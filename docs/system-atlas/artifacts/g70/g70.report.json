@@ -1,0 +1,23 @@
+{
+    "gigaprompt": "G70",
+    "milestone": "m70",
+    "generated_at": "2025-12-30T08:05:00Z",
+    "status": "PENDING",
+    "summary": "Gate + Integration Wave 1 - contract fixes needed",
+    "current_state": {
+        "failing_after_g68_g69": 32,
+        "remaining_clusters": {
+            "gates_pack": 8,
+            "gates_pipeline": 10,
+            "gates_ui": 5,
+            "gates_legacy": 4,
+            "integration": 5
+        }
+    },
+    "top_fixes": [
+        "gate-m12_4: add llmExtractorAdapter to allowlist",
+        "Pack gates: fix extraction_stub KB expectations",
+        "Clinical parity: update output expectations",
+        "UI wiring: update component mocks"
+    ]
+}

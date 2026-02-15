@@ -1,0 +1,43 @@
+{
+    "gigaprompt": "G67",
+    "milestone": "m67",
+    "generated_at": "2025-12-30T07:52:00Z",
+    "status": "COMPLETE",
+    "summary": "Greenboard failure snapshot created with clustered analysis and fix order",
+    "failing_suites_total": 46,
+    "clusters_breakdown": {
+        "E2E_PLAYWRIGHT": 12,
+        "FIREBASE_EMULATOR": 1,
+        "GATES_PACK": 8,
+        "GATES_PIPELINE": 10,
+        "GATES_UI": 5,
+        "GATES_LEGACY": 4,
+        "INTEGRATION": 5,
+        "UI_TESTS": 1
+    },
+    "top10_fix_order": [
+        "E2E → Playwright (12 files)",
+        "gate-m12_4 allowlist",
+        "Pack completeness (4 gates)",
+        "Clinical parity (2 gates)",
+        "Firebase mock",
+        "UI wiring gates",
+        "Integration contracts",
+        "Legacy quarantine (4 gates)",
+        "Determinism gate",
+        "MVP no-error"
+    ],
+    "artifacts_created": [
+        "docs/system-atlas/artifacts/g67/vitest.report.json",
+        "docs/system-atlas/artifacts/g67/fails.clustered.json",
+        "docs/system-atlas/artifacts/g67/fails.by_suite.jsonl",
+        "docs/system-atlas/artifacts/g67/fix-order.md"
+    ],
+    "next_gigaprompts": {
+        "G68": "E2E → Playwright (removes 12 failures)",
+        "G69": "Firebase mock (removes 1 failure)",
+        "G70": "Gates + Integration Wave 1 (removes ~20 failures)",
+        "G71": "Legacy + Gates Wave 2 (removes ~10 failures)"
+    },
+    "atlas_status": "PENDING"
+}

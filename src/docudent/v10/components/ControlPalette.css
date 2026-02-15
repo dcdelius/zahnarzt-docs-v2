@@ -1,0 +1,88 @@
+.v10-control-palette {
+    width: min(600px, 92vw);
+    border-radius: var(--radius-palette);
+    border: 1px solid var(--hairline);
+    background: var(--panel-surface-strong);
+    padding: 20px 20px 16px;
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(18px);
+}
+
+.v10-control-palette-header {
+    margin-bottom: 12px;
+}
+
+.v10-control-palette-command {
+    background: transparent;
+}
+
+.v10-control-palette-scroll {
+    max-height: 320px;
+}
+
+.v10-control-palette-item {
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 12px;
+}
+
+.v10-control-palette-item.is-on {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--txt-primary);
+}
+
+.v10-control-palette-item.is-off {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--txt-secondary);
+}
+
+.v10-control-palette-label {
+    font-weight: 600;
+}
+
+.v10-control-palette-check {
+    color: var(--txt-primary);
+    display: inline-flex;
+    align-items: center;
+}
+
+.v10-control-palette-separator {
+    margin: 12px 0;
+}
+
+.v10-control-palette-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.v10-control-palette-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.v10-control-palette-btn,
+.v10-control-palette-done {
+    height: 32px;
+    padding: 0 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--hairline);
+    background: var(--control);
+    color: var(--txt-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 160ms ease;
+}
+
+.v10-control-palette-btn:hover,
+.v10-control-palette-done:hover {
+    background: var(--control-hover);
+}
+
+.v10-control-palette-done {
+    background: var(--control-active);
+    color: var(--txt-primary);
+}

@@ -1,0 +1,63 @@
+{
+    "artifact": "v10-per-instance-output",
+    "version": "1.0.0",
+    "timestamp": "2025-12-31T10:30:00+01:00",
+    "status": "COMPLETED",
+    "verification": {
+        "build": "PASS",
+        "tests": {
+            "v10_ui_tests": {
+                "passed": 44,
+                "failed": 0,
+                "status": "PASS"
+            },
+            "gate_v10_no_imports_from_v7": {
+                "passed": 5,
+                "failed": 0,
+                "status": "PASS"
+            }
+        },
+        "atlas_refresh": "PASS",
+        "atlas_check": "PASS"
+    },
+    "changes": {
+        "types": {
+            "file": "src/docudent/v10/types.ts",
+            "change": "Added perInstance to V10PipelineOutput.output"
+        },
+        "pipeline": {
+            "file": "src/docudent/v10/pipeline/runV10.ts",
+            "changes": [
+                "Imported scopeExtractionToInstances from multitreatment/scoping",
+                "Extended InstanceResult with instanceId and teeth fields",
+                "Updated processInstance signature to accept instanceId/teeth",
+                "Build perInstance output by rendering each instance's chips separately",
+                "Derive fullText and billingCodes from perInstance SSOT"
+            ]
+        },
+        "session": {
+            "file": "src/docudent/v10/uiController/createV10Session.ts",
+            "changes": [
+                "Removed buildPerInstanceOutput fallback function",
+                "Added mapPipelinePerInstance for direct 1:1 mapping",
+                "Error if perInstance missing from runV10 output"
+            ]
+        },
+        "tests": {
+            "file": "src/docudent/v10/__tests__/ui/v10.per-instance-output.contract.test.ts",
+            "contracts": [
+                "perInstance keys match real instanceIds from scoping",
+                "Multi-tooth creates multiple perInstance entries",
+                "Per-instance structure is correct (text, billingRefs)",
+                "BillingRefs not hardcoded in text",
+                "Single-tooth regression"
+            ]
+        },
+        "docs": {
+            "contracts_md": "Added Per-Instance Output Contract, removed Known Limitations",
+            "wiring_graph": "Bumped to v3.3.0"
+        }
+    },
+    "instanceIdFormat": "${packId}-${tooth}-${counter}",
+    "example": "fuellung-36-1"
+}

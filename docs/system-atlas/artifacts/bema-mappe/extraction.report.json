@@ -1,0 +1,39 @@
+{
+    "task": "BEMA HTML Extraction and Catalog Update",
+    "generated_at": "2025-12-30T10:45:00Z",
+    "status": "COMPLETE",
+    "summary": "Extracted BEMA codes from 267 local HTML files and updated catalog",
+    "source": {
+        "directory": "/Users/david/dokumaster-ui/docs/BEMA NEU/BEMA_NEU/",
+        "files_found": 267,
+        "files_parsed": 264,
+        "source_type": "monkeymed_html"
+    },
+    "extraction": {
+        "total_items_extracted": 264,
+        "new_codes_found": 194,
+        "codes_already_in_catalog": 70
+    },
+    "catalog_update": {
+        "codes_added": 191,
+        "codes_skipped": 3,
+        "catalog_before": 424,
+        "catalog_after": 615
+    },
+    "artifacts_generated": [
+        "docs/system-atlas/artifacts/bema-mappe/bema.items.jsonl",
+        "docs/system-atlas/artifacts/bema-mappe/bema.index.json",
+        "docs/system-atlas/artifacts/bema-mappe/bema.patch.json",
+        "docs/system-atlas/artifacts/bema-mappe/diff.report.md"
+    ],
+    "scripts_created": [
+        "scripts/bemaMappe/extractFromHtml.ts",
+        "scripts/bemaMappe/applyPatch.ts"
+    ],
+    "atlas_status": "PASS",
+    "next_steps": [
+        "Run billing closure to verify missing codes reduced",
+        "Add npm scripts for bema:extract and bema:patch",
+        "Create gate test for BEMA catalog completeness"
+    ]
+}

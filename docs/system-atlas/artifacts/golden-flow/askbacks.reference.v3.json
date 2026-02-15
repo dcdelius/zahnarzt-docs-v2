@@ -1,0 +1,163 @@
+{
+    "version": "askbacks_reference_v3",
+    "askbacks": [
+        {
+            "id": "ab_insurance_context",
+            "title": "Abrechnungskontext",
+            "level": 1,
+            "blocking": true,
+            "trigger": "insurance_context == unknown",
+            "options": [
+                "GKV Regelversorgung",
+                "GKV Mehrkosten",
+                "PKV/Privat"
+            ],
+            "chip_deltas": {
+                "GKV Regelversorgung": [
+                    "insurance_gkv_regel:On"
+                ],
+                "GKV Mehrkosten": [
+                    "insurance_gkv_mehrkosten:On",
+                    "mkv_vorhanden:On"
+                ],
+                "PKV/Privat": [
+                    "insurance_pkv:On"
+                ]
+            }
+        },
+        {
+            "id": "ab_material_choice",
+            "title": "Füllungsmaterial",
+            "level": 1,
+            "blocking": true,
+            "trigger": "restoration_material == unknown",
+            "options": [
+                "Selbstadhäsiv",
+                "GIZ",
+                "Bulk-Fill",
+                "Komposit"
+            ],
+            "chip_deltas": {
+                "Selbstadhäsiv": [
+                    "material_self_adhesive:On"
+                ],
+                "GIZ": [
+                    "material_giz:On"
+                ],
+                "Bulk-Fill": [
+                    "material_bulk_fill:On"
+                ],
+                "Komposit": [
+                    "material_composite:On"
+                ]
+            }
+        },
+        {
+            "id": "ab_adhesive_technique",
+            "title": "Adhäsivtechnik",
+            "level": 1,
+            "blocking": true,
+            "trigger": "material IN [composite, bulk_fill] AND adhesive == unknown AND posterior",
+            "options": [
+                "Ja",
+                "Nein"
+            ],
+            "chip_deltas": {
+                "Ja": [
+                    "technique_adhesive:On"
+                ],
+                "Nein": [
+                    "technique_adhesive:Off"
+                ]
+            }
+        },
+        {
+            "id": "ab_layering_technique",
+            "title": "Schichttechnik",
+            "level": 2,
+            "blocking": false,
+            "trigger": "material == composite AND cavity IN [medium, large]",
+            "options": [
+                "Mehrschicht",
+                "Einfach"
+            ],
+            "chip_deltas": {
+                "Mehrschicht": [
+                    "technique_layering:On"
+                ],
+                "Einfach": [
+                    "technique_layering:Off"
+                ]
+            },
+            "default": "Mehrschicht"
+        },
+        {
+            "id": "ab_isolation_level",
+            "title": "Isolation",
+            "level": 2,
+            "blocking": false,
+            "trigger": "(adhesive == yes OR moisture_difficult) AND isolation == unknown",
+            "options": [
+                "Kofferdam",
+                "Relativ"
+            ],
+            "chip_deltas": {
+                "Kofferdam": [
+                    "isolation_kofferdam:On"
+                ],
+                "Relativ": [
+                    "isolation_relative:On"
+                ]
+            },
+            "default": "Relativ"
+        },
+        {
+            "id": "ab_pulp_protection",
+            "title": "Pulpaschutz",
+            "level": 2,
+            "blocking": false,
+            "trigger": "caries_depth == deep AND pulp_protection == unknown",
+            "options": [
+                "Liner",
+                "Base",
+                "Nein"
+            ],
+            "chip_deltas": {
+                "Liner": [
+                    "pulp_liner:On"
+                ],
+                "Base": [
+                    "pulp_base:On"
+                ],
+                "Nein": [
+                    "pulp_protection_none:On"
+                ]
+            },
+            "default": "Nein"
+        },
+        {
+            "id": "ab_matrix_system",
+            "title": "Matrizensystem",
+            "level": 3,
+            "blocking": false,
+            "trigger": "approx_contact == yes AND matrix == unknown",
+            "options": [
+                "Sektionalmatrize",
+                "Tofflemire",
+                "Keine"
+            ],
+            "chip_deltas": {
+                "Sektionalmatrize": [
+                    "matrix_sectional:On"
+                ],
+                "Tofflemire": [
+                    "matrix_tofflemire:On"
+                ],
+                "Keine": [
+                    "matrix_none:On"
+                ]
+            },
+            "default": "Keine"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "gp": "GP1/6",
+    "title": "Multi-Treatment Scoping Spec",
+    "date": "2025-12-31",
+    "status": "PASS",
+    "module": "v10/multitreatment/scoping.ts",
+    "tests": {
+        "scoping.no_leak.test.ts": {
+            "tests": 4,
+            "passed": 4
+        },
+        "scoping.negation_scope.test.ts": {
+            "tests": 4,
+            "passed": 4
+        },
+        "scoping.surface_scope.test.ts": {
+            "tests": 4,
+            "passed": 4
+        },
+        "total": {
+            "tests": 12,
+            "passed": 12
+        }
+    },
+    "features": {
+        "segmentMarkers": [
+            "danach",
+            "zusätzlich",
+            "auch",
+            "weiterer zahn",
+            "ebenfalls",
+            "noch",
+            "außerdem",
+            "sowie",
+            "und dann"
+        ],
+        "globalScopeMarkers": [
+            "bei beiden",
+            "bei allen",
+            "generell",
+            "grundsätzlich",
+            "insgesamt"
+        ],
+        "isolation": {
+            "surfaces": true,
+            "negations": true,
+            "arrayReferences": true
+        }
+    },
+    "contracts_updated": "docs/system-atlas/contracts.md",
+    "functions": [
+        "scopeExtractionToInstances(extraction, packId) -> ScopingResult",
+        "verifyNegationIsolation(result) -> boolean",
+        "verifySurfaceIsolation(result) -> boolean"
+    ]
+}

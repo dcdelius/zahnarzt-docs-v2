@@ -1,0 +1,611 @@
+{
+    "id": "fuellung",
+    "version": "1.0.0",
+    "lastUpdated": "2024-12-09",
+    "tier1_contextual": {
+        "description": "Fragen die direkt aus dem Diktat resultieren - IMMER fragen",
+        "questions": [
+            {
+                "id": "deep_caries_capping",
+                "trigger": {
+                    "keywords": [
+                        "tief",
+                        "profunda",
+                        "pulpanah",
+                        "cp",
+                        "caries profunda",
+                        "tiefe karies"
+                    ],
+                    "extractedFields": {
+                        "diagnosis": [
+                            "profunda",
+                            "tief",
+                            "cp"
+                        ]
+                    }
+                },
+                "priority": 1,
+                "question": "Welche Überkappung wurde durchgeführt?",
+                "subtext": "Bei Caries profunda muss dies dokumentiert werden!",
+                "importance": "billing_and_forensic",
+                "options": [
+                    {
+                        "id": "cp_indirect",
+                        "label": "Indirekt (Cp)",
+                        "icon": "shield",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_25",
+                                "autoAccept": true
+                            },
+                            "PKV": {
+                                "code": "GOZ_2330",
+                                "autoAccept": true
+                            }
+                        },
+                        "followup": "capping_material",
+                        "documentation": "Indirekte Überkappung mit ${capping_material}"
+                    },
+                    {
+                        "id": "p_direct",
+                        "label": "Direkt (P) - Pulpa eröffnet",
+                        "icon": "alert-triangle",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_26",
+                                "autoAccept": true
+                            },
+                            "PKV": {
+                                "code": "GOZ_2340",
+                                "autoAccept": true
+                            }
+                        },
+                        "followup": [
+                            "capping_material",
+                            "pulp_bleeding"
+                        ],
+                        "documentation": "Pulpa eröffnet, ${pulp_bleeding}. Direkte Überkappung mit ${capping_material}"
+                    },
+                    {
+                        "id": "no_capping",
+                        "label": "Keine Überkappung nötig",
+                        "icon": "check",
+                        "billing": null,
+                        "documentation": "Kavität nicht pulpanah, keine Überkappung erforderlich"
+                    }
+                ]
+            },
+            {
+                "id": "capping_material",
+                "trigger": {
+                    "dependsOn": [
+                        "deep_caries_capping.cp_indirect",
+                        "deep_caries_capping.p_direct"
+                    ]
+                },
+                "priority": 2,
+                "question": "Welches Überkappungsmaterial?",
+                "importance": "forensic",
+                "options": [
+                    {
+                        "id": "caoh2",
+                        "label": "Ca(OH)₂",
+                        "value": "Calciumhydroxid"
+                    },
+                    {
+                        "id": "mta",
+                        "label": "MTA",
+                        "value": "MTA"
+                    },
+                    {
+                        "id": "biodentine",
+                        "label": "Biodentine",
+                        "value": "Biodentine"
+                    },
+                    {
+                        "id": "theracal",
+                        "label": "TheraCal",
+                        "value": "TheraCal LC"
+                    }
+                ]
+            },
+            {
+                "id": "pulp_bleeding",
+                "trigger": {
+                    "dependsOn": [
+                        "deep_caries_capping.p_direct"
+                    ]
+                },
+                "priority": 3,
+                "question": "Stärke der Pulpablutung?",
+                "subtext": "Wichtig für Prognose und Dokumentation",
+                "importance": "forensic",
+                "options": [
+                    {
+                        "id": "minimal",
+                        "label": "Minimal, schnell stillbar",
+                        "value": "minimale Blutung, schnell stillbar"
+                    },
+                    {
+                        "id": "moderate",
+                        "label": "Moderat, stillbar",
+                        "value": "moderate Blutung, stillbar"
+                    },
+                    {
+                        "id": "severe",
+                        "label": "Stark, schwer stillbar",
+                        "value": "starke Blutung, erschwert stillbar",
+                        "warning": "Endo-Prognose abklären!"
+                    }
+                ]
+            },
+            {
+                "id": "anesthesia_type_unknown",
+                "trigger": {
+                    "notMentioned": [
+                        "leitung",
+                        "infiltration",
+                        "ila",
+                        "intraligament",
+                        "anästhesie",
+                        "betäubung",
+                        "spritze"
+                    ],
+                    "condition": "!extracted.anesthesia"
+                },
+                "priority": 4,
+                "question": "Welche Anästhesie wurde verwendet?",
+                "importance": "billing",
+                "options": [
+                    {
+                        "id": "leitung",
+                        "label": "Leitungsanästhesie",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_41a",
+                                "autoAccept": true
+                            },
+                            "PKV": {
+                                "code": "GOZ_0100",
+                                "autoAccept": true
+                            }
+                        }
+                    },
+                    {
+                        "id": "infiltration",
+                        "label": "Infiltrationsanästhesie",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_40",
+                                "autoAccept": true
+                            },
+                            "PKV": {
+                                "code": "GOZ_0090",
+                                "autoAccept": true
+                            }
+                        }
+                    },
+                    {
+                        "id": "ila",
+                        "label": "Intraligamentär (ILA)",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_40",
+                                "autoAccept": true
+                            },
+                            "PKV": {
+                                "code": "GOZ_0090",
+                                "autoAccept": true
+                            }
+                        }
+                    },
+                    {
+                        "id": "none",
+                        "label": "Keine Anästhesie",
+                        "billing": null
+                    }
+                ]
+            },
+            {
+                "id": "matrix_approximal",
+                "trigger": {
+                    "extractedFields": {
+                        "surfaces": [
+                            "m",
+                            "d"
+                        ]
+                    },
+                    "notMentioned": [
+                        "matrize",
+                        "teilmatrize",
+                        "sektionalmatrize"
+                    ]
+                },
+                "priority": 5,
+                "question": "Welche Matrize wurde bei der Approximalfüllung verwendet?",
+                "subtext": "Dokumentation bei M/D-Flächen forensisch wichtig!",
+                "importance": "forensic",
+                "options": [
+                    {
+                        "id": "sectional",
+                        "label": "Sektionalmatrize + Keil",
+                        "icon": "layers",
+                        "billing": null,
+                        "documentation": "Sektionalmatrizensystem mit anatomisch vorgeformter Matrize, Separationsring und Holzkeil"
+                    },
+                    {
+                        "id": "tofflemire",
+                        "label": "Tofflemire-Matrize",
+                        "icon": "circle",
+                        "billing": null,
+                        "documentation": "Tofflemire-Matrize angelegt"
+                    },
+                    {
+                        "id": "other",
+                        "label": "Andere Matrize",
+                        "icon": "square",
+                        "billing": null,
+                        "documentation": "Matrizenband verwendet"
+                    },
+                    {
+                        "id": "none",
+                        "label": "Keine Matrize (nur okklusal)",
+                        "billing": null,
+                        "documentation": ""
+                    }
+                ]
+            },
+            {
+                "id": "finishing_polishing",
+                "trigger": {
+                    "always": true,
+                    "settingOverride": {
+                        "key": "finishing.dokumentieren",
+                        "ifTrue": "skip_and_autoAccept"
+                    }
+                },
+                "priority": 6,
+                "question": "Ausarbeitung und Politur durchgeführt?",
+                "importance": "forensic",
+                "options": [
+                    {
+                        "id": "full",
+                        "label": "Vollständig ausgearbeitet und poliert",
+                        "billing": null,
+                        "documentation": "Füllung ausgearbeitet, Okklusion kontrolliert, hochglanzpoliert"
+                    },
+                    {
+                        "id": "planned",
+                        "label": "Politur in Folgesitzung geplant",
+                        "billing": null,
+                        "documentation": "Ausarbeitung erfolgt, Hochglanzpolitur in Folgesitzung"
+                    }
+                ]
+            }
+        ]
+    },
+    "tier2_optimization": {
+        "description": "Fragen die zusätzlichen Umsatz generieren - bei 'standard' oder 'aggressive' Setting",
+        "settingKey": "questionLevel",
+        "minimumLevel": "standard",
+        "questions": [
+            {
+                "id": "kofferdam",
+                "trigger": {
+                    "notMentioned": [
+                        "kofferdam",
+                        "spanngummi",
+                        "rubber dam",
+                        "koff"
+                    ],
+                    "settingOverride": {
+                        "key": "methodik.kofferdamStandard",
+                        "ifTrue": "skip_and_autoAccept"
+                    }
+                },
+                "priority": 1,
+                "question": "Wurde Kofferdam angelegt?",
+                "subtext": "Verbessert Qualität UND Abrechnung",
+                "importance": "billing",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, Kofferdam",
+                        "icon": "check-circle",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_12",
+                                "autoAccept": true
+                            },
+                            "PKV": {
+                                "code": "GOZ_2040",
+                                "autoAccept": true
+                            }
+                        },
+                        "documentation": "Behandlung unter Kofferdam"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein, relative Trockenlegung",
+                        "icon": "minus",
+                        "billing": null,
+                        "documentation": "Relative Trockenlegung mit Watterollen"
+                    }
+                ]
+            },
+            {
+                "id": "unterfuellung",
+                "trigger": {
+                    "keywords": [
+                        "tief",
+                        "profunda",
+                        "groß",
+                        "ausgedehnt"
+                    ],
+                    "insuranceType": "PKV",
+                    "settingOverride": {
+                        "key": "tiefKaries.unterfuellungStandard",
+                        "ifTrue": "suggest_first"
+                    }
+                },
+                "priority": 2,
+                "question": "Wurde eine Unterfüllung/Liner gelegt?",
+                "importance": "billing",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, Unterfüllung",
+                        "billing": {
+                            "PKV": {
+                                "code": "GOZ_2050",
+                                "autoAccept": true
+                            }
+                        },
+                        "documentation": "Unterfüllung/Liner appliziert"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein, direkt gefüllt",
+                        "billing": null
+                    }
+                ]
+            },
+            {
+                "id": "xray_control",
+                "trigger": {
+                    "keywords": [
+                        "profunda",
+                        "approximal",
+                        "randständigkeit"
+                    ],
+                    "probability": 0.3
+                },
+                "priority": 3,
+                "question": "Röntgenkontrolle der Füllung?",
+                "subtext": "Empfohlen bei approximalen/tiefen Füllungen",
+                "importance": "billing",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, Rö-Kontrolle",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_Ä925a",
+                                "autoAccept": false
+                            },
+                            "PKV": {
+                                "code": "GOÄ_5000",
+                                "autoAccept": false
+                            }
+                        },
+                        "documentation": "Röntgenkontrolle durchgeführt, Füllung randständig"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nicht nötig",
+                        "billing": null
+                    }
+                ]
+            },
+            {
+                "id": "fluoride",
+                "trigger": {
+                    "always": true,
+                    "settingOverride": {
+                        "key": "finishing.fluoridImmer",
+                        "ifTrue": "skip_and_autoAccept"
+                    }
+                },
+                "priority": 4,
+                "question": "Fluoridierung nach Füllung?",
+                "importance": "billing",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, Fluorid appliziert",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_IP4",
+                                "autoAccept": true
+                            },
+                            "PKV": {
+                                "code": "GOZ_1020",
+                                "autoAccept": true
+                            }
+                        },
+                        "documentation": "Duraphat auf Füllung und umliegende Zähne appliziert"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein",
+                        "billing": null
+                    }
+                ]
+            },
+            {
+                "id": "caries_detector",
+                "trigger": {
+                    "keywords": [
+                        "selektiv",
+                        "exkavation",
+                        "anfärb"
+                    ],
+                    "insuranceType": "PKV"
+                },
+                "priority": 5,
+                "question": "Kariesdetektor verwendet?",
+                "subtext": "Analogposition §6 GOZ möglich",
+                "importance": "billing",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, Kariesanfärbung",
+                        "billing": {
+                            "PKV": {
+                                "code": "GOZ_2020a",
+                                "isAnalog": true,
+                                "autoAccept": false
+                            }
+                        },
+                        "documentation": "Selektive Kariesexkavation unter Anfärbung mit Kariesdetektor"
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein",
+                        "billing": null
+                    }
+                ]
+            }
+        ]
+    },
+    "tier3_opportunistic": {
+        "description": "Zusatzleistungen die nebenbei möglich sind - nur bei 'aggressive' Setting",
+        "settingKey": "questionLevel",
+        "minimumLevel": "aggressive",
+        "timing": "after_treatment",
+        "questions": [
+            {
+                "id": "psi_screening",
+                "trigger": {
+                    "patientData": {
+                        "field": "lastPSI",
+                        "condition": "olderThan",
+                        "days": 180
+                    },
+                    "fallback": {
+                        "question": "Ist PSI-Screening aktuell? (>6 Monate?)"
+                    }
+                },
+                "priority": 1,
+                "question": "PSI-Screening durchführen?",
+                "subtext": "Letzter PSI länger als 6 Monate her",
+                "icon": "calendar-clock",
+                "importance": "preventive_billing",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, PSI durchführen",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_04",
+                                "autoAccept": false
+                            },
+                            "PKV": {
+                                "code": "GOZ_4005",
+                                "autoAccept": false
+                            }
+                        },
+                        "documentation": "PSI-Screening durchgeführt"
+                    },
+                    {
+                        "id": "skip",
+                        "label": "Heute nicht",
+                        "billing": null
+                    },
+                    {
+                        "id": "remind",
+                        "label": "Beim nächsten Termin",
+                        "action": "create_reminder",
+                        "billing": null
+                    }
+                ]
+            },
+            {
+                "id": "exam_01",
+                "trigger": {
+                    "patientData": {
+                        "field": "last01",
+                        "condition": "olderThan",
+                        "days": 180
+                    },
+                    "fallback": {
+                        "question": "01-Untersuchung mit abrechnen?"
+                    }
+                },
+                "priority": 2,
+                "question": "Befundaufnahme (01) mit abrechnen?",
+                "subtext": "Wenn sowieso untersucht wird",
+                "importance": "billing",
+                "options": [
+                    {
+                        "id": "yes",
+                        "label": "Ja, 01 abrechnen",
+                        "billing": {
+                            "GKV": {
+                                "code": "BEMA_01",
+                                "autoAccept": false
+                            },
+                            "PKV": {
+                                "code": "GOZ_0010",
+                                "autoAccept": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "no",
+                        "label": "Nein, nicht heute",
+                        "billing": null
+                    }
+                ]
+            }
+        ]
+    },
+    "metadata": {
+        "referencedCodes": {
+            "BEMA": [
+                "BEMA_01",
+                "BEMA_04",
+                "BEMA_12",
+                "BEMA_25",
+                "BEMA_26",
+                "BEMA_40",
+                "BEMA_41a",
+                "BEMA_IP4"
+            ],
+            "GOZ": [
+                "GOZ_0010",
+                "GOZ_0090",
+                "GOZ_0100",
+                "GOZ_1020",
+                "GOZ_2020a",
+                "GOZ_2040",
+                "GOZ_2050",
+                "GOZ_2330",
+                "GOZ_2340",
+                "GOZ_4005"
+            ],
+            "GOÄ": [
+                "GOÄ_5000"
+            ],
+            "BEMA_Ä": [
+                "BEMA_Ä925a"
+            ]
+        },
+        "settingsRequired": [
+            "questionLevel",
+            "methodik.kofferdamStandard",
+            "tiefKaries.unterfuellungStandard",
+            "finishing.fluoridImmer"
+        ]
+    }
+}

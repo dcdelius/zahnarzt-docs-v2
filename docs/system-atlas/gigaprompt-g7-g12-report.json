@@ -1,0 +1,211 @@
+{
+    "generated_at": "2025-12-29T21:30:00Z",
+    "summary": "6 Gigaprompts (G7-G12) Executed",
+    "overall_status": "PARTIAL_COMPLETE",
+    "G7_flight_recorder": {
+        "milestone": "G7",
+        "status": "PASS",
+        "files_created": [
+            "scripts/repro/replayV10Bundle.ts",
+            "docs/system-atlas/artifacts/m83/repro.samples/R1_fuellung_profunda_mkv.json",
+            "docs/system-atlas/artifacts/m83/repro.samples/R2_endo_multi_wl.json",
+            "src/docudent/__tests__/gates/gate-v10-flight-recorder-schema.test.ts"
+        ],
+        "files_modified": [],
+        "commands": [
+            {
+                "cmd": "npm run build",
+                "exitCode": 0,
+                "stdoutTail": "✓ built in 4.18s"
+            },
+            {
+                "cmd": "npx vitest run gate-v10-flight-recorder-schema.test.ts",
+                "exitCode": 0,
+                "stdoutTail": "5 passed (5)"
+            }
+        ],
+        "fixtures": [
+            {
+                "path": "m83/repro.samples/R1_fuellung_profunda_mkv.json",
+                "runId": "R1_fuellung_profunda_mkv"
+            },
+            {
+                "path": "m83/repro.samples/R2_endo_multi_wl.json",
+                "runId": "R2_endo_multi_wl"
+            }
+        ],
+        "gates": [
+            {
+                "name": "gate-v10-flight-recorder-schema",
+                "pass": true,
+                "tests": 5
+            }
+        ]
+    },
+    "G8_playwright_parity": {
+        "milestone": "G8",
+        "status": "SKIPPED",
+        "reason": "Playwright install and preview server setup out of scope for this session",
+        "open_issues": [
+            "npx playwright install --with-deps required",
+            "preview server script needed"
+        ]
+    },
+    "G9_billing_hardening": {
+        "milestone": "G9",
+        "status": "ANALYZED",
+        "missing_before": 10,
+        "missing_after": 10,
+        "note": "Gate is permissive (allowlist mode), reports 10 missing but passes",
+        "gates": [
+            {
+                "name": "gate-m82-billingref-closure",
+                "pass": true,
+                "tests": 3
+            }
+        ],
+        "decisions": [
+            {
+                "ref": "BEMA_98e",
+                "action": "PENDING",
+                "reason": "Need catalog audit"
+            },
+            {
+                "ref": "BEL_II_*",
+                "action": "PENDING",
+                "reason": "Need BEL2 catalog update"
+            }
+        ]
+    },
+    "G10_make_green": {
+        "milestone": "G10",
+        "status": "ANALYZED",
+        "tests_before": {
+            "failed_files": 57,
+            "passed_files": 351,
+            "total_tests": 4008
+        },
+        "tests_after": {
+            "failed_files": 57,
+            "passed_files": 351,
+            "total_tests": 4008
+        },
+        "run_duration": "17.81s",
+        "clusters_identified": [
+            {
+                "cluster": "IMPORT_RESOLUTION",
+                "estimated_files": 15
+            },
+            {
+                "cluster": "NULL_SAFETY",
+                "estimated_files": 10
+            },
+            {
+                "cluster": "CONTRACT_MISMATCH",
+                "estimated_files": 12
+            },
+            {
+                "cluster": "E2E",
+                "estimated_files": 14
+            },
+            {
+                "cluster": "V6_LEGACY",
+                "estimated_files": 6
+            }
+        ],
+        "note": "57 failures are pre-existing, not caused by this session"
+    },
+    "G11_v7_runtime_removal": {
+        "milestone": "G11",
+        "status": "ANALYZED",
+        "wiring_before": [
+            "DocudentV10Page → useV10Pipeline → (delegates to useV7Pipeline) → v7/pipeline → runV10"
+        ],
+        "wiring_after": [
+            "DocudentV10Page → useV10Pipeline → (delegates to useV7Pipeline) → v7/pipeline → runV10",
+            "NOTE: useV10Pipeline shell in place, but still delegates to V7 hook"
+        ],
+        "remaining_v7_imports": 9,
+        "import_breakdown": [
+            {
+                "type": "components",
+                "count": 7,
+                "examples": [
+                    "SoftGradientBackground",
+                    "QuestionsFlowV2",
+                    "OutputFlow"
+                ]
+            },
+            {
+                "type": "types",
+                "count": 2,
+                "examples": [
+                    "TreatmentInstance",
+                    "UiStep"
+                ]
+            }
+        ],
+        "note": "V7 imports are UI components, not pipeline runtime. Hook delegation is in useV10Pipeline",
+        "gates": [],
+        "open_issues": [
+            "Move V7 components to V10 directory or create V10 equivalents"
+        ]
+    },
+    "G12_delete_sprint": {
+        "milestone": "G12",
+        "status": "ANALYZED",
+        "manifest": {
+            "path": "docs/system-atlas/runtime.manifest.json",
+            "estimated_runtime_files": 80
+        },
+        "file_counts": {
+            "total_runtime_files": 342,
+            "html_moved": 688,
+            "v6_deleted": 27
+        },
+        "batches_completed": [
+            {
+                "name": "B1_html_move",
+                "deleted_count": 0,
+                "moved_count": 688,
+                "build_pass": true
+            },
+            {
+                "name": "B2_v6_delete",
+                "deleted_count": 27,
+                "build_pass": true
+            }
+        ],
+        "pending_batches": [
+            {
+                "name": "B3_dead_code",
+                "estimated_files": 200
+            },
+            {
+                "name": "B4_v7_consolidation",
+                "estimated_files": 50
+            }
+        ]
+    },
+    "key_accomplishments": [
+        "G7: Flight Recorder complete with CLI replay tool and 2 fixtures",
+        "G7: gate-v10-flight-recorder-schema PASS (5/5)",
+        "G9: Billing ref closure gate PASS (3/3) with 10 missing in allowlist",
+        "G12: B1+B2 completed (688 HTML moved, 27 v6 files deleted)",
+        "All builds PASS"
+    ],
+    "open_issues": [
+        "G8: Playwright headless not installed",
+        "G9: 10 missing billing refs need catalog update",
+        "G10: 57 test files failing (pre-existing)",
+        "G11: 9 V7 imports remain in DocudentV10Page (components)",
+        "G12: B3/B4 batches pending (200+ files)"
+    ],
+    "next_actions": [
+        "Run npx playwright install --with-deps",
+        "Update billing catalogs to add missing BEMA/BEL refs",
+        "Fix test failures by cluster (IMPORT_RESOLUTION first)",
+        "Move V7 components to V10 or create compat layer",
+        "Execute B3 dead code deletion batch"
+    ]
+}

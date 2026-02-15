@@ -1,0 +1,24 @@
+.v10-questions-shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+.v10-questions-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 32px;
+    align-items: start;
+    margin-top: 24px;
+}
+
+.v10-questions-stack {
+    display: grid;
+    gap: 24px;
+}
+
+@media (max-width: 980px) {
+    .v10-questions-grid {
+        grid-template-columns: 1fr;
+    }
+}

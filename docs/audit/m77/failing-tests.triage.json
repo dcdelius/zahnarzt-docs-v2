@@ -1,0 +1,167 @@
+{
+  "generated_at": "2025-12-29T13:19:25.304Z",
+  "total_failing_files": 46,
+  "cluster_count": 8,
+  "clusters": [
+    {
+      "cluster_id": "UNCATEGORIZED",
+      "hypothesis": "Needs manual investigation",
+      "affected_layer": "unknown",
+      "fix_targets": [
+        "Manual investigation required"
+      ],
+      "test_files": [
+        "/Users/david/dokumaster-ui/tests/firebase/case.flow.test.ts",
+        "/Users/david/dokumaster-ui/tests/firebase/firestore.rules.test.ts",
+        "/Users/david/dokumaster-ui/tests/firebase/settingsOverrides.service.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate7-stage-emission.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-flow.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-live-sanity.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-multiinstance-2teeth.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-multiinstance-questions-2teeth.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-realcases.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__e2e__/v7-ssot.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v10/__e2e__/v10-golden-path.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v10/__e2e__/v10-multiinstance.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v10/__e2e__/v10-prod-repro.e2e.spec.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v10/__e2e__/v10-ui.e2e.spec.ts"
+      ],
+      "sample_errors": [
+        "expected 0 to be greater than or equal to 6"
+      ]
+    },
+    {
+      "cluster_id": "IMPORT_RESOLUTION",
+      "hypothesis": "Module resolution or circular import issue",
+      "affected_layer": "core",
+      "fix_targets": [
+        "Manual investigation required"
+      ],
+      "test_files": [
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-billing-no-legacy-imports-runtime.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-no-hardcoded-chip-ids.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-v7-ssot-boundaries.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-m12_4-no-core-services-imports.test.ts"
+      ],
+      "sample_errors": [
+        "extraction/adapters/llmExtractorAdapter.ts imports forbidden pattern: from\\s+['\"].*core\\/services: expected [ Array(1) ] to have a length of +0 but got 1",
+        "Found 6 hardcoded chip ID(s). Use CANONICAL_CHIP_IDS instead.\n\n  src/docudent/v6/services/chipProvenanceBuilder.ts:209\n    if (translatedAnswers.get('kofferdam') === 'yes') answerDerivedChips.add('kofferdam');\n\n  src/docudent/v6/services/chipProvenanceBuilder.ts:210\n    if (translatedAnswers.get('kofferdam') === 'no') answerDerivedChips.add('rel_trocken');\n\n  src/docudent/v6/services/chipProvenanceBuilder.ts:213\n    if (translatedAnswers.get('vitality') === 'pos') answerDerivedChips.add('vipr_pos');\n\n  src/docudent/v6/services/chipProvenanceBuilder.ts:214\n    if (translatedAnswers.get('vitality') === 'neg') answerDerivedChips.add('vipr_neg');\n\n  src/docudent/v6/services/outputService.ts:135\n    const alwaysOnChipIds = ['exkavation', 'komposit_basic', 'finishing']; // From fuellung answer_map\n\n  src/docudent/v7/components/MultiInstancePanel.tsx:216\n    if (/kofferdam/i.test(slice)) mentioned['kofferdam'] = true;\n\nFix: Import { CANONICAL_CHIP_IDS } from '../../contracts/canonicalIds'",
+        "V7 must not import from core/billing/**.\nThis boundary is absolute.\n\n  src/docudent/v7/multitreatment/orchestrator.ts:29\n    import { checkCombinability } from '../../core/billing/combinability/billingCombinabilityChecker';\n\n  src/docudent/v7/multitreatment/orchestrator.ts:30\n    import { getBillingScopeWithFallback } from '../../core/billing/knowledgeBase/logic/billingScopeReso"
+      ]
+    },
+    {
+      "cluster_id": "GATE_FAILURE",
+      "hypothesis": "Gate test expectation needs update",
+      "affected_layer": "gates",
+      "fix_targets": [
+        "Manual investigation required"
+      ],
+      "test_files": [
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-fragmentation-sentinel.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m18-pack-registry-has-fuellung-endo.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m20-pack-combinability-goldens-are-real.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m25-pack-coverage-still-100.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m31-endo-clinical-parity.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m31-fuellung-clinical-parity.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m39-clinical-v4-determinism-100x.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-mvp-no-error.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-no-mock-output-strings.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-no-v6-mutation.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-pipeline-questionbundle-always-present.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-surface-detection.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-v7-ui-wiring.test.tsx",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-combinability-rules-lock.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-m16-parity-with-existing.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-no-patient-fields-in-output.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-output-coverage.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-p14-deep-filling-e2e.test.ts"
+      ],
+      "sample_errors": [
+        "expected [ { …(2) } ] to have a length of +0 but got 1",
+        "expected [ { id: 'fuellung', …(8) }, …(2) ] to have a length of 2 but got 3",
+        "expected 0 to be greater than or equal to 3"
+      ]
+    },
+    {
+      "cluster_id": "NULL_SAFETY",
+      "hypothesis": "Missing null checks or optional chaining",
+      "affected_layer": "runtime",
+      "fix_targets": [
+        "Manual investigation required"
+      ],
+      "test_files": [
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m18-pack-completeness.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m20-pack-allowlist-must-be-explicit.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gate-wiring-matrix.test.ts",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/ui-flow-e2e.test.tsx",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/ui-flow.test.tsx",
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-treatment-isolation.test.ts"
+      ],
+      "sample_errors": [
+        "expected null not to be null",
+        "expected null not to be null",
+        "expected false to be true // Object.is equality"
+      ]
+    },
+    {
+      "cluster_id": "BILLING_GATE",
+      "hypothesis": "Billing logic or combinability rule mismatch",
+      "affected_layer": "billing",
+      "fix_targets": [
+        "src/docudent/core/billing/",
+        "src/docudent/v10/billing/"
+      ],
+      "test_files": [
+        "/Users/david/dokumaster-ui/src/docudent/__tests__/gates/gate-m20-pack-billingref-coverage.test.ts"
+      ],
+      "sample_errors": [
+        "expected 0 to be greater than 0"
+      ]
+    },
+    {
+      "cluster_id": "MEDICAL_GATE",
+      "hypothesis": "Medical KB rule or askback expectation mismatch",
+      "affected_layer": "medical_kb",
+      "fix_targets": [
+        "src/docudent/medical_kb/"
+      ],
+      "test_files": [
+        "/Users/david/dokumaster-ui/src/docudent/v7/__tests__/gates/gate-medical-kb-anchors-valid.test.ts"
+      ],
+      "sample_errors": [
+        "Invalid sourceRefs (not found in sources.v1.yaml):\nrule:rule-endo-trepanation-emits-chip -> bema-katalog-2025::bema-pos-31\nrule:rule-endo-kofferdam-emits-chip -> bema-katalog-2025::bema-pos-12\nrule:rule-endo-wl-elek-emits-chip -> goz-kommentar-bundeszahnaerztekammer::goz-2400\nrule:rule-endo-wl-xray-emits-chip -> bema-katalog-2025::bema-pos-925a\nrule:rule-endo-roentgen-kontrolle-emits-chip -> bema-katalog-2025::bema-pos-925a\nrule:rule-endo-la-leitung-emits-chip -> bema-katalog-2025::bema-pos-41a\nrule:rule-endo-la-infiltr-emits-chip -> bema-katalog-2025::bema-pos-40\nrule:rule-endo-roentgen-einzelzahn-emits-chip -> bema-katalog-2025::bema-pos-925a\nrule:rule-endo-aufbau-postendo-emits-chip -> bema-katalog-2025::bema-pos-13\nrule:rule-fuellung-la-leitung-emits-chip -> bema-katalog-2025::bema-pos-41a\nrule:rule-fuellung-la-infiltr-emits-chip -> bema-katalog-2025::bema-pos-40\nrule:rule-fuellung-oberflaeche-la-emits-chip -> goz-kommentar-bundeszahnaerztekammer::goz-0080\nrule:rule-fuellung-kofferdam-emits-chip -> bema-katalog-2025::bema-pos-12\nrule:rule-fuellung-fluor-emits-chip -> bema-katalog-2025::bema-pos-IP4"
+      ]
+    },
+    {
+      "cluster_id": "V7_BOUNDARY_VIOLATION",
+      "hypothesis": "V7 pipeline contains orchestration logic that should be V10-only",
+      "affected_layer": "v7/pipeline",
+      "fix_targets": [
+        "src/docudent/v7/pipeline/index.ts",
+        "src/docudent/v7/pipeline/adapters/"
+      ],
+      "test_files": [
+        "/Users/david/dokumaster-ui/src/docudent/v7/pipeline/__tests__/no-logic.test.ts"
+      ],
+      "sample_errors": [
+        "expected [ { …(2) }, { …(2) }, { …(2) }, …(2) ] to have a length of +0 but got 5"
+      ]
+    },
+    {
+      "cluster_id": "CONTRACT_MISMATCH",
+      "hypothesis": "Question/output contracts have evolved, test expectations stale",
+      "affected_layer": "v7/pipeline",
+      "fix_targets": [
+        "Update test expectations",
+        "src/docudent/contracts/"
+      ],
+      "test_files": [
+        "/Users/david/dokumaster-ui/src/docudent/v7/pipeline/__tests__/reality-integration.test.ts"
+      ],
+      "sample_errors": [
+        "expected [ 'forensic', 'rule', 'mkv', 'upsell' ] to include 'medical'"
+      ]
+    }
+  ],
+  "uncovered_files": []
+}

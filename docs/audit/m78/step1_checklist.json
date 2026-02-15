@@ -1,0 +1,130 @@
+{
+    "milestone": "M78",
+    "step": 1,
+    "status": "CHECKLIST_GENERATED",
+    "checklist": {
+        "phase_a_inventory_reachability": {
+            "status": "NEXT",
+            "tasks": [
+                "A1: Fix audit tooling (tsx/ESM issues from M77)",
+                "A2: Generate inventory.files.jsonl",
+                "A3: Generate import-graph.edges.jsonl + reachability.classification.jsonl",
+                "A4: Generate dead_or_orphaned.json",
+                "A5: Create audit_runner.md"
+            ]
+        },
+        "phase_b_e2e_wiring_trace": {
+            "status": "PENDING"
+        },
+        "phase_c_ui_controls_payload": {
+            "status": "PENDING"
+        },
+        "phase_d_medical_layer_quality": {
+            "status": "PENDING"
+        },
+        "phase_e_billing_ssot_provenance": {
+            "status": "PENDING"
+        },
+        "phase_f_fix_failures": {
+            "status": "PENDING",
+            "total_failing": 46,
+            "clusters": 8
+        }
+    },
+    "files_to_inspect_first": [
+        "src/docudent/v10/pipeline/runV10.ts",
+        "src/docudent/v10/pipeline/runV10Bundle.ts",
+        "src/docudent/v10/pipeline/billingEligibilityGuard.ts",
+        "src/docudent/v7/pipeline/index.ts",
+        "src/docudent/v7/pipeline/adapters/toV10Input.ts",
+        "src/docudent/v7/pipeline/adapters/fromV10Output.ts",
+        "src/docudent/v7/hooks/useV7Pipeline.ts",
+        "src/docudent/v7/ui/normalizePipelineResultForUi.ts",
+        "src/docudent/v7/multitreatment/orchestrator.ts",
+        "src/docudent/medical_kb/engine/applyMedicalKb.ts",
+        "src/docudent/medical_kb/medical_kb.v1.json",
+        "src/docudent/v7/output/renderFromKbChips.ts",
+        "src/docudent/v10/billing/combinability.ts",
+        "src/docudent/core/billing/combinability/billingCombinabilityChecker.ts",
+        "src/docudent/v10/pages/DocudentV10Page.tsx",
+        "src/docudent/v7/pages/DocudentV7Page.tsx",
+        "src/docudent/v6/services/chipProvenanceBuilder.ts",
+        "src/docudent/v6/services/outputService.ts",
+        "src/docudent/v7/components/MultiInstancePanel.tsx",
+        "src/docudent/contracts/canonicalIds.ts",
+        "src/docudent/v10/extraction/index.ts",
+        "src/docudent/core/extraction/adapters/llmExtractorAdapter.ts",
+        "src/docudent/v10/trace/traceCollector.ts",
+        "src/docudent/v10/testOnly/index.ts",
+        "src/docudent/v7/__fixtures__/wiring/fuellung_01_standard.json",
+        "src/docudent/v7/__fixtures__/wiring/endo_01_missing_wl_method.json",
+        "src/docudent/__tests__/gates/gate-v10-parity-ui-vs-replay.test.ts",
+        "src/docudent/__tests__/gates/gate-v7-ssot-boundaries.test.ts",
+        "src/docudent/__tests__/gates/gate-no-hardcoded-chip-ids.test.ts",
+        "src/docudent/v7/__tests__/gates/gate-m12_4-no-core-services-imports.test.ts",
+        "src/docudent/v7/pipeline/__tests__/no-logic.test.ts",
+        "src/docudent/v7/pipeline/__tests__/reality-integration.test.ts",
+        "scripts/audit/inventory.ts",
+        "scripts/audit/buildImportGraph.ts",
+        "docs/audit/m77/failing-tests.triage.json"
+    ],
+    "failing_tests_clusters": {
+        "IMPORT_RESOLUTION": {
+            "count": 4,
+            "root_cause_hypothesis": "V7 imports core/billing, hardcoded chip IDs, forbidden pattern imports",
+            "priority": 1
+        },
+        "MEDICAL_GATE": {
+            "count": 1,
+            "root_cause_hypothesis": "Invalid sourceRefs anchors in medical_kb.v1.json",
+            "priority": 2
+        },
+        "V7_BOUNDARY_VIOLATION": {
+            "count": 1,
+            "root_cause_hypothesis": "V7 pipeline has orchestration logic that should be V10-only",
+            "priority": 3
+        },
+        "CONTRACT_MISMATCH": {
+            "count": 1,
+            "root_cause_hypothesis": "Question/output contracts evolved, test expectations stale",
+            "priority": 4
+        },
+        "NULL_SAFETY": {
+            "count": 6,
+            "root_cause_hypothesis": "Missing null checks in UI flow tests",
+            "priority": 5
+        },
+        "GATE_FAILURE": {
+            "count": 18,
+            "root_cause_hypothesis": "Stale gate expectations",
+            "priority": 6
+        },
+        "UNCATEGORIZED": {
+            "count": 14,
+            "root_cause_hypothesis": "E2E tests need Playwright browser",
+            "priority": 7
+        }
+    },
+    "repros_required": {
+        "repro1": {
+            "dictation": "Zahn 26 mod Kompositfüllung, tiefe Karies, Kofferdam, Anästhesie, 120 Euro",
+            "insuranceType": "MKV",
+            "treatmentId": "fuellung",
+            "expected_trajectory": [
+                "state=questions",
+                "medical_ueberkappung asked",
+                "state=output after answers",
+                "SSOT text + billing not empty"
+            ]
+        },
+        "repro2": {
+            "dictation": "Ich habe eine Wurzelfüllung an Zahn 1.4 mit zwei Kanälen, 18 mm, und danach eine Kompositfüllung okklusal gemacht, mit Mehrschichttechnik, ohne Anästhesie.",
+            "expected_trajectory": [
+                "instances: endo(14) + fuellung(14)",
+                "negation 'ohne Anästhesie' only for fuellung",
+                "endo LA preserved or asked"
+            ]
+        }
+    },
+    "next_action": "Execute Phase A: Fix audit tooling and generate ground truth inventory/reachability artifacts"
+}

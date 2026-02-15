@@ -1,0 +1,559 @@
+{
+    "_meta": {
+        "name": "Behandlungs-Workflows für LLM",
+        "beschreibung": "Schritt-für-Schritt Abläufe für häufige Behandlungen",
+        "version": "1.0"
+    },
+    "fuellung_gkv": {
+        "name": "Füllung GKV (Kassenpatient)",
+        "versicherung": "GKV",
+        "schritte": [
+            {
+                "schritt": 1,
+                "aktion": "Anästhesie",
+                "codes": {
+                    "standard": "BEMA_40",
+                    "uk_molaren": "BEMA_41a"
+                },
+                "entscheidung": "Bei UK-Molaren (36-38, 46-48): Leitungsanästhesie (41a)!"
+            },
+            {
+                "schritt": 2,
+                "aktion": "Trockenlegung (optional aber empfohlen)",
+                "codes": [
+                    "BEMA_12"
+                ],
+                "bedingung": "NUR wenn Kofferdam angelegt wird - dokumentieren!",
+                "tipp": "Kofferdam verbessert Qualität UND Abrechnung"
+            },
+            {
+                "schritt": 3,
+                "aktion": "Kariesentfernung und Tiefe prüfen",
+                "codes": [],
+                "entscheidung": "tiefe_karies_entscheidung"
+            },
+            {
+                "schritt": 4,
+                "aktion": "Überkappung (bei tiefer Karies)",
+                "codes": {
+                    "pulpanah_geschlossen": "BEMA_25",
+                    "pulpa_eroeffnet": "BEMA_26"
+                },
+                "dokumentation": "Material MUSS genannt werden: Ca(OH)2, MTA, Biodentine"
+            },
+            {
+                "schritt": 5,
+                "aktion": "Füllung legen",
+                "codes": {
+                    "1_flaeche": "BEMA_13",
+                    "2_flaechen": "BEMA_13b",
+                    "3_flaechen": "BEMA_13c",
+                    "mehr_als_3": "BEMA_13d"
+                },
+                "dokumentation": "Flächen im Text dokumentieren (m, o, d, v, p/l)"
+            }
+        ],
+        "typische_kombination": [
+            "BEMA_41a",
+            "BEMA_12",
+            "BEMA_13c"
+        ],
+        "typischer_betrag": "80-100€",
+        "haeufige_fehler": [
+            "Kofferdam berechnet ohne Dokumentation",
+            "F-Code passt nicht zu Flächen",
+            "Cp ohne Material"
+        ]
+    },
+    "fuellung_gkv_mkv": {
+        "name": "Füllung GKV mit Mehrkostenvereinbarung",
+        "versicherung": "GKV + MKV",
+        "beschreibung": "Patient wünscht höherwertige Versorgung (Mehrschicht, Ästhetik)",
+        "schritte": [
+            {
+                "schritt": 1,
+                "aktion": "SCHRIFTLICHE MKV VOR Behandlung!",
+                "codes": [],
+                "wichtig": "Ohne schriftliche Vereinbarung = kein Zahlungsanspruch!"
+            },
+            {
+                "schritt": 2,
+                "aktion": "Behandlung wie Füllung GKV",
+                "codes": [
+                    "BEMA_40/41a",
+                    "BEMA_12",
+                    "BEMA_13*"
+                ]
+            },
+            {
+                "schritt": 3,
+                "aktion": "MKV-Berechnung",
+                "berechnung": {
+                    "formel": "GOZ-Betrag minus BEMA-Anteil",
+                    "beispiel_3fl": {
+                        "goz_2100": "156,95€",
+                        "minus_bema_13c": "~58€",
+                        "mkv_betrag": "~99€"
+                    }
+                }
+            }
+        ],
+        "wann_mkv": [
+            "Separater Haftvermittler (statt selbstadhäsiv)",
+            "Mehrschichttechnik",
+            "Ästhetische Optimierung",
+            "Farbschichtung"
+        ],
+        "stand_2025": "Seit Amalgamverbot: Bulkfill/selbstadhäsiv = Kassenleistung im Seitenzahn!"
+    },
+    "fuellung_pkv": {
+        "name": "Füllung PKV (Privatpatient)",
+        "versicherung": "PKV",
+        "schritte": [
+            {
+                "schritt": 1,
+                "aktion": "Oberflächenanästhesie",
+                "codes": [
+                    "GOZ_0080"
+                ],
+                "tipp": "Wird sehr oft vergessen! IMMER ansetzen vor Injektion"
+            },
+            {
+                "schritt": 2,
+                "aktion": "Anästhesie",
+                "codes": {
+                    "standard": "GOZ_0090",
+                    "uk_molaren": "GOZ_0100"
+                }
+            },
+            {
+                "schritt": 3,
+                "aktion": "Kofferdam",
+                "codes": [
+                    "GOZ_2040"
+                ],
+                "tipp": "Verbessert Qualität UND Abrechnung"
+            },
+            {
+                "schritt": 4,
+                "aktion": "Kariesdetektor (optional)",
+                "codes": [
+                    "GOZ_2020a"
+                ],
+                "hinweis": "Analogposition §6 GOZ - Begründung: 'Kariesanfärbung'"
+            },
+            {
+                "schritt": 5,
+                "aktion": "Überkappung (bei tiefer Karies)",
+                "codes": {
+                    "pulpanah": "GOZ_2330",
+                    "pulpa_eroeffnet": "GOZ_2340"
+                }
+            },
+            {
+                "schritt": 6,
+                "aktion": "Unterfüllung (bei tiefer Kavität)",
+                "codes": [
+                    "GOZ_2050"
+                ],
+                "tipp": "Oft vergessen bei tiefen Kavitäten!"
+            },
+            {
+                "schritt": 7,
+                "aktion": "Füllung",
+                "codes": {
+                    "1_flaeche": "GOZ_2060",
+                    "2_flaechen": "GOZ_2080",
+                    "3_flaechen": "GOZ_2100",
+                    "mehr_als_3": "GOZ_2120"
+                },
+                "steigerung": "Bis 3,5x bei schwierigem Zugang, Angstpatient"
+            }
+        ],
+        "typische_kombination_minimal": [
+            "GOZ_0090",
+            "GOZ_2100"
+        ],
+        "typische_kombination_optimal": [
+            "GOZ_0080",
+            "GOZ_0090",
+            "GOZ_2040",
+            "GOZ_2050",
+            "GOZ_2100"
+        ],
+        "betrag_minimal": "~170€",
+        "betrag_optimal": "~260€",
+        "ausschluesse": [
+            "GOZ_2197 NICHT neben GOZ_2060-2120 (Adhäsiv inkludiert!)"
+        ]
+    },
+    "endodontie_gkv": {
+        "name": "Wurzelkanalbehandlung GKV",
+        "versicherung": "GKV",
+        "schritte": [
+            {
+                "schritt": 1,
+                "aktion": "Anästhesie",
+                "codes": [
+                    "BEMA_40",
+                    "BEMA_41a"
+                ]
+            },
+            {
+                "schritt": 2,
+                "aktion": "Kofferdam",
+                "codes": [
+                    "BEMA_12"
+                ],
+                "wichtig": "Bei Endo PFLICHT für Qualität - dokumentieren!"
+            },
+            {
+                "schritt": 3,
+                "aktion": "Zugang/Trepanation",
+                "codes": {
+                    "vital": "BEMA_28",
+                    "devital": "BEMA_31"
+                },
+                "hinweis": "Bei vitaler Pulpa: 28 (VitE), bei nekrotisch: 31 (Trep)"
+            },
+            {
+                "schritt": 4,
+                "aktion": "Aufbereitung",
+                "codes": {
+                    "einwurzelig": "BEMA_32",
+                    "zweiwurzelig": "BEMA_32a",
+                    "dreiwurzelig": "BEMA_32b"
+                },
+                "je_kanal": true,
+                "hinweis": "Je KANAL, nicht je Zahn!"
+            },
+            {
+                "schritt": 5,
+                "aktion": "Medikamentöse Einlage",
+                "codes": [
+                    "BEMA_34"
+                ],
+                "je_zahn": true,
+                "max": "3x laut Richtlinien"
+            },
+            {
+                "schritt": 6,
+                "aktion": "Wurzelfüllung",
+                "codes": {
+                    "einwurzelig": "BEMA_35",
+                    "zweiwurzelig": "BEMA_35a",
+                    "dreiwurzelig": "BEMA_35b"
+                },
+                "wichtig": "Anzahl WF muss = Anzahl WK sein!"
+            }
+        ],
+        "molaren_indikation": [
+            "Erhalt geschlossene Zahnreihe",
+            "Vermeidung Freiendsituation",
+            "Erhalt ZE"
+        ],
+        "regressfallen": [
+            "Molar ohne Indikation",
+            "WF-Anzahl ≠ WK-Anzahl"
+        ]
+    },
+    "endodontie_pkv": {
+        "name": "Wurzelkanalbehandlung PKV",
+        "versicherung": "PKV",
+        "schritte": [
+            {
+                "schritt": 1,
+                "aktion": "Oberflächenanästhesie + Anästhesie",
+                "codes": [
+                    "GOZ_0080",
+                    "GOZ_0100"
+                ]
+            },
+            {
+                "schritt": 2,
+                "aktion": "Kofferdam (2 Sitzungen = 2x!)",
+                "codes": [
+                    "GOZ_2040"
+                ],
+                "tipp": "Bei 2. Sitzung ERNEUT berechnen!"
+            },
+            {
+                "schritt": 3,
+                "aktion": "Trepanation/Pulpaentfernung",
+                "codes": [
+                    "GOZ_2360",
+                    "GOZ_2380"
+                ]
+            },
+            {
+                "schritt": 4,
+                "aktion": "Elektrometrische Längenmessung",
+                "codes": [
+                    "GOZ_2400"
+                ],
+                "je_kanal": true,
+                "tipp": "HÄUFIGSTER VERGESSENER POSTEN!"
+            },
+            {
+                "schritt": 5,
+                "aktion": "Maschinelle Aufbereitung",
+                "codes": [
+                    "GOZ_2410"
+                ],
+                "je_kanal": true
+            },
+            {
+                "schritt": 6,
+                "aktion": "Elektrophysikalisch-chemische Reinigung",
+                "codes": [
+                    "GOZ_2420"
+                ],
+                "je_kanal": true,
+                "hinweis": "Ultraschall, NaOCl-Spülung"
+            },
+            {
+                "schritt": 7,
+                "aktion": "Medikamentöse Einlage",
+                "codes": [
+                    "GOZ_2430"
+                ]
+            },
+            {
+                "schritt": 8,
+                "aktion": "Wurzelfüllung",
+                "codes": [
+                    "GOZ_2440"
+                ],
+                "je_kanal": true
+            }
+        ],
+        "typische_kombination_molar_3k": [
+            "GOZ_0080",
+            "GOZ_0100",
+            "2x GOZ_2040",
+            "3x GOZ_2400",
+            "3x GOZ_2410",
+            "3x GOZ_2420",
+            "3x GOZ_2440"
+        ],
+        "betrag_minimal": "~270€",
+        "betrag_optimal": "~600€",
+        "steigerungsgruende": [
+            "Gekrümmte Kanäle",
+            "Obliterierte Kanäle",
+            "Revision"
+        ],
+        "material_separat": [
+            "NiTi-Feilen",
+            "Guttapercha",
+            "Sealer"
+        ]
+    },
+    "krone_gkv_regelversorgung": {
+        "name": "Metallkrone GKV Regelversorgung",
+        "versicherung": "GKV",
+        "versorgungsart": "regelversorgung",
+        "schritte": [
+            {
+                "schritt": 1,
+                "aktion": "HKP erstellen und genehmigen lassen",
+                "codes": [],
+                "wichtig": "VOR Behandlung!"
+            },
+            {
+                "schritt": 2,
+                "aktion": "Anästhesie",
+                "codes": [
+                    "BEMA_40",
+                    "BEMA_41a"
+                ]
+            },
+            {
+                "schritt": 3,
+                "aktion": "Stiftaufbau (falls nötig)",
+                "codes": {
+                    "konfektioniert": "BEMA_18a",
+                    "gegossen": "BEMA_18b"
+                },
+                "festzuschuss": {
+                    "konfektioniert": "FZ_1.4",
+                    "gegossen": "FZ_1.5"
+                }
+            },
+            {
+                "schritt": 4,
+                "aktion": "Präparation + Abformung + Provisorium",
+                "codes": [
+                    "BEMA_20a"
+                ],
+                "enthaelt": [
+                    "Präparation",
+                    "Abformung",
+                    "Bissnahme",
+                    "Farbwahl",
+                    "Einprobe",
+                    "Eingliederung"
+                ],
+                "wichtig": "Alles in BEMA 20a enthalten!"
+            },
+            {
+                "schritt": 5,
+                "aktion": "Provisorium (falls separat)",
+                "codes": [
+                    "BEMA_19"
+                ],
+                "tipp": "Im HKP nur 1x, gesamt bis 2x möglich"
+            },
+            {
+                "schritt": 6,
+                "aktion": "Eingliederung",
+                "codes": [],
+                "hinweis": "In BEMA 20a enthalten"
+            }
+        ],
+        "festzuschuesse": {
+            "krone_standard": "FZ_1.1",
+            "mit_verblendung": "FZ_1.1 + FZ_1.3",
+            "mit_stift_konfekt": "FZ_1.1 + FZ_1.4",
+            "mit_stift_gegossen": "FZ_1.1 + FZ_1.5"
+        }
+    },
+    "krone_gkv_gleichartig": {
+        "name": "Vollkeramikkrone GKV gleichartig",
+        "versicherung": "GKV",
+        "versorgungsart": "gleichartig",
+        "beschreibung": "Regelversorgung + Mehrleistung (z.B. Vollkeramik statt Metall)",
+        "schritte": [
+            {
+                "schritt": 1,
+                "aktion": "HKP + Mehrkostenvereinbarung",
+                "codes": [],
+                "wichtig": "BEIDES schriftlich VOR Behandlung!"
+            },
+            {
+                "schritt": 2,
+                "aktion": "BEMA-Anteil (Kassenleistung)",
+                "codes": [
+                    "BEMA_20a",
+                    "ggf. BEMA_18a/18b"
+                ],
+                "hinweis": "Dies deckt die Regelversorgung ab"
+            },
+            {
+                "schritt": 3,
+                "aktion": "GOZ-Mehrkosten (NUR echte Mehrleistungen!)",
+                "codes": {
+                    "moeglich": [
+                        "GOZ_2195",
+                        "GOZ_2197",
+                        "GOZ_2180",
+                        "GOZ_203"
+                    ],
+                    "verboten": [
+                        "Abformung (in BEMA 20a)",
+                        "Eingliederung (in BEMA 20a)"
+                    ]
+                },
+                "wichtig": "Was in BEMA 20a enthalten ist, kann NICHT als GOZ berechnet werden!"
+            },
+            {
+                "schritt": 4,
+                "aktion": "Labor-Splitting",
+                "berechnung": {
+                    "kasse": "BEL-II Anteil",
+                    "patient": "Privatlabor-Differenz"
+                }
+            }
+        ],
+        "typisches_beispiel_zahn36_glasfaser": {
+            "festzuschuss": [
+                "FZ_1.1",
+                "FZ_1.4"
+            ],
+            "bema": [
+                "BEMA_18a",
+                "BEMA_20a"
+            ],
+            "goz_mehrkosten": [
+                "GOZ_2195",
+                "GOZ_2197",
+                "GOZ_2180",
+                "GOZ_203",
+                "GOZ_2197"
+            ],
+            "patient_zahlt": "GOZ-Mehrkosten + Labor-Differenz"
+        }
+    },
+    "krone_pkv": {
+        "name": "Krone PKV",
+        "versicherung": "PKV",
+        "schritte": [
+            {
+                "schritt": 1,
+                "aktion": "Oberflächenanästhesie + Anästhesie",
+                "codes": [
+                    "GOZ_0080",
+                    "GOZ_0090/0100"
+                ]
+            },
+            {
+                "schritt": 2,
+                "aktion": "Stiftaufbau (falls nötig)",
+                "codes": {
+                    "glasfaser": [
+                        "GOZ_2195",
+                        "GOZ_2197",
+                        "GOZ_2180"
+                    ],
+                    "gegossen": [
+                        "GOZ_2190"
+                    ]
+                }
+            },
+            {
+                "schritt": 3,
+                "aktion": "Gingivaretraktion",
+                "codes": [
+                    "GOZ_203"
+                ],
+                "hinweis": "Fadenlegen vor Abformung"
+            },
+            {
+                "schritt": 4,
+                "aktion": "Abformung",
+                "codes": {
+                    "konventionell": [
+                        "GOZ_5170"
+                    ],
+                    "digital": [
+                        "GOZ_0065"
+                    ]
+                }
+            },
+            {
+                "schritt": 5,
+                "aktion": "Provisorium",
+                "codes": [
+                    "GOZ_5080",
+                    "GOZ_5090"
+                ]
+            },
+            {
+                "schritt": 6,
+                "aktion": "Eingliederung",
+                "codes": {
+                    "konventionell": [
+                        "GOZ_5180"
+                    ],
+                    "adhaesiv": [
+                        "GOZ_2197"
+                    ]
+                }
+            }
+        ],
+        "material_separat": [
+            "Abformmaterial",
+            "Provisorium-Material"
+        ]
+    }
+}

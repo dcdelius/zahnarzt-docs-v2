@@ -1,0 +1,90 @@
+{
+    "_meta": {
+        "description": "V10 Headless Scenario Cases - Extraction",
+        "version": "1.0.0",
+        "created": "2026-02-01",
+        "treatmentId": "extraction"
+    },
+    "cases": [
+        {
+            "id": "ex01",
+            "title": "GKV einfache Extraktion + LA infiltr",
+            "insuranceType": "GKV",
+            "hasMKV": false,
+            "dictation": "Extraktion Zahn 28. Lokalanästhesie Infiltration.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_41a",
+                    "BEMA_40"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "textMustInclude": [
+                    "Extraktion",
+                    "Lokalanästhesie"
+                ]
+            },
+            "answers": {}
+        },
+        {
+            "id": "ex02",
+            "title": "PKV einfache Extraktion + LA infiltr",
+            "insuranceType": "PKV",
+            "hasMKV": false,
+            "dictation": "Extraktion Zahn 18. Infiltrationsanästhesie.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "GOZ_3000",
+                    "GOZ_0090"
+                ],
+                "mustNotIncludePrefixes": [
+                    "BEMA_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "textMustInclude": [
+                    "Extraktion"
+                ]
+            },
+            "answers": {}
+        },
+        {
+            "id": "ex03",
+            "title": "MKV (ohne Mehrkosten) Extraktion bleibt BEMA-only",
+            "insuranceType": "MKV",
+            "hasMKV": true,
+            "dictation": "Extraktion Zahn 48. Infiltrationsanästhesie.",
+            "expected": {
+                "mustIncludeCodes": [
+                    "BEMA_41a",
+                    "BEMA_40"
+                ],
+                "mustNotIncludePrefixes": [
+                    "GOZ_"
+                ],
+                "allowAliases": {},
+                "mustAskQuestionIds": [],
+                "mustNotAskQuestionIds": [],
+                "combinabilityMustNotBe": [
+                    "BLOCK"
+                ],
+                "textMustInclude": [
+                    "Extraktion"
+                ]
+            },
+            "answers": {}
+        }
+    ]
+}
+

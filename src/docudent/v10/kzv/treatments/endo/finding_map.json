@@ -1,0 +1,90 @@
+{
+    "_meta": {
+        "id": "endo_finding_map",
+        "version": "2025-01-v1",
+        "description": "SSOT Field→Text Mapping für Endo Befund/Diagnose. STUB - minimal structure for SSOT compliance."
+    },
+    "fields": {
+        "diagnose": {
+            "label": "Diagnose",
+            "renderTemplate": "{value}",
+            "required": true,
+            "auditNoteIfMissing": "Diagnose nicht dokumentiert"
+        },
+        "vitality": {
+            "label": "Sensibilität",
+            "valueMap": {
+                "+": {
+                    "text": "ViPr+",
+                    "meaning": "Sensibilität positiv"
+                },
+                "-": {
+                    "text": "ViPr−",
+                    "meaning": "Sensibilität negativ"
+                },
+                "positiv": {
+                    "text": "ViPr+",
+                    "meaning": "Sensibilität positiv"
+                },
+                "negativ": {
+                    "text": "ViPr−",
+                    "meaning": "Sensibilität negativ (devital)"
+                }
+            },
+            "required": true,
+            "auditNoteIfMissing": "Sensibilitätsprüfung nicht dokumentiert"
+        },
+        "percussion": {
+            "label": "Perkussion",
+            "valueMap": {
+                "+": {
+                    "text": "Perk+",
+                    "meaning": "Perkussion positiv (schmerzhaft)"
+                },
+                "-": {
+                    "text": "Perk−",
+                    "meaning": "Perkussion negativ (unauffällig)"
+                },
+                "positiv": {
+                    "text": "Perk+",
+                    "meaning": "Perkussion positiv"
+                },
+                "negativ": {
+                    "text": "Perk−",
+                    "meaning": "Perkussion negativ"
+                }
+            },
+            "required": false
+        },
+        "kanalzahl": {
+            "label": "Kanalzahl",
+            "renderTemplate": "{value} Kanäle",
+            "required": true,
+            "auditNoteIfMissing": "Kanalzahl nicht dokumentiert"
+        },
+        "roentgen": {
+            "label": "Röntgen",
+            "renderTemplate": "{value}",
+            "required": false
+        },
+        "zahn": {
+            "label": "Zahn",
+            "renderTemplate": "Zahn {value}",
+            "required": true,
+            "auditNoteIfMissing": "Zahnangabe fehlt"
+        }
+    },
+    "sectionOrder": [
+        "zahn",
+        "diagnose",
+        "kanalzahl",
+        "vitality",
+        "percussion",
+        "roentgen"
+    ],
+    "rendering": {
+        "separator": ". ",
+        "emptyValueBehavior": "skip",
+        "labelPrefix": false
+    }
+}

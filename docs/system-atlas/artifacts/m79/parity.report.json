@@ -1,0 +1,65 @@
+{
+    "milestone": "M79",
+    "generated_at": "2025-12-29T17:50:00Z",
+    "status": "PARTIAL",
+    "summary": "Parity infrastructure created but headless E2E not executed (requires Playwright)",
+    "ui_cli_parity": {
+        "methodology": "Repro bundle capture -> CLI replay -> diff comparison",
+        "repro_schema": "docs/audit/m79/repro.schema.json",
+        "replay_script": "scripts/audit/replayV10Bundle.ts",
+        "sample_bundles": [
+            "docs/audit/m79/repro.samples/01_fuellung_mkv_standard.json",
+            "docs/audit/m79/repro.samples/02_multi_endo_fuellung.json",
+            "docs/audit/m79/repro.samples/03_fuellung_gkv_direct.json",
+            "docs/audit/m79/repro.samples/04_endo_wl_missing.json",
+            "docs/audit/m79/repro.samples/05_fuellung_milchzahn.json"
+        ]
+    },
+    "parity_fields_checked": [
+        "state_sequence",
+        "question_ids",
+        "chips_list",
+        "blocked_chips_list",
+        "fullText",
+        "billingRefs"
+    ],
+    "headless_e2e_status": {
+        "status": "NOT_RUN",
+        "reason": "E2E tests require Playwright browser setup, not part of Vitest run",
+        "command_to_run": "npx playwright test src/docudent/v10/__e2e__/*.spec.ts --headless"
+    },
+    "cli_replay_status": {
+        "status": "SCRIPT_READY",
+        "command": "npx tsx scripts/audit/replayV10Bundle.ts --bundle docs/audit/m79/repro.samples/01_fuellung_mkv_standard.json",
+        "note": "Replay requires runV10 ESM import resolution, may need build step"
+    },
+    "wiring_graph_evidence": {
+        "file": "docs/audit/m79/wiring.graph.json",
+        "nodes": 22,
+        "edges": 21,
+        "ui_controls": 10
+    },
+    "blockers_for_full_parity": [
+        "Playwright browser binaries need download: npx playwright install",
+        "Production build needed for headless preview: npm run build && npm run preview",
+        "CLI replay ESM resolution needs vite/tsx config alignment"
+    ],
+    "proof_of_methodology": {
+        "trace_collector": {
+            "file": "src/docudent/v10/trace/traceCollector.ts",
+            "status": "EXISTS"
+        },
+        "wiring_graph": {
+            "file": "docs/audit/m79/wiring.graph.json",
+            "status": "GENERATED"
+        },
+        "repro_schema": {
+            "file": "docs/audit/m79/repro.schema.json",
+            "status": "GENERATED"
+        },
+        "repro_samples": {
+            "count": 5,
+            "status": "GENERATED"
+        }
+    }
+}

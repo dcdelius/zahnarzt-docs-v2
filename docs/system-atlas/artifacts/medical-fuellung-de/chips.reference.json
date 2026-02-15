@@ -1,0 +1,88 @@
+{
+    "version": "1.0.0",
+    "description": "GP2: Chips Reference for Füllung - NO BILLING CODES",
+    "chips": [
+        {
+            "id": "fuellung_material_composite",
+            "name": "Kompositfüllung",
+            "category": "material",
+            "precedence": [
+                "dictation",
+                "askback",
+                "default"
+            ],
+            "conflicts_with": [
+                "fuellung_material_giz"
+            ]
+        },
+        {
+            "id": "fuellung_material_giz",
+            "name": "Glasionomerfüllung",
+            "category": "material",
+            "precedence": [
+                "dictation",
+                "askback"
+            ],
+            "conflicts_with": [
+                "fuellung_material_composite"
+            ]
+        },
+        {
+            "id": "kofferdam",
+            "name": "Kofferdam",
+            "category": "isolation",
+            "precedence": [
+                "dictation",
+                "askback",
+                "settings"
+            ],
+            "conflicts_with": [
+                "fuellung_isolation_relative"
+            ]
+        },
+        {
+            "id": "fuellung_isolation_relative",
+            "name": "Relative Trockenlegung",
+            "category": "isolation",
+            "precedence": [
+                "askback",
+                "default"
+            ],
+            "conflicts_with": [
+                "kofferdam"
+            ]
+        },
+        {
+            "id": "fuellung_adhesivtechnik",
+            "name": "Adhäsivtechnik",
+            "category": "technique",
+            "precedence": [
+                "dictation",
+                "askback"
+            ],
+            "note": "Required for composite restorations"
+        },
+        {
+            "id": "fuellung_schichttechnik",
+            "name": "Mehrschichttechnik",
+            "category": "technique",
+            "precedence": [
+                "dictation",
+                "askback",
+                "context"
+            ],
+            "note": "For medium/large cavities"
+        },
+        {
+            "id": "fuellung_pulpaschutz",
+            "name": "Pulpaschutz/Unterfüllung",
+            "category": "protection",
+            "precedence": [
+                "dictation",
+                "askback"
+            ],
+            "note": "For deep caries near pulp"
+        }
+    ],
+    "note": "Chips are mapped to BillingRefs via unified.json, NEVER hardcoded"
+}

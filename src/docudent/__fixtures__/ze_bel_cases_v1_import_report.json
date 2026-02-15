@@ -1,0 +1,137 @@
+{
+    "meta": {
+        "importer": "Docudent Importer v1",
+        "timestamp": "2025-12-14T12:00:13.462Z",
+        "sourceFile": "ze_bel_cases_v1.json"
+    },
+    "summary": {
+        "pass": 12,
+        "fail": 0,
+        "total": 12,
+        "missingBelCodesUnique": [],
+        "invalidFzFormatUnique": [],
+        "invalidBelFormatUnique": []
+    },
+    "perCase": [
+        {
+            "id": "CASE_01",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_02",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_03",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_04",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_05",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_06",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_07",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_08",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_09",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_10",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_11",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        },
+        {
+            "id": "CASE_12",
+            "status": "PASS",
+            "missingBelCodes": [],
+            "invalidFzCodes": [],
+            "invalidBelCodes": [],
+            "notes": [
+                "All codes validated against SSOTs"
+            ]
+        }
+    ]
+}

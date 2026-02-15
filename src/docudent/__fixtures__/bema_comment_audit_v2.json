@@ -1,0 +1,427 @@
+{
+  "meta": {
+    "timestamp": "2025-12-14T21:19:10.118Z",
+    "sourceDir": "/Users/david/dokumaster-ui/src/docudent/BEMA"
+  },
+  "discovery": {
+    "totalHtmlFiles": 167,
+    "bemaCardsLoaded": 151,
+    "suspiciousFiles": []
+  },
+  "codeDetection": {
+    "byPattern": {
+      "Ä-codes": {
+        "count": 1,
+        "samples": [
+          "BEMA_Ä1"
+        ]
+      }
+    },
+    "suspiciousCodes": [],
+    "samples": [
+      {
+        "detectedCode": "BEL_0010",
+        "evidenceText": "Vorbereitende Maßnahmen",
+        "filePath": "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377058%27%5D.html"
+      },
+      {
+        "detectedCode": "BEL_0230",
+        "evidenceText": "Intraorale Stützstiftregistrierung zur Feststellung der Zentrallage",
+        "filePath": "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377130%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_01",
+        "evidenceText": "Die Evaluation der parodontalen Befunde im Rahmen der systematischen Parodontiti",
+        "filePath": "PAR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377096%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_03",
+        "evidenceText": "Zuschlag für Leistungen außerhalb der Sprechstunde, bei Nacht (20 Uhr bis 8 Uhr)",
+        "filePath": "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376928%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_10",
+        "evidenceText": "Sensibilitätsprüfung der Zähne",
+        "filePath": "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376936%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_100",
+        "evidenceText": "Maßnahmen zum Wiederherstellen der Funktion oder zur Erweiterung einer abnehmbar",
+        "filePath": "ZE/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377136%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_101",
+        "evidenceText": "Maßnahmen zur Weichteilstützung zum Ausgleich oder zum Verschluss von Defekten i",
+        "filePath": "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377042%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_103",
+        "evidenceText": "Eingliedern einer temporären Verschlussprothese nach Resektion oder bei großen D",
+        "filePath": "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377044%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_104",
+        "evidenceText": "Eingliedern einer Prothese oder Epithese zum Verschluss extraoraler Weichteildef",
+        "filePath": "KBR/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377045%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_105",
+        "evidenceText": "Entfernen harter Zahnbeläge bei Versicherten, die einem Pflegegrad nach § 15 SGB",
+        "filePath": "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376982%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_106",
+        "evidenceText": "Lokale medikamentöse Behandlung von Schleimhauterkrankungen, Aufbringung von auf",
+        "filePath": "KCH/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273376979%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_107",
+        "evidenceText": "Fluoridlackanwendung zur Zahnschmelzhärtung",
+        "filePath": "IP:FU/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377018%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_12",
+        "evidenceText": "Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störend",
+        "filePath": "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377059%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_122",
+        "evidenceText": "Kieferorthopädische Verrichtungen als alleinige Leistung",
+        "filePath": "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377067%27%5D.html"
+      },
+      {
+        "detectedCode": "BEMA_123",
+        "evidenceText": "Kieferorthopädische Maßnahmen mit herausnehmbaren Geräten zum Offenhalten von Lü",
+        "filePath": "KFO/kommentar.bema-goz.de_asgard_asgard-bema-xopp_text.xav_tf=xaver.component.Text_0&start=%2F%2F_%5B%40node_id%3D%273377068%27%5D.html"
+      }
+    ]
+  },
+  "sectionClassification": {
+    "distribution": {
+      "unknown": 13451,
+      "materials": 697,
+      "billing": 2016,
+      "limits": 180,
+      "definition": 411,
+      "plausibility": 333,
+      "notes": 172
+    },
+    "anomalies": []
+  },
+  "ruleExtraction": {
+    "totalBemaRules": 305,
+    "byType": {
+      "requires": 54,
+      "contra": 117,
+      "compat": 110,
+      "maxCount": 24
+    },
+    "unknownPercent": 0,
+    "samples": {
+      "requires": [
+        {
+          "ruleId": "CR_BEMA_0078db76",
+          "code": "BEMA_46",
+          "evidenceSnippet": "es zweckmäßig sein, die modellierende Osteotomie zusammen mit einer Sulkusplastik nach den BEMA-Nrn.",
+          "sourceCardId": "BEMA:BEMA_46:857451048be5"
+        },
+        {
+          "ruleId": "CR_BEMA_0202b663",
+          "code": "BEMA_25",
+          "evidenceSnippet": "olche besonders hochwertige Verdrängungstechniken in Kombination mit den entsprechenden Materialien ",
+          "sourceCardId": "BEMA:BEMA_25:ec01e9f2f92f"
+        },
+        {
+          "ruleId": "CR_BEMA_0b202493",
+          "code": "BEMA_98",
+          "evidenceSnippet": "ird in einem gemeinsamen elektronischen Datensatz zusammen mit der XML-Datei des Fremdlabors an die ",
+          "sourceCardId": "BEMA:BEMA_98:4a87472b033f"
+        },
+        {
+          "ruleId": "CR_BEMA_104b94b5",
+          "code": "BEMA_41",
+          "evidenceSnippet": "sche Maßnahmen).Die Infiltrationsanästhesie zählt zusammen mit der Leitungsanästhesie zu den Injekti",
+          "sourceCardId": "BEMA:BEMA_41:5cea6dfc7a78"
+        },
+        {
+          "ruleId": "CR_BEMA_1096dd49",
+          "code": "BEMA_96",
+          "evidenceSnippet": "ird in einem gemeinsamen elektronischen Datensatz zusammen mit der XML-Datei des Fremdlabors an die ",
+          "sourceCardId": "BEMA:BEMA_96:3ac04b516e90"
+        },
+        {
+          "ruleId": "CR_BEMA_153d257b",
+          "code": "BEMA_181",
+          "evidenceSnippet": "einem Telekonsilium muss der Konsiliar(zahn-)arzt gemeinsam mit der konsiliarischen Beurteilung mind",
+          "sourceCardId": "BEMA:BEMA_181:1be89748b201"
+        },
+        {
+          "ruleId": "CR_BEMA_2526cff4",
+          "code": "BEMA_182",
+          "evidenceSnippet": "einem Telekonsilium muss der Konsiliar(zahn-)arzt gemeinsam mit der konsiliarischen Beurteilung mind",
+          "sourceCardId": "BEMA:BEMA_182:8703c83b9af2"
+        },
+        {
+          "ruleId": "CR_BEMA_2625fa31",
+          "code": "BEMA_100",
+          "evidenceSnippet": "ird in einem gemeinsamen elektronischen Datensatz zusammen mit der XML-Datei des Fremdlabors an die ",
+          "sourceCardId": "BEMA:BEMA_100:9b46e0bd61ea"
+        },
+        {
+          "ruleId": "CR_BEMA_37570984",
+          "code": "BEMA_7",
+          "evidenceSnippet": "d der beiden Ausfertigungen des Behandlungsplanes zusammen mit den Befundunterlagen an den von der K",
+          "sourceCardId": "BEMA:BEMA_7:625b1e50dc23"
+        },
+        {
+          "ruleId": "CR_BEMA_393dc2aa",
+          "code": "BEMA_105",
+          "evidenceSnippet": "m Wirtschaftlichkeitsgebot. Letztlich muss es ihm zusammen mit seinem Patienten überlassen werden, d",
+          "sourceCardId": "BEMA:BEMA_105:2eb8852da2e7"
+        }
+      ],
+      "contra": [
+        {
+          "ruleId": "CR_BEMA_01062d57",
+          "code": "BEMA_8",
+          "evidenceSnippet": "23 für das Entfernen des provisorischen Schutzes nicht abrechnungsfähig. Dies gilt nicht für das Ent",
+          "sourceCardId": "BEMA:BEMA_8:18d1af598878"
+        },
+        {
+          "ruleId": "CR_BEMA_0369f56a",
+          "code": "BEMA_106",
+          "evidenceSnippet": "tfernen harter Zahnbeläge (BEMA-Nr. 107)– u. v. m.Nicht abrechnungsfähig– je Behandlungseinheit (je ",
+          "sourceCardId": "BEMA:BEMA_106:0909bf872d28"
+        },
+        {
+          "ruleId": "CR_BEMA_045247cd",
+          "code": "BEMA_5",
+          "evidenceSnippet": "en an den von der Krankenkasse benannten GutachterNicht abrechnungsfähig– für Aufnahmen des Mundinne",
+          "sourceCardId": "BEMA:BEMA_5:9a8f0c703a10"
+        },
+        {
+          "ruleId": "CR_BEMA_08c8e6d1",
+          "code": "BEMA_55",
+          "evidenceSnippet": "– Materialkosten für Composite pro InterdentalraumNicht abrechnungsfähig– für andere Schienungsarten",
+          "sourceCardId": "BEMA:BEMA_55:a42ea1e6af31"
+        },
+        {
+          "ruleId": "CR_BEMA_0ab281c3",
+          "code": "BEMA_31",
+          "evidenceSnippet": "ichtungen/Verbandsplatte (GOÄ-Nr. 2700) – u. v. m.Nicht abrechnungsfähig– für Reposition eines Zahne",
+          "sourceCardId": "BEMA:BEMA_31:206635d82033"
+        },
+        {
+          "ruleId": "CR_BEMA_0cb8a367",
+          "code": "BEMA_28",
+          "evidenceSnippet": "er Füllen (BEMA-Nr. 12, z. B. Kofferdam)– u. v. m.Nicht abrechnungsfähig– je Wurzelkanal– wenn Trepa",
+          "sourceCardId": "BEMA:BEMA_28:bb0890e30aa5"
+        },
+        {
+          "ruleId": "CR_BEMA_0d0c7fe7",
+          "code": "BEMA_01",
+          "evidenceSnippet": "rwurzeligem Zahn (BEMA-Nrn. UPT e und f)– u. v. m.Nicht abrechnungsfähig– ohne genehmigten PAR-Behan",
+          "sourceCardId": "BEMA:BEMA_01:003b93281390"
+        },
+        {
+          "ruleId": "CR_BEMA_0d1004c9",
+          "code": "BEMA_7",
+          "evidenceSnippet": "nigen Maßnahmen nach Nrn. 20 und 100 in der Regel nicht abrechnungsfähig.5. Leistungen nach der Nr. ",
+          "sourceCardId": "BEMA:BEMA_7:b95eee1d5635"
+        },
+        {
+          "ruleId": "CR_BEMA_0e05022a",
+          "code": "BEMA_105",
+          "evidenceSnippet": "tfernen harter Zahnbeläge (BEMA-Nr. 107)– u. v. m.Nicht abrechnungsfähig– für das Entfernen von Zahn",
+          "sourceCardId": "BEMA:BEMA_105:63e700d6ecbd"
+        },
+        {
+          "ruleId": "CR_BEMA_13c21f78",
+          "code": "BEMA_4",
+          "evidenceSnippet": "K 9)– z. B. Nahterneuerung (BEMA-Nr. 46)– u. v. m.Nicht abrechnungsfähig– im Zusammenhang mit– konse",
+          "sourceCardId": "BEMA:BEMA_4:7ec014dda743"
+        }
+      ],
+      "compat": [
+        {
+          "ruleId": "CR_BEMA_01482823",
+          "code": "BEMA_105",
+          "evidenceSnippet": "r Zähne – mehrfach je Parodontium– sitzungsgleich neben Chirurgischer Therapie (BEMA-Nr. CPT)– sitzu",
+          "sourceCardId": "BEMA:BEMA_105:6e8ab779ff87"
+        },
+        {
+          "ruleId": "CR_BEMA_056ee086",
+          "code": "BEMA_57",
+          "evidenceSnippet": "eistungslegende der BEMA-Nr. 61 stellt klar, dass neben der Korrektur des Lippenbändchens, welches g",
+          "sourceCardId": "BEMA:BEMA_57:00dd4ca637fc"
+        },
+        {
+          "ruleId": "CR_BEMA_06bbbd60",
+          "code": "BEMA_01",
+          "evidenceSnippet": "isinterne Dokumentation bleibt davon unberührt.3. Neben einer Früherkennungsuntersuchung nach Nr. FU",
+          "sourceCardId": "BEMA:BEMA_01:17bbe14859fd"
+        },
+        {
+          "ruleId": "CR_BEMA_08ae86ee",
+          "code": "BEMA_58",
+          "evidenceSnippet": "n Parodontitis und anderen Parodontalerkrankungen neben Leistungen nach den Nrn. AIT, CPT abrechenba",
+          "sourceCardId": "BEMA:BEMA_58:db989744d78f"
+        },
+        {
+          "ruleId": "CR_BEMA_0abf6683",
+          "code": "BEMA_151",
+          "evidenceSnippet": "ohngemeinschaft, stationäre Pflegeeinrichtung).3. Neben den Leistungen nach Nrn. 152 a und 152 b sin",
+          "sourceCardId": "BEMA:BEMA_151:64e8deb3bb99"
+        },
+        {
+          "ruleId": "CR_BEMA_0c669b71",
+          "code": "BEMA_01",
+          "evidenceSnippet": "hne mit einer fluoridhaltigen Zahnpasta putzen. Daneben soll grundsätzlich fluoridhaltiges Speisesal",
+          "sourceCardId": "BEMA:BEMA_01:101cd4a51347"
+        },
+        {
+          "ruleId": "CR_BEMA_0f633f49",
+          "code": "BEMA_36",
+          "evidenceSnippet": "r. 38:1. …2. Eine Leistung nach Nr. 38 kann nicht neben Leistungen nach den Nrn. 36, 37 oder 46 abge",
+          "sourceCardId": "BEMA:BEMA_36:2d4abeed1e4c"
+        },
+        {
+          "ruleId": "CR_BEMA_11a5cb99",
+          "code": "BEMA_23",
+          "evidenceSnippet": "einem Restzahnbestand von bis zu drei Zähnen ist neben der parodontalen Ausgangssituation der Restzä",
+          "sourceCardId": "BEMA:BEMA_23:b3e0cc863dd3"
+        },
+        {
+          "ruleId": "CR_BEMA_1274e174",
+          "code": "BEMA_126",
+          "evidenceSnippet": "Polieren.Leistungen nach Nrn. 126 bis 131 können neben Leistungen nach Nrn. 119 und/oder 120 abgerec",
+          "sourceCardId": "BEMA:BEMA_126:80b03ea044c3"
+        },
+        {
+          "ruleId": "CR_BEMA_16259d35",
+          "code": "BEMA_57",
+          "evidenceSnippet": "elben Sitzung nicht für dasselbe Operationsgebiet neben einer anderen chirurgischen Leistung abrechn",
+          "sourceCardId": "BEMA:BEMA_57:778acf2157b1"
+        }
+      ],
+      "maxCount": [
+        {
+          "ruleId": "CR_BEMA_0e4445af",
+          "code": "BEMA_7",
+          "evidenceSnippet": "kombinierte Behandlung, sind vier Modellanalysen maximal abrechenbar. Diese Einschränkungen gelten n",
+          "sourceCardId": "BEMA:BEMA_7:83df68906b88"
+        },
+        {
+          "ruleId": "CR_BEMA_19875bf4",
+          "code": "BEMA_95",
+          "evidenceSnippet": "m BEMA:Zu Nr. 95:Eine Leistung nach Nr. 95 d kann höchstens dreimal je Brücke abgerechnet werden.Ric",
+          "sourceCardId": "BEMA:BEMA_95:f612866de3b7"
+        },
+        {
+          "ruleId": "CR_BEMA_1e79e69f",
+          "code": "BEMA_8",
+          "evidenceSnippet": "terhalb des Kinns in Richtung Oberkiefermitte bei maximal nach hinten gebeugter Kopfhaltung.Der UK-A",
+          "sourceCardId": "BEMA:BEMA_8:f68ae8424381"
+        },
+        {
+          "ruleId": "CR_BEMA_2214cc4e",
+          "code": "BEMA_8",
+          "evidenceSnippet": "ichen Sitzungen ist vertraglich grundsätzlich auf maximal drei beschränkt. Durch den Einsatz moderne",
+          "sourceCardId": "BEMA:BEMA_8:382bd48165ab"
+        },
+        {
+          "ruleId": "CR_BEMA_3559cb16",
+          "code": "BEMA_92",
+          "evidenceSnippet": "hierfür die Befunde der zahnbegrenzten Lücken von höchstens vier fehlenden Zähnen je Kiefer bei anso",
+          "sourceCardId": "BEMA:BEMA_92:7bb2768475c6"
+        },
+        {
+          "ruleId": "CR_BEMA_3e05b633",
+          "code": "BEMA_8c",
+          "evidenceSnippet": "durch die 6er)handelt.Eine Frühbehandlung ist für höchstens 6 Quartale arechenbar und muss bei der A",
+          "sourceCardId": "BEMA:BEMA_8c:38233d79427c"
+        },
+        {
+          "ruleId": "CR_BEMA_48dad387",
+          "code": "BEMA_01",
+          "evidenceSnippet": "durch die 6er)handelt.Eine Frühbehandlung ist für höchstens 6 Quartale abrechenbar und muss bei der ",
+          "sourceCardId": "BEMA:BEMA_01:485ba57ff525"
+        },
+        {
+          "ruleId": "CR_BEMA_49d2e3b9",
+          "code": "BEMA_01",
+          "evidenceSnippet": "ggf. mittels Antrag verlängerbar um in der Regel maximal sechs Monate (Prüfverfahren durch die Krank",
+          "sourceCardId": "BEMA:BEMA_01:7ae447eb2047"
+        },
+        {
+          "ruleId": "CR_BEMA_5134eddb",
+          "code": "BEMA_01",
+          "evidenceSnippet": "der Frequenzbeschränkung der Leistung in der GOZ höchstens zweimal vereinbarungsfähig. Die Berechnun",
+          "sourceCardId": "BEMA:BEMA_01:0d92c455ca2d"
+        },
+        {
+          "ruleId": "CR_BEMA_6347bda2",
+          "code": "BEMA_5",
+          "evidenceSnippet": "im Verlauf einer kieferorthopädischen Behandlung höchstens zweimal, in begründeten Ausnahmefällen dr",
+          "sourceCardId": "BEMA:BEMA_5:a584fe39e235"
+        }
+      ]
+    }
+  },
+  "goldenCodeRegression": {
+    "BEMA_01": {
+      "found": true,
+      "sectionsCount": 88,
+      "rulesCount": 38,
+      "topSnippet": "Die Evaluation der parodontalen Befunde im Rahmen der systematischen Parodontitistherapie erfolgt gr",
+      "tags": [
+        "Material",
+        "Krone"
+      ]
+    },
+    "BEMA_12": {
+      "found": true,
+      "sectionsCount": 20,
+      "rulesCount": 9,
+      "topSnippet": "Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, An",
+      "tags": [
+        "Material",
+        "KFO"
+      ]
+    },
+    "BEMA_46": {
+      "found": true,
+      "sectionsCount": 104,
+      "rulesCount": 7,
+      "topSnippet": "Nachbehandlung nach chirurgischem Eingriff oder Tamponieren oder dergleichen, je Kieferhälfte oder F",
+      "tags": [
+        "Material"
+      ]
+    },
+    "BEMA_100": {
+      "found": true,
+      "sectionsCount": 278,
+      "rulesCount": 3,
+      "topSnippet": "Maßnahmen zum Wiederherstellen der Funktion oder zur Erweiterung einer abnehmbaren Prothese",
+      "tags": [
+        "Kombination",
+        "Material",
+        "Prothese",
+        "Krone",
+        "Reparatur",
+        "Modell"
+      ]
+    },
+    "BEMA_Ä1": {
+      "found": true,
+      "sectionsCount": 80,
+      "rulesCount": 3,
+      "topSnippet": "Untersuchung zur Versorgung mit einer Unterkieferprotrusionsschiene einschließlich Beratung",
+      "tags": [
+        "Mengenbegrenzung",
+        "Kombination",
+        "Material"
+      ]
+    }
+  }
+}

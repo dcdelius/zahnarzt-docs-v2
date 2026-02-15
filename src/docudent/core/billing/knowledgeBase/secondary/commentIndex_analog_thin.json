@@ -1,0 +1,1289 @@
+{
+  "meta": {
+    "version": "v1",
+    "generatedAt": "2025-12-15T09:13:07.560Z",
+    "count": 57,
+    "sourceFile": "commentIndex_analog.json"
+  },
+  "codes": {
+    "ANALOG_Aufbiss_01": {
+      "id": "ANALOG:ANALOG_Aufbiss_01:eedc999ff350",
+      "hasAnalogHint": true,
+      "title": "Strahlenschutzschiene, Schleimhautretraktor",
+      "chapter": "H. Eingliederung von Aufbissbehelfen und Schienen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_1030",
+        "GOZ_1020",
+        "GOZ_7000",
+        "GOZ_6200",
+        "GOZ_6160"
+      ],
+      "topSnippets": [
+        "Durch die Anfertigung eines Schleimhautretraktors bzw. Weichsgewebsretraktors wird ein Abstand zwischen Metall und dem Weichgewebe geschaffen, der zu einer e...",
+        "Zum 01.01.2012 trat die erste Verordnung zur Änderung der Gebührenordnung für Zahnärzte (GOZ) in Kraft. Bei Strahlenschutzschienen oder Strahlenapplikatoren ...",
+        "Derzeit sind Strahlenschutzschienen im Heilmittelverzeichnis für gesetzliche Krankenkassen des Gesundheitsministeriums nicht gelistet. Das heißt: es besteht ..."
+      ]
+    },
+    "ANALOG_Aufbiss_02": {
+      "id": "ANALOG:ANALOG_Aufbiss_02:689fa76b7b6d",
+      "hasAnalogHint": true,
+      "title": "Indikatorschiene Parafunktionen",
+      "chapter": "H. Eingliederung von Aufbissbehelfen und Schienen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_7010",
+        "GOZ_7000"
+      ],
+      "topSnippets": [
+        "Die Behandlung mit Okklusionsschienen (okklusal adjustiert, vgl. GOZ-Nr. 7010) sowie anderen Aufbissbehelfen (nicht okklusal adjustiert, vgl. GOZ-Nr. 7000) i...",
+        "Eine andere Form von „Schiene“ bzw. Aufbissbehelf stellen spezielle Indikatorschienen dar. Diese wurden entwickelt, um die Intensität und Verteilung von Zahn...",
+        "Indikatorschienen zur Visualisierung parafunktioneller Aktivitäten werden auf zuvor herzustellenden Zahnmodellen zahntechnisch gefertigt (in der Regel im Tie..."
+      ]
+    },
+    "ANALOG_Chir_03": {
+      "id": "ANALOG:ANALOG_Chir_03:dd1d0e514278",
+      "hasAnalogHint": true,
+      "title": "Trepanation eines Knochens",
+      "chapter": "D. Chirurgische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Dieser Drainageeffekt ist deshalb besonders wichtig, weil es bei einer Entzündung im Knochen (sogenannte Osteomyelitis = Knochenmarksentzündung) durch die ph...",
+        "Zum 1. Januar 2012 trat die erste Verordnung zur Änderung der Gebührenordnung für Zahnärzte (GOZ) in Kraft. Die ehemals unter der GOZ 1988 beschriebene Knoch..."
+      ]
+    },
+    "ANALOG_Chir_04": {
+      "id": "ANALOG:ANALOG_Chir_04:08efd8675b4d",
+      "hasAnalogHint": true,
+      "title": "Zystostomie",
+      "chapter": "D. Chirurgische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Material"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Die die Zahnheilkunde betreffenden Zysten wachsen im Kieferknochen oder in den Weichgeweben des Gesichtes oder des Halses. Die Knochenzysten treten häufiger ...",
+        "Zysten sind aufgrund ihres Wachstumsverhaltens, der Unmöglichkeit einer definitiven radiologisch-klinischen Diagnose (z. B. kann sich hinter einer radiologis...",
+        "Das der Zystostomie zugrunde liegende Behandlungsprinzip ist, die Zyste zu einer Nebenhöhle der Mund- bzw. Nasen- bzw. Kieferhöhle zu machen. Bei der Zystost..."
+      ]
+    },
+    "ANALOG_Chir_05": {
+      "id": "ANALOG:ANALOG_Chir_05:4243ec42e925",
+      "hasAnalogHint": true,
+      "title": "Neurolyse",
+      "chapter": "D. Chirurgische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Material",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_3240",
+        "GOZ_3100"
+      ],
+      "topSnippets": [
+        "Nervlösungen sind u. a. erforderlich, wenn chirurgische Eingriffe am Unterkieferknochen in Bereichen durchgeführt werden, in denen der Unterkiefernerv (Nervu...",
+        "Zum 01.01.2012 trat die erste Verordnung zur Änderung der Gebührenordnung für Zahnärzte (GOZ) in Kraft. Nach § 6 Abs. 2 sind die Vergütungen nach den Vorschr...",
+        "Die Berechnung der Neurolyse nach der GOÄ-Nr. 2583 ist nur als selbstständige Leistung berechenbar, nicht im örtlichen Zusammenhang mit einem anderen chirurg..."
+      ]
+    },
+    "ANALOG_Chir_06": {
+      "id": "ANALOG:ANALOG_Chir_06:ceb094eec767",
+      "hasAnalogHint": true,
+      "title": "Wurzelsegment-Replantation und Extrusion",
+      "chapter": "D. Chirurgische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_0010",
+        "GOZ_0070",
+        "GOZ_0040",
+        "GOZ_3020"
+      ],
+      "topSnippets": [
+        "Unter Extrusion versteht man die Bewegung des Zahnes in Richtung der Kauebene. Dabei kann es sich zum einen um einen erhaltungswürdigen Zahn handeln, der dau...",
+        "Die Extrusion mittels eines reimplantierten Wurzelsegments ist nur sinnvoll, wenn sie in einen konsequenten systematisierten Behandlungsablauf integriert ist...",
+        "Die Zahnsegmentpräparation für das Reimplantat stellt eine neue Behandlungsmethode dar. Sie ist in der GOZ 2012 nicht beschrieben. Demnach ist sie über das A..."
+      ]
+    },
+    "ANALOG_Chir_Analgosedierung": {
+      "id": "ANALOG:ANALOG_Chir_Analgosedierung:ddf78a044d84",
+      "hasAnalogHint": true,
+      "title": "Analgosedierung",
+      "chapter": "D. Chirurgische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_6050"
+      ],
+      "topSnippets": [
+        "Die Analgosedierung stellt eine solche medikamentöse Beruhigung (Sedierung) bzw. Dämpfung des Bewusstseins in Kombination mit einer Schmerzausschaltung (Anal...",
+        "„Entscheidender Unterschied zur klassischen Vollnarkose/Allgemeinanästhesie ist, dass beim Patienten eine Spontanatmung gegeben ist und der Patient auf äußer...",
+        "Eine komplette Schmerzausschaltung kann im Rahmen der Analgosedierung mit den hierfür dosismäßig zur Verfügung stehenden zentralen Analgetika aufgrund der at..."
+      ]
+    },
+    "ANALOG_Chir_Autologe_Blutkonzentrate": {
+      "id": "ANALOG:ANALOG_Chir_Autologe_Blutkonzentrate:d343180e373c",
+      "hasAnalogHint": true,
+      "title": "Autologe Blutkonzentrate",
+      "chapter": "D. Chirurgische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_9100"
+      ],
+      "topSnippets": [
+        "Bei den in der Zahnmedizin und der Mund-, Kiefer- und Gesichtschirurgie eingesetzten Blutkonzentraten handelt es sich um autologe Thrombozytenkonzentrate (AT...",
+        "Zur Gruppe der Plasmakonzentrate gehören das Platelet-Rich Plasma (PRP) und das Plasma Rich in Growth Factors (PRGF). Das Blut für alle Plasmakonzentrate wir...",
+        "Das Platelet-Rich Fibrin (PRF) ist ein Fibrinkonzentrat und wurde 2001 als sogenanntes L-PRF eingeführt. Das venöse Blut wird in einem sterilen Glasröhrchen ..."
+      ]
+    },
+    "ANALOG_Chir_Wurzelamputation": {
+      "id": "ANALOG:ANALOG_Chir_Wurzelamputation:5cf813fc0554",
+      "hasAnalogHint": true,
+      "title": "Wurzelamputation(en)",
+      "chapter": "D. Chirurgische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_3130",
+        "GOZ_3110",
+        "GOZ_0500",
+        "GOZ_0510"
+      ],
+      "topSnippets": [
+        "Neben dieser Zahnerhaltungsmaßnahme gibt es jedoch auch die zahnerhaltende Therapie mittels einer Prämolarisierung. Dabei wird nach der Hemisektion gerade ke...",
+        "Eine solche Prämolarisierung oder aber auch die Wurzelamputation eines dreiwurzeligen Zahnes (typischerweise der Molaren des Oberkiefers) oder dessen Trisekt...",
+        "Abb. WA-1: Darstellung der wegen einer Klasse-III-Furkation von bukkal nach distal nicht erhaltungswürdigen distovestibulären Wurzel 16"
+      ]
+    },
+    "ANALOG_FAL_01": {
+      "id": "ANALOG:ANALOG_FAL_01:2b064ecac441",
+      "hasAnalogHint": true,
+      "title": "CMD-Screening-Index",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_0010",
+        "GOZ_8000",
+        "GOZ_4005",
+        "GOZ_4000"
+      ],
+      "topSnippets": [
+        "Ein CMD-Screening stellt insofern eine Basisdiagnostik dar, im Sinne des Konzeptes der Bundeszahnärztekammer (BZÄK), der Kassenzahnärztlichen Bundesvereinigu...",
+        "Bei der eingehenden Untersuchung nach der GOZ-Nr. 0010 (Feststellung von Zahn-, Mund- und Kiefererkrankungen) fallen dysfunktionelle Störungen nicht vorherse...",
+        "Für das Screening auf cranio-mandibuläre Dysfunktionen haben verschiedene Autoren Vorschläge veröffentlicht, darunter Krogh-Poulson und Jäger. Ahlers und Jak..."
+      ]
+    },
+    "ANALOG_FAL_02": {
+      "id": "ANALOG:ANALOG_FAL_02:5591cadb49e4",
+      "hasAnalogHint": true,
+      "title": "Manuelle Strukturanalyse",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_8000"
+      ],
+      "topSnippets": [
+        "Die zahnärztliche „klinische Funktionsanalyse“ ist eine Untersuchung, bei der mehrere Einzeltests nacheinander durchgeführt werden, um auf Grundlage der Befu...",
+        "In Ergänzung zur klassischen klinischen Funktionsanalyse sind mittlerweile weitere Untersuchungstechniken entwickelt und wissenschaftlich erfolgreich validie...",
+        "Von der manuellen Strukturanalyse inhaltlich abzugrenzen sind mehrere Leistungen, denen gemeinsam ist, dass sie am Ober- und Unterkiefer einen Handgriff ther..."
+      ]
+    },
+    "ANALOG_FAL_03": {
+      "id": "ANALOG:ANALOG_FAL_03:e2c8b0761d38",
+      "hasAnalogHint": true,
+      "title": "Tests zur Aufdeckung orthopädischer Co-Faktoren",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Ein typischer Mechanismus der Einwirkung besteht darin, dass eine Insuffizienz der tiefen stabilisierenden Muskulatur zu einer suboptimalen Körperhaltung füh...",
+        "Tests zur Aufdeckung orthopädischer Co-Faktoren sind in der GOZ 2012 nicht beschrieben. Demnach ist die Berechnung über das Analogieverfahren nach § 6 Abs. 1..."
+      ]
+    },
+    "ANALOG_FAL_04": {
+      "id": "ANALOG:ANALOG_FAL_04:e50365bfe2ab",
+      "hasAnalogHint": true,
+      "title": "Tests zur Aufdeckung psychosomatischer Co-Faktoren",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Den Hintergrund bildet die Erkenntnis, dass psychosomatische Co-Faktoren an der Entstehung cranio-mandibulärer Dysfunktionen beteiligt sind. Ein Mechanismus ...",
+        "Tests zur Aufdeckung psychosomatischer Co-Faktoren sind in der GOZ 2012 nicht beschrieben. Demnach ist die Berechnung über das Analogieverfahren nach § 6 Abs..."
+      ]
+    },
+    "ANALOG_FAL_05": {
+      "id": "ANALOG:ANALOG_FAL_05:b65b3ac8664f",
+      "hasAnalogHint": true,
+      "title": "Neuromuskuläre Funktionsanalysen (Elektrophysiologische Messungen der Muskelaktivität)",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_8000",
+        "GOZ_8010"
+      ],
+      "topSnippets": [
+        "Neurophysiologisch spiegeln alle drei genannten Leistungen (Neuromuskuläre Funktionsanalysen) unterschiedliche Verfahren wider. Allen gemeinsam ist, dass sie...",
+        "Bei der einkanaligen neuromuskulären Funktionsanalyse wird mittels eines hierfür speziell entwickelten kompakten Messgerätes summarisch die Muskelaktivität d...",
+        "Die neuromuskuläre Funktionsanalyse mit individueller Justage und konditionierender elektrischer Stimulation stellt eine neue Kombination eines elektrophysio..."
+      ]
+    },
+    "ANALOG_FAL_06": {
+      "id": "ANALOG:ANALOG_FAL_06:093b3967369d",
+      "hasAnalogHint": true,
+      "title": "Kondylenpositionsanalyse",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Material"
+      ],
+      "referencedCodes": [
+        "GOZ_8010",
+        "GOZ_8065"
+      ],
+      "topSnippets": [
+        "Voraussetzungen für die Kondylenpositionsanalyse sind die Verfügbarkeit entsprechender Kondylenpositionsmessinstrumente, die dimensionsgetreue Umsetzbarkeit ...",
+        "Die Kondylenpositionsanalyse stellt unabhängig von den verwendeten Messinstrumenten ein Verfahren dar, welches die anderen zahnärztlich-funktionsdiagnostisch...",
+        "„Die Negativvoraussetzung der Analogberechnung, die Nichtaufnahme der jeweiligen Leistung in das Gebührenverzeichnis, liegt vor. Bei der computergesteuerten ..."
+      ]
+    },
+    "ANALOG_FAL_07": {
+      "id": "ANALOG:ANALOG_FAL_07:a86b1e5d7f28",
+      "hasAnalogHint": true,
+      "title": "Bimaxilläre Positionierungsschienen",
+      "chapter": "H. Eingliederung von Aufbissbehelfen und Schienen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_5170",
+        "GOZ_8010",
+        "GOZ_7000",
+        "GOZ_7010",
+        "GOZ_6200"
+      ],
+      "topSnippets": [
+        "Es existieren unterschiedliche Ursachen des Schnarchens (Rhonchopathie), wie z. B. die Erschlaffung der Muskulatur im Rachenbereich, im Bereich der Zunge und...",
+        "Medizinisch zu differenzieren von der habituellen Rhonchopathie ist die Schlafapnoe (obstruktives Schlafapnoe-Syndrom = OSAS, Apnoe = griechisch für Atemstil...",
+        "Zur Behandlung der habituellen Rhonchopathie und der obstruktiven Schlafapnoe (OSAS) sind bimaxilläre Protrusionsschienen wissenschaftlich anerkannt. So exis..."
+      ]
+    },
+    "ANALOG_FAL_08": {
+      "id": "ANALOG:ANALOG_FAL_08:1293e9a0e7e2",
+      "hasAnalogHint": true,
+      "title": "Registrieren von Unterkieferbewegungen mittels elektronischer Aufzeichnung für virtuelle Kiefermodelle in einem virtuellen Artikulator",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog"
+      ],
+      "referencedCodes": [
+        "GOZ_8065"
+      ],
+      "topSnippets": [
+        "Angesichts der fortschreitenden Entwicklung der CAD-/CAM-Technologie kommt es allerdings in zunehmendem Maße vor, dass Restaurationen nicht manuell und analo...",
+        "Da hier die Leistung jedoch für virtuelle Kiefermodelle in einem virtuellen Artikulator verwendet wird, kommt die Leistungsbeschreibung der ansonsten passend..."
+      ]
+    },
+    "ANALOG_FAL_09": {
+      "id": "ANALOG:ANALOG_FAL_09:498ab4235dc9",
+      "hasAnalogHint": true,
+      "title": "Metrische (quantitative) Analyse von Kiefergelenk-Magnetresonanztomogrammen",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Material",
+        "Prothetik"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Zur bildgebenden Darstellung der Kiefergelenke ist – neben auf Röntgenstrahlen beruhenden Untersuchungsverfahren zur Darstellung der Knochenstruktur – das Ma...",
+        "Der Arzt für bildgebende Diagnostik befundet die MRT-Aufnahmen, beschreibt dabei die zur Darstellung kommenden Gewebe und gibt insbesondere Hinweise auf Anze...",
+        "Jenseits dieser qualitativ-deskriptiven Bewertung durch die Fachärzte für bildgebende Diagnostik ist im Zusammenhang mit Funktionsstörungen des Kauorgans auc..."
+      ]
+    },
+    "ANALOG_FAL_10": {
+      "id": "ANALOG:ANALOG_FAL_10:7cf91fe93f77",
+      "hasAnalogHint": true,
+      "title": "Gesichtsebenenbezügliche Übertragung in den Artikulator/Kausimulator",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Parodontologie"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Diese Übertragungstechniken nehmen jeweils arbiträr oder kinematisch im posterioren Bereich auf die Positionen der Scharnierachse und im vorderen Bereich auf...",
+        "Erkennbar ist, dass diese Verfahren trotz aller Unterschiede in technischen Details übereinstimmend darauf abzielen, entweder",
+        "Die Leistung unterscheidet sich insofern technisch eindeutig von der gelenk- oder scharnierachsbezogenen Übertragung der Kieferposition und ergänzt diese, je..."
+      ]
+    },
+    "ANALOG_FAL_11": {
+      "id": "ANALOG:ANALOG_FAL_11:df393f9fa398",
+      "hasAnalogHint": true,
+      "title": "Repositionierung in therapeutische Position/Kondylenpositionseinstellung mit stationärem System",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Der Hintergrund ist folgender: Stellt sich im Rahmen der Kondylenpositionsanalyse (vgl. die entsprechende Analogleistung) im Kontext mit anderen funktionsana...",
+        "Die Repositionierung in die therapeutische Position/Kondylenpositionseinstellung mit stationärem System stellt ein Verfahren dar, welches die zahnärztlich-fu..."
+      ]
+    },
+    "ANALOG_FAL_12": {
+      "id": "ANALOG:ANALOG_FAL_12:c095a8426fac",
+      "hasAnalogHint": true,
+      "title": "Funktionstherapeutischer Aufbau individueller Front-, Eck- oder Seitenzahnführung im direkten Verfahren am Patienten oder im indirekten Verfahren",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_2270",
+        "GOZ_2197",
+        "GOZ_8090",
+        "GOZ_7080"
+      ],
+      "topSnippets": [
+        "In der Funktionstherapie sollen nach den Stellungnahmen wissenschaftlicher Fachgesellschaften (DGFDT/DGZMK/DGPRO/DGKFO/AGKi/DGMKG sowie in den USA seitens de...",
+        "Beim Aufbau von Funktionsflächen im direkten Verfahren am Patienten ist der schrittweise direkte Aufbau einer Anatomie aus plastischem Restaurationsmaterial ...",
+        "Die Indikation besteht in der restaurativen Abschlussbehandlung nach erfolgreicher Funktionstherapie bei cranio-mandibulären Dysfunktionen, wenn nach erfolgr..."
+      ]
+    },
+    "ANALOG_FAL_13": {
+      "id": "ANALOG:ANALOG_FAL_13:74e5d6c769e1",
+      "hasAnalogHint": true,
+      "title": "Entfernung des Aufbaus von Funktionsflächen zu diagnostischen Zwecken",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_8090",
+        "GOZ_7070",
+        "GOZ_2290",
+        "GOZ_2300"
+      ],
+      "topSnippets": [
+        "Ziel der Leistung ist es, in der Folgezeit zu prüfen, ob der Patient eine entsprechende Änderung der Zahn- bzw. Funktionsform in diesem Bereich zur Korrektur...",
+        "Im Leistungstext der GOZ-Nr. 8090 ist die Entfernung der diagnostischen Funktionsfläche nicht enthalten. Auch findet sich unter der GOZ-Nr. 8090 oder an ande..."
+      ]
+    },
+    "ANALOG_FAL_14": {
+      "id": "ANALOG:ANALOG_FAL_14:199e02993855",
+      "hasAnalogHint": true,
+      "title": "Fotos zur funktionsanalytischen Diagnostik medizinisch notwendig",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_6000"
+      ],
+      "topSnippets": [
+        "Dienen Fotos allerdings nicht der Befunddokumentation, sondern stellen sie einen Schritt zu einer genaueren oder erweiterten Diagnostik dar, so sind sie wie ...",
+        "Indikationen für einen Fotostatus in der Funktionsdiagnostik bestehen z. B. Gerade in der Funktionsanalyse ist der zu erstellende Fotostatus besonders aufwen...",
+        "Die intraorale Fotodiagnostik und die extraorale Fotodiagnostik sind – mit Ausnahme der Profil- und Enfacefotografie mit kieferorthopädischer Auswertung nach..."
+      ]
+    },
+    "ANALOG_FAL_15": {
+      "id": "ANALOG:ANALOG_FAL_15:f09f802a0cb9",
+      "hasAnalogHint": true,
+      "title": "Bewegungsanalyse des Unterkiefers",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Material"
+      ],
+      "referencedCodes": [
+        "GOZ_8060",
+        "GOZ_8065"
+      ],
+      "topSnippets": [
+        "In der neuen GOZ 2012 ist die Aufzeichnung der Unterkieferbewegung erstmals unterschieden nach den hierfür eingesetzten Instrumenten. Die GOZ unterscheidet d...",
+        "Jenseits der Leistungen nach GOZ-Nrn. 8060 und 8065 zur Einstellung der gemessenen Werte im Artikulator wurde mittlerweile ein vertieftes Verständnis für das...",
+        "Die Bewegungsanalyse des Unterkiefers stellt eine sehr spezielle, erst seit der Verfügbarkeit entsprechender elektronischer Instrumente und Auswertungsstrate..."
+      ]
+    },
+    "ANALOG_FAL_16": {
+      "id": "ANALOG:ANALOG_FAL_16:a7fc380e8ef2",
+      "hasAnalogHint": true,
+      "title": "Zahnverschleiß-Screening und Zahnverschleiß-Status",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_4005",
+        "GOZ_4000",
+        "GOZ_8000",
+        "GOZ_0100",
+        "GOZ_0010"
+      ],
+      "topSnippets": [
+        "Die Ursachen für diese Zahnhartsubstanzverluste sind teilweise chemisch – hier kommt es durch Säureeinfluss zu Erosionen (1). Diese sind Folge verstärkter Sä...",
+        "In geringem Maße sind die durch die o. g. Faktoren verursachten Zahnhartsubstanzverluste bzw. der Zahnverschleiß (engl. „tooth wear“) normale Begleiterschein...",
+        "Generell geht die Tendenz heute dahin, primär Patienten zu identifizieren, die hinsichtlich eines vermehrten Substanzverlustes auffällig sind (Screening), di..."
+      ]
+    },
+    "ANALOG_FAL_Analog_BSI": {
+      "id": "ANALOG:ANALOG_FAL_Analog_BSI:172172dbb372",
+      "hasAnalogHint": true,
+      "title": "Bruxismus-Screening-Index (BSI)",
+      "chapter": "J. Funktionsanalytische und funktionstherapeutische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_8000",
+        "GOZ_8010",
+        "GOZ_4005",
+        "GOZ_0010"
+      ],
+      "topSnippets": [
+        "Bruxismus wurde lange Zeit als Teil der cranio-mandibulären Dysfunktion (CMD) angesehen. So intergierte das von der DGFDT 2001 preisgekrönte Diagnoseschema v...",
+        "Die neue Definition der CMD (cranio-mandibulären Dysfunktion) durch die DGFDT hingegen unterschiedet sich davon komplett: Cranio-mandibuläre Dysfunktion (CMD...",
+        "Die DGFDT hat daher gemeinsam mit der DGZMK und ca. drei Dutzend Fachgesellschaften 2019 die erste AWMF-Leitlinie „Diagnostik und Behandlung des Bruxismus“ v..."
+      ]
+    },
+    "ANALOG_Impl_02": {
+      "id": "ANALOG:ANALOG_Impl_02:00b7834187d6",
+      "hasAnalogHint": true,
+      "title": "Periimplantitis-Therapie",
+      "chapter": "K. Implantologische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prophylaxe",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_4070",
+        "GOZ_4055",
+        "GOZ_1040",
+        "GOZ_4025"
+      ],
+      "topSnippets": [
+        "Sie entwickelt sich über eine primäre Infektion der Weichgewebe (Mucositis = Schleimhautentzündung) und führt erst in der zweiten Stufe zu Knochenabbau am Im...",
+        "Bei den Risikofaktoren sind die allgemeinen und die lokalen zu unterscheiden. Genetische Disposition und iatrogene Faktoren werden als die ätiologischen Haup...",
+        "Für die Periimplantitis-Therapie wird ein dreiphasiges Behandlungsschema bestehend aus Initialtherapie, chirurgisch resektiver Phase oder alternativ augmenta..."
+      ]
+    },
+    "ANALOG_Impl_03": {
+      "id": "ANALOG:ANALOG_Impl_03:fb6031b5ced3",
+      "hasAnalogHint": true,
+      "title": "Entfernung und Wiederbefestigung von Aufbauelementen",
+      "chapter": "K. Implantologische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prophylaxe",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_9050",
+        "GOZ_9060",
+        "GOZ_2290",
+        "GOZ_2310"
+      ],
+      "topSnippets": [
+        "Diese Aufbau- oder Verbindungselemente – auch als Sekundärteile bezeichnet – dienen wiederum der Aufnahme des Zahnersatzes (der Suprakonstruktion). Sie könne...",
+        "Zum 01.01.2012 trat die erste Verordnung zur Änderung der Gebührenordnung für Zahnärzte (GOZ) in Kraft. Bei dem reinen Abnehmen und Wiederbefestigen von dens..."
+      ]
+    },
+    "ANALOG_Impl_Augmentation": {
+      "id": "ANALOG:ANALOG_Impl_Augmentation:49d81cd5f2b4",
+      "hasAnalogHint": true,
+      "title": "Virtuelle Implantation und Augmentation",
+      "chapter": "K. Implantologische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Material",
+        "Prothetik"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Dasselbe gilt für die dreidimensionale augmentative Planung im Sinne einer „virtuellen Augmentation“. Eine „virtuelle Implantation oder Augmentation“ kann au...",
+        "Die virtuelle Implantation bzw. Augmentation ist in der GOZ 2012 und der GOÄ 1996 nicht beschrieben. Demnach ist die Berechnung über das Analogieverfahren na..."
+      ]
+    },
+    "ANALOG_KFO_01": {
+      "id": "ANALOG:ANALOG_KFO_01:fd4afc478697",
+      "hasAnalogHint": true,
+      "title": "Fotos zur KFO-Diagnostik medizinisch notwendig",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_6000",
+        "GOZ_6190"
+      ],
+      "topSnippets": [
+        "Dienen Fotos allerdings nicht der Befunddokumentation, sondern stellen sie einen Schritt zu einer genaueren oder erweiterten Diagnostik dar, so sind sie wie ...",
+        "In der Kieferorthopädie dienen Fotografien schon seit den 1920er-Jahren des letzten Jahrhunderts der Analyse des Aufbaus des Gesichtsschädels. Durch Arbeiten...",
+        "Die intraorale Fotodiagnostik und die extraorale Fotodiagnostik sind – mit Ausnahme der Profil- und Enfacefotografie mit kieferorthopädischer Auswertung nach..."
+      ]
+    },
+    "ANALOG_KFO_03": {
+      "id": "ANALOG:ANALOG_KFO_03:c17b295d791d",
+      "hasAnalogHint": true,
+      "title": "Ausgliedern einer intra-/extraoralen Verankerung",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_6160",
+        "GOZ_6120",
+        "GOZ_2290"
+      ],
+      "topSnippets": [
+        "Das Entfernen einer intra-/extraoralen Verankerung ist in der GOZ 2012 nicht beschrieben. Demnach ist die Berechnung über das Analogieverfahren nach § 6 Abs....",
+        "prinzipiell alle im Gebührenverzeichnis beschriebenen Leistungen als selbstständige zahnärztliche Leistungen in Betracht kommen und für die Frage, welche von...",
+        "Die Eingliederung – hier eines festsitzenden Lingualretainers – sei nicht im Sinne von § 4 Abs. 2 Satz 2 Alt. 1 GOZ Bestandteil einer mit den GOZ-Nrn. 6030 –..."
+      ]
+    },
+    "ANALOG_KFO_04": {
+      "id": "ANALOG:ANALOG_KFO_04:74fc681eacfa",
+      "hasAnalogHint": true,
+      "title": "Bracket-Positionierungsschablone",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_6100",
+        "GOZ_2000"
+      ],
+      "topSnippets": [
+        "Für den Patienten hat die indirekte Klebetechnik mehrere Vorteile: Die Platzierung der Brackets kann präziser erfolgen als durch die direkte Klebemethode unt...",
+        "Das Anlegen der Bracket-Positionierungsschablone ist in der GOZ 2012 nicht beschrieben. Demnach ist die Berechnung über das Analogieverfahren nach § 6 Abs. 1..."
+      ]
+    },
+    "ANALOG_KFO_05": {
+      "id": "ANALOG:ANALOG_KFO_05:73e68ca8785a",
+      "hasAnalogHint": true,
+      "title": "Virtuelle KFO-Planung",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_0065",
+        "GOZ_6100",
+        "GOZ_6150",
+        "GOZ_9020"
+      ],
+      "topSnippets": [
+        "Die Schritte im digitalen Workflow, die vergleichbar sind zum physisch-analogen Verfahren im zahntechnischen Labor, werden auch weiterhin nach § 9 GOZ berech...",
+        "Wie bei der zahntechnischen Herstellung von Setups oder von Geräten im Labor sind die entsprechenden virtuellen Verfahrensschritte im digitalen Workflow nach...",
+        "Beim Hiro-Verfahren (nach dem Japaner Toshiaki Hiro) werden daraufhin an den Zähnen dieses idealisierten Zahnbogens zungenseitig Brackets an einem geraden Vi..."
+      ]
+    },
+    "ANALOG_KFO_06": {
+      "id": "ANALOG:ANALOG_KFO_06:5548d82a90c6",
+      "hasAnalogHint": true,
+      "title": "Myofunktionelle Therapie",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_6190"
+      ],
+      "topSnippets": [
+        "Ein weiteres Ziel dieses ursächlichen (kausalen) kieferorthopädischen Behandlungsansatzes ist das Erreichen von harmonischeren, „besseren“ (weil das Wachstum...",
+        "Für diese Übungsdemonstrationen bei den myofunktionellen Übungen und das Training der Übungen unter regelmäßiger kieferorthopädischer Kontrolle hinsichtlich ...",
+        "extra- und intraorale diagnostische Fotos (vgl. eigene Ausführungen zu deren Analogberechnung) hinsichtlich des Behandlungserfolges der myofunktionellen Ther..."
+      ]
+    },
+    "ANALOG_KFO_08": {
+      "id": "ANALOG:ANALOG_KFO_08:f1b3c0a73bba",
+      "hasAnalogHint": true,
+      "title": "Fixretainer aus einem Stück, je Kiefer",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_6140",
+        "GOZ_2197",
+        "GOZ_6100"
+      ],
+      "topSnippets": [
+        "Kieferorthopädisch induzierte Zahnbewegungen werden durch langanhaltende leichte Kräfte gegen die Zähne erreicht. Die Zahnwurzeln werden in Kraftrichtung dur...",
+        "Bereits zu Beginn der aktiven Behandlung kann die Schienung von Zähnen in einer Zahngruppe erforderlich werden, um unerwünschte Zahnverschiebungen durch die ...",
+        "Gemäß dem Urteil des Bundesverwaltungsgerichts (BVerwG) vom 26.02.‍2021 (Az.: 5 C 7.19) zur Berechnung des festsitzenden Retainers erstatten die Beihilfestel..."
+      ]
+    },
+    "ANALOG_KFO_09": {
+      "id": "ANALOG:ANALOG_KFO_09:b9f5d930a807",
+      "hasAnalogHint": true,
+      "title": "Festsitzende Aufbisse zur Disklusion",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_8090",
+        "GOZ_2197"
+      ],
+      "topSnippets": [
+        "Festsitzende Aufbisse zur Disklusion der Zahnbögen, je Aufbiss",
+        "Frontal eingegliederte Aufbisse, z. B. Turbo-Bites oder der Jig, helfen bei der Reduktion des Overbite (vertikale Überlappung der Schneidezahngruppen) und si...",
+        "Das Eingliedern der oben beschriebenen festsitzenden Aufbisse ist in der GOZ 2012 nicht beschrieben. Da es sich um eine selbstständige zahnärztliche Leistung..."
+      ]
+    },
+    "ANALOG_KFO_10": {
+      "id": "ANALOG:ANALOG_KFO_10:48b06c91c8ad",
+      "hasAnalogHint": true,
+      "title": "Eingliederung Attachment auf TAD",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_6160",
+        "GOZ_0040",
+        "GOZ_5080"
+      ],
+      "topSnippets": [
+        "Eingliedern eines Attachments zur Aufnahme eines orthodontischen Hilfsmittels auf ein TAD (Transitoric Anchoring Device) Gaumenimplantat (Mini-)Pin",
+        "Bei der indirekten Verankerung sind die Kräfte der Reactio zwar gegen die Zähne gerichtet, jedoch sind diese fest über elastische oder starre Drähte an den i...",
+        "Die Eingliederung (Implantation) der TADs wird nach den Nummern aus dem Abschnitt K berechnet (GOZ-Nrn. 9020). Schon die Auswahl der Ankerschräubchen, ihre P..."
+      ]
+    },
+    "ANALOG_KFO_11": {
+      "id": "ANALOG:ANALOG_KFO_11:e76af676101c",
+      "hasAnalogHint": true,
+      "title": "Eingliederung Kunststoff zur Attachmentherstellung",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material"
+      ],
+      "referencedCodes": [
+        "GOZ_6100",
+        "GOZ_2197"
+      ],
+      "topSnippets": [
+        "Eingliedern von plastischem Kunststoff zur Herstellung von Attachments bei der Alignertechnik",
+        "Zum Herstellen und Befestigen der Attachments werden Klebeschablonen mit den negativen Formen der Erhebungen verwendet. Sie werden mit plastischem, zahnfarbe...",
+        "Das Eingliedern von Attachments bei der Alignertechnik ist in der GOZ 2012 nicht beschrieben. Demnach ist die Berechnung über das Analogieverfahren nach § 6 ..."
+      ]
+    },
+    "ANALOG_KFO_12": {
+      "id": "ANALOG:ANALOG_KFO_12:66382088f157",
+      "hasAnalogHint": true,
+      "title": "Ausgliederung von fixen KFO-Geräten",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_2290",
+        "GOZ_6150"
+      ],
+      "topSnippets": [
+        "Ausgliedern von orthodontischen Vollbögen, Verankerungsgeräten, Herbsthybriden, Hyraxschrauben u. a.",
+        "Auch festsitzende Verankerungsgeräte, Gaumennahterweiterungsapparaturen (z. B. mit einer Hyraxschraube), Herbsthybride u. a. stehen beim Ausgliedern unter Sp...",
+        "Die Leistungsbeschreibungen der GOZ-Nrn. 6140 bis 6160 beschreiben lediglich das Eingliedern der Drahtbögen, nicht jedoch deren Ausgliederung. Es handelt sic..."
+      ]
+    },
+    "ANALOG_KFO_ASR": {
+      "id": "ANALOG:ANALOG_KFO_ASR:f657082cf15f",
+      "hasAnalogHint": true,
+      "title": "ASR, Stripping, ARS",
+      "chapter": "G. Kieferorthopädische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_4030",
+        "GOZ_4040",
+        "GOZ_2200",
+        "GOZ_2230"
+      ],
+      "topSnippets": [
+        "Das Einkürzen der übertrieben stark ausgebildeten Ecken im Schneidekantenbereich ist hier ein probates Vorgehen. Nach der ASR sind Spalten zwischen den Zähne...",
+        "Die ASR wird von den privaten Krankenversicherern häufig mit Verweis auf das Urteil des Bundesverwaltungsgerichts (BVerwG) vom 26.02.‍2021 (Az.: 5 C 7.19) zu...",
+        "prinzipiell alle im Gebührenverzeichnis beschriebenen Leistungen als selbstständige zahnärztliche Leistungen in Betracht kommen und für die Frage, welche von..."
+      ]
+    },
+    "ANALOG_Kons_01": {
+      "id": "ANALOG:ANALOG_Kons_01:6e347b634254",
+      "hasAnalogHint": true,
+      "title": "Präendodontischer Aufbau",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_2040",
+        "GOZ_2197",
+        "GOZ_2180",
+        "GOZ_2170"
+      ],
+      "topSnippets": [
+        "Bis auf Gingivaniveau kariös zerstörte Zahnkrone Alleine das vorherige Exkavieren und Wiederherstellen der derart verloren gegangenen Zahnhartsubstanz kann i...",
+        "Die Abschirmung von bakteriellen Verunreinigungen des endodontischen Arbeitsfeldes wird heute allgemein gefordert. Sie ist häufig nur durch einen präendodont..."
+      ]
+    },
+    "ANALOG_Kons_02": {
+      "id": "ANALOG:ANALOG_Kons_02:5bb077d94a62",
+      "hasAnalogHint": true,
+      "title": "Endodontische Revisionsbehandlung",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_2390",
+        "GOZ_0110",
+        "GOZ_2410",
+        "GOZ_2440"
+      ],
+      "topSnippets": [
+        "Entfernung einer bereits vorhandenen Wurzelfüllung – die Revisionsbehandlung",
+        "Wörtlich übersetzt bedeutet Re-Vision das Wieder-Anschauen einer Sache. Der Begriff, der sich z. B. auch in der Rechtsprechung wiederfindet, bedeutet allgeme...",
+        "Es liegt in der Natur der Sache, dass während der Revisionsbehandlung wiederum Befunde zu Tage gebracht werden, die sich durch die Vordiagnostik weder röntge..."
+      ]
+    },
+    "ANALOG_Kons_03": {
+      "id": "ANALOG:ANALOG_Kons_03:21c7fd7769b5",
+      "hasAnalogHint": true,
+      "title": "Entfernung abgebrochener Wurzelkanalinstrumente",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_2360",
+        "GOZ_2040",
+        "GOZ_2410",
+        "GOZ_0110"
+      ],
+      "topSnippets": [
+        "Endodontische Instrumente können durch Überbeanspruchung, Ermüdung oder auch Materialfehler brechen, so dass mehr oder weniger große Fragmente dieser Feilen ...",
+        "Eine Wurzelbehandlung stellt den Versuch dar, einen stark angegriffenen Zahn vor der Extraktion zu bewahren. Die Erfolgsrate weist je nach Ausgangssituation ...",
+        "Die Vorgehensweise bei der Entfernung eines abgebrochenen Kanalinstruments orientiert sich grundsätzlich an den allgemeinen Prinzipien einer endodontischen B..."
+      ]
+    },
+    "ANALOG_Kons_04": {
+      "id": "ANALOG:ANALOG_Kons_04:330f2722fd11",
+      "hasAnalogHint": true,
+      "title": "Kariesinfiltration mikroinvasiv",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_2000",
+        "GOZ_1020",
+        "GOZ_2040"
+      ],
+      "topSnippets": [
+        "Die Entstehung einer Karies verläuft nicht kontinuierlich und progredient, vielmehr ist sie – abhängig von unterschiedlichsten Faktoren – in der Regel gepräg...",
+        "Als invasive Verfahren müssen alle Versorgungsformen gelten, für deren Verankerung am Zahn Zahnhartsubstanz geopfert werden muss (z. B. Amalgamfüllungen). Ab...",
+        "Das Prinzip der Kariesinfiltration beruht darauf, dass das Fortschreiten der Kariesentwicklung, die den ICDAS-Code 4 nicht überschritten hat (Dentinbeteiligu..."
+      ]
+    },
+    "ANALOG_Kons_05": {
+      "id": "ANALOG:ANALOG_Kons_05:0bbd1f17ad66",
+      "hasAnalogHint": true,
+      "title": "Verschluss einer Wurzelperforation",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_0110",
+        "GOZ_2060",
+        "GOZ_2160",
+        "GOZ_2440"
+      ],
+      "topSnippets": [
+        "Die Entwicklung und Einführung neuer Materialien und Hilfsmittel in der Endodontie (vgl. z. B. GOZ-Nr. 0110) in den vergangenen 25 Jahren machen heute Zähne ...",
+        "Die Defektdeckung einer Perforation mit MTA (Mineral-Tri-Oxid-Aggregat) stellt heute die erfolgversprechendste Therapieoption dar, da MTA im Gegensatz zu and...",
+        "Der Verschluss einer Wurzelperforation im Rahmen einer endodontischen Behandlung stellt eine sehr besondere, erst seit der Verfügbarkeit spezieller intrakana..."
+      ]
+    },
+    "ANALOG_Kons_06": {
+      "id": "ANALOG:ANALOG_Kons_06:fc701d5b34b4",
+      "hasAnalogHint": true,
+      "title": "Intrakoronale/intrakanaläre Diagnostik (IKD) mikrodimensional",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_2400",
+        "GOZ_0110",
+        "GOZ_2440",
+        "GOZ_9000"
+      ],
+      "topSnippets": [
+        "Die intrakoronale Diagnostik erfolgt vor Beginn einer Wurzelkanalbehandlung. Ihr geht eine spezielle Anamnese, eine klinische Erhebung der Befunde sowie eine...",
+        "Die intrakanaläre Diagnostik erfolgt zeitgleich zur Wurzelkanalaufbereitung. Eine intrakanaläre Diagnostik ist dann indiziert, um z. B. Risiken vor Abschluss...",
+        "Zum 01.01.2012 trat die erste Verordnung zur Änderung der Gebührenordnung für Zahnärzte (GOZ) in Kraft. Bei der intrakoronalen und intrakanalären Diagnostik ..."
+      ]
+    },
+    "ANALOG_Kons_07": {
+      "id": "ANALOG:ANALOG_Kons_07:9c107a6d6c81",
+      "hasAnalogHint": true,
+      "title": "Bleaching medizinisch notwendig",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prophylaxe",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_0010",
+        "GOZ_2040",
+        "GOZ_1020"
+      ],
+      "topSnippets": [
+        "Zum Einsatz kommen Präparate mit Wasserstoffperoxid oder Wasserstoffperoxid abspaltenden Substanzen. Das H2O2-Molekül ist so klein, dass es leicht in tiefere...",
+        "Unter externen (extrinsischen) Zahnverfärbungen sind Auflagerungen von unterschiedlichen farbgebenden Substanzen auf der Zahnoberfläche zu verstehen. Diese V...",
+        "Abzugrenzen von den externen Zahnverfärbungen sind intrinsische Zahnverfärbungen, bei denen es sich nicht um Zahnbeläge handelt, da diese Zahnverfärbungen in..."
+      ]
+    },
+    "ANALOG_Kons_08": {
+      "id": "ANALOG:ANALOG_Kons_08:3fca78236290",
+      "hasAnalogHint": true,
+      "title": "Endodontische Laserablation/Laserdekontamination",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_0120",
+        "GOZ_2410"
+      ],
+      "topSnippets": [
+        "Mit den Arbeiten von Gutknecht et al. gelang letztendlich der wissenschaftliche Beweis für die Wirkweise und den Erfolg laserendodontischer Maßnahmen und für...",
+        "Zum 01.01.2012 trat die erste Verordnung zur Änderung der Gebührenordnung für Zahnärzte (GOZ) in Kraft. Die eigenständige Dekontamination und Desinfektion so...",
+        "Zum einen ablative Verfahren, die die Morphologie der Kanalinnenwand verändern und auf eine mechanische Blockade der problematischen Seitenkanälchen abzielen..."
+      ]
+    },
+    "ANALOG_Kons_Analog_Apex": {
+      "id": "ANALOG:ANALOG_Kons_Analog_Apex:1da4225d32a7",
+      "hasAnalogHint": true,
+      "title": "Apexifikation",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Endodontie",
+        "Konservierend",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_2440",
+        "GOZ_2060",
+        "GOZ_3230"
+      ],
+      "topSnippets": [
+        "Der Verschluss einer Wurzelperforation im Rahmen einer endodontischen Behandlung stellt eine sehr besondere, erst seit der Verfügbarkeit spezieller intrakana...",
+        "Unter einer Apexifikation (therapeutischen Bildung einer Wurzelspitze) wird eine endodontische Therapieform verstanden, bei der ein apikal offener Wurzelkana...",
+        "Durch die Apexifikation wird eine natürliche (Calciumhydroxid) oder künstliche Hartsubstanzbarriere (MTA) an der Wurzelspitze erzeugt.Würde eine solche Barri..."
+      ]
+    },
+    "ANALOG_Kons_Analog_LAI": {
+      "id": "ANALOG:ANALOG_Kons_Analog_LAI:8b7f33b4184f",
+      "hasAnalogHint": true,
+      "title": "Lasergestützte Aktivierung von Spüllösungen (LAI)",
+      "chapter": "C. Konservierende Leistungen",
+      "tags": [
+        "Analog",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie"
+      ],
+      "referencedCodes": [
+        "GOZ_2410",
+        "GOZ_2420"
+      ],
+      "topSnippets": [
+        "Wichtig ist hierbei das Absorptionsspektrum des jeweiligen Spülmediums. Das bedeutet: Je besser die Absorption der Laserstrahlung durch ein bestimmtes Medium...",
+        "Die LAI bzw. PIPS ist in der GOZ von 2012 nicht beschrieben. Die Berechnung ist über das Analogieverfahren nach § 6 Abs. 1 anzuwenden. Es handelt sich um ein...",
+        "Jaramillo D, Ordinola-Zapata R, Bramante CM, Di Vito E: Biofilm removal by 6 % sodium hypochlorite activated by different irrigation techniques, Int Endod J,..."
+      ]
+    },
+    "ANALOG_Paro_01": {
+      "id": "ANALOG:ANALOG_Paro_01:32f00e80299e",
+      "hasAnalogHint": true,
+      "title": "Desinfektion nichtdentaler oraler Strukturen im Rahmen der FMD",
+      "chapter": "E. Leistungen bei Erkrankungen der Mundschleimhaut und des Parodontiums",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Material",
+        "Parodontologie",
+        "Prophylaxe",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_4070",
+        "GOZ_4025",
+        "GOZ_1040"
+      ],
+      "topSnippets": [
+        "Quirynen konnte in Studien nachweisen, dass mit einem Scaling (vgl. GOZ-Nrn. 4070, 4075) innerhalb von 24 Stunden mit nicht nur der Desinfektion der Zahnflei...",
+        "Die Reinigung aller nichtdentalen oralen Strukturen nach einem spezifischen System wie von Quirynen beschrieben, also eine sogenannte Full Mouth Disinfection...",
+        "Abbürsten des Zungenrückens für eine Minute mit einem 1 %-igen Chlorhexidin-Gel,"
+      ]
+    },
+    "ANALOG_Paro_03": {
+      "id": "ANALOG:ANALOG_Paro_03:d0c0faeeb2d9",
+      "hasAnalogHint": true,
+      "title": "Konsentierte Analogleistungen der S3-leitliniengerechten Parodontaltherapie",
+      "chapter": "E. Leistungen bei Erkrankungen der Mundschleimhaut und des Parodontiums",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prophylaxe",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_1040",
+        "GOZ_8000",
+        "GOZ_4005",
+        "GOZ_2110",
+        "GOZ_3010"
+      ],
+      "topSnippets": [
+        "In der Einleitung dieser S3-Leitline wird Parodontitis definiert als multifaktorielle, chronisch entzündliche Erkrankung im Zusammenhang mit einem dysbiotisc...",
+        "Die Parodontalbeschlüsse mit den Nummern 54 bis 59 werden aufgrund deren grundsätzlicher Bedeutung für das Gebührenrecht und für die Parodontalbehandlung ein...",
+        "Der § 6 Abs. 1 GOZ „Gebühren für andere Leistungen“ lautet wie folgt: Als zu berücksichtigende Kriterien bei der Auswahl einer passenden Gebührennummer wird ..."
+      ]
+    },
+    "ANALOG_Paro_aPDT": {
+      "id": "ANALOG:ANALOG_Paro_aPDT:ff978c85e1bd",
+      "hasAnalogHint": true,
+      "title": "Antimikrobielle Photodynamische Therapie",
+      "chapter": "E. Leistungen bei Erkrankungen der Mundschleimhaut und des Parodontiums",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Endodontie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_4110"
+      ],
+      "topSnippets": [
+        "Diese Verfahren sind nicht zu verwechseln mit der antimikrobiellen Photodynamischen Therapie (aPDT), deren Wirkung nicht auf Zellen, sondern auf Bakterien zi...",
+        "In den letzten Jahren wurde eine Vielzahl von Systemen am Markt vorgestellt, die mit unterschiedlichen Photosensitizern und Lichtsystemen arbeiten. Für ein F...",
+        "Neben der klassischen aPDT wird auch die Photothermische Therapie (PTT) propagiert, bei der der eigentlichen photodynamischen Reaktion ein untergeordneter Ef..."
+      ]
+    },
+    "ANALOG_ZE_01": {
+      "id": "ANALOG:ANALOG_ZE_01:1bc9f6967e74",
+      "hasAnalogHint": true,
+      "title": "Hinweise auf prothetische Behandlungsmaßnahmen nach § 6 Abs. 1",
+      "chapter": "F. Prothetische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_5070",
+        "GOZ_5120",
+        "GOZ_5080",
+        "GOZ_5110"
+      ],
+      "topSnippets": [
+        "Im Bereich der Prothetik existiert ebenfalls eine Vielzahl von zahnärztlichen Behandlungsmaßnahmen, die nur nach § 6 Abs. 1 GOZ analog berechnet werden könne...",
+        "Wurzelkappe ohne Stiftverankerung",
+        "GOZ-Nrn. 5000 – 5040, siehe 1.1.6"
+      ]
+    },
+    "ANALOG_ZE_02": {
+      "id": "ANALOG:ANALOG_ZE_02:1cc0d5a35543",
+      "hasAnalogHint": true,
+      "title": "Extrahierter Zahn als Provisorium",
+      "chapter": "F. Prothetische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_5200",
+        "GOZ_5070",
+        "GOZ_2040"
+      ],
+      "topSnippets": [
+        "Die verloren gegangene bzw. extrahierte natürliche Zahnkrone wird dabei nach der Abtrennung der Zahnwurzel zum Provisorium umgearbeitet. Der umgearbeitete Za...",
+        "Zum 01.01.2012 trat die erste Verordnung zur Änderung der Gebührenordnung für Zahnärzte (GOZ) in Kraft. Bei der Umarbeitung eines extrahierten Zahnes zum Pro...",
+        "Die Materialkosten für die Befestigung eines extrahierten Zahnes (z. B. Kunststoff, Verstärkungsnetze oder -einlagen in den Kunststoff sowie das Mehrflaschen..."
+      ]
+    },
+    "ANALOG_ZE_03": {
+      "id": "ANALOG:ANALOG_ZE_03:75b331d85855",
+      "hasAnalogHint": true,
+      "title": "Mock-up",
+      "chapter": "F. Prothetische Leistungen",
+      "tags": [
+        "Analog",
+        "Chirurgie",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [],
+      "topSnippets": [
+        "Häufig wird das Mock-up für Zahnersatzsimulationen im Vorfeld der Implantatchirurgie im Rahmen des sogenannten „prosthetically driven implant placements“ not...",
+        "Zum 01.01.2012 trat die erste Verordnung zur Änderung der Gebührenordnung für Zahnärzte (GOZ) in Kraft. Die Anfertigung und probeweise Eingliederung eines Mo..."
+      ]
+    },
+    "ANALOG_ZE_Mesokonstruktion": {
+      "id": "ANALOG:ANALOG_ZE_Mesokonstruktion:5049018d82b0",
+      "hasAnalogHint": true,
+      "title": "Eingliederung einer Mesokonstruktion",
+      "chapter": "F. Prothetische Leistungen",
+      "tags": [
+        "Analog",
+        "Funktionsanalyse",
+        "Konservierend",
+        "Material",
+        "Parodontologie",
+        "Prothetik"
+      ],
+      "referencedCodes": [
+        "GOZ_2200",
+        "GOZ_9050",
+        "GOZ_5004",
+        "GOZ_2190"
+      ],
+      "topSnippets": [
+        "In der modernen Zahnheilkunde werden Implantate grundsätzlich nicht beschliffen. Auch die diesbezügliche Formulierung der Leistungslegende der GOZ-Nrn. 2200 ...",
+        "Die Eingliederung und der damit einhergehende prothetische Aufwand von individuellen Abutments und Mesokonstruktionen sind nicht in der GOZ 2012 berücksichti..."
+      ]
+    }
+  }
+}

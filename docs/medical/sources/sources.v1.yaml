@@ -1,0 +1,451 @@
+# Medical Knowledge Sources v1
+
+# ═══════════════════════════════════════════════════════════════
+# SSOT for medical knowledge references used in the medical layer.
+# Each rule/askback/chip with medical rationale MUST have sourceRef.
+# ═══════════════════════════════════════════════════════════════
+
+sources:
+  - id: dgzmk-2024-konservierende
+    title: "DGZMK S3-Leitlinie: Konservierende Zahnheilkunde"
+    type: web
+    url: "https://www.dgzmk.de/leitlinien"
+    retrievedAt: "2025-01-01"
+    versionInfo: "Stand 2024"
+    reliability: primary
+    notes: "Deutsche Gesellschaft für Zahn-, Mund- und Kieferheilkunde - offizielle Leitlinie"
+    anchors:
+      - anchorId: dgzmk-konserv-anesthesia
+        locator: "Abschnitt 4.x: Lokalanästhesie"
+        excerpt: "Reference anchor for anesthesia guidance in conservatory dentistry (exact wording to be verified)."
+        tags: [anesthesia, konservierend]
+
+      - anchorId: dgzmk-konserv-exkavation
+        locator: "Abschnitt 4.x: Exkavation"
+        excerpt: "Reference anchor for caries excavation guidance (exact wording to be verified)."
+        tags: [exkavation, konservierend]
+
+      - anchorId: dgzmk-konserv-percussion
+        locator: "Abschnitt 3.x: Perkussion"
+        excerpt: "Reference anchor for percussion findings (exact wording to be verified)."
+        tags: [perkussion, diagnostik]
+
+      - anchorId: dgzmk-konserv-vipr
+        locator: "Abschnitt 3.x: Vitalitätsprobe"
+        excerpt: "Reference anchor for vitality testing (exact wording to be verified)."
+        tags: [vipr, diagnostik]
+
+      - anchorId: dgzmk-konserv-caries-profunda
+        locator: "Abschnitt 4.3: Therapie der Caries profunda"
+        excerpt: "Bei pulpanaher Karies (Caries profunda) mit weniger als 2mm Restdentin ist eine indirekte Überkappung (Cp) mit Calciumhydroxid oder bioaktiven Materialien (MTA, Biodentine) indiziert."
+        tags: [caries-profunda, ueberkappung, cp, material]
+
+      - anchorId: dgzmk-konserv-pulp-capping-material
+        locator: "Abschnitt 4.3.2: Materialwahl"
+        excerpt: "Calciumhydroxid gilt als Standardmaterial für die indirekte Überkappung. MTA und Biodentine zeigen in Studien vergleichbare oder bessere Erfolgsraten."
+        tags: [ueberkappung-material, caoh2, mta, biodentine]
+
+      - anchorId: dgzmk-konserv-pulpitis-risk
+        locator: "Abschnitt 4.4: Aufklärung und Prognose"
+        excerpt: "Der Patient ist über das erhöhte Risiko einer Pulpabeteiligung bei tiefer Karies aufzuklären. Bei Symptomen (Beschwerden auf Kälte/Wärme, Spontanschmerz) ist eine Endodontie wahrscheinlich."
+        tags: [pulpitis-risk, aufklaerung, prognose]
+
+      - anchorId: dgzmk-konserv-hemostasis
+        locator: "Abschnitt 4.3.3: Blutstillung und Exkavation"
+        excerpt: "Bei Blutung während der Exkavation ist eine Blutstillung erforderlich. Relevante Blutung muss dokumentiert werden. Bei persistierender Blutung ist die Prognose für Cp eingeschränkt."
+        tags: [hemostasis, bleeding, exkavation, cp-prognose]
+
+      - anchorId: dgzmk-konserv-sensitivity
+        locator: "Abschnitt 5.2: Postoperative Hypersensibilität"
+        excerpt: "Postoperative Hypersensibilität nach Füllungstherapie kann auftreten. Bei anhaltender Überempfindlichkeit auf Kälte länger als 4 Wochen ist eine Kontrolle indiziert."
+        tags: [sensitivity, hypersensitivity, postoperative]
+
+  - id: bema-katalog-2025
+    title: "BEMA (KZBV) - Bewertungsmaßstab zahnärztlicher Leistungen"
+    type: pdf
+    url: "https://www.kzbv.de/wp-content/uploads/KZBV_BEMA_2026-01-01.pdf"
+    retrievedAt: "2026-02-15"
+    versionInfo: "BEMA 2026 (KZBV PDF, gültig ab 01.01.2026)"
+    reliability: primary
+    notes: "Offizieller Abrechnungskatalog für GKV-Patienten"
+    anchors:
+      - anchorId: bema-allgemein
+        locator: "Allgemeine Bestimmungen"
+        excerpt: "Reference anchor for general BEMA billing provisions (exact wording to be verified)."
+        tags: [billing, bema, allgemein]
+
+      - anchorId: bema-pos-12
+        locator: "Position 12"
+        excerpt: "Reference anchor for BEMA position 12 (exact wording to be verified)."
+        tags: [billing, bema]
+
+      - anchorId: bema-pos-13
+        locator: "Position 13"
+        excerpt: "Reference anchor for BEMA position 13 (exact wording to be verified)."
+        tags: [billing, bema]
+
+      - anchorId: bema-pos-31
+        locator: "Position 31"
+        excerpt: "Reference anchor for BEMA position 31 (exact wording to be verified)."
+        tags: [billing, bema, endo]
+
+      - anchorId: bema-pos-40
+        locator: "Position 40"
+        excerpt: "Reference anchor for BEMA position 40 (exact wording to be verified)."
+        tags: [billing, bema, anesthesia]
+
+      - anchorId: bema-pos-41a
+        locator: "Position 41a"
+        excerpt: "Reference anchor for BEMA position 41a (exact wording to be verified)."
+        tags: [billing, bema, anesthesia]
+
+      - anchorId: bema-pos-925a
+        locator: "Position Ä925a"
+        excerpt: "Reference anchor for BEMA Ä925a (exact wording to be verified)."
+        tags: [billing, bema, roentgen]
+
+      - anchorId: bema-pos-IP4
+        locator: "Position IP4"
+        excerpt: "Reference anchor for BEMA position IP4 (exact wording to be verified)."
+        tags: [billing, bema, pzr, prophylaxe]
+
+      - anchorId: bema-pos-25
+        locator: "Position 25: Cp - Indirekte Überkappung"
+        excerpt: "Überkappung pulpanaher Kavitäten nach Exkavation zur Erhaltung der Vitalität. Einschließlich Applikation des Überkappungsmaterials."
+        tags: [billing, bema, cp, ueberkappung]
+
+      - anchorId: bema-pos-26
+        locator: "Position 26: P - Direkte Überkappung"
+        excerpt: "Direkte Überkappung bei punktförmiger Pulpaeröffnung. Nur bei kleiner, iatrogener Eröffnung ohne Entzündungszeichen."
+        tags: [billing, bema, p, direkte-ueberkappung]
+
+      - anchorId: bema-pos-32
+        locator: "Position 32: Trepanation"
+        excerpt: "Eröffnung der Pulpakammer, ggf. Exstirpation der Kronenpulpa."
+        tags: [billing, bema, endo, trepanation]
+
+      - anchorId: bema-pos-33
+        locator: "Position 33: Aufbereitung je Kanal"
+        excerpt: "Aufbereitung eines Wurzelkanals einschließlich Längenbestimmung und Spülung."
+        tags: [billing, bema, endo, aufbereitung]
+
+      - anchorId: bema-pos-34
+        locator: "Position 34: Medikamentöse Einlage"
+        excerpt: "Einlage von medikamentösen Substanzen in den Wurzelkanal."
+        tags: [billing, bema, endo, einlage]
+
+      - anchorId: bema-pos-35
+        locator: "Position 35: Wurzelfüllung je Kanal"
+        excerpt: "Obturation eines Wurzelkanals mit Wurzelfüllmaterial."
+        tags: [billing, bema, endo, wurzelfuellung]
+
+      - anchorId: bema-pos-32-35
+        locator: "Positionen 32-35: Wurzelkanalbehandlung"
+        excerpt: "Positionen 32-35 bilden die Grundleistungen der Wurzelkanalbehandlung nach BEMA."
+        tags: [billing, bema, endo]
+
+  - id: goz-kommentar-bundeszahnaerztekammer
+    title: "GOZ-Kommentar der Bundeszahnärztekammer"
+    type: web
+    url: "https://www.bzaek.de/fuer-zahnaerzte/abrechnung/goz.html"
+    retrievedAt: "2025-01-01"
+    versionInfo: "Stand 2024"
+    reliability: primary
+    notes: "Offizieller Kommentar zur Gebührenordnung für Zahnärzte (PKV)"
+    anchors:
+      - anchorId: goz-0080
+        locator: "GOZ 0080"
+        excerpt: "Reference anchor for GOZ 0080 (exact wording to be verified)."
+        tags: [billing, goz]
+
+      - anchorId: goz-2197
+        locator: "GOZ 2197"
+        excerpt: "Reference anchor for GOZ 2197 (exact wording to be verified)."
+        tags: [billing, goz, mkv]
+
+      - anchorId: goz-2400
+        locator: "GOZ 2400"
+        excerpt: "Reference anchor for GOZ 2400 (exact wording to be verified)."
+        tags: [billing, goz, endo]
+
+      - anchorId: goz-2330
+        locator: "GOZ 2330: Indirekte Überkappung der Pulpa"
+        excerpt: "Indirekte Überkappung (Cp) bei pulpanaher Karies. Material muss dokumentiert werden. Analogberechnung bei Einsatz von MTA/Biodentine möglich."
+        tags: [billing, goz, cp, pkv]
+
+      - anchorId: goz-2340
+        locator: "GOZ 2340: Direkte Überkappung der Pulpa"
+        excerpt: "Direkte Überkappung (P) bei akzidenteller, punktförmiger Pulpaeröffnung. Nur bei vitaler, nicht entzündeter Pulpa."
+        tags: [billing, goz, p, pkv]
+
+  - id: dgendo-2020-leitlinie
+    title: "DGENDO Leitlinie Wurzelkanalbehandlung"
+    type: pdf
+    url: "https://www.dgendo.de/patienten/leitlinien"
+    retrievedAt: "2025-01-01"
+    versionInfo: "Stand 2020"
+    reliability: primary
+    notes: "Deutsche Gesellschaft für Endodontologie und Traumatologie"
+    anchors:
+      - anchorId: dgendo-indikation-endo
+        locator: "Abschnitt 2.1: Indikation zur Wurzelkanalbehandlung"
+        excerpt: "Eine Wurzelkanalbehandlung ist indiziert bei irreversibler Pulpitis, Pulpanekrose, apikaler Parodontitis oder bei Trauma mit Pulpabeteiligung."
+        tags: [endo, indikation, pulpitis, nekrose]
+
+  - id: dgzmk-endo-leitlinie-2022
+    title: "DGZMK S3-Leitlinie: Endodontie (Wurzelkanalbehandlung)"
+    type: web
+    url: "https://www.dgzmk.de/leitlinien"
+    retrievedAt: "2025-01-01"
+    versionInfo: "Stand 2022"
+    reliability: primary
+    notes: "DGZMK Endodontie guideline index (anchors to be verified)."
+    anchors:
+      - anchorId: dgzmk-endo-kofferdam
+        locator: "Abschnitt 3.1: Kofferdam"
+        excerpt: "Zur Infektionskontrolle und zum Schutz des Patienten ist die absolute Trockenlegung mittels Kofferdam Standard bei jeder Wurzelkanalbehandlung."
+        tags: [endo, kofferdam, isolation]
+
+      - anchorId: dgzmk-endo-wl
+        locator: "Abschnitt 3.3: Arbeitslängenbestimmung"
+        excerpt: "Die Bestimmung der Arbeitslänge erfolgt elektrometrisch (Apexlokator) oder röntgenologisch. Eine Kombination beider Methoden erhöht die Präzision."
+        tags: [endo, arbeitslange, apexlokator]
+
+      - anchorId: dgzmk-endo-irrigation
+        locator: "Abschnitt 3.4: Wurzelkanalspülung"
+        excerpt: "Die Spülung mit NaOCl (1-5%) ist essenziell zur Desinfektion. EDTA dient der Entfernung der Schmierschicht. Schall- oder Ultraschallaktivierung verbessert die Reinigungseffizienz."
+        tags: [endo, spulung, naocl, edta]
+
+      - anchorId: dgzmk-endo-medication
+        locator: "Abschnitt 3.5: Medikamentöse Einlage"
+        excerpt: "Calciumhydroxid ist das Mittel der Wahl für die medikamentöse Zwischeneinlage. Die Einwirkzeit sollte mindestens 7 Tage betragen."
+        tags: [endo, einlage, calciumhydroxid]
+
+      - anchorId: dgzmk-endo-obturation
+        locator: "Abschnitt 3.6: Wurzelfüllung"
+        excerpt: "Die Obturation erfolgt mit Guttapercha und Sealer. Warmfülltechniken (Thermo-plastisch) oder Lateralkondensation sind etablierte Verfahren."
+        tags: [endo, wurzelfullung, guttapercha, sealer]
+
+      - anchorId: dgzmk-endo-pulpitis
+        locator: "Abschnitt 2.1: Pulpitis irreversibilis"
+        excerpt: "Bei irreversibler Pulpitis ist die Vitalexstirpation indiziert. Charakteristisch sind spontane, anhaltende Schmerzen, verstärkt durch Wärme."
+        tags: [endo, pulpitis, diagnose]
+
+      - anchorId: dgzmk-endo-nekrose
+        locator: "Abschnitt 2.2: Pulpanekrose"
+        excerpt: "Die Pulpanekrose erfordert eine vollständige Wurzelkanalbehandlung. Der Zahn reagiert negativ auf Sensibilitätstests."
+        tags: [endo, nekrose, diagnose]
+
+      - anchorId: dgzmk-endo-pa
+        locator: "Abschnitt 2.3: Apikale Parodontitis"
+        excerpt: "Die apikale Parodontitis zeigt röntgenologisch eine periapikale Aufhellung. Percussion positiv, Sensibilitätstest negativ."
+        tags: [endo, pa, apikale-parodontitis]
+
+  - id: dgzmk-consensus
+    title: "DGZMK Konsensuspapiere (konservierend)"
+    type: web
+    url: "https://www.dgzmk.de/leitlinien"
+    retrievedAt: "2025-01-01"
+    versionInfo: "Stand 2024"
+    reliability: secondary
+    notes: "Konsensusdokumente für direkte Kompositrestaurationen und Begleitmaßnahmen."
+    anchors:
+      - anchorId: direct-composite
+        locator: "Konsensus: Direkte Kompositrestauration"
+        excerpt: "Reference anchor for direct composite protocol (exact wording to be verified)."
+        tags: [komposit, direkte-restauration]
+
+      - anchorId: adhesive-protocol
+        locator: "Konsensus: Adhäsivtechnik"
+        excerpt: "Reference anchor for adhesive protocol (exact wording to be verified)."
+        tags: [adhaesiv, komposit]
+
+      - anchorId: finishing-polish
+        locator: "Konsensus: Finishing/Politur"
+        excerpt: "Reference anchor for finishing and polishing guidance (exact wording to be verified)."
+        tags: [finishing, polish]
+
+      - anchorId: relative-isolation
+        locator: "Konsensus: Relative Isolation"
+        excerpt: "Reference anchor for relative isolation guidance (exact wording to be verified)."
+        tags: [isolation, relative]
+
+  - id: dgzmk-konserv
+    title: "DGZMK Konservierende Zahnheilkunde (Hinweise)"
+    type: web
+    url: "https://www.dgzmk.de/leitlinien"
+    retrievedAt: "2025-01-01"
+    versionInfo: "Stand 2024"
+    reliability: secondary
+    notes: "Kurzreferenzen zur tiefen Karies und Pulpanähe."
+    anchors:
+      - anchorId: deep-caries
+        locator: "Hinweis: Tiefe Karies"
+        excerpt: "Reference anchor for deep-caries management (exact wording to be verified)."
+        tags: [caries-profunda, pulpa]
+
+  - id: sgb-v-2025
+    title: "SGB V (2025) – §28 Abs. 2"
+    type: web
+    url: "https://www.gesetze-im-internet.de/sgb_5/"
+    retrievedAt: "2025-01-01"
+    versionInfo: "Stand 2025"
+    reliability: primary
+    notes: "Mehrkostenvereinbarung / Wahlleistungen im GKV-Kontext."
+    anchors:
+      - anchorId: sgb-v-28-abs-2
+        locator: "§28 Abs. 2"
+        excerpt: "Reference anchor for Mehrkostenvereinbarung (exact wording to be verified)."
+        tags: [sgb-v, mkv, gkv]
+
+  - id: sgb-v-paragraph-28
+    title: "SGB V – §28"
+    type: web
+    url: "https://www.gesetze-im-internet.de/sgb_5/"
+    retrievedAt: "2025-01-01"
+    versionInfo: "Stand 2025"
+    reliability: primary
+    notes: "Mehrkosten / Wahlleistungen im GKV-Kontext."
+    anchors:
+      - anchorId: sgb-v-28-2
+        locator: "§28 Abs. 2"
+        excerpt: "Reference anchor for Mehrkostenvereinbarung (exact wording to be verified)."
+        tags: [sgb-v, mkv, gkv]
+
+  - id: bgb-630f-documentation
+    title: "BGB – §630f Dokumentation der Behandlung"
+    type: web
+    url: "https://www.gesetze-im-internet.de/bgb/__630f.html"
+    retrievedAt: "2026-02-14"
+    versionInfo: "Stand bei Abruf 2026-02-14"
+    reliability: primary
+    notes: "Allgemeine rechtliche Dokumentationspflicht (Baseline für forensisch saubere Doku-Struktur)."
+    anchors:
+      - anchorId: bgb-630f-core
+        locator: "§630f Abs. 1"
+        excerpt: "Dokumentation der wesentlichen Maßnahmen und Ergebnisse in unmittelbarem Zusammenhang mit der Behandlung."
+        tags: [documentation, legal, bgb]
+      - anchorId: bgb-630f-corrections
+        locator: "§630f Abs. 1 (Korrekturen)"
+        excerpt: "Berichtigungen/Änderungen müssen erkennbar bleiben (ursprünglicher Inhalt + Zeitpunkt)."
+        tags: [documentation, legal, audit]
+
+  - id: bgb-630e-consent
+    title: "BGB – §630e Aufklärungspflichten"
+    type: web
+    url: "https://www.gesetze-im-internet.de/bgb/__630e.html"
+    retrievedAt: "2026-02-14"
+    versionInfo: "Stand bei Abruf 2026-02-14"
+    reliability: primary
+    notes: "Rechtliche Basis für Patientenaufklärung/Einwilligung (Inhalt, Zeitpunkt, Form) – wichtig für 'Aufklärung' als Disclosure-Facts-Contract."
+    anchors:
+      - anchorId: bgb-630e-core
+        locator: "§630e Abs. 1"
+        excerpt: "Aufklärung über Art, Umfang, Durchführung, zu erwartende Folgen/Risiken, Notwendigkeit/Dringlichkeit, Eignung/Erfolgsaussichten sowie Alternativen."
+        tags: [consent, disclosure, legal, bgb]
+
+  - id: kzvb-mkv-merkblatt-2026
+    title: "KZVB – Mehrkostenvereinbarung bei Zahnfüllungen (Merkblatt)"
+    type: pdf
+    url: "https://www.kzvb.de/fileadmin/user_upload/Abrechnung_Honorar/BEMA_GOZ_Formulare/Mehrkostenvereinbarung_bei_Zahnfuellungen_Merkblatt.pdf"
+    retrievedAt: "2026-02-14"
+    versionInfo: "Merkblatt (KZVB)"
+    reliability: primary
+    notes: "Praktische MKV-Vorgaben (schriftliche Vereinbarung vor Behandlung, Inhalte, Aushändigung dokumentieren)."
+    anchors:
+      - anchorId: mkv-before-treatment
+        locator: "Abschnitt: Vor Behandlungsbeginn"
+        excerpt: "Vereinbarung muss vor der Behandlung geschlossen werden; Patient erhält eine Ausfertigung."
+        tags: [mkv, contract, gkv]
+      - anchorId: mkv-handout-documentation
+        locator: "Abschnitt: Dokumentation"
+        excerpt: "Aushändigung der Ausfertigung soll in der Patientenakte dokumentiert werden."
+        tags: [mkv, documentation, contract]
+      - anchorId: mkv-not-mkv-cosmetic
+        locator: "Abschnitt: Kein MKV-Fall"
+        excerpt: "Austausch intakter Füllungen aus kosmetischen Gründen ist typischerweise kein MKV-Fall (sondern privat)."
+        tags: [mkv, billing, boundary]
+
+  - id: gba-qbue-rl-z
+    title: "G-BA – QBÜ-RL-Z Qualitätsbeurteilung zahnärztliche Überkappung"
+    type: web
+    url: "https://www.g-ba.de/richtlinien/133/"
+    retrievedAt: "2026-02-14"
+    versionInfo: "QBÜ-RL-Z"
+    reliability: primary
+    notes: "Qualitätsbeurteilung für Überkappung (Cp/P) inkl. Prüfkatalog und dokumentationsrelevanten Evidenzelementen."
+    anchors:
+      - anchorId: qbue-pruefkatalog-evidence
+        locator: "Anlage: Prüfkatalog (Dokumentation)"
+        excerpt: "Evidenz umfasst u. a. Anamnese, Sensibilitätsprüfung, Röntgenbefunde, Indikation/Kontraindikationen und Nachuntersuchung."
+        tags: [quality, ueberkappung, documentation]
+
+  - id: kzbv-endo-gkv-coverage
+    title: "KZBV – Wurzelkanalbehandlung (GKV-Kostenübernahme, v. a. Molaren)"
+    type: web
+    url: "https://www.kzbv.de/patienten/medizinische-infos/behandlung-der-zahnwurzel/wann-ist-eine-wurzelkanalbehandlung-erforderlich/"
+    retrievedAt: "2026-02-15"
+    versionInfo: "KZBV Patienteninfo (Stand 2026-02-09)"
+    reliability: primary
+    notes: "GKV-Kostenübernahmebedingungen für Endo (insbes. zusätzliche Voraussetzungen bei Molaren) als Input für gezielte Askbacks."
+    anchors:
+      - anchorId: endo-molar-eligibility
+        locator: "Abschnitt: Molaren"
+        excerpt: "Für Molaren gelten zusätzliche Bedingungen (z. B. Erhalt einer geschlossenen Zahnreihe / einseitige Freiendsituation / Vermeidung einseitiger Verkürzung)."
+        tags: [endo, gkv, eligibility]
+
+  - id: strlschg-85-medical-exposure-records
+    title: "StrlSchG – §85 Aufzeichnungen bei medizinischer Exposition"
+    type: web
+    url: "https://www.gesetze-im-internet.de/strlschg/__85.html"
+    retrievedAt: "2026-02-15"
+    versionInfo: "Stand bei Abruf 2026-02-15"
+    reliability: primary
+    notes: "Rechtliche Basis für Dokumentationspflichten bei medizinischer Exposition (z. B. zahnärztliches Röntgen): Rechtfertigung, Zeitpunkt/Art, Ergebnis/Befund."
+    anchors:
+      - anchorId: strlschg-85-core
+        locator: "§85"
+        excerpt: "Aufzeichnungen u. a. über rechtfertigende Indikation, Zeitpunkt/Art der Exposition und den Befund/Ergebnis."
+        tags: [roentgen, documentation, legal]
+
+  - id: kzbv-mkv-form-fillings
+    title: "KZBV – Vereinbarung gem. § 28 Abs. 2 Satz 2 SGB V (Mehrkosten bei Füllungen) (Formular)"
+    type: pdf
+    url: "https://www.kzbv.de/wp-content/uploads/formular_vereinb_mehrkosten_fuell.pdf"
+    retrievedAt: "2026-02-15"
+    versionInfo: "Musterformular (KZBV)"
+    reliability: primary
+    notes: "Konkrete MKV-Vertragsfelder (Region, GOZ-Positionen, Beträge, BEMA-Offset, Unterschriften/Datum) als Grundlage für ContractContext Facts."
+    anchors:
+      - anchorId: mkv-form-fields
+        locator: "Form fields"
+        excerpt: "Region, GOZ-Positionen, Faktor/Anzahl/Betrag, Abzug BEMA 13, voraussichtliche Mehrkosten, Unterschriften/Datum."
+        tags: [mkv, contract, form]
+
+  - id: kzbv-bewaus-amalgamverbot-bema13-2024-10-02
+    title: "Bewertungsausschuss – Beschluss: Amalgamverbot / Anpassung BEMA 13 a-d (02.10.2024)"
+    type: pdf
+    url: "https://www.kzbv.de/wp-content/uploads/Beschluss-BewAus-Amalgamverbot-BEMA-13a-bis-d_2024-10-02.pdf"
+    retrievedAt: "2026-02-15"
+    versionInfo: "Beschluss (Inkrafttreten 01.01.2025)"
+    reliability: primary
+    notes: "Klärt GKV-Baseline im Seitenzahnbereich (selbstadhäsiv), Bulkfill-Ausnahme und MKV-Pfad für darüber hinausgehende Versorgung."
+    anchors:
+      - anchorId: bema13-posterior-branching
+        locator: "Entscheidungserhebliche Gründe"
+        excerpt: "Seitenzahnbereich: selbstadhäsiv baseline; Bulkfill nur als Ausnahme; darüber hinaus → Mehrkostenvereinbarung."
+        tags: [fuellung, bema13, mkv, posterior]
+
+  - id: kzbv-schnittstellen-bema-goz-2015
+    title: "KZBV – Schnittstellen zwischen BEMA und GOZ (Stand 01.06.2015)"
+    type: pdf
+    url: "https://www.kzbv.de/wp-content/uploads/KZBV_Schnittstellen_20150601a.pdf"
+    retrievedAt: "2026-02-15"
+    versionInfo: "Stand 01.06.2015"
+    reliability: primary
+    notes: "Leitfaden zur Vereinbarung privatzahnärztlicher Leistungen mit GKV-Versicherten (Hilfestellung für ContractContext/Agreement Facts)."
+    anchors:
+      - anchorId: schnittstellen-contract-framing
+        locator: "Leitfaden (Vereinbarung privatzahnärztlicher Leistungen)"
+        excerpt: "Rahmen zur Vereinbarung privater Zusatzleistungen bei GKV (Vertrags-/Dokumentations- und Abgrenzungslogik)."
+        tags: [mkv, contract, goz, gkv]

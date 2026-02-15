@@ -1,0 +1,229 @@
+/**
+ * V10ChipsGroupedPanel Styles
+ */
+
+.v10-chips-grouped {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.v10-instance-grouped {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 0.65rem 0 0.9rem;
+}
+
+.v10-grouped-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.35rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+.v10-grouped-badge {
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.v10-grouped-tooth {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Sections */
+.v10-chips-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.v10-section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+}
+
+.v10-section-count {
+    margin-left: 0.35rem;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.v10-section-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: fit-content;
+}
+
+.v10-section-toggle:hover {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.v10-section-toggle-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+
+.v10-chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.v10-chips-empty {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-style: italic;
+}
+
+/* Mini Chip */
+.v10-mini-chip-wrapper {
+    position: relative;
+}
+
+.v10-mini-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.v10-mini-chip:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.v10-mini-chip.enabled {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.v10-mini-chip.enabled[data-source="dictation"] {
+    background: rgba(56, 189, 248, 0.14);
+    border-color: rgba(56, 189, 248, 0.32);
+}
+
+.v10-mini-chip.enabled[data-source="settings"] {
+    background: rgba(255, 139, 106, 0.16);
+    border-color: rgba(255, 139, 106, 0.38);
+}
+
+.v10-mini-chip.enabled[data-source="override"] {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.26);
+}
+
+.v10-mini-chip.disabled {
+    opacity: 0.6;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.v10-mini-chip.override {
+    border: 1px dashed rgba(255, 255, 255, 0.35);
+}
+
+.v10-mini-chip.readonly {
+    cursor: default;
+}
+
+.v10-mini-chip.readonly:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.v10-mini-source {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 0.12rem 0.4rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.16);
+}
+
+.v10-mini-chip[data-source="dictation"] .v10-mini-source {
+    background: rgba(56, 189, 248, 0.22);
+    color: rgba(224, 251, 255, 0.92);
+}
+
+.v10-mini-chip[data-source="settings"] .v10-mini-source {
+    background: rgba(255, 139, 106, 0.24);
+    color: rgba(255, 245, 240, 0.92);
+}
+
+.v10-mini-chip[data-source="override"] .v10-mini-source {
+    background: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.v10-mini-label {
+    font-weight: 600;
+}
+
+/* Mini Menu */
+.v10-mini-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    background: #151b2a;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.v10-mini-menu button {
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: #d7dde3;
+    font-size: 0.8rem;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.v10-mini-menu button:hover {
+    background: rgba(255, 255, 255, 0.08);
+}

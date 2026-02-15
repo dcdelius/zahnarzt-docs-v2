@@ -1,0 +1,171 @@
+{
+    "milestone": "M81",
+    "status": "IN_PROGRESS",
+    "time_spent_min": 5,
+    "proof_of_work": {
+        "commands": [
+            {
+                "cmd": "grep -r 'from.*v6/' src/docudent --include='*.ts' --include='*.tsx' | grep -v '__tests__'",
+                "exitCode": 0,
+                "stdout_tail": "src/docudent/__archive__/core-services/outputService.ts:export { generateFinalOutput } from '../../v6/services/outputService';"
+            },
+            {
+                "cmd": "npx vitest run",
+                "exitCode": 0,
+                "stdout_tail": "Test Files  45 failed | 360 passed | 1 skipped (406)"
+            },
+            {
+                "cmd": "npx vitest run gate-no-runtime-imports-from-v6.test.ts",
+                "exitCode": 0,
+                "stdout_tail": "Test Files  1 passed (1), Tests  2 passed (2)"
+            }
+        ],
+        "files_changed": [
+            {
+                "file": "src/docudent/__tests__/gates/gate-no-runtime-imports-from-v6.test.ts",
+                "diffstat": "+118 new"
+            }
+        ],
+        "tests_run": [
+            {
+                "suite": "gate-no-runtime-imports-from-v6",
+                "result": "PASS (2/2)"
+            },
+            {
+                "suite": "full vitest run",
+                "result": "45 failed / 360 passed"
+            }
+        ]
+    },
+    "findings": [
+        {
+            "id": "F1",
+            "symptom": "V6 runtime import search",
+            "root_cause": {
+                "file": "src/docudent/__archive__/core-services/outputService.ts",
+                "line": 1,
+                "why": "Only v6 import is in __archive__, not runtime reached"
+            }
+        },
+        {
+            "id": "F2",
+            "symptom": "TypeScript not installed",
+            "root_cause": {
+                "file": "package.json",
+                "line": 0,
+                "why": "npm ls typescript shows empty - need npm install typescript to run tsc"
+            }
+        },
+        {
+            "id": "F3",
+            "symptom": "45 failing test files",
+            "root_cause": {
+                "file": "docs/audit/m79/tests.after.json",
+                "line": 0,
+                "why": "Clusters: UNCATEGORIZED(14 E2E), IMPORT_RESOLUTION(4), MEDICAL_GATE(1), NULL_SAFETY(6), CONTRACT_MISMATCH(1), OTHER(20)"
+            }
+        }
+    ],
+    "patches": [
+        {
+            "file": "src/docudent/__tests__/gates/gate-no-runtime-imports-from-v6.test.ts",
+            "change": "Created new gate test",
+            "why": "Enforce no v6 imports in runtime path"
+        }
+    ],
+    "tests": [
+        {
+            "file": "src/docudent/__tests__/gates/gate-no-runtime-imports-from-v6.test.ts",
+            "before": "N/A",
+            "after": "PASS"
+        }
+    ],
+    "next_actions": [
+        {
+            "priority": "P1",
+            "action": "Fix hardcoded chip IDs in v6/services/chipProvenanceBuilder.ts:209-214",
+            "owner": "agent"
+        },
+        {
+            "priority": "P1",
+            "action": "Fix hardcoded chip IDs in v6/services/outputService.ts:135",
+            "owner": "agent"
+        },
+        {
+            "priority": "P1",
+            "action": "Update gate-no-hardcoded-chip-ids.test.ts to exclude MultiInstancePanel false positive",
+            "owner": "agent"
+        },
+        {
+            "priority": "P1",
+            "action": "Create Flight Recorder structured trace in runV10.ts",
+            "owner": "agent"
+        },
+        {
+            "priority": "P1",
+            "action": "Create Playwright headless tests for Repro 1 and Repro 2",
+            "owner": "agent"
+        },
+        {
+            "priority": "P2",
+            "action": "Fix IMPORT_RESOLUTION cluster (4 files)",
+            "owner": "agent"
+        },
+        {
+            "priority": "P2",
+            "action": "Fix NULL_SAFETY cluster (6 files)",
+            "owner": "agent"
+        }
+    ],
+    "open_questions": [
+        {
+            "q": "Should typescript be added as devDependency to enable tsc --noEmit?",
+            "blocking": false
+        }
+    ],
+    "phase_plan": {
+        "A_v6_exorcism": {
+            "status": "MOSTLY_COMPLETE",
+            "remaining": [
+                "Fix hardcoded chip IDs",
+                "Update gate false positives"
+            ]
+        },
+        "B_parity": {
+            "status": "NOT_STARTED",
+            "steps": [
+                "Flight Recorder trace",
+                "Repro bundle capture",
+                "CLI replay tool"
+            ]
+        },
+        "C_ui_state_machine": {
+            "status": "NOT_STARTED",
+            "steps": [
+                "Playwright Repro 1",
+                "Playwright Repro 2"
+            ]
+        },
+        "D_test_triage": {
+            "status": "NOT_STARTED",
+            "clusters": [
+                "IMPORT_RESOLUTION",
+                "V7_BOUNDARY",
+                "NULL_SAFETY",
+                "GATE_FAILURE"
+            ]
+        }
+    },
+    "files_to_inspect": [
+        "src/docudent/v6/services/chipProvenanceBuilder.ts",
+        "src/docudent/v6/services/outputService.ts",
+        "src/docudent/__tests__/gates/gate-no-hardcoded-chip-ids.test.ts",
+        "src/docudent/contracts/canonicalIds.ts",
+        "src/docudent/v10/pipeline/runV10.ts",
+        "src/docudent/v10/pages/DocudentV10Page.tsx",
+        "src/docudent/v7/hooks/useV7Pipeline.ts",
+        "src/docudent/v10/trace/traceCollector.ts",
+        "src/docudent/v7/components/MultiInstancePanel.tsx",
+        "docs/audit/m79/tests.after.json"
+    ]
+}

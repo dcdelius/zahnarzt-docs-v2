@@ -1,0 +1,119 @@
+{
+    "timestamp": "2026-01-11T18:38:00+01:00",
+    "contract": "V10 Questions Contract Lock",
+    "status": "COMPLETE",
+    "askbacksWithKbOptions": [
+        {
+            "id": "askback-ueberkappung",
+            "questionKey": "ueberkappung",
+            "options": [
+                "indirekt",
+                "direkt",
+                "keine"
+            ]
+        },
+        {
+            "id": "askback-ueberkappung-material",
+            "questionKey": "ueberkappung_material",
+            "options": [
+                "Ca(OH)₂",
+                "MTA",
+                "Biodentine"
+            ]
+        },
+        {
+            "id": "askback-material",
+            "questionKey": "material",
+            "options": [
+                "komposit",
+                "giz"
+            ]
+        },
+        {
+            "id": "askback-isolation",
+            "questionKey": "isolation",
+            "options": [
+                "kofferdam",
+                "relativ"
+            ]
+        },
+        {
+            "id": "askback-la-type",
+            "questionKey": "la_type",
+            "options": [
+                "infiltration",
+                "leitung",
+                "keine"
+            ]
+        },
+        {
+            "id": "askback-sensitivity-followup",
+            "questionKey": "sensitivity_followup",
+            "options": [
+                "yes",
+                "no"
+            ]
+        },
+        {
+            "id": "askback-kofferdam",
+            "questionKey": "kofferdam",
+            "options": [
+                "yes",
+                "no"
+            ]
+        },
+        {
+            "id": "askback-mkv-confirmed",
+            "questionKey": "mkv_confirmed",
+            "options": [
+                "mehrkosten",
+                "nur_kasse"
+            ]
+        },
+        {
+            "id": "askback-adhesive-technique",
+            "questionKey": "adhesive_technique",
+            "options": [
+                "yes",
+                "no"
+            ]
+        },
+        {
+            "id": "askback-hemostasis",
+            "questionKey": "hemostasis",
+            "options": [
+                "yes",
+                "no"
+            ]
+        }
+    ],
+    "contractEnforcement": {
+        "ja_nein_fallback_removed": true,
+        "error_card_for_missing_options": true,
+        "boolean_guard_in_renderer": true,
+        "answers_stored_as_strings": true
+    },
+    "testResults": {
+        "suiteFile": "src/docudent/v10/__tests__/askbacks/compileAskbacksToQuestions.test.ts",
+        "passed": 9,
+        "failed": 0,
+        "total": 9
+    },
+    "buildResult": {
+        "status": "success",
+        "duration": "3.83s"
+    },
+    "modifiedFiles": [
+        "src/docudent/medical_kb/schema.v1.ts",
+        "src/docudent/medical_kb/medical_kb.v1.json",
+        "src/docudent/v10/askbacks/compileAskbacksToQuestions.ts",
+        "src/docudent/v10/components/QuestionsFlow.tsx",
+        "src/docudent/v10/components/QuestionsFlowV2.tsx",
+        "src/docudent/v10/pages/DocudentV10Page.tsx",
+        "src/docudent/v10/renderer/renderFromKbChips.ts"
+    ],
+    "dataTestIds": {
+        "v10-docudent-page": "DocudentV10Page.tsx:515",
+        "v10-questions-flow-v2": "QuestionsFlowV2.tsx:78"
+    }
+}

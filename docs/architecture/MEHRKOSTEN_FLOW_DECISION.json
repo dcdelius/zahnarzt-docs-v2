@@ -1,0 +1,71 @@
+{
+    "generatedAt": "2025-12-15T21:46:02+01:00",
+    "filling": {
+        "mehrskostenTrigger": "mehrschicht chip selected (GOZ_2197)",
+        "requiredDocumentation": [
+            "Mehrkostenvereinbarung schriftlich VOR Behandlung",
+            "BEMA-Grundleistung (13a-d je nach Flächen)",
+            "GOZ-Mehrkosten (GOZ 2197 Mehrschichttechnik)"
+        ],
+        "outputWording": {
+            "abrechnung": "BEMA 13c (Kassenleistung): 42,50€\nGOZ 2197 Mehrschicht (Zuzahlung): 68,00€\nPatient-Eigenanteil: 68,00€",
+            "hinweis": "Schriftliche Mehrkostenvereinbarung liegt vor."
+        },
+        "forensicMustHave": [
+            "Schriftliche MKV VOR Behandlung",
+            "GOZ 2197 NICHT neben GOZ 2060-2120 (inkludiert)"
+        ]
+    },
+    "endo": {
+        "mehrskostenTrigger": "Elektrometrische Längenbestimmung, OP-Mikroskop, NiTi-Aufbereitung",
+        "requiredDocumentation": [
+            "Analogleistung nach GOZ-Analog oder GOZ 2430",
+            "Keine schriftliche MKV erforderlich (reine GOZ-Leistung)"
+        ],
+        "outputWording": {
+            "abrechnung": "BEMA 32 (WK): 18,50€\nGOZ 2400 (OP-Mikroskop, analog): 85,00€\nPatient-Eigenanteil: 85,00€",
+            "hinweis": "Maschinelle NiTi-Aufbereitung unter OP-Mikroskop."
+        },
+        "forensicMustHave": [
+            "Begründung bei GOZ-Analog",
+            "Material/Methode dokumentieren"
+        ],
+        "note": "Endo-Mehrkosten sind meist reine GOZ-Zusatzleistungen, keine MKV-Logik wie bei Füllungen"
+    },
+    "displayMode": "structured_block",
+    "displayModeRationale": "Output must show: (1) Kassenleistung, (2) GOZ-Zusatz, (3) Patientenzuzahlung - as separate labeled lines for legal clarity and patient understanding",
+    "amountPolicy": "estimated_with_disclaimer",
+    "amountPolicyRationale": "Exact amounts depend on Steigerungsfaktor (2.3x default). Show estimated amounts with note 'basierend auf 2,3-fachem Satz'",
+    "scopeConfirmation": true,
+    "scopeDetails": {
+        "chairsideDocumentation": "Mehrkosten display IS chairside responsibility",
+        "hkpPlanning": "OUT OF SCOPE - HKP is separate ZE planning module",
+        "mkv_form": "OUT OF SCOPE - administrative/backoffice, not runtime"
+    },
+    "implementationGuidance": {
+        "outputTemplate": {
+            "gkvWithMehrkosten": [
+                "=== ABRECHNUNG ===",
+                "Kassenleistung: {bema_codes} ({bema_amount}€)",
+                "Zuzahlung: {goz_codes} ({goz_amount}€, 2,3-facher Satz)",
+                "Patientenanteil: {patient_amount}€",
+                "",
+                "Hinweis: Mehrkostenvereinbarung vor Behandlung vereinbart."
+            ],
+            "gkvWithoutMehrkosten": [
+                "=== ABRECHNUNG ===",
+                "Kassenleistung: {bema_codes} ({bema_amount}€)",
+                "Keine Zuzahlung."
+            ]
+        },
+        "dataSource": {
+            "bema_codes": "billingRegistry.ts → BEMA lookup",
+            "goz_codes": "billingRegistry.ts → GOZ lookup",
+            "amounts": "Calculated from kataloge/bema.json + goz.json punktwerte"
+        }
+    },
+    "testGates": [
+        "gate-mehrkosten-output-split.test.ts",
+        "gate-mkv-warning-if-missing.test.ts"
+    ]
+}

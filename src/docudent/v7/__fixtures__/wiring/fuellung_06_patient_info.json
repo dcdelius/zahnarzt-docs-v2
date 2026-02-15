@@ -1,0 +1,29 @@
+{
+    "id": "fuellung_06_patient_info",
+    "description": "Füllung mit Patienteninfo (Allergie/Antikoagulant) — muss in Patientenhinweis erscheinen",
+    "input": {
+        "treatmentId": "fuellung",
+        "insuranceType": "GKV",
+        "hasMKV": false,
+        "dictation": "Zahn 24 M Komposit Füllung Patient hat Penicillin-Allergie und nimmt Marcumar",
+        "answers": {}
+    },
+    "expect": {
+        "traceIncludes": [
+            "input:treatment=fuellung",
+            "questions:engine=fuellung"
+        ],
+        "traceExcludes": [
+            "questions:engine=endo"
+        ],
+        "noQuestionIdRegex": "(endo|kanal|wl|spül|wurzel)",
+        "outputMustContain": [
+            "24"
+        ],
+        "billingMustNotContain": [
+            "BEMA_40",
+            "BEMA_41a"
+        ]
+    },
+    "minimalAnswers": {}
+}

@@ -1,0 +1,26 @@
+{
+    "id": "R2",
+    "name": "Endo multi-canal WL method missing",
+    "description": "Endodontic treatment requiring WL method question",
+    "input": {
+        "treatmentId": "endo",
+        "dictation": "Zahn 14, Wurzelbehandlung, 2 Kanäle, Gangrän",
+        "insuranceType": "GKV",
+        "settings": {}
+    },
+    "expected_state_trajectory": [
+        "input",
+        "processing",
+        "questions",
+        "output"
+    ],
+    "expected_questions_minimum": [
+        "wl_method"
+    ],
+    "expected_invariants": {
+        "tooth_present": "14",
+        "canals_detected": 2,
+        "wl_method_question_visible": true,
+        "output_has_billing_or_diagnostic": true
+    }
+}

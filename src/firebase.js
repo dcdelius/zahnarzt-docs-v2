@@ -1,0 +1,51 @@
+// src/firebase.js
+import { initializeApp } from "firebase/app"
+import { getAuth } from "firebase/auth"
+import { getFirestore } from "firebase/firestore" // ✅ WICHTIG
+
+const getEnv = (key) => {
+  const viteEnv = typeof import.meta !== 'undefined' ? import.meta.env?.[key] : undefined;
+  const processEnv = typeof process !== 'undefined' ? process.env?.[key] : undefined;
+  return viteEnv ?? processEnv;
+};
+
+// Konfiguration
+const firebaseConfig = {
+  apiKey: getEnv('VITE_FIREBASE_API_KEY'),
+  authDomain: getEnv('VITE_FIREBASE_AUTH_DOMAIN'),
+  projectId: getEnv('VITE_FIREBASE_PROJECT_ID'),
+  storageBucket: getEnv('VITE_FIREBASE_STORAGE_BUCKET'),
+  messagingSenderId: getEnv('VITE_FIREBASE_MESSAGING_SENDER_ID'),
+  appId: getEnv('VITE_FIREBASE_APP_ID')
+}
+
+// OpenAI API Key
+export const OPENAI_API_KEY = getEnv('VITE_OPENAI_API_KEY');
+
+// Google Gemini API Key (für präzise Abrechnungsanalyse)
+export const GOOGLE_GEMINI_API_KEY = getEnv('VITE_GOOGLE_GEMINI_API_KEY');
+
+// Google Cloud Speech-to-Text API Key (optional, für bessere medizinische Transkription)
+export const GOOGLE_SPEECH_API_KEY = getEnv('VITE_GOOGLE_SPEECH_API_KEY');
+
+// Firebase Initialisierung
+const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app)
+export const db = getFirestore(app) // ✅ DAS NUTZT DU IN Dashboard.jsx
+
+// Error Handling für Firebase
+export const handleFirebaseError = (error) => {
+  console.error('Firebase Error:', error);
+  switch (error.code) {
+    case 'permission-denied':
+      return 'Keine Berechtigung für diese Aktion';
+    case 'not-found':
+      return 'Dokument nicht gefunden';
+    case 'already-exists':
+      return 'Dokument existiert bereits';
+    case 'resource-exhausted':
+      return 'Zu viele Anfragen. Bitte warten Sie einen Moment';
+    default:
+      return 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut';
+  }
+};
