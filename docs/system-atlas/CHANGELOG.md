@@ -9,6 +9,10 @@ Append-only log of atlas updates.
 - Clarified output length policy (kurz/mittel/lang invariants).
 - Cleaned medical source registry and aligned DGZMK endo anchors.
 - Updated known gaps with P0/P1 migration blockers.
+- Wired strict forensic evidence askbacks into procedure bundles (fuellung + endo) and hardened gate modes (WARN/BLOCK).
+- Added review + trace provenance extensions (fact source labels and code->chip->fact chain visibility).
+- Added KB release pinning hooks (`kbReleaseId`) for pipeline/session/multi-treatment runs.
+- Added consolidated audit runner (`npm run v10:audit:consolidated`) and onboarding contract doc.
 
 ## 2025-12-29 (unknown)
 

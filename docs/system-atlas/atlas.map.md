@@ -21,6 +21,7 @@ See [README.md SSOT vs Derived table](./README.md#ssot-vs-derived-canonical-refe
 | **Billing Resolver** | Surface count → F-code | `unified.json` surface_mapping | Wrong F-code | Trace resolver |
 | **BillingIntent** | Control catalog lookups | `computeBillingIntent()` | Wrong channel | Log BillingIntent |
 | **Combinability** | BillingRefs → verdict | `combinability_kb.v1.json` | False positive/negative | Combi tab |
+| **KB Release Pinning** | Session/bundle-level KB version lock | `kbReleaseId` in `runV10` / `runV10Bundle` | Mixed-version traces | Trace tab (`KB Release`) |
 | **Multi-Treatment Planner** | Split dictation → segments + instances | `planFromDictation.ts` + `segmentDictation.ts` | Misclassification, wrong segment split | Log planned segments / `classifyTreatment.ts` |
 | **Aggregation** | perInstance → billingCodes | `runV10.ts` flatMap | Dedup bug (fixed) | Billing tab |
 

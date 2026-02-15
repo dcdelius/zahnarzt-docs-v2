@@ -1,7 +1,7 @@
 # V10 Known Gaps
 
 **Updated:** 2026-02-15  
-**Status:** Non-blocking risks tracked for monitoring
+**Status:** Non-blocking risks tracked for monitoring (P0/P1 gaps resolved)
 
 ---
 
@@ -9,11 +9,8 @@
 
 | ID | Description | Opened | Notes |
 |----|-------------|--------|-------|
-| GAP-14 | Strict KZV mode not wired (evidence askbacks) | 2026-02-15 | QBÜ‑RL‑Z / StrlSchG / MKV evidence lists documented but not yet enforced in procedure graph. |
-| GAP-15 | Output text length policy not enforced across chips/disclosures | 2026-02-15 | `kurz/mittel/lang` invariants documented; needs enforcement + coverage gate. |
-| GAP-16 | One treatment not yet migrated end‑to‑end to Procedure Graph | 2026-02-15 | Choose Füllung or Endo and remove legacy emitters. |
 | GAP-17 | 3‑step UI coherence (Step 2 style alignment) | 2026-02-15 | Questions/Extracted Facts view should match Step‑1 visual language. |
-| GAP-18 | Settings flag for Strict KZV mode missing | 2026-02-15 | Needs practice‑level toggle + wiring to askback gating. |
+| GAP-19 | Final online UI regression run pending after full stage merge | 2026-02-15 | Run hosted UI smoke/E2E after consolidated audit and deploy candidate. |
 
 ## Resolved Gaps
 
@@ -33,6 +30,10 @@
 | GAP-11 | Output chronology drift in Behandlungsablauf (chips not phase-sorted) | 2026-02-14 |
 | GAP-12 | Multitreatment toothless segments caused phantom `unknown` instances | 2026-02-14 |
 | GAP-13 | Milchzahn unsupported returned `error` instead of Askback | 2026-02-14 |
+| GAP-14 | Strict KZV mode not wired (evidence askbacks) | 2026-02-15 |
+| GAP-15 | Output text length policy not enforced across chips/disclosures | 2026-02-15 |
+| GAP-16 | One treatment not yet migrated end‑to‑end to Procedure Graph | 2026-02-15 |
+| GAP-18 | Settings flag for Strict KZV mode missing | 2026-02-15 |
 
 ---
 

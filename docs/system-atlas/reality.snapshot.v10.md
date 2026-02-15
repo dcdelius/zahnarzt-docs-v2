@@ -1,8 +1,8 @@
 # V10 Reality Snapshot
 
-**Updated:** 2026-02-14 (Procedure wiring + live audits)
-**Status:** ✅ PIPELINE STABLE — Ready for Praxis-Test
-**Changes:** Procedure layer is SSOT for chip emission; live real-dictation + medical scenario audits executed; online dependency checks support Firestore client fallback.
+**Updated:** 2026-02-15 (Strict-KZV, Endo migration hardening, provenance/KB pinning)
+**Status:** ✅ PIPELINE STABLE — Strict contracts enforced for migrated path
+**Changes:** Strict-KZV evidence askbacks wired, endo procedure path hardened to BLOCK, review/trace provenance expanded, and KB release pinning available per session/bundle.
 
 ---
 
@@ -14,6 +14,9 @@
 > **Dictation Trumps Settings** — Explicitly dictated facts (e.g., "Leitungsanästhesie") override user preferences.
 > **Combinability BLOCK → Askback** — default is `state='questions'` with an explicit override question (no user-facing error).
 > **BillingIntent controls lookups** — `allowBema` / `allowGoz` / `allowGozAddon` prevent forbidden catalog access.
+> **Strict-KZV evidence mode** — forensic evidence askbacks are contract-gated by `practice.strictKzvMode`.
+> **Endo migration is unbypassable** — missing bundles/unknown emitters run in BLOCK mode for endo.
+> **KB release pinning** — `kbReleaseId` can be pinned on pipeline/session/bundle calls.
 
 See [README.md SSOT vs Derived table](./README.md#ssot-vs-derived-canonical-reference) for complete data lineage.
 
@@ -32,6 +35,7 @@ See [README.md SSOT vs Derived table](./README.md#ssot-vs-derived-canonical-refe
 | **Composer** | `src/docudent/v10/output/outputComposerV10.ts` | Sections[] | - | ✅ |
 | **Billing** | `src/docudent/v10/billing/surfaceBillingResolver.ts` | BillingRefs[] | gate-billingref-closure | ✅ |
 | **Combinability** | `src/docudent/v10/billing/combinability/checkCombinabilityFromKb.ts` | Verdict | gate-combinability | ✅ |
+| **Review Provenance** | `src/docudent/v10/pipeline/runV10.ts` + `V10ReviewSummaryCard.tsx` | fact source labels | UI provenance tests | ✅ |
 
 ---
 
@@ -92,6 +96,7 @@ interface BillingIntent {
 | Medical E2E | `npx vitest run gate-v10-medical-e2e-v2` | 10 | Medical logic | - |
 | Gate Suite | `npm test` | 3511+ | All contracts | `PASSED` |
 | Final Audit | `npm run v10:final-audit` | - | Online deps + V10 gates + scenario audits | `artifacts/_latest/*` |
+| Consolidated Audit | `npm run v10:audit:consolidated` | - | Stage contracts (Strict-KZV, migration, multitreatment determinism) | `artifacts/_latest/v10-consolidated-audit/` |
 | E2E Wiring | `npm run e2e:v10:wiring` | 10 | UI → pipeline | - |
 | Praxis-16 | `npm run e2e:v10:praxis16` | 16 | Real dictations | `artifacts/_latest/v10-praxis-16/` |
 | Endo-16 | `npm run e2e:v10:endo16` | 16 | Endo UI flows | `artifacts/_latest/v10-endo-16/` ✅ |

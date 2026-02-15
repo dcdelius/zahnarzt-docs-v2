@@ -67,6 +67,7 @@
     "v10:real-dictation-check": "node --import tsx scripts/v10/runV10RealDictationCheck.ts",
     "v10:final-audit": "npm run doctor:online -- --verbose && npm run v10:kb-parity && npm test -- --run src/docudent/v10/__tests__/gates && npm run v10:medical-scenario-run -- --file scripts/v10/scenarios.v10.realworld.medical.json && npm run v10:real-dictation-check",
     "v10:final-audit:full": "npm run v10:final-audit && npm run e2e:v10:praxis16 && npm run e2e:v10:endo6",
+    "v10:audit:consolidated": "node --import tsx scripts/v10/consolidated-audit.ts",
     "e2e:v10:questions-contract": "VITE_E2E_BYPASS_AUTH=1 npx playwright test e2e/v10-questions-contract.e2e.spec.ts"
   },
   "dependencies": {
