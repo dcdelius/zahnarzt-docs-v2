@@ -7,8 +7,8 @@
  */
 
 import { useState, useCallback, useRef } from 'react';
-import { runV10 } from '../public';
-import type { V10PipelineInput, V10PipelineOutput, V10PipelineState, V10ReviewContext } from '../types';
+import { runV10, runV10Bundle } from '../public';
+import type { V10BundleInput, V10PipelineInput, V10PipelineOutput, V10PipelineState, V10ReviewContext } from '../types';
 import type { SettingsInput } from '../settings/settingsTypes';
 import type { MultiTreatmentResult, BillingCode } from '../multitreatment/types';
 import type { CombinabilityResult } from '../../contracts/compose';
@@ -89,6 +89,8 @@ interface UseV10PipelineState {
     // Multi-instance support
     isMultiMode: boolean;
     multiResult: unknown | null;
+    pendingBundleInput: V10BundleInput | null;
+    bundleQuestionMap: Record<string, { rawId: string; instanceId?: string }>;
     instanceAnswers: Record<string, Map<string, unknown>>;
     lastMultiPlan: {
         dictation: string;
@@ -126,6 +128,8 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
         isProcessing: false,
         isMultiMode: false,
         multiResult: null,
+        pendingBundleInput: null,
+        bundleQuestionMap: {},
         instanceAnswers: {},
         lastMultiPlan: null,
     });
@@ -436,6 +440,267 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
             }));
         }
     }, []);
+
+    const runBundlePipeline = useCallback(async (bundleInput: V10BundleInput) => {
+        runIdCounterRef.current += 1;
+        const thisRunId = runIdCounterRef.current;
+        lastRunIdRef.current = thisRunId;
+
+        const normalizeScopedCodes = (codes: Array<{ code: string; instanceId: string; tooth?: string; scope?: string }>): BillingCode[] => {
+            const deduped = new Map<string, BillingCode>();
+            for (const scoped of codes) {
+                const system = scoped.code.startsWith('BEMA_')
+                    ? 'BEMA'
+                    : scoped.code.startsWith('GOZ_')
+                        ? 'GOZ'
+                        : scoped.code.startsWith('GOÄ_')
+                            ? 'GOÄ'
+                            : 'BEMA';
+                const key = `${scoped.code}::${scoped.instanceId}::${scoped.tooth ?? 'session'}::${scoped.scope ?? 'UNKNOWN'}`;
+                if (!deduped.has(key)) {
+                    deduped.set(key, {
+                        code: scoped.code,
+                        type: system as BillingCode['type'],
+                        instanceId: scoped.instanceId,
+                        tooth: scoped.tooth,
+                        scope: (scoped.scope as BillingCode['scope']) ?? 'UNKNOWN',
+                    });
+                }
+            }
+            return Array.from(deduped.values());
+        };
+
+        setState(s => ({
+            ...s,
+            isProcessing: true,
+            isMultiMode: true,
+            multiResult: null,
+            pendingBundleInput: bundleInput,
+        }));
+
+        try {
+            const output = await runV10Bundle(bundleInput);
+            if (thisRunId !== lastRunIdRef.current) return;
+
+            if (output.state === 'questions') {
+                const bundleQuestionMap: Record<string, { rawId: string; instanceId?: string }> = {};
+                const questions = (output.questions ?? []).map((q: any) => {
+                    const promptText = q.question || q.label || q.questionKey || '(Frage)';
+                    const rawId = q.id || q.questionKey;
+                    const scopedId = q.instanceId ? `${q.instanceId}::${rawId}` : rawId;
+                    bundleQuestionMap[scopedId] = { rawId, instanceId: q.instanceId };
+                    return {
+                        ...q,
+                        id: scopedId,
+                        rawId,
+                        instanceId: q.instanceId,
+                        questionKey: q.questionKey,
+                        question: promptText,
+                        label: promptText,
+                    };
+                });
+                setState(s => ({
+                    ...s,
+                    isProcessing: false,
+                    isMultiMode: true,
+                    multiResult: null,
+                    bundleQuestionMap,
+                    result: {
+                        ...INITIAL_RESULT,
+                        state: 'questions',
+                        questions,
+                    },
+                }));
+                return;
+            }
+
+            if (output.state !== 'output' || !output.output) {
+                setState(s => ({
+                    ...s,
+                    isProcessing: false,
+                    isMultiMode: false,
+                    multiResult: null,
+                    pendingBundleInput: null,
+                    bundleQuestionMap: {},
+                    result: {
+                        ...INITIAL_RESULT,
+                        state: 'error',
+                        error: output.error ?? 'Bundle execution failed',
+                    },
+                }));
+                return;
+            }
+
+            const segmentOutputs = output.output.segments ?? [];
+            const billingCodes = normalizeScopedCodes(output.output.billingCodes ?? []);
+            const provenanceSummary = (output.meta?.provenance?.factSources ?? []).reduce((acc, entry) => {
+                if (entry.source === 'dictation') acc.dictation += 1;
+                if (entry.source === 'settings') acc.settings += 1;
+                if (entry.source === 'askback') acc.askback += 1;
+                if (entry.source === 'manual') acc.manual += 1;
+                return acc;
+            }, { dictation: 0, settings: 0, askback: 0, manual: 0 });
+            const runs = segmentOutputs.map(segment => ({
+                segmentId: segment.segmentId,
+                treatmentId: segment.treatmentId,
+                result: {
+                    state: 'output',
+                    output: {
+                        fullText: segment.text,
+                        billingCodes: segment.billingCodes.map(code => code.code),
+                    },
+                    warnings: [],
+                } as any,
+                billingCodes: billingCodes.filter(code =>
+                    segment.billingCodes.some(segCode => segCode.code === code.code && segCode.tooth === code.tooth)
+                ),
+                warnings: [],
+            }));
+
+            const multiResult: MultiTreatmentResult = {
+                aggregatedState: 'output',
+                runs,
+                perTreatmentBundles: {},
+                mergedOutput: {
+                    sections: [],
+                    fullText: output.output.fullText,
+                    billingCodes: output.output.billingCodes.map(code => code.code),
+                    warnings: [],
+                },
+                aggregatedCopyText: output.output.fullText,
+                billingCodes,
+                conflicts: [],
+                combinability: null,
+                warnings: [],
+                provenanceSummary,
+                executionMeta: {
+                    kbReleaseId: output.meta?.kbReleaseId,
+                    outputHash: output.meta?.outputHash,
+                },
+                billingTrace: (output.output.billingCodes ?? []).map(code => ({
+                    code: code.code,
+                    instanceId: code.instanceId,
+                    tooth: code.tooth,
+                    scope: code.scope as BillingCode['scope'],
+                    kbReleaseId: output.meta?.kbReleaseId,
+                })),
+            };
+
+            setState(s => ({
+                ...s,
+                isProcessing: false,
+                isMultiMode: true,
+                multiResult,
+                pendingBundleInput: null,
+                bundleQuestionMap: {},
+                result: {
+                    ...INITIAL_RESULT,
+                    state: 'output',
+                    output: {
+                        fullText: output.output?.fullText ?? '',
+                        billingCodes: output.output?.billingCodes?.map(code => code.code) ?? [],
+                        sections: [],
+                        warnings: [],
+                    },
+                },
+            }));
+        } catch (error) {
+            if (thisRunId !== lastRunIdRef.current) return;
+            setState(s => ({
+                ...s,
+                isProcessing: false,
+                isMultiMode: false,
+                multiResult: null,
+                pendingBundleInput: null,
+                bundleQuestionMap: {},
+                result: {
+                    ...INITIAL_RESULT,
+                    state: 'error',
+                    error: String(error),
+                },
+            }));
+        }
+    }, []);
+
+    const completeQuestions = useCallback(async () => {
+        const current = stateRef.current;
+        if (current.pendingBundleInput && current.result.state === 'questions') {
+            if (current.pendingBundleInput.segments.length === 1) {
+                const onlySegment = current.pendingBundleInput.segments[0];
+                const normalizedAnswers = new Map<string, unknown>();
+                for (const [questionId, value] of current.answers.entries()) {
+                    const mapped = current.bundleQuestionMap[questionId];
+                    const rawId = mapped?.rawId ?? questionId;
+                    normalizedAnswers.set(rawId, value);
+                }
+                await runPipeline({
+                    dictation: onlySegment.dictation ?? current.pendingBundleInput.dictation ?? '',
+                    treatmentId: onlySegment.treatmentId,
+                    insuranceType: onlySegment.insuranceType,
+                    textLength: onlySegment.textLength,
+                    answers: normalizedAnswers,
+                    kbReleaseId: current.pendingBundleInput.kbReleaseId,
+                });
+                return;
+            }
+
+            const globalAnswers = new Map<string, unknown>();
+            const instanceAnswerMaps = new Map<string, Map<string, unknown>>();
+            const toothByInstanceId = new Map<string, string | undefined>();
+            for (const segment of current.pendingBundleInput.segments) {
+                for (const instance of segment.instances) {
+                    toothByInstanceId.set(instance.instanceId, instance.tooth);
+                }
+            }
+
+            for (const [questionId, value] of current.answers.entries()) {
+                const mapped = current.bundleQuestionMap[questionId];
+                const rawId = mapped?.rawId ?? questionId;
+                const instanceId = mapped?.instanceId;
+                if (instanceId) {
+                    const existing = instanceAnswerMaps.get(instanceId) ?? new Map<string, unknown>();
+                    existing.set(rawId, value);
+                    existing.set(questionId, value);
+                    const tooth = toothByInstanceId.get(instanceId);
+                    if (tooth) {
+                        if (!rawId.includes('::tooth:')) existing.set(`${rawId}::tooth:${tooth}`, value);
+                        if (!questionId.includes('::tooth:')) existing.set(`${questionId}::tooth:${tooth}`, value);
+                    }
+                    instanceAnswerMaps.set(instanceId, existing);
+                } else {
+                    globalAnswers.set(rawId, value);
+                    globalAnswers.set(questionId, value);
+                }
+            }
+
+            const nextSegments = current.pendingBundleInput.segments.map(segment => ({
+                ...segment,
+                instances: segment.instances.map(instance => {
+                    const instanceAnswers = instanceAnswerMaps.get(instance.instanceId);
+                    if (!instanceAnswers || instanceAnswers.size === 0) return instance;
+                    const mergedInstanceAnswers = new Map<string, unknown>();
+                    const currentAnswers = instance.answers instanceof Map
+                        ? instance.answers
+                        : new Map(Object.entries(instance.answers ?? {}));
+                    for (const [k, v] of currentAnswers.entries()) mergedInstanceAnswers.set(k, v);
+                    for (const [k, v] of instanceAnswers.entries()) mergedInstanceAnswers.set(k, v);
+                    return {
+                        ...instance,
+                        answers: mergedInstanceAnswers,
+                    };
+                }),
+            }));
+
+            await runBundlePipeline({
+                ...current.pendingBundleInput,
+                segments: nextSegments,
+                globalAnswers,
+            });
+            return;
+        }
+
+        await runPipeline();
+    }, [runBundlePipeline, runPipeline]);
 
     // ─── Multi-Instance Execution ───────────────────────────────
 
@@ -751,6 +1016,8 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
             isProcessing: false,
             isMultiMode: false,
             multiResult: null,
+            pendingBundleInput: null,
+            bundleQuestionMap: {},
             instanceAnswers: {},
             lastMultiPlan: null,
         }));
@@ -808,6 +1075,7 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
         answerQuestion,
         setAnswers,
         runPipeline,
+        completeQuestions,
         reset,
         goToQuestions,
 
@@ -819,6 +1087,7 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
         getInstanceAnswers,
         clearInstanceAnswers,
         runLastMultiPlan,
+        runBundlePipeline,
 
         // Compat stubs
         updateSegment: () => { },

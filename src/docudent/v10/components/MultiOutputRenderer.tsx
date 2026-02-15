@@ -148,6 +148,19 @@ const styles = {
         lineHeight: 1.4,
         color: colors.textSecondary,
     },
+    provenanceList: {
+        display: 'flex',
+        flexWrap: 'wrap' as const,
+        gap: '8px',
+    },
+    provenanceTag: {
+        padding: '6px 10px',
+        borderRadius: radii.pill,
+        border: `1px solid ${colors.lineSoft}`,
+        background: colors.surfaceGlass,
+        color: colors.textSecondary,
+        fontSize: '12px',
+    },
 };
 
 /**
@@ -187,6 +200,13 @@ const CopyButton: React.FC<{ text: string }> = ({ text }) => {
 };
 
 export const MultiOutputRenderer: React.FC<MultiOutputRendererProps> = ({ result, onReset }) => {
+    const sortedBillingCodes = [...result.billingCodes].sort((a, b) => {
+        const toothCmp = (a.tooth ?? '').localeCompare(b.tooth ?? '');
+        if (toothCmp !== 0) return toothCmp;
+        const codeCmp = a.code.localeCompare(b.code);
+        if (codeCmp !== 0) return codeCmp;
+        return (a.instanceId ?? '').localeCompare(b.instanceId ?? '');
+    });
 
     return (
         <motion.div
@@ -229,6 +249,28 @@ export const MultiOutputRenderer: React.FC<MultiOutputRendererProps> = ({ result
                             </div>
                         </div>
                     ))}
+                </div>
+            )}
+
+            {result.provenanceSummary && (
+                <div style={styles.section}>
+                    <div style={styles.sectionTitle}>Herkunft Fakten</div>
+                    <div style={styles.provenanceList}>
+                        <span style={styles.provenanceTag}>dictation: {result.provenanceSummary.dictation}</span>
+                        <span style={styles.provenanceTag}>settings: {result.provenanceSummary.settings}</span>
+                        <span style={styles.provenanceTag}>askback: {result.provenanceSummary.askback}</span>
+                        <span style={styles.provenanceTag}>manual: {result.provenanceSummary.manual}</span>
+                    </div>
+                </div>
+            )}
+
+            {result.executionMeta && (
+                <div style={styles.section}>
+                    <div style={styles.sectionTitle}>Execution</div>
+                    <div style={styles.provenanceList}>
+                        <span style={styles.provenanceTag}>kb: {result.executionMeta.kbReleaseId || 'default'}</span>
+                        <span style={styles.provenanceTag}>hash: {result.executionMeta.outputHash || 'n/a'}</span>
+                    </div>
                 </div>
             )}
 
@@ -286,7 +328,7 @@ export const MultiOutputRenderer: React.FC<MultiOutputRendererProps> = ({ result
             <div style={styles.section}>
                 <div style={styles.sectionTitle}>Abrechnungscodes ({result.billingCodes.length})</div>
                 <div style={styles.codeList}>
-                    {result.billingCodes.map((bc, i) => {
+                    {sortedBillingCodes.map((bc, i) => {
                         const toothPart = bc.tooth || 'NA';
                         return (
                             <span
@@ -294,12 +336,40 @@ export const MultiOutputRenderer: React.FC<MultiOutputRendererProps> = ({ result
                                 style={styles.codeTag}
                                 data-testid={`billing-code-${bc.code}-${toothPart}`}
                             >
-                                {bc.code}{bc.tooth ? ` (${bc.tooth})` : ''}
+                                {bc.code}{bc.tooth ? ` (${bc.tooth})` : ''}{bc.instanceId ? ` · ${bc.instanceId}` : ''}
                             </span>
                         );
                     })}
                 </div>
             </div>
+
+            {result.billingTrace && result.billingTrace.length > 0 && (
+                <div style={styles.section}>
+                    <div style={styles.sectionTitle}>Trace Code → Instanz → KB</div>
+                    <div style={{ display: 'grid', gap: '6px' }} data-testid="multi-billing-trace">
+                        {result.billingTrace.map((row, idx) => (
+                            <div
+                                key={`${row.code}-${row.instanceId}-${idx}`}
+                                style={{
+                                    padding: '8px 10px',
+                                    borderRadius: radii.cardSmall,
+                                    background: colors.surfaceGlass,
+                                    border: `1px solid ${colors.lineUltraSoft}`,
+                                    fontSize: '12px',
+                                    color: colors.textSecondary,
+                                }}
+                            >
+                                <strong style={{ color: colors.textPrimary }}>{row.code}</strong>
+                                {' · '}
+                                {row.instanceId}
+                                {row.tooth ? ` · Zahn ${row.tooth}` : ''}
+                                {row.scope ? ` · ${row.scope}` : ''}
+                                {row.kbReleaseId ? ` · ${row.kbReleaseId}` : ' · kb:default'}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             {/* Reset Button */}
             <div style={styles.center}>

@@ -13,10 +13,7 @@ import '../../v7/app/v7.design.css';
 // ═══════════════════════════════════════════════════════════════
 
 const DocudentV10Page = lazy(() => import('../pages/DocudentV10Page'));
-// Re-using V7 pages for secondary routes
-const CasesPageV7 = lazy(() => import('../../v7/pages/CasesPageV7'));
 const SettingsPageV10 = lazy(() => import('../pages/SettingsPageV10'));
-const TeamPage = lazy(() => import('../../v7/pages/TeamPage'));
 
 // ═══════════════════════════════════════════════════════════════
 // LOADING FALLBACK
@@ -46,15 +43,8 @@ export function V10Router() {
     return (
         <Suspense fallback={<V10LoadingFallback />}>
             <Routes>
-                {/* Main V10 Interface */}
                 <Route index element={<DocudentV10Page />} />
-
-                {/* Secondary Pages */}
-                <Route path="cases" element={<CasesPageV7 />} />
                 <Route path="settings" element={<SettingsPageV10 />} />
-                <Route path="team" element={<TeamPage />} />
-
-                {/* Fallback */}
                 <Route path="*" element={<Navigate to="/docudent/v10" replace />} />
             </Routes>
         </Suspense>

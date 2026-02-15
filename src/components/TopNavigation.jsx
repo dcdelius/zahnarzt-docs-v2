@@ -10,11 +10,8 @@ import CustomDropdown from "./CustomDropdown";
  */
 
 const navLinks = [
-  { to: "/dashboard", label: "Home" },
   { to: "/docudent/v10", label: "V10" },
-  { to: "/sonia-v3/settings", label: "Konfigurator" },
-  { to: "/lab/sonia", label: "Lab" },
-  { to: "/settings", label: "Settings" },
+  { to: "/docudent/v10/settings", label: "Settings" },
 ];
 
 export default function TopNavigation({ users = [], selectedUser = "", onUserChange, onLogout }) {
@@ -37,7 +34,7 @@ export default function TopNavigation({ users = [], selectedUser = "", onUserCha
       {/* Logo - Minimal */}
       <motion.div whileHover={{ opacity: 0.7 }} transition={{ duration: 0.2 }}>
         <Link
-          to="/dashboard"
+          to="/docudent/v10"
           className="text-xs font-medium"
           style={{
             color: textColor,

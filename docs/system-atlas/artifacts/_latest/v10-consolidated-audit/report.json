@@ -1,6 +1,6 @@
 {
-  "startedAt": "2026-02-15T14:05:43.246Z",
-  "finishedAt": "2026-02-15T14:05:47.080Z",
+  "startedAt": "2026-02-15T18:04:20.405Z",
+  "finishedAt": "2026-02-15T18:05:09.497Z",
   "allPassed": true,
   "steps": [
     {
@@ -15,6 +15,16 @@
     },
     {
       "id": "v10-multitreatment-determinism",
+      "ok": true,
+      "exitCode": 0
+    },
+    {
+      "id": "v10-ui-askback-lanes-and-trace",
+      "ok": true,
+      "exitCode": 0
+    },
+    {
+      "id": "v10-realistic-e2e",
       "ok": true,
       "exitCode": 0
     }

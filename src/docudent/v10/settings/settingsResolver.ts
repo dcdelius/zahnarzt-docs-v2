@@ -552,7 +552,7 @@ export function resolveSettings(params: {
         }
     }
 
-    // Füllung-Material: wenn ein User-Default gesetzt ist, Askback auto-füllen
+    // Füllung-Material: wenn ein User- ODER Praxis-Default gesetzt ist, Askback auto-füllen
     const materialAskbackId = 'fuellung_material';
     if (
         !isCriticalAskback(materialAskbackId, askbackPolicy)
@@ -561,19 +561,21 @@ export function resolveSettings(params: {
         && !answers.has(materialAskbackId)
     ) {
         const fuellungDefaults = settings.user?.treatments?.fuellung;
-        const hasMaterialDefault = Boolean(
+        const hasUserMaterialDefault = Boolean(
             fuellungDefaults?.defaultCompositeMaterialId
             ?? fuellungDefaults?.defaultBulkMaterialId
             ?? fuellungDefaults?.defaultFlowableMaterialId
         );
-        if (hasMaterialDefault) {
-            const normalized = normalizeSettingsValue(materialAskbackId, 'komposit');
-            if (normalized !== undefined) {
-                answers.set(materialAskbackId, normalized);
-                appliedAskbacks.add(materialAskbackId);
-                factSources['material'] = 'user';
-                applySettingsFactPatch(resolvedFacts, materialAskbackId, normalized);
-            }
+        const practiceMaterialDefault = settings.practice?.defaultMaterial;
+        const rawMaterialValue = hasUserMaterialDefault
+            ? (fuellungDefaults?.defaultCompositeMaterialId ?? 'komposit')
+            : practiceMaterialDefault;
+        const normalized = normalizeSettingsValue(materialAskbackId, rawMaterialValue);
+        if (normalized !== undefined) {
+            answers.set(materialAskbackId, normalized);
+            appliedAskbacks.add(materialAskbackId);
+            factSources['material'] = hasUserMaterialDefault ? 'user' : 'practice';
+            applySettingsFactPatch(resolvedFacts, materialAskbackId, normalized);
         }
     }
 

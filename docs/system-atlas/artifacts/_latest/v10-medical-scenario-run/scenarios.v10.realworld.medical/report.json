@@ -1,5 +1,5 @@
 {
-  "runId": "2026-02-15T13:21:45.693Z",
+  "runId": "2026-02-15T15:37:18.370Z",
   "suiteFile": "/Users/david/dokumaster-ui/scripts/v10/scenarios.v10.realworld.medical.json",
   "meta": {
     "description": "Real-life dictation set with extra clinical details (LLM+Firestore live)",
@@ -254,10 +254,14 @@
         "BEMA_31"
       ],
       "questions": [
-        "ENDO_T1_WORKING_LENGTHS"
+        "canal_count",
+        "ENDO_T1_WORKING_LENGTHS",
+        "wf_technique"
       ],
       "answersUsed": {
-        "endo-46-1::ENDO_T1_WORKING_LENGTHS::tooth:46": "{\"MB\":19,\"ML\":18,\"D\":20}"
+        "endo-46-1::endo_canal_count::tooth:46": "3",
+        "endo-46-1::ENDO_T1_WORKING_LENGTHS::tooth:46": "{\"MB\":19,\"ML\":18,\"D\":20}",
+        "endo-46-1::medical_wf_technique::tooth:46": "maschinell"
       },
       "perInstanceCount": 1,
       "textLength": 1217,
@@ -271,7 +275,9 @@
           "facts": {
             "tooth": "46",
             "surfaces": [],
-            "ENDO_T1_WORKING_LENGTHS": "{\"MB\":19,\"ML\":18,\"D\":20}"
+            "endo_canal_count": "3",
+            "ENDO_T1_WORKING_LENGTHS": "{\"MB\":19,\"ML\":18,\"D\":20}",
+            "wf_technique": "maschinell"
           },
           "chips": [
             "einlage_caoh2",
@@ -303,13 +309,21 @@
         "GOZ_2040",
         "GOZ_2400",
         "GOZ_2440",
+        "GOZ_2430",
+        "GOZ_2410",
         "GOZ_5000",
         "GOZ_2360"
       ],
-      "questions": [],
-      "answersUsed": {},
+      "questions": [
+        "canal_count",
+        "medication"
+      ],
+      "answersUsed": {
+        "endo-11-1::endo_canal_count::tooth:11": "3",
+        "endo-11-1::endo_medication::tooth:11": "Ca(OH)2"
+      },
       "perInstanceCount": 1,
-      "textLength": 957,
+      "textLength": 1216,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -319,11 +333,15 @@
           ],
           "facts": {
             "tooth": "11",
-            "surfaces": []
+            "surfaces": [],
+            "endo_canal_count": "3",
+            "endo_medication": "Ca(OH)2"
           },
           "chips": [
+            "einlage_caoh2",
             "endo_instrumentation_rotary",
             "endo_sealer",
+            "kanalaufbereitung_3",
             "kofferdam",
             "la_infiltr",
             "laengenmessung_elek",
@@ -334,7 +352,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 11\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial LA Infiltration. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung maschinell (rotierend). Anschließend Spülung mit NaOCl. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Anschließend Sealer verwendet. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "outputText": "[Befund]\nZahn 11\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial LA Infiltration. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Anschließend Sealer verwendet. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch; Aufbereitung rotierend; Spülung NaOCl; Wurzelfüllung warm vertikal mit Sealer.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
       "pass": true,
       "failures": []
     },
@@ -351,10 +369,14 @@
         "BEMA_32"
       ],
       "questions": [
-        "ENDO_T1_WORKING_LENGTHS"
+        "canal_count",
+        "ENDO_T1_WORKING_LENGTHS",
+        "wf_technique"
       ],
       "answersUsed": {
-        "endo-36-1::ENDO_T1_WORKING_LENGTHS::tooth:36": "{\"K1\":19,\"K2\":18,\"K3\":20}"
+        "endo-36-1::endo_canal_count::tooth:36": "3",
+        "endo-36-1::ENDO_T1_WORKING_LENGTHS::tooth:36": "{\"K1\":19,\"K2\":18,\"K3\":20}",
+        "endo-36-1::medical_wf_technique::tooth:36": "maschinell"
       },
       "perInstanceCount": 1,
       "textLength": 645,
@@ -368,7 +390,9 @@
           "facts": {
             "tooth": "36",
             "surfaces": [],
-            "ENDO_T1_WORKING_LENGTHS": "{\"K1\":19,\"K2\":18,\"K3\":20}"
+            "endo_canal_count": "3",
+            "ENDO_T1_WORKING_LENGTHS": "{\"K1\":19,\"K2\":18,\"K3\":20}",
+            "wf_technique": "maschinell"
           },
           "chips": [
             "kanalaufbereitung_3",
@@ -394,13 +418,23 @@
         "BEMA_41a",
         "BEMA_12",
         "BEMA_34",
+        "BEMA_35",
+        "BEMA_32",
         "BEMA_Ä925a",
         "BEMA_31"
       ],
-      "questions": [],
-      "answersUsed": {},
+      "questions": [
+        "canal_count",
+        "medication",
+        "irrigation"
+      ],
+      "answersUsed": {
+        "endo-27-1::endo_canal_count::tooth:27": "3",
+        "endo-27-1::endo_medication::tooth:27": "Ca(OH)2",
+        "endo-27-1::medical_endo_irrigation::tooth:27": "NaOCl + EDTA"
+      },
       "perInstanceCount": 1,
-      "textLength": 1018,
+      "textLength": 1195,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -410,20 +444,27 @@
           ],
           "facts": {
             "tooth": "27",
-            "surfaces": []
+            "surfaces": [],
+            "endo_canal_count": "3",
+            "endo_medication": "Ca(OH)2",
+            "endo_irrigation": "NaOCl + EDTA"
           },
           "chips": [
+            "einlage_caoh2",
             "endo_instrumentation_manual",
+            "kanalaufbereitung_3",
             "kofferdam",
             "la_leitung",
             "laengenmessung_elek",
             "roentgen_kontrolle",
+            "spuelung_edta",
+            "spuelung_naocl",
             "trepanation",
             "wf_kalt"
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 27\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung manuell. Anschließend Wurzelfüllung in kaltlateraler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch; Aufbereitung manuell; Spülung CHX; Wurzelfüllung kalt lateral.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• WF kaltlateral.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "outputText": "[Befund]\nZahn 27\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung manuell. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in kaltlateraler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch; Aufbereitung manuell; Spülung CHX; Wurzelfüllung kalt lateral.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF kaltlateral.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
       "pass": true,
       "failures": []
     },

@@ -1,0 +1,1332 @@
+{
+  "runId": "2026-02-15T15:35:50.758Z",
+  "suiteFile": "/Users/david/dokumaster-ui/scripts/v10/scenarios.v10.realworld.settings-materials.medical.json",
+  "meta": {
+    "description": "Realistic live dictations with simulated practice/user settings for materials and endo defaults",
+    "version": "1.0.0",
+    "created": "2026-02-15",
+    "settings": {
+      "practice": {
+        "defaultMaterial": "komposit",
+        "defaultIsolation": "kofferdam",
+        "materials": {
+          "fuellung": [
+            "ormocer",
+            "komposit nano-hybrid",
+            "bulk-fill"
+          ],
+          "endo": [
+            "Ca(OH)2",
+            "Ledermix",
+            "MTA"
+          ]
+        },
+        "treatments": {
+          "endo": {
+            "defaultEinlage": "caoh2",
+            "defaultIrrigationProtocol": "naocl_edta",
+            "defaultWLMethod": "elektrisch",
+            "defaultWFTechnique": "warm"
+          }
+        },
+        "inventory": {
+          "endo": {
+            "apexLocator": true,
+            "xray": true,
+            "obturationWarm": true,
+            "irrigantNaOCl": true,
+            "irrigantEDTA": true
+          }
+        }
+      },
+      "user": {
+        "defaultLAType": "leitung",
+        "defaultCappingMaterial": "mta",
+        "treatments": {
+          "endo": {
+            "defaultCanalCount": 3,
+            "defaultEinlage": "caoh2",
+            "defaultWFTechnique": "warm",
+            "defaultIrrigationProtocol": "naocl_edta"
+          }
+        }
+      }
+    }
+  },
+  "total": 10,
+  "pass": 10,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "sm01",
+      "title": "GKV Füllung ohne Materialangabe nutzt Praxis-Material",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 26 od. Kofferdam angelegt. Leitungsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13b"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 759,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-26-1",
+          "teeth": [
+            "26"
+          ],
+          "facts": {
+            "tooth": "26",
+            "surfaces": [
+              "o",
+              "d"
+            ],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_leitung"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 26. OD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Leitungsanästhesie N. alv. inf. (Ultracain D-S). Anschließend Kofferdam angelegt. Daraufhin Zahn 26 (OD): Füllungstherapie. Zum Schluss Füllung mit lichthärtendem Komposit (Komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm02",
+      "title": "PKV Füllung ohne Materialangabe nutzt Praxis-Material",
+      "treatmentId": "fuellung",
+      "insuranceType": "PKV",
+      "dictation": "Füllung 15 o. Kofferdam. Infiltrationsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_0090",
+        "GOZ_2040",
+        "GOZ_2060"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 740,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-15-1",
+          "teeth": [
+            "15"
+          ],
+          "facts": {
+            "tooth": "15",
+            "surfaces": [
+              "o"
+            ],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_infiltr"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 15. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst LA Infiltration (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 15 (O): Füllungstherapie. Abschließend Füllung mit lichthärtendem Komposit (Komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm03",
+      "title": "MKV Füllung ohne Materialangabe mit Mehrkosten",
+      "treatmentId": "fuellung",
+      "insuranceType": "MKV",
+      "dictation": "Füllung 36 mod. Kofferdam. Mehrkostenvereinbarung unterschrieben.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13c",
+        "GOZ_2100"
+      ],
+      "questions": [
+        "adhesive_technique",
+        "layering",
+        "mkv_justification",
+        "mkv_betrag"
+      ],
+      "answersUsed": {
+        "fuellung-36-1::fuellung_adhesive::tooth:36": "no",
+        "fuellung-36-1::fuellung_layering::tooth:36": "no",
+        "fuellung-36-1::fuellung_mkv_justification::tooth:36": "mehrschicht",
+        "fuellung-36-1::mkv_betrag::tooth:36": "150"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1368,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "m",
+              "o",
+              "d"
+            ],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user",
+            "fuellung_adhesive": "no",
+            "fuellung_layering": "no",
+            "fuellung_mkv_justification": "mehrschicht",
+            "betrag": "150"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "insurance_gkv_mkv",
+            "kofferdam",
+            "la_leitung",
+            "mehrschicht",
+            "mkv_begruendung"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. MOD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung nach § 28 Abs. 2 SGB V geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 36 (MOD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (Komposit) durchgeführt. Im Weiteren Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Abschließend Mehrkosten-Begründung: mehrschicht.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen. Patientenangabe: Mehrkostenvereinbarung unterschrieben.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm04",
+      "title": "Explizites Komposit überschreibt Praxis-Material",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 24 o Komposit. Kofferdam. Infiltrationsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_40",
+        "BEMA_12",
+        "BEMA_13"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 895,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-24-1",
+          "teeth": [
+            "24"
+          ],
+          "facts": {
+            "tooth": "24",
+            "surfaces": [
+              "o"
+            ],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_infiltr",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 24. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst LA Infiltration (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 24 (O): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm05",
+      "title": "Profunda mit indirekter Überkappung nutzt User-Default MTA",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 37 o. Karies profunda. Indirekte Überkappung. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13",
+        "BEMA_25"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 1006,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-37-1",
+          "teeth": [
+            "37"
+          ],
+          "facts": {
+            "tooth": "37",
+            "surfaces": [
+              "o"
+            ],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user"
+          },
+          "chips": [
+            "cp",
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_leitung"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 37. O. Caries profunda\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Bei der Überkappung wurde über das Risiko eines späteren Vitalitätsverlusts aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. (Ultracain D-S). Im Weiteren Kofferdam angelegt. Anschließend Pulpanahe Exkavation, indirekte Überkappung mit MTA. Daraufhin Zahn 37 (O): Füllungstherapie tief (caries profunda). Zum Schluss Füllung mit lichthärtendem Komposit (Komposit) durchgeführt.\n\nKlinische Zusatzinfo: Indirekte Überkappung.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Cp (MTA).\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm06",
+      "title": "Endo GKV mit Default-Einlage und Default-Irrigation",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 46. Trepanation. Kofferdam. Leitungsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_32",
+        "BEMA_Ä925a",
+        "BEMA_31"
+      ],
+      "questions": [
+        "ENDO_T1_IRRIGATION",
+        "ENDO_T1_WORKING_LENGTH_METHOD",
+        "ENDO_T1_WORKING_LENGTHS",
+        "wl_method"
+      ],
+      "answersUsed": {
+        "endo-46-1::ENDO_T1_IRRIGATION::tooth:46": "NaOCl",
+        "endo-46-1::ENDO_T1_WORKING_LENGTH_METHOD::tooth:46": "Apexlokator (EAL)",
+        "endo-46-1::ENDO_T1_WORKING_LENGTHS::tooth:46": "{\"K1\":19,\"K2\":20,\"K3\":21}"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1040,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-46-1",
+          "teeth": [
+            "46"
+          ],
+          "facts": {
+            "tooth": "46",
+            "surfaces": [],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user",
+            "ENDO_T1_IRRIGATION": "NaOCl",
+            "ENDO_T1_WORKING_LENGTH_METHOD": "Apexlokator (EAL)",
+            "ENDO_T1_WORKING_LENGTHS": "{\"K1\":19,\"K2\":20,\"K3\":21}"
+          },
+          "chips": [
+            "einlage_caoh2",
+            "kanalaufbereitung_3",
+            "kofferdam",
+            "la_leitung",
+            "laengenmessung_elek",
+            "roentgen_kontrolle",
+            "spuelung_edta",
+            "spuelung_naocl",
+            "trepanation",
+            "wf_warm"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 46\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm07",
+      "title": "Endo PKV nutzt Defaults und bleibt GOZ-only",
+      "treatmentId": "endo",
+      "insuranceType": "PKV",
+      "dictation": "Endo 11. Trepanation. Kofferdam. Infiltrationsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_0090",
+        "GOZ_0100",
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_2440",
+        "GOZ_2430",
+        "GOZ_2410",
+        "GOZ_5000",
+        "GOZ_2360"
+      ],
+      "questions": [
+        "ENDO_T1_IRRIGATION",
+        "ENDO_T1_WORKING_LENGTH_METHOD",
+        "ENDO_T1_WORKING_LENGTHS",
+        "wl_method"
+      ],
+      "answersUsed": {
+        "endo-11-1::ENDO_T1_IRRIGATION::tooth:11": "NaOCl",
+        "endo-11-1::ENDO_T1_WORKING_LENGTH_METHOD::tooth:11": "Apexlokator (EAL)",
+        "endo-11-1::ENDO_T1_WORKING_LENGTHS::tooth:11": "{\"K1\":19,\"K2\":20,\"K3\":21}"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1067,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-11-1",
+          "teeth": [
+            "11"
+          ],
+          "facts": {
+            "tooth": "11",
+            "surfaces": [],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user",
+            "ENDO_T1_IRRIGATION": "NaOCl",
+            "ENDO_T1_WORKING_LENGTH_METHOD": "Apexlokator (EAL)",
+            "ENDO_T1_WORKING_LENGTHS": "{\"K1\":19,\"K2\":20,\"K3\":21}"
+          },
+          "chips": [
+            "einlage_caoh2",
+            "kanalaufbereitung_3",
+            "kofferdam",
+            "la_infiltr",
+            "la_leitung",
+            "laengenmessung_elek",
+            "roentgen_kontrolle",
+            "spuelung_edta",
+            "spuelung_naocl",
+            "trepanation",
+            "wf_warm"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 11\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. Anschließend LA Infiltration. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• LA Infiltr.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm08",
+      "title": "Endo mit explizitem Ledermix überschreibt Default-Einlage",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 36. Trepanation. Medikamentöse Einlage Ledermix. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_34",
+        "BEMA_32",
+        "BEMA_Ä925a",
+        "BEMA_31"
+      ],
+      "questions": [
+        "ENDO_T1_IRRIGATION",
+        "ENDO_T1_WORKING_LENGTH_METHOD",
+        "ENDO_T1_WORKING_LENGTHS",
+        "wl_method"
+      ],
+      "answersUsed": {
+        "endo-36-1::ENDO_T1_IRRIGATION::tooth:36": "NaOCl",
+        "endo-36-1::ENDO_T1_WORKING_LENGTH_METHOD::tooth:36": "Apexlokator (EAL)",
+        "endo-36-1::ENDO_T1_WORKING_LENGTHS::tooth:36": "{\"K1\":19,\"K2\":20,\"K3\":21}"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1041,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user",
+            "ENDO_T1_IRRIGATION": "NaOCl",
+            "ENDO_T1_WORKING_LENGTH_METHOD": "Apexlokator (EAL)",
+            "ENDO_T1_WORKING_LENGTHS": "{\"K1\":19,\"K2\":20,\"K3\":21}"
+          },
+          "chips": [
+            "kanalaufbereitung_3",
+            "kofferdam",
+            "la_leitung",
+            "laengenmessung_elek",
+            "roentgen_kontrolle",
+            "spuelung_edta",
+            "spuelung_naocl",
+            "trepanation",
+            "wf_warm"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Medikamentöse Einlage Ledermix.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm09",
+      "title": "Multi-Tooth Füllung nutzt Praxis-Material konsistent",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 16 od. Kofferdam. Füllung 26 o. Kofferdam. Bisskontrolle geplant.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13b",
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13b"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 2,
+      "textLength": 1630,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-16-1",
+          "teeth": [
+            "16"
+          ],
+          "facts": {
+            "tooth": "16",
+            "surfaces": [
+              "o",
+              "d"
+            ],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user"
+          },
+          "chips": [
+            "finishing",
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_leitung"
+          ]
+        },
+        {
+          "instanceId": "fuellung-26-2",
+          "teeth": [
+            "26"
+          ],
+          "facts": {
+            "tooth": "26",
+            "surfaces": [
+              "o",
+              "d"
+            ],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user"
+          },
+          "chips": [
+            "finishing",
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_leitung"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 16. OD\n\nZahn 26. OD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. (Ultracain D-S). Im Weiteren Kofferdam angelegt. Anschließend Zahn 16 (OD): Füllungstherapie. Daraufhin Füllung mit lichthärtendem Komposit (Komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Bisskontrolle geplant.\n\nZu Beginn Leitungsanästhesie N. alv. inf. (Ultracain D-S). Anschließend Kofferdam angelegt. Daraufhin Zahn 26 (OD): Füllungstherapie. Im Weiteren Füllung mit lichthärtendem Komposit (Komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n\n• LA Leitung.\n• Kofferdam.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "sm10",
+      "title": "Endo mit expliziten Angaben bleibt fachlich konsistent",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 27: Trepanation. Arbeitslänge elektronisch. Aufbereitung manuell. Spülung CHX. Wurzelfüllung kalt lateral. Kofferdam. Leitungsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_32",
+        "BEMA_Ä925a",
+        "BEMA_31"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 1195,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-27-1",
+          "teeth": [
+            "27"
+          ],
+          "facts": {
+            "tooth": "27",
+            "surfaces": [],
+            "kofferdamUsed": true,
+            "kofferdamMentioned": true,
+            "isolationMentioned": "rubberDam",
+            "_kofferdamUsedSource": "settings:practice",
+            "anesthesia": "leitung",
+            "fuellung": {
+              "anesthesiaType": "leitung"
+            },
+            "_anesthesiaSource": "settings:user",
+            "endo": {
+              "wfTechnique": "warm",
+              "irrigationSolutions": [
+                "NaOCl",
+                "EDTA"
+              ],
+              "medication": "Ca(OH)2",
+              "canalCount": 3
+            },
+            "_endoWfTechniqueSource": "settings:user",
+            "_endoIrrigationSource": "settings:user",
+            "_endoMedicationSource": "settings:user",
+            "_endoCanalCountSource": "settings:user"
+          },
+          "chips": [
+            "einlage_caoh2",
+            "endo_instrumentation_manual",
+            "kanalaufbereitung_3",
+            "kofferdam",
+            "la_leitung",
+            "laengenmessung_elek",
+            "roentgen_kontrolle",
+            "spuelung_edta",
+            "spuelung_naocl",
+            "trepanation",
+            "wf_kalt"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 27\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung manuell. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in kaltlateraler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch; Aufbereitung manuell; Spülung CHX; Wurzelfüllung kalt lateral.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF kaltlateral.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "settingsApplied": {
+        "practice": {
+          "defaultMaterial": "komposit",
+          "defaultIsolation": "kofferdam",
+          "materials": {
+            "fuellung": [
+              "ormocer",
+              "komposit nano-hybrid",
+              "bulk-fill"
+            ],
+            "endo": [
+              "Ca(OH)2",
+              "Ledermix",
+              "MTA"
+            ]
+          },
+          "treatments": {
+            "endo": {
+              "defaultEinlage": "caoh2",
+              "defaultIrrigationProtocol": "naocl_edta",
+              "defaultWLMethod": "elektrisch",
+              "defaultWFTechnique": "warm"
+            },
+            "fuellung": {}
+          },
+          "inventory": {
+            "endo": {
+              "apexLocator": true,
+              "xray": true,
+              "obturationWarm": true,
+              "irrigantNaOCl": true,
+              "irrigantEDTA": true
+            },
+            "fuellung": {}
+          }
+        },
+        "user": {
+          "defaultLAType": "leitung",
+          "defaultCappingMaterial": "mta",
+          "treatments": {
+            "endo": {
+              "defaultCanalCount": 3,
+              "defaultEinlage": "caoh2",
+              "defaultWFTechnique": "warm",
+              "defaultIrrigationProtocol": "naocl_edta"
+            },
+            "fuellung": {}
+          }
+        }
+      },
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

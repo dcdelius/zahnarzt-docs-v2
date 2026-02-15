@@ -14,6 +14,7 @@ import type {
     hashSettings,
 } from './settingsTypes';
 import { setActiveKbReleaseId } from '../kb/release';
+import { reconcileUserWithPracticeHierarchy } from './hierarchyPolicy';
 
 // ═══════════════════════════════════════════════════════════════
 // STORAGE KEYS
@@ -35,6 +36,11 @@ function getActiveUserId(): string | null {
 
 function isFirestoreSettingsEnabled(): boolean {
     return import.meta.env.VITE_SETTINGS_FIRESTORE === 'true';
+}
+
+function isPracticeAdminRole(role?: string | null): boolean {
+    const value = String(role || '').toLowerCase();
+    return value.includes('practice_admin') || value.includes('admin') || value.includes('owner') || value.includes('praxis');
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -176,6 +182,7 @@ function sanitizePracticeForFirestore(settings: PracticeSettings): PracticeSetti
         enabledTreatments: settings.enabledTreatments,
         activeKbReleaseId: settings.activeKbReleaseId,
         chipStandards: settings.chipStandards,
+        lockUserOverrides: settings.lockUserOverrides,
     });
 }
 
@@ -213,13 +220,15 @@ export interface UseSettingsResult {
     resetToDefaults: () => void;
 
     isLoaded: boolean;
+    canEditPractice: boolean;
 }
 
-export function useSettings(params?: { userId?: string | null }): UseSettingsResult {
+export function useSettings(params?: { userId?: string | null; actorRole?: string | null }): UseSettingsResult {
     const [practiceSettings, setPracticeSettings] = useState<PracticeSettings>(DEFAULT_PRACTICE);
     const [userSettings, setUserSettings] = useState<UserSettings>(DEFAULT_USER);
     const [isLoaded, setIsLoaded] = useState(false);
     const activeUserId = params?.userId ?? getActiveUserId();
+    const canEditPractice = !isFirestoreSettingsEnabled() || isPracticeAdminRole(params?.actorRole);
 
     // Load from localStorage / Firestore on mount
     useEffect(() => {
@@ -242,9 +251,10 @@ export function useSettings(params?: { userId?: string | null }): UseSettingsRes
                     : DEFAULT_USER;
                 const migrated = migrateUserFromPracticeLegacy(practiceNext, userNext);
                 const migratedStandards = migrateStandardChipsToGlobal(migrated.next);
-                setUserSettings(migratedStandards.next);
-                if (migrated.changed || migratedStandards.changed) {
-                    localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(migratedStandards.next));
+                const reconciled = reconcileUserWithPracticeHierarchy(practiceNext, migratedStandards.next);
+                setUserSettings(reconciled.user);
+                if (migrated.changed || migratedStandards.changed || reconciled.changed) {
+                    localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(reconciled.user));
                 }
             } catch (e) {
                 console.warn('[useSettings] Failed to load settings from localStorage:', e);
@@ -275,6 +285,9 @@ export function useSettings(params?: { userId?: string | null }): UseSettingsRes
                         inventory: data.inventory,
                         enabledTreatments: data.enabledTreatments,
                         activeKbReleaseId: data.activeKbReleaseId,
+                        strictKzvMode: data.strictKzvMode,
+                        chipStandards: data.chipStandards,
+                        lockUserOverrides: data.lockUserOverrides,
                     };
                     setPracticeSettings(practiceNext);
                     localStorage.setItem(PRACTICE_SETTINGS_KEY, JSON.stringify(practiceNext));
@@ -291,6 +304,7 @@ export function useSettings(params?: { userId?: string | null }): UseSettingsRes
                             version: data.version ?? DEFAULT_USER.version,
                             defaultLAType: data.defaultLAType,
                             defaultLATypeUkPosterior: data.defaultLATypeUkPosterior,
+                            defaultAnestheticAgentId: data.defaultAnestheticAgentId,
                             defaultIsolation: data.defaultIsolation,
                             defaultCappingMaterial: data.defaultCappingMaterial,
                             preferredTextLength: data.preferredTextLength ?? DEFAULT_USER.preferredTextLength,
@@ -303,10 +317,11 @@ export function useSettings(params?: { userId?: string | null }): UseSettingsRes
                         };
                         const migrated = migrateUserFromPracticeLegacy(practiceNext, next);
                         const migratedStandards = migrateStandardChipsToGlobal(migrated.next);
-                        next = migratedStandards.next;
+                        const reconciled = reconcileUserWithPracticeHierarchy(practiceNext, migratedStandards.next);
+                        next = reconciled.user;
                         setUserSettings(next);
                         localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(next));
-                        if (migrated.changed || migratedStandards.changed) {
+                        if (migrated.changed || migratedStandards.changed || reconciled.changed) {
                             const payload = sanitizeUserForFirestore(next);
                             Promise.resolve()
                                 .then(() => setDoc(userRef, payload, { merge: true }))
@@ -340,7 +355,30 @@ export function useSettings(params?: { userId?: string | null }): UseSettingsRes
     // Save practice settings
     const updatePracticeSettings = useCallback((updates: Partial<PracticeSettings>) => {
         setPracticeSettings(prev => {
+            if (!canEditPractice) {
+                console.warn('[useSettings] Practice settings update blocked: missing practice admin role');
+                return prev;
+            }
             const next = { ...prev, ...updates };
+            const reconcile = reconcileUserWithPracticeHierarchy(next, userSettings);
+            if (reconcile.changed) {
+                setUserSettings(reconcile.user);
+                try {
+                    localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(reconcile.user));
+                } catch (e) {
+                    console.warn('[useSettings] Failed to save reconciled user settings:', e);
+                }
+                if (isFirestoreSettingsEnabled() && activeUserId) {
+                    const practiceId = getActivePracticeId();
+                    const firestoreUserRef = doc(db, 'Praxen', practiceId, 'Benutzer', activeUserId, 'Settings', 'v10');
+                    const userPayload = sanitizeUserForFirestore(reconcile.user);
+                    Promise.resolve()
+                        .then(() => setDoc(firestoreUserRef, userPayload, { merge: true }))
+                        .catch(err => {
+                            console.warn('[useSettings] Failed to save reconciled user settings to Firestore:', err);
+                        });
+                }
+            }
             try {
                 localStorage.setItem(PRACTICE_SETTINGS_KEY, JSON.stringify(next));
             } catch (e) {
@@ -359,12 +397,13 @@ export function useSettings(params?: { userId?: string | null }): UseSettingsRes
             }
             return next;
         });
-    }, []);
+    }, [activeUserId, canEditPractice, userSettings]);
 
     // Save user settings
     const updateUserSettings = useCallback((updates: Partial<UserSettings>) => {
         setUserSettings(prev => {
-            const next = { ...prev, ...updates };
+            const merged = { ...prev, ...updates };
+            const { user: next } = reconcileUserWithPracticeHierarchy(practiceSettings, merged);
             try {
                 localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(next));
             } catch (e) {
@@ -385,7 +424,7 @@ export function useSettings(params?: { userId?: string | null }): UseSettingsRes
             }
             return next;
         });
-    }, [activeUserId]);
+    }, [activeUserId, practiceSettings, setUserSettings]);
 
     // Reset
     const resetToDefaults = useCallback(() => {
@@ -427,5 +466,6 @@ export function useSettings(params?: { userId?: string | null }): UseSettingsRes
         updateUserSettings,
         resetToDefaults,
         isLoaded,
+        canEditPractice,
     };
 }

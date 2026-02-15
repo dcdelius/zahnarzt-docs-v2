@@ -18,6 +18,8 @@ export function V10OptionPillButton({ label, isActive, onClick, testId, size = '
         <motion.button
             type="button"
             onClick={onClick}
+            aria-pressed={isActive}
+            data-state={isActive ? 'active' : 'inactive'}
             animate={{
                 background: isActive ? gradients.button : colors.surfaceGlass,
                 color: isActive ? colors.textPrimary : colors.textSecondary,
@@ -41,4 +43,3 @@ export function V10OptionPillButton({ label, isActive, onClick, testId, size = '
         </motion.button>
     );
 }
-

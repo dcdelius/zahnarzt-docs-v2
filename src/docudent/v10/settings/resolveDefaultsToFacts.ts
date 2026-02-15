@@ -108,7 +108,7 @@ export function applySettingsDefaults(
     const cappingPref = typeof user?.defaultCappingMaterial === 'string'
         ? user.defaultCappingMaterial.toLowerCase()
         : undefined;
-    if (cappingMaterial === undefined && cappingPref) {
+    if ((result.treatmentId === 'fuellung' || result.capping?.performed === 'yes') && cappingMaterial === undefined && cappingPref) {
         const material =
             cappingPref.includes('caoh')
                 ? 'Ca(OH)₂'
@@ -125,8 +125,12 @@ export function applySettingsDefaults(
     }
 
     // Material default (only if unknown)
-    if (isUnknown(result.material) && practice?.defaultMaterial) {
+    if (result.treatmentId === 'fuellung' && isUnknown(result.material) && practice?.defaultMaterial) {
         result.material = practice.defaultMaterial.toLowerCase();
+        // Keep material askback fact in sync so settings can satisfy "fuellung_material" directly.
+        if (isUnknown((result as Record<string, unknown>).fuellung_material)) {
+            (result as Record<string, unknown>).fuellung_material = result.material;
+        }
         result._materialSource = 'settings:practice';
     }
 

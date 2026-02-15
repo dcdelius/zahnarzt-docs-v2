@@ -52,6 +52,12 @@ const FUELLUNG_KEYWORDS = [
 function hasAny(text: string, terms: string[]): string | null {
     const lower = text.toLowerCase();
     for (const term of terms) {
+        if (term.length <= 2) {
+            const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const tokenPattern = new RegExp(`\\b${escaped}\\b`, 'i');
+            if (tokenPattern.test(lower)) return term;
+            continue;
+        }
         if (lower.includes(term)) return term;
     }
     return null;

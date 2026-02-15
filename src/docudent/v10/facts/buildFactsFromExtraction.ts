@@ -446,6 +446,7 @@ function detectEndoProcedureDetails(text: string) {
         irrigationWithNaOCl: hasAny(normalized, ['naocl', 'natriumhypochlorit']),
         irrigationWithEDTA: hasAny(normalized, ['edta']),
         medicationCalciumHydroxide: hasAny(normalized, ['calciumhydroxid', 'caoh', 'ca(oh)2']),
+        medicationLedermix: hasAny(normalized, ['ledermix']),
         guttapercha: hasAny(normalized, ['guttapercha']),
         sealer: hasAny(normalized, ['sealer', 'ah plus']),
         instrumentationRotary: hasAny(normalized, ['rotierend', 'maschinell', 'reciproc', 'protaper', 'waveone', 'mtwo', 'niti']),
@@ -1652,7 +1653,11 @@ function buildEndoFacts(
                 ...(details.irrigationWithNaOCl ? ['NaOCl'] : []),
                 ...(details.irrigationWithEDTA ? ['EDTA'] : []),
             ],
-            medication: details.medicationCalciumHydroxide ? 'Ca(OH)2' : undefined,
+            medication: details.medicationLedermix
+                ? 'Ledermix'
+                : details.medicationCalciumHydroxide
+                    ? 'Ca(OH)2'
+                    : undefined,
             sealerMentioned: details.sealer ? true : undefined,
             obturated: details.guttapercha || details.sealer,
             anesthesiaType: details.anesthesiaLeitung

@@ -11,11 +11,11 @@ service cloud.firestore {
     }
 
     function getOrgs() {
-      return request.auth.token.orgs;
+      return request.auth.token.orgs != null ? request.auth.token.orgs : {};
     }
 
     function getPractices() {
-      return request.auth.token.practices;
+      return request.auth.token.practices != null ? request.auth.token.practices : {};
     }
 
     function isMemberOfOrg(orgId) {
@@ -246,24 +246,26 @@ service cloud.firestore {
     // ═══════════════════════════════════════════════════════════════
 
     match /Praxen/{practiceId} {
-      // Any signed-in user can read practices
-      allow read: if isSignedIn();
-      // Only signed-in users can create/update practices
-      allow create, update: if isSignedIn();
+      // Read only for users with explicit practice membership claim.
+      allow read: if isMemberOfPractice(practiceId);
+      // Create kept open for signed-in users (onboarding/bootstrap path).
+      allow create: if isSignedIn();
+      // Existing practice document updates require practice admin claim.
+      allow update: if hasPracticeRole(practiceId, 'practice_admin');
       // Delete restricted (could add admin check later)
       allow delete: if false;
 
       // Benutzer subcollection
       match /Benutzer/{userId} {
-        allow read: if isSignedIn();
-        allow create, update: if isSignedIn();
+        allow read: if isMemberOfPractice(practiceId);
+        allow create, update: if hasPracticeRole(practiceId, 'practice_admin');
         allow delete: if false;
       }
 
       // Settings subcollection (used by useSettings hook)
       match /Settings/{settingId} {
-        allow read: if isSignedIn();
-        allow create, update: if isSignedIn();
+        allow read: if isMemberOfPractice(practiceId);
+        allow create, update: if hasPracticeRole(practiceId, 'practice_admin');
         allow delete: if false;
       }
     }

@@ -10,7 +10,12 @@
 | ID | Description | Opened | Notes |
 |----|-------------|--------|-------|
 | GAP-17 | 3‑step UI coherence (Step 2 style alignment) | 2026-02-15 | Questions/Extracted Facts view should match Step‑1 visual language. |
-| GAP-19 | Final online UI regression run pending after full stage merge | 2026-02-15 | Run hosted UI smoke/E2E after consolidated audit and deploy candidate. |
+| GAP-19 | Final online UI regression run pending after full stage merge | 2026-02-15 | Hosted smoke is green (`https://zahnarzt-app.web.app` + `/v10` reachable); full authenticated hosted E2E is still pending. |
+| GAP-20 | Praxis-/Behandler-Settings hierarchy not fully productized | 2026-02-15 | Phase 3 guardrails live: hierarchy reconciliation + practice-write role policy + visible governance toggles in V10 settings; remaining work is full tenant onboarding/workflow model and richer permission matrix. |
+| GAP-23 | Actor-role trust model still partially client-side | 2026-02-15 | Actor role derives from auth token claims and legacy `Praxen/*` Firestore writes now require practice_admin claims; remaining work is full rule parity for all prod paths and backend validation hardening. |
+| GAP-24 | Settings taxonomy still partly treatment-centric for globally shared medical defaults | 2026-02-15 | Shared defaults like anesthesia/analgesia should be modeled once (global medical domain) and reused across treatment packs; current split still duplicates some semantics and increases drift risk. |
+| GAP-25 | Multi-treatment intent orchestration from one fluent dictation not yet fully productized | 2026-02-15 | Phase 1 is live (intent preanalysis, confirmation board, lane askbacks, deterministic bundle hash/provenance). Remaining work: richer overlap packs (e.g. Krone+Aufbau), advanced confidence fallback policies, and wider treatment coverage. |
+| GAP-26 | Treatment-pack coverage is still narrow versus real praxis spectrum | 2026-02-15 | Fundamentals are being hardened first (deterministic orchestration + strict gates). Systematic onboarding for further Behandlungsarten remains open and should follow the pack-onboarding contract (<1 day per treatment). |
 
 ## Resolved Gaps
 
@@ -34,6 +39,9 @@
 | GAP-15 | Output text length policy not enforced across chips/disclosures | 2026-02-15 |
 | GAP-16 | One treatment not yet migrated end‑to‑end to Procedure Graph | 2026-02-15 |
 | GAP-18 | Settings flag for Strict KZV mode missing | 2026-02-15 |
+| GAP-22 | V10 realistic full-workflow E2E unstable in askback completion | 2026-02-15 |
+| GAP-21 | Firestore settings hydration parity gap in V10 hook | 2026-02-15 |
+| GAP-27 | Consolidated release checklist/audit gate missing | 2026-02-15 |
 
 ---
 

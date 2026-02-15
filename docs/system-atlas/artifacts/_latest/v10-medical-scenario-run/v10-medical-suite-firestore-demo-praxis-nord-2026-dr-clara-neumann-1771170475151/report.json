@@ -1,0 +1,535 @@
+{
+  "runId": "2026-02-15T15:49:13.812Z",
+  "suiteFile": "/var/folders/fh/bz4qgkm12_z06kny5k7lt8m00000gn/T/v10-medical-suite-firestore-demo-praxis-nord-2026-dr-clara-neumann-1771170475151.json",
+  "meta": {
+    "description": "Real-life dictation set with extra clinical details (LLM+Firestore live)",
+    "version": "1.0.0",
+    "created": "2026-02-13"
+  },
+  "total": 10,
+  "pass": 10,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "r01",
+      "title": "GKV Füllung MOD + Okklusionshinweis",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 36 mod Komposit. Kofferdam. Leitungsanästhesie. Okklusion eingeschliffen, Politur, Bisskontrolle geplant.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13c"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 1065,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "m",
+              "o",
+              "d"
+            ]
+          },
+          "chips": [
+            "finishing",
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_leitung",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. MOD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 36 (MOD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Okklusion eingeschliffen; Politur; Bisskontrolle geplant.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r02",
+      "title": "GKV Füllung 1fl + Matrize/Keil",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 24 o Komposit. Kofferdam. Infiltrationsanästhesie. Matrize und Keil, Kontaktpunkt geprüft.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_40",
+        "BEMA_12",
+        "BEMA_13"
+      ],
+      "questions": [
+        "surfaces"
+      ],
+      "answersUsed": {
+        "fuellung-24-1::medical_surfaces::tooth:24": "o"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1017,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-24-1",
+          "teeth": [
+            "24"
+          ],
+          "facts": {
+            "tooth": "24",
+            "surfaces": "o"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_kontaktpunkt",
+            "fuellung_material_keil",
+            "fuellung_material_komposit",
+            "fuellung_material_matrix",
+            "kofferdam",
+            "la_infiltr",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 24. O\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst LA Infiltration (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Matrizensystem Matrix eingesetzt. Anschließend Keil zur Separation eingesetzt. Daraufhin Zahn 24 (O): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Kontaktpunkt geprüft.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r03",
+      "title": "GKV profunda + indirekte Überkappung",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 37 o Komposit. Karies profunda. Indirekte Überkappung mit Calciumhydroxid. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13",
+        "BEMA_25"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 867,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-37-1",
+          "teeth": [
+            "37"
+          ],
+          "facts": {
+            "tooth": "37",
+            "surfaces": [
+              "o"
+            ]
+          },
+          "chips": [
+            "cp",
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 37. O. Caries profunda\n\n[Aufklärung]\nBei der Überkappung wurde über das Risiko eines späteren Vitalitätsverlusts aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Kofferdam angelegt. Im Weiteren Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Anschließend Zahn 37 (O): Füllungstherapie tief (caries profunda). Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nKlinische Zusatzinfo: Indirekte Überkappung mit Calciumhydroxid.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Cp (Ca(OH)₂).\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r04",
+      "title": "MKV Füllung + Mehrkostenbegründung",
+      "treatmentId": "fuellung",
+      "insuranceType": "MKV",
+      "dictation": "Füllung 16 od Komposit. Mehrkostenvereinbarung unterschrieben, Begründung: ästhetischer Anspruch. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13b",
+        "GOZ_2080"
+      ],
+      "questions": [
+        "layering",
+        "mkv_justification",
+        "mkv_betrag"
+      ],
+      "answersUsed": {
+        "fuellung-16-1::fuellung_layering::tooth:16": "no",
+        "fuellung-16-1::fuellung_mkv_justification::tooth:16": "mehrschicht",
+        "fuellung-16-1::mkv_betrag::tooth:16": "150"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1029,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-16-1",
+          "teeth": [
+            "16"
+          ],
+          "facts": {
+            "tooth": "16",
+            "surfaces": [
+              "o",
+              "d"
+            ],
+            "fuellung_layering": "no",
+            "fuellung_mkv_justification": "mehrschicht",
+            "betrag": "150"
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "insurance_gkv_mkv",
+            "kofferdam",
+            "mehrschicht",
+            "mkv_begruendung"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 16. OD\n\n[Aufklärung]\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung nach § 28 Abs. 2 SGB V geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nInitial Kofferdam angelegt. Im Weiteren Zahn 16 (OD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Im Weiteren Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Zum Schluss Mehrkosten-Begründung: mehrschicht.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Patientenangabe: ästhetischer Anspruch.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r05",
+      "title": "PKV Füllung + Mehrschichttechnik",
+      "treatmentId": "fuellung",
+      "insuranceType": "PKV",
+      "dictation": "Füllung 45 modb Komposit. Kofferdam. Infiltrationsanästhesie. Mehrschichttechnik, lichthärtend.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_0090",
+        "GOZ_2040",
+        "GOZ_2120"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 957,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-45-1",
+          "teeth": [
+            "45"
+          ],
+          "facts": {
+            "tooth": "45",
+            "surfaces": []
+          },
+          "chips": [
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "la_infiltr",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 45. MODB\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst LA Infiltration (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 45 (MODB): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nKlinische Zusatzinfo: Mehrschichttechnik; lichthärtend.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r06",
+      "title": "GKV Endo mit WL + Spülung + Einlage",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 46: Trepanation. Arbeitslänge elektronisch mit Apex-Locator, Röntgenkontrolle. Aufbereitung maschinell. Spülung NaOCl und EDTA. Medikamentöse Einlage Calciumhydroxid. Provisorischer Verschluss mit Cavit. Kofferdam. Leitungsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_35",
+        "BEMA_32",
+        "BEMA_31"
+      ],
+      "questions": [
+        "canal_count",
+        "ENDO_T1_WORKING_LENGTHS",
+        "wf_technique"
+      ],
+      "answersUsed": {
+        "endo-46-1::endo_canal_count::tooth:46": "3",
+        "endo-46-1::ENDO_T1_WORKING_LENGTHS::tooth:46": "{\"MB\":19,\"ML\":18,\"D\":20}",
+        "endo-46-1::medical_wf_technique::tooth:46": "maschinell"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1217,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-46-1",
+          "teeth": [
+            "46"
+          ],
+          "facts": {
+            "tooth": "46",
+            "surfaces": [],
+            "endo_canal_count": "3",
+            "ENDO_T1_WORKING_LENGTHS": "{\"MB\":19,\"ML\":18,\"D\":20}",
+            "wf_technique": "maschinell"
+          },
+          "chips": [
+            "einlage_caoh2",
+            "endo_instrumentation_rotary",
+            "kanalaufbereitung_3",
+            "kofferdam",
+            "la_leitung",
+            "laengenmessung_elek",
+            "provisorischer_verschluss",
+            "spuelung_edta",
+            "spuelung_naocl",
+            "trepanation"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 46\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Aufbereitung maschinell (rotierend). Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Abschließend Provisorischer Verschluss.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch mit Apex-Locator; Röntgenkontrolle; Aufbereitung maschinell; Spülung NaOCl und EDTA; Medikamentöse Einlage Calciumhydroxid; Provisorischer Verschluss mit Cavit.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r07",
+      "title": "PKV Endo warm vertikal",
+      "treatmentId": "endo",
+      "insuranceType": "PKV",
+      "dictation": "Endo 11: Trepanation. Arbeitslänge elektronisch. Aufbereitung rotierend. Spülung NaOCl. Wurzelfüllung warm vertikal mit Sealer. Kofferdam. Infiltrationsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_0090",
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_2440",
+        "GOZ_2430",
+        "GOZ_2410",
+        "GOZ_5000",
+        "GOZ_2360"
+      ],
+      "questions": [
+        "canal_count",
+        "medication"
+      ],
+      "answersUsed": {
+        "endo-11-1::endo_canal_count::tooth:11": "3",
+        "endo-11-1::endo_medication::tooth:11": "Ca(OH)2"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1074,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-11-1",
+          "teeth": [
+            "11"
+          ],
+          "facts": {
+            "tooth": "11",
+            "surfaces": [],
+            "endo_canal_count": "3",
+            "endo_medication": "Ca(OH)2"
+          },
+          "chips": [
+            "einlage_caoh2",
+            "endo_instrumentation_rotary",
+            "endo_sealer",
+            "kanalaufbereitung_3",
+            "kofferdam",
+            "la_infiltr",
+            "laengenmessung_elek",
+            "roentgen_kontrolle",
+            "spuelung_naocl",
+            "trepanation",
+            "wf_warm"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 11\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial LA Infiltration. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Anschließend Sealer verwendet. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r08",
+      "title": "GKV Endo + Einlage + Provisorium",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 36: Zugang. Arbeitslänge röntgenologisch. Spülung NaOCl. Medikamentöse Einlage Ledermix. Provisorischer Verschluss. Kofferdam.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_Ä925a",
+        "BEMA_32"
+      ],
+      "questions": [
+        "canal_count",
+        "ENDO_T1_WORKING_LENGTHS",
+        "wf_technique"
+      ],
+      "answersUsed": {
+        "endo-36-1::endo_canal_count::tooth:36": "3",
+        "endo-36-1::ENDO_T1_WORKING_LENGTHS::tooth:36": "{\"K1\":19,\"K2\":18,\"K3\":20}",
+        "endo-36-1::medical_wf_technique::tooth:36": "maschinell"
+      },
+      "perInstanceCount": 1,
+      "textLength": 645,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [],
+            "endo_canal_count": "3",
+            "ENDO_T1_WORKING_LENGTHS": "{\"K1\":19,\"K2\":18,\"K3\":20}",
+            "wf_technique": "maschinell"
+          },
+          "chips": [
+            "kanalaufbereitung_3",
+            "kofferdam",
+            "laengenmessung_roentgen",
+            "provisorischer_verschluss",
+            "spuelung_naocl"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Kofferdam angelegt. Daraufhin Röntgen-Messaufnahme zur Arbeitslängenbestimmung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Abschließend Provisorischer Verschluss.\n\nKlinische Zusatzinfo: Zugang; Arbeitslänge röntgenologisch; Spülung NaOCl; Medikamentöse Einlage Ledermix; Provisorischer Verschluss.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Rö-Mess.\n• 3K.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r09",
+      "title": "GKV Endo kalt lateral",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 27: Trepanation. Arbeitslänge elektronisch. Aufbereitung manuell. Spülung CHX. Wurzelfüllung kalt lateral. Kofferdam. Leitungsanästhesie.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_32",
+        "BEMA_Ä925a",
+        "BEMA_31"
+      ],
+      "questions": [
+        "canal_count",
+        "medication",
+        "irrigation"
+      ],
+      "answersUsed": {
+        "endo-27-1::endo_canal_count::tooth:27": "3",
+        "endo-27-1::endo_medication::tooth:27": "Ca(OH)2",
+        "endo-27-1::medical_endo_irrigation::tooth:27": "NaOCl + EDTA"
+      },
+      "perInstanceCount": 1,
+      "textLength": 1195,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-27-1",
+          "teeth": [
+            "27"
+          ],
+          "facts": {
+            "tooth": "27",
+            "surfaces": [],
+            "endo_canal_count": "3",
+            "endo_medication": "Ca(OH)2",
+            "endo_irrigation": "NaOCl + EDTA"
+          },
+          "chips": [
+            "einlage_caoh2",
+            "endo_instrumentation_manual",
+            "kanalaufbereitung_3",
+            "kofferdam",
+            "la_leitung",
+            "laengenmessung_elek",
+            "roentgen_kontrolle",
+            "spuelung_edta",
+            "spuelung_naocl",
+            "trepanation",
+            "wf_kalt"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 27\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung manuell. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in kaltlateraler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch; Aufbereitung manuell; Spülung CHX; Wurzelfüllung kalt lateral.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF kaltlateral.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "r10",
+      "title": "GKV Multi-Tooth + Bisskontrolle",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 36 od Komposit Kofferdam; Füllung 14 o Kofferdam. Bisskontrolle geplant.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_12",
+        "BEMA_13b",
+        "BEMA_12",
+        "BEMA_13b"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 2,
+      "textLength": 1337,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "o",
+              "d"
+            ]
+          },
+          "chips": [
+            "finishing",
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "mehrschicht"
+          ]
+        },
+        {
+          "instanceId": "fuellung-14-2",
+          "teeth": [
+            "14"
+          ],
+          "facts": {
+            "tooth": "14",
+            "surfaces": [
+              "o"
+            ]
+          },
+          "chips": [
+            "finishing",
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "kofferdam",
+            "mehrschicht"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 36. OD\n\nZahn 14. OD\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Kofferdam angelegt. Daraufhin Zahn 36 (OD): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Bisskontrolle geplant.\n\nZu Beginn Kofferdam angelegt. Anschließend Zahn 14 (OD): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Patientenangabe: Bisskontrolle geplant.\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

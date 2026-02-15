@@ -5,6 +5,7 @@ import { SoftGradientBackground } from '../components';
 import { colors, gradients, radii, shadows, typography, spacing } from '../styles/tokens';
 import { useSettings } from '../settings/useSettings';
 import { useUser } from '../../../contexts/UserContext';
+import { useAuth } from '../../../contexts/AuthContext';
 import type { PracticeSettings, UserSettings } from '../settings/settingsTypes';
 import { DEFAULT_DOC_CHIPS } from '../settings/docStandardChips';
 import {
@@ -28,6 +29,7 @@ import { InlineExpandPanel } from '../components/InlineExpandPanel';
 import { OverlaySelectField } from '../components/OverlaySelectField';
 import { OverlayMultiSelectField } from '../components/OverlayMultiSelectField';
 import { HeaderDock } from '../components/HeaderDock';
+import { deriveSettingsCapabilities } from '../settings/permissionPolicy';
 
 // TREATMENT_LABELS and ALL_TREATMENT_IDS now imported from treatmentMaster.ts
 const TREATMENT_IDS = ALL_TREATMENT_IDS;
@@ -63,11 +65,6 @@ const GENERAL_TREATMENT_ID = 'allgemein';
 function getRoleLabel(role?: string) {
     if (!role) return 'Behandler';
     return role;
-}
-
-function isPracticeAdmin(role?: string) {
-    const value = String(role || '').toLowerCase();
-    return value.includes('admin') || value.includes('owner') || value.includes('praxis');
 }
 
 function normalizeList(value: string) {
@@ -551,13 +548,15 @@ function EmptyState({ text }: { text: string }) {
 
 export default function SettingsPageV10() {
     const { users, selectedUser, setSelectedUser } = useUser();
+    const { actorRole } = useAuth();
     const {
         practiceSettings,
         userSettings,
         updatePracticeSettings,
         updateUserSettings,
         isLoaded,
-    } = useSettings({ userId: selectedUser });
+        canEditPractice: canEditPracticeByHook,
+    } = useSettings({ userId: selectedUser, actorRole });
 
     const [activeScope, setActiveScope] = useState<'practice' | 'user'>('practice');
     const [activeTreatmentId, setActiveTreatmentId] = useState<string>(GENERAL_TREATMENT_ID);
@@ -589,11 +588,15 @@ export default function SettingsPageV10() {
     const handleUserSelect = (user: { id: string; name: string }) => {
         setSelectedUser(user.id);
     };
-    const admin = isPracticeAdmin(currentUser?.role);
     const v10CssVars = useMemo(() => buildV10CssVars(), []);
-    const firestoreEnabled = import.meta.env.VITE_SETTINGS_FIRESTORE === 'true';
-    const canEditPractice = admin || !firestoreEnabled;
+    const canEditPractice = canEditPracticeByHook;
     const enabledTreatments = userSettings.enabledTreatments ?? TREATMENT_IDS;
+    const capabilities = useMemo(
+        () => deriveSettingsCapabilities(actorRole, practiceSettings),
+        [actorRole, practiceSettings]
+    );
+    const isTreatmentOverrideLocked = !capabilities.canEditUserTreatmentSelection;
+    const isFuellungMaterialDefaultsLocked = !capabilities.canEditUserFuellungMaterialDefaults;
 
     useEffect(() => {
         const allIds = [GENERAL_TREATMENT_ID, ...TREATMENT_IDS];
@@ -883,6 +886,11 @@ export default function SettingsPageV10() {
     };
 
     const handleCreateUser = async () => {
+        if (!capabilities.canManageUsers) {
+            setCreateUserStatus('error');
+            setCreateUserError('Nur Praxis-Admins koennen Benutzer anlegen.');
+            return;
+        }
         if (!newUserState.name.trim()) return;
         setCreateUserStatus('creating');
         setCreateUserError(null);
@@ -1102,6 +1110,7 @@ export default function SettingsPageV10() {
                                     type="checkbox"
                                     className="v10-toggle-input"
                                     checked={(userSettings.enabledTreatments ?? TREATMENT_IDS).includes(activeTreatmentId)}
+                                    disabled={isTreatmentOverrideLocked}
                                     onChange={e => {
                                         const enabled = e.target.checked;
                                         const current = new Set(userSettings.enabledTreatments ?? TREATMENT_IDS);
@@ -1117,7 +1126,7 @@ export default function SettingsPageV10() {
                         ) : undefined}
                     >
 
-                        {activeScope === 'user' && showInlineCreateUser && admin ? (
+                        {activeScope === 'user' && showInlineCreateUser && capabilities.canManageUsers ? (
                             <div style={{ marginBottom: spacing.lg }}>
                                 {renderCreateUserForm(false)}
                             </div>
@@ -1261,9 +1270,53 @@ export default function SettingsPageV10() {
                                                 );
                                             })}
                                         </Band>
+
+                                        <Band label="Governance" description="Steuert, welche Behandler-Overrides gegenüber Praxis-Defaults erlaubt sind.">
+                                            <ToggleRow
+                                                label="Behandler-Behandlungen an Praxisliste koppeln"
+                                                description="Wenn aktiv, übernimmt jeder Behandler exakt die von der Praxis aktivierten Behandlungen."
+                                                checked={Boolean(practiceSettings.lockUserOverrides?.enabledTreatments)}
+                                                disabled={!canEditPractice}
+                                                onChange={(next) => updatePractice({
+                                                    lockUserOverrides: {
+                                                        ...(practiceSettings.lockUserOverrides ?? {}),
+                                                        enabledTreatments: next,
+                                                    },
+                                                })}
+                                            />
+                                            <ToggleRow
+                                                label="Behandler-Materialdefaults (Füllung) sperren"
+                                                description="Wenn aktiv, dürfen Behandler keine eigenen Material-Defaults für Füllung setzen."
+                                                checked={Boolean(practiceSettings.lockUserOverrides?.fuellungMaterialDefaults)}
+                                                disabled={!canEditPractice}
+                                                onChange={(next) => updatePractice({
+                                                    lockUserOverrides: {
+                                                        ...(practiceSettings.lockUserOverrides ?? {}),
+                                                        fuellungMaterialDefaults: next,
+                                                    },
+                                                })}
+                                            />
+                                        </Band>
                                     </>
                                 ) : (
                                     <>
+                                        {capabilities.canManageUsers ? (
+                                            <Band label="Team" description="Benutzerverwaltung fuer diese Praxis.">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowInlineCreateUser(v => !v)}
+                                                    className={`v10-settings-pill ${showInlineCreateUser ? 'v10-settings-pillActive' : 'v10-settings-pillSecondary'}`}
+                                                >
+                                                    {showInlineCreateUser ? 'Benutzeranlage ausblenden' : 'Benutzer anlegen'}
+                                                </button>
+                                                {showInlineCreateUser ? renderCreateUserForm(true) : null}
+                                            </Band>
+                                        ) : null}
+                                        {isTreatmentOverrideLocked ? (
+                                            <div className="v10-settings-adminNote">
+                                                Praxis-Governance aktiv: Behandlungsliste wird zentral durch die Praxis gesteuert.
+                                            </div>
+                                        ) : null}
                                         <Band label="Dokumentation">
                                             <OverlaySelectField
                                                 label="Textlänge"
@@ -1592,6 +1645,11 @@ export default function SettingsPageV10() {
                                                 defaultCappingMaterial: value ? (value as UserSettings['defaultCappingMaterial']) : undefined,
                                             })}
                                         />
+                                        {isFuellungMaterialDefaultsLocked ? (
+                                            <div className="v10-settings-adminNote">
+                                                Praxis-Governance aktiv: Material-Defaults werden zentral vorgegeben.
+                                            </div>
+                                        ) : null}
                                         <SettingSelect
                                             label="Standard-Komposit (Marke)"
                                             value={userSettings.treatments?.fuellung?.defaultCompositeMaterialId ?? ''}
@@ -1599,6 +1657,7 @@ export default function SettingsPageV10() {
                                             description={(practiceSettings.materialCatalog?.fuellung ?? []).length === 0
                                                 ? 'Tipp: Im Materialkatalog der Praxis zuerst Materialien auswählen.'
                                                 : 'Optional: für Dokumentation/Defaults (Auto-On).'}
+                                            disabled={isFuellungMaterialDefaultsLocked}
                                             onChange={(value) => {
                                                 updateUserTreatment('fuellung', { defaultCompositeMaterialId: value ? value : undefined });
                                             }}
@@ -1608,6 +1667,7 @@ export default function SettingsPageV10() {
                                             value={userSettings.treatments?.fuellung?.defaultBulkMaterialId ?? ''}
                                             options={fuellungBulkCatalogOptions}
                                             description="Optional: wenn du häufig Bulk-Fill nutzt."
+                                            disabled={isFuellungMaterialDefaultsLocked}
                                             onChange={(value) => {
                                                 updateUserTreatment('fuellung', { defaultBulkMaterialId: value ? value : undefined });
                                             }}
@@ -1617,6 +1677,7 @@ export default function SettingsPageV10() {
                                             value={userSettings.treatments?.fuellung?.defaultFlowableMaterialId ?? ''}
                                             options={fuellungFlowableCatalogOptions}
                                             description="Optional: wenn du eine Flowable Base bevorzugst."
+                                            disabled={isFuellungMaterialDefaultsLocked}
                                             onChange={(value) => {
                                                 updateUserTreatment('fuellung', { defaultFlowableMaterialId: value ? value : undefined });
                                             }}
@@ -1643,6 +1704,7 @@ export default function SettingsPageV10() {
                                             value={userSettings.treatments?.fuellung?.defaultAdhesiveMaterialId ?? ''}
                                             options={fuellungAdhesiveCatalogOptions}
                                             description="Optional: bevorzugtes Adhäsivsystem."
+                                            disabled={isFuellungMaterialDefaultsLocked}
                                             onChange={(value) => {
                                                 updateUserTreatment('fuellung', { defaultAdhesiveMaterialId: value ? value : undefined });
                                             }}
@@ -1652,6 +1714,7 @@ export default function SettingsPageV10() {
                                             value={userSettings.treatments?.fuellung?.defaultEtchMaterialId ?? ''}
                                             options={fuellungEtchCatalogOptions}
                                             description="Optional: bevorzugtes Ätzgel."
+                                            disabled={isFuellungMaterialDefaultsLocked}
                                             onChange={(value) => {
                                                 updateUserTreatment('fuellung', { defaultEtchMaterialId: value ? value : undefined });
                                             }}
@@ -1685,6 +1748,10 @@ export default function SettingsPageV10() {
                     saved={showSaved}
                     onSave={() => {
                         setIsSaving(true);
+                        // Re-commit current snapshots to Firestore/local storage so
+                        // the Save action is a real persistence boundary.
+                        updatePracticeSettings(practiceSettings);
+                        updateUserSettings(userSettings);
                         setTimeout(() => {
                             setIsSaving(false);
                             setIsDirty(false);

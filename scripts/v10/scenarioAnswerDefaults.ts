@@ -164,6 +164,44 @@ const guessEndoWorkingLengths = (dictation: string, facts: Record<string, unknow
     return JSON.stringify({ K1: 19, K2: 18, K3: 20 });
 };
 
+const guessEndoCanalCount = (dictation: string, facts: Record<string, unknown>): string[] => {
+    const normalized = normalizeDictation(dictation);
+    const mentioned = facts.endo as { canalCount?: number } | undefined;
+    const known = mentioned?.canalCount;
+    if (typeof known === 'number' && Number.isFinite(known) && known > 0) {
+        return [String(known)];
+    }
+    if (normalized.includes('mb') && normalized.includes('ml') && normalized.includes('d')) return ['3', '4'];
+    if (normalized.includes('einwurzelig') || normalized.includes('single canal')) return ['1'];
+    return ['3', '2', '4', '1'];
+};
+
+const guessEndoTechnique = (dictation: string): string[] => {
+    const normalized = normalizeDictation(dictation);
+    if (normalized.includes('rotierend')) return ['rotierend', 'maschinell'];
+    if (normalized.includes('maschinell') || normalized.includes('recip')) return ['maschinell', 'rotierend'];
+    if (normalized.includes('manuell') || normalized.includes('hand')) return ['manuell'];
+    return ['maschinell', 'rotierend', 'manuell'];
+};
+
+const guessEndoIrrigation = (dictation: string): string[] => {
+    const normalized = normalizeDictation(dictation);
+    if (normalized.includes('chx')) return ['chx', 'naocl', 'edta'];
+    if (normalized.includes('edta') && normalized.includes('naocl')) return ['naocl + edta', 'naocl', 'edta'];
+    if (normalized.includes('edta')) return ['edta', 'naocl', 'chx'];
+    if (normalized.includes('naocl') || normalized.includes('naclo')) return ['naocl', 'edta', 'chx'];
+    return ['naocl', 'edta', 'chx'];
+};
+
+const guessEndoMedication = (dictation: string): string[] => {
+    const normalized = normalizeDictation(dictation);
+    if (normalized.includes('ledermix')) return ['ledermix', 'ca(oh)2', 'kalzium'];
+    if (normalized.includes('ca(oh)2') || normalized.includes('calcium') || normalized.includes('kalzium')) {
+        return ['ca(oh)2', 'kalzium', 'ledermix'];
+    }
+    return ['ca(oh)2', 'kalzium', 'ledermix'];
+};
+
 export function resolveScenarioAnswer(question: ScenarioQuestion, context: ScenarioAnswerContext): string | undefined {
     const rawKey = (question.ruleId ?? question.id).toLowerCase();
     const key = normalizeQuestionKey(question.ruleId ?? question.id);
@@ -214,6 +252,18 @@ export function resolveScenarioAnswer(question: ScenarioQuestion, context: Scena
     }
     if (key.includes('upsell_mehrschicht')) {
         return pickOption(question.options, ['nein', 'kein']) ?? 'nein';
+    }
+    if (key.includes('canal_count')) {
+        return pickOption(question.options, guessEndoCanalCount(context.dictation, facts)) ?? '3';
+    }
+    if (key.includes('wf_technique') || key.includes('instrumentation_mode')) {
+        return pickOption(question.options, guessEndoTechnique(context.dictation)) ?? 'maschinell';
+    }
+    if (key.includes('endo_irrigation') || key.includes('irrigation')) {
+        return pickOption(question.options, guessEndoIrrigation(context.dictation)) ?? 'NaOCl + EDTA';
+    }
+    if (key.includes('endo_medication') || key.includes('medication')) {
+        return pickOption(question.options, guessEndoMedication(context.dictation)) ?? 'Ca(OH)2';
     }
 
     // ── Endo question engine IDs (ENDO_*) ────────────────────────

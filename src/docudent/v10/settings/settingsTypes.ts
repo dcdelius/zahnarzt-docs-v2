@@ -107,6 +107,17 @@ export interface PracticeSettings {
         /** Chips that apply to a specific treatmentId (e.g. "fuellung"). */
         perTreatment?: Record<string, string[]>;
     };
+
+    /**
+     * Optional policy locks where practice rules override user preferences.
+     * If enabled, user-level settings are reconciled to this policy on load/save.
+     */
+    lockUserOverrides?: {
+        /** Enforce exact treatment set from practice for every user. */
+        enabledTreatments?: boolean;
+        /** Disable user-specific fuellung material defaults (practice policy wins). */
+        fuellungMaterialDefaults?: boolean;
+    };
 }
 
 export interface EndoSettings {

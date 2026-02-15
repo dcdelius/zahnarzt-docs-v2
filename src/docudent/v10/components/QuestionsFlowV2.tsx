@@ -16,7 +16,7 @@
  * - No medical logic here — pure rendering
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { QuestionBundle } from '../../contracts/questions';
 import type { V10ReviewContext } from '../types';
@@ -64,6 +64,7 @@ export function QuestionsFlowV2({
     // Local state for optional expansion (does NOT modify bundle)
     const defaultExpanded = bundle.docMode === 'forensic';
     const [optionalExpanded, setOptionalExpanded] = useState(defaultExpanded);
+    const [activeLaneId, setActiveLaneId] = useState<string>('all');
 
     // Compute all questions and answered counts
     const allRequired = bundle.required;
@@ -80,6 +81,99 @@ export function QuestionsFlowV2({
     const allRequiredAnswered = answeredRequired === allRequired.length;
     const allOptionalAnswered = (answeredOptionalVisible + answeredOptionalHidden) ===
         (allOptionalVisible.length + allOptionalHidden.length);
+
+    const allQuestions = [...allRequired, ...allOptionalVisible, ...allOptionalHidden];
+    const laneOrder = useMemo(() => {
+        const reviewInstances = review?.instances ?? [];
+        return reviewInstances
+            .map(inst => inst.instanceId)
+            .filter(Boolean);
+    }, [review]);
+
+    const laneStats = useMemo(() => {
+        const byInstance = new Map<string, {
+            instanceId: string;
+            label: string;
+            requiredTotal: number;
+            requiredAnswered: number;
+            optionalTotal: number;
+            optionalAnswered: number;
+            sourceLabel: string;
+        }>();
+
+        for (const q of allQuestions) {
+            if (!q.instanceId) continue;
+            const reviewInstance = review?.instances?.find(inst => inst.instanceId === q.instanceId);
+            const toothLabel = reviewInstance?.tooth
+                ? `Zahn ${reviewInstance.tooth}`
+                : (reviewInstance?.teeth?.length ? `Zähne ${reviewInstance.teeth.join(', ')}` : q.instanceId);
+            const treatmentLabel = reviewInstance?.treatmentId ? ` · ${reviewInstance.treatmentId}` : '';
+
+            if (!byInstance.has(q.instanceId)) {
+                const sourceSet = new Set(Object.values(reviewInstance?.factSources ?? {}));
+                const sourceLabel = sourceSet.size > 0
+                    ? Array.from(sourceSet).sort().join('/')
+                    : 'dictation';
+                byInstance.set(q.instanceId, {
+                    instanceId: q.instanceId,
+                    label: `${toothLabel}${treatmentLabel}`,
+                    requiredTotal: 0,
+                    requiredAnswered: 0,
+                    optionalTotal: 0,
+                    optionalAnswered: 0,
+                    sourceLabel,
+                });
+            }
+
+            const lane = byInstance.get(q.instanceId)!;
+            const isRequired = q.medicalSeverity === 'hard';
+            const isAnswered = answers.has(q.id);
+            if (isRequired) {
+                lane.requiredTotal += 1;
+                if (isAnswered) lane.requiredAnswered += 1;
+            } else {
+                lane.optionalTotal += 1;
+                if (isAnswered) lane.optionalAnswered += 1;
+            }
+        }
+
+        const ordered = Array.from(byInstance.values()).sort((a, b) => {
+            const laneA = laneOrder.indexOf(a.instanceId);
+            const laneB = laneOrder.indexOf(b.instanceId);
+            if (laneA >= 0 && laneB >= 0 && laneA !== laneB) return laneA - laneB;
+            if (laneA >= 0 && laneB < 0) return -1;
+            if (laneA < 0 && laneB >= 0) return 1;
+            return a.label.localeCompare(b.label);
+        });
+        return ordered;
+    }, [allQuestions, answers, laneOrder, review]);
+
+    useEffect(() => {
+        if (laneStats.length === 0) {
+            setActiveLaneId('all');
+            return;
+        }
+        if (activeLaneId !== 'all' && laneStats.some(l => l.instanceId === activeLaneId)) {
+            return;
+        }
+        const firstWithPendingRequired = laneStats.find(l => l.requiredAnswered < l.requiredTotal);
+        setActiveLaneId(firstWithPendingRequired?.instanceId ?? laneStats[0].instanceId);
+    }, [activeLaneId, laneStats]);
+
+    const scopedRequired = activeLaneId === 'all'
+        ? allRequired
+        : allRequired.filter(q => !q.instanceId || q.instanceId === activeLaneId);
+    const scopedOptionalVisible = activeLaneId === 'all'
+        ? allOptionalVisible
+        : allOptionalVisible.filter(q => !q.instanceId || q.instanceId === activeLaneId);
+    const scopedOptionalHidden = activeLaneId === 'all'
+        ? allOptionalHidden
+        : allOptionalHidden.filter(q => !q.instanceId || q.instanceId === activeLaneId);
+
+    const scopedAnsweredRequired = scopedRequired.filter(q => answers.has(q.id)).length;
+    const scopedAnsweredOptionalVisible = scopedOptionalVisible.filter(q => answers.has(q.id)).length;
+    const scopedAnsweredOptionalHidden = scopedOptionalHidden.filter(q => answers.has(q.id)).length;
+    const scopedOptionalTotal = scopedOptionalVisible.length + scopedOptionalHidden.length;
 
     // Can complete if all required answered (optional is optional)
     const canComplete = allRequiredAnswered;
@@ -118,10 +212,10 @@ export function QuestionsFlowV2({
                                 >
                                     Erforderlich&nbsp;
                                     <span style={{ color: colors.textPrimary }}>
-                                        {answeredRequired}/{allRequired.length}
+                                        {scopedAnsweredRequired}/{scopedRequired.length}
                                     </span>
                                 </div>
-                                {optionalTotal > 0 ? (
+                                {scopedOptionalTotal > 0 ? (
                                     <div
                                         style={{
                                             padding: '10px 14px',
@@ -136,7 +230,7 @@ export function QuestionsFlowV2({
                                     >
                                         Optional&nbsp;
                                         <span style={{ color: colors.textPrimary }}>
-                                            {answeredOptionalVisible + answeredOptionalHidden}/{optionalTotal}
+                                            {scopedAnsweredOptionalVisible + scopedAnsweredOptionalHidden}/{scopedOptionalTotal}
                                         </span>
                                     </div>
                                 ) : null}
@@ -144,6 +238,68 @@ export function QuestionsFlowV2({
                         )}
                     />
                 </header>
+
+                {laneStats.length > 0 && (
+                    <section
+                        data-testid="v10-askback-lane-board"
+                        style={{
+                            marginTop: spacing.md,
+                            marginBottom: spacing.md,
+                            display: 'grid',
+                            gap: spacing.sm,
+                        }}
+                    >
+                        <div style={{ display: 'flex', gap: spacing.sm, flexWrap: 'wrap' }}>
+                            <button
+                                type="button"
+                                data-testid="v10-askback-lane-all"
+                                onClick={() => setActiveLaneId('all')}
+                                style={{
+                                    padding: '8px 12px',
+                                    borderRadius: radii.pill,
+                                    border: 'none',
+                                    background: activeLaneId === 'all' ? gradients.button : colors.surfaceGlassActive,
+                                    color: colors.textPrimary,
+                                    fontSize: typography.caption,
+                                    fontWeight: typography.semibold,
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                Alle Behandlungen
+                            </button>
+                            {laneStats.map(lane => (
+                                <button
+                                    key={lane.instanceId}
+                                    type="button"
+                                    data-testid={`v10-askback-lane-${lane.instanceId}`}
+                                    onClick={() => setActiveLaneId(lane.instanceId)}
+                                    style={{
+                                        padding: '10px 12px',
+                                        borderRadius: radii.cardSmall,
+                                        border: 'none',
+                                        background: activeLaneId === lane.instanceId ? colors.surfaceGlassHover : colors.surfaceGlass,
+                                        boxShadow: activeLaneId === lane.instanceId ? shadows.cardMedium : shadows.cardSoft,
+                                        color: colors.textPrimary,
+                                        textAlign: 'left',
+                                        minWidth: 180,
+                                        cursor: 'pointer',
+                                    }}
+                                >
+                                    <div style={{ fontSize: typography.caption, fontWeight: typography.semibold }}>
+                                        {lane.label}
+                                    </div>
+                                    <div style={{ marginTop: 4, fontSize: 11, color: colors.textSecondary }}>
+                                        Pflicht {lane.requiredAnswered}/{lane.requiredTotal}
+                                        {lane.optionalTotal > 0 ? ` · Optional ${lane.optionalAnswered}/${lane.optionalTotal}` : ''}
+                                    </div>
+                                    <div style={{ marginTop: 4, fontSize: 10, color: colors.textSubtle, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                                        Quelle {lane.sourceLabel}
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 <div className="v10-questions-grid">
                     <aside className="v10-questions-stack">
@@ -158,7 +314,7 @@ export function QuestionsFlowV2({
 
                     <main className="v10-questions-stack">
                         {/* REQUIRED SECTION — Always visible, cannot collapse */}
-                        {allRequired.length > 0 && (
+                        {scopedRequired.length > 0 && (
                             <section data-testid="required-section" style={sectionCardStyle}>
                                 <div
                                     style={{
@@ -172,11 +328,11 @@ export function QuestionsFlowV2({
                                         Erforderlich
                                     </div>
                                     <span style={{ fontSize: typography.caption, fontWeight: typography.semibold, color: colors.textSecondary }}>
-                                        {answeredRequired}/{allRequired.length}
+                                        {scopedAnsweredRequired}/{scopedRequired.length}
                                     </span>
                                 </div>
                                 <div style={{ display: 'grid', gap: spacing.md }}>
-                                    {allRequired.map(question => (
+                                    {scopedRequired.map(question => (
                                         <V10QuestionRow
                                             key={question.id}
                                             question={question}
@@ -191,9 +347,9 @@ export function QuestionsFlowV2({
                         )}
 
                         {/* OPTIONAL SECTION — Collapsible */}
-                        {optionalTotal > 0 && (
+                        {scopedOptionalTotal > 0 && (
                             <section data-testid="optional-section">
-                                {hasHiddenOptional ? (
+                                {scopedOptionalHidden.length > 0 ? (
                                     <>
                                         <motion.button
                                             onClick={() => setOptionalExpanded(!optionalExpanded)}
@@ -215,10 +371,10 @@ export function QuestionsFlowV2({
                                             data-testid="optional-toggle"
                                         >
                                             <div style={{ fontSize: typography.label, fontWeight: typography.semibold, letterSpacing: '0.14em', textTransform: 'uppercase', color: colors.textSecondary }}>
-                                                Optional ({optionalTotal})
+                                                Optional ({scopedOptionalTotal})
                                             </div>
                                             <div style={{ fontSize: typography.caption, fontWeight: typography.semibold, color: colors.coralAccent }}>
-                                                {optionalExpanded ? 'Weniger' : `Mehr (${allOptionalHidden.length})`}
+                                                {optionalExpanded ? 'Weniger' : `Mehr (${scopedOptionalHidden.length})`}
                                             </div>
                                         </motion.button>
 
@@ -234,7 +390,7 @@ export function QuestionsFlowV2({
                                                     <div style={sectionCardStyle}>
                                                         <div style={{ display: 'grid', gap: spacing.md }}>
                                                             {/* Visible optional */}
-                                                            {allOptionalVisible.map(question => (
+                                                            {scopedOptionalVisible.map(question => (
                                                                 <V10QuestionRow
                                                                     key={question.id}
                                                                     question={question}
@@ -245,7 +401,7 @@ export function QuestionsFlowV2({
                                                                 />
                                                             ))}
                                                             {/* Hidden optional (revealed on expand) */}
-                                                            {allOptionalHidden.map(question => (
+                                                            {scopedOptionalHidden.map(question => (
                                                                 <V10QuestionRow
                                                                     key={question.id}
                                                                     question={question}
@@ -262,11 +418,11 @@ export function QuestionsFlowV2({
                                         </AnimatePresence>
 
                                         {/* Show visible optional even when collapsed */}
-                                        {!optionalExpanded && allOptionalVisible.length > 0 && (
+                                        {!optionalExpanded && scopedOptionalVisible.length > 0 && (
                                             <div style={{ marginTop: spacing.md }}>
                                                 <div style={sectionCardStyle}>
                                                     <div style={{ display: 'grid', gap: spacing.md }}>
-                                                        {allOptionalVisible.map(question => (
+                                                        {scopedOptionalVisible.map(question => (
                                                             <V10QuestionRow
                                                                 key={question.id}
                                                                 question={question}
@@ -284,7 +440,7 @@ export function QuestionsFlowV2({
                                 ) : (
                                     <div style={sectionCardStyle}>
                                         <div style={{ display: 'grid', gap: spacing.md }}>
-                                            {allOptionalVisible.map(question => (
+                                            {scopedOptionalVisible.map(question => (
                                                 <V10QuestionRow
                                                     key={question.id}
                                                     question={question}

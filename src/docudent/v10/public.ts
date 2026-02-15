@@ -6,7 +6,7 @@
  */
 
 // Main orchestrators
-export { runV10, runV10Bundle } from './index';
+export { runV10, runV10Bundle, runPreanalyzedBundle } from './index';
 
 // Types
 export type {

@@ -52,6 +52,10 @@ import { useChipOverrides } from '../settings/useChipOverrides';
 // Types (from V10 barrel)
 import type { TreatmentInstance, UiStep } from '../components';
 import type { QuestionBundle } from '../../contracts/questions';
+import { detectTreatmentIntents } from '../preanalysis/detectTreatmentIntents';
+import { buildSegmentsFromIntents } from '../preanalysis/buildSegmentsFromIntents';
+import { buildIntentConfirmationViewModel, type IntentConfirmationViewModel } from '../preanalysis/buildIntentConfirmationViewModel';
+import { canonicalizeTreatmentIntentBundle, type TreatmentIntentBundleV1 } from '../preanalysis/treatmentIntentContract';
 
 export default function DocudentV10Page() {
     // ═══════════════════════════════════════════════════════════════
@@ -65,6 +69,7 @@ export default function DocudentV10Page() {
         isProcessing,
         currentState,
         runPipeline,
+        completeQuestions,
         reset,
         insuranceType,
         setInsuranceType,
@@ -89,6 +94,7 @@ export default function DocudentV10Page() {
         multiResult,
         createInstancesAndRun,
         setInstanceAnswers,
+        runBundlePipeline,
     } = useV10Pipeline({ settingsInput });
 
     // ═══════════════════════════════════════════════════════════════
@@ -109,7 +115,15 @@ export default function DocudentV10Page() {
 
     const [isRecording, setIsRecording] = useState(false);
     const [isTranscribing, setIsTranscribing] = useState(false);
+    const [isPreanalysisRunning, setIsPreanalysisRunning] = useState(false);
+    const [runAttemptSeq, setRunAttemptSeq] = useState(0);
     const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
+    const [intentConfirmation, setIntentConfirmation] = useState<{
+        bundle: TreatmentIntentBundleV1;
+        viewModel: IntentConfirmationViewModel;
+        selectedTreatments: Record<string, string>;
+    } | null>(null);
+    const [intentFocusIndex, setIntentFocusIndex] = useState(0);
     const autoMultiRef = useRef<string | null>(null);
     const settingsAppliedRef = useRef(false);
     const [debugOpen, setDebugOpen] = useState(false);
@@ -209,9 +223,16 @@ export default function DocudentV10Page() {
         };
     }, []);
 
+    useEffect(() => {
+        if (intentConfirmation && dictation.trim().length === 0) {
+            setIntentConfirmation(null);
+            setIntentFocusIndex(0);
+        }
+    }, [dictation, intentConfirmation]);
+
     // Derive base step from pipeline state
     const baseStep: UiStep = (() => {
-        if (isProcessing) return 'dictation';
+        if (isProcessing || isPreanalysisRunning) return 'dictation';
         switch (currentState) {
             case 'questions': return 'review';
             case 'output': return 'analysis';
@@ -283,6 +304,180 @@ export default function DocudentV10Page() {
             runPipeline({ textLength: next });
         }
     };
+
+    const launchIntentPreanalysis = useCallback(async () => {
+        if (!dictation.trim() || isProcessing || isTranscribing || isPreanalysisRunning) return;
+        setRunAttemptSeq(prev => prev + 1);
+        setIsPreanalysisRunning(true);
+        try {
+            const effectiveInsurance = hasMKV ? 'MKV' : insuranceType;
+            const forceFallbackForE2E = typeof window !== 'undefined'
+                && Boolean((window as any).__DOCUDENT_E2E_BYPASS_AUTH);
+            let detection: Awaited<ReturnType<typeof detectTreatmentIntents>>;
+            try {
+                detection = await Promise.race([
+                    detectTreatmentIntents(dictation, { forceFallback: forceFallbackForE2E }),
+                    new Promise<never>((_, reject) => {
+                        setTimeout(() => reject(new Error('preanalysis-timeout')), 12000);
+                    }),
+                ]);
+            } catch {
+                detection = await detectTreatmentIntents(dictation, { forceFallback: true });
+            }
+            const confirmationVm = buildIntentConfirmationViewModel(detection.bundle);
+
+            if (detection.needsConfirmation || !confirmationVm.canConfirmAllWithoutEdits) {
+                const selectedTreatments = Object.fromEntries(
+                    detection.bundle.intents.map(intent => [intent.intentId, intent.treatmentId])
+                );
+                setIntentConfirmation({
+                    bundle: detection.bundle,
+                    viewModel: confirmationVm,
+                    selectedTreatments,
+                });
+                setIntentFocusIndex(0);
+                setUiStepOverride('review');
+                return;
+            }
+
+            const segments = buildSegmentsFromIntents({
+                bundle: detection.bundle,
+                insuranceType: effectiveInsurance,
+                textLength,
+            });
+
+            if (segments.length === 1) {
+                await runPipeline({
+                    dictation: detection.bundle.dictation,
+                    treatmentId: segments[0].treatmentId,
+                    insuranceType: segments[0].insuranceType,
+                    textLength: segments[0].textLength,
+                    kbReleaseId: settingsInput?.practice?.activeKbReleaseId,
+                });
+                return;
+            }
+
+            await runBundlePipeline({
+                dictation: detection.bundle.dictation,
+                segments,
+                globalAnswers: answers,
+                kbReleaseId: settingsInput?.practice?.activeKbReleaseId,
+            });
+        } catch (error) {
+            console.warn('[V10 preanalysis] Falling back to single runPipeline', error);
+            await runPipeline();
+        } finally {
+            setIsPreanalysisRunning(false);
+        }
+    }, [
+        answers,
+        dictation,
+        hasMKV,
+        insuranceType,
+        isProcessing,
+        isPreanalysisRunning,
+        isTranscribing,
+        runPipeline,
+        runBundlePipeline,
+        settingsInput?.practice?.activeKbReleaseId,
+        textLength,
+    ]);
+
+    const handleDictationKeyDown = useCallback((event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
+            event.preventDefault();
+            void launchIntentPreanalysis();
+        }
+    }, [launchIntentPreanalysis]);
+
+    const applyIntentSelection = useCallback((intentId: string, treatmentId: string) => {
+        setIntentConfirmation(current => {
+            if (!current) return current;
+            return {
+                ...current,
+                selectedTreatments: {
+                    ...current.selectedTreatments,
+                    [intentId]: treatmentId,
+                },
+            };
+        });
+    }, []);
+
+    const confirmIntentSelectionAndRun = useCallback(async () => {
+        if (!intentConfirmation) return;
+
+        const effectiveInsurance = hasMKV ? 'MKV' : insuranceType;
+        const intents = intentConfirmation.bundle.intents.map(intent => ({
+            ...intent,
+            treatmentId: intentConfirmation.selectedTreatments[intent.intentId] ?? intent.treatmentId,
+            uncertainty: undefined,
+        }));
+
+        const selectedBundle = canonicalizeTreatmentIntentBundle({
+            ...intentConfirmation.bundle,
+            intents,
+            needsConfirmation: false,
+        });
+
+        setIntentConfirmation(null);
+        setIntentFocusIndex(0);
+        const segments = buildSegmentsFromIntents({
+            bundle: selectedBundle,
+            insuranceType: effectiveInsurance,
+            textLength,
+        });
+
+        if (segments.length === 1) {
+            await runPipeline({
+                dictation: selectedBundle.dictation,
+                treatmentId: segments[0].treatmentId,
+                insuranceType: segments[0].insuranceType,
+                textLength: segments[0].textLength,
+                kbReleaseId: settingsInput?.practice?.activeKbReleaseId,
+            });
+            return;
+        }
+
+        await runBundlePipeline({
+            dictation: selectedBundle.dictation,
+            segments,
+            globalAnswers: answers,
+            kbReleaseId: settingsInput?.practice?.activeKbReleaseId,
+        });
+    }, [answers, hasMKV, insuranceType, intentConfirmation, runBundlePipeline, settingsInput?.practice?.activeKbReleaseId, textLength]);
+
+    useEffect(() => {
+        if (!intentConfirmation) return;
+        const onKeyDown = (event: KeyboardEvent) => {
+            const lane = intentConfirmation.viewModel.lanes[intentFocusIndex];
+            if (!lane) return;
+
+            if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+                event.preventDefault();
+                setIntentFocusIndex(index => Math.min(index + 1, intentConfirmation.viewModel.lanes.length - 1));
+                return;
+            }
+            if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+                event.preventDefault();
+                setIntentFocusIndex(index => Math.max(index - 1, 0));
+                return;
+            }
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                void confirmIntentSelectionAndRun();
+                return;
+            }
+            if (event.key === '1' || event.key === '2' || event.key === '3') {
+                const optionIndex = Number(event.key) - 1;
+                const option = lane.options[optionIndex];
+                if (!option) return;
+                event.preventDefault();
+                applyIntentSelection(lane.intentId, option.treatmentId);
+            }
+        };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [applyIntentSelection, confirmIntentSelectionAndRun, intentConfirmation, intentFocusIndex]);
 
     const ensureWhisper = () => {
         if (!whisperServiceRef.current) {
@@ -494,12 +689,14 @@ export default function DocudentV10Page() {
             questionsCount: questions?.length || 0,
             hasOutput: !!output,
             isProcessing,
+            isPreanalysisRunning,
         })}`);
 
         // Processing spinner
-        if (isProcessing) {
+        if (isProcessing || isPreanalysisRunning) {
             return (
                 <motion.div
+                    data-testid="v10-preanalysis-panel"
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -521,8 +718,124 @@ export default function DocudentV10Page() {
                         animation: 'spin 1s linear infinite',
                     }} />
                     <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.6)' }}>
-                        Analysiere...
+                        {isPreanalysisRunning ? 'Voranalyse...' : 'Analysiere...'}
                     </span>
+                </motion.div>
+            );
+        }
+
+        if (intentConfirmation) {
+            return (
+                <motion.div
+                    data-testid="v10-intent-confirmation-panel"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.28 }}
+                    style={{
+                        maxWidth: '980px',
+                        margin: '0 auto',
+                        display: 'grid',
+                        gap: '16px',
+                    }}
+                >
+                    <div style={{
+                        background: 'rgba(255,255,255,0.06)',
+                        border: '1px solid rgba(255,255,255,0.14)',
+                        borderRadius: '20px',
+                        padding: '18px 20px',
+                        boxShadow: '0 18px 42px rgba(0,0,0,0.22)',
+                        backdropFilter: 'blur(16px)',
+                    }}>
+                        <div style={{ fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.74)' }}>
+                            Behandlungserkennung
+                        </div>
+                        <div style={{ fontSize: '30px', fontWeight: 700, color: '#fff', marginTop: '4px' }}>
+                            {intentConfirmation.viewModel.totalIntents} Behandlungen erkannt
+                        </div>
+                        <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.8)', marginTop: '8px' }}>
+                            {intentConfirmation.viewModel.autoConfirmedCount} bereits vorsortiert, {intentConfirmation.viewModel.requiresDecisionCount} mit Entscheidung.
+                        </div>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+                        {intentConfirmation.viewModel.lanes.map((lane, index) => (
+                            <motion.div
+                                key={lane.intentId}
+                                data-testid={`v10-intent-lane-${lane.intentId}`}
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.22 }}
+                                style={{
+                                    background: lane.requiresDecision ? 'rgba(255,145,77,0.16)' : 'rgba(255,255,255,0.06)',
+                                    border: index === intentFocusIndex
+                                        ? '1px solid rgba(255,172,120,0.96)'
+                                        : lane.requiresDecision
+                                            ? '1px solid rgba(255,145,77,0.42)'
+                                            : '1px solid rgba(255,255,255,0.14)',
+                                    borderRadius: '16px',
+                                    padding: '14px',
+                                    boxShadow: '0 12px 30px rgba(0,0,0,0.2)',
+                                    backdropFilter: 'blur(12px)',
+                                }}
+                            >
+                                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
+                                    <div style={{ fontSize: '16px', fontWeight: 650, color: '#fff' }}>{lane.label}</div>
+                                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.78)' }}>
+                                        {Math.round(lane.confidence * 100)}%
+                                    </div>
+                                </div>
+                                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.72)', marginTop: '8px', minHeight: '36px' }}>
+                                    {lane.evidencePreview}
+                                </div>
+                                <div style={{ display: 'flex', gap: '8px', marginTop: '12px', flexWrap: 'wrap' }}>
+                                    {lane.options.map(option => {
+                                        const selected = (intentConfirmation.selectedTreatments[lane.intentId] ?? lane.treatmentId) === option.treatmentId;
+                                        return (
+                                            <button
+                                                key={`${lane.intentId}-${option.treatmentId}`}
+                                                type="button"
+                                                data-testid={`v10-intent-option-${lane.intentId}-${option.treatmentId}`}
+                                                onClick={() => applyIntentSelection(lane.intentId, option.treatmentId)}
+                                                style={{
+                                                    borderRadius: '999px',
+                                                    border: selected ? '1px solid rgba(255,153,102,0.92)' : '1px solid rgba(255,255,255,0.18)',
+                                                    background: selected ? 'linear-gradient(120deg, rgba(250,115,102,0.9), rgba(255,170,112,0.9))' : 'rgba(255,255,255,0.06)',
+                                                    color: '#fff',
+                                                    padding: '7px 12px',
+                                                    fontSize: '12px',
+                                                    cursor: 'pointer',
+                                                }}
+                                            >
+                                                {option.label}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.66)' }}>
+                        Schnellwahl: Pfeile wechseln Lane, Tasten 1/2/3 wählen Option, Enter bestätigt.
+                    </div>
+
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+                        <button
+                            type="button"
+                            onClick={() => setIntentConfirmation(null)}
+                            style={dockGhostStyle}
+                        >
+                            Abbrechen
+                        </button>
+                        <button
+                            type="button"
+                            data-testid="v10-intent-confirm-button"
+                            onClick={confirmIntentSelectionAndRun}
+                            style={dockPrimaryStyle}
+                        >
+                            Bestätigen und weiter
+                        </button>
+                    </div>
                 </motion.div>
             );
         }
@@ -628,7 +941,7 @@ export default function DocudentV10Page() {
                             bundle={bundle}
                             answers={answers}
                             onAnswer={answerQuestion}
-                            onComplete={runPipeline}
+                            onComplete={completeQuestions}
                             extracted={extracted}
                             review={result?.review}
                         />
@@ -779,6 +1092,12 @@ export default function DocudentV10Page() {
     // ═══════════════════════════════════════════════════════════════
     return (
         <div className="v7" data-testid="v10-docudent-page" style={v10CssVars}>
+            <div
+                data-testid="v10-run-lifecycle"
+                data-run-seq={String(runAttemptSeq)}
+                data-phase={isPreanalysisRunning ? 'preanalysis' : isProcessing ? 'pipeline' : 'idle'}
+                style={{ display: 'none' }}
+            />
             {/* Background Layers (Same as V8) */}
             <SoftGradientBackground />
             <div className="v7-bg" />
@@ -832,7 +1151,7 @@ export default function DocudentV10Page() {
 
             {/* MAIN CONTENT */}
             {/* M64: Only show dictation input for idle state, NOT for review step */}
-            {currentState === 'idle' ? (
+            {currentState === 'idle' && !isPreanalysisRunning ? (
                 <div className="v7-jeton-hero">
                     <div className="v7-jeton-container" style={{ position: 'relative', zIndex: 10 }}>
                         <div className="v7-jeton-kicker">INTELLIGENT DOCUMENTATION</div>
@@ -847,6 +1166,7 @@ export default function DocudentV10Page() {
                                 data-testid="v10-dictation-input"
                                 value={dictation}
                                 onChange={(e) => setDictation(e.target.value)}
+                                onKeyDown={handleDictationKeyDown}
                                 placeholder={getPlaceholder()}
                                 style={{
                                     width: '100%',
@@ -884,7 +1204,7 @@ export default function DocudentV10Page() {
             )}
 
         {/* FLOATING ACTION DOCK */}
-            {currentState === 'idle' && (
+            {currentState === 'idle' && !isPreanalysisRunning && (
             <div className="v7-jeton-dock">
                 <button
                     data-testid="v10-dock-aufnahme"
@@ -910,8 +1230,8 @@ export default function DocudentV10Page() {
                 <button
                     data-testid="v10-run-button"
                     data-disabled-color="rgba(255, 255, 255, 0.4)"
-                    onClick={runPipeline}
-                    disabled={dictation.trim().length === 0 || isProcessing || isTranscribing}
+                    onClick={launchIntentPreanalysis}
+                    disabled={dictation.trim().length === 0 || isProcessing || isTranscribing || isPreanalysisRunning}
                     title={dictation.trim().length === 0 ? 'Bitte Text eingeben' : 'Dokumentation starten'}
                     style={{
                         ...dockPrimaryStyle,
@@ -920,10 +1240,9 @@ export default function DocudentV10Page() {
                         cursor: dictation.trim().length === 0 ? 'not-allowed' : 'pointer',
                     }}
                 >
-                    {isProcessing ? 'Läuft…' : 'Dokumentieren'}
+                    {isProcessing || isPreanalysisRunning ? 'Läuft…' : 'Dokumentieren'}
                 </button>
 
-                <Link to="/docudent/v10/cases" style={dockButtonBase}>Fälle</Link>
                 <Link to="/docudent/v10/settings" style={dockButtonBase}>Einstellungen</Link>
             </div>
             )}

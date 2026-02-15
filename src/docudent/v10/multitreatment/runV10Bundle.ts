@@ -81,6 +81,7 @@ function buildScopedBillingCodes(
         for (const code of instance.billingRefs) {
             scoped.push({
                 code,
+                instanceId: instance.instanceId,
                 tooth,
                 scope: getBillingScope(code),
                 chipId: undefined,

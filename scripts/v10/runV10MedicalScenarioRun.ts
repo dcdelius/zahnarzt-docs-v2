@@ -11,6 +11,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { createV10Session } from '../../src/docudent/v10/uiController/createV10Session';
+import type { SettingsContext } from '../../src/docudent/v10/settings/resolveDefaultsToFacts';
 import { resolveScenarioAnswer, type ScenarioAnswerContext, type ScenarioQuestion } from './scenarioAnswerDefaults';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,6 +22,7 @@ type ScenarioSuiteMeta = {
     version?: string;
     created?: string;
     treatmentId?: string;
+    settings?: SettingsContext;
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -33,6 +35,7 @@ interface Scenario {
     treatmentId?: string;
     insuranceType: 'GKV' | 'PKV' | 'MKV';
     dictation: string;
+    settings?: SettingsContext;
     expect: {
         phase: 'output' | 'questions';
         mustIncludePrefixes?: string[];
@@ -43,6 +46,8 @@ interface Scenario {
         mustAskbackIds?: string[];
         mustIncludeTextSnippets?: string[];
         mustNotIncludeTextSnippets?: string[];
+        mustNotAskbackIds?: string[];
+        maxQuestionCount?: number;
         mustHavePerInstance?: boolean;
         perInstanceCount?: number;
     };
@@ -68,6 +73,7 @@ interface CaseResult {
         chips: string[];
     }>;
     outputText?: string;
+    settingsApplied?: SettingsContext;
     pass: boolean;
     failures: string[];
 }
@@ -86,7 +92,63 @@ interface Report {
 // RUNNER
 // ═══════════════════════════════════════════════════════════════
 
-async function runScenario(scenario: Scenario, options: { defaultTreatmentId?: string }): Promise<CaseResult> {
+function mergeSettings(
+    base: SettingsContext | undefined,
+    override: SettingsContext | undefined
+): SettingsContext | undefined {
+    if (!base && !override) return undefined;
+    return {
+        practice: {
+            ...(base?.practice ?? {}),
+            ...(override?.practice ?? {}),
+            treatments: {
+                ...((base?.practice as any)?.treatments ?? {}),
+                ...((override?.practice as any)?.treatments ?? {}),
+                endo: {
+                    ...((base?.practice as any)?.treatments?.endo ?? {}),
+                    ...((override?.practice as any)?.treatments?.endo ?? {}),
+                },
+                fuellung: {
+                    ...((base?.practice as any)?.treatments?.fuellung ?? {}),
+                    ...((override?.practice as any)?.treatments?.fuellung ?? {}),
+                },
+            },
+            inventory: {
+                ...((base?.practice as any)?.inventory ?? {}),
+                ...((override?.practice as any)?.inventory ?? {}),
+                endo: {
+                    ...((base?.practice as any)?.inventory?.endo ?? {}),
+                    ...((override?.practice as any)?.inventory?.endo ?? {}),
+                },
+                fuellung: {
+                    ...((base?.practice as any)?.inventory?.fuellung ?? {}),
+                    ...((override?.practice as any)?.inventory?.fuellung ?? {}),
+                },
+            },
+        },
+        user: {
+            ...(base?.user ?? {}),
+            ...(override?.user ?? {}),
+            treatments: {
+                ...((base?.user as any)?.treatments ?? {}),
+                ...((override?.user as any)?.treatments ?? {}),
+                endo: {
+                    ...((base?.user as any)?.treatments?.endo ?? {}),
+                    ...((override?.user as any)?.treatments?.endo ?? {}),
+                },
+                fuellung: {
+                    ...((base?.user as any)?.treatments?.fuellung ?? {}),
+                    ...((override?.user as any)?.treatments?.fuellung ?? {}),
+                },
+            },
+        },
+    };
+}
+
+async function runScenario(
+    scenario: Scenario,
+    options: { defaultTreatmentId?: string; suiteSettings?: SettingsContext }
+): Promise<CaseResult> {
     const failures: string[] = [];
     const questionsAsked = new Set<string>();
     const answeredQuestions = new Set<string>();
@@ -95,10 +157,12 @@ async function runScenario(scenario: Scenario, options: { defaultTreatmentId?: s
     const session = createV10Session();
 
     const treatmentId = scenario.treatmentId ?? options.defaultTreatmentId ?? 'fuellung';
+    const settings = mergeSettings(options.suiteSettings, scenario.settings);
     let state = await session.start(scenario.dictation, {
         treatmentId,
         insuranceType: scenario.insuranceType,
         textLength: 'mittel',
+        settings,
     });
 
     const recordQuestion = (q: ScenarioQuestion) => {
@@ -208,6 +272,17 @@ async function runScenario(scenario: Scenario, options: { defaultTreatmentId?: s
             }
         }
     }
+    if (expect.mustNotAskbackIds && expect.mustNotAskbackIds.length > 0) {
+        for (const askbackId of expect.mustNotAskbackIds) {
+            const found = Array.from(questionsAsked).some(q => q.includes(askbackId));
+            if (found) {
+                failures.push(`Forbidden askback '${askbackId}' was asked`);
+            }
+        }
+    }
+    if (typeof expect.maxQuestionCount === 'number' && questionsAsked.size > expect.maxQuestionCount) {
+        failures.push(`Expected at most ${expect.maxQuestionCount} questions, got ${questionsAsked.size}`);
+    }
 
     // Only check billing for output phase
     if (phase === 'output') {
@@ -308,6 +383,7 @@ async function runScenario(scenario: Scenario, options: { defaultTreatmentId?: s
         combinability,
         instanceTraces,
         outputText,
+        settingsApplied: settings,
         pass: failures.length === 0,
         failures,
     };
@@ -340,6 +416,7 @@ async function main() {
     };
     const scenarios: Scenario[] = scenariosData.cases;
     const defaultTreatmentId = scenariosData._meta?.treatmentId;
+    const suiteSettings = scenariosData._meta?.settings;
     const suiteName = path.basename(scenariosPath).replace(/\.json$/i, '');
 
     // Run all scenarios
@@ -347,7 +424,7 @@ async function main() {
     for (const scenario of scenarios) {
         console.log(`Running case ${scenario.id}: ${scenario.title}...`);
         try {
-            const result = await runScenario(scenario, { defaultTreatmentId });
+            const result = await runScenario(scenario, { defaultTreatmentId, suiteSettings });
             results.push(result);
             console.log(`  → ${result.pass ? 'PASS' : 'FAIL'} ${result.failures.length > 0 ? `(${result.failures.join('; ')})` : ''}`);
         } catch (err) {

@@ -71,6 +71,21 @@ const E2E_MOCK_USER = {
   displayName: 'E2E Test User',
 };
 
+function getActivePracticeId() {
+  if (typeof window === 'undefined') return null;
+  return localStorage.getItem('docudent_practice_id');
+}
+
+function mapPracticeRoleFromClaims(claims) {
+  const practiceId = getActivePracticeId();
+  const practiceRoles = (practiceId && claims?.practices?.[practiceId]) || [];
+  if (practiceRoles.includes('practice_admin')) return 'practice_admin';
+  if (practiceRoles.includes('provider')) return 'provider';
+  if (practiceRoles.includes('assistant')) return 'assistant';
+  if (claims?.isSoftwareAdmin) return 'practice_admin';
+  return null;
+}
+
 export function useAuth() {
   return useContext(AuthContext);
 }
@@ -78,6 +93,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   // In E2E mode, start with mock user to avoid loading states
   const [user, setUser] = useState(isE2EMode ? E2E_MOCK_USER : null);
+  const [actorRole, setActorRole] = useState(isE2EMode ? 'practice_admin' : null);
   const [loading, setLoading] = useState(!isE2EMode);
   const navigate = useNavigate();
   const location = useLocation();
@@ -90,6 +106,17 @@ export function AuthProvider({ children }) {
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      if (user) {
+        user.getIdTokenResult()
+          .then((tokenResult) => {
+            setActorRole(mapPracticeRoleFromClaims(tokenResult.claims));
+          })
+          .catch(() => {
+            setActorRole(null);
+          });
+      } else {
+        setActorRole(null);
+      }
       setLoading(false);
 
       // Wenn der Benutzer nicht eingeloggt ist und nicht auf der Login-Seite ist,
@@ -110,7 +137,8 @@ export function AuthProvider({ children }) {
 
   const value = {
     user,
-    loading
+    loading,
+    actorRole,
   };
 
   return (

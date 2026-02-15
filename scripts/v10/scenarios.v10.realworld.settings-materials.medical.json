@@ -1,0 +1,178 @@
+{
+  "_meta": {
+    "description": "Realistic live dictations with simulated practice/user settings for materials and endo defaults",
+    "version": "1.0.0",
+    "created": "2026-02-15",
+    "settings": {
+      "practice": {
+        "defaultMaterial": "komposit",
+        "defaultIsolation": "kofferdam",
+        "materials": {
+          "fuellung": ["ormocer", "komposit nano-hybrid", "bulk-fill"],
+          "endo": ["Ca(OH)2", "Ledermix", "MTA"]
+        },
+        "treatments": {
+          "endo": {
+            "defaultEinlage": "caoh2",
+            "defaultIrrigationProtocol": "naocl_edta",
+            "defaultWLMethod": "elektrisch",
+            "defaultWFTechnique": "warm"
+          }
+        },
+        "inventory": {
+          "endo": {
+            "apexLocator": true,
+            "xray": true,
+            "obturationWarm": true,
+            "irrigantNaOCl": true,
+            "irrigantEDTA": true
+          }
+        }
+      },
+      "user": {
+        "defaultLAType": "leitung",
+        "defaultCappingMaterial": "mta",
+        "treatments": {
+          "endo": {
+            "defaultCanalCount": 3,
+            "defaultEinlage": "caoh2",
+            "defaultWFTechnique": "warm",
+            "defaultIrrigationProtocol": "naocl_edta"
+          }
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "sm01",
+      "title": "GKV Füllung ohne Materialangabe nutzt Praxis-Material",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 26 od. Kofferdam angelegt. Leitungsanästhesie.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"],
+        "mustIncludeTextSnippets": ["Komposit"]
+      }
+    },
+    {
+      "id": "sm02",
+      "title": "PKV Füllung ohne Materialangabe nutzt Praxis-Material",
+      "treatmentId": "fuellung",
+      "insuranceType": "PKV",
+      "dictation": "Füllung 15 o. Kofferdam. Infiltrationsanästhesie.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"],
+        "mustIncludeTextSnippets": ["Komposit"]
+      }
+    },
+    {
+      "id": "sm03",
+      "title": "MKV Füllung ohne Materialangabe mit Mehrkosten",
+      "treatmentId": "fuellung",
+      "insuranceType": "MKV",
+      "dictation": "Füllung 36 mod. Kofferdam. Mehrkostenvereinbarung unterschrieben.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustIncludeTextSnippets": ["Mehrkostenvereinbarung"]
+      }
+    },
+    {
+      "id": "sm04",
+      "title": "Explizites Komposit überschreibt Praxis-Material",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 24 o Komposit. Kofferdam. Infiltrationsanästhesie.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustIncludeTextSnippets": ["Komposit"],
+        "mustNotIncludeTextSnippets": ["ormocer"]
+      }
+    },
+    {
+      "id": "sm05",
+      "title": "Profunda mit indirekter Überkappung nutzt User-Default MTA",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 37 o. Karies profunda. Indirekte Überkappung. Kofferdam.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustIncludeTextSnippets": ["MTA"]
+      }
+    },
+    {
+      "id": "sm06",
+      "title": "Endo GKV mit Default-Einlage und Default-Irrigation",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 46. Trepanation. Kofferdam. Leitungsanästhesie.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"],
+        "mustIncludeTextSnippets": ["Ca(OH)₂"],
+        "maxQuestionCount": 4
+      }
+    },
+    {
+      "id": "sm07",
+      "title": "Endo PKV nutzt Defaults und bleibt GOZ-only",
+      "treatmentId": "endo",
+      "insuranceType": "PKV",
+      "dictation": "Endo 11. Trepanation. Kofferdam. Infiltrationsanästhesie.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"],
+        "mustIncludeTextSnippets": ["Ca(OH)₂"],
+        "maxQuestionCount": 4
+      }
+    },
+    {
+      "id": "sm08",
+      "title": "Endo mit explizitem Ledermix überschreibt Default-Einlage",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 36. Trepanation. Medikamentöse Einlage Ledermix. Kofferdam.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustIncludeTextSnippets": ["Ledermix"],
+        "mustNotIncludeTextSnippets": ["Ca(OH)₂"]
+      }
+    },
+    {
+      "id": "sm09",
+      "title": "Multi-Tooth Füllung nutzt Praxis-Material konsistent",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Füllung 16 od. Kofferdam. Füllung 26 o. Kofferdam. Bisskontrolle geplant.",
+      "expect": {
+        "phase": "output",
+        "perInstanceCount": 2,
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustIncludeTextSnippets": ["Komposit"]
+      }
+    },
+    {
+      "id": "sm10",
+      "title": "Endo mit expliziten Angaben bleibt fachlich konsistent",
+      "treatmentId": "endo",
+      "insuranceType": "GKV",
+      "dictation": "Endo 27: Trepanation. Arbeitslänge elektronisch. Aufbereitung manuell. Spülung CHX. Wurzelfüllung kalt lateral. Kofferdam. Leitungsanästhesie.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"],
+        "mustIncludeTextSnippets": ["kalt lateral"]
+      }
+    }
+  ]
+}

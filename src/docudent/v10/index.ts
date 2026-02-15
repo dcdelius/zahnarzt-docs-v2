@@ -6,6 +6,7 @@
 
 export { runV10 } from './pipeline/runV10';
 export { runV10Bundle } from './pipeline/runV10Bundle';
+export { runPreanalyzedBundle } from './preanalysis/runPreanalyzedBundle';
 
 export type {
     V10PipelineInput,

@@ -5,19 +5,12 @@ import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { useAuth } from "./contexts/AuthContext";
-import Layout from './components/Layout';
 import { Toaster } from 'sonner';
 
 // ═══════════════════════════════════════════════════════════════
 // LAZY IMPORTS - Active Tools Only
 // ═══════════════════════════════════════════════════════════════
-const HomePage = lazy(() => import('./pages/HomePage'));
-const DocudentV5 = lazy(() => import('./docudent/v5/pages/DocudentV5Page'));
-// V6 REMOVED - B2 Delete Sprint (2025-12-29)
-const V7Router = lazy(() => import('./docudent/v7/app/V7Router').then(m => ({ default: m.V7Router })));
-const V8Router = lazy(() => import('./docudent/v8/app/V8Router').then(m => ({ default: m.V8Router })));
 const V10Router = lazy(() => import('./docudent/v10/app/V10Router').then(m => ({ default: m.V10Router })));
-const LandingPage = lazy(() => import('./docudent/v7/pages/LandingPage'));
 
 function Login() {
   const navigate = useNavigate();
@@ -125,45 +118,20 @@ function App() {
       <Toaster position="bottom-right" expand={true} richColors />
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route element={<Layout />}>
-            {/* ═══════════════════════════════════════════════════════════ */}
-            {/* CLEAN ROUTES - Only Docudent */}
-            {/* ═══════════════════════════════════════════════════════════ */}
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<HomePage />} />
-
-            <Route path="/docudent/v5" element={<DocudentV5 />} />
-
-            {/* V6 removed - redirect to V10 */}
-            <Route path="/docudent/v6" element={<Navigate to="/docudent/v10" replace />} />
-
-            {/* Docudent V7 - Pure Renderer (Reality Gate) */}
-            <Route path="/docudent/v7/*" element={<V7Router />} />
-
-            {/* Legacy redirects */}
-            <Route path="/dashboard" element={<Navigate to="/home" replace />} />
-            <Route path="/sonia-v3" element={<Navigate to="/docudent" replace />} />
-            <Route path="/sonia-flow" element={<Navigate to="/docudent" replace />} />
-            <Route path="/docudent-v5" element={<Navigate to="/docudent" replace />} />
-          </Route>
-
-
-          {/* ═══════════════════════════════════════════════════════════════ */}
-          {/* STANDALONE LAYOUTS - No Global Nav */}
-          {/* ═══════════════════════════════════════════════════════════════ */}
-
-          {/* Docudent V8 - Jeton Redesign (Standalone) */}
-          <Route path="/docudent/v8/*" element={<V8Router />} />
-
-          {/* Docudent V10 - V10 Pipeline Direct (Standalone) */}
+          <Route path="/" element={<Login />} />
           <Route path="/docudent/v10/*" element={<V10Router />} />
-
-          {/* Docudent Landing - Premium Entry (Self-Contained Layout) */}
-          <Route path="/docudent" element={<LandingPage />} />
-
-          {/* V7 App Shell (Optional: can also be standalone if it has its own layout) */}
-          {/* Keeping V7Router inside Layout for now if it needs it, or check if it should be out too */}
-          {/* User only complained about landing page for now */}
+          {/* Freeze legacy app surfaces to V10-only runtime */}
+          <Route path="/home" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/dashboard" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/docudent" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/docudent/v5" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/docudent/v6" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/docudent/v7/*" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/docudent/v8/*" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/sonia-v3/*" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/sonia-flow/*" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="/docudent-v5" element={<Navigate to="/docudent/v10" replace />} />
+          <Route path="*" element={<Navigate to="/docudent/v10" replace />} />
         </Routes>
       </Suspense>
     </div>

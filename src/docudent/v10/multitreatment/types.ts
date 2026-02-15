@@ -213,6 +213,29 @@ export interface MultiTreatmentResult {
         message: string;
         requiredAskbacks: string[];
     }>;
+
+    /** Optional source provenance summary for UI explainability */
+    provenanceSummary?: {
+        dictation: number;
+        settings: number;
+        askback: number;
+        manual: number;
+    };
+
+    /** Bundle execution metadata for traceability */
+    executionMeta?: {
+        kbReleaseId?: string;
+        outputHash?: string;
+    };
+
+    /** Visible trace chain for UI: Code -> Instance -> KB */
+    billingTrace?: Array<{
+        code: string;
+        instanceId: string;
+        tooth?: string;
+        scope?: BillingScope;
+        kbReleaseId?: string;
+    }>;
 }
 
 // ─── Orchestrator Input ────────────────────────────────────────

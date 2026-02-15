@@ -390,6 +390,9 @@ export interface V10PipelineMeta {
         requiredAskbacks: string[];
     }>;
 
+    /** Deterministic output fingerprint for replay comparability */
+    outputHash?: string;
+
     /** Debug payload for checks (DEV only) */
     debug?: {
         instances: Array<{
@@ -494,6 +497,8 @@ export interface V10BundleInput {
 export interface V10ScopedBillingCode {
     /** Billing code (e.g., BEMA_25, GOZ_2330) */
     code: string;
+    /** Source instance identifier (required for provenance) */
+    instanceId: string;
     /** Tooth if TOOTH-scoped */
     tooth?: string;
     /** Scope type */

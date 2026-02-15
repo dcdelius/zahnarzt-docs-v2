@@ -67,14 +67,20 @@ function dedupeBillingCodes(codes: V10ScopedBillingCode[]): V10ScopedBillingCode
         } else {
             // TOOTH scope: keep per tooth
             const key = `${code.code}::${code.tooth ?? 'none'}`;
-            if (!seen.has(key)) {
-                seen.set(key, code);
-                result.push(code);
-            }
+                if (!seen.has(key)) {
+                    seen.set(key, code);
+                    result.push(code);
+                }
         }
     }
 
-    return result;
+    return result.sort((a, b) => {
+        const scopeCmp = a.scope.localeCompare(b.scope);
+        if (scopeCmp !== 0) return scopeCmp;
+        const toothCmp = (a.tooth ?? '').localeCompare(b.tooth ?? '');
+        if (toothCmp !== 0) return toothCmp;
+        return a.code.localeCompare(b.code);
+    });
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -92,6 +98,21 @@ interface CollectedInstanceResult {
     text: string;
     billingCodes: V10ScopedBillingCode[];
     trace: V10InstanceTrace;
+    factSources: Array<{
+        key: string;
+        source: 'dictation' | 'settings' | 'askback' | 'manual';
+        origin: 'answer' | 'settings';
+        scope: 'session' | 'tooth';
+        toothScope?: string;
+    }>;
+}
+
+function stableHash(input: string): string {
+    let hash = 5381;
+    for (let i = 0; i < input.length; i += 1) {
+        hash = ((hash << 5) + hash) ^ input.charCodeAt(i);
+    }
+    return `h${(hash >>> 0).toString(16).padStart(8, '0')}`;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -162,6 +183,14 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                 const chips = result.trace?.allChips ?? [];
                 let text = '';
                 const billingCodes: V10ScopedBillingCode[] = [];
+                const reviewInstance = result.review?.instances?.[0];
+                const factSources = Object.entries(reviewInstance?.factSources ?? {}).map(([key, source]) => ({
+                    key,
+                    source,
+                    origin: source === 'settings' ? 'settings' : 'answer',
+                    scope: instance.tooth ? 'tooth' as const : 'session' as const,
+                    toothScope: instance.tooth,
+                }));
 
                 if (result.state === 'output' && result.output) {
                     text = result.output.fullText;
@@ -171,6 +200,7 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                         const scope = getChipBillingScope(segment.treatmentId, code);
                         billingCodes.push({
                             code,
+                            instanceId: instance.instanceId,
                             tooth: instance.tooth,
                             scope,
                         });
@@ -183,7 +213,10 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                     tooth: instance.tooth,
                     treatmentId: segment.treatmentId,
                     hasUnansweredRequired,
-                    questions: result.questions ?? [],
+                    questions: (result.questions ?? []).map(question => ({
+                        ...question,
+                        instanceId: question.instanceId ?? instance.instanceId,
+                    })),
                     chips,
                     text,
                     billingCodes,
@@ -196,6 +229,7 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                         chips: [],
                         renderedChipIds: [],
                     },
+                    factSources,
                 });
             }
         }
@@ -219,6 +253,9 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
         const segmentOutputs = buildSegmentOutputs(allResults, segments);
         const allBillingCodes = allResults.flatMap(r => r.billingCodes);
         const dedupedBilling = dedupeBillingCodes(allBillingCodes);
+        if (dedupedBilling.some(code => !code.instanceId || !code.instanceId.trim())) {
+            throw new Error('Invariant violation: bundle billing code without instanceId');
+        }
         const fullText = segmentOutputs.map(s => s.text).join('\n\n');
 
         const sessionSummary = buildSessionBillingSummary(allBillingCodes, segments);
@@ -233,6 +270,16 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
             }))
         );
 
+        const outputHash = stableHash(JSON.stringify({
+            fullText,
+            billing: dedupedBilling.map(code => ({
+                code: code.code,
+                instanceId: code.instanceId,
+                tooth: code.tooth ?? null,
+                scope: code.scope,
+            })),
+        }));
+
         return {
             state: 'output',
             output: {
@@ -240,7 +287,7 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                 billingCodes: dedupedBilling,
                 segments: segmentOutputs,
             },
-            meta: buildMeta(allResults, startTime, sessionCombinability, upsellHints),
+            meta: buildMeta(allResults, startTime, sessionCombinability, upsellHints, outputHash),
             trace: isDev ? buildTrace(allResults) : undefined,
         };
     } catch (error) {
@@ -297,8 +344,9 @@ function collectAndSortQuestions(
     // Dedupe by question ID (keep first occurrence per stable order)
     const seen = new Set<string>();
     const deduped = allQuestions.filter(item => {
-        if (seen.has(item.question.id)) return false;
-        seen.add(item.question.id);
+        const scopeKey = `${item.question.instanceId ?? 'global'}::${item.question.id}`;
+        if (seen.has(scopeKey)) return false;
+        seen.add(scopeKey);
         return true;
     });
 
@@ -332,18 +380,33 @@ function buildSegmentOutputs(
     segments: V10BundleInput['segments']
 ): V10SegmentOutput[] {
     const outputs: V10SegmentOutput[] = [];
+    const orderedSegments = [...segments].sort((a, b) => {
+        const aTooth = results.find(r => r.segmentId === a.segmentId)?.tooth ?? '';
+        const bTooth = results.find(r => r.segmentId === b.segmentId)?.tooth ?? '';
+        const toothCmp = aTooth.localeCompare(bTooth);
+        if (toothCmp !== 0) return toothCmp;
+        const treatmentCmp = a.treatmentId.localeCompare(b.treatmentId);
+        if (treatmentCmp !== 0) return treatmentCmp;
+        return a.segmentId.localeCompare(b.segmentId);
+    });
 
-    for (const segment of segments) {
+    for (const segment of orderedSegments) {
         const segmentResults = results.filter(r => r.segmentId === segment.segmentId);
 
-        const instanceOutputs = segmentResults.map(r => ({
+        const instanceOutputs = [...segmentResults]
+            .sort((a, b) => {
+                const toothCmp = (a.tooth ?? '').localeCompare(b.tooth ?? '');
+                if (toothCmp !== 0) return toothCmp;
+                return a.instanceId.localeCompare(b.instanceId);
+            })
+            .map(r => ({
             instanceId: r.instanceId,
             tooth: r.tooth,
             text: r.text,
             chips: r.chips,
-        }));
+            }));
 
-        const segmentText = instanceOutputs.map(io => io.text).join(' ');
+        const segmentText = instanceOutputs.map(io => io.text).join('\n\n');
         const segmentBilling = segmentResults.flatMap(r => r.billingCodes);
 
         outputs.push({
@@ -362,8 +425,19 @@ function buildMeta(
     results: CollectedInstanceResult[],
     startTime: number,
     sessionCombinability?: ReturnType<typeof runSessionCombinability>,
-    upsellHints?: ReturnType<typeof deriveUpsellHints>
+    upsellHints?: ReturnType<typeof deriveUpsellHints>,
+    outputHash?: string,
 ): V10PipelineMeta {
+    const uniqueFactSources = new Map<string, CollectedInstanceResult['factSources'][number]>();
+    for (const result of results) {
+        for (const source of result.factSources) {
+            const key = `${source.key}::${source.source}::${source.scope}::${source.toothScope ?? ''}`;
+            if (!uniqueFactSources.has(key)) {
+                uniqueFactSources.set(key, source);
+            }
+        }
+    }
+
     return {
         engineUsed: 'v10',
         instanceCount: results.length,
@@ -383,6 +457,17 @@ function buildMeta(
             droppedCodes: sessionCombinability.droppedCodes,
         } : undefined,
         upsellHints: upsellHints && upsellHints.length > 0 ? upsellHints : undefined,
+        provenance: {
+            askbacks: [],
+            chips: [],
+            factSources: Array.from(uniqueFactSources.values()),
+            billingGuard: {
+                allowed: 0,
+                blocked: 0,
+                blockedChipIds: [],
+            },
+        },
+        outputHash,
     };
 }
 
