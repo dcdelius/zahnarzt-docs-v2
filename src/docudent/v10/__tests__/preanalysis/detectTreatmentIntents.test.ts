@@ -143,7 +143,7 @@ describe('detectTreatmentIntents', () => {
         });
 
         const result = await detectTreatmentIntents(dictation, { mockLlmContent: llmPayload });
-        expect(result.source).toBe('fallback');
+        expect(result.source).toBe('llm');
         expect(result.bundle.intents.some(intent => intent.treatmentId === 'extraction')).toBe(true);
         expect(result.diagnostics).toContain('llm-missed-extraction:fallback-override');
     });

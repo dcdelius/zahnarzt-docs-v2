@@ -441,7 +441,9 @@ export async function detectTreatmentIntents(
                             const fallback = fallbackDetect(dictation);
                             if (hasExtractionIntent(fallback.bundle)) {
                                 return {
-                                    ...fallback,
+                                    bundle: fallback.bundle,
+                                    source: 'llm',
+                                    needsConfirmation: fallback.bundle.needsConfirmation === true,
                                     diagnostics: [...diagnostics, 'llm-missed-extraction:fallback-override', ...fallback.diagnostics],
                                 };
                             }

@@ -58,6 +58,7 @@ import { buildIntentConfirmationViewModel, type IntentConfirmationViewModel } fr
 import { canonicalizeTreatmentIntentBundle, type TreatmentIntentBundleV1 } from '../preanalysis/treatmentIntentContract';
 import { buildInitialIntentSelections, getUnresolvedIntentIds } from '../preanalysis/intentSelectionPolicy';
 import {
+    applyExtractionEngineMeta,
     applyExtractionTraceMeta,
     applyPreanalysisMeta,
     createInitialLlmRuntimeMeta,
@@ -523,6 +524,10 @@ export default function DocudentV10Page() {
     useEffect(() => {
         setLlmRuntimeMeta(current => applyExtractionTraceMeta(current, result?.debug?.v10TraceLines));
     }, [result?.debug?.v10TraceLines]);
+
+    useEffect(() => {
+        setLlmRuntimeMeta(current => applyExtractionEngineMeta(current, result?.debug?.extractorEngine));
+    }, [result?.debug?.extractorEngine]);
 
     const handleMicClick = useCallback(async () => {
         setTranscriptionError(null);

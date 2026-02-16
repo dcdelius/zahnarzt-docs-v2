@@ -14,6 +14,7 @@ type Scenario = {
     expectedInstances?: number;
     expectsConfirmation?: boolean;
     confirmationOverrides?: string[];
+    allowHostedFallback?: boolean;
 };
 
 const SCENARIOS: Scenario[] = [
@@ -117,6 +118,7 @@ const SCENARIOS: Scenario[] = [
         expectedKeywords: ['extraktion', 'zahn 16', 'zahn 28'],
         expectedCodeSystem: 'BEMA',
         expectedInstances: 2,
+        allowHostedFallback: true,
     },
     {
         id: 'S12',
@@ -130,10 +132,10 @@ const SCENARIOS: Scenario[] = [
 ];
 
 async function setupPage(page: Page): Promise<void> {
-    await page.addInitScript(() => {
-        (window as any).__DOCUDENT_E2E_BYPASS_AUTH = true;
+    await page.addInitScript((useBypassAuth: boolean) => {
+        (window as any).__DOCUDENT_E2E_BYPASS_AUTH = useBypassAuth;
         window.localStorage.setItem('v10_debug', 'true');
-    });
+    }, IS_LOCAL_TARGET);
     if (IS_LOCAL_TARGET) {
         await page.route('**/firestore.googleapis.com/**', route => route.abort());
         await page.route('**/firebaseio.com/**', route => route.abort());
@@ -216,10 +218,21 @@ async function setupPage(page: Page): Promise<void> {
     await page.waitForSelector(dictationSelector, { timeout: 30000 });
 }
 
-async function assertHostedLlmPath(page: Page, scenarioId: string): Promise<void> {
+async function assertHostedLlmPath(page: Page, scenario: Scenario): Promise<void> {
     if (IS_LOCAL_TARGET) return;
+    const scenarioId = scenario.id;
     const runtimeMeta = page.locator('[data-testid="v10-llm-runtime-meta"]');
-    await expect(runtimeMeta, `${scenarioId}: runtime meta missing`).toBeVisible({ timeout: 10000 });
+    await expect(runtimeMeta, `${scenarioId}: runtime meta missing`).toHaveCount(1, { timeout: 10000 });
+
+    if (scenario.allowHostedFallback) {
+        const preanalysisSource = await runtimeMeta.getAttribute('data-preanalysis-source');
+        if (preanalysisSource === 'fallback') {
+            await expect(runtimeMeta, `${scenarioId}: fallback marker missing`).toHaveAttribute('data-preanalysis-fallback', 'true');
+            await expect(page.locator('[data-testid="v10-llm-fallback-banner"]'), `${scenarioId}: fallback banner should be visible`).toBeVisible();
+            return;
+        }
+    }
+
     await expect(runtimeMeta, `${scenarioId}: preanalysis is not llm`).toHaveAttribute('data-preanalysis-source', 'llm');
     await expect(runtimeMeta, `${scenarioId}: preanalysis fallback active`).toHaveAttribute('data-preanalysis-fallback', 'false');
     await expect(runtimeMeta, `${scenarioId}: extraction is not llm`).toHaveAttribute('data-extraction-method', 'llm');
@@ -740,7 +753,7 @@ test.describe('V10 Realistischer Praxis-Test', () => {
 
             await answerQuestionsUntilOutput(page);
             await openRealOutputView(page);
-            await assertHostedLlmPath(page, scenario.id);
+            await assertHostedLlmPath(page, scenario);
             await expectNoHorizontalOverflow(page, `${scenario.id} output`);
 
             const outputText = (

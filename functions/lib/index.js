@@ -321,7 +321,16 @@ Regeln:
 - Keine Billing-Codes/Felder ausgeben (z.B. BEMA/GOZ/GOÄ/BEL, billingCodes, billingRefs).
 - Nur treatmentIds verwenden, die im Schema stehen.`;
 function getOpenAiApiKey() {
-    return process.env.OPENAI_API_KEY ?? null;
+    const envKey = process.env.OPENAI_API_KEY?.trim();
+    if (envKey)
+        return envKey;
+    const runtimeConfigKey = functions.config()?.openai?.key;
+    if (typeof runtimeConfigKey === 'string' && runtimeConfigKey.trim().length > 0) {
+        // Keep OPENAI_API_KEY as canonical runtime source for downstream checks.
+        process.env.OPENAI_API_KEY = runtimeConfigKey.trim();
+        return process.env.OPENAI_API_KEY;
+    }
+    return null;
 }
 exports.detectTreatmentIntentsV1 = functions.https.onCall(async (data, context) => {
     if (!context.auth) {
