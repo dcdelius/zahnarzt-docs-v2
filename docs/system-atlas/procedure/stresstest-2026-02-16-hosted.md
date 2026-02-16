@@ -80,3 +80,31 @@
 3. Surface-/Flächen-Konsistenz im PKV-Füllungsfall härten (z. B. MODB darf nicht auf 1-flächig fallen).
 4. Preanalysis-Fallback observability + Stabilität verbessern (S7 zeigte einmal fallback).
 
+---
+
+## Addendum — Re-Run nach Grundfixes + Deploy (2026-02-16, später Lauf)
+
+### Setup
+- Commit: `e8b2176`
+- Deployment: `https://zahnarzt-app.web.app` (nach neuem Build)
+- E2E: `e2e/v10-realistic-praxis-test.e2e.spec.ts` (Hosted Login, kein Auth-Bypass)
+- Umfang: 12 Szenarien (S1-S12)
+
+### Ergebnis
+- 12/12 Szenarien passed.
+- Keine hard failures, kein Retry notwendig.
+- LLM-Assertions auf Hosted in allen Szenarien erfüllt (inkl. Preanalysis = `llm`).
+
+### Verifizierte Fixwirkungen
+1. **GKV-Narrativ ohne MKV-Leakage**  
+   Reine GKV-Fälle rendern kein Mehrkosten-/Mehrschicht-MKV-Narrativ mehr.
+2. **Surface Parsing robuster**  
+   Explizite Oberflächen (z. B. `MODB`) bleiben stabil und werden nicht durch Kontaktpunkt-Ambiguität überschrieben.
+3. **Endo Morphologie-Guardrail aktiv**  
+   Kanalzahl wird zahnbezogen begrenzt (Fail-safe gegen fachlich unplausible Kanalanzahlen).
+4. **Preanalysis stabiler**  
+   Retry vor Fallback reduziert flüchtige Hosted-Fallbacks in der Praxissequenz.
+
+### Offene Restpunkte (nicht Blocker für MVP-Basis)
+- Endo-Katalogabbildung (BEMA/GOZ-Detailtiefe pro Morphologie) weiter verfeinern.
+- UI-Transparenz für Billing-Provenance und Debug-Konsistenz weiter ausbauen.
