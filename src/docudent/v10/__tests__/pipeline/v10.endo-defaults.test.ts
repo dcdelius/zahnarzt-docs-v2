@@ -68,6 +68,7 @@ describe('Pipeline: endo settings defaults', () => {
             insuranceType: 'GKV',
             textLength: 'mittel',
             testOnly: {
+                enabled: true,
                 forceExtraction: {
                     tooth: '46',
                     treatmentId: 'endo',
@@ -77,6 +78,7 @@ describe('Pipeline: endo settings defaults', () => {
                         MB: '19',
                         DB: '18',
                     },
+                    medical_isolation: 'kofferdam',
                 },
                 settings: {
                     user: {

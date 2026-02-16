@@ -510,46 +510,53 @@ export async function detectTreatmentIntents(
 
     const diagnostics: string[] = [];
     if (!options?.forceFallback) {
-        try {
-            const llmRaw = options?.mockLlmContent
-                ? { content: options.mockLlmContent }
-                : await runLlmPreanalysis(dictation, options);
+        const maxAttempts = options?.mockLlmContent ? 1 : 2;
+        for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+            try {
+                const llmRaw = options?.mockLlmContent
+                    ? { content: options.mockLlmContent }
+                    : await runLlmPreanalysis(dictation, options);
 
-            if (llmRaw) {
-                const parsedJson = parseJsonObject(llmRaw.content);
-                if (parsedJson) {
-                    const sanitizedJson = sanitizeLlmBundleCandidate(parsedJson);
-                    const validated = validateTreatmentIntentBundle(sanitizedJson);
-                    if (validated.ok) {
-                        const canonical = canonicalizeTreatmentIntentBundle(validated.data);
-                        const collapsed = collapseDuplicateIntents(canonical);
-                        if (EXTRACTION_SIGNAL_RE.test(dictation) && !hasExtractionIntent(canonical)) {
-                            const fallback = fallbackDetect(dictation);
-                            if (hasExtractionIntent(fallback.bundle)) {
-                                return {
-                                    bundle: fallback.bundle,
-                                    source: 'llm',
-                                    needsConfirmation: fallback.bundle.needsConfirmation === true,
-                                    diagnostics: [...diagnostics, 'llm-missed-extraction:fallback-override', ...fallback.diagnostics],
-                                };
+                if (llmRaw) {
+                    const parsedJson = parseJsonObject(llmRaw.content);
+                    if (parsedJson) {
+                        const sanitizedJson = sanitizeLlmBundleCandidate(parsedJson);
+                        const validated = validateTreatmentIntentBundle(sanitizedJson);
+                        if (validated.ok) {
+                            const canonical = canonicalizeTreatmentIntentBundle(validated.data);
+                            const collapsed = collapseDuplicateIntents(canonical);
+                            if (EXTRACTION_SIGNAL_RE.test(dictation) && !hasExtractionIntent(canonical)) {
+                                const fallback = fallbackDetect(dictation);
+                                if (hasExtractionIntent(fallback.bundle)) {
+                                    return {
+                                        bundle: fallback.bundle,
+                                        source: 'llm',
+                                        needsConfirmation: fallback.bundle.needsConfirmation === true,
+                                        diagnostics: [...diagnostics, 'llm-missed-extraction:fallback-override', ...fallback.diagnostics],
+                                    };
+                                }
                             }
+                            return {
+                                bundle: collapsed.bundle,
+                                source: 'llm',
+                                needsConfirmation: collapsed.bundle.needsConfirmation === true,
+                                diagnostics: [...diagnostics, ...collapsed.diagnostics],
+                            };
                         }
-                        return {
-                            bundle: collapsed.bundle,
-                            source: 'llm',
-                            needsConfirmation: collapsed.bundle.needsConfirmation === true,
-                            diagnostics: [...diagnostics, ...collapsed.diagnostics],
-                        };
+                        diagnostics.push(`llm-schema-invalid:attempt${attempt}:${validated.issues[0] ?? 'unknown'}`);
+                    } else {
+                        diagnostics.push(`llm-json-parse-failed:attempt${attempt}`);
                     }
-                    diagnostics.push(`llm-schema-invalid:${validated.issues[0] ?? 'unknown'}`);
                 } else {
-                    diagnostics.push('llm-json-parse-failed');
+                    diagnostics.push(`llm-unavailable:attempt${attempt}`);
                 }
-            } else {
-                diagnostics.push('llm-unavailable');
+            } catch (error) {
+                diagnostics.push(`llm-error:attempt${attempt}:${error instanceof Error ? error.message : String(error)}`);
             }
-        } catch (error) {
-            diagnostics.push(`llm-error:${error instanceof Error ? error.message : String(error)}`);
+
+            if (attempt < maxAttempts) {
+                diagnostics.push(`llm-retry:attempt${attempt + 1}`);
+            }
         }
     }
 

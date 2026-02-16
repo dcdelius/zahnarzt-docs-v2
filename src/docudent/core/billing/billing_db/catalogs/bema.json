@@ -187,7 +187,7 @@
     "id": "BEMA_32",
     "system": "BEMA",
     "nummer": "32",
-    "bezeichnung": "Wurzelkanalbehandlung (Aufbereitung) - Einwurzeliger Zahn",
+    "bezeichnung": "Wurzelkanalbehandlung (Aufbereitung)",
     "kurzform": "WK1",
     "punkte": 25,
     "kategorie": "endodontie"
@@ -211,7 +211,7 @@
     "id": "BEMA_35",
     "system": "BEMA",
     "nummer": "35",
-    "bezeichnung": "Wurzelfüllung - Einwurzeliger Zahn",
+    "bezeichnung": "Wurzelfüllung",
     "kurzform": "WF1",
     "punkte": 20,
     "kategorie": "endodontie"

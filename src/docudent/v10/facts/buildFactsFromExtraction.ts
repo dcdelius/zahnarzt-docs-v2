@@ -19,6 +19,7 @@ import {
     normalizeSurfaces as normalizeSurfacesModule,
     type CanonicalSurface,
 } from '../extraction/surfaces';
+import { clampCanalCountToTooth } from './endoToothAnatomy';
 
 // ═══════════════════════════════════════════════════════════════
 // TOKEN NORMALIZATION + SYNONYMS (ported from V7)
@@ -1611,7 +1612,7 @@ function buildEndoFacts(
         : tempClosureNegated
             ? false
             : undefined;
-    const canalCount = detectCanalCount(combinedText);
+    const canalCount = clampCanalCountToTooth(tooth, detectCanalCount(combinedText));
     const explicitWlMethod = (extracted as Record<string, unknown>).wl_method;
     const workingLengthMethod =
         typeof explicitWlMethod === 'string'

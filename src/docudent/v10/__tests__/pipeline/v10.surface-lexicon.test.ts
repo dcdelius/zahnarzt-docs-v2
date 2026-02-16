@@ -19,4 +19,13 @@ describe('V10 Surface Lexicon', () => {
         expect(result.surfaces).toEqual(['o']);
         expect(result.hasAmbiguity).toBe(false);
     });
+
+    it('keeps explicit MODB surfaces even when contact point is mentioned', () => {
+        const result = normalizeSurfaces({
+            dictation: 'Zahn 45 MODB Kompositfüllung, Kontaktpunkt und Okklusion kontrolliert.',
+        });
+
+        expect(result.surfaces).toEqual(['m', 'o', 'd', 'b']);
+        expect(result.hasAmbiguity).toBe(false);
+    });
 });

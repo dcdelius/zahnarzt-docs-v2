@@ -152,6 +152,36 @@ describe('detectTreatmentIntents', () => {
         expect(result.diagnostics.some(item => item.includes('gateway-unavailable'))).toBe(true);
     });
 
+    it('retries gateway once before falling back', async () => {
+        const llmPayload = JSON.stringify({
+            version: TREATMENT_INTENT_CONTRACT_VERSION,
+            dictation: 'Endo 46 dann Aufbau.',
+            needsConfirmation: false,
+            intents: [
+                {
+                    intentId: 'retry-a',
+                    treatmentId: 'endo',
+                    tooth: '46',
+                    confidence: 0.9,
+                    evidenceSpans: [{ start: 0, end: 7, text: 'Endo 46' }],
+                },
+            ],
+        });
+
+        let attempts = 0;
+        const result = await detectTreatmentIntents('Endo 46 dann Aufbau.', {
+            llmGateway: async () => {
+                attempts += 1;
+                if (attempts === 1) throw new Error('gateway-timeout');
+                return llmPayload;
+            },
+        });
+
+        expect(result.source).toBe('llm');
+        expect(attempts).toBe(2);
+        expect(result.diagnostics).toContain('llm-retry:attempt2');
+    });
+
     it('overrides llm payload when extraction signal is present but extraction intent is missing', async () => {
         const dictation = 'Extraktion Zahn 28 nach Luxation mit Infiltrationsanästhesie; danach Füllung Zahn 16 okklusal mit Komposit.';
         const llmPayload = JSON.stringify({

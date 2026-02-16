@@ -205,21 +205,6 @@ function parseExtractedSurfaces(extracted: string | string[]): ParseResult {
 
 function parseDictationSurfaces(dictation: string): ParseResult {
     const lower = dictation.toLowerCase();
-    const warnings: string[] = [];
-
-    // Check for ambiguous terms first
-    if (isAmbiguousTerm(lower)) {
-        const ambiguousMatches = [
-            'approximal', 'seitlich', 'großflächig', 'mehrflächig',
-            'zwischenzahn', 'interproximal', 'kontaktpunkt'
-        ].filter(term => lower.includes(term));
-
-        return {
-            surfaces: [],
-            warnings: [`Ambiguous terms in dictation: ${ambiguousMatches.join(', ')}`],
-            hasAmbiguity: true,
-        };
-    }
 
     // Try to find compound patterns first (mod, od, modb, etc.)
     const compoundPattern = /\b(modbl|modb|modl|mob|mod|dom|omd|od|do|mo|om|md|dm|ob|bo|ol|lo)\b/gi;
@@ -282,6 +267,20 @@ function parseDictationSurfaces(dictation: string): ParseResult {
                 surfaces.push(...parsed);
             }
         }
+    }
+
+    // Only treat terms as ambiguous if we still have no explicit surfaces.
+    if (surfaces.length === 0 && isAmbiguousTerm(lower)) {
+        const ambiguousMatches = [
+            'approximal', 'seitlich', 'großflächig', 'mehrflächig',
+            'zwischenzahn', 'interproximal', 'kontaktpunkt'
+        ].filter(term => lower.includes(term));
+
+        return {
+            surfaces: [],
+            warnings: [`Ambiguous terms in dictation: ${ambiguousMatches.join(', ')}`],
+            hasAmbiguity: true,
+        };
     }
 
     return {

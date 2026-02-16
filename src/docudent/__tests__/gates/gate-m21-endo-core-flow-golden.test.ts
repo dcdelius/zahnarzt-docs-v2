@@ -169,7 +169,7 @@ describe('gate-m21-endo-core-flow-golden', () => {
         const kb = pack.getTreatmentKb()!;
         const expectedPhases = [
             'befund', 'anaesthesie', 'vorbereitung', 'zugang',
-            'aufbereitung', 'spuelung', 'einlage', 'wurzelfuellung', 'abschluss'
+            'aufbereitung', 'spuelung', 'einlage', 'wurzelfuellung', 'abschluss', 'info'
         ];
 
         const chipPhases = [...new Set(kb.chips.map(c => c.phase))];

@@ -357,6 +357,20 @@ function getProcedureGateMode(treatmentId: string): 'warn' | 'block' {
     return treatmentId === 'endo' ? 'block' : 'warn';
 }
 
+function sanitizeFuellungChipsForInsurance(
+    chipIds: string[],
+    insuranceType: 'GKV' | 'PKV' | 'MKV',
+    facts: TreatmentFacts | undefined
+): string[] {
+    if (insuranceType === 'PKV') return chipIds;
+    const hasActiveMkv = insuranceType === 'MKV' && facts?.nurKasse !== true;
+    if (hasActiveMkv) return chipIds;
+
+    // Mehrschicht/Adhäsiv Mehrkosten-narrative must not leak into pure GKV paths.
+    const blocked = new Set(['mehrschicht', 'insurance_gkv_mkv']);
+    return chipIds.filter(chipId => !blocked.has(chipId));
+}
+
 function getMatrixSystemLabel(value: unknown): string | undefined {
     const normalized = String(value ?? '').toLowerCase();
     if (!normalized) return undefined;
@@ -1875,7 +1889,11 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
             );
             // Render this instance's chips via SSOT renderer
             const instanceChipSource = testOverrides.chips ?? result.chips;
-            const instanceAllowedChips = instanceChipSource.filter(c => allowedChipIds.includes(c));
+            const instanceAllowedChips = sanitizeFuellungChipsForInsurance(
+                instanceChipSource.filter(c => allowedChipIds.includes(c)),
+                instanceInsuranceType,
+                (result.facts ?? {}) as TreatmentFacts
+            );
             if (result.facts?.nurKasse === true) {
                 const mkvIndex = instanceAllowedChips.indexOf('insurance_gkv_mkv');
                 if (mkvIndex >= 0) {

@@ -11,6 +11,7 @@ import type {
     CappingFact,
     MEDICAL_QUESTION_IDS,
 } from './types';
+import { clampCanalCountToTooth } from './endoToothAnatomy';
 
 // ═══════════════════════════════════════════════════════════════
 // NORMALIZERS
@@ -53,6 +54,7 @@ export function applyAnswersToFacts(
         capping: { ...facts.capping },
         counseling: { ...facts.counseling },
     };
+    const currentTooth = typeof newFacts.tooth === 'string' ? newFacts.tooth : undefined;
 
     const getAnswer = (...keys: string[]): unknown => {
         for (const key of keys) {
@@ -595,7 +597,7 @@ export function applyAnswersToFacts(
         if (Number.isFinite(parsed)) {
             newFacts.endo = {
                 ...(newFacts.endo ?? {}),
-                canalCount: parsed,
+                canalCount: clampCanalCountToTooth(currentTooth, parsed),
             };
         }
     }
@@ -636,7 +638,7 @@ export function applyAnswersToFacts(
         if (parsedCanals !== undefined) {
             newFacts.endo = {
                 ...(newFacts.endo ?? {}),
-                canalCount: parsedCanals,
+                canalCount: clampCanalCountToTooth(currentTooth, parsedCanals),
             };
         }
     }
