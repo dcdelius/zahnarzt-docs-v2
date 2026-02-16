@@ -127,6 +127,91 @@ function parseJsonObject(raw: string): unknown | null {
     }
 }
 
+function normalizeOptionalString(value: unknown): string | undefined {
+    if (typeof value !== 'string') return undefined;
+    const trimmed = value.trim();
+    return trimmed.length > 0 ? trimmed : undefined;
+}
+
+function sanitizeLlmBundleCandidate(input: unknown): unknown {
+    if (!input || typeof input !== 'object') return input;
+    const src = input as Record<string, unknown>;
+    const intentsRaw = Array.isArray(src.intents) ? src.intents : undefined;
+    if (!intentsRaw) return input;
+
+    const intents = intentsRaw
+        .filter(intent => intent && typeof intent === 'object')
+        .map((intent) => {
+            const record = { ...(intent as Record<string, unknown>) };
+            const intentId = record.intentId;
+            if (typeof intentId === 'number' && Number.isFinite(intentId)) {
+                record.intentId = String(intentId);
+            } else {
+                record.intentId = normalizeOptionalString(intentId) ?? intentId;
+            }
+
+            const treatmentId = normalizeOptionalString(record.treatmentId);
+            if (treatmentId) record.treatmentId = treatmentId;
+
+            const confidenceRaw = record.confidence;
+            if (typeof confidenceRaw === 'string') {
+                const parsed = Number(confidenceRaw.replace(',', '.'));
+                if (Number.isFinite(parsed)) record.confidence = parsed;
+            }
+
+            const tooth = normalizeOptionalString(record.tooth);
+            if (tooth) record.tooth = tooth;
+            else delete record.tooth;
+
+            const phase = normalizeOptionalString(record.phase);
+            if (phase) record.phase = phase;
+            else delete record.phase;
+
+            const step = normalizeOptionalString(record.step);
+            if (step) record.step = step;
+            else delete record.step;
+
+            const uncertainty = normalizeOptionalString(record.uncertainty);
+            if (uncertainty) record.uncertainty = uncertainty;
+            else delete record.uncertainty;
+
+            if (Array.isArray(record.evidenceSpans)) {
+                record.evidenceSpans = record.evidenceSpans
+                    .filter(span => span && typeof span === 'object')
+                    .map((span) => {
+                        const spanRecord = { ...(span as Record<string, unknown>) };
+                        if (typeof spanRecord.start === 'string') {
+                            const parsedStart = Number(spanRecord.start);
+                            if (Number.isFinite(parsedStart)) spanRecord.start = parsedStart;
+                        }
+                        if (typeof spanRecord.end === 'string') {
+                            const parsedEnd = Number(spanRecord.end);
+                            if (Number.isFinite(parsedEnd)) spanRecord.end = parsedEnd;
+                        }
+                        const spanText = normalizeOptionalString(spanRecord.text);
+                        if (spanText) spanRecord.text = spanText;
+                        return spanRecord;
+                    });
+            }
+
+            return record;
+        });
+
+    const needsConfirmationRaw = src.needsConfirmation;
+    const needsConfirmation =
+        typeof needsConfirmationRaw === 'boolean'
+            ? needsConfirmationRaw
+            : typeof needsConfirmationRaw === 'string'
+                ? needsConfirmationRaw.toLowerCase() === 'true'
+                : undefined;
+
+    return {
+        ...src,
+        intents,
+        ...(needsConfirmation === undefined ? {} : { needsConfirmation }),
+    };
+}
+
 function mapClassifierTreatmentToPackId(value: string): 'fuellung' | 'endo' | 'extraction' | 'crown_prep' {
     if (value === 'endo') return 'endo';
     if (value === 'extraction') return 'extraction';
@@ -433,7 +518,8 @@ export async function detectTreatmentIntents(
             if (llmRaw) {
                 const parsedJson = parseJsonObject(llmRaw.content);
                 if (parsedJson) {
-                    const validated = validateTreatmentIntentBundle(parsedJson);
+                    const sanitizedJson = sanitizeLlmBundleCandidate(parsedJson);
+                    const validated = validateTreatmentIntentBundle(sanitizedJson);
                     if (validated.ok) {
                         const canonical = canonicalizeTreatmentIntentBundle(validated.data);
                         const collapsed = collapseDuplicateIntents(canonical);

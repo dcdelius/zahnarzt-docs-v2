@@ -86,6 +86,40 @@ describe('detectTreatmentIntents', () => {
         expect(result.diagnostics.some(item => item.startsWith('llm-schema-invalid'))).toBe(true);
     });
 
+    it('sanitizes empty optional llm fields instead of falling back', async () => {
+        const dictation = 'Extraktion Zahn 28 nach Luxation; danach Füllung Zahn 16 okklusal mit Komposit.';
+        const llmPayload = JSON.stringify({
+            version: TREATMENT_INTENT_CONTRACT_VERSION,
+            dictation,
+            needsConfirmation: false,
+            intents: [
+                {
+                    intentId: 1,
+                    treatmentId: 'extraction',
+                    tooth: '28',
+                    phase: ' ',
+                    step: '',
+                    confidence: '1.0',
+                    uncertainty: '',
+                    evidenceSpans: [{ start: '0', end: '29', text: 'Extraktion Zahn 28 nach Luxation' }],
+                },
+                {
+                    intentId: '2',
+                    treatmentId: 'fuellung',
+                    tooth: '16',
+                    confidence: '0.9',
+                    uncertainty: '',
+                    evidenceSpans: [{ start: '39', end: '78', text: 'Füllung Zahn 16 okklusal mit Komposit' }],
+                },
+            ],
+        });
+
+        const result = await detectTreatmentIntents(dictation, { mockLlmContent: llmPayload });
+        expect(result.source).toBe('llm');
+        expect(result.bundle.intents).toHaveLength(2);
+        expect(result.bundle.intents.every(intent => !intent.uncertainty)).toBe(true);
+    });
+
     it('accepts gateway payload for browser-safe llm preanalysis', async () => {
         const llmPayload = JSON.stringify({
             version: TREATMENT_INTENT_CONTRACT_VERSION,

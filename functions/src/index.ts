@@ -393,7 +393,7 @@ Antworte NUR als JSON mit diesem Schema:
   "intents": [
     {
       "intentId": "string",
-      "treatmentId": "fuellung|endo|extraction",
+      "treatmentId": "fuellung|endo|extraction|crown_prep",
       "tooth": "string optional",
       "phase": "string optional",
       "step": "string optional",

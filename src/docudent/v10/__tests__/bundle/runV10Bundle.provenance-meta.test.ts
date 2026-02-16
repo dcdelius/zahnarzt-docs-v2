@@ -54,4 +54,24 @@ describe('runV10Bundle provenance meta', () => {
 
         expect((first.meta.provenance?.chips ?? []).length).toBeGreaterThan(0);
     });
+
+    it('propagates extraction diagnostics into bundle meta', async () => {
+        const result = await runV10Bundle({
+            dictation: 'Fuellung Zahn 36 okklusal mit Komposit unter Kofferdam.',
+            segments: [
+                {
+                    segmentId: 'seg-1',
+                    treatmentId: 'fuellung',
+                    insuranceType: 'GKV',
+                    textLength: 'mittel',
+                    dictation: 'Fuellung Zahn 36 okklusal mit Komposit unter Kofferdam.',
+                    instances: [{ instanceId: 'inst-36', tooth: '36' }],
+                },
+            ],
+        }, { autoAnswerAllQuestions: true });
+
+        expect(result.state).toBe('output');
+        expect(result.meta.extractorEngine).toBeDefined();
+        expect(result.meta.traceLines?.some(line => line.startsWith('extract_detail:'))).toBe(true);
+    });
 });

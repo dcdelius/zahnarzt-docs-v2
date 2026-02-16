@@ -121,6 +121,8 @@ interface CollectedInstanceResult {
     askbackProvenance: NonNullable<NonNullable<V10PipelineMeta['provenance']>['askbacks']>;
     chipProvenance: NonNullable<NonNullable<V10PipelineMeta['provenance']>['chips']>;
     billingGuard?: NonNullable<NonNullable<V10PipelineMeta['provenance']>['billingGuard']>;
+    extractorEngine?: V10PipelineMeta['extractorEngine'];
+    traceLines?: string[];
 }
 
 function extractToothFromScopedId(id?: string): string | undefined {
@@ -410,6 +412,8 @@ export async function runV10Bundle(
                     askbackProvenance,
                     chipProvenance,
                     billingGuard: result.meta?.provenance?.billingGuard,
+                    extractorEngine: result.meta?.extractorEngine,
+                    traceLines: result.meta?.traceLines,
                 });
             }
         }
@@ -607,6 +611,16 @@ function buildMeta(
     upsellHints?: ReturnType<typeof deriveUpsellHints>,
     outputHash?: string,
 ): V10PipelineMeta {
+    const sortedByInstance = [...results].sort((a, b) => a.instanceId.localeCompare(b.instanceId));
+    const extractorEngines = Array.from(new Set(sortedByInstance
+        .map(result => result.extractorEngine)
+        .filter((engine): engine is NonNullable<V10PipelineMeta['extractorEngine']> => Boolean(engine))));
+    const extractorEngine = extractorEngines.length === 1 ? extractorEngines[0] : undefined;
+    const extractDetailLine = sortedByInstance
+        .flatMap(result => result.traceLines ?? [])
+        .find(line => typeof line === 'string' && line.startsWith('extract_detail:'));
+    const traceLines = extractDetailLine ? [extractDetailLine] : undefined;
+
     const uniqueFactSources = new Map<string, CollectedInstanceResult['factSources'][number]>();
     for (const result of results) {
         for (const source of result.factSources) {
@@ -685,6 +699,8 @@ function buildMeta(
             // Determinism invariant: output payload must not depend on wall clock time.
             total: 0,
         },
+        traceLines,
+        extractorEngine,
         combinability: sessionCombinability ? {
             verdict: sessionCombinability.verdict,
             conflicts: sessionCombinability.conflicts.map(c => ({

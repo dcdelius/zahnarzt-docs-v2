@@ -509,6 +509,12 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
                         ...INITIAL_RESULT,
                         state: 'questions',
                         questions,
+                        meta: output.meta,
+                        traceLines: output.meta?.traceLines ?? [],
+                        debug: {
+                            v10TraceLines: output.meta?.traceLines ?? [],
+                            extractorEngine: output.meta?.extractorEngine,
+                        },
                     },
                 }));
                 return;
@@ -601,6 +607,15 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
                         billingCodes: output.output?.billingCodes?.map(code => code.code) ?? [],
                         sections: [],
                         warnings: [],
+                    },
+                    meta: output.meta,
+                    kbMeta: output.meta?.kb,
+                    kbReleaseId: output.meta?.kbReleaseId,
+                    provenance: output.meta?.provenance,
+                    traceLines: output.meta?.traceLines ?? [],
+                    debug: {
+                        v10TraceLines: output.meta?.traceLines ?? [],
+                        extractorEngine: output.meta?.extractorEngine,
                     },
                 },
             }));
