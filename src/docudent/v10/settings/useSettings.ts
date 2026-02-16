@@ -6,7 +6,7 @@
 
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { db } from '../../../firebase';
+import { auth, db } from '../../../firebase';
 import type {
     PracticeSettings,
     UserSettings,
@@ -15,6 +15,12 @@ import type {
 } from './settingsTypes';
 import { setActiveKbReleaseId } from '../kb/release';
 import { reconcileUserWithPracticeHierarchy } from './hierarchyPolicy';
+import {
+    normalizePracticeMedicalDefaults,
+    normalizeUserMedicalDefaults,
+    stripPracticeMedicalDefaultMirrors,
+    stripUserMedicalDefaultMirrors,
+} from './medicalDefaults';
 
 // ═══════════════════════════════════════════════════════════════
 // STORAGE KEYS
@@ -41,6 +47,12 @@ function isFirestoreSettingsEnabled(): boolean {
 function isPracticeAdminRole(role?: string | null): boolean {
     const value = String(role || '').toLowerCase();
     return value.includes('practice_admin') || value.includes('admin') || value.includes('owner') || value.includes('praxis');
+}
+
+function resolveUserSettingsDocId(selectedUserId: string | null, canEditPractice: boolean): string | null {
+    if (canEditPractice) return selectedUserId;
+    if (typeof window === 'undefined') return selectedUserId;
+    return auth.currentUser?.uid ?? selectedUserId;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -166,16 +178,15 @@ function sanitizePracticeForFirestore(settings: PracticeSettings): PracticeSetti
     return stripUndefinedDeep({
         version: settings.version ?? DEFAULT_PRACTICE.version,
         // Defaults used by pipeline (must persist if Firestore is enabled)
-        defaultIsolation: settings.defaultIsolation,
         defaultMaterial: settings.defaultMaterial,
         defaultRoentgenPolicy: settings.defaultRoentgenPolicy,
         defaultIrrigationProtocol: settings.defaultIrrigationProtocol,
         defaultWLMethod: settings.defaultWLMethod,
         defaultWFTechnique: settings.defaultWFTechnique,
         strictKzvMode: settings.strictKzvMode,
+        medicalDefaults: settings.medicalDefaults,
         materials: settings.materials,
         materialCatalog: settings.materialCatalog,
-        defaultAnestheticAgentId: settings.defaultAnestheticAgentId,
         treatments: settings.treatments,
         devices: settings.devices,
         inventory: settings.inventory,
@@ -190,11 +201,7 @@ function sanitizeUserForFirestore(settings: UserSettings): UserSettings {
     return stripUndefinedDeep({
         version: settings.version ?? DEFAULT_USER.version,
         // Defaults used by pipeline/UI (must persist if Firestore is enabled)
-        defaultLAType: settings.defaultLAType,
-        defaultLATypeUkPosterior: settings.defaultLATypeUkPosterior,
-        defaultAnestheticAgentId: settings.defaultAnestheticAgentId,
-        defaultIsolation: settings.defaultIsolation,
-        defaultCappingMaterial: settings.defaultCappingMaterial,
+        medicalDefaults: settings.medicalDefaults,
         preferredTextLength: settings.preferredTextLength,
         skipAskbacks: settings.skipAskbacks,
         defaultHasMKV: settings.defaultHasMKV,
@@ -229,32 +236,40 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
     const [isLoaded, setIsLoaded] = useState(false);
     const activeUserId = params?.userId ?? getActiveUserId();
     const canEditPractice = !isFirestoreSettingsEnabled() || isPracticeAdminRole(params?.actorRole);
+    const userSettingsDocId = resolveUserSettingsDocId(activeUserId, canEditPractice);
 
     // Load from localStorage / Firestore on mount
     useEffect(() => {
         let cancelled = false;
         const practiceId = getActivePracticeId();
-        const userId = activeUserId;
+        const userId = userSettingsDocId;
 
         const loadLocal = () => {
             try {
                 const storedPractice = localStorage.getItem(PRACTICE_SETTINGS_KEY);
-                const practiceNext = storedPractice
+                const practiceRaw = storedPractice
                     ? ({ ...DEFAULT_PRACTICE, ...JSON.parse(storedPractice) } as PracticeSettings)
                     : DEFAULT_PRACTICE;
+                const normalizedPractice = normalizePracticeMedicalDefaults(practiceRaw);
+                const practiceNext = stripPracticeMedicalDefaultMirrors(normalizedPractice.next);
                 setPracticeSettings(practiceNext);
                 setActiveKbReleaseId(practiceNext.activeKbReleaseId);
+                if (normalizedPractice.changed) {
+                    localStorage.setItem(PRACTICE_SETTINGS_KEY, JSON.stringify(sanitizePracticeForFirestore(practiceNext)));
+                }
 
                 const storedUser = localStorage.getItem(USER_SETTINGS_KEY);
-                const userNext = storedUser
+                const userRaw = storedUser
                     ? ({ ...DEFAULT_USER, ...JSON.parse(storedUser) } as UserSettings)
                     : DEFAULT_USER;
-                const migrated = migrateUserFromPracticeLegacy(practiceNext, userNext);
+                const normalizedUser = normalizeUserMedicalDefaults(userRaw);
+                const migrated = migrateUserFromPracticeLegacy(practiceNext, normalizedUser.next);
                 const migratedStandards = migrateStandardChipsToGlobal(migrated.next);
                 const reconciled = reconcileUserWithPracticeHierarchy(practiceNext, migratedStandards.next);
-                setUserSettings(reconciled.user);
-                if (migrated.changed || migratedStandards.changed || reconciled.changed) {
-                    localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(reconciled.user));
+                const userNext = stripUserMedicalDefaultMirrors(reconciled.user);
+                setUserSettings(userNext);
+                if (normalizedUser.changed || migrated.changed || migratedStandards.changed || reconciled.changed) {
+                    localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(sanitizeUserForFirestore(userNext)));
                 }
             } catch (e) {
                 console.warn('[useSettings] Failed to load settings from localStorage:', e);
@@ -268,7 +283,7 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
                 let practiceNext: PracticeSettings = DEFAULT_PRACTICE;
                 if (!cancelled && practiceSnap.exists()) {
                     const data = practiceSnap.data() as PracticeSettings;
-                    practiceNext = {
+                    const loadedPractice: PracticeSettings = {
                         ...DEFAULT_PRACTICE,
                         version: data.version ?? DEFAULT_PRACTICE.version,
                         defaultIsolation: data.defaultIsolation,
@@ -277,6 +292,7 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
                         defaultIrrigationProtocol: data.defaultIrrigationProtocol,
                         defaultWLMethod: data.defaultWLMethod,
                         defaultWFTechnique: data.defaultWFTechnique,
+                        medicalDefaults: data.medicalDefaults,
                         materials: data.materials,
                         materialCatalog: data.materialCatalog,
                         defaultAnestheticAgentId: data.defaultAnestheticAgentId,
@@ -289,9 +305,18 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
                         chipStandards: data.chipStandards,
                         lockUserOverrides: data.lockUserOverrides,
                     };
+                    const normalizedPractice = normalizePracticeMedicalDefaults(loadedPractice);
+                    practiceNext = stripPracticeMedicalDefaultMirrors(normalizedPractice.next);
                     setPracticeSettings(practiceNext);
-                    localStorage.setItem(PRACTICE_SETTINGS_KEY, JSON.stringify(practiceNext));
+                    localStorage.setItem(PRACTICE_SETTINGS_KEY, JSON.stringify(sanitizePracticeForFirestore(practiceNext)));
                     setActiveKbReleaseId(practiceNext.activeKbReleaseId);
+                    if (normalizedPractice.changed) {
+                        Promise.resolve()
+                            .then(() => setDoc(practiceRef, sanitizePracticeForFirestore(practiceNext), { merge: true }))
+                            .catch(err => {
+                                console.warn('[useSettings] Failed to write migrated practice medical defaults to Firestore:', err);
+                            });
+                    }
                 }
 
                 if (userId) {
@@ -307,6 +332,7 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
                             defaultAnestheticAgentId: data.defaultAnestheticAgentId,
                             defaultIsolation: data.defaultIsolation,
                             defaultCappingMaterial: data.defaultCappingMaterial,
+                            medicalDefaults: data.medicalDefaults,
                             preferredTextLength: data.preferredTextLength ?? DEFAULT_USER.preferredTextLength,
                             skipAskbacks: data.skipAskbacks,
                             defaultHasMKV: data.defaultHasMKV,
@@ -315,13 +341,15 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
                             enabledTreatments: data.enabledTreatments,
                             migrations: data.migrations,
                         };
+                        const normalizedUser = normalizeUserMedicalDefaults(next);
+                        next = normalizedUser.next;
                         const migrated = migrateUserFromPracticeLegacy(practiceNext, next);
                         const migratedStandards = migrateStandardChipsToGlobal(migrated.next);
                         const reconciled = reconcileUserWithPracticeHierarchy(practiceNext, migratedStandards.next);
-                        next = reconciled.user;
+                        next = stripUserMedicalDefaultMirrors(reconciled.user);
                         setUserSettings(next);
-                        localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(next));
-                        if (migrated.changed || migratedStandards.changed || reconciled.changed) {
+                        localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(sanitizeUserForFirestore(next)));
+                        if (normalizedUser.changed || migrated.changed || migratedStandards.changed || reconciled.changed) {
                             const payload = sanitizeUserForFirestore(next);
                             Promise.resolve()
                                 .then(() => setDoc(userRef, payload, { merge: true }))
@@ -350,7 +378,7 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
         return () => {
             cancelled = true;
         };
-    }, [activeUserId]);
+    }, [userSettingsDocId]);
 
     // Save practice settings
     const updatePracticeSettings = useCallback((updates: Partial<PracticeSettings>) => {
@@ -359,19 +387,22 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
                 console.warn('[useSettings] Practice settings update blocked: missing practice admin role');
                 return prev;
             }
-            const next = { ...prev, ...updates };
+            const merged = { ...prev, ...updates };
+            const normalized = normalizePracticeMedicalDefaults(merged);
+            const next = stripPracticeMedicalDefaultMirrors(normalized.next);
             const reconcile = reconcileUserWithPracticeHierarchy(next, userSettings);
             if (reconcile.changed) {
-                setUserSettings(reconcile.user);
+                const reconciledUser = stripUserMedicalDefaultMirrors(reconcile.user);
+                setUserSettings(reconciledUser);
                 try {
-                    localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(reconcile.user));
+                    localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(sanitizeUserForFirestore(reconciledUser)));
                 } catch (e) {
                     console.warn('[useSettings] Failed to save reconciled user settings:', e);
                 }
-                if (isFirestoreSettingsEnabled() && activeUserId) {
+                if (isFirestoreSettingsEnabled() && userSettingsDocId) {
                     const practiceId = getActivePracticeId();
-                    const firestoreUserRef = doc(db, 'Praxen', practiceId, 'Benutzer', activeUserId, 'Settings', 'v10');
-                    const userPayload = sanitizeUserForFirestore(reconcile.user);
+                    const firestoreUserRef = doc(db, 'Praxen', practiceId, 'Benutzer', userSettingsDocId, 'Settings', 'v10');
+                    const userPayload = sanitizeUserForFirestore(reconciledUser);
                     Promise.resolve()
                         .then(() => setDoc(firestoreUserRef, userPayload, { merge: true }))
                         .catch(err => {
@@ -380,7 +411,7 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
                 }
             }
             try {
-                localStorage.setItem(PRACTICE_SETTINGS_KEY, JSON.stringify(next));
+                localStorage.setItem(PRACTICE_SETTINGS_KEY, JSON.stringify(sanitizePracticeForFirestore(next)));
             } catch (e) {
                 console.warn('[useSettings] Failed to save practice settings:', e);
             }
@@ -397,21 +428,23 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
             }
             return next;
         });
-    }, [activeUserId, canEditPractice, userSettings]);
+    }, [canEditPractice, userSettings, userSettingsDocId]);
 
     // Save user settings
     const updateUserSettings = useCallback((updates: Partial<UserSettings>) => {
         setUserSettings(prev => {
             const merged = { ...prev, ...updates };
-            const { user: next } = reconcileUserWithPracticeHierarchy(practiceSettings, merged);
+            const normalized = normalizeUserMedicalDefaults(merged);
+            const reconciled = reconcileUserWithPracticeHierarchy(practiceSettings, normalized.next);
+            const next = stripUserMedicalDefaultMirrors(reconciled.user);
             try {
-                localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(next));
+                localStorage.setItem(USER_SETTINGS_KEY, JSON.stringify(sanitizeUserForFirestore(next)));
             } catch (e) {
                 console.warn('[useSettings] Failed to save user settings:', e);
             }
             if (isFirestoreSettingsEnabled()) {
                 const practiceId = getActivePracticeId();
-                const userId = activeUserId;
+                const userId = userSettingsDocId;
                 if (userId) {
                     const userRef = doc(db, 'Praxen', practiceId, 'Benutzer', userId, 'Settings', 'v10');
                     const payload = sanitizeUserForFirestore(next);
@@ -424,7 +457,7 @@ export function useSettings(params?: { userId?: string | null; actorRole?: strin
             }
             return next;
         });
-    }, [activeUserId, practiceSettings, setUserSettings]);
+    }, [practiceSettings, setUserSettings, userSettingsDocId]);
 
     // Reset
     const resetToDefaults = useCallback(() => {

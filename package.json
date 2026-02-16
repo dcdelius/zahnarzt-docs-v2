@@ -51,6 +51,9 @@
     "e2e:v10:insurance": "npx playwright test -c playwright.v10.config.ts v10-insurance-billing.e2e.spec.ts",
     "e2e:v10:practice": "npx playwright test src/docudent/__tests__/e2e/v10.practice.e2e.spec.ts",
     "e2e:v10:wiring": "npx playwright test e2e/v10-wiring.e2e.spec.ts",
+    "e2e:v10:hosted-auth-gate": "node --import tsx scripts/v10/runHostedAuthGate.ts",
+    "e2e:v10:hosted-auth-confirm-audit": "HOSTED_GATE_GREP='S12 - PKV Kronenpräparation mit Confirm-Pfad' node --import tsx scripts/v10/runHostedAuthGate.ts",
+    "e2e:v10:option-wiring": "npx playwright test e2e/v10-option-response-wiring.e2e.spec.ts",
     "e2e:v10:praxis16": "npx playwright test e2e/v10-praxis-16.e2e.spec.ts",
     "e2e:v10:endo6": "npx playwright test e2e/v10-endo-6.e2e.spec.ts",
     "e2e:v10:endo16": "npx playwright test e2e/v10-endo-6.e2e.spec.ts",
@@ -70,6 +73,7 @@
     "v10:final-audit": "npm run doctor:online -- --verbose && npm run v10:kb-parity && npm test -- --run src/docudent/v10/__tests__/gates && npm run v10:medical-scenario-run -- --file scripts/v10/scenarios.v10.realworld.medical.json && npm run v10:real-dictation-check",
     "v10:final-audit:full": "npm run v10:final-audit && npm run e2e:v10:praxis16 && npm run e2e:v10:endo6",
     "v10:audit:consolidated": "node --import tsx scripts/v10/consolidated-audit.ts",
+    "v10:audit:release": "DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH=1 node --import tsx scripts/v10/consolidated-audit.ts",
     "e2e:v10:questions-contract": "VITE_E2E_BYPASS_AUTH=1 npx playwright test e2e/v10-questions-contract.e2e.spec.ts"
   },
   "dependencies": {

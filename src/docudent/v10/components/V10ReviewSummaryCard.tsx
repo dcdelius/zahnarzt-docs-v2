@@ -70,6 +70,18 @@ function resolveCappingLabel(facts: V10ReviewContext['instances'][number]['facts
     return null;
 }
 
+function resolveMaterialLabel(
+    materialMentioned?: V10ReviewContext['instances'][number]['facts']['materialMentioned'],
+    material?: V10ReviewContext['instances'][number]['facts']['material']
+) {
+    const normalized = String(materialMentioned ?? material ?? '').trim().toLowerCase();
+    if (!normalized || normalized === 'unknown') return null;
+    if (normalized === 'komposit' || normalized === 'composite') return 'Material: Komposit';
+    if (normalized === 'giz') return 'Material: GIZ';
+    if (normalized === 'amalgam') return 'Material: Amalgam';
+    return `Material: ${normalized}`;
+}
+
 function resolveWlLabel(method?: string) {
     if (!method) return null;
     if (method === 'electronic') return 'Arbeitslänge: elektronisch';
@@ -175,6 +187,9 @@ export function V10ReviewSummaryCard({
 
                     const cappingLabel = resolveCappingLabel(facts);
                     pushPill('capping', cappingLabel);
+
+                    const materialLabel = resolveMaterialLabel(facts.materialMentioned as any, facts.material as any);
+                    pushPill('material', materialLabel);
 
                     const wlLabel = resolveWlLabel((facts.endo as any)?.workingLengthMethod);
                     pushPill('workingLengthMethod', wlLabel);

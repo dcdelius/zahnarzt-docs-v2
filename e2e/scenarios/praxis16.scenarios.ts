@@ -25,6 +25,7 @@ export interface Praxis16Scenario {
         channelization: Channelization;
         addon: boolean;
         askbacks: string[];  // Canonical askback IDs from askbackIds.ts
+        askbackMode?: 'strict' | 'diagnostic';
         multiplicity: boolean;  // If true, assert billing count matches instances
         combinability: Combinability;
         negations?: string[];  // Things that MUST NOT appear (e.g., 'kofferdam')
@@ -39,6 +40,7 @@ const ASKBACK = {
     ueberkappungMaterial: 'medical_ueberkappung_material',
     isolation: 'fuellung_isolation',
     mkvJustification: 'fuellung_mkv_justification',
+    mkvAmount: 'mkv_betrag',
     mkvConfirmed: 'medical_mkv_confirmed',
     layering: 'fuellung_layering',
 };
@@ -200,9 +202,9 @@ export const PRAXIS_16_SCENARIOS: Praxis16Scenario[] = [
             instances: 2,
             channelization: 'BOTH',
             addon: true,
-            askbacks: [ASKBACK.isolation, ASKBACK.mkvJustification],
+            askbacks: [ASKBACK.mkvJustification, ASKBACK.mkvAmount],
             multiplicity: true,
-            combinability: 'warn',
+            combinability: 'ok',
         },
     },
 

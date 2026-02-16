@@ -8,8 +8,8 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import { createV10Session } from '../src/docudent/v10/uiController/createV10Session';
-import scenarios from '../src/docudent/v10/reality/scenarios.v1.json';
+import { createV10Session } from '../../src/docudent/v10/uiController/createV10Session';
+import scenarios from '../../src/docudent/v10/reality/scenarios.v1.json';
 
 interface ScenarioResult {
     id: string;
@@ -30,6 +30,14 @@ interface Report {
     passed: number;
     failed: number;
     results: ScenarioResult[];
+}
+
+function normalizeQuestionId(id: string): string {
+    const trimmed = String(id ?? '').trim().toLowerCase();
+    if (!trimmed) return '';
+    const short = trimmed.includes('.') ? trimmed.split('.').pop() ?? trimmed : trimmed;
+    if (short === 'capping') return 'ueberkappung';
+    return short;
 }
 
 async function runScenario(scenario: typeof scenarios.scenarios[0]): Promise<ScenarioResult> {
@@ -58,9 +66,12 @@ async function runScenario(scenario: typeof scenarios.scenarios[0]): Promise<Sce
 
         // Check question containment
         if (state.phase === 'questions' && scenario.expected.mustContainQuestions.length > 0) {
-            const allQuestions = Object.values(state.questions).flat().map(q => q.ruleId);
+            const allQuestions = Object.values(state.questions)
+                .flat()
+                .map((q) => normalizeQuestionId(q.ruleId));
             for (const expected of scenario.expected.mustContainQuestions) {
-                if (!allQuestions.some(q => q.includes(expected))) {
+                const normalizedExpected = normalizeQuestionId(expected);
+                if (!allQuestions.some((q) => q === normalizedExpected)) {
                     errors.push(`Expected question containing "${expected}" not found`);
                 }
             }
@@ -77,7 +88,9 @@ async function runScenario(scenario: typeof scenarios.scenarios[0]): Promise<Sce
         }
 
         for (const inst of instances) {
-            chipsMap[inst.instanceId] = inst.chips;
+            chipsMap[inst.instanceId] = Array.isArray(inst.chips)
+                ? inst.chips
+                : Array.from(inst.chips ?? []);
         }
 
         return {

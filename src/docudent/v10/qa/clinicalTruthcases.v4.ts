@@ -6,6 +6,7 @@
  */
 
 import type { ClinicalContractV2, ClinicalTruthcaseV5 } from './clinicalAssertionContract.v2';
+import { canonicalizeSettingsInput } from '../settings/medicalDefaults';
 
 // ═══════════════════════════════════════════════════════════════
 // SECTION A: SETTINGS REDUCE ASKBACKS (10 cases)
@@ -476,6 +477,12 @@ export const clinicalTruthcasesV4: ClinicalTruthcaseV5[] = [
     ...manualOverridesSection,
     ...multiTreatmentSection,
     ...confusablesSection,
-];
+].map((truthcase) => {
+    if (!truthcase.settings) return truthcase;
+    return {
+        ...truthcase,
+        settings: canonicalizeSettingsInput(truthcase.settings),
+    };
+});
 
 export const V4_TRUTH_COUNT = clinicalTruthcasesV4.length;

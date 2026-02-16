@@ -1,0 +1,231 @@
+{
+  "timestamp": "2026-02-16T16:04:55.701Z",
+  "totalScenarios": 10,
+  "passed": 10,
+  "failed": 0,
+  "results": [
+    {
+      "id": "TC1_basic_single",
+      "name": "Basic single tooth filling",
+      "dictation": "Füllung Zahn 36 okklusal Komposit",
+      "passed": true,
+      "instances": 1,
+      "phase": "output",
+      "questions": {},
+      "chips": {
+        "fuellung-36-1": [
+          "fuellung_grundleistung",
+          "fuellung_material_komposit",
+          "mehrschicht"
+        ]
+      },
+      "errors": [],
+      "duration": 25
+    },
+    {
+      "id": "TC2_material_unknown",
+      "name": "Material needs askback",
+      "dictation": "Füllung 36 okklusal tiefe Karies",
+      "passed": true,
+      "instances": 1,
+      "phase": "questions",
+      "questions": {
+        "fuellung-36-1": [
+          "isolation",
+          "material",
+          "ueberkappung"
+        ]
+      },
+      "chips": {
+        "fuellung-36-1": []
+      },
+      "errors": [],
+      "duration": 2
+    },
+    {
+      "id": "TC3_mehrkosten_schicht",
+      "name": "Mehrkosten/Schichttechnik trigger",
+      "dictation": "Füllung 36 mod Komposit GKV Mehrkosten",
+      "passed": true,
+      "instances": 1,
+      "phase": "output",
+      "questions": {},
+      "chips": {
+        "fuellung-36-1": [
+          "insurance_gkv_mkv",
+          "fuellung_grundleistung",
+          "fuellung_material_komposit",
+          "mehrschicht"
+        ]
+      },
+      "errors": [],
+      "duration": 2
+    },
+    {
+      "id": "TC4_multi_tooth_isolation",
+      "name": "Multi-tooth with different isolation",
+      "dictation": "36 ohne Kofferdam; 14 mit Kofferdam",
+      "passed": true,
+      "instances": 2,
+      "phase": "questions",
+      "questions": {
+        "fuellung-14-2": [
+          "material",
+          "surfaces"
+        ],
+        "fuellung-36-1": [
+          "material",
+          "surfaces"
+        ]
+      },
+      "chips": {
+        "fuellung-36-1": [],
+        "fuellung-14-2": []
+      },
+      "errors": [],
+      "duration": 1
+    },
+    {
+      "id": "TC5_multi_segment_complex",
+      "name": "Complex multi-segment dictation",
+      "dictation": "36 mod. Danach 14 okklusal. Auch 46 distal ohne Adhäsiv",
+      "passed": true,
+      "instances": 3,
+      "phase": "questions",
+      "questions": {
+        "fuellung-14-2": [
+          "isolation",
+          "material"
+        ],
+        "fuellung-36-1": [
+          "isolation",
+          "material"
+        ],
+        "fuellung-46-3": [
+          "isolation",
+          "material"
+        ]
+      },
+      "chips": {
+        "fuellung-36-1": [],
+        "fuellung-14-2": [],
+        "fuellung-46-3": []
+      },
+      "errors": [],
+      "duration": 3
+    },
+    {
+      "id": "TC6_surface_isolation",
+      "name": "Surface isolation per tooth",
+      "dictation": "36 mod; 14 okklusal",
+      "passed": true,
+      "instances": 2,
+      "phase": "questions",
+      "questions": {
+        "fuellung-14-2": [
+          "isolation",
+          "material"
+        ],
+        "fuellung-36-1": [
+          "isolation",
+          "material"
+        ]
+      },
+      "chips": {
+        "fuellung-36-1": [],
+        "fuellung-14-2": []
+      },
+      "errors": [],
+      "duration": 3
+    },
+    {
+      "id": "TC7_adhesive_scoped",
+      "name": "Adhesive negation scoped",
+      "dictation": "36 okklusal adhäsiv; 14 distal ohne Adhäsiv",
+      "passed": true,
+      "instances": 2,
+      "phase": "questions",
+      "questions": {
+        "fuellung-14-2": [
+          "isolation",
+          "material"
+        ],
+        "fuellung-36-1": [
+          "isolation",
+          "material"
+        ]
+      },
+      "chips": {
+        "fuellung-36-1": [],
+        "fuellung-14-2": []
+      },
+      "errors": [],
+      "duration": 1
+    },
+    {
+      "id": "TC8_pkv_full",
+      "name": "PKV full flow",
+      "dictation": "Füllung 36 okklusal Komposit adhäsiv PKV",
+      "passed": true,
+      "instances": 1,
+      "phase": "output",
+      "questions": {},
+      "chips": {
+        "fuellung-36-1": [
+          "fuellung_grundleistung",
+          "fuellung_material_komposit",
+          "fuellung_material_adhesive",
+          "mehrschicht"
+        ]
+      },
+      "errors": [],
+      "duration": 1
+    },
+    {
+      "id": "TC9_capping_trigger",
+      "name": "Deep caries triggers capping question",
+      "dictation": "36 okklusal Caries profunda",
+      "passed": true,
+      "instances": 1,
+      "phase": "questions",
+      "questions": {
+        "fuellung-36-1": [
+          "isolation",
+          "material",
+          "ueberkappung"
+        ]
+      },
+      "chips": {
+        "fuellung-36-1": []
+      },
+      "errors": [],
+      "duration": 1
+    },
+    {
+      "id": "TC10_global_scope",
+      "name": "Global scope marker",
+      "dictation": "36 und 14, bei beiden adhäsiv",
+      "passed": true,
+      "instances": 2,
+      "phase": "questions",
+      "questions": {
+        "fuellung-14-2": [
+          "isolation",
+          "material",
+          "surfaces"
+        ],
+        "fuellung-36-1": [
+          "isolation",
+          "material",
+          "surfaces"
+        ]
+      },
+      "chips": {
+        "fuellung-36-1": [],
+        "fuellung-14-2": []
+      },
+      "errors": [],
+      "duration": 1
+    }
+  ]
+}

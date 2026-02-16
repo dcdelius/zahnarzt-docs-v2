@@ -1,0 +1,59 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - region "Notifications alt+T"
+  - generic [ref=e4]:
+    - generic [ref=e10]:
+      - banner [ref=e11]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Output
+            - heading "Behandlungsdokumentation" [level=1] [ref=e15]
+            - generic [ref=e16]:
+              - text: 16.02.2026·
+              - strong [ref=e17]: BEMA 3
+              - text: ·
+              - strong [ref=e18]: GOZ 0
+              - text: · 3 Codes
+          - generic [ref=e19]:
+            - button "Kopieren" [ref=e20] [cursor=pointer]
+            - button "Bearbeiten" [ref=e21] [cursor=pointer]
+            - button "Neuer Fall" [ref=e22] [cursor=pointer]
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]: BEFUND
+          - generic [ref=e27]: Zahn 36. MOD
+        - generic [ref=e29]:
+          - generic [ref=e30]: AUFKLÄRUNG
+          - generic [ref=e31]: Risiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.
+        - generic [ref=e33]:
+          - generic [ref=e34]: BEHANDLUNGSABLAUF
+          - generic [ref=e35]: "Zunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 36 (MOD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur."
+        - generic [ref=e37]:
+          - generic [ref=e38]: DURCHGEFÜHRTE LEISTUNGEN
+          - generic [ref=e39]: • LA Leitung. • Kofferdam. • Komposit Mehrschichttechnik.
+        - generic [ref=e41]:
+          - generic [ref=e42]: HINWEISE
+          - generic [ref=e43]: Der Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.
+        - generic [ref=e45]:
+          - generic [ref=e46]: ABRECHNUNG
+          - generic [ref=e47]: "Kassenleistung (BEMA): 41a – Leitungsanästhesie, intraoral 12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich 13c – Füllung dreiflächig"
+      - generic [ref=e49]:
+        - button "Abrechnung 3 Positionen · BEMA 3 · GOZ 0 Anzeigen" [ref=e50] [cursor=pointer]:
+          - generic [ref=e51]:
+            - generic [ref=e52]: Abrechnung
+            - generic [ref=e53]: 3 Positionen · BEMA 3 · GOZ 0
+          - generic [ref=e54]: Anzeigen
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - generic [ref=e58]: BEMA_12
+            - generic [ref=e59]: BEMA
+          - generic [ref=e60]:
+            - generic [ref=e61]: BEMA_13c
+            - generic [ref=e62]: BEMA
+          - generic [ref=e63]:
+            - generic [ref=e64]: BEMA_41a
+            - generic [ref=e65]: BEMA
+    - button "Debug" [ref=e66] [cursor=pointer]
+```

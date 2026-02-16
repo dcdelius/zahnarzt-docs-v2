@@ -6,6 +6,8 @@
  */
 
 import { isTestMode } from '../testOnly';
+import { isLlmTextSafeForBillingBoundary } from './llmBoundaryContract';
+import { callTextRefinerGateway } from './textRefinerGatewayClient';
 
 export interface TextRefineInput {
     text: string;
@@ -23,14 +25,11 @@ function isRefinerEnabled(): boolean {
 }
 
 function getOpenAiKey(): string | undefined {
-    if (typeof window !== 'undefined') {
-        return (import.meta as any)?.env?.VITE_OPENAI_API_KEY;
-    }
-    return process.env.VITE_OPENAI_API_KEY || process.env.REACT_APP_OPENAI_API_KEY;
+    return process.env.OPENAI_API_KEY || process.env.REACT_APP_OPENAI_API_KEY;
 }
 
-function hasBillingCodeTokens(text: string): boolean {
-    return /(?:BEMA|GOZ|GOÄ|BEL)_\d+/i.test(text);
+export function hasBillingCodeTokens(text: string): boolean {
+    return !isLlmTextSafeForBillingBoundary(text);
 }
 
 function extractNumbers(text: string): string[] {
@@ -44,7 +43,7 @@ function numbersMatch(a: string[], b: string[]): boolean {
     return aSorted.every((val, idx) => val === bSorted[idx]);
 }
 
-function isRefinementSafe(original: string, refined: string): boolean {
+export function isRefinementSafe(original: string, refined: string): boolean {
     if (!refined.trim()) return false;
     if (hasBillingCodeTokens(refined)) return false;
 
@@ -60,6 +59,12 @@ function isRefinementSafe(original: string, refined: string): boolean {
 
 export async function refineDocumentationText(input: TextRefineInput): Promise<string | null> {
     if (!isRefinerEnabled()) return null;
+    if (typeof window !== 'undefined') {
+        const gatewayText = await callTextRefinerGateway(input);
+        if (!gatewayText) return null;
+        return isRefinementSafe(input.text, gatewayText) ? gatewayText : null;
+    }
+
     const apiKey = getOpenAiKey();
     if (!apiKey) return null;
 

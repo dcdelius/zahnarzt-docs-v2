@@ -232,26 +232,19 @@ export async function extractFromDictation(dictation: string): Promise<Extracted
 // ═══════════════════════════════════════════════════════════════
 
 async function extractViaLLM(dictation: string): Promise<Partial<ExtractedData> | null> {
-    const envFromProcess = (typeof process !== 'undefined' && process.env) ? process.env : undefined;
-
-    // Direct access for Vite replacement
-    // @ts-ignore
-    const viteKey = import.meta.env?.VITE_OPENAI_API_KEY;
-
-    const apiKey = viteKey
-        ?? envFromProcess?.VITE_OPENAI_API_KEY
-        ?? envFromProcess?.REACT_APP_OPENAI_API_KEY;
-
-    if (!apiKey) {
-        console.warn('[Core Extract] No OpenAI API key found');
-        console.log('[Core Extract] Env check:', {
-            hasImportMeta: !!import.meta,
-            // @ts-ignore
-            viteKeyPresent: !!import.meta.env?.VITE_OPENAI_API_KEY,
-            processKeyPresent: !!process?.env?.VITE_OPENAI_API_KEY
-        });
-        return null;
+    if (typeof window !== 'undefined') {
+        const { callExtractionGateway } = await import('./extractionGatewayClient');
+        const gatewayContent = await callExtractionGateway(dictation);
+        if (!gatewayContent) return null;
+        const gatewayJsonMatch = gatewayContent.match(/\{[\s\S]*\}/);
+        if (!gatewayJsonMatch) return null;
+        return parseJsonLenient(gatewayJsonMatch[0]);
     }
+
+    const envFromProcess = (typeof process !== 'undefined' && process.env) ? process.env : undefined;
+    const apiKey = envFromProcess?.OPENAI_API_KEY;
+
+    if (!apiKey) return null;
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',

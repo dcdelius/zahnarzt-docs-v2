@@ -17,7 +17,6 @@ import type {
     InviteDoc,
     ProviderDoc,
     CustomClaims,
-    OrgRole,
     PracticeRole,
 } from './authTypes';
 
@@ -370,5 +369,400 @@ export const acceptInvite = functions.https.onCall(
         functions.logger.info(`User ${uid} accepted invite ${inviteId} with role ${invite.role}`);
 
         return { ok: true, role: invite.role };
+    }
+);
+
+// ═══════════════════════════════════════════════════════════════
+// F4: DETECT TREATMENT INTENTS (LLM PREANALYSIS GATEWAY)
+// ═══════════════════════════════════════════════════════════════
+
+interface DetectTreatmentIntentsV1Input {
+    dictation: string;
+}
+
+interface DetectTreatmentIntentsV1Output {
+    content: string;
+}
+
+const PREANALYSIS_PROMPT = `Du strukturierst zahnmedizinische Fliesstext-Diktate in Behandlungs-Intents.
+Antworte NUR als JSON mit diesem Schema:
+{
+  "version": "1.0.0",
+  "dictation": "<original>",
+  "needsConfirmation": true|false,
+  "intents": [
+    {
+      "intentId": "string",
+      "treatmentId": "fuellung|endo|extraction",
+      "tooth": "string optional",
+      "phase": "string optional",
+      "step": "string optional",
+      "confidence": 0..1,
+      "evidenceSpans": [{ "start": number, "end": number, "text": "string" }],
+      "uncertainty": "classifier_low_confidence|candidate:crown_prep_no_pack|llm_low_confidence|llm_ambiguous_mapping|inferred_tooth_from_context|missing_tooth_reference optional"
+    }
+  ]
+}
+Regeln:
+- Keine Erfindungen.
+- Jeder Intent braucht mindestens einen evidenceSpan.
+- Wenn unsicher: needsConfirmation=true.
+- Wenn uncertainty gesetzt ist, muss needsConfirmation=true sein.
+- Wenn tooth fehlt, uncertainty setzen (z.B. missing_tooth_reference).
+- Keine Billing-Codes/Felder ausgeben (z.B. BEMA/GOZ/GOÄ/BEL, billingCodes, billingRefs).
+- Nur treatmentIds verwenden, die im Schema stehen.`;
+
+function getOpenAiApiKey(): string | null {
+    return process.env.OPENAI_API_KEY ?? null;
+}
+
+export const detectTreatmentIntentsV1 = functions.https.onCall(
+    async (data: DetectTreatmentIntentsV1Input, context): Promise<DetectTreatmentIntentsV1Output> => {
+        if (!context.auth) {
+            throw new functions.https.HttpsError('unauthenticated', 'Login required');
+        }
+
+        const dictation = (data?.dictation ?? '').trim();
+        if (!dictation) {
+            throw new functions.https.HttpsError('invalid-argument', 'dictation is required');
+        }
+        if (dictation.length > 4000) {
+            throw new functions.https.HttpsError('invalid-argument', 'dictation exceeds max length');
+        }
+
+        const apiKey = getOpenAiApiKey();
+        if (!apiKey) {
+            throw new functions.https.HttpsError('failed-precondition', 'OPENAI_API_KEY not configured');
+        }
+
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                temperature: 0.0,
+                max_tokens: 900,
+                messages: [
+                    { role: 'system', content: PREANALYSIS_PROMPT },
+                    { role: 'user', content: dictation },
+                ],
+            }),
+        });
+
+        if (!response.ok) {
+            const details = await response.text().catch(() => 'no-details');
+            functions.logger.error('detectTreatmentIntentsV1 upstream error', {
+                status: response.status,
+                details,
+            });
+            throw new functions.https.HttpsError(
+                'internal',
+                `preanalysis upstream failed (${response.status})`
+            );
+        }
+
+        const payload = await response.json() as {
+            choices?: Array<{ message?: { content?: string } }>;
+        };
+        const content = payload?.choices?.[0]?.message?.content;
+        if (!content || typeof content !== 'string') {
+            throw new functions.https.HttpsError('internal', 'preanalysis returned empty content');
+        }
+
+        return { content };
+    }
+);
+
+// ═══════════════════════════════════════════════════════════════
+// F5: EXTRACT FROM DICTATION (LLM EXTRACTION GATEWAY)
+// ═══════════════════════════════════════════════════════════════
+
+interface ExtractFromDictationV1Input {
+    dictation: string;
+}
+
+interface ExtractFromDictationV1Output {
+    content: string;
+}
+
+const EXTRACTION_PROMPT_V1 = `Du bist ein Extraktions-Assistent für zahnärztliche Diktate.
+
+Extrahiere aus dem folgenden Diktat die strukturierten Daten.
+Antworte NUR mit einem JSON-Objekt, keine Erklärungen.
+
+Felder zum Extrahieren:
+- tooth: Zahnnummer (z.B. "36", "15") oder null
+- surfaces: Array von Flächen ["m", "o", "d", "b", "l", "i"] oder []
+- diagnosis: Diagnose (z.B. "Caries profunda", "Caries media") oder null
+- costs: Kosten in Euro als Zahl oder null
+- klinischeZusatzinfos: Array kurzer Stichpunkte zu medizinischen Zusatzinfos oder []
+- patientenangaben: Array kurzer Stichpunkte zu psychosozialen/patientenseitigen Angaben oder []
+- zusatzinfos: (legacy) Array kurzer Stichpunkte, falls keine klare Zuordnung möglich
+- mentioned.anesthesia: { type: "infiltr"|"leitung"|"keine", confidence: 0-1 } oder undefined
+- mentioned.kofferdam: true/false oder undefined
+- mentioned.capping: { type: "cp"|"p"|"none" } oder undefined
+- mentioned.material: String oder undefined
+- mentioned.vitality: "+"| "-" oder undefined
+- mentioned.percussion: "+"| "-" oder undefined
+
+Regeln:
+1. Extrahiere NUR was explizit erwähnt wurde
+2. Bei "tief" oder "profunda" → diagnosis: "Caries profunda"
+3. "mod" = ["m", "o", "d"], "ob" = ["o", "b"], etc.
+4. klinischeZusatzinfos nur bei expliziter, medizinisch relevanter Zusatzinfo (kurz, neutral, keine Mutmaßungen)
+5. patientenangaben nur bei expliziter Patientenangabe (kurz, neutral, keine Mutmaßungen)
+6. zusatzinfos nur wenn keine klare Zuordnung möglich ist
+7. KEINE Annahmen über nicht erwähnte Felder
+
+JSON-Antwort:`;
+
+export const extractFromDictationV1 = functions.https.onCall(
+    async (data: ExtractFromDictationV1Input, context): Promise<ExtractFromDictationV1Output> => {
+        if (!context.auth) {
+            throw new functions.https.HttpsError('unauthenticated', 'Login required');
+        }
+
+        const dictation = (data?.dictation ?? '').trim();
+        if (!dictation) {
+            throw new functions.https.HttpsError('invalid-argument', 'dictation is required');
+        }
+        if (dictation.length > 4000) {
+            throw new functions.https.HttpsError('invalid-argument', 'dictation exceeds max length');
+        }
+
+        const apiKey = getOpenAiApiKey();
+        if (!apiKey) {
+            throw new functions.https.HttpsError('failed-precondition', 'OPENAI_API_KEY not configured');
+        }
+
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                messages: [
+                    { role: 'system', content: EXTRACTION_PROMPT_V1 },
+                    { role: 'user', content: dictation },
+                ],
+                temperature: 0.1,
+                max_tokens: 500,
+            }),
+        });
+
+        if (!response.ok) {
+            const details = await response.text().catch(() => 'no-details');
+            functions.logger.error('extractFromDictationV1 upstream error', {
+                status: response.status,
+                details,
+            });
+            throw new functions.https.HttpsError(
+                'internal',
+                `extraction upstream failed (${response.status})`
+            );
+        }
+
+        const payload = await response.json() as {
+            choices?: Array<{ message?: { content?: string } }>;
+        };
+        const content = payload?.choices?.[0]?.message?.content;
+        if (!content || typeof content !== 'string') {
+            throw new functions.https.HttpsError('internal', 'extraction returned empty content');
+        }
+
+        return { content };
+    }
+);
+
+// ═══════════════════════════════════════════════════════════════
+// F6: TRANSCRIBE AUDIO (WHISPER GATEWAY)
+// ═══════════════════════════════════════════════════════════════
+
+interface TranscribeAudioV1Input {
+    audioBase64: string;
+    mimeType: string;
+    fileName: string;
+}
+
+interface TranscribeAudioV1Output {
+    text: string;
+}
+
+const TRANSCRIPTION_PROMPT_V1 = `Dies ist eine zahnärztliche Dokumentation.
+Transkribiere präzise Fachbegriffe, Zahnnummern (FDI), Flächenkürzel und Materialnamen.
+Keine Interpretationen, nur wörtlich transkribieren.`;
+
+export const transcribeAudioV1 = functions.https.onCall(
+    async (data: TranscribeAudioV1Input, context): Promise<TranscribeAudioV1Output> => {
+        if (!context.auth) {
+            throw new functions.https.HttpsError('unauthenticated', 'Login required');
+        }
+
+        const audioBase64 = String(data?.audioBase64 ?? '').trim();
+        const mimeType = String(data?.mimeType ?? 'audio/webm').trim() || 'audio/webm';
+        const fileName = String(data?.fileName ?? 'audio.webm').trim() || 'audio.webm';
+        if (!audioBase64) {
+            throw new functions.https.HttpsError('invalid-argument', 'audioBase64 is required');
+        }
+
+        let audioBuffer: Buffer;
+        try {
+            audioBuffer = Buffer.from(audioBase64, 'base64');
+        } catch {
+            throw new functions.https.HttpsError('invalid-argument', 'audioBase64 is not valid base64');
+        }
+        if (!audioBuffer.length) {
+            throw new functions.https.HttpsError('invalid-argument', 'decoded audio is empty');
+        }
+        if (audioBuffer.length > 8 * 1024 * 1024) {
+            throw new functions.https.HttpsError('invalid-argument', 'audio payload exceeds 8MB limit');
+        }
+
+        const apiKey = getOpenAiApiKey();
+        if (!apiKey) {
+            throw new functions.https.HttpsError('failed-precondition', 'OPENAI_API_KEY not configured');
+        }
+
+        const formData = new FormData();
+        const audioBytes = Uint8Array.from(audioBuffer);
+        const audioBlob = new Blob([audioBytes], { type: mimeType });
+        formData.append('file', audioBlob, fileName);
+        formData.append('model', 'whisper-1');
+        formData.append('language', 'de');
+        formData.append('response_format', 'text');
+        formData.append('prompt', TRANSCRIPTION_PROMPT_V1);
+
+        const response = await fetch('https://api.openai.com/v1/audio/transcriptions', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${apiKey}`,
+            },
+            body: formData,
+        });
+
+        if (!response.ok) {
+            const details = await response.text().catch(() => 'no-details');
+            functions.logger.error('transcribeAudioV1 upstream error', {
+                status: response.status,
+                details,
+            });
+            throw new functions.https.HttpsError(
+                'internal',
+                `transcription upstream failed (${response.status})`
+            );
+        }
+
+        const contentType = response.headers.get('content-type') ?? '';
+        const text = contentType.includes('application/json')
+            ? String((await response.json() as { text?: string })?.text ?? '')
+            : await response.text();
+
+        const normalized = text.trim();
+        if (!normalized) {
+            throw new functions.https.HttpsError('internal', 'transcription returned empty text');
+        }
+
+        return { text: normalized };
+    }
+);
+
+// ═══════════════════════════════════════════════════════════════
+// F7: REFINE DOCUMENTATION TEXT (LLM GATEWAY)
+// ═══════════════════════════════════════════════════════════════
+
+interface RefineDocumentationTextV1Input {
+    text: string;
+    treatmentId: string;
+    insuranceType: 'GKV' | 'PKV' | 'MKV';
+    textLength: 'kurz' | 'mittel' | 'lang';
+}
+
+interface RefineDocumentationTextV1Output {
+    text: string;
+}
+
+const REFINER_PROMPT_V1 = [
+    'Du bist ein medizinischer Korrektor.',
+    'Korrigiere nur Grammatik, Rechtschreibung und Zeichensetzung.',
+    'Aendere keine inhaltlichen Fakten, Zahlen, Zahnnummern oder Begriffe.',
+    'Fuege keine neuen Saetze hinzu und entferne keine Saetze.',
+    'Gib nur den korrigierten Text zurueck.',
+].join('\n');
+
+export const refineDocumentationTextV1 = functions.https.onCall(
+    async (data: RefineDocumentationTextV1Input, context): Promise<RefineDocumentationTextV1Output> => {
+        if (!context.auth) {
+            throw new functions.https.HttpsError('unauthenticated', 'Login required');
+        }
+
+        const text = String(data?.text ?? '').trim();
+        if (!text) {
+            throw new functions.https.HttpsError('invalid-argument', 'text is required');
+        }
+        if (text.length > 8000) {
+            throw new functions.https.HttpsError('invalid-argument', 'text exceeds max length');
+        }
+
+        const treatmentId = String(data?.treatmentId ?? '').trim() || 'unknown';
+        const insuranceType = data?.insuranceType ?? 'GKV';
+        const textLength = data?.textLength ?? 'mittel';
+
+        const apiKey = getOpenAiApiKey();
+        if (!apiKey) {
+            throw new functions.https.HttpsError('failed-precondition', 'OPENAI_API_KEY not configured');
+        }
+
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                temperature: 0,
+                max_tokens: 800,
+                messages: [
+                    { role: 'system', content: REFINER_PROMPT_V1 },
+                    {
+                        role: 'user',
+                        content: [
+                            `TREATMENT=${treatmentId}`,
+                            `INSURANCE=${insuranceType}`,
+                            `TEXT_LENGTH=${textLength}`,
+                            '',
+                            text,
+                        ].join('\n'),
+                    },
+                ],
+            }),
+        });
+
+        if (!response.ok) {
+            const details = await response.text().catch(() => 'no-details');
+            functions.logger.error('refineDocumentationTextV1 upstream error', {
+                status: response.status,
+                details,
+            });
+            throw new functions.https.HttpsError(
+                'internal',
+                `refiner upstream failed (${response.status})`
+            );
+        }
+
+        const payload = await response.json() as {
+            choices?: Array<{ message?: { content?: string } }>;
+        };
+        const content = String(payload?.choices?.[0]?.message?.content ?? '').trim();
+        if (!content) {
+            throw new functions.https.HttpsError('internal', 'refiner returned empty content');
+        }
+
+        return { text: content };
     }
 );

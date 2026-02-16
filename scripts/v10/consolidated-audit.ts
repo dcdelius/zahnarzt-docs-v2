@@ -8,7 +8,36 @@ type AuditStep = {
     args: string[];
 };
 
+function assertHostedAuthEnv(): void {
+    const baseUrl = process.env.PLAYWRIGHT_BASE_URL?.trim();
+    const loginEmail = process.env.E2E_LOGIN_EMAIL?.trim();
+    const loginPassword = process.env.E2E_LOGIN_PASSWORD?.trim();
+
+    if (!baseUrl) {
+        console.error('[v10:audit:consolidated] DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH=1 requires PLAYWRIGHT_BASE_URL');
+        process.exit(1);
+    }
+    if (/localhost|127\.0\.0\.1/i.test(baseUrl)) {
+        console.error(`[v10:audit:consolidated] PLAYWRIGHT_BASE_URL must target hosted URL, received: ${baseUrl}`);
+        process.exit(1);
+    }
+    if (!loginEmail || !loginPassword) {
+        console.error('[v10:audit:consolidated] DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH=1 requires E2E_LOGIN_EMAIL and E2E_LOGIN_PASSWORD');
+        process.exit(1);
+    }
+}
+
 const steps: AuditStep[] = [
+    {
+        id: 'v10-online-deps',
+        cmd: 'npm',
+        args: ['run', 'doctor:online', '--', '--verbose'],
+    },
+    {
+        id: 'v10-kb-parity',
+        cmd: 'npm',
+        args: ['run', 'v10:kb-parity'],
+    },
     {
         id: 'v10-gates',
         cmd: 'npm',
@@ -62,6 +91,15 @@ if (process.env.DOCUDENT_AUDIT_INCLUDE_E2E !== '0') {
         id: 'v10-realistic-e2e',
         cmd: 'npx',
         args: ['playwright', 'test', 'e2e/v10-realistic-praxis-test.e2e.spec.ts', '--project=chromium'],
+    });
+}
+
+if (process.env.DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH === '1') {
+    assertHostedAuthEnv();
+    steps.push({
+        id: 'v10-hosted-auth-gate',
+        cmd: 'npm',
+        args: ['run', 'e2e:v10:hosted-auth-gate'],
     });
 }
 

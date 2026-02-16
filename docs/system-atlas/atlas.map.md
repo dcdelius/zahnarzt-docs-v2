@@ -22,7 +22,7 @@ See [README.md SSOT vs Derived table](./README.md#ssot-vs-derived-canonical-refe
 | **BillingIntent** | Control catalog lookups | `computeBillingIntent()` | Wrong channel | Log BillingIntent |
 | **Combinability** | BillingRefs → verdict | `combinability_kb.v1.json` | False positive/negative | Combi tab |
 | **KB Release Pinning** | Session/bundle-level KB version lock | `kbReleaseId` in `runV10` / `runV10Bundle` | Mixed-version traces | Trace tab (`KB Release`) |
-| **LLM Preanalysis (planned)** | Dictation -> treatment intents + evidence spans + confidence | Preanalysis contract (`TreatmentIntentV1`) | Wrong intent split, low-confidence ambiguity | Intent debug panel + preanalysis fixtures |
+| **LLM Preanalysis (live, phase-1)** | Dictation -> treatment intents + evidence spans + confidence | `preanalysis/*` + `TreatmentIntentV1` contract | Wrong intent split, low-confidence ambiguity | Intent confirmation panel + preanalysis fixtures |
 | **Multi-Treatment Planner** | Split dictation → segments + instances | `planFromDictation.ts` + `segmentDictation.ts` | Misclassification, wrong segment split | Log planned segments / `classifyTreatment.ts` |
 | **Aggregation** | perInstance → billingCodes | `runV10.ts` flatMap | Dedup bug (fixed) | Billing tab |
 | **Release Audit Gate** | Consolidated release pass/fail signal | `scripts/v10/consolidated-audit.ts` + release checklist | hidden regressions before deploy | `v10-consolidated-audit/report.json` |

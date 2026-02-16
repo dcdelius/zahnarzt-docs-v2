@@ -14,9 +14,9 @@
                 "PKV": "GOZ_2210"
             },
             "textSnippets": {
-                "kurz": "Präparation durchgeführt.",
-                "mittel": "Kronenpräparation des Zahnes durchgeführt.",
-                "lang": "Sorgfältige Kronenpräparation mit definierten Präparationsgrenzen."
+                "kurz": "Zahn {tooth}: Präparation durchgeführt.",
+                "mittel": "Zahn {tooth}: Kronenpräparation durchgeführt.",
+                "lang": "Zahn {tooth}: Sorgfältige Kronenpräparation mit definierten Präparationsgrenzen."
             },
             "defaultActive": true
         },
@@ -29,9 +29,9 @@
                 "PKV": "GOZ_5000"
             },
             "textSnippets": {
-                "kurz": "Abformung.",
-                "mittel": "Präzisionsabformung durchgeführt.",
-                "lang": "Präzisionsabformung für Laboranfertigung."
+                "kurz": "Zahn {tooth}: Abformung.",
+                "mittel": "Zahn {tooth}: Präzisionsabformung durchgeführt.",
+                "lang": "Zahn {tooth}: Präzisionsabformung für Laboranfertigung."
             }
         },
         {
@@ -43,9 +43,9 @@
                 "PKV": "GOZ_2260"
             },
             "textSnippets": {
-                "kurz": "Provisorium.",
-                "mittel": "Provisorische Versorgung.",
-                "lang": "Provisorische Kronenversorgung zum Schutz des präparierten Stumpfes."
+                "kurz": "Zahn {tooth}: Provisorium.",
+                "mittel": "Zahn {tooth}: Provisorische Versorgung.",
+                "lang": "Zahn {tooth}: Provisorische Kronenversorgung zum Schutz des präparierten Stumpfes."
             }
         },
         {

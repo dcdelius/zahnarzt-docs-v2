@@ -15,8 +15,8 @@
             },
             "textSnippets": {
                 "kurz": "Extraktion durchgeführt.",
-                "mittel": "Extraktion des Zahnes durchgeführt.",
-                "lang": "Extraktion des Zahnes lege artis durchgeführt. Blutstillung. Verhaltenshinweise gegeben."
+                "mittel": "Extraktion Zahn {tooth} durchgeführt.",
+                "lang": "Extraktion Zahn {tooth} lege artis durchgeführt. Blutstillung. Verhaltenshinweise gegeben."
             },
             "defaultActive": true
         },

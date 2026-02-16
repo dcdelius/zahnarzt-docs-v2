@@ -36,16 +36,23 @@
     border-radius: 999px;
     box-shadow: var(--dock-shadow);
     backdrop-filter: blur(18px);
+    overflow: hidden;
 }
 
 .header-dock-content {
     display: flex;
     align-items: center;
     gap: 12px;
+    min-width: 0;
 }
 
 .header-dock.is-docs {
     width: min(980px, calc(100vw - 120px));
+}
+
+.header-dock.is-docs .header-dock-content {
+    flex: 1;
+    justify-content: space-between;
 }
 
 /* ============== BRAND WORDMARK ============== */
@@ -83,6 +90,16 @@
     padding: 6px 16px;
     background: var(--dock-inset);
     border-radius: 999px;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.header-dock-controls::-webkit-scrollbar {
+    display: none;
 }
 
 .header-dock-divider {
@@ -95,6 +112,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0;
 }
 
 .header-dock-link {

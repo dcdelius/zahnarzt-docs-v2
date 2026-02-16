@@ -26,14 +26,14 @@ describe('gate-v10-treatment-intent-contract', () => {
     it('fails fast on unknown treatment ids', () => {
         const parsed = validateTreatmentIntentBundle({
             version: TREATMENT_INTENT_CONTRACT_VERSION,
-            dictation: 'Kronenpraeparation 16.',
+            dictation: 'Extraktion Zahn 28.',
             intents: [
                 {
-                    intentId: 'crown-16',
-                    treatmentId: 'crown_prep',
-                    tooth: '16',
+                    intentId: 'extract-28',
+                    treatmentId: 'extraction_stub',
+                    tooth: '28',
                     confidence: 0.82,
-                    evidenceSpans: [{ start: 0, end: 20, text: 'Kronenpraeparation 16' }],
+                    evidenceSpans: [{ start: 0, end: 18, text: 'Extraktion Zahn 28' }],
                 },
             ],
         });
@@ -88,4 +88,3 @@ describe('gate-v10-treatment-intent-contract', () => {
         expect(toDeterministicIntentHashInput(left.data)).toBe(toDeterministicIntentHashInput(right.data));
     });
 });
-

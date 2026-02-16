@@ -50,6 +50,7 @@ Orchestrator: v10/pipeline/runV10.ts
 - [benchmark.sonia-vs-dokumaster.md](./benchmark.sonia-vs-dokumaster.md) — Markt-Must-Haves + Benchmark (Soll vs Ist)
 - [architecture.scaling.plan.md](./architecture.scaling.plan.md) — Plan to scale to 20-30 packs + multi-treatment (1 then 2)
 - [status-2026-02-15.md](./status-2026-02-15.md) — Agent handoff snapshot (current)
+- [procedure/v10-remediation-plan-2026-02-15.md](./procedure/v10-remediation-plan-2026-02-15.md) — Active execution board (audit findings -> sequential remediation)
 - [procedure/multi-treatment-llm-orchestration-plan-2026-02-15.md](./procedure/multi-treatment-llm-orchestration-plan-2026-02-15.md) — Detailed handoff plan for LLM-driven multi-treatment orchestration + UI flow
 - [procedure/treatment-pack-onboarding.v10.md](./procedure/treatment-pack-onboarding.v10.md) — 1-day onboarding contract + mandatory gates
 - [procedure/v10-release-checklist-2026-02-15.md](./procedure/v10-release-checklist-2026-02-15.md) — Release gate checklist (pinning, determinism, trace, realistic E2E)

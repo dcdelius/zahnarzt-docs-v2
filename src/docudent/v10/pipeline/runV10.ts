@@ -95,6 +95,11 @@ import { normalizeToothInText, extractToothNumber, isValidFDI } from '../../core
 import { mergeRequiredAskbacks } from '../askbacks/mergeRequiredAskbacks';
 import type { SettingsInput } from '../settings/settingsTypes';
 import { isFactKnownForAskback, resolveSettings } from '../settings/settingsResolver';
+import {
+    canonicalizeSettingsInput,
+    getPracticeDefaultAnestheticAgentId,
+    getUserDefaultAnestheticAgentId,
+} from '../settings/medicalDefaults';
 import { getMaterialById, getMaterialLabelById } from '../registry/materialCatalog';
 import type { ChipOverridesMap, OverridesByInstance } from '../settings/useChipOverrides';
 import type { PackUiContractV1 } from '../packs/types';
@@ -591,9 +596,9 @@ function processInstance(
 
     // Render-only labels (derived once from settings + facts)
     const renderLaAgent = getMaterialLabelById(
-        settingsInput?.user?.defaultAnestheticAgentId
+        getUserDefaultAnestheticAgentId(settingsInput?.user)
     ) ?? getMaterialLabelById(
-        settingsInput?.practice?.defaultAnestheticAgentId
+        getPracticeDefaultAnestheticAgentId(settingsInput?.practice)
     ) ?? 'Ultracain D-S';
     const renderFillMaterial = (() => {
         const materialSource = settingsFactSources.get('material');
@@ -1400,14 +1405,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
             trace.add('testOnly', traceTestOnly(testOverrides.appliedTypes, testOverrides.skipCombinability));
         }
 
-        const normalizeSettingsInput = (raw: unknown): SettingsInput | undefined => {
-            if (!raw || typeof raw !== 'object') return undefined;
-            const candidate = raw as SettingsInput;
-            if ('practice' in candidate || 'user' in candidate) return candidate;
-            return { user: raw } as unknown as SettingsInput;
-        };
-
-        const settingsInput = normalizeSettingsInput(testOverrides.settings ?? userDefaults);
+        const settingsInput = canonicalizeSettingsInput(testOverrides.settings ?? userDefaults);
         const normalizedRequestedRelease = typeof kbReleaseId === 'string' && kbReleaseId.trim().length > 0
             ? kbReleaseId.trim()
             : undefined;
@@ -1578,13 +1576,52 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
         // === Process each instance using scoping ===
         // Use scoping module to get real instanceIds
         const scopingResult = scopeExtractionToInstances(normalizedDictation, treatmentId);
+        let scopedInstances = scopingResult.instances;
+
+        // Bundle callers provide explicit teeth; in that mode the orchestrator must
+        // stay tooth-local and must not pull additional instances from full dictation.
+        if (teeth && teeth.length > 0) {
+            const requestedTeeth = teeth.filter(Boolean);
+            const requestedSet = new Set(requestedTeeth);
+            const byTooth = new Map<string, (typeof scopedInstances)[number]>();
+
+            for (const scoped of scopedInstances) {
+                for (const scopedTooth of scoped.teeth ?? []) {
+                    if (!requestedSet.has(scopedTooth)) continue;
+                    if (byTooth.has(scopedTooth)) continue;
+                    byTooth.set(scopedTooth, {
+                        ...scoped,
+                        // Normalize to one tooth per forced instance to preserve
+                        // deterministic one-instance execution in bundle mode.
+                        teeth: [scopedTooth],
+                    });
+                }
+            }
+
+            scopedInstances = requestedTeeth.map((requestedTooth, index) => {
+                const matched = byTooth.get(requestedTooth);
+                if (matched) {
+                    return {
+                        ...matched,
+                        instanceId: `${treatmentId}-${requestedTooth}-${index + 1}`,
+                        teeth: [requestedTooth],
+                    };
+                }
+                return {
+                    instanceId: `${treatmentId}-${requestedTooth}-${index + 1}`,
+                    teeth: [requestedTooth],
+                    sourceText: normalizedDictation,
+                };
+            });
+        }
+
         trace.add(
             'scoping',
-            `instances=${scopingResult.instances.length};segments=${scopingResult.segmentCount};globalSegments=${scopingResult.globalSegments.length}`
+            `instances=${scopedInstances.length};segments=${scopingResult.segmentCount};globalSegments=${scopingResult.globalSegments.length}`
         );
         let results: InstanceResult[] = [];
 
-        for (const scopedInstance of scopingResult.instances) {
+        for (const scopedInstance of scopedInstances) {
             const primaryTooth = scopedInstance.teeth[0] !== 'unknown' ? scopedInstance.teeth[0] : undefined;
             const instanceDictationBase = scopedInstance.sourceText ?? normalizedDictation;
             const instanceDictation = scopingResult.globalSegments.length > 0

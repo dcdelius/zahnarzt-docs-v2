@@ -11,6 +11,15 @@ import type { SettingsInput, ResolvedSettings } from './settingsTypes';
 import type { TreatmentFacts } from '../facts';
 import type { AskbackPolicyV1, SettingsSchemaV1 } from '../packs/types';
 import { normalizeAskbackId } from '../procedure/normalizeAskbackId';
+import {
+    getPracticeDefaultAnestheticAgentId,
+    getPracticeDefaultIsolation,
+    getUserDefaultAnestheticAgentId,
+    getUserDefaultCappingMaterial,
+    getUserDefaultIsolation,
+    getUserDefaultLAType,
+    getUserDefaultLATypeUkPosterior,
+} from './medicalDefaults';
 
 function normalizeAskbackKey(id: string): string {
     return normalizeAskbackId(id);
@@ -507,7 +516,19 @@ export function resolveSettings(params: {
 
     for (const mapping of mappings) {
         const scopeSettings = mapping.scope === 'practice' ? settings.practice : settings.user;
-        const rawValue = getNestedValue(scopeSettings, mapping.key);
+        let rawValue = getNestedValue(scopeSettings, mapping.key);
+        if (rawValue === undefined) {
+            if (mapping.scope === 'practice') {
+                if (mapping.key === 'defaultIsolation') rawValue = getPracticeDefaultIsolation(settings.practice);
+                if (mapping.key === 'defaultAnestheticAgentId') rawValue = getPracticeDefaultAnestheticAgentId(settings.practice);
+            } else {
+                if (mapping.key === 'defaultLAType') rawValue = getUserDefaultLAType(settings.user);
+                if (mapping.key === 'defaultLATypeUkPosterior') rawValue = getUserDefaultLATypeUkPosterior(settings.user);
+                if (mapping.key === 'defaultIsolation') rawValue = getUserDefaultIsolation(settings.user);
+                if (mapping.key === 'defaultCappingMaterial') rawValue = getUserDefaultCappingMaterial(settings.user);
+                if (mapping.key === 'defaultAnestheticAgentId') rawValue = getUserDefaultAnestheticAgentId(settings.user);
+            }
+        }
         if (rawValue === undefined) continue;
 
         const askbackId = mapping.askbackId;
@@ -540,8 +561,8 @@ export function resolveSettings(params: {
         && !isFactKnownForAskback(laAskbackId, facts)
     ) {
         const user = settings.user;
-        const override = isUkPosteriorMolar(tooth) ? user?.defaultLATypeUkPosterior : undefined;
-        const fallback = user?.defaultLAType;
+        const override = isUkPosteriorMolar(tooth) ? getUserDefaultLATypeUkPosterior(user) : undefined;
+        const fallback = getUserDefaultLAType(user);
         const desired = override ?? (!answers.has(laAskbackId) ? fallback : undefined);
         const normalized = normalizeSettingsValue(laAskbackId, desired);
         if (normalized !== undefined) {

@@ -169,6 +169,15 @@ export function V10PostAnalysisDashboard({
         return { total: codes.length, bema, goz };
     }, [billingCodes]);
 
+    const visibleBillingCodes = useMemo(() => {
+        const fromOutput = (billingCodes ?? []).filter(code => typeof code === 'string' && code.trim().length > 0);
+        const fromMeta = (meta?.billingCompleteness?.origins ?? [])
+            .map(origin => origin.code)
+            .filter(code => typeof code === 'string' && code.trim().length > 0);
+        const merged = Array.from(new Set([...fromOutput, ...fromMeta]));
+        return merged.sort((a, b) => a.localeCompare(b));
+    }, [billingCodes, meta?.billingCompleteness?.origins]);
+
     const containerStyle: React.CSSProperties = {
         maxWidth: 1160,
         margin: '0 auto',
@@ -254,6 +263,54 @@ export function V10PostAnalysisDashboard({
                 />
 
                 <V10ReviewSummaryCard review={review} />
+
+                {visibleBillingCodes.length > 0 && (
+                    <div
+                        data-testid="v10-postanalysis-billing-codes"
+                        style={{
+                            marginTop: spacing.xl,
+                            padding: spacing.lg,
+                            borderRadius: radii.cardSmall,
+                            background: colors.surfaceGlass,
+                            boxShadow: shadows.cardSoft,
+                            backdropFilter: 'blur(14px)',
+                        }}
+                    >
+                        <div
+                            style={{
+                                fontSize: typography.label,
+                                color: colors.textSecondary,
+                                letterSpacing: '0.14em',
+                                textTransform: 'uppercase',
+                                marginBottom: spacing.sm,
+                            }}
+                        >
+                            Abrechnungsvorschau
+                        </div>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: spacing.sm }}>
+                            {visibleBillingCodes.map((code, index) => (
+                                <span
+                                    key={`${code}-${index}`}
+                                    data-testid={`v10-postanalysis-billing-code-${index}`}
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        padding: '6px 10px',
+                                        borderRadius: radii.pill,
+                                        background: colors.surfaceGlassActive,
+                                        border: `1px solid ${colors.lineDivider}`,
+                                        color: colors.textPrimary,
+                                        fontSize: typography.caption,
+                                        fontWeight: typography.semibold,
+                                        letterSpacing: '0.02em',
+                                    }}
+                                >
+                                    {code}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                )}
 
                 <div
                     style={{

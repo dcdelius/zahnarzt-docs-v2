@@ -8,6 +8,6 @@ describe('gate-v10-bundle-output-hash', () => {
     it('computes deterministic outputHash from text and scoped billing', () => {
         const content = readFileSync(RUN_BUNDLE_PATH, 'utf-8');
         expect(content).toContain('const outputHash = stableHash(JSON.stringify({');
-        expect(content).toContain('meta: buildMeta(allResults, startTime, sessionCombinability, upsellHints, outputHash)');
+        expect(content).toContain('meta: buildMeta(allResults, sessionCombinability, upsellHints, outputHash)');
     });
 });

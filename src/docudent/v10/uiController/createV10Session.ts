@@ -64,7 +64,9 @@ export interface OutputState {
     }>;
     kbMeta?: V10PipelineOutput['meta']['kb'];
     kbReleaseId?: V10PipelineOutput['meta']['kbReleaseId'];
-    debug?: V10PipelineOutput['meta']['debug'];
+    debug?: (V10PipelineOutput['meta']['debug'] & {
+        v10TraceLines?: string[];
+    }) | undefined;
 }
 
 export interface V10SessionOptions {
@@ -198,7 +200,12 @@ export function createV10Session(): V10Session {
                     perInstance: mapPipelinePerInstance(result.output.perInstance),
                     kbMeta: result.meta?.kb,
                     kbReleaseId: result.meta?.kbReleaseId,
-                    debug: result.meta?.debug,
+                    debug: result.meta
+                        ? {
+                            ...(result.meta?.debug ?? {}),
+                            v10TraceLines: result.meta?.traceLines,
+                        }
+                        : undefined,
                 };
 
                 state = { phase: 'output', output, instances };
@@ -284,7 +291,12 @@ export function createV10Session(): V10Session {
                 perInstance: mapPipelinePerInstance(result.output.perInstance),
                 kbMeta: result.meta?.kb,
                 kbReleaseId: result.meta?.kbReleaseId,
-                debug: result.meta?.debug,
+                debug: result.meta
+                    ? {
+                        ...(result.meta?.debug ?? {}),
+                        v10TraceLines: result.meta?.traceLines,
+                    }
+                    : undefined,
             };
 
             state = { phase: 'output', output, instances };

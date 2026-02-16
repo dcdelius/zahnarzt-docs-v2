@@ -7,6 +7,14 @@
 import React, { useState } from 'react';
 import './V10SettingsDrawer.css';
 import type { PracticeSettings, UserSettings } from '../settings/settingsTypes';
+import {
+    getPracticeDefaultIsolation,
+    getUserDefaultCappingMaterial,
+    getUserDefaultLAType,
+    patchPracticeDefaultIsolation,
+    patchUserDefaultCappingMaterial,
+    patchUserDefaultLAType,
+} from '../settings/medicalDefaults';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -105,14 +113,16 @@ function PracticeSettingsPanel({ settings, onUpdate }: PracticeSettingsPanelProp
         <div className="v10-settings-panel" data-testid="v10-practice-settings">
             <SettingRow
                 label="Standard Isolation"
-                value={settings.defaultIsolation || ''}
+                value={getPracticeDefaultIsolation(settings) || ''}
                 options={[
                     { value: '', label: 'Keine Vorgabe' },
                     { value: 'kofferdam', label: 'Kofferdam' },
                     { value: 'relative', label: 'Relative Trockenlegung' },
                     { value: 'none', label: 'Ohne Isolation' },
                 ]}
-                onChange={v => onUpdate({ defaultIsolation: v as PracticeSettings['defaultIsolation'] || undefined })}
+                onChange={v => onUpdate(
+                    patchPracticeDefaultIsolation(settings, v as PracticeSettings['defaultIsolation'] || undefined)
+                )}
             />
 
             <SettingRow
@@ -168,26 +178,30 @@ function UserSettingsPanel({ settings, onUpdate }: UserSettingsPanelProps) {
         <div className="v10-settings-panel" data-testid="v10-user-settings">
             <SettingRow
                 label="Standard Anästhesie"
-                value={settings.defaultLAType || ''}
+                value={getUserDefaultLAType(settings) || ''}
                 options={[
                     { value: '', label: 'Keine Vorgabe' },
                     { value: 'infiltration', label: 'Infiltration' },
                     { value: 'leitung', label: 'Leitungsanästhesie' },
                     { value: 'none', label: 'Ohne Anästhesie' },
                 ]}
-                onChange={v => onUpdate({ defaultLAType: v as UserSettings['defaultLAType'] || undefined })}
+                onChange={v => onUpdate(
+                    patchUserDefaultLAType(settings, v as UserSettings['defaultLAType'] || undefined)
+                )}
             />
 
             <SettingRow
                 label="Standard Überkappung"
-                value={settings.defaultCappingMaterial || ''}
+                value={getUserDefaultCappingMaterial(settings) || ''}
                 options={[
                     { value: '', label: 'Keine Vorgabe' },
                     { value: 'caoh2', label: 'Ca(OH)2' },
                     { value: 'mta', label: 'MTA' },
                     { value: 'biodentin', label: 'Biodentin' },
                 ]}
-                onChange={v => onUpdate({ defaultCappingMaterial: v as UserSettings['defaultCappingMaterial'] || undefined })}
+                onChange={v => onUpdate(
+                    patchUserDefaultCappingMaterial(settings, v as UserSettings['defaultCappingMaterial'] || undefined)
+                )}
             />
 
             <SettingRow

@@ -13,6 +13,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { resolveSurfaceBilling, type SurfaceMapping } from '../../src/docudent/v10/billing/surfaceBillingResolver';
+import type { BillingIntent } from '../../src/docudent/v10/types';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -52,7 +53,25 @@ interface Result {
     id: string;
     passed: boolean;
     expected: { bema: boolean; goz: boolean };
-    actual: { base: string | null; addon: string | null };
+    actual: { base: string | null; addon: string | null; addonActive: boolean };
+}
+
+function toBillingIntent(
+    insuranceType: TestCase['insuranceType'],
+    mehrkostenConfirmed: boolean
+): BillingIntent {
+    if (insuranceType === 'GKV') {
+        return { mode: 'GKV', allowBema: true, allowGoz: false, allowGozAddon: false };
+    }
+    if (insuranceType === 'PKV') {
+        return { mode: 'PKV', allowBema: false, allowGoz: true, allowGozAddon: false };
+    }
+    return {
+        mode: 'MKV',
+        allowBema: true,
+        allowGoz: false,
+        allowGozAddon: mehrkostenConfirmed,
+    };
 }
 
 const results: Result[] = [];
@@ -62,7 +81,7 @@ for (const tc of CASES) {
     const resolved = resolveSurfaceBilling(
         SURFACE_MAPPING,
         { surfaces: tc.surfaces },
-        tc.insuranceType
+        toBillingIntent(tc.insuranceType, tc.mehrkostenConfirmed)
     );
 
     // Base code check
@@ -82,7 +101,11 @@ for (const tc of CASES) {
         id: tc.id,
         passed,
         expected: { bema: tc.expectBema, goz: tc.expectGoz },
-        actual: { base: resolved?.billingCode ?? null, addon: resolved?.addonCode ?? null },
+        actual: {
+            base: resolved?.billingCode ?? null,
+            addon: resolved?.addonCode ?? null,
+            addonActive: Boolean(resolved?.addonCode),
+        },
     });
 }
 

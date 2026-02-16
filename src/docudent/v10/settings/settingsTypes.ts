@@ -4,6 +4,12 @@
  * Practice and User defaults as billing-eligible settings source.
  * Versioned + hashed for determinism.
  */
+import {
+    getPracticeDefaultIsolation,
+    getUserDefaultCappingMaterial,
+    getUserDefaultIsolation,
+    getUserDefaultLAType,
+} from './medicalDefaults';
 
 // ═══════════════════════════════════════════════════════════════
 // PRACTICE SETTINGS (Praxis-wide)
@@ -18,7 +24,10 @@ export interface PracticeSettings {
     /** Strict KZV compliance mode (evidence askbacks enforced) */
     strictKzvMode?: boolean;
 
-    /** Default isolation method */
+    /**
+     * @deprecated Legacy mirror. Canonical runtime source is
+     * `medicalDefaults.isolation.defaultMode`.
+     */
     defaultIsolation?: 'kofferdam' | 'relative' | 'none';
 
     /** Default composite material */
@@ -57,8 +66,24 @@ export interface PracticeSettings {
         fuellung?: string[];
     };
 
-    /** Default LA agent for documentation (catalog id). */
+    /**
+     * @deprecated Legacy mirror. Canonical runtime source is
+     * `medicalDefaults.anesthesia.defaultAgentId`.
+     */
     defaultAnestheticAgentId?: string;
+
+    /**
+     * Normalized cross-treatment medical defaults.
+     * Mirrors legacy top-level defaults during migration phase.
+     */
+    medicalDefaults?: {
+        anesthesia?: {
+            defaultAgentId?: string;
+        };
+        isolation?: {
+            defaultMode?: 'kofferdam' | 'relative' | 'none';
+        };
+    };
 
     /** Practice-wide device list */
     devices?: string[];
@@ -198,20 +223,53 @@ export interface UserSettings {
     /** Content hash for determinism */
     hash?: string;
 
-    /** Default LA type (documentation + askback auto-fill). */
+    /**
+     * @deprecated Legacy mirror. Canonical runtime source is
+     * `medicalDefaults.anesthesia.defaultType`.
+     */
     defaultLAType?: 'infiltration' | 'leitung' | 'ila' | 'none';
 
-    /** Default LA agent for documentation (catalog id). */
+    /**
+     * @deprecated Legacy mirror. Canonical runtime source is
+     * `medicalDefaults.anesthesia.defaultAgentId`.
+     */
     defaultAnestheticAgentId?: string;
 
-    /** Default isolation method (applies across treatments). */
+    /**
+     * @deprecated Legacy mirror. Canonical runtime source is
+     * `medicalDefaults.isolation.defaultMode`.
+     */
     defaultIsolation?: 'kofferdam' | 'relative' | 'none';
 
-    /** Optional override for lower-jaw posterior teeth (FDI 36-38 / 46-48). */
+    /**
+     * @deprecated Legacy mirror. Canonical runtime source is
+     * `medicalDefaults.anesthesia.ukPosteriorType`.
+     */
     defaultLATypeUkPosterior?: 'infiltration' | 'leitung' | 'ila' | 'none';
 
-    /** Default capping material */
+    /**
+     * @deprecated Legacy mirror. Canonical runtime source is
+     * `medicalDefaults.restorative.defaultCappingMaterial`.
+     */
     defaultCappingMaterial?: 'caoh2' | 'mta' | 'biodentin';
+
+    /**
+     * Normalized cross-treatment medical defaults.
+     * Mirrors legacy top-level defaults during migration phase.
+     */
+    medicalDefaults?: {
+        anesthesia?: {
+            defaultType?: 'infiltration' | 'leitung' | 'ila' | 'none';
+            ukPosteriorType?: 'infiltration' | 'leitung' | 'ila' | 'none';
+            defaultAgentId?: string;
+        };
+        isolation?: {
+            defaultMode?: 'kofferdam' | 'relative' | 'none';
+        };
+        restorative?: {
+            defaultCappingMaterial?: 'caoh2' | 'mta' | 'biodentin';
+        };
+    };
 
     /** Preferred text output length */
     preferredTextLength?: 'kurz' | 'mittel' | 'lang';
@@ -322,9 +380,9 @@ export function getSettingsValueForAskback(
     const allowEDTA = endoInv?.irrigantEDTA !== false;
 
     const mapping: Record<string, () => unknown | undefined> = {
-        'medical_la_type': () => user?.defaultLAType,
-        'medical_isolation': () => practice?.defaultIsolation,
-        'medical_ueberkappung': () => user?.defaultCappingMaterial,
+        'medical_la_type': () => getUserDefaultLAType(user),
+        'medical_isolation': () => getPracticeDefaultIsolation(practice) ?? getUserDefaultIsolation(user),
+        'medical_ueberkappung': () => getUserDefaultCappingMaterial(user),
         'medical_wl_method': () => {
             const candidate = (user?.treatments?.endo?.defaultWLMethod ?? practice?.defaultWLMethod) as string | undefined;
             if (!candidate) return undefined;

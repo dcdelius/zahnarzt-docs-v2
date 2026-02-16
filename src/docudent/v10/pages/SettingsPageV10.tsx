@@ -30,6 +30,20 @@ import { OverlaySelectField } from '../components/OverlaySelectField';
 import { OverlayMultiSelectField } from '../components/OverlayMultiSelectField';
 import { HeaderDock } from '../components/HeaderDock';
 import { deriveSettingsCapabilities } from '../settings/permissionPolicy';
+import {
+    getPracticeDefaultAnestheticAgentId,
+    getUserDefaultAnestheticAgentId,
+    getUserDefaultCappingMaterial,
+    getUserDefaultIsolation,
+    getUserDefaultLAType,
+    getUserDefaultLATypeUkPosterior,
+    patchPracticeDefaultAnestheticAgentId,
+    patchUserDefaultAnestheticAgentId,
+    patchUserDefaultCappingMaterial,
+    patchUserDefaultIsolation,
+    patchUserDefaultLAType,
+    patchUserDefaultLATypeUkPosterior,
+} from '../settings/medicalDefaults';
 
 // TREATMENT_LABELS and ALL_TREATMENT_IDS now imported from treatmentMaster.ts
 const TREATMENT_IDS = ALL_TREATMENT_IDS;
@@ -783,9 +797,7 @@ export default function SettingsPageV10() {
     };
 
     const updatePracticeDefaultAnesthetic = (materialId: string | undefined) => {
-        updatePractice({
-            defaultAnestheticAgentId: materialId,
-        });
+        updatePractice(patchPracticeDefaultAnestheticAgentId(practiceSettings, materialId));
     };
     const updateUserTreatment = (
         treatmentKey: 'endo' | 'fuellung',
@@ -1141,8 +1153,8 @@ export default function SettingsPageV10() {
                                                 label="Standard-Anästhetikum"
                                                 helper="Wird in die LA-Textbausteine eingesetzt"
                                                 value={
-                                                    practiceSettings.defaultAnestheticAgentId
-                                                        ? MATERIAL_CATALOG.find(m => m.id === practiceSettings.defaultAnestheticAgentId)?.label ?? 'Auswählen...'
+                                                    getPracticeDefaultAnestheticAgentId(practiceSettings)
+                                                        ? MATERIAL_CATALOG.find(m => m.id === getPracticeDefaultAnestheticAgentId(practiceSettings))?.label ?? 'Auswählen...'
                                                         : 'Standard: Ultracain D-S'
                                                 }
                                                 options={[
@@ -1151,7 +1163,7 @@ export default function SettingsPageV10() {
                                                         .filter(m => m.category === 'anesthetic_la')
                                                         .map(m => ({ id: m.id, label: `${m.label} (${m.manufacturer})` }))
                                                 ]}
-                                                selectedId={practiceSettings.defaultAnestheticAgentId ?? ''}
+                                                selectedId={getPracticeDefaultAnestheticAgentId(practiceSettings) ?? ''}
                                                 onSelect={(id) => updatePracticeDefaultAnesthetic(id || undefined)}
                                                 disabled={!canEditPractice}
                                             />
@@ -1364,7 +1376,7 @@ export default function SettingsPageV10() {
                                             <OverlaySelectField
                                                 label="Standard-LA"
                                                 helper="Default, wenn im Diktat nichts Konkretes gesagt wurde"
-                                                value={{ '': 'Keine', infiltration: 'Infiltration', leitung: 'Leitung', ila: 'Intraligamentär', none: 'Ohne' }[userSettings.defaultLAType ?? ''] || 'Keine'}
+                                                value={{ '': 'Keine', infiltration: 'Infiltration', leitung: 'Leitung', ila: 'Intraligamentär', none: 'Ohne' }[getUserDefaultLAType(userSettings) ?? ''] || 'Keine'}
                                                 options={[
                                                     { id: '', label: 'Keine' },
                                                     { id: 'infiltration', label: 'Infiltration' },
@@ -1372,17 +1384,17 @@ export default function SettingsPageV10() {
                                                     { id: 'ila', label: 'Intraligamentär' },
                                                     { id: 'none', label: 'Ohne' },
                                                 ]}
-                                                selectedId={userSettings.defaultLAType ?? ''}
-                                                onSelect={value => updateUser({
-                                                    defaultLAType: value ? (value as UserSettings['defaultLAType']) : undefined,
-                                                })}
+                                                selectedId={getUserDefaultLAType(userSettings) ?? ''}
+                                                onSelect={value => updateUser(
+                                                    patchUserDefaultLAType(userSettings, value ? (value as UserSettings['defaultLAType']) : undefined)
+                                                )}
                                             />
                                             <OverlaySelectField
                                                 label="Standard-Anästhetikum"
                                                 helper="Überschreibt den Praxisstandard für deinen Output"
                                                 value={
-                                                    userSettings.defaultAnestheticAgentId
-                                                        ? MATERIAL_CATALOG.find(m => m.id === userSettings.defaultAnestheticAgentId)?.label ?? 'Auswählen...'
+                                                    getUserDefaultAnestheticAgentId(userSettings)
+                                                        ? MATERIAL_CATALOG.find(m => m.id === getUserDefaultAnestheticAgentId(userSettings))?.label ?? 'Auswählen...'
                                                         : 'Praxisstandard'
                                                 }
                                                 options={[
@@ -1391,25 +1403,28 @@ export default function SettingsPageV10() {
                                                         .filter(m => m.category === 'anesthetic_la')
                                                         .map(m => ({ id: m.id, label: `${m.label} (${m.manufacturer})` }))
                                                 ]}
-                                                selectedId={userSettings.defaultAnestheticAgentId ?? ''}
-                                                onSelect={(id) => updateUser({
-                                                    defaultAnestheticAgentId: id ? id : undefined,
-                                                })}
+                                                selectedId={getUserDefaultAnestheticAgentId(userSettings) ?? ''}
+                                                onSelect={(id) => updateUser(
+                                                    patchUserDefaultAnestheticAgentId(userSettings, id ? id : undefined)
+                                                )}
                                             />
                                             <OverlaySelectField
                                                 label="UK Molaren Override"
                                                 helper="Optionaler Override für Unterkiefer 6er/7er/8er"
-                                                value={{ '': 'Keine', leitung: 'Leitung', ila: 'Intraligamentär', infiltration: 'Infiltration' }[userSettings.defaultLATypeUkPosterior ?? ''] || 'Keine'}
+                                                value={{ '': 'Keine', leitung: 'Leitung', ila: 'Intraligamentär', infiltration: 'Infiltration' }[getUserDefaultLATypeUkPosterior(userSettings) ?? ''] || 'Keine'}
                                                 options={[
                                                     { id: '', label: 'Keine' },
                                                     { id: 'leitung', label: 'Leitung' },
                                                     { id: 'ila', label: 'Intraligamentär' },
                                                     { id: 'infiltration', label: 'Infiltration' },
                                                 ]}
-                                                selectedId={userSettings.defaultLATypeUkPosterior ?? ''}
-                                                onSelect={value => updateUser({
-                                                    defaultLATypeUkPosterior: value ? (value as UserSettings['defaultLATypeUkPosterior']) : undefined,
-                                                })}
+                                                selectedId={getUserDefaultLATypeUkPosterior(userSettings) ?? ''}
+                                                onSelect={value => updateUser(
+                                                    patchUserDefaultLATypeUkPosterior(
+                                                        userSettings,
+                                                        value ? (value as UserSettings['defaultLATypeUkPosterior']) : undefined
+                                                    )
+                                                )}
                                             />
                                         </Band>
 
@@ -1417,17 +1432,20 @@ export default function SettingsPageV10() {
                                             <OverlaySelectField
                                                 label="Standard-Isolation"
                                                 helper="Gilt für alle Behandlungen"
-                                                value={{ '': 'Keine', kofferdam: 'Kofferdam', relative: 'Relativ', none: 'Ohne' }[userSettings.defaultIsolation ?? ''] || 'Keine'}
+                                                value={{ '': 'Keine', kofferdam: 'Kofferdam', relative: 'Relativ', none: 'Ohne' }[getUserDefaultIsolation(userSettings) ?? ''] || 'Keine'}
                                                 options={[
                                                     { id: '', label: 'Keine' },
                                                     { id: 'kofferdam', label: 'Kofferdam' },
                                                     { id: 'relative', label: 'Relativ' },
                                                     { id: 'none', label: 'Ohne' },
                                                 ]}
-                                                selectedId={userSettings.defaultIsolation ?? ''}
-                                                onSelect={value => updateUser({
-                                                    defaultIsolation: value ? (value as UserSettings['defaultIsolation']) : undefined,
-                                                })}
+                                                selectedId={getUserDefaultIsolation(userSettings) ?? ''}
+                                                onSelect={value => updateUser(
+                                                    patchUserDefaultIsolation(
+                                                        userSettings,
+                                                        value ? (value as UserSettings['defaultIsolation']) : undefined
+                                                    )
+                                                )}
                                             />
                                         </Band>
 
@@ -1633,7 +1651,7 @@ export default function SettingsPageV10() {
                                         />
                                         <SettingSelect
                                             label="Überkappung (Material-Default)"
-                                            value={userSettings.defaultCappingMaterial ?? ''}
+                                            value={getUserDefaultCappingMaterial(userSettings) ?? ''}
                                             options={[
                                                 { value: '', label: 'Keine Vorgabe' },
                                                 { value: 'caoh2', label: 'Ca(OH)2' },
@@ -1641,9 +1659,12 @@ export default function SettingsPageV10() {
                                                 { value: 'biodentin', label: 'Biodentin' },
                                             ]}
                                             description="Wenn du standardmäßig ein Material bei (indirekter/direkter) Überkappung nutzt."
-                                            onChange={value => updateUser({
-                                                defaultCappingMaterial: value ? (value as UserSettings['defaultCappingMaterial']) : undefined,
-                                            })}
+                                            onChange={value => updateUser(
+                                                patchUserDefaultCappingMaterial(
+                                                    userSettings,
+                                                    value ? (value as UserSettings['defaultCappingMaterial']) : undefined
+                                                )
+                                            )}
                                         />
                                         {isFuellungMaterialDefaultsLocked ? (
                                             <div className="v10-settings-adminNote">

@@ -260,6 +260,16 @@ service cloud.firestore {
         allow read: if isMemberOfPractice(practiceId);
         allow create, update: if hasPracticeRole(practiceId, 'practice_admin');
         allow delete: if false;
+
+        // User-scoped settings document:
+        // - practice_admin can manage any user settings
+        // - signed-in user can manage own settings when userId == auth uid
+        match /Settings/{settingId} {
+          allow read: if isMemberOfPractice(practiceId);
+          allow create, update: if hasPracticeRole(practiceId, 'practice_admin') ||
+                                   (isMemberOfPractice(practiceId) && request.auth.uid == userId);
+          allow delete: if false;
+        }
       }
 
       // Settings subcollection (used by useSettings hook)

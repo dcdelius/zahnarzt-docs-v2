@@ -5,14 +5,34 @@
 const SEGMENT_MARKERS = [
     'danach',
     'zusätzlich',
+    'zusaetzlich',
     'auch',
     'weiterer zahn',
     'ebenfalls',
     'noch',
     'außerdem',
+    'ausserdem',
+    'anschließend',
+    'anschliessend',
+    'im anschluss',
+    'im anschluss daran',
     'sowie',
     'und dann',
 ];
+
+function isSentenceBoundary(text: string, index: number): boolean {
+    const char = text[index];
+    if (char !== '.' && char !== '!' && char !== '?') return false;
+    if (char === '.') {
+        const prev = text[index - 1] ?? '';
+        const next = text[index + 1] ?? '';
+        // Do not split decimal values like "120.50".
+        if (/\d/.test(prev) && /\d/.test(next)) {
+            return false;
+        }
+    }
+    return true;
+}
 
 export function splitDictationIntoSegments(text: string): string[] {
     const lowerText = text.toLowerCase();
@@ -26,9 +46,9 @@ export function splitDictationIntoSegments(text: string): string[] {
         }
     }
 
-    // Only split on semicolons (clear segment separator).
+    // Split on explicit separators and sentence boundaries.
     for (let i = 0; i < text.length; i++) {
-        if (text[i] === ';') {
+        if (text[i] === ';' || isSentenceBoundary(text, i)) {
             markerPositions.push({ pos: i, marker: text[i] });
         }
     }

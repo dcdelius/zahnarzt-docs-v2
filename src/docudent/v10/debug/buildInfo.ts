@@ -19,7 +19,7 @@ export interface BuildInfo {
     buildTime: string;
     buildMode: string;
     packs: string[];
-    openAiKeyPresent: boolean;
+    llmPath: 'gateway-only';
     kb: {
         medical: { version: string; hash: string } | null;
         combinability: { version: string; hash: string } | null;
@@ -31,14 +31,13 @@ export interface BuildInfo {
  */
 export function getBuildInfo(): BuildInfo {
     const medicalMeta = defaultMedicalKbProvider.getMeta();
-    const openAiKeyPresent = Boolean((import.meta as any)?.env?.VITE_OPENAI_API_KEY);
 
     return {
         gitSha: BUILD_SHA,
         buildTime: BUILD_TIME,
         buildMode: BUILD_MODE,
         packs: listPackIds(),
-        openAiKeyPresent,
+        llmPath: 'gateway-only',
         kb: {
             medical: medicalMeta ? {
                 version: medicalMeta.version,

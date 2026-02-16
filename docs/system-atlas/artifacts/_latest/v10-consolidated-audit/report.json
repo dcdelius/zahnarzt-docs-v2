@@ -1,8 +1,18 @@
 {
-  "startedAt": "2026-02-15T18:04:20.405Z",
-  "finishedAt": "2026-02-15T18:05:09.497Z",
+  "startedAt": "2026-02-16T14:56:51.649Z",
+  "finishedAt": "2026-02-16T14:58:04.268Z",
   "allPassed": true,
   "steps": [
+    {
+      "id": "v10-online-deps",
+      "ok": true,
+      "exitCode": 0
+    },
+    {
+      "id": "v10-kb-parity",
+      "ok": true,
+      "exitCode": 0
+    },
     {
       "id": "v10-gates",
       "ok": true,

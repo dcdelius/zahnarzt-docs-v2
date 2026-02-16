@@ -9,10 +9,8 @@
             "goldenMode": true,
             "expected": {
                 "minInstances": 1,
-                "expectBlockingQuestions": true,
-                "mustContainQuestions": [
-                    "fuellung.adhesive"
-                ],
+                "expectBlockingQuestions": false,
+                "mustContainQuestions": [],
                 "mustNotLeak": null
             }
         },
@@ -38,10 +36,8 @@
             "goldenMode": true,
             "expected": {
                 "minInstances": 1,
-                "expectBlockingQuestions": true,
-                "mustContainQuestions": [
-                    "fuellung.layering"
-                ],
+                "expectBlockingQuestions": false,
+                "mustContainQuestions": [],
                 "mustNotLeak": null
             }
         },

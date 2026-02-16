@@ -1,5 +1,5 @@
 {
-  "runId": "2026-02-15T15:37:18.370Z",
+  "runId": "2026-02-16T16:12:51.723Z",
   "suiteFile": "/Users/david/dokumaster-ui/scripts/v10/scenarios.v10.realworld.medical.json",
   "meta": {
     "description": "Real-life dictation set with extra clinical details (LLM+Firestore live)",
@@ -25,7 +25,7 @@
       "questions": [],
       "answersUsed": {},
       "perInstanceCount": 1,
-      "textLength": 1065,
+      "textLength": 1030,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -51,7 +51,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 36. MOD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 36 (MOD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Okklusion eingeschliffen; Politur; Bisskontrolle geplant.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "outputText": "[Befund]\nZahn 36. MOD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 36 (MOD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Bisskontrolle geplant.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
       "pass": true,
       "failures": []
     },
@@ -117,7 +117,7 @@
       "questions": [],
       "answersUsed": {},
       "perInstanceCount": 1,
-      "textLength": 867,
+      "textLength": 801,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -140,7 +140,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 37. O. Caries profunda\n\n[Aufklärung]\nBei der Überkappung wurde über das Risiko eines späteren Vitalitätsverlusts aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Kofferdam angelegt. Im Weiteren Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Anschließend Zahn 37 (O): Füllungstherapie tief (caries profunda). Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nKlinische Zusatzinfo: Indirekte Überkappung mit Calciumhydroxid.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Cp (Ca(OH)₂).\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "outputText": "[Befund]\nZahn 37. O. Caries profunda\n\n[Aufklärung]\nBei der Überkappung wurde über das Risiko eines späteren Vitalitätsverlusts aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Kofferdam angelegt. Im Weiteren Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Anschließend Zahn 37 (O): Füllungstherapie tief (caries profunda). Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Cp (Ca(OH)₂).\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
       "pass": true,
       "failures": []
     },
@@ -167,7 +167,7 @@
         "fuellung-16-1::mkv_betrag::tooth:16": "150"
       },
       "perInstanceCount": 1,
-      "textLength": 1029,
+      "textLength": 989,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -195,7 +195,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 16. OD\n\n[Aufklärung]\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung nach § 28 Abs. 2 SGB V geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nInitial Kofferdam angelegt. Im Weiteren Zahn 16 (OD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Im Weiteren Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Zum Schluss Mehrkosten-Begründung: mehrschicht.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Patientenangabe: ästhetischer Anspruch.",
+      "outputText": "[Befund]\nZahn 16. OD\n\n[Aufklärung]\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung nach § 28 Abs. 2 SGB V geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\n\n[Behandlungsablauf]\nInitial Kofferdam angelegt. Im Weiteren Zahn 16 (OD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Im Weiteren Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Zum Schluss Mehrkosten-Begründung: mehrschicht.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
       "pass": true,
       "failures": []
     },
@@ -214,7 +214,7 @@
       "questions": [],
       "answersUsed": {},
       "perInstanceCount": 1,
-      "textLength": 957,
+      "textLength": 900,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -235,7 +235,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 45. MODB\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst LA Infiltration (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 45 (MODB): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nKlinische Zusatzinfo: Mehrschichttechnik; lichthärtend.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "outputText": "[Befund]\nZahn 45. MODB\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst LA Infiltration (Ultracain D-S). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 45 (MODB): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
       "pass": true,
       "failures": []
     },
@@ -264,7 +264,7 @@
         "endo-46-1::medical_wf_technique::tooth:46": "maschinell"
       },
       "perInstanceCount": 1,
-      "textLength": 1217,
+      "textLength": 994,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -293,7 +293,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 46\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Aufbereitung maschinell (rotierend). Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Abschließend Provisorischer Verschluss.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch mit Apex-Locator; Röntgenkontrolle; Aufbereitung maschinell; Spülung NaOCl und EDTA; Medikamentöse Einlage Calciumhydroxid; Provisorischer Verschluss mit Cavit.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "outputText": "[Befund]\nZahn 46\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Leitungsanästhesie N. alv. inf. Daraufhin Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Aufbereitung maschinell (rotierend). Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Abschließend Provisorischer Verschluss.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
       "pass": true,
       "failures": []
     },
@@ -323,7 +323,7 @@
         "endo-11-1::endo_medication::tooth:11": "Ca(OH)2"
       },
       "perInstanceCount": 1,
-      "textLength": 1216,
+      "textLength": 1074,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -352,7 +352,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 11\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial LA Infiltration. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Anschließend Sealer verwendet. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch; Aufbereitung rotierend; Spülung NaOCl; Wurzelfüllung warm vertikal mit Sealer.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "outputText": "[Befund]\nZahn 11\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial LA Infiltration. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Anschließend Sealer verwendet. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
       "pass": true,
       "failures": []
     },
@@ -379,7 +379,7 @@
         "endo-36-1::medical_wf_technique::tooth:36": "maschinell"
       },
       "perInstanceCount": 1,
-      "textLength": 645,
+      "textLength": 510,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -403,7 +403,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 36\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Kofferdam angelegt. Daraufhin Röntgen-Messaufnahme zur Arbeitslängenbestimmung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Abschließend Provisorischer Verschluss.\n\nKlinische Zusatzinfo: Zugang; Arbeitslänge röntgenologisch; Spülung NaOCl; Medikamentöse Einlage Ledermix; Provisorischer Verschluss.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Rö-Mess.\n• 3K.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "outputText": "[Befund]\nZahn 36\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Kofferdam angelegt. Daraufhin Röntgen-Messaufnahme zur Arbeitslängenbestimmung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Spülung mit NaOCl. Abschließend Provisorischer Verschluss.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Rö-Mess.\n• 3K.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
       "pass": true,
       "failures": []
     },
@@ -434,7 +434,7 @@
         "endo-27-1::medical_endo_irrigation::tooth:27": "NaOCl + EDTA"
       },
       "perInstanceCount": 1,
-      "textLength": 1195,
+      "textLength": 1069,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -464,7 +464,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 27\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung manuell. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in kaltlateraler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslänge elektronisch; Aufbereitung manuell; Spülung CHX; Wurzelfüllung kalt lateral.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF kaltlateral.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "outputText": "[Befund]\nZahn 27\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Leitungsanästhesie N. alv. inf. Anschließend Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung manuell. Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in kaltlateraler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF kaltlateral.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
       "pass": true,
       "failures": []
     },
@@ -484,7 +484,7 @@
       "questions": [],
       "answersUsed": {},
       "perInstanceCount": 2,
-      "textLength": 1337,
+      "textLength": 1297,
       "combinability": "n/a",
       "instanceTraces": [
         {
@@ -527,7 +527,7 @@
           ]
         }
       ],
-      "outputText": "[Befund]\nZahn 36. OD\n\nZahn 14. OD\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Kofferdam angelegt. Daraufhin Zahn 36 (OD): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Bisskontrolle geplant.\n\nZu Beginn Kofferdam angelegt. Anschließend Zahn 14 (OD): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Patientenangabe: Bisskontrolle geplant.\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "outputText": "[Befund]\nZahn 36. OD\n\nZahn 14. OD\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Kofferdam angelegt. Daraufhin Zahn 36 (OD): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Bisskontrolle geplant.\n\nZu Beginn Kofferdam angelegt. Anschließend Zahn 14 (OD): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
       "pass": true,
       "failures": []
     }

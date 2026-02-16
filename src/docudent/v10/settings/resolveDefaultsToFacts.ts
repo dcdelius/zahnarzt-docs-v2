@@ -6,6 +6,11 @@
  */
 
 import type { PracticeSettings, UserSettings } from './settingsTypes';
+import {
+    getUserDefaultCappingMaterial,
+    getUserDefaultLAType,
+    resolveIsolationDefaultWithSource,
+} from './medicalDefaults';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -62,8 +67,9 @@ export function applySettingsDefaults(
         typeof result.kofferdamUsed === 'boolean'
         || result.isolationMentioned === 'rubberDam'
         || result.isolationMentioned === 'relative';
-    const isolationPref = typeof practice?.defaultIsolation === 'string'
-        ? practice.defaultIsolation.toLowerCase()
+    const isolationDefault = resolveIsolationDefaultWithSource(practice, user);
+    const isolationPref = typeof isolationDefault.value === 'string'
+        ? isolationDefault.value.toLowerCase()
         : undefined;
     if (!hasIsolation && isolationPref) {
         if (isolationPref.includes('kofferdam')) {
@@ -82,12 +88,15 @@ export function applySettingsDefaults(
             result.kofferdamUsed = false;
             result.kofferdamMentioned = false;
         }
-        result._kofferdamUsedSource = 'settings:practice';
+        if (isolationDefault.source) {
+            result._kofferdamUsedSource = `settings:${isolationDefault.source}`;
+        }
     }
 
     // Anesthesia default (only if unknown)
-    const laPref = typeof user?.defaultLAType === 'string'
-        ? user.defaultLAType.toLowerCase()
+    const laDefault = getUserDefaultLAType(user);
+    const laPref = typeof laDefault === 'string'
+        ? laDefault.toLowerCase()
         : undefined;
     if (isUnknown(result.anesthesia) && laPref) {
         if (laPref.includes('infiltr')) {
@@ -105,8 +114,9 @@ export function applySettingsDefaults(
 
     // Capping material (only if unknown)
     const cappingMaterial = (result.capping as Record<string, unknown> | undefined)?.material;
-    const cappingPref = typeof user?.defaultCappingMaterial === 'string'
-        ? user.defaultCappingMaterial.toLowerCase()
+    const cappingDefault = getUserDefaultCappingMaterial(user);
+    const cappingPref = typeof cappingDefault === 'string'
+        ? cappingDefault.toLowerCase()
         : undefined;
     if ((result.treatmentId === 'fuellung' || result.capping?.performed === 'yes') && cappingMaterial === undefined && cappingPref) {
         const material =
@@ -116,7 +126,7 @@ export function applySettingsDefaults(
                     ? 'MTA'
                     : cappingPref.includes('biodentin')
                         ? 'Biodentine'
-                        : user.defaultCappingMaterial;
+                        : cappingDefault;
         result.capping = {
             ...(result.capping as Record<string, unknown> | undefined),
             material,

@@ -1,0 +1,65 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - region "Notifications alt+T"
+  - generic [ref=e4]:
+    - generic [ref=e10]:
+      - banner [ref=e11]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Output
+            - heading "Behandlungsdokumentation" [level=1] [ref=e15]
+            - generic [ref=e16]:
+              - text: 16.02.2026·
+              - strong [ref=e17]: BEMA 4
+              - text: ·
+              - strong [ref=e18]: GOZ 0
+              - text: · 4 Codes
+          - generic [ref=e19]:
+            - button "Kopieren" [ref=e20] [cursor=pointer]
+            - button "Bearbeiten" [ref=e21] [cursor=pointer]
+            - button "Neuer Fall" [ref=e22] [cursor=pointer]
+      - generic [ref=e23]:
+        - generic [ref=e24]: Abrechnungswarnung
+        - generic [ref=e25]: "Combinability coverage missing for codes: BEMA_35, BEMA_32, BEMA_31"
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: BEFUND
+          - generic [ref=e30]: Zahn 46
+        - generic [ref=e32]:
+          - generic [ref=e33]: AUFKLÄRUNG
+          - generic [ref=e34]: Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.
+        - generic [ref=e36]:
+          - generic [ref=e37]: BEHANDLUNGSABLAUF
+          - generic [ref=e38]: Zunächst Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Abschließend Provisorischer Verschluss.
+        - generic [ref=e40]:
+          - generic [ref=e41]: DURCHGEFÜHRTE LEISTUNGEN
+          - generic [ref=e42]: • Kofferdam. • Trep. • Elektr. AL. • 3K. • Ca(OH)₂ Einlage.
+        - generic [ref=e44]:
+          - generic [ref=e45]: HINWEISE
+          - generic [ref=e46]: Der Patient wurde über Verhaltensregeln nach der Behandlung informiert.
+        - generic [ref=e48]:
+          - generic [ref=e49]: ABRECHNUNG
+          - generic [ref=e50]: "Kassenleistung (BEMA): 12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich 35 – Wurzelfüllung - Einwurzeliger Zahn 32 – Wurzelkanalbehandlung (Aufbereitung) - Einwurzeliger Zahn 31 – Trepanation (Trep)"
+      - generic [ref=e52]:
+        - button "Abrechnung 4 Positionen · BEMA 4 · GOZ 0 Anzeigen" [ref=e53] [cursor=pointer]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: Abrechnung
+            - generic [ref=e56]: 4 Positionen · BEMA 4 · GOZ 0
+          - generic [ref=e57]: Anzeigen
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - generic [ref=e61]: BEMA_12
+            - generic [ref=e62]: BEMA
+          - generic [ref=e63]:
+            - generic [ref=e64]: BEMA_31
+            - generic [ref=e65]: BEMA
+          - generic [ref=e66]:
+            - generic [ref=e67]: BEMA_32
+            - generic [ref=e68]: BEMA
+          - generic [ref=e69]:
+            - generic [ref=e70]: BEMA_35
+            - generic [ref=e71]: BEMA
+    - button "Debug" [ref=e72] [cursor=pointer]
+```

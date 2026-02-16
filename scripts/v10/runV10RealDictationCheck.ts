@@ -12,6 +12,7 @@ type Scenario = {
   insuranceType?: 'GKV' | 'PKV' | 'MKV';
   treatmentId?: string;
   materialDefaults?: Record<string, unknown>;
+  expectedPhase?: 'output' | 'questions';
   /** Some treatments/scenarios may legitimately emit no billing codes (e.g., non-billable documentation-only). */
   expectBillingCodes?: boolean;
 };
@@ -33,6 +34,8 @@ type ScenarioResult = {
     copyText: string;
     billingCodes: string[];
     chips: string[];
+    extractionMethod: 'llm' | 'regex' | 'stub' | 'unknown';
+    extractionLlmError: string;
     debugInstances: Array<{
       instanceId: string;
       tooth?: string;
@@ -51,6 +54,72 @@ const OUTPUT_DIR = path.join(
   process.cwd(),
   'docs/system-atlas/artifacts/_latest/v10-real-dictation-check'
 );
+
+const REQUIRE_LLM_PATH = process.env.DOCUDENT_REQUIRE_LLM_PATH !== '0';
+
+const readEnv = (name: string): string | null => {
+  const raw = process.env[name];
+  if (!raw) return null;
+  const trimmed = raw.replace(/^['"]|['"]$/g, '').trim();
+  return trimmed.length > 0 ? trimmed : null;
+};
+
+const ensureServerOpenAiKey = (): void => {
+  const openAiKey = readEnv('OPENAI_API_KEY');
+  if (openAiKey) return;
+  const viteKey = readEnv('VITE_OPENAI_API_KEY');
+  if (!viteKey) return;
+  process.env.OPENAI_API_KEY = viteKey;
+  // eslint-disable-next-line no-console
+  console.warn('[v10-real-dictation-check] OPENAI_API_KEY fehlte; nutze VITE_OPENAI_API_KEY als Laufzeit-Fallback fuer diesen Script-Run.');
+};
+
+const parseExtractionMeta = (
+  traceLines: unknown
+): { extractionMethod: 'llm' | 'regex' | 'stub' | 'unknown'; extractionLlmError: string } => {
+  const lines = Array.isArray(traceLines) ? traceLines : [];
+  let detailValue: string | null = null;
+  for (const line of lines) {
+    if (typeof line === 'string' && line.startsWith('extract_detail:')) {
+      detailValue = line.slice('extract_detail:'.length);
+      break;
+    }
+    if (
+      line
+      && typeof line === 'object'
+      && (line as Record<string, unknown>).key === 'extract_detail'
+      && typeof (line as Record<string, unknown>).value === 'string'
+    ) {
+      detailValue = (line as Record<string, string>).value;
+      break;
+    }
+  }
+  if (!detailValue) {
+    return { extractionMethod: 'unknown', extractionLlmError: 'unknown' };
+  }
+  const fields = detailValue
+    .split(';')
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .reduce<Record<string, string>>((acc, item) => {
+      const [key, value] = item.split('=');
+      if (key && value) {
+        acc[key.trim()] = value.trim();
+      }
+      return acc;
+    }, {});
+
+  const methodRaw = (fields.method ?? '').toLowerCase();
+  const extractionMethod: 'llm' | 'regex' | 'stub' | 'unknown' =
+    methodRaw === 'llm' || methodRaw === 'regex' || methodRaw === 'stub'
+      ? methodRaw
+      : 'unknown';
+
+  return {
+    extractionMethod,
+    extractionLlmError: fields.llmError ?? 'unknown',
+  };
+};
 
 const scenarios: Scenario[] = [
   {
@@ -122,6 +191,8 @@ const scenarios: Scenario[] = [
     dictation:
       'MKV. Zahn 15 okklusal, Kompositfüllung. Mehrkosten vereinbart, Betrag noch offen.',
     insuranceType: 'MKV',
+    expectedPhase: 'questions',
+    expectBillingCodes: false,
   },
   {
     id: 'mkv-fuellung-nur-kasse',
@@ -236,6 +307,28 @@ const pickAnswer = (
     return null;
   };
 
+  const pickOptionByKeyword = (keywords: string[]): string | null => {
+    if (!q.options || q.options.length === 0) return null;
+    for (const option of q.options) {
+      const value = String(option.value ?? '').toLowerCase();
+      const label = String(option.label ?? '').toLowerCase();
+      for (const keyword of keywords) {
+        if (value.includes(keyword) || label.includes(keyword)) {
+          return option.value;
+        }
+      }
+    }
+    return null;
+  };
+
+  const detectCanalCount = (): string => {
+    const toothMatch = normalizedDictation.match(/\bzahn\s+([1-8][1-8])\b/);
+    const tooth = toothMatch?.[1] ?? '';
+    if (/^(1[1-3]|2[1-3]|3[1-3]|4[1-3])$/.test(tooth)) return '1';
+    if (/^(1[45]|2[45]|3[45]|4[45])$/.test(tooth)) return '2';
+    return '3';
+  };
+
   if (key.includes('insurance') || text.includes('versicherung')) {
     return { questionId: q.id, answerId: 'GKV' };
   }
@@ -283,10 +376,24 @@ const pickAnswer = (
     return { questionId: q.id, answerId: 'kofferdam' };
   }
   if (key.includes('working_length_method') || text.includes('arbeitslängen bestimmt')) {
-    return { questionId: q.id, answerId: 'Apexlokator (EAL)' };
+    const option = pickOptionByKeyword(['apex', 'eal', 'elektr', 'rontgen', 'roentgen']);
+    return { questionId: q.id, answerId: option ?? 'Apexlokator (EAL)' };
   }
   if (key.includes('working_length') || key.includes('workinglength') || text.includes('arbeitslängen')) {
     return { questionId: q.id, answerId: JSON.stringify({ MB: 21, DB: 21 }) };
+  }
+  if (key.includes('endo_canal_count') || text.includes('kanalanzahl')) {
+    const option = pickOptionByKeyword(['1', '2', '3', '4']);
+    return { questionId: q.id, answerId: option ?? detectCanalCount() };
+  }
+  if (key.includes('medical_wf_technique') || key.includes('wf_technique')) {
+    const option = pickOptionByKeyword(['rot', 'maschin', 'hand']);
+    if (option) return { questionId: q.id, answerId: option };
+    return { questionId: q.id, answerId: 'rotierend' };
+  }
+  if (key.includes('medical_wl_method') || key.includes('wl_method')) {
+    const option = pickOptionByKeyword(['apex', 'eal', 'elektr', 'rontgen', 'roentgen']);
+    return { questionId: q.id, answerId: option ?? 'Apexlokator (EAL)' };
   }
   if (key.includes('anesthesia') || text.includes('anästhesie')) {
     if (text.includes('welche') || text.includes('art')) {
@@ -298,7 +405,8 @@ const pickAnswer = (
     return { questionId: q.id, answerId: 'composite' };
   }
   if (key.includes('surface') || text.includes('fläche')) {
-    return { questionId: q.id, answerId: ['mesial'] };
+    const option = pickOptionByKeyword(['mesial', 'okklusal', 'distal', 'm', 'o', 'd', 'b', 'l', 'i']);
+    return { questionId: q.id, answerId: option ?? 'm' };
   }
   if (key.includes('endo') || text.includes('endo')) {
     if (key.includes('workinglength') || text.includes('längenmessung')) {
@@ -320,6 +428,7 @@ const ensureDir = (dir: string) => {
 
 const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
   const session = createV10Session();
+  const expectedPhase = scenario.expectedPhase ?? 'output';
 
   let result = await session.start(scenario.dictation, {
     settings: scenario.materialDefaults ?? {},
@@ -358,7 +467,9 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
           // eslint-disable-next-line no-await-in-loop
           result = await session.answer(instanceId, answer.questionId, String(answer.answerId));
         } else {
-          issues.push(`No auto-answer for question ${q.id}`);
+          if (expectedPhase === 'output') {
+            issues.push(`No auto-answer for question ${q.id}`);
+          }
         }
       }
     }
@@ -372,22 +483,38 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
   const copyText = output?.fullText ?? '';
   const billingCodes = output?.billingRefs ?? [];
   const debugInstances = output?.debug?.instances ?? [];
+  const extractionMeta = parseExtractionMeta(output?.debug?.v10TraceLines);
   const chips = debugInstances.length > 0
     ? debugInstances.flatMap((inst) => inst.chips ?? [])
     : result.instances?.flatMap((inst) => Array.from(inst.chips ?? [])) ?? [];
 
-  if (result.phase !== 'output') {
-    issues.push(`Scenario ended in phase "${result.phase}"`);
+  if (result.phase !== expectedPhase) {
+    issues.push(`Scenario ended in phase "${result.phase}" (expected "${expectedPhase}")`);
   }
-  if (!copyText.trim()) {
-    issues.push('Empty copyText output');
-  }
-  const expectBilling = scenario.expectBillingCodes ?? true;
-  if (expectBilling && billingCodes.length === 0) {
-    issues.push('No billing codes emitted');
-  }
-  if (chips.length === 0) {
-    issues.push('No chips emitted');
+  if (expectedPhase === 'output') {
+    if (!copyText.trim()) {
+      issues.push('Empty copyText output');
+    }
+    const expectBilling = scenario.expectBillingCodes ?? true;
+    if (expectBilling && billingCodes.length === 0) {
+      issues.push('No billing codes emitted');
+    }
+    if (chips.length === 0) {
+      issues.push('No chips emitted');
+    }
+    if (REQUIRE_LLM_PATH) {
+      if (extractionMeta.extractionMethod !== 'llm') {
+        issues.push(`LLM path required, but extraction method is "${extractionMeta.extractionMethod}"`);
+      }
+      if (extractionMeta.extractionLlmError !== 'none') {
+        issues.push(`LLM path required, but extraction llmError is "${extractionMeta.extractionLlmError}"`);
+      }
+    }
+  } else {
+    const openQuestions = Object.values(result.questions ?? {}).flat().length;
+    if (openQuestions === 0) {
+      issues.push('Expected unresolved askbacks, but questions are empty');
+    }
   }
 
   // ────────────────────────────────────────────────────────────
@@ -459,6 +586,8 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
       copyText,
       billingCodes,
       chips,
+      extractionMethod: extractionMeta.extractionMethod,
+      extractionLlmError: extractionMeta.extractionLlmError,
       debugInstances,
     },
     issues,
@@ -466,6 +595,10 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
 };
 
 const main = async () => {
+  ensureServerOpenAiKey();
+  if (REQUIRE_LLM_PATH && !readEnv('OPENAI_API_KEY')) {
+    throw new Error('LLM path required but OPENAI_API_KEY is missing. Set OPENAI_API_KEY (or VITE_OPENAI_API_KEY for local fallback mapping).');
+  }
   ensureDir(OUTPUT_DIR);
 
   const results: ScenarioResult[] = [];
@@ -491,8 +624,12 @@ const main = async () => {
   ];
 
   fs.writeFileSync(path.join(OUTPUT_DIR, 'summary.md'), summaryLines.join('\n'), 'utf-8');
+  const issueCount = results.reduce((sum, entry) => sum + entry.issues.length, 0);
   // eslint-disable-next-line no-console
-  console.log(`Wrote ${reportPath}`);
+  console.log(`Wrote ${reportPath} (issues: ${issueCount})`);
+  if (issueCount > 0) {
+    process.exit(1);
+  }
 };
 
 main().catch((error) => {

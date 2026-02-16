@@ -8,7 +8,9 @@
 import type { TreatmentPack } from './types';
 import { createFuellungPack } from './fuellung/pack';
 import { createEndoPack } from './endo/pack';
+import { createExtractionPack } from './extraction/pack';
 import { createExtractionStubPack } from './extraction_stub/pack';
+import { createCrownPrepPack } from './crown_prep/pack';
 
 // ═══════════════════════════════════════════════════════════════
 // PACK REGISTRY
@@ -21,6 +23,8 @@ import { createExtractionStubPack } from './extraction_stub/pack';
 export const PACKS = {
     fuellung: createFuellungPack(),
     endo: createEndoPack(),
+    extraction: createExtractionPack(),
+    crown_prep: createCrownPrepPack(),
     extraction_stub: createExtractionStubPack(), // M48: Stub for UI dry run
 } as const;
 

@@ -29,6 +29,8 @@
           "fuellung_material_adhesive",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-26-1",
@@ -68,7 +70,7 @@
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Befund]\nZahn 15. O\n\nZahn 25. O\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 15 (O): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V).\n\nInitial Zahn 25 (O): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V).\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Zusatzinfo: Mehrkostenvereinbarung wurde besprochen.\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+        "copyText": "[Befund]\nZahn 15. O\n\nZahn 25. O\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Zahn 15 (O): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V).\n\nInitial Zahn 25 (O): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V).\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Zusatzinfo: Mehrkostenvereinbarung wurde besprochen..\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
         "billingCodes": [
           "BEMA_13",
           "BEMA_13"
@@ -83,6 +85,8 @@
           "fuellung_material_komposit",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-15-1",
@@ -133,25 +137,18 @@
       "questions": [],
       "answers": [
         {
-          "questionId": "fuellung-14-1::fuellung_isolation::tooth:14",
-          "answerId": "kofferdam"
-        },
-        {
           "questionId": "fuellung-14-1::medical_surfaces::tooth:14",
-          "answerId": [
-            "mesial"
-          ]
+          "answerId": "m"
         }
       ],
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Befund]\nZahn 14\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Kofferdam angelegt. Anschließend Matrizensystem Matrix eingesetzt. Daraufhin Keil zur Separation eingesetzt. Im Weiteren Zahn 14: Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: alte Füllung entfernt; Mehrschichtige Komposittechnik mit Matrix und Keil; Politur.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+        "copyText": "[Befund]\nZahn 14. M\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Matrizensystem Matrix eingesetzt. Anschließend Keil zur Separation eingesetzt. Daraufhin Zahn 14 (M): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: alte Füllung entfernt; mehrschichtige Komposittechnik mit Matrix und Keil; wegen approximaler Defektlage; Politur.\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
         "billingCodes": [
-          "BEMA_12"
+          "BEMA_13"
         ],
         "chips": [
-          "kofferdam",
           "fuellung_grundleistung",
           "finishing",
           "fuellung_material_komposit",
@@ -159,6 +156,8 @@
           "fuellung_material_keil",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-14-1",
@@ -167,7 +166,6 @@
             "nurKasse": false,
             "mkvPresent": false,
             "chips": [
-              "kofferdam",
               "fuellung_grundleistung",
               "finishing",
               "fuellung_material_komposit",
@@ -176,7 +174,6 @@
               "mehrschicht"
             ],
             "chipEmitters": {
-              "kofferdam": "node:common.isolation.kofferdam",
               "fuellung_grundleistung": "node:fuellung.baseline",
               "finishing": "node:fuellung.finishing",
               "fuellung_material_komposit": "node:fuellung.material.komposit",
@@ -214,6 +211,8 @@
           "cp_not_required",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-46-1",
@@ -249,10 +248,10 @@
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Befund]\nZahn 11. B\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn LA Infiltration (Ultracain D-S). Anschließend Zahn 11 (B): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+        "copyText": "[Befund]\nZahn 11. OD\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn LA Infiltration (Ultracain D-S). Anschließend Zahn 11 (OD): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Durchgeführte Leistungen]\n• LA Infiltr.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
         "billingCodes": [
           "BEMA_40",
-          "BEMA_13"
+          "BEMA_13b"
         ],
         "chips": [
           "la_infiltr",
@@ -260,6 +259,8 @@
           "fuellung_material_komposit",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-11-1",
@@ -319,6 +320,8 @@
           "cp",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-36-1",
@@ -377,6 +380,8 @@
           "cp_not_required",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-27-1",
@@ -444,6 +449,8 @@
           "fuellung_material_matrix",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-24-1",
@@ -511,6 +518,8 @@
           "fuellung_material_matrix",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-15-1",
@@ -571,16 +580,11 @@
         "copyText": "",
         "billingCodes": [],
         "chips": [],
+        "extractionMethod": "unknown",
+        "extractionLlmError": "unknown",
         "debugInstances": []
       },
-      "issues": [
-        "No auto-answer for question fuellung-15-1::mkv_betrag::tooth:15",
-        "No auto-answer for question fuellung-15-1::mkv_betrag::tooth:15",
-        "Scenario ended in phase \"questions\"",
-        "Empty copyText output",
-        "No billing codes emitted",
-        "No chips emitted"
-      ]
+      "issues": []
     },
     {
       "id": "mkv-fuellung-nur-kasse",
@@ -600,6 +604,8 @@
           "fuellung_material_komposit",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-46-1",
@@ -641,6 +647,8 @@
           "fuellung_material_komposit",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-36-1",
@@ -697,6 +705,8 @@
           "fuellung_material_komposit",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-35-1",
@@ -746,6 +756,8 @@
           "fuellung_material_komposit",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-16-1",
@@ -778,7 +790,7 @@
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Befund]\nZahn 47. D\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Leitungsanästhesie N. alv. inf. (Ultracain D-S). Anschließend Zahn 47 (D): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Lokalanästhesie Leitungsanästhesie; Kompositfüllung mehrschichtig; Politur.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+        "copyText": "[Befund]\nZahn 47. D\n\n[Aufklärung]\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZu Beginn Leitungsanästhesie N. alv. inf. (Ultracain D-S). Anschließend Zahn 47 (D): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Kompositfüllung mehrschichtig; Politur.\n\n[Durchgeführte Leistungen]\n• LA Leitung.\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
         "billingCodes": [
           "GOZ_0100",
           "GOZ_2060"
@@ -790,6 +802,8 @@
           "fuellung_material_komposit",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-47-1",
@@ -825,16 +839,16 @@
       "answers": [
         {
           "questionId": "fuellung-12-1::medical_surfaces::tooth:12",
-          "answerId": [
-            "mesial"
-          ]
+          "answerId": "m"
         }
       ],
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Befund]\nZahn 12\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Matrizensystem Matrix eingesetzt. Daraufhin Keil zur Separation eingesetzt. Im Weiteren Zahn 12: Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Kompositfüllung approximal mit Matrix und Keil; Okklusionskontrolle; Ausarbeitung und Politur.\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
-        "billingCodes": [],
+        "copyText": "[Befund]\nZahn 12. M\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Matrizensystem Matrix eingesetzt. Daraufhin Keil zur Separation eingesetzt. Im Weiteren Zahn 12 (M): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\nKlinische Zusatzinfo: Kompositfüllung approximal mit Matrix und Keil; Okklusionskontrolle; Ausarbeitung und Politur.\n\n[Durchgeführte Leistungen]\n• Komposit Mehrschichttechnik.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+        "billingCodes": [
+          "GOZ_2060"
+        ],
         "chips": [
           "fuellung_grundleistung",
           "finishing",
@@ -843,6 +857,8 @@
           "fuellung_material_keil",
           "mehrschicht"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "fuellung-12-1",
@@ -870,9 +886,7 @@
           }
         ]
       },
-      "issues": [
-        "No billing codes emitted"
-      ]
+      "issues": []
     },
     {
       "id": "pkv-endo-basic",
@@ -881,31 +895,57 @@
       "questions": [],
       "answers": [
         {
+          "questionId": "endo-21-1::endo_canal_count::tooth:21",
+          "answerId": "1"
+        },
+        {
+          "questionId": "endo-21-1::endo_medication::tooth:21",
+          "answerId": "caoh2"
+        },
+        {
           "questionId": "endo-21-1::ENDO_T1_WORKING_LENGTH_METHOD::tooth:21",
           "answerId": "Apexlokator (EAL)"
         },
         {
           "questionId": "endo-21-1::ENDO_T1_WORKING_LENGTHS::tooth:21",
           "answerId": "{\"MB\":21,\"DB\":21}"
+        },
+        {
+          "questionId": "endo-21-1::medical_isolation::tooth:21",
+          "answerId": "kofferdam"
+        },
+        {
+          "questionId": "endo-21-1::medical_wf_technique::tooth:21",
+          "answerId": "rotierend"
+        },
+        {
+          "questionId": "endo-21-1::medical_wl_method::tooth:21",
+          "answerId": "Apexlokator (EAL)"
         }
       ],
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Befund]\nZahn 21\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 2 Wurzelkanälen. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Abschließend Provisorischer Verschluss.\n\nKlinische Zusatzinfo: Trepanation; Vitalexstirpation; Längenmessung; Aufbereitung maschinell; Spülung mit NaOCl; medikamentöse Einlage; temporärer Verschluss.\n\n[Durchgeführte Leistungen]\n• Trep.\n• Elektr. AL.\n• 2K.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+        "copyText": "[Befund]\nZahn 21\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Kofferdam angelegt. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 1 Wurzelkanal. Daraufhin Aufbereitung maschinell (rotierend). Anschließend Spülung mit NaOCl. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Abschließend Provisorischer Verschluss.\n\nKlinische Zusatzinfo: Trepanation; Vitalexstirpation; Längenmessung; Aufbereitung maschinell; Spülung mit NaOCl; medikamentöse Einlage; temporärer Verschluss.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 1K.\n• Ca(OH)₂ Einlage.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
         "billingCodes": [
+          "GOZ_2040",
           "GOZ_2400",
+          "GOZ_2430",
           "GOZ_2410",
           "GOZ_2360"
         ],
         "chips": [
+          "kofferdam",
           "laengenmessung_elek",
           "spuelung_naocl",
-          "kanalaufbereitung_2",
+          "einlage_caoh2",
+          "kanalaufbereitung_1",
           "endo_instrumentation_rotary",
           "provisorischer_verschluss",
           "trepanation"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "endo-21-1",
@@ -915,17 +955,21 @@
             "mkvPresent": false,
             "mehrkostenConfirmed": false,
             "chips": [
+              "kofferdam",
               "laengenmessung_elek",
               "spuelung_naocl",
-              "kanalaufbereitung_2",
+              "einlage_caoh2",
+              "kanalaufbereitung_1",
               "endo_instrumentation_rotary",
               "provisorischer_verschluss",
               "trepanation"
             ],
             "chipEmitters": {
+              "kofferdam": "node:common.isolation.kofferdam",
               "laengenmessung_elek": "node:endo.wl.electronic",
               "spuelung_naocl": "node:endo.irrigation.naocl",
-              "kanalaufbereitung_2": "node:endo.canal.count.2",
+              "einlage_caoh2": "node:endo.medication.caoh2",
+              "kanalaufbereitung_1": "node:endo.canal.count.1",
               "endo_instrumentation_rotary": "node:endo.instrumentation.rotary",
               "provisorischer_verschluss": "node:endo.temp_closure",
               "trepanation": "node:endo.trepanation"
@@ -940,26 +984,47 @@
       "label": "PKV Endo mit warm vertikaler WF + Röntgenkontrolle",
       "dictation": "PKV. Zahn 36 Endo. Trepanation, Arbeitslängenmessung, Aufbereitung rotierend, Spülung NaOCl/EDTA, warm vertikale Wurzelfüllung, Röntgenkontrolle, provisorischer Verschluss.",
       "questions": [],
-      "answers": [],
+      "answers": [
+        {
+          "questionId": "endo-36-1::endo_canal_count::tooth:36",
+          "answerId": "3"
+        },
+        {
+          "questionId": "endo-36-1::endo_medication::tooth:36",
+          "answerId": "caoh2"
+        },
+        {
+          "questionId": "endo-36-1::medical_isolation::tooth:36",
+          "answerId": "kofferdam"
+        }
+      ],
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Befund]\nZahn 36\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Trepanation der Pulpakammer. Daraufhin Röntgen-Messaufnahme zur Arbeitslängenbestimmung. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Provisorischer Verschluss. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslängenmessung; Aufbereitung rotierend; Spülung NaOCl/EDTA; warm vertikale Wurzelfüllung; Röntgenkontrolle; provisorischer Verschluss.\n\n[Durchgeführte Leistungen]\n• Trep.\n• Rö-Mess.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+        "copyText": "[Befund]\nZahn 36\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Röntgen-Messaufnahme zur Arbeitslängenbestimmung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Anschließend Spülung mit EDTA. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Provisorischer Verschluss. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Trepanation; Arbeitslängenmessung; Aufbereitung rotierend; Spülung NaOCl/EDTA; warm vertikale Wurzelfüllung; Röntgenkontrolle; provisorischer Verschluss.\n\n[Durchgeführte Leistungen]\n• Kofferdam.\n• Trep.\n• Rö-Mess.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
         "billingCodes": [
+          "GOZ_2040",
           "GOZ_5000",
           "GOZ_2440",
+          "GOZ_2430",
+          "GOZ_2410",
           "GOZ_2360"
         ],
         "chips": [
+          "kofferdam",
           "laengenmessung_roentgen",
           "wf_warm",
           "spuelung_naocl",
           "spuelung_edta",
+          "einlage_caoh2",
+          "kanalaufbereitung_3",
           "endo_instrumentation_rotary",
           "roentgen_kontrolle",
           "provisorischer_verschluss",
           "trepanation"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "endo-36-1",
@@ -969,20 +1034,26 @@
             "mkvPresent": false,
             "mehrkostenConfirmed": false,
             "chips": [
+              "kofferdam",
               "laengenmessung_roentgen",
               "wf_warm",
               "spuelung_naocl",
               "spuelung_edta",
+              "einlage_caoh2",
+              "kanalaufbereitung_3",
               "endo_instrumentation_rotary",
               "roentgen_kontrolle",
               "provisorischer_verschluss",
               "trepanation"
             ],
             "chipEmitters": {
+              "kofferdam": "node:common.isolation.kofferdam",
               "laengenmessung_roentgen": "node:endo.wl.xray",
               "wf_warm": "node:endo.wf.warm",
               "spuelung_naocl": "node:endo.irrigation.naocl",
               "spuelung_edta": "node:endo.irrigation.edta",
+              "einlage_caoh2": "node:endo.medication.caoh2",
+              "kanalaufbereitung_3": "node:endo.canal.count.3",
               "endo_instrumentation_rotary": "node:endo.instrumentation.rotary",
               "roentgen_kontrolle": "node:endo.xray.control",
               "provisorischer_verschluss": "node:endo.temp_closure",
@@ -1007,7 +1078,7 @@
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Behandlungsablauf]\nZunaechst Lokalanästhesie (Infiltration). Anschliessend Extraktion des Zahnes durchgeführt. Abschliessend Wundversorgung durchgeführt.\n\nKlinische Zusatzinfo: Wundversorgung; Naht gelegt.\n\n[Durchgefuehrte Leistungen]\n• LA infiltr.\n• Extraktion durchgeführt.\n• Wundversorgung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen. Patientenangabe: Postoperativer Hinweis.",
+        "copyText": "[Behandlungsablauf]\nZunaechst Lokalanästhesie (Infiltration). Anschliessend Extraktion Zahn 18 durchgeführt. Abschliessend Wundversorgung durchgeführt.\n\nKlinische Zusatzinfo: Wundversorgung; Naht gelegt.\n\n[Durchgefuehrte Leistungen]\n• LA infiltr.\n• Extraktion durchgeführt.\n• Wundversorgung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen. Patientenangabe: Postoperativer Hinweis.",
         "billingCodes": [
           "BEMA_40",
           "BEMA_41a"
@@ -1017,6 +1088,8 @@
           "extraktion_einfach",
           "wundversorgung"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "extraction-18-1",
@@ -1056,6 +1129,8 @@
           "zahnstein_entfernung",
           "fluoridierung"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "pzr-unknown-1",
@@ -1084,7 +1159,7 @@
       "state": "output",
       "outputSummary": {
         "hasCopyText": true,
-        "copyText": "[Behandlungsablauf]\nZunaechst Kronenpräparation des Zahnes durchgeführt. Anschliessend Präzisionsabformung durchgeführt. Abschliessend Provisorische Versorgung.\n\n[Durchgefuehrte Leistungen]\n• Präparation durchgeführt.\n• Abformung.\n• Provisorium.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+        "copyText": "[Behandlungsablauf]\nZunaechst Zahn 11: Kronenpräparation durchgeführt. Anschliessend Zahn 11: Präzisionsabformung durchgeführt. Abschliessend Zahn 11: Provisorische Versorgung.\n\n[Durchgefuehrte Leistungen]\n• Zahn 11: Präparation durchgeführt.\n• Zahn 11: Abformung.\n• Zahn 11: Provisorium.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Zusatzinfo: Kronenpräparation; Abformung; Provisorium eingesetzt.",
         "billingCodes": [
           "GOZ_2210",
           "GOZ_5000",
@@ -1095,6 +1170,8 @@
           "abformung",
           "provisorium"
         ],
+        "extractionMethod": "llm",
+        "extractionLlmError": "none",
         "debugInstances": [
           {
             "instanceId": "crown_prep-11-1",

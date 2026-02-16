@@ -72,6 +72,47 @@ describe('Pipeline: general settings defaults', () => {
         expect(result.output.fullText).toContain('Kofferdam');
     });
 
+    it('applies normalized medical defaults (anesthesia + isolation) without legacy keys', async () => {
+        const result = await runV10WithAutoAnswers({
+            dictation: 'Zahn 36 MO Komposit.',
+            treatmentId: 'fuellung',
+            insuranceType: 'GKV',
+            textLength: 'mittel',
+            testOnly: {
+                forceExtraction: {
+                    tooth: '36',
+                    surfaces: ['m', 'o'],
+                    cariesDepth: 'normal',
+                },
+                settings: {
+                    user: {
+                        medicalDefaults: {
+                            anesthesia: {
+                                defaultType: 'infiltration',
+                                defaultAgentId: 'la_septanest',
+                            },
+                            isolation: { defaultMode: 'kofferdam' },
+                        },
+                        treatments: {
+                            fuellung: {
+                                defaultCompositeMaterialId: 'comp_universal_tetric_evoceram',
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+        expect(result.state).toBe('output');
+        if (result.state !== 'output') return;
+
+        const instance = Object.values(result.output.perInstance ?? {})[0];
+        expect(instance?.chips).toContain('la_infiltr');
+        expect(instance?.chips).toContain('kofferdam');
+        expect(result.output.fullText).toContain('Septanest');
+        expect(result.output.fullText).toContain('Kofferdam');
+    });
+
     it('applies MKV defaults in MKV mode (no manual confirmation)', async () => {
         const result = await runV10WithAutoAnswers({
             dictation: 'Zahn 36 MO Komposit.',

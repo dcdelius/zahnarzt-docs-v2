@@ -15,6 +15,12 @@ interface Props {
     optionTestId?: (option: { id: string; label: string }) => string;
 }
 
+type QuestionOptionLoose = {
+    id?: string;
+    label: string;
+    dataValue?: unknown;
+};
+
 function defaultParseNumber(raw: string): number | undefined {
     const trimmed = raw.trim();
     if (trimmed.length === 0) return undefined;
@@ -25,6 +31,26 @@ function defaultParseNumber(raw: string): number | undefined {
 
 function defaultOptionTestId(option: { id: string; label: string }) {
     return `option-${option.label}`;
+}
+
+function resolveOptionId(option: QuestionOptionLoose): string {
+    if (typeof option.id === 'string' && option.id.trim().length > 0) {
+        return option.id;
+    }
+    if (typeof option.dataValue === 'string' && option.dataValue.trim().length > 0) {
+        return option.dataValue;
+    }
+    return option.label;
+}
+
+function resolveOptionValue(option: QuestionOptionLoose): unknown {
+    return option.dataValue ?? resolveOptionId(option);
+}
+
+function isOptionActive(value: unknown, option: QuestionOptionLoose): boolean {
+    const resolvedId = resolveOptionId(option);
+    const resolvedValue = resolveOptionValue(option);
+    return value === resolvedValue || value === resolvedId || value === option.label;
 }
 
 export function V10QuestionRow({
@@ -98,11 +124,11 @@ export function V10QuestionRow({
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 {type === 'single' && options && options.length > 0 && options.map((opt) => (
                     <V10OptionPillButton
-                        key={opt.id}
+                        key={resolveOptionId(opt)}
                         label={opt.label}
-                        isActive={value === opt.dataValue || value === opt.id}
-                        onClick={() => onChange(opt.dataValue ?? opt.id)}
-                        testId={optionTestId({ id: opt.id, label: opt.label })}
+                        isActive={isOptionActive(value, opt)}
+                        onClick={() => onChange(resolveOptionValue(opt))}
+                        testId={optionTestId({ id: resolveOptionId(opt), label: opt.label })}
                     />
                 ))}
 
@@ -193,11 +219,11 @@ export function V10QuestionRow({
 
                 {type === 'multi' && options?.map((opt) => {
                     const currentArray = Array.isArray(value) ? value : [];
-                    const resolvedValue = opt.dataValue ?? opt.id;
+                    const resolvedValue = resolveOptionValue(opt);
                     const isSelected = currentArray.includes(resolvedValue);
                     return (
                         <V10OptionPillButton
-                            key={opt.id}
+                            key={resolveOptionId(opt)}
                             label={opt.label}
                             isActive={isSelected}
                             onClick={() => {
@@ -207,18 +233,18 @@ export function V10QuestionRow({
                                     onChange([...currentArray, resolvedValue]);
                                 }
                             }}
-                            testId={optionTestId({ id: opt.id, label: opt.label })}
+                            testId={optionTestId({ id: resolveOptionId(opt), label: opt.label })}
                         />
                     );
                 })}
 
                 {!type && options && options.map((opt) => (
                     <V10OptionPillButton
-                        key={opt.id}
+                        key={resolveOptionId(opt)}
                         label={opt.label}
-                        isActive={value === opt.dataValue || value === opt.id}
-                        onClick={() => onChange(opt.dataValue ?? opt.id)}
-                        testId={optionTestId({ id: opt.id, label: opt.label })}
+                        isActive={isOptionActive(value, opt)}
+                        onClick={() => onChange(resolveOptionValue(opt))}
+                        testId={optionTestId({ id: resolveOptionId(opt), label: opt.label })}
                     />
                 ))}
 

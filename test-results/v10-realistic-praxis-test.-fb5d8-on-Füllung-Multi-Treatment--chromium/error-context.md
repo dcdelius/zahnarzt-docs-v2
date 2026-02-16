@@ -1,0 +1,85 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - region "Notifications alt+T"
+  - generic [ref=e4]:
+    - navigation [ref=e8]:
+      - link "DOCUDENT" [ref=e9] [cursor=pointer]:
+        - /url: /docudent/v10
+      - generic [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: Behandlung
+            - button "Füllung ▼" [ref=e14] [cursor=pointer]:
+              - generic [ref=e15]: Füllung
+              - generic [ref=e16]: ▼
+          - generic [ref=e17]:
+            - generic [ref=e18]: Versicherung
+            - generic [ref=e19]:
+              - button "GKV" [ref=e20] [cursor=pointer]
+              - button "+MKV" [ref=e21] [cursor=pointer]
+              - button "PKV" [ref=e22] [cursor=pointer]
+          - generic [ref=e23]:
+            - generic [ref=e24]: Länge
+            - generic [ref=e25]:
+              - button "Kurz" [ref=e26] [cursor=pointer]
+              - button "Mittel" [ref=e27] [cursor=pointer]
+              - button "Lang" [ref=e28] [cursor=pointer]
+          - button "Multi-Modus" [ref=e29] [cursor=pointer]
+        - button "Einstellungen" [ref=e31] [cursor=pointer]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]: Herkunft Fakten
+        - generic [ref=e37]:
+          - generic [ref=e38]: "dictation: 3"
+          - generic [ref=e39]: "settings: 0"
+          - generic [ref=e40]: "askback: 0"
+          - generic [ref=e41]: "manual: 0"
+      - generic [ref=e42]:
+        - generic [ref=e43]: Execution
+        - generic [ref=e44]:
+          - generic [ref=e45]: "kb: default"
+          - generic [ref=e46]: "hash: h2740bd23"
+      - generic [ref=e47]:
+        - generic [ref=e48]: Behandlungen (2)
+        - generic [ref=e50]:
+          - generic [ref=e51]: FUELLUNG
+          - generic [ref=e52]: intent-2-seg-2-1
+        - generic [ref=e54]:
+          - generic [ref=e55]: EXTRACTION
+          - generic [ref=e56]: intent-1-seg-1-1
+      - generic [ref=e57]:
+        - generic [ref=e58]: Zusammengeführte Dokumentation
+        - generic [ref=e59]:
+          - generic [ref=e60]: "LA Infiltration (Ultracain D-S). Kofferdam angelegt. Zahn 16 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Lokalanästhesie (Infiltration). Extraktion Zahn 28 durchgeführt. Wundversorgung durchgeführt."
+          - button "Text kopieren" [ref=e61] [cursor=pointer]
+      - generic [ref=e62]:
+        - generic [ref=e63]: Abrechnungscodes (5)
+        - generic [ref=e64]:
+          - generic [ref=e65]: BEMA_12 (16) · seg-2-1:tooth:16
+          - generic [ref=e66]: BEMA_13 (16) · seg-2-1:tooth:16
+          - generic [ref=e67]: BEMA_40 (16) · seg-2-1:tooth:16
+          - generic [ref=e68]: BEMA_40 (28) · seg-1-1:tooth:28
+          - generic [ref=e69]: BEMA_41a (28) · seg-1-1:tooth:28
+      - generic [ref=e70]:
+        - generic [ref=e71]: Trace Code → Instanz → KB
+        - generic [ref=e72]:
+          - generic [ref=e73]:
+            - strong [ref=e74]: BEMA_40
+            - text: · seg-1-1:tooth:28 · Zahn 28 · TOOTH · kb:default
+          - generic [ref=e75]:
+            - strong [ref=e76]: BEMA_41a
+            - text: · seg-1-1:tooth:28 · Zahn 28 · TOOTH · kb:default
+          - generic [ref=e77]:
+            - strong [ref=e78]: BEMA_12
+            - text: · seg-2-1:tooth:16 · Zahn 16 · TOOTH · kb:default
+          - generic [ref=e79]:
+            - strong [ref=e80]: BEMA_13
+            - text: · seg-2-1:tooth:16 · Zahn 16 · TOOTH · kb:default
+          - generic [ref=e81]:
+            - strong [ref=e82]: BEMA_40
+            - text: · seg-2-1:tooth:16 · Zahn 16 · TOOTH · kb:default
+      - button "Neue Dokumentation" [ref=e84] [cursor=pointer]
+    - button "Debug" [ref=e85] [cursor=pointer]
+```

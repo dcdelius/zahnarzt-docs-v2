@@ -26,4 +26,32 @@ describe('runV10Bundle provenance meta', () => {
             }
         }
     });
+
+    it('keeps provenance deterministic and exposes chip lineage on output bundles', async () => {
+        const input = {
+            dictation: 'Fuellung Zahn 36 okklusal mit Komposit unter Kofferdam.',
+            segments: [
+                {
+                    segmentId: 'seg-1',
+                    treatmentId: 'fuellung' as const,
+                    insuranceType: 'GKV' as const,
+                    textLength: 'mittel' as const,
+                    dictation: 'Fuellung Zahn 36 okklusal mit Komposit unter Kofferdam.',
+                    instances: [{ instanceId: 'inst-36', tooth: '36' }],
+                },
+            ],
+        };
+
+        const first = await runV10Bundle(input, { autoAnswerAllQuestions: true });
+        const second = await runV10Bundle(input, { autoAnswerAllQuestions: true });
+
+        expect(first.state).toBe('output');
+        expect(second.state).toBe('output');
+
+        const firstProvenance = JSON.stringify(first.meta.provenance ?? {});
+        const secondProvenance = JSON.stringify(second.meta.provenance ?? {});
+        expect(firstProvenance).toBe(secondProvenance);
+
+        expect((first.meta.provenance?.chips ?? []).length).toBeGreaterThan(0);
+    });
 });

@@ -24,22 +24,50 @@ function parseArgs(argv: string[]) {
 }
 
 async function checkOpenAI(): Promise<CheckResult> {
-    const apiKey = readEnv('VITE_OPENAI_API_KEY') ?? readEnv('REACT_APP_OPENAI_API_KEY');
-    if (!apiKey) {
-        return { ok: false, details: { reason: 'missing_api_key', env: ['VITE_OPENAI_API_KEY', 'REACT_APP_OPENAI_API_KEY'] } };
+    let derivedFromVite = false;
+    let serverKey = readEnv('OPENAI_API_KEY');
+    if (!serverKey) {
+        const viteKey = readEnv('VITE_OPENAI_API_KEY');
+        if (viteKey) {
+            process.env.OPENAI_API_KEY = viteKey;
+            serverKey = viteKey;
+            derivedFromVite = true;
+        }
+    }
+    const browserKey = readEnv('VITE_OPENAI_API_KEY') ?? readEnv('REACT_APP_OPENAI_API_KEY');
+    if (!serverKey) {
+        return {
+            ok: false,
+            details: {
+                reason: 'missing_openai_api_key',
+                env: ['OPENAI_API_KEY'],
+            },
+        };
     }
 
-    const res = await fetch('https://api.openai.com/v1/models', {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${apiKey}` },
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${serverKey}`,
+        },
+        body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            temperature: 0,
+            max_tokens: 1,
+            messages: [{ role: 'user', content: 'ping' }],
+        }),
     });
 
-    const ok = res.ok;
     return {
-        ok,
+        ok: res.ok,
         details: {
             status: res.status,
             statusText: res.statusText,
+            keySource: 'OPENAI_API_KEY',
+            serverKeyDerivedFromVite: derivedFromVite,
+            browserKeyPresent: Boolean(browserKey),
+            browserKeyMatchesServerKey: browserKey ? browserKey === serverKey : null,
         },
     };
 }
@@ -158,7 +186,9 @@ async function main() {
     const args = parseArgs(process.argv.slice(2));
 
     const envSummary = {
+        OPENAI_API_KEY: Boolean(readEnv('OPENAI_API_KEY')),
         VITE_OPENAI_API_KEY: Boolean(readEnv('VITE_OPENAI_API_KEY')),
+        REACT_APP_OPENAI_API_KEY: Boolean(readEnv('REACT_APP_OPENAI_API_KEY')),
         VITE_FIREBASE_PROJECT_ID: Boolean(readEnv('VITE_FIREBASE_PROJECT_ID')),
         VITE_FIREBASE_API_KEY: Boolean(readEnv('VITE_FIREBASE_API_KEY')),
         VITE_FIREBASE_APP_ID: Boolean(readEnv('VITE_FIREBASE_APP_ID')),

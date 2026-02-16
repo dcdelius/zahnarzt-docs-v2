@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-15T15:15:20.223Z",
+  "generated": "2026-02-16T15:24:47.676Z",
   "duration": "0ms",
   "summary": {
     "total": 8,
@@ -16,7 +16,8 @@
       },
       "actual": {
         "base": "BEMA_13",
-        "addon": null
+        "addon": null,
+        "addonActive": false
       }
     },
     {
@@ -28,7 +29,8 @@
       },
       "actual": {
         "base": "GOZ_2060",
-        "addon": null
+        "addon": null,
+        "addonActive": false
       }
     },
     {
@@ -40,7 +42,8 @@
       },
       "actual": {
         "base": "BEMA_13",
-        "addon": "GOZ_2060"
+        "addon": "GOZ_2060",
+        "addonActive": true
       }
     },
     {
@@ -52,7 +55,8 @@
       },
       "actual": {
         "base": "BEMA_13",
-        "addon": null
+        "addon": null,
+        "addonActive": false
       }
     },
     {
@@ -64,7 +68,8 @@
       },
       "actual": {
         "base": "BEMA_13b",
-        "addon": null
+        "addon": null,
+        "addonActive": false
       }
     },
     {
@@ -76,7 +81,8 @@
       },
       "actual": {
         "base": "BEMA_13c",
-        "addon": null
+        "addon": null,
+        "addonActive": false
       }
     },
     {
@@ -88,7 +94,8 @@
       },
       "actual": {
         "base": "BEMA_13d",
-        "addon": null
+        "addon": null,
+        "addonActive": false
       }
     },
     {
@@ -100,7 +107,8 @@
       },
       "actual": {
         "base": "BEMA_13",
-        "addon": "GOZ_2060"
+        "addon": null,
+        "addonActive": false
       }
     }
   ]

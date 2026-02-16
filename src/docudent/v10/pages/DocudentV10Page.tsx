@@ -21,8 +21,8 @@ import { useV10Pipeline, type InsuranceType, type TextLength } from '../hooks/us
 import { useSettings } from '../settings/useSettings';
 import type { ReproBundleV1 } from '../debug/reproBundle';
 import { AudioRecorder } from '../../../services/AudioRecorder';
-import { WhisperService } from '../../../services/WhisperService';
 import { useUser } from '../../../contexts/UserContext';
+import { callTranscriptionGateway } from '../audio/transcriptionGatewayClient';
 
 // PACK REGISTRY - V10 addition for dynamic treatment list
 import { listPacks, listPackIds, getPack } from '../packs';
@@ -56,6 +56,14 @@ import { detectTreatmentIntents } from '../preanalysis/detectTreatmentIntents';
 import { buildSegmentsFromIntents } from '../preanalysis/buildSegmentsFromIntents';
 import { buildIntentConfirmationViewModel, type IntentConfirmationViewModel } from '../preanalysis/buildIntentConfirmationViewModel';
 import { canonicalizeTreatmentIntentBundle, type TreatmentIntentBundleV1 } from '../preanalysis/treatmentIntentContract';
+import { buildInitialIntentSelections, getUnresolvedIntentIds } from '../preanalysis/intentSelectionPolicy';
+import {
+    applyExtractionTraceMeta,
+    applyPreanalysisMeta,
+    createInitialLlmRuntimeMeta,
+    shouldShowLlmFallbackBanner,
+    type V10LlmRuntimeMeta,
+} from '../debug/llmRuntimeMeta';
 
 export default function DocudentV10Page() {
     // ═══════════════════════════════════════════════════════════════
@@ -121,16 +129,17 @@ export default function DocudentV10Page() {
     const [intentConfirmation, setIntentConfirmation] = useState<{
         bundle: TreatmentIntentBundleV1;
         viewModel: IntentConfirmationViewModel;
-        selectedTreatments: Record<string, string>;
+        selectedTreatments: Record<string, string | undefined>;
     } | null>(null);
     const [intentFocusIndex, setIntentFocusIndex] = useState(0);
+    const intentConfirmationOpenedAtRef = useRef<number>(0);
     const autoMultiRef = useRef<string | null>(null);
     const settingsAppliedRef = useRef(false);
     const [debugOpen, setDebugOpen] = useState(false);
+    const [llmRuntimeMeta, setLlmRuntimeMeta] = useState<V10LlmRuntimeMeta>(() => createInitialLlmRuntimeMeta());
     const showDebugToggle = typeof window !== 'undefined'
         && (import.meta.env.DEV || localStorage.getItem('v10_debug') === 'true');
     const audioRecorderRef = useRef<AudioRecorder | null>(null);
-    const whisperServiceRef = useRef<WhisperService | null>(null);
     const {
         overridesByInstance: chipOverridesByInstance,
         setOverride: setChipOverride,
@@ -309,11 +318,14 @@ export default function DocudentV10Page() {
         if (!dictation.trim() || isProcessing || isTranscribing || isPreanalysisRunning) return;
         setRunAttemptSeq(prev => prev + 1);
         setIsPreanalysisRunning(true);
+        setLlmRuntimeMeta(createInitialLlmRuntimeMeta());
         try {
             const effectiveInsurance = hasMKV ? 'MKV' : insuranceType;
             const forceFallbackForE2E = typeof window !== 'undefined'
                 && Boolean((window as any).__DOCUDENT_E2E_BYPASS_AUTH);
             let detection: Awaited<ReturnType<typeof detectTreatmentIntents>>;
+            let preanalysisError: string | undefined;
+            let forcedFallback = forceFallbackForE2E;
             try {
                 detection = await Promise.race([
                     detectTreatmentIntents(dictation, { forceFallback: forceFallbackForE2E }),
@@ -321,20 +333,30 @@ export default function DocudentV10Page() {
                         setTimeout(() => reject(new Error('preanalysis-timeout')), 12000);
                     }),
                 ]);
-            } catch {
+            } catch (error) {
+                preanalysisError = error instanceof Error ? error.message : String(error);
+                forcedFallback = true;
                 detection = await detectTreatmentIntents(dictation, { forceFallback: true });
             }
+            const preanalysisDiagnostics = preanalysisError
+                ? [...detection.diagnostics, `preanalysis-timeout-or-error:${preanalysisError}`]
+                : detection.diagnostics;
+            setLlmRuntimeMeta(current => applyPreanalysisMeta(current, {
+                source: detection.source,
+                diagnostics: preanalysisDiagnostics,
+                fallback: detection.source === 'fallback' || forcedFallback,
+                error: preanalysisError,
+            }));
             const confirmationVm = buildIntentConfirmationViewModel(detection.bundle);
 
             if (detection.needsConfirmation || !confirmationVm.canConfirmAllWithoutEdits) {
-                const selectedTreatments = Object.fromEntries(
-                    detection.bundle.intents.map(intent => [intent.intentId, intent.treatmentId])
-                );
+                const selectedTreatments = buildInitialIntentSelections(detection.bundle, confirmationVm);
                 setIntentConfirmation({
                     bundle: detection.bundle,
                     viewModel: confirmationVm,
                     selectedTreatments,
                 });
+                intentConfirmationOpenedAtRef.current = Date.now();
                 setIntentFocusIndex(0);
                 setUiStepOverride('review');
                 return;
@@ -365,6 +387,13 @@ export default function DocudentV10Page() {
             });
         } catch (error) {
             console.warn('[V10 preanalysis] Falling back to single runPipeline', error);
+            const message = error instanceof Error ? error.message : String(error);
+            setLlmRuntimeMeta(current => applyPreanalysisMeta(current, {
+                source: 'fallback',
+                diagnostics: [...current.preanalysisDiagnostics, 'preanalysis-launch-failed:single-run-fallback'],
+                fallback: true,
+                error: message,
+            }));
             await runPipeline();
         } finally {
             setIsPreanalysisRunning(false);
@@ -405,6 +434,10 @@ export default function DocudentV10Page() {
 
     const confirmIntentSelectionAndRun = useCallback(async () => {
         if (!intentConfirmation) return;
+        const unresolvedIntentIds = getUnresolvedIntentIds(intentConfirmation.viewModel, intentConfirmation.selectedTreatments);
+        if (unresolvedIntentIds.length > 0) {
+            return;
+        }
 
         const effectiveInsurance = hasMKV ? 'MKV' : insuranceType;
         const intents = intentConfirmation.bundle.intents.map(intent => ({
@@ -446,6 +479,11 @@ export default function DocudentV10Page() {
         });
     }, [answers, hasMKV, insuranceType, intentConfirmation, runBundlePipeline, settingsInput?.practice?.activeKbReleaseId, textLength]);
 
+    const unresolvedIntentIds = useMemo(() => {
+        if (!intentConfirmation) return [];
+        return getUnresolvedIntentIds(intentConfirmation.viewModel, intentConfirmation.selectedTreatments);
+    }, [intentConfirmation]);
+
     useEffect(() => {
         if (!intentConfirmation) return;
         const onKeyDown = (event: KeyboardEvent) => {
@@ -463,6 +501,9 @@ export default function DocudentV10Page() {
                 return;
             }
             if (event.key === 'Enter') {
+                if (event.metaKey || event.ctrlKey) return;
+                if (Date.now() - intentConfirmationOpenedAtRef.current < 250) return;
+                if (unresolvedIntentIds.length > 0) return;
                 event.preventDefault();
                 void confirmIntentSelectionAndRun();
                 return;
@@ -477,14 +518,11 @@ export default function DocudentV10Page() {
         };
         window.addEventListener('keydown', onKeyDown);
         return () => window.removeEventListener('keydown', onKeyDown);
-    }, [applyIntentSelection, confirmIntentSelectionAndRun, intentConfirmation, intentFocusIndex]);
+    }, [applyIntentSelection, confirmIntentSelectionAndRun, intentConfirmation, intentFocusIndex, unresolvedIntentIds.length]);
 
-    const ensureWhisper = () => {
-        if (!whisperServiceRef.current) {
-            const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-            whisperServiceRef.current = new WhisperService(apiKey);
-        }
-    };
+    useEffect(() => {
+        setLlmRuntimeMeta(current => applyExtractionTraceMeta(current, result?.debug?.v10TraceLines));
+    }, [result?.debug?.v10TraceLines]);
 
     const handleMicClick = useCallback(async () => {
         setTranscriptionError(null);
@@ -495,7 +533,6 @@ export default function DocudentV10Page() {
 
         if (!isRecording) {
             try {
-                ensureWhisper();
                 await audioRecorderRef.current.startRecording();
                 setIsRecording(true);
             } catch (error) {
@@ -509,8 +546,10 @@ export default function DocudentV10Page() {
             setIsTranscribing(true);
             const audioBlob = await audioRecorderRef.current.stopRecording();
             setIsRecording(false);
-            ensureWhisper();
-            const transcription = await whisperServiceRef.current!.transcribe(audioBlob);
+            const transcription = await callTranscriptionGateway(audioBlob);
+            if (!transcription) {
+                throw new Error('Transkription leer');
+            }
             const nextText = dictation.trim().length > 0
                 ? `${dictation.trim()} ${transcription}`.trim()
                 : transcription;
@@ -784,12 +823,12 @@ export default function DocudentV10Page() {
                                         {Math.round(lane.confidence * 100)}%
                                     </div>
                                 </div>
-                                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.72)', marginTop: '8px', minHeight: '36px' }}>
-                                    {lane.evidencePreview}
-                                </div>
+                                    <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.72)', marginTop: '8px', minHeight: '36px' }}>
+                                        {lane.evidencePreview}
+                                    </div>
                                 <div style={{ display: 'flex', gap: '8px', marginTop: '12px', flexWrap: 'wrap' }}>
                                     {lane.options.map(option => {
-                                        const selected = (intentConfirmation.selectedTreatments[lane.intentId] ?? lane.treatmentId) === option.treatmentId;
+                                        const selected = intentConfirmation.selectedTreatments[lane.intentId] === option.treatmentId;
                                         return (
                                             <button
                                                 key={`${lane.intentId}-${option.treatmentId}`}
@@ -818,6 +857,11 @@ export default function DocudentV10Page() {
                     <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.66)' }}>
                         Schnellwahl: Pfeile wechseln Lane, Tasten 1/2/3 wählen Option, Enter bestätigt.
                     </div>
+                    {unresolvedIntentIds.length > 0 ? (
+                        <div style={{ fontSize: '12px', color: 'rgba(255,182,140,0.92)' }}>
+                            Bitte ordne {unresolvedIntentIds.length} Behandlung{unresolvedIntentIds.length === 1 ? '' : 'en'} explizit zu.
+                        </div>
+                    ) : null}
 
                     <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
                         <button
@@ -831,6 +875,7 @@ export default function DocudentV10Page() {
                             type="button"
                             data-testid="v10-intent-confirm-button"
                             onClick={confirmIntentSelectionAndRun}
+                            disabled={unresolvedIntentIds.length > 0}
                             style={dockPrimaryStyle}
                         >
                             Bestätigen und weiter
@@ -1098,6 +1143,44 @@ export default function DocudentV10Page() {
                 data-phase={isPreanalysisRunning ? 'preanalysis' : isProcessing ? 'pipeline' : 'idle'}
                 style={{ display: 'none' }}
             />
+            <div
+                data-testid="v10-llm-runtime-meta"
+                data-preanalysis-source={llmRuntimeMeta.preanalysisSource}
+                data-preanalysis-fallback={String(llmRuntimeMeta.preanalysisFallback)}
+                data-extraction-method={llmRuntimeMeta.extractionMethod}
+                data-extraction-llm-error={llmRuntimeMeta.extractionLlmError}
+                style={{ display: 'none' }}
+            />
+            {shouldShowLlmFallbackBanner(llmRuntimeMeta) && (
+                <div
+                    data-testid="v10-llm-fallback-banner"
+                    style={{
+                        position: 'fixed',
+                        left: '24px',
+                        bottom: '24px',
+                        zIndex: 1800,
+                        maxWidth: '460px',
+                        background: 'rgba(250, 115, 102, 0.16)',
+                        color: '#FFE7D9',
+                        border: '1px solid rgba(250, 115, 102, 0.35)',
+                        borderRadius: '12px',
+                        padding: '10px 12px',
+                        fontSize: '12px',
+                        lineHeight: 1.45,
+                        boxShadow: '0 10px 24px rgba(0,0,0,0.24)',
+                        backdropFilter: 'blur(10px)',
+                    }}
+                >
+                    <strong>Fallback aktiv</strong>
+                    <div>
+                        Voranalyse: {llmRuntimeMeta.preanalysisSource}
+                        {' · '}
+                        Extraktion: {llmRuntimeMeta.extractionMethod}
+                        {' · '}
+                        llmError: {llmRuntimeMeta.extractionLlmError}
+                    </div>
+                </div>
+            )}
             {/* Background Layers (Same as V8) */}
             <SoftGradientBackground />
             <div className="v7-bg" />
@@ -1151,7 +1234,7 @@ export default function DocudentV10Page() {
 
             {/* MAIN CONTENT */}
             {/* M64: Only show dictation input for idle state, NOT for review step */}
-            {currentState === 'idle' && !isPreanalysisRunning ? (
+            {currentState === 'idle' && !isPreanalysisRunning && !intentConfirmation ? (
                 <div className="v7-jeton-hero">
                     <div className="v7-jeton-container" style={{ position: 'relative', zIndex: 10 }}>
                         <div className="v7-jeton-kicker">INTELLIGENT DOCUMENTATION</div>
@@ -1204,7 +1287,7 @@ export default function DocudentV10Page() {
             )}
 
         {/* FLOATING ACTION DOCK */}
-            {currentState === 'idle' && !isPreanalysisRunning && (
+            {currentState === 'idle' && !isPreanalysisRunning && !intentConfirmation && (
             <div className="v7-jeton-dock">
                 <button
                     data-testid="v10-dock-aufnahme"
@@ -1292,6 +1375,7 @@ export default function DocudentV10Page() {
             {showDebugToggle && debugOpen && (
                 <V10DebugDrawer
                     result={result}
+                    runtimeDiagnostics={llmRuntimeMeta}
                     onClose={() => setDebugOpen(false)}
                     onImportRepro={handleImportRepro}
                     onRunRepro={() => runPipeline()}

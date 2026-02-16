@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-14T20:29:46.133Z",
+  "generatedAt": "2026-02-16T16:16:55.109Z",
   "files": [
     {
       "path": "src/docudent/__archive__/core-services/outputService.ts",
@@ -430,8 +430,8 @@
     {
       "path": "src/docudent/__tests__/gates/gate-askback-rerun-resolution.test.ts",
       "type": "test",
-      "size": 5926,
-      "hash": "b48e831bbff4"
+      "size": 7180,
+      "hash": "b0bc2fc2b8ab"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-askback-runner-v1.test.ts",
@@ -720,6 +720,30 @@
       "type": "test",
       "size": 8094,
       "hash": "3d0d774bd66c"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-firebase-functions-target.test.ts",
+      "type": "test",
+      "size": 534,
+      "hash": "c76191bc5357"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-firestore-legacy-praxen-admin-writes.test.ts",
+      "type": "test",
+      "size": 1029,
+      "hash": "a27be0c1c6fc"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-firestore-v10-settings-path-parity.test.ts",
+      "type": "test",
+      "size": 879,
+      "hash": "8433e970d16a"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-firestore-v10-settings-rules-emulator.test.ts",
+      "type": "test",
+      "size": 4258,
+      "hash": "5ce6038498a7"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-fragmentation-sentinel.test.ts",
@@ -1120,8 +1144,8 @@
     {
       "path": "src/docudent/__tests__/gates/gate-m36-settings-reduce-askbacks.test.ts",
       "type": "test",
-      "size": 4021,
-      "hash": "b45d9f5c7a6b"
+      "size": 5350,
+      "hash": "1501a1fbeef2"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-m37-negation-overrides-settings.test.ts",
@@ -1186,8 +1210,8 @@
     {
       "path": "src/docudent/__tests__/gates/gate-m39-clinical-v4-settings-reduce-askbacks.test.ts",
       "type": "test",
-      "size": 2360,
-      "hash": "5673413ea4a5"
+      "size": 2749,
+      "hash": "86e8fd67b837"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-m40-ui-controls-respect-precedence.test.ts",
@@ -1360,8 +1384,8 @@
     {
       "path": "src/docudent/__tests__/gates/gate-mkv-askback-trigger-ssot.test.ts",
       "type": "test",
-      "size": 13216,
-      "hash": "9110a8421f23"
+      "size": 13326,
+      "hash": "986bd14e2b86"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-mkv-billing-contract.test.ts",
@@ -1372,8 +1396,8 @@
     {
       "path": "src/docudent/__tests__/gates/gate-mkv-minimal-askback-v2.test.ts",
       "type": "test",
-      "size": 13551,
-      "hash": "91440e468c9c"
+      "size": 14509,
+      "hash": "092bab3869a9"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-mkv-praxis-default.test.ts",
@@ -1688,16 +1712,46 @@
       "hash": "7c06063948e9"
     },
     {
+      "path": "src/docudent/__tests__/gates/gate-v10-bundle-instance-provenance.test.ts",
+      "type": "test",
+      "size": 761,
+      "hash": "d73f4ce5b1b4"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-bundle-output-hash.test.ts",
+      "type": "test",
+      "size": 595,
+      "hash": "c0f217963644"
+    },
+    {
       "path": "src/docudent/__tests__/gates/gate-v10-capping-workflow-dag.test.ts",
       "type": "test",
       "size": 5429,
       "hash": "ef21d9af213c"
     },
     {
+      "path": "src/docudent/__tests__/gates/gate-v10-clinical-truthcases-settings-canonicalization.test.ts",
+      "type": "test",
+      "size": 615,
+      "hash": "1a5a86d81962"
+    },
+    {
       "path": "src/docudent/__tests__/gates/gate-v10-concept-ueberkappung-cohesion.test.ts",
       "type": "test",
       "size": 2250,
       "hash": "f4551d356977"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-consolidated-audit-coverage.test.ts",
+      "type": "test",
+      "size": 1089,
+      "hash": "d050180c9583"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-crown-prep-active-path.test.ts",
+      "type": "test",
+      "size": 1055,
+      "hash": "e9faf8005940"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-v10-deep-filling-wiring.test.ts",
@@ -1718,10 +1772,52 @@
       "hash": "700e39015fbb"
     },
     {
+      "path": "src/docudent/__tests__/gates/gate-v10-extraction-gateway-boundary.test.ts",
+      "type": "test",
+      "size": 746,
+      "hash": "e3da8bd9094e"
+    },
+    {
       "path": "src/docudent/__tests__/gates/gate-v10-flight-recorder-schema.test.ts",
       "type": "test",
       "size": 4273,
       "hash": "df7dfafd5baa"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-intent-confirm-explicit-decision.test.ts",
+      "type": "test",
+      "size": 691,
+      "hash": "74c678893665"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-intent-confirm-options-allowlist.test.ts",
+      "type": "test",
+      "size": 1367,
+      "hash": "61dd756a4043"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-intent-confirmation-min-clicks.test.ts",
+      "type": "test",
+      "size": 775,
+      "hash": "ad464ba5a18b"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-intent-to-segment-determinism.test.ts",
+      "type": "test",
+      "size": 1575,
+      "hash": "78eafe6484d3"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-llm-runtime-visibility.test.ts",
+      "type": "test",
+      "size": 1055,
+      "hash": "dffad60111c2"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-llm-ssot-boundary.test.ts",
+      "type": "test",
+      "size": 2032,
+      "hash": "a32b59a18050"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-v10-medical-e2e-v2.test.ts",
@@ -1814,6 +1910,24 @@
       "hash": "b16e1f3a5477"
     },
     {
+      "path": "src/docudent/__tests__/gates/gate-v10-only-app-surface.test.ts",
+      "type": "test",
+      "size": 2891,
+      "hash": "81645879a077"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-option-pill-accessibility.test.ts",
+      "type": "test",
+      "size": 566,
+      "hash": "87f055d1e4ce"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-orchestrator-single-path.test.ts",
+      "type": "test",
+      "size": 567,
+      "hash": "44562ca268d5"
+    },
+    {
       "path": "src/docudent/__tests__/gates/gate-v10-output-shape-contract.test.ts",
       "type": "test",
       "size": 4428,
@@ -1832,6 +1946,66 @@
       "hash": "021b8b606994"
     },
     {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-ambiguous-overlap-confirmation.test.ts",
+      "type": "test",
+      "size": 790,
+      "hash": "62fc672bcb29"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-confirmation-blocks-autorun.test.ts",
+      "type": "test",
+      "size": 715,
+      "hash": "eee58ac7783e"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-cross-clause-ambiguous-tooth-context.test.ts",
+      "type": "test",
+      "size": 945,
+      "hash": "1bd4c8266132"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-fixture-coverage.test.ts",
+      "type": "test",
+      "size": 2113,
+      "hash": "e40bcc50423f"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-gateway-boundary.test.ts",
+      "type": "test",
+      "size": 755,
+      "hash": "e521d9541d33"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-marker-poor-flow.test.ts",
+      "type": "test",
+      "size": 855,
+      "hash": "be8c16c2a1de"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-noise-segment-skip.test.ts",
+      "type": "test",
+      "size": 772,
+      "hash": "c57abb5ada37"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-replay-fixtures.test.ts",
+      "type": "test",
+      "size": 1030,
+      "hash": "058394a51c39"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-triple-overlap-deterministic.test.ts",
+      "type": "test",
+      "size": 921,
+      "hash": "74eeefc58961"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-preanalysis-uncertainty-contract.test.ts",
+      "type": "test",
+      "size": 1231,
+      "hash": "c8e7bc5b2745"
+    },
+    {
       "path": "src/docudent/__tests__/gates/gate-v10-procedure-coverage-audit.test.ts",
       "type": "test",
       "size": 2118,
@@ -1842,6 +2016,18 @@
       "type": "test",
       "size": 4394,
       "hash": "966e2a7169f2"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-release-audit-script.test.ts",
+      "type": "test",
+      "size": 645,
+      "hash": "e29de8a7781b"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-release-checklist.test.ts",
+      "type": "test",
+      "size": 1123,
+      "hash": "ba3d852d6772"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-v10-repro-26mod-mkv-askbacks.test.ts",
@@ -1856,10 +2042,124 @@
       "hash": "83b0bb8554d1"
     },
     {
+      "path": "src/docudent/__tests__/gates/gate-v10-run-surface-observability.test.ts",
+      "type": "test",
+      "size": 1407,
+      "hash": "d7c44439c05a"
+    },
+    {
       "path": "src/docudent/__tests__/gates/gate-v10-scenario-run.test.ts",
       "type": "test",
       "size": 5535,
       "hash": "84a8dae4a90a"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-server-llm-auth-boundary.test.ts",
+      "type": "test",
+      "size": 1495,
+      "hash": "447c287c174a"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-server-openai-env-boundary.test.ts",
+      "type": "test",
+      "size": 1497,
+      "hash": "6ba846d76f8f"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-capabilities-ui-wired.test.ts",
+      "type": "test",
+      "size": 1112,
+      "hash": "e4fd088d4fb7"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-firestore-load-parity.test.ts",
+      "type": "test",
+      "size": 839,
+      "hash": "e009e59ed714"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-governance-ui.test.ts",
+      "type": "test",
+      "size": 1296,
+      "hash": "4b0e10eb3d55"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-hierarchy-reconcile-wired.test.ts",
+      "type": "test",
+      "size": 835,
+      "hash": "1e938327b44f"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-legacy-mirror-deprecation-contract.test.ts",
+      "type": "test",
+      "size": 876,
+      "hash": "16e94b988475"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-medical-default-patch-no-legacy-keys.test.ts",
+      "type": "test",
+      "size": 1728,
+      "hash": "6d55e612570d"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-medical-default-write-path.test.ts",
+      "type": "test",
+      "size": 2144,
+      "hash": "512ff63f02b9"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-no-legacy-mirror-read-fallback.test.ts",
+      "type": "test",
+      "size": 1712,
+      "hash": "b008ee59a5a1"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-pipeline-canonicalization.test.ts",
+      "type": "test",
+      "size": 815,
+      "hash": "a994527289dd"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-practice-write-policy.test.ts",
+      "type": "test",
+      "size": 1113,
+      "hash": "2f762e2ba8df"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-runtime-canonicalization.test.ts",
+      "type": "test",
+      "size": 829,
+      "hash": "68a2819335e7"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-save-persists.test.ts",
+      "type": "test",
+      "size": 596,
+      "hash": "1f3cc5bc315e"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-storage-normalized-medical-defaults.test.ts",
+      "type": "test",
+      "size": 1991,
+      "hash": "6307db1f4816"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-store-single-target.test.ts",
+      "type": "test",
+      "size": 898,
+      "hash": "76aa655f7811"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-settings-user-doc-resolution.test.ts",
+      "type": "test",
+      "size": 1122,
+      "hash": "f7b6f438a468"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-single-intent-direct-run.test.ts",
+      "type": "test",
+      "size": 520,
+      "hash": "dd04c88a06a7"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-v10-ssot-chip-closure.test.ts",
@@ -1874,10 +2174,28 @@
       "hash": "46baab62ae9b"
     },
     {
+      "path": "src/docudent/__tests__/gates/gate-v10-text-refiner-gateway-boundary.test.ts",
+      "type": "test",
+      "size": 1029,
+      "hash": "09edfbc644fb"
+    },
+    {
       "path": "src/docudent/__tests__/gates/gate-v10-tooth-required-no-silent-output.test.ts",
       "type": "test",
       "size": 7009,
       "hash": "fad122ab3549"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-transcription-gateway-boundary.test.ts",
+      "type": "test",
+      "size": 1112,
+      "hash": "76574544071a"
+    },
+    {
+      "path": "src/docudent/__tests__/gates/gate-v10-treatment-intent-contract.test.ts",
+      "type": "test",
+      "size": 3231,
+      "hash": "136d843cacb4"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-v10-ui-autorepro-capture.test.ts",
@@ -2440,8 +2758,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/common.json",
       "type": "data",
-      "size": 1840,
-      "hash": "d488ae689d2e"
+      "size": 2067,
+      "hash": "1d86fab36fbe"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/crown_prep.json",
@@ -2452,8 +2770,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/endo.json",
       "type": "data",
-      "size": 3691,
-      "hash": "e1b6cf32ffa7"
+      "size": 3915,
+      "hash": "da956bf67306"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/extraction.json",
@@ -2464,8 +2782,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/fuellung.json",
       "type": "data",
-      "size": 3554,
-      "hash": "296344ed374d"
+      "size": 3948,
+      "hash": "ea515081e596"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/pzr.json",
@@ -2716,8 +3034,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
       "type": "runtime",
-      "size": 54386,
-      "hash": "40efa5e16141"
+      "size": 55181,
+      "hash": "4a7a37896f04"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/logic/regelEngine.ts",
@@ -3046,8 +3364,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/crown_prep/unified.json",
       "type": "data",
-      "size": 13621,
-      "hash": "db2c4ff95018"
+      "size": 13736,
+      "hash": "01cbdbafce78"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/endo/answer_map.json",
@@ -3076,8 +3394,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/endo/unified.json",
       "type": "data",
-      "size": 28795,
-      "hash": "714475fb0de2"
+      "size": 28553,
+      "hash": "f75d492c0d2c"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/extraction/answer_map.json",
@@ -3106,8 +3424,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/extraction/unified.json",
       "type": "data",
-      "size": 12385,
-      "hash": "9452ccfd2751"
+      "size": 12389,
+      "hash": "ecb6ca749e98"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/answer_map.json",
@@ -3136,8 +3454,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/unified.json",
       "type": "data",
-      "size": 36315,
-      "hash": "dbd1098f888e"
+      "size": 37012,
+      "hash": "5c53ba490e9d"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/pzr/answer_map.json",
@@ -3248,10 +3566,16 @@
       "hash": "e99b1d962328"
     },
     {
+      "path": "src/docudent/core/extraction/extractionGatewayClient.ts",
+      "type": "runtime",
+      "size": 926,
+      "hash": "a6c8ad11abe5"
+    },
+    {
       "path": "src/docudent/core/extraction/extractionService.ts",
       "type": "runtime",
-      "size": 23525,
-      "hash": "25f5e28a9f84"
+      "size": 23397,
+      "hash": "8ce43e649bfc"
     },
     {
       "path": "src/docudent/core/extraction/normalizeExtractedData.ts",
@@ -3406,8 +3730,8 @@
     {
       "path": "src/docudent/core/playbooks/endo/endoSignalParser.ts",
       "type": "runtime",
-      "size": 42703,
-      "hash": "cc5b7df5baf5"
+      "size": 42832,
+      "hash": "939fc251b797"
     },
     {
       "path": "src/docudent/core/playbooks/endo/endoTextRenderer.ts",
@@ -3646,8 +3970,8 @@
     {
       "path": "src/docudent/medical_kb/medical_kb.v1.v10.json",
       "type": "data",
-      "size": 127266,
-      "hash": "09e8ea93ba80"
+      "size": 131029,
+      "hash": "143e20df2241"
     },
     {
       "path": "src/docudent/medical_kb/schema.v1.ts",
@@ -3704,10 +4028,70 @@
       "hash": "10be1b231614"
     },
     {
+      "path": "src/docudent/v10/__tests__/askbacks/strict-kzv-fallback-questions.test.ts",
+      "type": "test",
+      "size": 1530,
+      "hash": "01c4ba7b9d5b"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/bundle/runV10Bundle.billing-dedupe-policy.test.ts",
+      "type": "test",
+      "size": 3098,
+      "hash": "985c5a19de55"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/bundle/runV10Bundle.instance-binding.test.ts",
+      "type": "test",
+      "size": 6596,
+      "hash": "ae7e38287c2b"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/bundle/runV10Bundle.kb-pinning.test.ts",
+      "type": "test",
+      "size": 3630,
+      "hash": "29f67b756b23"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/bundle/runV10Bundle.output-hash.test.ts",
+      "type": "test",
+      "size": 1110,
+      "hash": "7105bcb60b64"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/bundle/runV10Bundle.provenance-meta.test.ts",
+      "type": "test",
+      "size": 2373,
+      "hash": "f9e06eba3fac"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/components/MultiOutputRenderer.provenance.test.tsx",
+      "type": "test",
+      "size": 2368,
+      "hash": "78d7ea63c0c8"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/components/QuestionsFlowV2.lanes.test.tsx",
+      "type": "test",
+      "size": 2872,
+      "hash": "ea5cf8829fdc"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/components/V10ReviewAndBillingVisibility.test.tsx",
+      "type": "test",
+      "size": 2775,
+      "hash": "05f76b1f5167"
+    },
+    {
       "path": "src/docudent/v10/__tests__/facts/applyAnswersToFacts.test.ts",
       "type": "test",
       "size": 3230,
       "hash": "23a6a1cd695b"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/facts/endo-medication-detection.test.ts",
+      "type": "test",
+      "size": 675,
+      "hash": "c8fa81fa2aab"
     },
     {
       "path": "src/docudent/v10/__tests__/fixtures/goldenClinicalScenarios.v1.ts",
@@ -3782,6 +4166,12 @@
       "hash": "dad4a9bf4be0"
     },
     {
+      "path": "src/docudent/v10/__tests__/gates/gate-endo-procedure-migration-unbypassable.test.ts",
+      "type": "test",
+      "size": 2504,
+      "hash": "2570d1ff4dcf"
+    },
+    {
       "path": "src/docudent/v10/__tests__/gates/gate-extraction-facts-completeness.test.ts",
       "type": "test",
       "size": 814,
@@ -3814,14 +4204,14 @@
     {
       "path": "src/docudent/v10/__tests__/gates/gate-fuellung-mkv-askback-side-composite.test.ts",
       "type": "test",
-      "size": 1147,
-      "hash": "b587f0f9b538"
+      "size": 1091,
+      "hash": "317a0c877d3e"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-fuellung-mkv-chip-confirmed.test.ts",
       "type": "test",
-      "size": 1678,
-      "hash": "ca94b8933b8c"
+      "size": 1717,
+      "hash": "223422bcaf30"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-fuellung-no-silent-defaults.test.ts",
@@ -3866,6 +4256,12 @@
       "hash": "21bb331a97b3"
     },
     {
+      "path": "src/docudent/v10/__tests__/gates/gate-kb-release-pinning.test.ts",
+      "type": "test",
+      "size": 1931,
+      "hash": "0fee67307b3a"
+    },
+    {
       "path": "src/docudent/v10/__tests__/gates/gate-kb-schema-billingref-policy.test.ts",
       "type": "test",
       "size": 6894,
@@ -3890,10 +4286,28 @@
       "hash": "17543dd97ecb"
     },
     {
+      "path": "src/docudent/v10/__tests__/gates/gate-multitreatment-deterministic-aggregation.test.ts",
+      "type": "test",
+      "size": 2776,
+      "hash": "eee754b2605a"
+    },
+    {
       "path": "src/docudent/v10/__tests__/gates/gate-no-hardcoded-billing.test.ts",
       "type": "test",
       "size": 3763,
       "hash": "91138f288a63"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-output-length-policy-contract.test.ts",
+      "type": "test",
+      "size": 2084,
+      "hash": "05d58ee513f0"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-output-section-order-contract.test.ts",
+      "type": "test",
+      "size": 2369,
+      "hash": "37c3b77cc408"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-pzr-facts-completeness.test.ts",
@@ -3906,6 +4320,12 @@
       "type": "test",
       "size": 4043,
       "hash": "2a1901781d4d"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-treatment-pack-onboarding-contract.test.ts",
+      "type": "test",
+      "size": 1833,
+      "hash": "10cecb371665"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-truthcases-top15.test.ts",
@@ -3998,6 +4418,36 @@
       "hash": "c9e3afd89b1d"
     },
     {
+      "path": "src/docudent/v10/__tests__/llm/llmBoundaryContract.test.ts",
+      "type": "test",
+      "size": 895,
+      "hash": "a16b9ffa2c59"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/llm/llmRuntimeMeta.test.ts",
+      "type": "test",
+      "size": 2325,
+      "hash": "5d0a0638a977"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/llm/textRefiner.boundary.test.ts",
+      "type": "test",
+      "size": 827,
+      "hash": "10b96d88815c"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/multitreatment/classifyTreatment.test.ts",
+      "type": "test",
+      "size": 1860,
+      "hash": "9e9742e6e353"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/multitreatment/kb-release-pinning.test.ts",
+      "type": "test",
+      "size": 3451,
+      "hash": "469bb8e4ff64"
+    },
+    {
       "path": "src/docudent/v10/__tests__/multitreatment/multitreatment.scenario-suite.test.ts",
       "type": "test",
       "size": 6144,
@@ -4034,10 +4484,28 @@
       "hash": "9d6e2c10692a"
     },
     {
+      "path": "src/docudent/v10/__tests__/multitreatment/segmentDictation.test.ts",
+      "type": "test",
+      "size": 1476,
+      "hash": "3da9e1f943e1"
+    },
+    {
       "path": "src/docudent/v10/__tests__/pipeline-realistic-praxis.test.ts",
       "type": "test",
       "size": 12428,
       "hash": "741bb67f5672"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/strict-kzv-evidence-wiring.test.ts",
+      "type": "test",
+      "size": 3693,
+      "hash": "a0dc3015a1cc"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.askback-filter-known-facts.test.ts",
+      "type": "test",
+      "size": 1167,
+      "hash": "76dd0d1336b5"
     },
     {
       "path": "src/docudent/v10/__tests__/pipeline/v10.chip-billing-probe.test.ts",
@@ -4084,8 +4552,8 @@
     {
       "path": "src/docudent/v10/__tests__/pipeline/v10.fuellung-mkv-confirmed-askback.test.ts",
       "type": "test",
-      "size": 1147,
-      "hash": "e993f05293b7"
+      "size": 1418,
+      "hash": "45c55a3bd383"
     },
     {
       "path": "src/docudent/v10/__tests__/pipeline/v10.fuellung-ueberkappung-material-askback.test.ts",
@@ -4124,16 +4592,70 @@
       "hash": "e36a3de0ae68"
     },
     {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.review-fact-provenance.test.ts",
+      "type": "test",
+      "size": 1525,
+      "hash": "62a00506910e"
+    },
+    {
       "path": "src/docudent/v10/__tests__/pipeline/v10.settings-general-defaults.test.ts",
       "type": "test",
-      "size": 5540,
-      "hash": "dbd25f9b96e5"
+      "size": 7202,
+      "hash": "1cee48bac826"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.settings-material-defaults.test.ts",
+      "type": "test",
+      "size": 1106,
+      "hash": "0d09cad2c8e6"
     },
     {
       "path": "src/docudent/v10/__tests__/pipeline/v10.surface-lexicon.test.ts",
       "type": "test",
       "size": 730,
       "hash": "b6586db2ada0"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/preanalysis/buildIntentConfirmationViewModel.test.ts",
+      "type": "test",
+      "size": 2104,
+      "hash": "2c351b615829"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/preanalysis/buildSegmentsFromIntents.test.ts",
+      "type": "test",
+      "size": 3086,
+      "hash": "ed45b21eb094"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/preanalysis/detectTreatmentIntents.test.ts",
+      "type": "test",
+      "size": 14935,
+      "hash": "7b4e1bff56e1"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/preanalysis/fixtures/mixedIntentFixtures.ts",
+      "type": "test",
+      "size": 4864,
+      "hash": "127d358affda"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/preanalysis/intentSelectionPolicy.test.ts",
+      "type": "test",
+      "size": 1965,
+      "hash": "ba8c0a814627"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/preanalysis/runPreanalyzedBundle.test.ts",
+      "type": "test",
+      "size": 5726,
+      "hash": "837017bc9d4a"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/preanalysis/treatmentIntentContract.test.ts",
+      "type": "test",
+      "size": 10012,
+      "hash": "6297f1a9a3cd"
     },
     {
       "path": "src/docudent/v10/__tests__/procedure/bundleBillingCoverage.test.ts",
@@ -4157,7 +4679,7 @@
       "path": "src/docudent/v10/__tests__/procedure/common-anesthesia-askback.test.ts",
       "type": "test",
       "size": 1029,
-      "hash": "5635683b7b20"
+      "hash": "c090725be339"
     },
     {
       "path": "src/docudent/v10/__tests__/procedure/endo-askback-bundles.test.ts",
@@ -4181,7 +4703,7 @@
       "path": "src/docudent/v10/__tests__/procedure/fuellung-askback-bundles.test.ts",
       "type": "test",
       "size": 2600,
-      "hash": "04a87df59158"
+      "hash": "c573ba06a302"
     },
     {
       "path": "src/docudent/v10/__tests__/procedure/fuellung-capping-required-facts.test.ts",
@@ -4192,14 +4714,14 @@
     {
       "path": "src/docudent/v10/__tests__/procedure/gateMissingEventBundles.test.ts",
       "type": "test",
-      "size": 1821,
-      "hash": "31a86ded4595"
+      "size": 2457,
+      "hash": "6a5d9634c4de"
     },
     {
       "path": "src/docudent/v10/__tests__/procedure/gateNoUnknownChipEmitters.test.ts",
       "type": "test",
-      "size": 1001,
-      "hash": "f5a44be6b848"
+      "size": 1490,
+      "hash": "71529c2b49db"
     },
     {
       "path": "src/docudent/v10/__tests__/procedure/procedureCoverageGate.test.ts",
@@ -4208,10 +4730,52 @@
       "hash": "dfdf08dcdf9d"
     },
     {
+      "path": "src/docudent/v10/__tests__/procedure/strict-kzv-contract.test.ts",
+      "type": "test",
+      "size": 807,
+      "hash": "df62f5aae4ed"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/procedure/strict-kzv-evidence-askbacks.test.ts",
+      "type": "test",
+      "size": 4003,
+      "hash": "213b7014d17b"
+    },
+    {
       "path": "src/docudent/v10/__tests__/settings/chipStandards.test.ts",
       "type": "test",
       "size": 1008,
       "hash": "3c06be76312c"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/settings/hierarchyPolicy.test.ts",
+      "type": "test",
+      "size": 4202,
+      "hash": "e1663d1f334e"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/settings/medicalDefaults.test.ts",
+      "type": "test",
+      "size": 11063,
+      "hash": "122d68336b3d"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/settings/permissionPolicy.test.ts",
+      "type": "test",
+      "size": 1265,
+      "hash": "978ffa02081c"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/settings/resolveDefaultsToFacts.test.ts",
+      "type": "test",
+      "size": 2435,
+      "hash": "f91ff41bbf22"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/settings/strict-kzv-defaults.test.ts",
+      "type": "test",
+      "size": 304,
+      "hash": "9bac78f2549d"
     },
     {
       "path": "src/docudent/v10/__tests__/ui/v10.instance-isolation.test.ts",
@@ -4226,6 +4790,12 @@
       "hash": "479e056303ba"
     },
     {
+      "path": "src/docudent/v10/__tests__/ui/v10.questions-controls.test.tsx",
+      "type": "test",
+      "size": 1616,
+      "hash": "a8a81983521d"
+    },
+    {
       "path": "src/docudent/v10/__tests__/ui/v10.reality.contract.test.ts",
       "type": "test",
       "size": 9231,
@@ -4238,6 +4808,12 @@
       "hash": "ed9c3d70e59c"
     },
     {
+      "path": "src/docudent/v10/__tests__/ui/v10.review-source-labels.test.tsx",
+      "type": "test",
+      "size": 2167,
+      "hash": "365830b75f05"
+    },
+    {
       "path": "src/docudent/v10/__tests__/ui/v10.ui.snapshots.test.tsx",
       "type": "test",
       "size": 4346,
@@ -4246,20 +4822,26 @@
     {
       "path": "src/docudent/v10/app/V10Router.tsx",
       "type": "runtime",
-      "size": 2992,
-      "hash": "79053ff84740"
+      "size": 2572,
+      "hash": "8b45c6d4ca70"
     },
     {
       "path": "src/docudent/v10/askbacks/buildQuestionsFromAskbacks.ts",
       "type": "runtime",
-      "size": 3031,
-      "hash": "f903b97de91a"
+      "size": 4574,
+      "hash": "478dfb824131"
     },
     {
       "path": "src/docudent/v10/askbacks/mergeRequiredAskbacks.ts",
       "type": "runtime",
       "size": 681,
       "hash": "545fd5702391"
+    },
+    {
+      "path": "src/docudent/v10/audio/transcriptionGatewayClient.ts",
+      "type": "runtime",
+      "size": 1814,
+      "hash": "e4855e5c8982"
     },
     {
       "path": "src/docudent/v10/billing/billingCatalog.ts",
@@ -4390,8 +4972,8 @@
     {
       "path": "src/docudent/v10/components/index.ts",
       "type": "runtime",
-      "size": 1283,
-      "hash": "492f67a309f2"
+      "size": 1234,
+      "hash": "d1748c014598"
     },
     {
       "path": "src/docudent/v10/components/InlineExpandPanel.tsx",
@@ -4414,14 +4996,14 @@
     {
       "path": "src/docudent/v10/components/MultiOutputRenderer.tsx",
       "type": "runtime",
-      "size": 11150,
-      "hash": "08eddbc5c98c"
+      "size": 14686,
+      "hash": "534e5bfbbf2d"
     },
     {
       "path": "src/docudent/v10/components/OutputFlow.tsx",
       "type": "runtime",
-      "size": 20367,
-      "hash": "38d2627ce301"
+      "size": 23801,
+      "hash": "f6bb3fb76151"
     },
     {
       "path": "src/docudent/v10/components/OverlayMultiSelectField.tsx",
@@ -4442,16 +5024,10 @@
       "hash": "cfbb815ddd32"
     },
     {
-      "path": "src/docudent/v10/components/QuestionsFlow.tsx",
-      "type": "runtime",
-      "size": 13645,
-      "hash": "3427c08532cf"
-    },
-    {
       "path": "src/docudent/v10/components/QuestionsFlowV2.tsx",
       "type": "runtime",
-      "size": 15625,
-      "hash": "f9bdad7fc363"
+      "size": 28953,
+      "hash": "59c0e03d5a09"
     },
     {
       "path": "src/docudent/v10/components/ScopePill.tsx",
@@ -4540,8 +5116,8 @@
     {
       "path": "src/docudent/v10/components/V10DebugDrawer.tsx",
       "type": "runtime",
-      "size": 26508,
-      "hash": "3628bd488b57"
+      "size": 27902,
+      "hash": "caddaf423a89"
     },
     {
       "path": "src/docudent/v10/components/V10InstanceFilter.tsx",
@@ -4570,20 +5146,20 @@
     {
       "path": "src/docudent/v10/components/V10OptionPillButton.tsx",
       "type": "runtime",
-      "size": 1420,
-      "hash": "31262600f746"
+      "size": 1513,
+      "hash": "eba55d05109d"
     },
     {
       "path": "src/docudent/v10/components/V10PostAnalysisDashboard.tsx",
       "type": "runtime",
-      "size": 26052,
-      "hash": "0296944c5f0b"
+      "size": 30105,
+      "hash": "a1ee1aa45c49"
     },
     {
       "path": "src/docudent/v10/components/V10QuestionRow.tsx",
       "type": "runtime",
-      "size": 9640,
-      "hash": "d216f82497fa"
+      "size": 10872,
+      "hash": "8619a0eafe67"
     },
     {
       "path": "src/docudent/v10/components/V10ReproPanel.tsx",
@@ -4594,14 +5170,14 @@
     {
       "path": "src/docudent/v10/components/V10ReviewStep.tsx",
       "type": "runtime",
-      "size": 11138,
-      "hash": "9304b43f81a2"
+      "size": 14146,
+      "hash": "25c736cd7592"
     },
     {
       "path": "src/docudent/v10/components/V10ReviewSummaryCard.tsx",
       "type": "runtime",
-      "size": 12121,
-      "hash": "f2007b51de83"
+      "size": 14696,
+      "hash": "05fc923c95d9"
     },
     {
       "path": "src/docudent/v10/components/V10SegmentPreview.tsx",
@@ -4612,8 +5188,8 @@
     {
       "path": "src/docudent/v10/components/V10SettingsDrawer.tsx",
       "type": "runtime",
-      "size": 10202,
-      "hash": "45355d9ba5d0"
+      "size": 10634,
+      "hash": "49720dadf0dc"
     },
     {
       "path": "src/docudent/v10/components/V10StageHeader.tsx",
@@ -4636,8 +5212,8 @@
     {
       "path": "src/docudent/v10/components/V10TracePanel.tsx",
       "type": "runtime",
-      "size": 22096,
-      "hash": "0a24aca893f5"
+      "size": 26110,
+      "hash": "faef7f32e525"
     },
     {
       "path": "src/docudent/v10/components/V10TreatmentSelector.tsx",
@@ -4666,8 +5242,14 @@
     {
       "path": "src/docudent/v10/debug/buildInfo.ts",
       "type": "runtime",
-      "size": 1888,
-      "hash": "41d89bdd1490"
+      "size": 1807,
+      "hash": "0b49a02341e6"
+    },
+    {
+      "path": "src/docudent/v10/debug/llmRuntimeMeta.ts",
+      "type": "runtime",
+      "size": 2807,
+      "hash": "7530182b6225"
     },
     {
       "path": "src/docudent/v10/debug/reproBundle.ts",
@@ -4732,14 +5314,14 @@
     {
       "path": "src/docudent/v10/facts/applyAnswersToFacts.ts",
       "type": "runtime",
-      "size": 25229,
-      "hash": "84a6b5e89abd"
+      "size": 27665,
+      "hash": "3596d2b510ae"
     },
     {
       "path": "src/docudent/v10/facts/buildFactsFromExtraction.ts",
       "type": "runtime",
-      "size": 65832,
-      "hash": "19d3d6902067"
+      "size": 68306,
+      "hash": "bf46f7981154"
     },
     {
       "path": "src/docudent/v10/facts/index.ts",
@@ -4750,8 +5332,8 @@
     {
       "path": "src/docudent/v10/facts/types.ts",
       "type": "runtime",
-      "size": 11137,
-      "hash": "9dbf30ba16bd"
+      "size": 11458,
+      "hash": "c05cb75b71b6"
     },
     {
       "path": "src/docudent/v10/gates/gate-no-hardcoded-billing-refs.test.ts",
@@ -4774,14 +5356,14 @@
     {
       "path": "src/docudent/v10/hooks/useV10Pipeline.ts",
       "type": "runtime",
-      "size": 31963,
-      "hash": "7b8557a59f47"
+      "size": 45586,
+      "hash": "e40db115aafc"
     },
     {
       "path": "src/docudent/v10/index.ts",
       "type": "runtime",
-      "size": 583,
-      "hash": "d90890d17ad7"
+      "size": 658,
+      "hash": "38020d40a0a1"
     },
     {
       "path": "src/docudent/v10/kb/combinability/combinability_kb.v1.json",
@@ -4822,14 +5404,14 @@
     {
       "path": "src/docudent/v10/kb/medical/providers/jsonProvider.ts",
       "type": "runtime",
-      "size": 2116,
-      "hash": "be688f3d946f"
+      "size": 2388,
+      "hash": "50f2d1ca1c4d"
     },
     {
       "path": "src/docudent/v10/kb/medical/types.ts",
       "type": "runtime",
-      "size": 1727,
-      "hash": "3ccb564ac067"
+      "size": 1763,
+      "hash": "3f7a43e29e15"
     },
     {
       "path": "src/docudent/v10/kb/release.ts",
@@ -4846,20 +5428,20 @@
     {
       "path": "src/docudent/v10/kb/treatment/providers/firestoreProvider.ts",
       "type": "runtime",
-      "size": 6998,
-      "hash": "6ec60a6baa99"
+      "size": 7841,
+      "hash": "9559af592dfc"
     },
     {
       "path": "src/docudent/v10/kb/treatment/providers/jsonProvider.ts",
       "type": "runtime",
-      "size": 3447,
-      "hash": "7f9ceb6915dd"
+      "size": 3819,
+      "hash": "85e1403cad10"
     },
     {
       "path": "src/docudent/v10/kb/treatment/types.ts",
       "type": "runtime",
-      "size": 3334,
-      "hash": "5f5809d64666"
+      "size": 3374,
+      "hash": "05b7707c105d"
     },
     {
       "path": "src/docudent/v10/kb/util/hash.ts",
@@ -4934,10 +5516,22 @@
       "hash": "3b50ffc2359c"
     },
     {
+      "path": "src/docudent/v10/llm/llmBoundaryContract.ts",
+      "type": "runtime",
+      "size": 1091,
+      "hash": "627d03ccd2c4"
+    },
+    {
       "path": "src/docudent/v10/llm/textRefiner.ts",
       "type": "runtime",
-      "size": 3601,
-      "hash": "6329e347f3ac"
+      "size": 3872,
+      "hash": "3ed326f18f53"
+    },
+    {
+      "path": "src/docudent/v10/llm/textRefinerGatewayClient.ts",
+      "type": "runtime",
+      "size": 951,
+      "hash": "7e6e713b1ed4"
     },
     {
       "path": "src/docudent/v10/medical/medicalAskbackAdapter.ts",
@@ -4948,8 +5542,8 @@
     {
       "path": "src/docudent/v10/multitreatment/classifyTreatment.ts",
       "type": "runtime",
-      "size": 1777,
-      "hash": "a3db2d89eca0"
+      "size": 3697,
+      "hash": "975214e3a144"
     },
     {
       "path": "src/docudent/v10/multitreatment/planFromDictation.ts",
@@ -4960,8 +5554,8 @@
     {
       "path": "src/docudent/v10/multitreatment/runV10Bundle.ts",
       "type": "runtime",
-      "size": 9421,
-      "hash": "67286063f1e7"
+      "size": 432,
+      "hash": "ae5a64191e86"
     },
     {
       "path": "src/docudent/v10/multitreatment/scoping.ts",
@@ -4972,14 +5566,14 @@
     {
       "path": "src/docudent/v10/multitreatment/segmentDictation.ts",
       "type": "runtime",
-      "size": 1563,
-      "hash": "cf17521b8de8"
+      "size": 2164,
+      "hash": "13c78572b1a6"
     },
     {
       "path": "src/docudent/v10/multitreatment/types.ts",
       "type": "runtime",
-      "size": 7910,
-      "hash": "62c4dd64e9f2"
+      "size": 8489,
+      "hash": "b5fa80b1819b"
     },
     {
       "path": "src/docudent/v10/output/composeDocumentationV10.ts",
@@ -5068,8 +5662,8 @@
     {
       "path": "src/docudent/v10/packs/extraction/combinability.ts",
       "type": "runtime",
-      "size": 127,
-      "hash": "f8e4f53ea610"
+      "size": 744,
+      "hash": "60ac14e0111b"
     },
     {
       "path": "src/docudent/v10/packs/extraction/pack.ts",
@@ -5080,8 +5674,8 @@
     {
       "path": "src/docudent/v10/packs/extraction/scenarios.ts",
       "type": "runtime",
-      "size": 690,
-      "hash": "a9016de57de9"
+      "size": 1632,
+      "hash": "5ccbde4b4cce"
     },
     {
       "path": "src/docudent/v10/packs/extraction/ui.contract.ts",
@@ -5164,8 +5758,8 @@
     {
       "path": "src/docudent/v10/packs/registry.ts",
       "type": "runtime",
-      "size": 2227,
-      "hash": "dcfeea245a05"
+      "size": 2421,
+      "hash": "0613c694d5fa"
     },
     {
       "path": "src/docudent/v10/packs/types.ts",
@@ -5176,14 +5770,14 @@
     {
       "path": "src/docudent/v10/pages/DocudentV10Page.tsx",
       "type": "runtime",
-      "size": 45263,
-      "hash": "36b34a81c0cf"
+      "size": 61209,
+      "hash": "d08ab2830eb4"
     },
     {
       "path": "src/docudent/v10/pages/SettingsPageV10.tsx",
       "type": "runtime",
-      "size": 89219,
-      "hash": "4f8f20b894b6"
+      "size": 96430,
+      "hash": "7c509e401d3b"
     },
     {
       "path": "src/docudent/v10/pipeline/billingEligibilityGuard.ts",
@@ -5194,14 +5788,56 @@
     {
       "path": "src/docudent/v10/pipeline/runV10.ts",
       "type": "runtime",
-      "size": 103466,
-      "hash": "be58d63e6d21"
+      "size": 112760,
+      "hash": "cba87efa2bd4"
     },
     {
       "path": "src/docudent/v10/pipeline/runV10Bundle.ts",
       "type": "runtime",
-      "size": 14829,
-      "hash": "ebd130df639f"
+      "size": 30269,
+      "hash": "1da5f01a197d"
+    },
+    {
+      "path": "src/docudent/v10/preanalysis/buildIntentConfirmationViewModel.ts",
+      "type": "runtime",
+      "size": 3504,
+      "hash": "f76ff3d456ad"
+    },
+    {
+      "path": "src/docudent/v10/preanalysis/buildSegmentsFromIntents.ts",
+      "type": "runtime",
+      "size": 1776,
+      "hash": "e1cec8dbeaf0"
+    },
+    {
+      "path": "src/docudent/v10/preanalysis/detectTreatmentIntents.ts",
+      "type": "runtime",
+      "size": 17868,
+      "hash": "9d962fbea70b"
+    },
+    {
+      "path": "src/docudent/v10/preanalysis/intentSelectionPolicy.ts",
+      "type": "runtime",
+      "size": 1147,
+      "hash": "f68cc7b69b7d"
+    },
+    {
+      "path": "src/docudent/v10/preanalysis/preanalysisGatewayClient.ts",
+      "type": "runtime",
+      "size": 937,
+      "hash": "46e62caf7336"
+    },
+    {
+      "path": "src/docudent/v10/preanalysis/runPreanalyzedBundle.ts",
+      "type": "runtime",
+      "size": 2894,
+      "hash": "097f8e330bef"
+    },
+    {
+      "path": "src/docudent/v10/preanalysis/treatmentIntentContract.ts",
+      "type": "runtime",
+      "size": 7345,
+      "hash": "76e6b4f39b08"
     },
     {
       "path": "src/docudent/v10/procedure/bundleMeta/index.ts",
@@ -5218,8 +5854,8 @@
     {
       "path": "src/docudent/v10/procedure/events/allBundles.ts",
       "type": "runtime",
-      "size": 1084,
-      "hash": "dc4ff094df87"
+      "size": 1218,
+      "hash": "5d661c26acc7"
     },
     {
       "path": "src/docudent/v10/procedure/events/buildProcedureNodes.ts",
@@ -5230,32 +5866,32 @@
     {
       "path": "src/docudent/v10/procedure/events/common.ts",
       "type": "runtime",
-      "size": 5149,
-      "hash": "cf9e38a80acc"
+      "size": 5400,
+      "hash": "12a0e2976bb4"
     },
     {
       "path": "src/docudent/v10/procedure/events/crown_prep.ts",
       "type": "runtime",
-      "size": 1784,
-      "hash": "847963f123e9"
+      "size": 1933,
+      "hash": "5d3310e5cc73"
     },
     {
       "path": "src/docudent/v10/procedure/events/endo.ts",
       "type": "runtime",
-      "size": 7584,
-      "hash": "90757cf40396"
+      "size": 10387,
+      "hash": "749871575a9c"
     },
     {
       "path": "src/docudent/v10/procedure/events/extraction.ts",
       "type": "runtime",
-      "size": 1064,
-      "hash": "1bca6cd36a70"
+      "size": 1141,
+      "hash": "0c421bc1df4b"
     },
     {
       "path": "src/docudent/v10/procedure/events/fuellung.ts",
       "type": "runtime",
-      "size": 6224,
-      "hash": "351514456bb5"
+      "size": 9135,
+      "hash": "79f6a4d55076"
     },
     {
       "path": "src/docudent/v10/procedure/events/index.ts",
@@ -5266,8 +5902,8 @@
     {
       "path": "src/docudent/v10/procedure/events/pzr.ts",
       "type": "runtime",
-      "size": 1359,
-      "hash": "02f5ba7b9348"
+      "size": 1456,
+      "hash": "01f533b2c242"
     },
     {
       "path": "src/docudent/v10/procedure/events/types.ts",
@@ -5278,8 +5914,8 @@
     {
       "path": "src/docudent/v10/procedure/gates/gateMissingEventBundles.ts",
       "type": "runtime",
-      "size": 1038,
-      "hash": "75d0137d5a82"
+      "size": 1266,
+      "hash": "4364660ecc8e"
     },
     {
       "path": "src/docudent/v10/procedure/gates/gateNoSettingsAccessInComposer.ts",
@@ -5290,14 +5926,14 @@
     {
       "path": "src/docudent/v10/procedure/gates/gateNoUnknownChipEmitters.ts",
       "type": "runtime",
-      "size": 1019,
-      "hash": "d45af85f2194"
+      "size": 1224,
+      "hash": "b6edefb3e117"
     },
     {
       "path": "src/docudent/v10/procedure/normalizeAskbackId.ts",
       "type": "runtime",
-      "size": 570,
-      "hash": "e169b1fa53e7"
+      "size": 930,
+      "hash": "0d7d964ab55f"
     },
     {
       "path": "src/docudent/v10/procedure/registry/capabilities/index.ts",
@@ -5308,20 +5944,20 @@
     {
       "path": "src/docudent/v10/procedure/registry/treatments/index.ts",
       "type": "runtime",
-      "size": 6077,
-      "hash": "9729d701189e"
+      "size": 6623,
+      "hash": "087f4434b031"
     },
     {
       "path": "src/docudent/v10/procedure/resolver/matchProcedureGraph.ts",
       "type": "runtime",
-      "size": 1780,
-      "hash": "e64a725b1c27"
+      "size": 1873,
+      "hash": "e8e33b34383b"
     },
     {
       "path": "src/docudent/v10/procedure/resolver/resolveContractContext.ts",
       "type": "runtime",
-      "size": 934,
-      "hash": "92f48d497e2b"
+      "size": 1075,
+      "hash": "e3453bdbef4d"
     },
     {
       "path": "src/docudent/v10/procedure/resolver/resolveDefaultsFromSettings.ts",
@@ -5338,8 +5974,8 @@
     {
       "path": "src/docudent/v10/public.ts",
       "type": "runtime",
-      "size": 643,
-      "hash": "2258bbd2afaa"
+      "size": 665,
+      "hash": "a8f626405bb1"
     },
     {
       "path": "src/docudent/v10/qa/clinicalAssertionContract.v1.ts",
@@ -5374,8 +6010,8 @@
     {
       "path": "src/docudent/v10/qa/clinicalTruthcases.v4.ts",
       "type": "runtime",
-      "size": 18934,
-      "hash": "c889e5ecc9d1"
+      "size": 19185,
+      "hash": "60288fd79992"
     },
     {
       "path": "src/docudent/v10/qa/clinicalTruthcases.v5.multitreatment.ts",
@@ -5446,8 +6082,8 @@
     {
       "path": "src/docudent/v10/reality/scenarios.v1.json",
       "type": "data",
-      "size": 5244,
-      "hash": "a4f181fa0a6b"
+      "size": 5133,
+      "hash": "f5da96864e93"
     },
     {
       "path": "src/docudent/v10/registry/materialCatalog.ts",
@@ -5498,16 +6134,34 @@
       "hash": "13300fddca62"
     },
     {
+      "path": "src/docudent/v10/settings/hierarchyPolicy.ts",
+      "type": "runtime",
+      "size": 3450,
+      "hash": "0c3a3b763fca"
+    },
+    {
+      "path": "src/docudent/v10/settings/medicalDefaults.ts",
+      "type": "runtime",
+      "size": 16290,
+      "hash": "9f8b58eea117"
+    },
+    {
+      "path": "src/docudent/v10/settings/permissionPolicy.ts",
+      "type": "runtime",
+      "size": 933,
+      "hash": "14dfb30620cb"
+    },
+    {
       "path": "src/docudent/v10/settings/resolveDefaultsToFacts.ts",
       "type": "runtime",
-      "size": 15331,
-      "hash": "220362efca91"
+      "size": 16057,
+      "hash": "eafa3e79ed24"
     },
     {
       "path": "src/docudent/v10/settings/settingsResolver.ts",
       "type": "runtime",
-      "size": 30172,
-      "hash": "d630dec4b976"
+      "size": 32849,
+      "hash": "77b0a6e9fc84"
     },
     {
       "path": "src/docudent/v10/settings/settingsStore.ts",
@@ -5518,8 +6172,8 @@
     {
       "path": "src/docudent/v10/settings/settingsTypes.ts",
       "type": "runtime",
-      "size": 14002,
-      "hash": "13f4233599e1"
+      "size": 16212,
+      "hash": "748b0f6658cc"
     },
     {
       "path": "src/docudent/v10/settings/treatmentMaster.ts",
@@ -5536,8 +6190,8 @@
     {
       "path": "src/docudent/v10/settings/useSettings.ts",
       "type": "runtime",
-      "size": 18079,
-      "hash": "f2036e7238a4"
+      "size": 23069,
+      "hash": "165c7b1f729d"
     },
     {
       "path": "src/docudent/v10/styles/tokens.ts",
@@ -5584,8 +6238,8 @@
     {
       "path": "src/docudent/v10/types.ts",
       "type": "runtime",
-      "size": 18802,
-      "hash": "ab8ed0a4ae6e"
+      "size": 19329,
+      "hash": "5df4f3d1521d"
     },
     {
       "path": "src/docudent/v10/ui/usePackUiContract.ts",
@@ -5596,8 +6250,8 @@
     {
       "path": "src/docudent/v10/uiController/createV10Session.ts",
       "type": "runtime",
-      "size": 16733,
-      "hash": "8473c64da244"
+      "size": 17865,
+      "hash": "c86361a176be"
     },
     {
       "path": "src/docudent/v5/components/AnalogJustificationRow.tsx",

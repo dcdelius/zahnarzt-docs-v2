@@ -12,11 +12,13 @@ import {
 
 describe('gate-m36-settings-reduce-askbacks', () => {
     describe('settings provide values for askbacks', () => {
-        it('defaultLAType provides value for medical_la_type', () => {
+        it('medicalDefaults.anesthesia.defaultType provides value for medical_la_type', () => {
             const settings: SettingsInput = {
                 user: {
                     version: '1.0.0',
-                    defaultLAType: 'infiltration',
+                    medicalDefaults: {
+                        anesthesia: { defaultType: 'infiltration' },
+                    },
                 },
             };
 
@@ -24,11 +26,27 @@ describe('gate-m36-settings-reduce-askbacks', () => {
             expect(value).toBe('infiltration');
         });
 
-        it('defaultIsolation provides value for medical_isolation', () => {
+        it('medicalDefaults.anesthesia.defaultType provides value for medical_la_type', () => {
+            const settings: SettingsInput = {
+                user: {
+                    version: '1.0.0',
+                    medicalDefaults: {
+                        anesthesia: { defaultType: 'leitung' },
+                    },
+                },
+            };
+
+            const value = getSettingsValueForAskback('medical_la_type', settings);
+            expect(value).toBe('leitung');
+        });
+
+        it('medicalDefaults.isolation.defaultMode provides value for medical_isolation', () => {
             const settings: SettingsInput = {
                 practice: {
                     version: '1.0.0',
-                    defaultIsolation: 'kofferdam',
+                    medicalDefaults: {
+                        isolation: { defaultMode: 'kofferdam' },
+                    },
                 },
             };
 
@@ -36,11 +54,27 @@ describe('gate-m36-settings-reduce-askbacks', () => {
             expect(value).toBe('kofferdam');
         });
 
-        it('defaultCappingMaterial provides value for medical_ueberkappung', () => {
+        it('medicalDefaults.isolation.defaultMode provides value for medical_isolation', () => {
+            const settings: SettingsInput = {
+                practice: {
+                    version: '1.0.0',
+                    medicalDefaults: {
+                        isolation: { defaultMode: 'relative' },
+                    },
+                },
+            };
+
+            const value = getSettingsValueForAskback('medical_isolation', settings);
+            expect(value).toBe('relative');
+        });
+
+        it('medicalDefaults.restorative.defaultCappingMaterial provides value for medical_ueberkappung', () => {
             const settings: SettingsInput = {
                 user: {
                     version: '1.0.0',
-                    defaultCappingMaterial: 'mta',
+                    medicalDefaults: {
+                        restorative: { defaultCappingMaterial: 'mta' },
+                    },
                 },
             };
 

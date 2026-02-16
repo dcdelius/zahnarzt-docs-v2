@@ -14,7 +14,7 @@ import type {
     V10InstanceTrace,
     V10PipelineMeta,
 } from '../types';
-import type { DynamicQuestion } from '../../contracts/questions';
+import type { DynamicQuestion, QuestionOption } from '../../contracts/questions';
 import { runV10 } from './runV10';
 import { renderFromKbChips, getChipFromKb } from '../renderer';
 import {
@@ -22,6 +22,7 @@ import {
     runSessionCombinability,
     deriveUpsellHints,
 } from '../billing/sessionCombinability';
+import type { SettingsInput } from '../settings/settingsTypes';
 
 // ═══════════════════════════════════════════════════════════════
 // SCOPE DEDUP HELPERS
@@ -51,32 +52,44 @@ function getChipBillingScope(
 /**
  * Dedupe billing codes by scope.
  * SESSION: keep only first occurrence.
- * TOOTH: keep all (with tooth info).
+ * INSTANCE: keep first occurrence per instance.
+ * TOOTH: keep first occurrence per tooth.
  */
 function dedupeBillingCodes(codes: V10ScopedBillingCode[]): V10ScopedBillingCode[] {
     const seen = new Map<string, V10ScopedBillingCode>();
     const result: V10ScopedBillingCode[] = [];
 
+    const dedupePolicyFor = (code: V10ScopedBillingCode): 'SESSION' | 'INSTANCE' | 'TOOTH' => {
+        if (code.scope === 'SESSION') return 'SESSION';
+        // Safety default: non-session billing is instance-bound, so two procedures
+        // on the same tooth do not silently collapse into one code.
+        return 'INSTANCE';
+    };
+
+    const dedupeKeyFor = (code: V10ScopedBillingCode): string => {
+        const policy = dedupePolicyFor(code);
+        if (policy === 'SESSION') {
+            return `SESSION::${code.code}`;
+        }
+        if (policy === 'TOOTH') {
+            return `TOOTH::${code.code}::${code.tooth ?? 'none'}`;
+        }
+        return `INSTANCE::${code.code}::${code.instanceId}`;
+    };
+
     for (const code of codes) {
-        if (code.scope === 'SESSION') {
-            // SESSION scope: dedupe by code only
-            if (!seen.has(code.code)) {
-                seen.set(code.code, code);
-                result.push(code);
-            }
-        } else {
-            // TOOTH scope: keep per tooth
-            const key = `${code.code}::${code.tooth ?? 'none'}`;
-                if (!seen.has(key)) {
-                    seen.set(key, code);
-                    result.push(code);
-                }
+        const key = dedupeKeyFor(code);
+        if (!seen.has(key)) {
+            seen.set(key, code);
+            result.push(code);
         }
     }
 
     return result.sort((a, b) => {
         const scopeCmp = a.scope.localeCompare(b.scope);
         if (scopeCmp !== 0) return scopeCmp;
+        const instanceCmp = a.instanceId.localeCompare(b.instanceId);
+        if (instanceCmp !== 0) return instanceCmp;
         const toothCmp = (a.tooth ?? '').localeCompare(b.tooth ?? '');
         if (toothCmp !== 0) return toothCmp;
         return a.code.localeCompare(b.code);
@@ -105,6 +118,34 @@ interface CollectedInstanceResult {
         scope: 'session' | 'tooth';
         toothScope?: string;
     }>;
+    askbackProvenance: NonNullable<NonNullable<V10PipelineMeta['provenance']>['askbacks']>;
+    chipProvenance: NonNullable<NonNullable<V10PipelineMeta['provenance']>['chips']>;
+    billingGuard?: NonNullable<NonNullable<V10PipelineMeta['provenance']>['billingGuard']>;
+}
+
+function extractToothFromScopedId(id?: string): string | undefined {
+    if (!id) return undefined;
+    const scopedMatch = id.match(/::tooth:(\d+)$/);
+    if (scopedMatch?.[1]) return scopedMatch[1];
+    const dashMatch = id.match(/-(\d+)-\d+$/);
+    if (dashMatch?.[1]) return dashMatch[1];
+    const suffixMatch = id.match(/tooth:(\d+)(?:$|:)/);
+    if (suffixMatch?.[1]) return suffixMatch[1];
+    return undefined;
+}
+
+function questionMatchesInstance(question: DynamicQuestion, tooth?: string): boolean {
+    if (!tooth) return true;
+    const questionTooth = extractToothFromScopedId(question.id)
+        ?? extractToothFromScopedId(question.instanceId);
+    if (!questionTooth) return true;
+    return questionTooth === tooth;
+}
+
+export interface RunV10BundleOptions {
+    settings?: SettingsInput;
+    autoAnswerAllQuestions?: boolean;
+    forceChipsByTreatmentId?: Record<string, string[]>;
 }
 
 function stableHash(input: string): string {
@@ -113,6 +154,46 @@ function stableHash(input: string): string {
         hash = ((hash << 5) + hash) ^ input.charCodeAt(i);
     }
     return `h${(hash >>> 0).toString(16).padStart(8, '0')}`;
+}
+
+function pickOptionValue(first?: QuestionOption): unknown {
+    if (!first) return undefined;
+    if (first.dataValue !== undefined) return first.dataValue;
+    if (first.label !== undefined) return first.label;
+    return first.id;
+}
+
+function buildAutoAnswers(questions: DynamicQuestion[]): Map<string, unknown> {
+    const answers = new Map<string, unknown>();
+    for (const q of questions) {
+        const firstValue = pickOptionValue(q.options?.[0]);
+
+        if (q.type === 'multi') {
+            answers.set(q.id, firstValue !== undefined ? [firstValue] : []);
+            continue;
+        }
+        if (q.type === 'number') {
+            const num = q.defaultValue ?? q.presets?.[0] ?? q.min ?? 0;
+            answers.set(q.id, num);
+            continue;
+        }
+        if (q.type === 'text') {
+            answers.set(q.id, '');
+            continue;
+        }
+        answers.set(q.id, firstValue ?? 'unknown');
+    }
+    return answers;
+}
+
+function sortSourceRefs(sourceRefs: Array<{ sourceId: string; anchorId: string; note?: string }>): Array<{ sourceId: string; anchorId: string; note?: string }> {
+    return [...sourceRefs].sort((a, b) => {
+        const sourceCmp = a.sourceId.localeCompare(b.sourceId);
+        if (sourceCmp !== 0) return sourceCmp;
+        const anchorCmp = a.anchorId.localeCompare(b.anchorId);
+        if (anchorCmp !== 0) return anchorCmp;
+        return (a.note ?? '').localeCompare(b.note ?? '');
+    });
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -125,8 +206,10 @@ function stableHash(input: string): string {
  * Processes segments in order, instances within each segment in order.
  * Returns 'questions' if any instance has unanswered required questions.
  */
-export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutput> {
-    const startTime = Date.now();
+export async function runV10Bundle(
+    input: V10BundleInput,
+    opts?: RunV10BundleOptions
+): Promise<V10BundleOutput> {
     const isDev = process.env.NODE_ENV !== 'production';
     const normalizeKbReleaseId = (value: unknown): string | undefined => {
         if (typeof value !== 'string') return undefined;
@@ -148,6 +231,7 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
 
         for (const segment of segments) {
             const segmentDictation = segment.dictation ?? fullDictation ?? '';
+            const forcedChips = opts?.forceChipsByTreatmentId?.[segment.treatmentId];
 
             for (const instance of segment.instances) {
                 const instanceDictation = instance.dictation ?? segmentDictation;
@@ -164,26 +248,105 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                 }
 
                 // Call single-instance runV10
-                const result = await runV10({
+                let result = await runV10({
                     dictation: instanceDictation,
                     treatmentId: segment.treatmentId,
                     insuranceType: segment.insuranceType,
                     textLength: segment.textLength,
                     answers: mergedAnswers,
+                    userDefaults: opts?.settings as Record<string, unknown> | undefined,
                     teeth: instance.tooth ? [instance.tooth] : undefined,
                     kbReleaseId: pinnedKbReleaseId,
+                    testOnly: forcedChips
+                        ? {
+                            enabled: true,
+                            forceChips: forcedChips,
+                        }
+                        : undefined,
                 });
                 pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
 
-                // Check for required questions
-                const hasUnansweredRequired = result.state === 'questions' &&
-                    (result.questions?.some(q => q.medicalSeverity === 'hard') ?? false);
+                if (result.state === 'questions') {
+                    const requiredCount = result.questionsBundle?.required?.length ?? 0;
+                    const shouldAutoAnswer =
+                        (opts?.autoAnswerAllQuestions === true && (result.questions?.length ?? 0) > 0)
+                        || (requiredCount === 0 && (result.questions?.length ?? 0) > 0);
 
-                // Get chips and render
-                const chips = result.trace?.allChips ?? [];
+                    if (shouldAutoAnswer) {
+                        const autoAnswers = buildAutoAnswers(result.questions ?? []);
+                        for (const [key, value] of autoAnswers) {
+                            mergedAnswers.set(key, value);
+                        }
+                        result = await runV10({
+                            dictation: instanceDictation,
+                            treatmentId: segment.treatmentId,
+                            insuranceType: segment.insuranceType,
+                            textLength: segment.textLength,
+                            answers: mergedAnswers,
+                            userDefaults: opts?.settings as Record<string, unknown> | undefined,
+                            teeth: instance.tooth ? [instance.tooth] : undefined,
+                            kbReleaseId: pinnedKbReleaseId,
+                        });
+                        pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
+                    }
+                }
+
+                if (result.state === 'questions' && forcedChips) {
+                    result = await runV10({
+                        dictation: instanceDictation,
+                        treatmentId: segment.treatmentId,
+                        insuranceType: segment.insuranceType,
+                        textLength: segment.textLength,
+                        answers: mergedAnswers,
+                        userDefaults: opts?.settings as Record<string, unknown> | undefined,
+                        teeth: instance.tooth ? [instance.tooth] : undefined,
+                        kbReleaseId: pinnedKbReleaseId,
+                        testOnly: {
+                            enabled: true,
+                            forceChips: forcedChips,
+                        },
+                    });
+                    pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
+                }
+
+                // Check for required questions
+                const scopedQuestions = (result.questions ?? [])
+                    .filter(question => questionMatchesInstance(question, instance.tooth))
+                    .map(question => ({
+                        ...question,
+                        // Rebind all question answers to the bundle instance id so
+                        // completion writes back into the same pending bundle path.
+                        instanceId: instance.instanceId,
+                    }));
+
+                const hasUnansweredRequired = result.state === 'questions' &&
+                    scopedQuestions.some(q => q.medicalSeverity === 'hard');
+
+                const outputInstance = result.state === 'output' && result.output
+                    ? Object.values(result.output.perInstance ?? {}).find(entry =>
+                        instance.tooth
+                            ? entry.teeth?.includes(instance.tooth)
+                            : true
+                    ) ?? Object.values(result.output.perInstance ?? {})[0]
+                    : undefined;
+
+                const traceInstance = result.trace?.instances?.find(traceEntry =>
+                    instance.tooth ? traceEntry.tooth === instance.tooth : true
+                ) ?? result.trace?.instances?.[0];
+
+                // Keep chips aligned to the selected bundle instance to prevent
+                // cross-instance leakage when runV10 internally scopes multiple teeth.
+                const chips = outputInstance?.chips
+                    ?? traceInstance?.chips
+                    ?? result.trace?.allChips
+                    ?? [];
                 let text = '';
                 const billingCodes: V10ScopedBillingCode[] = [];
-                const reviewInstance = result.review?.instances?.[0];
+                const reviewInstance = result.review?.instances?.find(review =>
+                    instance.tooth
+                        ? review.teeth?.includes(instance.tooth) || review.tooth === instance.tooth
+                        : true
+                ) ?? result.review?.instances?.[0];
                 const factSources = Object.entries(reviewInstance?.factSources ?? {}).map(([key, source]) => ({
                     key,
                     source,
@@ -191,12 +354,29 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                     scope: instance.tooth ? 'tooth' as const : 'session' as const,
                     toothScope: instance.tooth,
                 }));
+                const rawAskbackProvenance = result.meta?.provenance?.askbacks ?? [];
+                const askbackProvenance = rawAskbackProvenance.map(askback => ({
+                    ...askback,
+                    scope: askback.scope ?? (instance.tooth ? 'tooth' : 'session'),
+                    toothScope: askback.toothScope ?? instance.tooth,
+                    sourceRefs: sortSourceRefs(askback.sourceRefs ?? []),
+                    triggeredByFacts: [...new Set(askback.triggeredByFacts ?? [])].sort((a, b) => a.localeCompare(b)),
+                }));
+                const rawChipProvenance = result.meta?.provenance?.chips ?? [];
+                const chipProvenance = rawChipProvenance.map(chip => ({
+                    ...chip,
+                    scope: chip.scope ?? (instance.tooth ? 'tooth' : 'session'),
+                    toothScope: chip.toothScope ?? instance.tooth,
+                    sourceRefs: sortSourceRefs(chip.sourceRefs ?? []),
+                    factSources: [...new Set(chip.factSources ?? [])].sort((a, b) => a.localeCompare(b)),
+                }));
 
                 if (result.state === 'output' && result.output) {
-                    text = result.output.fullText;
+                    text = outputInstance?.text ?? result.output.fullText;
+                    const billingRefs = outputInstance?.billingRefs ?? result.output.billingCodes;
 
                     // Convert billing codes to scoped format
-                    for (const code of result.output.billingCodes) {
+                    for (const code of billingRefs) {
                         const scope = getChipBillingScope(segment.treatmentId, code);
                         billingCodes.push({
                             code,
@@ -213,14 +393,11 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                     tooth: instance.tooth,
                     treatmentId: segment.treatmentId,
                     hasUnansweredRequired,
-                    questions: (result.questions ?? []).map(question => ({
-                        ...question,
-                        instanceId: question.instanceId ?? instance.instanceId,
-                    })),
+                    questions: scopedQuestions,
                     chips,
                     text,
                     billingCodes,
-                    trace: result.trace?.instances?.[0] ?? {
+                    trace: traceInstance ?? {
                         tooth: instance.tooth,
                         extractedSummary: { tooth: null, surfaces: [], diagnosis: null },
                         facts: {},
@@ -230,6 +407,9 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                         renderedChipIds: [],
                     },
                     factSources,
+                    askbackProvenance,
+                    chipProvenance,
+                    billingGuard: result.meta?.provenance?.billingGuard,
                 });
             }
         }
@@ -244,7 +424,7 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
             return {
                 state: 'questions',
                 questions: allQuestions,
-                meta: buildMeta(allResults, startTime),
+                meta: buildMeta(allResults),
                 trace: isDev ? buildTrace(allResults) : undefined,
             };
         }
@@ -287,7 +467,7 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                 billingCodes: dedupedBilling,
                 segments: segmentOutputs,
             },
-            meta: buildMeta(allResults, startTime, sessionCombinability, upsellHints, outputHash),
+            meta: buildMeta(allResults, sessionCombinability, upsellHints, outputHash),
             trace: isDev ? buildTrace(allResults) : undefined,
         };
     } catch (error) {
@@ -298,7 +478,7 @@ export async function runV10Bundle(input: V10BundleInput): Promise<V10BundleOutp
                 engineUsed: 'v10',
                 instanceCount: 0,
                 multiInstance: true,
-                durations: { total: Date.now() - startTime },
+                durations: { total: 0 },
             },
         };
     }
@@ -423,7 +603,6 @@ function buildSegmentOutputs(
 
 function buildMeta(
     results: CollectedInstanceResult[],
-    startTime: number,
     sessionCombinability?: ReturnType<typeof runSessionCombinability>,
     upsellHints?: ReturnType<typeof deriveUpsellHints>,
     outputHash?: string,
@@ -438,12 +617,73 @@ function buildMeta(
         }
     }
 
+    const askbackByKey = new Map<string, NonNullable<NonNullable<V10PipelineMeta['provenance']>['askbacks']>[number]>();
+    for (const result of results) {
+        for (const askback of result.askbackProvenance) {
+            const key = [
+                askback.askbackId,
+                askback.ruleId,
+                askback.scope,
+                askback.toothScope ?? '',
+                askback.sourceRefs.map(ref => `${ref.sourceId}#${ref.anchorId}:${ref.note ?? ''}`).join('|'),
+            ].join('::');
+            if (!askbackByKey.has(key)) {
+                askbackByKey.set(key, askback);
+            }
+        }
+    }
+    const chipByKey = new Map<string, NonNullable<NonNullable<V10PipelineMeta['provenance']>['chips']>[number]>();
+    for (const result of results) {
+        for (const chip of result.chipProvenance) {
+            const key = [
+                chip.chipId,
+                chip.emittedByRuleId,
+                chip.scope,
+                chip.toothScope ?? '',
+                chip.billingEligible ? '1' : '0',
+                chip.factSources.join('|'),
+                chip.sourceRefs.map(ref => `${ref.sourceId}#${ref.anchorId}:${ref.note ?? ''}`).join('|'),
+            ].join('::');
+            if (!chipByKey.has(key)) {
+                chipByKey.set(key, chip);
+            }
+        }
+    }
+    const askbacks = Array.from(askbackByKey.values()).sort((a, b) => {
+        const toothCmp = (a.toothScope ?? '').localeCompare(b.toothScope ?? '');
+        if (toothCmp !== 0) return toothCmp;
+        const idCmp = a.askbackId.localeCompare(b.askbackId);
+        if (idCmp !== 0) return idCmp;
+        return a.ruleId.localeCompare(b.ruleId);
+    });
+    const chips = Array.from(chipByKey.values()).sort((a, b) => {
+        const toothCmp = (a.toothScope ?? '').localeCompare(b.toothScope ?? '');
+        if (toothCmp !== 0) return toothCmp;
+        const chipCmp = a.chipId.localeCompare(b.chipId);
+        if (chipCmp !== 0) return chipCmp;
+        return a.emittedByRuleId.localeCompare(b.emittedByRuleId);
+    });
+    const guardTotals = results.reduce((acc, result) => {
+        if (!result.billingGuard) return acc;
+        acc.allowed += result.billingGuard.allowed;
+        acc.blocked += result.billingGuard.blocked;
+        for (const chipId of result.billingGuard.blockedChipIds ?? []) {
+            acc.blockedChipIds.add(chipId);
+        }
+        return acc;
+    }, {
+        allowed: 0,
+        blocked: 0,
+        blockedChipIds: new Set<string>(),
+    });
+
     return {
         engineUsed: 'v10',
         instanceCount: results.length,
         multiInstance: results.length > 1,
         durations: {
-            total: Date.now() - startTime,
+            // Determinism invariant: output payload must not depend on wall clock time.
+            total: 0,
         },
         combinability: sessionCombinability ? {
             verdict: sessionCombinability.verdict,
@@ -458,13 +698,13 @@ function buildMeta(
         } : undefined,
         upsellHints: upsellHints && upsellHints.length > 0 ? upsellHints : undefined,
         provenance: {
-            askbacks: [],
-            chips: [],
+            askbacks,
+            chips,
             factSources: Array.from(uniqueFactSources.values()),
             billingGuard: {
-                allowed: 0,
-                blocked: 0,
-                blockedChipIds: [],
+                allowed: guardTotals.allowed,
+                blocked: guardTotals.blocked,
+                blockedChipIds: [...guardTotals.blockedChipIds].sort((a, b) => a.localeCompare(b)),
             },
         },
         outputHash,

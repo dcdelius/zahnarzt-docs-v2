@@ -12,9 +12,11 @@ import { V10ReproPanel } from './V10ReproPanel';
 import { createReproBundle, type ReproBundleV1 } from '../debug/reproBundle';
 import { getBuildInfo, getTreatmentKbInfo } from '../debug/buildInfo';
 import { getLastRepro, copyLastReproToClipboard, type AutoReproBundle } from '../debug/autoReproCapture';
+import type { V10LlmRuntimeMeta } from '../debug/llmRuntimeMeta';
 
 interface V10DebugDrawerProps {
     result: any; // PipelineResult from useV10Pipeline
+    runtimeDiagnostics?: V10LlmRuntimeMeta;
     onClose: () => void;
     onImportRepro?: (bundle: ReproBundleV1) => void;
     onRunRepro?: () => void;
@@ -32,7 +34,7 @@ const TABS: { id: DebugTab; label: string }[] = [
     { id: 'repro', label: 'Repro' },
 ];
 
-export function V10DebugDrawer({ result, onClose, onImportRepro, onRunRepro }: V10DebugDrawerProps) {
+export function V10DebugDrawer({ result, runtimeDiagnostics, onClose, onImportRepro, onRunRepro }: V10DebugDrawerProps) {
     const [activeTab, setActiveTab] = useState<DebugTab>('trace');
 
     // Extract debug info from result
@@ -93,15 +95,15 @@ export function V10DebugDrawer({ result, onClose, onImportRepro, onRunRepro }: V
                                     {buildInfo.packs.join(', ')}
                                 </div>
                             </div>
-                            {/* OpenAI Key */}
+                            {/* LLM Path */}
                             <div style={{
                                 background: 'rgba(255,255,255,0.05)',
                                 padding: '12px',
                                 borderRadius: '8px',
                             }}>
-                                <div style={{ fontWeight: 600, color: '#FA7366', marginBottom: '4px' }}>OpenAI Key</div>
+                                <div style={{ fontWeight: 600, color: '#FA7366', marginBottom: '4px' }}>LLM Path</div>
                                 <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.8)' }}>
-                                    {buildInfo.openAiKeyPresent ? 'present' : 'missing'}
+                                    {buildInfo.llmPath}
                                 </div>
                             </div>
                             {/* KB Hashes */}
@@ -114,6 +116,23 @@ export function V10DebugDrawer({ result, onClose, onImportRepro, onRunRepro }: V
                                 <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>
                                     <div>medical: {buildInfo.kb.medical?.version ?? 'N/A'} ({buildInfo.kb.medical?.hash ?? '-'})</div>
                                     <div>combi: {buildInfo.kb.combinability?.version ?? 'N/A'}</div>
+                                </div>
+                            </div>
+                            <div
+                                data-testid="v10-debug-llm-runtime-card"
+                                style={{
+                                    background: 'rgba(255,255,255,0.05)',
+                                    padding: '12px',
+                                    borderRadius: '8px',
+                                }}
+                            >
+                                <div style={{ fontWeight: 600, color: '#FA7366', marginBottom: '4px' }}>LLM Runtime</div>
+                                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>
+                                    <div>Preanalysis source: {runtimeDiagnostics?.preanalysisSource ?? 'N/A'}</div>
+                                    <div>Preanalysis fallback: {String(runtimeDiagnostics?.preanalysisFallback ?? false)}</div>
+                                    <div>Extraction method: {runtimeDiagnostics?.extractionMethod ?? 'N/A'}</div>
+                                    <div>Extraction llmError: {runtimeDiagnostics?.extractionLlmError ?? 'N/A'}</div>
+                                    <div>Diagnostics: {(runtimeDiagnostics?.preanalysisDiagnostics ?? []).join(', ') || 'none'}</div>
                                 </div>
                             </div>
                             {/* Last Repro Summary */}
