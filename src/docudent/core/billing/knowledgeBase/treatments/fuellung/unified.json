@@ -356,7 +356,7 @@
             "category": "leistung",
             "textSnippets": {
                 "kurz": "Rel. Trockenlegung.",
-                "mittel": "Relative Trockenlegung.",
+                "mittel": "Relative Trockenlegung (Watterollen/Speichelsauger).",
                 "lang": "Relative Trockenlegung mittels Watterollen und kontinuierlicher Absaugung."
             },
             "billingRef": null,
@@ -459,7 +459,7 @@
             "category": "leistung",
             "textSnippets": {
                 "kurz": "Keine Pulpaeröffnung.",
-                "mittel": "Keine Pulpaeröffnung, Cp nicht erforderlich.",
+                "mittel": "Keine Pulpaeröffnung; Cp nicht erforderlich.",
                 "lang": "Keine Pulpaeröffnung während der Exkavation, indirekte Überkappung (Cp) nicht erforderlich."
             },
             "billingRef": null,

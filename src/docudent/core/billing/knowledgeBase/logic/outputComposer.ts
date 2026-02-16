@@ -617,6 +617,10 @@ function renderBehandlung(
         return section.slotRule.phases.includes(chip.phase || '');
     });
     const ordered = orderByPhase(filtered);
+    const suppressKompositMaterialLine = ordered.some(chip => chip.id === 'mehrschicht');
+    const proseChips = suppressKompositMaterialLine
+        ? ordered.filter(chip => chip.id !== 'fuellung_material_komposit')
+        : ordered;
 
     // Material name mapping for placeholder substitution
     const MATERIAL_NAMES: Record<string, string> = {
@@ -630,7 +634,7 @@ function renderBehandlung(
 
     // Get snippets from SSOT (chip.textSnippets) and substitute placeholders
     const snippets: Array<{ text: string; chipId: string }> = [];
-    for (const chip of ordered) {
+    for (const chip of proseChips) {
         let snippet = chip.textSnippets?.[textLength] || chip.textSnippets?.mittel;
         if (snippet?.trim()) {
             snippet = replacePlaceholders(snippet, extractedData, ['material']);

@@ -378,6 +378,18 @@ function normalizeMaterialToken(value: string): string {
         .trim();
 }
 
+const LA_AGENT_DOC_LABELS: Record<string, string> = {
+    'ultracain d s': 'Ultracain D-S, Articain 4% + Adrenalin 1:200.000',
+    'ultracain d s forte': 'Ultracain D-S forte, Articain 4% + Adrenalin 1:100.000',
+};
+
+function formatLaAgentForDocumentation(value: string | undefined): string {
+    const fallback = 'Ultracain D-S';
+    const raw = String(value ?? '').trim() || fallback;
+    const normalized = normalizeMaterialToken(raw);
+    return LA_AGENT_DOC_LABELS[normalized] ?? raw;
+}
+
 function detectCatalogMentions(
     dictation: string,
     settingsInput?: SettingsInput
@@ -595,11 +607,11 @@ function processInstance(
     }
 
     // Render-only labels (derived once from settings + facts)
-    const renderLaAgent = getMaterialLabelById(
+    const renderLaAgent = formatLaAgentForDocumentation(getMaterialLabelById(
         getUserDefaultAnestheticAgentId(settingsInput?.user)
     ) ?? getMaterialLabelById(
         getPracticeDefaultAnestheticAgentId(settingsInput?.practice)
-    ) ?? 'Ultracain D-S';
+    ) ?? 'Ultracain D-S');
     const renderFillMaterial = (() => {
         const materialSource = settingsFactSources.get('material');
         const mentioned = (facts as any)?.materialMentioned;
@@ -1879,7 +1891,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 }
             }
             const renderLabels = (result.facts as TreatmentFacts | undefined)?.render;
-            const laAgent = renderLabels?.laAgent ?? 'Ultracain D-S';
+            const laAgent = formatLaAgentForDocumentation(renderLabels?.laAgent);
             const fillMaterial = renderLabels?.fillMaterial ?? 'Komposit';
             const adhesiveMaterial = renderLabels?.adhesiveMaterial ?? 'Adhäsiv';
             const etchMaterial = renderLabels?.etchMaterial ?? 'Ätzgel';
@@ -2309,7 +2321,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
             const flowableDisplay = renderLabels.flowableMaterial ?? 'Flowable';
             const bulkDisplay = renderLabels.bulkMaterial ?? 'Bulk-Fill';
             const matrixDisplay = renderLabels.matrixSystem ?? 'Matrix';
-            const laAgent = renderLabels.laAgent ?? 'Ultracain D-S';
+            const laAgent = formatLaAgentForDocumentation(renderLabels.laAgent);
 
             const klinischeZusatzinfos = (!zusatzinfosInjected && normalizedClinicalInfos.length > 0)
                 ? normalizedClinicalInfos
