@@ -108,9 +108,10 @@ export function isFactKnownForAskback(askbackId: string, facts: TreatmentFacts):
             return typeof facts.mkvJustification === 'string' && facts.mkvJustification.length > 0;
         case 'mkv_confirmed':
             return (
-                facts.mkvPresent === true
-                || facts.nurKasse === true
+                facts.nurKasse === true
                 || facts.mehrkostenConfirmed === true
+                || facts.mehrkostenMentioned === true
+                || (typeof facts.mkvBetrag === 'number' && facts.mkvBetrag > 0)
             );
         default:
             return false;
