@@ -40,7 +40,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.refineDocumentationTextV1 = exports.transcribeAudioV1 = exports.extractFromDictationV1 = exports.detectTreatmentIntentsV1 = exports.acceptInvite = exports.createInvite = exports.createPracticeSelfServe = void 0;
+exports.composeForensicDocumentationV1 = exports.refineDocumentationTextV1 = exports.transcribeAudioV1 = exports.extractFromDictationV1 = exports.detectTreatmentIntentsV1 = exports.acceptInvite = exports.createInvite = exports.createPracticeSelfServe = void 0;
 const functions = __importStar(require("firebase-functions"));
 const admin = __importStar(require("firebase-admin"));
 const crypto = __importStar(require("crypto"));
@@ -381,7 +381,7 @@ exports.extractFromDictationV1 = functions.https.onCall(async (data, context) =>
                 { role: 'system', content: EXTRACTION_PROMPT_V1 },
                 { role: 'user', content: dictation },
             ],
-            temperature: 0.1,
+            temperature: 0.0,
             max_tokens: 500,
         }),
     });
@@ -527,5 +527,120 @@ exports.refineDocumentationTextV1 = functions.https.onCall(async (data, context)
         throw new functions.https.HttpsError('internal', 'refiner returned empty content');
     }
     return { text: content };
+});
+const FORENSIC_COMPOSER_PROMPT_V1 = [
+    'Du bist ein medizinischer Forensik-Redaktor fuer zahnmedizinische Dokumentation (Deutschland).',
+    'Input ist strukturierte JSON mit sections[].',
+    'Ziel: sprachlich klar, forensisch nachvollziehbar, ohne inhaltliche Veraenderung.',
+    'Nicht erlaubt: neue Fakten, entfernte Fakten, geaenderte Zahlen, geaenderte Zahnnummern, Billing-Codes.',
+    'Output muss JSON sein: {"sections":[{"id":"...","label":"...","content":"..."}]}.',
+    'Verwende exakt dieselben section IDs in derselben Reihenfolge.',
+    'Labels unveraendert lassen.',
+    'Kein Text ausserhalb des JSON.',
+].join('\n');
+function parseJsonObject(raw) {
+    const stripped = raw
+        .replace(/```json/gi, '')
+        .replace(/```/g, '')
+        .trim();
+    const match = stripped.match(/\{[\s\S]*\}/);
+    if (!match)
+        return null;
+    try {
+        return JSON.parse(match[0]);
+    }
+    catch {
+        return null;
+    }
+}
+function normalizeSections(value) {
+    if (!Array.isArray(value))
+        return [];
+    return value
+        .filter(entry => entry && typeof entry === 'object')
+        .map((entry) => {
+        const record = entry;
+        return {
+            id: String(record.id ?? '').trim(),
+            label: String(record.label ?? '').trim(),
+            content: String(record.content ?? '').trim(),
+        };
+    })
+        .filter(section => section.id.length > 0 && section.label.length > 0 && section.content.length > 0);
+}
+exports.composeForensicDocumentationV1 = functions.https.onCall(async (data, context) => {
+    if (!context.auth) {
+        throw new functions.https.HttpsError('unauthenticated', 'Login required');
+    }
+    const sections = normalizeSections(data?.sections);
+    if (sections.length === 0) {
+        throw new functions.https.HttpsError('invalid-argument', 'sections are required');
+    }
+    if (sections.length > 8) {
+        throw new functions.https.HttpsError('invalid-argument', 'too many sections');
+    }
+    const treatmentId = String(data?.treatmentId ?? '').trim() || 'unknown';
+    const insuranceType = data?.insuranceType ?? 'GKV';
+    const textLength = data?.textLength ?? 'mittel';
+    const contextPayload = data?.context && typeof data.context === 'object'
+        ? data.context
+        : undefined;
+    const apiKey = getOpenAiApiKey();
+    if (!apiKey) {
+        throw new functions.https.HttpsError('failed-precondition', 'OPENAI_API_KEY not configured');
+    }
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            temperature: 0,
+            max_tokens: 1300,
+            messages: [
+                { role: 'system', content: FORENSIC_COMPOSER_PROMPT_V1 },
+                {
+                    role: 'user',
+                    content: JSON.stringify({
+                        treatmentId,
+                        insuranceType,
+                        textLength,
+                        sections,
+                        context: contextPayload,
+                    }),
+                },
+            ],
+        }),
+    });
+    if (!response.ok) {
+        const details = await response.text().catch(() => 'no-details');
+        functions.logger.error('composeForensicDocumentationV1 upstream error', {
+            status: response.status,
+            details,
+        });
+        throw new functions.https.HttpsError('internal', `forensic composer upstream failed (${response.status})`);
+    }
+    const payload = await response.json();
+    const content = String(payload?.choices?.[0]?.message?.content ?? '').trim();
+    if (!content) {
+        throw new functions.https.HttpsError('internal', 'forensic composer returned empty content');
+    }
+    const parsed = parseJsonObject(content);
+    if (!parsed || typeof parsed !== 'object') {
+        throw new functions.https.HttpsError('internal', 'forensic composer returned invalid JSON');
+    }
+    const parsedSections = normalizeSections(parsed.sections);
+    if (parsedSections.length !== sections.length) {
+        throw new functions.https.HttpsError('internal', 'forensic composer returned invalid section count');
+    }
+    const sourceIds = sections.map(section => section.id);
+    const targetIds = parsedSections.map(section => section.id);
+    const sameOrder = sourceIds.every((id, index) => id === targetIds[index]);
+    if (!sameOrder) {
+        throw new functions.https.HttpsError('internal', 'forensic composer changed section order');
+    }
+    return { sections: parsedSections };
 });
 //# sourceMappingURL=index.js.map
