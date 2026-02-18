@@ -1,0 +1,20 @@
+{
+    "_meta": {
+        "treatmentId": "roentgen",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "indication": {
+            "label": "Roentgen-Indikation",
+            "template": "{{value}}"
+        },
+        "type": {
+            "label": "Roentgen-Typ",
+            "template": "{{value}}"
+        },
+        "findings": {
+            "label": "Roentgen-Befund",
+            "template": "{{value}}"
+        }
+    }
+}

@@ -1,8 +1,5 @@
 import type { ClinicalEventBundle } from './types';
-
-function isStrictKzv(contract: { values?: Record<string, unknown> }): boolean {
-    return contract?.values?.strictKzv === true;
-}
+import { createRadiologyEvidenceAskbackBundles } from './common';
 
 function usesRadiology(facts: Record<string, unknown>): boolean {
     const endo = facts.endo as
@@ -232,48 +229,11 @@ export const endoAskbackBundles: ClinicalEventBundle[] = [
 ];
 
 export const endoStrictEvidenceBundles: ClinicalEventBundle[] = [
-    {
-        id: 'endo.strict.roentgen_indikation',
-        scope: 'per_instance',
-        match: (facts, contract) =>
-            isStrictKzv(contract)
-            && facts.treatmentId === 'endo'
-            && usesRadiology(facts)
-            && !((facts.radiology as { indication?: string } | undefined)?.indication),
-        requiresFacts: ['radiology.indication'],
-        askbacks: ['medical_roentgen_indikation'],
-    },
-    {
-        id: 'endo.strict.roentgen_typ',
-        scope: 'per_instance',
-        match: (facts, contract) =>
-            isStrictKzv(contract)
-            && facts.treatmentId === 'endo'
-            && usesRadiology(facts)
-            && !((facts.radiology as { type?: string } | undefined)?.type),
-        requiresFacts: ['radiology.type'],
-        askbacks: ['medical_roentgen_typ'],
-    },
-    {
-        id: 'endo.strict.roentgen_zeitpunkt',
-        scope: 'per_instance',
-        match: (facts, contract) =>
-            isStrictKzv(contract)
-            && facts.treatmentId === 'endo'
-            && usesRadiology(facts)
-            && !((facts.radiology as { timing?: string } | undefined)?.timing),
-        requiresFacts: ['radiology.timing'],
-        askbacks: ['medical_roentgen_zeitpunkt'],
-    },
-    {
-        id: 'endo.strict.roentgen_befund',
-        scope: 'per_instance',
-        match: (facts, contract) =>
-            isStrictKzv(contract)
-            && facts.treatmentId === 'endo'
-            && usesRadiology(facts)
-            && !((facts.radiology as { findings?: string } | undefined)?.findings),
-        requiresFacts: ['radiology.findings'],
-        askbacks: ['medical_roentgen_befund'],
-    },
+    ...createRadiologyEvidenceAskbackBundles({
+        idPrefix: 'endo.strict',
+        mode: 'strict_only',
+        applies: (facts) =>
+            facts.treatmentId === 'endo'
+            && usesRadiology(facts),
+    }),
 ];

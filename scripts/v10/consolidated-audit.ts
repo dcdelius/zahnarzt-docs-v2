@@ -1,28 +1,23 @@
 import { spawnSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { resolveHostedRunEnv, validateHostedRunEnv } from './shared/hostedEnv';
 
 type AuditStep = {
     id: string;
     cmd: string;
     args: string[];
+    env?: Record<string, string>;
 };
 
-function assertHostedAuthEnv(): void {
-    const baseUrl = process.env.PLAYWRIGHT_BASE_URL?.trim();
-    const loginEmail = process.env.E2E_LOGIN_EMAIL?.trim();
-    const loginPassword = process.env.E2E_LOGIN_PASSWORD?.trim();
+const requireLlmExtractionInAudit = process.env.DOCUDENT_AUDIT_REQUIRE_LLM_EXTRACTION === '1';
 
-    if (!baseUrl) {
-        console.error('[v10:audit:consolidated] DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH=1 requires PLAYWRIGHT_BASE_URL');
-        process.exit(1);
-    }
-    if (/localhost|127\.0\.0\.1/i.test(baseUrl)) {
-        console.error(`[v10:audit:consolidated] PLAYWRIGHT_BASE_URL must target hosted URL, received: ${baseUrl}`);
-        process.exit(1);
-    }
-    if (!loginEmail || !loginPassword) {
-        console.error('[v10:audit:consolidated] DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH=1 requires E2E_LOGIN_EMAIL and E2E_LOGIN_PASSWORD');
+function assertHostedAuthEnv(featureFlag: 'DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH' | 'DOCUDENT_AUDIT_INCLUDE_HOSTED_PREANALYSIS'): void {
+    const validation = validateHostedRunEnv(resolveHostedRunEnv());
+    if (!validation.ok) {
+        for (const issue of validation.issues) {
+            console.error(`[v10:audit:consolidated] ${featureFlag}=1 ${issue}`);
+        }
         process.exit(1);
     }
 }
@@ -42,6 +37,20 @@ const steps: AuditStep[] = [
         id: 'v10-gates',
         cmd: 'npm',
         args: ['test', '--', '--run', 'src/docudent/v10/__tests__/gates'],
+    },
+    {
+        id: 'v10-documentation-fidelity',
+        cmd: 'npm',
+        args: [
+            'run',
+            'v10:documentation-fidelity-audit',
+            '--',
+            '--file',
+            'scripts/v10/scenarios.v10.realworld.fliessend20.json',
+            '--strict-warnings',
+            '--disable-firestore-kb',
+            ...(requireLlmExtractionInAudit ? ['--require-llm-extraction'] : []),
+        ],
     },
     {
         id: 'v10-procedure-pipeline',
@@ -94,12 +103,35 @@ if (process.env.DOCUDENT_AUDIT_INCLUDE_E2E !== '0') {
     });
 }
 
+if (process.env.DOCUDENT_AUDIT_INCLUDE_PREANALYSIS_READINESS === '1') {
+    steps.push({
+        id: 'v10-preanalysis-readiness',
+        cmd: 'npm',
+        args: ['run', 'v10:preanalysis-readiness'],
+        env: {
+            DOCUDENT_READINESS_STRICT: '1',
+            DOCUDENT_READINESS_REQUIRE_PASSWORD: '1',
+            DOCUDENT_READINESS_REQUIRE_CALLABLES: '1',
+            DOCUDENT_READINESS_INCLUDE_HOSTED_GATE: '0',
+        },
+    });
+}
+
 if (process.env.DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH === '1') {
-    assertHostedAuthEnv();
+    assertHostedAuthEnv('DOCUDENT_AUDIT_INCLUDE_HOSTED_AUTH');
     steps.push({
         id: 'v10-hosted-auth-gate',
         cmd: 'npm',
         args: ['run', 'e2e:v10:hosted-auth-gate'],
+    });
+}
+
+if (process.env.DOCUDENT_AUDIT_INCLUDE_HOSTED_PREANALYSIS === '1') {
+    assertHostedAuthEnv('DOCUDENT_AUDIT_INCLUDE_HOSTED_PREANALYSIS');
+    steps.push({
+        id: 'v10-hosted-preanalysis-gate',
+        cmd: 'npm',
+        args: ['run', 'e2e:v10:hosted-preanalysis-gate'],
     });
 }
 
@@ -108,7 +140,10 @@ const results = steps.map((step) => {
     const run = spawnSync(step.cmd, step.args, {
         stdio: 'inherit',
         shell: true,
-        env: process.env,
+        env: {
+            ...process.env,
+            ...(step.env ?? {}),
+        },
     });
     return {
         id: step.id,

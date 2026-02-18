@@ -33,6 +33,10 @@ function defaultOptionTestId(option: { id: string; label: string }) {
     return `option-${option.label}`;
 }
 
+function buildInputTestId(questionId: string) {
+    return `input-${questionId}`;
+}
+
 function resolveOptionId(option: QuestionOptionLoose): string {
     if (typeof option.id === 'string' && option.id.trim().length > 0) {
         return option.id;
@@ -170,7 +174,7 @@ export function V10QuestionRow({
                             fontWeight: 700,
                             boxShadow: shadows.cardInput,
                         }}
-                        data-testid={`input-${id}`}
+                        data-testid={buildInputTestId(id)}
                     />
                 )}
 
@@ -192,6 +196,7 @@ export function V10QuestionRow({
                             color: colors.textPrimary,
                             boxShadow: shadows.cardInput,
                         }}
+                        data-testid={buildInputTestId(id)}
                     />
                 )}
 
@@ -214,6 +219,7 @@ export function V10QuestionRow({
                             color: colors.textPrimary,
                             boxShadow: shadows.cardInput,
                         }}
+                        data-testid={buildInputTestId(id)}
                     />
                 )}
 

@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "id": "totalprothese",
+    "version": "1.0.0",
+    "label": "Totalprothese"
+  },
+  "chips": [
+    {
+      "id": "totalprothese_konventionell",
+      "label": "Konventionelle Totalprothese",
+      "phase": "prothetik",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Konventionelle Totalprothese eingegliedert.",
+        "mittel": "Konventionelle Totalprothese eingegliedert und Sitz kontrolliert.",
+        "lang": "Konventionelle Totalprothesenversorgung eingegliedert, Halt und Okklusion kontrolliert sowie Hinweise zur Eingewoehnung dokumentiert."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "totalprothese_immediat",
+      "label": "Immediat-Totalprothese",
+      "phase": "prothetik",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Immediat-Totalprothese eingegliedert.",
+        "mittel": "Immediat-Totalprothese eingegliedert und postoperative Kontrollen geplant.",
+        "lang": "Immediat-Totalprothese eingegliedert, Sitz und Okklusion initial beurteilt sowie engmaschige Nachkontrollen vereinbart."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "totalprothese_kontrolle",
+      "label": "Prothesenkontrolle",
+      "phase": "nachsorge",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Kontrolle der Totalprothese dokumentiert.",
+        "mittel": "Druckstellen- und Funktionskontrolle der Totalprothese dokumentiert.",
+        "lang": "Nachkontrolle der Totalprothesenversorgung mit Druckstellenpruefung, Funktionskontrolle und Anpassungsempfehlung dokumentiert."
+      },
+      "showInQuickView": true
+    }
+  ]
+}

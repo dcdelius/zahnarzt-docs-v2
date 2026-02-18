@@ -3,6 +3,10 @@
  */
 
 import { assertKnownTreatment, hasCapability, type TreatmentId } from './treatmentRegistry';
+import {
+    loadTemplateConfig as loadCoreTemplateConfig,
+    loadFindingMapConfig as loadCoreFindingMapConfig,
+} from '@/docudent/core/billing/knowledgeBase/registry/loaders';
 
 export interface TemplateConfig {
     _meta: { treatmentId?: string; version?: string };
@@ -16,32 +20,16 @@ export interface FindingMapConfig {
     rendering?: Record<string, unknown>;
 }
 
-// Static imports (Vite-friendly)
-import fuellungTemplate from '../treatments/fuellung/template.json';
-import fuellungFindingMap from '../treatments/fuellung/finding_map.json';
-import endoTemplate from '../treatments/endo/template.json';
-import endoFindingMap from '../treatments/endo/finding_map.json';
-
-const templateConfigs: Record<TreatmentId, TemplateConfig> = {
-    fuellung: fuellungTemplate as unknown as TemplateConfig,
-    endo: endoTemplate as unknown as TemplateConfig,
-};
-
-const findingMapConfigs: Record<TreatmentId, FindingMapConfig> = {
-    fuellung: fuellungFindingMap as unknown as FindingMapConfig,
-    endo: endoFindingMap as unknown as FindingMapConfig,
-};
-
 export function loadTemplateConfig(treatmentId: string): TemplateConfig | null {
     assertKnownTreatment(treatmentId);
     const id = treatmentId as TreatmentId;
     if (!hasCapability(id, 'hasTemplate')) return null;
-    return templateConfigs[id];
+    return loadCoreTemplateConfig(id) as TemplateConfig | null;
 }
 
 export function loadFindingMapConfig(treatmentId: string): FindingMapConfig | null {
     assertKnownTreatment(treatmentId);
     const id = treatmentId as TreatmentId;
     if (!hasCapability(id, 'hasFindingMap')) return null;
-    return findingMapConfigs[id];
+    return loadCoreFindingMapConfig(id) as FindingMapConfig | null;
 }

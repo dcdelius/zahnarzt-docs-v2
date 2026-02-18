@@ -19,6 +19,10 @@ import type {
     CustomClaims,
     PracticeRole,
 } from './authTypes';
+import {
+    buildExtractionPromptV1,
+    buildPreanalysisPromptV1,
+} from './llm/promptContracts';
 
 admin.initializeApp();
 const db = admin.firestore();
@@ -384,33 +388,7 @@ interface DetectTreatmentIntentsV1Output {
     content: string;
 }
 
-const PREANALYSIS_PROMPT = `Du strukturierst zahnmedizinische Fliesstext-Diktate in Behandlungs-Intents.
-Antworte NUR als JSON mit diesem Schema:
-{
-  "version": "1.0.0",
-  "dictation": "<original>",
-  "needsConfirmation": true|false,
-  "intents": [
-    {
-      "intentId": "string",
-      "treatmentId": "fuellung|endo|extraction|crown_prep",
-      "tooth": "string optional",
-      "phase": "string optional",
-      "step": "string optional",
-      "confidence": 0..1,
-      "evidenceSpans": [{ "start": number, "end": number, "text": "string" }],
-      "uncertainty": "classifier_low_confidence|candidate:crown_prep_no_pack|llm_low_confidence|llm_ambiguous_mapping|inferred_tooth_from_context|missing_tooth_reference optional"
-    }
-  ]
-}
-Regeln:
-- Keine Erfindungen.
-- Jeder Intent braucht mindestens einen evidenceSpan.
-- Wenn unsicher: needsConfirmation=true.
-- Wenn uncertainty gesetzt ist, muss needsConfirmation=true sein.
-- Wenn tooth fehlt, uncertainty setzen (z.B. missing_tooth_reference).
-- Keine Billing-Codes/Felder ausgeben (z.B. BEMA/GOZ/GOÄ/BEL, billingCodes, billingRefs).
-- Nur treatmentIds verwenden, die im Schema stehen.`;
+const PREANALYSIS_PROMPT = buildPreanalysisPromptV1();
 
 function getOpenAiApiKey(): string | null {
     const envKey = process.env.OPENAI_API_KEY?.trim();
@@ -496,36 +474,7 @@ interface ExtractFromDictationV1Output {
     content: string;
 }
 
-const EXTRACTION_PROMPT_V1 = `Du bist ein Extraktions-Assistent für zahnärztliche Diktate.
-
-Extrahiere aus dem folgenden Diktat die strukturierten Daten.
-Antworte NUR mit einem JSON-Objekt, keine Erklärungen.
-
-Felder zum Extrahieren:
-- tooth: Zahnnummer (z.B. "36", "15") oder null
-- surfaces: Array von Flächen ["m", "o", "d", "b", "l", "i"] oder []
-- diagnosis: Diagnose (z.B. "Caries profunda", "Caries media") oder null
-- costs: Kosten in Euro als Zahl oder null
-- klinischeZusatzinfos: Array kurzer Stichpunkte zu medizinischen Zusatzinfos oder []
-- patientenangaben: Array kurzer Stichpunkte zu psychosozialen/patientenseitigen Angaben oder []
-- zusatzinfos: (legacy) Array kurzer Stichpunkte, falls keine klare Zuordnung möglich
-- mentioned.anesthesia: { type: "infiltr"|"leitung"|"keine", confidence: 0-1 } oder undefined
-- mentioned.kofferdam: true/false oder undefined
-- mentioned.capping: { type: "cp"|"p"|"none" } oder undefined
-- mentioned.material: String oder undefined
-- mentioned.vitality: "+"| "-" oder undefined
-- mentioned.percussion: "+"| "-" oder undefined
-
-Regeln:
-1. Extrahiere NUR was explizit erwähnt wurde
-2. Bei "tief" oder "profunda" → diagnosis: "Caries profunda"
-3. "mod" = ["m", "o", "d"], "ob" = ["o", "b"], etc.
-4. klinischeZusatzinfos nur bei expliziter, medizinisch relevanter Zusatzinfo (kurz, neutral, keine Mutmaßungen)
-5. patientenangaben nur bei expliziter Patientenangabe (kurz, neutral, keine Mutmaßungen)
-6. zusatzinfos nur wenn keine klare Zuordnung möglich ist
-7. KEINE Annahmen über nicht erwähnte Felder
-
-JSON-Antwort:`;
+const EXTRACTION_PROMPT_V1 = buildExtractionPromptV1();
 
 export const extractFromDictationV1 = functions.https.onCall(
     async (data: ExtractFromDictationV1Input, context): Promise<ExtractFromDictationV1Output> => {
@@ -558,7 +507,7 @@ export const extractFromDictationV1 = functions.https.onCall(
                     { role: 'system', content: EXTRACTION_PROMPT_V1 },
                     { role: 'user', content: dictation },
                 ],
-                temperature: 0.1,
+                temperature: 0.0,
                 max_tokens: 500,
             }),
         });
@@ -772,5 +721,171 @@ export const refineDocumentationTextV1 = functions.https.onCall(
         }
 
         return { text: content };
+    }
+);
+
+// ═══════════════════════════════════════════════════════════════
+// F8: FORENSIC DOCUMENTATION COMPOSER (LLM GATEWAY)
+// ═══════════════════════════════════════════════════════════════
+
+interface ComposeForensicSectionV1 {
+    id: string;
+    label: string;
+    content: string;
+}
+
+interface ComposeForensicDocumentationV1Input {
+    treatmentId: string;
+    insuranceType: 'GKV' | 'PKV' | 'MKV';
+    textLength: 'kurz' | 'mittel' | 'lang';
+    sections: ComposeForensicSectionV1[];
+    context?: {
+        instanceCount?: number;
+        unresolvedForensicHints?: string[];
+        documentationContext?: {
+            clinical?: string[];
+            patient?: string[];
+            administrative?: string[];
+            forensicNotes?: string[];
+        };
+    };
+}
+
+interface ComposeForensicDocumentationV1Output {
+    sections: ComposeForensicSectionV1[];
+}
+
+const FORENSIC_COMPOSER_PROMPT_V1 = [
+    'Du bist ein medizinischer Forensik-Redaktor fuer zahnmedizinische Dokumentation (Deutschland).',
+    'Input ist strukturierte JSON mit sections[].',
+    'Ziel: sprachlich klar, forensisch nachvollziehbar, ohne inhaltliche Veraenderung.',
+    'Nicht erlaubt: neue Fakten, entfernte Fakten, geaenderte Zahlen, geaenderte Zahnnummern, Billing-Codes.',
+    'Output muss JSON sein: {"sections":[{"id":"...","label":"...","content":"..."}]}.',
+    'Verwende exakt dieselben section IDs in derselben Reihenfolge.',
+    'Labels unveraendert lassen.',
+    'Kein Text ausserhalb des JSON.',
+].join('\n');
+
+function parseJsonObject(raw: string): unknown | null {
+    const stripped = raw
+        .replace(/```json/gi, '')
+        .replace(/```/g, '')
+        .trim();
+    const match = stripped.match(/\{[\s\S]*\}/);
+    if (!match) return null;
+    try {
+        return JSON.parse(match[0]);
+    } catch {
+        return null;
+    }
+}
+
+function normalizeSections(value: unknown): ComposeForensicSectionV1[] {
+    if (!Array.isArray(value)) return [];
+    return value
+        .filter(entry => entry && typeof entry === 'object')
+        .map((entry) => {
+            const record = entry as Record<string, unknown>;
+            return {
+                id: String(record.id ?? '').trim(),
+                label: String(record.label ?? '').trim(),
+                content: String(record.content ?? '').trim(),
+            };
+        })
+        .filter(section => section.id.length > 0 && section.label.length > 0 && section.content.length > 0);
+}
+
+export const composeForensicDocumentationV1 = functions.https.onCall(
+    async (
+        data: ComposeForensicDocumentationV1Input,
+        context
+    ): Promise<ComposeForensicDocumentationV1Output> => {
+        if (!context.auth) {
+            throw new functions.https.HttpsError('unauthenticated', 'Login required');
+        }
+
+        const sections = normalizeSections(data?.sections);
+        if (sections.length === 0) {
+            throw new functions.https.HttpsError('invalid-argument', 'sections are required');
+        }
+        if (sections.length > 8) {
+            throw new functions.https.HttpsError('invalid-argument', 'too many sections');
+        }
+
+        const treatmentId = String(data?.treatmentId ?? '').trim() || 'unknown';
+        const insuranceType = data?.insuranceType ?? 'GKV';
+        const textLength = data?.textLength ?? 'mittel';
+        const contextPayload = data?.context && typeof data.context === 'object'
+            ? data.context
+            : undefined;
+
+        const apiKey = getOpenAiApiKey();
+        if (!apiKey) {
+            throw new functions.https.HttpsError('failed-precondition', 'OPENAI_API_KEY not configured');
+        }
+
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                temperature: 0,
+                max_tokens: 1300,
+                messages: [
+                    { role: 'system', content: FORENSIC_COMPOSER_PROMPT_V1 },
+                    {
+                        role: 'user',
+                        content: JSON.stringify({
+                            treatmentId,
+                            insuranceType,
+                            textLength,
+                            sections,
+                            context: contextPayload,
+                        }),
+                    },
+                ],
+            }),
+        });
+
+        if (!response.ok) {
+            const details = await response.text().catch(() => 'no-details');
+            functions.logger.error('composeForensicDocumentationV1 upstream error', {
+                status: response.status,
+                details,
+            });
+            throw new functions.https.HttpsError(
+                'internal',
+                `forensic composer upstream failed (${response.status})`
+            );
+        }
+
+        const payload = await response.json() as {
+            choices?: Array<{ message?: { content?: string } }>;
+        };
+        const content = String(payload?.choices?.[0]?.message?.content ?? '').trim();
+        if (!content) {
+            throw new functions.https.HttpsError('internal', 'forensic composer returned empty content');
+        }
+
+        const parsed = parseJsonObject(content);
+        if (!parsed || typeof parsed !== 'object') {
+            throw new functions.https.HttpsError('internal', 'forensic composer returned invalid JSON');
+        }
+        const parsedSections = normalizeSections((parsed as { sections?: unknown }).sections);
+        if (parsedSections.length !== sections.length) {
+            throw new functions.https.HttpsError('internal', 'forensic composer returned invalid section count');
+        }
+
+        const sourceIds = sections.map(section => section.id);
+        const targetIds = parsedSections.map(section => section.id);
+        const sameOrder = sourceIds.every((id, index) => id === targetIds[index]);
+        if (!sameOrder) {
+            throw new functions.https.HttpsError('internal', 'forensic composer changed section order');
+        }
+
+        return { sections: parsedSections };
     }
 );

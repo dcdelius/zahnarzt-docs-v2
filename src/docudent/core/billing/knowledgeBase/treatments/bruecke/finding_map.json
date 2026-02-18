@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "treatmentId": "bruecke",
+    "version": "1.0.0"
+  },
+  "fields": {
+    "type": {
+      "label": "Brueckentyp",
+      "template": "{{value}}"
+    },
+    "phase": {
+      "label": "Leistungsphase",
+      "template": "{{value}}"
+    }
+  }
+}

@@ -373,6 +373,269 @@ export function applyAnswersToFacts(
         };
     }
 
+    // Untersuchung evidence
+    const untersuchungReason = getAnswer(
+        'medical_untersuchung_anlass',
+        'untersuchung_anlass',
+        'anlass'
+    );
+    const untersuchungFindings = getAnswer(
+        'medical_untersuchung_befunde',
+        'untersuchung_befunde',
+        'befunde'
+    );
+    const untersuchungAssessment = getAnswer(
+        'medical_untersuchung_beurteilung',
+        'untersuchung_beurteilung',
+        'beurteilung'
+    );
+    if (
+        untersuchungReason !== undefined
+        || untersuchungFindings !== undefined
+        || untersuchungAssessment !== undefined
+    ) {
+        newFacts.untersuchung = {
+            ...(newFacts.untersuchung as Record<string, unknown> ?? {}),
+            ...(untersuchungReason !== undefined ? { reason: String(untersuchungReason).trim() } : {}),
+            ...(untersuchungFindings !== undefined ? { findings: String(untersuchungFindings).trim() } : {}),
+            ...(untersuchungAssessment !== undefined ? { assessment: String(untersuchungAssessment).trim() } : {}),
+        };
+    }
+
+    // Fissurenversiegelung evidence
+    const fissurenIndikation = getAnswer(
+        'medical_fissuren_indikation',
+        'fissuren_indikation',
+        'indikation'
+    );
+    const fissurenMaterial = getAnswer(
+        'medical_fissuren_material',
+        'fissuren_material',
+        'versiegelungsmaterial'
+    );
+    if (fissurenIndikation !== undefined || fissurenMaterial !== undefined) {
+        newFacts.fissurenversiegelung = {
+            ...(newFacts.fissurenversiegelung as Record<string, unknown> ?? {}),
+            ...(fissurenIndikation !== undefined ? { indication: String(fissurenIndikation).trim() } : {}),
+            ...(fissurenMaterial !== undefined ? { material: String(fissurenMaterial).trim() } : {}),
+        };
+    }
+
+    // Parodontologie evidence
+    const parodontologiePhase = getAnswer(
+        'medical_parodontologie_phase',
+        'parodontologie_phase',
+        'paro_phase'
+    );
+    const parodontologieUptGrad = getAnswer(
+        'medical_parodontologie_upt_grad',
+        'parodontologie_upt_grad',
+        'upt_grad'
+    );
+    if (parodontologiePhase !== undefined || parodontologieUptGrad !== undefined) {
+        newFacts.parodontologie = {
+            ...(newFacts.parodontologie as Record<string, unknown> ?? {}),
+            ...(parodontologiePhase !== undefined ? { phase: String(parodontologiePhase).trim().toLowerCase() } : {}),
+            ...(parodontologieUptGrad !== undefined ? { uptGrade: String(parodontologieUptGrad).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // UPT evidence
+    const uptGrad = getAnswer(
+        'medical_upt_grad',
+        'upt_grad',
+        'upt_grade'
+    );
+    const uptIntervall = getAnswer(
+        'medical_upt_intervall',
+        'upt_intervall',
+        'upt_interval'
+    );
+    if (uptGrad !== undefined || uptIntervall !== undefined) {
+        newFacts.upt = {
+            ...(newFacts.upt as Record<string, unknown> ?? {}),
+            ...(uptGrad !== undefined ? { grade: String(uptGrad).trim().toLowerCase() } : {}),
+            ...(uptIntervall !== undefined ? { interval: String(uptIntervall).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // Krone evidence
+    const kroneArt = getAnswer(
+        'medical_krone_art',
+        'krone_art',
+        'krone_type'
+    );
+    const kroneEingliederung = getAnswer(
+        'medical_krone_eingliederung',
+        'krone_eingliederung',
+        'krone_placement'
+    );
+    if (kroneArt !== undefined || kroneEingliederung !== undefined) {
+        newFacts.krone = {
+            ...(newFacts.krone as Record<string, unknown> ?? {}),
+            ...(kroneArt !== undefined ? { type: String(kroneArt).trim().toLowerCase() } : {}),
+            ...(kroneEingliederung !== undefined ? { placement: String(kroneEingliederung).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // Bruecke evidence
+    const brueckeTyp = getAnswer(
+        'medical_bruecke_typ',
+        'bruecke_typ',
+        'bruecke_type'
+    );
+    const brueckePhase = getAnswer(
+        'medical_bruecke_phase',
+        'bruecke_phase',
+        'bruecke_step'
+    );
+    if (brueckeTyp !== undefined || brueckePhase !== undefined) {
+        newFacts.bruecke = {
+            ...(newFacts.bruecke as Record<string, unknown> ?? {}),
+            ...(brueckeTyp !== undefined ? { type: String(brueckeTyp).trim().toLowerCase() } : {}),
+            ...(brueckePhase !== undefined ? { phase: String(brueckePhase).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // Teilkrone evidence
+    const teilkroneArt = getAnswer(
+        'medical_teilkrone_art',
+        'teilkrone_art',
+        'teilkrone_type'
+    );
+    const teilkroneEingliederung = getAnswer(
+        'medical_teilkrone_eingliederung',
+        'teilkrone_eingliederung',
+        'teilkrone_placement'
+    );
+    if (teilkroneArt !== undefined || teilkroneEingliederung !== undefined) {
+        newFacts.teilkrone = {
+            ...(newFacts.teilkrone as Record<string, unknown> ?? {}),
+            ...(teilkroneArt !== undefined ? { type: String(teilkroneArt).trim().toLowerCase() } : {}),
+            ...(teilkroneEingliederung !== undefined ? { placement: String(teilkroneEingliederung).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // WSR evidence
+    const wsrZugang = getAnswer(
+        'medical_wsr_zugang',
+        'wsr_zugang',
+        'wsr_access'
+    );
+    const wsrLokalisation = getAnswer(
+        'medical_wsr_lokalisation',
+        'wsr_lokalisation',
+        'wsr_location'
+    );
+    if (wsrZugang !== undefined || wsrLokalisation !== undefined) {
+        newFacts.wsr = {
+            ...(newFacts.wsr as Record<string, unknown> ?? {}),
+            ...(wsrZugang !== undefined ? { zugang: String(wsrZugang).trim().toLowerCase() } : {}),
+            ...(wsrLokalisation !== undefined ? { lokalisation: String(wsrLokalisation).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // Trauma evidence
+    const traumaArt = getAnswer(
+        'medical_trauma_art',
+        'trauma_art',
+        'trauma_type'
+    );
+    const traumaSchienung = getAnswer(
+        'medical_trauma_schienung',
+        'trauma_schienung',
+        'trauma_splint'
+    );
+    const traumaKontrolle = getAnswer(
+        'medical_trauma_kontrolle',
+        'trauma_kontrolle',
+        'trauma_followup'
+    );
+    if (traumaArt !== undefined || traumaSchienung !== undefined || traumaKontrolle !== undefined) {
+        newFacts.trauma = {
+            ...(newFacts.trauma as Record<string, unknown> ?? {}),
+            ...(traumaArt !== undefined ? { art: String(traumaArt).trim().toLowerCase() } : {}),
+            ...(traumaSchienung !== undefined ? { schienung: String(traumaSchienung).trim().toLowerCase() } : {}),
+            ...(traumaKontrolle !== undefined ? { kontrolle: String(traumaKontrolle).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // Implant evidence
+    const implantPhase = getAnswer(
+        'medical_implant_phase',
+        'implant_phase',
+        'implant_step'
+    );
+    const implantNachsorge = getAnswer(
+        'medical_implant_nachsorge',
+        'implant_nachsorge',
+        'implant_followup'
+    );
+    if (implantPhase !== undefined || implantNachsorge !== undefined) {
+        newFacts.implant = {
+            ...(newFacts.implant as Record<string, unknown> ?? {}),
+            ...(implantPhase !== undefined ? { phase: String(implantPhase).trim().toLowerCase() } : {}),
+            ...(implantNachsorge !== undefined ? { nachsorge: String(implantNachsorge).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // Schiene evidence
+    const schieneTyp = getAnswer(
+        'medical_schiene_typ',
+        'schiene_typ',
+        'schiene_type'
+    );
+    const schienePhase = getAnswer(
+        'medical_schiene_phase',
+        'schiene_phase',
+        'schiene_step'
+    );
+    if (schieneTyp !== undefined || schienePhase !== undefined) {
+        newFacts.schiene = {
+            ...(newFacts.schiene as Record<string, unknown> ?? {}),
+            ...(schieneTyp !== undefined ? { type: String(schieneTyp).trim().toLowerCase() } : {}),
+            ...(schienePhase !== undefined ? { phase: String(schienePhase).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // Teilprothese evidence
+    const teilprotheseTyp = getAnswer(
+        'medical_teilprothese_typ',
+        'teilprothese_typ',
+        'teilprothese_type'
+    );
+    const teilprothesePhase = getAnswer(
+        'medical_teilprothese_phase',
+        'teilprothese_phase',
+        'teilprothese_step'
+    );
+    if (teilprotheseTyp !== undefined || teilprothesePhase !== undefined) {
+        newFacts.teilprothese = {
+            ...(newFacts.teilprothese as Record<string, unknown> ?? {}),
+            ...(teilprotheseTyp !== undefined ? { type: String(teilprotheseTyp).trim().toLowerCase() } : {}),
+            ...(teilprothesePhase !== undefined ? { phase: String(teilprothesePhase).trim().toLowerCase() } : {}),
+        };
+    }
+
+    // Totalprothese evidence
+    const totalprotheseTyp = getAnswer(
+        'medical_totalprothese_typ',
+        'totalprothese_typ',
+        'totalprothese_type'
+    );
+    const totalprothesePhase = getAnswer(
+        'medical_totalprothese_phase',
+        'totalprothese_phase',
+        'totalprothese_step'
+    );
+    if (totalprotheseTyp !== undefined || totalprothesePhase !== undefined) {
+        newFacts.totalprothese = {
+            ...(newFacts.totalprothese as Record<string, unknown> ?? {}),
+            ...(totalprotheseTyp !== undefined ? { type: String(totalprotheseTyp).trim().toLowerCase() } : {}),
+            ...(totalprothesePhase !== undefined ? { phase: String(totalprothesePhase).trim().toLowerCase() } : {}),
+        };
+    }
+
     // Isolation (Kofferdam / relative)
     const isolationAnswer = getAnswer('isolation', 'medical_isolation', 'fuellung_isolation');
     if (isolationAnswer !== undefined && typeof isolationAnswer === 'string') {
@@ -385,6 +648,18 @@ export function applyAnswersToFacts(
             newFacts.kofferdamUsed = false;
             newFacts.kofferdamMentioned = true;
             newFacts.isolationMentioned = 'relative';
+        } else if (
+            normalized.includes('keine')
+            || normalized.includes('kein')
+            || normalized.includes('ohne')
+            || normalized.includes('none')
+            || normalized.includes('nein')
+            || normalized.includes('no')
+            || normalized.includes('false')
+        ) {
+            newFacts.kofferdamUsed = false;
+            newFacts.kofferdamMentioned = false;
+            newFacts.isolationMentioned = 'unknown';
         }
     }
 
@@ -518,10 +793,44 @@ export function applyAnswersToFacts(
     // ── Endo askbacks ──────────────────────────────────────────
     const endoKofferdam = getAnswer('medical_endo_kofferdam', 'endo_kofferdam');
     if (endoKofferdam !== undefined) {
+        const normalized = normalizeYesNo(endoKofferdam);
+        const raw = String(endoKofferdam).toLowerCase();
+        const yes =
+            normalized === 'yes'
+            || raw.includes('kofferdam')
+            || raw.includes('rubber');
+        const relative =
+            raw.includes('relativ')
+            || raw.includes('watterollen')
+            || raw.includes('watte');
+        const no =
+            normalized === 'no'
+            || relative
+            || raw.includes('none')
+            || raw.includes('kein')
+            || raw.includes('keine')
+            || raw.includes('ohne')
+            || raw.includes('nein')
+            || raw.includes('no')
+            || raw.includes('false');
+
         newFacts.endo = {
             ...(newFacts.endo ?? {}),
-            kofferdam: normalizeYesNo(endoKofferdam) === 'yes',
+            kofferdam: yes ? true : no ? false : (newFacts.endo as Record<string, unknown> | undefined)?.kofferdam as boolean | undefined,
         };
+        if (yes) {
+            newFacts.kofferdamUsed = true;
+            newFacts.kofferdamMentioned = true;
+            newFacts.isolationMentioned = 'rubberDam';
+        } else if (relative) {
+            newFacts.kofferdamUsed = false;
+            newFacts.kofferdamMentioned = true;
+            newFacts.isolationMentioned = 'relative';
+        } else if (no) {
+            newFacts.kofferdamUsed = false;
+            newFacts.kofferdamMentioned = false;
+            newFacts.isolationMentioned = 'unknown';
+        }
     }
 
     const endoWlMethod = getAnswer('medical_wl_method', 'medical_endo_wl_method', 'endo_wl_method', 'wl_method');
@@ -602,11 +911,35 @@ export function applyAnswersToFacts(
         }
     }
 
+    const workingLengthsAnswer =
+        getAnswer('workingLengthsByCanal', 'working_lengths', 'endo_working_lengths')
+        ?? getAnswerByRegex(/ENDO_.*WORKING_LENGTHS/i);
+
+    const normalizedWorkingLengthsText = (() => {
+        if (!workingLengthsAnswer) return undefined;
+        if (typeof workingLengthsAnswer === 'string') {
+            const value = workingLengthsAnswer.trim();
+            return value.length > 0 ? value : undefined;
+        }
+        if (typeof workingLengthsAnswer === 'object' && !Array.isArray(workingLengthsAnswer)) {
+            const entries = Object.entries(workingLengthsAnswer as Record<string, unknown>)
+                .map(([canal, len]) => [String(canal).trim().toUpperCase(), String(len ?? '').trim()] as const)
+                .filter(([canal, len]) => canal.length > 0 && len.length > 0);
+            if (entries.length === 0) return undefined;
+            return entries.map(([canal, len]) => `${canal}: ${len} mm`).join(', ');
+        }
+        return String(workingLengthsAnswer);
+    })();
+
+    if (normalizedWorkingLengthsText) {
+        newFacts.endo = {
+            ...(newFacts.endo ?? {}),
+            workingLengthsText: normalizedWorkingLengthsText,
+        };
+    }
+
     // Derive canal count from working length answers (if explicit canal count missing)
     if (newFacts.endo?.canalCount === undefined) {
-        const workingLengthsAnswer =
-            getAnswer('workingLengthsByCanal', 'working_lengths', 'endo_working_lengths')
-            ?? getAnswerByRegex(/ENDO_.*WORKING_LENGTHS/i);
 
         const parsedCanals = (() => {
             if (workingLengthsAnswer && typeof workingLengthsAnswer === 'object' && !Array.isArray(workingLengthsAnswer)) {

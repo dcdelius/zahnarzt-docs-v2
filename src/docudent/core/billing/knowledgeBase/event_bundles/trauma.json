@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "treatmentId": "trauma",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "trauma.baseline",
+      "chipIds": ["trauma_baseline"],
+      "textRefIds": ["trauma_baseline"],
+      "billingRefIds": []
+    },
+    {
+      "id": "trauma.schienung.semipermanent",
+      "chipIds": ["trauma_schienung_semipermanent"],
+      "textRefIds": ["trauma_schienung_semipermanent"],
+      "billingRefIds": ["trauma_schienung_semipermanent"]
+    },
+    {
+      "id": "trauma.kontrolle.empfohlen",
+      "chipIds": ["trauma_kontrolle_empfohlen"],
+      "textRefIds": ["trauma_kontrolle_empfohlen"],
+      "billingRefIds": []
+    },
+    {
+      "id": "trauma.askback.art"
+    },
+    {
+      "id": "trauma.askback.schienung"
+    },
+    {
+      "id": "trauma.askback.kontrolle"
+    }
+  ]
+}

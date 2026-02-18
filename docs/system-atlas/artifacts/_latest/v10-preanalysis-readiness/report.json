@@ -1,0 +1,80 @@
+{
+  "startedAt": "2026-02-18T07:57:58.749Z",
+  "finishedAt": "2026-02-18T07:58:08.060Z",
+  "strict": true,
+  "requirements": {
+    "password": true,
+    "callables": true
+  },
+  "summary": {
+    "hostedEnvOk": true,
+    "authPasswordOk": true,
+    "callablesOk": true,
+    "readyForHostedPreanalysis": true
+  },
+  "diagnostics": {
+    "hostedEnvIssues": [],
+    "authPasswordMessage": "enabled",
+    "callableAuthMessage": "ok",
+    "callableFailures": []
+  },
+  "blockers": [],
+  "nextSteps": [
+    "Run npm run e2e:v10:hosted-preanalysis-gate."
+  ],
+  "steps": [
+    {
+      "id": "auth-diagnostics",
+      "ok": true,
+      "exitCode": 0,
+      "payload": {
+        "timestamp": "2026-02-18T07:57:58.834Z",
+        "requirements": {
+          "strict": true,
+          "requireAnonymous": false,
+          "requirePassword": true
+        },
+        "anonymous": {
+          "ok": false,
+          "message": "ADMIN_ONLY_OPERATION"
+        },
+        "passwordAuth": {
+          "attempted": true,
+          "ok": true,
+          "message": "enabled"
+        }
+      }
+    },
+    {
+      "id": "callable-diagnostics",
+      "ok": true,
+      "exitCode": 0,
+      "payload": {
+        "timestamp": "2026-02-18T07:57:59.558Z",
+        "projectId": "zahnarzt-app",
+        "region": "us-central1",
+        "auth": {
+          "attempted": true,
+          "ok": true,
+          "message": "ok"
+        },
+        "callables": [
+          {
+            "name": "extractFromDictationV1",
+            "attempted": true,
+            "ok": true,
+            "httpStatus": 200,
+            "message": "ok"
+          },
+          {
+            "name": "detectTreatmentIntentsV1",
+            "attempted": true,
+            "ok": true,
+            "httpStatus": 200,
+            "message": "ok"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+    "_meta": {
+        "treatmentId": "krone",
+        "version": "1.0.0",
+        "description": "Question Bank fuer Krone"
+    },
+    "questions": [
+        {
+            "key": "art",
+            "category": "forensic",
+            "prompt": "Welche Kronenart wurde durchgefuehrt?",
+            "type": "single",
+            "dataField": "krone.type",
+            "options": [
+                {
+                    "id": "vollkrone",
+                    "label": "Vollkrone",
+                    "dataValue": "vollkrone"
+                },
+                {
+                    "id": "provisorium",
+                    "label": "Provisorische Krone",
+                    "dataValue": "provisorium"
+                }
+            ]
+        },
+        {
+            "key": "eingliederung",
+            "category": "forensic",
+            "prompt": "Eingliederungsart dokumentieren",
+            "type": "single",
+            "dataField": "krone.placement",
+            "options": [
+                {
+                    "id": "definitiv",
+                    "label": "Definitiv",
+                    "dataValue": "definitiv"
+                },
+                {
+                    "id": "provisorisch",
+                    "label": "Provisorisch",
+                    "dataValue": "provisorisch"
+                }
+            ]
+        }
+    ]
+}

@@ -6,6 +6,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
+import { getPack } from '../packs';
 import './V10MultiQuestionsPanel.css';
 
 // ═══════════════════════════════════════════════════════════════
@@ -18,12 +19,13 @@ export interface V10Question {
     type: 'select' | 'text' | 'boolean' | 'multi';
     options?: Array<{ value: string; label: string }>;
     instanceId?: string;
-    treatmentType?: 'endo' | 'fuellung';
+    treatmentType?: 'endo' | 'fuellung' | string;
 }
 
 export interface V10Instance {
     id: string;
-    treatmentType: 'endo' | 'fuellung';
+    treatmentType: 'endo' | 'fuellung' | string;
+    treatmentId?: string;
     tooth?: string;
     questions: V10Question[];
 }
@@ -135,7 +137,9 @@ interface InstanceSectionProps {
 }
 
 function InstanceSection({ instance, answers, onAnswerChange, onSubmit, isSubmitted, loading }: InstanceSectionProps) {
-    const treatmentLabel = instance.treatmentType === 'endo' ? 'Endo' : 'Füllung';
+    const treatmentId = instance.treatmentId ?? instance.treatmentType;
+    const pack = treatmentId ? getPack(treatmentId) : null;
+    const treatmentLabel = pack?.meta?.label ?? (instance.treatmentType === 'endo' ? 'Endo' : instance.treatmentType === 'fuellung' ? 'Füllung' : String(treatmentId));
     const treatmentColor = instance.treatmentType === 'endo' ? 'var(--endo-color, #e74c3c)' : 'var(--fuellung-color, #3498db)';
 
     return (

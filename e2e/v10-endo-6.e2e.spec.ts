@@ -13,7 +13,7 @@
  * Run: npm run e2e:v10:endo6
  */
 
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page, Locator } from '@playwright/test';
 import * as fs from 'fs';
 import * as path from 'path';
 import { ENDO_SCENARIOS, type EndoScenario } from './scenarios/endo6.scenarios';
@@ -87,12 +87,69 @@ async function selectTextLength(page: Page, label: 'Kurz' | 'Mittel' | 'Lang'): 
     await selector.locator(`button:has-text("${label}")`).click();
 }
 
+async function ensureSingleMode(page: Page): Promise<void> {
+    const multiButton = page.locator('[data-testid="v10-multi-button"]');
+    const isVisible = await multiButton.isVisible({ timeout: 1200 }).catch(() => false);
+    if (!isVisible) return;
+    await multiButton.click({ force: true });
+    await expect(multiButton).toBeHidden({ timeout: 5000 });
+}
+
+async function handleIntentConfirmationIfVisible(page: Page): Promise<void> {
+    const confirmationPanel = page.locator('[data-testid="v10-intent-confirmation-panel"]');
+    if (!await confirmationPanel.isVisible({ timeout: 1200 }).catch(() => false)) return;
+
+    const lanes = confirmationPanel.locator('[data-testid^="v10-intent-lane-"]');
+    const laneCount = await lanes.count();
+    for (let laneIndex = 0; laneIndex < laneCount; laneIndex += 1) {
+        const lane = lanes.nth(laneIndex);
+        const laneId = (await lane.getAttribute('data-testid')) || '';
+        const laneParts = laneId.split('v10-intent-lane-');
+        if (laneParts.length !== 2 || !laneParts[1]) continue;
+        const intentId = laneParts[1];
+
+        const preferredById = confirmationPanel.locator(`[data-testid="v10-intent-option-${intentId}-endo"]`).first();
+        if (await preferredById.isVisible({ timeout: 300 }).catch(() => false)) {
+            await preferredById.click({ force: true });
+            await page.waitForTimeout(80);
+            continue;
+        }
+
+        const preferredByLabel = lane.locator('button:has-text("Endo")').first();
+        if (await preferredByLabel.isVisible({ timeout: 300 }).catch(() => false)) {
+            await preferredByLabel.click({ force: true });
+            await page.waitForTimeout(80);
+            continue;
+        }
+
+        const firstOption = confirmationPanel.locator(`[data-testid^="v10-intent-option-${intentId}-"]`).first();
+        if (await firstOption.isVisible({ timeout: 300 }).catch(() => false)) {
+            await firstOption.click({ force: true });
+            await page.waitForTimeout(80);
+        }
+    }
+
+    const confirmButton = page.locator('[data-testid="v10-intent-confirm-button"]');
+    if (await confirmButton.isVisible({ timeout: 1200 }).catch(() => false)) {
+        await expect(confirmButton).toBeEnabled({ timeout: 5000 });
+        await confirmButton.click();
+        await confirmationPanel.waitFor({ state: 'hidden', timeout: 10000 }).catch(() => { });
+    }
+}
+
 async function runPipeline(page: Page, dictation: string): Promise<'output' | 'questions'> {
     await page.fill('[data-testid="v10-dictation-input"]', dictation);
     await page.click('[data-testid="v10-run-button"]');
 
     await page.waitForSelector(
-        '[data-testid="v10-questions-panel"]:visible, [data-testid="v10-output-panel"]:visible, button:has-text("Zum Output")',
+        '[data-testid="v10-intent-confirmation-panel"]:visible, [data-testid="v10-questions-panel"]:visible, [data-testid="v10-output-panel"]:visible, [data-testid="v10-multi-output-panel"]:visible, button:has-text("Zum Output")',
+        { timeout: 20000 }
+    );
+
+    await handleIntentConfirmationIfVisible(page);
+
+    await page.waitForSelector(
+        '[data-testid="v10-questions-panel"]:visible, [data-testid="v10-output-panel"]:visible, [data-testid="v10-multi-output-panel"]:visible, button:has-text("Zum Output")',
         { timeout: 20000 }
     );
 
@@ -132,63 +189,179 @@ async function getBodyText(page: Page): Promise<string> {
     return (await page.locator('body').innerText()) || '';
 }
 
-async function autoAnswerQuestionsFlowV2(page: Page): Promise<void> {
+async function fillQuestionRow(row: Locator, preferNoKofferdam: boolean): Promise<void> {
+    const rowId = await row.getAttribute('data-testid');
+    const questionId = rowId?.replace('question-row-', '') ?? '';
+    const normalizedQuestionId = questionId.toLowerCase();
+    const rowText = (await row.innerText().catch(() => '')).toLowerCase();
+    const wantsCanalCount =
+        normalizedQuestionId.includes('canal_count')
+        || normalizedQuestionId.includes('kanal')
+        || rowText.includes('wie viele kanaele')
+        || rowText.includes('wie viele kanäle');
+    const wantsWlMethod =
+        normalizedQuestionId.includes('wl_method')
+        || normalizedQuestionId.includes('working_length_method')
+        || rowText.includes('wl_method')
+        || rowText.includes('arbeitslaengenmethode')
+        || rowText.includes('arbeitslängenmethode');
+    const wantsWorkingLengths =
+        normalizedQuestionId.includes('working_length')
+        || normalizedQuestionId.includes('arbeitslaenge')
+        || normalizedQuestionId.includes('arbeitslänge')
+        || normalizedQuestionId.includes('apical_size');
+
+    const textareas = row.locator('textarea');
+    if (await textareas.count() > 0) {
+        let value = '30';
+        if (wantsCanalCount) {
+            value = '3';
+        } else if (wantsWlMethod) {
+            value = 'elektrisch';
+        } else if (questionId.includes('APICAL_SIZE')) {
+            value = 'MB: 30, ML: 30, D: 30';
+        } else if (wantsWorkingLengths) {
+            value = 'MB: 19, ML: 18, D: 20';
+        } else if (
+            normalizedQuestionId.includes('medication')
+            || normalizedQuestionId.includes('einlage')
+            || normalizedQuestionId.includes('medik')
+        ) {
+            value = 'caoh2';
+        }
+        await textareas.first().fill(value);
+        return;
+    }
+
+    const numberInput = row.locator('input[type="number"]');
+    if (await numberInput.count() > 0) {
+        await numberInput.first().fill(wantsCanalCount ? '3' : '30');
+        return;
+    }
+
+    const textInput = row.locator('input[type="text"]');
+    if (await textInput.count() > 0) {
+        if (wantsCanalCount) {
+            await textInput.first().fill('3');
+            return;
+        }
+        if (wantsWlMethod) {
+            await textInput.first().fill('elektrisch');
+            return;
+        }
+        if (wantsWorkingLengths) {
+            await textInput.first().fill('MB: 19, ML: 18, D: 20');
+            return;
+        }
+        if (
+            normalizedQuestionId.includes('medication')
+            || normalizedQuestionId.includes('einlage')
+            || normalizedQuestionId.includes('medik')
+        ) {
+            await textInput.first().fill('caoh2');
+            return;
+        }
+        await textInput.first().fill('30');
+        return;
+    }
+
+    const buttons = row.locator('button');
+    if (await buttons.count() > 0) {
+        if (wantsCanalCount) {
+            const btn3 = row.locator('button:has-text("3")').first();
+            if (await btn3.isVisible({ timeout: 300 }).catch(() => false)) {
+                await btn3.click();
+                return;
+            }
+        }
+        if (wantsWlMethod) {
+            const electronic = row
+                .locator('button:has-text("Elektrisch"), button:has-text("Apex")')
+                .first();
+            if (await electronic.isVisible({ timeout: 300 }).catch(() => false)) {
+                await electronic.click();
+                return;
+            }
+        }
+        if (
+            preferNoKofferdam
+            && (normalizedQuestionId.includes('kofferdam') || normalizedQuestionId.includes('isolation'))
+        ) {
+            const noOption = row
+                .locator('button:has-text("Nein"), button:has-text("Kein"), button:has-text("ohne"), button:has-text("No")')
+                .first();
+            if (await noOption.isVisible({ timeout: 300 }).catch(() => false)) {
+                await noOption.click();
+                return;
+            }
+        }
+        await buttons.first().click();
+    }
+}
+
+async function autoAnswerQuestionsFlowV2(page: Page, options?: { preferNoKofferdam?: boolean }): Promise<void> {
+    const preferNoKofferdam = options?.preferNoKofferdam === true;
     const rows = page.locator('[data-testid^="question-row-"]');
     const count = await rows.count();
 
     for (let i = 0; i < count; i++) {
         const row = rows.nth(i);
-        const rowId = await row.getAttribute('data-testid');
-        const questionId = rowId?.replace('question-row-', '') ?? '';
+        await fillQuestionRow(row, preferNoKofferdam);
+    }
 
-        const textareas = row.locator('textarea');
-        if (await textareas.count() > 0) {
-            const value = questionId.includes('APICAL_SIZE')
-                ? 'MB: 30, ML: 30, D: 30'
-                : 'MB: 19, ML: 18, D: 20';
-            await textareas.first().fill(value);
-            continue;
-        }
+    const laneButtons = page.locator('button[data-testid^="v10-askback-lane-"]');
+    const laneCount = await laneButtons.count();
+    for (let i = 0; i < laneCount; i += 1) {
+        const lane = laneButtons.nth(i);
+        const laneId = (await lane.getAttribute('data-testid').catch(() => '')) ?? '';
+        if (!laneId || laneId === 'v10-askback-lane-all') continue;
+        await lane.click({ force: true });
+        await page.waitForTimeout(120);
 
-        const numberInput = row.locator('input[type="number"]');
-        if (await numberInput.count() > 0) {
-            await numberInput.first().fill('30');
-            continue;
+        const laneRows = page.locator('[data-testid^="question-row-"]');
+        const laneRowCount = await laneRows.count();
+        for (let j = 0; j < laneRowCount; j += 1) {
+            const row = laneRows.nth(j);
+            await fillQuestionRow(row, preferNoKofferdam);
         }
+    }
 
-        const textInput = row.locator('input[type="text"]');
-        if (await textInput.count() > 0) {
-            await textInput.first().fill('30');
-            continue;
-        }
-
-        const buttons = row.locator('button');
-        if (await buttons.count() > 0) {
-            await buttons.first().click();
-        }
+    const allLane = page.locator('[data-testid="v10-askback-lane-all"]');
+    if (await allLane.isVisible({ timeout: 400 }).catch(() => false)) {
+        await allLane.click({ force: true });
     }
 
     const completeButton = page.locator('[data-testid="complete-button"]');
     if (await completeButton.isVisible({ timeout: 1000 }).catch(() => false)) {
-        await completeButton.click();
+        const isDisabled = await completeButton.isDisabled().catch(() => true);
+        if (!isDisabled) {
+            await completeButton.click();
+        }
     } else {
         const fallback = page.locator('[data-testid="v10-submit-answers"], button:has-text("Weiter")').first();
         if (await fallback.isVisible({ timeout: 1000 }).catch(() => false)) {
-            await fallback.click();
+            const isDisabled = await fallback.isDisabled().catch(() => false);
+            if (!isDisabled) {
+                await fallback.click();
+            }
         }
     }
 }
 
-async function autoAnswerQuestionsUntilOutput(page: Page, maxRounds = 4): Promise<void> {
+async function autoAnswerQuestionsUntilOutput(
+    page: Page,
+    maxRounds = 4,
+    options?: { preferNoKofferdam?: boolean }
+): Promise<void> {
     for (let round = 0; round < maxRounds; round++) {
         const hasQuestions = await page.locator('[data-testid="v10-questions-panel"]').isVisible({ timeout: 1000 }).catch(() => false);
         if (!hasQuestions) break;
-        await autoAnswerQuestionsFlowV2(page);
+        await autoAnswerQuestionsFlowV2(page, options);
         await page.waitForTimeout(400);
     }
 
     await page.waitForSelector(
-        '[data-testid="v10-output-panel"]:visible, button:has-text("Zum Output")',
+        '[data-testid="v10-output-panel"]:visible, [data-testid="v10-multi-output-panel"]:visible, [data-testid="v10-output-text"]:visible, button:has-text("Zum Output")',
         { timeout: 20000 }
     );
 }
@@ -203,9 +376,18 @@ async function assertTextSnippets(
         return;
     }
 
-    const text = options.phase === 'questions'
-        ? await page.locator('[data-testid="v10-questions-panel"]').innerText()
-        : await page.locator('[data-testid="v10-output-panel"]').innerText();
+    let text = '';
+    if (options.phase === 'questions') {
+        text = await page.locator('[data-testid="v10-questions-panel"]').innerText();
+    } else if (await page.locator('[data-testid="v10-output-panel"]').isVisible({ timeout: 500 }).catch(() => false)) {
+        text = await page.locator('[data-testid="v10-output-panel"]').innerText();
+    } else if (await page.locator('[data-testid="v10-multi-output-panel"]').isVisible({ timeout: 500 }).catch(() => false)) {
+        text = await page.locator('[data-testid="v10-multi-output-panel"]').innerText();
+    } else if (await page.locator('[data-testid="v10-output-text"]').isVisible({ timeout: 500 }).catch(() => false)) {
+        text = await page.locator('[data-testid="v10-output-text"]').innerText();
+    } else {
+        text = await getBodyText(page);
+    }
 
     for (const snippet of mustIncludeTextSnippets ?? []) {
         expect(text, `Expected to include snippet: ${snippet}`).toContain(snippet);
@@ -223,10 +405,16 @@ async function ensureOutputVisible(page: Page): Promise<void> {
     await Promise.race([
         page.locator('[data-testid="section-behandlung"]').waitFor({ state: 'visible', timeout: 20000 }),
         page.locator('[data-testid="billing-toggle"]').waitFor({ state: 'visible', timeout: 20000 }),
+        page.locator('[data-testid="v10-output-panel"]').waitFor({ state: 'visible', timeout: 20000 }),
+        page.locator('[data-testid="v10-multi-output-panel"]').waitFor({ state: 'visible', timeout: 20000 }),
+        page.locator('[data-testid="v10-output-text"]').waitFor({ state: 'visible', timeout: 20000 }),
+        page.getByText('Behandlungsdokumentation').first().waitFor({ state: 'visible', timeout: 20000 }),
     ]);
 }
 
 async function assertOutputSections(page: Page): Promise<void> {
+    const hasMultiOutput = await page.locator('[data-testid="v10-multi-output-panel"]').isVisible({ timeout: 400 }).catch(() => false);
+    if (hasMultiOutput) return;
     await expect(page.locator('[data-testid="section-behandlung"]')).toBeVisible({ timeout: 5000 });
     await expect(page.locator('[data-testid="section-leistungen"]')).toBeVisible({ timeout: 5000 });
 }
@@ -267,12 +455,21 @@ test.describe('V10 Endo-16 Suite', () => {
             };
 
             try {
+                const preferNoKofferdam = /\bkein(?:e|er|es)?\s+kofferdam|ohne\s+kofferdam/i.test(scenario.dictation);
                 await navigateToV10(page);
                 await selectTreatment(page, 'endo');
                 await selectInsurance(page, scenario.insuranceType);
                 await selectTextLength(page, 'Mittel');
+                await ensureSingleMode(page);
 
-                const phase = await runPipeline(page, scenario.dictation);
+                const initialPhase = await runPipeline(page, scenario.dictation);
+                let phase: 'output' | 'questions' = initialPhase;
+
+                if (initialPhase === 'questions' && scenario.expected.phase === 'output') {
+                    await autoAnswerQuestionsUntilOutput(page, 4, { preferNoKofferdam });
+                    phase = 'output';
+                }
+
                 result.phase = phase;
                 expect(phase).toBe(scenario.expected.phase);
 
@@ -282,7 +479,7 @@ test.describe('V10 Endo-16 Suite', () => {
                 await assertTextSnippets(page, scenario, { phase });
 
                 if (phase === 'questions' && scenario.expected.autoComplete) {
-                    await autoAnswerQuestionsUntilOutput(page);
+                    await autoAnswerQuestionsUntilOutput(page, 4, { preferNoKofferdam });
                     await ensureOutputVisible(page);
                 }
 

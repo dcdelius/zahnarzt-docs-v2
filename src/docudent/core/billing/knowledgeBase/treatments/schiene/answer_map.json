@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "treatmentId": "schiene",
+    "version": "1.0.0"
+  },
+  "map": [
+    {
+      "questionKey": "schiene_typ",
+      "questionIdPatterns": [
+        "schiene_typ",
+        "medical_schiene_typ"
+      ],
+      "answers": {
+        "okklusionsschiene": "schiene_okklusionsschiene",
+        "protrusionsschiene": "schiene_protrusionsschiene"
+      },
+      "exclusiveGroup": "schiene_typ",
+      "mutuallyExclusive": [
+        "schiene_okklusionsschiene",
+        "schiene_protrusionsschiene"
+      ]
+    }
+  ],
+  "defaults": {
+    "alwaysOnChipIds": []
+  }
+}

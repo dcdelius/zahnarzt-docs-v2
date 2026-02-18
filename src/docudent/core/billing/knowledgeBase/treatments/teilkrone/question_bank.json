@@ -1,0 +1,47 @@
+{
+    "_meta": {
+        "treatmentId": "teilkrone",
+        "version": "1.0.0",
+        "description": "Question Bank fuer Teilkrone"
+    },
+    "questions": [
+        {
+            "key": "art",
+            "category": "forensic",
+            "prompt": "Welche Teilkronenart wurde durchgefuehrt?",
+            "type": "single",
+            "dataField": "teilkrone.type",
+            "options": [
+                {
+                    "id": "teilkrone",
+                    "label": "Teilkronenversorgung",
+                    "dataValue": "teilkrone"
+                },
+                {
+                    "id": "provisorium",
+                    "label": "Provisorische Teilkrone",
+                    "dataValue": "provisorium"
+                }
+            ]
+        },
+        {
+            "key": "eingliederung",
+            "category": "forensic",
+            "prompt": "Eingliederungsart dokumentieren",
+            "type": "single",
+            "dataField": "teilkrone.placement",
+            "options": [
+                {
+                    "id": "definitiv",
+                    "label": "Definitiv",
+                    "dataValue": "definitiv"
+                },
+                {
+                    "id": "provisorisch",
+                    "label": "Provisorisch",
+                    "dataValue": "provisorisch"
+                }
+            ]
+        }
+    ]
+}

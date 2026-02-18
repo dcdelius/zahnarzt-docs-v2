@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "krone",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "krone.art.vollkrone",
+      "chipIds": ["krone_vollkrone"],
+      "textRefIds": ["krone_vollkrone"],
+      "billingRefIds": ["krone_vollkrone"]
+    },
+    {
+      "id": "krone.art.provisorium",
+      "chipIds": ["krone_provisorium"],
+      "textRefIds": ["krone_provisorium"],
+      "billingRefIds": ["krone_provisorium"]
+    },
+    {
+      "id": "krone.eingliederung.definitiv",
+      "chipIds": ["krone_eingliederung_definitiv"],
+      "textRefIds": ["krone_eingliederung_definitiv"],
+      "billingRefIds": ["krone_eingliederung_definitiv"]
+    },
+    {
+      "id": "krone.askback.art"
+    },
+    {
+      "id": "krone.askback.eingliederung"
+    }
+  ]
+}

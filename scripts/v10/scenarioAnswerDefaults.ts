@@ -206,6 +206,18 @@ export function resolveScenarioAnswer(question: ScenarioQuestion, context: Scena
     const rawKey = (question.ruleId ?? question.id).toLowerCase();
     const key = normalizeQuestionKey(question.ruleId ?? question.id);
     const facts = context.instanceFacts ?? {};
+    const hasFreeTextInput = !question.options || question.options.length === 0;
+
+    // Free-text askbacks used by top20 treatment packs.
+    if (hasFreeTextInput) {
+        if (key.includes('untersuchung_anlass')) return 'Kontrolluntersuchung';
+        if (key.includes('untersuchung_befunde')) return 'Befunde klinisch unauffaellig';
+        if (key.includes('roentgen_indikation')) return 'Diagnostik und Therapieplanung';
+        if (key.includes('roentgen_typ')) return 'OPG';
+        if (key.includes('roentgen_befund')) return 'Apikale Auffaelligkeit regio 36 dokumentiert';
+        if (key.includes('befund')) return 'Klinischer Befund dokumentiert';
+        if (key.includes('anlass')) return 'Behandlungsanlass dokumentiert';
+    }
 
     if (key.includes('vitality')) {
         return pickOption(question.options, ['+', 'pos', 'positiv']) ?? '+';

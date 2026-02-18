@@ -16,6 +16,39 @@
 export const EXTRACTION_VERSION_V6 = 'v6' as const;
 
 // ═══════════════════════════════════════════════════════════════
+// REASONED EXTRACTION (LLM HINT ENVELOPE)
+// ═══════════════════════════════════════════════════════════════
+
+export type ReasonedHintBasis = 'explicit' | 'inferred';
+
+export interface ReasonedIntentHintV1 {
+    treatmentId: string;
+    confidence: number;
+    basis: ReasonedHintBasis;
+    evidence: string[];
+    tooth?: string;
+    phase?: string;
+    step?: string;
+}
+
+export interface ReasonedFactHintV1 {
+    key: string;
+    value: string | number | boolean | string[] | number[] | null;
+    confidence: number;
+    basis: ReasonedHintBasis;
+    evidence: string[];
+    requiresConfirmation?: boolean;
+}
+
+export interface ReasonedExtractionV1 {
+    version: 'v1';
+    intentHints?: ReasonedIntentHintV1[];
+    factHints?: ReasonedFactHintV1[];
+    forensicNotes?: string[];
+    unresolved?: string[];
+}
+
+// ═══════════════════════════════════════════════════════════════
 // V6 EXTRACTED DATA TYPE
 // ═══════════════════════════════════════════════════════════════
 
@@ -54,6 +87,9 @@ export interface ExtractedDataV6 {
 
     /** Patientenangaben (psychosozialer Kontext) */
     patientenangaben?: string[];
+
+    /** Optional LLM reasoned hints (never authoritative for billing by itself) */
+    reasoning?: ReasonedExtractionV1;
 
     /** Extraction version tag for debugging */
     extractionVersion: typeof EXTRACTION_VERSION_V6;

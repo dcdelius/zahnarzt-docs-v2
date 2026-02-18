@@ -330,9 +330,10 @@ export const MultiOutputRenderer: React.FC<MultiOutputRendererProps> = ({ result
                 <div style={styles.codeList}>
                     {sortedBillingCodes.map((bc, i) => {
                         const toothPart = bc.tooth || 'NA';
+                        const keySuffix = bc.instanceId || i;
                         return (
                             <span
-                                key={`${bc.code}-${bc.tooth || i}`}
+                                key={`${bc.code}-${toothPart}-${keySuffix}`}
                                 style={styles.codeTag}
                                 data-testid={`billing-code-${bc.code}-${toothPart}`}
                             >

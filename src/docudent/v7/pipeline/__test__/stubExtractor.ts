@@ -21,13 +21,6 @@ export function stubExtractFromDictation(
 ): ExtractedData {
     const lower = dictation.toLowerCase();
 
-    // --- Extract ALL tooth numbers (multi-tooth support) ---
-    // P14.X: Use global regex to find all FDI tooth numbers
-    // FDI notation: 11-18, 21-28, 31-38, 41-48 (permanent), 51-55, 61-65, 71-75, 81-85 (deciduous)
-    // Word boundary ensures we don't match partial numbers like "216" as "21" + "6"
-    const toothPattern = /\bZahn\s*(\d{1,2})\b|\b([1-8][1-8])\b/gi;
-    const matches = [...dictation.matchAll(toothPattern)];
-
     // Helper: Validate FDI tooth number
     const isValidFDITooth = (t: string): boolean => {
         if (!/^\d{2}$/.test(t)) return false;
@@ -41,10 +34,47 @@ export function stubExtractFromDictation(
         return false;
     };
 
-    const allTeeth = matches
-        .map(m => m[1] || m[2])  // Group 1 for "Zahn XX", Group 2 for standalone
+    // --- Extract ALL tooth numbers (multi-tooth support) ---
+    // Explicit references are strong tooth signals.
+    const explicitMatches = [...dictation.matchAll(/\bZahn\s*(\d{2})\b/gi)];
+    const explicitTeeth = explicitMatches
+        .map(m => m[1])
         .filter((t): t is string => t !== undefined)
-        .filter(isValidFDITooth);  // Validate FDI format properly
+        .filter(isValidFDITooth);
+
+    // Standalone 2-digit values can be endo working lengths (e.g., MB 20, D 21) and must be filtered.
+    const VALUE_UNIT_TOOTH_PATTERN = /\b([1-8][1-8])\b\s*(?:ncm|mm|cm|ml|mg|rpm|nm)\b/gi;
+    const ROOT_CANAL_TOOTH_PATTERN = /\b(?:mb|ml|db|dl|d|p|pal|k1|k2|k3|k4)\s*[:=]?\s*([1-8][1-8])\b/gi;
+    const collectBlockedRanges = (pattern: RegExp): Array<{ start: number; end: number }> => {
+        const ranges: Array<{ start: number; end: number }> = [];
+        for (const match of dictation.matchAll(pattern)) {
+            const value = match[1];
+            if (!value || match.index === undefined) continue;
+            const localOffset = match[0].indexOf(value);
+            if (localOffset < 0) continue;
+            const start = match.index + localOffset;
+            ranges.push({ start, end: start + value.length });
+        }
+        return ranges;
+    };
+    const blockedRanges = [
+        ...collectBlockedRanges(VALUE_UNIT_TOOTH_PATTERN),
+        ...collectBlockedRanges(ROOT_CANAL_TOOTH_PATTERN),
+    ];
+
+    const standaloneMatches = [...dictation.matchAll(/\b([1-8][1-8])\b/g)];
+    const standaloneTeeth = standaloneMatches
+        .filter((match) => {
+            if (match.index === undefined) return false;
+            const value = match[1];
+            const start = match.index;
+            const end = start + value.length;
+            return !blockedRanges.some(range => start >= range.start && end <= range.end);
+        })
+        .map(match => match[1])
+        .filter(isValidFDITooth);
+
+    const allTeeth = [...explicitTeeth, ...standaloneTeeth];
 
     // Unique and sorted (numeric order)
     const teeth = [...new Set(allTeeth)].sort((a, b) => parseInt(a) - parseInt(b));

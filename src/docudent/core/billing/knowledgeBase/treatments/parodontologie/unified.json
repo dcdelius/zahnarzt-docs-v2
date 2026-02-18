@@ -1,0 +1,67 @@
+{
+    "_meta": {
+        "id": "parodontologie",
+        "version": "1.0.0",
+        "label": "Parodontologie"
+    },
+    "chips": [
+        {
+            "id": "parodontologie_status",
+            "label": "Parodontalstatus/PSI",
+            "phase": "diagnostik",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Parodontalstatus erhoben.",
+                "mittel": "Parodontalstatus inklusive Screening erhoben und dokumentiert.",
+                "lang": "Parodontalstatus inklusive strukturierter parodontaler Screening-Befunde erhoben und nachvollziehbar dokumentiert."
+            },
+            "defaultActive": true,
+            "showInQuickView": true
+        },
+        {
+            "id": "parodontologie_ait",
+            "label": "Antiinfektioese Therapie",
+            "phase": "behandlung",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Antiinfektioese Parodontaltherapie durchgefuehrt.",
+                "mittel": "Geschlossene antiinfektioese Parodontaltherapie durchgefuehrt.",
+                "lang": "Geschlossene antiinfektioese Parodontaltherapie mit supra- und subgingivaler Instrumentierung durchgefuehrt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "parodontologie_upt_a",
+            "label": "UPT Grad A",
+            "phase": "nachsorge",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "UPT Grad A dokumentiert.",
+                "mittel": "Unterstuetzende Parodontitistherapie Grad A durchgefuehrt.",
+                "lang": "Unterstuetzende Parodontitistherapie (UPT) Grad A mit risikoadaptiertem Recall dokumentiert."
+            }
+        },
+        {
+            "id": "parodontologie_upt_b",
+            "label": "UPT Grad B",
+            "phase": "nachsorge",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "UPT Grad B dokumentiert.",
+                "mittel": "Unterstuetzende Parodontitistherapie Grad B durchgefuehrt.",
+                "lang": "Unterstuetzende Parodontitistherapie (UPT) Grad B mit risikoadaptiertem Recall dokumentiert."
+            }
+        },
+        {
+            "id": "parodontologie_upt_c",
+            "label": "UPT Grad C",
+            "phase": "nachsorge",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "UPT Grad C dokumentiert.",
+                "mittel": "Unterstuetzende Parodontitistherapie Grad C durchgefuehrt.",
+                "lang": "Unterstuetzende Parodontitistherapie (UPT) Grad C mit engmaschigem risikoadaptiertem Recall dokumentiert."
+            }
+        }
+    ]
+}

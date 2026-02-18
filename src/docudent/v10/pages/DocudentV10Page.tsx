@@ -52,7 +52,7 @@ import { useChipOverrides } from '../settings/useChipOverrides';
 // Types (from V10 barrel)
 import type { TreatmentInstance, UiStep } from '../components';
 import type { QuestionBundle } from '../../contracts/questions';
-import { detectTreatmentIntents } from '../preanalysis/detectTreatmentIntents';
+import { collapseDuplicateIntents, detectTreatmentIntents } from '../preanalysis/detectTreatmentIntents';
 import { buildSegmentsFromIntents } from '../preanalysis/buildSegmentsFromIntents';
 import { buildIntentConfirmationViewModel, type IntentConfirmationViewModel } from '../preanalysis/buildIntentConfirmationViewModel';
 import { canonicalizeTreatmentIntentBundle, type TreatmentIntentBundleV1 } from '../preanalysis/treatmentIntentContract';
@@ -323,7 +323,7 @@ export default function DocudentV10Page() {
         try {
             const effectiveInsurance = hasMKV ? 'MKV' : insuranceType;
             const forceFallbackForE2E = typeof window !== 'undefined'
-                && Boolean((window as any).__DOCUDENT_E2E_BYPASS_AUTH);
+                && Boolean((window as any).__DOCUDENT_E2E_FORCE_PREANALYSIS_FALLBACK);
             let detection: Awaited<ReturnType<typeof detectTreatmentIntents>>;
             let preanalysisError: string | undefined;
             let forcedFallback = forceFallbackForE2E;
@@ -370,6 +370,9 @@ export default function DocudentV10Page() {
             });
 
             if (segments.length === 1) {
+                setTreatmentLocal(segments[0].treatmentId);
+                setTreatmentId(segments[0].treatmentId);
+                localStorage.setItem('v10_treatment', segments[0].treatmentId);
                 await runPipeline({
                     dictation: detection.bundle.dictation,
                     treatmentId: segments[0].treatmentId,
@@ -447,11 +450,12 @@ export default function DocudentV10Page() {
             uncertainty: undefined,
         }));
 
-        const selectedBundle = canonicalizeTreatmentIntentBundle({
+        const selectedBundleRaw = canonicalizeTreatmentIntentBundle({
             ...intentConfirmation.bundle,
             intents,
             needsConfirmation: false,
         });
+        const selectedBundle = collapseDuplicateIntents(selectedBundleRaw).bundle;
 
         setIntentConfirmation(null);
         setIntentFocusIndex(0);
@@ -462,6 +466,9 @@ export default function DocudentV10Page() {
         });
 
         if (segments.length === 1) {
+            setTreatmentLocal(segments[0].treatmentId);
+            setTreatmentId(segments[0].treatmentId);
+            localStorage.setItem('v10_treatment', segments[0].treatmentId);
             await runPipeline({
                 dictation: selectedBundle.dictation,
                 treatmentId: segments[0].treatmentId,
@@ -1152,6 +1159,8 @@ export default function DocudentV10Page() {
                 data-testid="v10-llm-runtime-meta"
                 data-preanalysis-source={llmRuntimeMeta.preanalysisSource}
                 data-preanalysis-fallback={String(llmRuntimeMeta.preanalysisFallback)}
+                data-preanalysis-error={llmRuntimeMeta.preanalysisError ?? ''}
+                data-preanalysis-diagnostics={llmRuntimeMeta.preanalysisDiagnostics.join(' | ')}
                 data-extraction-method={llmRuntimeMeta.extractionMethod}
                 data-extraction-llm-error={llmRuntimeMeta.extractionLlmError}
                 style={{ display: 'none' }}
@@ -1184,6 +1193,16 @@ export default function DocudentV10Page() {
                         {' · '}
                         llmError: {llmRuntimeMeta.extractionLlmError}
                     </div>
+                    {llmRuntimeMeta.preanalysisError && llmRuntimeMeta.preanalysisError.trim().length > 0 && (
+                        <div>
+                            preanalysisError: {llmRuntimeMeta.preanalysisError}
+                        </div>
+                    )}
+                    {!llmRuntimeMeta.preanalysisError && llmRuntimeMeta.preanalysisDiagnostics.length > 0 && (
+                        <div>
+                            preanalysisDiag: {llmRuntimeMeta.preanalysisDiagnostics[0]}
+                        </div>
+                    )}
                 </div>
             )}
             {/* Background Layers (Same as V8) */}

@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import './V10ChipsControlPanel.css';
 import type { ChipMode, ChipOverride, EffectiveChip } from '../settings/useChipOverrides';
 import { PARAMETRIZED_CHIPS, isParametrizedChip } from '../settings/useChipOverrides';
+import { getPack } from '../packs';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -16,7 +17,8 @@ import { PARAMETRIZED_CHIPS, isParametrizedChip } from '../settings/useChipOverr
 
 export interface ChipsControlInstance {
     instanceId: string;
-    treatmentType: 'endo' | 'fuellung';
+    treatmentType: 'endo' | 'fuellung' | string;
+    treatmentId?: string;
     tooth?: string;
     chips: EffectiveChip[];
 }
@@ -69,7 +71,9 @@ interface InstanceChipsControlProps {
 }
 
 function InstanceChipsControl({ instance, onOverride, onResetOverride }: InstanceChipsControlProps) {
-    const treatmentLabel = instance.treatmentType === 'endo' ? 'Endo' : 'Füllung';
+    const treatmentId = instance.treatmentId ?? instance.treatmentType;
+    const pack = treatmentId ? getPack(treatmentId) : null;
+    const treatmentLabel = pack?.meta?.label ?? (instance.treatmentType === 'endo' ? 'Endo' : instance.treatmentType === 'fuellung' ? 'Füllung' : String(treatmentId));
     const treatmentColor = instance.treatmentType === 'endo' ? '#e74c3c' : '#3498db';
 
     return (

@@ -1,4 +1,5 @@
 import { getFunctions, httpsCallable } from 'firebase/functions';
+import { ensureCallableAuthReady } from '../firebase/ensureCallableAuthReady';
 
 type ExtractFromDictationGatewayInput = {
     dictation: string;
@@ -18,6 +19,7 @@ function getFunctionsInstance() {
 }
 
 export async function callExtractionGateway(dictation: string): Promise<string | null> {
+    await ensureCallableAuthReady();
     const callable = httpsCallable<
         ExtractFromDictationGatewayInput,
         ExtractFromDictationGatewayOutput

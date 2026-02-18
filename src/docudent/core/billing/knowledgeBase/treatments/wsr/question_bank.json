@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "treatmentId": "wsr",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Wurzelspitzenresektion"
+  },
+  "questions": [
+    {
+      "key": "zugang",
+      "category": "forensic",
+      "prompt": "Welcher Zugang wurde bei der Wurzelspitzenresektion verwendet?",
+      "type": "single",
+      "dataField": "wsr.zugang",
+      "options": [
+        {
+          "id": "trepaniert",
+          "label": "Am eroeffneten Zahn (trepaniert)",
+          "dataValue": "trepaniert"
+        },
+        {
+          "id": "osteotomie",
+          "label": "Durch Osteotomie",
+          "dataValue": "osteotomie"
+        }
+      ]
+    },
+    {
+      "key": "lokalisation",
+      "category": "forensic",
+      "prompt": "Welche Lokalisation hat der betroffene Zahn?",
+      "type": "single",
+      "dataField": "wsr.lokalisation",
+      "options": [
+        {
+          "id": "front_praemolar",
+          "label": "Frontzahn/Praemolar",
+          "dataValue": "front_praemolar"
+        },
+        {
+          "id": "molar",
+          "label": "Molar",
+          "dataValue": "molar"
+        }
+      ]
+    }
+  ]
+}

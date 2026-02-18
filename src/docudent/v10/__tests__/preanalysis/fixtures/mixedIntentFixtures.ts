@@ -88,12 +88,11 @@ export const MIXED_INTENT_FIXTURES: PreanalysisFixture[] = [
         dictation: 'Fuellung Zahn 36 und Zahn 14 okklusal mit Komposit, danach adhaesiver Aufbau mit Komposit.',
         expected: {
             source: 'fallback',
-            needsConfirmation: true,
-            intentCount: 3,
+            needsConfirmation: false,
+            intentCount: 2,
             intentChecks: [
                 { treatmentId: 'fuellung', tooth: '36' },
                 { treatmentId: 'fuellung', tooth: '14' },
-                { treatmentId: 'fuellung', uncertainty: 'llm_ambiguous_mapping' },
             ],
         },
     },

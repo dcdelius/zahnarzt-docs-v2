@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "treatmentId": "ueberkappung",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Ueberkappung"
+  },
+  "questions": [
+    {
+      "key": "ueberkappung_art",
+      "category": "forensic",
+      "prompt": "Wurde direkt oder indirekt ueberkappt?",
+      "type": "single",
+      "dataField": "capping.performed",
+      "options": [
+        {
+          "id": "indirekt",
+          "label": "Indirekte Ueberkappung",
+          "dataValue": "indirekt"
+        },
+        {
+          "id": "direkt",
+          "label": "Direkte Ueberkappung",
+          "dataValue": "direkt"
+        }
+      ]
+    },
+    {
+      "key": "ueberkappung_material",
+      "category": "forensic",
+      "prompt": "Welches Ueberkappungsmaterial wurde verwendet?",
+      "type": "single",
+      "dataField": "capping.material",
+      "options": [
+        {
+          "id": "MTA",
+          "label": "MTA",
+          "dataValue": "MTA"
+        },
+        {
+          "id": "Ca(OH)₂",
+          "label": "Ca(OH)2",
+          "dataValue": "Ca(OH)₂"
+        },
+        {
+          "id": "Biodentine",
+          "label": "Biodentine",
+          "dataValue": "Biodentine"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+    "_meta": {
+        "id": "ueberkappung",
+        "version": "1.0.0",
+        "label": "Ueberkappung"
+    },
+    "chips": [
+        {
+            "id": "ueberkappung_indirekt",
+            "label": "Indirekte Ueberkappung",
+            "phase": "behandlung",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Indirekte Ueberkappung durchgefuehrt.",
+                "mittel": "Indirekte Ueberkappung mit pulpanaher Versorgung durchgefuehrt.",
+                "lang": "Indirekte Ueberkappung bei pulpanaher Karies nach Exkavation und atraumatischer Dentinversorgung lege artis durchgefuehrt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "ueberkappung_direkt",
+            "label": "Direkte Ueberkappung",
+            "phase": "behandlung",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Direkte Ueberkappung durchgefuehrt.",
+                "mittel": "Direkte Ueberkappung bei Pulpaeroeffnung durchgefuehrt.",
+                "lang": "Direkte Ueberkappung bei lokalisierter Pulpaeroeffnung mit vitaler Pulpa unter sterilen Bedingungen durchgefuehrt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "ueberkappung_material_mta",
+            "label": "Material MTA",
+            "phase": "dokumentation",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "MTA verwendet.",
+                "mittel": "Ueberkappungsmaterial: MTA.",
+                "lang": "Als Ueberkappungsmaterial wurde MTA verwendet."
+            }
+        },
+        {
+            "id": "ueberkappung_material_caoh2",
+            "label": "Material Ca(OH)2",
+            "phase": "dokumentation",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Ca(OH)2 verwendet.",
+                "mittel": "Ueberkappungsmaterial: Ca(OH)2.",
+                "lang": "Als Ueberkappungsmaterial wurde Calciumhydroxid verwendet."
+            }
+        },
+        {
+            "id": "ueberkappung_material_biodentine",
+            "label": "Material Biodentine",
+            "phase": "dokumentation",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Biodentine verwendet.",
+                "mittel": "Ueberkappungsmaterial: Biodentine.",
+                "lang": "Als Ueberkappungsmaterial wurde Biodentine verwendet."
+            }
+        }
+    ]
+}

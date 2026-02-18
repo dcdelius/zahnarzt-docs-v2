@@ -1,4 +1,4 @@
-import { classifyTreatmentId, detectTreatmentSignals } from '../multitreatment/classifyTreatment';
+import { classifyTreatmentId, detectTreatmentSignals, type ClassifiedTreatment } from '../multitreatment/classifyTreatment';
 import { splitDictationIntoSegments } from '../multitreatment/segmentDictation';
 import {
     PREANALYSIS_TREATMENT_IDS,
@@ -9,6 +9,7 @@ import {
     type TreatmentIntentV1,
     validateTreatmentIntentBundle,
 } from './treatmentIntentContract';
+import { buildPreanalysisPrompt } from '@/docudent/contracts/llmPromptContracts';
 
 type LlmResult = {
     content: string;
@@ -27,37 +28,280 @@ export type DetectTreatmentIntentsResult = {
     diagnostics: string[];
 };
 
-const PREANALYSIS_PROMPT = `Du strukturierst zahnmedizinische Fliesstext-Diktate in Behandlungs-Intents.
-Antworte NUR als JSON mit diesem Schema:
-{
-  "version": "1.0.0",
-  "dictation": "<original>",
-  "needsConfirmation": true|false,
-  "intents": [
-    {
-      "intentId": "string",
-      "treatmentId": "${PREANALYSIS_TREATMENT_IDS.join('|')}",
-      "tooth": "string optional",
-      "phase": "string optional",
-      "step": "string optional",
-      "confidence": 0..1,
-      "evidenceSpans": [{ "start": number, "end": number, "text": "string" }],
-      "uncertainty": "${TREATMENT_INTENT_UNCERTAINTY_CODES.join('|')} optional"
-    }
-  ]
-}
-Regeln:
-- Keine Erfindungen.
-- Jeder Intent braucht mindestens einen evidenceSpan.
-- Wenn unsicher: needsConfirmation=true.
-- Wenn uncertainty gesetzt ist, muss needsConfirmation=true sein.
-- Wenn tooth fehlt, uncertainty setzen (z.B. missing_tooth_reference).
-- Keine Billing-Codes/Felder ausgeben (z.B. BEMA/GOZ/GOÄ/BEL, billingCodes, billingRefs).
-- Nur treatmentIds verwenden, die im Schema stehen.`;
+type ReconcileResult = {
+    bundle: TreatmentIntentBundleV1;
+    diagnostics: string[];
+};
+
+const PREANALYSIS_PROMPT = buildPreanalysisPrompt({
+    version: TREATMENT_INTENT_CONTRACT_VERSION,
+    treatmentIds: PREANALYSIS_TREATMENT_IDS,
+    uncertaintyCodes: TREATMENT_INTENT_UNCERTAINTY_CODES,
+});
 
 const EXTRACTION_SIGNAL_RE = /\b(extraktion|luxation|zahn ziehen|entfernt|entfernung|alveole|naht)\b/i;
-const EXPLICIT_TREATMENT_SIGNAL_RE = /\b(f[uü]llung|komposit|adh[aä]siv(?:e|er|es|en)?\s+aufbau|aufbauf[uü]llung|endo|wkb|wurzelkanal|trepanation|extraktion|luxation|zahn ziehen|krone|kronenpr[aä]p|beschliff(?:en|en)|praeparation)\b/i;
+const EXPLICIT_TREATMENT_SIGNAL_RE = /\b(f[uü]llung|komposit|adh[aä]siv(?:e|er|es|en)?\s+aufbau|aufbauf[uü]llung|endo|wkb|wurzelkanal|trepanation|extraktion|luxation|zahn ziehen|pzr|professionelle\s+zahnreinigung|zahnreinigung|zahnstein|belagsentfernung|politur|fluoridierung|krone|teilkrone|brücke|bruecke|brückenglied|brueckenglied|onlay|overlay|kronenpr[aä]p|beschliff(?:en|en)|praeparation|r[oö]ntgen|roentgen|xray|opg|zahnfilm|untersuchung|kontrolluntersuchung|check-up|überkappung|ueberkappung|pulpaeröffnung|pulpaeroeffnung|fissurenversiegelung|versiegelung|sealant|parodontitis|parodontal|parodontologie|psi|ait|upt|wsr|wurzelspitzenresektion|apikoektomie|apektomie|trauma|zahntrauma|avulsion|zahnunfall|schienung|okklusionsschiene|aufbissschiene|knirscherschiene|protrusionsschiene|schienentherapie|teilprothese|interimsteilprothese|klammerprothese|modellguss(?:prothese)?|totalprothese|vollprothese|totale|immediatprothese|zahnlos|implant|implantat|implantation|implantatinsertion|implantatfreilegung)\b/i;
 const SAME_TOOTH_CONTEXT_RE = /\b(selben|gleichen)\s+zahn\b|\bam\s+(selben|gleichen)\b/i;
+const TOOTH_VALUE_UNIT_RE = /\b([1-8][1-8])\b\s*(?:ncm|mm|cm|ml|mg|rpm|nm)\b/gi;
+const ROOT_CANAL_VALUE_RE = /\b(?:mb|ml|db|dl|d|p|pal|k1|k2|k3|k4)\s*[:=]?\s*([1-8][1-8])\b/gi;
+const INSURANCE_ONLY_SEGMENT_RE = /^\s*(?:gkv|pkv|mkv)\s*$/i;
+const SKIPPED_CONTEXT_SIGNAL_RE = /\b(?:bisskontrolle|okklusion|okklusionskontrolle|artikulations(?:folie|papier)|politur|hochglanzpolitur|finierung|nachpolier|sensibil|empfindlich|beschwerd|klopfdolent|kontrolle|nachsorge|wiederkommen)\b/i;
+const HISTORICAL_CONTEXT_RE = /\b(?:seit\s+(?:der|dem)?\s*letzt(?:en|er|em)?|nach\s+(?:der|dem)?\s*letzt(?:en|er|em)?|beim\s+letzten\s+mal|im\s+vortermin|vorbehandlung)\b/i;
+const SYMPTOM_CONTEXT_RE = /\b(?:empfindlich|temperaturempfind(?:lich)?|temp(?:eratur)?sensibel|ueberempfind(?:lich)?|überempfind(?:lich)?|schmerz|beschwerd|klopfdolent|klopfempfindlich|reiz)\b/i;
+const PROCEDURE_ACTION_RE = /\b(?:heute|durchgef(?:ue|ü)hrt|gelegt|versorgt|erneut\s+er(?:oe|ö)ffnet|trepanation|trepaniert|sp(?:ue|ü)lung|gesp(?:ue|ü)lt|einlage|extrahiert|aufbereitung|wurzelf(?:ue|ü)llung|eingegliedert|angefertigt|praeparation|präparation|abformung|fluoridierung|versiegelung)\b/i;
+const CONTEXT_ONLY_MARKER_RE = /\b(?:anamnese|vorgeschichte|familiaer|famili(?:a|ä)r|belastet|angst|schlafmangel|medikation|antikoagulation|rauch|raucht|sozial|recall|kontrolle|nachsorge|terminiert|verfuegbar|verfügbar)\b/i;
+const PROSTHETIC_INSERTION_RE = /\b(?:eingegliedert|eingesetzt|eingliederung|zementiert|eingeklebt)\b/i;
+const PROSTHETIC_DEFINITIVE_RE = /\b(?:definitiv(?:e|er|es|en)?|endg(?:u|ü)ltig(?:e|er|es|en)?)\b/i;
+
+function escapeRegexLiteral(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+    return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function normalizeStringArray(value: unknown): string[] {
+    if (Array.isArray(value)) {
+        return value
+            .map(entry => String(entry).trim())
+            .filter(Boolean);
+    }
+    if (typeof value === 'string') {
+        const trimmed = value.trim();
+        return trimmed.length > 0 ? [trimmed] : [];
+    }
+    return [];
+}
+
+function normalizeWhitespace(value: string): string {
+    return value.replace(/\s+/g, ' ').trim();
+}
+
+function normalizeForensicContextNote(value: string): string {
+    const normalized = normalizeWhitespace(value)
+        .replace(/^[,;:\-\s]+/, '')
+        .replace(/^(?:dass|und|sowie)\s+/i, '')
+        .trim();
+    return normalized;
+}
+
+function isHistoricalComplaintOnlyEvidence(evidenceText: string): boolean {
+    const normalized = normalizeWhitespace(evidenceText);
+    if (!normalized) return false;
+    if (!HISTORICAL_CONTEXT_RE.test(normalized)) return false;
+    if (!SYMPTOM_CONTEXT_RE.test(normalized)) return false;
+    if (PROCEDURE_ACTION_RE.test(normalized)) return false;
+    return true;
+}
+
+function isContextOnlyEvidence(evidenceText: string): boolean {
+    const normalized = normalizeWhitespace(evidenceText);
+    if (!normalized) return false;
+    if (!CONTEXT_ONLY_MARKER_RE.test(normalized)) return false;
+    if (PROCEDURE_ACTION_RE.test(normalized)) return false;
+    return true;
+}
+
+function inferProstheticFinalTreatmentId(
+    intent: TreatmentIntentV1,
+    evidenceText: string
+): TreatmentIntentV1['treatmentId'] | undefined {
+    const normalized = normalizeWhitespace(evidenceText).toLowerCase();
+    if (!normalized) return undefined;
+    const hasInsertionSignal = PROSTHETIC_INSERTION_RE.test(normalized);
+    const hasDefinitiveSignal = PROSTHETIC_DEFINITIVE_RE.test(normalized);
+    if (!hasInsertionSignal && !hasDefinitiveSignal) return undefined;
+
+    if (normalized.includes('teilkrone')) return 'teilkrone';
+    if (normalized.includes('bruecke') || normalized.includes('brücke')) return 'bruecke';
+    if (normalized.includes('krone') && intent.treatmentId === 'crown_prep') return 'krone';
+    return undefined;
+}
+
+function mergeForensicNoteIntoIntent(
+    intent: TreatmentIntentV1,
+    noteRaw: string
+): TreatmentIntentV1 {
+    const note = normalizeForensicContextNote(noteRaw);
+    if (!note) return intent;
+
+    const sharedFacts = isRecord(intent.sharedFacts) ? { ...intent.sharedFacts } : {};
+    const existingNotes = [
+        ...normalizeStringArray(sharedFacts.forensicNotes),
+        ...normalizeStringArray(sharedFacts.forensic_notes),
+    ];
+    const mergedNotes = Array.from(new Set([...existingNotes, note]));
+    sharedFacts.forensicNotes = mergedNotes;
+    delete sharedFacts.forensic_notes;
+
+    const normalizedLower = note.toLowerCase();
+    const hasOkklusionSignal = /\b(?:okklusion|okklusionskontrolle|bisskontrolle|artikulations(?:folie|papier)|einschleif)\b/i.test(normalizedLower);
+    const hasPoliturSignal = /\b(?:politur|hochglanzpolitur|finier|nachpolier)\b/i.test(normalizedLower);
+    if (hasOkklusionSignal) {
+        sharedFacts.okklusion = true;
+        sharedFacts.bisskontrolle = true;
+    }
+    if (hasPoliturSignal) {
+        sharedFacts.politur = true;
+    }
+    if (hasOkklusionSignal || hasPoliturSignal) {
+        sharedFacts.finishing = true;
+    }
+
+    return {
+        ...intent,
+        sharedFacts,
+    };
+}
+
+function mergeEvidenceSpans(
+    base: TreatmentIntentV1['evidenceSpans'],
+    additions: TreatmentIntentV1['evidenceSpans']
+): TreatmentIntentV1['evidenceSpans'] {
+    const seen = new Set<string>();
+    const merged = [...base, ...additions]
+        .filter((span) => {
+            const key = `${span.start}:${span.end}:${span.text}`;
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        })
+        .sort((a, b) => {
+            if (a.start !== b.start) return a.start - b.start;
+            if (a.end !== b.end) return a.end - b.end;
+            return a.text.localeCompare(b.text);
+        });
+    return merged;
+}
+
+function mergeContextIntoIntent(
+    intent: TreatmentIntentV1,
+    noteRaw: string,
+    evidenceSpans?: TreatmentIntentV1['evidenceSpans']
+): TreatmentIntentV1 {
+    const withNote = mergeForensicNoteIntoIntent(intent, noteRaw);
+    if (!evidenceSpans || evidenceSpans.length === 0) return withNote;
+    return {
+        ...withNote,
+        evidenceSpans: mergeEvidenceSpans(withNote.evidenceSpans, evidenceSpans),
+    };
+}
+
+function demoteHistoricalComplaintIntents(
+    bundle: TreatmentIntentBundleV1
+): { bundle: TreatmentIntentBundleV1; diagnostics: string[] } {
+    if (bundle.intents.length <= 1) {
+        return { bundle, diagnostics: [] };
+    }
+
+    const diagnostics: string[] = [];
+    const kept: TreatmentIntentV1[] = [];
+    const demoted: Array<{ intent: TreatmentIntentV1; note: string }> = [];
+
+    for (const intent of bundle.intents) {
+        const evidenceText = normalizeWhitespace(intent.evidenceSpans.map(span => span.text).join(' '));
+        if (!isHistoricalComplaintOnlyEvidence(evidenceText) && !isContextOnlyEvidence(evidenceText)) {
+            kept.push(intent);
+            continue;
+        }
+        demoted.push({ intent, note: evidenceText });
+        diagnostics.push(`historical-context-intent-demoted:${intent.intentId}:${intent.treatmentId}`);
+    }
+
+    if (demoted.length === 0 || kept.length === 0) {
+        return { bundle, diagnostics: [] };
+    }
+
+    const withContext = [...kept];
+    for (const item of demoted) {
+        const sameToothIndex = item.intent.tooth
+            ? withContext.findIndex(candidate => candidate.tooth === item.intent.tooth)
+            : -1;
+        const targetIndex = sameToothIndex >= 0 ? sameToothIndex : withContext.length - 1;
+        withContext[targetIndex] = mergeForensicNoteIntoIntent(withContext[targetIndex], item.note);
+        diagnostics.push(`historical-context-note-attached:${withContext[targetIndex].intentId}`);
+    }
+
+    return {
+        bundle: canonicalizeTreatmentIntentBundle({
+            ...bundle,
+            intents: withContext,
+            needsConfirmation:
+                bundle.needsConfirmation === true
+                || withContext.some(intent => Boolean(intent.uncertainty)),
+        }),
+        diagnostics,
+    };
+}
+
+function demoteAmbiguousUntoothedContinuationIntents(
+    bundle: TreatmentIntentBundleV1
+): { bundle: TreatmentIntentBundleV1; diagnostics: string[] } {
+    if (bundle.intents.length <= 1) {
+        return { bundle, diagnostics: [] };
+    }
+
+    const diagnostics: string[] = [];
+    const kept: TreatmentIntentV1[] = [];
+
+    for (const intent of bundle.intents) {
+        const evidenceText = normalizeWhitespace(intent.evidenceSpans.map(span => span.text).join(' '));
+        const hasToothInEvidence = findAllTeeth(evidenceText).length > 0;
+        const isAmbiguousUntoothed =
+            !intent.tooth
+            && intent.uncertainty === 'llm_ambiguous_mapping'
+            && !hasToothInEvidence;
+
+        if (!isAmbiguousUntoothed) {
+            kept.push(intent);
+            continue;
+        }
+
+        const targetIndex = (() => {
+            for (let i = kept.length - 1; i >= 0; i -= 1) {
+                const candidate = kept[i];
+                if (!candidate?.tooth) continue;
+                if (candidate.treatmentId !== intent.treatmentId) continue;
+                return i;
+            }
+            return -1;
+        })();
+
+        if (targetIndex < 0) {
+            kept.push(intent);
+            continue;
+        }
+
+        const appliesToAllSiblingIntents = /\b(?:beide|allen?|sämtlich(?:e|en)?)\b/i.test(evidenceText);
+        if (appliesToAllSiblingIntents) {
+            const siblingIndexes = kept
+                .map((candidate, index) => ({ candidate, index }))
+                .filter(entry => entry.candidate.treatmentId === intent.treatmentId && Boolean(entry.candidate.tooth))
+                .map(entry => entry.index);
+            if (siblingIndexes.length > 0) {
+                for (const siblingIndex of siblingIndexes) {
+                    kept[siblingIndex] = mergeContextIntoIntent(kept[siblingIndex], evidenceText, intent.evidenceSpans);
+                }
+            } else {
+                kept[targetIndex] = mergeContextIntoIntent(kept[targetIndex], evidenceText, intent.evidenceSpans);
+            }
+        } else {
+            kept[targetIndex] = mergeContextIntoIntent(kept[targetIndex], evidenceText, intent.evidenceSpans);
+        }
+        diagnostics.push(`ambiguous-untoothed-intent-demoted:${intent.intentId}:${intent.treatmentId}`);
+        diagnostics.push(`ambiguous-untoothed-note-attached:${kept[targetIndex].intentId}`);
+    }
+
+    return {
+        bundle: canonicalizeTreatmentIntentBundle({
+            ...bundle,
+            intents: kept,
+            needsConfirmation: kept.some(intent => Boolean(intent.uncertainty)),
+        }),
+        diagnostics,
+    };
+}
 
 function getServerOpenAiKey(): string | null {
     if (typeof window !== 'undefined') return null;
@@ -141,13 +385,13 @@ function sanitizeLlmBundleCandidate(input: unknown): unknown {
 
     const intents = intentsRaw
         .filter(intent => intent && typeof intent === 'object')
-        .map((intent) => {
+        .map((intent, index) => {
             const record = { ...(intent as Record<string, unknown>) };
             const intentId = record.intentId;
             if (typeof intentId === 'number' && Number.isFinite(intentId)) {
                 record.intentId = String(intentId);
             } else {
-                record.intentId = normalizeOptionalString(intentId) ?? intentId;
+                record.intentId = normalizeOptionalString(intentId) ?? `llm-intent-${index + 1}`;
             }
 
             const treatmentId = normalizeOptionalString(record.treatmentId);
@@ -194,6 +438,19 @@ function sanitizeLlmBundleCandidate(input: unknown): unknown {
                     });
             }
 
+            const confidenceFinal = typeof record.confidence === 'number' && Number.isFinite(record.confidence)
+                ? Math.max(0, Math.min(1, Number(record.confidence)))
+                : 0.5;
+            record.confidence = confidenceFinal;
+
+            const toothFinal = normalizeOptionalString(record.tooth);
+            if (!toothFinal && !record.uncertainty) {
+                record.uncertainty = 'missing_tooth_reference';
+            }
+            if (confidenceFinal < 0.6 && !record.uncertainty) {
+                record.uncertainty = 'llm_low_confidence';
+            }
+
             return record;
         });
 
@@ -205,23 +462,78 @@ function sanitizeLlmBundleCandidate(input: unknown): unknown {
                 ? needsConfirmationRaw.toLowerCase() === 'true'
                 : undefined;
 
+    const computedNeedsConfirmation = intents.some((intent) => {
+        if (!intent || typeof intent !== 'object') return false;
+        return Boolean((intent as Record<string, unknown>).uncertainty);
+    });
+
+    const needsConfirmationFinal = needsConfirmation === true || computedNeedsConfirmation;
+
     return {
         ...src,
         intents,
-        ...(needsConfirmation === undefined ? {} : { needsConfirmation }),
+        needsConfirmation: needsConfirmationFinal,
     };
 }
 
-function mapClassifierTreatmentToPackId(value: string): 'fuellung' | 'endo' | 'extraction' | 'crown_prep' {
+function mapClassifierTreatmentToPackId(value: string): ClassifiedTreatment['treatmentId'] {
     if (value === 'endo') return 'endo';
     if (value === 'extraction') return 'extraction';
+    if (value === 'pzr') return 'pzr';
     if (value === 'crown_prep') return 'crown_prep';
+    if (value === 'krone') return 'krone';
+    if (value === 'bruecke') return 'bruecke';
+    if (value === 'teilkrone') return 'teilkrone';
+    if (value === 'wsr') return 'wsr';
+    if (value === 'trauma') return 'trauma';
+    if (value === 'implant') return 'implant';
+    if (value === 'schiene') return 'schiene';
+    if (value === 'teilprothese') return 'teilprothese';
+    if (value === 'totalprothese') return 'totalprothese';
+    if (value === 'ueberkappung') return 'ueberkappung';
+    if (value === 'fissurenversiegelung') return 'fissurenversiegelung';
+    if (value === 'parodontologie') return 'parodontologie';
+    if (value === 'upt') return 'upt';
+    if (value === 'untersuchung') return 'untersuchung';
+    if (value === 'roentgen') return 'roentgen';
     return 'fuellung';
 }
 
 function findAllTeeth(text: string): string[] {
-    const matches = text.match(/\b([1-8][1-8])\b/g) || [];
-    return Array.from(new Set(matches));
+    const collectBlockedRanges = (pattern: RegExp): Array<{ start: number; end: number }> => {
+        const withGlobal = pattern.flags.includes('g')
+            ? pattern
+            : new RegExp(pattern.source, `${pattern.flags}g`);
+        const ranges: Array<{ start: number; end: number }> = [];
+        for (const match of text.matchAll(withGlobal)) {
+            const value = match[1];
+            if (!value || match.index === undefined) continue;
+            const localOffset = match[0].indexOf(value);
+            if (localOffset < 0) continue;
+            const start = match.index + localOffset;
+            ranges.push({ start, end: start + value.length });
+        }
+        return ranges;
+    };
+
+    const blockedRanges = [
+        ...collectBlockedRanges(TOOTH_VALUE_UNIT_RE),
+        ...collectBlockedRanges(ROOT_CANAL_VALUE_RE),
+    ];
+
+    const result: string[] = [];
+    for (const match of text.matchAll(/\b([1-8][1-8])\b/g)) {
+        const value = match[1];
+        if (!value || match.index === undefined) continue;
+        const start = match.index;
+        const end = start + value.length;
+        const isBlocked = blockedRanges.some(range => start >= range.start && end <= range.end);
+        if (isBlocked) continue;
+        if (!result.includes(value)) {
+            result.push(value);
+        }
+    }
+    return result;
 }
 
 function buildEvidenceSpan(dictation: string, snippet: string, startSearchAt: number): { start: number; end: number; text: string } {
@@ -255,6 +567,7 @@ function fallbackIntentFromSegment(
     diagnostics: string[];
     uncertain: boolean;
     contextTeeth: string[];
+    skippedContextNote?: string;
 } {
     const diagnostics: string[] = [];
     const classification = classifyTreatmentId(segmentText);
@@ -263,14 +576,21 @@ function fallbackIntentFromSegment(
     const hasMultipleTreatmentSignals = explicitSignalTreatments.length > 1;
     const hasExplicitTreatmentSignal = EXPLICIT_TREATMENT_SIGNAL_RE.test(segmentText);
     const hasExplicitSameToothReference = SAME_TOOTH_CONTEXT_RE.test(segmentText);
+    const normalizedSegment = normalizeWhitespace(segmentText);
     if (canSkipNoiseSegment && classification.confidence === 'low' && !hasExplicitTreatmentSignal) {
         diagnostics.push(`segment-skipped-no-treatment-signal:${segmentIndex + 1}`);
+        const skippedContextNote = SKIPPED_CONTEXT_SIGNAL_RE.test(normalizedSegment)
+            || isHistoricalComplaintOnlyEvidence(normalizedSegment)
+            || isContextOnlyEvidence(normalizedSegment)
+            ? normalizedSegment
+            : undefined;
         return {
             intents: [],
             nextOffset: startOffset,
             diagnostics,
             uncertain: false,
             contextTeeth: [],
+            skippedContextNote,
         };
     }
 
@@ -305,9 +625,22 @@ function fallbackIntentFromSegment(
     const intents: TreatmentIntentV1[] = [];
     const confidenceByTreatment: Record<string, number> = {
         extraction: 0.74,
+        pzr: 0.7,
         endo: 0.74,
         crown_prep: 0.72,
+        krone: 0.72,
+        bruecke: 0.72,
+        teilkrone: 0.72,
+        wsr: 0.72,
+        trauma: 0.72,
+        implant: 0.72,
+        schiene: 0.7,
+        teilprothese: 0.7,
+        totalprothese: 0.7,
+        ueberkappung: 0.68,
+        untersuchung: 0.66,
         fuellung: 0.62,
+        roentgen: 0.7,
     };
 
     treatmentIds.forEach((treatmentId, treatmentIndex) => {
@@ -354,7 +687,36 @@ function fallbackIntentFromSegment(
         diagnostics,
         uncertain,
         contextTeeth: teethRaw,
+        skippedContextNote: undefined,
     };
+}
+
+function attachSkippedContextToTailIntents(
+    intents: TreatmentIntentV1[],
+    noteRaw: string
+): TreatmentIntentV1[] {
+    const note = normalizeForensicContextNote(noteRaw);
+    if (!note || intents.length === 0) return intents;
+
+    const tailTreatmentId = intents[intents.length - 1]?.treatmentId;
+    if (!tailTreatmentId) return intents;
+
+    const next = [...intents];
+    let attached = false;
+    for (let i = next.length - 1; i >= 0; i -= 1) {
+        const candidate = next[i];
+        if (candidate.treatmentId !== tailTreatmentId) {
+            if (attached) break;
+            continue;
+        }
+        next[i] = mergeForensicNoteIntoIntent(candidate, note);
+        attached = true;
+    }
+
+    if (!attached) {
+        next[next.length - 1] = mergeForensicNoteIntoIntent(next[next.length - 1], note);
+    }
+    return next;
 }
 
 function fallbackDetect(dictation: string): DetectTreatmentIntentsResult {
@@ -366,17 +728,23 @@ function fallbackDetect(dictation: string): DetectTreatmentIntentsResult {
     let contextTeeth: string[] = [];
 
     segments.forEach((segmentText, segmentIndex) => {
+        const isInsuranceOnlySegment = INSURANCE_ONLY_SEGMENT_RE.test(segmentText.trim());
         const result = fallbackIntentFromSegment(
             dictation,
             segmentText,
             segmentIndex,
             cursor,
             contextTeeth,
-            intents.length > 0
+            intents.length > 0 || isInsuranceOnlySegment
         );
         cursor = result.nextOffset;
         intents.push(...result.intents);
         diagnostics.push(...result.diagnostics);
+        if (result.skippedContextNote && intents.length > 0) {
+            const merged = attachSkippedContextToTailIntents(intents, result.skippedContextNote);
+            intents.splice(0, intents.length, ...merged);
+            diagnostics.push(`segment-context-note-attached:${segmentIndex + 1}`);
+        }
         if (result.uncertain) needsConfirmation = true;
         if (result.contextTeeth.length > 0) {
             contextTeeth = result.contextTeeth;
@@ -396,12 +764,21 @@ function fallbackDetect(dictation: string): DetectTreatmentIntentsResult {
 
     const canonical = canonicalizeTreatmentIntentBundle(parsed.data);
     const collapsed = collapseDuplicateIntents(canonical);
+    const pruned = pruneLikelyRootCanalToothArtifacts(collapsed.bundle, dictation);
+    const demotedHistorical = demoteHistoricalComplaintIntents(pruned.bundle);
+    const demotedContinuation = demoteAmbiguousUntoothedContinuationIntents(demotedHistorical.bundle);
 
     return {
-        bundle: collapsed.bundle,
+        bundle: demotedContinuation.bundle,
         source: 'fallback',
-        diagnostics: [...diagnostics, ...collapsed.diagnostics],
-        needsConfirmation: collapsed.bundle.needsConfirmation === true,
+        diagnostics: [
+            ...diagnostics,
+            ...collapsed.diagnostics,
+            ...pruned.diagnostics,
+            ...demotedHistorical.diagnostics,
+            ...demotedContinuation.diagnostics,
+        ],
+        needsConfirmation: demotedContinuation.bundle.needsConfirmation === true,
     };
 }
 
@@ -409,7 +786,47 @@ function hasExtractionIntent(bundle: TreatmentIntentBundleV1): boolean {
     return bundle.intents.some(intent => intent.treatmentId === 'extraction');
 }
 
-function collapseDuplicateIntents(
+function hasRootCanalValueReference(dictation: string, tooth: string): boolean {
+    const escapedTooth = escapeRegexLiteral(tooth);
+    const pattern = new RegExp(`\\b(?:mb|ml|db|dl|d|p|pal|k1|k2|k3|k4)\\s*[:=]?\\s*${escapedTooth}\\b`, 'i');
+    return pattern.test(dictation);
+}
+
+function pruneLikelyRootCanalToothArtifacts(
+    bundle: TreatmentIntentBundleV1,
+    dictation: string
+): { bundle: TreatmentIntentBundleV1; diagnostics: string[] } {
+    const explicitTeeth = new Set(findAllTeeth(dictation));
+    if (explicitTeeth.size === 0) {
+        return { bundle, diagnostics: [] };
+    }
+
+    const diagnostics: string[] = [];
+    const filtered = bundle.intents.filter((intent) => {
+        if (!intent.tooth) return true;
+        if (explicitTeeth.has(intent.tooth)) return true;
+        if (!hasRootCanalValueReference(dictation, intent.tooth)) return true;
+        diagnostics.push(`root-canal-value-tooth-artifact-pruned:${intent.intentId}:${intent.tooth}`);
+        return false;
+    });
+
+    if (filtered.length === bundle.intents.length || filtered.length === 0) {
+        return { bundle, diagnostics };
+    }
+
+    return {
+        bundle: canonicalizeTreatmentIntentBundle({
+            ...bundle,
+            intents: filtered,
+            needsConfirmation:
+                bundle.needsConfirmation === true
+                || filtered.some(intent => Boolean(intent.uncertainty)),
+        }),
+        diagnostics,
+    };
+}
+
+export function collapseDuplicateIntents(
     bundle: TreatmentIntentBundleV1
 ): { bundle: TreatmentIntentBundleV1; diagnostics: string[] } {
     const grouped = new Map<string, TreatmentIntentV1[]>();
@@ -479,6 +896,40 @@ function collapseDuplicateIntents(
     };
 }
 
+function reconcileLlmBundleWithDeterministicSignals(bundle: TreatmentIntentBundleV1): ReconcileResult {
+    const diagnostics: string[] = [];
+    const intents = bundle.intents.map((intent) => {
+        const evidenceText = intent.evidenceSpans.map(span => span.text).join(' ').trim();
+        if (!evidenceText) return intent;
+        const prostheticOverride = inferProstheticFinalTreatmentId(intent, evidenceText);
+        if (prostheticOverride && prostheticOverride !== intent.treatmentId) {
+            diagnostics.push(`llm-treatment-overridden-by-prosthetic-step:${intent.intentId}:${intent.treatmentId}->${prostheticOverride}`);
+            return {
+                ...intent,
+                treatmentId: prostheticOverride,
+            };
+        }
+        const signals = detectTreatmentSignals(evidenceText);
+        const distinctSignals = Array.from(new Set(signals.map(signal => signal.treatmentId)));
+        if (distinctSignals.length !== 1) return intent;
+        const deterministicTreatment = distinctSignals[0];
+        if (deterministicTreatment === intent.treatmentId) return intent;
+        diagnostics.push(`llm-treatment-overridden-by-signal:${intent.intentId}:${intent.treatmentId}->${deterministicTreatment}`);
+        return {
+            ...intent,
+            treatmentId: deterministicTreatment,
+            uncertainty: undefined,
+        };
+    });
+    return {
+        bundle: canonicalizeTreatmentIntentBundle({
+            ...bundle,
+            intents,
+        }),
+        diagnostics,
+    };
+}
+
 const UNCERTAINTY_PRIORITY: TreatmentIntentV1['uncertainty'][] = [
     'missing_tooth_reference',
     'inferred_tooth_from_context',
@@ -524,8 +975,12 @@ export async function detectTreatmentIntents(
                         const validated = validateTreatmentIntentBundle(sanitizedJson);
                         if (validated.ok) {
                             const canonical = canonicalizeTreatmentIntentBundle(validated.data);
-                            const collapsed = collapseDuplicateIntents(canonical);
-                            if (EXTRACTION_SIGNAL_RE.test(dictation) && !hasExtractionIntent(canonical)) {
+                            const reconciled = reconcileLlmBundleWithDeterministicSignals(canonical);
+                            const collapsed = collapseDuplicateIntents(reconciled.bundle);
+                            const pruned = pruneLikelyRootCanalToothArtifacts(collapsed.bundle, dictation);
+                            const demotedHistorical = demoteHistoricalComplaintIntents(pruned.bundle);
+                            const demotedContinuation = demoteAmbiguousUntoothedContinuationIntents(demotedHistorical.bundle);
+                            if (EXTRACTION_SIGNAL_RE.test(dictation) && !hasExtractionIntent(reconciled.bundle)) {
                                 const fallback = fallbackDetect(dictation);
                                 if (hasExtractionIntent(fallback.bundle)) {
                                     return {
@@ -537,10 +992,17 @@ export async function detectTreatmentIntents(
                                 }
                             }
                             return {
-                                bundle: collapsed.bundle,
+                                bundle: demotedContinuation.bundle,
                                 source: 'llm',
-                                needsConfirmation: collapsed.bundle.needsConfirmation === true,
-                                diagnostics: [...diagnostics, ...collapsed.diagnostics],
+                                needsConfirmation: demotedContinuation.bundle.needsConfirmation === true,
+                                diagnostics: [
+                                    ...diagnostics,
+                                    ...reconciled.diagnostics,
+                                    ...collapsed.diagnostics,
+                                    ...pruned.diagnostics,
+                                    ...demotedHistorical.diagnostics,
+                                    ...demotedContinuation.diagnostics,
+                                ],
                             };
                         }
                         diagnostics.push(`llm-schema-invalid:attempt${attempt}:${validated.issues[0] ?? 'unknown'}`);

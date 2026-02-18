@@ -1,6 +1,6 @@
 # V10 Real Dictation Check
 
-Scenarios: 21
+Scenarios: 37
 
 - gkv-fuellung-profunda-la: OK (0 issues)
 - gkv-fuellung-multizahn-kontext: OK (0 issues)
@@ -23,3 +23,19 @@ Scenarios: 21
 - gkv-extraction-naht: OK (0 issues)
 - gkv-pzr-fluor: OK (0 issues)
 - pkv-crown-prep-provi: OK (0 issues)
+- pkv-ueberkappung-direkt: OK (0 issues)
+- pkv-fissurenversiegelung: OK (0 issues)
+- gkv-parodontologie-ait: OK (0 issues)
+- gkv-upt-grad-b: OK (0 issues)
+- pkv-wsr-osteotomie: OK (0 issues)
+- gkv-trauma-schienung: OK (0 issues)
+- pkv-implant-insertion: OK (0 issues)
+- pkv-krone-definitiv: OK (0 issues)
+- pkv-teilkrone-definitiv: OK (0 issues)
+- pkv-bruecke-definitiv: OK (0 issues)
+- pkv-teilprothese-modellguss: OK (0 issues)
+- pkv-totalprothese-konventionell: OK (0 issues)
+- gkv-schiene-okklusion: OK (0 issues)
+- pkv-untersuchung-eingehend: OK (0 issues)
+- pkv-roentgen-opg: OK (0 issues)
+- gkv-multi-extraktion-fuellung: OK (0 issues)

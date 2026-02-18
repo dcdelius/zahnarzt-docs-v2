@@ -28,7 +28,28 @@ export const pzrUiContract: PackUiContractV1 = {
     ],
     settingsSchema: {
         practice: [],
-        user: [],
+        user: [
+            {
+                key: 'treatments.pzr.defaultZahnsteinEntfernung',
+                label: 'Zahnsteinentfernung standardmaessig dokumentieren',
+                type: 'enum',
+                options: [
+                    { value: 'yes', label: 'Ja' },
+                    { value: 'no', label: 'Nein' },
+                ],
+                mapsToAskbackId: 'pzr_zahnstein',
+            },
+            {
+                key: 'treatments.pzr.defaultFluoridation',
+                label: 'Fluoridierung standardmaessig dokumentieren',
+                type: 'enum',
+                options: [
+                    { value: 'yes', label: 'Ja' },
+                    { value: 'no', label: 'Nein' },
+                ],
+                mapsToAskbackId: 'pzr_fluoridation',
+            },
+        ],
     },
     askbackPolicy: {
         criticalAskbacks: [

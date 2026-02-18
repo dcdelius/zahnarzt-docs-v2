@@ -1,0 +1,46 @@
+{
+    "_meta": {
+        "id": "roentgen",
+        "version": "1.0.0",
+        "label": "Roentgen"
+    },
+    "chips": [
+        {
+            "id": "roentgen_einzelzahn",
+            "label": "Roentgen Einzelzahnaufnahme",
+            "phase": "diagnostik",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Roentgen Einzelzahnaufnahme.",
+                "mittel": "Roentgenologische Einzelzahnaufnahme angefertigt.",
+                "lang": "Roentgenologische Einzelzahnaufnahme indiziert, angefertigt und befundet."
+            },
+            "defaultActive": true,
+            "showInQuickView": true
+        },
+        {
+            "id": "roentgen_opg",
+            "label": "Roentgen OPG",
+            "phase": "diagnostik",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "OPG angefertigt.",
+                "mittel": "Orthopantomogramm angefertigt und ausgewertet.",
+                "lang": "Orthopantomogramm zur Uebersichtsdiagnostik angefertigt und befundet."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "roentgen_befundung",
+            "label": "Roentgen Befundung",
+            "phase": "diagnostik",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Roentgenbefund dokumentiert.",
+                "mittel": "Roentgenbefund dokumentiert.",
+                "lang": "Roentgenbefund nachvollziehbar dokumentiert und mit dem klinischen Befund abgeglichen."
+            },
+            "defaultActive": true
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+  "results": [
+    {
+      "id": "mt01",
+      "label": "GKV Extraktion plus Fuellung",
+      "dictation": "GKV. Zunaechst Extraktion Zahn 28 nach Luxation mit Infiltrationsanaesthesie und Wundversorgung, danach Fuellung Zahn 16 okklusal mit Komposit unter Kofferdam und Okklusionskontrolle.",
+      "state": "output",
+      "passes": 1,
+      "questions": [],
+      "answers": {},
+      "detectedTreatments": [
+        "extraction",
+        "fuellung"
+      ],
+      "billingCodes": [
+        "BEMA_40",
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13"
+      ],
+      "fullText": "Lokalanästhesie (Infiltration). Extraktion Zahn 28 durchgeführt. Wundversorgung durchgeführt.\n\nLA Infiltration (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Kofferdam angelegt. Zahn 16 (O): Füllungstherapie. Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "issues": []
+    },
+    {
+      "id": "mt02",
+      "label": "GKV Fuellung plus Endo plus Roentgen",
+      "dictation": "GKV. Zahn 24 bekam eine tiefe MOD-Kompositfuellung. Anschliessend wurde Zahn 27 wegen Klopfdolenz trepaniert, die Kanaele aufbereitet und medikamentoes eingelegt. Danach erfolgte eine Roentgenkontrolle.",
+      "state": "output",
+      "passes": 2,
+      "questions": [
+        {
+          "id": "medical_ueberkappung::tooth:24",
+          "text": "Überkappung durchgeführt?"
+        },
+        {
+          "id": "fuellung_isolation::tooth:24",
+          "text": "Welche Isolation?"
+        },
+        {
+          "id": "fuellung_layering::tooth:24",
+          "text": "Mehrschichttechnik verwendet?"
+        },
+        {
+          "id": "endo_canal_count::tooth:27",
+          "text": "Wie viele Kanaele wurden behandelt?"
+        },
+        {
+          "id": "endo_medication::tooth:27",
+          "text": "Welche medikamentoese Einlage wurde verwendet?"
+        },
+        {
+          "id": "ENDO_T1_IRRIGATION::tooth:27",
+          "text": "Welche Spüllösungen wurden verwendet?"
+        },
+        {
+          "id": "ENDO_T1_WORKING_LENGTH_METHOD::tooth:27",
+          "text": "Wie wurden die Arbeitslängen bestimmt?"
+        },
+        {
+          "id": "ENDO_T1_WORKING_LENGTHS::tooth:27",
+          "text": "Bitte Arbeitslängen pro Kanal angeben"
+        },
+        {
+          "id": "medical_isolation::tooth:27",
+          "text": "Welche Isolation?"
+        },
+        {
+          "id": "medical_wf_technique::tooth:27",
+          "text": "Welche Wurzelfuelltechnik wurde verwendet?"
+        },
+        {
+          "id": "medical_roentgen_befund::tooth:27",
+          "text": "Roentgen-Befund dokumentieren"
+        },
+        {
+          "id": "medical_roentgen_typ::tooth:27",
+          "text": "Roentgen-Typ dokumentieren (z. B. Zahnfilm/Bissfluegel/OPG)"
+        },
+        {
+          "id": "medical_roentgen_zeitpunkt::tooth:27",
+          "text": "Roentgen-Zeitpunkt dokumentieren"
+        }
+      ],
+      "answers": {
+        "medical_ueberkappung::tooth:24": "keine",
+        "fuellung_isolation::tooth:24": "kofferdam",
+        "fuellung_layering::tooth:24": "yes",
+        "endo_canal_count::tooth:27": "dokumentiert",
+        "endo_medication::tooth:27": "dokumentiert",
+        "ENDO_T1_IRRIGATION::tooth:27": "NaOCl",
+        "ENDO_T1_WORKING_LENGTH_METHOD::tooth:27": "Apexlokator (EAL)",
+        "ENDO_T1_WORKING_LENGTHS::tooth:27": "dokumentiert",
+        "medical_isolation::tooth:27": "kofferdam",
+        "medical_wf_technique::tooth:27": "warm",
+        "medical_roentgen_befund::tooth:27": "klinisch dokumentiert",
+        "medical_roentgen_typ::tooth:27": "dokumentiert",
+        "medical_roentgen_zeitpunkt::tooth:27": "dokumentiert"
+      },
+      "detectedTreatments": [
+        "endo",
+        "fuellung",
+        "roentgen"
+      ],
+      "billingCodes": [
+        "BEMA_12",
+        "BEMA_13c",
+        "BEMA_31",
+        "BEMA_34",
+        "BEMA_Ä925a",
+        "BEMA_Ä925a"
+      ],
+      "fullText": "Kofferdam angelegt. Zahn 24 (MOD): Füllungstherapie tief (caries profunda). Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Keine Pulpaeröffnung; Cp nicht erforderlich.\n\nKofferdam angelegt. Elektrische Arbeitslängenmessung. Wurzelfüllung in warmer vertikaler Kondensation. Spülung mit NaOCl. Röntgenkontrolle post WF. Trepanation der Pulpakammer.\n\nRoentgenologische Einzelzahnaufnahme angefertigt. Roentgenbefund dokumentiert.",
+      "issues": []
+    },
+    {
+      "id": "mt03",
+      "label": "PKV Kronenpraeparation plus OPG",
+      "dictation": "PKV. Zahn 11 wurde fuer eine Krone praepariert, abgeformt und provisorisch versorgt; zusaetzlich wurde ein OPG zur Therapieplanung angefertigt.",
+      "state": "output",
+      "passes": 2,
+      "questions": [
+        {
+          "id": "crown_prep_impression::tooth:11",
+          "text": "Abformung durchgeführt?"
+        },
+        {
+          "id": "medical_roentgen_befund::tooth:11",
+          "text": "Roentgen-Befund dokumentieren"
+        },
+        {
+          "id": "medical_roentgen_zeitpunkt::tooth:11",
+          "text": "Roentgen-Zeitpunkt dokumentieren"
+        }
+      ],
+      "answers": {
+        "crown_prep_impression::tooth:11": "yes",
+        "medical_roentgen_befund::tooth:11": "klinisch dokumentiert",
+        "medical_roentgen_zeitpunkt::tooth:11": "dokumentiert"
+      },
+      "detectedTreatments": [
+        "crown_prep",
+        "roentgen"
+      ],
+      "billingCodes": [
+        "GOZ_5000",
+        "GOZ_2210",
+        "GOZ_2260",
+        "GOZ_5004"
+      ],
+      "fullText": "Zahn 11: Kronenpräparation durchgeführt. Zahn 11: Präzisionsabformung durchgeführt. Zahn 11: Provisorische Versorgung.\n\nOrthopantomogramm angefertigt und ausgewertet. Roentgenbefund dokumentiert.",
+      "issues": []
+    }
+  ]
+}

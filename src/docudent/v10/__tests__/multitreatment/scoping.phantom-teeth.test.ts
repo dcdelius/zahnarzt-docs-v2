@@ -8,6 +8,28 @@ import { describe, it, expect } from 'vitest';
 import { scopeExtractionToInstances } from '../../multitreatment/scoping';
 
 describe('Phantom Tooth Prevention', () => {
+    describe('Endo root-canal values should not create phantom teeth', () => {
+        it('should not infer tooth 21 from "D 21" working-length value', () => {
+            const result = scopeExtractionToInstances(
+                'Zahn 36. Zweiter Termin. Arbeitslängen per Apex Locator: MB 20, ML 19, D 21. NaOCl + EDTA.',
+                'endo'
+            );
+
+            expect(result.instances.length).toBe(1);
+            expect(result.instances[0].teeth).toEqual(['36']);
+        });
+
+        it('should keep explicit endo tooth references', () => {
+            const result = scopeExtractionToInstances(
+                'Endo Zahn 21. Arbeitslängen per Apex Locator: MB 20, D 21. NaOCl Spülung.',
+                'endo'
+            );
+
+            expect(result.instances.length).toBe(1);
+            expect(result.instances[0].teeth).toEqual(['21']);
+        });
+    });
+
     describe('Prices should not create phantom teeth', () => {
         it('should not parse "120€" as tooth 12 or 20', () => {
             const result = scopeExtractionToInstances(

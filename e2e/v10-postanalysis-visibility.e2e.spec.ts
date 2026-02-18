@@ -97,23 +97,6 @@ async function answerQuestionsUntilDashboard(page: Page): Promise<void> {
             await page.waitForTimeout(120);
         }
 
-        const textareas = page.locator('textarea');
-        const textareaCount = await textareas.count();
-        for (let t = 0; t < textareaCount; t += 1) {
-            const area = textareas.nth(t);
-            if (!(await area.isVisible().catch(() => false))) continue;
-            const currentValue = await area.inputValue().catch(() => '');
-            if (currentValue && currentValue.trim().length > 0) continue;
-            const contextText = ((
-                await area.locator('xpath=ancestor::*[@data-testid][1]').textContent().catch(() => '')
-            ) || '').toLowerCase();
-            let value = 'ja';
-            if (contextText.includes('betrag')) value = '150';
-            if (contextText.includes('flächen') || contextText.includes('flaechen') || contextText.includes('surface')) value = 'o';
-            await area.fill(value);
-            await page.waitForTimeout(120);
-        }
-
         const completeBtn = page.locator('[data-testid="complete-button"]');
         if (await completeBtn.isVisible().catch(() => false)) {
             const disabled = await completeBtn.isDisabled().catch(() => true);

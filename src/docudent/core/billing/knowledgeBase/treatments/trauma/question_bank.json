@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "treatmentId": "trauma",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Zahntrauma"
+  },
+  "questions": [
+    {
+      "key": "trauma_art",
+      "category": "forensic",
+      "prompt": "Welche Traumaart liegt vor?",
+      "type": "single",
+      "dataField": "trauma.art",
+      "options": [
+        {
+          "id": "luxation",
+          "label": "Luxation",
+          "dataValue": "luxation"
+        },
+        {
+          "id": "fraktur",
+          "label": "Kronen-/Wurzelfraktur",
+          "dataValue": "fraktur"
+        },
+        {
+          "id": "avulsion",
+          "label": "Avulsion",
+          "dataValue": "avulsion"
+        }
+      ]
+    },
+    {
+      "key": "trauma_schienung",
+      "category": "forensic",
+      "prompt": "Wurde eine semipermanente Schienung angelegt?",
+      "type": "single",
+      "dataField": "trauma.schienung",
+      "options": [
+        {
+          "id": "ja",
+          "label": "Ja",
+          "dataValue": "ja"
+        },
+        {
+          "id": "nein",
+          "label": "Nein",
+          "dataValue": "nein"
+        }
+      ]
+    },
+    {
+      "key": "trauma_kontrolle",
+      "category": "forensic",
+      "prompt": "Wurde eine Verlaufskontrolle geplant?",
+      "type": "single",
+      "dataField": "trauma.kontrolle",
+      "options": [
+        {
+          "id": "ja",
+          "label": "Ja",
+          "dataValue": "ja"
+        },
+        {
+          "id": "nein",
+          "label": "Nein",
+          "dataValue": "nein"
+        }
+      ]
+    }
+  ]
+}

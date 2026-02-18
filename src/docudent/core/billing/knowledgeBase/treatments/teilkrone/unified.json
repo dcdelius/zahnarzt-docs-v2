@@ -1,0 +1,44 @@
+{
+    "_meta": {
+        "id": "teilkrone",
+        "version": "1.0.0",
+        "label": "Teilkrone"
+    },
+    "chips": [
+        {
+            "id": "teilkrone_definitiv",
+            "label": "Teilkronenversorgung",
+            "phase": "prothetik",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Teilkronenversorgung durchgefuehrt.",
+                "mittel": "Definitive Teilkronenversorgung am betroffenen Zahn durchgefuehrt.",
+                "lang": "Definitive Teilkronenversorgung am betroffenen Zahn lege artis durchgefuehrt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "teilkrone_provisorium",
+            "label": "Provisorische Teilkrone",
+            "phase": "prothetik",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Provisorische Teilkrone eingesetzt.",
+                "mittel": "Provisorische Teilkrone zur interimistischen Versorgung eingesetzt.",
+                "lang": "Provisorische Teilkrone zur Sicherung von Schutz und Funktion bis zur definitiven Versorgung eingesetzt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "teilkrone_eingliederung_definitiv",
+            "label": "Definitive Eingliederung",
+            "phase": "dokumentation",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Definitive Eingliederung dokumentiert.",
+                "mittel": "Definitive Eingliederung und Okklusionskontrolle dokumentiert.",
+                "lang": "Definitive Eingliederung mit Kontrolle von Randschluss, Approximalkontakten und Okklusion dokumentiert."
+            }
+        }
+    ]
+}

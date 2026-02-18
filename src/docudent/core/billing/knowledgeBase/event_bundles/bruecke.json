@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "bruecke",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "bruecke.typ.definitiv",
+      "chipIds": ["bruecke_definitiv"],
+      "textRefIds": ["bruecke_definitiv"],
+      "billingRefIds": ["bruecke_definitiv"]
+    },
+    {
+      "id": "bruecke.typ.provisorisch",
+      "chipIds": ["bruecke_provisorisch"],
+      "textRefIds": ["bruecke_provisorisch"],
+      "billingRefIds": ["bruecke_provisorisch"]
+    },
+    {
+      "id": "bruecke.phase.kontrolle",
+      "chipIds": ["bruecke_kontrolle"],
+      "textRefIds": ["bruecke_kontrolle"],
+      "billingRefIds": []
+    },
+    {
+      "id": "bruecke.askback.typ"
+    },
+    {
+      "id": "bruecke.askback.phase"
+    }
+  ]
+}

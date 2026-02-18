@@ -1,5 +1,6 @@
 import { resolveSurfaceBilling } from './surfaceBillingResolver';
 import { getBillingDbTreatment } from './billingDb';
+import { normalizeBillingRefId } from '../../core/billing/billingRefNormalization';
 
 export interface ResolveBillingRefsInput {
     treatmentId: string;
@@ -19,6 +20,10 @@ export function resolveBillingRefsFromBundleMeta(input: ResolveBillingRefsInput)
     if (!db) return [];
 
     const codes = new Set<string>();
+    const addCode = (code?: string) => {
+        if (!code) return;
+        codes.add(normalizeBillingRefId(code));
+    };
     const surfaceMapped = new Set(db.surfaceMappedChips ?? []);
     const mehrkostenConfirmed = input.mehrkostenConfirmed === true;
 
@@ -30,10 +35,10 @@ export function resolveBillingRefsFromBundleMeta(input: ResolveBillingRefsInput)
                 input.insuranceType
             );
             if (surfaceResult?.billingCode) {
-                codes.add(surfaceResult.billingCode);
+                addCode(surfaceResult.billingCode);
             }
             if (input.insuranceType === 'MKV' && mehrkostenConfirmed && surfaceResult?.addonCode) {
-                codes.add(surfaceResult.addonCode);
+                addCode(surfaceResult.addonCode);
             }
             continue;
         }
@@ -43,18 +48,18 @@ export function resolveBillingRefsFromBundleMeta(input: ResolveBillingRefsInput)
 
         if (input.insuranceType === 'MKV') {
             if (ref.MKV && mehrkostenConfirmed) {
-                codes.add(ref.MKV);
+                addCode(ref.MKV);
             } else if (ref.GKV) {
-                codes.add(ref.GKV);
+                addCode(ref.GKV);
             } else if (ref.PKV && mehrkostenConfirmed) {
-                codes.add(ref.PKV);
+                addCode(ref.PKV);
             }
             continue;
         }
 
         const direct = ref[input.insuranceType];
         if (direct) {
-            codes.add(direct);
+            addCode(direct);
         }
     }
 

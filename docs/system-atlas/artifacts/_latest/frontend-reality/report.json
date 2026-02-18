@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-16T16:04:55.701Z",
+  "timestamp": "2026-02-16T20:53:31.559Z",
   "totalScenarios": 10,
   "passed": 10,
   "failed": 0,
@@ -15,12 +15,11 @@
       "chips": {
         "fuellung-36-1": [
           "fuellung_grundleistung",
-          "fuellung_material_komposit",
-          "mehrschicht"
+          "fuellung_material_komposit"
         ]
       },
       "errors": [],
-      "duration": 25
+      "duration": 137
     },
     {
       "id": "TC2_material_unknown",
@@ -40,7 +39,7 @@
         "fuellung-36-1": []
       },
       "errors": [],
-      "duration": 2
+      "duration": 10
     },
     {
       "id": "TC3_mehrkosten_schicht",
@@ -52,14 +51,12 @@
       "questions": {},
       "chips": {
         "fuellung-36-1": [
-          "insurance_gkv_mkv",
           "fuellung_grundleistung",
-          "fuellung_material_komposit",
-          "mehrschicht"
+          "fuellung_material_komposit"
         ]
       },
       "errors": [],
-      "duration": 2
+      "duration": 11
     },
     {
       "id": "TC4_multi_tooth_isolation",
@@ -83,7 +80,7 @@
         "fuellung-14-2": []
       },
       "errors": [],
-      "duration": 1
+      "duration": 14
     },
     {
       "id": "TC5_multi_segment_complex",
@@ -112,7 +109,7 @@
         "fuellung-46-3": []
       },
       "errors": [],
-      "duration": 3
+      "duration": 25
     },
     {
       "id": "TC6_surface_isolation",
@@ -136,7 +133,7 @@
         "fuellung-14-2": []
       },
       "errors": [],
-      "duration": 3
+      "duration": 26
     },
     {
       "id": "TC7_adhesive_scoped",
@@ -160,7 +157,7 @@
         "fuellung-14-2": []
       },
       "errors": [],
-      "duration": 1
+      "duration": 46
     },
     {
       "id": "TC8_pkv_full",
@@ -174,12 +171,11 @@
         "fuellung-36-1": [
           "fuellung_grundleistung",
           "fuellung_material_komposit",
-          "fuellung_material_adhesive",
-          "mehrschicht"
+          "fuellung_material_adhesive"
         ]
       },
       "errors": [],
-      "duration": 1
+      "duration": 13
     },
     {
       "id": "TC9_capping_trigger",
@@ -199,7 +195,7 @@
         "fuellung-36-1": []
       },
       "errors": [],
-      "duration": 1
+      "duration": 9
     },
     {
       "id": "TC10_global_scope",
@@ -225,7 +221,7 @@
         "fuellung-14-2": []
       },
       "errors": [],
-      "duration": 1
+      "duration": 19
     }
   ]
 }

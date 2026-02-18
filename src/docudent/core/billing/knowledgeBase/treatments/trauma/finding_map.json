@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "treatmentId": "trauma",
+    "version": "1.0.0"
+  },
+  "fields": {
+    "art": {
+      "label": "Traumaart",
+      "template": "{{value}}"
+    },
+    "schienung": {
+      "label": "Schienung",
+      "template": "{{value}}"
+    },
+    "kontrolle": {
+      "label": "Kontrolle",
+      "template": "{{value}}"
+    }
+  }
+}

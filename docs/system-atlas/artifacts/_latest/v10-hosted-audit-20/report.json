@@ -1,0 +1,770 @@
+{
+  "runAt": "2026-02-18T07:27:00.799Z",
+  "baseUrl": "http://localhost:4173",
+  "isFullSuite": true,
+  "authMode": {
+    "localBypass": true,
+    "forceRealAuth": false
+  },
+  "summary": {
+    "cases": 20,
+    "extraction": {
+      "llm": 0,
+      "stub": 20,
+      "regex": 0,
+      "unknown": 0
+    },
+    "preanalysis": {
+      "llm": 0,
+      "fallback": 20,
+      "loginRequired": 20
+    }
+  },
+  "cases": [
+    {
+      "id": "S1",
+      "title": "GKV Füllung MOD",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV",
+      "dictation": "Bei der 36 war MOD kariös, ich habe nach Leitungsanästhesie unter Kofferdam mit Komposit aufgebaut, Okklusion eingeschliffen und sauber poliert, Patientin beschwerdefrei beim Aufbeißen.",
+      "askbacks": [],
+      "askbackAnswers": [],
+      "outputFullText": "[BEFUND]\n\nZahn 36. MOD\n\n[AUFKLÄRUNG]\n\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 36 (MOD): Füllungstherapie. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• LA Leitung.\n• Kofferdam.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  41a – Leitungsanästhesie, intraoral\n  12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich\n  13c – Füllung dreiflächig",
+      "outputExcerpt": "[BEFUND] Zahn 36. MOD [AUFKLÄRUNG] Risiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S, A",
+      "billingCodes": [
+        "BEMA_12B",
+        "BEMA_13C",
+        "BEMA_41A"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S2",
+      "title": "GKV+MKV Füllung mit Mehrkosten",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV+MKV",
+      "dictation": "An 16 OD Kompositversorgung im Seitenzahnbereich, Kofferdam lag, wir haben den Patienten zur Mehrkostenvereinbarung aufgeklärt und unterschrieben, ästhetischer Wunsch war explizit genannt.",
+      "askbacks": [
+        "Mehrkostenbetrag (Patientenanteil)?",
+        "Mehrkosten-Begründung?Mehrschichttechnik (adhäsiv)Ästhetik / Materialwahl (Patientenwunsch)Keine Mehrkosten (nur Kasse)"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "mkv_betrag::tooth:16",
+          "questionLabel": "Mehrkostenbetrag (Patientenanteil)?",
+          "answer": "150",
+          "source": "free_text"
+        },
+        {
+          "questionId": "fuellung_mkv_justification::tooth:16",
+          "questionLabel": "Mehrkosten-Begründung?Mehrschichttechnik (adhäsiv)Ästhetik / Materialwahl (Patientenwunsch)Keine Mehrkosten (nur Kasse)",
+          "answer": "Mehrschichttechnik (adhäsiv)",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 16. OD\n\n[AUFKLÄRUNG]\n\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung nach § 28 Abs. 2 SGB V geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\nMehrkostenbegründung: mehrschicht.\nMehrkostenbetrag dokumentiert: 150.00 EUR.\n\n[BEHANDLUNGSABLAUF]\n\nInitial Kofferdam angelegt. Im Weiteren Zahn 16 (OD): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Daraufhin Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Abschließend Mehrkosten-Begründung: mehrschicht.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich\n  13b – Füllung zweiflächig\nPrivatleistung (GOZ):\n  2080 – Kompositfüllung zweiflächig in Adhäsivtechnik\n[MKV-Validierung] Mehrschichttechnik dokumentiert.\n\nZuzahlung lt. Mehrkostenvereinbarung",
+      "outputExcerpt": "[BEFUND] Zahn 16. OD [AUFKLÄRUNG] Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung nach § 28 Abs. 2 SGB V geschlossen. Die Zuzahlung fü",
+      "billingCodes": [
+        "BEMA_12B",
+        "BEMA_13B",
+        "GOZ_2080"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S3",
+      "title": "PKV Füllung",
+      "treatmentId": "fuellung",
+      "insuranceMode": "PKV",
+      "dictation": "Bei 45 MODB direkte Kompositfüllung in Mehrschichttechnik, vorher Infiltration, trocken gelegt mit Kofferdam, Kontaktpunkt und Okklusion zum Schluss kontrolliert.",
+      "askbacks": [],
+      "askbackAnswers": [],
+      "outputFullText": "[BEFUND]\n\nZahn 45. MODB\n\n[AUFKLÄRUNG]\n\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst LA Infiltration (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 45 (MODB): Füllungstherapie. Anschließend Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Kontaktpunkt geprüft.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• LA Infiltr.\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  0090 – Infiltrationsanästhesie\n  2040 – Anlegen von Spanngummi (Kofferdam)\n  2120 – Kompositfüllung mehr als dreiflächig",
+      "outputExcerpt": "[BEFUND] Zahn 45. MODB [AUFKLÄRUNG] Risiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zunächst LA Infiltration (Ultracain D-S, Articain 4% + Ad",
+      "billingCodes": [
+        "GOZ_0090",
+        "GOZ_2040",
+        "GOZ_2120"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S4",
+      "title": "GKV Endo mit Einlage",
+      "treatmentId": "endo",
+      "insuranceMode": "GKV",
+      "dictation": "Endo an 46, Trepanation gemacht, Arbeitslänge elektronisch mit Röntgen gegengeprüft, gespült mit NaOCl und EDTA, dann medikamentöse Einlage mit Calciumhydroxid und provisorisch verschlossen, alles unter Kofferdam.",
+      "askbacks": [],
+      "askbackAnswers": [
+        {
+          "questionId": "ENDO_T1_WORKING_LENGTHS::tooth:46",
+          "questionLabel": "Bitte Arbeitslängen pro Kanal angeben",
+          "answer": "{\"K1\":19,\"K2\":18,\"K3\":17}",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_canal_count::tooth:46",
+          "questionLabel": "Wie viele Kanaele wurden behandelt?",
+          "answer": "3",
+          "source": "free_text"
+        },
+        {
+          "questionId": "medical_wf_technique::tooth:46",
+          "questionLabel": "Welche Wurzelfuelltechnik wurde verwendet?Warm vertikalKalt lateralEinzelstift",
+          "answer": "Warm vertikal",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 46\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Provisorischer Verschluss. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Daraufhin Röntgenkontrolle post WF. Abschließend Arbeitslängen dokumentiert: {\"K1\":19,\"K2\":18,\"K3\":17}.\n\nKlinische Zusatzinfo: Endo Arbeitslängenmethode: electronic; Endo Kanalanzahl: 3; Endo Spüllösungen: NaOCl, EDTA; Endo Medikamentöse Einlage: Ca(OH)2; Endo Wurzelfülltechnik: warm.\nMedikamentöse Einlage dokumentiert: Ca(OH)2.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\nKanalanzahl dokumentiert: 3.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich\n  34 – Medikamentöse Einlage (Med)\n  35 – Wurzelfüllung\n  32 – Wurzelkanalbehandlung (Aufbereitung)\n  Ä925a – Röntgen: Aufnahme je Projektion\n  31 – Trepanation (Trep)",
+      "outputExcerpt": "[BEFUND] Zahn 46 [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zunächst Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen.",
+      "billingCodes": [
+        "BEMA_12B",
+        "BEMA_31B",
+        "BEMA_32B",
+        "BEMA_34B",
+        "BEMA_35B",
+        "BEMA_Ä925A"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required | segment-multi-treatment-signals:1:endo|roentgen"
+      }
+    },
+    {
+      "id": "S5",
+      "title": "PKV Endo warm",
+      "treatmentId": "endo",
+      "insuranceMode": "PKV",
+      "dictation": "11 endodontisch eröffnet, elektronisch die Länge genommen, rotierend aufbereitet, warm-vertikal obturiert mit Sealer, Kofferdam war durchgehend angelegt, postoperativ keine Beschwerden.",
+      "askbacks": [
+        "Bitte Arbeitslängen pro Kanal angeben",
+        "Welche Spüllösungen wurden verwendet?NaOClEDTACHXNaClAndere",
+        "Wie viele Kanaele wurden behandelt?",
+        "Welche medikamentoese Einlage wurde verwendet?"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "ENDO_T1_WORKING_LENGTHS::tooth:11",
+          "questionLabel": "Bitte Arbeitslängen pro Kanal angeben",
+          "answer": "{\"K1\":19}",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_canal_count::tooth:11",
+          "questionLabel": "Wie viele Kanaele wurden behandelt?",
+          "answer": "1",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_medication::tooth:11",
+          "questionLabel": "Welche medikamentoese Einlage wurde verwendet?",
+          "answer": "Ca(OH)2",
+          "source": "free_text"
+        },
+        {
+          "questionId": "ENDO_T1_IRRIGATION::tooth:11",
+          "questionLabel": "Welche Spüllösungen wurden verwendet?NaOClEDTACHXNaClAndere",
+          "answer": "NaOCl",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 11\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nInitial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 1 Wurzelkanal. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Anschließend Sealer verwendet. Daraufhin Röntgenkontrolle post WF. Abschließend Arbeitslängen dokumentiert: {\"K1\":19}.\n\nKlinische Zusatzinfo: Endo Arbeitslängenmethode: electronic; Endo Kanalanzahl: 1; Endo Spüllösungen: NaOCl; Endo Medikamentöse Einlage: Ca(OH)2; Endo Wurzelfülltechnik: warm.\nMedikamentöse Einlage dokumentiert: Ca(OH)2.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Elektr. AL.\n• 1K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\nKanalanzahl dokumentiert: 1.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  2040 – Anlegen von Spanngummi (Kofferdam)\n  2400 – Elektrometrische Längenbestimmung (Endometrie)\n  2440 – Wurzelfüllung je Kanal\n  2430 – Einlage medikamentös je Kanal\n  2410 – Zusatz maschinelle Aufbereitung\n  5000 – Röntgen: Intraorale Aufnahme",
+      "outputExcerpt": "[BEFUND] Zahn 11 [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Initial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 1 Wurzelkanal. Anschließend Aufbereitung maschinell (rot",
+      "billingCodes": [
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_2410",
+        "GOZ_2430",
+        "GOZ_2440",
+        "GOZ_5000"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S6",
+      "title": "Multitooth GKV",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV",
+      "dictation": "Heute zwei Stellen: 36 OD mit Komposit unter Kofferdam und 14 okklusal ebenfalls versorgt, danach Bisskontrolle durchgeführt und beide Füllungen nachpoliert, Patient soll bei Sensibilität wiederkommen.",
+      "askbacks": [
+        "Welches Füllungsmaterial?KompositGlasionomerzement (GIZ)"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "seg-1-1-2:tooth:14::fuellung_material::tooth:14",
+          "questionLabel": "Welches Füllungsmaterial?KompositGlasionomerzement (GIZ)",
+          "answer": "Komposit",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "Kofferdam angelegt. Zahn 36 (OD): Füllungstherapie. Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nZahn 14 (O): Füllungstherapie. Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "outputExcerpt": "Kofferdam angelegt. Zahn 36 (OD): Füllungstherapie. Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zahn 14 (O): Füllungstherapie. Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Füllung mit lichthärtendem Komposit (komposit) durchgefü",
+      "billingCodes": [
+        "BEMA_13",
+        "BEMA_12",
+        "BEMA_13B"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required | segment-skipped-no-treatment-signal:2 | tooth-context-ambiguous | ambiguous-untoothed-intent-demoted:seg-3-1-1:fuellung | ambiguous-untoothed-note-attached:seg-1-1-2"
+      }
+    },
+    {
+      "id": "S7",
+      "title": "GKV Füllung mit tiefer Karies",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV",
+      "dictation": "Zahn 26 mesio-okklusal tiefe Karies, nach Aufklärung unter Kofferdam versorgt, Komposit eingebracht und Okklusion kontrolliert, Patient über mögliche Sensibilität informiert.",
+      "askbacks": [
+        "Überkappung durchgeführt?Ja, indirekt (Cp)Ja, direkt (P)Nein"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "medical_ueberkappung::tooth:26",
+          "questionLabel": "Überkappung durchgeführt?Ja, indirekt (Cp)Ja, direkt (P)Nein",
+          "answer": "Ja, indirekt (Cp)",
+          "source": "option"
+        },
+        {
+          "questionId": "medical_ueberkappung_material::tooth:26",
+          "questionLabel": "Überkappungsmaterial?Ca(OH)₂MTABiodentine",
+          "answer": "Ca(OH)₂",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 26. O. Caries profunda\n\n[AUFKLÄRUNG]\n\nBei der Überkappung wurde über das Risiko eines späteren Vitalitätsverlusts aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZu Beginn Kofferdam angelegt. Anschließend Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Daraufhin Zahn 26 (O): Füllungstherapie tief (caries profunda). Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\nÜberkappung durchgeführt (Ca(OH)₂).\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Cp (Ca(OH)₂).\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich\n  13 – Füllung einflächig\n  25 – Indirekte Überkappung (Cp)",
+      "outputExcerpt": "[BEFUND] Zahn 26. O. Caries profunda [AUFKLÄRUNG] Bei der Überkappung wurde über das Risiko eines späteren Vitalitätsverlusts aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zu Beginn Kofferdam angelegt. Anschließend Pulpana",
+      "billingCodes": [
+        "BEMA_12B",
+        "BEMA_13B",
+        "BEMA_25B"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S8",
+      "title": "PKV Füllung Frontzahn",
+      "treatmentId": "fuellung",
+      "insuranceMode": "PKV",
+      "dictation": "An 11 inzisal-labial defekte Füllung ersetzt, adhäsiv mit Komposit geschichtet, Form und Ästhetik angepasst, Schlusskontrolle mit Artikulationspapier.",
+      "askbacks": [],
+      "askbackAnswers": [],
+      "outputFullText": "[BEFUND]\n\nZahn 11. OB\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZu Beginn Adhäsivsystem Adhäsiv appliziert. Anschließend Zahn 11 (OB): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Komposit Mehrschichttechnik.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  2080 – Kompositfüllung zweiflächig in Adhäsivtechnik",
+      "outputExcerpt": "[BEFUND] Zahn 11. OB [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zu Beginn Adhäsivsystem Adhäsiv appliziert. Anschließend Zahn 11 (OB): Füllungstherapie. Daraufhin Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrs",
+      "billingCodes": [
+        "GOZ_2080"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S9",
+      "title": "GKV Endo Revision akut",
+      "treatmentId": "endo",
+      "insuranceMode": "GKV",
+      "dictation": "Akute Symptomatik an 36, Trepanation und Drainage, Arbeitslänge mit Apexlokator bestimmt, Spülprotokoll NaOCl und EDTA, medikamentöse Einlage eingebracht und dicht provisorisch verschlossen.",
+      "askbacks": [
+        "Bitte Arbeitslängen pro Kanal angeben",
+        "Wie viele Kanaele wurden behandelt?",
+        "Welche Isolation?KofferdamRelative Trockenlegung",
+        "Welche medikamentoese Einlage wurde verwendet?",
+        "Welche Wurzelfuelltechnik wurde verwendet?Warm vertikalKalt lateralEinzelstift"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "ENDO_T1_WORKING_LENGTHS::tooth:36",
+          "questionLabel": "Bitte Arbeitslängen pro Kanal angeben",
+          "answer": "{\"K1\":19,\"K2\":18,\"K3\":17}",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_canal_count::tooth:36",
+          "questionLabel": "Wie viele Kanaele wurden behandelt?",
+          "answer": "3",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_medication::tooth:36",
+          "questionLabel": "Welche medikamentoese Einlage wurde verwendet?",
+          "answer": "Ca(OH)2",
+          "source": "free_text"
+        },
+        {
+          "questionId": "medical_isolation::tooth:36",
+          "questionLabel": "Welche Isolation?KofferdamRelative Trockenlegung",
+          "answer": "Kofferdam",
+          "source": "option"
+        },
+        {
+          "questionId": "medical_wf_technique::tooth:36",
+          "questionLabel": "Welche Wurzelfuelltechnik wurde verwendet?Warm vertikalKalt lateralEinzelstift",
+          "answer": "Warm vertikal",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 36\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Provisorischer Verschluss. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Daraufhin Röntgenkontrolle post WF. Abschließend Arbeitslängen dokumentiert: {\"K1\":19,\"K2\":18,\"K3\":17}.\n\nKlinische Zusatzinfo: Endo Arbeitslängenmethode: electronic; Endo Kanalanzahl: 3; Endo Spüllösungen: NaOCl, EDTA; Endo Medikamentöse Einlage: Ca(OH)2; Endo Wurzelfülltechnik: warm.\nMedikamentöse Einlage dokumentiert: Ca(OH)2.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\nKanalanzahl dokumentiert: 3.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich\n  34 – Medikamentöse Einlage (Med)\n  35 – Wurzelfüllung\n  32 – Wurzelkanalbehandlung (Aufbereitung)\n  Ä925a – Röntgen: Aufnahme je Projektion\n  31 – Trepanation (Trep)",
+      "outputExcerpt": "[BEFUND] Zahn 36 [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zunächst Kofferdam angelegt. Daraufhin Trepanation der Pulpakammer. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen.",
+      "billingCodes": [
+        "BEMA_12B",
+        "BEMA_31B",
+        "BEMA_32B",
+        "BEMA_34B",
+        "BEMA_35B",
+        "BEMA_Ä925A"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S10",
+      "title": "PKV Endo mit Dokumentation",
+      "treatmentId": "endo",
+      "insuranceMode": "PKV",
+      "dictation": "Endodontische Behandlung an 21, Kofferdam gelegt, Kanäle aufbereitet, Arbeitslänge elektronisch und radiologisch gesichert, Obturation und postoperativer Hinweis zur Verlaufskontrolle dokumentiert.",
+      "askbacks": [
+        "Wie viele Kanaele wurden behandelt?",
+        "Welche Spuelloesungen wurden verwendet?NaOCl + EDTANaOClEDTACHXKeine",
+        "Welche medikamentoese Einlage wurde verwendet?",
+        "Welche Wurzelfuelltechnik wurde verwendet?Warm vertikalKalt lateralEinzelstift"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "endo_canal_count::tooth:21",
+          "questionLabel": "Wie viele Kanaele wurden behandelt?",
+          "answer": "1",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_medication::tooth:21",
+          "questionLabel": "Welche medikamentoese Einlage wurde verwendet?",
+          "answer": "Ca(OH)2",
+          "source": "free_text"
+        },
+        {
+          "questionId": "medical_endo_irrigation::tooth:21",
+          "questionLabel": "Welche Spuelloesungen wurden verwendet?NaOCl + EDTANaOClEDTACHXKeine",
+          "answer": "NaOCl + EDTA",
+          "source": "option"
+        },
+        {
+          "questionId": "medical_wf_technique::tooth:21",
+          "questionLabel": "Welche Wurzelfuelltechnik wurde verwendet?Warm vertikalKalt lateralEinzelstift",
+          "answer": "Warm vertikal",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 21\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nInitial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 1 Wurzelkanal. Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\nKlinische Zusatzinfo: Endo Arbeitslängenmethode: electronic; Endo Kanalanzahl: 1; Endo Spüllösungen: NaOCl, EDTA; Endo Medikamentöse Einlage: Ca(OH)2; Endo Wurzelfülltechnik: warm.\nMedikamentöse Einlage dokumentiert: Ca(OH)2.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Elektr. AL.\n• 1K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\nKanalanzahl dokumentiert: 1.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  2040 – Anlegen von Spanngummi (Kofferdam)\n  2400 – Elektrometrische Längenbestimmung (Endometrie)\n  2440 – Wurzelfüllung je Kanal\n  2430 – Einlage medikamentös je Kanal\n  2410 – Zusatz maschinelle Aufbereitung\n  5000 – Röntgen: Intraorale Aufnahme",
+      "outputExcerpt": "[BEFUND] Zahn 21 [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Initial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 1 Wurzelkanal. Anschließend Spülung mit NaOCl. Daraufhin",
+      "billingCodes": [
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_2410",
+        "GOZ_2430",
+        "GOZ_2440",
+        "GOZ_5000"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S11",
+      "title": "GKV Extraktion + Füllung (Multi-Treatment)",
+      "treatmentId": "extraction",
+      "insuranceMode": "GKV",
+      "dictation": "Extraktion Zahn 28 nach Luxation mit Infiltrationsanästhesie; danach Füllung Zahn 16 okklusal mit Komposit unter Kofferdam, Okklusion kontrolliert.",
+      "askbacks": [
+        "Wundversorgung/Naht durchgeführt?JaNein"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "seg-1-1-1:tooth:28::wound_care::tooth:28",
+          "questionLabel": "Wundversorgung/Naht durchgeführt?JaNein",
+          "answer": "Ja",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "Lokalanästhesie (Infiltration). Extraktion Zahn 28 durchgeführt. Wundversorgung durchgeführt.\n\nLA Infiltration (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Kofferdam angelegt. Zahn 16 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "outputExcerpt": "Lokalanästhesie (Infiltration). Extraktion Zahn 28 durchgeführt. Wundversorgung durchgeführt. LA Infiltration (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Kofferdam angelegt. Zahn 16 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "billingCodes": [
+        "BEMA_12",
+        "BEMA_13",
+        "BEMA_40",
+        "BEMA_41A"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S12",
+      "title": "PKV Kronenpräparation",
+      "treatmentId": "crown_prep",
+      "insuranceMode": "PKV",
+      "dictation": "Zahn 16 für Krone beschliffen, supragingival präpariert, Präzisionsabformung durchgeführt und Provisorium eingesetzt.",
+      "askbacks": [],
+      "askbackAnswers": [],
+      "outputFullText": "[BEHANDLUNGSABLAUF]\n\nZunaechst Zahn 16: Kronenpräparation durchgeführt. Anschliessend Zahn 16: Präzisionsabformung durchgeführt. Abschliessend Zahn 16: Provisorische Versorgung.\n\nKlinische Zusatzinfo: Kronenpräparation dokumentiert; Präzisionsabformung dokumentiert; Provisorische Versorgung dokumentiert.\n\n[DURCHGEFUEHRTE LEISTUNGEN]\n\n• Zahn 16: Präparation durchgeführt.\n• Zahn 16: Abformung.\n• Zahn 16: Provisorium.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  2210 – Vollkrone (Hohlkehl- oder Stufenpräparation)\n  5000 – Röntgen: Intraorale Aufnahme\n  2260 – Provisorium direktes Verfahren ohne Abformung",
+      "outputExcerpt": "[BEHANDLUNGSABLAUF] Zunaechst Zahn 16: Kronenpräparation durchgeführt. Anschliessend Zahn 16: Präzisionsabformung durchgeführt. Abschliessend Zahn 16: Provisorische Versorgung. Klinische Zusatzinfo: Kronenpräparation dokumentiert; Präzisionsabformung dokumentiert; Provisorische Versorgung dokumentiert. [DURCHGEFUEHRTE ",
+      "billingCodes": [
+        "GOZ_2210",
+        "GOZ_2260",
+        "GOZ_5000"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S13",
+      "title": "GKV Füllung nur Kasse",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV",
+      "dictation": "Zahn 27 okklusal kariös, reine Kassenversorgung ohne Mehrkosten, Infiltration und danach Bisskontrolle.",
+      "askbacks": [],
+      "askbackAnswers": [
+        {
+          "questionId": "fuellung_material::tooth:27",
+          "questionLabel": "Welches Füllungsmaterial?KompositGlasionomerzement (GIZ)",
+          "answer": "Komposit",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 27. O\n\n[AUFKLÄRUNG]\n\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Es wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst LA Infiltration (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Daraufhin Zahn 27 (O): Füllungstherapie. Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• LA Infiltr.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  40 – Infiltrationsanästhesie\n  13 – Füllung einflächig",
+      "outputExcerpt": "[BEFUND] Zahn 27. O [AUFKLÄRUNG] Risiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Es wurde ausschließlich eine Kassenleistung erbracht. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zunäch",
+      "billingCodes": [
+        "BEMA_13B",
+        "BEMA_40B"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required | segment-skipped-no-treatment-signal:2 | segment-context-note-attached:2"
+      }
+    },
+    {
+      "id": "S14",
+      "title": "GKV+MKV Füllung Mehrschicht",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV+MKV",
+      "dictation": "An Zahn 36 MOD adhäsive Kompositversorgung in Mehrschichttechnik, Aufklärung und Mehrkostenvereinbarung unterschrieben, danach Finieren und Polieren.",
+      "askbacks": [
+        "Mehrkostenbetrag (Patientenanteil)?",
+        "Mehrkosten-Begründung?Mehrschichttechnik (adhäsiv)Ästhetik / Materialwahl (Patientenwunsch)Keine Mehrkosten (nur Kasse)"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "mkv_betrag::tooth:36",
+          "questionLabel": "Mehrkostenbetrag (Patientenanteil)?",
+          "answer": "150",
+          "source": "free_text"
+        },
+        {
+          "questionId": "fuellung_mkv_justification::tooth:36",
+          "questionLabel": "Mehrkosten-Begründung?Mehrschichttechnik (adhäsiv)Ästhetik / Materialwahl (Patientenwunsch)Keine Mehrkosten (nur Kasse)",
+          "answer": "Mehrschichttechnik (adhäsiv)",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 36. MOD\n\n[AUFKLÄRUNG]\n\nÜber die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung nach § 28 Abs. 2 SGB V geschlossen. Die Zuzahlung für die über den Kassenanteil hinausgehenden Leistungen wurde erläutert und vom Patienten akzeptiert.\nMehrkostenbegründung: mehrschicht.\nMehrkostenbetrag dokumentiert: 150.00 EUR.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst Adhäsivsystem Adhäsiv appliziert. Daraufhin Zahn 36 (MOD): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Anschließend Höherwertige Versorgung mit Mehrkostenvereinbarung (§ 28 SGB V). Abschließend Mehrkosten-Begründung: mehrschicht.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Komposit Mehrschichttechnik.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  13c – Füllung dreiflächig\nPrivatleistung (GOZ):\n  2100 – Kompositfüllung dreiflächig in Adhäsivtechnik\n[MKV-Validierung] Adhäsivtechnik dokumentiert.\n\nZuzahlung lt. Mehrkostenvereinbarung",
+      "outputExcerpt": "[BEFUND] Zahn 36. MOD [AUFKLÄRUNG] Über die Mehrkosten der Mehrschichttechnik und/oder Adhäsivtechnik wurde aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. Es wurde eine Mehrkostenvereinbarung nach § 28 Abs. 2 SGB V geschlossen. Die Zuzahlung f",
+      "billingCodes": [
+        "BEMA_13C",
+        "GOZ_2100"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required | segment-skipped-no-treatment-signal:2"
+      }
+    },
+    {
+      "id": "S15",
+      "title": "PKV Füllung mit Nebendetails",
+      "treatmentId": "fuellung",
+      "insuranceMode": "PKV",
+      "dictation": "Zahn 24 distal-okklusal exkaviert und mit Komposit aufgebaut, Patient berichtete Kälteempfindlichkeit, Kontaktpunkt stabil und Okklusion fein justiert.",
+      "askbacks": [
+        "Kontrolle bei Überempfindlichkeit geplant?JaNein"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "medical_sensitivity_followup::tooth:24",
+          "questionLabel": "Kontrolle bei Überempfindlichkeit geplant?JaNein",
+          "answer": "Ja",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 24. OD\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst Exkavation kariöser Anteile bis sondenharter Konsistenz. Daraufhin Zahn 24 (OD): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Kontaktpunkt geprüft.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Komposit Mehrschichttechnik.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  2080 – Kompositfüllung zweiflächig in Adhäsivtechnik",
+      "outputExcerpt": "[BEFUND] Zahn 24. OD [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zunächst Exkavation kariöser Anteile bis sondenharter Konsistenz. Daraufhin Zahn 24 (OD): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Denti",
+      "billingCodes": [
+        "GOZ_2080"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S16",
+      "title": "GKV Endo mit Kofferdam",
+      "treatmentId": "endo",
+      "insuranceMode": "GKV",
+      "dictation": "Endo an 47 unter Kofferdam, Arbeitslänge elektronisch, Spülung mit NaOCl und EDTA, Calciumhydroxid-Einlage und dichter provisorischer Verschluss.",
+      "askbacks": [
+        "Bitte Arbeitslängen pro Kanal angeben",
+        "Wie viele Kanaele wurden behandelt?",
+        "Welche Wurzelfuelltechnik wurde verwendet?Warm vertikalKalt lateralEinzelstift"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "ENDO_T1_WORKING_LENGTHS::tooth:47",
+          "questionLabel": "Bitte Arbeitslängen pro Kanal angeben",
+          "answer": "{\"K1\":19,\"K2\":18,\"K3\":17}",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_canal_count::tooth:47",
+          "questionLabel": "Wie viele Kanaele wurden behandelt?",
+          "answer": "3",
+          "source": "free_text"
+        },
+        {
+          "questionId": "medical_wf_technique::tooth:47",
+          "questionLabel": "Welche Wurzelfuelltechnik wurde verwendet?Warm vertikalKalt lateralEinzelstift",
+          "answer": "Warm vertikal",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 47\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nInitial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Spülung mit NaOCl. Daraufhin Spülung mit EDTA. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Provisorischer Verschluss. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Daraufhin Röntgenkontrolle post WF. Abschließend Arbeitslängen dokumentiert: {\"K1\":19,\"K2\":18,\"K3\":17}.\n\nKlinische Zusatzinfo: Endo Arbeitslängenmethode: electronic; Endo Kanalanzahl: 3; Endo Spüllösungen: NaOCl, EDTA; Endo Medikamentöse Einlage: Ca(OH)2; Endo Wurzelfülltechnik: warm.\nMedikamentöse Einlage dokumentiert: Ca(OH)2.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\nKanalanzahl dokumentiert: 3.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich\n  34 – Medikamentöse Einlage (Med)\n  35 – Wurzelfüllung\n  32 – Wurzelkanalbehandlung (Aufbereitung)\n  Ä925a – Röntgen: Aufnahme je Projektion",
+      "outputExcerpt": "[BEFUND] Zahn 47 [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Initial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 3 Wurzelkanälen. Anschließend Spülung mit NaOCl. Daraufh",
+      "billingCodes": [
+        "BEMA_12B",
+        "BEMA_32B",
+        "BEMA_34B",
+        "BEMA_35B",
+        "BEMA_Ä925A"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S17",
+      "title": "PKV Endo mit Röntgenkontrolle",
+      "treatmentId": "endo",
+      "insuranceMode": "PKV",
+      "dictation": "An Zahn 21 endodontisch eröffnet, Kanäle instrumentiert, Arbeitslängen elektronisch und radiologisch gesichert, warm obturiert und Verlauf kontrolliert.",
+      "askbacks": [
+        "Bitte Arbeitslängen pro Kanal angeben",
+        "Welche Spüllösungen wurden verwendet?NaOClEDTACHXNaClAndere",
+        "Wie viele Kanaele wurden behandelt?",
+        "Welche Isolation?KofferdamRelative Trockenlegung",
+        "Welche medikamentoese Einlage wurde verwendet?"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "ENDO_T1_WORKING_LENGTHS::tooth:21",
+          "questionLabel": "Bitte Arbeitslängen pro Kanal angeben",
+          "answer": "{\"K1\":19}",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_canal_count::tooth:21",
+          "questionLabel": "Wie viele Kanaele wurden behandelt?",
+          "answer": "1",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_medication::tooth:21",
+          "questionLabel": "Welche medikamentoese Einlage wurde verwendet?",
+          "answer": "Ca(OH)2",
+          "source": "free_text"
+        },
+        {
+          "questionId": "ENDO_T1_IRRIGATION::tooth:21",
+          "questionLabel": "Welche Spüllösungen wurden verwendet?NaOClEDTACHXNaClAndere",
+          "answer": "NaOCl",
+          "source": "option"
+        },
+        {
+          "questionId": "medical_isolation::tooth:21",
+          "questionLabel": "Welche Isolation?KofferdamRelative Trockenlegung",
+          "answer": "Kofferdam",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 21\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nInitial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 1 Wurzelkanal. Anschließend Spülung mit NaOCl. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Daraufhin Röntgenkontrolle post WF. Abschließend Arbeitslängen dokumentiert: {\"K1\":19}.\n\nKlinische Zusatzinfo: Endo Arbeitslängenmethode: electronic; Endo Kanalanzahl: 1; Endo Spüllösungen: NaOCl; Endo Medikamentöse Einlage: Ca(OH)2; Endo Wurzelfülltechnik: warm.\nMedikamentöse Einlage dokumentiert: Ca(OH)2.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Elektr. AL.\n• 1K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\nKanalanzahl dokumentiert: 1.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  2040 – Anlegen von Spanngummi (Kofferdam)\n  2400 – Elektrometrische Längenbestimmung (Endometrie)\n  2440 – Wurzelfüllung je Kanal\n  2430 – Einlage medikamentös je Kanal\n  2410 – Zusatz maschinelle Aufbereitung\n  5000 – Röntgen: Intraorale Aufnahme",
+      "outputExcerpt": "[BEFUND] Zahn 21 [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Initial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 1 Wurzelkanal. Anschließend Spülung mit NaOCl. Daraufhin",
+      "billingCodes": [
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_2410",
+        "GOZ_2430",
+        "GOZ_2440",
+        "GOZ_5000"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S18",
+      "title": "GKV Füllung tiefe Karies mit Überkappung",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV",
+      "dictation": "Zahn 15 mesio-okklusal tiefe Karies, keine Pulpaeröffnung, indirekte Überkappung mit Calciumhydroxid und danach Kompositfüllung, Okklusion geprüft.",
+      "askbacks": [],
+      "askbackAnswers": [],
+      "outputFullText": "[BEFUND]\n\nZahn 15. O. Caries profunda\n\n[AUFKLÄRUNG]\n\nBei der Überkappung wurde über das Risiko eines späteren Vitalitätsverlusts aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst Pulpanahe Exkavation, indirekte Überkappung mit Ca(OH)₂. Daraufhin Zahn 15 (O): Füllungstherapie tief (caries profunda). Im Weiteren Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\nÜberkappung durchgeführt (Ca(OH)₂).\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Cp (Ca(OH)₂).\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  13 – Füllung einflächig\n  25 – Indirekte Überkappung (Cp)",
+      "outputExcerpt": "[BEFUND] Zahn 15. O. Caries profunda [AUFKLÄRUNG] Bei der Überkappung wurde über das Risiko eines späteren Vitalitätsverlusts aufgeklärt. Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zunächst Pulpanahe Exkavation, indirekte Überkappu",
+      "billingCodes": [
+        "BEMA_13B",
+        "BEMA_25B"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required | segment-multi-treatment-signals:1:fuellung|ueberkappung | tooth-inferred-from-context | duplicate-intent-collapsed:fuellung::15:2"
+      }
+    },
+    {
+      "id": "S19",
+      "title": "GKV Extraktion ohne Naht",
+      "treatmentId": "extraction",
+      "insuranceMode": "GKV",
+      "dictation": "Zahn 38 nach Leitungsanästhesie atraumatisch entfernt, Blutstillung ohne Naht, Patient über Verhalten nach Extraktion aufgeklärt.",
+      "askbacks": [],
+      "askbackAnswers": [],
+      "outputFullText": "[BEHANDLUNGSABLAUF]\n\nZunaechst Leitungsanästhesie N. alv. inf. (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Anschliessend Extraktion Zahn 38 durchgeführt.\n\n[DURCHGEFUEHRTE LEISTUNGEN]\n\n• LA Leitung.\n• Extraktion durchgeführt.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  41a – Leitungsanästhesie, intraoral",
+      "outputExcerpt": "[BEHANDLUNGSABLAUF] Zunaechst Leitungsanästhesie N. alv. inf. (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Anschliessend Extraktion Zahn 38 durchgeführt. [DURCHGEFUEHRTE LEISTUNGEN] • LA Leitung. • Extraktion durchgeführt. [HINWEISE] Der Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrun",
+      "billingCodes": [
+        "BEMA_41A"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required | segment-multi-treatment-signals:1:trauma|extraction"
+      }
+    },
+    {
+      "id": "S20",
+      "title": "PKV schnelle Frontzahn-Füllung",
+      "treatmentId": "fuellung",
+      "insuranceMode": "PKV",
+      "dictation": "11 ib Komposit adhäsiv, Kofferdam, finiert und poliert.",
+      "askbacks": [],
+      "askbackAnswers": [],
+      "outputFullText": "[BEFUND]\n\nZahn 11. OB\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZu Beginn Kofferdam angelegt. Anschließend Adhäsivsystem Adhäsiv appliziert. Daraufhin Zahn 11 (OB): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Schmelz/Dentin). Komposit in Mehrschichttechnik schichtweise appliziert und lichthärtend. Zum Schluss Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Komposit Mehrschichttechnik.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  2040 – Anlegen von Spanngummi (Kofferdam)\n  2080 – Kompositfüllung zweiflächig in Adhäsivtechnik",
+      "outputExcerpt": "[BEFUND] Zahn 11. OB [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zu Beginn Kofferdam angelegt. Anschließend Adhäsivsystem Adhäsiv appliziert. Daraufhin Zahn 11 (OB): Füllungstherapie. Im Weiteren Ätz-/Adhäsivtechnik (Sc",
+      "billingCodes": [
+        "GOZ_2040",
+        "GOZ_2080"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    }
+  ]
+}

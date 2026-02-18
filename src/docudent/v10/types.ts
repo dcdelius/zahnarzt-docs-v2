@@ -86,11 +86,23 @@ export interface V10PipelineInput {
     /** Pre-extracted data (skip extraction) */
     preExtracted?: Record<string, unknown>;
 
+    /**
+     * Optional intent-preanalysis hints (LLM/fallback stage).
+     * Never a billing source; used only to improve extraction/fact prefill.
+     */
+    preanalysisHints?: V10PreanalysisHints;
+
     /** User defaults for pre-filling */
     userDefaults?: Record<string, unknown>;
 
     /** Optional KB release pin for deterministic session runs */
     kbReleaseId?: string;
+
+    /**
+     * Optional hard requirement for extraction runtime method.
+     * When true, pipeline returns error if extraction does not run with LLM method.
+     */
+    requireLlmExtraction?: boolean;
 
     /** Per-instance chip overrides (manual control center) */
     chipOverrides?: OverridesByInstance;
@@ -244,6 +256,19 @@ export interface V10ReviewContext {
     }>;
 }
 
+export type V10ClinicalObligationOutcome = 'done' | 'not_done' | 'deferred_next_visit';
+
+export interface V10ClinicalObligationCheck {
+    instanceId: string;
+    tooth?: string;
+    treatmentId: string;
+    obligationId: string;
+    askbackId: string;
+    factPath: string;
+    outcome: V10ClinicalObligationOutcome;
+    reason: string;
+}
+
 // ═══════════════════════════════════════════════════════════════
 // PIPELINE META
 // ═══════════════════════════════════════════════════════════════
@@ -393,6 +418,35 @@ export interface V10PipelineMeta {
     /** Deterministic output fingerprint for replay comparability */
     outputHash?: string;
 
+    /** Centralized clinical obligation evaluation outcomes */
+    clinicalObligations?: {
+        checks: V10ClinicalObligationCheck[];
+        summary: {
+            done: number;
+            notDone: number;
+            deferredNextVisit: number;
+        };
+    };
+
+    /** Optional summary of LLM reasoned extraction hints (read-only diagnostics) */
+    reasonedExtraction?: {
+        intentHints: number;
+        factHints: number;
+        explicitHints: number;
+        inferredHints: number;
+        forensicNotes: number;
+        unresolved: number;
+        appliedKeys: string[];
+    };
+
+    /** Optional status for second-stage LLM forensic composition */
+    forensicComposer?: {
+        enabled: boolean;
+        applied: boolean;
+        sectionCount: number;
+        error?: string;
+    };
+
     /** Debug payload for checks (DEV only) */
     debug?: {
         instances: Array<{
@@ -463,6 +517,27 @@ export interface V10InstanceInput {
     dictation?: string;
     /** Scoped answers, e.g. medical_ueberkappung::tooth:16 */
     answers?: Map<string, unknown> | Record<string, unknown>;
+    /** Optional preanalysis hints scoped to this instance */
+    preanalysisHints?: V10PreanalysisHints;
+}
+
+export interface V10PreanalysisEvidenceSpan {
+    start: number;
+    end: number;
+    text: string;
+}
+
+export interface V10PreanalysisHints {
+    source: 'intent_preanalysis';
+    intentId: string;
+    treatmentId: string;
+    tooth?: string;
+    confidence: number;
+    phase?: string;
+    step?: string;
+    evidenceSpans: V10PreanalysisEvidenceSpan[];
+    sharedFacts?: Record<string, unknown>;
+    mentioned?: Record<string, unknown>;
 }
 
 /** Input for a treatment segment (one treatmentId, multiple instances) */
@@ -491,6 +566,8 @@ export interface V10BundleInput {
     globalAnswers?: Map<string, unknown> | Record<string, unknown>;
     /** Optional KB release pin used for all segment/instance runs */
     kbReleaseId?: string;
+    /** Optional hard requirement propagated to each runV10 instance */
+    requireLlmExtraction?: boolean;
 }
 
 /** Billing code with scope information */

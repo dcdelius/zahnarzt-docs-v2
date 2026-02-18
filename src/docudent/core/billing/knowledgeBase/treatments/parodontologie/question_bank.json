@@ -1,0 +1,57 @@
+{
+    "_meta": {
+        "treatmentId": "parodontologie",
+        "version": "1.0.0",
+        "description": "Question Bank fuer Parodontologie"
+    },
+    "questions": [
+        {
+            "key": "phase",
+            "category": "forensic",
+            "prompt": "Welche PAR-Phase wurde erbracht?",
+            "type": "single",
+            "dataField": "parodontologie.phase",
+            "options": [
+                {
+                    "id": "status",
+                    "label": "Befunderhebung/Status",
+                    "dataValue": "status"
+                },
+                {
+                    "id": "ait",
+                    "label": "Antiinfektioese Therapie (AIT)",
+                    "dataValue": "ait"
+                },
+                {
+                    "id": "upt",
+                    "label": "UPT (Nachsorge)",
+                    "dataValue": "upt"
+                }
+            ]
+        },
+        {
+            "key": "upt_grad",
+            "category": "forensic",
+            "prompt": "Welcher UPT-Grad wurde durchgefuehrt?",
+            "type": "single",
+            "dataField": "parodontologie.uptGrade",
+            "options": [
+                {
+                    "id": "a",
+                    "label": "Grad A",
+                    "dataValue": "a"
+                },
+                {
+                    "id": "b",
+                    "label": "Grad B",
+                    "dataValue": "b"
+                },
+                {
+                    "id": "c",
+                    "label": "Grad C",
+                    "dataValue": "c"
+                }
+            ]
+        }
+    ]
+}

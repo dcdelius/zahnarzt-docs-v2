@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "treatmentId": "implant",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Implantologie"
+  },
+  "questions": [
+    {
+      "key": "implant_phase",
+      "category": "forensic",
+      "prompt": "Welche implantologische Phase wurde durchgefuehrt?",
+      "type": "single",
+      "dataField": "implant.phase",
+      "options": [
+        {
+          "id": "insertion",
+          "label": "Implantatinsertion",
+          "dataValue": "insertion"
+        },
+        {
+          "id": "freilegung",
+          "label": "Implantatfreilegung",
+          "dataValue": "freilegung"
+        }
+      ]
+    },
+    {
+      "key": "implant_nachsorge",
+      "category": "forensic",
+      "prompt": "Wurde eine postoperative Nachsorge dokumentiert?",
+      "type": "single",
+      "dataField": "implant.nachsorge",
+      "options": [
+        {
+          "id": "ja",
+          "label": "Ja",
+          "dataValue": "ja"
+        },
+        {
+          "id": "nein",
+          "label": "Nein",
+          "dataValue": "nein"
+        }
+      ]
+    }
+  ]
+}

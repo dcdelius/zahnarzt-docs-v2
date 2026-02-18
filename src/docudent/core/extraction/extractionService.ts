@@ -13,8 +13,9 @@
  * - Normalizes tooth numbers BEFORE any extraction
  */
 
-import type { ExtractedDataV6, ExtractedData } from '../../contracts/extractionV6';
+import type { ExtractedDataV6, ExtractedData, ReasonedExtractionV1 } from '../../contracts/extractionV6';
 import { EXTRACTION_VERSION_V6 } from '../../contracts/extractionV6';
+import { buildExtractionPromptV1 } from '../../contracts/llmPromptContracts';
 import { normalizeToothInText, extractToothNumber, requiresLeitungsanaesthesie } from './toothNormalizer';
 import { z } from 'zod';
 
@@ -22,36 +23,7 @@ import { z } from 'zod';
 // EXTRACTION PROMPT
 // ═══════════════════════════════════════════════════════════════
 
-const EXTRACTION_PROMPT = `Du bist ein Extraktions-Assistent für zahnärztliche Diktate.
-
-Extrahiere aus dem folgenden Diktat die strukturierten Daten.
-Antworte NUR mit einem JSON-Objekt, keine Erklärungen.
-
-Felder zum Extrahieren:
-- tooth: Zahnnummer (z.B. "36", "15") oder null
-- surfaces: Array von Flächen ["m", "o", "d", "b", "l", "i"] oder []
-- diagnosis: Diagnose (z.B. "Caries profunda", "Caries media") oder null
-- costs: Kosten in Euro als Zahl oder null
-- klinischeZusatzinfos: Array kurzer Stichpunkte zu medizinischen Zusatzinfos oder []
-- patientenangaben: Array kurzer Stichpunkte zu psychosozialen/patientenseitigen Angaben oder []
-- zusatzinfos: (legacy) Array kurzer Stichpunkte, falls keine klare Zuordnung möglich
-- mentioned.anesthesia: { type: "infiltr"|"leitung"|"keine", confidence: 0-1 } oder undefined
-- mentioned.kofferdam: true/false oder undefined  
-- mentioned.capping: { type: "cp"|"p"|"none" } oder undefined
-- mentioned.material: String oder undefined
-- mentioned.vitality: "+"| "-" oder undefined
-- mentioned.percussion: "+"| "-" oder undefined
-
-Regeln:
-1. Extrahiere NUR was explizit erwähnt wurde
-2. Bei "tief" oder "profunda" → diagnosis: "Caries profunda"
-3. "mod" = ["m", "o", "d"], "ob" = ["o", "b"], etc.
-4. klinischeZusatzinfos nur bei expliziter, medizinisch relevanter Zusatzinfo (kurz, neutral, keine Mutmaßungen)
-5. patientenangaben nur bei expliziter Patientenangabe (kurz, neutral, keine Mutmaßungen)
-6. zusatzinfos nur wenn keine klare Zuordnung möglich ist
-7. KEINE Annahmen über nicht erwähnte Felder
-
-JSON-Antwort:`;
+const EXTRACTION_PROMPT = buildExtractionPromptV1();
 
 const ExtractedMentionedSchema = z.object({
     anesthesia: z.union([
@@ -74,6 +46,40 @@ const ExtractedMentionedSchema = z.object({
     fluoridation: z.boolean().nullable().optional(),
 }).partial();
 
+const ReasonedIntentHintSchema = z.object({
+    treatmentId: z.union([z.string(), z.null()]).optional(),
+    confidence: z.number().optional(),
+    basis: z.enum(['explicit', 'inferred']).optional(),
+    evidence: z.union([z.array(z.string()), z.string()]).optional(),
+    tooth: z.string().optional(),
+    phase: z.string().optional(),
+    step: z.string().optional(),
+}).partial();
+
+const ReasonedFactHintSchema = z.object({
+    key: z.union([z.string(), z.null()]).optional(),
+    value: z.union([
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.string()),
+        z.array(z.number()),
+        z.null(),
+    ]).optional(),
+    confidence: z.number().optional(),
+    basis: z.enum(['explicit', 'inferred']).optional(),
+    evidence: z.union([z.array(z.string()), z.string()]).optional(),
+    requiresConfirmation: z.boolean().optional(),
+}).partial();
+
+const ReasonedExtractionSchema = z.object({
+    version: z.string().optional(),
+    intentHints: z.array(ReasonedIntentHintSchema).optional(),
+    factHints: z.array(ReasonedFactHintSchema).optional(),
+    forensicNotes: z.union([z.array(z.string()), z.string()]).optional(),
+    unresolved: z.union([z.array(z.string()), z.string()]).optional(),
+}).partial().nullable();
+
 const ExtractedDataSchema = z.object({
     tooth: z.string().nullable().optional(),
     teeth: z.union([z.array(z.string()), z.string()]).optional(),
@@ -83,6 +89,7 @@ const ExtractedDataSchema = z.object({
     klinischeZusatzinfos: z.union([z.array(z.string()), z.string()]).optional(),
     patientenangaben: z.union([z.array(z.string()), z.string()]).optional(),
     zusatzinfos: z.union([z.array(z.string()), z.string()]).optional(),
+    reasoning: ReasonedExtractionSchema.optional(),
     mentioned: ExtractedMentionedSchema.optional(),
     gaps: z.array(z.string()).optional(),
 }).partial();
@@ -97,28 +104,55 @@ const ExtractedDataSchema = z.object({
  * Returns unique, numeric-sorted array.
  */
 function extractAllTeeth(dictation: string): string[] {
-    // Multiple patterns to match tooth numbers
-    // - "Zahn 16" or "Zahn16"
-    // - "Z16" or "Z 16"
-    // - "#16"
-    // - "FDI 16"
-    // - Standalone two-digit FDI numbers at word boundaries
-    const patterns = [
-        /\bZahn\s*(\d{2})\b/gi,       // Zahn 16, Zahn16
-        /\bZ\s*(\d{2})\b/gi,          // Z16, Z 16
-        /#(\d{2})\b/g,                // #16
-        /\bFDI\s*(\d{2})\b/gi,        // FDI 16
-        /\b([1-8][1-8])\b/g,          // Standalone FDI (11-88)
-    ];
-
     const allMatches: string[] = [];
-    for (const pattern of patterns) {
+
+    // 1) Explicit tooth references are always valid tooth signals.
+    const explicitPatterns = [
+        /\bZahn\s*(\d{2})\b/gi, // Zahn 16, Zahn16
+        /\bZ\s*(\d{2})\b/gi, // Z16, Z 16
+        /#(\d{2})\b/g, // #16
+        /\bFDI\s*(\d{2})\b/gi, // FDI 16
+    ];
+    for (const pattern of explicitPatterns) {
         const matches = dictation.matchAll(pattern);
         for (const match of matches) {
             const tooth = match[1];
             if (tooth && isValidFDITooth(tooth)) {
                 allMatches.push(tooth);
             }
+        }
+    }
+
+    // 2) Standalone values can include non-tooth numbers in endo dictations
+    // (e.g., MB 20 / D 21, 19mm, 35 Ncm). Block those contexts deterministically.
+    const VALUE_UNIT_TOOTH_PATTERN = /\b([1-8][1-8])\b\s*(?:ncm|mm|cm|ml|mg|rpm|nm)\b/gi;
+    const ROOT_CANAL_TOOTH_PATTERN = /\b(?:mb|ml|db|dl|d|p|pal|k1|k2|k3|k4)\s*[:=]?\s*([1-8][1-8])\b/gi;
+    const collectBlockedRanges = (pattern: RegExp): Array<{ start: number; end: number }> => {
+        const ranges: Array<{ start: number; end: number }> = [];
+        for (const match of dictation.matchAll(pattern)) {
+            const value = match[1];
+            if (!value || match.index === undefined) continue;
+            const localOffset = match[0].indexOf(value);
+            if (localOffset < 0) continue;
+            const start = match.index + localOffset;
+            ranges.push({ start, end: start + value.length });
+        }
+        return ranges;
+    };
+    const blockedRanges = [
+        ...collectBlockedRanges(VALUE_UNIT_TOOTH_PATTERN),
+        ...collectBlockedRanges(ROOT_CANAL_TOOTH_PATTERN),
+    ];
+
+    const standalonePattern = /\b([1-8][1-8])\b/g;
+    for (const match of dictation.matchAll(standalonePattern)) {
+        const tooth = match[1];
+        if (!tooth || !isValidFDITooth(tooth) || match.index === undefined) continue;
+        const start = match.index;
+        const end = start + tooth.length;
+        const isBlocked = blockedRanges.some(range => start >= range.start && end <= range.end);
+        if (!isBlocked) {
+            allMatches.push(tooth);
         }
     }
 
@@ -210,7 +244,7 @@ export async function extractFromDictation(dictation: string): Promise<Extracted
         clinicalExtras.push('Bisskontrolle geplant');
     }
     if (clinicalExtras.length > 0) {
-        const existing = coerceStringArray((result as Record<string, unknown>).klinischeZusatzinfos)
+        const existing = coerceTextArray((result as Record<string, unknown>).klinischeZusatzinfos)
             ?.map(info => String(info).trim())
             .filter(Boolean) ?? [];
         const merged = Array.from(new Set([...existing, ...clinicalExtras]));
@@ -242,7 +276,9 @@ async function extractViaLLM(dictation: string): Promise<Partial<ExtractedData> 
     }
 
     const envFromProcess = (typeof process !== 'undefined' && process.env) ? process.env : undefined;
-    const apiKey = envFromProcess?.OPENAI_API_KEY;
+    const apiKey = envFromProcess?.OPENAI_API_KEY
+        || envFromProcess?.VITE_OPENAI_API_KEY
+        || envFromProcess?.REACT_APP_OPENAI_API_KEY;
 
     if (!apiKey) return null;
 
@@ -258,7 +294,7 @@ async function extractViaLLM(dictation: string): Promise<Partial<ExtractedData> 
                 { role: 'system', content: EXTRACTION_PROMPT },
                 { role: 'user', content: dictation }
             ],
-            temperature: 0.1,
+            temperature: 0.0,
             max_tokens: 500
         })
     });
@@ -312,7 +348,7 @@ function parseJsonLenient(raw: string): Partial<ExtractedData> | null {
     }
 }
 
-function coerceStringArray(value: unknown): string[] | undefined {
+function coerceTokenArray(value: unknown): string[] | undefined {
     if (Array.isArray(value)) {
         return value.map(v => String(v).trim()).filter(Boolean);
     }
@@ -323,6 +359,96 @@ function coerceStringArray(value: unknown): string[] | undefined {
             .filter(Boolean);
     }
     return undefined;
+}
+
+function coerceTextArray(value: unknown): string[] | undefined {
+    if (Array.isArray(value)) {
+        return value.map(v => String(v).trim()).filter(Boolean);
+    }
+    if (typeof value === 'string') {
+        const trimmed = value.trim();
+        if (!trimmed) return undefined;
+        if (/[\n;]/.test(trimmed)) {
+            return trimmed
+                .split(/[\n;]+/)
+                .map(v => v.trim())
+                .filter(Boolean);
+        }
+        return [trimmed];
+    }
+    return undefined;
+}
+
+function normalizeReasonedStringArray(value: unknown): string[] {
+    return coerceTextArray(value)
+        ?.map(item => String(item).trim())
+        .filter(Boolean) ?? [];
+}
+
+function normalizeReasonedExtraction(value: unknown): ReasonedExtractionV1 | undefined {
+    const parsed = ReasonedExtractionSchema.safeParse(value);
+    if (!parsed.success) return undefined;
+    const data = parsed.data;
+
+    const intentHints = (data.intentHints ?? [])
+        .map((hint) => {
+            const treatmentId = String(hint.treatmentId ?? '').trim();
+            if (!treatmentId) return null;
+            const basis = hint.basis === 'inferred' ? 'inferred' : 'explicit';
+            const confidence = typeof hint.confidence === 'number' && Number.isFinite(hint.confidence)
+                ? Math.min(1, Math.max(0, hint.confidence))
+                : 0.5;
+            const evidence = normalizeReasonedStringArray(hint.evidence);
+            return {
+                treatmentId,
+                confidence,
+                basis,
+                evidence,
+                tooth: typeof hint.tooth === 'string' && hint.tooth.trim().length > 0 ? hint.tooth.trim() : undefined,
+                phase: typeof hint.phase === 'string' && hint.phase.trim().length > 0 ? hint.phase.trim() : undefined,
+                step: typeof hint.step === 'string' && hint.step.trim().length > 0 ? hint.step.trim() : undefined,
+            };
+        })
+        .filter((hint): hint is NonNullable<typeof hint> => hint !== null);
+
+    const factHints = (data.factHints ?? [])
+        .map((hint) => {
+            const key = String(hint.key ?? '').trim();
+            if (!key) return null;
+            const basis = hint.basis === 'inferred' ? 'inferred' : 'explicit';
+            const confidence = typeof hint.confidence === 'number' && Number.isFinite(hint.confidence)
+                ? Math.min(1, Math.max(0, hint.confidence))
+                : 0.5;
+            const evidence = normalizeReasonedStringArray(hint.evidence);
+            const value = hint.value ?? null;
+            return {
+                key,
+                value,
+                confidence,
+                basis,
+                evidence,
+                requiresConfirmation: hint.requiresConfirmation === true ? true : undefined,
+            };
+        })
+        .filter((hint): hint is NonNullable<typeof hint> => hint !== null);
+
+    const forensicNotes = normalizeReasonedStringArray(data.forensicNotes);
+    const unresolved = normalizeReasonedStringArray(data.unresolved);
+
+    const hasPayload =
+        intentHints.length > 0
+        || factHints.length > 0
+        || forensicNotes.length > 0
+        || unresolved.length > 0;
+    if (!hasPayload) return undefined;
+
+    return {
+        version: 'v1',
+        intentHints: intentHints.length > 0 ? intentHints : undefined,
+        factHints: factHints.length > 0 ? factHints : undefined,
+        forensicNotes: forensicNotes.length > 0 ? forensicNotes : undefined,
+        unresolved: unresolved.length > 0 ? unresolved : undefined,
+    };
 }
 
 function normalizeMentioned(mentioned: any): ExtractedData['mentioned'] | undefined {
@@ -367,18 +493,19 @@ function validateExtractedData(input: unknown): Partial<ExtractedData> | null {
     }
 
     const data = result.data;
-    const teeth = coerceStringArray(data.teeth);
-    const surfaces = coerceStringArray(data.surfaces);
+    const teeth = coerceTokenArray(data.teeth);
+    const surfaces = coerceTokenArray(data.surfaces);
     const costs = typeof data.costs === 'string' ? Number(data.costs.replace(',', '.')) : data.costs;
-    const klinischeZusatzinfos = coerceStringArray((data as Record<string, unknown>).klinischeZusatzinfos)
+    const klinischeZusatzinfos = coerceTextArray((data as Record<string, unknown>).klinischeZusatzinfos)
         ?.map(info => String(info).trim())
         .filter(Boolean);
-    const patientenangaben = coerceStringArray((data as Record<string, unknown>).patientenangaben)
+    const patientenangaben = coerceTextArray((data as Record<string, unknown>).patientenangaben)
         ?.map(info => String(info).trim())
         .filter(Boolean);
-    const zusatzinfos = coerceStringArray(data.zusatzinfos)
+    const zusatzinfos = coerceTextArray(data.zusatzinfos)
         ?.map(info => String(info).trim())
         .filter(Boolean);
+    const reasoning = normalizeReasonedExtraction((data as Record<string, unknown>).reasoning);
 
     return {
         tooth: data.tooth ?? null,
@@ -389,6 +516,7 @@ function validateExtractedData(input: unknown): Partial<ExtractedData> | null {
         klinischeZusatzinfos: klinischeZusatzinfos?.length ? klinischeZusatzinfos : undefined,
         patientenangaben: patientenangaben?.length ? patientenangaben : undefined,
         zusatzinfos: zusatzinfos?.length ? zusatzinfos : undefined,
+        reasoning,
         mentioned: normalizeMentioned(data.mentioned),
         gaps: data.gaps ?? [],
     };

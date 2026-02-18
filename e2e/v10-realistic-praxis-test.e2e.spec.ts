@@ -224,7 +224,9 @@ async function assertHostedLlmPath(page: Page, scenario: Scenario): Promise<void
     const runtimeMeta = page.locator('[data-testid="v10-llm-runtime-meta"]');
     await expect(runtimeMeta, `${scenarioId}: runtime meta missing`).toHaveCount(1, { timeout: 10000 });
 
-    if (scenario.allowHostedFallback) {
+    const allowHostedFallback = scenario.allowHostedFallback === true
+        && process.env.DOCUDENT_AUDIT_ALLOW_HOSTED_FALLBACK === '1';
+    if (allowHostedFallback) {
         const preanalysisSource = await runtimeMeta.getAttribute('data-preanalysis-source');
         if (preanalysisSource === 'fallback') {
             await expect(runtimeMeta, `${scenarioId}: fallback marker missing`).toHaveAttribute('data-preanalysis-fallback', 'true');
@@ -348,7 +350,7 @@ async function answerQuestionsUntilOutput(page: Page): Promise<void> {
             }
         }
 
-        // Fill free-text askbacks first (input + textarea).
+        // Fill free-text askbacks via stable per-question input testids.
         const textInputs = page.locator('[data-testid^="input-"]');
         const inputCount = await textInputs.count();
         for (let t = 0; t < inputCount; t++) {
@@ -363,23 +365,6 @@ async function answerQuestionsUntilOutput(page: Page): Promise<void> {
             if (inputId.includes('working') || inputId.includes('length')) value = '{"K1":19,"K2":18,"K3":20}';
             if (inputId.includes('surface')) value = 'o';
             await input.fill(value);
-            await page.waitForTimeout(150);
-        }
-        const textareas = page.locator('textarea');
-        const textareaCount = await textareas.count();
-        for (let t = 0; t < textareaCount; t++) {
-            const area = textareas.nth(t);
-            if (!(await area.isVisible().catch(() => false))) continue;
-            const currentValue = await area.inputValue().catch(() => '');
-            if (currentValue && currentValue.trim().length > 0) continue;
-            const contextText = ((
-                await area.locator('xpath=ancestor::*[@data-testid][1]').textContent().catch(() => '')
-            ) || '').toLowerCase();
-            let value = 'ja';
-            if (contextText.includes('betrag')) value = '150';
-            if (contextText.includes('flächen') || contextText.includes('flaechen') || contextText.includes('surface')) value = 'o';
-            if (contextText.includes('arbeitsl') || contextText.includes('canal') || contextText.includes('kanal')) value = '{"K1":19,"K2":18,"K3":20}';
-            await area.fill(value);
             await page.waitForTimeout(150);
         }
 
@@ -657,6 +642,7 @@ async function expectNoHorizontalOverflow(page: Page, label: string): Promise<vo
 }
 
 async function extractBillingSignals(page: Page): Promise<{ codes: string[]; bemaCount: number; gozCount: number }> {
+    const codePattern = /(BEMA_[0-9Ä]+[A-Z]?|GOZ_[0-9]{4})/gi;
     const multiPanel = page.locator('[data-testid="v10-multi-output-panel"]');
     if (await multiPanel.isVisible().catch(() => false)) {
         const codeTags = page.locator('[data-testid^="billing-code-"]');
@@ -664,8 +650,10 @@ async function extractBillingSignals(page: Page): Promise<{ codes: string[]; bem
         const codes: string[] = [];
         for (let i = 0; i < count; i++) {
             const text = (await codeTags.nth(i).textContent()) || '';
-            const match = text.match(/(BEMA_[0-9A-ZÄ]+|GOZ_[0-9A-Z]+)/i);
-            if (match) codes.push(match[1].toUpperCase());
+            const matches = text.match(codePattern) || [];
+            for (const code of matches) {
+                codes.push(code.toUpperCase());
+            }
         }
         const uniq = Array.from(new Set(codes));
         const bemaCount = uniq.filter(code => code.startsWith('BEMA_')).length;
@@ -679,7 +667,7 @@ async function extractBillingSignals(page: Page): Promise<{ codes: string[]; bem
         await page.waitForTimeout(250);
     }
     const billingText = await page.locator('[data-testid="billing-card"]').textContent().catch(() => '');
-    const rawMatches = billingText.match(/(BEMA_[0-9A-ZÄ]+|GOZ_[0-9A-Z]+)/gi) || [];
+    const rawMatches = billingText.match(codePattern) || [];
     const codes = Array.from(new Set(rawMatches.map(v => v.toUpperCase())));
     const countMatch = billingText.match(/BEMA\s*(\d+)\s*·\s*GOZ\s*(\d+)/i);
     const fallbackText = countMatch ? billingText : (await page.locator('body').innerText().catch(() => ''));

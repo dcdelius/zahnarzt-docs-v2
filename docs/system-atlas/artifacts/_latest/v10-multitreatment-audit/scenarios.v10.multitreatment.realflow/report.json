@@ -1,0 +1,366 @@
+{
+  "results": [
+    {
+      "id": "m01",
+      "label": "GKV Fuellung + Endo + Roentgen",
+      "dictation": "GKV. Bei Zahn 24 wurde eine tiefe MOD-Kompositfuellung gelegt. Danach haben wir Zahn 27 wegen Klopfdolenz trepaniert, die Kanaele aufbereitet und medikamentoes eingelegt. Zur Verlaufskontrolle wurde eine Roentgenaufnahme angefertigt.",
+      "state": "output",
+      "passes": 2,
+      "questions": [
+        {
+          "id": "medical_ueberkappung::tooth:24",
+          "text": "Überkappung durchgeführt?"
+        },
+        {
+          "id": "fuellung_isolation::tooth:24",
+          "text": "Welche Isolation?"
+        },
+        {
+          "id": "fuellung_layering::tooth:24",
+          "text": "Mehrschichttechnik verwendet?"
+        },
+        {
+          "id": "endo_canal_count::tooth:27",
+          "text": "Wie viele Kanaele wurden behandelt?"
+        },
+        {
+          "id": "endo_medication::tooth:27",
+          "text": "Welche medikamentoese Einlage wurde verwendet?"
+        },
+        {
+          "id": "ENDO_T1_IRRIGATION::tooth:27",
+          "text": "Welche Spüllösungen wurden verwendet?"
+        },
+        {
+          "id": "ENDO_T1_WORKING_LENGTH_METHOD::tooth:27",
+          "text": "Wie wurden die Arbeitslängen bestimmt?"
+        },
+        {
+          "id": "ENDO_T1_WORKING_LENGTHS::tooth:27",
+          "text": "Bitte Arbeitslängen pro Kanal angeben"
+        },
+        {
+          "id": "medical_isolation::tooth:27",
+          "text": "Welche Isolation?"
+        },
+        {
+          "id": "medical_wf_technique::tooth:27",
+          "text": "Welche Wurzelfuelltechnik wurde verwendet?"
+        },
+        {
+          "id": "medical_roentgen_befund::tooth:27",
+          "text": "Roentgen-Befund dokumentieren"
+        },
+        {
+          "id": "medical_roentgen_typ::tooth:27",
+          "text": "Roentgen-Typ dokumentieren (z. B. Zahnfilm/Bissfluegel/OPG)"
+        },
+        {
+          "id": "medical_roentgen_zeitpunkt::tooth:27",
+          "text": "Roentgen-Zeitpunkt dokumentieren"
+        }
+      ],
+      "answers": {
+        "medical_ueberkappung::tooth:24": "keine",
+        "fuellung_isolation::tooth:24": "kofferdam",
+        "fuellung_layering::tooth:24": "yes",
+        "endo_canal_count::tooth:27": "dokumentiert",
+        "endo_medication::tooth:27": "dokumentiert",
+        "ENDO_T1_IRRIGATION::tooth:27": "NaOCl",
+        "ENDO_T1_WORKING_LENGTH_METHOD::tooth:27": "Apexlokator (EAL)",
+        "ENDO_T1_WORKING_LENGTHS::tooth:27": "dokumentiert",
+        "medical_isolation::tooth:27": "kofferdam",
+        "medical_wf_technique::tooth:27": "warm",
+        "medical_roentgen_befund::tooth:27": "klinisch dokumentiert",
+        "medical_roentgen_typ::tooth:27": "dokumentiert",
+        "medical_roentgen_zeitpunkt::tooth:27": "dokumentiert"
+      },
+      "detectedTreatments": [
+        "endo",
+        "fuellung",
+        "roentgen"
+      ],
+      "billingCodes": [
+        "BEMA_12",
+        "BEMA_13c",
+        "BEMA_31",
+        "BEMA_34",
+        "BEMA_Ä925a",
+        "BEMA_Ä925a"
+      ],
+      "fullText": "Kofferdam angelegt. Zahn 24 (MOD): Füllungstherapie tief (caries profunda). Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Keine Pulpaeröffnung; Cp nicht erforderlich.\n\nKofferdam angelegt. Elektrische Arbeitslängenmessung. Wurzelfüllung in warmer vertikaler Kondensation. Spülung mit NaOCl. Röntgenkontrolle post WF. Trepanation der Pulpakammer.\n\nRoentgenologische Einzelzahnaufnahme angefertigt. Roentgenbefund dokumentiert.",
+      "issues": []
+    },
+    {
+      "id": "m02",
+      "label": "PKV Kronenpraeparation + Roentgen",
+      "dictation": "PKV. Zahn 11 wurde fuer eine Krone praepariert, praezise abgeformt und provisorisch versorgt. Zusaetzlich erfolgte ein OPG zur Therapieplanung.",
+      "state": "output",
+      "passes": 2,
+      "questions": [
+        {
+          "id": "crown_prep_impression::tooth:11",
+          "text": "Abformung durchgeführt?"
+        },
+        {
+          "id": "medical_roentgen_befund::tooth:11",
+          "text": "Roentgen-Befund dokumentieren"
+        },
+        {
+          "id": "medical_roentgen_zeitpunkt::tooth:11",
+          "text": "Roentgen-Zeitpunkt dokumentieren"
+        }
+      ],
+      "answers": {
+        "crown_prep_impression::tooth:11": "yes",
+        "medical_roentgen_befund::tooth:11": "klinisch dokumentiert",
+        "medical_roentgen_zeitpunkt::tooth:11": "dokumentiert"
+      },
+      "detectedTreatments": [
+        "crown_prep",
+        "roentgen"
+      ],
+      "billingCodes": [
+        "GOZ_5000",
+        "GOZ_2210",
+        "GOZ_2260",
+        "GOZ_5004"
+      ],
+      "fullText": "Zahn 11: Kronenpräparation durchgeführt. Zahn 11: Präzisionsabformung durchgeführt. Zahn 11: Provisorische Versorgung.\n\nOrthopantomogramm angefertigt und ausgewertet. Roentgenbefund dokumentiert.",
+      "issues": []
+    },
+    {
+      "id": "m03",
+      "label": "GKV Extraktion + Fuellung",
+      "dictation": "GKV. Zunaechst Extraktion von Zahn 28 unter Infiltrationsanaesthesie mit Wundversorgung, anschliessend an Zahn 16 eine okklusale Kompositfuellung unter Kofferdam mit Bisskontrolle.",
+      "state": "output",
+      "passes": 1,
+      "questions": [],
+      "answers": {},
+      "detectedTreatments": [
+        "extraction",
+        "fuellung"
+      ],
+      "billingCodes": [
+        "BEMA_40",
+        "BEMA_41a",
+        "BEMA_12",
+        "BEMA_13"
+      ],
+      "fullText": "Lokalanästhesie (Infiltration). Extraktion Zahn 28 durchgeführt. Wundversorgung durchgeführt.\n\nLA Infiltration (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Kofferdam angelegt. Zahn 16 (O): Füllungstherapie. Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "issues": []
+    },
+    {
+      "id": "m04",
+      "label": "PKV Endo + WSR + Roentgen",
+      "dictation": "PKV. Zahn 36 endodontisch mit Trepanation, Arbeitslaengenbestimmung, Aufbereitung und Wurzelfuellung behandelt; im Anschluss Wurzelspitzenresektion via Osteotomie und postoperative Roentgenkontrolle.",
+      "state": "output",
+      "passes": 2,
+      "questions": [
+        {
+          "id": "endo_canal_count::tooth:36",
+          "text": "Wie viele Kanaele wurden behandelt?"
+        },
+        {
+          "id": "endo_medication::tooth:36",
+          "text": "Welche medikamentoese Einlage wurde verwendet?"
+        },
+        {
+          "id": "ENDO_T1_IRRIGATION::tooth:36",
+          "text": "Welche Spüllösungen wurden verwendet?"
+        },
+        {
+          "id": "ENDO_T1_WORKING_LENGTH_METHOD::tooth:36",
+          "text": "Wie wurden die Arbeitslängen bestimmt?"
+        },
+        {
+          "id": "ENDO_T1_WORKING_LENGTHS::tooth:36",
+          "text": "Bitte Arbeitslängen pro Kanal angeben"
+        },
+        {
+          "id": "medical_isolation::tooth:36",
+          "text": "Welche Isolation?"
+        },
+        {
+          "id": "medical_wf_technique::tooth:36",
+          "text": "Welche Wurzelfuelltechnik wurde verwendet?"
+        },
+        {
+          "id": "fuellung_material::tooth:36",
+          "text": "Welches Füllungsmaterial?"
+        },
+        {
+          "id": "fuellung_isolation::tooth:36",
+          "text": "Welche Isolation?"
+        },
+        {
+          "id": "medical_wsr_lokalisation::tooth:36",
+          "text": "WSR-Lokalisation dokumentieren"
+        },
+        {
+          "id": "medical_roentgen_befund::tooth:36",
+          "text": "Roentgen-Befund dokumentieren"
+        },
+        {
+          "id": "medical_roentgen_typ::tooth:36",
+          "text": "Roentgen-Typ dokumentieren (z. B. Zahnfilm/Bissfluegel/OPG)"
+        }
+      ],
+      "answers": {
+        "endo_canal_count::tooth:36": "dokumentiert",
+        "endo_medication::tooth:36": "dokumentiert",
+        "ENDO_T1_IRRIGATION::tooth:36": "NaOCl",
+        "ENDO_T1_WORKING_LENGTH_METHOD::tooth:36": "Apexlokator (EAL)",
+        "ENDO_T1_WORKING_LENGTHS::tooth:36": "dokumentiert",
+        "medical_isolation::tooth:36": "kofferdam",
+        "medical_wf_technique::tooth:36": "warm",
+        "fuellung_material::tooth:36": "komposit",
+        "fuellung_isolation::tooth:36": "kofferdam",
+        "medical_wsr_lokalisation::tooth:36": "front_praemolar",
+        "medical_roentgen_befund::tooth:36": "klinisch dokumentiert",
+        "medical_roentgen_typ::tooth:36": "dokumentiert"
+      },
+      "detectedTreatments": [
+        "endo",
+        "fuellung",
+        "roentgen",
+        "wsr"
+      ],
+      "billingCodes": [
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_5000",
+        "GOZ_2360",
+        "GOZ_2440",
+        "GOZ_2080",
+        "GOZ_3110"
+      ],
+      "fullText": "Kofferdam angelegt. Elektrische Arbeitslängenmessung. Wurzelfüllung in warmer vertikaler Kondensation. Spülung mit NaOCl. Röntgenkontrolle post WF. Trepanation der Pulpakammer.\n\nKofferdam angelegt. Zahn 36 (MO): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nWurzelspitzenresektion durch Osteotomie am betroffenen Zahn durchgefuehrt. Lokalisation Frontzahn/Praemolar fuer Wurzelspitzenresektion dokumentiert.\n\nRoentgenologische Einzelzahnaufnahme angefertigt. Roentgenbefund dokumentiert.",
+      "issues": []
+    },
+    {
+      "id": "m05",
+      "label": "GKV Trauma + Schiene + Roentgen",
+      "dictation": "GKV. Nach Frontzahntrauma an Zahn 11 mit Lockerung wurde semipermanent geschient, eine Roentgenkontrolle durchgefuehrt und zusaetzlich eine Okklusionsschiene zur Entlastung eingegliedert.",
+      "state": "output",
+      "passes": 2,
+      "questions": [
+        {
+          "id": "medical_trauma_art::tooth:11",
+          "text": "Traumaart dokumentieren"
+        },
+        {
+          "id": "medical_roentgen_befund::tooth:11",
+          "text": "Roentgen-Befund dokumentieren"
+        },
+        {
+          "id": "medical_roentgen_typ::tooth:11",
+          "text": "Roentgen-Typ dokumentieren (z. B. Zahnfilm/Bissfluegel/OPG)"
+        },
+        {
+          "id": "medical_roentgen_zeitpunkt::tooth:11",
+          "text": "Roentgen-Zeitpunkt dokumentieren"
+        }
+      ],
+      "answers": {
+        "medical_trauma_art::tooth:11": "luxation",
+        "medical_roentgen_befund::tooth:11": "klinisch dokumentiert",
+        "medical_roentgen_typ::tooth:11": "dokumentiert",
+        "medical_roentgen_zeitpunkt::tooth:11": "dokumentiert"
+      },
+      "detectedTreatments": [
+        "roentgen",
+        "schiene",
+        "trauma"
+      ],
+      "billingCodes": [
+        "BEMA_100",
+        "BEMA_Ä925a",
+        "BEMA_K1"
+      ],
+      "fullText": "Akute Traumasituation klinisch beurteilt und dokumentiert. Semipermanente Schienung zur Stabilisierung traumatisierter Zaehne durchgefuehrt. Verlaufskontrolle nach Trauma empfohlen und dokumentiert.\n\nRoentgenologische Einzelzahnaufnahme angefertigt. Roentgenbefund dokumentiert.\n\nOkklusionsschiene eingegliedert und initial angepasst. Schienenkontrolle mit Trage- und Beschwerdeabfrage dokumentiert.",
+      "issues": []
+    },
+    {
+      "id": "m06",
+      "label": "GKV Parodontologie + UPT",
+      "dictation": "GKV. In regio 36 und 37 wurde eine geschlossene antiinfektioese Parodontaltherapie durchgefuehrt und anschliessend UPT Grad B mit Recallplanung dokumentiert.",
+      "state": "output",
+      "passes": 2,
+      "questions": [
+        {
+          "id": "medical_upt_intervall::tooth:36",
+          "text": "Recallintervall dokumentieren"
+        },
+        {
+          "id": "medical_upt_intervall::tooth:37",
+          "text": "Recallintervall dokumentieren"
+        }
+      ],
+      "answers": {
+        "medical_upt_intervall::tooth:36": "3-4_monate",
+        "medical_upt_intervall::tooth:37": "3-4_monate"
+      },
+      "detectedTreatments": [
+        "parodontologie",
+        "upt"
+      ],
+      "billingCodes": [
+        "BEMA_AIT",
+        "BEMA_AIT",
+        "BEMA_UPTb"
+      ],
+      "fullText": "Geschlossene antiinfektioese Parodontaltherapie durchgefuehrt.\n\nGeschlossene antiinfektioese Parodontaltherapie durchgefuehrt.\n\nUnterstuetzende Parodontitistherapie (UPT) Grad B durchgefuehrt. Recallintervall fuer UPT dokumentiert.",
+      "issues": []
+    },
+    {
+      "id": "m07",
+      "label": "PKV Implantat + Krone",
+      "dictation": "PKV. In regio 36 erfolgte die Implantatinsertion mit Nachsorge, spaeter wurde die definitive Krone eingegliedert und okklusal eingestellt.",
+      "state": "output",
+      "passes": 2,
+      "questions": [
+        {
+          "id": "medical_krone_art::tooth:36",
+          "text": "Kronenart dokumentieren"
+        }
+      ],
+      "answers": {
+        "medical_krone_art::tooth:36": "vollkrone"
+      },
+      "detectedTreatments": [
+        "implant",
+        "krone"
+      ],
+      "billingCodes": [
+        "GOZ_9000",
+        "GOZ_5180",
+        "GOZ_2210"
+      ],
+      "fullText": "Implantatinsertion am betroffenen Zahngebiet durchgefuehrt. Postoperative Nachsorge inklusive Verhaltensempfehlungen dokumentiert.\n\nVollkronenversorgung am betroffenen Zahn durchgefuehrt. Definitive Eingliederung und Okklusionskontrolle dokumentiert.",
+      "issues": []
+    },
+    {
+      "id": "m08",
+      "label": "PKV Teilkrone + Bruecke",
+      "dictation": "PKV. Zahn 16 erhielt eine definitive Teilkrone, gleichzeitig wurde in regio 36 eine definitive Brueckenversorgung eingegliedert und funktionell kontrolliert.",
+      "state": "output",
+      "passes": 1,
+      "questions": [],
+      "answers": {},
+      "detectedTreatments": [
+        "bruecke",
+        "teilkrone"
+      ],
+      "billingCodes": [
+        "GOZ_5180",
+        "GOZ_5070",
+        "GOZ_5070",
+        "GOZ_2220",
+        "GOZ_2220"
+      ],
+      "fullText": "Definitive Brueckenversorgung eingegliedert und okklusal kontrolliert.\n\nDefinitive Brueckenversorgung eingegliedert und okklusal kontrolliert.\n\nDefinitive Teilkronenversorgung am betroffenen Zahn durchgefuehrt. Definitive Eingliederung und Okklusionskontrolle dokumentiert.\n\nDefinitive Teilkronenversorgung am betroffenen Zahn durchgefuehrt. Definitive Eingliederung und Okklusionskontrolle dokumentiert.",
+      "issues": []
+    }
+  ]
+}

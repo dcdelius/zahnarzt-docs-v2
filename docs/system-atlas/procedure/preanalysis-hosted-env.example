@@ -1,0 +1,14 @@
+# Hosted Preanalysis Strict Gate (Example Env)
+#
+# Copy into your shell/session (do not commit real credentials).
+
+export PLAYWRIGHT_BASE_URL="https://YOUR_HOSTED_URL"
+export E2E_LOGIN_EMAIL="user@example.com"
+export E2E_LOGIN_PASSWORD="replace-me"
+
+# Optional: restrict to a subset while validating setup
+# export HOSTED_PREANALYSIS_GATE_GREP="S1 - GKV Füllung MOD"
+
+# Run strict hosted preanalysis gate
+npm run e2e:v10:hosted-preanalysis-gate
+

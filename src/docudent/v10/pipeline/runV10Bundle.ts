@@ -16,7 +16,8 @@ import type {
 } from '../types';
 import type { DynamicQuestion, QuestionOption } from '../../contracts/questions';
 import { runV10 } from './runV10';
-import { renderFromKbChips, getChipFromKb } from '../renderer';
+import { getBillingScopeWithFallback } from '../../core/billing/knowledgeBase/logic/billingScopeResolver';
+import { normalizeBillingRefId } from '../../core/billing/billingRefNormalization';
 import {
     buildSessionBillingSummary,
     runSessionCombinability,
@@ -29,22 +30,17 @@ import type { SettingsInput } from '../settings/settingsTypes';
 // ═══════════════════════════════════════════════════════════════
 
 /**
- * Determine billing scope for a chip.
- * SESSION-scoped chips (e.g., anesthesia) are deduped across all instances.
- * TOOTH-scoped chips are kept per-tooth.
+ * Determine billing scope for a billing code.
+ * Uses DB-backed scope resolver with fallback table.
+ * JAW/CASE are session-level for bundle dedupe behavior.
+ * UNKNOWN defaults to TOOTH metadata (dedupe policy still controls collapse behavior).
  */
-function getChipBillingScope(
-    treatmentId: string,
-    chipId: string
+function getBillingCodeScope(
+    code: string
 ): 'SESSION' | 'TOOTH' {
-    // Check KB for scope info (fallback to TOOTH if not specified)
-    const chip = getChipFromKb(treatmentId, chipId);
-    if (chip) {
-        // Check phase for scope hints
-        const sessionPhases = ['anaesthesie', 'vorbereitung'];
-        if (chip.phase && sessionPhases.includes(chip.phase)) {
-            return 'SESSION';
-        }
+    const resolved = getBillingScopeWithFallback(code, true);
+    if (resolved === 'SESSION' || resolved === 'JAW' || resolved === 'CASE') {
+        return 'SESSION';
     }
     return 'TOOTH';
 }
@@ -52,8 +48,7 @@ function getChipBillingScope(
 /**
  * Dedupe billing codes by scope.
  * SESSION: keep only first occurrence.
- * INSTANCE: keep first occurrence per instance.
- * TOOTH: keep first occurrence per tooth.
+ * NON-SESSION: keep first occurrence per instance (safety default).
  */
 function dedupeBillingCodes(codes: V10ScopedBillingCode[]): V10ScopedBillingCode[] {
     const seen = new Map<string, V10ScopedBillingCode>();
@@ -258,7 +253,9 @@ export async function runV10Bundle(
                     answers: mergedAnswers,
                     userDefaults: opts?.settings as Record<string, unknown> | undefined,
                     teeth: instance.tooth ? [instance.tooth] : undefined,
+                    preanalysisHints: instance.preanalysisHints,
                     kbReleaseId: pinnedKbReleaseId,
+                    requireLlmExtraction: input.requireLlmExtraction,
                     testOnly: forcedChips
                         ? {
                             enabled: true,
@@ -287,7 +284,9 @@ export async function runV10Bundle(
                             answers: mergedAnswers,
                             userDefaults: opts?.settings as Record<string, unknown> | undefined,
                             teeth: instance.tooth ? [instance.tooth] : undefined,
+                            preanalysisHints: instance.preanalysisHints,
                             kbReleaseId: pinnedKbReleaseId,
+                            requireLlmExtraction: input.requireLlmExtraction,
                         });
                         pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
                     }
@@ -302,13 +301,21 @@ export async function runV10Bundle(
                         answers: mergedAnswers,
                         userDefaults: opts?.settings as Record<string, unknown> | undefined,
                         teeth: instance.tooth ? [instance.tooth] : undefined,
+                        preanalysisHints: instance.preanalysisHints,
                         kbReleaseId: pinnedKbReleaseId,
+                        requireLlmExtraction: input.requireLlmExtraction,
                         testOnly: {
                             enabled: true,
                             forceChips: forcedChips,
                         },
                     });
                     pinnedKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? pinnedKbReleaseId;
+                }
+
+                if (result.state === 'error') {
+                    throw new Error(
+                        `[BUNDLE_INSTANCE_ERROR] segment=${segment.segmentId} instance=${instance.instanceId} treatment=${segment.treatmentId}: ${result.error ?? 'unknown'}`
+                    );
                 }
 
                 // Check for required questions
@@ -379,9 +386,10 @@ export async function runV10Bundle(
 
                     // Convert billing codes to scoped format
                     for (const code of billingRefs) {
-                        const scope = getChipBillingScope(segment.treatmentId, code);
+                        const normalizedCode = normalizeBillingRefId(code);
+                        const scope = getBillingCodeScope(normalizedCode);
                         billingCodes.push({
-                            code,
+                            code: normalizedCode,
                             instanceId: instance.instanceId,
                             tooth: instance.tooth,
                             scope,
@@ -564,25 +572,12 @@ function buildSegmentOutputs(
     segments: V10BundleInput['segments']
 ): V10SegmentOutput[] {
     const outputs: V10SegmentOutput[] = [];
-    const orderedSegments = [...segments].sort((a, b) => {
-        const aTooth = results.find(r => r.segmentId === a.segmentId)?.tooth ?? '';
-        const bTooth = results.find(r => r.segmentId === b.segmentId)?.tooth ?? '';
-        const toothCmp = aTooth.localeCompare(bTooth);
-        if (toothCmp !== 0) return toothCmp;
-        const treatmentCmp = a.treatmentId.localeCompare(b.treatmentId);
-        if (treatmentCmp !== 0) return treatmentCmp;
-        return a.segmentId.localeCompare(b.segmentId);
-    });
+    const orderedSegments = segments;
 
     for (const segment of orderedSegments) {
         const segmentResults = results.filter(r => r.segmentId === segment.segmentId);
 
-        const instanceOutputs = [...segmentResults]
-            .sort((a, b) => {
-                const toothCmp = (a.tooth ?? '').localeCompare(b.tooth ?? '');
-                if (toothCmp !== 0) return toothCmp;
-                return a.instanceId.localeCompare(b.instanceId);
-            })
+        const instanceOutputs = segmentResults
             .map(r => ({
             instanceId: r.instanceId,
             tooth: r.tooth,

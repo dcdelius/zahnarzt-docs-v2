@@ -1,0 +1,205 @@
+{
+  "_meta": {
+    "description": "Extraction benchmark corpus: 20 long prose dictations with contextual signals",
+    "version": "1.0.0",
+    "created": "2026-02-17"
+  },
+  "cases": [
+    {
+      "id": "exb01-fuellung",
+      "label": "Fuellung with historical complaint and medication change",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "expectedTooth": "24",
+      "maxIntentCount": 1,
+      "contextMarkers": ["apixaban", "seit letzter fuellung empfindlich"],
+      "dictation": "Heute wurde an Zahn 24 eine mod Kompositfuellung in Mehrschichttechnik gelegt. Die Patientin berichtet, dass Zahn 36 seit letzter Fuellung weiter empfindlich ist. Laut Anamnese wurde die Medikation vor einer Woche auf Apixaban umgestellt."
+    },
+    {
+      "id": "exb02-endo",
+      "label": "Endo revision with social stress context",
+      "treatmentId": "endo",
+      "insuranceType": "PKV",
+      "expectedTooth": "27",
+      "maxIntentCount": 1,
+      "contextMarkers": ["seit letzter sitzung klopfdolent", "familiaeren todesfall"],
+      "dictation": "Zahn 27 war seit letzter Sitzung weiterhin klopfdolent, daher heute erneute endodontische Aufbereitung mit NaOCl und EDTA sowie medikamentoeser Einlage. Die Patientin ist wegen eines familiaeren Todesfalls aktuell stark belastet und berichtet Schlafmangel."
+    },
+    {
+      "id": "exb03-extraction",
+      "label": "Extraction with comorbidity context",
+      "treatmentId": "extraction",
+      "insuranceType": "GKV",
+      "expectedTooth": "28",
+      "maxIntentCount": 1,
+      "contextMarkers": ["diabetes typ ii", "metformin"],
+      "dictation": "An Zahn 28 erfolgte nach Infiltrationsanaesthesie die komplikationslose Extraktion mit Wundversorgung und Naht. In der Anamnese bestehen Diabetes Typ II und eine laufende Metformin Therapie."
+    },
+    {
+      "id": "exb04-pzr",
+      "label": "PZR with adherence issue",
+      "treatmentId": "pzr",
+      "insuranceType": "GKV",
+      "expectedTooth": "36",
+      "maxIntentCount": 1,
+      "contextMarkers": ["interdentalbuersten", "unregelmaessig"],
+      "dictation": "Im Rahmen der Prophylaxe wurden harte und weiche Belaege entfernt, poliert und fluoridiert. Im Seitenzahnbereich 36 bis 46 zeigte sich vermehrter Biofilm. Die Patientin gibt an, Interdentalbuersten nur unregelmaessig zu verwenden."
+    },
+    {
+      "id": "exb05-crown-preep",
+      "label": "Crown prep with anticoagulation context",
+      "treatmentId": "crown_prep",
+      "insuranceType": "PKV",
+      "expectedTooth": "16",
+      "maxIntentCount": 1,
+      "contextMarkers": ["antikoagulation", "rivaroxaban"],
+      "dictation": "Heute erfolgte an Zahn 16 die Kronenpraeparation mit Abformung und provisorischer Versorgung. Die Patientin steht unter Antikoagulation mit Rivaroxaban, was in der Planung beruecksichtigt wurde."
+    },
+    {
+      "id": "exb06-ueberkappung",
+      "label": "Direct capping with allergy context",
+      "treatmentId": "ueberkappung",
+      "insuranceType": "PKV",
+      "expectedTooth": "36",
+      "maxIntentCount": 1,
+      "contextMarkers": ["allergie", "penicillin"],
+      "dictation": "Bei Exkavation an Zahn 36 kam es zur punktfoermigen Pulpaeroeffnung, darauf direkte Ueberkappung mit MTA und dichter adhäsiver Verschluss. In der Patientenanamnese ist eine Penicillin Allergie dokumentiert."
+    },
+    {
+      "id": "exb07-fissurenversiegelung",
+      "label": "Sealant with caries risk context",
+      "treatmentId": "fissurenversiegelung",
+      "insuranceType": "PKV",
+      "expectedTooth": "16",
+      "maxIntentCount": 1,
+      "contextMarkers": ["erhoehtes kariesrisiko", "zuckerhaltige getraenke"],
+      "dictation": "An Zahn 16 wurden die Fissuren gereinigt, geaetzt und mit lichthaertendem Material versiegelt. Die Mutter berichtet ueber haeufigen Konsum zuckerhaltiger Getraenke, daher wurde ein erhoehtes Kariesrisiko besprochen."
+    },
+    {
+      "id": "exb08-parodontologie",
+      "label": "Parodontology with smoking context",
+      "treatmentId": "parodontologie",
+      "insuranceType": "GKV",
+      "expectedTooth": "36",
+      "maxIntentCount": 1,
+      "contextMarkers": ["raucht", "zehn zigaretten"],
+      "dictation": "Heute wurde in den Regionen 36 und 37 eine geschlossene antiinfektioese Parodontalbehandlung durchgefuehrt. Im Gespraech gab der Patient an, weiterhin etwa zehn Zigaretten taeglich zu rauchen."
+    },
+    {
+      "id": "exb09-upt",
+      "label": "UPT with followup requirement",
+      "treatmentId": "upt",
+      "insuranceType": "GKV",
+      "expectedTooth": "36",
+      "maxIntentCount": 1,
+      "contextMarkers": ["recall in 3 monaten", "blutungsneigung"],
+      "dictation": "Im UPT Termin wurden Resttaschen kontrolliert und subgingival nachinstrumentiert. Es zeigte sich erneut Blutungsneigung an 36 distal, daher wurde ein Recall in 3 Monaten vereinbart."
+    },
+    {
+      "id": "exb10-wsr",
+      "label": "WSR with previous treatment outcome",
+      "treatmentId": "wsr",
+      "insuranceType": "PKV",
+      "expectedTooth": "36",
+      "maxIntentCount": 1,
+      "contextMarkers": ["vorbehandlung ohne beschwerdefreiheit", "persistierende apikale symptomatik"],
+      "dictation": "An Zahn 36 erfolgte wegen persistierender apikaler Symptomatik die Wurzelspitzenresektion mit Zugang, Resektion und Wundverschluss. Laut Verlauf brachte die Vorbehandlung keine Beschwerdefreiheit."
+    },
+    {
+      "id": "exb11-trauma",
+      "label": "Trauma with sports event context",
+      "treatmentId": "trauma",
+      "insuranceType": "GKV",
+      "expectedTooth": "11",
+      "maxIntentCount": 1,
+      "contextMarkers": ["sportunfall", "nervoes vor turnier"],
+      "dictation": "Nach Sportunfall wurde Zahn 11 klinisch beurteilt und semipermanent geschient. Der Patient berichtet ein bevorstehendes Turnier und ist deshalb stark nervoes."
+    },
+    {
+      "id": "exb12-implant",
+      "label": "Implant insertion with immunosuppression context",
+      "treatmentId": "implant",
+      "insuranceType": "PKV",
+      "expectedTooth": "36",
+      "maxIntentCount": 1,
+      "contextMarkers": ["immunsuppression", "methotrexat"],
+      "dictation": "In regio 36 wurde nach osteotomischer Vorbereitung ein Implantat inseriert und die Primaerstabilitaet kontrolliert. In der Anamnese besteht eine rheumatologische Immunsuppression unter Methotrexat."
+    },
+    {
+      "id": "exb13-krone",
+      "label": "Crown insertion with family care burden",
+      "treatmentId": "krone",
+      "insuranceType": "PKV",
+      "expectedTooth": "16",
+      "maxIntentCount": 1,
+      "contextMarkers": ["pflege der mutter", "zeitlich eingeschraenkt"],
+      "dictation": "Die definitive Krone an Zahn 16 wurde eingesetzt und okklusal feinadjustiert. Die Patientin erwaehnt, wegen der Pflege ihrer Mutter zeitlich stark eingeschraenkt zu sein."
+    },
+    {
+      "id": "exb14-teilkrone",
+      "label": "Onlay insertion with sensitivity history",
+      "treatmentId": "teilkrone",
+      "insuranceType": "PKV",
+      "expectedTooth": "16",
+      "maxIntentCount": 1,
+      "contextMarkers": ["nach provisoriun empfindlich", "kaeltereize"],
+      "dictation": "An Zahn 16 wurde die laborgefertigte Teilkrone definitiv eingegliedert, Kontakte und Okklusion wurden kontrolliert. Die Patientin gab an, nach dem Provisorium zeitweise auf Kaeltereize empfindlich gewesen zu sein."
+    },
+    {
+      "id": "exb15-bruecke",
+      "label": "Bridge insertion with social context",
+      "treatmentId": "bruecke",
+      "insuranceType": "PKV",
+      "expectedTooth": "36",
+      "maxIntentCount": 1,
+      "contextMarkers": ["arbeitsreise", "naechste woche"],
+      "dictation": "Die definitive Brueckenversorgung in regio 36 wurde eingesetzt und in statischer wie dynamischer Okklusion eingeschliffen. Der Patient reist naechste Woche beruflich ins Ausland."
+    },
+    {
+      "id": "exb16-teilprothese",
+      "label": "Partial denture with follow-up logistics",
+      "treatmentId": "teilprothese",
+      "insuranceType": "PKV",
+      "maxIntentCount": 1,
+      "contextMarkers": ["druckstellenkontrolle", "nur morgens verfuegbar"],
+      "dictation": "Die Modellguss Teilprothese wurde eingegliedert, Halt und Stuetzfunktion wurden kontrolliert. Eine Druckstellenkontrolle wurde geplant, der Patient ist aus beruflichen Gruenden nur morgens verfuegbar."
+    },
+    {
+      "id": "exb17-totalprothese",
+      "label": "Full denture with adaptation concern",
+      "treatmentId": "totalprothese",
+      "insuranceType": "PKV",
+      "maxIntentCount": 1,
+      "contextMarkers": ["angst vor adaptation", "frueher schlechte erfahrung"],
+      "dictation": "Die Oberkiefer Totalprothese wurde eingesetzt und der Saugschluss geprueft. Die Patientin aeusserte Angst vor der Adaptationsphase aufgrund frueherer schlechter Erfahrungen."
+    },
+    {
+      "id": "exb18-schiene",
+      "label": "Splint with medication update",
+      "treatmentId": "schiene",
+      "insuranceType": "PKV",
+      "maxIntentCount": 1,
+      "contextMarkers": ["sertralin", "medikationsaenderung"],
+      "dictation": "Heute erfolgte die Eingliederung einer Aufbissschiene mit Anpassung der Kontaktpunkte. Die Patientin berichtete eine aktuelle Medikationsaenderung auf Sertralin."
+    },
+    {
+      "id": "exb19-untersuchung",
+      "label": "Clinical examination with family history",
+      "treatmentId": "untersuchung",
+      "insuranceType": "PKV",
+      "maxIntentCount": 1,
+      "contextMarkers": ["familiaere parodontitis", "prophylaxeinteresse"],
+      "dictation": "Im Rahmen der Untersuchung wurden Hart und Weichgewebe sowie Okklusion beurteilt, ohne akuten Interventionsbedarf. Die Patientin berichtet eine familiaere Parodontitis Vorgeschichte und ausgepraegtes Prophylaxeinteresse."
+    },
+    {
+      "id": "exb20-roentgen",
+      "label": "Radiology with historical complaint should not create extra treatment",
+      "treatmentId": "roentgen",
+      "insuranceType": "PKV",
+      "expectedTooth": "36",
+      "maxIntentCount": 1,
+      "contextMarkers": ["seit letzter fuellung temperatur empfindlich", "opg zur diagnostik"],
+      "dictation": "Heute wurde ein OPG zur Diagnostik und Therapieplanung angefertigt, mit apikaler Auffaelligkeit regio 36. Die Patientin sagt ausserdem, seit letzter Fuellung an Zahn 36 weiterhin temperatur empfindlich zu sein."
+    }
+  ]
+}

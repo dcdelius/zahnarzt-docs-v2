@@ -1,0 +1,56 @@
+{
+    "_meta": {
+        "id": "upt",
+        "version": "1.0.0",
+        "label": "UPT"
+    },
+    "chips": [
+        {
+            "id": "upt_grad_a",
+            "label": "UPT Grad A",
+            "phase": "nachsorge",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "UPT Grad A durchgefuehrt.",
+                "mittel": "Unterstuetzende Parodontitistherapie (UPT) Grad A durchgefuehrt.",
+                "lang": "Unterstuetzende Parodontitistherapie (UPT) Grad A mit risikoadaptiertem Recall und parodontaler Nachsorge durchgefuehrt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "upt_grad_b",
+            "label": "UPT Grad B",
+            "phase": "nachsorge",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "UPT Grad B durchgefuehrt.",
+                "mittel": "Unterstuetzende Parodontitistherapie (UPT) Grad B durchgefuehrt.",
+                "lang": "Unterstuetzende Parodontitistherapie (UPT) Grad B mit risikoadaptiertem Recall und parodontaler Nachsorge durchgefuehrt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "upt_grad_c",
+            "label": "UPT Grad C",
+            "phase": "nachsorge",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "UPT Grad C durchgefuehrt.",
+                "mittel": "Unterstuetzende Parodontitistherapie (UPT) Grad C durchgefuehrt.",
+                "lang": "Unterstuetzende Parodontitistherapie (UPT) Grad C mit engmaschigem risikoadaptiertem Recall und parodontaler Nachsorge durchgefuehrt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "upt_recall_dokumentiert",
+            "label": "Recallintervall dokumentiert",
+            "phase": "dokumentation",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Recallintervall dokumentiert.",
+                "mittel": "Recallintervall fuer UPT dokumentiert.",
+                "lang": "Recallintervall fuer die UPT risikoadaptiert dokumentiert und mit dem Patienten besprochen."
+            }
+        }
+    ]
+}

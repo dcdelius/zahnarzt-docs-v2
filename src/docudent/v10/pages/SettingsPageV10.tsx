@@ -17,7 +17,8 @@ import {
 import './SettingsPageV10.css';
 import { adminService, type NewUserData } from '../settings/adminService';
 import type { PracticeRole } from '../../core/auth/authTypes';
-import { TREATMENT_DEFINITIONS, TREATMENT_CATEGORIES, TREATMENT_IDS as ALL_TREATMENT_IDS, TREATMENT_LABELS } from '../settings/treatmentMaster';
+import { TREATMENT_DEFINITIONS, TREATMENT_CATEGORIES, TREATMENT_LABELS } from '../settings/treatmentMaster';
+import { SETTINGS_TREATMENT_IDS } from '../settings/settingsTreatmentIds';
 import { SegmentedControl } from '../components/SegmentedControl';
 import { SettingRow } from '../components/SettingRow';
 import { PillToggleGroup } from '../components/PillToggleGroup';
@@ -44,10 +45,19 @@ import {
     patchUserDefaultLAType,
     patchUserDefaultLATypeUkPosterior,
 } from '../settings/medicalDefaults';
+import { getPack, hasPack } from '../packs';
 
-// TREATMENT_LABELS and ALL_TREATMENT_IDS now imported from treatmentMaster.ts
-const TREATMENT_IDS = ALL_TREATMENT_IDS;
+// Settings treatment ids are pinned to manifest UI selector ids (target-20).
+const TREATMENT_IDS = [...SETTINGS_TREATMENT_IDS];
 const GENERAL_TREATMENT_ID = 'allgemein';
+
+function normalizeEnabledTreatments(value: unknown): string[] | undefined {
+    if (!Array.isArray(value)) return undefined;
+    const allowlist = new Set(TREATMENT_IDS);
+    return Array.from(new Set(
+        value.filter((entry): entry is string => typeof entry === 'string' && allowlist.has(entry))
+    ));
+}
 
 /**
  * Phase 0 — Mandatory Scan Summary (settings state + persistence)
@@ -86,6 +96,14 @@ function normalizeList(value: string) {
         .split(',')
         .map(v => v.trim())
         .filter(Boolean);
+}
+
+function getNestedValue(obj: unknown, path: string): unknown {
+    if (!obj || typeof obj !== 'object') return undefined;
+    return path.split('.').reduce<unknown>((cursor, key) => {
+        if (!cursor || typeof cursor !== 'object') return undefined;
+        return (cursor as Record<string, unknown>)[key];
+    }, obj);
 }
 
 function buildV10CssVars(): React.CSSProperties {
@@ -604,7 +622,16 @@ export default function SettingsPageV10() {
     };
     const v10CssVars = useMemo(() => buildV10CssVars(), []);
     const canEditPractice = canEditPracticeByHook;
-    const enabledTreatments = userSettings.enabledTreatments ?? TREATMENT_IDS;
+    const normalizedUserEnabledTreatments = useMemo(
+        () => normalizeEnabledTreatments(userSettings.enabledTreatments),
+        [userSettings.enabledTreatments]
+    );
+    const enabledTreatments = normalizedUserEnabledTreatments ?? TREATMENT_IDS;
+    const normalizedPracticeEnabledTreatments = useMemo(
+        () => normalizeEnabledTreatments(practiceSettings.enabledTreatments),
+        [practiceSettings.enabledTreatments]
+    );
+    const practiceEnabledTreatments = normalizedPracticeEnabledTreatments ?? TREATMENT_IDS;
     const capabilities = useMemo(
         () => deriveSettingsCapabilities(actorRole, practiceSettings),
         [actorRole, practiceSettings]
@@ -800,19 +827,40 @@ export default function SettingsPageV10() {
         updatePractice(patchPracticeDefaultAnestheticAgentId(practiceSettings, materialId));
     };
     const updateUserTreatment = (
-        treatmentKey: 'endo' | 'fuellung',
+        treatmentKey: string,
         updates: Record<string, unknown>
     ) => {
+        const currentTreatmentSettings = userSettings.treatments?.[treatmentKey] as Record<string, unknown> | undefined;
         updateUser({
             treatments: {
                 ...(userSettings.treatments ?? {}),
                 [treatmentKey]: {
-                    ...(userSettings.treatments?.[treatmentKey] ?? {}),
+                    ...(currentTreatmentSettings ?? {}),
                     ...updates,
                 },
             },
         });
     };
+
+    const updateUserSettingByPath = (path: string, rawValue: unknown) => {
+        const value = rawValue === '' ? undefined : rawValue;
+        if (path.startsWith('treatments.')) {
+            const [, treatmentKey, ...rest] = path.split('.');
+            if (!treatmentKey || rest.length === 0) return;
+            updateUserTreatment(treatmentKey, {
+                [rest.join('.')]: value,
+            });
+            return;
+        }
+        updateUser({ [path]: value } as Partial<UserSettings>);
+    };
+
+    const activePackUserSettingsSchema = useMemo(() => {
+        if (activeTreatmentId === GENERAL_TREATMENT_ID) return [];
+        if (!hasPack(activeTreatmentId)) return [];
+        const schema = getPack(activeTreatmentId).getUiContract()?.settingsSchema?.user ?? [];
+        return schema;
+    }, [activeTreatmentId]);
 
     const getPracticeStandardChips = (): string[] => {
         return practiceSettings.chipStandards?.global ?? [];
@@ -888,7 +936,7 @@ export default function SettingsPageV10() {
 
     const toggleUserTreatment = (next: boolean) => {
         if (activeTreatmentId === GENERAL_TREATMENT_ID) return;
-        const base = new Set(userSettings.enabledTreatments ?? TREATMENT_IDS);
+        const base = new Set(enabledTreatments);
         if (next) {
             base.add(activeTreatmentId);
         } else {
@@ -1121,17 +1169,17 @@ export default function SettingsPageV10() {
                                 <input
                                     type="checkbox"
                                     className="v10-toggle-input"
-                                    checked={(userSettings.enabledTreatments ?? TREATMENT_IDS).includes(activeTreatmentId)}
+                                    checked={enabledTreatments.includes(activeTreatmentId)}
                                     disabled={isTreatmentOverrideLocked}
                                     onChange={e => {
                                         const enabled = e.target.checked;
-                                        const current = new Set(userSettings.enabledTreatments ?? TREATMENT_IDS);
+                                        const current = new Set(enabledTreatments);
                                         if (enabled) current.add(activeTreatmentId);
                                         else current.delete(activeTreatmentId);
                                         updateUserSettings({ enabledTreatments: Array.from(current) });
                                     }}
                                 />
-                                <span className={`v10-toggle-track ${(userSettings.enabledTreatments ?? TREATMENT_IDS).includes(activeTreatmentId) ? 'is-on' : ''}`}>
+                                <span className={`v10-toggle-track ${enabledTreatments.includes(activeTreatmentId) ? 'is-on' : ''}`}>
                                     <span className="v10-toggle-thumb" />
                                 </span>
                             </label>
@@ -1247,7 +1295,7 @@ export default function SettingsPageV10() {
 
                                         <Band label="Behandlungen" description="Welche Behandlungen bietet diese Praxis an?">
                                             {treatmentGroups.map(group => {
-                                                const groupEnabled = practiceSettings.enabledTreatments ?? TREATMENT_IDS;
+                                                const groupEnabled = practiceEnabledTreatments;
                                                 const items = group.items.map(id => ({
                                                     id,
                                                     label: TREATMENT_DEFINITIONS[id]?.labelShort || TREATMENT_LABELS[id] || id,
@@ -1260,7 +1308,7 @@ export default function SettingsPageV10() {
                                                         items={items}
                                                         disabled={!canEditPractice}
                                                         onItemToggle={(id, enabled) => {
-                                                            const current = new Set(practiceSettings.enabledTreatments ?? TREATMENT_IDS);
+                                                            const current = new Set(practiceEnabledTreatments);
                                                             if (enabled) {
                                                                 current.add(id);
                                                             } else {
@@ -1269,12 +1317,12 @@ export default function SettingsPageV10() {
                                                             updatePractice({ enabledTreatments: Array.from(current) });
                                                         }}
                                                         onEnableAll={() => {
-                                                            const current = new Set(practiceSettings.enabledTreatments ?? TREATMENT_IDS);
+                                                            const current = new Set(practiceEnabledTreatments);
                                                             group.items.forEach(id => current.add(id));
                                                             updatePractice({ enabledTreatments: Array.from(current) });
                                                         }}
                                                         onDisableAll={() => {
-                                                            const current = new Set(practiceSettings.enabledTreatments ?? TREATMENT_IDS);
+                                                            const current = new Set(practiceEnabledTreatments);
                                                             group.items.forEach(id => current.delete(id));
                                                             updatePractice({ enabledTreatments: Array.from(current) });
                                                         }}
@@ -1753,7 +1801,50 @@ export default function SettingsPageV10() {
                                         </div>
                                     </>
                                 ) : (
-                                    <EmptyState text="Für diese Behandlung gibt es noch keine spezifischen Einstellungen." />
+                                    activePackUserSettingsSchema.length > 0 ? (
+                                        <>
+                                            {activePackUserSettingsSchema.map((entry) => {
+                                                const rawValue = getNestedValue(userSettings, entry.key);
+                                                if (entry.type === 'boolean') {
+                                                    return (
+                                                        <ToggleRow
+                                                            key={entry.key}
+                                                            label={entry.label}
+                                                            checked={Boolean(rawValue)}
+                                                            onChange={(next) => updateUserSettingByPath(entry.key, next ? true : undefined)}
+                                                        />
+                                                    );
+                                                }
+                                                if (entry.type === 'string') {
+                                                    return (
+                                                        <SettingTextField
+                                                            key={entry.key}
+                                                            label={entry.label}
+                                                            value={typeof rawValue === 'string' ? rawValue : ''}
+                                                            onChange={(next) => updateUserSettingByPath(entry.key, next || undefined)}
+                                                        />
+                                                    );
+                                                }
+                                                return (
+                                                    <SettingSelect
+                                                        key={entry.key}
+                                                        label={entry.label}
+                                                        value={typeof rawValue === 'string' ? rawValue : ''}
+                                                        options={[
+                                                            { value: '', label: 'Keine Vorgabe' },
+                                                            ...(entry.options ?? []).map(option => ({
+                                                                value: option.value,
+                                                                label: option.label,
+                                                            })),
+                                                        ]}
+                                                        onChange={(next) => updateUserSettingByPath(entry.key, next)}
+                                                    />
+                                                );
+                                            })}
+                                        </>
+                                    ) : (
+                                        <EmptyState text="Für diese Behandlung gibt es noch keine spezifischen Einstellungen." />
+                                    )
                                 )}
                             </>
                         )}

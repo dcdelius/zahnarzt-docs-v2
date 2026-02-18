@@ -1,20 +1,25 @@
 {
-  "startedAt": "2026-02-16T14:56:51.649Z",
-  "finishedAt": "2026-02-16T14:58:04.268Z",
-  "allPassed": true,
+  "startedAt": "2026-02-17T18:53:33.456Z",
+  "finishedAt": "2026-02-17T18:54:25.836Z",
+  "allPassed": false,
   "steps": [
     {
       "id": "v10-online-deps",
-      "ok": true,
-      "exitCode": 0
+      "ok": false,
+      "exitCode": 1
     },
     {
       "id": "v10-kb-parity",
+      "ok": false,
+      "exitCode": 1
+    },
+    {
+      "id": "v10-gates",
       "ok": true,
       "exitCode": 0
     },
     {
-      "id": "v10-gates",
+      "id": "v10-documentation-fidelity",
       "ok": true,
       "exitCode": 0
     },
@@ -30,11 +35,6 @@
     },
     {
       "id": "v10-ui-askback-lanes-and-trace",
-      "ok": true,
-      "exitCode": 0
-    },
-    {
-      "id": "v10-realistic-e2e",
       "ok": true,
       "exitCode": 0
     }

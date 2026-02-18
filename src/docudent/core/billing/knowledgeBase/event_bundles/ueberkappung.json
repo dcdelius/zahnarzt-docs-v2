@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "treatmentId": "ueberkappung",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "ueberkappung.baseline.direkt",
+      "chipIds": ["ueberkappung_direkt"],
+      "textRefIds": ["ueberkappung_direkt"],
+      "billingRefIds": ["ueberkappung_direkt"]
+    },
+    {
+      "id": "ueberkappung.baseline.indirekt",
+      "chipIds": ["ueberkappung_indirekt"],
+      "textRefIds": ["ueberkappung_indirekt"],
+      "billingRefIds": ["ueberkappung_indirekt"]
+    },
+    {
+      "id": "ueberkappung.material.mta",
+      "chipIds": ["ueberkappung_material_mta"],
+      "textRefIds": ["ueberkappung_material_mta"]
+    },
+    {
+      "id": "ueberkappung.material.caoh2",
+      "chipIds": ["ueberkappung_material_caoh2"],
+      "textRefIds": ["ueberkappung_material_caoh2"]
+    },
+    {
+      "id": "ueberkappung.material.biodentine",
+      "chipIds": ["ueberkappung_material_biodentine"],
+      "textRefIds": ["ueberkappung_material_biodentine"]
+    },
+    {
+      "id": "ueberkappung.askback.art"
+    },
+    {
+      "id": "ueberkappung.askback.material"
+    }
+  ]
+}

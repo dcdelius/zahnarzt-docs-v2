@@ -8,13 +8,17 @@
  * ✅ Explicit errors for unknown treatments
  * ✅ Type-safe treatment IDs
  */
+import {
+    CORE_BILLING_TREATMENT_IDS,
+    type CoreBillingTreatmentId,
+} from '@/docudent/contracts/treatments.manifest';
 
 // ═══════════════════════════════════════════════════════════════
 // KNOWN TREATMENTS — Add new treatments here
 // ═══════════════════════════════════════════════════════════════
 
-export const KNOWN_TREATMENTS = ['fuellung', 'endo', 'extraction', 'pzr', 'crown_prep'] as const;
-export type TreatmentId = typeof KNOWN_TREATMENTS[number];
+export const KNOWN_TREATMENTS = [...CORE_BILLING_TREATMENT_IDS] as const;
+export type TreatmentId = CoreBillingTreatmentId;
 
 // ═══════════════════════════════════════════════════════════════
 // VALIDATION FUNCTIONS
@@ -93,6 +97,111 @@ const TREATMENT_CAPABILITIES: Record<TreatmentId, TreatmentCapabilities> = {
         hasFindingMap: true,
     },
     crown_prep: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    ueberkappung: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    untersuchung: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    roentgen: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    fissurenversiegelung: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    parodontologie: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    upt: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    krone: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    bruecke: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    teilkrone: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    wsr: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    trauma: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    implant: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    schiene: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    teilprothese: {
+        hasUnified: true,
+        hasAnswerMap: true,
+        hasQuestionBank: true,
+        hasTemplate: true,
+        hasFindingMap: true,
+    },
+    totalprothese: {
         hasUnified: true,
         hasAnswerMap: true,
         hasQuestionBank: true,

@@ -1,0 +1,46 @@
+{
+    "_meta": {
+        "treatmentId": "ueberkappung",
+        "version": "1.0.0"
+    },
+    "map": [
+        {
+            "questionKey": "ueberkappung_art",
+            "questionIdPatterns": [
+                "medical_ueberkappung",
+                "ueberkappung",
+                "capping"
+            ],
+            "answers": {
+                "direkt": "ueberkappung_direkt",
+                "indirekt": "ueberkappung_indirekt"
+            },
+            "exclusiveGroup": "ueberkappung_art",
+            "mutuallyExclusive": [
+                "ueberkappung_direkt",
+                "ueberkappung_indirekt"
+            ]
+        },
+        {
+            "questionKey": "ueberkappung_material",
+            "questionIdPatterns": [
+                "medical_ueberkappung_material",
+                "ueberkappung_material"
+            ],
+            "answers": {
+                "MTA": "ueberkappung_material_mta",
+                "Ca(OH)₂": "ueberkappung_material_caoh2",
+                "Biodentine": "ueberkappung_material_biodentine"
+            },
+            "exclusiveGroup": "ueberkappung_material",
+            "mutuallyExclusive": [
+                "ueberkappung_material_mta",
+                "ueberkappung_material_caoh2",
+                "ueberkappung_material_biodentine"
+            ]
+        }
+    ],
+    "defaults": {
+        "alwaysOnChipIds": []
+    }
+}

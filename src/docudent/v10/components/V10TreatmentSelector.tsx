@@ -9,6 +9,7 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { listPacks } from '../packs';
+import { UI_SELECTOR_TREATMENT_IDS } from '@/docudent/contracts/treatments.manifest';
 
 interface V10TreatmentSelectorProps {
     value: string;
@@ -21,7 +22,10 @@ export function V10TreatmentSelector({ value, onChange, 'data-testid': testId }:
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Get packs from registry
-    const packs = useMemo(() => listPacks(), []);
+    const packs = useMemo(() => {
+        const allowed = new Set<string>(UI_SELECTOR_TREATMENT_IDS as readonly string[]);
+        return listPacks().filter(pack => allowed.has(pack.id));
+    }, []);
     const selectedPack = packs.find(p => p.id === value) || packs[0];
 
     // Close dropdown when clicking outside

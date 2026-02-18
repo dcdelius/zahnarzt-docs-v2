@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "treatmentId": "fissurenversiegelung",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "fissurenversiegelung.baseline",
+      "chipIds": ["fissurenversiegelung_standard", "fissurenversiegelung_kontrolle"],
+      "textRefIds": ["fissurenversiegelung_standard", "fissurenversiegelung_kontrolle"],
+      "billingRefIds": ["fissurenversiegelung_standard"]
+    },
+    {
+      "id": "fissurenversiegelung.askback.indikation"
+    },
+    {
+      "id": "fissurenversiegelung.askback.material"
+    }
+  ]
+}

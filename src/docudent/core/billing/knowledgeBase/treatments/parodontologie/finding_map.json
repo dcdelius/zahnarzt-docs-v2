@@ -1,0 +1,16 @@
+{
+    "_meta": {
+        "treatmentId": "parodontologie",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "phase": {
+            "label": "PAR-Phase",
+            "template": "{{value}}"
+        },
+        "uptGrade": {
+            "label": "UPT-Grad",
+            "template": "{{value}}"
+        }
+    }
+}

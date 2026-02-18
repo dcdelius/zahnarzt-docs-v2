@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "treatmentId": "parodontologie",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "parodontologie.phase.status",
+      "chipIds": ["parodontologie_status"],
+      "textRefIds": ["parodontologie_status"],
+      "billingRefIds": ["parodontologie_status"]
+    },
+    {
+      "id": "parodontologie.phase.ait",
+      "chipIds": ["parodontologie_ait"],
+      "textRefIds": ["parodontologie_ait"],
+      "billingRefIds": ["parodontologie_ait"]
+    },
+    {
+      "id": "parodontologie.phase.upt.a",
+      "chipIds": ["parodontologie_upt_a"],
+      "textRefIds": ["parodontologie_upt_a"],
+      "billingRefIds": ["parodontologie_upt_a"]
+    },
+    {
+      "id": "parodontologie.phase.upt.b",
+      "chipIds": ["parodontologie_upt_b"],
+      "textRefIds": ["parodontologie_upt_b"],
+      "billingRefIds": ["parodontologie_upt_b"]
+    },
+    {
+      "id": "parodontologie.phase.upt.c",
+      "chipIds": ["parodontologie_upt_c"],
+      "textRefIds": ["parodontologie_upt_c"],
+      "billingRefIds": ["parodontologie_upt_c"]
+    },
+    {
+      "id": "parodontologie.askback.phase"
+    },
+    {
+      "id": "parodontologie.askback.upt_grad"
+    }
+  ]
+}

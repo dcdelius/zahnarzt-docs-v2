@@ -49,8 +49,11 @@ async function globalSetup(config: FullConfig) {
         if (isLoginVisible) {
             console.log('[globalSetup] Login form visible, authenticating...');
 
-            const email = process.env.E2E_LOGIN_EMAIL || 'dcdelius@me.com';
-            const password = process.env.E2E_LOGIN_PASSWORD || 'Magenta!';
+            const email = process.env.E2E_LOGIN_EMAIL;
+            const password = process.env.E2E_LOGIN_PASSWORD;
+            if (!email || !password) {
+                throw new Error('E2E_LOGIN_EMAIL und E2E_LOGIN_PASSWORD sind fuer globalSetup erforderlich.');
+            }
 
             await emailInput.fill(email);
 

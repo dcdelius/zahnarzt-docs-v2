@@ -28,4 +28,24 @@ describe('V10 Surface Lexicon', () => {
         expect(result.surfaces).toEqual(['m', 'o', 'd', 'b']);
         expect(result.hasAmbiguity).toBe(false);
     });
+
+    it('maps shorthand IB to O+B for anterior shorthand dictation', () => {
+        const result = normalizeSurfaces({
+            dictation: '11 IB Komposit adhäsiv, finiert und poliert.',
+        });
+
+        expect(result.surfaces).toEqual(['o', 'b']);
+        expect(result.hasAmbiguity).toBe(false);
+    });
+
+    it('prefers explicit dictation surfaces when extraction conflicts', () => {
+        const result = normalizeSurfaces({
+            extracted: ['o', 'l'],
+            dictation: '11 IB Komposit adhäsiv.',
+        });
+
+        expect(result.surfaces).toEqual(['o', 'b']);
+        expect(result.source).toBe('dictation');
+        expect(result.hasAmbiguity).toBe(false);
+    });
 });

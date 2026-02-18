@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "treatmentId": "wsr",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "wsr.zugang.trepaniert",
+      "chipIds": ["wsr_bema_54"],
+      "textRefIds": ["wsr_bema_54"],
+      "billingRefIds": ["wsr_bema_54"]
+    },
+    {
+      "id": "wsr.zugang.osteotomie",
+      "chipIds": ["wsr_bema_55"],
+      "textRefIds": ["wsr_bema_55"],
+      "billingRefIds": ["wsr_bema_55"]
+    },
+    {
+      "id": "wsr.lokalisation.front_praemolar",
+      "chipIds": ["wsr_goz_3110"],
+      "textRefIds": ["wsr_goz_3110"],
+      "billingRefIds": ["wsr_goz_3110"]
+    },
+    {
+      "id": "wsr.lokalisation.molar",
+      "chipIds": ["wsr_goz_3120"],
+      "textRefIds": ["wsr_goz_3120"],
+      "billingRefIds": ["wsr_goz_3120"]
+    },
+    {
+      "id": "wsr.askback.zugang"
+    },
+    {
+      "id": "wsr.askback.lokalisation"
+    }
+  ]
+}

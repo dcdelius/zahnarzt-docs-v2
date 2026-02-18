@@ -161,6 +161,28 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
         return sessionKbReleaseIdRef.current;
     };
 
+    const resolveRequireLlmExtraction = (): boolean => {
+        if (typeof process !== 'undefined' && process.env?.DOCUDENT_REQUIRE_LLM_PATH === '1') {
+            return true;
+        }
+        try {
+            // Browser/runtime flag for hard online mode.
+            if ((import.meta as any)?.env?.VITE_V10_REQUIRE_LLM_EXTRACTION === 'true') {
+                return true;
+            }
+        } catch {
+            // ignore
+        }
+        if (typeof window !== 'undefined') {
+            try {
+                return window.localStorage?.getItem('v10_require_llm_extraction') === 'true';
+            } catch {
+                // ignore
+            }
+        }
+        return false;
+    };
+
     // ─── Actions ────────────────────────────────────────────────
 
     const setDictation = useCallback((text: string) => {
@@ -168,19 +190,35 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
     }, []);
 
     const setInsuranceType = useCallback((type: InsuranceType) => {
-        setState(s => ({ ...s, insuranceType: type }));
+        setState(s => {
+            const next = { ...s, insuranceType: type };
+            stateRef.current = next;
+            return next;
+        });
     }, []);
 
     const setTextLength = useCallback((length: TextLength) => {
-        setState(s => ({ ...s, textLength: length }));
+        setState(s => {
+            const next = { ...s, textLength: length };
+            stateRef.current = next;
+            return next;
+        });
     }, []);
 
     const setHasMKV = useCallback((hasMKV: boolean) => {
-        setState(s => ({ ...s, hasMKV }));
+        setState(s => {
+            const next = { ...s, hasMKV };
+            stateRef.current = next;
+            return next;
+        });
     }, []);
 
     const setTreatmentId = useCallback((treatmentId: string) => {
-        setState(s => ({ ...s, treatmentId }));
+        setState(s => {
+            const next = { ...s, treatmentId };
+            stateRef.current = next;
+            return next;
+        });
     }, []);
 
     const answerQuestion = useCallback((questionId: string, value: unknown) => {
@@ -308,6 +346,7 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
                 chipOverrides,
                 userDefaults: userDefaults as Record<string, unknown> | undefined,
                 kbReleaseId: sessionKbReleaseId,
+                requireLlmExtraction: resolveRequireLlmExtraction(),
             });
 
             if (thisRunId !== lastRunIdRef.current) {
@@ -479,7 +518,10 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
         }));
 
         try {
-            const output = await runV10Bundle(bundleInput);
+            const output = await runV10Bundle({
+                ...bundleInput,
+                requireLlmExtraction: bundleInput.requireLlmExtraction ?? resolveRequireLlmExtraction(),
+            });
             if (thisRunId !== lastRunIdRef.current) return;
 
             if (output.state === 'questions') {
@@ -774,6 +816,7 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
                     answers: instanceAnswers,
                     userDefaults: settingsRef.current as Record<string, unknown> | undefined,
                     kbReleaseId: sessionKbReleaseId,
+                    requireLlmExtraction: resolveRequireLlmExtraction(),
                 });
             }));
 
@@ -971,6 +1014,7 @@ export function useV10Pipeline(options?: { settingsInput?: SettingsInput }) {
                     answers: instanceAnswers,
                     userDefaults: settingsRef.current as Record<string, unknown> | undefined,
                     kbReleaseId: sessionKbReleaseId,
+                    requireLlmExtraction: resolveRequireLlmExtraction(),
                 });
             }));
 

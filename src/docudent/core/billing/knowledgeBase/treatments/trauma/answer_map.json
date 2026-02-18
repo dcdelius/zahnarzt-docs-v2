@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "treatmentId": "trauma",
+    "version": "1.0.0"
+  },
+  "map": [],
+  "defaults": {
+    "alwaysOnChipIds": []
+  }
+}

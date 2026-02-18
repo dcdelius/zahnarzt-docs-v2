@@ -172,6 +172,200 @@
       },
       "surfaceMappedChips": []
     },
+    "untersuchung": {
+      "billingRefs": {
+        "untersuchung_eingehend": {
+          "GKV": "BEMA_01",
+          "PKV": "GOZ_0010"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "parodontologie": {
+      "billingRefs": {
+        "parodontologie_status": {
+          "GKV": "BEMA_04",
+          "PKV": "GOZ_4000"
+        },
+        "parodontologie_ait": {
+          "GKV": "BEMA_AIT",
+          "PKV": "GOZ_4070"
+        },
+        "parodontologie_upt_a": {
+          "GKV": "BEMA_UPTa"
+        },
+        "parodontologie_upt_b": {
+          "GKV": "BEMA_UPTb"
+        },
+        "parodontologie_upt_c": {
+          "GKV": "BEMA_UPTc"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "upt": {
+      "billingRefs": {
+        "upt_grad_a": {
+          "GKV": "BEMA_UPTa"
+        },
+        "upt_grad_b": {
+          "GKV": "BEMA_UPTb"
+        },
+        "upt_grad_c": {
+          "GKV": "BEMA_UPTc"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "trauma": {
+      "billingRefs": {
+        "trauma_schienung_semipermanent": {
+          "GKV": "BEMA_100",
+          "PKV": "GOZ_7070"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "implant": {
+      "billingRefs": {
+        "implant_insertion": {
+          "PKV": "GOZ_9000"
+        },
+        "implant_freilegung": {
+          "PKV": "GOZ_9040"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "schiene": {
+      "billingRefs": {
+        "schiene_okklusionsschiene": {
+          "GKV": "BEMA_K1",
+          "PKV": "GOZ_7000"
+        },
+        "schiene_protrusionsschiene": {
+          "PKV": "GOZ_7010"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "wsr": {
+      "billingRefs": {
+        "wsr_bema_54": {
+          "GKV": "BEMA_54"
+        },
+        "wsr_bema_55": {
+          "GKV": "BEMA_55"
+        },
+        "wsr_goz_3110": {
+          "PKV": "GOZ_3110"
+        },
+        "wsr_goz_3120": {
+          "PKV": "GOZ_3120"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "krone": {
+      "billingRefs": {
+        "krone_vollkrone": {
+          "GKV": "BEMA_20a",
+          "PKV": "GOZ_2210"
+        },
+        "krone_provisorium": {
+          "GKV": "BEMA_19",
+          "PKV": "GOZ_2270"
+        },
+        "krone_eingliederung_definitiv": {
+          "PKV": "GOZ_5180"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "bruecke": {
+      "billingRefs": {
+        "bruecke_definitiv": {
+          "PKV": "GOZ_5070"
+        },
+        "bruecke_provisorisch": {
+          "PKV": "GOZ_5120"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "teilprothese": {
+      "billingRefs": {
+        "teilprothese_interim": {
+          "PKV": "GOZ_5200"
+        },
+        "teilprothese_modellguss": {
+          "PKV": "GOZ_5210"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "totalprothese": {
+      "billingRefs": {
+        "totalprothese_konventionell": {
+          "PKV": "GOZ_5220"
+        },
+        "totalprothese_immediat": {
+          "PKV": "GOZ_5230"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "teilkrone": {
+      "billingRefs": {
+        "teilkrone_definitiv": {
+          "GKV": "BEMA_20c",
+          "PKV": "GOZ_2220"
+        },
+        "teilkrone_provisorium": {
+          "GKV": "BEMA_19",
+          "PKV": "GOZ_2260"
+        },
+        "teilkrone_eingliederung_definitiv": {
+          "PKV": "GOZ_5180"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "fissurenversiegelung": {
+      "billingRefs": {
+        "fissurenversiegelung_standard": {
+          "GKV": "BEMA_IP5",
+          "PKV": "GOZ_2000"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "ueberkappung": {
+      "billingRefs": {
+        "ueberkappung_indirekt": {
+          "GKV": "BEMA_25",
+          "PKV": "GOZ_2330"
+        },
+        "ueberkappung_direkt": {
+          "GKV": "BEMA_26",
+          "PKV": "GOZ_2340"
+        }
+      },
+      "surfaceMappedChips": []
+    },
+    "roentgen": {
+      "billingRefs": {
+        "roentgen_einzelzahn": {
+          "GKV": "BEMA_Ä925a",
+          "PKV": "GOZ_5000"
+        },
+        "roentgen_opg": {
+          "GKV": "BEMA_Ä935d",
+          "PKV": "GOZ_5004"
+        }
+      },
+      "surfaceMappedChips": []
+    },
     "crown_prep": {
       "billingRefs": {
         "abformung": {

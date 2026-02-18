@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "teilkrone",
+    "version": "1.0.0"
+  },
+    "bundles": [
+    {
+      "id": "teilkrone.art.definitiv",
+      "chipIds": ["teilkrone_definitiv"],
+      "textRefIds": ["teilkrone_definitiv"],
+      "billingRefIds": ["teilkrone_definitiv"]
+    },
+    {
+      "id": "teilkrone.art.provisorium",
+      "chipIds": ["teilkrone_provisorium"],
+      "textRefIds": ["teilkrone_provisorium"],
+      "billingRefIds": ["teilkrone_provisorium"]
+    },
+    {
+      "id": "teilkrone.eingliederung.definitiv",
+      "chipIds": ["teilkrone_eingliederung_definitiv"],
+      "textRefIds": ["teilkrone_eingliederung_definitiv"],
+      "billingRefIds": ["teilkrone_eingliederung_definitiv"]
+    },
+    {
+      "id": "teilkrone.askback.art"
+    },
+    {
+      "id": "teilkrone.askback.eingliederung"
+    }
+  ]
+}

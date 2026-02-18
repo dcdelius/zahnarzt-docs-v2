@@ -459,6 +459,18 @@ export function QuestionsFlowV2({
                 </div>
 
                 {/* Sticky Action Bar */}
+                <div
+                    data-testid="v10-questions-completion-state"
+                    data-required-total={String(allRequired.length)}
+                    data-required-answered={String(answeredRequired)}
+                    data-pending-required={String(pendingRequired)}
+                    data-can-complete={canComplete ? 'true' : 'false'}
+                    data-active-lane={activeLaneId}
+                    data-scoped-required-total={String(scopedRequired.length)}
+                    data-scoped-required-answered={String(scopedAnsweredRequired)}
+                    style={{ display: 'none' }}
+                    aria-hidden="true"
+                />
                 <motion.div
                     style={{
                         position: 'sticky',

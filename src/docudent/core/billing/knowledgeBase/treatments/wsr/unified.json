@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "id": "wsr",
+    "version": "1.0.0",
+    "label": "WSR"
+  },
+  "chips": [
+    {
+      "id": "wsr_bema_54",
+      "label": "WSR am eroeffneten Zahn",
+      "phase": "chirurgie",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Wurzelspitzenresektion am eroeffneten Zahn durchgefuehrt.",
+        "mittel": "Wurzelspitzenresektion am eroeffneten Zahn (trepaniert) durchgefuehrt.",
+        "lang": "Wurzelspitzenresektion am eroeffneten Zahn (trepaniert) mit standardisierter OP-Dokumentation durchgefuehrt."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "wsr_bema_55",
+      "label": "WSR durch Osteotomie",
+      "phase": "chirurgie",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Wurzelspitzenresektion durch Osteotomie durchgefuehrt.",
+        "mittel": "Wurzelspitzenresektion durch Osteotomie am betroffenen Zahn durchgefuehrt.",
+        "lang": "Wurzelspitzenresektion durch Osteotomie am betroffenen Zahn mit standardisierter OP-Dokumentation durchgefuehrt."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "wsr_goz_3110",
+      "label": "Lokalisation Front/Praemolar",
+      "phase": "dokumentation",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Lokalisation Frontzahn/Praemolar dokumentiert.",
+        "mittel": "Lokalisation Frontzahn/Praemolar fuer Wurzelspitzenresektion dokumentiert.",
+        "lang": "Lokalisation Frontzahn/Praemolar fuer Wurzelspitzenresektion mit Befundbezug dokumentiert."
+      }
+    },
+    {
+      "id": "wsr_goz_3120",
+      "label": "Lokalisation Molar",
+      "phase": "dokumentation",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Lokalisation Molar dokumentiert.",
+        "mittel": "Lokalisation Molar fuer Wurzelspitzenresektion dokumentiert.",
+        "lang": "Lokalisation Molar fuer Wurzelspitzenresektion mit Befundbezug dokumentiert."
+      }
+    }
+  ]
+}

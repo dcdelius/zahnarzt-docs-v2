@@ -74,17 +74,83 @@ async function selectInsurance(page: Page, type: 'GKV' | 'PKV' | 'MKV') {
     }
 }
 
+async function handleIntentConfirmationIfVisible(page: Page): Promise<boolean> {
+    const panel = page.locator('[data-testid="v10-intent-confirmation-panel"]');
+    if (!(await panel.isVisible().catch(() => false))) return false;
+
+    const preferredTreatments = ['fuellung', 'endo', 'extraction', 'roentgen', 'untersuchung'];
+    const lanes = panel.locator('[data-testid^="v10-intent-lane-"]');
+    const laneCount = await lanes.count();
+
+    for (let i = 0; i < laneCount; i++) {
+        const lane = lanes.nth(i);
+        const laneTestId = (await lane.getAttribute('data-testid')) || '';
+        const laneId = laneTestId.replace('v10-intent-lane-', '');
+        if (!laneId) continue;
+
+        const selected = panel.locator(`[data-testid^="v10-intent-option-${laneId}-"][aria-pressed="true"]`);
+        if (await selected.count() > 0) continue;
+
+        let picked = false;
+        for (const treatmentId of preferredTreatments) {
+            const option = panel.locator(`[data-testid="v10-intent-option-${laneId}-${treatmentId}"]`).first();
+            if (await option.count() > 0) {
+                await option.click({ force: true });
+                picked = true;
+                break;
+            }
+        }
+
+        if (!picked) {
+            const fallbackOption = panel.locator(`[data-testid^="v10-intent-option-${laneId}-"]`).first();
+            if (await fallbackOption.count() > 0) {
+                await fallbackOption.click({ force: true });
+            }
+        }
+    }
+
+    const confirm = page.locator('[data-testid="v10-intent-confirm-button"]');
+    await expect(confirm).toBeEnabled({ timeout: 7000 });
+    await confirm.click();
+    return true;
+}
+
 async function runPipeline(page: Page, dictation: string): Promise<'output' | 'questions'> {
     await page.fill('[data-testid="v10-dictation-input"]', dictation);
-    await page.click('[data-testid="v10-run-button"]');
+    const runButton = page.locator('[data-testid="v10-run-button"]');
+    await expect(runButton).toBeVisible({ timeout: 10000 });
 
-    const result = page.locator('[data-testid="v10-questions-panel"], [data-testid="v10-output-panel"]');
-    await expect(result.first()).toBeVisible({ timeout: 15000 });
-
-    if (await page.locator('[data-testid="v10-questions-panel"]').isVisible()) {
-        return 'questions';
+    // Trigger run with small fallback sequence for occasional click drops.
+    await runButton.click().catch(() => {});
+    await page.waitForTimeout(120);
+    if (
+        !(await page.locator('[data-testid="v10-preanalysis-panel"]').isVisible().catch(() => false))
+        && !(await page.locator('[data-testid="v10-intent-confirmation-panel"]').isVisible().catch(() => false))
+    ) {
+        await page.keyboard.press('Control+Enter').catch(() => {});
+        await page.waitForTimeout(150);
     }
-    return 'output';
+
+    const started = Date.now();
+    while (Date.now() - started < 30000) {
+        if (await page.locator('[data-testid="v10-questions-panel"]').isVisible().catch(() => false)) {
+            return 'questions';
+        }
+        if (await page.locator('[data-testid="v10-output-panel"]').isVisible().catch(() => false)) {
+            return 'output';
+        }
+        if (await page.locator('[data-testid="v10-multi-output-panel"]').isVisible().catch(() => false)) {
+            return 'output';
+        }
+        if (await page.locator('[data-testid="v10-intent-confirmation-panel"]').isVisible().catch(() => false)) {
+            await handleIntentConfirmationIfVisible(page);
+            await page.waitForTimeout(250);
+            continue;
+        }
+        await page.waitForTimeout(250);
+    }
+
+    throw new Error('Neither questions nor output panel became visible within timeout.');
 }
 
 async function submitAnswers(page: Page): Promise<boolean> {

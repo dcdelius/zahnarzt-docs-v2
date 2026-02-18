@@ -79,7 +79,9 @@ export function loadAllRules(): Regel[] {
         // ...prothetikRegeln,
     ];
 
-    console.log(`[RegressGuard] ${alleRegeln.length} Regeln geladen`);
+    if (typeof process !== 'undefined' && process.env?.DOCUDENT_DEBUG_PROBES === '1') {
+        console.log(`[RegressGuard] ${alleRegeln.length} Regeln geladen`);
+    }
     return alleRegeln;
 }
 

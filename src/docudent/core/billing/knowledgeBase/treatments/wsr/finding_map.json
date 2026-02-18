@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "treatmentId": "wsr",
+    "version": "1.0.0"
+  },
+  "fields": {
+    "zugang": {
+      "label": "Zugang",
+      "template": "{{value}}"
+    },
+    "lokalisation": {
+      "label": "Lokalisation",
+      "template": "{{value}}"
+    }
+  }
+}

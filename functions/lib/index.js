@@ -44,6 +44,7 @@ exports.refineDocumentationTextV1 = exports.transcribeAudioV1 = exports.extractF
 const functions = __importStar(require("firebase-functions"));
 const admin = __importStar(require("firebase-admin"));
 const crypto = __importStar(require("crypto"));
+const promptContracts_1 = require("./llm/promptContracts");
 admin.initializeApp();
 const db = admin.firestore();
 const auth = admin.auth();
@@ -293,33 +294,7 @@ exports.acceptInvite = functions.https.onCall(async (data, context) => {
     functions.logger.info(`User ${uid} accepted invite ${inviteId} with role ${invite.role}`);
     return { ok: true, role: invite.role };
 });
-const PREANALYSIS_PROMPT = `Du strukturierst zahnmedizinische Fliesstext-Diktate in Behandlungs-Intents.
-Antworte NUR als JSON mit diesem Schema:
-{
-  "version": "1.0.0",
-  "dictation": "<original>",
-  "needsConfirmation": true|false,
-  "intents": [
-    {
-      "intentId": "string",
-      "treatmentId": "fuellung|endo|extraction|crown_prep",
-      "tooth": "string optional",
-      "phase": "string optional",
-      "step": "string optional",
-      "confidence": 0..1,
-      "evidenceSpans": [{ "start": number, "end": number, "text": "string" }],
-      "uncertainty": "classifier_low_confidence|candidate:crown_prep_no_pack|llm_low_confidence|llm_ambiguous_mapping|inferred_tooth_from_context|missing_tooth_reference optional"
-    }
-  ]
-}
-Regeln:
-- Keine Erfindungen.
-- Jeder Intent braucht mindestens einen evidenceSpan.
-- Wenn unsicher: needsConfirmation=true.
-- Wenn uncertainty gesetzt ist, muss needsConfirmation=true sein.
-- Wenn tooth fehlt, uncertainty setzen (z.B. missing_tooth_reference).
-- Keine Billing-Codes/Felder ausgeben (z.B. BEMA/GOZ/GOÄ/BEL, billingCodes, billingRefs).
-- Nur treatmentIds verwenden, die im Schema stehen.`;
+const PREANALYSIS_PROMPT = (0, promptContracts_1.buildPreanalysisPromptV1)();
 function getOpenAiApiKey() {
     const envKey = process.env.OPENAI_API_KEY?.trim();
     if (envKey)
@@ -378,36 +353,7 @@ exports.detectTreatmentIntentsV1 = functions.https.onCall(async (data, context) 
     }
     return { content };
 });
-const EXTRACTION_PROMPT_V1 = `Du bist ein Extraktions-Assistent für zahnärztliche Diktate.
-
-Extrahiere aus dem folgenden Diktat die strukturierten Daten.
-Antworte NUR mit einem JSON-Objekt, keine Erklärungen.
-
-Felder zum Extrahieren:
-- tooth: Zahnnummer (z.B. "36", "15") oder null
-- surfaces: Array von Flächen ["m", "o", "d", "b", "l", "i"] oder []
-- diagnosis: Diagnose (z.B. "Caries profunda", "Caries media") oder null
-- costs: Kosten in Euro als Zahl oder null
-- klinischeZusatzinfos: Array kurzer Stichpunkte zu medizinischen Zusatzinfos oder []
-- patientenangaben: Array kurzer Stichpunkte zu psychosozialen/patientenseitigen Angaben oder []
-- zusatzinfos: (legacy) Array kurzer Stichpunkte, falls keine klare Zuordnung möglich
-- mentioned.anesthesia: { type: "infiltr"|"leitung"|"keine", confidence: 0-1 } oder undefined
-- mentioned.kofferdam: true/false oder undefined
-- mentioned.capping: { type: "cp"|"p"|"none" } oder undefined
-- mentioned.material: String oder undefined
-- mentioned.vitality: "+"| "-" oder undefined
-- mentioned.percussion: "+"| "-" oder undefined
-
-Regeln:
-1. Extrahiere NUR was explizit erwähnt wurde
-2. Bei "tief" oder "profunda" → diagnosis: "Caries profunda"
-3. "mod" = ["m", "o", "d"], "ob" = ["o", "b"], etc.
-4. klinischeZusatzinfos nur bei expliziter, medizinisch relevanter Zusatzinfo (kurz, neutral, keine Mutmaßungen)
-5. patientenangaben nur bei expliziter Patientenangabe (kurz, neutral, keine Mutmaßungen)
-6. zusatzinfos nur wenn keine klare Zuordnung möglich ist
-7. KEINE Annahmen über nicht erwähnte Felder
-
-JSON-Antwort:`;
+const EXTRACTION_PROMPT_V1 = (0, promptContracts_1.buildExtractionPromptV1)();
 exports.extractFromDictationV1 = functions.https.onCall(async (data, context) => {
     if (!context.auth) {
         throw new functions.https.HttpsError('unauthenticated', 'Login required');

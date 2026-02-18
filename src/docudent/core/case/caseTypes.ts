@@ -44,7 +44,7 @@ export const CASE_STATUS_HINTS: Record<CaseStatus, string> = {
 // ═══════════════════════════════════════════════════════════════
 
 export type InsuranceType = 'GKV' | 'PKV';
-export type TreatmentId = 'fuellung' | 'endo';
+export type { ManifestTreatmentId as TreatmentId } from '@/docudent/contracts/treatments.manifest';
 
 // ═══════════════════════════════════════════════════════════════
 // SUMMARY TYPE (for list views)

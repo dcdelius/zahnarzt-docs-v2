@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "schiene",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "schiene.typ.okklusionsschiene",
+      "chipIds": ["schiene_okklusionsschiene"],
+      "textRefIds": ["schiene_okklusionsschiene"],
+      "billingRefIds": ["schiene_okklusionsschiene"]
+    },
+    {
+      "id": "schiene.typ.protrusionsschiene",
+      "chipIds": ["schiene_protrusionsschiene"],
+      "textRefIds": ["schiene_protrusionsschiene"],
+      "billingRefIds": ["schiene_protrusionsschiene"]
+    },
+    {
+      "id": "schiene.phase.kontrolle",
+      "chipIds": ["schiene_kontrolle"],
+      "textRefIds": ["schiene_kontrolle"],
+      "billingRefIds": []
+    },
+    {
+      "id": "schiene.askback.typ"
+    },
+    {
+      "id": "schiene.askback.phase"
+    }
+  ]
+}

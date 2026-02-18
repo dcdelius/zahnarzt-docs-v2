@@ -1,8 +1,7 @@
 import { normalizeAskbackId } from '../procedure/normalizeAskbackId';
 
 export function mergeRequiredAskbacks(
-    engineAskbacks: string[] = [],
-    procedureAskbacks: string[] = []
+    ...sources: Array<string[] | undefined>
 ): string[] {
     const merged: string[] = [];
     const seen = new Set<string>();
@@ -14,14 +13,12 @@ export function mergeRequiredAskbacks(
         merged.push(id);
     };
 
-    for (const id of engineAskbacks) {
-        if (!id) continue;
-        pushUnique(id);
-    }
-
-    for (const id of procedureAskbacks) {
-        if (!id) continue;
-        pushUnique(id);
+    for (const source of sources) {
+        if (!source) continue;
+        for (const id of source) {
+            if (!id) continue;
+            pushUnique(id);
+        }
     }
 
     return merged;

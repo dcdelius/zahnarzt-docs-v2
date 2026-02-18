@@ -1,0 +1,57 @@
+{
+  "runId": "2026-02-17T14:41:08.502Z",
+  "total": 2,
+  "pass": 2,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "mt01",
+      "title": "Endo + Fuellung (MKV addon) + Extraction in einer Sitzung",
+      "status": "PASS",
+      "treatmentIds": [
+        "endo",
+        "fuellung",
+        "extraction"
+      ],
+      "billingCodes": [
+        "BEMA_40",
+        "BEMA_12",
+        "BEMA_41a",
+        "BEMA_13c",
+        "GOZ_2100",
+        "BEMA_31",
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_Ä925a"
+      ],
+      "combinability": {
+        "reasons": []
+      },
+      "failures": []
+    },
+    {
+      "id": "mt02",
+      "title": "Endo + Fuellung (nur Kasse -> kein GOZ addon) + Extraction",
+      "status": "PASS",
+      "treatmentIds": [
+        "endo",
+        "fuellung",
+        "extraction"
+      ],
+      "billingCodes": [
+        "BEMA_40",
+        "BEMA_12",
+        "BEMA_41a",
+        "BEMA_13c",
+        "BEMA_31",
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_Ä925a"
+      ],
+      "combinability": {
+        "reasons": []
+      },
+      "failures": []
+    }
+  ]
+}

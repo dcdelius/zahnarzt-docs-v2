@@ -108,5 +108,51 @@ describe('Pipeline: endo settings defaults', () => {
             'einlage_caoh2',
             'kanalaufbereitung_2',
         ]));
+        const fullText = (result.output.fullText ?? '').toLowerCase();
+        expect(fullText).toContain('arbeitslängen dokumentiert');
+        expect(fullText).toContain('mb: 19');
+        expect(fullText).toContain('db: 18');
+    });
+
+    it('keeps no-kofferdam dictation above kofferdam defaults and suppresses BEMA_12', async () => {
+        const result = await runV10({
+            dictation:
+                'Endo Zahn 46. Leitungsanästhesie. Kein Kofferdam möglich (eingeschränkte Mundöffnung). Trepanation. 3 Kanäle aufbereitet. Arbeitslänge elektronisch. Gespült NaOCl und EDTA. Wurzelfüllung warm vertikal.',
+            treatmentId: 'endo',
+            insuranceType: 'GKV',
+            textLength: 'mittel',
+            testOnly: {
+                enabled: true,
+                forceAnswers: {
+                    medical_vipr: 'neg',
+                    medical_isolation: 'none',
+                    ENDO_RUBBER_DAM: 'Nein',
+                    ENDO_T1_WORKING_LENGTH_METHOD: 'elektrisch',
+                    ENDO_T2_WORKING_LENGTH_METHOD: 'elektrisch',
+                    ENDO_T1_IRRIGATION: 'naocl_edta',
+                    ENDO_T2_IRRIGATION: 'naocl_edta',
+                    ENDO_T1_MEDICATION: 'caoh2',
+                    ENDO_T2_MEDICATION: 'caoh2',
+                    ENDO_T3_OBTURATION_TECHNIQUE: 'warm',
+                    endo_canal_count: 3,
+                },
+                settings: {
+                    practice: { defaultIsolation: 'kofferdam' as const },
+                    user: {
+                        medicalDefaults: {
+                            isolation: { defaultMode: 'kofferdam' as const },
+                        },
+                    },
+                },
+            },
+        });
+
+        expect(result.state).toBe('output');
+        if (result.state !== 'output') return;
+
+        const instance = Object.values(result.output.perInstance ?? {})[0];
+        expect(instance?.chips ?? []).not.toContain('kofferdam');
+        expect((result.output.billingCodes ?? []).some(code => String(code).includes('BEMA_12'))).toBe(false);
+        expect((result.output.copyText ?? '').toLowerCase()).not.toContain('kofferdam angelegt');
     });
 });

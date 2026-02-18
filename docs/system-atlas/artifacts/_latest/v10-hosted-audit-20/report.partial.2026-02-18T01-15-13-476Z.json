@@ -1,0 +1,49 @@
+{
+  "runAt": "2026-02-18T01:15:13.476Z",
+  "baseUrl": "http://localhost:4173",
+  "isFullSuite": false,
+  "authMode": {
+    "localBypass": true,
+    "forceRealAuth": false
+  },
+  "summary": {
+    "cases": 1,
+    "extraction": {
+      "llm": 0,
+      "stub": 1,
+      "regex": 0,
+      "unknown": 0
+    },
+    "preanalysis": {
+      "llm": 0,
+      "fallback": 1,
+      "loginRequired": 1
+    }
+  },
+  "cases": [
+    {
+      "id": "S1",
+      "title": "GKV Füllung MOD",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV",
+      "dictation": "Bei der 36 war MOD kariös, ich habe nach Leitungsanästhesie unter Kofferdam mit Komposit aufgebaut, Okklusion eingeschliffen und sauber poliert, Patientin beschwerdefrei beim Aufbeißen.",
+      "askbacks": [],
+      "askbackAnswers": [],
+      "outputFullText": "[BEFUND]\n\nZahn 36. MOD\n\n[AUFKLÄRUNG]\n\nRisiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nZunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Daraufhin Kofferdam angelegt. Im Weiteren Zahn 36 (MOD): Füllungstherapie. Anschließend Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Abschließend Okklusion geprüft/eingeschliffen. Ausarbeitung und Politur.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• LA Leitung.\n• Kofferdam.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.\n\n[ABRECHNUNG]\n\nKassenleistung (BEMA):\n  41a – Leitungsanästhesie, intraoral\n  12 – Besondere Maßnahmen beim Präparieren oder Füllen (Separieren, Beseitigen störenden Zahnfleisches, Anlegen von Spanngummi, Stillung einer übermäßigen Papillenblutung), je Sitzung, je Kieferhälfte oder Frontzahnbereich\n  13c – Füllung dreiflächig",
+      "outputExcerpt": "[BEFUND] Zahn 36. MOD [AUFKLÄRUNG] Risiken der Lokalanästhesie wurden besprochen (Hämatom, Nervschädigung, allergische Reaktion). Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Zunächst Leitungsanästhesie N. alv. inf. (Ultracain D-S, A",
+      "billingCodes": [
+        "BEMA_12B",
+        "BEMA_13C",
+        "BEMA_41A"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    }
+  ]
+}

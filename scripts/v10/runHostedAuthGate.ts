@@ -1,25 +1,17 @@
 import { spawnSync } from 'node:child_process';
+import { resolveHostedRunEnv, validateHostedRunEnv } from './shared/hostedEnv';
 
 function fail(message: string): never {
     console.error(`[hosted-auth-gate] ${message}`);
     process.exit(1);
 }
 
-const baseUrl = process.env.PLAYWRIGHT_BASE_URL?.trim();
-const loginEmail = process.env.E2E_LOGIN_EMAIL?.trim();
-const loginPassword = process.env.E2E_LOGIN_PASSWORD?.trim();
-
-if (!baseUrl) {
-    fail('PLAYWRIGHT_BASE_URL fehlt. Beispiel: https://app.docudent.de');
+const hostedEnv = resolveHostedRunEnv();
+const hostedEnvValidation = validateHostedRunEnv(hostedEnv);
+if (!hostedEnvValidation.ok) {
+    fail(hostedEnvValidation.issues.join(' '));
 }
-
-if (/localhost|127\.0\.0\.1/i.test(baseUrl)) {
-    fail(`PLAYWRIGHT_BASE_URL muss auf Hosted zeigen, nicht auf lokal: ${baseUrl}`);
-}
-
-if (!loginEmail || !loginPassword) {
-    fail('E2E_LOGIN_EMAIL und E2E_LOGIN_PASSWORD sind Pflicht fuer den Hosted Auth Gate.');
-}
+const baseUrl = hostedEnv.baseUrl!.trim();
 
 const grep =
     process.env.HOSTED_GATE_GREP

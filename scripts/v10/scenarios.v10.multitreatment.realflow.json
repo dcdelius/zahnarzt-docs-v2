@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "description": "Real-life multi-treatment flowing dictations",
+    "version": "1.0.0",
+    "created": "2026-02-17"
+  },
+  "cases": [
+    {
+      "id": "m01",
+      "label": "GKV Fuellung + Endo + Roentgen",
+      "dictation": "GKV. Bei Zahn 24 wurde eine tiefe MOD-Kompositfuellung gelegt. Danach haben wir Zahn 27 wegen Klopfdolenz trepaniert, die Kanaele aufbereitet und medikamentoes eingelegt. Zur Verlaufskontrolle wurde eine Roentgenaufnahme angefertigt.",
+      "insuranceType": "GKV",
+      "expectedTreatments": ["fuellung", "endo", "roentgen"]
+    },
+    {
+      "id": "m02",
+      "label": "PKV Kronenpraeparation + Roentgen",
+      "dictation": "PKV. Zahn 11 wurde fuer eine Krone praepariert, praezise abgeformt und provisorisch versorgt. Zusaetzlich erfolgte ein OPG zur Therapieplanung.",
+      "insuranceType": "PKV",
+      "expectedTreatments": ["crown_prep", "roentgen"]
+    },
+    {
+      "id": "m03",
+      "label": "GKV Extraktion + Fuellung",
+      "dictation": "GKV. Zunaechst Extraktion von Zahn 28 unter Infiltrationsanaesthesie mit Wundversorgung, anschliessend an Zahn 16 eine okklusale Kompositfuellung unter Kofferdam mit Bisskontrolle.",
+      "insuranceType": "GKV",
+      "expectedTreatments": ["extraction", "fuellung"]
+    },
+    {
+      "id": "m04",
+      "label": "PKV Endo + WSR + Roentgen",
+      "dictation": "PKV. Zahn 36 endodontisch mit Trepanation, Arbeitslaengenbestimmung, Aufbereitung und Wurzelfuellung behandelt; im Anschluss Wurzelspitzenresektion via Osteotomie und postoperative Roentgenkontrolle.",
+      "insuranceType": "PKV",
+      "expectedTreatments": ["endo", "wsr", "roentgen"]
+    },
+    {
+      "id": "m05",
+      "label": "GKV Trauma + Schiene + Roentgen",
+      "dictation": "GKV. Nach Frontzahntrauma an Zahn 11 mit Lockerung wurde semipermanent geschient, eine Roentgenkontrolle durchgefuehrt und zusaetzlich eine Okklusionsschiene zur Entlastung eingegliedert.",
+      "insuranceType": "GKV",
+      "expectedTreatments": ["trauma", "roentgen", "schiene"]
+    },
+    {
+      "id": "m06",
+      "label": "GKV Parodontologie + UPT",
+      "dictation": "GKV. In regio 36 und 37 wurde eine geschlossene antiinfektioese Parodontaltherapie durchgefuehrt und anschliessend UPT Grad B mit Recallplanung dokumentiert.",
+      "insuranceType": "GKV",
+      "expectedTreatments": ["parodontologie", "upt"]
+    },
+    {
+      "id": "m07",
+      "label": "PKV Implantat + Krone",
+      "dictation": "PKV. In regio 36 erfolgte die Implantatinsertion mit Nachsorge, spaeter wurde die definitive Krone eingegliedert und okklusal eingestellt.",
+      "insuranceType": "PKV",
+      "expectedTreatments": ["implant", "krone"]
+    },
+    {
+      "id": "m08",
+      "label": "PKV Teilkrone + Bruecke",
+      "dictation": "PKV. Zahn 16 erhielt eine definitive Teilkrone, gleichzeitig wurde in regio 36 eine definitive Brueckenversorgung eingegliedert und funktionell kontrolliert.",
+      "insuranceType": "PKV",
+      "expectedTreatments": ["teilkrone", "bruecke"]
+    }
+  ]
+}

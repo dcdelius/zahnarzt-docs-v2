@@ -1,0 +1,116 @@
+{
+  "runAt": "2026-02-18T07:19:15.016Z",
+  "baseUrl": "http://localhost:4173",
+  "isFullSuite": false,
+  "authMode": {
+    "localBypass": true,
+    "forceRealAuth": false
+  },
+  "summary": {
+    "cases": 2,
+    "extraction": {
+      "llm": 0,
+      "stub": 2,
+      "regex": 0,
+      "unknown": 0
+    },
+    "preanalysis": {
+      "llm": 0,
+      "fallback": 2,
+      "loginRequired": 2
+    }
+  },
+  "cases": [
+    {
+      "id": "S5",
+      "title": "PKV Endo warm",
+      "treatmentId": "endo",
+      "insuranceMode": "PKV",
+      "dictation": "11 endodontisch eröffnet, elektronisch die Länge genommen, rotierend aufbereitet, warm-vertikal obturiert mit Sealer, Kofferdam war durchgehend angelegt, postoperativ keine Beschwerden.",
+      "askbacks": [
+        "Bitte Arbeitslängen pro Kanal angeben",
+        "Welche Spüllösungen wurden verwendet?NaOClEDTACHXNaClAndere",
+        "Wie viele Kanaele wurden behandelt?",
+        "Welche medikamentoese Einlage wurde verwendet?"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "ENDO_T1_WORKING_LENGTHS::tooth:11",
+          "questionLabel": "Bitte Arbeitslängen pro Kanal angeben",
+          "answer": "{\"K1\":19,\"K2\":18,\"K3\":20}",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_canal_count::tooth:11",
+          "questionLabel": "Wie viele Kanaele wurden behandelt?",
+          "answer": "3",
+          "source": "free_text"
+        },
+        {
+          "questionId": "endo_medication::tooth:11",
+          "questionLabel": "Welche medikamentoese Einlage wurde verwendet?",
+          "answer": "Ca(OH)2",
+          "source": "free_text"
+        },
+        {
+          "questionId": "ENDO_T1_IRRIGATION::tooth:11",
+          "questionLabel": "Welche Spüllösungen wurden verwendet?NaOClEDTACHXNaClAndere",
+          "answer": "NaOCl",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "[BEFUND]\n\nZahn 11\n\n[AUFKLÄRUNG]\n\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[BEHANDLUNGSABLAUF]\n\nInitial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 1 Wurzelkanal. Anschließend Aufbereitung maschinell (rotierend). Daraufhin Spülung mit NaOCl. Anschließend Medikamentöse Einlage mit Ca(OH)₂. Daraufhin Wurzelfüllung in warmer vertikaler Kondensation. Anschließend Sealer verwendet. Daraufhin Röntgenkontrolle post WF. Abschließend Arbeitslängen dokumentiert: {\"K1\":19,\"K2\":18,\"K3\":20}.\n\nKlinische Zusatzinfo: Endo Arbeitslängenmethode: electronic; Endo Kanalanzahl: 1; Endo Spüllösungen: NaOCl; Endo Medikamentöse Einlage: Ca(OH)2; Endo Wurzelfülltechnik: warm.\nMedikamentöse Einlage dokumentiert: Ca(OH)2.\n\n[DURCHGEFÜHRTE LEISTUNGEN]\n\n• Kofferdam.\n• Elektr. AL.\n• 1K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\nKanalanzahl dokumentiert: 1.\n\n[HINWEISE]\n\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.\n\n[ABRECHNUNG]\n\nPrivatleistung (GOZ):\n  2040 – Anlegen von Spanngummi (Kofferdam)\n  2400 – Elektrometrische Längenbestimmung (Endometrie)\n  2440 – Wurzelfüllung je Kanal\n  2430 – Einlage medikamentös je Kanal\n  2410 – Zusatz maschinelle Aufbereitung\n  5000 – Röntgen: Intraorale Aufnahme",
+      "outputExcerpt": "[BEFUND] Zahn 11 [AUFKLÄRUNG] Der Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert. [BEHANDLUNGSABLAUF] Initial Kofferdam angelegt. Anschließend Elektrische Arbeitslängenmessung. Daraufhin Aufbereitung von 1 Wurzelkanal. Anschließend Aufbereitung maschinell (rot",
+      "billingCodes": [
+        "GOZ_2040",
+        "GOZ_2400",
+        "GOZ_2410",
+        "GOZ_2430",
+        "GOZ_2440",
+        "GOZ_5000"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    },
+    {
+      "id": "S11",
+      "title": "GKV Extraktion + Füllung (Multi-Treatment)",
+      "treatmentId": "extraction",
+      "insuranceMode": "GKV",
+      "dictation": "Extraktion Zahn 28 nach Luxation mit Infiltrationsanästhesie; danach Füllung Zahn 16 okklusal mit Komposit unter Kofferdam, Okklusion kontrolliert.",
+      "askbacks": [
+        "Wundversorgung/Naht durchgeführt?JaNein"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "seg-1-1-1:tooth:28::wound_care::tooth:28",
+          "questionLabel": "Wundversorgung/Naht durchgeführt?JaNein",
+          "answer": "Ja",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "Lokalanästhesie (Infiltration). Extraktion Zahn 28 durchgeführt. Wundversorgung durchgeführt.\n\nLA Infiltration (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Kofferdam angelegt. Zahn 16 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "outputExcerpt": "Lokalanästhesie (Infiltration). Extraktion Zahn 28 durchgeführt. Wundversorgung durchgeführt. LA Infiltration (Ultracain D-S, Articain 4% + Adrenalin 1:200.000). Kofferdam angelegt. Zahn 16 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "billingCodes": [
+        "BEMA_12",
+        "BEMA_13",
+        "BEMA_40",
+        "BEMA_41A"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required"
+      }
+    }
+  ]
+}

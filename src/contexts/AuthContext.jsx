@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signInAnonymously } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -99,9 +99,26 @@ export function AuthProvider({ children }) {
   const location = useLocation();
 
   useEffect(() => {
-    // In E2E mode, skip Firebase auth entirely
+    // In E2E mode, keep UI bypass but try anonymous auth so callable gateways
+    // still receive a valid auth context (if provider is enabled).
     if (isE2EMode) {
-      return;
+      let alive = true;
+      signInAnonymously(auth)
+        .then((credential) => {
+          if (!alive) return;
+          if (credential?.user) {
+            setUser(credential.user);
+          }
+        })
+        .catch((error) => {
+          if (typeof window !== 'undefined' && !window.__e2eAnonAuthWarned) {
+            console.warn('[AuthContext] E2E anonymous auth unavailable; using mock user only', error);
+            window.__e2eAnonAuthWarned = true;
+          }
+        });
+      return () => {
+        alive = false;
+      };
     }
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {

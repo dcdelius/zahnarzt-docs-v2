@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "treatmentId": "totalprothese",
+    "version": "1.0.0"
+  },
+  "map": [
+    {
+      "questionKey": "totalprothese_typ",
+      "questionIdPatterns": [
+        "totalprothese_typ",
+        "medical_totalprothese_typ"
+      ],
+      "answers": {
+        "konventionell": "totalprothese_konventionell",
+        "immediat": "totalprothese_immediat"
+      },
+      "exclusiveGroup": "totalprothese_typ",
+      "mutuallyExclusive": [
+        "totalprothese_konventionell",
+        "totalprothese_immediat"
+      ]
+    }
+  ],
+  "defaults": {
+    "alwaysOnChipIds": []
+  }
+}

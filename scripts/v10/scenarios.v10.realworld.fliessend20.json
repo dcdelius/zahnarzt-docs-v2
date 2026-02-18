@@ -1,0 +1,249 @@
+{
+  "_meta": {
+    "description": "20 real-life flowing dictations across top treatments for full-output audit",
+    "version": "1.0.0",
+    "created": "2026-02-17"
+  },
+  "cases": [
+    {
+      "id": "f01",
+      "title": "GKV Fuellung tief",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Heute bei Zahn 24 MOD die kariosen Anteile entfernt, die Karies war tief, danach mit Komposit versorgt und die Okklusion kontrolliert.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"]
+      }
+    },
+    {
+      "id": "f02",
+      "title": "PKV Endo mehrkanalig",
+      "treatmentId": "endo",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 27 wurde eine endodontische Behandlung mit Trepanation, Arbeitslangenbestimmung, maschineller Aufbereitung, NaOCl-Spulung und medikamentoeser Einlage durchgefuehrt.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f03",
+      "title": "GKV Extraktion mit Wundversorgung",
+      "treatmentId": "extraction",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 18 wurde nach Infiltrationsanaesthesie komplikationslos extrahiert, anschliessend erfolgte die Wundversorgung mit postoperativer Aufklaerung.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"]
+      }
+    },
+    {
+      "id": "f04",
+      "title": "PKV Kronenpraeparation",
+      "treatmentId": "crown_prep",
+      "insuranceType": "PKV",
+      "dictation": "Bei Zahn 11 erfolgte die Kronenpraeparation, danach Abformung und Eingliederung eines Provisoriums.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f05",
+      "title": "GKV PZR komplett",
+      "treatmentId": "pzr",
+      "insuranceType": "GKV",
+      "dictation": "Es wurde eine professionelle Zahnreinigung mit Zahnsteinentfernung, Politur und abschliessender Fluoridierung durchgefuehrt.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"]
+      }
+    },
+    {
+      "id": "f06",
+      "title": "PKV Ueberkappung",
+      "treatmentId": "ueberkappung",
+      "insuranceType": "PKV",
+      "dictation": "Bei Zahn 36 kam es pulpanah zur direkten Ueberkappung mit MTA nach punktfoermiger Pulpaeroeffnung.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f07",
+      "title": "PKV Fissurenversiegelung",
+      "treatmentId": "fissurenversiegelung",
+      "insuranceType": "PKV",
+      "dictation": "Zur Kariesprophylaxe wurde an Zahn 16 eine Fissurenversiegelung mit lichthaertendem Material vorgenommen.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f08",
+      "title": "GKV Parodontologie",
+      "treatmentId": "parodontologie",
+      "insuranceType": "GKV",
+      "dictation": "Im Rahmen der Parodontaltherapie wurde an den Regionen 36 und 37 eine geschlossene antiinfektioese Behandlung durchgefuehrt.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"]
+      }
+    },
+    {
+      "id": "f09",
+      "title": "GKV UPT Recall",
+      "treatmentId": "upt",
+      "insuranceType": "GKV",
+      "dictation": "UPT Grad B wurde heute an Zahn 36 durchgefuehrt, das Recallintervall ist auf sechs Monate festgelegt.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"]
+      }
+    },
+    {
+      "id": "f10",
+      "title": "PKV WSR",
+      "treatmentId": "wsr",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 36 wurde eine Wurzelspitzenresektion ueber Osteotomie im Molarenbereich durchgefuehrt.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f11",
+      "title": "GKV Trauma Schienung",
+      "treatmentId": "trauma",
+      "insuranceType": "GKV",
+      "dictation": "Nach Luxation an Zahn 11 wurde eine semipermanente Schienung angelegt und die Verlaufskontrolle geplant.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"]
+      }
+    },
+    {
+      "id": "f12",
+      "title": "PKV Implantat",
+      "treatmentId": "implant",
+      "insuranceType": "PKV",
+      "dictation": "In regio 36 erfolgte die Implantatinsertion, anschliessend wurden Nachsorge und Kontrolltermin dokumentiert.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f13",
+      "title": "PKV Krone definitiv",
+      "treatmentId": "krone",
+      "insuranceType": "PKV",
+      "dictation": "Die definitive Vollkrone an Zahn 16 wurde eingegliedert und funktionell-okklusal kontrolliert.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f14",
+      "title": "PKV Teilkrone",
+      "treatmentId": "teilkrone",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 16 wurde die Teilkrone heute definitiv eingesetzt und der Sitz abschliessend geprueft.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f15",
+      "title": "PKV Bruecke",
+      "treatmentId": "bruecke",
+      "insuranceType": "PKV",
+      "dictation": "Die definitive Brueckenversorgung in regio 36 wurde eingesetzt, anschliessend erfolgte die statische und dynamische Okklusionskontrolle.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f16",
+      "title": "PKV Teilprothese",
+      "treatmentId": "teilprothese",
+      "insuranceType": "PKV",
+      "dictation": "Die Modellguss-Teilprothese im Unterkiefer wurde eingegliedert und auf Druckstellen kontrolliert.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f17",
+      "title": "PKV Totalprothese",
+      "treatmentId": "totalprothese",
+      "insuranceType": "PKV",
+      "dictation": "Im Oberkiefer wurde die konventionelle Totalprothese eingesetzt und die Schleimhaut auf Druckstellen kontrolliert.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f18",
+      "title": "GKV Schiene",
+      "treatmentId": "schiene",
+      "insuranceType": "GKV",
+      "dictation": "Die Okklusionsschiene wurde eingegliedert und initial auf den Biss angepasst.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["BEMA_"],
+        "mustNotIncludePrefixes": ["GOZ_"]
+      }
+    },
+    {
+      "id": "f19",
+      "title": "PKV Untersuchung",
+      "treatmentId": "untersuchung",
+      "insuranceType": "PKV",
+      "dictation": "Es erfolgte eine eingehende Kontrolluntersuchung; Anlass war die Routinekontrolle, Befunde klinisch unauffaellig, aktuell kein akuter Therapiebedarf.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    },
+    {
+      "id": "f20",
+      "title": "PKV Roentgen OPG",
+      "treatmentId": "roentgen",
+      "insuranceType": "PKV",
+      "dictation": "Zur praeoperativen Therapieplanung wurde ein OPG angefertigt; Roentgenbefund: apikale Auffaelligkeit regio 36 dokumentiert.",
+      "expect": {
+        "phase": "output",
+        "mustIncludePrefixes": ["GOZ_"],
+        "mustNotIncludePrefixes": ["BEMA_"]
+      }
+    }
+  ]
+}

@@ -92,57 +92,34 @@ interface Report {
 // RUNNER
 // ═══════════════════════════════════════════════════════════════
 
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+    return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function deepMergeObjects(
+    base: Record<string, unknown>,
+    override: Record<string, unknown>
+): Record<string, unknown> {
+    const result: Record<string, unknown> = { ...base };
+    for (const [key, overrideValue] of Object.entries(override)) {
+        const baseValue = result[key];
+        if (isPlainObject(baseValue) && isPlainObject(overrideValue)) {
+            result[key] = deepMergeObjects(baseValue, overrideValue);
+            continue;
+        }
+        result[key] = overrideValue;
+    }
+    return result;
+}
+
 function mergeSettings(
     base: SettingsContext | undefined,
     override: SettingsContext | undefined
 ): SettingsContext | undefined {
     if (!base && !override) return undefined;
-    return {
-        practice: {
-            ...(base?.practice ?? {}),
-            ...(override?.practice ?? {}),
-            treatments: {
-                ...((base?.practice as any)?.treatments ?? {}),
-                ...((override?.practice as any)?.treatments ?? {}),
-                endo: {
-                    ...((base?.practice as any)?.treatments?.endo ?? {}),
-                    ...((override?.practice as any)?.treatments?.endo ?? {}),
-                },
-                fuellung: {
-                    ...((base?.practice as any)?.treatments?.fuellung ?? {}),
-                    ...((override?.practice as any)?.treatments?.fuellung ?? {}),
-                },
-            },
-            inventory: {
-                ...((base?.practice as any)?.inventory ?? {}),
-                ...((override?.practice as any)?.inventory ?? {}),
-                endo: {
-                    ...((base?.practice as any)?.inventory?.endo ?? {}),
-                    ...((override?.practice as any)?.inventory?.endo ?? {}),
-                },
-                fuellung: {
-                    ...((base?.practice as any)?.inventory?.fuellung ?? {}),
-                    ...((override?.practice as any)?.inventory?.fuellung ?? {}),
-                },
-            },
-        },
-        user: {
-            ...(base?.user ?? {}),
-            ...(override?.user ?? {}),
-            treatments: {
-                ...((base?.user as any)?.treatments ?? {}),
-                ...((override?.user as any)?.treatments ?? {}),
-                endo: {
-                    ...((base?.user as any)?.treatments?.endo ?? {}),
-                    ...((override?.user as any)?.treatments?.endo ?? {}),
-                },
-                fuellung: {
-                    ...((base?.user as any)?.treatments?.fuellung ?? {}),
-                    ...((override?.user as any)?.treatments?.fuellung ?? {}),
-                },
-            },
-        },
-    };
+    const baseObj = isPlainObject(base) ? base : {};
+    const overrideObj = isPlainObject(override) ? override : {};
+    return deepMergeObjects(baseObj, overrideObj) as SettingsContext;
 }
 
 async function runScenario(

@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "id": "bruecke",
+    "version": "1.0.0",
+    "label": "Bruecke"
+  },
+  "chips": [
+    {
+      "id": "bruecke_definitiv",
+      "label": "Definitive Brueckenversorgung",
+      "phase": "prothetik",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Definitive Bruecke eingegliedert.",
+        "mittel": "Definitive Brueckenversorgung eingegliedert und okklusal kontrolliert.",
+        "lang": "Definitive Brueckenversorgung eingegliedert, Passung und Okklusion kontrolliert sowie Patientenhinweise dokumentiert."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "bruecke_provisorisch",
+      "label": "Provisorische Bruecke",
+      "phase": "prothetik",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Provisorische Bruecke eingegliedert.",
+        "mittel": "Provisorische Brueckenversorgung zur Uebergangsphase eingegliedert.",
+        "lang": "Provisorische Brueckenversorgung als Uebergang bis zur definitiven Versorgung eingegliedert und Hinweise zur Nachkontrolle dokumentiert."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "bruecke_kontrolle",
+      "label": "Brueckenkontrolle",
+      "phase": "nachsorge",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Brueckenkontrolle dokumentiert.",
+        "mittel": "Brueckenkontrolle mit Funktionspruefung dokumentiert.",
+        "lang": "Verlaufskontrolle der Brueckenversorgung mit Funktions- und Kontaktpruefung dokumentiert."
+      },
+      "showInQuickView": true
+    }
+  ]
+}

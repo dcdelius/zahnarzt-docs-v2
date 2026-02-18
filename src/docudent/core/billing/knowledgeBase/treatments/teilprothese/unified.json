@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "id": "teilprothese",
+    "version": "1.0.0",
+    "label": "Teilprothese"
+  },
+  "chips": [
+    {
+      "id": "teilprothese_interim",
+      "label": "Interimsteilprothese",
+      "phase": "prothetik",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Interimsteilprothese eingegliedert.",
+        "mittel": "Interimsteilprothese mit einfachen Halteelementen eingegliedert.",
+        "lang": "Interimsteilprothese mit einfachen, gebogenen Halteelementen eingegliedert und funktionell kontrolliert."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "teilprothese_modellguss",
+      "label": "Modellgussprothese",
+      "phase": "prothetik",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Modellgussprothese eingegliedert.",
+        "mittel": "Modellgussprothese mit gegossenen Halte-/Stuetzanteilen eingegliedert.",
+        "lang": "Modellgussprothese mit gegossenen Halte- und Stuetzelementen eingegliedert und funktionell beurteilt."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "teilprothese_kontrolle",
+      "label": "Prothesenkontrolle",
+      "phase": "nachsorge",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Prothesenkontrolle dokumentiert.",
+        "mittel": "Druckstellen- und Funktionskontrolle der Teilprothese dokumentiert.",
+        "lang": "Nachkontrolle der Teilprothesenversorgung mit Druckstellenpruefung, Funktionskontrolle und Anpassungsempfehlung dokumentiert."
+      },
+      "showInQuickView": true
+    }
+  ]
+}

@@ -19,17 +19,31 @@ import type {
     V10PipelineTrace,
     V10InstanceTrace,
     V10ReviewContext,
+    V10ClinicalObligationCheck,
 } from '../types';
 import type { DocMode, DynamicQuestion, QuestionBundle } from '../../contracts/questions';
 import type { ExtractedDataV2, Surface } from '../../contracts/extraction';
 import { createField, unknownField } from '../../contracts/extraction';
 import { buildQuestionsFromAskbacks } from '../askbacks/buildQuestionsFromAskbacks';
+import { deriveReasonedAskbackHints, orderAskbacksDeterministically } from '../askbacks/reasonedAskbackHints';
 import { presentQuestions } from '../../core/questions/questionPresentationPolicy';
+import { applyReasonedExtractionHints } from '../extraction/adapters/reasonedExtractionHints';
+import {
+    buildDocumentationContextFromExtraction,
+    buildLabeledContextNotes,
+    collectSharedForensicNotes,
+    collectSharedUnresolvedNotes,
+    mergeNotesIntoDocumentationContext,
+    resolveDocumentationContextMapping,
+    syncDocumentationContextToExtraction,
+} from '../extraction/context/documentationContext';
+import type { DocumentationContextV1 } from '../extraction/context/documentationContext';
 
 // V10: Facts Module (replaces V7 medical)
 import type { TreatmentFacts } from '../facts';
 import { buildFactsFromExtraction } from '../facts';
 import { applyAnswersToFacts } from '../facts';
+import { collectDocumentationEvidenceNotes } from '../facts/documentationEvidence';
 
 // M6: Medical Engine
 import { applyMedicalKb, stripToothScope, withToothScope } from '../../medical_kb/engine/applyMedicalKb';
@@ -91,8 +105,10 @@ import { getBundleMetaMap } from '../procedure/bundleMeta';
 import { normalizeAskbackId } from '../procedure/normalizeAskbackId';
 import { resolveBillingRefsFromBundleMeta } from '../billing/resolveBillingRefsFromBundleMeta';
 import { resolveBillingDetailsFromDb } from '../billing/resolveBillingDetailsFromDb';
+import { normalizeBillingRefId } from '../../core/billing/billingRefNormalization';
 import { normalizeToothInText, extractToothNumber, isValidFDI } from '../../core/extraction/toothNormalizer';
 import { mergeRequiredAskbacks } from '../askbacks/mergeRequiredAskbacks';
+import { evaluateClinicalObligations } from '../obligations/clinicalObligations';
 import type { SettingsInput } from '../settings/settingsTypes';
 import { isFactKnownForAskback, resolveSettings } from '../settings/settingsResolver';
 import {
@@ -108,6 +124,12 @@ import { getStandardChipIdsForInstance } from '../settings/chipStandards';
 // GP4: Billing Completeness
 import { computeBillingCompleteness, type BillingCompletenessResult } from '../billing/billingCompleteness';
 import { getBillingDbTreatment } from '../billing/billingDb';
+import { refineDocumentationText } from '../llm/textRefiner';
+import {
+    composeForensicDocumentation,
+    isForensicComposerEnabled,
+    type ForensicComposeSection,
+} from '../llm/forensicComposer';
 
 // ═══════════════════════════════════════════════════════════════
 // INSTANCE PROCESSING
@@ -146,6 +168,8 @@ interface InstanceResult {
     answerSources: Map<string, FactSource>;
     /** P3c: Settings-applied fact provenance (normalized key -> source) */
     settingsFactSources: Map<string, FactSource>;
+    /** Centralized clinical obligation outcomes for this instance */
+    clinicalObligations: V10ClinicalObligationCheck[];
     /** Bundle-level disclosure refs (optional) */
     disclosureIds?: string[];
     /** Bundle-level billable chip IDs (optional) */
@@ -156,12 +180,69 @@ function mergeQuestionsById(primary: DynamicQuestion[], additional: DynamicQuest
     if (additional.length === 0) return primary;
     const merged = [...primary];
     const seen = new Set(primary.map(question => question.id));
+    const semanticSeen = new Set(
+        primary
+            .map(question => semanticQuestionKey(question))
+            .filter((key): key is string => Boolean(key))
+    );
     for (const question of additional) {
         if (!question.id || seen.has(question.id)) continue;
+        const semanticKey = semanticQuestionKey(question);
+        if (semanticKey && semanticSeen.has(semanticKey)) continue;
         seen.add(question.id);
+        if (semanticKey) semanticSeen.add(semanticKey);
         merged.push(question);
     }
     return merged;
+}
+
+function dedupeQuestionsBySemanticKey(questions: DynamicQuestion[]): DynamicQuestion[] {
+    if (questions.length <= 1) return questions;
+    const selected = new Map<string, DynamicQuestion>();
+
+    const score = (question: DynamicQuestion): number => {
+        let points = 0;
+        if (Array.isArray(question.options) && question.options.length > 0) points += 3;
+        if (question.type === 'single' || question.type === 'multi') points += 2;
+        if (question.type === 'perCanalTable') points += 4;
+        if ((question.id ?? '').startsWith('ENDO_')) points += 1;
+        return points;
+    };
+
+    for (const question of questions) {
+        const key = semanticQuestionKey(question);
+        if (!key) {
+            selected.set(`id:${question.id}`, question);
+            continue;
+        }
+        const existing = selected.get(key);
+        if (!existing || score(question) > score(existing)) {
+            selected.set(key, question);
+        }
+    }
+
+    return Array.from(selected.values());
+}
+
+function semanticQuestionKey(question: DynamicQuestion): string | undefined {
+    const raw = String(normalizeAskbackId(question.questionKey ?? stripToothScope(question.id ?? ''))).toLowerCase();
+    if (!raw) return undefined;
+    if (raw.includes('irrigation') || raw.includes('endo_t1_irrigation') || raw.includes('endo_t2_irrigation')) {
+        return 'irrigation';
+    }
+    if (raw.includes('wf_technique') || raw.includes('obturation_technique') || raw.includes('endo_t3_obturation_technique')) {
+        return 'wf_technique';
+    }
+    if (raw.includes('canal_count') || raw.includes('endo_canal_count')) {
+        return 'canal_count';
+    }
+    if (raw.includes('working_length_method') || raw.includes('wl_method')) {
+        return 'working_length_method';
+    }
+    if (raw.includes('working_lengths')) {
+        return 'working_lengths';
+    }
+    return raw;
 }
 
 type ReviewFactSourceLabel = NonNullable<V10ReviewContext['instances'][number]['factSources']>[string];
@@ -704,7 +785,7 @@ function processInstance(
     };
 
     // ═══ PROBE B2: Facts AFTER answers merge ═══
-    if (isDev) {
+    if (isDev && getNodeProcessEnv()?.DOCUDENT_DEBUG_PROBES === '1') {
         console.debug('[PROBE B] Facts Mapping', {
             instanceId,
             tooth,
@@ -870,13 +951,23 @@ function processInstance(
     }
     const chipProvenance = mergedChipIds.map(chipId => ({
         chipId,
-        ruleId: chipEmitterLookup.get(chipId) ?? 'unknown',
+        ruleId: chipEmitterLookup.get(chipId) ?? 'engine:unattributed',
         sourceRefs: [],
     }));
 
+    const clinicalObligationResult = evaluateClinicalObligations({
+        treatmentId,
+        facts: facts as TreatmentFacts,
+        strictKzvMode: settingsInput?.practice?.strictKzvMode === true,
+    });
+
+    const reasonedAskbackHints = deriveReasonedAskbackHints(extracted as Record<string, unknown>, facts as TreatmentFacts);
+
     const requiredAskbacks = mergeRequiredAskbacks(
         engineResult.requiredAskbacks,
-        procedureRequiredAskbacks
+        procedureRequiredAskbacks,
+        clinicalObligationResult.requiredAskbacks,
+        reasonedAskbackHints.required
     );
 
     const requiredNormalized = new Set(requiredAskbacks.map(a => normalizeAskbackId(a)));
@@ -896,12 +987,21 @@ function processInstance(
     for (const id of procedureOptionalAskbacks ?? []) {
         pushOptional(id);
     }
+    for (const id of reasonedAskbackHints.optional ?? []) {
+        pushOptional(id);
+    }
 
     const filterKnownAskbacks = (ids: string[]) =>
         ids.filter(id => !isFactKnownForAskback(id, facts as TreatmentFacts));
 
-    const filteredRequiredAskbacks = filterKnownAskbacks(requiredAskbacks);
-    const filteredOptionalAskbacks = filterKnownAskbacks(optionalAskbacks);
+    const filteredRequiredAskbacks = orderAskbacksDeterministically(
+        filterKnownAskbacks(requiredAskbacks),
+        reasonedAskbackHints.priorities
+    );
+    const filteredOptionalAskbacks = orderAskbacksDeterministically(
+        filterKnownAskbacks(optionalAskbacks),
+        reasonedAskbackHints.priorities
+    );
 
     const askbackQuestions = buildQuestionsFromAskbacks({
         required: filteredRequiredAskbacks,
@@ -909,9 +1009,9 @@ function processInstance(
     });
 
     // Step 5: Generate questions (endo uses playbook adapter, others use KB askbacks)
-    const allQuestions = endoQuestionBuild
+    const allQuestions = dedupeQuestionsBySemanticKey(endoQuestionBuild
         ? mergeQuestionsById(endoQuestionBuild.questions, askbackQuestions)
-        : askbackQuestions;
+        : askbackQuestions);
 
     const settingsAnswerKeys = new Set(resolvedSettings.answers.keys());
     const settingsSkipKeys = new Set(resolvedSettings.skippedAskbacks);
@@ -1017,8 +1117,8 @@ function processInstance(
         },
         ruleHits: engineResult.trace.firedRules,
         askbacks: {
-            required: engineResult.requiredAskbacks,
-            optional: engineResult.optionalAskbacks,
+            required: filteredRequiredAskbacks,
+            optional: filteredOptionalAskbacks,
         },
         chips: mergedChipIds,
         renderedChipIds: mergedChipIds,
@@ -1030,6 +1130,61 @@ function processInstance(
         if (emitter) {
             chipEmitters[chipId] = emitter;
         }
+    }
+
+    const engineAskbackProvenance = engineResult.trace.requiredAskbacks.map(a => ({
+        askbackId: a.id,
+        ruleId: a.ruleId,
+        sourceRefs: a.sourceRefs,
+    }));
+    const obligationAskbackProvenance = clinicalObligationResult.checks
+        .filter(check => check.outcome === 'not_done')
+        .map(check => ({
+            askbackId: check.askbackId,
+            ruleId: `obligation:${check.obligationId}`,
+            sourceRefs: [] as SourceRef[],
+        }));
+    const askbackProvenance = new Map<string, {
+        askbackId: string;
+        ruleId: string;
+        sourceRefs: SourceRef[];
+    }>();
+    const mergeSourceRefs = (left: SourceRef[], right: SourceRef[]): SourceRef[] => {
+        const merged = [...left];
+        const seen = new Set(
+            left.map(ref => `${ref.sourceId}|${ref.anchorId}|${ref.note ?? ''}`)
+        );
+        for (const ref of right) {
+            const key = `${ref.sourceId}|${ref.anchorId}|${ref.note ?? ''}`;
+            if (seen.has(key)) continue;
+            seen.add(key);
+            merged.push(ref);
+        }
+        return merged;
+    };
+    const reasonedAskbackProvenance = reasonedAskbackHints.provenance.map(entry => ({
+        askbackId: entry.askbackId,
+        ruleId: entry.ruleId,
+        sourceRefs: [] as SourceRef[],
+    }));
+
+    for (const entry of [...engineAskbackProvenance, ...obligationAskbackProvenance, ...reasonedAskbackProvenance]) {
+        const normalized = normalizeAskbackId(entry.askbackId);
+        const existing = askbackProvenance.get(normalized);
+        if (!existing) {
+            askbackProvenance.set(normalized, entry);
+            continue;
+        }
+        const preferObligationRule =
+            entry.ruleId.startsWith('obligation:')
+            || existing.ruleId.startsWith('obligation:');
+        askbackProvenance.set(normalized, {
+            askbackId: existing.askbackId,
+            ruleId: preferObligationRule
+                ? (entry.ruleId.startsWith('obligation:') ? entry.ruleId : existing.ruleId)
+                : existing.ruleId,
+            sourceRefs: mergeSourceRefs(existing.sourceRefs, entry.sourceRefs),
+        });
     }
 
     return {
@@ -1052,15 +1207,16 @@ function processInstance(
         questionBundle: effectiveBundle,
         trace,
         hasUnansweredRequired,
-        // M15: Provenance from engine trace
-        askbackProvenance: engineResult.trace.requiredAskbacks.map(a => ({
-            askbackId: a.id,
-            ruleId: a.ruleId,
-            sourceRefs: a.sourceRefs,
-        })),
+        // M15 + GAP-33: Provenance from engine + centralized obligations
+        askbackProvenance: Array.from(askbackProvenance.values()),
         chipProvenance,
         answerSources,
         settingsFactSources,
+        clinicalObligations: clinicalObligationResult.checks.map(check => ({
+            ...check,
+            instanceId,
+            tooth,
+        })),
         disclosureIds: Array.from(procedureDisclosureIds),
         billingChipIds: Array.from(procedureBillingChipIds),
     };
@@ -1240,6 +1396,123 @@ function normalizeProvenanceKey(key: string): string {
         .replace(/-/g, '_');
 }
 
+function inferFactKeysForAskback(askbackId: string): string[] {
+    const key = normalizeProvenanceKey(askbackId);
+    switch (key) {
+        case 'la_type':
+            return ['anesthesia', 'la_type'];
+        case 'vitality':
+            return ['vitality'];
+        case 'percussion':
+            return ['percussion'];
+        case 'isolation':
+        case 'kofferdam':
+            return ['kofferdamUsed', 'isolationMentioned', 'endo.kofferdam'];
+        case 'roentgen_indikation':
+        case 'radiology_indication':
+            return ['radiology.indication'];
+        case 'roentgen_typ':
+        case 'radiology_type':
+            return ['radiology.type'];
+        case 'roentgen_zeitpunkt':
+        case 'radiology_timing':
+            return ['radiology.timing'];
+        case 'roentgen_befund':
+        case 'radiology_findings':
+            return ['radiology.findings'];
+        case 'ueberkappung':
+        case 'pulpaschutz':
+            return ['capping.performed', 'pulpaOpened'];
+        case 'ueberkappung_material':
+            return ['capping.material'];
+        case 'fissuren_indikation':
+            return ['fissurenversiegelung.indication'];
+        case 'fissuren_material':
+            return ['fissurenversiegelung.material'];
+        case 'wl_method':
+            return ['endo.workingLengthMethod'];
+        case 'wf_technique':
+            return ['endo.wfTechnique'];
+        case 'irrigation':
+            return ['endo.irrigationSolutions'];
+        case 'medication':
+            return ['endo.medication'];
+        case 'canal_count':
+            return ['endo.canalCount'];
+        case 'layering':
+            return ['layeringMentioned'];
+        case 'adhesive':
+        case 'adhesive_technique':
+            return ['adhesiveTechnique'];
+        case 'material':
+            return ['material', 'materialMentioned'];
+        case 'wound_care':
+            return ['woundCare'];
+        case 'untersuchung_anlass':
+            return ['untersuchung.reason'];
+        case 'untersuchung_befunde':
+            return ['untersuchung.findings'];
+        case 'untersuchung_beurteilung':
+            return ['untersuchung.assessment'];
+        case 'pzr_zahnstein':
+            return ['pzr.zahnsteinEntfernung'];
+        case 'pzr_fluoridation':
+            return ['pzr.fluoridation'];
+        case 'parodontologie_phase':
+            return ['parodontologie.phase'];
+        case 'parodontologie_upt_grad':
+            return ['parodontologie.uptGrade'];
+        case 'upt_grad':
+            return ['upt.grade'];
+        case 'upt_intervall':
+            return ['upt.interval'];
+        case 'krone_art':
+            return ['krone.type'];
+        case 'krone_eingliederung':
+            return ['krone.placement'];
+        case 'teilkrone_art':
+            return ['teilkrone.type'];
+        case 'teilkrone_eingliederung':
+            return ['teilkrone.placement'];
+        case 'bruecke_typ':
+            return ['bruecke.type'];
+        case 'bruecke_phase':
+            return ['bruecke.phase'];
+        case 'trauma_art':
+            return ['trauma.art'];
+        case 'trauma_schienung':
+            return ['trauma.schienung'];
+        case 'trauma_kontrolle':
+            return ['trauma.kontrolle'];
+        case 'implant_phase':
+            return ['implant.phase'];
+        case 'implant_nachsorge':
+            return ['implant.nachsorge'];
+        case 'schiene_typ':
+            return ['schiene.type'];
+        case 'schiene_phase':
+            return ['schiene.phase'];
+        case 'teilprothese_typ':
+            return ['teilprothese.type'];
+        case 'teilprothese_phase':
+            return ['teilprothese.phase'];
+        case 'totalprothese_typ':
+            return ['totalprothese.type'];
+        case 'totalprothese_phase':
+            return ['totalprothese.phase'];
+        case 'wsr_zugang':
+            return ['wsr.zugang'];
+        case 'wsr_lokalisation':
+            return ['wsr.lokalisation'];
+        case 'mkv_justification':
+            return ['mkvJustification'];
+        case 'mkv_confirmed':
+            return ['mehrkostenConfirmed', 'mehrkostenMentioned', 'nurKasse', 'mkvBetrag'];
+        default:
+            return key ? [`askback:${key}`] : [];
+    }
+}
+
 function buildQuestionBundleFromQuestions(questions: DynamicQuestion[], docMode: DocMode): QuestionBundle {
     const required = questions.filter(q => q.medicalSeverity === 'hard');
     const optional = questions.filter(q => q.medicalSeverity !== 'hard');
@@ -1381,6 +1654,248 @@ function applyChipOverridesToChips(
     return { chips: finalChips, added, removed };
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+    return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function hasMeaningfulValue(value: unknown): boolean {
+    if (value === undefined || value === null) return false;
+    if (typeof value === 'string') return value.trim().length > 0;
+    if (Array.isArray(value)) return value.length > 0;
+    return true;
+}
+
+function normalizeHintMentionedValue(value: unknown): unknown {
+    if (typeof value === 'string') {
+        const trimmed = value.trim();
+        return trimmed.length > 0 ? trimmed : undefined;
+    }
+    if (typeof value === 'number' || typeof value === 'boolean') return value;
+    if (Array.isArray(value)) {
+        const normalized = value
+            .map(item => normalizeHintMentionedValue(item))
+            .filter(item => item !== undefined);
+        return normalized.length > 0 ? normalized : undefined;
+    }
+    if (isRecord(value)) return value;
+    return undefined;
+}
+
+function mergeHintMentioned(
+    mentioned: Record<string, unknown>,
+    source: Record<string, unknown>,
+    appliedKeys: string[]
+): void {
+    for (const [key, rawValue] of Object.entries(source)) {
+        const normalized = normalizeHintMentionedValue(rawValue);
+        if (normalized === undefined) continue;
+        if (hasMeaningfulValue(mentioned[key])) continue;
+        mentioned[key] = normalized;
+        appliedKeys.push(`mentioned.${key}`);
+    }
+}
+
+function mergePreanalysisHintsIntoExtraction(
+    extracted: Record<string, unknown>,
+    hints: V10PipelineInput['preanalysisHints'] | undefined
+): { extracted: Record<string, unknown>; appliedKeys: string[] } {
+    if (!hints) return { extracted, appliedKeys: [] };
+    const appliedKeys: string[] = [];
+    const next = { ...extracted };
+    const mentioned = isRecord(next.mentioned) ? { ...next.mentioned as Record<string, unknown> } : {};
+
+    if (isRecord(hints.mentioned)) {
+        mergeHintMentioned(mentioned, hints.mentioned, appliedKeys);
+    }
+
+    if (isRecord(hints.sharedFacts)) {
+        const shared = hints.sharedFacts;
+        const documentationContext = buildDocumentationContextFromExtraction(next as Record<string, unknown>);
+        const mappedMentioned: Record<string, unknown> = {};
+        if (shared.workingLength !== undefined) mappedMentioned.working_length = shared.workingLength;
+        if (shared.workingLengthMethod !== undefined) mappedMentioned.wl_method = shared.workingLengthMethod;
+        if (shared.wfTechnique !== undefined) mappedMentioned.wf_technique = shared.wfTechnique;
+        if (shared.canalCount !== undefined) mappedMentioned.root_canals = shared.canalCount;
+        if (shared.irrigationSolutions !== undefined) mappedMentioned.irrigation_solutions = shared.irrigationSolutions;
+        if (shared.medication !== undefined) mappedMentioned.endo_medication = shared.medication;
+        if (shared.tempClosure !== undefined) mappedMentioned.temp_closure = shared.tempClosure;
+        if (shared.step !== undefined) mappedMentioned.endo_step = shared.step;
+        if (shared.phase !== undefined) mappedMentioned.endo_phase = shared.phase;
+        if (Object.keys(mappedMentioned).length > 0) {
+            mergeHintMentioned(mentioned, mappedMentioned, appliedKeys);
+        }
+
+        if (!hasMeaningfulValue(next.tooth) && typeof shared.tooth === 'string' && shared.tooth.trim().length > 0) {
+            next.tooth = shared.tooth.trim();
+            appliedKeys.push('tooth');
+        }
+        if (!hasMeaningfulValue(next.surfaces) && Array.isArray(shared.surfaces) && shared.surfaces.length > 0) {
+            next.surfaces = [...shared.surfaces];
+            appliedKeys.push('surfaces');
+        }
+
+        const forensicNotes = collectSharedForensicNotes(shared);
+        if (mergeNotesIntoDocumentationContext(documentationContext, 'forensicNotes', forensicNotes)) {
+            appliedKeys.push('patientenangaben');
+        }
+        const unresolvedNotes = collectSharedUnresolvedNotes(shared);
+        if (mergeNotesIntoDocumentationContext(documentationContext, 'unresolved', unresolvedNotes)) {
+            appliedKeys.push('reasoning.unresolved');
+        }
+
+        for (const [sharedKey, sharedValue] of Object.entries(shared)) {
+            const mapping = resolveDocumentationContextMapping(sharedKey);
+            if (!mapping) continue;
+            const notes = buildLabeledContextNotes(mapping, sharedValue);
+            if (mergeNotesIntoDocumentationContext(documentationContext, mapping.bucket, notes)) {
+                appliedKeys.push(mapping.target);
+            }
+        }
+        appliedKeys.push(...syncDocumentationContextToExtraction(next as Record<string, unknown>, documentationContext));
+    }
+
+    if (!hasMeaningfulValue(mentioned.endo_step) && typeof hints.step === 'string' && hints.step.trim().length > 0) {
+        mentioned.endo_step = hints.step.trim();
+        appliedKeys.push('mentioned.endo_step');
+    }
+    if (!hasMeaningfulValue(mentioned.endo_phase) && typeof hints.phase === 'string' && hints.phase.trim().length > 0) {
+        mentioned.endo_phase = hints.phase.trim();
+        appliedKeys.push('mentioned.endo_phase');
+    }
+    if (!hasMeaningfulValue(next.tooth) && typeof hints.tooth === 'string' && hints.tooth.trim().length > 0) {
+        next.tooth = hints.tooth.trim();
+        appliedKeys.push('tooth');
+    }
+
+    if (Object.keys(mentioned).length > 0) {
+        next.mentioned = mentioned;
+    }
+
+    return { extracted: next, appliedKeys: Array.from(new Set(appliedKeys)) };
+}
+
+async function maybeComposeForensicSections(input: {
+    treatmentId: string;
+    insuranceType: 'GKV' | 'PKV' | 'MKV';
+    textLength: 'kurz' | 'mittel' | 'lang';
+    sections: ForensicComposeSection[];
+    context?: {
+        instanceCount?: number;
+        unresolvedForensicHints?: string[];
+        documentationContext?: {
+            clinical?: string[];
+            patient?: string[];
+            administrative?: string[];
+            forensicNotes?: string[];
+        };
+    };
+}): Promise<{
+    enabled: boolean;
+    sections: ForensicComposeSection[];
+    applied: boolean;
+    error?: string;
+}> {
+    const enabled = isForensicComposerEnabled();
+    if (!enabled) {
+        return {
+            enabled: false,
+            sections: input.sections,
+            applied: false,
+        };
+    }
+
+    try {
+        const composed = await composeForensicDocumentation({
+            treatmentId: input.treatmentId,
+            insuranceType: input.insuranceType,
+            textLength: input.textLength,
+            sections: input.sections,
+            context: input.context,
+        });
+        if (Array.isArray(composed) && composed.length === input.sections.length) {
+            const source = input.sections.map(section => section.content).join('\n\n');
+            const target = composed.map(section => section.content).join('\n\n');
+            if (target.trim().length > 0 && target !== source) {
+                return {
+                    enabled,
+                    sections: composed,
+                    applied: true,
+                };
+            }
+            return {
+                enabled,
+                sections: input.sections,
+                applied: false,
+            };
+        }
+        return {
+            enabled,
+            sections: input.sections,
+            applied: false,
+        };
+    } catch (error) {
+        return {
+            enabled,
+            sections: input.sections,
+            applied: false,
+            error: error instanceof Error ? error.message : String(error),
+        };
+    }
+}
+
+async function maybeRefineFinalOutputText(input: {
+    text: string;
+    treatmentId: string;
+    insuranceType: 'GKV' | 'PKV' | 'MKV';
+    textLength: 'kurz' | 'mittel' | 'lang';
+}): Promise<{ text: string; applied: boolean; error?: string }> {
+    try {
+        const refined = await refineDocumentationText({
+            text: input.text,
+            treatmentId: input.treatmentId,
+            insuranceType: input.insuranceType,
+            textLength: input.textLength,
+        });
+        if (typeof refined === 'string' && refined.trim().length > 0 && refined !== input.text) {
+            return { text: refined, applied: true };
+        }
+        return { text: input.text, applied: false };
+    } catch (error) {
+        return {
+            text: input.text,
+            applied: false,
+            error: error instanceof Error ? error.message : String(error),
+        };
+    }
+}
+
+function resolveRequireLlmExtraction(requireFromInput: boolean | undefined): boolean {
+    if (requireFromInput === true) return true;
+    const env = getNodeProcessEnv();
+    const requireFromEnv = env?.DOCUDENT_REQUIRE_LLM_PATH === '1'
+        || env?.VITE_V10_REQUIRE_LLM_EXTRACTION === 'true';
+    if (requireFromEnv) return true;
+    if (isTestMode()) return false;
+    // Runtime default is soft-fallback.
+    // LLM-hard-require must be explicitly requested by input/env.
+    return false;
+}
+
+function getNodeProcessEnv(): Record<string, string | undefined> | undefined {
+    if (typeof process === 'undefined' || !process.env) return undefined;
+    return process.env;
+}
+
+function hasAnyOpenAiKeyInNodeEnv(): boolean {
+    const env = getNodeProcessEnv();
+    if (!env) return false;
+    return Boolean(
+        env.OPENAI_API_KEY
+        || env.VITE_OPENAI_API_KEY
+        || env.REACT_APP_OPENAI_API_KEY
+    );
+}
+
 // ═══════════════════════════════════════════════════════════════
 // MAIN ORCHESTRATOR
 // ═══════════════════════════════════════════════════════════════
@@ -1392,9 +1907,13 @@ function applyChipOverridesToChips(
  */
 export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput> {
     const startTime = Date.now();
-    const isDev = process.env.NODE_ENV !== 'production';
+    const env = getNodeProcessEnv();
+    const isDev = (env?.NODE_ENV ?? 'development') !== 'production';
+    const probeDebugEnabled = isDev && env?.DOCUDENT_DEBUG_PROBES === '1';
     const trace = new V10TraceCollector();
     let milchzahnDocOnly = false;
+    let reasonedExtractionMeta: V10PipelineMeta['reasonedExtraction'] | undefined;
+    let forensicComposerMeta: V10PipelineMeta['forensicComposer'] | undefined;
 
     try {
         const {
@@ -1405,11 +1924,14 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
             answers: rawAnswers,
             teeth,
             preExtracted,
+            preanalysisHints,
+            requireLlmExtraction,
             userDefaults,
             chipOverrides,
             testOnly,
             kbReleaseId,
         } = input;
+        const requireLlmRuntime = resolveRequireLlmExtraction(requireLlmExtraction);
 
         const docMode: DocMode =
             textLength === 'kurz' ? 'fast'
@@ -1497,6 +2019,15 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
         const extractStart = Date.now();
         const extractor = await selectExtractor(testOverrides.extraction);
         let extracted: Record<string, unknown>;
+        if (
+            requireLlmRuntime
+            && typeof window === 'undefined'
+            && !preExtracted
+            && !testOverrides.extraction
+            && !hasAnyOpenAiKeyInNodeEnv()
+        ) {
+            throw new Error('LLM extraction required but no OpenAI key configured in runtime env (OPENAI_API_KEY/VITE_OPENAI_API_KEY/REACT_APP_OPENAI_API_KEY).');
+        }
 
         if (preExtracted) {
             extracted = preExtracted;
@@ -1515,6 +2046,19 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
         // P0 FIX: Always set rawDictation so detectNurKasse can find "nur Kasse" patterns
         extracted.rawDictation = rawDictation;
         (extracted as Record<string, unknown>).normalizedDictation = normalizedDictation;
+        const hintMerge = mergePreanalysisHintsIntoExtraction(extracted as Record<string, unknown>, preanalysisHints);
+        const reasonedMerge = applyReasonedExtractionHints(hintMerge.extracted as Record<string, unknown>, treatmentId);
+        extracted = reasonedMerge.extracted;
+        syncDocumentationContextToExtraction(extracted as Record<string, unknown>);
+        reasonedExtractionMeta = reasonedMerge.summary ? {
+            intentHints: reasonedMerge.summary.intentHints,
+            factHints: reasonedMerge.summary.factHints,
+            explicitHints: reasonedMerge.summary.explicitHints,
+            inferredHints: reasonedMerge.summary.inferredHints,
+            forensicNotes: reasonedMerge.summary.forensicNotes,
+            unresolved: reasonedMerge.summary.unresolved,
+            appliedKeys: reasonedMerge.summary.appliedKeys,
+        } : undefined;
 
         // Backfill tooth if extraction failed or produced invalid FDI
         const extractedTooth = (extracted as Record<string, unknown>).tooth;
@@ -1529,9 +2073,20 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
         }
 
         // Trace extraction diagnostics (LLM vs regex fallback)
-        const extractionMethod = (extracted as Record<string, unknown>)._extractionMethod ?? extractor.engine;
-        const llmError = (extracted as Record<string, unknown>)._llmError ?? 'none';
-        trace.add('extract_detail', `method=${extractionMethod};llmError=${llmError}`);
+        const extractionMethod = String((extracted as Record<string, unknown>)._extractionMethod ?? extractor.engine);
+        const llmError = String((extracted as Record<string, unknown>)._llmError ?? 'none');
+        const reasonedApplied = reasonedExtractionMeta?.appliedKeys.length ?? 0;
+        const reasonedHints = (reasonedExtractionMeta?.intentHints ?? 0) + (reasonedExtractionMeta?.factHints ?? 0);
+        const reasonedInferred = reasonedExtractionMeta?.inferredHints ?? 0;
+        const reasonedUnresolved = reasonedExtractionMeta?.unresolved ?? 0;
+        trace.add(
+            'extract_detail',
+            `method=${extractionMethod};llmError=${llmError};preHints=${hintMerge.appliedKeys.length};reasonedHints=${reasonedHints};reasonedApplied=${reasonedApplied};reasonedInferred=${reasonedInferred};reasonedUnresolved=${reasonedUnresolved}`
+        );
+        if (requireLlmRuntime && extractionMethod !== 'llm') {
+            trace.add('gate', `extraction_method_required=llm;actual=${extractionMethod};llmError=${llmError}`);
+            throw new Error(`LLM extraction required but method was '${extractionMethod}' (llmError=${llmError})`);
+        }
 
         trace.recordDuration('extract', Date.now() - extractStart);
 
@@ -1593,7 +2148,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                     state: 'questions',
                     questions: [question],
                     questionsBundle: bundle,
-                    meta: buildMeta([], startTime, treatmentId, trace, extractor.engine, testOverrides.applied, resolvedKbReleaseId),
+                    meta: buildMeta([], startTime, treatmentId, trace, extractor.engine, testOverrides.applied, resolvedKbReleaseId, undefined, undefined, undefined, undefined, undefined, reasonedExtractionMeta, forensicComposerMeta),
                     trace: isDev ? buildTrace([]) : undefined,
                 };
             }
@@ -1716,7 +2271,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 questions: sortedQuestions,
                 questionsBundle: singleBundle ?? buildQuestionBundleFromQuestions(sortedQuestions, docMode),
                 review: buildReviewContext(results, settingsInput),
-                meta: buildMeta(results, startTime, treatmentId, trace, extractor.engine, testOverrides.applied, resolvedKbReleaseId),
+                meta: buildMeta(results, startTime, treatmentId, trace, extractor.engine, testOverrides.applied, resolvedKbReleaseId, undefined, undefined, undefined, undefined, undefined, reasonedExtractionMeta, forensicComposerMeta),
                 trace: isDev ? buildTrace(results) : undefined,
             };
         }
@@ -1995,7 +2550,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 instanceId: result.instanceId,
                 teeth: result.teeth,
                 text: instanceRendered.fullText,
-                billingRefs: billingRefsFromBundle,
+                billingRefs: billingRefsFromBundle.map(normalizeBillingRefId),
                 chips: instanceAllowedChips,
                 chipEmitters: filteredEmitters,
             };
@@ -2020,10 +2575,12 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
             : perInstanceTexts[0] ?? '';  // Empty if no text (no fallback!)
         // GEAR 2: Billing Multiplicity - derive from perInstance WITHOUT dedup
         // Multi-tooth cases may have same code multiple times
-        const allBillingRefs = Object.values(perInstance).flatMap(p => p.billingRefs);
+        const allBillingRefs = Object.values(perInstance)
+            .flatMap(p => p.billingRefs)
+            .map(normalizeBillingRefId);
 
         // ═══ PROBE C: After MedicalKB and Renderer ═══
-        if (isDev) {
+        if (probeDebugEnabled) {
             console.debug('[PROBE C] Post-Render Output', {
                 instanceCount: results.length,
                 perInstanceSummary: Object.entries(perInstance).map(([id, p]) => ({
@@ -2119,7 +2676,12 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                             testOverrides.applied,
                             resolvedKbReleaseId,
                             billingGuardResult,
-                            combinabilityResult
+                            combinabilityResult,
+                            undefined,
+                            undefined,
+                            undefined,
+                            reasonedExtractionMeta,
+                            forensicComposerMeta
                         ),
                         trace: isDev ? buildTrace(results) : undefined,
                     };
@@ -2273,19 +2835,35 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
 
         const aggregatedSections: Array<{ id: string; label: string; content: string }> = [];
         const sectionBuckets = new Map<string, { id: string; label: string; contents: string[] }>();
-        const rawClinicalInfos = (extracted as { klinischeZusatzinfos?: string[] | string })?.klinischeZusatzinfos;
-        const rawPatientInfos = (extracted as { patientenangaben?: string[] | string })?.patientenangaben;
-        const rawLegacyInfos = (extracted as { zusatzinfos?: string[] | string })?.zusatzinfos;
-        const normalizedClinicalInfos = Array.isArray(rawClinicalInfos)
-            ? rawClinicalInfos.map(info => String(info).trim()).filter(Boolean)
-            : (typeof rawClinicalInfos === 'string' ? [rawClinicalInfos.trim()].filter(Boolean) : []);
-        const normalizedPatientInfos = Array.isArray(rawPatientInfos)
-            ? rawPatientInfos.map(info => String(info).trim()).filter(Boolean)
-            : (typeof rawPatientInfos === 'string' ? [rawPatientInfos.trim()].filter(Boolean) : []);
-        const normalizedLegacyInfos = Array.isArray(rawLegacyInfos)
-            ? rawLegacyInfos.map(info => String(info).trim()).filter(Boolean)
-            : (typeof rawLegacyInfos === 'string' ? [rawLegacyInfos.trim()].filter(Boolean) : []);
+        const extractionDocumentationContext = buildDocumentationContextFromExtraction(extracted as Record<string, unknown>);
+        const composerContextByInstance = new Map<string, DocumentationContextV1>();
+        const aggregatedComposerContext: DocumentationContextV1 = {
+            version: extractionDocumentationContext.version,
+            clinical: [...extractionDocumentationContext.clinical],
+            patient: [...extractionDocumentationContext.patient],
+            administrative: [...extractionDocumentationContext.administrative],
+            forensicNotes: [...extractionDocumentationContext.forensicNotes],
+            unresolved: [...extractionDocumentationContext.unresolved],
+        };
+        const unresolvedForensicHints = extractionDocumentationContext.unresolved;
         let zusatzinfosInjected = false;
+
+        for (const [instanceId, instance] of Object.entries(finalPerInstanceWithFacts)) {
+            const facts = (instance.facts ?? {}) as TreatmentFacts;
+            const instanceComposerContext = buildDocumentationContextFromExtraction({
+                documentationContext: (facts as Record<string, unknown>).documentationContext,
+            });
+            const evidenceNotes = collectDocumentationEvidenceNotes(facts);
+            mergeNotesIntoDocumentationContext(instanceComposerContext, 'clinical', evidenceNotes.clinical);
+            mergeNotesIntoDocumentationContext(instanceComposerContext, 'patient', evidenceNotes.patient);
+            mergeNotesIntoDocumentationContext(instanceComposerContext, 'administrative', evidenceNotes.administrative);
+            composerContextByInstance.set(instanceId, instanceComposerContext);
+            mergeNotesIntoDocumentationContext(aggregatedComposerContext, 'clinical', instanceComposerContext.clinical);
+            mergeNotesIntoDocumentationContext(aggregatedComposerContext, 'patient', instanceComposerContext.patient);
+            mergeNotesIntoDocumentationContext(aggregatedComposerContext, 'administrative', instanceComposerContext.administrative);
+            mergeNotesIntoDocumentationContext(aggregatedComposerContext, 'forensicNotes', instanceComposerContext.forensicNotes);
+            mergeNotesIntoDocumentationContext(aggregatedComposerContext, 'unresolved', instanceComposerContext.unresolved);
+        }
 
         for (const [instanceId, instance] of Object.entries(finalPerInstanceWithFacts)) {
             const facts = (instance.facts ?? {}) as TreatmentFacts;
@@ -2341,14 +2919,20 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
             const matrixDisplay = renderLabels.matrixSystem ?? 'Matrix';
             const laAgent = formatLaAgentForDocumentation(renderLabels.laAgent);
 
-            const klinischeZusatzinfos = (!zusatzinfosInjected && normalizedClinicalInfos.length > 0)
-                ? normalizedClinicalInfos
+            const globalClinicalInfos = aggregatedComposerContext.clinical;
+            const globalPatientInfos = Array.from(new Set([
+                ...aggregatedComposerContext.patient,
+                ...aggregatedComposerContext.forensicNotes,
+            ]));
+            const globalLegacyInfos = aggregatedComposerContext.administrative;
+            const klinischeZusatzinfos = (!zusatzinfosInjected && globalClinicalInfos.length > 0)
+                ? globalClinicalInfos
                 : undefined;
-            const patientenangaben = (!zusatzinfosInjected && normalizedPatientInfos.length > 0)
-                ? normalizedPatientInfos
+            const patientenangaben = (!zusatzinfosInjected && globalPatientInfos.length > 0)
+                ? globalPatientInfos
                 : undefined;
-            const zusatzinfos = (!zusatzinfosInjected && normalizedLegacyInfos.length > 0)
-                ? normalizedLegacyInfos
+            const zusatzinfos = (!zusatzinfosInjected && globalLegacyInfos.length > 0)
+                ? globalLegacyInfos
                 : undefined;
             if ((klinischeZusatzinfos?.length ?? 0) > 0 || (patientenangaben?.length ?? 0) > 0 || (zusatzinfos?.length ?? 0) > 0) {
                 zusatzinfosInjected = true;
@@ -2373,9 +2957,28 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 anesthesia: String(facts.anesthesia ?? ''),
                 insuranceType,
                 mkv_justification: facts.mkvJustification ?? '',
+                mkv_betrag: facts.mkvBetrag ?? undefined,
+                capping: {
+                    performed: facts.capping?.performed ?? 'unknown',
+                    material: facts.capping?.material ?? undefined,
+                },
+                radiology: facts.radiology ? {
+                    indication: facts.radiology.indication,
+                    type: facts.radiology.type,
+                    timing: facts.radiology.timing,
+                    findings: facts.radiology.findings,
+                } : undefined,
                 klinischeZusatzinfos,
                 patientenangaben,
                 zusatzinfos,
+                endo: facts.endo ? {
+                    workingLengthMethod: facts.endo.workingLengthMethod,
+                    workingLengthsText: (facts.endo as Record<string, unknown>).workingLengthsText,
+                    canalCount: facts.endo.canalCount,
+                    irrigationSolutions: facts.endo.irrigationSolutions,
+                    medication: facts.endo.medication,
+                    wfTechnique: facts.endo.wfTechnique,
+                } : undefined,
             };
 
             const mkvSignal = instanceInsuranceType === 'MKV'
@@ -2436,19 +3039,85 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
         }
 
         for (const bucket of sectionBuckets.values()) {
+            const uniqueParagraphs: string[] = [];
+            const seenParagraphs = new Set<string>();
+            for (const entry of bucket.contents) {
+                const normalized = String(entry ?? '').trim();
+                if (!normalized) continue;
+                const paragraphs = normalized
+                    .split(/\n{2,}/)
+                    .map(paragraph => paragraph.trim())
+                    .filter(Boolean);
+                for (const paragraph of paragraphs) {
+                    if (seenParagraphs.has(paragraph)) continue;
+                    seenParagraphs.add(paragraph);
+                    uniqueParagraphs.push(paragraph);
+                }
+            }
             aggregatedSections.push({
                 id: bucket.id,
                 label: bucket.label,
-                content: bucket.contents.filter(Boolean).join('\n\n'),
+                content: uniqueParagraphs.join('\n\n'),
             });
         }
 
         const finalSections = aggregatedSections;
         const fullTextSections = finalSections.filter(section => section.id !== 'abrechnung');
+
+        const forensicComposition = await maybeComposeForensicSections({
+            treatmentId,
+            insuranceType: sessionInsuranceType,
+            textLength,
+            sections: fullTextSections.map(section => ({
+                id: section.id,
+                label: section.label,
+                content: section.content,
+            })),
+            context: {
+                instanceCount: results.length,
+                unresolvedForensicHints,
+                documentationContext: {
+                    clinical: extractionDocumentationContext.clinical,
+                    patient: extractionDocumentationContext.patient,
+                    administrative: extractionDocumentationContext.administrative,
+                    forensicNotes: extractionDocumentationContext.forensicNotes,
+                },
+            },
+        });
+        forensicComposerMeta = {
+            enabled: forensicComposition.enabled,
+            applied: forensicComposition.applied,
+            sectionCount: forensicComposition.sections.length,
+            error: forensicComposition.error,
+        };
+        if (forensicComposition.applied) {
+            trace.add('render', 'forensic_composer=applied');
+        } else if (forensicComposition.error) {
+            trace.add('render', `forensic_composer=error:${forensicComposition.error}`);
+        } else if (forensicComposition.enabled) {
+            trace.add('render', 'forensic_composer=skipped');
+        } else {
+            trace.add('render', 'forensic_composer=disabled');
+        }
+
         // M64: do NOT prepend "Zahn X" here — this was reverted in M64
-        const finalFullText = fullTextSections
+        let finalFullText = forensicComposition.sections
             .map(section => `[${section.label}]\n${section.content}`)
             .join('\n\n');
+        const refinement = await maybeRefineFinalOutputText({
+            text: finalFullText,
+            treatmentId,
+            insuranceType: sessionInsuranceType,
+            textLength,
+        });
+        finalFullText = refinement.text;
+        if (refinement.applied) {
+            trace.add('render', 'text_refiner=applied');
+        } else if (refinement.error) {
+            trace.add('render', `text_refiner=error:${refinement.error}`);
+        } else {
+            trace.add('render', 'text_refiner=skipped');
+        }
 
         const regelPruefungen = pruefeRegeln({
             codes: finalBillingCodes,
@@ -2477,7 +3146,7 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
 
         const billingValidationResult = validateBillingCodes(finalBillingCodes);
 
-        if (isDev) {
+        if (probeDebugEnabled) {
             console.debug('[GP4] Billing Completeness:', billingCompletenessResult.isComplete ? 'COMPLETE' : 'INCOMPLETE', billingCompletenessResult);
             console.debug('[Billing Validation] Conflicts:', billingValidationResult.konflikte.length);
         }
@@ -2512,6 +3181,8 @@ export async function runV10(input: V10PipelineInput): Promise<V10PipelineOutput
                 billingCompletenessResult,
                 regelPruefungen,
                 billingValidationResult,
+                reasonedExtractionMeta,
+                forensicComposerMeta,
                 { instances: debugInstances }
             ),
             trace: isDev ? buildTrace(results) : undefined,
@@ -2544,6 +3215,8 @@ function buildMeta(
     billingCompletenessResult?: BillingCompletenessResult,
     regelPruefungen?: ReturnType<typeof pruefeRegeln>,
     billingValidationResult?: ReturnType<typeof validateBillingCodes>,
+    reasonedExtraction?: V10PipelineMeta['reasonedExtraction'],
+    forensicComposer?: V10PipelineMeta['forensicComposer'],
     debug?: V10PipelineMeta['debug']
 ): V10PipelineMeta {
     // Get KB metadata
@@ -2559,7 +3232,7 @@ function buildMeta(
             sourceRefs: a.sourceRefs,
             scope: r.tooth ? 'tooth' as const : 'session' as const,
             toothScope: r.tooth,
-            triggeredByFacts: [], // TODO: track which facts triggered
+            triggeredByFacts: inferFactKeysForAskback(a.askbackId),
         }))),
         chips: results.flatMap(r => {
             const scope = r.tooth ? 'tooth' as const : 'session' as const;
@@ -2610,6 +3283,18 @@ function buildMeta(
         } : undefined,
     } : undefined;
 
+    const clinicalObligationChecks = results.flatMap(result => result.clinicalObligations ?? []);
+    const clinicalObligations = clinicalObligationChecks.length > 0
+        ? {
+            checks: clinicalObligationChecks,
+            summary: {
+                done: clinicalObligationChecks.filter(check => check.outcome === 'done').length,
+                notDone: clinicalObligationChecks.filter(check => check.outcome === 'not_done').length,
+                deferredNextVisit: clinicalObligationChecks.filter(check => check.outcome === 'deferred_next_visit').length,
+            },
+        }
+        : undefined;
+
     return {
         engineUsed: 'v10',
         instanceCount: results.length,
@@ -2641,6 +3326,7 @@ function buildMeta(
             } : undefined,
         },
         provenance,
+        clinicalObligations,
         combinability: combinabilityResult ? {
             verdict: combinabilityResult.verdict,
             conflicts: combinabilityResult.conflicts.map(c => ({
@@ -2661,6 +3347,8 @@ function buildMeta(
         } : undefined,
         billingValidation: billingValidationResult,
         regelPruefungen: regelPruefungen && regelPruefungen.length > 0 ? regelPruefungen : undefined,
+        reasonedExtraction,
+        forensicComposer,
         debug,
     };
 }

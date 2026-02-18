@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "treatmentId": "bruecke",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Brueckenversorgung"
+  },
+  "questions": [
+    {
+      "key": "bruecke_typ",
+      "category": "forensic",
+      "prompt": "Welche Brueckenversorgung wurde durchgefuehrt?",
+      "type": "single",
+      "dataField": "bruecke.type",
+      "options": [
+        {
+          "id": "definitiv",
+          "label": "Definitive Bruecke",
+          "dataValue": "definitiv"
+        },
+        {
+          "id": "provisorisch",
+          "label": "Provisorische Bruecke",
+          "dataValue": "provisorisch"
+        }
+      ]
+    },
+    {
+      "key": "bruecke_phase",
+      "category": "forensic",
+      "prompt": "Wurde eine Verlaufskontrolle dokumentiert?",
+      "type": "single",
+      "dataField": "bruecke.phase",
+      "options": [
+        {
+          "id": "eingliederung",
+          "label": "Eingliederung",
+          "dataValue": "eingliederung"
+        },
+        {
+          "id": "kontrolle",
+          "label": "Kontrolle/Nachjustierung",
+          "dataValue": "kontrolle"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "_meta": {
+    "id": "schiene_template",
+    "version": "2026-02-v1",
+    "description": "Output-Template fuer Schiene"
+  },
+  "sections": [
+    {
+      "id": "header",
+      "label": "Uebersicht",
+      "format": "inline",
+      "slots": [
+        "{behandlung}",
+        "{tooth}"
+      ],
+      "separator": " | "
+    },
+    {
+      "id": "behandlung",
+      "label": "Behandlungsablauf",
+      "format": "prose",
+      "source": "chips",
+      "slotRule": {
+        "phases": [
+          "funktion",
+          "nachsorge"
+        ],
+        "proseAllowed": true
+      },
+      "connectorSource": "phrasebank.behandlung"
+    },
+    {
+      "id": "leistungen",
+      "label": "Durchgefuehrte Leistungen",
+      "format": "bullets",
+      "source": "chips",
+      "slotRule": {
+        "phases": [
+          "funktion",
+          "nachsorge"
+        ],
+        "hasBilling": true
+      },
+      "maxBullets": 8
+    },
+    {
+      "id": "abrechnung",
+      "label": "Abrechnung",
+      "format": "billing",
+      "source": "billingDetails"
+    }
+  ],
+  "dedupeRules": {
+    "byChipId": [],
+    "byCategory": []
+  },
+  "phrasebank": {
+    "behandlung": {
+      "start": [
+        "Zunaechst"
+      ],
+      "middle": [
+        "Anschliessend"
+      ],
+      "end": [
+        "Abschliessend"
+      ]
+    }
+  },
+  "textLengthPolicy": {
+    "kurz": {
+      "snippetKey": "kurz",
+      "maxSentencesPerChip": 1
+    },
+    "mittel": {
+      "snippetKey": "mittel",
+      "maxSentencesPerChip": 2
+    },
+    "lang": {
+      "snippetKey": "lang",
+      "maxSentencesPerChip": 3
+    }
+  }
+}

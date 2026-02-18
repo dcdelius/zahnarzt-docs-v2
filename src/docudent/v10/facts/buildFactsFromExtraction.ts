@@ -19,6 +19,7 @@ import {
     normalizeSurfaces as normalizeSurfacesModule,
     type CanonicalSurface,
 } from '../extraction/surfaces';
+import { buildDocumentationContextFromExtraction } from '../extraction/context/documentationContext';
 import { clampCanalCountToTooth } from './endoToothAnatomy';
 
 // ═══════════════════════════════════════════════════════════════
@@ -471,6 +472,89 @@ function detectCanalCount(text: string): number | undefined {
     return undefined;
 }
 
+function normalizeEndoStepFromMentioned(value: unknown): EndoStep | undefined {
+    if (typeof value !== 'string') return undefined;
+    const normalized = normalizeToken(value);
+    if (!normalized) return undefined;
+    if (normalized.includes('trepan')) return 'trepanation';
+    if (normalized.includes('working_length') || normalized.includes('arbeitslange') || normalized.includes('langenmess')) return 'working_length';
+    if (normalized.includes('prep') || normalized.includes('aufbereitung') || normalized.includes('instrument')) return 'preparation';
+    if (normalized.includes('irrig') || normalized.includes('spul')) return 'irrigation';
+    if (normalized.includes('medication') || normalized.includes('einlage') || normalized.includes('caoh') || normalized.includes('ledermix')) return 'medication';
+    if (normalized.includes('obturation') || normalized.includes('wurzelfull') || normalized.includes('wf')) return 'obturation';
+    if (normalized.includes('unknown')) return 'unknown';
+    return undefined;
+}
+
+function toOptionalNumber(value: unknown): number | undefined {
+    if (typeof value === 'number' && Number.isFinite(value)) return value;
+    if (typeof value === 'string') {
+        const parsed = Number(value.replace(',', '.').trim());
+        if (Number.isFinite(parsed)) return parsed;
+    }
+    return undefined;
+}
+
+function toOptionalBoolean(value: unknown): boolean | undefined {
+    if (typeof value === 'boolean') return value;
+    if (typeof value === 'string') {
+        const normalized = normalizeToken(value);
+        if (['true', 'ja', 'yes', '1'].includes(normalized)) return true;
+        if (['false', 'nein', 'no', '0'].includes(normalized)) return false;
+    }
+    return undefined;
+}
+
+function normalizeWorkingLengthMethod(value: unknown): 'electronic' | 'xray' | undefined {
+    if (typeof value !== 'string') return undefined;
+    const normalized = normalizeToken(value);
+    if (!normalized) return undefined;
+    if (normalized.includes('elektr') || normalized.includes('electronic') || normalized.includes('apex') || normalized.includes('endo')) return 'electronic';
+    if (normalized.includes('rontgen') || normalized.includes('roentgen') || normalized.includes('xray') || normalized.includes('messaufnahme')) return 'xray';
+    return undefined;
+}
+
+function normalizeWfTechnique(value: unknown): 'warm' | 'einzel' | 'kalt' | undefined {
+    if (typeof value !== 'string') return undefined;
+    const normalized = normalizeToken(value);
+    if (!normalized) return undefined;
+    if (normalized.includes('warm') || normalized.includes('thermo')) return 'warm';
+    if (normalized.includes('einzel') || normalized.includes('single') || normalized.includes('cone')) return 'einzel';
+    if (normalized.includes('kalt') || normalized.includes('lateral')) return 'kalt';
+    return undefined;
+}
+
+function normalizeMedication(value: unknown): 'Ledermix' | 'Ca(OH)2' | undefined {
+    if (typeof value !== 'string') return undefined;
+    const normalized = normalizeToken(value);
+    if (!normalized) return undefined;
+    if (normalized.includes('ledermix')) return 'Ledermix';
+    if (normalized.includes('calcium') || normalized.includes('caoh') || normalized.includes('ca(oh)2')) return 'Ca(OH)2';
+    return undefined;
+}
+
+function normalizeIrrigationSolutions(value: unknown): string[] | undefined {
+    const tokens = Array.isArray(value)
+        ? value
+        : typeof value === 'string'
+            ? value.split(/[;,/|]/g)
+            : [];
+    if (tokens.length === 0) return undefined;
+    const set = new Set<string>();
+    tokens.forEach((token) => {
+        const normalized = normalizeToken(String(token));
+        if (!normalized) return;
+        if (normalized.includes('naocl') || normalized.includes('natriumhypochlorit') || normalized.includes('hypochlorit')) {
+            set.add('NaOCl');
+        } else if (normalized.includes('edta')) {
+            set.add('EDTA');
+        } else if (normalized.includes('chx') || normalized.includes('chlorhex')) {
+            set.add('CHX');
+        }
+    });
+    return set.size > 0 ? Array.from(set) : undefined;
+}
+
 function detectCrownPrepSignals(text: string): {
     preparation?: boolean;
     impression?: boolean;
@@ -523,6 +607,354 @@ function detectCrownPrepSignals(text: string): {
         impression,
         provisional,
     };
+}
+
+function detectRadiologyIndication(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['therapieplanung', 'planung', 'planungsaufnahme', 'planung roentgen', 'planung rontgen'])) {
+        return 'planung';
+    }
+    if (hasAny(normalized, ['kontrolle', 'verlaufskontrolle', 'kontrollaufnahme', 'postop kontrolle', 'postoperative kontrolle'])) {
+        return 'kontrolle';
+    }
+    if (hasAny(normalized, ['diagnostik', 'abklarung', 'diagnose', 'befundung', 'initialbefund'])) {
+        return 'diagnostik';
+    }
+    return undefined;
+}
+
+function detectRadiologyType(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['opg', 'orthopantomogramm', 'panorama', 'panoramaschichtaufnahme'])) {
+        return 'opg';
+    }
+    if (hasAny(normalized, ['einzelzahnaufnahme', 'zahnfilm', 'bissflugel', 'bitewing', 'einzelaufnahme'])) {
+        return 'einzelzahn';
+    }
+    return undefined;
+}
+
+function detectRadiologyTiming(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['praeoperativ', 'preoperativ', 'vor op', 'vor der op'])) return 'praeoperativ';
+    if (hasAny(normalized, ['intraoperativ', 'waehrend der op', 'waehrend op'])) return 'intraoperativ';
+    if (hasAny(normalized, ['postoperativ', 'nach op', 'post op'])) return 'postoperativ';
+    return undefined;
+}
+
+function detectRadiologyFindings(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['apikale auffaelligkeit', 'apikale aufhellung', 'periapikale aufhellung', 'apikaler befund'])) {
+        return 'apikale_auffaelligkeit';
+    }
+    if (hasAny(normalized, ['kariologische befunde', 'karies', 'dentinkaries', 'sekundarkaries'])) {
+        return 'kariologische_befunde';
+    }
+    if (hasAny(normalized, ['unauffaellig', 'ohne auffaelligkeit', 'ohne pathologischen befund', 'regelrecht'])) {
+        return 'unauffaellig';
+    }
+    return undefined;
+}
+
+function detectUntersuchungReason(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['kontrolluntersuchung', 'kontrolle', 'nachkontrolle', 'recall'])) return 'kontrolle';
+    if (hasAny(normalized, ['beschwerden', 'schmerz', 'abklarung', 'akuttermin'])) return 'beschwerden';
+    if (hasAny(normalized, ['vorsorge', 'prophylaxecheck', 'routineuntersuchung', 'check-up', 'checkup'])) return 'vorsorge';
+    return undefined;
+}
+
+function detectUntersuchungFindings(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['unauffaellig', 'ohne auffaelligkeit', 'regelrechter befund'])) return 'unauffaellig';
+    if (hasAny(normalized, ['kariesverdacht', 'kariologisch', 'kariesverdaechtig'])) return 'kariesverdacht';
+    if (hasAny(normalized, ['parodontal', 'parodontale auffaelligkeit', 'parozeichen', 'blutung auf sondieren'])) return 'parozeichen';
+    return undefined;
+}
+
+function detectUntersuchungAssessment(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    const negatedNeedPatterns = [
+        /\bkein(?:e|er|en|em)?\s+(?:akut(?:e|er|en|em)?\s+|derzeit(?:ig)?\s+|momentan\s+|aktuell\s+)?(?:therapiebedarf|behandlungsbedarf|sanierungsbedarf)\b/,
+        /\bohne\s+(?:akut(?:e|er|en|em)?\s+)?(?:therapiebedarf|behandlungsbedarf|sanierungsbedarf)\b/,
+    ];
+    if (negatedNeedPatterns.some(pattern => pattern.test(normalized))) {
+        return 'ohne_therapiebedarf';
+    }
+    if (hasAny(normalized, ['therapiebedarf', 'behandlungsbedarf', 'sanierungsbedarf'])) {
+        return 'therapiebedarf';
+    }
+    return undefined;
+}
+
+function detectFissurenIndikation(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['erhoehte kariesaktivitaet', 'hohes kariesrisiko', 'kariesaktiv'])) {
+        return 'erhoehte_kariesaktivitaet';
+    }
+    if (hasAny(normalized, ['kariesprophylaxe', 'prophylaxe', 'praevention', 'pravention'])) {
+        return 'kariesprophylaxe';
+    }
+    return undefined;
+}
+
+function detectFissurenMaterial(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['giz', 'glasionomer', 'glass ionomer', 'provisorisch'])) {
+        return 'giz_provisorisch';
+    }
+    if (hasAny(normalized, ['kunststoff', 'komposit', 'versiegler'])) {
+        return 'kunststoff';
+    }
+    return undefined;
+}
+
+function detectParodontologiePhase(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['antiinfektios', 'antiinfektioes', 'ait', 'geschlossenes debridement', 'subgingivale instrumentierung'])) {
+        return 'ait';
+    }
+    if (hasAny(normalized, ['upt', 'unterstutzende parodontitistherapie', 'unterstuetzende parodontitistherapie', 'paro recall'])) {
+        return 'upt';
+    }
+    if (hasAny(normalized, ['parodontalstatus', 'paro-status', 'psi', 'screening', 'befunderhebung'])) {
+        return 'status';
+    }
+    return undefined;
+}
+
+function detectParodontologieUptGrade(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (/\bupt\s*grad\s*c\b/.test(normalized) || /\bgrad\s*c\b/.test(normalized)) return 'c';
+    if (/\bupt\s*grad\s*b\b/.test(normalized) || /\bgrad\s*b\b/.test(normalized)) return 'b';
+    if (/\bupt\s*grad\s*a\b/.test(normalized) || /\bgrad\s*a\b/.test(normalized)) return 'a';
+    return undefined;
+}
+
+function detectUptGrade(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (/\bupt\s*grad\s*c\b/.test(normalized) || /\bgrad\s*c\b/.test(normalized)) return 'c';
+    if (/\bupt\s*grad\s*b\b/.test(normalized) || /\bgrad\s*b\b/.test(normalized)) return 'b';
+    if (/\bupt\s*grad\s*a\b/.test(normalized) || /\bgrad\s*a\b/.test(normalized)) return 'a';
+    return undefined;
+}
+
+function detectUptIntervall(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['3-4 monate', '3 bis 4 monate', 'quartal', 'vierteljahr', '3 monate', '4 monate'])) {
+        return '3-4_monate';
+    }
+    if (hasAny(normalized, ['6 monate', 'halbjahr', 'halbjaehrlich', 'halbjährlich'])) {
+        return '6_monate';
+    }
+    if (hasAny(normalized, ['12 monate', 'jaehrlich', 'jährlich', '1 jahr', 'ein jahr'])) {
+        return '12_monate';
+    }
+    return undefined;
+}
+
+function detectWsrZugang(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['osteotomie', 'knochenfenster', 'buccale osteotomie'])) {
+        return 'osteotomie';
+    }
+    if (hasAny(normalized, ['trepaniert', 'am eroffneten zahn', 'am eroeffneten zahn', 'eroffneter zahn', 'eroeffneter zahn'])) {
+        return 'trepaniert';
+    }
+    return undefined;
+}
+
+function detectWsrLokalisation(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['molar', 'molarenbereich', 'seitenzahnbereich'])) {
+        return 'molar';
+    }
+    if (hasAny(normalized, ['frontzahn', 'praumolar', 'praemolar', 'front- praemolar', 'front praemolar'])) {
+        return 'front_praemolar';
+    }
+    return undefined;
+}
+
+function detectTraumaArt(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['luxation', 'subluxation', 'intrusion', 'extrusion'])) {
+        return 'luxation';
+    }
+    if (hasAny(normalized, ['fraktur', 'kronenfraktur', 'wurzelfraktur', 'schmelz-dentin-fraktur'])) {
+        return 'fraktur';
+    }
+    if (hasAny(normalized, ['avulsion', 'avulsiert', 'ausgeschlagen', 'replantation'])) {
+        return 'avulsion';
+    }
+    return undefined;
+}
+
+function detectTraumaSchienung(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['keine schienung', 'ohne schienung'])) return 'nein';
+    if (hasAny(normalized, ['semipermanent', 'schienung', 'splint', 'draht-komposit-schiene', 'draht komposit schiene'])) {
+        return 'ja';
+    }
+    return undefined;
+}
+
+function detectTraumaKontrolle(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['keine kontrolle', 'ohne kontrolle', 'keine nachkontrolle'])) return 'nein';
+    if (hasAny(normalized, ['kontrolle', 'nachkontrolle', 'verlaufskontrolle', 'recall', 'wiedervorstellung'])) {
+        return 'ja';
+    }
+    return undefined;
+}
+
+function detectImplantPhase(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['freilegung', 'implantat freigelegt', 'zweiteingriff', 'healing abutment'])) {
+        return 'freilegung';
+    }
+    if (hasAny(normalized, ['implantatinsertion', 'implantat gesetzt', 'implantation', 'implantat inseriert'])) {
+        return 'insertion';
+    }
+    return undefined;
+}
+
+function detectImplantNachsorge(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['keine nachsorge', 'ohne nachsorge', 'keine kontrolle'])) return 'nein';
+    if (hasAny(normalized, ['nachsorge', 'postoperativ', 'kontrolltermin', 'wiedervorstellung', 'recall'])) return 'ja';
+    return undefined;
+}
+
+function detectSchieneTyp(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['protrusionsschiene', 'protrusions', 'unterkieferprotrusion'])) {
+        return 'protrusionsschiene';
+    }
+    if (hasAny(normalized, ['okklusionsschiene', 'aufbissschiene', 'knirscherschiene'])) {
+        return 'okklusionsschiene';
+    }
+    return undefined;
+}
+
+function detectSchienePhase(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['kontrolle', 'nachadjustierung', 'adjustiert', 'nachkontrolle'])) {
+        return 'kontrolle';
+    }
+    if (hasAny(normalized, ['eingliederung', 'eingegliedert', 'eingesetzt', 'eingesetzt und angepasst'])) {
+        return 'eingliederung';
+    }
+    return undefined;
+}
+
+function detectKroneArt(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['provisorische krone', 'provisorium', 'interimskrone', 'temporaere krone'])) {
+        return 'provisorium';
+    }
+    if (hasAny(normalized, ['vollkrone'])) {
+        return 'vollkrone';
+    }
+    return undefined;
+}
+
+function detectKroneEingliederung(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['definitiv', 'definitiv eingegliedert', 'final eingegliedert', 'zementiert'])) {
+        return 'definitiv';
+    }
+    if (hasAny(normalized, ['provisorisch', 'provisorisch eingegliedert', 'temporar eingesetzt', 'eingesetzt'])) {
+        return 'provisorisch';
+    }
+    return undefined;
+}
+
+function detectTeilkroneArt(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['provisorische teilkrone', 'teilkrone provisorisch', 'interim teilkrone'])) {
+        return 'provisorium';
+    }
+    if (/\bteilkrone\b/.test(normalized)) {
+        return 'teilkrone';
+    }
+    return undefined;
+}
+
+function detectTeilkroneEingliederung(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['definitiv', 'definitiv eingegliedert', 'final eingegliedert', 'zementiert'])) {
+        return 'definitiv';
+    }
+    if (hasAny(normalized, ['provisorisch', 'provisorisch eingegliedert', 'temporar eingesetzt', 'eingesetzt'])) {
+        return 'provisorisch';
+    }
+    return undefined;
+}
+
+function detectBrueckeTyp(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['provisorische bruecke', 'interimsbruecke', 'uebergangsbruecke'])) {
+        return 'provisorisch';
+    }
+    if (hasAny(normalized, ['definitive bruecke', 'bruecke definitiv', 'definitiv'])) {
+        return 'definitiv';
+    }
+    return undefined;
+}
+
+function detectBrueckePhase(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['kontrolle', 'nachjustierung', 'nachkontrolle', 'okklusionskontrolle'])) {
+        return 'kontrolle';
+    }
+    if (hasAny(normalized, ['eingliederung', 'eingegliedert', 'eingesetzt', 'zementiert'])) {
+        return 'eingliederung';
+    }
+    return undefined;
+}
+
+function detectTeilprotheseTyp(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['modellgussprothese', 'modellguss', 'klammerprothese'])) {
+        return 'modellguss';
+    }
+    if (hasAny(normalized, ['interimsteilprothese', 'interimprothese', 'interimsprothese', 'interim'])) {
+        return 'interim';
+    }
+    return undefined;
+}
+
+function detectTeilprothesePhase(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['kontrolle', 'nachjustierung', 'druckstellenkontrolle', 'nachkontrolle'])) {
+        return 'kontrolle';
+    }
+    if (hasAny(normalized, ['eingliederung', 'eingegliedert', 'eingesetzt'])) {
+        return 'eingliederung';
+    }
+    return undefined;
+}
+
+function detectTotalprotheseTyp(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['immediat-totalprothese', 'immediatprothese', 'immediat'])) {
+        return 'immediat';
+    }
+    if (hasAny(normalized, ['konventionelle totalprothese', 'konventionell', 'vollprothese'])) {
+        return 'konventionell';
+    }
+    return undefined;
+}
+
+function detectTotalprothesePhase(text: string): string | undefined {
+    const normalized = normalizeToken(text);
+    if (hasAny(normalized, ['kontrolle', 'nachjustierung', 'druckstellenkontrolle', 'nachkontrolle'])) {
+        return 'kontrolle';
+    }
+    if (hasAny(normalized, ['eingliederung', 'eingegliedert', 'eingesetzt'])) {
+        return 'eingliederung';
+    }
+    return undefined;
 }
 
 /**
@@ -1362,11 +1794,16 @@ export function detectPulpaOpened(extracted: ExtractedDataLike): boolean | undef
     // Dictation patterns for direkte Überkappung (Pulpaeröffnung)
     const directCappingPatterns = [
         'pulpaeroffnung',
+        'pulpaeroeffnung',
+        'pulpaoeffnung',
         'pulpa eroffnung',
+        'pulpa eroeffnung',
         'direkte uberkappung',
         'direkt uberkappung',
         'punktformige eroffnung',
+        'punktfoermige eroeffnung',
         'pulpa eroffnet',
+        'pulpa eroeffnet',
         'pulpa punktformig',
         'mit p',
         'p.'
@@ -1585,8 +2022,10 @@ function buildEndoFacts(
 
     const combinedText = textSources.join(' ');
     const isolationMentioned = detectIsolationMentioned(extracted);
+    const kofferdam = detectKofferdam(extracted);
     const diagnosis = detectEndoDiagnosis(combinedText);
-    const step = detectEndoStep(combinedText);
+    const stepFromMentioned = normalizeEndoStepFromMentioned(mentioned['endo_step'] ?? mentioned['step']);
+    const step = stepFromMentioned ?? detectEndoStep(combinedText);
     const stepFlags = detectEndoStepFlags(combinedText);
     const details = detectEndoProcedureDetails(combinedText);
     const tempClosureNegated = hasAny(combinedText, [
@@ -1612,20 +2051,29 @@ function buildEndoFacts(
         : tempClosureNegated
             ? false
             : undefined;
-    const canalCount = clampCanalCountToTooth(tooth, detectCanalCount(combinedText));
-    const explicitWlMethod = (extracted as Record<string, unknown>).wl_method;
+    const explicitCanalCount = toOptionalNumber(mentioned['root_canals'] ?? mentioned['canal_count']);
+    const canalCount = clampCanalCountToTooth(tooth, explicitCanalCount ?? detectCanalCount(combinedText));
+    const explicitWlMethod =
+        (extracted as Record<string, unknown>).wl_method
+        ?? mentioned['wl_method']
+        ?? mentioned['working_length_method'];
     const workingLengthMethod =
-        typeof explicitWlMethod === 'string'
-            ? (explicitWlMethod.toLowerCase().includes('elektr')
-                ? 'electronic'
-                : explicitWlMethod.toLowerCase().includes('rontgen') || explicitWlMethod.toLowerCase().includes('roentgen')
-                    ? 'xray'
-                    : undefined)
+        normalizeWorkingLengthMethod(explicitWlMethod)
+            ? normalizeWorkingLengthMethod(explicitWlMethod)
             : details.workingLengthMethodElectronic
                 ? 'electronic'
                 : details.workingLengthMethodXray
                     ? 'xray'
                     : undefined;
+    const explicitIrrigationSolutions = normalizeIrrigationSolutions(
+        mentioned['irrigation_solutions'] ?? mentioned['endo_irrigation_solutions']
+    );
+    const explicitMedication = normalizeMedication(
+        mentioned['endo_medication'] ?? mentioned['medication']
+    );
+    const explicitWfTechnique = normalizeWfTechnique(mentioned['wf_technique']);
+    const explicitTempClosure = toOptionalBoolean(mentioned['temp_closure']);
+    const explicitRootCanals = toOptionalNumber(mentioned['root_canals']);
 
     return {
         treatmentId: 'endo',
@@ -1634,8 +2082,10 @@ function buildEndoFacts(
         cariesDepth: detectCariesDepth(extracted),
         capping: { performed: 'unknown' },
         counseling: { pulpitisRisk: 'unknown' },
+        kofferdamUsed: kofferdam.used,
+        kofferdamMentioned: kofferdam.mentioned,
         isolationMentioned,
-        rootCanals: typeof mentioned['root_canals'] === 'number' ? mentioned['root_canals'] : undefined,
+        rootCanals: explicitRootCanals,
         workingLength: typeof mentioned['working_length'] === 'string' ? mentioned['working_length'] : undefined,
         endo: {
             diagnosis,
@@ -1648,34 +2098,40 @@ function buildEndoFacts(
                     ? 'manual'
                     : undefined,
             canalCount,
-            kofferdam: details.kofferdam || isolationMentioned === 'rubberDam' ? true : undefined,
+            kofferdam: kofferdam.used === false
+                ? false
+                : details.kofferdam || isolationMentioned === 'rubberDam'
+                    ? true
+                    : undefined,
             workingLengthMethod,
-            irrigationSolutions: [
+            irrigationSolutions: explicitIrrigationSolutions ?? [
                 ...(details.irrigationWithNaOCl ? ['NaOCl'] : []),
                 ...(details.irrigationWithEDTA ? ['EDTA'] : []),
             ],
-            medication: details.medicationLedermix
-                ? 'Ledermix'
-                : details.medicationCalciumHydroxide
-                    ? 'Ca(OH)2'
-                    : undefined,
+            medication: explicitMedication
+                ?? (details.medicationLedermix
+                    ? 'Ledermix'
+                    : details.medicationCalciumHydroxide
+                        ? 'Ca(OH)2'
+                        : undefined),
             sealerMentioned: details.sealer ? true : undefined,
-            obturated: details.guttapercha || details.sealer,
+            obturated: details.guttapercha || details.sealer || step === 'obturation',
             anesthesiaType: details.anesthesiaLeitung
                 ? 'leitung'
                 : details.anesthesiaInfiltration
                     ? 'infiltration'
                     : undefined,
-            wfTechnique: details.wfTechniqueWarm
-                ? 'warm'
-                : details.wfTechniqueEinzel
-                    ? 'einzel'
-                    : details.wfTechniqueKalt
-                        ? 'kalt'
-                        : undefined,
+            wfTechnique: explicitWfTechnique
+                ?? (details.wfTechniqueWarm
+                    ? 'warm'
+                    : details.wfTechniqueEinzel
+                        ? 'einzel'
+                        : details.wfTechniqueKalt
+                            ? 'kalt'
+                            : undefined),
             diagnosticXray: details.diagnosticXray,
             postEndoAufbau: details.postEndoAufbau,
-            tempClosure,
+            tempClosure: explicitTempClosure ?? tempClosure,
         },
     };
 }
@@ -1733,6 +2189,432 @@ function buildCrownPrepFacts(extracted: ExtractedDataLike, instanceScope?: { too
     };
 }
 
+function buildRoentgenFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const indication = detectRadiologyIndication(combinedText);
+    const type = detectRadiologyType(combinedText);
+    const timing = detectRadiologyTiming(combinedText);
+    const findings = detectRadiologyFindings(combinedText);
+
+    return {
+        treatmentId: 'roentgen',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        radiology: {
+            ...(indication ? { indication } : {}),
+            ...(type ? { type } : {}),
+            ...(timing ? { timing } : {}),
+            ...(findings ? { findings } : {}),
+        },
+    };
+}
+
+function buildUntersuchungFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const reason = detectUntersuchungReason(combinedText);
+    const findings = detectUntersuchungFindings(combinedText);
+    const assessment = detectUntersuchungAssessment(combinedText);
+
+    return {
+        treatmentId: 'untersuchung',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        untersuchung: {
+            ...(reason ? { reason } : {}),
+            ...(findings ? { findings } : {}),
+            ...(assessment ? { assessment } : {}),
+        },
+    };
+}
+
+function buildFissurenversiegelungFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const indication = detectFissurenIndikation(combinedText);
+    const material = detectFissurenMaterial(combinedText);
+
+    return {
+        treatmentId: 'fissurenversiegelung',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        fissurenversiegelung: {
+            ...(indication ? { indication } : {}),
+            ...(material ? { material } : {}),
+        },
+    };
+}
+
+function buildUeberkappungFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const cappingPerformed = detectCapping(extracted);
+    const cappingMaterial = detectCappingMaterial(extracted);
+    const pulpaOpened = detectPulpaOpened(extracted);
+    const anesthesiaDetected = detectAnesthesia(extracted);
+    const anesthesiaAmbiguous = detectAnesthesiaAmbiguous(extracted);
+    const anesthesia = anesthesiaAmbiguous ? 'unknown' : anesthesiaDetected;
+
+    return {
+        treatmentId: 'ueberkappung',
+        tooth,
+        cariesDepth: detectCariesDepth(extracted),
+        capping: {
+            performed: cappingPerformed,
+            ...(cappingMaterial ? { material: cappingMaterial } : {}),
+        },
+        counseling: { pulpitisRisk: 'unknown' },
+        pulpaOpened,
+        anesthesia,
+        anesthesiaAmbiguous,
+        surfaceAnesthesia: detectSurfaceAnesthesia(extracted),
+    };
+}
+
+function buildParodontologieFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const phase = detectParodontologiePhase(combinedText);
+    const uptGrade = detectParodontologieUptGrade(combinedText);
+
+    return {
+        treatmentId: 'parodontologie',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        parodontologie: {
+            ...(phase ? { phase } : {}),
+            ...(uptGrade ? { uptGrade } : {}),
+        },
+    };
+}
+
+function buildUptFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const grade = detectUptGrade(combinedText);
+    const interval = detectUptIntervall(combinedText);
+
+    return {
+        treatmentId: 'upt',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        upt: {
+            ...(grade ? { grade } : {}),
+            ...(interval ? { interval } : {}),
+        },
+    };
+}
+
+function buildWsrFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const zugang = detectWsrZugang(combinedText);
+    const lokalisation = detectWsrLokalisation(combinedText);
+
+    return {
+        treatmentId: 'wsr',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        wsr: {
+            ...(zugang ? { zugang } : {}),
+            ...(lokalisation ? { lokalisation } : {}),
+        },
+    };
+}
+
+function buildTraumaFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const art = detectTraumaArt(combinedText);
+    const schienung = detectTraumaSchienung(combinedText);
+    const kontrolle = detectTraumaKontrolle(combinedText);
+
+    return {
+        treatmentId: 'trauma',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        trauma: {
+            ...(art ? { art } : {}),
+            ...(schienung ? { schienung } : {}),
+            ...(kontrolle ? { kontrolle } : {}),
+        },
+    };
+}
+
+function buildImplantFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const phase = detectImplantPhase(combinedText);
+    const nachsorge = detectImplantNachsorge(combinedText);
+
+    return {
+        treatmentId: 'implant',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        implant: {
+            ...(phase ? { phase } : {}),
+            ...(nachsorge ? { nachsorge } : {}),
+        },
+    };
+}
+
+function buildSchieneFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const type = detectSchieneTyp(combinedText);
+    const phase = detectSchienePhase(combinedText);
+
+    return {
+        treatmentId: 'schiene',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        schiene: {
+            ...(type ? { type } : {}),
+            ...(phase ? { phase } : {}),
+        },
+    };
+}
+
+function buildKroneFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const type = detectKroneArt(combinedText);
+    const placement = detectKroneEingliederung(combinedText);
+
+    return {
+        treatmentId: 'krone',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        krone: {
+            ...(type ? { type } : {}),
+            ...(placement ? { placement } : {}),
+        },
+    };
+}
+
+function buildTeilkroneFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const type = detectTeilkroneArt(combinedText);
+    const placement = detectTeilkroneEingliederung(combinedText);
+
+    return {
+        treatmentId: 'teilkrone',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        teilkrone: {
+            ...(type ? { type } : {}),
+            ...(placement ? { placement } : {}),
+        },
+    };
+}
+
+function buildBrueckeFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const type = detectBrueckeTyp(combinedText);
+    const phase = detectBrueckePhase(combinedText);
+
+    return {
+        treatmentId: 'bruecke',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        bruecke: {
+            ...(type ? { type } : {}),
+            ...(phase ? { phase } : {}),
+        },
+    };
+}
+
+function buildTeilprotheseFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const type = detectTeilprotheseTyp(combinedText);
+    const phase = detectTeilprothesePhase(combinedText);
+
+    return {
+        treatmentId: 'teilprothese',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        teilprothese: {
+            ...(type ? { type } : {}),
+            ...(phase ? { phase } : {}),
+        },
+    };
+}
+
+function buildTotalprotheseFacts(extracted: ExtractedDataLike, instanceScope?: { tooth?: string }): TreatmentFacts {
+    const toothValue = instanceScope?.tooth ?? (extracted as Record<string, unknown>).tooth;
+    const tooth = toothValue !== undefined && toothValue !== null ? String(toothValue) : undefined;
+    const textSources: string[] = [];
+    if (extracted.rawDictation) textSources.push(extracted.rawDictation);
+    if (instanceScope?.tooth && extracted.teeth) {
+        const toothData = extracted.teeth.find(t => t.tooth === instanceScope.tooth);
+        if (toothData?.notes) {
+            textSources.push(...toothData.notes);
+        }
+    }
+    const combinedText = textSources.join(' ');
+    const type = detectTotalprotheseTyp(combinedText);
+    const phase = detectTotalprothesePhase(combinedText);
+
+    return {
+        treatmentId: 'totalprothese',
+        tooth,
+        cariesDepth: 'unknown',
+        capping: { performed: 'unknown' },
+        counseling: { pulpitisRisk: 'unknown' },
+        totalprothese: {
+            ...(type ? { type } : {}),
+            ...(phase ? { phase } : {}),
+        },
+    };
+}
+
 // ═══════════════════════════════════════════════════════════════
 // MAIN ENTRY POINT
 // ═══════════════════════════════════════════════════════════════
@@ -1744,25 +2626,70 @@ function buildCrownPrepFacts(extracted: ExtractedDataLike, instanceScope?: { too
 export function buildFactsFromExtraction(params: BuildFactsParams): TreatmentFacts {
     const { extracted, treatmentId, instanceScope } = params;
     const safeExtracted: ExtractedDataLike = extracted ?? {};
+    const documentationContext = buildDocumentationContextFromExtraction(safeExtracted as unknown as Record<string, unknown>);
+
+    const withDocumentationContext = (facts: TreatmentFacts): TreatmentFacts => {
+        const hasContext =
+            documentationContext.clinical.length > 0
+            || documentationContext.patient.length > 0
+            || documentationContext.administrative.length > 0
+            || documentationContext.forensicNotes.length > 0
+            || documentationContext.unresolved.length > 0;
+        if (!hasContext) return facts;
+        return {
+            ...facts,
+            documentationContext,
+        };
+    };
 
     switch (treatmentId) {
         case 'fuellung':
-            return buildFuellungFacts(safeExtracted, instanceScope);
+            return withDocumentationContext(buildFuellungFacts(safeExtracted, instanceScope));
         case 'endo':
-            return buildEndoFacts(safeExtracted, instanceScope);
+            return withDocumentationContext(buildEndoFacts(safeExtracted, instanceScope));
         case 'extraction':
-            return buildExtractionFacts(safeExtracted, instanceScope);
+            return withDocumentationContext(buildExtractionFacts(safeExtracted, instanceScope));
         case 'pzr':
-            return buildPzrFacts(safeExtracted);
+            return withDocumentationContext(buildPzrFacts(safeExtracted));
         case 'crown_prep':
-            return buildCrownPrepFacts(safeExtracted, instanceScope);
+            return withDocumentationContext(buildCrownPrepFacts(safeExtracted, instanceScope));
+        case 'roentgen':
+            return withDocumentationContext(buildRoentgenFacts(safeExtracted, instanceScope));
+        case 'untersuchung':
+            return withDocumentationContext(buildUntersuchungFacts(safeExtracted, instanceScope));
+        case 'fissurenversiegelung':
+            return withDocumentationContext(buildFissurenversiegelungFacts(safeExtracted, instanceScope));
+        case 'ueberkappung':
+            return withDocumentationContext(buildUeberkappungFacts(safeExtracted, instanceScope));
+        case 'parodontologie':
+            return withDocumentationContext(buildParodontologieFacts(safeExtracted, instanceScope));
+        case 'upt':
+            return withDocumentationContext(buildUptFacts(safeExtracted, instanceScope));
+        case 'wsr':
+            return withDocumentationContext(buildWsrFacts(safeExtracted, instanceScope));
+        case 'trauma':
+            return withDocumentationContext(buildTraumaFacts(safeExtracted, instanceScope));
+        case 'implant':
+            return withDocumentationContext(buildImplantFacts(safeExtracted, instanceScope));
+        case 'schiene':
+            return withDocumentationContext(buildSchieneFacts(safeExtracted, instanceScope));
+        case 'krone':
+            return withDocumentationContext(buildKroneFacts(safeExtracted, instanceScope));
+        case 'teilkrone':
+            return withDocumentationContext(buildTeilkroneFacts(safeExtracted, instanceScope));
+        case 'bruecke':
+            return withDocumentationContext(buildBrueckeFacts(safeExtracted, instanceScope));
+        case 'teilprothese':
+            return withDocumentationContext(buildTeilprotheseFacts(safeExtracted, instanceScope));
+        case 'totalprothese':
+            return withDocumentationContext(buildTotalprotheseFacts(safeExtracted, instanceScope));
         default:
-            return {
+            return withDocumentationContext({
                 treatmentId,
                 cariesDepth: 'unknown',
                 capping: { performed: 'unknown' },
                 counseling: { pulpitisRisk: 'unknown' },
-            };
+            });
     }
 }
 

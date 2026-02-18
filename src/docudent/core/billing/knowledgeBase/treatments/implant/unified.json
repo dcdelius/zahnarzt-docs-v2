@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "id": "implant",
+    "version": "1.0.0",
+    "label": "Implant"
+  },
+  "chips": [
+    {
+      "id": "implant_insertion",
+      "label": "Implantatinsertion",
+      "phase": "chirurgie",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Implantat inseriert.",
+        "mittel": "Implantatinsertion am betroffenen Zahngebiet durchgefuehrt.",
+        "lang": "Implantatinsertion am betroffenen Zahngebiet mit dokumentiertem chirurgischem Vorgehen durchgefuehrt."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "implant_freilegung",
+      "label": "Implantatfreilegung",
+      "phase": "chirurgie",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Implantat freigelegt.",
+        "mittel": "Implantat freigelegt und Weichgewebe angepasst.",
+        "lang": "Implantat freigelegt und periimplantares Weichgewebe funktionell angepasst."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "implant_nachsorge",
+      "label": "Implantat-Nachsorge",
+      "phase": "nachsorge",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Postoperative Nachsorge dokumentiert.",
+        "mittel": "Postoperative Nachsorge inklusive Verhaltensempfehlungen dokumentiert.",
+        "lang": "Postoperative Nachsorge inklusive klinischer Kontrolle und Verhaltensempfehlungen dokumentiert."
+      }
+    }
+  ]
+}

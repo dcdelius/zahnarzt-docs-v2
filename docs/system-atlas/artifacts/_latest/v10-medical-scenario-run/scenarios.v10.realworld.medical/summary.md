@@ -1,20 +1,31 @@
 # V10 Medical Scenario Run Summary
 
-**Run ID:** 2026-02-16T16:12:51.723Z
+**Run ID:** 2026-02-17T19:32:33.251Z
 **Suite:** scenarios.v10.realworld.medical
-**Total:** 10 | **Pass:** 10 | **Fail:** 0
+**Total:** 21 | **Pass:** 21 | **Fail:** 0
 
 ## Results
 
 | ID | Treatment | Insurance | Phase | Questions | BillingRefs | Status |
 |----|-----------|-----------|-------|-----------|-------------|--------|
-| r01 | fuellung | GKV | output | 0 | BEMA_41a, BEMA_12, BEMA_13c | ✅ |
-| r02 | fuellung | GKV | output | 1 | BEMA_40, BEMA_12, BEMA_13 | ✅ |
-| r03 | fuellung | GKV | output | 0 | BEMA_12, BEMA_13, BEMA_25 | ✅ |
-| r04 | fuellung | MKV | output | 3 | BEMA_12, BEMA_13b, GOZ_2080 | ✅ |
-| r05 | fuellung | PKV | output | 0 | GOZ_0090, GOZ_2040, GOZ_2120 | ✅ |
-| r06 | endo | GKV | output | 3 | BEMA_41a, BEMA_12, BEMA_35... | ✅ |
-| r07 | endo | PKV | output | 2 | GOZ_0090, GOZ_2040, GOZ_2400... | ✅ |
-| r08 | endo | GKV | output | 3 | BEMA_12, BEMA_Ä925a, BEMA_32 | ✅ |
-| r09 | endo | GKV | output | 3 | BEMA_41a, BEMA_12, BEMA_34... | ✅ |
-| r10 | fuellung | GKV | output | 0 | BEMA_12, BEMA_13b, BEMA_12... | ✅ |
+| r01 | fuellung | GKV | output | 2 | BEMA_12, BEMA_13c | ✅ |
+| r02 | endo | GKV | output | 7 | BEMA_34, BEMA_35, BEMA_32... | ✅ |
+| r03 | extraction | GKV | output | 0 | BEMA_40, BEMA_41a | ✅ |
+| r04 | crown_prep | PKV | output | 0 | GOZ_2210, GOZ_5000, GOZ_2260 | ✅ |
+| r05 | pzr | GKV | output | 0 | BEMA_107, BEMA_107a | ✅ |
+| r06 | ueberkappung | PKV | output | 0 | GOZ_2340 | ✅ |
+| r07 | fissurenversiegelung | PKV | output | 0 | GOZ_2000 | ✅ |
+| r08 | parodontologie | GKV | output | 0 | BEMA_AIT, BEMA_AIT | ✅ |
+| r09 | upt | GKV | output | 0 | BEMA_UPTb | ✅ |
+| r10 | wsr | PKV | output | 0 | GOZ_3120 | ✅ |
+| r11 | trauma | GKV | output | 0 | BEMA_100 | ✅ |
+| r12 | implant | PKV | output | 0 | GOZ_9000 | ✅ |
+| r13 | krone | PKV | output | 0 | GOZ_2210, GOZ_5180 | ✅ |
+| r14 | teilkrone | PKV | output | 0 | GOZ_2220, GOZ_5180 | ✅ |
+| r15 | bruecke | PKV | output | 0 | GOZ_5070 | ✅ |
+| r16 | teilprothese | PKV | output | 0 | GOZ_5210 | ✅ |
+| r17 | totalprothese | PKV | output | 0 | GOZ_5220 | ✅ |
+| r18 | schiene | GKV | output | 0 | BEMA_K1 | ✅ |
+| r19 | untersuchung | PKV | output | 0 | GOZ_0010 | ✅ |
+| r20 | roentgen | PKV | output | 0 | GOZ_5004 | ✅ |
+| r21 | fuellung | GKV | output | 0 | BEMA_40, BEMA_12, BEMA_13... | ✅ |

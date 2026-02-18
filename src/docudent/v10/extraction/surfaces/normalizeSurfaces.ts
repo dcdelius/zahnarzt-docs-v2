@@ -100,6 +100,9 @@ export function normalizeSurfaces(input: SurfaceNormalizationInput): SurfaceNorm
                     const dictationSet = new Set(dictationResult.surfaces);
                     const extractionIsSubset = extractionResult.surfaces.every(s => dictationSet.has(s));
                     const dictationHasMore = dictationResult.surfaces.length > extractionResult.surfaces.length;
+                    const sameSurfaceSet =
+                        extractionResult.surfaces.length === dictationResult.surfaces.length
+                        && extractionResult.surfaces.every(s => dictationSet.has(s));
                     if (extractionIsSubset && dictationHasMore) {
                         return {
                             surfaces: dictationResult.surfaces,
@@ -107,6 +110,18 @@ export function normalizeSurfaces(input: SurfaceNormalizationInput): SurfaceNorm
                             warnings: [
                                 ...extractionResult.warnings,
                                 'Extraction surfaces were incomplete; using dictation surfaces instead',
+                            ],
+                            hasAmbiguity: false,
+                        };
+                    }
+                    // If explicit dictation surfaces conflict with extraction, prefer dictation.
+                    if (!sameSurfaceSet) {
+                        return {
+                            surfaces: dictationResult.surfaces,
+                            source: 'dictation',
+                            warnings: [
+                                ...extractionResult.warnings,
+                                'Extraction/dictation surface conflict; using dictation surfaces',
                             ],
                             hasAmbiguity: false,
                         };
@@ -294,7 +309,7 @@ function tokenizeString(str: string): string[] {
     const lower = str.toLowerCase().trim();
 
     // Check if it's a pure single-letter compound (like "mod", "od")
-    if (/^[modbl]+$/.test(lower)) {
+    if (/^[modbli]+$/.test(lower)) {
         // Return as single token for compound lookup
         return [lower];
     }
@@ -308,21 +323,24 @@ function escapeRegExp(value: string): string {
 }
 
 function parseToken(token: string): CanonicalSurface[] {
+    const normalizeIncisal = (value: string) => value.replace(/i/g, 'o');
+    const normalizedToken = normalizeIncisal(token.toLowerCase());
+
     // Check compounds first
-    const compound = UNAMBIGUOUS_COMPOUNDS[token];
+    const compound = UNAMBIGUOUS_COMPOUNDS[normalizedToken];
     if (compound) {
         return [...compound];
     }
 
     // Check single terms
-    const single = UNAMBIGUOUS_TERMS[token];
+    const single = UNAMBIGUOUS_TERMS[normalizedToken];
     if (single) {
         return [single];
     }
 
-    // Check if it's a sequence of single canonical letters
-    if (/^[modbl]+$/.test(token)) {
-        return token.split('').filter(
+    // Check if it's a sequence of surface letters (incisal 'i' aliases to 'o')
+    if (/^[modbli]+$/.test(normalizedToken)) {
+        return normalizedToken.split('').filter(
             (c): c is CanonicalSurface => ALL_CANONICAL_SURFACES.includes(c as CanonicalSurface)
         );
     }

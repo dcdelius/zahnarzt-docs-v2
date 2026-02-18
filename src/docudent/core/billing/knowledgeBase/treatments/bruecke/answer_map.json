@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "treatmentId": "bruecke",
+    "version": "1.0.0"
+  },
+  "map": [
+    {
+      "questionKey": "bruecke_typ",
+      "questionIdPatterns": [
+        "bruecke_typ",
+        "medical_bruecke_typ"
+      ],
+      "answers": {
+        "definitiv": "bruecke_definitiv",
+        "provisorisch": "bruecke_provisorisch"
+      },
+      "exclusiveGroup": "bruecke_typ",
+      "mutuallyExclusive": [
+        "bruecke_definitiv",
+        "bruecke_provisorisch"
+      ]
+    }
+  ],
+  "defaults": {
+    "alwaysOnChipIds": []
+  }
+}

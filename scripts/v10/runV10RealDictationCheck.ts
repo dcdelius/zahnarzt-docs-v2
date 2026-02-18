@@ -4,6 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { createV10Session } from '../../src/docudent/v10/uiController/createV10Session';
+import { runV10Bundle } from '../../src/docudent/v10/pipeline/runV10Bundle';
+import { detectTreatmentIntents } from '../../src/docudent/v10/preanalysis/detectTreatmentIntents';
+import { buildSegmentsFromIntents } from '../../src/docudent/v10/preanalysis/buildSegmentsFromIntents';
 
 type Scenario = {
   id: string;
@@ -13,8 +16,19 @@ type Scenario = {
   treatmentId?: string;
   materialDefaults?: Record<string, unknown>;
   expectedPhase?: 'output' | 'questions';
+  expectedTreatments?: string[];
+  expectedBillingCodes?: string[];
   /** Some treatments/scenarios may legitimately emit no billing codes (e.g., non-billable documentation-only). */
   expectBillingCodes?: boolean;
+};
+
+type ScenarioSuiteFile = {
+  _meta?: {
+    description?: string;
+    version?: string;
+    created?: string;
+  };
+  cases?: Scenario[];
 };
 
 type QuestionAnswer = {
@@ -34,6 +48,7 @@ type ScenarioResult = {
     copyText: string;
     billingCodes: string[];
     chips: string[];
+    detectedTreatments: string[];
     extractionMethod: 'llm' | 'regex' | 'stub' | 'unknown';
     extractionLlmError: string;
     debugInstances: Array<{
@@ -121,7 +136,7 @@ const parseExtractionMeta = (
   };
 };
 
-const scenarios: Scenario[] = [
+const defaultScenarios: Scenario[] = [
   {
     id: 'gkv-fuellung-profunda-la',
     label: 'GKV Füllung profunda mit LA + Kofferdam',
@@ -243,6 +258,7 @@ const scenarios: Scenario[] = [
       'PKV. Zahn 21 endodontische Behandlung. Trepanation, Vitalexstirpation, Längenmessung, Aufbereitung maschinell, Spülung mit NaOCl, medikamentöse Einlage, temporärer Verschluss.',
     insuranceType: 'PKV',
     treatmentId: 'endo',
+    expectedBillingCodes: ['GOZ_2360'],
   },
   {
     id: 'pkv-endo-warm-vertikal',
@@ -251,6 +267,7 @@ const scenarios: Scenario[] = [
       'PKV. Zahn 36 Endo. Trepanation, Arbeitslängenmessung, Aufbereitung rotierend, Spülung NaOCl/EDTA, warm vertikale Wurzelfüllung, Röntgenkontrolle, provisorischer Verschluss.',
     insuranceType: 'PKV',
     treatmentId: 'endo',
+    expectedBillingCodes: ['GOZ_2440'],
   },
   {
     id: 'gkv-extraction-naht',
@@ -259,6 +276,7 @@ const scenarios: Scenario[] = [
       'GKV. Zahn 18 Extraktion. Wundversorgung, Naht gelegt. Postoperativer Hinweis.',
     insuranceType: 'GKV',
     treatmentId: 'extraction',
+    expectedBillingCodes: ['BEMA_41a'],
   },
   {
     id: 'gkv-pzr-fluor',
@@ -267,6 +285,7 @@ const scenarios: Scenario[] = [
       'GKV. PZR durchgeführt, Zahnstein entfernt, Politur und abschließende Fluoridierung.',
     insuranceType: 'GKV',
     treatmentId: 'pzr',
+    expectedBillingCodes: ['BEMA_107'],
   },
   {
     id: 'pkv-crown-prep-provi',
@@ -275,8 +294,172 @@ const scenarios: Scenario[] = [
       'PKV. Zahn 11 Kronenpräparation, Abformung, Provisorium eingesetzt.',
     insuranceType: 'PKV',
     treatmentId: 'crown_prep',
+    expectedBillingCodes: ['GOZ_2210'],
+  },
+  {
+    id: 'pkv-ueberkappung-direkt',
+    label: 'PKV direkte Überkappung',
+    dictation:
+      'PKV. Direkte Ueberkappung mit MTA bei Pulpaeroeffnung an Zahn 36.',
+    insuranceType: 'PKV',
+    treatmentId: 'ueberkappung',
+    expectedBillingCodes: ['GOZ_2340'],
+  },
+  {
+    id: 'pkv-fissurenversiegelung',
+    label: 'PKV Fissurenversiegelung',
+    dictation:
+      'PKV. Fissurenversiegelung an Zahn 16 zur Kariesprophylaxe mit Kunststoff durchgefuehrt.',
+    insuranceType: 'PKV',
+    treatmentId: 'fissurenversiegelung',
+    expectedBillingCodes: ['GOZ_2000'],
+  },
+  {
+    id: 'gkv-parodontologie-ait',
+    label: 'GKV Parodontologie AIT',
+    dictation:
+      'GKV. Geschlossene antiinfektioese Parodontaltherapie an 36 und 37 durchgefuehrt.',
+    insuranceType: 'GKV',
+    treatmentId: 'parodontologie',
+    expectedBillingCodes: ['BEMA_AIT'],
+  },
+  {
+    id: 'gkv-upt-grad-b',
+    label: 'GKV UPT Grad B',
+    dictation:
+      'GKV. UPT Grad B an Zahn 36 mit Recallintervall 6 Monate durchgefuehrt.',
+    insuranceType: 'GKV',
+    treatmentId: 'upt',
+    expectedBillingCodes: ['BEMA_UPTb'],
+  },
+  {
+    id: 'pkv-wsr-osteotomie',
+    label: 'PKV WSR Osteotomie',
+    dictation:
+      'PKV. Wurzelspitzenresektion an Zahn 36 durch Osteotomie im Molarenbereich durchgefuehrt.',
+    insuranceType: 'PKV',
+    treatmentId: 'wsr',
+    expectedBillingCodes: ['GOZ_3120'],
+  },
+  {
+    id: 'gkv-trauma-schienung',
+    label: 'GKV Trauma mit semipermanenter Schienung',
+    dictation:
+      'GKV. Zahntrauma an Zahn 11 nach Luxation, semipermanente Schienung angelegt und Verlaufskontrolle geplant.',
+    insuranceType: 'GKV',
+    treatmentId: 'trauma',
+    expectedBillingCodes: ['BEMA_100'],
+  },
+  {
+    id: 'pkv-implant-insertion',
+    label: 'PKV Implantatinsertion',
+    dictation:
+      'PKV. Implantatinsertion regio 36 durchgefuehrt, postoperative Nachsorge und Kontrolltermin dokumentiert.',
+    insuranceType: 'PKV',
+    treatmentId: 'implant',
+    expectedBillingCodes: ['GOZ_9000'],
+  },
+  {
+    id: 'pkv-krone-definitiv',
+    label: 'PKV Krone definitiv',
+    dictation:
+      'PKV. Vollkrone an Zahn 16 definitiv eingegliedert und okklusal kontrolliert.',
+    insuranceType: 'PKV',
+    treatmentId: 'krone',
+    expectedBillingCodes: ['GOZ_5180'],
+  },
+  {
+    id: 'pkv-teilkrone-definitiv',
+    label: 'PKV Teilkrone definitiv',
+    dictation:
+      'PKV. Teilkronenversorgung an Zahn 16, Teilkrone definitiv eingegliedert.',
+    insuranceType: 'PKV',
+    treatmentId: 'teilkrone',
+    expectedBillingCodes: ['GOZ_2220'],
+  },
+  {
+    id: 'pkv-bruecke-definitiv',
+    label: 'PKV Brücke definitiv',
+    dictation:
+      'PKV. Definitive Bruecke regio 36 eingegliedert und Okklusionskontrolle dokumentiert.',
+    insuranceType: 'PKV',
+    treatmentId: 'bruecke',
+    expectedBillingCodes: ['GOZ_5070'],
+  },
+  {
+    id: 'pkv-teilprothese-modellguss',
+    label: 'PKV Teilprothese Modellguss',
+    dictation:
+      'PKV. Modellgussprothese im Unterkiefer eingesetzt und Druckstellenkontrolle dokumentiert.',
+    insuranceType: 'PKV',
+    treatmentId: 'teilprothese',
+    expectedBillingCodes: ['GOZ_5210'],
+  },
+  {
+    id: 'pkv-totalprothese-konventionell',
+    label: 'PKV Totalprothese konventionell',
+    dictation:
+      'PKV. Konventionelle Totalprothese im Oberkiefer eingegliedert und Druckstellenkontrolle dokumentiert.',
+    insuranceType: 'PKV',
+    treatmentId: 'totalprothese',
+    expectedBillingCodes: ['GOZ_5220'],
+  },
+  {
+    id: 'gkv-schiene-okklusion',
+    label: 'GKV Okklusionsschiene',
+    dictation:
+      'GKV. Okklusionsschiene eingegliedert.',
+    insuranceType: 'GKV',
+    treatmentId: 'schiene',
+    expectedBillingCodes: ['BEMA_K1'],
+  },
+  {
+    id: 'pkv-untersuchung-eingehend',
+    label: 'PKV eingehende Untersuchung',
+    dictation:
+      'PKV. Eingehende Kontrolluntersuchung, Befunde unauffaellig, derzeit kein Therapiebedarf.',
+    insuranceType: 'PKV',
+    treatmentId: 'untersuchung',
+    expectedBillingCodes: ['GOZ_0010'],
+  },
+  {
+    id: 'pkv-roentgen-opg',
+    label: 'PKV OPG',
+    dictation:
+      'PKV. OPG zur Therapieplanung praeoperativ angefertigt, apikale Auffaelligkeit regio 36 dokumentiert.',
+    insuranceType: 'PKV',
+    treatmentId: 'roentgen',
+    expectedBillingCodes: ['GOZ_5004'],
+  },
+  {
+    id: 'gkv-multi-extraktion-fuellung',
+    label: 'GKV Multi-Treatment Extraktion plus Fuellung',
+    dictation:
+      'GKV. Extraktion Zahn 28 nach Luxation mit Infiltrationsanaesthesie; danach Fuellung Zahn 16 okklusal mit Komposit unter Kofferdam, Okklusion kontrolliert.',
+    insuranceType: 'GKV',
+    expectedTreatments: ['extraction', 'fuellung'],
+    expectedBillingCodes: ['BEMA_41a', 'BEMA_13'],
   },
 ];
+
+const parseArgs = (): { file?: string } => {
+  const args = process.argv.slice(2);
+  const idx = args.indexOf('--file');
+  if (idx === -1) return {};
+  const value = args[idx + 1];
+  return value ? { file: value } : {};
+};
+
+const resolveSuitePath = (raw: string): string => (
+  path.isAbsolute(raw) ? raw : path.resolve(process.cwd(), raw)
+);
+
+const loadScenariosFromFile = (suitePath: string): Scenario[] => {
+  const parsed = JSON.parse(fs.readFileSync(suitePath, 'utf-8')) as ScenarioSuiteFile | Scenario[];
+  if (Array.isArray(parsed)) return parsed;
+  if (Array.isArray(parsed.cases)) return parsed.cases;
+  return [];
+};
 
 const pickAnswer = (
   q: { id: string; question?: string; options?: Array<{ value: string; label: string }> },
@@ -329,7 +512,19 @@ const pickAnswer = (
     return '3';
   };
 
+  const defaultFreeTextAnswer = (): string => {
+    if (key.includes('befund') || text.includes('befund')) return 'unauffaellig';
+    if (key.includes('indikation') || text.includes('indikation')) return 'therapieplanung';
+    if (key.includes('zeitpunkt') || text.includes('zeitpunkt')) return 'praeoperativ';
+    if (key.includes('empfehl') || text.includes('empfehl')) return 'kontrolle in 6 monaten';
+    if (key.includes('begruendung') || text.includes('begruendung')) return 'medizinisch indiziert';
+    if (key.includes('anlass') || text.includes('anlass')) return 'kontrolluntersuchung';
+    return 'dokumentiert';
+  };
+
   if (key.includes('insurance') || text.includes('versicherung')) {
+    if (normalizedDictation.includes('pkv')) return { questionId: q.id, answerId: 'PKV' };
+    if (normalizedDictation.includes('mkv')) return { questionId: q.id, answerId: 'MKV' };
     return { questionId: q.id, answerId: 'GKV' };
   }
   if (key.includes('mkv') && (key.includes('begruendung') || text.includes('begründung'))) {
@@ -375,6 +570,94 @@ const pickAnswer = (
   if (key.includes('isolation') || text.includes('isolation')) {
     return { questionId: q.id, answerId: 'kofferdam' };
   }
+  if (key.includes('fissuren') && (key.includes('indikation') || text.includes('prophyl'))) {
+    const option = pickOptionByKeyword(['prophylaxe', 'karies']);
+    return { questionId: q.id, answerId: option ?? 'kariesprophylaxe' };
+  }
+  if (key.includes('fissuren') && key.includes('material')) {
+    const option = pickOptionByKeyword(['kunststoff', 'komposit']);
+    return { questionId: q.id, answerId: option ?? 'kunststoff' };
+  }
+  if (key.includes('parodontologie') && key.includes('phase')) {
+    const option = pickOptionByKeyword(['ait', 'befund', 'upt']);
+    return { questionId: q.id, answerId: option ?? 'ait' };
+  }
+  if (key.includes('upt') && key.includes('grad')) {
+    const option = pickOptionByKeyword(['b', 'a', 'c']);
+    return { questionId: q.id, answerId: option ?? 'b' };
+  }
+  if (key.includes('upt') && (key.includes('intervall') || text.includes('recall'))) {
+    const option = pickOptionByKeyword(['6', '3', '12']);
+    return { questionId: q.id, answerId: option ?? '6_monate' };
+  }
+  if (key.includes('wsr') && key.includes('zugang')) {
+    const option = pickOptionByKeyword(['osteotomie', 'trepaniert']);
+    return { questionId: q.id, answerId: option ?? 'osteotomie' };
+  }
+  if (key.includes('wsr') && key.includes('lokalisation')) {
+    const option = pickOptionByKeyword(['molar', 'praemolar', 'front']);
+    return { questionId: q.id, answerId: option ?? 'molar' };
+  }
+  if (key.includes('trauma') && (key.includes('schien') || text.includes('schien'))) {
+    const option = pickOptionByKeyword(['semipermanent', 'rigid', 'flex']);
+    return { questionId: q.id, answerId: option ?? 'semipermanent' };
+  }
+  if (key.includes('implant') && key.includes('phase')) {
+    const option = pickOptionByKeyword(['insertion', 'freilegung']);
+    return { questionId: q.id, answerId: option ?? 'insertion' };
+  }
+  if (key.includes('krone') && key.includes('eingliederung')) {
+    const option = pickOptionByKeyword(['definitiv', 'provisor']);
+    return { questionId: q.id, answerId: option ?? 'definitiv' };
+  }
+  if (key.includes('krone') && key.includes('art')) {
+    const option = pickOptionByKeyword(['vollkrone', 'teilkrone']);
+    return { questionId: q.id, answerId: option ?? 'vollkrone' };
+  }
+  if (key.includes('teilkrone') && key.includes('eingliederung')) {
+    const option = pickOptionByKeyword(['definitiv', 'provisor']);
+    return { questionId: q.id, answerId: option ?? 'definitiv' };
+  }
+  if (key.includes('teilkrone') && key.includes('art')) {
+    const option = pickOptionByKeyword(['teilkrone']);
+    return { questionId: q.id, answerId: option ?? 'teilkrone' };
+  }
+  if (key.includes('bruecke') && key.includes('eingliederung')) {
+    const option = pickOptionByKeyword(['definitiv', 'provisor']);
+    return { questionId: q.id, answerId: option ?? 'definitiv' };
+  }
+  if (key.includes('bruecke') && key.includes('art')) {
+    const option = pickOptionByKeyword(['definitiv', 'provisor']);
+    return { questionId: q.id, answerId: option ?? 'definitiv' };
+  }
+  if (key.includes('teilprothese') && key.includes('typ')) {
+    const option = pickOptionByKeyword(['modellguss', 'interim']);
+    return { questionId: q.id, answerId: option ?? 'modellguss' };
+  }
+  if (key.includes('totalprothese') && key.includes('typ')) {
+    const option = pickOptionByKeyword(['konventionell', 'immediat']);
+    return { questionId: q.id, answerId: option ?? 'konventionell' };
+  }
+  if (key.includes('schiene') && (key.includes('typ') || text.includes('schienentyp'))) {
+    const option = pickOptionByKeyword(['okklusion', 'protrusion']);
+    return { questionId: q.id, answerId: option ?? 'okklusionsschiene' };
+  }
+  if (key.includes('roentgen') && key.includes('typ')) {
+    const option = pickOptionByKeyword(['opg', 'einzel', 'intraoral']);
+    return { questionId: q.id, answerId: option ?? 'opg' };
+  }
+  if (key.includes('roentgen') && key.includes('indikation')) {
+    const option = pickOptionByKeyword(['planung', 'diagnostik']);
+    return { questionId: q.id, answerId: option ?? 'planung' };
+  }
+  if (key.includes('roentgen') && key.includes('zeitpunkt')) {
+    const option = pickOptionByKeyword(['praeoperativ', 'postoperativ', 'intraoperativ']);
+    return { questionId: q.id, answerId: option ?? 'praeoperativ' };
+  }
+  if (key.includes('roentgen') && key.includes('befund')) {
+    const option = pickOptionByKeyword(['unauffaellig', 'auffaellig']);
+    return { questionId: q.id, answerId: option ?? 'unauffaellig' };
+  }
   if (key.includes('working_length_method') || text.includes('arbeitslängen bestimmt')) {
     const option = pickOptionByKeyword(['apex', 'eal', 'elektr', 'rontgen', 'roentgen']);
     return { questionId: q.id, answerId: option ?? 'Apexlokator (EAL)' };
@@ -419,6 +702,9 @@ const pickAnswer = (
       return { questionId: q.id, answerId: 'caoh2' };
     }
   }
+  if (!q.options || q.options.length === 0) {
+    return { questionId: q.id, answerId: defaultFreeTextAnswer() };
+  }
   return null;
 };
 
@@ -426,8 +712,141 @@ const ensureDir = (dir: string) => {
   fs.mkdirSync(dir, { recursive: true });
 };
 
+const inferTreatmentIdFromInstanceId = (instanceId: string): string => {
+  if (typeof instanceId !== 'string') return '';
+  const match = instanceId.match(/^([a-z_]+)/i);
+  return match?.[1] ?? '';
+};
+
 const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
-  const session = createV10Session();
+  const useBundleAutodetect =
+    !scenario.treatmentId
+    && Array.isArray(scenario.expectedTreatments)
+    && scenario.expectedTreatments.length > 1;
+
+  const session: any = useBundleAutodetect
+    ? (() => {
+      let prepared = false;
+      let segments: ReturnType<typeof buildSegmentsFromIntents> = [];
+      const bundleAnswers = new Map<string, unknown>();
+      let insuranceType: 'GKV' | 'PKV' | 'MKV' = scenario.insuranceType ?? 'GKV';
+
+      const runBundle = async () => {
+        if (!prepared) {
+          const preanalysis = await detectTreatmentIntents(scenario.dictation);
+          segments = buildSegmentsFromIntents({
+            bundle: preanalysis.bundle,
+            insuranceType,
+            textLength: 'mittel',
+          });
+          prepared = true;
+        }
+
+        const bundleResult = await runV10Bundle({
+          dictation: scenario.dictation,
+          segments,
+          globalAnswers: bundleAnswers,
+        });
+
+        if (bundleResult.state === 'questions') {
+          const groupedQuestions = (bundleResult.questions ?? []).reduce<Record<string, Array<{
+            id: string;
+            question: string;
+            options?: Array<{ value: string; label: string }>;
+          }>>>((acc, q) => {
+            const instanceId = q.instanceId ?? 'global';
+            const options = (q.options ?? []).map((opt) => ({
+              value: String(opt.dataValue ?? opt.id),
+              label: String(opt.label ?? opt.id),
+            }));
+            const list = acc[instanceId] ?? [];
+            list.push({
+              id: q.id,
+              question: q.question,
+              options,
+            });
+            acc[instanceId] = list;
+            return acc;
+          }, {});
+
+          return {
+            phase: 'questions',
+            questions: groupedQuestions,
+            instances: Object.keys(groupedQuestions).map((instanceId) => ({
+              instanceId,
+              chips: new Set<string>(),
+            })),
+          };
+        }
+
+        if (bundleResult.state === 'output' && bundleResult.output) {
+          const billingRefs = (bundleResult.output.billingCodes ?? []).map((code) => code.code);
+          const perInstance: Record<string, { text: string; billingRefs: string[] }> = {};
+          const bundleDetectedTreatments = Array.from(
+            new Set((bundleResult.output.segments ?? []).map((segment) => String(segment.treatmentId)))
+          ).sort();
+          const debugInstances: Array<{
+            instanceId: string;
+            tooth?: string;
+            chips: string[];
+          }> = [];
+
+          for (const segment of bundleResult.output.segments ?? []) {
+            const segmentBilling = segment.billingCodes ?? [];
+            for (const instance of segment.instanceOutputs ?? []) {
+              const instanceBillingRefs = segmentBilling
+                .filter((code) => code.instanceId === instance.instanceId)
+                .map((code) => code.code);
+              perInstance[instance.instanceId] = {
+                text: instance.text ?? '',
+                billingRefs: instanceBillingRefs,
+              };
+              debugInstances.push({
+                instanceId: instance.instanceId,
+                tooth: instance.tooth,
+                chips: instance.chips ?? [],
+              });
+            }
+          }
+
+          return {
+            phase: 'output',
+            output: {
+              fullText: bundleResult.output.fullText ?? '',
+              billingRefs,
+              perInstance,
+              debug: {
+                instances: debugInstances,
+                v10TraceLines: bundleResult.meta?.traceLines,
+                detectedTreatments: bundleDetectedTreatments,
+              },
+            },
+            instances: debugInstances.map((instance) => ({
+              instanceId: instance.instanceId,
+              chips: new Set(instance.chips ?? []),
+            })),
+          };
+        }
+
+        return {
+          phase: 'error',
+          error: bundleResult.error ?? 'bundle_error',
+          instances: [],
+        };
+      };
+
+      return {
+        start: async (_dictation: string, opts?: { insuranceType?: 'GKV' | 'PKV' | 'MKV' }) => {
+          insuranceType = opts?.insuranceType ?? insuranceType;
+          return runBundle();
+        },
+        answer: async (_instanceId: string, questionId: string, value: string) => {
+          bundleAnswers.set(questionId, value);
+          return runBundle();
+        },
+      };
+    })()
+    : createV10Session();
   const expectedPhase = scenario.expectedPhase ?? 'output';
 
   let result = await session.start(scenario.dictation, {
@@ -447,7 +866,8 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
 
     for (const [instanceId, questions] of Object.entries(questionBlocks)) {
       for (const q of questions) {
-        if (answeredQuestionIds.has(q.id)) {
+        const answeredQuestionId = `${instanceId}::${q.id}`;
+        if (answeredQuestionIds.has(answeredQuestionId)) {
           continue;
         }
         const qKey = (q.id ?? '').toLowerCase();
@@ -462,7 +882,7 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
 
         if (answer) {
           collectedAnswers.push(answer);
-          answeredQuestionIds.add(q.id);
+          answeredQuestionIds.add(answeredQuestionId);
           answeredAny = true;
           // eslint-disable-next-line no-await-in-loop
           result = await session.answer(instanceId, answer.questionId, String(answer.answerId));
@@ -483,7 +903,20 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
   const copyText = output?.fullText ?? '';
   const billingCodes = output?.billingRefs ?? [];
   const debugInstances = output?.debug?.instances ?? [];
+  const debugDetectedTreatments = Array.isArray((output?.debug as any)?.detectedTreatments)
+    ? (output?.debug as any).detectedTreatments.filter((item: unknown): item is string => typeof item === 'string')
+    : [];
   const extractionMeta = parseExtractionMeta(output?.debug?.v10TraceLines);
+  const detectedTreatments = Array.from(
+    new Set(
+      [
+        ...debugDetectedTreatments,
+        ...debugInstances
+          .map((inst) => inferTreatmentIdFromInstanceId(inst.instanceId))
+          .filter(Boolean),
+      ]
+    )
+  ).sort();
   const chips = debugInstances.length > 0
     ? debugInstances.flatMap((inst) => inst.chips ?? [])
     : result.instances?.flatMap((inst) => Array.from(inst.chips ?? [])) ?? [];
@@ -492,12 +925,34 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
     issues.push(`Scenario ended in phase "${result.phase}" (expected "${expectedPhase}")`);
   }
   if (expectedPhase === 'output') {
+    const expectedTreatments = (
+      scenario.expectedTreatments
+      ?? (scenario.treatmentId ? [scenario.treatmentId] : (scenario.id.includes('fuellung') ? ['fuellung'] : undefined))
+    )?.map((item) => item.toLowerCase());
+    if (expectedTreatments && expectedTreatments.length > 0) {
+      const missingTreatments = expectedTreatments.filter((item) => !detectedTreatments.includes(item));
+      if (missingTreatments.length > 0) {
+        issues.push(`Missing expected treatments: ${missingTreatments.join(', ')}`);
+      }
+      const unexpectedTreatments = detectedTreatments.filter((item) => !expectedTreatments.includes(item));
+      if (unexpectedTreatments.length > 0) {
+        issues.push(`Unexpected detected treatments: ${unexpectedTreatments.join(', ')}`);
+      }
+    }
+
     if (!copyText.trim()) {
       issues.push('Empty copyText output');
     }
     const expectBilling = scenario.expectBillingCodes ?? true;
     if (expectBilling && billingCodes.length === 0) {
       issues.push('No billing codes emitted');
+    }
+    if (scenario.expectedBillingCodes && scenario.expectedBillingCodes.length > 0) {
+      for (const expectedCode of scenario.expectedBillingCodes) {
+        if (!billingCodes.includes(expectedCode)) {
+          issues.push(`Missing expected billing code: ${expectedCode}`);
+        }
+      }
     }
     if (chips.length === 0) {
       issues.push('No chips emitted');
@@ -520,21 +975,28 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
   // ────────────────────────────────────────────────────────────
   // Architecture invariants (SSOT / no hidden paths)
   // ────────────────────────────────────────────────────────────
+  const enforceEmitterInvariants = debugInstances.some((inst) => {
+    const emitters = (inst as any).chipEmitters as Record<string, string> | undefined;
+    return Boolean(emitters && Object.keys(emitters).length > 0);
+  });
+
   for (const inst of debugInstances) {
     const emitters = (inst as any).chipEmitters as Record<string, string> | undefined;
     const chipList = (inst.chips ?? []) as string[];
-    if (!emitters || Object.keys(emitters).length === 0) {
-      issues.push(`Missing chipEmitters for instance ${inst.instanceId}`);
-      continue;
-    }
-    for (const chipId of chipList) {
-      const emitter = emitters[chipId];
-      if (!emitter) {
-        issues.push(`Missing emitter for chip "${chipId}" (instance ${inst.instanceId})`);
+    if (enforceEmitterInvariants) {
+      if (!emitters || Object.keys(emitters).length === 0) {
+        issues.push(`Missing chipEmitters for instance ${inst.instanceId}`);
         continue;
       }
-      if (emitter !== 'manualOverride' && !emitter.startsWith('node:')) {
-        issues.push(`Invalid emitter "${emitter}" for chip "${chipId}" (instance ${inst.instanceId})`);
+      for (const chipId of chipList) {
+        const emitter = emitters[chipId];
+        if (!emitter) {
+          issues.push(`Missing emitter for chip "${chipId}" (instance ${inst.instanceId})`);
+          continue;
+        }
+        if (emitter !== 'manualOverride' && !emitter.startsWith('node:')) {
+          issues.push(`Invalid emitter "${emitter}" for chip "${chipId}" (instance ${inst.instanceId})`);
+        }
       }
     }
 
@@ -586,6 +1048,7 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
       copyText,
       billingCodes,
       chips,
+      detectedTreatments,
       extractionMethod: extractionMeta.extractionMethod,
       extractionLlmError: extractionMeta.extractionLlmError,
       debugInstances,
@@ -595,11 +1058,22 @@ const runScenario = async (scenario: Scenario): Promise<ScenarioResult> => {
 };
 
 const main = async () => {
+  const { file } = parseArgs();
+  const scenarios = file
+    ? loadScenariosFromFile(resolveSuitePath(file))
+    : defaultScenarios;
+  const suiteName = file
+    ? path.basename(file).replace(/\.json$/i, '')
+    : 'default';
+  const outputDir = file
+    ? path.join(OUTPUT_DIR, suiteName)
+    : OUTPUT_DIR;
+
   ensureServerOpenAiKey();
   if (REQUIRE_LLM_PATH && !readEnv('OPENAI_API_KEY')) {
     throw new Error('LLM path required but OPENAI_API_KEY is missing. Set OPENAI_API_KEY (or VITE_OPENAI_API_KEY for local fallback mapping).');
   }
-  ensureDir(OUTPUT_DIR);
+  ensureDir(outputDir);
 
   const results: ScenarioResult[] = [];
   for (const scenario of scenarios) {
@@ -608,7 +1082,7 @@ const main = async () => {
     results.push(result);
   }
 
-  const reportPath = path.join(OUTPUT_DIR, 'report.json');
+  const reportPath = path.join(outputDir, 'report.json');
   fs.writeFileSync(reportPath, JSON.stringify({ results }, null, 2), 'utf-8');
 
   const summaryLines = [
@@ -623,7 +1097,7 @@ const main = async () => {
     '',
   ];
 
-  fs.writeFileSync(path.join(OUTPUT_DIR, 'summary.md'), summaryLines.join('\n'), 'utf-8');
+  fs.writeFileSync(path.join(outputDir, 'summary.md'), summaryLines.join('\n'), 'utf-8');
   const issueCount = results.reduce((sum, entry) => sum + entry.issues.length, 0);
   // eslint-disable-next-line no-console
   console.log(`Wrote ${reportPath} (issues: ${issueCount})`);

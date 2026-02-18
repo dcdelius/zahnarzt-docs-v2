@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "treatmentId": "teilprothese",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Teilprothese"
+  },
+  "questions": [
+    {
+      "key": "teilprothese_typ",
+      "category": "forensic",
+      "prompt": "Welche Art der Teilprothese wurde versorgt?",
+      "type": "single",
+      "dataField": "teilprothese.type",
+      "options": [
+        {
+          "id": "interim",
+          "label": "Interimsteilprothese",
+          "dataValue": "interim"
+        },
+        {
+          "id": "modellguss",
+          "label": "Modellgussprothese",
+          "dataValue": "modellguss"
+        }
+      ]
+    },
+    {
+      "key": "teilprothese_phase",
+      "category": "forensic",
+      "prompt": "Welche Leistungsphase wurde dokumentiert?",
+      "type": "single",
+      "dataField": "teilprothese.phase",
+      "options": [
+        {
+          "id": "eingliederung",
+          "label": "Eingliederung",
+          "dataValue": "eingliederung"
+        },
+        {
+          "id": "kontrolle",
+          "label": "Kontrolle/Nachjustierung",
+          "dataValue": "kontrolle"
+        }
+      ]
+    }
+  ]
+}

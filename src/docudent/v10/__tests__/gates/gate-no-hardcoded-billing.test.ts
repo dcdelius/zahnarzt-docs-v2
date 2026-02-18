@@ -2,7 +2,7 @@
  * Gate Test: No Hardcoded Billing Strings in V10 Runtime
  *
  * Contract: V10 runtime code MUST NOT contain hardcoded billing codes like
- * "BEMA_13c" or "GOZ_2060". All billing must use BillingRef IDs from KB.
+ * "BEMA_13c" or "GOZ_2060". Billing must flow via BillingRef/DB/KB references.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -11,10 +11,15 @@ import { resolve, join } from 'path';
 
 const V10_RUNTIME_DIRS = [
     'src/docudent/v10/pipeline',
+    'src/docudent/v10/procedure',
     'src/docudent/v10/renderer',
     'src/docudent/v10/output',
     'src/docudent/v10/facts',
+    'src/docudent/v10/settings',
+    'src/docudent/v10/preanalysis',
     'src/docudent/v10/multitreatment',
+    'src/docudent/v10/kzv/registry',
+    'src/docudent/v10/billing',
 ];
 
 // Patterns that indicate hardcoded billing codes in runtime
@@ -33,6 +38,10 @@ const SKIP_PATTERNS = [
     /\.spec\.ts$/,
     /fixtures/,
     /golden/,
+    /\/qa\//,
+    /\/diagnostics\//,
+    /\/kb\/combinability\//,
+    /\/packs\/.*\/combinability\.ts$/,
 ];
 
 function getAllTsFiles(dir: string): string[] {

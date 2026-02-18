@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "teilprothese",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "teilprothese.typ.interim",
+      "chipIds": ["teilprothese_interim"],
+      "textRefIds": ["teilprothese_interim"],
+      "billingRefIds": ["teilprothese_interim"]
+    },
+    {
+      "id": "teilprothese.typ.modellguss",
+      "chipIds": ["teilprothese_modellguss"],
+      "textRefIds": ["teilprothese_modellguss"],
+      "billingRefIds": ["teilprothese_modellguss"]
+    },
+    {
+      "id": "teilprothese.phase.kontrolle",
+      "chipIds": ["teilprothese_kontrolle"],
+      "textRefIds": ["teilprothese_kontrolle"],
+      "billingRefIds": []
+    },
+    {
+      "id": "teilprothese.askback.typ"
+    },
+    {
+      "id": "teilprothese.askback.phase"
+    }
+  ]
+}

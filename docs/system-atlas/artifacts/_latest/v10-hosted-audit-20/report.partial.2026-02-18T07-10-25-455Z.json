@@ -1,0 +1,58 @@
+{
+  "runAt": "2026-02-18T07:10:25.455Z",
+  "baseUrl": "http://localhost:4173",
+  "isFullSuite": false,
+  "authMode": {
+    "localBypass": true,
+    "forceRealAuth": false
+  },
+  "summary": {
+    "cases": 1,
+    "extraction": {
+      "llm": 0,
+      "stub": 1,
+      "regex": 0,
+      "unknown": 0
+    },
+    "preanalysis": {
+      "llm": 0,
+      "fallback": 1,
+      "loginRequired": 1
+    }
+  },
+  "cases": [
+    {
+      "id": "S6",
+      "title": "Multitooth GKV",
+      "treatmentId": "fuellung",
+      "insuranceMode": "GKV",
+      "dictation": "Heute zwei Stellen: 36 OD mit Komposit unter Kofferdam und 14 okklusal ebenfalls versorgt, danach Bisskontrolle durchgeführt und beide Füllungen nachpoliert, Patient soll bei Sensibilität wiederkommen.",
+      "askbacks": [
+        "Welches Füllungsmaterial?KompositGlasionomerzement (GIZ)"
+      ],
+      "askbackAnswers": [
+        {
+          "questionId": "seg-1-1-2:tooth:14::fuellung_material::tooth:14",
+          "questionLabel": "Welches Füllungsmaterial?KompositGlasionomerzement (GIZ)",
+          "answer": "Komposit",
+          "source": "option"
+        }
+      ],
+      "outputFullText": "Kofferdam angelegt. Zahn 36 (OD): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\nZahn 14 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "outputExcerpt": "Kofferdam angelegt. Zahn 36 (OD): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt. Zahn 14 (O): Füllungstherapie. Füllung mit lichthärtendem Komposit (komposit) durchgeführt.",
+      "billingCodes": [
+        "BEMA_13",
+        "BEMA_12",
+        "BEMA_13B"
+      ],
+      "runtime": {
+        "extractionMethod": "stub",
+        "extractionLlmError": "none",
+        "preanalysisSource": "fallback",
+        "preanalysisFallback": "true",
+        "preanalysisError": "none",
+        "preanalysisDiagnostics": "llm-error:attempt1:Login required | llm-retry:attempt2 | llm-error:attempt2:Login required | segment-skipped-no-treatment-signal:2 | tooth-context-ambiguous | ambiguous-untoothed-intent-demoted:seg-3-1-1:fuellung | ambiguous-untoothed-note-attached:seg-1-1-2"
+      }
+    }
+  ]
+}

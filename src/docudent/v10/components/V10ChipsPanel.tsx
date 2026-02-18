@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import { getPack } from '../packs';
 import './V10ChipsPanel.css';
 
 // ═══════════════════════════════════════════════════════════════
@@ -22,7 +23,8 @@ export interface ChipWithSource {
 
 export interface ChipsPanelInstance {
     instanceId: string;
-    treatmentType: 'endo' | 'fuellung';
+    treatmentType: 'endo' | 'fuellung' | string;
+    treatmentId?: string;
     tooth?: string;
     chips: ChipWithSource[];
 }
@@ -75,7 +77,9 @@ interface InstanceChipsProps {
 }
 
 function InstanceChips({ instance, onChipToggle, onEditField }: InstanceChipsProps) {
-    const treatmentLabel = instance.treatmentType === 'endo' ? 'Endo' : 'Füllung';
+    const treatmentId = instance.treatmentId ?? instance.treatmentType;
+    const pack = treatmentId ? getPack(treatmentId) : null;
+    const treatmentLabel = pack?.meta?.label ?? (instance.treatmentType === 'endo' ? 'Endo' : instance.treatmentType === 'fuellung' ? 'Füllung' : String(treatmentId));
     const treatmentColor = instance.treatmentType === 'endo' ? '#e74c3c' : '#3498db';
 
     return (

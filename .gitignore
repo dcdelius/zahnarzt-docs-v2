@@ -30,8 +30,16 @@ dist-ssr
 .env.test.local
 .env.production.local
 .env.e2e
+.env.e2e.local
 e2e/.auth
 
 # Local secrets (never commit)
 *firebase-adminsdk*.json
 zahnarzt-app-d7f1a50f6e20.json
+
+# Local test/runtime artifacts
+.playwright-cli/
+output/
+__reports__/
+test-results/
+.firebase/

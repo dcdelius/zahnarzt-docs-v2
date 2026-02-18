@@ -1,0 +1,10 @@
+{
+    "_meta": {
+        "treatmentId": "krone",
+        "version": "1.0.0"
+    },
+    "map": [],
+    "defaults": {
+        "alwaysOnChipIds": []
+    }
+}

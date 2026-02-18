@@ -1,0 +1,16 @@
+{
+    "_meta": {
+        "treatmentId": "fissurenversiegelung",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "indication": {
+            "label": "Indikation",
+            "template": "{{value}}"
+        },
+        "material": {
+            "label": "Material",
+            "template": "{{value}}"
+        }
+    }
+}

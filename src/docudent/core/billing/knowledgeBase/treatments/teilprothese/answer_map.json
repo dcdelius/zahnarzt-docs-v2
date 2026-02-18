@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "treatmentId": "teilprothese",
+    "version": "1.0.0"
+  },
+  "map": [
+    {
+      "questionKey": "teilprothese_typ",
+      "questionIdPatterns": [
+        "teilprothese_typ",
+        "medical_teilprothese_typ"
+      ],
+      "answers": {
+        "interim": "teilprothese_interim",
+        "modellguss": "teilprothese_modellguss"
+      },
+      "exclusiveGroup": "teilprothese_typ",
+      "mutuallyExclusive": [
+        "teilprothese_interim",
+        "teilprothese_modellguss"
+      ]
+    }
+  ],
+  "defaults": {
+    "alwaysOnChipIds": []
+  }
+}

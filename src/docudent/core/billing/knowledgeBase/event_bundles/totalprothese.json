@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "totalprothese",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "totalprothese.typ.konventionell",
+      "chipIds": ["totalprothese_konventionell"],
+      "textRefIds": ["totalprothese_konventionell"],
+      "billingRefIds": ["totalprothese_konventionell"]
+    },
+    {
+      "id": "totalprothese.typ.immediat",
+      "chipIds": ["totalprothese_immediat"],
+      "textRefIds": ["totalprothese_immediat"],
+      "billingRefIds": ["totalprothese_immediat"]
+    },
+    {
+      "id": "totalprothese.phase.kontrolle",
+      "chipIds": ["totalprothese_kontrolle"],
+      "textRefIds": ["totalprothese_kontrolle"],
+      "billingRefIds": []
+    },
+    {
+      "id": "totalprothese.askback.typ"
+    },
+    {
+      "id": "totalprothese.askback.phase"
+    }
+  ]
+}

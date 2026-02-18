@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "treatmentId": "untersuchung",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "untersuchung.baseline",
+      "chipIds": ["untersuchung_eingehend", "untersuchung_befunddoku"],
+      "textRefIds": ["untersuchung_eingehend", "untersuchung_befunddoku"],
+      "billingRefIds": ["untersuchung_eingehend"]
+    },
+    {
+      "id": "untersuchung.askback.anlass"
+    },
+    {
+      "id": "untersuchung.askback.befunde"
+    },
+    {
+      "id": "untersuchung.askback.beurteilung"
+    }
+  ]
+}

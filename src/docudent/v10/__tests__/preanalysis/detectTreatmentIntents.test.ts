@@ -31,6 +31,62 @@ describe('detectTreatmentIntents', () => {
         expect(result.bundle.intents).toHaveLength(2);
     });
 
+    it('overrides llm treatment when deterministic evidence signal is unique', async () => {
+        const dictation = 'Implantatinsertion regio 36 nach DVT-Planung.';
+        const llmPayload = JSON.stringify({
+            version: TREATMENT_INTENT_CONTRACT_VERSION,
+            dictation,
+            needsConfirmation: false,
+            intents: [
+                {
+                    intentId: 'wrong-1',
+                    treatmentId: 'fuellung',
+                    tooth: '36',
+                    confidence: 0.95,
+                    evidenceSpans: [{ start: 0, end: 26, text: 'Implantatinsertion regio 36' }],
+                },
+            ],
+        });
+
+        const result = await detectTreatmentIntents(dictation, { mockLlmContent: llmPayload });
+        expect(result.source).toBe('llm');
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('implant');
+        expect(result.diagnostics.some(item => item.startsWith('llm-treatment-overridden-by-signal:wrong-1:fuellung->implant'))).toBe(true);
+    });
+
+    it('prunes llm phantom tooth intents created from root-canal length values', async () => {
+        const dictation = 'Zahn 36. Zweiter Termin. Kein Kofferdam möglich wegen Kronenrand. Arbeitslängen per Apex Locator: MB 20, ML 19, D 21. ISO 30. Maschinell aufbereitet. NaOCl + EDTA Spülung. Einlage CaOH2.';
+        const llmPayload = JSON.stringify({
+            version: TREATMENT_INTENT_CONTRACT_VERSION,
+            dictation,
+            needsConfirmation: false,
+            intents: [
+                {
+                    intentId: 'endo-36',
+                    treatmentId: 'endo',
+                    tooth: '36',
+                    confidence: 0.9,
+                    evidenceSpans: [{ start: 0, end: 7, text: 'Zahn 36' }],
+                },
+                {
+                    intentId: 'endo-21-phantom',
+                    treatmentId: 'endo',
+                    tooth: '21',
+                    confidence: 0.88,
+                    evidenceSpans: [{ start: 94, end: 99, text: 'D 21.' }],
+                },
+            ],
+        });
+
+        const result = await detectTreatmentIntents(dictation, { mockLlmContent: llmPayload });
+        expect(result.source).toBe('llm');
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('endo');
+        expect(result.bundle.intents[0]?.tooth).toBe('36');
+        expect(result.diagnostics.some(item => item.startsWith('root-canal-value-tooth-artifact-pruned:'))).toBe(true);
+    });
+
     it('falls back when llm payload is invalid', async () => {
         const invalidPayload = '{"foo":"bar"}';
         const result = await detectTreatmentIntents('Endo 46 danach Aufbau.', { mockLlmContent: invalidPayload });
@@ -39,7 +95,7 @@ describe('detectTreatmentIntents', () => {
         expect(result.diagnostics.some(item => item.startsWith('llm-schema-invalid'))).toBe(true);
     });
 
-    it('falls back when llm payload has uncertainty but misses confirmation flag', async () => {
+    it('auto-repairs llm payload when uncertainty exists but needsConfirmation is false', async () => {
         const invalidPayload = JSON.stringify({
             version: TREATMENT_INTENT_CONTRACT_VERSION,
             dictation: 'Endo 46 danach Aufbau',
@@ -63,11 +119,12 @@ describe('detectTreatmentIntents', () => {
             ],
         });
         const result = await detectTreatmentIntents('Endo 46 danach Aufbau', { mockLlmContent: invalidPayload });
-        expect(result.source).toBe('fallback');
-        expect(result.diagnostics.some(item => item.startsWith('llm-schema-invalid'))).toBe(true);
+        expect(result.source).toBe('llm');
+        expect(result.needsConfirmation).toBe(true);
+        expect(result.bundle.intents[1]?.uncertainty).toBe('llm_low_confidence');
     });
 
-    it('falls back when llm payload has low confidence without uncertainty', async () => {
+    it('auto-repairs llm low confidence payload by assigning uncertainty', async () => {
         const invalidPayload = JSON.stringify({
             version: TREATMENT_INTENT_CONTRACT_VERSION,
             dictation: 'Kompositversorgung gelegt',
@@ -82,8 +139,9 @@ describe('detectTreatmentIntents', () => {
             ],
         });
         const result = await detectTreatmentIntents('Kompositversorgung gelegt', { mockLlmContent: invalidPayload });
-        expect(result.source).toBe('fallback');
-        expect(result.diagnostics.some(item => item.startsWith('llm-schema-invalid'))).toBe(true);
+        expect(result.source).toBe('llm');
+        expect(result.needsConfirmation).toBe(true);
+        expect(result.bundle.intents[0]?.uncertainty).toBe('missing_tooth_reference');
     });
 
     it('sanitizes empty optional llm fields instead of falling back', async () => {
@@ -267,6 +325,53 @@ describe('detectTreatmentIntents', () => {
         expect(result.bundle.intents[0]?.treatmentId).toBe('extraction');
     });
 
+    it('detects teilprothese deterministically in fallback', async () => {
+        const result = await detectTreatmentIntents(
+            'Modellgussprothese im Unterkiefer eingegliedert und Druckstellen kontrolliert.',
+            { forceFallback: true }
+        );
+        expect(result.bundle.intents[0]?.treatmentId).toBe('teilprothese');
+    });
+
+    it('detects totalprothese deterministically in fallback', async () => {
+        const result = await detectTreatmentIntents(
+            'Konventionelle Totalprothese im Oberkiefer eingegliedert, zahnloser Kiefer versorgt.',
+            { forceFallback: true }
+        );
+        expect(result.bundle.intents[0]?.treatmentId).toBe('totalprothese');
+    });
+
+    it('detects pzr deterministically in fallback', async () => {
+        const result = await detectTreatmentIntents(
+            'Professionelle Zahnreinigung durchgeführt, Zahnstein entfernt und Fluoridierung erfolgt.',
+            { forceFallback: true }
+        );
+        expect(result.bundle.intents[0]?.treatmentId).toBe('pzr');
+    });
+
+    it('does not add phantom fuellung for isolated fissurenversiegelung wording', async () => {
+        const result = await detectTreatmentIntents(
+            'Fissurenversiegelung an Zahn 16 zur Kariesprophylaxe mit Kunststoff durchgefuehrt.',
+            { forceFallback: true }
+        );
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('fissurenversiegelung');
+        expect(result.bundle.intents[0]?.tooth).toBe('16');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('keeps explicit fuellung when fissuren and fuellung are both clearly dictated', async () => {
+        const result = await detectTreatmentIntents(
+            'Fissurenversiegelung an Zahn 16, danach Füllung Zahn 14 okklusal mit Komposit.',
+            { forceFallback: true }
+        );
+        expect(result.bundle.intents).toHaveLength(2);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('fissurenversiegelung');
+        expect(result.bundle.intents[0]?.tooth).toBe('16');
+        expect(result.bundle.intents[1]?.treatmentId).toBe('fuellung');
+        expect(result.bundle.intents[1]?.tooth).toBe('14');
+    });
+
     it('collapses duplicate fallback intents for same tooth+treatment', async () => {
         const dictation = 'Heute Stelle 14 okklusal mit Komposit unter Kofferdam, danach Füllung nachpoliert und Okklusion kontrolliert.';
         const result = await detectTreatmentIntents(dictation, { forceFallback: true });
@@ -326,21 +431,148 @@ describe('detectTreatmentIntents', () => {
         expect(result.bundle.intents[0]?.treatmentId).toBe('fuellung');
         expect(result.bundle.intents[0]?.tooth).toBe('36');
         expect(result.diagnostics).toContain('segment-skipped-no-treatment-signal:2');
+        expect(result.diagnostics).toContain('segment-context-note-attached:2');
+        const sharedFacts = result.bundle.intents[0]?.sharedFacts as Record<string, unknown> | undefined;
+        const forensicNotes = Array.isArray(sharedFacts?.forensicNotes) ? sharedFacts?.forensicNotes as string[] : [];
+        expect(forensicNotes.some(note => note.toLowerCase().includes('bisskontrolle'))).toBe(true);
+        expect(sharedFacts?.finishing).toBe(true);
     });
 
-    it('keeps cross-clause tooth context unresolved when previous clause contains multiple teeth', async () => {
+    it('demotes historical symptom-only clause to forensic context instead of creating phantom treatment', async () => {
+        const dictation = 'Bei Zahn 24 heute MOD-Kompositfuellung gelegt. Patient berichtet, Zahn 36 seit letzter Fuellung weiter temperaturempfindlich.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('fuellung');
+        expect(result.bundle.intents[0]?.tooth).toBe('24');
+        const sharedFacts = result.bundle.intents[0]?.sharedFacts as Record<string, unknown> | undefined;
+        const forensicNotes = Array.isArray(sharedFacts?.forensicNotes) ? sharedFacts?.forensicNotes as string[] : [];
+        expect(forensicNotes.some(note => note.toLowerCase().includes('seit letzter fuellung'))).toBe(true);
+        expect(result.diagnostics.some(item => item.startsWith('historical-context-intent-demoted:'))).toBe(true);
+    });
+
+    it('demotes historical symptom-only llm intent and keeps active treatment intent', async () => {
+        const dictation = 'Heute Füllung Zahn 24 MOD gelegt. Zahn 36 seit letzter Füllung empfindlich.';
+        const llmPayload = JSON.stringify({
+            version: TREATMENT_INTENT_CONTRACT_VERSION,
+            dictation,
+            needsConfirmation: false,
+            intents: [
+                {
+                    intentId: 'llm-active',
+                    treatmentId: 'fuellung',
+                    tooth: '24',
+                    confidence: 0.91,
+                    evidenceSpans: [{ start: 0, end: 33, text: 'Heute Füllung Zahn 24 MOD gelegt.' }],
+                },
+                {
+                    intentId: 'llm-historical',
+                    treatmentId: 'fuellung',
+                    tooth: '36',
+                    confidence: 0.74,
+                    evidenceSpans: [{ start: 34, end: dictation.length, text: 'Zahn 36 seit letzter Füllung empfindlich.' }],
+                },
+            ],
+        });
+
+        const result = await detectTreatmentIntents(dictation, { mockLlmContent: llmPayload });
+        expect(result.source).toBe('llm');
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.tooth).toBe('24');
+        expect(result.diagnostics.some(item => item.startsWith('historical-context-intent-demoted:llm-historical'))).toBe(true);
+    });
+
+    it('demotes context-only family history clause instead of creating phantom treatment intent', async () => {
+        const dictation = 'Untersuchung ohne akuten Interventionsbedarf. Familiaere Parodontitis Vorgeschichte wurde berichtet.';
+        const llmPayload = JSON.stringify({
+            version: TREATMENT_INTENT_CONTRACT_VERSION,
+            dictation,
+            needsConfirmation: false,
+            intents: [
+                {
+                    intentId: 'llm-untersuchung',
+                    treatmentId: 'untersuchung',
+                    tooth: '11',
+                    confidence: 0.86,
+                    evidenceSpans: [{ start: 0, end: 46, text: 'Untersuchung ohne akuten Interventionsbedarf.' }],
+                },
+                {
+                    intentId: 'llm-phantom-paro',
+                    treatmentId: 'parodontologie',
+                    confidence: 0.74,
+                    uncertainty: 'missing_tooth_reference',
+                    evidenceSpans: [{ start: 47, end: dictation.length, text: 'Familiaere Parodontitis Vorgeschichte wurde berichtet.' }],
+                },
+            ],
+        });
+
+        const result = await detectTreatmentIntents(dictation, { mockLlmContent: llmPayload });
+        expect(result.source).toBe('llm');
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('untersuchung');
+        expect(result.diagnostics.some(item => item.startsWith('historical-context-intent-demoted:llm-phantom-paro'))).toBe(true);
+    });
+
+    it('remaps llm crown_prep to krone when evidence describes definitive crown insertion', async () => {
+        const dictation = 'Die definitive Krone an Zahn 16 wurde eingesetzt und okklusal feinadjustiert.';
+        const llmPayload = JSON.stringify({
+            version: TREATMENT_INTENT_CONTRACT_VERSION,
+            dictation,
+            needsConfirmation: false,
+            intents: [
+                {
+                    intentId: 'llm-crown-wrong',
+                    treatmentId: 'crown_prep',
+                    tooth: '16',
+                    confidence: 0.9,
+                    evidenceSpans: [{ start: 0, end: dictation.length, text: dictation }],
+                },
+            ],
+        });
+
+        const result = await detectTreatmentIntents(dictation, { mockLlmContent: llmPayload });
+        expect(result.source).toBe('llm');
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('krone');
+        expect(result.diagnostics.some(item => item.startsWith('llm-treatment-overridden-by-prosthetic-step:llm-crown-wrong:crown_prep->krone'))).toBe(true);
+    });
+
+    it('remaps llm crown_prep to krone when evidence only says definitive crown (without insertion verb)', async () => {
+        const dictation = 'Definitive Krone an Zahn 16, Okklusion feinadjustiert.';
+        const llmPayload = JSON.stringify({
+            version: TREATMENT_INTENT_CONTRACT_VERSION,
+            dictation,
+            needsConfirmation: false,
+            intents: [
+                {
+                    intentId: 'llm-crown-definitive',
+                    treatmentId: 'crown_prep',
+                    tooth: '16',
+                    confidence: 0.84,
+                    evidenceSpans: [{ start: 0, end: 29, text: 'Definitive Krone an Zahn 16' }],
+                },
+            ],
+        });
+
+        const result = await detectTreatmentIntents(dictation, { mockLlmContent: llmPayload });
+        expect(result.source).toBe('llm');
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('krone');
+        expect(result.diagnostics.some(item => item.startsWith('llm-treatment-overridden-by-prosthetic-step:llm-crown-definitive:crown_prep->krone'))).toBe(true);
+    });
+
+    it('demotes ambiguous untoothed follow-up clause into existing tooth intents', async () => {
         const dictation = 'Fuellung Zahn 36 und Zahn 14 okklusal mit Komposit, danach adhaesiver Aufbau mit Komposit.';
         const result = await detectTreatmentIntents(dictation, { forceFallback: true });
 
-        expect(result.needsConfirmation).toBe(true);
+        expect(result.needsConfirmation).toBe(false);
         expect(result.bundle.intents.map(intent => `${intent.treatmentId}:${intent.tooth ?? 'unknown'}`)).toEqual([
             'fuellung:36',
             'fuellung:14',
-            'fuellung:unknown',
         ]);
-        const unresolvedFollowup = result.bundle.intents.find(intent => !intent.tooth);
-        expect(unresolvedFollowup?.uncertainty).toBe('llm_ambiguous_mapping');
+        expect(result.bundle.intents.some(intent => !intent.tooth)).toBe(false);
         expect(result.diagnostics).toContain('tooth-context-ambiguous');
+        expect(result.diagnostics.some(item => item.startsWith('ambiguous-untoothed-intent-demoted:'))).toBe(true);
     });
 
     it('detects deterministic triple overlap for crown + build-up + extraction', async () => {
@@ -368,5 +600,177 @@ describe('detectTreatmentIntents', () => {
         ]);
         expect(result.bundle.intents.every(intent => intent.uncertainty === 'llm_ambiguous_mapping')).toBe(true);
         expect(result.diagnostics.some(item => item.startsWith('segment-multi-treatment-signals:1:'))).toBe(true);
+    });
+
+    it('classifies WSR deterministically in fallback path', async () => {
+        const dictation = 'Apektomie Zahn 11 durchgefuehrt.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('wsr');
+        expect(result.bundle.intents[0]?.tooth).toBe('11');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('does not add phantom endo intent for isolated WSR dictation', async () => {
+        const dictation = 'Wurzelspitzenresektion an Zahn 36 durch Osteotomie im Molarenbereich durchgefuehrt.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('wsr');
+        expect(result.bundle.intents[0]?.tooth).toBe('36');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('keeps explicit endo plus wsr when both are clearly dictated', async () => {
+        const dictation = 'Endo an Zahn 36 mit Wurzelkanalaufbereitung, danach Wurzelspitzenresektion an Zahn 36.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(2);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('endo');
+        expect(result.bundle.intents[1]?.treatmentId).toBe('wsr');
+        expect(result.bundle.intents[0]?.tooth).toBe('36');
+        expect(result.bundle.intents[1]?.tooth).toBe('36');
+    });
+
+    it('classifies trauma deterministically in fallback path', async () => {
+        const dictation = 'Zahntrauma Zahn 21, semipermanente Schienung angelegt.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('trauma');
+        expect(result.bundle.intents[0]?.tooth).toBe('21');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('does not add phantom extraction intent for isolated trauma dictation', async () => {
+        const dictation = 'Zahntrauma an Zahn 11 nach Luxation, semipermanente Schienung angelegt.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('trauma');
+        expect(result.bundle.intents[0]?.tooth).toBe('11');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('keeps explicit extraction with trauma when both are clearly dictated', async () => {
+        const dictation = 'Zahntrauma an Zahn 11 nach Luxation; Zahn 28 extrahiert und Alveole versorgt.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(2);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('trauma');
+        expect(result.bundle.intents[1]?.treatmentId).toBe('extraction');
+        expect(result.bundle.intents[0]?.tooth).toBe('11');
+        expect(result.bundle.intents[1]?.tooth).toBe('28');
+    });
+
+    it('classifies implant deterministically in fallback path', async () => {
+        const dictation = 'Implantatinsertion Zahn 36 durchgefuehrt.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('implant');
+        expect(result.bundle.intents[0]?.tooth).toBe('36');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('classifies schiene deterministically in fallback path', async () => {
+        const dictation = 'Okklusionsschiene an Zahn 16 eingegliedert, Nachkontrolle vereinbart.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('schiene');
+        expect(result.bundle.intents[0]?.tooth).toBe('16');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('classifies bruecke deterministically in fallback path', async () => {
+        const dictation = 'Definitive Bruecke an Zahn 36 eingegliedert und okklusal kontrolliert.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('bruecke');
+        expect(result.bundle.intents[0]?.tooth).toBe('36');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('does not add phantom crown_prep intent for isolated crown placement dictation', async () => {
+        const dictation = 'Vollkrone an Zahn 16 definitiv eingegliedert und okklusal kontrolliert.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('krone');
+        expect(result.bundle.intents[0]?.tooth).toBe('16');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('keeps explicit crown_prep plus crown when both are clearly dictated', async () => {
+        const dictation = 'Kronenpraeparation Zahn 16 mit Abformung, danach Vollkrone an Zahn 16 definitiv eingegliedert.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(2);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('crown_prep');
+        expect(result.bundle.intents[1]?.treatmentId).toBe('krone');
+        expect(result.bundle.intents[0]?.tooth).toBe('16');
+        expect(result.bundle.intents[1]?.tooth).toBe('16');
+    });
+
+    it('does not add phantom crown_prep intent for isolated teilkrone placement dictation', async () => {
+        const dictation = 'Teilkronenversorgung an Zahn 16, Teilkrone definitiv eingegliedert.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('teilkrone');
+        expect(result.bundle.intents[0]?.tooth).toBe('16');
+        expect(result.needsConfirmation).toBe(false);
+    });
+
+    it('keeps explicit crown_prep plus teilkrone when both are clearly dictated', async () => {
+        const dictation = 'Kronenpraeparation Zahn 16 mit Abformung, danach Teilkrone an Zahn 16 definitiv eingegliedert.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(2);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('crown_prep');
+        expect(result.bundle.intents[1]?.treatmentId).toBe('teilkrone');
+        expect(result.bundle.intents[0]?.tooth).toBe('16');
+        expect(result.bundle.intents[1]?.tooth).toBe('16');
+    });
+
+    it('does not infer phantom teeth from torque units like Ncm', async () => {
+        const dictation = 'Implantatinsertion regio 36 mit Primaerstabilitaet 35 Ncm und Nachsorge.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('implant');
+        expect(result.bundle.intents[0]?.tooth).toBe('36');
+    });
+
+    it('keeps explicit tooth reference even when the same value appears as root-canal length', async () => {
+        const dictation = 'Endo Zahn 21. Arbeitslängen per Apex Locator: MB 20, D 21. NaOCl Spülung.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        expect(result.bundle.intents).toHaveLength(1);
+        expect(result.bundle.intents[0]?.treatmentId).toBe('endo');
+        expect(result.bundle.intents[0]?.tooth).toBe('21');
+    });
+
+    it('does not infer phantom tooth 21 from root-canal values in fallback endo dictation', async () => {
+        const dictation = 'Zahn 36. Zweiter Termin. Kein Kofferdam möglich wegen Kronenrand. Arbeitslängen per Apex Locator: MB 20, ML 19, D 21. ISO 30. Maschinell aufbereitet. NaOCl + EDTA Spülung. Einlage CaOH2.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        const mapped = result.bundle.intents.map(intent => `${intent.treatmentId}:${intent.tooth ?? 'unknown'}`);
+        expect(mapped).toContain('endo:36');
+        expect(mapped.some(entry => entry.endsWith(':21'))).toBe(false);
+        expect(result.diagnostics.some(item => item.startsWith('root-canal-value-tooth-artifact-pruned:'))).toBe(false);
+    });
+
+    it('skips insurance-only preface segment and keeps crown_prep plus roentgen without phantom fuellung', async () => {
+        const dictation = 'PKV. Zahn 11 wurde fuer eine Krone praepariert, abgeformt und provisorisch versorgt; zusaetzlich wurde ein OPG zur Therapieplanung angefertigt.';
+        const result = await detectTreatmentIntents(dictation, { forceFallback: true });
+
+        const mapped = result.bundle.intents.map(intent => intent.treatmentId);
+        expect(mapped).toContain('crown_prep');
+        expect(mapped).toContain('roentgen');
+        expect(mapped).not.toContain('fuellung');
     });
 });

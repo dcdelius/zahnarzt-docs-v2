@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "upt",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "upt.grad.a",
+      "chipIds": ["upt_grad_a", "upt_recall_dokumentiert"],
+      "textRefIds": ["upt_grad_a", "upt_recall_dokumentiert"],
+      "billingRefIds": ["upt_grad_a"]
+    },
+    {
+      "id": "upt.grad.b",
+      "chipIds": ["upt_grad_b", "upt_recall_dokumentiert"],
+      "textRefIds": ["upt_grad_b", "upt_recall_dokumentiert"],
+      "billingRefIds": ["upt_grad_b"]
+    },
+    {
+      "id": "upt.grad.c",
+      "chipIds": ["upt_grad_c", "upt_recall_dokumentiert"],
+      "textRefIds": ["upt_grad_c", "upt_recall_dokumentiert"],
+      "billingRefIds": ["upt_grad_c"]
+    },
+    {
+      "id": "upt.askback.grad"
+    },
+    {
+      "id": "upt.askback.intervall"
+    }
+  ]
+}

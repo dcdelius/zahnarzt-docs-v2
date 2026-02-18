@@ -76,6 +76,7 @@ export interface V10SessionOptions {
     textLength?: 'kurz' | 'mittel' | 'lang';
     settings?: SettingsContext;
     kbReleaseId?: string;
+    requireLlmExtraction?: boolean;
     forceExtraction?: Record<string, unknown>;
     forceAnswers?: Record<string, unknown>;
 }
@@ -153,6 +154,7 @@ export function createV10Session(): V10Session {
                 answers,
                 userDefaults: opts.settings as Record<string, unknown> | undefined,
                 kbReleaseId: sessionKbReleaseId,
+                requireLlmExtraction: opts.requireLlmExtraction,
                 teeth: teeth.length > 0 ? teeth : undefined,  // Pass teeth for perTooth output
                 testOnly,
             });
@@ -240,9 +242,10 @@ export function createV10Session(): V10Session {
         answeredFactsByInstance.set(instanceId, instance.answeredFacts);
 
         const tooth = instance.teeth?.[0];
+        const hasConcreteTooth = typeof tooth === 'string' && /^\d{2}$/.test(tooth);
         const scopedKey = pipelineQuestionId.includes('::tooth:')
             ? pipelineQuestionId
-            : (tooth ? `${pipelineQuestionId}::tooth:${tooth}` : pipelineQuestionId);
+            : (hasConcreteTooth ? `${pipelineQuestionId}::tooth:${tooth}` : pipelineQuestionId);
         answers.set(scopedKey, value);
 
         // 4. Re-run the REAL pipeline with answers
@@ -262,6 +265,7 @@ export function createV10Session(): V10Session {
             answers,
             userDefaults: currentOpts.settings as Record<string, unknown> | undefined,
             kbReleaseId: sessionKbReleaseId,
+            requireLlmExtraction: currentOpts.requireLlmExtraction,
             testOnly,
         });
         sessionKbReleaseId = normalizeKbReleaseId(result.meta?.kbReleaseId) ?? sessionKbReleaseId;

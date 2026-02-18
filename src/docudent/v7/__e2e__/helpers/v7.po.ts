@@ -34,9 +34,12 @@ export class V7PageObject {
         const isLoginPage = await emailInput.isVisible({ timeout: 2000 }).catch(() => false);
 
         if (isLoginPage) {
-            // Fill login credentials from env or defaults
-            const email = process.env.E2E_LOGIN_EMAIL || 'dcdelius@me.com';
-            const password = process.env.E2E_LOGIN_PASSWORD || 'Magenta!';
+            // Fill login credentials from env
+            const email = process.env.E2E_LOGIN_EMAIL;
+            const password = process.env.E2E_LOGIN_PASSWORD;
+            if (!email || !password) {
+                throw new Error('E2E_LOGIN_EMAIL und E2E_LOGIN_PASSWORD fehlen fuer V7 E2E Login.');
+            }
 
             await emailInput.fill(email);
 

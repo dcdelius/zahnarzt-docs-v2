@@ -1,15 +1,15 @@
 # V10 Consolidated Audit
 
-- Started: 2026-02-16T14:56:51.649Z
-- Finished: 2026-02-16T14:58:04.268Z
-- Result: PASS
+- Started: 2026-02-17T18:53:33.456Z
+- Finished: 2026-02-17T18:54:25.836Z
+- Result: FAIL
 
 ## Steps
-- v10-online-deps: PASS
-- v10-kb-parity: PASS
+- v10-online-deps: FAIL (exit 1)
+- v10-kb-parity: FAIL (exit 1)
 - v10-gates: PASS
+- v10-documentation-fidelity: PASS
 - v10-procedure-pipeline: PASS
 - v10-multitreatment-determinism: PASS
 - v10-ui-askback-lanes-and-trace: PASS
-- v10-realistic-e2e: PASS
 

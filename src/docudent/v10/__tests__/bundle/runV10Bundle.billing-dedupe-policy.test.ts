@@ -4,16 +4,6 @@ vi.mock('../../pipeline/runV10', () => ({
     runV10: vi.fn(),
 }));
 
-vi.mock('../../renderer', () => ({
-    renderFromKbChips: vi.fn(() => ''),
-    getChipFromKb: vi.fn((_treatmentId: string, chipId: string) => {
-        if (chipId === 'BEMA_40') {
-            return { phase: 'anaesthesie' };
-        }
-        return null;
-    }),
-}));
-
 import { runV10 } from '../../pipeline/runV10';
 import { runV10Bundle } from '../../pipeline/runV10Bundle';
 

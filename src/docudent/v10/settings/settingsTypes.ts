@@ -11,6 +11,18 @@ import {
     getUserDefaultLAType,
 } from './medicalDefaults';
 
+type GenericTreatmentSettings = Record<string, unknown>;
+
+export interface TreatmentSettingsOverrides {
+    endo?: Partial<EndoSettings>;
+    fuellung?: Partial<FuellungSettings>;
+    [treatmentId: string]:
+    | Partial<EndoSettings>
+    | Partial<FuellungSettings>
+    | GenericTreatmentSettings
+    | undefined;
+}
+
 // ═══════════════════════════════════════════════════════════════
 // PRACTICE SETTINGS (Praxis-wide)
 // ═══════════════════════════════════════════════════════════════
@@ -46,10 +58,7 @@ export interface PracticeSettings {
     defaultWFTechnique?: 'kalt' | 'warm' | 'einzel';
 
     /** Custom settings for specific treatments */
-    treatments?: {
-        endo?: Partial<EndoSettings>;
-        fuellung?: Partial<FuellungSettings>;
-    };
+    treatments?: TreatmentSettingsOverrides;
 
     /** Practice-specific material availability */
     materials?: {
@@ -295,10 +304,7 @@ export interface UserSettings {
     };
 
     /** Custom overrides per treatment */
-    treatments?: {
-        endo?: Partial<EndoSettings>;
-        fuellung?: Partial<FuellungSettings>;
-    };
+    treatments?: TreatmentSettingsOverrides;
 
     /** One-time migrations to keep settings backwards compatible. */
     migrations?: {

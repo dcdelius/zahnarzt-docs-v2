@@ -1,0 +1,44 @@
+{
+    "_meta": {
+        "id": "krone",
+        "version": "1.0.0",
+        "label": "Krone"
+    },
+    "chips": [
+        {
+            "id": "krone_vollkrone",
+            "label": "Vollkrone",
+            "phase": "prothetik",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Vollkronenversorgung durchgefuehrt.",
+                "mittel": "Vollkronenversorgung am betroffenen Zahn durchgefuehrt.",
+                "lang": "Definitive Vollkronenversorgung am betroffenen Zahn lege artis durchgefuehrt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "krone_provisorium",
+            "label": "Provisorische Krone",
+            "phase": "prothetik",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Provisorische Krone eingesetzt.",
+                "mittel": "Provisorische Krone zur interimistischen Versorgung eingesetzt.",
+                "lang": "Provisorische Krone zur Sicherung von Schutz und Funktion bis zur definitiven Versorgung eingesetzt."
+            },
+            "showInQuickView": true
+        },
+        {
+            "id": "krone_eingliederung_definitiv",
+            "label": "Definitive Eingliederung",
+            "phase": "dokumentation",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Definitive Eingliederung dokumentiert.",
+                "mittel": "Definitive Eingliederung und Okklusionskontrolle dokumentiert.",
+                "lang": "Definitive Eingliederung mit Kontrolle von Randschluss, Approximalkontakten und Okklusion dokumentiert."
+            }
+        }
+    ]
+}

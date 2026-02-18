@@ -47,6 +47,15 @@ const CANONICAL_SECTION_ORDER = [
     'abrechnung',
 ] as const;
 
+const DEFAULT_SECTION_LABELS: Record<string, string> = {
+    befund: 'Befund',
+    aufklaerung: 'Aufklärung',
+    behandlung: 'Behandlungsablauf',
+    leistungen: 'Durchgeführte Leistungen',
+    hinweise: 'Hinweise',
+    abrechnung: 'Abrechnung',
+};
+
 // Billing reason enum for diagnostics
 export type BillingReasonCode =
     | 'RULES_DB_UNAVAILABLE'
@@ -644,6 +653,28 @@ function renderBehandlung(
         }
     }
 
+    const endoWorkingLengthsText = (() => {
+        const text = extractedData?.endo?.workingLengthsText;
+        if (typeof text !== 'string') return '';
+        const trimmed = text.trim();
+        return trimmed.length > 0 ? trimmed : '';
+    })();
+
+    if (endoWorkingLengthsText) {
+        const likelyEndo = proseChips.some(chip =>
+            chip.id === 'trepanation'
+            || chip.id.startsWith('kanalaufbereitung_')
+            || chip.id.startsWith('wf_')
+            || chip.id.startsWith('laengenmessung_')
+        );
+        if (likelyEndo) {
+            snippets.push({
+                text: `Arbeitslängen dokumentiert: ${endoWorkingLengthsText}.`,
+                chipId: 'endo_working_lengths_documented',
+            });
+        }
+    }
+
     const { text, usedChipIds } = buildProse(snippets, phrasebank, seed);
 
     // Build educational context notes (if context provided)
@@ -925,6 +956,11 @@ export function composeOutput(
     // Collect all evidence
     const allRefs: EvidenceRef[] = [];
     const sections: ComposedSection[] = [];
+    const templateSectionLabels = new Map(
+        template.sections
+            .map(section => [section.id, (section.label || '').trim()] as const)
+            .filter(([, label]) => label.length > 0)
+    );
 
     const resolveDisclosureIds = (sectionDef: TemplateSection): string[] | undefined => {
         if (!disclosureOverrideSet) {
@@ -1028,6 +1064,44 @@ export function composeOutput(
                 evidenceRefs: sectionResult.evidenceRefs
             });
             allRefs.push(...sectionResult.evidenceRefs);
+        }
+    }
+
+    const obligations = buildDocumentationObligations({
+        treatmentId: templateId,
+        extractedData,
+    });
+    if (obligations.length > 0) {
+        for (const obligation of obligations) {
+            let targetSection = sections.find(section => section.id === obligation.sectionId);
+            if (!targetSection) {
+                const resolvedLabel = templateSectionLabels.get(obligation.sectionId)
+                    ?? DEFAULT_SECTION_LABELS[obligation.sectionId]
+                    ?? obligation.sectionId;
+                targetSection = {
+                    id: obligation.sectionId,
+                    label: resolvedLabel,
+                    content: '',
+                    lines: [],
+                    evidenceByLineIndex: [],
+                    format: 'prose',
+                    evidenceRefs: [],
+                };
+                sections.push(targetSection);
+            }
+            const nextContent = mergeObligationLinesIntoSectionContent(targetSection.content, [obligation.text]);
+            if (nextContent !== targetSection.content) {
+                targetSection.content = nextContent;
+                targetSection.lines = nextContent.split('\n').map(line => line.trim()).filter(Boolean);
+                const evidenceRef: EvidenceRef = {
+                    type: 'mapping',
+                    id: obligation.evidenceId,
+                    source: 'documentation-obligation',
+                };
+                targetSection.evidenceRefs = [...targetSection.evidenceRefs, evidenceRef];
+                targetSection.evidenceByLineIndex = targetSection.lines.map(() => [...targetSection.evidenceRefs]);
+                allRefs.push(evidenceRef);
+            }
         }
     }
 
@@ -1140,6 +1214,10 @@ import {
 
 import { checkCombinability } from '../../combinability/billingCombinabilityChecker';
 import type { BillingInferenceResult } from './billingRegistry';
+import {
+    buildDocumentationObligations,
+    mergeObligationLinesIntoSectionContent,
+} from './documentationObligations';
 
 /** Unmapped billing code warning (for GATE testing) */
 export interface UnmappedCodeWarning {

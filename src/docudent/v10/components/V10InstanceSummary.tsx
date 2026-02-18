@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import { getPack } from '../packs';
 import './V10InstanceSummary.css';
 
 // ═══════════════════════════════════════════════════════════════
@@ -14,7 +15,8 @@ import './V10InstanceSummary.css';
 
 export interface InstanceSummaryData {
     id: string;
-    treatmentType: 'endo' | 'fuellung';
+    treatmentType: 'endo' | 'fuellung' | string;
+    treatmentId?: string;
     tooth?: string;
     state: 'idle' | 'questions' | 'output' | 'error';
     chipsCount: number;
@@ -68,7 +70,9 @@ interface InstanceCardProps {
 }
 
 function InstanceCard({ instance, isSelected, onClick }: InstanceCardProps) {
-    const treatmentLabel = instance.treatmentType === 'endo' ? 'Endo' : 'Füllung';
+    const treatmentId = instance.treatmentId ?? instance.treatmentType;
+    const pack = treatmentId ? getPack(treatmentId) : null;
+    const treatmentLabel = pack?.meta?.label ?? (instance.treatmentType === 'endo' ? 'Endo' : instance.treatmentType === 'fuellung' ? 'Füllung' : String(treatmentId));
     const treatmentColor = instance.treatmentType === 'endo' ? 'var(--endo-color, #e74c3c)' : 'var(--fuellung-color, #3498db)';
 
     const stateLabel = {

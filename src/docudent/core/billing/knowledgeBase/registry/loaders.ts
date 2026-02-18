@@ -169,6 +169,97 @@ import crownPrepQuestionBank from '../treatments/crown_prep/question_bank.json';
 import crownPrepTemplate from '../treatments/crown_prep/template.json';
 import crownPrepFindingMap from '../treatments/crown_prep/finding_map.json';
 
+// Ueberkappung
+import ueberkappungUnified from '../treatments/ueberkappung/unified.json';
+import ueberkappungAnswerMap from '../treatments/ueberkappung/answer_map.json';
+import ueberkappungQuestionBank from '../treatments/ueberkappung/question_bank.json';
+import ueberkappungTemplate from '../treatments/ueberkappung/template.json';
+import ueberkappungFindingMap from '../treatments/ueberkappung/finding_map.json';
+
+// Untersuchung
+import untersuchungUnified from '../treatments/untersuchung/unified.json';
+import untersuchungAnswerMap from '../treatments/untersuchung/answer_map.json';
+import untersuchungQuestionBank from '../treatments/untersuchung/question_bank.json';
+import untersuchungTemplate from '../treatments/untersuchung/template.json';
+import untersuchungFindingMap from '../treatments/untersuchung/finding_map.json';
+
+// Roentgen
+import roentgenUnified from '../treatments/roentgen/unified.json';
+import roentgenAnswerMap from '../treatments/roentgen/answer_map.json';
+import roentgenQuestionBank from '../treatments/roentgen/question_bank.json';
+import roentgenTemplate from '../treatments/roentgen/template.json';
+import roentgenFindingMap from '../treatments/roentgen/finding_map.json';
+
+// Fissurenversiegelung
+import fissurenversiegelungUnified from '../treatments/fissurenversiegelung/unified.json';
+import fissurenversiegelungAnswerMap from '../treatments/fissurenversiegelung/answer_map.json';
+import fissurenversiegelungQuestionBank from '../treatments/fissurenversiegelung/question_bank.json';
+import fissurenversiegelungTemplate from '../treatments/fissurenversiegelung/template.json';
+import fissurenversiegelungFindingMap from '../treatments/fissurenversiegelung/finding_map.json';
+
+// Parodontologie
+import parodontologieUnified from '../treatments/parodontologie/unified.json';
+import parodontologieAnswerMap from '../treatments/parodontologie/answer_map.json';
+import parodontologieQuestionBank from '../treatments/parodontologie/question_bank.json';
+import parodontologieTemplate from '../treatments/parodontologie/template.json';
+import parodontologieFindingMap from '../treatments/parodontologie/finding_map.json';
+
+// UPT
+import uptUnified from '../treatments/upt/unified.json';
+import uptAnswerMap from '../treatments/upt/answer_map.json';
+import uptQuestionBank from '../treatments/upt/question_bank.json';
+import uptTemplate from '../treatments/upt/template.json';
+import uptFindingMap from '../treatments/upt/finding_map.json';
+
+// Krone
+import kroneUnified from '../treatments/krone/unified.json';
+import kroneAnswerMap from '../treatments/krone/answer_map.json';
+import kroneQuestionBank from '../treatments/krone/question_bank.json';
+import kroneTemplate from '../treatments/krone/template.json';
+import kroneFindingMap from '../treatments/krone/finding_map.json';
+import brueckeUnified from '../treatments/bruecke/unified.json';
+import brueckeAnswerMap from '../treatments/bruecke/answer_map.json';
+import brueckeQuestionBank from '../treatments/bruecke/question_bank.json';
+import brueckeTemplate from '../treatments/bruecke/template.json';
+import brueckeFindingMap from '../treatments/bruecke/finding_map.json';
+
+// Teilkrone
+import teilkroneUnified from '../treatments/teilkrone/unified.json';
+import teilkroneAnswerMap from '../treatments/teilkrone/answer_map.json';
+import teilkroneQuestionBank from '../treatments/teilkrone/question_bank.json';
+import teilkroneTemplate from '../treatments/teilkrone/template.json';
+import teilkroneFindingMap from '../treatments/teilkrone/finding_map.json';
+import wsrUnified from '../treatments/wsr/unified.json';
+import wsrAnswerMap from '../treatments/wsr/answer_map.json';
+import wsrQuestionBank from '../treatments/wsr/question_bank.json';
+import wsrTemplate from '../treatments/wsr/template.json';
+import wsrFindingMap from '../treatments/wsr/finding_map.json';
+import traumaUnified from '../treatments/trauma/unified.json';
+import traumaAnswerMap from '../treatments/trauma/answer_map.json';
+import traumaQuestionBank from '../treatments/trauma/question_bank.json';
+import traumaTemplate from '../treatments/trauma/template.json';
+import traumaFindingMap from '../treatments/trauma/finding_map.json';
+import implantUnified from '../treatments/implant/unified.json';
+import implantAnswerMap from '../treatments/implant/answer_map.json';
+import implantQuestionBank from '../treatments/implant/question_bank.json';
+import implantTemplate from '../treatments/implant/template.json';
+import implantFindingMap from '../treatments/implant/finding_map.json';
+import schieneUnified from '../treatments/schiene/unified.json';
+import schieneAnswerMap from '../treatments/schiene/answer_map.json';
+import schieneQuestionBank from '../treatments/schiene/question_bank.json';
+import schieneTemplate from '../treatments/schiene/template.json';
+import schieneFindingMap from '../treatments/schiene/finding_map.json';
+import teilprotheseUnified from '../treatments/teilprothese/unified.json';
+import teilprotheseAnswerMap from '../treatments/teilprothese/answer_map.json';
+import teilprotheseQuestionBank from '../treatments/teilprothese/question_bank.json';
+import teilprotheseTemplate from '../treatments/teilprothese/template.json';
+import teilprotheseFindingMap from '../treatments/teilprothese/finding_map.json';
+import totalprotheseUnified from '../treatments/totalprothese/unified.json';
+import totalprotheseAnswerMap from '../treatments/totalprothese/answer_map.json';
+import totalprotheseQuestionBank from '../treatments/totalprothese/question_bank.json';
+import totalprotheseTemplate from '../treatments/totalprothese/template.json';
+import totalprotheseFindingMap from '../treatments/totalprothese/finding_map.json';
+
 // ═══════════════════════════════════════════════════════════════
 // CONFIG REGISTRIES — Map treatmentId to imported configs
 // ═══════════════════════════════════════════════════════════════
@@ -179,6 +270,21 @@ const unifiedConfigs: Record<TreatmentId, UnifiedConfig> = {
     extraction: extractionUnified as unknown as UnifiedConfig,
     pzr: pzrUnified as unknown as UnifiedConfig,
     crown_prep: crownPrepUnified as unknown as UnifiedConfig,
+    ueberkappung: ueberkappungUnified as unknown as UnifiedConfig,
+    untersuchung: untersuchungUnified as unknown as UnifiedConfig,
+    roentgen: roentgenUnified as unknown as UnifiedConfig,
+    fissurenversiegelung: fissurenversiegelungUnified as unknown as UnifiedConfig,
+    parodontologie: parodontologieUnified as unknown as UnifiedConfig,
+    upt: uptUnified as unknown as UnifiedConfig,
+    krone: kroneUnified as unknown as UnifiedConfig,
+    teilkrone: teilkroneUnified as unknown as UnifiedConfig,
+    wsr: wsrUnified as unknown as UnifiedConfig,
+    trauma: traumaUnified as unknown as UnifiedConfig,
+    implant: implantUnified as unknown as UnifiedConfig,
+    bruecke: brueckeUnified as unknown as UnifiedConfig,
+    schiene: schieneUnified as unknown as UnifiedConfig,
+    teilprothese: teilprotheseUnified as unknown as UnifiedConfig,
+    totalprothese: totalprotheseUnified as unknown as UnifiedConfig,
 };
 
 const answerMapConfigs: Record<TreatmentId, AnswerMapConfig> = {
@@ -187,6 +293,21 @@ const answerMapConfigs: Record<TreatmentId, AnswerMapConfig> = {
     extraction: extractionAnswerMap as unknown as AnswerMapConfig,
     pzr: pzrAnswerMap as unknown as AnswerMapConfig,
     crown_prep: crownPrepAnswerMap as unknown as AnswerMapConfig,
+    ueberkappung: ueberkappungAnswerMap as unknown as AnswerMapConfig,
+    untersuchung: untersuchungAnswerMap as unknown as AnswerMapConfig,
+    roentgen: roentgenAnswerMap as unknown as AnswerMapConfig,
+    fissurenversiegelung: fissurenversiegelungAnswerMap as unknown as AnswerMapConfig,
+    parodontologie: parodontologieAnswerMap as unknown as AnswerMapConfig,
+    upt: uptAnswerMap as unknown as AnswerMapConfig,
+    krone: kroneAnswerMap as unknown as AnswerMapConfig,
+    teilkrone: teilkroneAnswerMap as unknown as AnswerMapConfig,
+    wsr: wsrAnswerMap as unknown as AnswerMapConfig,
+    trauma: traumaAnswerMap as unknown as AnswerMapConfig,
+    implant: implantAnswerMap as unknown as AnswerMapConfig,
+    bruecke: brueckeAnswerMap as unknown as AnswerMapConfig,
+    schiene: schieneAnswerMap as unknown as AnswerMapConfig,
+    teilprothese: teilprotheseAnswerMap as unknown as AnswerMapConfig,
+    totalprothese: totalprotheseAnswerMap as unknown as AnswerMapConfig,
 };
 
 const questionBankConfigs: Record<TreatmentId, QuestionBankConfig> = {
@@ -195,6 +316,21 @@ const questionBankConfigs: Record<TreatmentId, QuestionBankConfig> = {
     extraction: extractionQuestionBank as unknown as QuestionBankConfig,
     pzr: pzrQuestionBank as unknown as QuestionBankConfig,
     crown_prep: crownPrepQuestionBank as unknown as QuestionBankConfig,
+    ueberkappung: ueberkappungQuestionBank as unknown as QuestionBankConfig,
+    untersuchung: untersuchungQuestionBank as unknown as QuestionBankConfig,
+    roentgen: roentgenQuestionBank as unknown as QuestionBankConfig,
+    fissurenversiegelung: fissurenversiegelungQuestionBank as unknown as QuestionBankConfig,
+    parodontologie: parodontologieQuestionBank as unknown as QuestionBankConfig,
+    upt: uptQuestionBank as unknown as QuestionBankConfig,
+    krone: kroneQuestionBank as unknown as QuestionBankConfig,
+    teilkrone: teilkroneQuestionBank as unknown as QuestionBankConfig,
+    wsr: wsrQuestionBank as unknown as QuestionBankConfig,
+    trauma: traumaQuestionBank as unknown as QuestionBankConfig,
+    implant: implantQuestionBank as unknown as QuestionBankConfig,
+    bruecke: brueckeQuestionBank as unknown as QuestionBankConfig,
+    schiene: schieneQuestionBank as unknown as QuestionBankConfig,
+    teilprothese: teilprotheseQuestionBank as unknown as QuestionBankConfig,
+    totalprothese: totalprotheseQuestionBank as unknown as QuestionBankConfig,
 };
 
 const templateConfigs: Record<TreatmentId, TemplateConfig> = {
@@ -203,6 +339,21 @@ const templateConfigs: Record<TreatmentId, TemplateConfig> = {
     extraction: extractionTemplate as unknown as TemplateConfig,
     pzr: pzrTemplate as unknown as TemplateConfig,
     crown_prep: crownPrepTemplate as unknown as TemplateConfig,
+    ueberkappung: ueberkappungTemplate as unknown as TemplateConfig,
+    untersuchung: untersuchungTemplate as unknown as TemplateConfig,
+    roentgen: roentgenTemplate as unknown as TemplateConfig,
+    fissurenversiegelung: fissurenversiegelungTemplate as unknown as TemplateConfig,
+    parodontologie: parodontologieTemplate as unknown as TemplateConfig,
+    upt: uptTemplate as unknown as TemplateConfig,
+    krone: kroneTemplate as unknown as TemplateConfig,
+    teilkrone: teilkroneTemplate as unknown as TemplateConfig,
+    wsr: wsrTemplate as unknown as TemplateConfig,
+    trauma: traumaTemplate as unknown as TemplateConfig,
+    implant: implantTemplate as unknown as TemplateConfig,
+    bruecke: brueckeTemplate as unknown as TemplateConfig,
+    schiene: schieneTemplate as unknown as TemplateConfig,
+    teilprothese: teilprotheseTemplate as unknown as TemplateConfig,
+    totalprothese: totalprotheseTemplate as unknown as TemplateConfig,
 };
 
 const findingMapConfigs: Record<TreatmentId, FindingMapConfig> = {
@@ -211,6 +362,21 @@ const findingMapConfigs: Record<TreatmentId, FindingMapConfig> = {
     extraction: extractionFindingMap as unknown as FindingMapConfig,
     pzr: pzrFindingMap as unknown as FindingMapConfig,
     crown_prep: crownPrepFindingMap as unknown as FindingMapConfig,
+    ueberkappung: ueberkappungFindingMap as unknown as FindingMapConfig,
+    untersuchung: untersuchungFindingMap as unknown as FindingMapConfig,
+    roentgen: roentgenFindingMap as unknown as FindingMapConfig,
+    fissurenversiegelung: fissurenversiegelungFindingMap as unknown as FindingMapConfig,
+    parodontologie: parodontologieFindingMap as unknown as FindingMapConfig,
+    upt: uptFindingMap as unknown as FindingMapConfig,
+    krone: kroneFindingMap as unknown as FindingMapConfig,
+    teilkrone: teilkroneFindingMap as unknown as FindingMapConfig,
+    wsr: wsrFindingMap as unknown as FindingMapConfig,
+    trauma: traumaFindingMap as unknown as FindingMapConfig,
+    implant: implantFindingMap as unknown as FindingMapConfig,
+    bruecke: brueckeFindingMap as unknown as FindingMapConfig,
+    schiene: schieneFindingMap as unknown as FindingMapConfig,
+    teilprothese: teilprotheseFindingMap as unknown as FindingMapConfig,
+    totalprothese: totalprotheseFindingMap as unknown as FindingMapConfig,
 };
 
 // ═══════════════════════════════════════════════════════════════

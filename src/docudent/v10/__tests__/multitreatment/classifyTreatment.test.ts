@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classifyTreatmentId } from '../../multitreatment/classifyTreatment';
+import { classifyTreatmentId, detectTreatmentSignals } from '../../multitreatment/classifyTreatment';
 
 describe('classifyTreatmentId', () => {
     it('classifies crown preparation wording as crown_prep', () => {
@@ -32,5 +32,19 @@ describe('classifyTreatmentId', () => {
     it('classifies explicit extraction shorthand as extraction', () => {
         const classification = classifyTreatmentId('EX 48 mit Luxation und Alveolenrevision erfolgt.');
         expect(classification.treatmentId).toBe('extraction');
+    });
+
+    it('detects endo reliably in flowing wording with trepaniert and kanaele', () => {
+        const classification = classifyTreatmentId(
+            'Zahn 27 wurde trepaniert, Kanaele aufbereitet und mit NaOCl gespuelt.'
+        );
+        expect(classification.treatmentId).toBe('endo');
+    });
+
+    it('suppresses fuellung signal in crown prep plus OPG context without explicit fuellung wording', () => {
+        const signals = detectTreatmentSignals(
+            'Zahn 11 fuer Krone praepariert, abgeformt, provisorisch versorgt; zusaetzlich OPG angefertigt.'
+        );
+        expect(signals.some((signal) => signal.treatmentId === 'fuellung')).toBe(false);
     });
 });

@@ -1,0 +1,16 @@
+{
+    "_meta": {
+        "treatmentId": "ueberkappung",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "type": {
+            "label": "Ueberkappungsart",
+            "template": "{{value}}"
+        },
+        "material": {
+            "label": "Ueberkappungsmaterial",
+            "template": "{{value}}"
+        }
+    }
+}

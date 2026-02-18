@@ -1,0 +1,16 @@
+{
+    "_meta": {
+        "treatmentId": "krone",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "type": {
+            "label": "Kronenart",
+            "template": "{{value}}"
+        },
+        "placement": {
+            "label": "Eingliederung",
+            "template": "{{value}}"
+        }
+    }
+}

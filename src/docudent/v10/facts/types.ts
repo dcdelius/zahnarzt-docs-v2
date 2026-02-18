@@ -19,6 +19,15 @@ export type Polarity = 'pos' | 'neg' | 'unknown';
  */
 export type FillMaterial = 'komposit' | 'giz' | 'amalgam' | 'unknown';
 
+export interface DocumentationContextFact {
+    version: 'v1';
+    clinical: string[];
+    patient: string[];
+    administrative: string[];
+    forensicNotes: string[];
+    unresolved: string[];
+}
+
 export interface CappingFact {
     performed: YesNoUnknown;
     material?: 'Ca(OH)₂' | 'MTA' | 'Biodentine' | string;
@@ -54,6 +63,7 @@ export interface TreatmentFacts {
     counseling: CounselingFact;
     bleeding?: BleedingFact;
     sensitivity?: SensitivityFact;
+    documentationContext?: DocumentationContextFact;
 
     // ═══════════════════════════════════════════════════════════════
     // MVP FACTS - Required for KB chip emission
@@ -236,6 +246,86 @@ export interface TreatmentFacts {
         provisional?: boolean;
     };
 
+    // Untersuchung-specific
+    untersuchung?: {
+        reason?: string;
+        findings?: string;
+        assessment?: string;
+    };
+
+    // Fissurenversiegelung-specific
+    fissurenversiegelung?: {
+        indication?: string;
+        material?: string;
+    };
+
+    // Parodontologie-specific
+    parodontologie?: {
+        phase?: 'status' | 'ait' | 'upt' | string;
+        uptGrade?: 'a' | 'b' | 'c' | string;
+    };
+
+    // UPT-specific
+    upt?: {
+        grade?: 'a' | 'b' | 'c' | string;
+        interval?: string;
+    };
+
+    // Krone-specific
+    krone?: {
+        type?: 'vollkrone' | 'provisorium' | string;
+        placement?: 'definitiv' | 'provisorisch' | string;
+    };
+
+    // Bruecke-specific
+    bruecke?: {
+        type?: 'definitiv' | 'provisorisch' | string;
+        phase?: 'eingliederung' | 'kontrolle' | string;
+    };
+
+    // Teilkrone-specific
+    teilkrone?: {
+        type?: 'teilkrone' | 'provisorium' | string;
+        placement?: 'definitiv' | 'provisorisch' | string;
+    };
+
+    // WSR-specific
+    wsr?: {
+        zugang?: 'trepaniert' | 'osteotomie' | string;
+        lokalisation?: 'front_praemolar' | 'molar' | string;
+    };
+
+    // Trauma-specific
+    trauma?: {
+        art?: 'luxation' | 'fraktur' | 'avulsion' | string;
+        schienung?: 'ja' | 'nein' | string;
+        kontrolle?: 'ja' | 'nein' | string;
+    };
+
+    // Implant-specific
+    implant?: {
+        phase?: 'insertion' | 'freilegung' | string;
+        nachsorge?: 'ja' | 'nein' | string;
+    };
+
+    // Schiene-specific
+    schiene?: {
+        type?: 'okklusionsschiene' | 'protrusionsschiene' | string;
+        phase?: 'eingliederung' | 'kontrolle' | string;
+    };
+
+    // Teilprothese-specific
+    teilprothese?: {
+        type?: 'interim' | 'modellguss' | string;
+        phase?: 'eingliederung' | 'kontrolle' | string;
+    };
+
+    // Totalprothese-specific
+    totalprothese?: {
+        type?: 'konventionell' | 'immediat' | string;
+        phase?: 'eingliederung' | 'kontrolle' | string;
+    };
+
     // Endo-specific
     rootCanals?: number;
     workingLength?: string;
@@ -276,6 +366,31 @@ export interface TreatmentFacts {
 export const MEDICAL_QUESTION_IDS = {
     UEBERKAPPUNG: 'medical_ueberkappung',
     UEBERKAPPUNG_MATERIAL: 'medical_ueberkappung_material',
+    FISSUREN_INDIKATION: 'medical_fissuren_indikation',
+    FISSUREN_MATERIAL: 'medical_fissuren_material',
+    PARODONTOLOGIE_PHASE: 'medical_parodontologie_phase',
+    PARODONTOLOGIE_UPT_GRAD: 'medical_parodontologie_upt_grad',
+    UPT_GRAD: 'medical_upt_grad',
+    UPT_INTERVALL: 'medical_upt_intervall',
+    KRONE_ART: 'medical_krone_art',
+    KRONE_EINGLIEDERUNG: 'medical_krone_eingliederung',
+    BRUECKE_TYP: 'medical_bruecke_typ',
+    BRUECKE_PHASE: 'medical_bruecke_phase',
+    TEILKRONE_ART: 'medical_teilkrone_art',
+    TEILKRONE_EINGLIEDERUNG: 'medical_teilkrone_eingliederung',
+    WSR_ZUGANG: 'medical_wsr_zugang',
+    WSR_LOKALISATION: 'medical_wsr_lokalisation',
+    TRAUMA_ART: 'medical_trauma_art',
+    TRAUMA_SCHIENUNG: 'medical_trauma_schienung',
+    TRAUMA_KONTROLLE: 'medical_trauma_kontrolle',
+    IMPLANT_PHASE: 'medical_implant_phase',
+    IMPLANT_NACHSORGE: 'medical_implant_nachsorge',
+    SCHIENE_TYP: 'medical_schiene_typ',
+    SCHIENE_PHASE: 'medical_schiene_phase',
+    TEILPROTHESE_TYP: 'medical_teilprothese_typ',
+    TEILPROTHESE_PHASE: 'medical_teilprothese_phase',
+    TOTALPROTHESE_TYP: 'medical_totalprothese_typ',
+    TOTALPROTHESE_PHASE: 'medical_totalprothese_phase',
     COUNSEL_PULPITIS_RISK: 'medical_counsel_pulpitis_risk',
     HEMOSTASIS: 'medical_hemostasis',
     SENSITIVITY_FOLLOWUP: 'medical_sensitivity_followup',
@@ -302,6 +417,11 @@ export interface ExtractedDataLike {
     zusatzinfos?: string[];
     klinischeZusatzinfos?: string[];
     patientenangaben?: string[];
+    reasoning?: {
+        forensicNotes?: string[];
+        unresolved?: string[];
+    };
+    documentationContext?: DocumentationContextFact;
 }
 
 export interface BuildFactsParams {

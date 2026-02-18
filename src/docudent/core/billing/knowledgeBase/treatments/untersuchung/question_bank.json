@@ -1,0 +1,76 @@
+{
+    "_meta": {
+        "treatmentId": "untersuchung",
+        "version": "1.0.0",
+        "description": "Question Bank fuer Untersuchung"
+    },
+    "questions": [
+        {
+            "key": "anlass",
+            "category": "forensic",
+            "prompt": "Anlass der Untersuchung dokumentieren",
+            "type": "single",
+            "dataField": "untersuchung.reason",
+            "options": [
+                {
+                    "id": "kontrolle",
+                    "label": "Kontrolluntersuchung",
+                    "dataValue": "kontrolle"
+                },
+                {
+                    "id": "beschwerden",
+                    "label": "Beschwerden/Abklaerung",
+                    "dataValue": "beschwerden"
+                },
+                {
+                    "id": "vorsorge",
+                    "label": "Vorsorge",
+                    "dataValue": "vorsorge"
+                }
+            ]
+        },
+        {
+            "key": "befunde",
+            "category": "forensic",
+            "prompt": "Wesentliche Befunde dokumentieren",
+            "type": "single",
+            "dataField": "untersuchung.findings",
+            "options": [
+                {
+                    "id": "unauffaellig",
+                    "label": "Unauffaellig",
+                    "dataValue": "unauffaellig"
+                },
+                {
+                    "id": "kariesverdacht",
+                    "label": "Kariesverdaechtige Stellen",
+                    "dataValue": "kariesverdacht"
+                },
+                {
+                    "id": "parozeichen",
+                    "label": "Parodontale Auffaelligkeiten",
+                    "dataValue": "parozeichen"
+                }
+            ]
+        },
+        {
+            "key": "beurteilung",
+            "category": "forensic",
+            "prompt": "Beurteilung/Diagnose dokumentieren",
+            "type": "single",
+            "dataField": "untersuchung.assessment",
+            "options": [
+                {
+                    "id": "ohne_therapiebedarf",
+                    "label": "Derzeit kein Therapiebedarf",
+                    "dataValue": "ohne_therapiebedarf"
+                },
+                {
+                    "id": "therapiebedarf",
+                    "label": "Therapiebedarf vorhanden",
+                    "dataValue": "therapiebedarf"
+                }
+            ]
+        }
+    ]
+}

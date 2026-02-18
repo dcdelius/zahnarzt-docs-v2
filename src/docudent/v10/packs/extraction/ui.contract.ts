@@ -28,7 +28,30 @@ export const extractionUiContract: PackUiContractV1 = {
     ],
     settingsSchema: {
         practice: [],
-        user: [],
+        user: [
+            {
+                key: 'defaultLAType',
+                label: 'Standard-LA',
+                type: 'enum',
+                options: [
+                    { value: 'infiltration', label: 'Infiltration' },
+                    { value: 'leitung', label: 'Leitung' },
+                    { value: 'ila', label: 'Intraligamentär (ILA)' },
+                    { value: 'none', label: 'Ohne' },
+                ],
+                mapsToAskbackId: 'medical_la_type',
+            },
+            {
+                key: 'treatments.extraction.defaultWoundCare',
+                label: 'Wundversorgung standardmäßig dokumentieren',
+                type: 'enum',
+                options: [
+                    { value: 'yes', label: 'Ja' },
+                    { value: 'no', label: 'Nein' },
+                ],
+                mapsToAskbackId: 'wound_care',
+            },
+        ],
     },
     askbackPolicy: {
         criticalAskbacks: [

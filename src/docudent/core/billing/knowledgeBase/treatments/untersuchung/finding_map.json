@@ -1,0 +1,20 @@
+{
+    "_meta": {
+        "treatmentId": "untersuchung",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "reason": {
+            "label": "Anlass",
+            "template": "{{value}}"
+        },
+        "findings": {
+            "label": "Befunde",
+            "template": "{{value}}"
+        },
+        "assessment": {
+            "label": "Beurteilung",
+            "template": "{{value}}"
+        }
+    }
+}

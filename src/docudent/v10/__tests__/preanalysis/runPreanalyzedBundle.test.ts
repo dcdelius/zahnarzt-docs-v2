@@ -47,6 +47,9 @@ describe('runPreanalyzedBundle', () => {
 
         expect(runBundle).toHaveBeenCalledTimes(1);
         expect(runBundle.mock.calls[0][0].segments).toHaveLength(2);
+        const firstSegment = runBundle.mock.calls[0][0].segments[0];
+        expect(firstSegment?.instances?.[0]?.preanalysisHints?.intentId).toBeTruthy();
+        expect(firstSegment?.dictation?.length ?? 0).toBeLessThanOrEqual(fixture!.dictation.length);
         expect(result.state).toBe('output');
         if (result.state === 'output') {
             expect(result.preanalysis.intentHashInput.length).toBeGreaterThan(10);
@@ -145,5 +148,30 @@ describe('runPreanalyzedBundle', () => {
         if (result.state === 'needs_confirmation') {
             expect(result.preview.bundle.intents.some(intent => !intent.tooth)).toBe(true);
         }
+    });
+
+    it('auto-runs single fissuren intent without confirmation for explicit dictation', async () => {
+        const runBundle = vi.fn().mockResolvedValue({
+            state: 'output',
+            output: { fullText: 'ok', billingCodes: ['GOZ_2000'], segments: [] },
+            meta: {
+                engineUsed: 'v10',
+                instanceCount: 1,
+                multiInstance: false,
+                durations: { total: 1 },
+            },
+        });
+
+        const result = await runPreanalyzedBundle({
+            dictation: 'Fissurenversiegelung an Zahn 16 zur Kariesprophylaxe mit Kunststoff durchgefuehrt.',
+            insuranceType: 'PKV',
+            textLength: 'mittel',
+            forceFallback: true,
+        }, { runBundle });
+
+        expect(runBundle).toHaveBeenCalledTimes(1);
+        expect(runBundle.mock.calls[0][0].segments).toHaveLength(1);
+        expect(runBundle.mock.calls[0][0].segments[0]?.treatmentId).toBe('fissurenversiegelung');
+        expect(result.state).toBe('output');
     });
 });

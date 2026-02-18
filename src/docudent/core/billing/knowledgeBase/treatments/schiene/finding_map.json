@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "treatmentId": "schiene",
+    "version": "1.0.0"
+  },
+  "fields": {
+    "type": {
+      "label": "Schienentyp",
+      "template": "{{value}}"
+    },
+    "phase": {
+      "label": "Leistungsphase",
+      "template": "{{value}}"
+    }
+  }
+}

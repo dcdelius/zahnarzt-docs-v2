@@ -1,10 +1,81 @@
 import type { ClinicalEventBundle } from './types';
+import type { ContractContext, FactScope } from '../types';
 
 const hasChip = (contract: { values?: Record<string, unknown> } | undefined, chipId: string): boolean => {
     const available = contract?.values?.availableChips as string[] | undefined;
     if (!Array.isArray(available) || available.length === 0) return true;
     return available.includes(chipId);
 };
+
+type RadiologyField = 'indication' | 'type' | 'timing' | 'findings';
+
+type RadiologyIdSuffixes = {
+    indication: string;
+    type: string;
+    timing: string;
+    findings: string;
+};
+
+type RadiologyAskbackMode = 'strict_only' | 'always';
+
+const defaultRadiologyIdSuffixes: RadiologyIdSuffixes = {
+    indication: 'roentgen_indikation',
+    type: 'roentgen_typ',
+    timing: 'roentgen_zeitpunkt',
+    findings: 'roentgen_befund',
+};
+
+function hasRadiologyField(facts: Record<string, unknown>, field: RadiologyField): boolean {
+    const value = (facts.radiology as Record<string, unknown> | undefined)?.[field];
+    if (typeof value === 'string') return value.trim().length > 0;
+    return value !== undefined && value !== null;
+}
+
+export function isStrictKzvContract(contract: ContractContext): boolean {
+    return contract?.values?.strictKzv === true;
+}
+
+export function createRadiologyEvidenceAskbackBundles(args: {
+    idPrefix: string;
+    scope?: FactScope;
+    mode?: RadiologyAskbackMode;
+    applies: (facts: Record<string, unknown>, contract: ContractContext) => boolean;
+    idSuffixes?: Partial<RadiologyIdSuffixes>;
+}): ClinicalEventBundle[] {
+    const scope = args.scope ?? 'per_instance';
+    const mode = args.mode ?? 'always';
+    const suffixes: RadiologyIdSuffixes = {
+        ...defaultRadiologyIdSuffixes,
+        ...(args.idSuffixes ?? {}),
+    };
+
+    const isApplicable = (facts: Record<string, unknown>, contract: ContractContext): boolean => {
+        if (!args.applies(facts, contract)) return false;
+        if (mode === 'strict_only') return isStrictKzvContract(contract);
+        return true;
+    };
+
+    const build = (
+        field: RadiologyField,
+        suffix: string,
+        askbackId: string
+    ): ClinicalEventBundle => ({
+        id: `${args.idPrefix}.${suffix}`,
+        scope,
+        match: (facts, contract) =>
+            isApplicable(facts, contract)
+            && !hasRadiologyField(facts, field),
+        requiresFacts: [`radiology.${field}`],
+        askbacks: [askbackId],
+    });
+
+    return [
+        build('indication', suffixes.indication, 'medical_roentgen_indikation'),
+        build('type', suffixes.type, 'medical_roentgen_typ'),
+        build('timing', suffixes.timing, 'medical_roentgen_zeitpunkt'),
+        build('findings', suffixes.findings, 'medical_roentgen_befund'),
+    ];
+}
 
 export const commonEventBundles: ClinicalEventBundle[] = [
     {

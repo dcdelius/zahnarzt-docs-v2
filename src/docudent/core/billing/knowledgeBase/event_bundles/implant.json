@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "treatmentId": "implant",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "implant.phase.insertion",
+      "chipIds": ["implant_insertion"],
+      "textRefIds": ["implant_insertion"],
+      "billingRefIds": ["implant_insertion"]
+    },
+    {
+      "id": "implant.phase.freilegung",
+      "chipIds": ["implant_freilegung"],
+      "textRefIds": ["implant_freilegung"],
+      "billingRefIds": ["implant_freilegung"]
+    },
+    {
+      "id": "implant.nachsorge",
+      "chipIds": ["implant_nachsorge"],
+      "textRefIds": ["implant_nachsorge"],
+      "billingRefIds": []
+    },
+    {
+      "id": "implant.askback.phase"
+    },
+    {
+      "id": "implant.askback.nachsorge"
+    }
+  ]
+}

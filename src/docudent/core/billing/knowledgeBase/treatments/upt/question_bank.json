@@ -1,0 +1,57 @@
+{
+    "_meta": {
+        "treatmentId": "upt",
+        "version": "1.0.0",
+        "description": "Question Bank fuer UPT"
+    },
+    "questions": [
+        {
+            "key": "upt_grad",
+            "category": "forensic",
+            "prompt": "Welcher UPT-Grad wurde erbracht?",
+            "type": "single",
+            "dataField": "upt.grade",
+            "options": [
+                {
+                    "id": "a",
+                    "label": "Grad A",
+                    "dataValue": "a"
+                },
+                {
+                    "id": "b",
+                    "label": "Grad B",
+                    "dataValue": "b"
+                },
+                {
+                    "id": "c",
+                    "label": "Grad C",
+                    "dataValue": "c"
+                }
+            ]
+        },
+        {
+            "key": "upt_intervall",
+            "category": "forensic",
+            "prompt": "Recallintervall dokumentieren",
+            "type": "single",
+            "dataField": "upt.interval",
+            "options": [
+                {
+                    "id": "3_4_monate",
+                    "label": "3-4 Monate",
+                    "dataValue": "3-4_monate"
+                },
+                {
+                    "id": "6_monate",
+                    "label": "6 Monate",
+                    "dataValue": "6_monate"
+                },
+                {
+                    "id": "12_monate",
+                    "label": "12 Monate",
+                    "dataValue": "12_monate"
+                }
+            ]
+        }
+    ]
+}

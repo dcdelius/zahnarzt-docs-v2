@@ -65,4 +65,14 @@ describe('Multi-Treatment Scoping: No Leak', () => {
         // Each instance should have unique ID
         expect(result.instances[0].instanceId).not.toBe(result.instances[1].instanceId);
     });
+
+    it('should ignore torque values like Ncm as phantom teeth', () => {
+        const result = scopeExtractionToInstances(
+            'Implantatinsertion regio 36 mit Primaerstabilitaet 35 Ncm und Nachsorge.',
+            'implant'
+        );
+
+        expect(result.instances).toHaveLength(1);
+        expect(result.instances[0].teeth).toEqual(['36']);
+    });
 });

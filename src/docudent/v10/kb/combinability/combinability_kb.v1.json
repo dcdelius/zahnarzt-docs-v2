@@ -3,7 +3,7 @@
     "version": "1.1.0",
     "generatedAt": "2025-12-23T22:00:00Z",
     "sourceFile": "kombinationen.json + html_truthset_v2",
-    "ruleCount": 21,
+    "ruleCount": 22,
     "hash": "m16-v1-truthset+la"
   },
   "rules": [
@@ -352,6 +352,31 @@
       ],
       "scope": "SESSION",
       "priority": 50
+    },
+    {
+      "id": "regel_krone_goz_basisdokumentation",
+      "typ": "dokumentation",
+      "titel": "Kronenversorgung: GOZ-Basisdokumentation",
+      "beschreibung": "Für GOZ 2210, GOZ 2220, GOZ 2260 und GOZ 5180 muss die Kronen-/Teilkronen-/Eingliederungsversorgung mit Präparation und Versorgungsart nachvollziehbar dokumentiert sein.",
+      "betrifft": [
+        "GOZ_2210",
+        "GOZ_2220",
+        "GOZ_2260",
+        "GOZ_5180"
+      ],
+      "regel": {
+        "operator": "muss",
+        "bedingung": "Kronenart, Präparation und Eingliederungs-/Provisoriumsart dokumentiert"
+      },
+      "schweregrad": "info",
+      "sourceRefs": [
+        {
+          "anchor": "GOZ-2210/2220/2260/5180",
+          "document": "GOZ Leistungsverzeichnis"
+        }
+      ],
+      "scope": "TOOTH",
+      "priority": 35
     },
     {
       "id": "regel_e2e_test_warn",

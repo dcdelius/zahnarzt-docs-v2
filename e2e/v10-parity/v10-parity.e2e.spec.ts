@@ -82,7 +82,7 @@ async function waitForV10PageReady(page: Page): Promise<{
 
 /**
  * Handle login if we land on login page instead of V10.
- * Uses E2E test credentials from environment or defaults.
+ * Uses E2E test credentials from environment.
  */
 async function handleLoginIfNeeded(page: Page): Promise<boolean> {
     // Check if we're on a login page
@@ -95,9 +95,12 @@ async function handleLoginIfNeeded(page: Page): Promise<boolean> {
 
     console.log('[V10 E2E] Login page detected, attempting login...');
 
-    // Fill login credentials from env or defaults
-    const email = process.env.E2E_LOGIN_EMAIL || 'dcdelius@me.com';
-    const password = process.env.E2E_LOGIN_PASSWORD || 'Magenta!';
+    // Fill login credentials from env
+    const email = process.env.E2E_LOGIN_EMAIL;
+    const password = process.env.E2E_LOGIN_PASSWORD;
+    if (!email || !password) {
+        throw new Error('E2E_LOGIN_EMAIL und E2E_LOGIN_PASSWORD fehlen fuer Hosted-Login.');
+    }
 
     // Fill email
     await emailInput.fill(email);

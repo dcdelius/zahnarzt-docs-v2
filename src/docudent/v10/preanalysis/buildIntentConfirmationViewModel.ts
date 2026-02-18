@@ -1,5 +1,6 @@
 import type { TreatmentIntentBundleV1, TreatmentIntentV1 } from './treatmentIntentContract';
 import { PREANALYSIS_TREATMENT_IDS } from './treatmentIntentContract';
+import { getTreatmentLabel } from '@/docudent/contracts/treatments.manifest';
 
 type ConfirmationOption = {
     treatmentId: string;
@@ -28,17 +29,10 @@ export type IntentConfirmationViewModel = {
     lanes: IntentConfirmationLane[];
 };
 
-const TREATMENT_LABELS: Record<string, string> = {
-    fuellung: 'Fuellung',
-    endo: 'Endo',
-    extraction: 'Extraktion',
-    crown_prep: 'Kronenpraeparation',
-    extraction_stub: 'Extraktion',
-};
 const FALLBACK_OPTIONS = [...PREANALYSIS_TREATMENT_IDS];
 
 function treatmentLabel(treatmentId: string): string {
-    return TREATMENT_LABELS[treatmentId] ?? treatmentId;
+    return getTreatmentLabel(treatmentId);
 }
 
 function confidenceLabel(confidence: number): 'high' | 'medium' | 'low' {

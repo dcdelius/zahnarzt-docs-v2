@@ -72,6 +72,36 @@ const ISO_DATE_PATTERN = /\d{4}-\d{2}-\d{2}/g;
 const GERMAN_DATE_PATTERN = /\d{1,2}\.\d{1,2}\.\d{2,4}/g;
 const YEAR_PATTERN = /\b(20\d{2}|19\d{2})\b/g;
 const TIME_PATTERN = /\d{1,2}:\d{2}/g;
+const VALUE_UNIT_PATTERN = /\b\d{1,3}\s*(?:ncm|mm|cm|ml|mg|rpm|nm)\b/gi;
+const ENDO_EXPLICIT_TOOTH_REFERENCE_PATTERN = /(?:\bzahn\b|\bz\.?)\s*[1-4][1-8]\b/i;
+const ENDO_ROOT_CANAL_VALUE_PATTERN = /\b(?:mb1|mb2|mb|ml|mv|db|dl|dv|d|p|pal|k1|k2|k3|k4)\s*[:=]?\s*([1-4][1-8])\b/gi;
+const ENDO_VALUE_UNIT_TOOTH_PATTERN = /\b([1-4][1-8])\b\s*(?:ncm|mm|cm|rpm|nm)\b/gi;
+const PROBE_DEBUG_ENABLED = typeof process !== 'undefined'
+    && process.env?.DOCUDENT_DEBUG_PROBES === '1';
+
+function isValidPermanentFdi(tooth: string): boolean {
+    if (!/^\d{2}$/.test(tooth)) return false;
+    const num = parseInt(tooth, 10);
+    const quadrant = Math.floor(num / 10);
+    const position = num % 10;
+    return quadrant >= 1 && quadrant <= 4 && position >= 1 && position <= 8;
+}
+
+function collectValueRanges(text: string, pattern: RegExp): Array<{ start: number; end: number }> {
+    const withGlobal = pattern.flags.includes('g')
+        ? new RegExp(pattern.source, pattern.flags)
+        : new RegExp(pattern.source, `${pattern.flags}g`);
+    const ranges: Array<{ start: number; end: number }> = [];
+    for (const match of text.matchAll(withGlobal)) {
+        const value = match[1];
+        if (!value || match.index === undefined) continue;
+        const localOffset = match[0].indexOf(value);
+        if (localOffset < 0) continue;
+        const start = match.index + localOffset;
+        ranges.push({ start, end: start + value.length });
+    }
+    return ranges;
+}
 
 /**
  * Extract valid FDI tooth numbers from text.
@@ -79,18 +109,33 @@ const TIME_PATTERN = /\d{1,2}:\d{2}/g;
  */
 function extractTeeth(text: string, packId: string): string[] {
     // Endo dictations contain many 2-digit numbers (WL/ISO) that must NOT become teeth.
-    // Use deterministic endo parser as the primary source of truth for endo tooth scoping.
+    // Use deterministic endo parser only when an explicit tooth marker exists.
+    // For standalone numbers, filter root-canal/value patterns first.
     if (packId === 'endo') {
-        const signals = parseEndoSignals(text);
-        const tooth = signals.tooth;
-        if (typeof tooth === 'string' && /^\d{2}$/.test(tooth)) {
-            const num = parseInt(tooth, 10);
-            const quadrant = Math.floor(num / 10);
-            const position = num % 10;
-            if (quadrant >= 1 && quadrant <= 4 && position >= 1 && position <= 8) {
+        if (ENDO_EXPLICIT_TOOTH_REFERENCE_PATTERN.test(text)) {
+            const signals = parseEndoSignals(text);
+            const tooth = signals.tooth;
+            if (typeof tooth === 'string' && isValidPermanentFdi(tooth)) {
                 return [tooth];
             }
         }
+
+        const blockedRanges = [
+            ...collectValueRanges(text, ENDO_ROOT_CANAL_VALUE_PATTERN),
+            ...collectValueRanges(text, ENDO_VALUE_UNIT_TOOTH_PATTERN),
+        ];
+        const standalone = Array.from(text.matchAll(/\b([1-4][1-8])\b/g))
+            .filter((match) => {
+                if (match.index === undefined) return false;
+                const value = match[1];
+                const start = match.index;
+                const end = start + value.length;
+                return !blockedRanges.some(range => start >= range.start && end <= range.end);
+            })
+            .map(match => match[1])
+            .filter(isValidPermanentFdi);
+
+        return Array.from(new Set(standalone));
     }
 
     // First, mask out prices/dates/times to prevent false matches
@@ -99,7 +144,8 @@ function extractTeeth(text: string, packId: string): string[] {
         .replace(ISO_DATE_PATTERN, ' DATE ')
         .replace(GERMAN_DATE_PATTERN, ' DATE ')
         .replace(YEAR_PATTERN, ' DATE ')
-        .replace(TIME_PATTERN, ' TIME ');
+        .replace(TIME_PATTERN, ' TIME ')
+        .replace(VALUE_UNIT_PATTERN, ' VALUE ');
 
     // Also mask 3+ digit numbers (not teeth)
     maskedText = maskedText.replace(/\d{3,}/g, ' NUM ');
@@ -119,7 +165,7 @@ function extractTeeth(text: string, packId: string): string[] {
     }
 
     // ═══ DEV PROBE A: Scoping tooth extraction ═══
-    if (process.env.NODE_ENV !== 'production' && teeth.size > 0) {
+    if (process.env.NODE_ENV !== 'production' && PROBE_DEBUG_ENABLED && teeth.size > 0) {
         console.debug('[PROBE A] extractTeeth', {
             originalText: text.slice(0, 100) + (text.length > 100 ? '...' : ''),
             maskedText: maskedText.slice(0, 100) + (maskedText.length > 100 ? '...' : ''),

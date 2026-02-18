@@ -1,166 +1,261 @@
 {
     "_meta": {
-        "description": "Real-life dictation set with extra clinical details (LLM+Firestore live)",
-        "version": "1.0.0",
-        "created": "2026-02-13"
+        "description": "Real-life dictation set for 20 treatment coverage + multi-treatment stress case (LLM+Firestore live)",
+        "version": "2.0.0",
+        "created": "2026-02-17"
     },
     "cases": [
         {
             "id": "r01",
-            "title": "GKV Füllung MOD + Okklusionshinweis",
+            "title": "GKV Fuellung MOD + Kofferdam",
             "treatmentId": "fuellung",
             "insuranceType": "GKV",
-            "dictation": "Füllung 36 mod Komposit. Kofferdam. Leitungsanästhesie. Okklusion eingeschliffen, Politur, Bisskontrolle geplant.",
+            "dictation": "Zahn 36 MOD Karies, Kompositfuellung mit Kofferdam und Abschlusskontrolle.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "BEMA_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "GOZ_"
-                ]
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
             }
         },
         {
             "id": "r02",
-            "title": "GKV Füllung 1fl + Matrize/Keil",
-            "treatmentId": "fuellung",
+            "title": "GKV Endo Standard",
+            "treatmentId": "endo",
             "insuranceType": "GKV",
-            "dictation": "Füllung 24 o Komposit. Kofferdam. Infiltrationsanästhesie. Matrize und Keil, Kontaktpunkt geprüft.",
+            "dictation": "Zahn 36 Trepanation, Arbeitslaengenmessung, Aufbereitung, Spuelung und Wurzelfuellung durchgefuehrt.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "BEMA_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "GOZ_"
-                ]
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
             }
         },
         {
             "id": "r03",
-            "title": "GKV profunda + indirekte Überkappung",
-            "treatmentId": "fuellung",
+            "title": "GKV Extraktion mit LA",
+            "treatmentId": "extraction",
             "insuranceType": "GKV",
-            "dictation": "Füllung 37 o Komposit. Karies profunda. Indirekte Überkappung mit Calciumhydroxid. Kofferdam.",
+            "dictation": "Extraktion Zahn 28 mit Infiltrationsanaesthesie und Wundversorgung durchgefuehrt.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "BEMA_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "GOZ_"
-                ]
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
             }
         },
         {
             "id": "r04",
-            "title": "MKV Füllung + Mehrkostenbegründung",
-            "treatmentId": "fuellung",
-            "insuranceType": "MKV",
-            "dictation": "Füllung 16 od Komposit. Mehrkostenvereinbarung unterschrieben, Begründung: ästhetischer Anspruch. Kofferdam.",
+            "title": "PKV Kronenpraeparation",
+            "treatmentId": "crown_prep",
+            "insuranceType": "PKV",
+            "dictation": "Zahn 11 Kronenpraeparation, Abformung und Provisorium durchgefuehrt.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "BEMA_"
-                ]
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
             }
         },
         {
             "id": "r05",
-            "title": "PKV Füllung + Mehrschichttechnik",
-            "treatmentId": "fuellung",
-            "insuranceType": "PKV",
-            "dictation": "Füllung 45 modb Komposit. Kofferdam. Infiltrationsanästhesie. Mehrschichttechnik, lichthärtend.",
+            "title": "GKV PZR komplett",
+            "treatmentId": "pzr",
+            "insuranceType": "GKV",
+            "dictation": "PZR vollstaendig durchgefuehrt, Zahnstein entfernt und Fluoridierung vorgenommen.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "GOZ_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "BEMA_"
-                ]
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
             }
         },
         {
             "id": "r06",
-            "title": "GKV Endo mit WL + Spülung + Einlage",
-            "treatmentId": "endo",
-            "insuranceType": "GKV",
-            "dictation": "Endo 46: Trepanation. Arbeitslänge elektronisch mit Apex-Locator, Röntgenkontrolle. Aufbereitung maschinell. Spülung NaOCl und EDTA. Medikamentöse Einlage Calciumhydroxid. Provisorischer Verschluss mit Cavit. Kofferdam. Leitungsanästhesie.",
+            "title": "PKV Ueberkappung direkt",
+            "treatmentId": "ueberkappung",
+            "insuranceType": "PKV",
+            "dictation": "Direkte Ueberkappung mit MTA bei Pulpaeroeffnung an Zahn 36.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "BEMA_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "GOZ_"
-                ]
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
             }
         },
         {
             "id": "r07",
-            "title": "PKV Endo warm vertikal",
-            "treatmentId": "endo",
+            "title": "PKV Fissurenversiegelung",
+            "treatmentId": "fissurenversiegelung",
             "insuranceType": "PKV",
-            "dictation": "Endo 11: Trepanation. Arbeitslänge elektronisch. Aufbereitung rotierend. Spülung NaOCl. Wurzelfüllung warm vertikal mit Sealer. Kofferdam. Infiltrationsanästhesie.",
+            "dictation": "Fissurenversiegelung an Zahn 16 zur Kariesprophylaxe mit Kunststoff durchgefuehrt.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "GOZ_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "BEMA_"
-                ]
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
             }
         },
         {
             "id": "r08",
-            "title": "GKV Endo + Einlage + Provisorium",
-            "treatmentId": "endo",
+            "title": "GKV Parodontologie AIT",
+            "treatmentId": "parodontologie",
             "insuranceType": "GKV",
-            "dictation": "Endo 36: Zugang. Arbeitslänge röntgenologisch. Spülung NaOCl. Medikamentöse Einlage Ledermix. Provisorischer Verschluss. Kofferdam.",
+            "dictation": "Geschlossene antiinfektioese Parodontaltherapie an 36 und 37 durchgefuehrt.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "BEMA_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "GOZ_"
-                ]
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
             }
         },
         {
             "id": "r09",
-            "title": "GKV Endo kalt lateral",
-            "treatmentId": "endo",
+            "title": "GKV UPT Grad B",
+            "treatmentId": "upt",
             "insuranceType": "GKV",
-            "dictation": "Endo 27: Trepanation. Arbeitslänge elektronisch. Aufbereitung manuell. Spülung CHX. Wurzelfüllung kalt lateral. Kofferdam. Leitungsanästhesie.",
+            "dictation": "UPT Grad B an Zahn 36 mit Recallintervall 6 Monate durchgefuehrt.",
             "expect": {
                 "phase": "output",
-                "mustIncludePrefixes": [
-                    "BEMA_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "GOZ_"
-                ]
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
             }
         },
         {
             "id": "r10",
-            "title": "GKV Multi-Tooth + Bisskontrolle",
+            "title": "PKV WSR Osteotomie",
+            "treatmentId": "wsr",
+            "insuranceType": "PKV",
+            "dictation": "Wurzelspitzenresektion an Zahn 36 durch Osteotomie im Molarenbereich durchgefuehrt.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r11",
+            "title": "GKV Trauma mit Schienung",
+            "treatmentId": "trauma",
+            "insuranceType": "GKV",
+            "dictation": "Zahntrauma an Zahn 11 nach Luxation, semipermanente Schienung angelegt und Verlaufskontrolle geplant.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        },
+        {
+            "id": "r12",
+            "title": "PKV Implantatinsertion",
+            "treatmentId": "implant",
+            "insuranceType": "PKV",
+            "dictation": "Implantatinsertion regio 36 durchgefuehrt, postoperative Nachsorge und Kontrolltermin dokumentiert.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r13",
+            "title": "PKV Krone definitiv",
+            "treatmentId": "krone",
+            "insuranceType": "PKV",
+            "dictation": "Vollkrone an Zahn 16 definitiv eingegliedert und okklusal kontrolliert.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r14",
+            "title": "PKV Teilkrone definitiv",
+            "treatmentId": "teilkrone",
+            "insuranceType": "PKV",
+            "dictation": "Teilkronenversorgung an Zahn 16, Teilkrone definitiv eingegliedert.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r15",
+            "title": "PKV Bruecke definitiv",
+            "treatmentId": "bruecke",
+            "insuranceType": "PKV",
+            "dictation": "Definitive Bruecke regio 36 eingegliedert und Okklusionskontrolle dokumentiert.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r16",
+            "title": "PKV Teilprothese Modellguss",
+            "treatmentId": "teilprothese",
+            "insuranceType": "PKV",
+            "dictation": "Modellgussprothese im Unterkiefer eingesetzt und Druckstellenkontrolle dokumentiert.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r17",
+            "title": "PKV Totalprothese konventionell",
+            "treatmentId": "totalprothese",
+            "insuranceType": "PKV",
+            "dictation": "Konventionelle Totalprothese im Oberkiefer eingegliedert und Druckstellenkontrolle dokumentiert.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r18",
+            "title": "GKV Schiene Okklusion",
+            "treatmentId": "schiene",
+            "insuranceType": "GKV",
+            "dictation": "Okklusionsschiene eingegliedert.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
+            }
+        },
+        {
+            "id": "r19",
+            "title": "PKV Untersuchung eingehend",
+            "treatmentId": "untersuchung",
+            "insuranceType": "PKV",
+            "dictation": "Eingehende Kontrolluntersuchung, Befunde unauffaellig, derzeit kein Therapiebedarf.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r20",
+            "title": "PKV Roentgen OPG",
+            "treatmentId": "roentgen",
+            "insuranceType": "PKV",
+            "dictation": "OPG zur Therapieplanung praeoperativ angefertigt, apikale Auffaelligkeit regio 36 dokumentiert.",
+            "expect": {
+                "phase": "output",
+                "mustIncludePrefixes": ["GOZ_"],
+                "mustNotIncludePrefixes": ["BEMA_"]
+            }
+        },
+        {
+            "id": "r21",
+            "title": "GKV Multi-Treatment Extraktion plus Fuellung",
             "treatmentId": "fuellung",
             "insuranceType": "GKV",
-            "dictation": "Füllung 36 od Komposit Kofferdam; Füllung 14 o Kofferdam. Bisskontrolle geplant.",
+            "dictation": "Extraktion Zahn 28 nach Luxation mit Infiltrationsanaesthesie; danach Fuellung Zahn 16 okklusal mit Komposit unter Kofferdam, Okklusion kontrolliert.",
             "expect": {
                 "phase": "output",
                 "perInstanceCount": 2,
-                "mustIncludePrefixes": [
-                    "BEMA_"
-                ],
-                "mustNotIncludePrefixes": [
-                    "GOZ_"
-                ]
+                "mustIncludePrefixes": ["BEMA_"],
+                "mustNotIncludePrefixes": ["GOZ_"]
             }
         }
     ]

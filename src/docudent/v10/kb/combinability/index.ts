@@ -19,12 +19,27 @@ import combinabilityKbData from './combinability_kb.v1.json';
 
 let cachedKb: CombinabilityKb | null = null;
 
+function isTestOnlyRule(rule: CombinabilityRule): boolean {
+    if ((rule.id || '').toLowerCase().includes('e2e_test')) return true;
+    const allCodes = [...(rule.betrifft || []), ...(rule.blockWith || [])];
+    return allCodes.some(code => /^TEST_/i.test(String(code)));
+}
+
 /**
  * Load the combinability KB (cached).
  */
 export function loadCombinabilityKb(): CombinabilityKb {
     if (!cachedKb) {
-        cachedKb = combinabilityKbData as CombinabilityKb;
+        const rawKb = combinabilityKbData as CombinabilityKb;
+        const filteredRules = (rawKb.rules || []).filter(rule => !isTestOnlyRule(rule));
+        cachedKb = {
+            ...rawKb,
+            _meta: {
+                ...rawKb._meta,
+                ruleCount: filteredRules.length,
+            },
+            rules: filteredRules,
+        };
     }
     return cachedKb;
 }

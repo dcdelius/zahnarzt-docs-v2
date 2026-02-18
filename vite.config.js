@@ -54,8 +54,50 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return undefined;
+
+          // Heavy rendering stack
+          if (id.includes('@react-three') || id.includes('/three/')) {
+            return 'three-vendor';
+          }
+
+          // Platform/runtime SDKs
+          if (id.includes('/firebase/')) {
+            return 'firebase-vendor';
+          }
+
+          // UI frameworks
+          if (id.includes('@radix-ui')) {
+            return 'radix-vendor';
+          }
+          if (id.includes('framer-motion')) {
+            return 'motion-vendor';
+          }
+
+          // Core React runtime
+          if (
+            id.includes('/react/') ||
+            id.includes('/react-dom/') ||
+            id.includes('/scheduler/')
+          ) {
+            return 'react-vendor';
+          }
+
+          // Shared utilities/icons
+          if (id.includes('lucide-react') || id.includes('@heroicons')) {
+            return 'icons-vendor';
+          }
+          if (
+            id.includes('/lodash/') ||
+            id.includes('/zod/') ||
+            id.includes('/clsx/') ||
+            id.includes('tailwind-merge')
+          ) {
+            return 'utils-vendor';
+          }
+
+          return undefined;
         },
       },
     },

@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "treatmentId": "implant",
+    "version": "1.0.0"
+  },
+  "fields": {
+    "phase": {
+      "label": "Implantatphase",
+      "template": "{{value}}"
+    },
+    "nachsorge": {
+      "label": "Nachsorge",
+      "template": "{{value}}"
+    }
+  }
+}

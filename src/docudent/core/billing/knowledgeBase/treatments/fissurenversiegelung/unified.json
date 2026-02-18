@@ -1,0 +1,34 @@
+{
+    "_meta": {
+        "id": "fissurenversiegelung",
+        "version": "1.0.0",
+        "label": "Fissurenversiegelung"
+    },
+    "chips": [
+        {
+            "id": "fissurenversiegelung_standard",
+            "label": "Fissurenversiegelung",
+            "phase": "behandlung",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Fissurenversiegelung durchgefuehrt.",
+                "mittel": "Fissurenversiegelung kariesfreier Fissuren mit Kunststoff durchgefuehrt.",
+                "lang": "Nach Reinigung und Trockenlegung wurde eine Fissurenversiegelung kariesfreier Fissuren mit aushaertendem Kunststoff durchgefuehrt."
+            },
+            "defaultActive": true,
+            "showInQuickView": true
+        },
+        {
+            "id": "fissurenversiegelung_kontrolle",
+            "label": "Versiegelungskontrolle",
+            "phase": "dokumentation",
+            "billingRef": null,
+            "textSnippets": {
+                "kurz": "Versiegelung kontrolliert.",
+                "mittel": "Sitz und Randqualitaet der Versiegelung kontrolliert.",
+                "lang": "Sitz, Randqualitaet und Okklusion der Versiegelung wurden kontrolliert und dokumentiert."
+            },
+            "defaultActive": true
+        }
+    ]
+}

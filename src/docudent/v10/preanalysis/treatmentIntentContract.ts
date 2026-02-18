@@ -1,9 +1,10 @@
 import { z } from 'zod';
 import { hasPack } from '../packs/registry';
 import { containsBillingSignal } from '../llm/llmBoundaryContract';
+import { PREANALYSIS_TREATMENT_IDS_V1 } from '@/docudent/contracts/treatments.manifest';
 
 export const TREATMENT_INTENT_CONTRACT_VERSION = '1.0.0';
-export const PREANALYSIS_TREATMENT_IDS = ['fuellung', 'endo', 'extraction', 'crown_prep'] as const;
+export const PREANALYSIS_TREATMENT_IDS = [...PREANALYSIS_TREATMENT_IDS_V1] as const;
 export const TREATMENT_INTENT_UNCERTAINTY_CODES = [
     'classifier_low_confidence',
     'llm_low_confidence',

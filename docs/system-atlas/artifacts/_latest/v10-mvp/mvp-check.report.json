@@ -1,42 +1,42 @@
 {
-  "timestamp": "2026-02-16T15:00:10.527Z",
+  "timestamp": "2026-02-17T09:11:24.658Z",
   "verdict": "PASS",
   "results": [
     {
       "step": "Build",
       "status": "PASS",
-      "durationMs": 4046,
-      "output": "react-vendor-BD2DzXP7.js                                   141.29 kB │ gzip:  45.44 kB\ndist/assets/SettingsPageV10-C7OqwiiM.js                                162.72 kB │ gzip:  50.36 kB\ndist/assets/DocudentV10Page-BksvY5qm.js                                645.32 kB │ gzip: 159.15 kB\ndist/assets/index-BhwDr70D.js                                          777.73 kB │ gzip: 198.78 kB\ndist/assets/HeaderDock-ghRJyz8Z.js                                   1,108.16 kB │ gzip: 284.22 kB\n✓ built in 3.85s\n"
+      "durationMs": 5291,
+      "output": "react-vendor-BD2DzXP7.js                                   141.29 kB │ gzip:  45.44 kB\ndist/assets/SettingsPageV10-33rf4Dj5.js                                164.10 kB │ gzip:  50.74 kB\ndist/assets/DocudentV10Page-6ZBfJabe.js                                705.33 kB │ gzip: 171.06 kB\ndist/assets/index-CSSsIG_w.js                                          777.73 kB │ gzip: 198.78 kB\ndist/assets/HeaderDock-BvpBkC5Z.js                                   1,202.40 kB │ gzip: 299.52 kB\n✓ built in 5.04s\n"
     },
     {
       "step": "V10 UI Tests",
       "status": "PASS",
-      "durationMs": 1371,
-      "output": "sia: 'unknown',\n    capping: { performed: 'unknown', material: undefined }\n  },\n  scopedAnswersEntries: {},\n  factsAfterAnswers: {\n    surfaces: [ 'o', 'd' ],\n    cariesDepth: 'unknown',\n    anesthesia: 'unknown',\n    capping: { performed: 'unknown', material: undefined },\n    cappingMaterial: undefined\n  }\n}\n\n\n Test Files  7 passed (7)\n      Tests  52 passed (52)\n   Start at  16:00:08\n   Duration  910ms (transform 678ms, setup 0ms, collect 2.68s, tests 333ms, environment 1.56s, prepare 270ms)\n\n"
+      "durationMs": 1940,
+      "output": "sia: 'unknown',\n    capping: { performed: 'unknown', material: undefined }\n  },\n  scopedAnswersEntries: {},\n  factsAfterAnswers: {\n    surfaces: [ 'o', 'd' ],\n    cariesDepth: 'unknown',\n    anesthesia: 'unknown',\n    capping: { performed: 'unknown', material: undefined },\n    cappingMaterial: undefined\n  }\n}\n\n\n Test Files  7 passed (7)\n      Tests  52 passed (52)\n   Start at  10:11:21\n   Duration  1.56s (transform 957ms, setup 1ms, collect 4.49s, tests 387ms, environment 2.89s, prepare 449ms)\n\n"
     },
     {
       "step": "V10/V7 Gate",
       "status": "PASS",
-      "durationMs": 552,
-      "output": "\n RUN  v1.6.1 /Users/david/dokumaster-ui\n\n ✓ src/docudent/__tests__/gates/gate-v10-no-imports-from-v7.test.ts  (5 tests) 59ms\nstdout | src/docudent/__tests__/gates/gate-v10-no-imports-from-v7.test.ts > Gate: V10 No V7 Imports > should report V7 import count as zero\n\n📊 V7 Import Status: 0 imports (target: 0)\n\n\n Test Files  1 passed (1)\n      Tests  5 passed (5)\n   Start at  16:00:09\n   Duration  262ms (transform 13ms, setup 0ms, collect 12ms, tests 59ms, environment 0ms, prepare 30ms)\n\n"
+      "durationMs": 692,
+      "output": "\n RUN  v1.6.1 /Users/david/dokumaster-ui\n\nstdout | src/docudent/__tests__/gates/gate-v10-no-imports-from-v7.test.ts > Gate: V10 No V7 Imports > should report V7 import count as zero\n\n📊 V7 Import Status: 0 imports (target: 0)\n\n ✓ src/docudent/__tests__/gates/gate-v10-no-imports-from-v7.test.ts  (5 tests) 74ms\n\n Test Files  1 passed (1)\n      Tests  5 passed (5)\n   Start at  10:11:23\n   Duration  334ms (transform 18ms, setup 0ms, collect 15ms, tests 74ms, environment 0ms, prepare 39ms)\n\n"
     },
     {
       "step": "Atlas Refresh",
       "status": "PASS",
-      "durationMs": 252,
-      "output": "\n> dokumaster-ui@0.0.0 atlas:refresh\n> node --import tsx scripts/systemAtlas/refresh.ts\n\n🔄 Atlas Refresh Started\n\n📦 Generating runtime manifest...\n   Found 1262 files\n📝 Updated CHANGELOG.md\n📋 Generating index...\n   Found 332 artifacts\n🔐 Generating hashes...\n\n✅ Atlas refresh complete in 0.10s\n   Runtime: 491 files\n   Tests: 615 files\n   Artifacts: 332\n"
+      "durationMs": 315,
+      "output": "\n> dokumaster-ui@0.0.0 atlas:refresh\n> node --import tsx scripts/systemAtlas/refresh.ts\n\n🔄 Atlas Refresh Started\n\n📦 Generating runtime manifest...\n   Found 1475 files\n📝 Updated CHANGELOG.md\n📋 Generating index...\n   Found 334 artifacts\n🔐 Generating hashes...\n\n✅ Atlas refresh complete in 0.13s\n   Runtime: 568 files\n   Tests: 661 files\n   Artifacts: 334\n"
     },
     {
       "step": "Atlas Check",
       "status": "PASS",
-      "durationMs": 151,
-      "output": "\n> dokumaster-ui@0.0.0 atlas:check\n> node --import tsx scripts/systemAtlas/check.ts\n\n🔍 Atlas Check Started\n\nChecking: Index consistency...\n  ✅ PASS: 332 artifacts verified\nChecking: Manifest integrity...\n  ✅ PASS: 1262 files in manifest\nChecking: Hashes file...\n  ✅ PASS: 7 hash entries\nChecking: No deleted refs...\n  ✅ PASS: No deleted paths in wiring\n\n══════════════════════════════════════════════════\n✅ Atlas check PASSED\n"
+      "durationMs": 223,
+      "output": "\n> dokumaster-ui@0.0.0 atlas:check\n> node --import tsx scripts/systemAtlas/check.ts\n\n🔍 Atlas Check Started\n\nChecking: Index consistency...\n  ✅ PASS: 334 artifacts verified\nChecking: Manifest integrity...\n  ✅ PASS: 1475 files in manifest\nChecking: Hashes file...\n  ✅ PASS: 7 hash entries\nChecking: No deleted refs...\n  ✅ PASS: No deleted paths in wiring\n\n══════════════════════════════════════════════════\n✅ Atlas check PASSED\n"
     }
   ],
   "summary": {
     "total": 5,
     "passed": 5,
     "failed": 0,
-    "durationMs": 6372
+    "durationMs": 8461
   }
 }

@@ -42,4 +42,35 @@ describe('QuestionsFlowV2 controls', () => {
         expect(screen.queryByTestId('optional-toggle')).not.toBeInTheDocument();
         expect(screen.getByText('Optional Frage')).toBeInTheDocument();
     });
+
+    it('exposes deterministic completion-state hook for automation', () => {
+        render(
+            <QuestionsFlowV2
+                bundle={{
+                    required: [
+                        {
+                            id: 'r1',
+                            questionKey: 'r1',
+                            question: 'Pflichtfrage',
+                            category: 'forensic',
+                            type: 'text',
+                            medicalSeverity: 'hard',
+                        },
+                    ],
+                    optionalVisible: [],
+                    optionalHidden: [],
+                    optionalTotal: 0,
+                    docMode: 'balanced',
+                }}
+                answers={new Map()}
+                onAnswer={vi.fn()}
+                onComplete={vi.fn()}
+            />
+        );
+
+        const completionState = screen.getByTestId('v10-questions-completion-state');
+        expect(completionState).toHaveAttribute('data-required-total', '1');
+        expect(completionState).toHaveAttribute('data-required-answered', '0');
+        expect(completionState).toHaveAttribute('data-can-complete', 'false');
+    });
 });

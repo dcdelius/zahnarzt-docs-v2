@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "treatmentId": "roentgen",
+    "version": "1.0.0"
+  },
+  "map": [
+    {
+      "questionKey": "roentgen_typ",
+      "questionIdPatterns": [
+        "roentgen_typ",
+        "medical_roentgen_typ",
+        "radiology_type"
+      ],
+      "answers": {
+        "einzelzahn": "roentgen_einzelzahn",
+        "zahnfilm": "roentgen_einzelzahn",
+        "bissfluegel": "roentgen_einzelzahn",
+        "opg": "roentgen_opg",
+        "panorama": "roentgen_opg"
+      },
+      "exclusiveGroup": "roentgen_typ",
+      "mutuallyExclusive": [
+        "roentgen_einzelzahn",
+        "roentgen_opg"
+      ]
+    }
+  ],
+  "defaults": {
+    "alwaysOnChipIds": []
+  }
+}

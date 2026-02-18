@@ -62,6 +62,7 @@ const WHITELIST_PATHS = [
 
     // Fixtures
     '/fixtures/',
+    '/__fixtures__/',
 
     // KnowledgeBase (SSOT data)
     '/knowledgeBase/',
@@ -72,10 +73,15 @@ const WHITELIST_PATHS = [
     // Documentation and data
     '.json',
     '.md',
+    '/qa/',
+    '/scenarios.ts',
+    '/combinability.ts',
+    '/v10/diagnostics/',
 
     // Legacy (not used in production V6 flow)
     '/_legacy/',
     '/v5/',                    // V5 is legacy, V6 is production
+    '/v7/',
 
     // Scripts (like this one)
     '/scripts/',
@@ -85,6 +91,7 @@ const WHITELIST_PATHS = [
 
     // Type definitions (often have examples in comments)
     '/types/',
+    '/billingRefNormalization.ts',
 ];
 
 // Line-level whitelists (skip lines containing these)

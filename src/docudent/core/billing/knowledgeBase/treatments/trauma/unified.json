@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "id": "trauma",
+    "version": "1.0.0",
+    "label": "Trauma"
+  },
+  "chips": [
+    {
+      "id": "trauma_baseline",
+      "label": "Akute Traumasituation dokumentiert",
+      "phase": "diagnostik",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Traumasituation klinisch beurteilt.",
+        "mittel": "Akute Traumasituation klinisch beurteilt und dokumentiert.",
+        "lang": "Akute Traumasituation klinisch beurteilt, Befundlage dokumentiert und weiteres Vorgehen festgelegt."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "trauma_schienung_semipermanent",
+      "label": "Semipermanente Schienung",
+      "phase": "akutversorgung",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Semipermanente Schienung durchgefuehrt.",
+        "mittel": "Semipermanente Schienung zur Stabilisierung traumatisierter Zaehne durchgefuehrt.",
+        "lang": "Semipermanente Schienung zur Stabilisierung traumatisierter Zaehne entsprechend Trauma-Befund durchgefuehrt."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "trauma_kontrolle_empfohlen",
+      "label": "Kontrolltermin geplant",
+      "phase": "nachsorge",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Trauma-Kontrolle empfohlen.",
+        "mittel": "Verlaufskontrolle nach Trauma empfohlen und dokumentiert.",
+        "lang": "Verlaufskontrolle nach Trauma mit Vitalitaets- und klinischer Re-Evaluation empfohlen und dokumentiert."
+      }
+    }
+  ]
+}

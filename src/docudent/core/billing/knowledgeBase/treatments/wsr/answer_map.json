@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "treatmentId": "wsr",
+    "version": "1.0.0"
+  },
+  "map": [],
+  "defaults": {
+    "alwaysOnChipIds": []
+  }
+}

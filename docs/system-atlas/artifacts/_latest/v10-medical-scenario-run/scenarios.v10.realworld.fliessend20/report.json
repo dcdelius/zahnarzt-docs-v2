@@ -1,0 +1,782 @@
+{
+  "runId": "2026-02-17T16:17:26.141Z",
+  "suiteFile": "/Users/david/dokumaster-ui/scripts/v10/scenarios.v10.realworld.fliessend20.json",
+  "meta": {
+    "description": "20 real-life flowing dictations across top treatments for full-output audit",
+    "version": "1.0.0",
+    "created": "2026-02-17"
+  },
+  "total": 20,
+  "pass": 20,
+  "fail": 0,
+  "cases": [
+    {
+      "id": "f01",
+      "title": "GKV Fuellung tief",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Heute bei Zahn 24 MOD die kariosen Anteile entfernt, die Karies war tief, danach mit Komposit versorgt und die Okklusion kontrolliert.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_13c"
+      ],
+      "questions": [
+        "isolation",
+        "layering",
+        "ueberkappung"
+      ],
+      "answersUsed": {
+        "fuellung-24-1::fuellung_isolation::tooth:24": "relativ",
+        "fuellung-24-1::fuellung_layering::tooth:24": "no",
+        "fuellung-24-1::medical_ueberkappung::tooth:24": "keine"
+      },
+      "perInstanceCount": 1,
+      "textLength": 527,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fuellung-24-1",
+          "teeth": [
+            "24"
+          ],
+          "facts": {
+            "tooth": "24",
+            "surfaces": [
+              "m",
+              "o",
+              "d"
+            ],
+            "fuellung_isolation": "relativ",
+            "fuellung_layering": "no",
+            "ueberkappung": "keine"
+          },
+          "chips": [
+            "cp_not_required",
+            "fuellung_grundleistung",
+            "fuellung_material_komposit",
+            "rel_trocken"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 24. MOD. Caries profunda\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nZunächst Relative Trockenlegung (Watterollen/Speichelsauger). Daraufhin Keine Pulpaeröffnung; Cp nicht erforderlich. Im Weiteren Zahn 24 (MOD): Füllungstherapie tief (caries profunda). Zum Schluss Füllung mit lichthärtendem Komposit (komposit) durchgeführt.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f02",
+      "title": "PKV Endo mehrkanalig",
+      "treatmentId": "endo",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 27 wurde eine endodontische Behandlung mit Trepanation, Arbeitslangenbestimmung, maschineller Aufbereitung, NaOCl-Spulung und medikamentoeser Einlage durchgefuehrt.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_2400",
+        "GOZ_2440",
+        "GOZ_2430",
+        "GOZ_2410",
+        "GOZ_5000",
+        "GOZ_2360"
+      ],
+      "questions": [
+        "canal_count",
+        "medication",
+        "ENDO_T1_WORKING_LENGTH_METHOD",
+        "ENDO_T1_WORKING_LENGTHS",
+        "isolation",
+        "wf_technique"
+      ],
+      "answersUsed": {
+        "endo-27-1::endo_canal_count::tooth:27": "3",
+        "endo-27-1::endo_medication::tooth:27": "Ca(OH)2",
+        "endo-27-1::ENDO_T1_WORKING_LENGTH_METHOD::tooth:27": "Apexlokator (EAL)",
+        "endo-27-1::ENDO_T1_WORKING_LENGTHS::tooth:27": "{\"MB\":19,\"ML\":18,\"D\":20}",
+        "endo-27-1::medical_isolation::tooth:27": "relativ",
+        "endo-27-1::medical_wf_technique::tooth:27": "warm"
+      },
+      "perInstanceCount": 1,
+      "textLength": 747,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "endo-27-1",
+          "teeth": [
+            "27"
+          ],
+          "facts": {
+            "tooth": "27",
+            "surfaces": [],
+            "endo_canal_count": "3",
+            "endo_medication": "Ca(OH)2",
+            "ENDO_T1_WORKING_LENGTH_METHOD": "Apexlokator (EAL)",
+            "ENDO_T1_WORKING_LENGTHS": "{\"MB\":19,\"ML\":18,\"D\":20}",
+            "isolation": "relativ",
+            "wf_technique": "warm"
+          },
+          "chips": [
+            "einlage_caoh2",
+            "endo_instrumentation_rotary",
+            "kanalaufbereitung_3",
+            "laengenmessung_elek",
+            "rel_trocken",
+            "roentgen_kontrolle",
+            "spuelung_naocl",
+            "trepanation",
+            "wf_warm"
+          ]
+        }
+      ],
+      "outputText": "[Befund]\nZahn 27\n\n[Aufklärung]\nDer Patient wurde über Behandlungsalternativen, Risiken und den voraussichtlichen Behandlungsablauf informiert.\n\n[Behandlungsablauf]\nInitial Relative Trockenlegung. Anschließend Trepanation der Pulpakammer. Daraufhin Elektrische Arbeitslängenmessung. Anschließend Aufbereitung von 3 Wurzelkanälen. Daraufhin Aufbereitung maschinell (rotierend). Anschließend Spülung mit NaOCl. Daraufhin Medikamentöse Einlage mit Ca(OH)₂. Anschließend Wurzelfüllung in warmer vertikaler Kondensation. Abschließend Röntgenkontrolle post WF.\n\n[Durchgeführte Leistungen]\n• Trep.\n• Elektr. AL.\n• 3K.\n• Ca(OH)₂ Einlage.\n• WF warmvertikal.\n• Rö-Kontrolle.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f03",
+      "title": "GKV Extraktion mit Wundversorgung",
+      "treatmentId": "extraction",
+      "insuranceType": "GKV",
+      "dictation": "Zahn 18 wurde nach Infiltrationsanaesthesie komplikationslos extrahiert, anschliessend erfolgte die Wundversorgung mit postoperativer Aufklaerung.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_40",
+        "BEMA_41a"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 474,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "extraction-18-1",
+          "teeth": [
+            "18"
+          ],
+          "facts": {
+            "tooth": "18",
+            "surfaces": []
+          },
+          "chips": [
+            "extraktion_einfach",
+            "la_infiltr",
+            "wundversorgung"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Lokalanästhesie (Infiltration). Anschliessend Extraktion Zahn 18 durchgeführt. Abschliessend Wundversorgung durchgeführt.\n\n[Durchgefuehrte Leistungen]\n• LA infiltr.\n• Extraktion durchgeführt.\n• Wundversorgung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert. Aufgrund der lokalen Betäubung wurde der Patient auf die vorübergehende Taubheit hingewiesen sowie darauf, erst nach Abklingen der Betäubung zu essen.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f04",
+      "title": "PKV Kronenpraeparation",
+      "treatmentId": "crown_prep",
+      "insuranceType": "PKV",
+      "dictation": "Bei Zahn 11 erfolgte die Kronenpraeparation, danach Abformung und Eingliederung eines Provisoriums.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_2210",
+        "GOZ_5000",
+        "GOZ_2260"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 372,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "crown_prep-11-1",
+          "teeth": [
+            "11"
+          ],
+          "facts": {
+            "tooth": "11",
+            "surfaces": []
+          },
+          "chips": [
+            "abformung",
+            "praeparation",
+            "provisorium"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Zahn 11: Kronenpräparation durchgeführt. Anschliessend Zahn 11: Präzisionsabformung durchgeführt. Abschliessend Zahn 11: Provisorische Versorgung.\n\n[Durchgefuehrte Leistungen]\n• Zahn 11: Präparation durchgeführt.\n• Zahn 11: Abformung.\n• Zahn 11: Provisorium.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f05",
+      "title": "GKV PZR komplett",
+      "treatmentId": "pzr",
+      "insuranceType": "GKV",
+      "dictation": "Es wurde eine professionelle Zahnreinigung mit Zahnsteinentfernung, Politur und abschliessender Fluoridierung durchgefuehrt.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_107",
+        "BEMA_107a"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 333,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "pzr-unknown-1",
+          "teeth": [
+            "unknown"
+          ],
+          "facts": {},
+          "chips": [
+            "fluoridierung",
+            "pzr_vollstaendig",
+            "zahnstein_entfernung"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Professionelle Zahnreinigung durchgeführt. Anschliessend Supragingivale Zahnsteinentfernung. Abschliessend Fluoridierung der Zähne.\n\n[Durchgefuehrte Leistungen]\n• PZR durchgeführt.\n• Zahnstein entfernt.\n• Fluoridierung.\n\n[Hinweise]\nDer Patient wurde über Verhaltensregeln nach der Behandlung informiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f06",
+      "title": "PKV Ueberkappung",
+      "treatmentId": "ueberkappung",
+      "insuranceType": "PKV",
+      "dictation": "Bei Zahn 36 kam es pulpanah zur direkten Ueberkappung mit MTA nach punktfoermiger Pulpaeroeffnung.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_2340"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 127,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "ueberkappung-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": []
+          },
+          "chips": [
+            "ueberkappung_direkt",
+            "ueberkappung_material_mta"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Direkte Ueberkappung bei Pulpaeroeffnung durchgefuehrt. Anschliessend Ueberkappungsmaterial: MTA.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f07",
+      "title": "PKV Fissurenversiegelung",
+      "treatmentId": "fissurenversiegelung",
+      "insuranceType": "PKV",
+      "dictation": "Zur Kariesprophylaxe wurde an Zahn 16 eine Fissurenversiegelung mit lichthaertendem Material vorgenommen.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_2000"
+      ],
+      "questions": [
+        "fissuren_material"
+      ],
+      "answersUsed": {
+        "fissurenversiegelung-16-1::medical_fissuren_material::tooth:16": "giz_provisorisch"
+      },
+      "perInstanceCount": 1,
+      "textLength": 170,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "fissurenversiegelung-16-1",
+          "teeth": [
+            "16"
+          ],
+          "facts": {
+            "tooth": "16",
+            "surfaces": [],
+            "fissuren_material": "giz_provisorisch"
+          },
+          "chips": [
+            "fissurenversiegelung_kontrolle",
+            "fissurenversiegelung_standard"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Fissurenversiegelung kariesfreier Fissuren mit Kunststoff durchgefuehrt. Anschliessend Sitz und Randqualitaet der Versiegelung kontrolliert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f08",
+      "title": "GKV Parodontologie",
+      "treatmentId": "parodontologie",
+      "insuranceType": "GKV",
+      "dictation": "Im Rahmen der Parodontaltherapie wurde an den Regionen 36 und 37 eine geschlossene antiinfektioese Behandlung durchgefuehrt.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_AIT",
+        "BEMA_AIT"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 2,
+      "textLength": 166,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "parodontologie-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": []
+          },
+          "chips": [
+            "parodontologie_ait"
+          ]
+        },
+        {
+          "instanceId": "parodontologie-37-2",
+          "teeth": [
+            "37"
+          ],
+          "facts": {
+            "tooth": "37",
+            "surfaces": []
+          },
+          "chips": [
+            "parodontologie_ait"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Geschlossene antiinfektioese Parodontaltherapie durchgefuehrt.\n\nZunaechst Geschlossene antiinfektioese Parodontaltherapie durchgefuehrt.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f09",
+      "title": "GKV UPT Recall",
+      "treatmentId": "upt",
+      "insuranceType": "GKV",
+      "dictation": "UPT Grad B wurde heute an Zahn 36 durchgefuehrt, das Recallintervall ist auf sechs Monate festgelegt.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_UPTb"
+      ],
+      "questions": [
+        "upt_intervall"
+      ],
+      "answersUsed": {
+        "upt-36-1::medical_upt_intervall::tooth:36": "3-4_monate"
+      },
+      "perInstanceCount": 1,
+      "textLength": 147,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "upt-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": [
+              "b"
+            ],
+            "upt_intervall": "3-4_monate"
+          },
+          "chips": [
+            "upt_grad_b",
+            "upt_recall_dokumentiert"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Unterstuetzende Parodontitistherapie (UPT) Grad B durchgefuehrt. Anschliessend Recallintervall fuer UPT dokumentiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f10",
+      "title": "PKV WSR",
+      "treatmentId": "wsr",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 36 wurde eine Wurzelspitzenresektion ueber Osteotomie im Molarenbereich durchgefuehrt.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_3120"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 179,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "wsr-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": []
+          },
+          "chips": [
+            "wsr_bema_55",
+            "wsr_goz_3120"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Wurzelspitzenresektion durch Osteotomie am betroffenen Zahn durchgefuehrt. Anschliessend Lokalisation Molar fuer Wurzelspitzenresektion dokumentiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f11",
+      "title": "GKV Trauma Schienung",
+      "treatmentId": "trauma",
+      "insuranceType": "GKV",
+      "dictation": "Nach Luxation an Zahn 11 wurde eine semipermanente Schienung angelegt und die Verlaufskontrolle geplant.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_100"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 256,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "trauma-11-1",
+          "teeth": [
+            "11"
+          ],
+          "facts": {
+            "tooth": "11",
+            "surfaces": []
+          },
+          "chips": [
+            "trauma_baseline",
+            "trauma_kontrolle_empfohlen",
+            "trauma_schienung_semipermanent"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Akute Traumasituation klinisch beurteilt und dokumentiert. Anschliessend Semipermanente Schienung zur Stabilisierung traumatisierter Zaehne durchgefuehrt. Abschliessend Verlaufskontrolle nach Trauma empfohlen und dokumentiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f12",
+      "title": "PKV Implantat",
+      "treatmentId": "implant",
+      "insuranceType": "PKV",
+      "dictation": "In regio 36 erfolgte die Implantatinsertion, anschliessend wurden Nachsorge und Kontrolltermin dokumentiert.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_9000"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 174,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "implant-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": []
+          },
+          "chips": [
+            "implant_insertion",
+            "implant_nachsorge"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Implantatinsertion am betroffenen Zahngebiet durchgefuehrt. Anschliessend Postoperative Nachsorge inklusive Verhaltensempfehlungen dokumentiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f13",
+      "title": "PKV Krone definitiv",
+      "treatmentId": "krone",
+      "insuranceType": "PKV",
+      "dictation": "Die definitive Vollkrone an Zahn 16 wurde eingegliedert und funktionell-okklusal kontrolliert.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_2210",
+        "GOZ_5180"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 162,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "krone-16-1",
+          "teeth": [
+            "16"
+          ],
+          "facts": {
+            "tooth": "16",
+            "surfaces": [
+              "o"
+            ]
+          },
+          "chips": [
+            "krone_eingliederung_definitiv",
+            "krone_vollkrone"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Vollkronenversorgung am betroffenen Zahn durchgefuehrt. Anschliessend Definitive Eingliederung und Okklusionskontrolle dokumentiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f14",
+      "title": "PKV Teilkrone",
+      "treatmentId": "teilkrone",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 16 wurde die Teilkrone heute definitiv eingesetzt und der Sitz abschliessend geprueft.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_2220",
+        "GOZ_5180"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 173,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "teilkrone-16-1",
+          "teeth": [
+            "16"
+          ],
+          "facts": {
+            "tooth": "16",
+            "surfaces": []
+          },
+          "chips": [
+            "teilkrone_definitiv",
+            "teilkrone_eingliederung_definitiv"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Definitive Teilkronenversorgung am betroffenen Zahn durchgefuehrt. Anschliessend Definitive Eingliederung und Okklusionskontrolle dokumentiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f15",
+      "title": "PKV Bruecke",
+      "treatmentId": "bruecke",
+      "insuranceType": "PKV",
+      "dictation": "Die definitive Brueckenversorgung in regio 36 wurde eingesetzt, anschliessend erfolgte die statische und dynamische Okklusionskontrolle.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_5070"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 168,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "bruecke-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": []
+          },
+          "chips": [
+            "bruecke_definitiv",
+            "bruecke_kontrolle"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Definitive Brueckenversorgung eingegliedert und okklusal kontrolliert. Anschliessend Brueckenkontrolle mit Funktionspruefung dokumentiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f16",
+      "title": "PKV Teilprothese",
+      "treatmentId": "teilprothese",
+      "insuranceType": "PKV",
+      "dictation": "Die Modellguss-Teilprothese im Unterkiefer wurde eingegliedert und auf Druckstellen kontrolliert.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_5210"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 100,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "teilprothese-unknown-1",
+          "teeth": [
+            "unknown"
+          ],
+          "facts": {},
+          "chips": [
+            "teilprothese_modellguss"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Modellgussprothese mit gegossenen Halte-/Stuetzanteilen eingegliedert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f17",
+      "title": "PKV Totalprothese",
+      "treatmentId": "totalprothese",
+      "insuranceType": "PKV",
+      "dictation": "Im Oberkiefer wurde die konventionelle Totalprothese eingesetzt und die Schleimhaut auf Druckstellen kontrolliert.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_5220"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 95,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "totalprothese-unknown-1",
+          "teeth": [
+            "unknown"
+          ],
+          "facts": {},
+          "chips": [
+            "totalprothese_konventionell"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Konventionelle Totalprothese eingegliedert und Sitz kontrolliert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f18",
+      "title": "GKV Schiene",
+      "treatmentId": "schiene",
+      "insuranceType": "GKV",
+      "dictation": "Die Okklusionsschiene wurde eingegliedert und initial auf den Biss angepasst.",
+      "phase": "output",
+      "billingRefs": [
+        "BEMA_K1"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 84,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "schiene-unknown-1",
+          "teeth": [
+            "unknown"
+          ],
+          "facts": {},
+          "chips": [
+            "schiene_okklusionsschiene"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Okklusionsschiene eingegliedert und initial angepasst.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f19",
+      "title": "PKV Untersuchung",
+      "treatmentId": "untersuchung",
+      "insuranceType": "PKV",
+      "dictation": "Es erfolgte eine eingehende Kontrolluntersuchung; Anlass war die Routinekontrolle, Befunde klinisch unauffaellig, aktuell kein akuter Therapiebedarf.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_0010"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 177,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "untersuchung-unknown-1",
+          "teeth": [
+            "unknown"
+          ],
+          "facts": {},
+          "chips": [
+            "untersuchung_befunddoku",
+            "untersuchung_eingehend"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Eingehende Untersuchung zur Feststellung von Zahn-, Mund- und Kiefererkrankungen durchgefuehrt. Anschliessend Befunde nachvollziehbar dokumentiert.",
+      "pass": true,
+      "failures": []
+    },
+    {
+      "id": "f20",
+      "title": "PKV Roentgen OPG",
+      "treatmentId": "roentgen",
+      "insuranceType": "PKV",
+      "dictation": "Zur praeoperativen Therapieplanung wurde ein OPG angefertigt; Roentgenbefund: apikale Auffaelligkeit regio 36 dokumentiert.",
+      "phase": "output",
+      "billingRefs": [
+        "GOZ_5004"
+      ],
+      "questions": [],
+      "answersUsed": {},
+      "perInstanceCount": 1,
+      "textLength": 119,
+      "combinability": "n/a",
+      "instanceTraces": [
+        {
+          "instanceId": "roentgen-36-1",
+          "teeth": [
+            "36"
+          ],
+          "facts": {
+            "tooth": "36",
+            "surfaces": []
+          },
+          "chips": [
+            "roentgen_befundung",
+            "roentgen_opg"
+          ]
+        }
+      ],
+      "outputText": "[Behandlungsablauf]\nZunaechst Orthopantomogramm angefertigt und ausgewertet. Anschliessend Roentgenbefund dokumentiert.",
+      "pass": true,
+      "failures": []
+    }
+  ]
+}

@@ -72,6 +72,16 @@ export function isFactKnownForAskback(askbackId: string, facts: TreatmentFacts):
             return Boolean(facts.capping?.material);
         case 'pulpaschutz':
             return facts.capping?.performed !== undefined && facts.capping?.performed !== 'unknown';
+        case 'fissuren_indikation':
+            return Boolean((facts.fissurenversiegelung as { indication?: string } | undefined)?.indication);
+        case 'fissuren_material':
+            return Boolean((facts.fissurenversiegelung as { material?: string } | undefined)?.material);
+        case 'crown_prep_preparation':
+            return typeof (facts.crownPrep as { preparation?: boolean } | undefined)?.preparation === 'boolean';
+        case 'crown_prep_impression':
+            return typeof (facts.crownPrep as { impression?: boolean } | undefined)?.impression === 'boolean';
+        case 'crown_prep_provisional':
+            return typeof (facts.crownPrep as { provisional?: boolean } | undefined)?.provisional === 'boolean';
         case 'wl_method':
             return Boolean(facts.endo?.workingLengthMethod);
         case 'wf_technique':
@@ -104,6 +114,64 @@ export function isFactKnownForAskback(askbackId: string, facts: TreatmentFacts):
         case 'sensitivity_followup':
             return typeof facts.sensitivity?.desensitizerApplied === 'string'
                 && facts.sensitivity?.desensitizerApplied !== 'unknown';
+        case 'wound_care':
+            return typeof (facts as Record<string, unknown>).woundCare === 'boolean';
+        case 'untersuchung_anlass':
+            return Boolean((facts.untersuchung as { reason?: string } | undefined)?.reason);
+        case 'untersuchung_befunde':
+            return Boolean((facts.untersuchung as { findings?: string } | undefined)?.findings);
+        case 'untersuchung_beurteilung':
+            return Boolean((facts.untersuchung as { assessment?: string } | undefined)?.assessment);
+        case 'pzr_zahnstein':
+            return typeof (facts.pzr as { zahnsteinEntfernung?: boolean } | undefined)?.zahnsteinEntfernung === 'boolean';
+        case 'pzr_fluoridation':
+            return typeof (facts.pzr as { fluoridation?: boolean } | undefined)?.fluoridation === 'boolean';
+        case 'parodontologie_phase':
+            return Boolean((facts.parodontologie as { phase?: string } | undefined)?.phase);
+        case 'parodontologie_upt_grad':
+            return Boolean((facts.parodontologie as { uptGrade?: string } | undefined)?.uptGrade);
+        case 'upt_grad':
+            return Boolean((facts.upt as { grade?: string } | undefined)?.grade);
+        case 'upt_intervall':
+            return Boolean((facts.upt as { interval?: string } | undefined)?.interval);
+        case 'krone_art':
+            return Boolean((facts.krone as { type?: string } | undefined)?.type);
+        case 'krone_eingliederung':
+            return Boolean((facts.krone as { placement?: string } | undefined)?.placement);
+        case 'teilkrone_art':
+            return Boolean((facts.teilkrone as { type?: string } | undefined)?.type);
+        case 'teilkrone_eingliederung':
+            return Boolean((facts.teilkrone as { placement?: string } | undefined)?.placement);
+        case 'bruecke_typ':
+            return Boolean((facts.bruecke as { type?: string } | undefined)?.type);
+        case 'bruecke_phase':
+            return Boolean((facts.bruecke as { phase?: string } | undefined)?.phase);
+        case 'trauma_art':
+            return Boolean((facts.trauma as { art?: string } | undefined)?.art);
+        case 'trauma_schienung':
+            return Boolean((facts.trauma as { schienung?: string } | undefined)?.schienung);
+        case 'trauma_kontrolle':
+            return Boolean((facts.trauma as { kontrolle?: string } | undefined)?.kontrolle);
+        case 'implant_phase':
+            return Boolean((facts.implant as { phase?: string } | undefined)?.phase);
+        case 'implant_nachsorge':
+            return Boolean((facts.implant as { nachsorge?: string } | undefined)?.nachsorge);
+        case 'schiene_typ':
+            return Boolean((facts.schiene as { type?: string } | undefined)?.type);
+        case 'schiene_phase':
+            return Boolean((facts.schiene as { phase?: string } | undefined)?.phase);
+        case 'teilprothese_typ':
+            return Boolean((facts.teilprothese as { type?: string } | undefined)?.type);
+        case 'teilprothese_phase':
+            return Boolean((facts.teilprothese as { phase?: string } | undefined)?.phase);
+        case 'totalprothese_typ':
+            return Boolean((facts.totalprothese as { type?: string } | undefined)?.type);
+        case 'totalprothese_phase':
+            return Boolean((facts.totalprothese as { phase?: string } | undefined)?.phase);
+        case 'wsr_zugang':
+            return Boolean((facts.wsr as { zugang?: string } | undefined)?.zugang);
+        case 'wsr_lokalisation':
+            return Boolean((facts.wsr as { lokalisation?: string } | undefined)?.lokalisation);
         case 'mkv_justification':
             return typeof facts.mkvJustification === 'string' && facts.mkvJustification.length > 0;
         case 'mkv_confirmed':
@@ -185,6 +253,27 @@ function normalizeSettingsValue(askbackId: string, raw: unknown): unknown | unde
         case 'sensitivity_followup':
             if (value.includes('yes') || value.includes('ja')) return 'yes';
             if (value.includes('no') || value.includes('nein')) return 'no';
+            return raw;
+        case 'wound_care':
+            if (value.includes('yes') || value.includes('ja')) return 'yes';
+            if (value.includes('no') || value.includes('nein')) return 'no';
+            return raw;
+        case 'pzr_zahnstein':
+        case 'pzr_fluoridation':
+            if (value.includes('yes') || value.includes('ja')) return 'yes';
+            if (value.includes('no') || value.includes('nein')) return 'no';
+            return raw;
+        case 'crown_prep_preparation':
+        case 'crown_prep_impression':
+        case 'crown_prep_provisional':
+            if (value.includes('yes') || value.includes('ja') || value.includes('true')) return true;
+            if (value.includes('no') || value.includes('nein') || value.includes('false')) return false;
+            return raw;
+        case 'trauma_schienung':
+        case 'trauma_kontrolle':
+        case 'implant_nachsorge':
+            if (value.includes('yes') || value.includes('ja')) return 'ja';
+            if (value.includes('no') || value.includes('nein')) return 'nein';
             return raw;
         case 'material':
             if (value.includes('giz') || value.includes('glasionomer')) return 'giz';
@@ -368,6 +457,212 @@ function applySettingsFactPatch(
             } else if (valueStr.includes('no') || valueStr.includes('nein')) {
                 setNestedFact(target, ['sensitivity', 'desensitizerApplied'], 'no');
             }
+            return;
+        }
+        case 'wound_care': {
+            if (valueStr.includes('yes') || valueStr.includes('ja')) {
+                setNestedFact(target, ['woundCare'], true);
+            } else if (valueStr.includes('no') || valueStr.includes('nein')) {
+                setNestedFact(target, ['woundCare'], false);
+            }
+            return;
+        }
+        case 'radiology_indication': {
+            setNestedFact(target, ['radiology', 'indication'], normalizedValue);
+            return;
+        }
+        case 'radiology_type': {
+            setNestedFact(target, ['radiology', 'type'], normalizedValue);
+            return;
+        }
+        case 'radiology_timing': {
+            setNestedFact(target, ['radiology', 'timing'], normalizedValue);
+            return;
+        }
+        case 'radiology_findings': {
+            setNestedFact(target, ['radiology', 'findings'], normalizedValue);
+            return;
+        }
+        case 'untersuchung_anlass': {
+            setNestedFact(target, ['untersuchung', 'reason'], normalizedValue);
+            return;
+        }
+        case 'untersuchung_befunde': {
+            setNestedFact(target, ['untersuchung', 'findings'], normalizedValue);
+            return;
+        }
+        case 'untersuchung_beurteilung': {
+            setNestedFact(target, ['untersuchung', 'assessment'], normalizedValue);
+            return;
+        }
+        case 'pzr_zahnstein': {
+            if (valueStr.includes('yes') || valueStr.includes('ja')) {
+                setNestedFact(target, ['pzr', 'zahnsteinEntfernung'], true);
+            } else if (valueStr.includes('no') || valueStr.includes('nein')) {
+                setNestedFact(target, ['pzr', 'zahnsteinEntfernung'], false);
+            }
+            return;
+        }
+        case 'pzr_fluoridation': {
+            if (valueStr.includes('yes') || valueStr.includes('ja')) {
+                setNestedFact(target, ['pzr', 'fluoridation'], true);
+            } else if (valueStr.includes('no') || valueStr.includes('nein')) {
+                setNestedFact(target, ['pzr', 'fluoridation'], false);
+            }
+            return;
+        }
+        case 'parodontologie_phase': {
+            setNestedFact(target, ['parodontologie', 'phase'], normalizedValue);
+            return;
+        }
+        case 'parodontologie_upt_grad': {
+            setNestedFact(target, ['parodontologie', 'uptGrade'], normalizedValue);
+            return;
+        }
+        case 'upt_grad': {
+            setNestedFact(target, ['upt', 'grade'], normalizedValue);
+            return;
+        }
+        case 'upt_intervall': {
+            setNestedFact(target, ['upt', 'interval'], normalizedValue);
+            return;
+        }
+        case 'krone_art': {
+            setNestedFact(target, ['krone', 'type'], normalizedValue);
+            return;
+        }
+        case 'krone_eingliederung': {
+            setNestedFact(target, ['krone', 'placement'], normalizedValue);
+            return;
+        }
+        case 'teilkrone_art': {
+            setNestedFact(target, ['teilkrone', 'type'], normalizedValue);
+            return;
+        }
+        case 'teilkrone_eingliederung': {
+            setNestedFact(target, ['teilkrone', 'placement'], normalizedValue);
+            return;
+        }
+        case 'bruecke_typ': {
+            setNestedFact(target, ['bruecke', 'type'], normalizedValue);
+            return;
+        }
+        case 'bruecke_phase': {
+            setNestedFact(target, ['bruecke', 'phase'], normalizedValue);
+            return;
+        }
+        case 'fissuren_indikation': {
+            setNestedFact(target, ['fissurenversiegelung', 'indication'], normalizedValue);
+            return;
+        }
+        case 'fissuren_material': {
+            setNestedFact(target, ['fissurenversiegelung', 'material'], normalizedValue);
+            return;
+        }
+        case 'crown_prep_preparation': {
+            if (typeof normalizedValue === 'boolean') {
+                setNestedFact(target, ['crownPrep', 'preparation'], normalizedValue);
+                return;
+            }
+            if (valueStr.includes('yes') || valueStr.includes('ja') || valueStr.includes('true')) {
+                setNestedFact(target, ['crownPrep', 'preparation'], true);
+            } else if (valueStr.includes('no') || valueStr.includes('nein') || valueStr.includes('false')) {
+                setNestedFact(target, ['crownPrep', 'preparation'], false);
+            }
+            return;
+        }
+        case 'crown_prep_impression': {
+            if (typeof normalizedValue === 'boolean') {
+                setNestedFact(target, ['crownPrep', 'impression'], normalizedValue);
+                return;
+            }
+            if (valueStr.includes('yes') || valueStr.includes('ja') || valueStr.includes('true')) {
+                setNestedFact(target, ['crownPrep', 'impression'], true);
+            } else if (valueStr.includes('no') || valueStr.includes('nein') || valueStr.includes('false')) {
+                setNestedFact(target, ['crownPrep', 'impression'], false);
+            }
+            return;
+        }
+        case 'crown_prep_provisional': {
+            if (typeof normalizedValue === 'boolean') {
+                setNestedFact(target, ['crownPrep', 'provisional'], normalizedValue);
+                return;
+            }
+            if (valueStr.includes('yes') || valueStr.includes('ja') || valueStr.includes('true')) {
+                setNestedFact(target, ['crownPrep', 'provisional'], true);
+            } else if (valueStr.includes('no') || valueStr.includes('nein') || valueStr.includes('false')) {
+                setNestedFact(target, ['crownPrep', 'provisional'], false);
+            }
+            return;
+        }
+        case 'trauma_art': {
+            setNestedFact(target, ['trauma', 'art'], normalizedValue);
+            return;
+        }
+        case 'trauma_schienung': {
+            if (valueStr.includes('yes') || valueStr.includes('ja')) {
+                setNestedFact(target, ['trauma', 'schienung'], 'ja');
+            } else if (valueStr.includes('no') || valueStr.includes('nein')) {
+                setNestedFact(target, ['trauma', 'schienung'], 'nein');
+            } else {
+                setNestedFact(target, ['trauma', 'schienung'], normalizedValue);
+            }
+            return;
+        }
+        case 'trauma_kontrolle': {
+            if (valueStr.includes('yes') || valueStr.includes('ja')) {
+                setNestedFact(target, ['trauma', 'kontrolle'], 'ja');
+            } else if (valueStr.includes('no') || valueStr.includes('nein')) {
+                setNestedFact(target, ['trauma', 'kontrolle'], 'nein');
+            } else {
+                setNestedFact(target, ['trauma', 'kontrolle'], normalizedValue);
+            }
+            return;
+        }
+        case 'implant_phase': {
+            setNestedFact(target, ['implant', 'phase'], normalizedValue);
+            return;
+        }
+        case 'implant_nachsorge': {
+            if (valueStr.includes('yes') || valueStr.includes('ja')) {
+                setNestedFact(target, ['implant', 'nachsorge'], 'ja');
+            } else if (valueStr.includes('no') || valueStr.includes('nein')) {
+                setNestedFact(target, ['implant', 'nachsorge'], 'nein');
+            } else {
+                setNestedFact(target, ['implant', 'nachsorge'], normalizedValue);
+            }
+            return;
+        }
+        case 'schiene_typ': {
+            setNestedFact(target, ['schiene', 'type'], normalizedValue);
+            return;
+        }
+        case 'schiene_phase': {
+            setNestedFact(target, ['schiene', 'phase'], normalizedValue);
+            return;
+        }
+        case 'teilprothese_typ': {
+            setNestedFact(target, ['teilprothese', 'type'], normalizedValue);
+            return;
+        }
+        case 'teilprothese_phase': {
+            setNestedFact(target, ['teilprothese', 'phase'], normalizedValue);
+            return;
+        }
+        case 'totalprothese_typ': {
+            setNestedFact(target, ['totalprothese', 'type'], normalizedValue);
+            return;
+        }
+        case 'totalprothese_phase': {
+            setNestedFact(target, ['totalprothese', 'phase'], normalizedValue);
+            return;
+        }
+        case 'wsr_zugang': {
+            setNestedFact(target, ['wsr', 'zugang'], normalizedValue);
+            return;
+        }
+        case 'wsr_lokalisation': {
+            setNestedFact(target, ['wsr', 'lokalisation'], normalizedValue);
             return;
         }
         case 'medication': {

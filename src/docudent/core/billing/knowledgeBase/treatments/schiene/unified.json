@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "id": "schiene",
+    "version": "1.0.0",
+    "label": "Schiene"
+  },
+  "chips": [
+    {
+      "id": "schiene_okklusionsschiene",
+      "label": "Okklusionsschiene",
+      "phase": "funktion",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Okklusionsschiene eingegliedert.",
+        "mittel": "Okklusionsschiene eingegliedert und initial angepasst.",
+        "lang": "Okklusionsschiene zur funktionellen Therapie eingegliedert, initial adjustiert und Tragehinweise dokumentiert."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "schiene_protrusionsschiene",
+      "label": "Protrusionsschiene",
+      "phase": "funktion",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Protrusionsschiene eingegliedert.",
+        "mittel": "Protrusionsschiene eingegliedert und Zielposition dokumentiert.",
+        "lang": "Protrusionsschiene eingegliedert, Zielposition festgelegt und Trage-/Kontrollhinweise nachvollziehbar dokumentiert."
+      },
+      "showInQuickView": true
+    },
+    {
+      "id": "schiene_kontrolle",
+      "label": "Schienenkontrolle",
+      "phase": "nachsorge",
+      "billingRef": null,
+      "textSnippets": {
+        "kurz": "Schienenkontrolle erfolgt.",
+        "mittel": "Schienenkontrolle mit Trage- und Beschwerdeabfrage dokumentiert.",
+        "lang": "Verlaufskontrolle der Schienentherapie mit Funktionspruefung, Beschwerdeabfrage und Anpassungsempfehlung dokumentiert."
+      },
+      "showInQuickView": true
+    }
+  ]
+}

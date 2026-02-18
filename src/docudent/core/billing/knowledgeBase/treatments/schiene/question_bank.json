@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "treatmentId": "schiene",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Schienentherapie"
+  },
+  "questions": [
+    {
+      "key": "schiene_typ",
+      "category": "forensic",
+      "prompt": "Welcher Schienentyp wurde versorgt?",
+      "type": "single",
+      "dataField": "schiene.type",
+      "options": [
+        {
+          "id": "okklusionsschiene",
+          "label": "Okklusionsschiene",
+          "dataValue": "okklusionsschiene"
+        },
+        {
+          "id": "protrusionsschiene",
+          "label": "Protrusionsschiene",
+          "dataValue": "protrusionsschiene"
+        }
+      ]
+    },
+    {
+      "key": "schiene_phase",
+      "category": "forensic",
+      "prompt": "Welche Leistung wurde dokumentiert?",
+      "type": "single",
+      "dataField": "schiene.phase",
+      "options": [
+        {
+          "id": "eingliederung",
+          "label": "Eingliederung",
+          "dataValue": "eingliederung"
+        },
+        {
+          "id": "kontrolle",
+          "label": "Kontrolle/Nachadjustierung",
+          "dataValue": "kontrolle"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "treatmentId": "totalprothese",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Totalprothese"
+  },
+  "questions": [
+    {
+      "key": "totalprothese_typ",
+      "category": "forensic",
+      "prompt": "Welche Art der Totalprothese wurde versorgt?",
+      "type": "single",
+      "dataField": "totalprothese.type",
+      "options": [
+        {
+          "id": "konventionell",
+          "label": "Konventionelle Totalprothese",
+          "dataValue": "konventionell"
+        },
+        {
+          "id": "immediat",
+          "label": "Immediat-Totalprothese",
+          "dataValue": "immediat"
+        }
+      ]
+    },
+    {
+      "key": "totalprothese_phase",
+      "category": "forensic",
+      "prompt": "Welche Leistungsphase wurde dokumentiert?",
+      "type": "single",
+      "dataField": "totalprothese.phase",
+      "options": [
+        {
+          "id": "eingliederung",
+          "label": "Eingliederung",
+          "dataValue": "eingliederung"
+        },
+        {
+          "id": "kontrolle",
+          "label": "Kontrolle/Nachjustierung",
+          "dataValue": "kontrolle"
+        }
+      ]
+    }
+  ]
+}

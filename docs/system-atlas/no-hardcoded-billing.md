@@ -24,6 +24,9 @@
 - Renderer outputs `billingRefs` (IDs), not codes
 - UI displays from catalog lookup
 - Tests may use code literals in assertions
+- Gate: `src/docudent/v10/__tests__/gates/gate-no-hardcoded-billing.test.ts`
+  - Scans expansion-critical runtime paths (`pipeline`, `procedure`, `settings`, `preanalysis`, `multitreatment`, `kzv/registry`, `billing`, `renderer`, `output`, `facts`)
+  - Blocks new hardcoded `BEMA_*`, `GOZ_*`, `BEL_*`, `GOAE_*` literals outside allowlisted fixture/diagnostic zones
 
 ## Verification Command
 

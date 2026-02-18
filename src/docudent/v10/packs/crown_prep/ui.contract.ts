@@ -28,7 +28,26 @@ export const crownPrepUiContract: PackUiContractV1 = {
     ],
     settingsSchema: {
         practice: [],
-        user: [],
+        user: [
+            {
+                key: 'treatments.crown_prep.defaultPreparation',
+                label: 'Standard-Praeparation dokumentiert',
+                type: 'boolean',
+                mapsToAskbackId: 'crown_prep_preparation',
+            },
+            {
+                key: 'treatments.crown_prep.defaultImpression',
+                label: 'Standard-Abformung dokumentiert',
+                type: 'boolean',
+                mapsToAskbackId: 'crown_prep_impression',
+            },
+            {
+                key: 'treatments.crown_prep.defaultProvisional',
+                label: 'Standard-Provisorium dokumentiert',
+                type: 'boolean',
+                mapsToAskbackId: 'crown_prep_provisional',
+            },
+        ],
     },
     askbackPolicy: {
         criticalAskbacks: [

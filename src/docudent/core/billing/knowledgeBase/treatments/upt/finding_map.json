@@ -1,0 +1,16 @@
+{
+    "_meta": {
+        "treatmentId": "upt",
+        "version": "1.0.0"
+    },
+    "fields": {
+        "grade": {
+            "label": "UPT-Grad",
+            "template": "{{value}}"
+        },
+        "interval": {
+            "label": "Recallintervall",
+            "template": "{{value}}"
+        }
+    }
+}

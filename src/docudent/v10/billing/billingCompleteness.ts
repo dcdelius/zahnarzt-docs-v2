@@ -245,16 +245,18 @@ function findBillingOrigin(
         }
     }
 
-    // Direct surface_mapping check for F-codes
-    if (isFCode(billingCode)) {
-        const surfaceOrigin = findSurfaceMappingOrigin(billingCode, insuranceType, treatmentKb.surface_mapping);
-        if (surfaceOrigin) {
-            return {
-                code: billingCode,
-                origin: 'surface_mapping',
-                ref: surfaceOrigin,
-            };
-        }
+    // Fallback: any code mapped in surface_mapping is a valid surface-derived origin.
+    const surfaceOriginFromKb = findSurfaceMappingOrigin(
+        billingCode,
+        insuranceType,
+        treatmentKb.surface_mapping
+    );
+    if (surfaceOriginFromKb) {
+        return {
+            code: billingCode,
+            origin: 'surface_mapping',
+            ref: surfaceOriginFromKb,
+        };
     }
 
     return null;
@@ -333,31 +335,18 @@ function findBillingOriginFromDb(
         }
     }
 
-    if (isFCode(billingCode)) {
-        const surfaceOrigin = findSurfaceMappingOrigin(
-            billingCode,
-            insuranceType,
-            billingDb.surfaceMapping
-        );
-        if (surfaceOrigin) {
-            return {
-                code: billingCode,
-                origin: 'surface_mapping',
-                ref: surfaceOrigin,
-            };
-        }
+    const surfaceOriginFromDb = findSurfaceMappingOrigin(
+        billingCode,
+        insuranceType,
+        billingDb.surfaceMapping
+    );
+    if (surfaceOriginFromDb) {
+        return {
+            code: billingCode,
+            origin: 'surface_mapping',
+            ref: surfaceOriginFromDb,
+        };
     }
 
     return null;
-}
-
-/**
- * Check if a billing code is an F-code (filling surface code).
- */
-function isFCode(code: string): boolean {
-    // BEMA F-codes: BEMA_13, BEMA_13b, BEMA_13c, BEMA_13d
-    if (code.startsWith('BEMA_13')) return true;
-    // GOZ F-codes: GOZ_2060, GOZ_2080, GOZ_2100, GOZ_2120
-    if (['GOZ_2060', 'GOZ_2080', 'GOZ_2100', 'GOZ_2120'].includes(code)) return true;
-    return false;
 }

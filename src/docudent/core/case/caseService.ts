@@ -17,6 +17,7 @@ import {
     Firestore,
 } from 'firebase/firestore';
 import { computeSettingsHashSync } from './hashUtils';
+import type { ManifestTreatmentId } from '@/docudent/contracts/treatments.manifest';
 
 // ═══════════════════════════════════════════════════════════════
 // TYPES
@@ -24,7 +25,7 @@ import { computeSettingsHashSync } from './hashUtils';
 
 export type CaseStatus = 'draft' | 'finalized' | 'amended';
 export type InsuranceType = 'GKV' | 'PKV';
-export type TreatmentId = 'fuellung' | 'endo';
+export type TreatmentId = ManifestTreatmentId;
 
 export interface Reproducibility {
     playbookVersionId: string;

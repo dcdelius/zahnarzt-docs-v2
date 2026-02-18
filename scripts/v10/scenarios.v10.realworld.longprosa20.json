@@ -1,0 +1,149 @@
+{
+  "_meta": {
+    "description": "20 long-form real-life dictations for online LLM extraction + question/output validation",
+    "version": "1.0.0",
+    "created": "2026-02-17"
+  },
+  "cases": [
+    {
+      "id": "lp01-fuellung-gkv",
+      "label": "Long Prosa GKV Fuellung profunda",
+      "treatmentId": "fuellung",
+      "insuranceType": "GKV",
+      "dictation": "Die Patientin stellte sich heute mit Beschwerden an Zahn 24 vor; klinisch zeigte sich eine ausgedehnte mesio-okkluso-distale Karies, deutlich pulpanah, ohne sichere Pulpaeroeffnung. Nach Infiltrationsanaesthesie und absoluter Trockenlegung mit Kofferdam erfolgte die Exkavation, anschließend adhäsive Mehrschichttechnik mit Komposit, Okklusions- und Artikulationskontrolle sowie finale Politur."
+    },
+    {
+      "id": "lp02-fuellung-pkv",
+      "label": "Long Prosa PKV Frontzahnfuellung",
+      "treatmentId": "fuellung",
+      "insuranceType": "PKV",
+      "dictation": "Bei Zahn 11 distal-inzisal bestand ein alter insuffizienter Kompositrand mit Sekundaerkaries; der Defekt wurde unter relativer Trockenlegung versorgt, nach Schmelz-Dentin-Adhaesivprotokoll schichtweise rekonstruiert und im Anschluss in Funktion und Aesthetik ausgearbeitet, inklusive feiner Politur."
+    },
+    {
+      "id": "lp03-endo-pkv",
+      "label": "Long Prosa PKV Endo Sitzung",
+      "treatmentId": "endo",
+      "insuranceType": "PKV",
+      "dictation": "Zahn 27 war weiterhin deutlich klopfempfindlich nach Vorbehandlung, daher heute erneute endodontische Sitzung: Zugang erweitert, Arbeitslaenge elektronisch kontrolliert, maschinelle Aufbereitung in allen Kanaelen, intensive Spuelung mit Natriumhypochlorit und EDTA, medikamentoese Einlage mit Calciumhydroxid sowie dichter provisorischer Verschluss; postoperatives Vorgehen wurde erklaert."
+    },
+    {
+      "id": "lp04-extraction-gkv",
+      "label": "Long Prosa GKV Extraktion",
+      "treatmentId": "extraction",
+      "insuranceType": "GKV",
+      "dictation": "Bei Zahn 28 persistierten rezidivierende Entzuendungszeichen mit begrenzter Erhaltungswuerdigkeit; nach Infiltrationsanaesthesie wurde der Zahn schonend luxiert und komplikationslos extrahiert, die Alveole gesaeubert, Wundversorgung mit Adaptation und Naht durchgefuehrt sowie die Patientin ueber Verhalten und Nachkontrolle informiert."
+    },
+    {
+      "id": "lp05-crownprep-pkv",
+      "label": "Long Prosa PKV Kronenpraeparation",
+      "treatmentId": "crown_prep",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 16 erfolgte nach lokaler Anaesthesie die definitive Kronenpraeparation bei praeexistenter grosser Defektfuellung, anschließend Praezisionsabformung und Bissnahme, provisorische Versorgung adhäsiv befestigt, Okklusion kontrolliert und Pflegehinweise bis zur definitiven Eingliederung besprochen."
+    },
+    {
+      "id": "lp06-pzr-gkv",
+      "label": "Long Prosa GKV PZR",
+      "treatmentId": "pzr",
+      "insuranceType": "GKV",
+      "dictation": "Im Rahmen der Prophylaxesitzung wurden supra- und gingivale harte sowie weiche Belaege systematisch entfernt, anschließend alle Zahnflaechen poliert und abschließend fluoridiert; die Patientin wurde motivierend zur Interdentalpflege und Recall-Intervall beraten."
+    },
+    {
+      "id": "lp07-ueberkappung-pkv",
+      "label": "Long Prosa PKV direkte Ueberkappung",
+      "treatmentId": "ueberkappung",
+      "insuranceType": "PKV",
+      "dictation": "Bei der Exkavation an Zahn 36 kam es punktfoermig zur Pulpaeroeffnung bei erhaltener Blutstillung, sodass nach atraumatischer Reinigung eine direkte Ueberkappung mit MTA erfolgte, darauf dichter bakteriendichter Verschluss mit adhäsiver Rekonstruktion und Aufklaerung ueber Prognose sowie Verlaufskontrolle."
+    },
+    {
+      "id": "lp08-fissuren-pkv",
+      "label": "Long Prosa PKV Fissurenversiegelung",
+      "treatmentId": "fissurenversiegelung",
+      "insuranceType": "PKV",
+      "dictation": "Zur kariesprophylaktischen Primärpraevention wurden die okklusalen Fissuren an Zahn 16 gereinigt, geaetzt, getrocknet und mit lichthaertendem Versiegler blasenfrei appliziert; anschließend erfolgte die Härtung und okklusale Feinjustierung."
+    },
+    {
+      "id": "lp09-paro-gkv",
+      "label": "Long Prosa GKV Parodontologie",
+      "treatmentId": "parodontologie",
+      "insuranceType": "GKV",
+      "dictation": "Nach abgeschlossener Befunderhebung wurde heute in den Regionen 36 und 37 eine geschlossene antiinfektioese Therapie mit subgingivaler Instrumentierung durchgefuehrt, begleitet von Hygienereinstruktion, Blutungskontrolle und Planung der weiteren parodontalen Nachsorge."
+    },
+    {
+      "id": "lp10-upt-gkv",
+      "label": "Long Prosa GKV UPT",
+      "treatmentId": "upt",
+      "insuranceType": "GKV",
+      "dictation": "In der UPT-Sitzung Grad B wurden die bekannten Resttaschen kontrolliert, Biofilmmanagement und Re-Instruktion durchgefuehrt sowie die supportive Therapie dokumentiert; das naechste Recall wurde auf sechs Monate terminiert."
+    },
+    {
+      "id": "lp11-wsr-pkv",
+      "label": "Long Prosa PKV WSR",
+      "treatmentId": "wsr",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 36 erfolgte aufgrund persistierender apikaler Symptomatik die chirurgische Wurzelspitzenresektion mit osteotomischem Zugang, kuerzender Resektion der Wurzelspitze und Wundverschluss; postoperatives Regime inklusive Analgesie- und Kontrollhinweis wurde dokumentiert."
+    },
+    {
+      "id": "lp12-trauma-gkv",
+      "label": "Long Prosa GKV Trauma",
+      "treatmentId": "trauma",
+      "insuranceType": "GKV",
+      "dictation": "Nach Frontzahntrauma mit Lockerung von Zahn 11 wurde klinisch und funktionell beurteilt, anschließend eine semipermanente Schienung angelegt, die Okklusion entlastet und ein engmaschiges Kontrollschema mit Sensibilitaetskontrollen vereinbart."
+    },
+    {
+      "id": "lp13-implant-pkv",
+      "label": "Long Prosa PKV Implantat",
+      "treatmentId": "implant",
+      "insuranceType": "PKV",
+      "dictation": "In regio 36 wurde unter sterilem Protokoll nach osteotomischer Bettaufbereitung ein enossales Implantat inseriert, Primärstabilität kontrolliert und die postoperative Nachsorge einschließlich Medikation und Kontrollintervall mit der Patientin besprochen."
+    },
+    {
+      "id": "lp14-krone-pkv",
+      "label": "Long Prosa PKV Krone definitiv",
+      "treatmentId": "krone",
+      "insuranceType": "PKV",
+      "dictation": "Die definitive Vollkrone an Zahn 16 wurde heute nach Trockenprobe und Randkontrolle eingesetzt, statische und dynamische Okklusion feinadjustiert und die Patientin zu Verhalten und Pflege der neuen Versorgung instruiert."
+    },
+    {
+      "id": "lp15-teilkrone-pkv",
+      "label": "Long Prosa PKV Teilkrone",
+      "treatmentId": "teilkrone",
+      "insuranceType": "PKV",
+      "dictation": "An Zahn 16 wurde die laborgefertigte Teilkrone definitiv eingegliedert, approximale Kontakte sowie Okklusionspunkte kontrolliert und dokumentiert, anschließend erfolgte die Abschlussaufklaerung zum Verhalten in der Eingewoehnungsphase."
+    },
+    {
+      "id": "lp16-bruecke-pkv",
+      "label": "Long Prosa PKV Bruecke",
+      "treatmentId": "bruecke",
+      "insuranceType": "PKV",
+      "dictation": "Die definitive Brueckenversorgung in regio 36 wurde eingesetzt, Sitz und Passung geprueft und danach in statischer wie dynamischer Okklusion eingeschliffen; die Reinigungsfaehigkeit unter dem Brueckenglied wurde demonstriert und besprochen."
+    },
+    {
+      "id": "lp17-teilprothese-pkv",
+      "label": "Long Prosa PKV Teilprothese",
+      "treatmentId": "teilprothese",
+      "insuranceType": "PKV",
+      "dictation": "Die Modellguss-Teilprothese im Unterkiefer wurde eingegliedert, Halte- und Stuetzfunktion kontrolliert, Druckstellen evaluiert und die Patientin ausfuehrlich zur Handhabung, Hygiene und Nachsorge angeleitet."
+    },
+    {
+      "id": "lp18-totalprothese-pkv",
+      "label": "Long Prosa PKV Totalprothese",
+      "treatmentId": "totalprothese",
+      "insuranceType": "PKV",
+      "dictation": "Im Oberkiefer wurde die konventionelle Totalprothese eingesetzt, Randgestaltung und Saugschluss geprueft, potenzielle Druckareale markiert und die schrittweise Adaptation sowie notwendige Kontrolltermine mit der Patientin abgestimmt."
+    },
+    {
+      "id": "lp19-untersuchung-pkv",
+      "label": "Long Prosa PKV Untersuchung",
+      "treatmentId": "untersuchung",
+      "insuranceType": "PKV",
+      "dictation": "Im Rahmen der eingehenden Untersuchung wurden Hart- und Weichgewebe sowie Okklusion beurteilt, anamnestisch keine akuten Beschwerden angegeben, klinisch aktuell kein unmittelbarer Therapiebedarf, jedoch Empfehlung zur routinemaessigen Verlaufskontrolle."
+    },
+    {
+      "id": "lp20-roentgen-pkv",
+      "label": "Long Prosa PKV Roentgen",
+      "treatmentId": "roentgen",
+      "insuranceType": "PKV",
+      "dictation": "Zur erweiterten Diagnostik und Therapieplanung wurde ein OPG angefertigt; radiologisch zeigte sich in regio 36 eine apikale Auffaelligkeit, die mit dem klinischen Befund korreliert und in den weiteren Behandlungsplan integriert wurde."
+    }
+  ]
+}

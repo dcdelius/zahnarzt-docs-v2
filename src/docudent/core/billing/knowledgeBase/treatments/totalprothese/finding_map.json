@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "treatmentId": "totalprothese",
+    "version": "1.0.0"
+  },
+  "fields": {
+    "type": {
+      "label": "Prothesentyp",
+      "template": "{{value}}"
+    },
+    "phase": {
+      "label": "Leistungsphase",
+      "template": "{{value}}"
+    }
+  }
+}

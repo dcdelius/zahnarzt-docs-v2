@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "treatmentId": "roentgen",
+    "version": "1.0.0",
+    "description": "Question Bank fuer Roentgen"
+  },
+  "questions": [
+    {
+      "key": "roentgen_typ",
+      "category": "forensic",
+      "prompt": "Welcher Roentgen-Typ wurde angefertigt?",
+      "type": "single",
+      "dataField": "radiology.type",
+      "options": [
+        {
+          "id": "einzelzahn",
+          "label": "Einzelzahnaufnahme",
+          "dataValue": "einzelzahn"
+        },
+        {
+          "id": "opg",
+          "label": "OPG",
+          "dataValue": "opg"
+        }
+      ]
+    },
+    {
+      "key": "roentgen_indikation",
+      "category": "forensic",
+      "prompt": "Bitte Roentgen-Indikation dokumentieren",
+      "type": "single",
+      "dataField": "radiology.indication",
+      "options": [
+        {
+          "id": "diagnostik",
+          "label": "Diagnostik/Abklaerung",
+          "dataValue": "diagnostik"
+        },
+        {
+          "id": "kontrolle",
+          "label": "Therapiekontrolle",
+          "dataValue": "kontrolle"
+        },
+        {
+          "id": "planung",
+          "label": "Therapieplanung",
+          "dataValue": "planung"
+        }
+      ]
+    },
+    {
+      "key": "roentgen_befund",
+      "category": "forensic",
+      "prompt": "Bitte Roentgen-Befund dokumentieren",
+      "type": "single",
+      "dataField": "radiology.findings",
+      "options": [
+        {
+          "id": "unauffaellig",
+          "label": "Unauffaellig",
+          "dataValue": "unauffaellig"
+        },
+        {
+          "id": "kariologische_befunde",
+          "label": "Kariologische Befunde",
+          "dataValue": "kariologische_befunde"
+        },
+        {
+          "id": "apikale_auffaelligkeit",
+          "label": "Apikale Auffaelligkeit",
+          "dataValue": "apikale_auffaelligkeit"
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "version": "2.0.0",
-  "generatedAt": "2026-02-16T16:16:55.151Z",
+  "generatedAt": "2026-02-17T09:11:24.424Z",
   "gitHash": "unknown",
-  "runtimeFileCount": 491,
+  "runtimeFileCount": 568,
   "artifactCount": 334,
   "artifacts": {
     "artifacts/_latest/atlas/gp6.cleanup.report.json": {
@@ -32,13 +32,13 @@
     },
     "artifacts/_latest/frontend-reality/report.json": {
       "path": "artifacts/_latest/frontend-reality/report.json",
-      "size": 5299,
-      "hash": "3deaae7be6eb"
+      "size": 5202,
+      "hash": "d43a51898d7b"
     },
     "artifacts/_latest/frontend-reality/summary.md": {
       "path": "artifacts/_latest/frontend-reality/summary.md",
-      "size": 895,
-      "hash": "7e79fd55cb09"
+      "size": 904,
+      "hash": "7df5477ac863"
     },
     "artifacts/_latest/golden-flow/askback_contract.v3.md": {
       "path": "artifacts/_latest/golden-flow/askback_contract.v3.md",
@@ -127,13 +127,13 @@
     },
     "artifacts/_latest/v10-consolidated-audit/report.json": {
       "path": "artifacts/_latest/v10-consolidated-audit/report.json",
-      "size": 733,
-      "hash": "ce37090e3124"
+      "size": 737,
+      "hash": "0274fdb09d3f"
     },
     "artifacts/_latest/v10-consolidated-audit/summary.md": {
       "path": "artifacts/_latest/v10-consolidated-audit/summary.md",
-      "size": 324,
-      "hash": "c87407c15ee2"
+      "size": 351,
+      "hash": "aa0f01bb6ed7"
     },
     "artifacts/_latest/v10-cutover/gp1-6.final.report.json": {
       "path": "artifacts/_latest/v10-cutover/gp1-6.final.report.json",
@@ -187,13 +187,13 @@
     },
     "artifacts/_latest/v10-endo-16/report.json": {
       "path": "artifacts/_latest/v10-endo-16/report.json",
-      "size": 4557,
-      "hash": "f896640964a0"
+      "size": 4998,
+      "hash": "eae2f03bc5b4"
     },
     "artifacts/_latest/v10-endo-16/summary.md": {
       "path": "artifacts/_latest/v10-endo-16/summary.md",
-      "size": 1920,
-      "hash": "de3cef3ff4c3"
+      "size": 2006,
+      "hash": "baea1014ea0a"
     },
     "artifacts/_latest/v10-explain-run/report.json": {
       "path": "artifacts/_latest/v10-explain-run/report.json",
@@ -302,13 +302,13 @@
     },
     "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.medical/report.json": {
       "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.medical/report.json",
-      "size": 24448,
-      "hash": "1feb72259298"
+      "size": 27017,
+      "hash": "271cd51bc52d"
     },
     "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.medical/summary.md": {
       "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.medical/summary.md",
-      "size": 1052,
-      "hash": "ca1a3fca8e3d"
+      "size": 1606,
+      "hash": "ac3a7c9bd144"
     },
     "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.settings-materials.medical/report.json": {
       "path": "artifacts/_latest/v10-medical-scenario-run/scenarios.v10.realworld.settings-materials.medical/report.json",
@@ -418,12 +418,12 @@
     "artifacts/_latest/v10-mvp/mvp-check.report.json": {
       "path": "artifacts/_latest/v10-mvp/mvp-check.report.json",
       "size": 3216,
-      "hash": "47656b40dd8a"
+      "hash": "1c7ff94fa782"
     },
     "artifacts/_latest/v10-mvp/mvp-check.summary.md": {
       "path": "artifacts/_latest/v10-mvp/mvp-check.summary.md",
       "size": 481,
-      "hash": "3b211bafcfd5"
+      "hash": "ab6a0e054589"
     },
     "artifacts/_latest/v10-mvp/mvp-reality-audit.md": {
       "path": "artifacts/_latest/v10-mvp/mvp-reality-audit.md",
@@ -513,12 +513,12 @@
     "artifacts/_latest/v10-practice-check/report.json": {
       "path": "artifacts/_latest/v10-practice-check/report.json",
       "size": 2037,
-      "hash": "95789f6a4a08"
+      "hash": "70e79f8f6525"
     },
     "artifacts/_latest/v10-practice-check/summary.md": {
       "path": "artifacts/_latest/v10-practice-check/summary.md",
       "size": 183,
-      "hash": "02b6876fb231"
+      "hash": "32de276aad41"
     },
     "artifacts/_latest/v10-praxis-16/report.json": {
       "path": "artifacts/_latest/v10-praxis-16/report.json",
@@ -547,13 +547,13 @@
     },
     "artifacts/_latest/v10-real-dictation-check/report.json": {
       "path": "artifacts/_latest/v10-real-dictation-check/report.json",
-      "size": 56437,
-      "hash": "863df391ab96"
+      "size": 77074,
+      "hash": "1752094ec268"
     },
     "artifacts/_latest/v10-real-dictation-check/summary.md": {
       "path": "artifacts/_latest/v10-real-dictation-check/summary.md",
-      "size": 968,
-      "hash": "42ee849761e2"
+      "size": 1611,
+      "hash": "5c7c3ebcd89e"
     },
     "artifacts/_latest/v10-reality/report.json": {
       "path": "artifacts/_latest/v10-reality/report.json",
@@ -1397,8 +1397,8 @@
     },
     "CHANGELOG.md": {
       "path": "CHANGELOG.md",
-      "size": 17234,
-      "hash": "0491312931db"
+      "size": 17398,
+      "hash": "c79f353361ca"
     },
     "ENGINE.md": {
       "path": "ENGINE.md",
@@ -1542,13 +1542,13 @@
     },
     "index.md": {
       "path": "index.md",
-      "size": 3609,
-      "hash": "0c319cc188e6"
+      "size": 3790,
+      "hash": "7be84cfa20d1"
     },
     "known-gaps.md": {
       "path": "known-gaps.md",
-      "size": 7048,
-      "hash": "177162572b6a"
+      "size": 7978,
+      "hash": "b7a7694056ec"
     },
     "material-catalog.md": {
       "path": "material-catalog.md",
@@ -1557,8 +1557,8 @@
     },
     "no-hardcoded-billing.md": {
       "path": "no-hardcoded-billing.md",
-      "size": 1065,
-      "hash": "a9d29b36df16"
+      "size": 1430,
+      "hash": "d3b3be522797"
     },
     "plan.kb-releases.md": {
       "path": "plan.kb-releases.md",
@@ -1587,8 +1587,8 @@
     },
     "runtime.manifest.json": {
       "path": "runtime.manifest.json",
-      "size": 206552,
-      "hash": "9eecaa7c3bdb"
+      "size": 241868,
+      "hash": "47c010510b27"
     },
     "settings-coverage.md": {
       "path": "settings-coverage.md",
@@ -1627,8 +1627,8 @@
     },
     "status-2026-02-15.md": {
       "path": "status-2026-02-15.md",
-      "size": 13241,
-      "hash": "20a813b6a7a4"
+      "size": 14165,
+      "hash": "9545de3a25e1"
     },
     "test-strategy.md": {
       "path": "test-strategy.md",

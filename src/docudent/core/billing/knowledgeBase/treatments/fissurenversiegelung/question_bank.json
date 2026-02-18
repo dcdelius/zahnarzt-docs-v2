@@ -1,0 +1,47 @@
+{
+    "_meta": {
+        "treatmentId": "fissurenversiegelung",
+        "version": "1.0.0",
+        "description": "Question Bank fuer Fissurenversiegelung"
+    },
+    "questions": [
+        {
+            "key": "indikation",
+            "category": "forensic",
+            "prompt": "Indikation der Fissurenversiegelung dokumentieren",
+            "type": "single",
+            "dataField": "fissurenversiegelung.indication",
+            "options": [
+                {
+                    "id": "kariesprophylaxe",
+                    "label": "Kariesprophylaxe",
+                    "dataValue": "kariesprophylaxe"
+                },
+                {
+                    "id": "erhoehte_kariesaktivitaet",
+                    "label": "Erhoehte Kariesaktivitaet",
+                    "dataValue": "erhoehte_kariesaktivitaet"
+                }
+            ]
+        },
+        {
+            "key": "material",
+            "category": "forensic",
+            "prompt": "Verwendetes Versiegelungsmaterial dokumentieren",
+            "type": "single",
+            "dataField": "fissurenversiegelung.material",
+            "options": [
+                {
+                    "id": "kunststoff",
+                    "label": "Aushaertender Kunststoff",
+                    "dataValue": "kunststoff"
+                },
+                {
+                    "id": "giz_provisorisch",
+                    "label": "GIZ provisorisch",
+                    "dataValue": "giz_provisorisch"
+                }
+            ]
+        }
+    ]
+}

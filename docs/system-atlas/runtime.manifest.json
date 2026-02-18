@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-16T16:16:55.109Z",
+  "generatedAt": "2026-02-17T09:11:24.375Z",
   "files": [
     {
       "path": "src/docudent/__archive__/core-services/outputService.ts",
@@ -868,8 +868,8 @@
     {
       "path": "src/docudent/__tests__/gates/gate-m21-endo-core-flow-golden.test.ts",
       "type": "test",
-      "size": 8590,
-      "hash": "e0072a86166e"
+      "size": 8598,
+      "hash": "3ea546c94078"
     },
     {
       "path": "src/docudent/__tests__/gates/gate-m21-endo-false-positive-prevention.test.ts",
@@ -2482,8 +2482,8 @@
     {
       "path": "src/docudent/contracts/index.ts",
       "type": "runtime",
-      "size": 323,
-      "hash": "616673db23dc"
+      "size": 361,
+      "hash": "016f70a78357"
     },
     {
       "path": "src/docudent/contracts/medical.ts",
@@ -2544,6 +2544,12 @@
       "type": "runtime",
       "size": 7583,
       "hash": "e010e406b1e5"
+    },
+    {
+      "path": "src/docudent/contracts/treatments.manifest.ts",
+      "type": "runtime",
+      "size": 5538,
+      "hash": "78805db74c6a"
     },
     {
       "path": "src/docudent/contracts/warnings.ts",
@@ -2638,8 +2644,8 @@
     {
       "path": "src/docudent/core/billing/billing_db/billing_db.v1.json",
       "type": "data",
-      "size": 4224,
-      "hash": "3259e8d7ef01"
+      "size": 8487,
+      "hash": "18dcb229c403"
     },
     {
       "path": "src/docudent/core/billing/billing_db/catalogs/bel2_2022.json",
@@ -2650,8 +2656,8 @@
     {
       "path": "src/docudent/core/billing/billing_db/catalogs/bema.json",
       "type": "data",
-      "size": 164473,
-      "hash": "6fd04c7a19b7"
+      "size": 164432,
+      "hash": "ae3b21f0b19b"
     },
     {
       "path": "src/docudent/core/billing/billing_db/catalogs/festzuschuesse.json",
@@ -2756,6 +2762,12 @@
       "hash": "1e3a728a8610"
     },
     {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/bruecke.json",
+      "type": "data",
+      "size": 718,
+      "hash": "2b932df1a2c6"
+    },
+    {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/common.json",
       "type": "data",
       "size": 2067,
@@ -2780,16 +2792,100 @@
       "hash": "b0bbc399c4d4"
     },
     {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/fissurenversiegelung.json",
+      "type": "data",
+      "size": 528,
+      "hash": "dedeaaca531b"
+    },
+    {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/fuellung.json",
       "type": "data",
       "size": 3948,
       "hash": "ea515081e596"
     },
     {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/implant.json",
+      "type": "data",
+      "size": 714,
+      "hash": "c93a7d804741"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/krone.json",
+      "type": "data",
+      "size": 761,
+      "hash": "e3194a1bfb34"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/parodontologie.json",
+      "type": "data",
+      "size": 1171,
+      "hash": "ae691f2e19c1"
+    },
+    {
       "path": "src/docudent/core/billing/knowledgeBase/event_bundles/pzr.json",
       "type": "data",
       "size": 708,
       "hash": "21bb4d840e3f"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/roentgen.json",
+      "type": "data",
+      "size": 777,
+      "hash": "3e3e5c38ed72"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/schiene.json",
+      "type": "data",
+      "size": 774,
+      "hash": "d358e714a3a8"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/teilkrone.json",
+      "type": "data",
+      "size": 823,
+      "hash": "45b382697db7"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/teilprothese.json",
+      "type": "data",
+      "size": 772,
+      "hash": "b07630533cfe"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/totalprothese.json",
+      "type": "data",
+      "size": 802,
+      "hash": "f905a36c8430"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/trauma.json",
+      "type": "data",
+      "size": 799,
+      "hash": "d8a04d2977f6"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/ueberkappung.json",
+      "type": "data",
+      "size": 1080,
+      "hash": "cfc83a963798"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/untersuchung.json",
+      "type": "data",
+      "size": 516,
+      "hash": "1c3a09e952ed"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/upt.json",
+      "type": "data",
+      "size": 782,
+      "hash": "16b19de591e6"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/event_bundles/wsr.json",
+      "type": "data",
+      "size": 845,
+      "hash": "4894cdfee0e6"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/index.ts",
@@ -2812,8 +2908,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/kataloge/bema.json",
       "type": "data",
-      "size": 164473,
-      "hash": "6fd04c7a19b7"
+      "size": 164432,
+      "hash": "ae3b21f0b19b"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/kataloge/festzuschuesse.json",
@@ -3034,8 +3130,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/logic/outputComposer.ts",
       "type": "runtime",
-      "size": 55181,
-      "hash": "4a7a37896f04"
+      "size": 55420,
+      "hash": "0fc96ee9b089"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/logic/regelEngine.ts",
@@ -3208,8 +3304,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/registry/loaders.ts",
       "type": "runtime",
-      "size": 12912,
-      "hash": "4153c1caffaf"
+      "size": 23550,
+      "hash": "6b88b270ebe8"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/registry/settingsRegistry.ts",
@@ -3220,8 +3316,8 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/registry/treatmentRegistry.ts",
       "type": "runtime",
-      "size": 4094,
-      "hash": "406a78544a3b"
+      "size": 6664,
+      "hash": "030345d56871"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/rules/askback_templates_comment_v1.json",
@@ -3338,6 +3434,36 @@
       "hash": "4bcc16ffc81a"
     },
     {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/bruecke/answer_map.json",
+      "type": "data",
+      "size": 530,
+      "hash": "9e121749a3c6"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/bruecke/finding_map.json",
+      "type": "data",
+      "size": 258,
+      "hash": "39cc22e6e937"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/bruecke/question_bank.json",
+      "type": "data",
+      "size": 1120,
+      "hash": "0de02ea9d5c3"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/bruecke/template.json",
+      "type": "data",
+      "size": 1492,
+      "hash": "ffa5585c7aca"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/bruecke/unified.json",
+      "type": "data",
+      "size": 1537,
+      "hash": "f4787424272f"
+    },
+    {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/crown_prep/answer_map.json",
       "type": "data",
       "size": 164,
@@ -3428,6 +3554,36 @@
       "hash": "ecb6ca749e98"
     },
     {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/fissurenversiegelung/answer_map.json",
+      "type": "data",
+      "size": 147,
+      "hash": "8ef2bbd6face"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/fissurenversiegelung/finding_map.json",
+      "type": "data",
+      "size": 329,
+      "hash": "df5f1a610cb2"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/fissurenversiegelung/question_bank.json",
+      "type": "data",
+      "size": 1529,
+      "hash": "ee20da8a4fb6"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/fissurenversiegelung/template.json",
+      "type": "data",
+      "size": 2035,
+      "hash": "18c35e42b582"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/fissurenversiegelung/unified.json",
+      "type": "data",
+      "size": 1295,
+      "hash": "e247ddadc151"
+    },
+    {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/answer_map.json",
       "type": "data",
       "size": 4085,
@@ -3454,8 +3610,98 @@
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/fuellung/unified.json",
       "type": "data",
-      "size": 37012,
-      "hash": "5c53ba490e9d"
+      "size": 37041,
+      "hash": "02fdbba37b25"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/implant/answer_map.json",
+      "type": "data",
+      "size": 134,
+      "hash": "30607b1ee3ec"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/implant/finding_map.json",
+      "type": "data",
+      "size": 261,
+      "hash": "de4864c09fbc"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/implant/question_bank.json",
+      "type": "data",
+      "size": 1067,
+      "hash": "6f1769c1d587"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/implant/template.json",
+      "type": "data",
+      "size": 1571,
+      "hash": "ebb937938412"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/implant/unified.json",
+      "type": "data",
+      "size": 1386,
+      "hash": "89efb43cd626"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/krone/answer_map.json",
+      "type": "data",
+      "size": 154,
+      "hash": "6e82a062e725"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/krone/finding_map.json",
+      "type": "data",
+      "size": 313,
+      "hash": "bcdb416cbb5e"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/krone/question_bank.json",
+      "type": "data",
+      "size": 1350,
+      "hash": "656d441a6822"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/krone/template.json",
+      "type": "data",
+      "size": 2003,
+      "hash": "8264b8a19fd6"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/krone/unified.json",
+      "type": "data",
+      "size": 1666,
+      "hash": "028b4c70c403"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/parodontologie/answer_map.json",
+      "type": "data",
+      "size": 141,
+      "hash": "cc7c8fe021c0"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/parodontologie/finding_map.json",
+      "type": "data",
+      "size": 317,
+      "hash": "61414ad352d6"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/parodontologie/question_bank.json",
+      "type": "data",
+      "size": 1639,
+      "hash": "2f070d25744e"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/parodontologie/template.json",
+      "type": "data",
+      "size": 2120,
+      "hash": "0743692cf68a"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/parodontologie/unified.json",
+      "type": "data",
+      "size": 2694,
+      "hash": "b031e199657f"
     },
     {
       "path": "src/docudent/core/billing/knowledgeBase/treatments/pzr/answer_map.json",
@@ -3486,6 +3732,306 @@
       "type": "data",
       "size": 13661,
       "hash": "23fdcff248ef"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/roentgen/answer_map.json",
+      "type": "data",
+      "size": 666,
+      "hash": "a20bd3a803a5"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/roentgen/finding_map.json",
+      "type": "data",
+      "size": 435,
+      "hash": "8da8aa545801"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/roentgen/question_bank.json",
+      "type": "data",
+      "size": 1853,
+      "hash": "a695d77bff57"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/roentgen/template.json",
+      "type": "data",
+      "size": 1974,
+      "hash": "96c396a647ea"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/roentgen/unified.json",
+      "type": "data",
+      "size": 1593,
+      "hash": "af2dd19b3ee4"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/schiene/answer_map.json",
+      "type": "data",
+      "size": 572,
+      "hash": "0d1ddff46da4"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/schiene/finding_map.json",
+      "type": "data",
+      "size": 258,
+      "hash": "563e91430d2b"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/schiene/question_bank.json",
+      "type": "data",
+      "size": 1126,
+      "hash": "31a3f2e743cd"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/schiene/template.json",
+      "type": "data",
+      "size": 1586,
+      "hash": "7b5263896601"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/schiene/unified.json",
+      "type": "data",
+      "size": 1517,
+      "hash": "3996099c3144"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilkrone/answer_map.json",
+      "type": "data",
+      "size": 158,
+      "hash": "419c6ce5558f"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilkrone/finding_map.json",
+      "type": "data",
+      "size": 321,
+      "hash": "56860a023486"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilkrone/question_bank.json",
+      "type": "data",
+      "size": 1385,
+      "hash": "0774cde3d99a"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilkrone/template.json",
+      "type": "data",
+      "size": 2011,
+      "hash": "1498bfa28a82"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilkrone/unified.json",
+      "type": "data",
+      "size": 1724,
+      "hash": "d999f23473ad"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilprothese/answer_map.json",
+      "type": "data",
+      "size": 563,
+      "hash": "f030f8f69873"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilprothese/finding_map.json",
+      "type": "data",
+      "size": 264,
+      "hash": "9488b312945b"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilprothese/question_bank.json",
+      "type": "data",
+      "size": 1126,
+      "hash": "98dabf5a2c09"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilprothese/template.json",
+      "type": "data",
+      "size": 1502,
+      "hash": "e28bb9c9ff41"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/teilprothese/unified.json",
+      "type": "data",
+      "size": 1546,
+      "hash": "796ea834815f"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/totalprothese/answer_map.json",
+      "type": "data",
+      "size": 584,
+      "hash": "4d722a05b38d"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/totalprothese/finding_map.json",
+      "type": "data",
+      "size": 265,
+      "hash": "049263aa02b0"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/totalprothese/question_bank.json",
+      "type": "data",
+      "size": 1153,
+      "hash": "ae8243cbc9a3"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/totalprothese/template.json",
+      "type": "data",
+      "size": 1504,
+      "hash": "a9476ce87619"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/totalprothese/unified.json",
+      "type": "data",
+      "size": 1642,
+      "hash": "46b1953cc52f"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/trauma/answer_map.json",
+      "type": "data",
+      "size": 133,
+      "hash": "5bebebf1db8e"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/trauma/finding_map.json",
+      "type": "data",
+      "size": 337,
+      "hash": "d2195cb36b2e"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/trauma/question_bank.json",
+      "type": "data",
+      "size": 1547,
+      "hash": "602541258f96"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/trauma/template.json",
+      "type": "data",
+      "size": 1601,
+      "hash": "f18cdcf8bf17"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/trauma/unified.json",
+      "type": "data",
+      "size": 1515,
+      "hash": "cad5c51808b1"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/ueberkappung/answer_map.json",
+      "type": "data",
+      "size": 1378,
+      "hash": "6b3476051fb0"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/ueberkappung/finding_map.json",
+      "type": "data",
+      "size": 334,
+      "hash": "abc9316b1e9e"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/ueberkappung/question_bank.json",
+      "type": "data",
+      "size": 1198,
+      "hash": "a3f7b47e9862"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/ueberkappung/template.json",
+      "type": "data",
+      "size": 2019,
+      "hash": "b7744e137323"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/ueberkappung/unified.json",
+      "type": "data",
+      "size": 2480,
+      "hash": "15192d304cd3"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/untersuchung/answer_map.json",
+      "type": "data",
+      "size": 139,
+      "hash": "49f50bec20e8"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/untersuchung/finding_map.json",
+      "type": "data",
+      "size": 419,
+      "hash": "462556bb5b6d"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/untersuchung/question_bank.json",
+      "type": "data",
+      "size": 2425,
+      "hash": "870dd25e50fe"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/untersuchung/template.json",
+      "type": "data",
+      "size": 1982,
+      "hash": "d3f30660d894"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/untersuchung/unified.json",
+      "type": "data",
+      "size": 1291,
+      "hash": "edcae968288c"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/upt/answer_map.json",
+      "type": "data",
+      "size": 152,
+      "hash": "15a06b8038d3"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/upt/finding_map.json",
+      "type": "data",
+      "size": 312,
+      "hash": "c208468e9d1e"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/upt/question_bank.json",
+      "type": "data",
+      "size": 1586,
+      "hash": "c82df1b9562a"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/upt/template.json",
+      "type": "data",
+      "size": 1999,
+      "hash": "0d0312e0a405"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/upt/unified.json",
+      "type": "data",
+      "size": 2194,
+      "hash": "6bb07b86c42c"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/wsr/answer_map.json",
+      "type": "data",
+      "size": 130,
+      "hash": "d11e6efe18d3"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/wsr/finding_map.json",
+      "type": "data",
+      "size": 256,
+      "hash": "c0422fa2ffbc"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/wsr/question_bank.json",
+      "type": "data",
+      "size": 1123,
+      "hash": "afc203cd6319"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/wsr/template.json",
+      "type": "data",
+      "size": 1580,
+      "hash": "730d659a13c9"
+    },
+    {
+      "path": "src/docudent/core/billing/knowledgeBase/treatments/wsr/unified.json",
+      "type": "data",
+      "size": 1936,
+      "hash": "065a3c2ce7a3"
     },
     {
       "path": "src/docudent/core/billing/optimizer.ts",
@@ -3532,14 +4078,14 @@
     {
       "path": "src/docudent/core/case/caseService.ts",
       "type": "runtime",
-      "size": 8468,
-      "hash": "6dbc79e38d09"
+      "size": 8553,
+      "hash": "0d48ac0ff138"
     },
     {
       "path": "src/docudent/core/case/caseTypes.ts",
       "type": "runtime",
-      "size": 2890,
-      "hash": "5cb1e2365b8e"
+      "size": 2943,
+      "hash": "349d62dc8a41"
     },
     {
       "path": "src/docudent/core/case/hashUtils.ts",
@@ -3552,6 +4098,12 @@
       "type": "runtime",
       "size": 13609,
       "hash": "8174f73f78f8"
+    },
+    {
+      "path": "src/docudent/core/extraction/__tests__/extractionService.teeth.test.ts",
+      "type": "test",
+      "size": 1302,
+      "hash": "b3e0dd2f2549"
     },
     {
       "path": "src/docudent/core/extraction/__tests__/normalizeExtractedData.test.ts",
@@ -3574,8 +4126,8 @@
     {
       "path": "src/docudent/core/extraction/extractionService.ts",
       "type": "runtime",
-      "size": 23397,
-      "hash": "8ce43e649bfc"
+      "size": 24753,
+      "hash": "280126009b14"
     },
     {
       "path": "src/docudent/core/extraction/normalizeExtractedData.ts",
@@ -4022,6 +4574,12 @@
       "hash": "0b9da3715988"
     },
     {
+      "path": "src/docudent/v10/__tests__/askbacks/buildQuestionsFromAskbacks-endo-fallbacks.test.ts",
+      "type": "test",
+      "size": 1301,
+      "hash": "9c6d47467175"
+    },
+    {
       "path": "src/docudent/v10/__tests__/askbacks/mergeRequiredAskbacks.test.ts",
       "type": "test",
       "size": 655,
@@ -4060,8 +4618,8 @@
     {
       "path": "src/docudent/v10/__tests__/bundle/runV10Bundle.provenance-meta.test.ts",
       "type": "test",
-      "size": 2373,
-      "hash": "f9e06eba3fac"
+      "size": 3243,
+      "hash": "5fb8aba1fe59"
     },
     {
       "path": "src/docudent/v10/__tests__/components/MultiOutputRenderer.provenance.test.tsx",
@@ -4094,6 +4652,12 @@
       "hash": "c8fa81fa2aab"
     },
     {
+      "path": "src/docudent/v10/__tests__/facts/endo-tooth-anatomy.test.ts",
+      "type": "test",
+      "size": 1146,
+      "hash": "25f3318e5c4f"
+    },
+    {
       "path": "src/docudent/v10/__tests__/fixtures/goldenClinicalScenarios.v1.ts",
       "type": "test",
       "size": 19740,
@@ -4122,6 +4686,12 @@
       "type": "test",
       "size": 12473,
       "hash": "d1d44a4e92b7"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-bruecke-facts-completeness.test.ts",
+      "type": "test",
+      "size": 819,
+      "hash": "d14c7040b636"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-combinability-auto-resolve.test.ts",
@@ -4176,6 +4746,12 @@
       "type": "test",
       "size": 814,
       "hash": "1e74f5f42feb"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-fissurenversiegelung-facts-completeness.test.ts",
+      "type": "test",
+      "size": 905,
+      "hash": "0f0cf0da2b88"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-fuellung-billing-complete.test.ts",
@@ -4244,6 +4820,12 @@
       "hash": "185ab0475f75"
     },
     {
+      "path": "src/docudent/v10/__tests__/gates/gate-implant-facts-completeness.test.ts",
+      "type": "test",
+      "size": 842,
+      "hash": "13b156275c25"
+    },
+    {
       "path": "src/docudent/v10/__tests__/gates/gate-kb-compiled-only.test.ts",
       "type": "test",
       "size": 1576,
@@ -4274,6 +4856,12 @@
       "hash": "fae5a59b11fd"
     },
     {
+      "path": "src/docudent/v10/__tests__/gates/gate-krone-facts-completeness.test.ts",
+      "type": "test",
+      "size": 807,
+      "hash": "28fe137890f2"
+    },
+    {
       "path": "src/docudent/v10/__tests__/gates/gate-medical-kb-validate.test.ts",
       "type": "test",
       "size": 849,
@@ -4294,8 +4882,8 @@
     {
       "path": "src/docudent/v10/__tests__/gates/gate-no-hardcoded-billing.test.ts",
       "type": "test",
-      "size": 3763,
-      "hash": "91138f288a63"
+      "size": 4046,
+      "hash": "c3730f61607c"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-output-length-policy-contract.test.ts",
@@ -4310,16 +4898,76 @@
       "hash": "37c3b77cc408"
     },
     {
+      "path": "src/docudent/v10/__tests__/gates/gate-parodontologie-facts-completeness.test.ts",
+      "type": "test",
+      "size": 769,
+      "hash": "d5f553cf8983"
+    },
+    {
       "path": "src/docudent/v10/__tests__/gates/gate-pzr-facts-completeness.test.ts",
       "type": "test",
       "size": 838,
       "hash": "a60d038b6d4d"
     },
     {
+      "path": "src/docudent/v10/__tests__/gates/gate-roentgen-facts-completeness.test.ts",
+      "type": "test",
+      "size": 994,
+      "hash": "be150685f4b5"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-schiene-facts-completeness.test.ts",
+      "type": "test",
+      "size": 813,
+      "hash": "74d704befc45"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-settings-askback-mappings-wired.test.ts",
+      "type": "test",
+      "size": 3477,
+      "hash": "13dba83bf678"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-settings-schema-coverage.test.ts",
+      "type": "test",
+      "size": 642,
+      "hash": "350c4603d24d"
+    },
+    {
       "path": "src/docudent/v10/__tests__/gates/gate-ssot-chip-ids.test.ts",
       "type": "test",
       "size": 4043,
       "hash": "2a1901781d4d"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-teilkrone-facts-completeness.test.ts",
+      "type": "test",
+      "size": 827,
+      "hash": "666d14b43a34"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-teilprothese-facts-completeness.test.ts",
+      "type": "test",
+      "size": 855,
+      "hash": "f49893101824"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-totalprothese-facts-completeness.test.ts",
+      "type": "test",
+      "size": 876,
+      "hash": "92b642728feb"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-trauma-facts-completeness.test.ts",
+      "type": "test",
+      "size": 896,
+      "hash": "4d7c505955b5"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-treatment-manifest-single-source.test.ts",
+      "type": "test",
+      "size": 1741,
+      "hash": "4cbe45e7babf"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-treatment-pack-onboarding-contract.test.ts",
@@ -4338,6 +4986,24 @@
       "type": "test",
       "size": 7068,
       "hash": "c657e96fa91a"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-ueberkappung-facts-completeness.test.ts",
+      "type": "test",
+      "size": 935,
+      "hash": "8f8f41fe6fce"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-untersuchung-facts-completeness.test.ts",
+      "type": "test",
+      "size": 827,
+      "hash": "9ea1ceb84915"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/gates/gate-upt-facts-completeness.test.ts",
+      "type": "test",
+      "size": 776,
+      "hash": "1a6da5fe0d93"
     },
     {
       "path": "src/docudent/v10/__tests__/gates/gate-v10-all-chips-have-emitters.test.ts",
@@ -4388,6 +5054,12 @@
       "hash": "3de7c614f5a8"
     },
     {
+      "path": "src/docudent/v10/__tests__/gates/gate-wsr-facts-completeness.test.ts",
+      "type": "test",
+      "size": 810,
+      "hash": "c77dd6730670"
+    },
+    {
       "path": "src/docudent/v10/__tests__/golden-mode-smoke.test.ts",
       "type": "test",
       "size": 3100,
@@ -4426,8 +5098,8 @@
     {
       "path": "src/docudent/v10/__tests__/llm/llmRuntimeMeta.test.ts",
       "type": "test",
-      "size": 2325,
-      "hash": "5d0a0638a977"
+      "size": 3092,
+      "hash": "13d3069e7ddf"
     },
     {
       "path": "src/docudent/v10/__tests__/llm/textRefiner.boundary.test.ts",
@@ -4462,14 +5134,14 @@
     {
       "path": "src/docudent/v10/__tests__/multitreatment/scoping.no_leak.test.ts",
       "type": "test",
-      "size": 2222,
-      "hash": "d21d728883d4"
+      "size": 2585,
+      "hash": "c83fe6d51db6"
     },
     {
       "path": "src/docudent/v10/__tests__/multitreatment/scoping.phantom-teeth.test.ts",
       "type": "test",
-      "size": 4726,
-      "hash": "3de7e4f2ceda"
+      "size": 5611,
+      "hash": "28a77cf1a0cb"
     },
     {
       "path": "src/docudent/v10/__tests__/multitreatment/scoping.surface_scope.test.ts",
@@ -4508,6 +5180,12 @@
       "hash": "76dd0d1336b5"
     },
     {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.bruecke-baseline.test.ts",
+      "type": "test",
+      "size": 3245,
+      "hash": "1d4338c51276"
+    },
+    {
       "path": "src/docudent/v10/__tests__/pipeline/v10.chip-billing-probe.test.ts",
       "type": "test",
       "size": 9045,
@@ -4520,10 +5198,28 @@
       "hash": "c5234d6f36f0"
     },
     {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.crown_prep-baseline.test.ts",
+      "type": "test",
+      "size": 1251,
+      "hash": "6cc1944f1921"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.endo-baseline.test.ts",
+      "type": "test",
+      "size": 1251,
+      "hash": "ee1e1754d18c"
+    },
+    {
       "path": "src/docudent/v10/__tests__/pipeline/v10.endo-defaults.test.ts",
       "type": "test",
-      "size": 3992,
-      "hash": "3f47e0ab2d2c"
+      "size": 6042,
+      "hash": "7adbbfb4af18"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.endo-question-dedupe.test.ts",
+      "type": "test",
+      "size": 1280,
+      "hash": "5358d9a8e662"
     },
     {
       "path": "src/docudent/v10/__tests__/pipeline/v10.endo-steps.test.ts",
@@ -4532,10 +5228,40 @@
       "hash": "35a260d142ef"
     },
     {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.extraction-baseline.test.ts",
+      "type": "test",
+      "size": 1413,
+      "hash": "95857821fd09"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.fissurenversiegelung-baseline.test.ts",
+      "type": "test",
+      "size": 2483,
+      "hash": "6dec8ef86275"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.fuellung-baseline.test.ts",
+      "type": "test",
+      "size": 1433,
+      "hash": "559eed1d56d6"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.fuellung-doc-quality.test.ts",
+      "type": "test",
+      "size": 1755,
+      "hash": "7292f2a789d0"
+    },
+    {
       "path": "src/docudent/v10/__tests__/pipeline/v10.fuellung-finishing-facts.test.ts",
       "type": "test",
       "size": 1859,
       "hash": "1f7075901b00"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.fuellung-gkv-no-mkv-narrative.test.ts",
+      "type": "test",
+      "size": 1253,
+      "hash": "cf39ac0c88f6"
     },
     {
       "path": "src/docudent/v10/__tests__/pipeline/v10.fuellung-la-ambiguity-default.test.ts",
@@ -4568,6 +5294,18 @@
       "hash": "79dcf1660a49"
     },
     {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.implant-baseline.test.ts",
+      "type": "test",
+      "size": 3330,
+      "hash": "84074a5aeb68"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.krone-baseline.test.ts",
+      "type": "test",
+      "size": 2324,
+      "hash": "43733b32a522"
+    },
+    {
       "path": "src/docudent/v10/__tests__/pipeline/v10.material-settings-output.test.ts",
       "type": "test",
       "size": 2781,
@@ -4578,6 +5316,12 @@
       "type": "test",
       "size": 6164,
       "hash": "8b3190d28ef7"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.parodontologie-baseline.test.ts",
+      "type": "test",
+      "size": 2183,
+      "hash": "e09bf18f138b"
     },
     {
       "path": "src/docudent/v10/__tests__/pipeline/v10.perfect-output-contract.test.ts",
@@ -4592,10 +5336,28 @@
       "hash": "e36a3de0ae68"
     },
     {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.pzr-baseline.test.ts",
+      "type": "test",
+      "size": 1367,
+      "hash": "540fcb078c73"
+    },
+    {
       "path": "src/docudent/v10/__tests__/pipeline/v10.review-fact-provenance.test.ts",
       "type": "test",
       "size": 1525,
       "hash": "62a00506910e"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.roentgen-baseline.test.ts",
+      "type": "test",
+      "size": 2849,
+      "hash": "e7daeec59edd"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.schiene-baseline.test.ts",
+      "type": "test",
+      "size": 3206,
+      "hash": "9027004be44d"
     },
     {
       "path": "src/docudent/v10/__tests__/pipeline/v10.settings-general-defaults.test.ts",
@@ -4610,10 +5372,64 @@
       "hash": "0d09cad2c8e6"
     },
     {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.settings-treatment-schema.test.ts",
+      "type": "test",
+      "size": 17238,
+      "hash": "cf2ddc3ca516"
+    },
+    {
       "path": "src/docudent/v10/__tests__/pipeline/v10.surface-lexicon.test.ts",
       "type": "test",
-      "size": 730,
-      "hash": "b6586db2ada0"
+      "size": 1786,
+      "hash": "55252f702694"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.teilkrone-baseline.test.ts",
+      "type": "test",
+      "size": 2391,
+      "hash": "d9d9dbe24c86"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.teilprothese-baseline.test.ts",
+      "type": "test",
+      "size": 3292,
+      "hash": "9ea4d87fb2ea"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.totalprothese-baseline.test.ts",
+      "type": "test",
+      "size": 3343,
+      "hash": "5a845b48401e"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.trauma-baseline.test.ts",
+      "type": "test",
+      "size": 3239,
+      "hash": "6e7f7645ca52"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.ueberkappung-baseline.test.ts",
+      "type": "test",
+      "size": 2388,
+      "hash": "84e1953d0b2c"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.untersuchung-baseline.test.ts",
+      "type": "test",
+      "size": 2698,
+      "hash": "7519365c9f76"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.upt-baseline.test.ts",
+      "type": "test",
+      "size": 2299,
+      "hash": "dcf7a7461bb7"
+    },
+    {
+      "path": "src/docudent/v10/__tests__/pipeline/v10.wsr-baseline.test.ts",
+      "type": "test",
+      "size": 3374,
+      "hash": "1a50dd536772"
     },
     {
       "path": "src/docudent/v10/__tests__/preanalysis/buildIntentConfirmationViewModel.test.ts",
@@ -4630,8 +5446,8 @@
     {
       "path": "src/docudent/v10/__tests__/preanalysis/detectTreatmentIntents.test.ts",
       "type": "test",
-      "size": 14935,
-      "hash": "7b4e1bff56e1"
+      "size": 31124,
+      "hash": "375069f0abd6"
     },
     {
       "path": "src/docudent/v10/__tests__/preanalysis/fixtures/mixedIntentFixtures.ts",
@@ -4648,8 +5464,8 @@
     {
       "path": "src/docudent/v10/__tests__/preanalysis/runPreanalyzedBundle.test.ts",
       "type": "test",
-      "size": 5726,
-      "hash": "837017bc9d4a"
+      "size": 6751,
+      "hash": "b7ea8a0523de"
     },
     {
       "path": "src/docudent/v10/__tests__/preanalysis/treatmentIntentContract.test.ts",
@@ -4828,8 +5644,8 @@
     {
       "path": "src/docudent/v10/askbacks/buildQuestionsFromAskbacks.ts",
       "type": "runtime",
-      "size": 4574,
-      "hash": "478dfb824131"
+      "size": 15118,
+      "hash": "fd261b44e292"
     },
     {
       "path": "src/docudent/v10/askbacks/mergeRequiredAskbacks.ts",
@@ -4852,8 +5668,8 @@
     {
       "path": "src/docudent/v10/billing/billingCompleteness.ts",
       "type": "runtime",
-      "size": 12893,
-      "hash": "d7c101b33194"
+      "size": 12454,
+      "hash": "b27b9699bf1f"
     },
     {
       "path": "src/docudent/v10/billing/billingDb.ts",
@@ -4996,8 +5812,8 @@
     {
       "path": "src/docudent/v10/components/MultiOutputRenderer.tsx",
       "type": "runtime",
-      "size": 14686,
-      "hash": "534e5bfbbf2d"
+      "size": 14757,
+      "hash": "93758f298079"
     },
     {
       "path": "src/docudent/v10/components/OutputFlow.tsx",
@@ -5092,8 +5908,8 @@
     {
       "path": "src/docudent/v10/components/V10ChipsControlPanel.tsx",
       "type": "runtime",
-      "size": 12483,
-      "hash": "fcfc29a0f568"
+      "size": 12771,
+      "hash": "c921fb3b44e7"
     },
     {
       "path": "src/docudent/v10/components/V10ChipsGroupedPanel.tsx",
@@ -5104,8 +5920,8 @@
     {
       "path": "src/docudent/v10/components/V10ChipsPanel.tsx",
       "type": "runtime",
-      "size": 5750,
-      "hash": "391ae1df3161"
+      "size": 6038,
+      "hash": "66ee16e3b584"
     },
     {
       "path": "src/docudent/v10/components/V10CommandPalette.tsx",
@@ -5128,8 +5944,8 @@
     {
       "path": "src/docudent/v10/components/V10InstanceSummary.tsx",
       "type": "runtime",
-      "size": 4837,
-      "hash": "9b82607751e8"
+      "size": 5125,
+      "hash": "d88ec67a4e9b"
     },
     {
       "path": "src/docudent/v10/components/V10InsuranceSelector.tsx",
@@ -5140,8 +5956,8 @@
     {
       "path": "src/docudent/v10/components/V10MultiQuestionsPanel.tsx",
       "type": "runtime",
-      "size": 9835,
-      "hash": "f06cd8b397e3"
+      "size": 10132,
+      "hash": "8914289fa0a8"
     },
     {
       "path": "src/docudent/v10/components/V10OptionPillButton.tsx",
@@ -5218,8 +6034,8 @@
     {
       "path": "src/docudent/v10/components/V10TreatmentSelector.tsx",
       "type": "runtime",
-      "size": 7989,
-      "hash": "36daff57338f"
+      "size": 8225,
+      "hash": "1896ae10eeae"
     },
     {
       "path": "src/docudent/v10/components/ValueCapsule.tsx",
@@ -5248,8 +6064,8 @@
     {
       "path": "src/docudent/v10/debug/llmRuntimeMeta.ts",
       "type": "runtime",
-      "size": 2807,
-      "hash": "7530182b6225"
+      "size": 4492,
+      "hash": "725ab9a9a197"
     },
     {
       "path": "src/docudent/v10/debug/reproBundle.ts",
@@ -5308,20 +6124,26 @@
     {
       "path": "src/docudent/v10/extraction/surfaces/normalizeSurfaces.ts",
       "type": "runtime",
-      "size": 12523,
-      "hash": "cde4c2b80543"
+      "size": 13593,
+      "hash": "40cacbae94a5"
     },
     {
       "path": "src/docudent/v10/facts/applyAnswersToFacts.ts",
       "type": "runtime",
-      "size": 27665,
-      "hash": "3596d2b510ae"
+      "size": 39425,
+      "hash": "c36d07e0d4bb"
     },
     {
       "path": "src/docudent/v10/facts/buildFactsFromExtraction.ts",
       "type": "runtime",
-      "size": 68306,
-      "hash": "bf46f7981154"
+      "size": 101486,
+      "hash": "cc45d3792920"
+    },
+    {
+      "path": "src/docudent/v10/facts/endoToothAnatomy.ts",
+      "type": "runtime",
+      "size": 1220,
+      "hash": "852a0b879b91"
     },
     {
       "path": "src/docudent/v10/facts/index.ts",
@@ -5332,8 +6154,8 @@
     {
       "path": "src/docudent/v10/facts/types.ts",
       "type": "runtime",
-      "size": 11458,
-      "hash": "c05cb75b71b6"
+      "size": 14683,
+      "hash": "a9958807fe79"
     },
     {
       "path": "src/docudent/v10/gates/gate-no-hardcoded-billing-refs.test.ts",
@@ -5356,8 +6178,8 @@
     {
       "path": "src/docudent/v10/hooks/useV10Pipeline.ts",
       "type": "runtime",
-      "size": 45586,
-      "hash": "e40db115aafc"
+      "size": 46753,
+      "hash": "6487607f5124"
     },
     {
       "path": "src/docudent/v10/index.ts",
@@ -5368,8 +6190,8 @@
     {
       "path": "src/docudent/v10/kb/combinability/combinability_kb.v1.json",
       "type": "data",
-      "size": 17321,
-      "hash": "0959ef76e0d1"
+      "size": 18149,
+      "hash": "a02e9c06c5cb"
     },
     {
       "path": "src/docudent/v10/kb/combinability/compiler.ts",
@@ -5482,14 +6304,14 @@
     {
       "path": "src/docudent/v10/kzv/registry/loaders.ts",
       "type": "runtime",
-      "size": 1713,
-      "hash": "8bc237415dae"
+      "size": 1278,
+      "hash": "55deb19cf27c"
     },
     {
       "path": "src/docudent/v10/kzv/registry/treatmentRegistry.ts",
       "type": "runtime",
-      "size": 993,
-      "hash": "ccc2b7caff33"
+      "size": 1084,
+      "hash": "8421e1153001"
     },
     {
       "path": "src/docudent/v10/kzv/treatments/endo/finding_map.json",
@@ -5542,8 +6364,8 @@
     {
       "path": "src/docudent/v10/multitreatment/classifyTreatment.ts",
       "type": "runtime",
-      "size": 3697,
-      "hash": "975214e3a144"
+      "size": 14111,
+      "hash": "21757542cdb3"
     },
     {
       "path": "src/docudent/v10/multitreatment/planFromDictation.ts",
@@ -5560,8 +6382,8 @@
     {
       "path": "src/docudent/v10/multitreatment/scoping.ts",
       "type": "runtime",
-      "size": 12181,
-      "hash": "9f7cf944ef20"
+      "size": 14227,
+      "hash": "807c1816f5d5"
     },
     {
       "path": "src/docudent/v10/multitreatment/segmentDictation.ts",
@@ -5588,6 +6410,30 @@
       "hash": "19eb735dd2b0"
     },
     {
+      "path": "src/docudent/v10/packs/bruecke/combinability.ts",
+      "type": "runtime",
+      "size": 124,
+      "hash": "5a8b701c141e"
+    },
+    {
+      "path": "src/docudent/v10/packs/bruecke/pack.ts",
+      "type": "runtime",
+      "size": 1068,
+      "hash": "760b923b8532"
+    },
+    {
+      "path": "src/docudent/v10/packs/bruecke/scenarios.ts",
+      "type": "runtime",
+      "size": 878,
+      "hash": "471fe59fa861"
+    },
+    {
+      "path": "src/docudent/v10/packs/bruecke/ui.contract.ts",
+      "type": "runtime",
+      "size": 1939,
+      "hash": "a951af0ea158"
+    },
+    {
       "path": "src/docudent/v10/packs/crown_prep/combinability.ts",
       "type": "runtime",
       "size": 126,
@@ -5608,8 +6454,8 @@
     {
       "path": "src/docudent/v10/packs/crown_prep/ui.contract.ts",
       "type": "runtime",
-      "size": 1033,
-      "hash": "8d81c9b6a873"
+      "size": 1777,
+      "hash": "39baee525d1b"
     },
     {
       "path": "src/docudent/v10/packs/endo/combinability.ts",
@@ -5680,8 +6526,32 @@
     {
       "path": "src/docudent/v10/packs/extraction/ui.contract.ts",
       "type": "runtime",
-      "size": 1114,
-      "hash": "cba150e8f9bc"
+      "size": 2000,
+      "hash": "b7e33833d076"
+    },
+    {
+      "path": "src/docudent/v10/packs/fissurenversiegelung/combinability.ts",
+      "type": "runtime",
+      "size": 137,
+      "hash": "9231356407e3"
+    },
+    {
+      "path": "src/docudent/v10/packs/fissurenversiegelung/pack.ts",
+      "type": "runtime",
+      "size": 1184,
+      "hash": "3f433049275b"
+    },
+    {
+      "path": "src/docudent/v10/packs/fissurenversiegelung/scenarios.ts",
+      "type": "runtime",
+      "size": 924,
+      "hash": "f654dbade894"
+    },
+    {
+      "path": "src/docudent/v10/packs/fissurenversiegelung/ui.contract.ts",
+      "type": "runtime",
+      "size": 1876,
+      "hash": "6aeb2332f962"
     },
     {
       "path": "src/docudent/v10/packs/fuellung/combinability.ts",
@@ -5726,10 +6596,82 @@
       "hash": "a2ec2e150e40"
     },
     {
+      "path": "src/docudent/v10/packs/implant/combinability.ts",
+      "type": "runtime",
+      "size": 124,
+      "hash": "cd4d014e2706"
+    },
+    {
+      "path": "src/docudent/v10/packs/implant/pack.ts",
+      "type": "runtime",
+      "size": 1078,
+      "hash": "5f8a98e41c2b"
+    },
+    {
+      "path": "src/docudent/v10/packs/implant/scenarios.ts",
+      "type": "runtime",
+      "size": 830,
+      "hash": "6ef3b057152b"
+    },
+    {
+      "path": "src/docudent/v10/packs/implant/ui.contract.ts",
+      "type": "runtime",
+      "size": 1917,
+      "hash": "810e35774aba"
+    },
+    {
       "path": "src/docudent/v10/packs/index.ts",
       "type": "runtime",
-      "size": 677,
-      "hash": "d31d7852db87"
+      "size": 1523,
+      "hash": "e870222d725e"
+    },
+    {
+      "path": "src/docudent/v10/packs/krone/combinability.ts",
+      "type": "runtime",
+      "size": 122,
+      "hash": "ff14831be8a5"
+    },
+    {
+      "path": "src/docudent/v10/packs/krone/pack.ts",
+      "type": "runtime",
+      "size": 1046,
+      "hash": "50d12d322739"
+    },
+    {
+      "path": "src/docudent/v10/packs/krone/scenarios.ts",
+      "type": "runtime",
+      "size": 802,
+      "hash": "242b9f23cb88"
+    },
+    {
+      "path": "src/docudent/v10/packs/krone/ui.contract.ts",
+      "type": "runtime",
+      "size": 1952,
+      "hash": "87d2b3eb945d"
+    },
+    {
+      "path": "src/docudent/v10/packs/parodontologie/combinability.ts",
+      "type": "runtime",
+      "size": 131,
+      "hash": "8dc7fada8467"
+    },
+    {
+      "path": "src/docudent/v10/packs/parodontologie/pack.ts",
+      "type": "runtime",
+      "size": 1133,
+      "hash": "0d27c81ba1f0"
+    },
+    {
+      "path": "src/docudent/v10/packs/parodontologie/scenarios.ts",
+      "type": "runtime",
+      "size": 890,
+      "hash": "c87c09290548"
+    },
+    {
+      "path": "src/docudent/v10/packs/parodontologie/ui.contract.ts",
+      "type": "runtime",
+      "size": 2351,
+      "hash": "2cbb01a182ad"
     },
     {
       "path": "src/docudent/v10/packs/pzr/combinability.ts",
@@ -5752,14 +6694,158 @@
     {
       "path": "src/docudent/v10/packs/pzr/ui.contract.ts",
       "type": "runtime",
-      "size": 1116,
-      "hash": "073c63918167"
+      "size": 1915,
+      "hash": "e0c44e638e23"
     },
     {
       "path": "src/docudent/v10/packs/registry.ts",
       "type": "runtime",
-      "size": 2421,
-      "hash": "0613c694d5fa"
+      "size": 4019,
+      "hash": "9f8027a2ac3f"
+    },
+    {
+      "path": "src/docudent/v10/packs/roentgen/combinability.ts",
+      "type": "runtime",
+      "size": 125,
+      "hash": "70433065055b"
+    },
+    {
+      "path": "src/docudent/v10/packs/roentgen/pack.ts",
+      "type": "runtime",
+      "size": 1064,
+      "hash": "9edb9356db74"
+    },
+    {
+      "path": "src/docudent/v10/packs/roentgen/scenarios.ts",
+      "type": "runtime",
+      "size": 1378,
+      "hash": "b237c0ea64d8"
+    },
+    {
+      "path": "src/docudent/v10/packs/roentgen/ui.contract.ts",
+      "type": "runtime",
+      "size": 3351,
+      "hash": "74c476af4588"
+    },
+    {
+      "path": "src/docudent/v10/packs/schiene/combinability.ts",
+      "type": "runtime",
+      "size": 124,
+      "hash": "4ecd204f287b"
+    },
+    {
+      "path": "src/docudent/v10/packs/schiene/pack.ts",
+      "type": "runtime",
+      "size": 1077,
+      "hash": "dca5af9a132b"
+    },
+    {
+      "path": "src/docudent/v10/packs/schiene/scenarios.ts",
+      "type": "runtime",
+      "size": 933,
+      "hash": "ef51df7ea5a4"
+    },
+    {
+      "path": "src/docudent/v10/packs/schiene/ui.contract.ts",
+      "type": "runtime",
+      "size": 2017,
+      "hash": "1c24e988b508"
+    },
+    {
+      "path": "src/docudent/v10/packs/teilkrone/combinability.ts",
+      "type": "runtime",
+      "size": 126,
+      "hash": "4ebd62304552"
+    },
+    {
+      "path": "src/docudent/v10/packs/teilkrone/pack.ts",
+      "type": "runtime",
+      "size": 1090,
+      "hash": "bfebca4417f7"
+    },
+    {
+      "path": "src/docudent/v10/packs/teilkrone/scenarios.ts",
+      "type": "runtime",
+      "size": 851,
+      "hash": "8f61db2b23c8"
+    },
+    {
+      "path": "src/docudent/v10/packs/teilkrone/ui.contract.ts",
+      "type": "runtime",
+      "size": 2027,
+      "hash": "c4ce85556033"
+    },
+    {
+      "path": "src/docudent/v10/packs/teilprothese/combinability.ts",
+      "type": "runtime",
+      "size": 129,
+      "hash": "52e63848af3e"
+    },
+    {
+      "path": "src/docudent/v10/packs/teilprothese/pack.ts",
+      "type": "runtime",
+      "size": 1114,
+      "hash": "912b5e641ce8"
+    },
+    {
+      "path": "src/docudent/v10/packs/teilprothese/scenarios.ts",
+      "type": "runtime",
+      "size": 912,
+      "hash": "9b5c75469ee5"
+    },
+    {
+      "path": "src/docudent/v10/packs/teilprothese/ui.contract.ts",
+      "type": "runtime",
+      "size": 2020,
+      "hash": "a282f6e91625"
+    },
+    {
+      "path": "src/docudent/v10/packs/totalprothese/combinability.ts",
+      "type": "runtime",
+      "size": 130,
+      "hash": "61a8e183ea35"
+    },
+    {
+      "path": "src/docudent/v10/packs/totalprothese/pack.ts",
+      "type": "runtime",
+      "size": 1122,
+      "hash": "b722f9b5e5ce"
+    },
+    {
+      "path": "src/docudent/v10/packs/totalprothese/scenarios.ts",
+      "type": "runtime",
+      "size": 957,
+      "hash": "08ab19e7a268"
+    },
+    {
+      "path": "src/docudent/v10/packs/totalprothese/ui.contract.ts",
+      "type": "runtime",
+      "size": 2044,
+      "hash": "8b1a283b951f"
+    },
+    {
+      "path": "src/docudent/v10/packs/trauma/combinability.ts",
+      "type": "runtime",
+      "size": 123,
+      "hash": "8465f670adb2"
+    },
+    {
+      "path": "src/docudent/v10/packs/trauma/pack.ts",
+      "type": "runtime",
+      "size": 1067,
+      "hash": "7d7190f48edc"
+    },
+    {
+      "path": "src/docudent/v10/packs/trauma/scenarios.ts",
+      "type": "runtime",
+      "size": 919,
+      "hash": "9363c64ded1e"
+    },
+    {
+      "path": "src/docudent/v10/packs/trauma/ui.contract.ts",
+      "type": "runtime",
+      "size": 2419,
+      "hash": "4379f7f1b4ad"
     },
     {
       "path": "src/docudent/v10/packs/types.ts",
@@ -5768,16 +6854,112 @@
       "hash": "5813bfbeb1c9"
     },
     {
+      "path": "src/docudent/v10/packs/ueberkappung/combinability.ts",
+      "type": "runtime",
+      "size": 129,
+      "hash": "0bbe3f053ba4"
+    },
+    {
+      "path": "src/docudent/v10/packs/ueberkappung/pack.ts",
+      "type": "runtime",
+      "size": 1126,
+      "hash": "c1915d42a5d8"
+    },
+    {
+      "path": "src/docudent/v10/packs/ueberkappung/scenarios.ts",
+      "type": "runtime",
+      "size": 871,
+      "hash": "16d8bad807e8"
+    },
+    {
+      "path": "src/docudent/v10/packs/ueberkappung/ui.contract.ts",
+      "type": "runtime",
+      "size": 2483,
+      "hash": "2e44c850752b"
+    },
+    {
+      "path": "src/docudent/v10/packs/untersuchung/combinability.ts",
+      "type": "runtime",
+      "size": 129,
+      "hash": "fa9805bd4764"
+    },
+    {
+      "path": "src/docudent/v10/packs/untersuchung/pack.ts",
+      "type": "runtime",
+      "size": 1117,
+      "hash": "94890c3fab7c"
+    },
+    {
+      "path": "src/docudent/v10/packs/untersuchung/scenarios.ts",
+      "type": "runtime",
+      "size": 923,
+      "hash": "cb2c8c1dd483"
+    },
+    {
+      "path": "src/docudent/v10/packs/untersuchung/ui.contract.ts",
+      "type": "runtime",
+      "size": 2512,
+      "hash": "2bcf82dfede3"
+    },
+    {
+      "path": "src/docudent/v10/packs/upt/combinability.ts",
+      "type": "runtime",
+      "size": 120,
+      "hash": "93a80b6b6152"
+    },
+    {
+      "path": "src/docudent/v10/packs/upt/pack.ts",
+      "type": "runtime",
+      "size": 1016,
+      "hash": "20621c183d1a"
+    },
+    {
+      "path": "src/docudent/v10/packs/upt/scenarios.ts",
+      "type": "runtime",
+      "size": 776,
+      "hash": "acffb27e8687"
+    },
+    {
+      "path": "src/docudent/v10/packs/upt/ui.contract.ts",
+      "type": "runtime",
+      "size": 1873,
+      "hash": "abc91ab277fe"
+    },
+    {
+      "path": "src/docudent/v10/packs/wsr/combinability.ts",
+      "type": "runtime",
+      "size": 120,
+      "hash": "76e893cb0199"
+    },
+    {
+      "path": "src/docudent/v10/packs/wsr/pack.ts",
+      "type": "runtime",
+      "size": 1045,
+      "hash": "54d71462ba8a"
+    },
+    {
+      "path": "src/docudent/v10/packs/wsr/scenarios.ts",
+      "type": "runtime",
+      "size": 826,
+      "hash": "188a442e9c24"
+    },
+    {
+      "path": "src/docudent/v10/packs/wsr/ui.contract.ts",
+      "type": "runtime",
+      "size": 2135,
+      "hash": "0586d0785acb"
+    },
+    {
       "path": "src/docudent/v10/pages/DocudentV10Page.tsx",
       "type": "runtime",
-      "size": 61209,
-      "hash": "d08ab2830eb4"
+      "size": 61905,
+      "hash": "c4d62e8d5a43"
     },
     {
       "path": "src/docudent/v10/pages/SettingsPageV10.tsx",
       "type": "runtime",
-      "size": 96430,
-      "hash": "7c509e401d3b"
+      "size": 100933,
+      "hash": "4a17ab69bf86"
     },
     {
       "path": "src/docudent/v10/pipeline/billingEligibilityGuard.ts",
@@ -5788,20 +6970,20 @@
     {
       "path": "src/docudent/v10/pipeline/runV10.ts",
       "type": "runtime",
-      "size": 112760,
-      "hash": "cba87efa2bd4"
+      "size": 116290,
+      "hash": "0882784512a0"
     },
     {
       "path": "src/docudent/v10/pipeline/runV10Bundle.ts",
       "type": "runtime",
-      "size": 30269,
-      "hash": "1da5f01a197d"
+      "size": 31198,
+      "hash": "42ae3b9ceaa1"
     },
     {
       "path": "src/docudent/v10/preanalysis/buildIntentConfirmationViewModel.ts",
       "type": "runtime",
-      "size": 3504,
-      "hash": "f76ff3d456ad"
+      "size": 3367,
+      "hash": "d3af38776b2b"
     },
     {
       "path": "src/docudent/v10/preanalysis/buildSegmentsFromIntents.ts",
@@ -5812,8 +6994,8 @@
     {
       "path": "src/docudent/v10/preanalysis/detectTreatmentIntents.ts",
       "type": "runtime",
-      "size": 17868,
-      "hash": "9d962fbea70b"
+      "size": 28651,
+      "hash": "81b6854d1218"
     },
     {
       "path": "src/docudent/v10/preanalysis/intentSelectionPolicy.ts",
@@ -5836,14 +7018,14 @@
     {
       "path": "src/docudent/v10/preanalysis/treatmentIntentContract.ts",
       "type": "runtime",
-      "size": 7345,
-      "hash": "76e6b4f39b08"
+      "size": 7419,
+      "hash": "f4a0a710f9cb"
     },
     {
       "path": "src/docudent/v10/procedure/bundleMeta/index.ts",
       "type": "runtime",
-      "size": 2046,
-      "hash": "7449ff82dcce"
+      "size": 4338,
+      "hash": "fb81b854dac9"
     },
     {
       "path": "src/docudent/v10/procedure/bundleMeta/types.ts",
@@ -5854,8 +7036,14 @@
     {
       "path": "src/docudent/v10/procedure/events/allBundles.ts",
       "type": "runtime",
-      "size": 1218,
-      "hash": "5d661c26acc7"
+      "size": 3183,
+      "hash": "2a69362db078"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/bruecke.ts",
+      "type": "runtime",
+      "size": 1666,
+      "hash": "f048aa73a34a"
     },
     {
       "path": "src/docudent/v10/procedure/events/buildProcedureNodes.ts",
@@ -5888,10 +7076,22 @@
       "hash": "0c421bc1df4b"
     },
     {
+      "path": "src/docudent/v10/procedure/events/fissurenversiegelung.ts",
+      "type": "runtime",
+      "size": 1222,
+      "hash": "9b0ec5de2031"
+    },
+    {
       "path": "src/docudent/v10/procedure/events/fuellung.ts",
       "type": "runtime",
       "size": 9135,
       "hash": "79f6a4d55076"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/implant.ts",
+      "type": "runtime",
+      "size": 1689,
+      "hash": "4f02c3721221"
     },
     {
       "path": "src/docudent/v10/procedure/events/index.ts",
@@ -5900,16 +7100,88 @@
       "hash": "6b62d9c45912"
     },
     {
+      "path": "src/docudent/v10/procedure/events/krone.ts",
+      "type": "runtime",
+      "size": 1669,
+      "hash": "c461da83b087"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/parodontologie.ts",
+      "type": "runtime",
+      "size": 2479,
+      "hash": "09a5bed3b0f2"
+    },
+    {
       "path": "src/docudent/v10/procedure/events/pzr.ts",
       "type": "runtime",
       "size": 1456,
       "hash": "01f533b2c242"
     },
     {
+      "path": "src/docudent/v10/procedure/events/roentgen.ts",
+      "type": "runtime",
+      "size": 2612,
+      "hash": "fb1dc6346c75"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/schiene.ts",
+      "type": "runtime",
+      "size": 1708,
+      "hash": "9963ec2a6b83"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/teilkrone.ts",
+      "type": "runtime",
+      "size": 1773,
+      "hash": "b15e98df8780"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/teilprothese.ts",
+      "type": "runtime",
+      "size": 1784,
+      "hash": "1b5a865b6084"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/totalprothese.ts",
+      "type": "runtime",
+      "size": 1822,
+      "hash": "84bf2c7dff8a"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/trauma.ts",
+      "type": "runtime",
+      "size": 1967,
+      "hash": "2cc46e36c36e"
+    },
+    {
       "path": "src/docudent/v10/procedure/events/types.ts",
       "type": "runtime",
       "size": 572,
       "hash": "22d8f2575a9f"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/ueberkappung.ts",
+      "type": "runtime",
+      "size": 2907,
+      "hash": "310e14f998de"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/untersuchung.ts",
+      "type": "runtime",
+      "size": 1425,
+      "hash": "6af67670f63a"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/upt.ts",
+      "type": "runtime",
+      "size": 1606,
+      "hash": "ebd4ac010ce2"
+    },
+    {
+      "path": "src/docudent/v10/procedure/events/wsr.ts",
+      "type": "runtime",
+      "size": 1975,
+      "hash": "477a6cbc0da7"
     },
     {
       "path": "src/docudent/v10/procedure/gates/gateMissingEventBundles.ts",
@@ -5944,8 +7216,8 @@
     {
       "path": "src/docudent/v10/procedure/registry/treatments/index.ts",
       "type": "runtime",
-      "size": 6623,
-      "hash": "087f4434b031"
+      "size": 18893,
+      "hash": "aeacaa32595f"
     },
     {
       "path": "src/docudent/v10/procedure/resolver/matchProcedureGraph.ts",
@@ -6160,8 +7432,8 @@
     {
       "path": "src/docudent/v10/settings/settingsResolver.ts",
       "type": "runtime",
-      "size": 32849,
-      "hash": "77b0a6e9fc84"
+      "size": 46867,
+      "hash": "ed45c901c088"
     },
     {
       "path": "src/docudent/v10/settings/settingsStore.ts",
@@ -6172,8 +7444,8 @@
     {
       "path": "src/docudent/v10/settings/settingsTypes.ts",
       "type": "runtime",
-      "size": 16212,
-      "hash": "748b0f6658cc"
+      "size": 16400,
+      "hash": "a8af3b470ee2"
     },
     {
       "path": "src/docudent/v10/settings/treatmentMaster.ts",
@@ -7406,10 +8678,16 @@
       "hash": "d9986222b32f"
     },
     {
+      "path": "src/docudent/v7/pipeline/__test__/stubExtractor.test.ts",
+      "type": "test",
+      "size": 1071,
+      "hash": "a7f8cb8667ce"
+    },
+    {
       "path": "src/docudent/v7/pipeline/__test__/stubExtractor.ts",
       "type": "runtime",
-      "size": 10564,
-      "hash": "c545cc156502"
+      "size": 11829,
+      "hash": "d80532244de9"
     },
     {
       "path": "src/docudent/v7/pipeline/__tests__/contract-drift.test.ts",

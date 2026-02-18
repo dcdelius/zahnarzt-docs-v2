@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "id": "mt01",
+      "label": "GKV Extraktion plus Fuellung",
+      "dictation": "GKV. Zunaechst Extraktion Zahn 28 nach Luxation mit Infiltrationsanaesthesie und Wundversorgung, danach Fuellung Zahn 16 okklusal mit Komposit unter Kofferdam und Okklusionskontrolle.",
+      "insuranceType": "GKV",
+      "expectedTreatments": ["extraction", "fuellung"]
+    },
+    {
+      "id": "mt02",
+      "label": "GKV Fuellung plus Endo plus Roentgen",
+      "dictation": "GKV. Zahn 24 bekam eine tiefe MOD-Kompositfuellung. Anschliessend wurde Zahn 27 wegen Klopfdolenz trepaniert, die Kanaele aufbereitet und medikamentoes eingelegt. Danach erfolgte eine Roentgenkontrolle.",
+      "insuranceType": "GKV",
+      "expectedTreatments": ["fuellung", "endo", "roentgen"]
+    },
+    {
+      "id": "mt03",
+      "label": "PKV Kronenpraeparation plus OPG",
+      "dictation": "PKV. Zahn 11 wurde fuer eine Krone praepariert, abgeformt und provisorisch versorgt; zusaetzlich wurde ein OPG zur Therapieplanung angefertigt.",
+      "insuranceType": "PKV",
+      "expectedTreatments": ["crown_prep", "roentgen"]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "runId": "2026-02-14T21:08:39.368Z",
+  "runId": "2026-02-17T17:41:56.909Z",
   "total": 16,
   "pass": 16,
   "fail": 0,
@@ -13,6 +13,7 @@
         "BEMA_31",
         "BEMA_32",
         "BEMA_34",
+        "BEMA_35",
         "BEMA_41a",
         "BEMA_Ä925a"
       ],
@@ -29,6 +30,7 @@
         "GOZ_2360",
         "GOZ_2400",
         "GOZ_2410",
+        "GOZ_2430",
         "GOZ_2440",
         "GOZ_5000"
       ],
@@ -43,6 +45,7 @@
         "BEMA_31",
         "BEMA_32",
         "BEMA_34",
+        "BEMA_35",
         "BEMA_41a",
         "BEMA_Ä925a"
       ],
@@ -85,7 +88,10 @@
       "status": "pass",
       "billingRefs": [
         "BEMA_12",
-        "BEMA_32"
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_Ä925a"
       ],
       "errors": [],
       "phase": "questions"
@@ -98,7 +104,9 @@
         "BEMA_12",
         "BEMA_31",
         "BEMA_32",
-        "BEMA_35"
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_Ä925a"
       ],
       "errors": [],
       "phase": "questions"
@@ -112,6 +120,7 @@
         "BEMA_31",
         "BEMA_32",
         "BEMA_34",
+        "BEMA_35",
         "BEMA_41a",
         "BEMA_Ä925a"
       ],
@@ -128,6 +137,7 @@
         "GOZ_2360",
         "GOZ_2400",
         "GOZ_2410",
+        "GOZ_2430",
         "GOZ_2440",
         "GOZ_5000"
       ],
@@ -139,7 +149,10 @@
       "title": "GKV: T2 kein Kofferdam möglich → kein BEMA_12",
       "status": "pass",
       "billingRefs": [
-        "BEMA_35"
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_Ä925a"
       ],
       "errors": [],
       "phase": "output"
@@ -150,7 +163,10 @@
       "status": "pass",
       "billingRefs": [
         "BEMA_12",
-        "BEMA_35"
+        "BEMA_32",
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_Ä925a"
       ],
       "errors": [],
       "phase": "questions"
@@ -163,7 +179,9 @@
         "BEMA_12",
         "BEMA_31",
         "BEMA_32",
-        "BEMA_35"
+        "BEMA_34",
+        "BEMA_35",
+        "BEMA_Ä925a"
       ],
       "errors": [],
       "phase": "questions"
@@ -174,7 +192,9 @@
       "status": "pass",
       "billingRefs": [
         "BEMA_12",
+        "BEMA_32",
         "BEMA_34",
+        "BEMA_35",
         "BEMA_Ä925a"
       ],
       "errors": [],
@@ -189,6 +209,7 @@
         "BEMA_31",
         "BEMA_32",
         "BEMA_34",
+        "BEMA_35",
         "BEMA_41a",
         "BEMA_Ä925a"
       ],
@@ -205,6 +226,7 @@
         "GOZ_2360",
         "GOZ_2400",
         "GOZ_2410",
+        "GOZ_2430",
         "GOZ_2440",
         "GOZ_5000"
       ],

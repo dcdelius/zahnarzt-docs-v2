@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "treatmentId": "roentgen",
+    "version": "1.0.0"
+  },
+  "bundles": [
+    {
+      "id": "roentgen.typ.einzelzahn",
+      "chipIds": ["roentgen_einzelzahn"],
+      "textRefIds": ["roentgen_einzelzahn"],
+      "billingRefIds": ["roentgen_einzelzahn"]
+    },
+    {
+      "id": "roentgen.typ.opg",
+      "chipIds": ["roentgen_opg"],
+      "textRefIds": ["roentgen_opg"],
+      "billingRefIds": ["roentgen_opg"]
+    },
+    {
+      "id": "roentgen.befundung",
+      "chipIds": ["roentgen_befundung"],
+      "textRefIds": ["roentgen_befundung"]
+    },
+    {
+      "id": "roentgen.askback.indikation"
+    },
+    {
+      "id": "roentgen.askback.typ"
+    },
+    {
+      "id": "roentgen.askback.zeitpunkt"
+    },
+    {
+      "id": "roentgen.askback.befund"
+    }
+  ]
+}

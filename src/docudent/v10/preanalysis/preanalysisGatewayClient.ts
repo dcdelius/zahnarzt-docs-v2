@@ -1,4 +1,5 @@
 import { getFunctions, httpsCallable } from 'firebase/functions';
+import { ensureCallableAuthReady } from '@/docudent/core/firebase/ensureCallableAuthReady';
 
 type DetectTreatmentIntentsGatewayInput = {
     dictation: string;
@@ -18,6 +19,7 @@ function getFunctionsInstance() {
 }
 
 export async function callPreanalysisGateway(dictation: string): Promise<string | null> {
+    await ensureCallableAuthReady();
     const callable = httpsCallable<
         DetectTreatmentIntentsGatewayInput,
         DetectTreatmentIntentsGatewayOutput
